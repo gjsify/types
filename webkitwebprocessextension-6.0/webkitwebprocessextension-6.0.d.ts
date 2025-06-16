@@ -325,14 +325,15 @@ export namespace WebKitWebProcessExtension {
      */
     class ContextMenu extends GObject.Object {
         static $gtype: GObject.GType<ContextMenu>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ContextMenu.SignalSignatures;
+        $signals: ContextMenu.SignalSignatures;
 
         // Constructors
 
@@ -491,14 +492,15 @@ export namespace WebKitWebProcessExtension {
      */
     class ContextMenuItem extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ContextMenuItem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ContextMenuItem.SignalSignatures;
+        $signals: ContextMenuItem.SignalSignatures;
 
         // Constructors
 
@@ -588,14 +590,15 @@ export namespace WebKitWebProcessExtension {
      */
     class Frame extends GObject.Object {
         static $gtype: GObject.GType<Frame>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Frame.SignalSignatures;
+        $signals: Frame.SignalSignatures;
 
         // Constructors
 
@@ -764,14 +767,15 @@ export namespace WebKitWebProcessExtension {
          * is present in #WebKitHitTestResult:context
          */
         get mediaUri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HitTestResult.SignalSignatures;
+        $signals: HitTestResult.SignalSignatures;
 
         // Constructors
 
@@ -880,14 +884,15 @@ export namespace WebKitWebProcessExtension {
 
     class ScriptWorld extends GObject.Object {
         static $gtype: GObject.GType<ScriptWorld>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScriptWorld.SignalSignatures;
+        $signals: ScriptWorld.SignalSignatures;
 
         // Constructors
 
@@ -966,14 +971,15 @@ export namespace WebKitWebProcessExtension {
          */
         get uri(): string;
         set uri(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: URIRequest.SignalSignatures;
+        $signals: URIRequest.SignalSignatures;
 
         // Constructors
 
@@ -1109,14 +1115,15 @@ export namespace WebKitWebProcessExtension {
          * The URI for which the response was made.
          */
         get uri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: URIResponse.SignalSignatures;
+        $signals: URIResponse.SignalSignatures;
 
         // Constructors
 
@@ -1238,14 +1245,15 @@ export namespace WebKitWebProcessExtension {
          * allowed.
          */
         get parameters(): GLib.Variant;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserMessage.SignalSignatures;
+        $signals: UserMessage.SignalSignatures;
 
         // Constructors
 
@@ -1334,14 +1342,15 @@ export namespace WebKitWebProcessExtension {
      */
     class WebEditor extends GObject.Object {
         static $gtype: GObject.GType<WebEditor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebEditor.SignalSignatures;
+        $signals: WebEditor.SignalSignatures;
 
         // Constructors
 
@@ -1394,14 +1403,15 @@ export namespace WebKitWebProcessExtension {
      */
     class WebFormManager extends GObject.Object {
         static $gtype: GObject.GType<WebFormManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebFormManager.SignalSignatures;
+        $signals: WebFormManager.SignalSignatures;
 
         // Constructors
 
@@ -1466,14 +1476,15 @@ export namespace WebKitWebProcessExtension {
      */
     class WebHitTestResult extends GObject.Object {
         static $gtype: GObject.GType<WebHitTestResult>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebHitTestResult.SignalSignatures;
+        $signals: WebHitTestResult.SignalSignatures;
 
         // Constructors
 
@@ -1616,14 +1627,15 @@ export namespace WebKitWebProcessExtension {
          * The current active URI of the #WebKitWebPage.
          */
         get uri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebPage.SignalSignatures;
+        $signals: WebPage.SignalSignatures;
 
         // Constructors
 
@@ -1815,14 +1827,15 @@ export namespace WebKitWebProcessExtension {
      */
     class WebProcessExtension extends GObject.Object {
         static $gtype: GObject.GType<WebProcessExtension>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebProcessExtension.SignalSignatures;
+        $signals: WebProcessExtension.SignalSignatures;
 
         // Constructors
 

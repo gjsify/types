@@ -559,14 +559,15 @@ export namespace Libxfce4windowing {
          * The list of #XfwWindow belonging to the application.
          */
         get windows(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Application.SignalSignatures;
+        $signals: Application.SignalSignatures;
 
         // Constructors
 
@@ -675,14 +676,15 @@ export namespace Libxfce4windowing {
 
         get app_id(): string;
         get appId(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ApplicationWayland.SignalSignatures;
+        $signals: ApplicationWayland.SignalSignatures;
 
         // Constructors
 
@@ -726,14 +728,15 @@ export namespace Libxfce4windowing {
 
     class ApplicationX11 extends Application {
         static $gtype: GObject.GType<ApplicationX11>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ApplicationX11.SignalSignatures;
+        $signals: ApplicationX11.SignalSignatures;
 
         // Constructors
 
@@ -776,14 +779,15 @@ export namespace Libxfce4windowing {
 
     class ScreenWayland extends GObject.Object implements Screen {
         static $gtype: GObject.GType<ScreenWayland>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScreenWayland.SignalSignatures;
+        $signals: ScreenWayland.SignalSignatures;
 
         // Constructors
 
@@ -1339,14 +1343,15 @@ export namespace Libxfce4windowing {
 
     class ScreenX11 extends GObject.Object implements Screen {
         static $gtype: GObject.GType<ScreenX11>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScreenX11.SignalSignatures;
+        $signals: ScreenX11.SignalSignatures;
 
         // Constructors
 
@@ -1973,14 +1978,15 @@ export namespace Libxfce4windowing {
          */
         get type(): WindowType;
         get workspace(): Workspace;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Window.SignalSignatures;
+        $signals: Window.SignalSignatures;
 
         // Constructors
 
@@ -2150,14 +2156,15 @@ export namespace Libxfce4windowing {
         // Properties
 
         get handle(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WindowWayland.SignalSignatures;
+        $signals: WindowWayland.SignalSignatures;
 
         // Constructors
 
@@ -2206,14 +2213,15 @@ export namespace Libxfce4windowing {
 
     class WindowX11 extends Window {
         static $gtype: GObject.GType<WindowX11>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WindowX11.SignalSignatures;
+        $signals: WindowX11.SignalSignatures;
 
         // Constructors
 
@@ -2265,14 +2273,15 @@ export namespace Libxfce4windowing {
 
         get wnck_object(): GObject.Object;
         get wnckObject(): GObject.Object;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WnckIcon.SignalSignatures;
+        $signals: WnckIcon.SignalSignatures;
 
         // Constructors
 
@@ -2980,14 +2989,15 @@ export namespace Libxfce4windowing {
 
     class WorkspaceDummy extends GObject.Object implements Workspace {
         static $gtype: GObject.GType<WorkspaceDummy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WorkspaceDummy.SignalSignatures;
+        $signals: WorkspaceDummy.SignalSignatures;
 
         // Constructors
 
@@ -3638,14 +3648,15 @@ export namespace Libxfce4windowing {
         set set_layout_func(val: any);
         get setLayoutFunc(): any;
         set setLayoutFunc(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WorkspaceGroupDummy.SignalSignatures;
+        $signals: WorkspaceGroupDummy.SignalSignatures;
 
         // Constructors
 
@@ -4227,14 +4238,15 @@ export namespace Libxfce4windowing {
 
     class WorkspaceGroupWayland extends GObject.Object implements WorkspaceGroup {
         static $gtype: GObject.GType<WorkspaceGroupWayland>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WorkspaceGroupWayland.SignalSignatures;
+        $signals: WorkspaceGroupWayland.SignalSignatures;
 
         // Constructors
 
@@ -4811,14 +4823,15 @@ export namespace Libxfce4windowing {
 
     class WorkspaceManagerDummy extends GObject.Object implements WorkspaceManager {
         static $gtype: GObject.GType<WorkspaceManagerDummy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WorkspaceManagerDummy.SignalSignatures;
+        $signals: WorkspaceManagerDummy.SignalSignatures;
 
         // Constructors
 
@@ -5332,14 +5345,15 @@ export namespace Libxfce4windowing {
         get wlManager(): any;
         get wl_registry(): any;
         get wlRegistry(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WorkspaceManagerWayland.SignalSignatures;
+        $signals: WorkspaceManagerWayland.SignalSignatures;
 
         // Constructors
 
@@ -5839,14 +5853,15 @@ export namespace Libxfce4windowing {
 
     class WorkspaceManagerX11 extends GObject.Object implements WorkspaceManager {
         static $gtype: GObject.GType<WorkspaceManagerX11>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WorkspaceManagerX11.SignalSignatures;
+        $signals: WorkspaceManagerX11.SignalSignatures;
 
         // Constructors
 
@@ -6361,14 +6376,15 @@ export namespace Libxfce4windowing {
         // Properties
 
         get handle(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WorkspaceWayland.SignalSignatures;
+        $signals: WorkspaceWayland.SignalSignatures;
 
         // Constructors
 
@@ -6997,14 +7013,15 @@ export namespace Libxfce4windowing {
 
     class WorkspaceX11 extends GObject.Object implements Workspace {
         static $gtype: GObject.GType<WorkspaceX11>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WorkspaceX11.SignalSignatures;
+        $signals: WorkspaceX11.SignalSignatures;
 
         // Constructors
 

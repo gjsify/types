@@ -76,14 +76,15 @@ export namespace FolksLibsocialweb {
 
         get lsw_contact(): SocialWebClient.Contact;
         get lswContact(): SocialWebClient.Contact;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Persona.SignalSignatures;
+        $signals: Persona.SignalSignatures;
 
         // Constructors
 
@@ -717,14 +718,15 @@ export namespace FolksLibsocialweb {
         // Properties
 
         get service(): SocialWebClient.ClientService;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PersonaStore.SignalSignatures;
+        $signals: PersonaStore.SignalSignatures;
 
         // Constructors
 

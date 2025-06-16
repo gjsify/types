@@ -86,14 +86,15 @@ export namespace GFBGraph {
          */
         get name(): string;
         set name(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Album.SignalSignatures;
+        $signals: Album.SignalSignatures;
 
         // Constructors
 
@@ -320,14 +321,15 @@ export namespace GFBGraph {
 
     class GoaAuthorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<GoaAuthorizer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GoaAuthorizer.SignalSignatures;
+        $signals: GoaAuthorizer.SignalSignatures;
 
         // Constructors
 
@@ -886,14 +888,15 @@ export namespace GFBGraph {
         set updated_time(val: string);
         get updatedTime(): string;
         set updatedTime(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Node.SignalSignatures;
+        $signals: Node.SignalSignatures;
 
         // Constructors
 
@@ -1084,14 +1087,15 @@ export namespace GFBGraph {
          */
         get width(): number;
         set width(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Photo.SignalSignatures;
+        $signals: Photo.SignalSignatures;
 
         // Constructors
 
@@ -1922,14 +1926,15 @@ export namespace GFBGraph {
         set access_token(val: string);
         get accessToken(): string;
         set accessToken(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimpleAuthorizer.SignalSignatures;
+        $signals: SimpleAuthorizer.SignalSignatures;
 
         // Constructors
 
@@ -2480,14 +2485,15 @@ export namespace GFBGraph {
          */
         get name(): string;
         set name(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: User.SignalSignatures;
+        $signals: User.SignalSignatures;
 
         // Constructors
 

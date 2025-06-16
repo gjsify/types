@@ -1129,14 +1129,15 @@ export namespace Gcr {
      */
     class AccessDescription extends GObject.Object {
         static $gtype: GObject.GType<AccessDescription>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AccessDescription.SignalSignatures;
+        $signals: AccessDescription.SignalSignatures;
 
         // Constructors
 
@@ -1235,14 +1236,15 @@ export namespace Gcr {
          * The length of the certificate chain.
          */
         get length(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertificateChain.SignalSignatures;
+        $signals: CertificateChain.SignalSignatures;
 
         // Constructors
 
@@ -1547,14 +1549,15 @@ export namespace Gcr {
          * The raw value in bytes of the extension.
          */
         get value(): GLib.Bytes;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertificateExtension.SignalSignatures;
+        $signals: CertificateExtension.SignalSignatures;
 
         // Constructors
 
@@ -1651,14 +1654,15 @@ export namespace Gcr {
          * The number of items. See [method`Gio`.ListModel.get_n_items].
          */
         get nItems(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertificateExtensionAuthorityInfoAccess.SignalSignatures;
+        $signals: CertificateExtensionAuthorityInfoAccess.SignalSignatures;
 
         // Constructors
 
@@ -2260,14 +2264,15 @@ export namespace Gcr {
      */
     class CertificateExtensionAuthorityKeyIdentifier extends CertificateExtension {
         static $gtype: GObject.GType<CertificateExtensionAuthorityKeyIdentifier>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertificateExtensionAuthorityKeyIdentifier.SignalSignatures;
+        $signals: CertificateExtensionAuthorityKeyIdentifier.SignalSignatures;
 
         // Constructors
 
@@ -2337,14 +2342,15 @@ export namespace Gcr {
      */
     class CertificateExtensionBasicConstraints extends CertificateExtension {
         static $gtype: GObject.GType<CertificateExtensionBasicConstraints>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertificateExtensionBasicConstraints.SignalSignatures;
+        $signals: CertificateExtensionBasicConstraints.SignalSignatures;
 
         // Constructors
 
@@ -2437,14 +2443,15 @@ export namespace Gcr {
          * The number of items. See [method`Gio`.ListModel.get_n_items].
          */
         get nItems(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertificateExtensionCertificatePolicies.SignalSignatures;
+        $signals: CertificateExtensionCertificatePolicies.SignalSignatures;
 
         // Constructors
 
@@ -3061,14 +3068,15 @@ export namespace Gcr {
          * The number of items. See [method`Gio`.ListModel.get_n_items].
          */
         get nItems(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertificateExtensionCrlDistributionPoints.SignalSignatures;
+        $signals: CertificateExtensionCrlDistributionPoints.SignalSignatures;
 
         // Constructors
 
@@ -3668,14 +3676,15 @@ export namespace Gcr {
      */
     class CertificateExtensionExtendedKeyUsage extends CertificateExtension {
         static $gtype: GObject.GType<CertificateExtensionExtendedKeyUsage>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertificateExtensionExtendedKeyUsage.SignalSignatures;
+        $signals: CertificateExtensionExtendedKeyUsage.SignalSignatures;
 
         // Constructors
 
@@ -3742,14 +3751,15 @@ export namespace Gcr {
      */
     class CertificateExtensionKeyUsage extends CertificateExtension {
         static $gtype: GObject.GType<CertificateExtensionKeyUsage>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertificateExtensionKeyUsage.SignalSignatures;
+        $signals: CertificateExtensionKeyUsage.SignalSignatures;
 
         // Constructors
 
@@ -3819,14 +3829,15 @@ export namespace Gcr {
 
         get n_items(): number;
         get nItems(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertificateExtensionList.SignalSignatures;
+        $signals: CertificateExtensionList.SignalSignatures;
 
         // Constructors
 
@@ -4435,14 +4446,15 @@ export namespace Gcr {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CertificateExtensionSubjectAltName>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertificateExtensionSubjectAltName.SignalSignatures;
+        $signals: CertificateExtensionSubjectAltName.SignalSignatures;
 
         // Constructors
 
@@ -5036,14 +5048,15 @@ export namespace Gcr {
      */
     class CertificateExtensionSubjectKeyIdentifier extends CertificateExtension {
         static $gtype: GObject.GType<CertificateExtensionSubjectKeyIdentifier>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertificateExtensionSubjectKeyIdentifier.SignalSignatures;
+        $signals: CertificateExtensionSubjectKeyIdentifier.SignalSignatures;
 
         // Constructors
 
@@ -5108,14 +5121,15 @@ export namespace Gcr {
         get label(): string;
         get section(): CertificateSection;
         get value(): GObject.Value;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertificateField.SignalSignatures;
+        $signals: CertificateField.SignalSignatures;
 
         // Constructors
 
@@ -5193,14 +5207,15 @@ export namespace Gcr {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CertificatePolicy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertificatePolicy.SignalSignatures;
+        $signals: CertificatePolicy.SignalSignatures;
 
         // Constructors
 
@@ -5792,14 +5807,15 @@ export namespace Gcr {
      */
     class CertificatePolicyQualifier extends GObject.Object {
         static $gtype: GObject.GType<CertificatePolicyQualifier>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertificatePolicyQualifier.SignalSignatures;
+        $signals: CertificatePolicyQualifier.SignalSignatures;
 
         // Constructors
 
@@ -5877,14 +5893,15 @@ export namespace Gcr {
          * The private key that this certificate request is for.
          */
         get privateKey(): Gck.Object;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertificateRequest.SignalSignatures;
+        $signals: CertificateRequest.SignalSignatures;
 
         // Constructors
 
@@ -6043,14 +6060,15 @@ export namespace Gcr {
 
         get fields(): Gio.ListModel;
         get label(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertificateSection.SignalSignatures;
+        $signals: CertificateSection.SignalSignatures;
 
         // Constructors
 
@@ -6115,14 +6133,15 @@ export namespace Gcr {
      */
     class DistributionPoint extends GObject.Object {
         static $gtype: GObject.GType<DistributionPoint>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DistributionPoint.SignalSignatures;
+        $signals: DistributionPoint.SignalSignatures;
 
         // Constructors
 
@@ -6183,14 +6202,15 @@ export namespace Gcr {
      */
     class GeneralName extends GObject.Object {
         static $gtype: GObject.GType<GeneralName>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GeneralName.SignalSignatures;
+        $signals: GeneralName.SignalSignatures;
 
         // Constructors
 
@@ -6248,14 +6268,15 @@ export namespace Gcr {
      */
     class GeneralNames<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<GeneralNames>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GeneralNames.SignalSignatures;
+        $signals: GeneralNames.SignalSignatures;
 
         // Constructors
 
@@ -6902,14 +6923,15 @@ export namespace Gcr {
          * only valid during a [signal`Parser:`:parsed] signal.
          */
         get parsedLabel(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Parser.SignalSignatures;
+        $signals: Parser.SignalSignatures;
 
         // Constructors
 
@@ -7144,14 +7166,15 @@ export namespace Gcr {
          * Automatically loaded attributes for this certificate.
          */
         get attributes(): Gck.Attributes;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Pkcs11Certificate.SignalSignatures;
+        $signals: Pkcs11Certificate.SignalSignatures;
 
         // Constructors
 
@@ -7982,14 +8005,15 @@ export namespace Gcr {
          * have not been called successfully.
          */
         get protocol(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SecretExchange.SignalSignatures;
+        $signals: SecretExchange.SignalSignatures;
 
         // Constructors
 
@@ -8100,14 +8124,15 @@ export namespace Gcr {
      */
     class SimpleCertificate extends GObject.Object implements Certificate {
         static $gtype: GObject.GType<SimpleCertificate>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimpleCertificate.SignalSignatures;
+        $signals: SimpleCertificate.SignalSignatures;
 
         // Constructors
 
@@ -8825,14 +8850,15 @@ export namespace Gcr {
          * The interaction used to prompt for passwords.
          */
         get interaction(): Gio.TlsInteraction;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SshAskpass.SignalSignatures;
+        $signals: SshAskpass.SignalSignatures;
 
         // Constructors
 
@@ -8961,14 +8987,15 @@ export namespace Gcr {
          * The timeout in seconds to wait when opening the prompt.
          */
         set timeoutSeconds(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SystemPrompt.SignalSignatures;
+        $signals: SystemPrompt.SignalSignatures;
 
         // Constructors
 
@@ -10448,14 +10475,15 @@ export namespace Gcr {
          * Whether the prompter is prompting or not.
          */
         get prompting(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SystemPrompter.SignalSignatures;
+        $signals: SystemPrompter.SignalSignatures;
 
         // Constructors
 

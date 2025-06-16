@@ -283,14 +283,15 @@ export namespace Budgie {
          */
         get supportedActions(): PanelAction;
         set supportedActions(val: PanelAction);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Applet.SignalSignatures;
+        $signals: Applet.SignalSignatures;
 
         // Constructors
 
@@ -1018,14 +1019,15 @@ export namespace Budgie {
         set settings(val: Gio.Settings);
         get uuid(): string;
         set uuid(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AppletInfo.SignalSignatures;
+        $signals: AppletInfo.SignalSignatures;
 
         // Constructors
 
@@ -1171,14 +1173,15 @@ export namespace Budgie {
         set relative_to(val: Gtk.Widget);
         get relativeTo(): Gtk.Widget;
         set relativeTo(val: Gtk.Widget);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Popover.SignalSignatures;
+        $signals: Popover.SignalSignatures;
 
         // Constructors
 
@@ -1682,14 +1685,15 @@ export namespace Budgie {
 
     class PopoverManager extends GObject.Object {
         static $gtype: GObject.GType<PopoverManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PopoverManager.SignalSignatures;
+        $signals: PopoverManager.SignalSignatures;
 
         // Constructors
 

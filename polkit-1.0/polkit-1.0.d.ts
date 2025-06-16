@@ -175,14 +175,15 @@ export namespace Polkit {
      */
     class ActionDescription extends GObject.Object {
         static $gtype: GObject.GType<ActionDescription>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ActionDescription.SignalSignatures;
+        $signals: ActionDescription.SignalSignatures;
 
         // Constructors
 
@@ -338,14 +339,15 @@ export namespace Polkit {
          * #GObject::notify signal to track changes to this property.
          */
         get owner(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Authority.SignalSignatures;
+        $signals: Authority.SignalSignatures;
 
         // Constructors
 
@@ -1981,14 +1983,15 @@ export namespace Polkit {
      */
     class AuthorizationResult extends GObject.Object {
         static $gtype: GObject.GType<AuthorizationResult>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AuthorizationResult.SignalSignatures;
+        $signals: AuthorizationResult.SignalSignatures;
 
         // Constructors
 
@@ -2094,14 +2097,15 @@ export namespace Polkit {
      */
     class Details extends GObject.Object {
         static $gtype: GObject.GType<Details>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Details.SignalSignatures;
+        $signals: Details.SignalSignatures;
 
         // Constructors
 
@@ -2197,14 +2201,15 @@ export namespace Polkit {
          * construction, it will be set to match the current process.
          */
         get subject(): Subject;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Permission.SignalSignatures;
+        $signals: Permission.SignalSignatures;
 
         // Constructors
 
@@ -3026,14 +3031,15 @@ export namespace Polkit {
          */
         get name(): string;
         set name(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SystemBusName.SignalSignatures;
+        $signals: SystemBusName.SignalSignatures;
 
         // Constructors
 
@@ -3669,14 +3675,15 @@ export namespace Polkit {
      */
     class TemporaryAuthorization extends GObject.Object {
         static $gtype: GObject.GType<TemporaryAuthorization>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TemporaryAuthorization.SignalSignatures;
+        $signals: TemporaryAuthorization.SignalSignatures;
 
         // Constructors
 
@@ -3765,14 +3772,15 @@ export namespace Polkit {
          */
         get gid(): number;
         set gid(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UnixGroup.SignalSignatures;
+        $signals: UnixGroup.SignalSignatures;
 
         // Constructors
 
@@ -4328,14 +4336,15 @@ export namespace Polkit {
          */
         get name(): string;
         set name(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UnixNetgroup.SignalSignatures;
+        $signals: UnixNetgroup.SignalSignatures;
 
         // Constructors
 
@@ -4922,14 +4931,15 @@ export namespace Polkit {
          */
         get uid(): number;
         set uid(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UnixProcess.SignalSignatures;
+        $signals: UnixProcess.SignalSignatures;
 
         // Constructors
 
@@ -5633,14 +5643,15 @@ export namespace Polkit {
          */
         get sessionId(): string;
         set sessionId(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UnixSession.SignalSignatures;
+        $signals: UnixSession.SignalSignatures;
 
         // Constructors
 
@@ -6595,14 +6606,15 @@ export namespace Polkit {
          */
         get uid(): number;
         set uid(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UnixUser.SignalSignatures;
+        $signals: UnixUser.SignalSignatures;
 
         // Constructors
 

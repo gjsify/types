@@ -4600,14 +4600,15 @@ export namespace GstVideo {
      */
     class ColorBalanceChannel extends GObject.Object {
         static $gtype: GObject.GType<ColorBalanceChannel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ColorBalanceChannel.SignalSignatures;
+        $signals: ColorBalanceChannel.SignalSignatures;
 
         // Fields
 
@@ -4701,14 +4702,15 @@ export namespace GstVideo {
          * live sources with a non-zero latency, you should set it to a non-zero value.
          */
         get forceLive(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VideoAggregator.SignalSignatures;
+        $signals: VideoAggregator.SignalSignatures;
 
         // Fields
 
@@ -4817,14 +4819,15 @@ export namespace GstVideo {
         set converter_config(val: Gst.Structure);
         get converterConfig(): Gst.Structure;
         set converterConfig(val: Gst.Structure);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VideoAggregatorConvertPad.SignalSignatures;
+        $signals: VideoAggregatorConvertPad.SignalSignatures;
 
         // Constructors
 
@@ -4906,14 +4909,15 @@ export namespace GstVideo {
         set repeatAfterEos(val: boolean);
         get zorder(): number;
         set zorder(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VideoAggregatorPad.SignalSignatures;
+        $signals: VideoAggregatorPad.SignalSignatures;
 
         // Constructors
 
@@ -5053,14 +5057,15 @@ export namespace GstVideo {
      */
     class VideoAggregatorParallelConvertPad extends VideoAggregatorConvertPad {
         static $gtype: GObject.GType<VideoAggregatorParallelConvertPad>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VideoAggregatorParallelConvertPad.SignalSignatures;
+        $signals: VideoAggregatorParallelConvertPad.SignalSignatures;
 
         // Constructors
 
@@ -5106,14 +5111,15 @@ export namespace GstVideo {
 
     class VideoBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VideoBufferPool>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VideoBufferPool.SignalSignatures;
+        $signals: VideoBufferPool.SignalSignatures;
 
         // Fields
 
@@ -5379,14 +5385,15 @@ export namespace GstVideo {
          */
         get qos(): boolean;
         set qos(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VideoDecoder.SignalSignatures;
+        $signals: VideoDecoder.SignalSignatures;
 
         // Constructors
 
@@ -6028,14 +6035,15 @@ export namespace GstVideo {
         set minForceKeyUnitInterval(val: number);
         get qos(): boolean;
         set qos(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VideoEncoder.SignalSignatures;
+        $signals: VideoEncoder.SignalSignatures;
 
         // Constructors
 
@@ -6974,14 +6982,15 @@ export namespace GstVideo {
      */
     abstract class VideoFilter extends GstBase.BaseTransform {
         static $gtype: GObject.GType<VideoFilter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VideoFilter.SignalSignatures;
+        $signals: VideoFilter.SignalSignatures;
 
         // Fields
 
@@ -7124,14 +7133,15 @@ export namespace GstVideo {
          */
         get showPrerollFrame(): boolean;
         set showPrerollFrame(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VideoSink.SignalSignatures;
+        $signals: VideoSink.SignalSignatures;
 
         // Fields
 

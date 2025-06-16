@@ -151,14 +151,15 @@ export namespace EpcUi {
         set realm(val: string);
         get username(): string;
         set username(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PasswordDialog.SignalSignatures;
+        $signals: PasswordDialog.SignalSignatures;
 
         // Constructors
 
@@ -748,14 +749,15 @@ export namespace EpcUi {
         set progress(val: number);
         get title(): string;
         set title(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProgressWindow.SignalSignatures;
+        $signals: ProgressWindow.SignalSignatures;
 
         // Constructors
 

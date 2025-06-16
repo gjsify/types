@@ -46,14 +46,15 @@ export namespace Gamerzilla {
         set url(val: string);
         get username(): string;
         set username(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GamerzillaGobj.SignalSignatures;
+        $signals: GamerzillaGobj.SignalSignatures;
 
         // Constructors
 

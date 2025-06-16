@@ -117,14 +117,15 @@ export namespace Mash {
      */
     class Data extends GObject.Object {
         static $gtype: GObject.GType<Data>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Data.SignalSignatures;
+        $signals: Data.SignalSignatures;
 
         // Constructors
 
@@ -204,14 +205,15 @@ export namespace Mash {
      */
     abstract class DataLoader extends GObject.Object {
         static $gtype: GObject.GType<DataLoader>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataLoader.SignalSignatures;
+        $signals: DataLoader.SignalSignatures;
 
         // Constructors
 
@@ -371,14 +373,15 @@ export namespace Mash {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<DirectionalLight>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DirectionalLight.SignalSignatures;
+        $signals: DirectionalLight.SignalSignatures;
 
         // Constructors
 
@@ -970,14 +973,15 @@ export namespace Mash {
         set diffuse(val: Clutter.Color);
         get specular(): Clutter.Color;
         set specular(val: Clutter.Color);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Light.SignalSignatures;
+        $signals: Light.SignalSignatures;
 
         // Constructors
 
@@ -2214,14 +2218,15 @@ export namespace Mash {
      */
     class LightSet extends GObject.Object {
         static $gtype: GObject.GType<LightSet>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LightSet.SignalSignatures;
+        $signals: LightSet.SignalSignatures;
 
         // Constructors
 
@@ -2393,14 +2398,15 @@ export namespace Mash {
         set light_set(val: LightSet);
         get lightSet(): LightSet;
         set lightSet(val: LightSet);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Model.SignalSignatures;
+        $signals: Model.SignalSignatures;
 
         // Constructors
 
@@ -3376,14 +3382,15 @@ export namespace Mash {
 
     class PlyLoader extends Data {
         static $gtype: GObject.GType<PlyLoader>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlyLoader.SignalSignatures;
+        $signals: PlyLoader.SignalSignatures;
 
         // Constructors
 
@@ -3544,14 +3551,15 @@ export namespace Mash {
         set quadratic_attenuation(val: number);
         get quadraticAttenuation(): number;
         set quadraticAttenuation(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PointLight.SignalSignatures;
+        $signals: PointLight.SignalSignatures;
 
         // Constructors
 
@@ -4180,14 +4188,15 @@ export namespace Mash {
         set spot_exponent(val: number);
         get spotExponent(): number;
         set spotExponent(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SpotLight.SignalSignatures;
+        $signals: SpotLight.SignalSignatures;
 
         // Constructors
 

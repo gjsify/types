@@ -144,14 +144,15 @@ export namespace GPasteGtk {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget
     {
         static $gtype: GObject.GType<PreferencesBehaviourPage>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PreferencesBehaviourPage.SignalSignatures;
+        $signals: PreferencesBehaviourPage.SignalSignatures;
 
         // Constructors
 
@@ -681,14 +682,15 @@ export namespace GPasteGtk {
 
     class PreferencesGroup extends Adw.PreferencesGroup implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<PreferencesGroup>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PreferencesGroup.SignalSignatures;
+        $signals: PreferencesGroup.SignalSignatures;
 
         // Constructors
 
@@ -1272,14 +1274,15 @@ export namespace GPasteGtk {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget
     {
         static $gtype: GObject.GType<PreferencesHistorySettingsPage>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PreferencesHistorySettingsPage.SignalSignatures;
+        $signals: PreferencesHistorySettingsPage.SignalSignatures;
 
         // Constructors
 
@@ -1765,14 +1768,15 @@ export namespace GPasteGtk {
 
     class PreferencesManager extends GObject.Object {
         static $gtype: GObject.GType<PreferencesManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PreferencesManager.SignalSignatures;
+        $signals: PreferencesManager.SignalSignatures;
 
         // Constructors
 
@@ -1876,14 +1880,15 @@ export namespace GPasteGtk {
 
     class PreferencesPage extends Adw.PreferencesPage implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<PreferencesPage>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PreferencesPage.SignalSignatures;
+        $signals: PreferencesPage.SignalSignatures;
 
         // Constructors
 
@@ -2429,14 +2434,15 @@ export namespace GPasteGtk {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget
     {
         static $gtype: GObject.GType<PreferencesShortcutsPage>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PreferencesShortcutsPage.SignalSignatures;
+        $signals: PreferencesShortcutsPage.SignalSignatures;
 
         // Constructors
 
@@ -2963,14 +2969,15 @@ export namespace GPasteGtk {
 
     class PreferencesWidget extends Adw.Bin implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<PreferencesWidget>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PreferencesWidget.SignalSignatures;
+        $signals: PreferencesWidget.SignalSignatures;
 
         // Constructors
 
@@ -3532,14 +3539,15 @@ export namespace GPasteGtk {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Native, Gtk.Root, Gtk.ShortcutManager
     {
         static $gtype: GObject.GType<PreferencesWindow>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PreferencesWindow.SignalSignatures;
+        $signals: PreferencesWindow.SignalSignatures;
 
         // Constructors
 

@@ -585,14 +585,15 @@ export namespace Flatpak {
          * The bundle file that this ref refers to.
          */
         get file(): Gio.File;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BundleRef.SignalSignatures;
+        $signals: BundleRef.SignalSignatures;
 
         // Constructors
 
@@ -671,14 +672,15 @@ export namespace Flatpak {
 
     class Installation extends GObject.Object {
         static $gtype: GObject.GType<Installation>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Installation.SignalSignatures;
+        $signals: Installation.SignalSignatures;
 
         // Constructors
 
@@ -1608,14 +1610,15 @@ export namespace Flatpak {
         set origin(val: string);
         get subpaths(): string[];
         set subpaths(val: string[]);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InstalledRef.SignalSignatures;
+        $signals: InstalledRef.SignalSignatures;
 
         // Constructors
 
@@ -1748,14 +1751,15 @@ export namespace Flatpak {
 
     class Instance extends GObject.Object {
         static $gtype: GObject.GType<Instance>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Instance.SignalSignatures;
+        $signals: Instance.SignalSignatures;
 
         // Constructors
 
@@ -1899,14 +1903,15 @@ export namespace Flatpak {
         get commit(): string;
         get kind(): RefKind;
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Ref.SignalSignatures;
+        $signals: Ref.SignalSignatures;
 
         // Constructors
 
@@ -2027,14 +2032,15 @@ export namespace Flatpak {
         get should_download(): boolean;
         get shouldDownload(): boolean;
         get subpaths(): string[];
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RelatedRef.SignalSignatures;
+        $signals: RelatedRef.SignalSignatures;
 
         // Constructors
 
@@ -2106,14 +2112,15 @@ export namespace Flatpak {
          * time.
          */
         get type(): RemoteType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Remote.SignalSignatures;
+        $signals: Remote.SignalSignatures;
 
         // Constructors
 
@@ -2442,14 +2449,15 @@ export namespace Flatpak {
         get metadata(): GLib.Bytes;
         get remote_name(): string;
         get remoteName(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RemoteRef.SignalSignatures;
+        $signals: RemoteRef.SignalSignatures;
 
         // Constructors
 
@@ -2578,14 +2586,15 @@ export namespace Flatpak {
          */
         get noInteraction(): boolean;
         set noInteraction(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Transaction.SignalSignatures;
+        $signals: Transaction.SignalSignatures;
 
         // Constructors
 
@@ -3535,14 +3544,15 @@ export namespace Flatpak {
 
     class TransactionOperation extends GObject.Object {
         static $gtype: GObject.GType<TransactionOperation>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TransactionOperation.SignalSignatures;
+        $signals: TransactionOperation.SignalSignatures;
 
         // Constructors
 
@@ -3719,14 +3729,15 @@ export namespace Flatpak {
 
     class TransactionProgress extends GObject.Object {
         static $gtype: GObject.GType<TransactionProgress>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TransactionProgress.SignalSignatures;
+        $signals: TransactionProgress.SignalSignatures;
 
         // Constructors
 

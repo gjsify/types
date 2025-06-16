@@ -464,14 +464,15 @@ export namespace EDataBook {
         get registry(): EDataServer.SourceRegistry;
         get writable(): boolean;
         set writable(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BookBackend.SignalSignatures;
+        $signals: BookBackend.SignalSignatures;
 
         // Constructors
 
@@ -1575,14 +1576,15 @@ export namespace EDataBook {
      */
     abstract class BookBackendFactory extends EBackend.BackendFactory {
         static $gtype: GObject.GType<BookBackendFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BookBackendFactory.SignalSignatures;
+        $signals: BookBackendFactory.SignalSignatures;
 
         // Constructors
 
@@ -1620,14 +1622,15 @@ export namespace EDataBook {
 
     class BookBackendSExp extends GObject.Object {
         static $gtype: GObject.GType<BookBackendSExp>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BookBackendSExp.SignalSignatures;
+        $signals: BookBackendSExp.SignalSignatures;
 
         // Constructors
 
@@ -1725,14 +1728,15 @@ export namespace EDataBook {
      */
     class BookBackendSync extends BookBackend {
         static $gtype: GObject.GType<BookBackendSync>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BookBackendSync.SignalSignatures;
+        $signals: BookBackendSync.SignalSignatures;
 
         // Constructors
 
@@ -1929,14 +1933,15 @@ export namespace EDataBook {
         // Properties
 
         get locale(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BookCache.SignalSignatures;
+        $signals: BookCache.SignalSignatures;
 
         // Constructors
 
@@ -2896,14 +2901,15 @@ export namespace EDataBook {
          */
         get cache(): BookCache;
         set cache(val: BookCache);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BookMetaBackend.SignalSignatures;
+        $signals: BookMetaBackend.SignalSignatures;
 
         // Constructors
 
@@ -3573,14 +3579,15 @@ export namespace EDataBook {
      */
     class BookSqlite extends GObject.Object implements EDataServer.Extensible {
         static $gtype: GObject.GType<BookSqlite>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BookSqlite.SignalSignatures;
+        $signals: BookSqlite.SignalSignatures;
 
         // Constructors
 
@@ -4444,14 +4451,15 @@ export namespace EDataBook {
         get connection(): Gio.DBusConnection;
         get object_path(): string;
         get objectPath(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataBook.SignalSignatures;
+        $signals: DataBook.SignalSignatures;
 
         // Constructors
 
@@ -5148,14 +5156,15 @@ export namespace EDataBook {
         get backend(): BookBackend;
         get position(): number;
         get total(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataBookCursor.SignalSignatures;
+        $signals: DataBookCursor.SignalSignatures;
 
         // Constructors
 
@@ -5381,14 +5390,15 @@ export namespace EDataBook {
         set book_cache(val: BookCache);
         set bookCache(val: BookCache);
         set cursor(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataBookCursorCache.SignalSignatures;
+        $signals: DataBookCursorCache.SignalSignatures;
 
         // Constructors
 
@@ -5457,14 +5467,15 @@ export namespace EDataBook {
         set ebsql(val: BookSqlite);
         set revision_key(val: string);
         set revisionKey(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataBookCursorSqlite.SignalSignatures;
+        $signals: DataBookCursorSqlite.SignalSignatures;
 
         // Constructors
 
@@ -5512,14 +5523,15 @@ export namespace EDataBook {
 
     class DataBookDirect extends GObject.Object {
         static $gtype: GObject.GType<DataBookDirect>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataBookDirect.SignalSignatures;
+        $signals: DataBookDirect.SignalSignatures;
 
         // Constructors
 
@@ -5575,14 +5587,15 @@ export namespace EDataBook {
 
     class DataBookFactory extends EBackend.DataFactory implements EDataServer.Extensible, Gio.Initable {
         static $gtype: GObject.GType<DataBookFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataBookFactory.SignalSignatures;
+        $signals: DataBookFactory.SignalSignatures;
 
         // Constructors
 
@@ -6181,14 +6194,15 @@ export namespace EDataBook {
         get object_path(): string;
         get objectPath(): string;
         get sexp(): BookBackendSExp;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataBookView.SignalSignatures;
+        $signals: DataBookView.SignalSignatures;
 
         // Constructors
 
@@ -6956,14 +6970,15 @@ export namespace EDataBook {
      */
     class DataBookViewWatcherCache extends EBookContacts.BookIndicesUpdater {
         static $gtype: GObject.GType<DataBookViewWatcherCache>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataBookViewWatcherCache.SignalSignatures;
+        $signals: DataBookViewWatcherCache.SignalSignatures;
 
         // Constructors
 
@@ -7029,14 +7044,15 @@ export namespace EDataBook {
      */
     class DataBookViewWatcherMemory extends EBookContacts.BookIndicesUpdater {
         static $gtype: GObject.GType<DataBookViewWatcherMemory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataBookViewWatcherMemory.SignalSignatures;
+        $signals: DataBookViewWatcherMemory.SignalSignatures;
 
         // Constructors
 
@@ -7108,14 +7124,15 @@ export namespace EDataBook {
      */
     class DataBookViewWatcherSqlite extends EBookContacts.BookIndicesUpdater {
         static $gtype: GObject.GType<DataBookViewWatcherSqlite>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataBookViewWatcherSqlite.SignalSignatures;
+        $signals: DataBookViewWatcherSqlite.SignalSignatures;
 
         // Constructors
 
@@ -7179,14 +7196,15 @@ export namespace EDataBook {
 
     class SubprocessBookFactory extends EBackend.SubprocessFactory implements Gio.Initable {
         static $gtype: GObject.GType<SubprocessBookFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SubprocessBookFactory.SignalSignatures;
+        $signals: SubprocessBookFactory.SignalSignatures;
 
         // Constructors
 
@@ -7770,14 +7788,15 @@ export namespace EDataBook {
          * was not detected yet.
          */
         get locale(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SystemLocaleWatcher.SignalSignatures;
+        $signals: SystemLocaleWatcher.SignalSignatures;
 
         // Constructors
 

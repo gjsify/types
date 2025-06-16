@@ -59,14 +59,15 @@ export namespace RygelRenderer {
         set supported_profiles(val: RygelCore.DLNAProfile[]);
         get supportedProfiles(): RygelCore.DLNAProfile[];
         set supportedProfiles(val: RygelCore.DLNAProfile[]);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaRendererPlugin.SignalSignatures;
+        $signals: MediaRendererPlugin.SignalSignatures;
 
         // Constructors
 
@@ -140,14 +141,15 @@ export namespace RygelRenderer {
         // Properties
 
         get player(): MediaPlayer;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaRenderer.SignalSignatures;
+        $signals: MediaRenderer.SignalSignatures;
 
         // Constructors
 

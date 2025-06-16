@@ -212,14 +212,15 @@ export namespace GdkX11 {
 
     class X11AppLaunchContext extends Gdk.AppLaunchContext {
         static $gtype: GObject.GType<X11AppLaunchContext>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: X11AppLaunchContext.SignalSignatures;
+        $signals: X11AppLaunchContext.SignalSignatures;
 
         // Constructors
 
@@ -262,14 +263,15 @@ export namespace GdkX11 {
 
     class X11Cursor extends Gdk.Cursor {
         static $gtype: GObject.GType<X11Cursor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: X11Cursor.SignalSignatures;
+        $signals: X11Cursor.SignalSignatures;
 
         // Constructors
 
@@ -336,14 +338,15 @@ export namespace GdkX11 {
 
     class X11DeviceCore extends Gdk.Device {
         static $gtype: GObject.GType<X11DeviceCore>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: X11DeviceCore.SignalSignatures;
+        $signals: X11DeviceCore.SignalSignatures;
 
         // Constructors
 
@@ -383,14 +386,15 @@ export namespace GdkX11 {
 
     class X11DeviceManagerCore extends Gdk.DeviceManager {
         static $gtype: GObject.GType<X11DeviceManagerCore>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: X11DeviceManagerCore.SignalSignatures;
+        $signals: X11DeviceManagerCore.SignalSignatures;
 
         // Constructors
 
@@ -445,14 +449,15 @@ export namespace GdkX11 {
         get major(): number;
         get minor(): number;
         get opcode(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: X11DeviceManagerXI2.SignalSignatures;
+        $signals: X11DeviceManagerXI2.SignalSignatures;
 
         // Constructors
 
@@ -517,14 +522,15 @@ export namespace GdkX11 {
 
         get device_id(): number;
         get deviceId(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: X11DeviceXI2.SignalSignatures;
+        $signals: X11DeviceXI2.SignalSignatures;
 
         // Constructors
 
@@ -562,14 +568,15 @@ export namespace GdkX11 {
 
     class X11Display extends Gdk.Display {
         static $gtype: GObject.GType<X11Display>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: X11Display.SignalSignatures;
+        $signals: X11Display.SignalSignatures;
 
         // Constructors
 
@@ -761,14 +768,15 @@ export namespace GdkX11 {
 
     class X11DisplayManager extends Gdk.DisplayManager {
         static $gtype: GObject.GType<X11DisplayManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: X11DisplayManager.SignalSignatures;
+        $signals: X11DisplayManager.SignalSignatures;
 
         // Constructors
 
@@ -806,14 +814,15 @@ export namespace GdkX11 {
 
     class X11DragContext extends Gdk.DragContext {
         static $gtype: GObject.GType<X11DragContext>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: X11DragContext.SignalSignatures;
+        $signals: X11DragContext.SignalSignatures;
 
         // Constructors
 
@@ -855,14 +864,15 @@ export namespace GdkX11 {
 
     class X11GLContext extends Gdk.GLContext {
         static $gtype: GObject.GType<X11GLContext>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: X11GLContext.SignalSignatures;
+        $signals: X11GLContext.SignalSignatures;
 
         // Constructors
 
@@ -900,14 +910,15 @@ export namespace GdkX11 {
 
     class X11Keymap extends Gdk.Keymap {
         static $gtype: GObject.GType<X11Keymap>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: X11Keymap.SignalSignatures;
+        $signals: X11Keymap.SignalSignatures;
 
         // Constructors
 
@@ -978,14 +989,15 @@ export namespace GdkX11 {
 
     class X11Monitor extends Gdk.Monitor {
         static $gtype: GObject.GType<X11Monitor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: X11Monitor.SignalSignatures;
+        $signals: X11Monitor.SignalSignatures;
 
         // Constructors
 
@@ -1031,14 +1043,15 @@ export namespace GdkX11 {
 
     class X11Screen extends Gdk.Screen {
         static $gtype: GObject.GType<X11Screen>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: X11Screen.SignalSignatures;
+        $signals: X11Screen.SignalSignatures;
 
         // Constructors
 
@@ -1141,14 +1154,15 @@ export namespace GdkX11 {
 
     class X11Visual extends Gdk.Visual {
         static $gtype: GObject.GType<X11Visual>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: X11Visual.SignalSignatures;
+        $signals: X11Visual.SignalSignatures;
 
         // Constructors
 
@@ -1196,14 +1210,15 @@ export namespace GdkX11 {
 
     class X11Window extends Gdk.Window {
         static $gtype: GObject.GType<X11Window>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: X11Window.SignalSignatures;
+        $signals: X11Window.SignalSignatures;
 
         // Constructors
 

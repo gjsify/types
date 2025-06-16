@@ -556,14 +556,15 @@ export namespace WebKit2WebExtension {
      */
     class ContextMenu extends GObject.Object {
         static $gtype: GObject.GType<ContextMenu>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ContextMenu.SignalSignatures;
+        $signals: ContextMenu.SignalSignatures;
 
         // Constructors
 
@@ -702,14 +703,15 @@ export namespace WebKit2WebExtension {
      */
     class ContextMenuItem extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ContextMenuItem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ContextMenuItem.SignalSignatures;
+        $signals: ContextMenuItem.SignalSignatures;
 
         // Constructors
 
@@ -840,14 +842,15 @@ export namespace WebKit2WebExtension {
         get specified(): boolean;
         get value(): string;
         set value(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMAttr.SignalSignatures;
+        $signals: DOMAttr.SignalSignatures;
 
         // Constructors
 
@@ -1356,14 +1359,15 @@ export namespace WebKit2WebExtension {
         // Properties
 
         get size(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMBlob.SignalSignatures;
+        $signals: DOMBlob.SignalSignatures;
 
         // Constructors
 
@@ -1423,14 +1427,15 @@ export namespace WebKit2WebExtension {
 
     class DOMCDATASection extends DOMText implements DOMEventTarget {
         static $gtype: GObject.GType<DOMCDATASection>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMCDATASection.SignalSignatures;
+        $signals: DOMCDATASection.SignalSignatures;
 
         // Constructors
 
@@ -1939,14 +1944,15 @@ export namespace WebKit2WebExtension {
         get parent_style_sheet(): DOMCSSStyleSheet;
         get parentStyleSheet(): DOMCSSStyleSheet;
         get type(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMCSSRule.SignalSignatures;
+        $signals: DOMCSSRule.SignalSignatures;
 
         // Constructors
 
@@ -2001,14 +2007,15 @@ export namespace WebKit2WebExtension {
         // Properties
 
         get length(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMCSSRuleList.SignalSignatures;
+        $signals: DOMCSSRuleList.SignalSignatures;
 
         // Constructors
 
@@ -2072,14 +2079,15 @@ export namespace WebKit2WebExtension {
         get length(): number;
         get parent_rule(): DOMCSSRule;
         get parentRule(): DOMCSSRule;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMCSSStyleDeclaration.SignalSignatures;
+        $signals: DOMCSSStyleDeclaration.SignalSignatures;
 
         // Constructors
 
@@ -2161,14 +2169,15 @@ export namespace WebKit2WebExtension {
         get owner_rule(): DOMCSSRule;
         get ownerRule(): DOMCSSRule;
         get rules(): DOMCSSRuleList;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMCSSStyleSheet.SignalSignatures;
+        $signals: DOMCSSStyleSheet.SignalSignatures;
 
         // Constructors
 
@@ -2234,14 +2243,15 @@ export namespace WebKit2WebExtension {
         set cssText(val: string);
         get css_value_type(): number;
         get cssValueType(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMCSSValue.SignalSignatures;
+        $signals: DOMCSSValue.SignalSignatures;
 
         // Constructors
 
@@ -2311,14 +2321,15 @@ export namespace WebKit2WebExtension {
         get data(): string;
         set data(val: string);
         get length(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMCharacterData.SignalSignatures;
+        $signals: DOMCharacterData.SignalSignatures;
 
         // Constructors
 
@@ -2823,14 +2834,15 @@ export namespace WebKit2WebExtension {
         get right(): number;
         get top(): number;
         get width(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMClientRect.SignalSignatures;
+        $signals: DOMClientRect.SignalSignatures;
 
         // Constructors
 
@@ -2910,14 +2922,15 @@ export namespace WebKit2WebExtension {
         // Properties
 
         get length(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMClientRectList.SignalSignatures;
+        $signals: DOMClientRectList.SignalSignatures;
 
         // Constructors
 
@@ -2986,14 +2999,15 @@ export namespace WebKit2WebExtension {
 
     class DOMComment extends DOMCharacterData implements DOMEventTarget {
         static $gtype: GObject.GType<DOMComment>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMComment.SignalSignatures;
+        $signals: DOMComment.SignalSignatures;
 
         // Constructors
 
@@ -3478,14 +3492,15 @@ export namespace WebKit2WebExtension {
 
     class DOMDOMImplementation extends DOMObject {
         static $gtype: GObject.GType<DOMDOMImplementation>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMDOMImplementation.SignalSignatures;
+        $signals: DOMDOMImplementation.SignalSignatures;
 
         // Constructors
 
@@ -3596,14 +3611,15 @@ export namespace WebKit2WebExtension {
         get range_count(): number;
         get rangeCount(): number;
         get type(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMDOMSelection.SignalSignatures;
+        $signals: DOMDOMSelection.SignalSignatures;
 
         // Constructors
 
@@ -3682,14 +3698,15 @@ export namespace WebKit2WebExtension {
         get length(): number;
         get value(): string;
         set value(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMDOMTokenList.SignalSignatures;
+        $signals: DOMDOMTokenList.SignalSignatures;
 
         // Constructors
 
@@ -3865,14 +3882,15 @@ export namespace WebKit2WebExtension {
         set status(val: string);
         get top(): DOMDOMWindow;
         get window(): DOMDOMWindow;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMDOMWindow.SignalSignatures;
+        $signals: DOMDOMWindow.SignalSignatures;
 
         // Constructors
 
@@ -4667,14 +4685,15 @@ export namespace WebKit2WebExtension {
         set xml_version(val: string);
         get xmlVersion(): string;
         set xmlVersion(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMDocument.SignalSignatures;
+        $signals: DOMDocument.SignalSignatures;
 
         // Constructors
 
@@ -5341,14 +5360,15 @@ export namespace WebKit2WebExtension {
         get firstElementChild(): DOMElement;
         get last_element_child(): DOMElement;
         get lastElementChild(): DOMElement;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMDocumentFragment.SignalSignatures;
+        $signals: DOMDocumentFragment.SignalSignatures;
 
         // Constructors
 
@@ -5892,14 +5912,15 @@ export namespace WebKit2WebExtension {
         get publicId(): string;
         get system_id(): string;
         get systemId(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMDocumentType.SignalSignatures;
+        $signals: DOMDocumentType.SignalSignatures;
 
         // Constructors
 
@@ -6572,14 +6593,15 @@ export namespace WebKit2WebExtension {
         get tagName(): string;
         get webkit_region_overset(): string;
         get webkitRegionOverset(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMElement.SignalSignatures;
+        $signals: DOMElement.SignalSignatures;
 
         // Constructors
 
@@ -7195,14 +7217,15 @@ export namespace WebKit2WebExtension {
 
     class DOMEntityReference extends DOMNode implements DOMEventTarget {
         static $gtype: GObject.GType<DOMEntityReference>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMEntityReference.SignalSignatures;
+        $signals: DOMEntityReference.SignalSignatures;
 
         // Constructors
 
@@ -7743,14 +7766,15 @@ export namespace WebKit2WebExtension {
         get time_stamp(): number;
         get timeStamp(): number;
         get type(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMEvent.SignalSignatures;
+        $signals: DOMEvent.SignalSignatures;
 
         // Constructors
 
@@ -7816,14 +7840,15 @@ export namespace WebKit2WebExtension {
         // Properties
 
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMFile.SignalSignatures;
+        $signals: DOMFile.SignalSignatures;
 
         // Constructors
 
@@ -7874,14 +7899,15 @@ export namespace WebKit2WebExtension {
         // Properties
 
         get length(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMFileList.SignalSignatures;
+        $signals: DOMFileList.SignalSignatures;
 
         // Constructors
 
@@ -8060,14 +8086,15 @@ export namespace WebKit2WebExtension {
         set text(val: string);
         get type(): string;
         set type(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLAnchorElement.SignalSignatures;
+        $signals: DOMHTMLAnchorElement.SignalSignatures;
 
         // Constructors
 
@@ -8698,14 +8725,15 @@ export namespace WebKit2WebExtension {
         set vspace(val: number);
         get width(): string;
         set width(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLAppletElement.SignalSignatures;
+        $signals: DOMHTMLAppletElement.SignalSignatures;
 
         // Constructors
 
@@ -9330,14 +9358,15 @@ export namespace WebKit2WebExtension {
         set shape(val: string);
         get target(): string;
         set target(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLAreaElement.SignalSignatures;
+        $signals: DOMHTMLAreaElement.SignalSignatures;
 
         // Constructors
 
@@ -9913,14 +9942,15 @@ export namespace WebKit2WebExtension {
 
         get clear(): string;
         set clear(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLBRElement.SignalSignatures;
+        $signals: DOMHTMLBRElement.SignalSignatures;
 
         // Constructors
 
@@ -10476,14 +10506,15 @@ export namespace WebKit2WebExtension {
         set href(val: string);
         get target(): string;
         set target(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLBaseElement.SignalSignatures;
+        $signals: DOMHTMLBaseElement.SignalSignatures;
 
         // Constructors
 
@@ -11029,14 +11060,15 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLBaseFontElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLBaseFontElement>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLBaseFontElement.SignalSignatures;
+        $signals: DOMHTMLBaseFontElement.SignalSignatures;
 
         // Constructors
 
@@ -11647,14 +11679,15 @@ export namespace WebKit2WebExtension {
         set v_link(val: string);
         get vLink(): string;
         set vLink(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLBodyElement.SignalSignatures;
+        $signals: DOMHTMLBodyElement.SignalSignatures;
 
         // Constructors
 
@@ -12240,14 +12273,15 @@ export namespace WebKit2WebExtension {
         set value(val: string);
         get will_validate(): boolean;
         get willValidate(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLButtonElement.SignalSignatures;
+        $signals: DOMHTMLButtonElement.SignalSignatures;
 
         // Constructors
 
@@ -12815,14 +12849,15 @@ export namespace WebKit2WebExtension {
         set height(val: number);
         get width(): number;
         set width(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLCanvasElement.SignalSignatures;
+        $signals: DOMHTMLCanvasElement.SignalSignatures;
 
         // Constructors
 
@@ -13319,14 +13354,15 @@ export namespace WebKit2WebExtension {
         // Properties
 
         get length(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLCollection.SignalSignatures;
+        $signals: DOMHTMLCollection.SignalSignatures;
 
         // Constructors
 
@@ -13438,14 +13474,15 @@ export namespace WebKit2WebExtension {
 
         get compact(): boolean;
         set compact(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLDListElement.SignalSignatures;
+        $signals: DOMHTMLDListElement.SignalSignatures;
 
         // Constructors
 
@@ -13999,14 +14036,15 @@ export namespace WebKit2WebExtension {
 
         get compact(): boolean;
         set compact(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLDirectoryElement.SignalSignatures;
+        $signals: DOMHTMLDirectoryElement.SignalSignatures;
 
         // Constructors
 
@@ -14560,14 +14598,15 @@ export namespace WebKit2WebExtension {
 
         get align(): string;
         set align(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLDivElement.SignalSignatures;
+        $signals: DOMHTMLDivElement.SignalSignatures;
 
         // Constructors
 
@@ -15165,14 +15204,15 @@ export namespace WebKit2WebExtension {
         get vlinkColor(): string;
         set vlinkColor(val: string);
         get width(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLDocument.SignalSignatures;
+        $signals: DOMHTMLDocument.SignalSignatures;
 
         // Constructors
 
@@ -15800,14 +15840,15 @@ export namespace WebKit2WebExtension {
         set translate(val: boolean);
         get webkitdropzone(): string;
         set webkitdropzone(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLElement.SignalSignatures;
+        $signals: DOMHTMLElement.SignalSignatures;
 
         // Constructors
 
@@ -16410,14 +16451,15 @@ export namespace WebKit2WebExtension {
         set type(val: string);
         get width(): number;
         set width(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLEmbedElement.SignalSignatures;
+        $signals: DOMHTMLEmbedElement.SignalSignatures;
 
         // Constructors
 
@@ -16980,14 +17022,15 @@ export namespace WebKit2WebExtension {
         // Properties
 
         get form(): DOMHTMLFormElement;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLFieldSetElement.SignalSignatures;
+        $signals: DOMHTMLFieldSetElement.SignalSignatures;
 
         // Constructors
 
@@ -17548,14 +17591,15 @@ export namespace WebKit2WebExtension {
         set face(val: string);
         get size(): string;
         set size(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLFontElement.SignalSignatures;
+        $signals: DOMHTMLFontElement.SignalSignatures;
 
         // Constructors
 
@@ -18144,14 +18188,15 @@ export namespace WebKit2WebExtension {
         set name(val: string);
         get target(): string;
         set target(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLFormElement.SignalSignatures;
+        $signals: DOMHTMLFormElement.SignalSignatures;
 
         // Constructors
 
@@ -18778,14 +18823,15 @@ export namespace WebKit2WebExtension {
         get src(): string;
         set src(val: string);
         get width(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLFrameElement.SignalSignatures;
+        $signals: DOMHTMLFrameElement.SignalSignatures;
 
         // Constructors
 
@@ -19361,14 +19407,15 @@ export namespace WebKit2WebExtension {
         set cols(val: string);
         get rows(): string;
         set rows(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLFrameSetElement.SignalSignatures;
+        $signals: DOMHTMLFrameSetElement.SignalSignatures;
 
         // Constructors
 
@@ -19939,14 +19986,15 @@ export namespace WebKit2WebExtension {
         set size(val: string);
         get width(): string;
         set width(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLHRElement.SignalSignatures;
+        $signals: DOMHTMLHRElement.SignalSignatures;
 
         // Constructors
 
@@ -20504,14 +20552,15 @@ export namespace WebKit2WebExtension {
 
         get profile(): string;
         set profile(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLHeadElement.SignalSignatures;
+        $signals: DOMHTMLHeadElement.SignalSignatures;
 
         // Constructors
 
@@ -21063,14 +21112,15 @@ export namespace WebKit2WebExtension {
 
         get align(): string;
         set align(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLHeadingElement.SignalSignatures;
+        $signals: DOMHTMLHeadingElement.SignalSignatures;
 
         // Constructors
 
@@ -21624,14 +21674,15 @@ export namespace WebKit2WebExtension {
 
         get version(): string;
         set version(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLHtmlElement.SignalSignatures;
+        $signals: DOMHTMLHtmlElement.SignalSignatures;
 
         // Constructors
 
@@ -22241,14 +22292,15 @@ export namespace WebKit2WebExtension {
         set src(val: string);
         get width(): string;
         set width(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLIFrameElement.SignalSignatures;
+        $signals: DOMHTMLIFrameElement.SignalSignatures;
 
         // Constructors
 
@@ -22898,14 +22950,15 @@ export namespace WebKit2WebExtension {
         set width(val: number);
         get x(): number;
         get y(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLImageElement.SignalSignatures;
+        $signals: DOMHTMLImageElement.SignalSignatures;
 
         // Constructors
 
@@ -23594,14 +23647,15 @@ export namespace WebKit2WebExtension {
         set width(val: number);
         get will_validate(): boolean;
         get willValidate(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLInputElement.SignalSignatures;
+        $signals: DOMHTMLInputElement.SignalSignatures;
 
         // Constructors
 
@@ -24209,14 +24263,15 @@ export namespace WebKit2WebExtension {
         set type(val: string);
         get value(): number;
         set value(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLLIElement.SignalSignatures;
+        $signals: DOMHTMLLIElement.SignalSignatures;
 
         // Constructors
 
@@ -24776,14 +24831,15 @@ export namespace WebKit2WebExtension {
         set html_for(val: string);
         get htmlFor(): string;
         set htmlFor(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLLabelElement.SignalSignatures;
+        $signals: DOMHTMLLabelElement.SignalSignatures;
 
         // Constructors
 
@@ -25341,14 +25397,15 @@ export namespace WebKit2WebExtension {
         get align(): string;
         set align(val: string);
         get form(): DOMHTMLFormElement;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLLegendElement.SignalSignatures;
+        $signals: DOMHTMLLegendElement.SignalSignatures;
 
         // Constructors
 
@@ -25941,14 +25998,15 @@ export namespace WebKit2WebExtension {
         set target(val: string);
         get type(): string;
         set type(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLLinkElement.SignalSignatures;
+        $signals: DOMHTMLLinkElement.SignalSignatures;
 
         // Constructors
 
@@ -26522,14 +26580,15 @@ export namespace WebKit2WebExtension {
         get areas(): DOMHTMLCollection;
         get name(): string;
         set name(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLMapElement.SignalSignatures;
+        $signals: DOMHTMLMapElement.SignalSignatures;
 
         // Constructors
 
@@ -27074,14 +27133,15 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLMarqueeElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLMarqueeElement>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLMarqueeElement.SignalSignatures;
+        $signals: DOMHTMLMarqueeElement.SignalSignatures;
 
         // Constructors
 
@@ -27635,14 +27695,15 @@ export namespace WebKit2WebExtension {
 
         get compact(): boolean;
         set compact(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLMenuElement.SignalSignatures;
+        $signals: DOMHTMLMenuElement.SignalSignatures;
 
         // Constructors
 
@@ -28209,14 +28270,15 @@ export namespace WebKit2WebExtension {
         set name(val: string);
         get scheme(): string;
         set scheme(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLMetaElement.SignalSignatures;
+        $signals: DOMHTMLMetaElement.SignalSignatures;
 
         // Constructors
 
@@ -28781,14 +28843,15 @@ export namespace WebKit2WebExtension {
         set date_time(val: string);
         get dateTime(): string;
         set dateTime(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLModElement.SignalSignatures;
+        $signals: DOMHTMLModElement.SignalSignatures;
 
         // Constructors
 
@@ -29350,14 +29413,15 @@ export namespace WebKit2WebExtension {
         set start(val: number);
         get type(): string;
         set type(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLOListElement.SignalSignatures;
+        $signals: DOMHTMLOListElement.SignalSignatures;
 
         // Constructors
 
@@ -29992,14 +30056,15 @@ export namespace WebKit2WebExtension {
         set vspace(val: number);
         get width(): string;
         set width(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLObjectElement.SignalSignatures;
+        $signals: DOMHTMLObjectElement.SignalSignatures;
 
         // Constructors
 
@@ -30570,14 +30635,15 @@ export namespace WebKit2WebExtension {
         set disabled(val: boolean);
         get label(): string;
         set label(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLOptGroupElement.SignalSignatures;
+        $signals: DOMHTMLOptGroupElement.SignalSignatures;
 
         // Constructors
 
@@ -31161,14 +31227,15 @@ export namespace WebKit2WebExtension {
         get text(): string;
         get value(): string;
         set value(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLOptionElement.SignalSignatures;
+        $signals: DOMHTMLOptionElement.SignalSignatures;
 
         // Constructors
 
@@ -31681,14 +31748,15 @@ export namespace WebKit2WebExtension {
         set selected_index(val: number);
         get selectedIndex(): number;
         set selectedIndex(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLOptionsCollection.SignalSignatures;
+        $signals: DOMHTMLOptionsCollection.SignalSignatures;
 
         // Constructors
 
@@ -31803,14 +31871,15 @@ export namespace WebKit2WebExtension {
 
         get align(): string;
         set align(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLParagraphElement.SignalSignatures;
+        $signals: DOMHTMLParagraphElement.SignalSignatures;
 
         // Constructors
 
@@ -32379,14 +32448,15 @@ export namespace WebKit2WebExtension {
         set value_type(val: string);
         get valueType(): string;
         set valueType(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLParamElement.SignalSignatures;
+        $signals: DOMHTMLParamElement.SignalSignatures;
 
         // Constructors
 
@@ -32950,14 +33020,15 @@ export namespace WebKit2WebExtension {
         set width(val: number);
         get wrap(): boolean;
         set wrap(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLPreElement.SignalSignatures;
+        $signals: DOMHTMLPreElement.SignalSignatures;
 
         // Constructors
 
@@ -33511,14 +33582,15 @@ export namespace WebKit2WebExtension {
 
         get cite(): string;
         set cite(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLQuoteElement.SignalSignatures;
+        $signals: DOMHTMLQuoteElement.SignalSignatures;
 
         // Constructors
 
@@ -34099,14 +34171,15 @@ export namespace WebKit2WebExtension {
         set text(val: string);
         get type(): string;
         set type(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLScriptElement.SignalSignatures;
+        $signals: DOMHTMLScriptElement.SignalSignatures;
 
         // Constructors
 
@@ -34717,14 +34790,15 @@ export namespace WebKit2WebExtension {
         set value(val: string);
         get will_validate(): boolean;
         get willValidate(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLSelectElement.SignalSignatures;
+        $signals: DOMHTMLSelectElement.SignalSignatures;
 
         // Constructors
 
@@ -35313,14 +35387,15 @@ export namespace WebKit2WebExtension {
         get sheet(): DOMStyleSheet;
         get type(): string;
         set type(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLStyleElement.SignalSignatures;
+        $signals: DOMHTMLStyleElement.SignalSignatures;
 
         // Constructors
 
@@ -35879,14 +35954,15 @@ export namespace WebKit2WebExtension {
 
         get align(): string;
         set align(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLTableCaptionElement.SignalSignatures;
+        $signals: DOMHTMLTableCaptionElement.SignalSignatures;
 
         // Constructors
 
@@ -36515,14 +36591,15 @@ export namespace WebKit2WebExtension {
         set vAlign(val: string);
         get width(): string;
         set width(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLTableCellElement.SignalSignatures;
+        $signals: DOMHTMLTableCellElement.SignalSignatures;
 
         // Constructors
 
@@ -37129,14 +37206,15 @@ export namespace WebKit2WebExtension {
         set vAlign(val: string);
         get width(): string;
         set width(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLTableColElement.SignalSignatures;
+        $signals: DOMHTMLTableColElement.SignalSignatures;
 
         // Constructors
 
@@ -37758,14 +37836,15 @@ export namespace WebKit2WebExtension {
         get tHead(): DOMHTMLTableSectionElement;
         get width(): string;
         set width(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLTableElement.SignalSignatures;
+        $signals: DOMHTMLTableElement.SignalSignatures;
 
         // Constructors
 
@@ -38387,14 +38466,15 @@ export namespace WebKit2WebExtension {
         set v_align(val: string);
         get vAlign(): string;
         set vAlign(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLTableRowElement.SignalSignatures;
+        $signals: DOMHTMLTableRowElement.SignalSignatures;
 
         // Constructors
 
@@ -38982,14 +39062,15 @@ export namespace WebKit2WebExtension {
         set v_align(val: string);
         get vAlign(): string;
         set vAlign(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLTableSectionElement.SignalSignatures;
+        $signals: DOMHTMLTableSectionElement.SignalSignatures;
 
         // Constructors
 
@@ -39611,14 +39692,15 @@ export namespace WebKit2WebExtension {
         set value(val: string);
         get will_validate(): boolean;
         get willValidate(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLTextAreaElement.SignalSignatures;
+        $signals: DOMHTMLTextAreaElement.SignalSignatures;
 
         // Constructors
 
@@ -40196,14 +40278,15 @@ export namespace WebKit2WebExtension {
 
         get text(): string;
         set text(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLTitleElement.SignalSignatures;
+        $signals: DOMHTMLTitleElement.SignalSignatures;
 
         // Constructors
 
@@ -40761,14 +40844,15 @@ export namespace WebKit2WebExtension {
         set compact(val: boolean);
         get type(): string;
         set type(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMHTMLUListElement.SignalSignatures;
+        $signals: DOMHTMLUListElement.SignalSignatures;
 
         // Constructors
 
@@ -41315,14 +41399,15 @@ export namespace WebKit2WebExtension {
         get metaKey(): boolean;
         get shift_key(): boolean;
         get shiftKey(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMKeyboardEvent.SignalSignatures;
+        $signals: DOMKeyboardEvent.SignalSignatures;
 
         // Constructors
 
@@ -41400,14 +41485,15 @@ export namespace WebKit2WebExtension {
         set media_text(val: string);
         get mediaText(): string;
         set mediaText(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMMediaList.SignalSignatures;
+        $signals: DOMMediaList.SignalSignatures;
 
         // Constructors
 
@@ -41552,14 +41638,15 @@ export namespace WebKit2WebExtension {
         get toElement(): DOMNode;
         get x(): number;
         get y(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMMouseEvent.SignalSignatures;
+        $signals: DOMMouseEvent.SignalSignatures;
 
         // Constructors
 
@@ -41642,14 +41729,15 @@ export namespace WebKit2WebExtension {
         // Properties
 
         get length(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMNamedNodeMap.SignalSignatures;
+        $signals: DOMNamedNodeMap.SignalSignatures;
 
         // Constructors
 
@@ -41773,14 +41861,15 @@ export namespace WebKit2WebExtension {
         set text_content(val: string);
         get textContent(): string;
         set textContent(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMNode.SignalSignatures;
+        $signals: DOMNode.SignalSignatures;
 
         // Constructors
 
@@ -42342,14 +42431,15 @@ export namespace WebKit2WebExtension {
         get root(): DOMNode;
         get what_to_show(): number;
         get whatToShow(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMNodeIterator.SignalSignatures;
+        $signals: DOMNodeIterator.SignalSignatures;
 
         // Constructors
 
@@ -42412,14 +42502,15 @@ export namespace WebKit2WebExtension {
         // Properties
 
         get length(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMNodeList.SignalSignatures;
+        $signals: DOMNodeList.SignalSignatures;
 
         // Constructors
 
@@ -42472,14 +42563,15 @@ export namespace WebKit2WebExtension {
 
         set core_object(val: any);
         set coreObject(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMObject.SignalSignatures;
+        $signals: DOMObject.SignalSignatures;
 
         // Fields
 
@@ -42548,14 +42640,15 @@ export namespace WebKit2WebExtension {
 
         get sheet(): DOMStyleSheet;
         get target(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMProcessingInstruction.SignalSignatures;
+        $signals: DOMProcessingInstruction.SignalSignatures;
 
         // Constructors
 
@@ -43082,14 +43175,15 @@ export namespace WebKit2WebExtension {
         get start_offset(): number;
         get startOffset(): number;
         get text(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMRange.SignalSignatures;
+        $signals: DOMRange.SignalSignatures;
 
         // Constructors
 
@@ -43193,14 +43287,15 @@ export namespace WebKit2WebExtension {
         get parentStyleSheet(): DOMStyleSheet;
         get title(): string;
         get type(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMStyleSheet.SignalSignatures;
+        $signals: DOMStyleSheet.SignalSignatures;
 
         // Constructors
 
@@ -43258,14 +43353,15 @@ export namespace WebKit2WebExtension {
         // Properties
 
         get length(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMStyleSheetList.SignalSignatures;
+        $signals: DOMStyleSheetList.SignalSignatures;
 
         // Constructors
 
@@ -43334,14 +43430,15 @@ export namespace WebKit2WebExtension {
 
         get whole_text(): string;
         get wholeText(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMText.SignalSignatures;
+        $signals: DOMText.SignalSignatures;
 
         // Constructors
 
@@ -43852,14 +43949,15 @@ export namespace WebKit2WebExtension {
         get root(): DOMNode;
         get what_to_show(): number;
         get whatToShow(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMTreeWalker.SignalSignatures;
+        $signals: DOMTreeWalker.SignalSignatures;
 
         // Constructors
 
@@ -43969,14 +44067,15 @@ export namespace WebKit2WebExtension {
         get page_y(): number;
         get pageY(): number;
         get view(): DOMDOMWindow;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMUIEvent.SignalSignatures;
+        $signals: DOMUIEvent.SignalSignatures;
 
         // Constructors
 
@@ -44081,14 +44180,15 @@ export namespace WebKit2WebExtension {
         get wheelDeltaX(): number;
         get wheel_delta_y(): number;
         get wheelDeltaY(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMWheelEvent.SignalSignatures;
+        $signals: DOMWheelEvent.SignalSignatures;
 
         // Constructors
 
@@ -44147,14 +44247,15 @@ export namespace WebKit2WebExtension {
 
     class DOMXPathExpression extends DOMObject {
         static $gtype: GObject.GType<DOMXPathExpression>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMXPathExpression.SignalSignatures;
+        $signals: DOMXPathExpression.SignalSignatures;
 
         // Constructors
 
@@ -44237,14 +44338,15 @@ export namespace WebKit2WebExtension {
         get snapshotLength(): number;
         get string_value(): string;
         get stringValue(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DOMXPathResult.SignalSignatures;
+        $signals: DOMXPathResult.SignalSignatures;
 
         // Constructors
 
@@ -44300,14 +44402,15 @@ export namespace WebKit2WebExtension {
      */
     class Frame extends GObject.Object {
         static $gtype: GObject.GType<Frame>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Frame.SignalSignatures;
+        $signals: Frame.SignalSignatures;
 
         // Constructors
 
@@ -44491,14 +44594,15 @@ export namespace WebKit2WebExtension {
          * is present in #WebKitHitTestResult:context
          */
         get mediaUri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HitTestResult.SignalSignatures;
+        $signals: HitTestResult.SignalSignatures;
 
         // Constructors
 
@@ -44607,14 +44711,15 @@ export namespace WebKit2WebExtension {
 
     class ScriptWorld extends GObject.Object {
         static $gtype: GObject.GType<ScriptWorld>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScriptWorld.SignalSignatures;
+        $signals: ScriptWorld.SignalSignatures;
 
         // Constructors
 
@@ -44693,14 +44798,15 @@ export namespace WebKit2WebExtension {
          */
         get uri(): string;
         set uri(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: URIRequest.SignalSignatures;
+        $signals: URIRequest.SignalSignatures;
 
         // Constructors
 
@@ -44836,14 +44942,15 @@ export namespace WebKit2WebExtension {
          * The URI for which the response was made.
          */
         get uri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: URIResponse.SignalSignatures;
+        $signals: URIResponse.SignalSignatures;
 
         // Constructors
 
@@ -44965,14 +45072,15 @@ export namespace WebKit2WebExtension {
          * allowed.
          */
         get parameters(): GLib.Variant;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserMessage.SignalSignatures;
+        $signals: UserMessage.SignalSignatures;
 
         // Constructors
 
@@ -45061,14 +45169,15 @@ export namespace WebKit2WebExtension {
      */
     class WebEditor extends GObject.Object {
         static $gtype: GObject.GType<WebEditor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebEditor.SignalSignatures;
+        $signals: WebEditor.SignalSignatures;
 
         // Constructors
 
@@ -45191,14 +45300,15 @@ export namespace WebKit2WebExtension {
      */
     class WebExtension extends GObject.Object {
         static $gtype: GObject.GType<WebExtension>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebExtension.SignalSignatures;
+        $signals: WebExtension.SignalSignatures;
 
         // Constructors
 
@@ -45314,14 +45424,15 @@ export namespace WebKit2WebExtension {
          * The #WebKitDOMNode
          */
         get node(): DOMNode;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebHitTestResult.SignalSignatures;
+        $signals: WebHitTestResult.SignalSignatures;
 
         // Constructors
 
@@ -45396,14 +45507,15 @@ export namespace WebKit2WebExtension {
          * The current active URI of the #WebKitWebPage.
          */
         get uri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebPage.SignalSignatures;
+        $signals: WebPage.SignalSignatures;
 
         // Constructors
 

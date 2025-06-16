@@ -317,14 +317,15 @@ export namespace BraseroBurn {
 
     class Burn extends GObject.Object {
         static $gtype: GObject.GType<Burn>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Burn.SignalSignatures;
+        $signals: Burn.SignalSignatures;
 
         // Constructors
 
@@ -511,14 +512,15 @@ export namespace BraseroBurn {
 
     class BurnDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<BurnDialog>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BurnDialog.SignalSignatures;
+        $signals: BurnDialog.SignalSignatures;
 
         // Constructors
 
@@ -1112,14 +1114,15 @@ export namespace BraseroBurn {
         // Properties
 
         get session(): BurnSession;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BurnOptions.SignalSignatures;
+        $signals: BurnOptions.SignalSignatures;
 
         // Constructors
 
@@ -1633,14 +1636,15 @@ export namespace BraseroBurn {
         set speed(val: number);
         get tmpdir(): string;
         set tmpdir(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BurnSession.SignalSignatures;
+        $signals: BurnSession.SignalSignatures;
 
         // Constructors
 
@@ -1944,14 +1948,15 @@ export namespace BraseroBurn {
 
     class SessionCfg extends SessionSpan {
         static $gtype: GObject.GType<SessionCfg>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SessionCfg.SignalSignatures;
+        $signals: SessionCfg.SignalSignatures;
 
         // Constructors
 
@@ -2041,14 +2046,15 @@ export namespace BraseroBurn {
 
     class SessionSpan extends BurnSession {
         static $gtype: GObject.GType<SessionSpan>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SessionSpan.SignalSignatures;
+        $signals: SessionSpan.SignalSignatures;
 
         // Constructors
 
@@ -2130,14 +2136,15 @@ export namespace BraseroBurn {
 
     class Status extends GObject.Object {
         static $gtype: GObject.GType<Status>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Status.SignalSignatures;
+        $signals: Status.SignalSignatures;
 
         // Constructors
 
@@ -2310,14 +2317,15 @@ export namespace BraseroBurn {
 
     class SumDialog extends ToolDialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SumDialog>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SumDialog.SignalSignatures;
+        $signals: SumDialog.SignalSignatures;
 
         // Constructors
 
@@ -2878,14 +2886,15 @@ export namespace BraseroBurn {
 
     class ToolDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ToolDialog>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ToolDialog.SignalSignatures;
+        $signals: ToolDialog.SignalSignatures;
 
         // Constructors
 
@@ -3381,14 +3390,15 @@ export namespace BraseroBurn {
 
     class Track extends GObject.Object {
         static $gtype: GObject.GType<Track>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Track.SignalSignatures;
+        $signals: Track.SignalSignatures;
 
         // Constructors
 
@@ -3547,14 +3557,15 @@ export namespace BraseroBurn {
 
     class TrackData extends Track {
         static $gtype: GObject.GType<TrackData>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TrackData.SignalSignatures;
+        $signals: TrackData.SignalSignatures;
 
         // Constructors
 
@@ -3741,14 +3752,15 @@ export namespace BraseroBurn {
         implements Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel, Gtk.TreeSortable
     {
         static $gtype: GObject.GType<TrackDataCfg>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TrackDataCfg.SignalSignatures;
+        $signals: TrackDataCfg.SignalSignatures;
 
         // Constructors
 
@@ -4951,14 +4963,15 @@ export namespace BraseroBurn {
 
     class TrackDisc extends Track {
         static $gtype: GObject.GType<TrackDisc>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TrackDisc.SignalSignatures;
+        $signals: TrackDisc.SignalSignatures;
 
         // Constructors
 
@@ -5014,14 +5027,15 @@ export namespace BraseroBurn {
 
     class TrackImage extends Track {
         static $gtype: GObject.GType<TrackImage>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TrackImage.SignalSignatures;
+        $signals: TrackImage.SignalSignatures;
 
         // Constructors
 
@@ -5122,14 +5136,15 @@ export namespace BraseroBurn {
 
     class TrackImageCfg extends TrackImage {
         static $gtype: GObject.GType<TrackImageCfg>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TrackImageCfg.SignalSignatures;
+        $signals: TrackImageCfg.SignalSignatures;
 
         // Constructors
 
@@ -5193,14 +5208,15 @@ export namespace BraseroBurn {
 
     class TrackStream extends Track {
         static $gtype: GObject.GType<TrackStream>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TrackStream.SignalSignatures;
+        $signals: TrackStream.SignalSignatures;
 
         // Constructors
 
@@ -5328,14 +5344,15 @@ export namespace BraseroBurn {
 
     class TrackStreamCfg extends TrackStream {
         static $gtype: GObject.GType<TrackStreamCfg>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TrackStreamCfg.SignalSignatures;
+        $signals: TrackStreamCfg.SignalSignatures;
 
         // Constructors
 

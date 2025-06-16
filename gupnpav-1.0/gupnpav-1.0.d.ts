@@ -400,14 +400,15 @@ export namespace GUPnPAV {
 
     class CDSLastChangeParser extends GObject.Object {
         static $gtype: GObject.GType<CDSLastChangeParser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CDSLastChangeParser.SignalSignatures;
+        $signals: CDSLastChangeParser.SignalSignatures;
 
         // Constructors
 
@@ -545,14 +546,15 @@ export namespace GUPnPAV {
          */
         get totalDeletedChildCount(): number;
         set totalDeletedChildCount(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DIDLLiteContainer.SignalSignatures;
+        $signals: DIDLLiteContainer.SignalSignatures;
 
         // Constructors
 
@@ -730,14 +732,15 @@ export namespace GUPnPAV {
          * The pointer to object node in XML document.
          */
         get xmlNode(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DIDLLiteContributor.SignalSignatures;
+        $signals: DIDLLiteContributor.SignalSignatures;
 
         // Constructors
 
@@ -854,14 +857,15 @@ export namespace GUPnPAV {
          * The pointer to desc node in XML document.
          */
         get xmlNode(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DIDLLiteCreateClass.SignalSignatures;
+        $signals: DIDLLiteCreateClass.SignalSignatures;
 
         // Constructors
 
@@ -995,14 +999,15 @@ export namespace GUPnPAV {
          * The pointer to desc node in XML document.
          */
         get xmlNode(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DIDLLiteDescriptor.SignalSignatures;
+        $signals: DIDLLiteDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -1137,14 +1142,15 @@ export namespace GUPnPAV {
          */
         get refId(): string;
         set refId(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DIDLLiteItem.SignalSignatures;
+        $signals: DIDLLiteItem.SignalSignatures;
 
         // Constructors
 
@@ -1426,14 +1432,15 @@ export namespace GUPnPAV {
          * The pointer to object node in XML document.
          */
         get xmlNode(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DIDLLiteObject.SignalSignatures;
+        $signals: DIDLLiteObject.SignalSignatures;
 
         // Constructors
 
@@ -1819,14 +1826,15 @@ export namespace GUPnPAV {
 
     class DIDLLiteParser extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteParser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DIDLLiteParser.SignalSignatures;
+        $signals: DIDLLiteParser.SignalSignatures;
 
         // Constructors
 
@@ -2112,14 +2120,15 @@ export namespace GUPnPAV {
          * The pointer to res node in XML document.
          */
         get xmlNode(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DIDLLiteResource.SignalSignatures;
+        $signals: DIDLLiteResource.SignalSignatures;
 
         // Constructors
 
@@ -2415,14 +2424,15 @@ export namespace GUPnPAV {
          * The pointer to root node in XML document.
          */
         get xmlNode(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DIDLLiteWriter.SignalSignatures;
+        $signals: DIDLLiteWriter.SignalSignatures;
 
         // Constructors
 
@@ -2532,14 +2542,15 @@ export namespace GUPnPAV {
          * The version of this feature.
          */
         get version(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Feature.SignalSignatures;
+        $signals: Feature.SignalSignatures;
 
         // Constructors
 
@@ -2595,14 +2606,15 @@ export namespace GUPnPAV {
 
     class FeatureListParser extends GObject.Object {
         static $gtype: GObject.GType<FeatureListParser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FeatureListParser.SignalSignatures;
+        $signals: FeatureListParser.SignalSignatures;
 
         // Constructors
 
@@ -2652,14 +2664,15 @@ export namespace GUPnPAV {
 
     class LastChangeParser extends GObject.Object {
         static $gtype: GObject.GType<LastChangeParser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LastChangeParser.SignalSignatures;
+        $signals: LastChangeParser.SignalSignatures;
 
         // Constructors
 
@@ -2732,14 +2745,15 @@ export namespace GUPnPAV {
          */
         get title(): string;
         set title(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaCollection.SignalSignatures;
+        $signals: MediaCollection.SignalSignatures;
 
         // Constructors
 
@@ -2899,14 +2913,15 @@ export namespace GUPnPAV {
          */
         get protocol(): string;
         set protocol(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProtocolInfo.SignalSignatures;
+        $signals: ProtocolInfo.SignalSignatures;
 
         // Constructors
 
@@ -3048,14 +3063,15 @@ export namespace GUPnPAV {
 
     class SearchCriteriaParser extends GObject.Object {
         static $gtype: GObject.GType<SearchCriteriaParser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SearchCriteriaParser.SignalSignatures;
+        $signals: SearchCriteriaParser.SignalSignatures;
 
         // Constructors
 

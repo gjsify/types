@@ -36,14 +36,15 @@ export namespace ArrowCUDA {
 
     class Buffer extends Arrow.Buffer {
         static $gtype: GObject.GType<Buffer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Buffer.SignalSignatures;
+        $signals: Buffer.SignalSignatures;
 
         // Constructors
 
@@ -104,14 +105,15 @@ export namespace ArrowCUDA {
 
     class BufferInputStream extends Arrow.BufferInputStream implements Arrow.File, Arrow.Readable {
         static $gtype: GObject.GType<BufferInputStream>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BufferInputStream.SignalSignatures;
+        $signals: BufferInputStream.SignalSignatures;
 
         // Constructors
 
@@ -597,14 +599,15 @@ export namespace ArrowCUDA {
 
     class BufferOutputStream extends Arrow.OutputStream implements Arrow.File, Arrow.Writable {
         static $gtype: GObject.GType<BufferOutputStream>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BufferOutputStream.SignalSignatures;
+        $signals: BufferOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -1109,14 +1112,15 @@ export namespace ArrowCUDA {
         // Properties
 
         set context(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Context.SignalSignatures;
+        $signals: Context.SignalSignatures;
 
         // Constructors
 
@@ -1158,14 +1162,15 @@ export namespace ArrowCUDA {
 
     class DeviceManager extends GObject.Object {
         static $gtype: GObject.GType<DeviceManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceManager.SignalSignatures;
+        $signals: DeviceManager.SignalSignatures;
 
         // Constructors
 
@@ -1214,14 +1219,15 @@ export namespace ArrowCUDA {
 
     class HostBuffer extends Arrow.MutableBuffer {
         static $gtype: GObject.GType<HostBuffer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HostBuffer.SignalSignatures;
+        $signals: HostBuffer.SignalSignatures;
 
         // Constructors
 
@@ -1274,14 +1280,15 @@ export namespace ArrowCUDA {
 
         set ipc_memory_handle(val: any);
         set ipcMemoryHandle(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IPCMemoryHandle.SignalSignatures;
+        $signals: IPCMemoryHandle.SignalSignatures;
 
         // Constructors
 

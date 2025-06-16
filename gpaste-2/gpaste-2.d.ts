@@ -363,14 +363,15 @@ export namespace GPaste {
 
     class Client extends Gio.DBusProxy implements Gio.AsyncInitable<Client>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Client>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -2095,14 +2096,15 @@ export namespace GPaste {
 
     class ClientItem extends GObject.Object {
         static $gtype: GObject.GType<ClientItem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientItem.SignalSignatures;
+        $signals: ClientItem.SignalSignatures;
 
         // Constructors
 
@@ -2171,14 +2173,15 @@ export namespace GPaste {
         implements Gio.AsyncInitable<GnomeShellClient>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<GnomeShellClient>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GnomeShellClient.SignalSignatures;
+        $signals: GnomeShellClient.SignalSignatures;
 
         // Constructors
 
@@ -3108,14 +3111,15 @@ export namespace GPaste {
         implements Gio.AsyncInitable<ScreensaverClient>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<ScreensaverClient>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScreensaverClient.SignalSignatures;
+        $signals: ScreensaverClient.SignalSignatures;
 
         // Constructors
 
@@ -3935,14 +3939,15 @@ export namespace GPaste {
 
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Settings.SignalSignatures;
+        $signals: Settings.SignalSignatures;
 
         // Constructors
 

@@ -186,14 +186,15 @@ export namespace Granite {
 
     class ServicesContractorProxy extends GObject.Object {
         static $gtype: GObject.GType<ServicesContractorProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ServicesContractorProxy.SignalSignatures;
+        $signals: ServicesContractorProxy.SignalSignatures;
 
         // Constructors
 
@@ -242,14 +243,15 @@ export namespace Granite {
 
     class ServicesSystem extends GObject.Object {
         static $gtype: GObject.GType<ServicesSystem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ServicesSystem.SignalSignatures;
+        $signals: ServicesSystem.SignalSignatures;
 
         // Constructors
 
@@ -371,14 +373,15 @@ export namespace Granite {
         set title(val: string);
         get child(): Gtk.Widget;
         set child(val: Gtk.Widget);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingsPage.SignalSignatures;
+        $signals: SettingsPage.SignalSignatures;
 
         // Constructors
 
@@ -504,14 +507,15 @@ export namespace Granite {
         get activatable(): boolean;
         get description(): string;
         set description(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimpleSettingsPage.SignalSignatures;
+        $signals: SimpleSettingsPage.SignalSignatures;
 
         // Constructors
 
@@ -620,14 +624,15 @@ export namespace Granite {
         set accelString(val: string);
         get label(): string;
         set label(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AccelLabel.SignalSignatures;
+        $signals: AccelLabel.SignalSignatures;
 
         // Constructors
 
@@ -767,14 +772,15 @@ export namespace Granite {
         get format(): string;
         get date(): GLib.DateTime;
         set date(val: GLib.DateTime);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DatePicker.SignalSignatures;
+        $signals: DatePicker.SignalSignatures;
 
         // Constructors
 
@@ -1326,14 +1332,15 @@ export namespace Granite {
 
     class Dialog extends Gtk.Dialog {
         static $gtype: GObject.GType<Dialog>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Dialog.SignalSignatures;
+        $signals: Dialog.SignalSignatures;
 
         // Constructors
 
@@ -1424,14 +1431,15 @@ export namespace Granite {
         set secondary_text(val: string);
         get secondaryText(): string;
         set secondaryText(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HeaderLabel.SignalSignatures;
+        $signals: HeaderLabel.SignalSignatures;
 
         // Constructors
 
@@ -1535,14 +1543,15 @@ export namespace Granite {
 
     class HyperTextView extends Gtk.TextView {
         static $gtype: GObject.GType<HyperTextView>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HyperTextView.SignalSignatures;
+        $signals: HyperTextView.SignalSignatures;
 
         // Constructors
 
@@ -1695,14 +1704,15 @@ export namespace Granite {
         set buttons(val: Gtk.ButtonsType);
         get custom_bin(): Gtk.Box;
         get customBin(): Gtk.Box;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MessageDialog.SignalSignatures;
+        $signals: MessageDialog.SignalSignatures;
 
         // Constructors
 
@@ -1862,14 +1872,15 @@ export namespace Granite {
         set secondary_icon_tooltip_text(val: string);
         get secondaryIconTooltipText(): string;
         set secondaryIconTooltipText(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ModeSwitch.SignalSignatures;
+        $signals: ModeSwitch.SignalSignatures;
 
         // Constructors
 
@@ -1982,14 +1993,15 @@ export namespace Granite {
         set label(val: string);
         get active(): boolean;
         set active(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OverlayBar.SignalSignatures;
+        $signals: OverlayBar.SignalSignatures;
 
         // Constructors
 
@@ -2089,14 +2101,15 @@ export namespace Granite {
         set description(val: string);
         get icon(): Gio.Icon;
         set icon(val: Gio.Icon);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Placeholder.SignalSignatures;
+        $signals: Placeholder.SignalSignatures;
 
         // Constructors
 
@@ -2196,14 +2209,15 @@ export namespace Granite {
         set visible_child_name(val: string);
         get visibleChildName(): string;
         set visibleChildName(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingsSidebar.SignalSignatures;
+        $signals: SettingsSidebar.SignalSignatures;
 
         // Constructors
 
@@ -2261,14 +2275,15 @@ export namespace Granite {
         set prefers_color_scheme(val: SettingsColorScheme);
         get prefersColorScheme(): SettingsColorScheme;
         set prefersColorScheme(val: SettingsColorScheme);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Settings.SignalSignatures;
+        $signals: Settings.SignalSignatures;
 
         // Constructors
 
@@ -2370,14 +2385,15 @@ export namespace Granite {
         set text(val: string);
         get description(): string;
         set description(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SwitchModelButton.SignalSignatures;
+        $signals: SwitchModelButton.SignalSignatures;
 
         // Constructors
 
@@ -2523,14 +2539,15 @@ export namespace Granite {
         get format24(): string;
         get time(): GLib.DateTime;
         set time(val: GLib.DateTime);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TimePicker.SignalSignatures;
+        $signals: TimePicker.SignalSignatures;
 
         // Constructors
 
@@ -2625,14 +2642,15 @@ export namespace Granite {
 
         get title(): string;
         set title(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Toast.SignalSignatures;
+        $signals: Toast.SignalSignatures;
 
         // Constructors
 
@@ -2776,14 +2794,15 @@ export namespace Granite {
         set minLength(val: number);
         get regex(): GLib.Regex;
         set regex(val: GLib.Regex);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValidatedEntry.SignalSignatures;
+        $signals: ValidatedEntry.SignalSignatures;
 
         // Constructors
 

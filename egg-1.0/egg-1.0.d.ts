@@ -133,14 +133,15 @@ export namespace Egg {
          * animated.
          */
         set target(val: GObject.Object);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Animation.SignalSignatures;
+        $signals: Animation.SignalSignatures;
 
         // Constructors
 
@@ -231,14 +232,15 @@ export namespace Egg {
          */
         get source(): GObject.Object;
         set source(val: GObject.Object);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BindingGroup.SignalSignatures;
+        $signals: BindingGroup.SignalSignatures;
 
         // Constructors
 
@@ -423,14 +425,15 @@ export namespace Egg {
         set max_width_request(val: number);
         get maxWidthRequest(): number;
         set maxWidthRequest(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Box.SignalSignatures;
+        $signals: Box.SignalSignatures;
 
         // Constructors
 
@@ -999,14 +1002,15 @@ export namespace Egg {
         set max_width_request(val: number);
         get maxWidthRequest(): number;
         set maxWidthRequest(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CenteringBin.SignalSignatures;
+        $signals: CenteringBin.SignalSignatures;
 
         // Constructors
 
@@ -1565,14 +1569,15 @@ export namespace Egg {
         set row_spacing(val: number);
         get rowSpacing(): number;
         set rowSpacing(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ColumnLayout.SignalSignatures;
+        $signals: ColumnLayout.SignalSignatures;
 
         // Constructors
 
@@ -2110,14 +2115,15 @@ export namespace Egg {
 
     class ElasticBin extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ElasticBin>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ElasticBin.SignalSignatures;
+        $signals: ElasticBin.SignalSignatures;
 
         // Constructors
 
@@ -2673,14 +2679,15 @@ export namespace Egg {
         set subtitle(val: string);
         get title(): string;
         set title(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EmptyState.SignalSignatures;
+        $signals: EmptyState.SignalSignatures;
 
         // Constructors
 
@@ -3233,14 +3240,15 @@ export namespace Egg {
         set max_width_chars(val: number);
         get maxWidthChars(): number;
         set maxWidthChars(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EntryBox.SignalSignatures;
+        $signals: EntryBox.SignalSignatures;
 
         // Constructors
 
@@ -3839,14 +3847,15 @@ export namespace Egg {
         set showHidden(val: boolean);
         get title(): string;
         set title(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileChooserEntry.SignalSignatures;
+        $signals: FileChooserEntry.SignalSignatures;
 
         // Constructors
 
@@ -4403,14 +4412,15 @@ export namespace Egg {
         get rowType(): GObject.GType;
         set row_type_name(val: string);
         set rowTypeName(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ListBox.SignalSignatures;
+        $signals: ListBox.SignalSignatures;
 
         // Constructors
 
@@ -4921,14 +4931,15 @@ export namespace Egg {
      */
     class MenuManager extends GObject.Object {
         static $gtype: GObject.GType<MenuManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MenuManager.SignalSignatures;
+        $signals: MenuManager.SignalSignatures;
 
         // Constructors
 
@@ -5031,14 +5042,15 @@ export namespace Egg {
 
         get label(): string;
         set label(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PillBox.SignalSignatures;
+        $signals: PillBox.SignalSignatures;
 
         // Constructors
 
@@ -5581,14 +5593,15 @@ export namespace Egg {
      */
     class PriorityBox extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<PriorityBox>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PriorityBox.SignalSignatures;
+        $signals: PriorityBox.SignalSignatures;
 
         // Constructors
 
@@ -6165,14 +6178,15 @@ export namespace Egg {
         set show_progress(val: boolean);
         get showProgress(): boolean;
         set showProgress(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProgressButton.SignalSignatures;
+        $signals: ProgressButton.SignalSignatures;
 
         // Constructors
 
@@ -10809,14 +10823,15 @@ export namespace Egg {
         set show_more(val: boolean);
         get showMore(): boolean;
         set showMore(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RadioBox.SignalSignatures;
+        $signals: RadioBox.SignalSignatures;
 
         // Constructors
 
@@ -11364,14 +11379,15 @@ export namespace Egg {
 
     class ScrolledWindow extends Gtk.ScrolledWindow implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ScrolledWindow>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScrolledWindow.SignalSignatures;
+        $signals: ScrolledWindow.SignalSignatures;
 
         // Constructors
 
@@ -11916,14 +11932,15 @@ export namespace Egg {
         set show_close_button(val: boolean);
         get showCloseButton(): boolean;
         set showCloseButton(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SearchBar.SignalSignatures;
+        $signals: SearchBar.SignalSignatures;
 
         // Constructors
 
@@ -12439,14 +12456,15 @@ export namespace Egg {
         set schema_key(val: string);
         get schemaKey(): string;
         set schemaKey(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingsFlagAction.SignalSignatures;
+        $signals: SettingsFlagAction.SignalSignatures;
 
         // Constructors
 
@@ -13185,14 +13203,15 @@ export namespace Egg {
         get path(): string;
         get schema_id(): string;
         get schemaId(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingsSandwich.SignalSignatures;
+        $signals: SettingsSandwich.SignalSignatures;
 
         // Constructors
 
@@ -13315,14 +13334,15 @@ export namespace Egg {
          * The GType of the target property.
          */
         get targetType(): GObject.GType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SignalGroup.SignalSignatures;
+        $signals: SignalGroup.SignalSignatures;
 
         // Constructors
 
@@ -13489,14 +13509,15 @@ export namespace Egg {
         set widthChars(val: number);
         get xalign(): number;
         set xalign(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimpleLabel.SignalSignatures;
+        $signals: SimpleLabel.SignalSignatures;
 
         // Constructors
 
@@ -14244,14 +14265,15 @@ export namespace Egg {
         set text(val: string);
         get title(): string;
         set title(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimplePopover.SignalSignatures;
+        $signals: SimplePopover.SignalSignatures;
 
         // Constructors
 
@@ -14805,14 +14827,15 @@ export namespace Egg {
 
         get position(): SliderPosition;
         set position(val: SliderPosition);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Slider.SignalSignatures;
+        $signals: Slider.SignalSignatures;
 
         // Constructors
 
@@ -15308,14 +15331,15 @@ export namespace Egg {
 
         get state(): string;
         set state(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StateMachine.SignalSignatures;
+        $signals: StateMachine.SignalSignatures;
 
         // Constructors
 
@@ -16037,14 +16061,15 @@ export namespace Egg {
         set subtitle(val: string);
         get title(): string;
         set title(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Suggestion.SignalSignatures;
+        $signals: Suggestion.SignalSignatures;
 
         // Constructors
 
@@ -16254,14 +16279,15 @@ export namespace Egg {
         set model(val: Gio.ListModel);
         get typed_text(): string;
         get typedText(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SuggestionEntry.SignalSignatures;
+        $signals: SuggestionEntry.SignalSignatures;
 
         // Constructors
 
@@ -20863,14 +20889,15 @@ export namespace Egg {
 
         get suggestion(): Suggestion;
         set suggestion(val: Suggestion);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SuggestionEntryBuffer.SignalSignatures;
+        $signals: SuggestionEntryBuffer.SignalSignatures;
 
         // Constructors
 
@@ -21032,14 +21059,15 @@ export namespace Egg {
         set relativeTo(val: Gtk.Widget);
         get selected(): Suggestion;
         set selected(val: Suggestion);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SuggestionPopover.SignalSignatures;
+        $signals: SuggestionPopover.SignalSignatures;
 
         // Constructors
 
@@ -21597,14 +21625,15 @@ export namespace Egg {
 
         get suggestion(): Suggestion;
         set suggestion(val: Suggestion);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SuggestionRow.SignalSignatures;
+        $signals: SuggestionRow.SignalSignatures;
 
         // Constructors
 
@@ -22161,14 +22190,15 @@ export namespace Egg {
         set valueCopyFunc(val: any);
         set value_destroy_func(val: any);
         set valueDestroyFunc(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TaskCache.SignalSignatures;
+        $signals: TaskCache.SignalSignatures;
 
         // Constructors
 
@@ -22306,14 +22336,15 @@ export namespace Egg {
         set row_spacing(val: number);
         get rowSpacing(): number;
         set rowSpacing(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ThreeGrid.SignalSignatures;
+        $signals: ThreeGrid.SignalSignatures;
 
         // Constructors
 
@@ -22802,14 +22833,15 @@ export namespace Egg {
         // Properties
 
         get widget(): Gtk.Widget;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WidgetActionGroup.SignalSignatures;
+        $signals: WidgetActionGroup.SignalSignatures;
 
         // Constructors
 

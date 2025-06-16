@@ -497,14 +497,15 @@ export namespace GSystem {
      */
     class Console extends GObject.Object {
         static $gtype: GObject.GType<Console>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Console.SignalSignatures;
+        $signals: Console.SignalSignatures;
 
         // Constructors
 
@@ -611,14 +612,15 @@ export namespace GSystem {
         // Properties
 
         get context(): SubprocessContext;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Subprocess.SignalSignatures;
+        $signals: Subprocess.SignalSignatures;
 
         // Constructors
 
@@ -1322,14 +1324,15 @@ export namespace GSystem {
          */
         get argv(): string[];
         set argv(val: string[]);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SubprocessContext.SignalSignatures;
+        $signals: SubprocessContext.SignalSignatures;
 
         // Constructors
 

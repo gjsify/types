@@ -91,14 +91,15 @@ export namespace Thunarx {
 
     class Menu extends GObject.Object {
         static $gtype: GObject.GType<Menu>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Menu.SignalSignatures;
+        $signals: Menu.SignalSignatures;
 
         // Constructors
 
@@ -177,14 +178,15 @@ export namespace Thunarx {
         set sensitive(val: boolean);
         get tooltip(): string;
         set tooltip(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MenuItem.SignalSignatures;
+        $signals: MenuItem.SignalSignatures;
 
         // Constructors
 
@@ -314,14 +316,15 @@ export namespace Thunarx {
         set label_widget(val: Gtk.Widget);
         get labelWidget(): Gtk.Widget;
         set labelWidget(val: Gtk.Widget);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PropertyPage.SignalSignatures;
+        $signals: PropertyPage.SignalSignatures;
 
         // Constructors
 
@@ -832,14 +835,15 @@ export namespace Thunarx {
 
     class ProviderFactory extends GObject.Object {
         static $gtype: GObject.GType<ProviderFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProviderFactory.SignalSignatures;
+        $signals: ProviderFactory.SignalSignatures;
 
         // Constructors
 
@@ -908,14 +912,15 @@ export namespace Thunarx {
 
     class ProviderModule extends GObject.TypeModule implements GObject.TypePlugin, ProviderPlugin {
         static $gtype: GObject.GType<ProviderModule>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProviderModule.SignalSignatures;
+        $signals: ProviderModule.SignalSignatures;
 
         // Constructors
 
@@ -1691,14 +1696,15 @@ export namespace Thunarx {
          * classes should set a useful name.
          */
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Renamer.SignalSignatures;
+        $signals: Renamer.SignalSignatures;
 
         // Constructors
 

@@ -232,14 +232,15 @@ export namespace SecretUnstable {
          * uses to interact with the actual D-Bus Secret Service.
          */
         get service(): Service;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Collection.SignalSignatures;
+        $signals: Collection.SignalSignatures;
 
         // Constructors
 
@@ -1674,14 +1675,15 @@ export namespace SecretUnstable {
          * uses to interact with the actual D-Bus Secret Service.
          */
         get service(): Service;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Item.SignalSignatures;
+        $signals: Item.SignalSignatures;
 
         // Constructors
 
@@ -2989,14 +2991,15 @@ export namespace SecretUnstable {
      */
     class Prompt extends Gio.DBusProxy implements Gio.AsyncInitable<Prompt>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Prompt>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Prompt.SignalSignatures;
+        $signals: Prompt.SignalSignatures;
 
         // Constructors
 
@@ -3922,14 +3925,15 @@ export namespace SecretUnstable {
      */
     class Service extends Gio.DBusProxy implements Gio.AsyncInitable<Service>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Service>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Service.SignalSignatures;
+        $signals: Service.SignalSignatures;
 
         // Constructors
 

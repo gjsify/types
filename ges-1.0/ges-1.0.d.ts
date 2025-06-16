@@ -1417,14 +1417,15 @@ export namespace GES {
          * asset it is now the proxy of/no longer the proxy of.
          */
         get proxyTarget(): Asset;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Asset.SignalSignatures;
+        $signals: Asset.SignalSignatures;
 
         // Constructors
 
@@ -2808,14 +2809,15 @@ export namespace GES {
      */
     abstract class AudioSource extends Source implements Extractable, MetaContainer {
         static $gtype: GObject.GType<AudioSource>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AudioSource.SignalSignatures;
+        $signals: AudioSource.SignalSignatures;
 
         // Constructors
 
@@ -3317,14 +3319,15 @@ export namespace GES {
      */
     class AudioTestSource extends AudioSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<AudioTestSource>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AudioTestSource.SignalSignatures;
+        $signals: AudioTestSource.SignalSignatures;
 
         // Constructors
 
@@ -3860,14 +3863,15 @@ export namespace GES {
      */
     class AudioTrack extends Track implements MetaContainer, Gst.ChildProxy {
         static $gtype: GObject.GType<AudioTrack>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AudioTrack.SignalSignatures;
+        $signals: AudioTrack.SignalSignatures;
 
         // Constructors
 
@@ -4741,14 +4745,15 @@ export namespace GES {
 
     class AudioTransition extends Transition implements Extractable, MetaContainer {
         static $gtype: GObject.GType<AudioTransition>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AudioTransition.SignalSignatures;
+        $signals: AudioTransition.SignalSignatures;
 
         // Constructors
 
@@ -5262,14 +5267,15 @@ export namespace GES {
          * The location of the file/resource to use.
          */
         get uri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AudioUriSource.SignalSignatures;
+        $signals: AudioUriSource.SignalSignatures;
 
         // Constructors
 
@@ -5817,14 +5823,15 @@ export namespace GES {
      */
     abstract class BaseEffect extends Operation implements Extractable, MetaContainer {
         static $gtype: GObject.GType<BaseEffect>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BaseEffect.SignalSignatures;
+        $signals: BaseEffect.SignalSignatures;
 
         // Constructors
 
@@ -6388,14 +6395,15 @@ export namespace GES {
      */
     abstract class BaseEffectClip extends OperationClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<BaseEffectClip>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BaseEffectClip.SignalSignatures;
+        $signals: BaseEffectClip.SignalSignatures;
 
         // Constructors
 
@@ -6891,14 +6899,15 @@ export namespace GES {
 
     abstract class BaseTransitionClip extends OperationClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<BaseTransitionClip>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BaseTransitionClip.SignalSignatures;
+        $signals: BaseTransitionClip.SignalSignatures;
 
         // Constructors
 
@@ -7377,14 +7386,15 @@ export namespace GES {
 
     abstract class BaseXmlFormatter extends Formatter implements Extractable {
         static $gtype: GObject.GType<BaseXmlFormatter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BaseXmlFormatter.SignalSignatures;
+        $signals: BaseXmlFormatter.SignalSignatures;
 
         // Constructors
 
@@ -7745,14 +7755,15 @@ export namespace GES {
          */
         get supportedFormats(): TrackType;
         set supportedFormats(val: TrackType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Clip.SignalSignatures;
+        $signals: Clip.SignalSignatures;
 
         // Constructors
 
@@ -8609,14 +8620,15 @@ export namespace GES {
          */
         get supportedFormats(): TrackType;
         set supportedFormats(val: TrackType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClipAsset.SignalSignatures;
+        $signals: ClipAsset.SignalSignatures;
 
         // Constructors
 
@@ -9784,14 +9796,15 @@ export namespace GES {
 
     class CommandLineFormatter extends Formatter implements Extractable {
         static $gtype: GObject.GType<CommandLineFormatter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CommandLineFormatter.SignalSignatures;
+        $signals: CommandLineFormatter.SignalSignatures;
 
         // Constructors
 
@@ -9940,14 +9953,15 @@ export namespace GES {
          * children (maximum - minimum + 1).
          */
         get height(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Container.SignalSignatures;
+        $signals: Container.SignalSignatures;
 
         // Fields
 
@@ -11019,14 +11033,15 @@ export namespace GES {
         set use_cache(val: boolean);
         get useCache(): boolean;
         set useCache(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DiscovererManager.SignalSignatures;
+        $signals: DiscovererManager.SignalSignatures;
 
         // Constructors
 
@@ -11145,14 +11160,15 @@ export namespace GES {
          * Example: "videobalance saturation=1.5 hue=+0.5"
          */
         get binDescription(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Effect.SignalSignatures;
+        $signals: Effect.SignalSignatures;
 
         // Constructors
 
@@ -11651,14 +11667,15 @@ export namespace GES {
      */
     class EffectAsset extends TrackElementAsset implements MetaContainer, Gio.AsyncInitable<EffectAsset>, Gio.Initable {
         static $gtype: GObject.GType<EffectAsset>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EffectAsset.SignalSignatures;
+        $signals: EffectAsset.SignalSignatures;
 
         // Constructors
 
@@ -12401,14 +12418,15 @@ export namespace GES {
          * Example: "videobalance saturation=1.5 hue=+0.5"
          */
         get videoBinDescription(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EffectClip.SignalSignatures;
+        $signals: EffectClip.SignalSignatures;
 
         // Constructors
 
@@ -12892,14 +12910,15 @@ export namespace GES {
      */
     abstract class Formatter extends GObject.InitiallyUnowned implements Extractable {
         static $gtype: GObject.GType<Formatter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Formatter.SignalSignatures;
+        $signals: Formatter.SignalSignatures;
 
         // Constructors
 
@@ -13172,14 +13191,15 @@ export namespace GES {
          */
         get start(): number;
         set start(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Group.SignalSignatures;
+        $signals: Group.SignalSignatures;
 
         // Constructors
 
@@ -13693,14 +13713,15 @@ export namespace GES {
          * The location of the file/resource to use.
          */
         get uri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ImageSource.SignalSignatures;
+        $signals: ImageSource.SignalSignatures;
 
         // Constructors
 
@@ -14248,14 +14269,15 @@ export namespace GES {
          */
         get priority(): number;
         set priority(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Layer.SignalSignatures;
+        $signals: Layer.SignalSignatures;
 
         // Fields
 
@@ -15329,14 +15351,15 @@ export namespace GES {
          * Current position (in nanoseconds) of the #GESMarker
          */
         get position(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Marker.SignalSignatures;
+        $signals: Marker.SignalSignatures;
 
         // Constructors
 
@@ -16204,14 +16227,15 @@ export namespace GES {
          */
         get flags(): MarkerFlags;
         set flags(val: MarkerFlags);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MarkerList.SignalSignatures;
+        $signals: MarkerList.SignalSignatures;
 
         // Constructors
 
@@ -16316,14 +16340,15 @@ export namespace GES {
          * multifile://20:50`/`home/you/sequence/\%04d.png
          */
         get uri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MultiFileSource.SignalSignatures;
+        $signals: MultiFileSource.SignalSignatures;
 
         // Constructors
 
@@ -16825,14 +16850,15 @@ export namespace GES {
      */
     abstract class Operation extends TrackElement implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Operation>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Operation.SignalSignatures;
+        $signals: Operation.SignalSignatures;
 
         // Constructors
 
@@ -17331,14 +17357,15 @@ export namespace GES {
      */
     abstract class OperationClip extends Clip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<OperationClip>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OperationClip.SignalSignatures;
+        $signals: OperationClip.SignalSignatures;
 
         // Constructors
 
@@ -17842,14 +17869,15 @@ export namespace GES {
      */
     abstract class OverlayClip extends OperationClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<OverlayClip>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OverlayClip.SignalSignatures;
+        $signals: OverlayClip.SignalSignatures;
 
         // Constructors
 
@@ -18441,14 +18469,15 @@ export namespace GES {
          */
         get videoSink(): Gst.Element;
         set videoSink(val: Gst.Element);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Pipeline.SignalSignatures;
+        $signals: Pipeline.SignalSignatures;
 
         // Constructors
 
@@ -19120,14 +19149,15 @@ export namespace GES {
      */
     class PitiviFormatter extends Formatter implements Extractable {
         static $gtype: GObject.GType<PitiviFormatter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PitiviFormatter.SignalSignatures;
+        $signals: PitiviFormatter.SignalSignatures;
 
         // Constructors
 
@@ -19292,14 +19322,15 @@ export namespace GES {
         // Properties
 
         get uri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Project.SignalSignatures;
+        $signals: Project.SignalSignatures;
 
         // Constructors
 
@@ -20555,14 +20586,15 @@ export namespace GES {
      */
     class Source extends TrackElement implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Source>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Source.SignalSignatures;
+        $signals: Source.SignalSignatures;
 
         // Constructors
 
@@ -21082,14 +21114,15 @@ export namespace GES {
      */
     class SourceClip extends Clip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<SourceClip>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceClip.SignalSignatures;
+        $signals: SourceClip.SignalSignatures;
 
         // Constructors
 
@@ -21583,14 +21616,15 @@ export namespace GES {
      */
     class SourceClipAsset extends ClipAsset implements MetaContainer, Gio.AsyncInitable<SourceClipAsset>, Gio.Initable {
         static $gtype: GObject.GType<SourceClipAsset>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceClipAsset.SignalSignatures;
+        $signals: SourceClipAsset.SignalSignatures;
 
         // Constructors
 
@@ -22331,14 +22365,15 @@ export namespace GES {
          */
         get vpattern(): VideoTestPattern;
         set vpattern(val: VideoTestPattern);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TestClip.SignalSignatures;
+        $signals: TestClip.SignalSignatures;
 
         // Constructors
 
@@ -22882,14 +22917,15 @@ export namespace GES {
 
     class TextOverlay extends Operation implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TextOverlay>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TextOverlay.SignalSignatures;
+        $signals: TextOverlay.SignalSignatures;
 
         // Constructors
 
@@ -23523,14 +23559,15 @@ export namespace GES {
          */
         get ypos(): number;
         set ypos(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TextOverlayClip.SignalSignatures;
+        $signals: TextOverlayClip.SignalSignatures;
 
         // Constructors
 
@@ -24261,14 +24298,15 @@ export namespace GES {
          */
         get snappingDistance(): number;
         set snappingDistance(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Timeline.SignalSignatures;
+        $signals: Timeline.SignalSignatures;
 
         // Fields
 
@@ -25770,14 +25808,15 @@ export namespace GES {
          */
         get timeline(): Timeline;
         set timeline(val: Timeline);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TimelineElement.SignalSignatures;
+        $signals: TimelineElement.SignalSignatures;
 
         // Fields
 
@@ -27374,14 +27413,15 @@ export namespace GES {
          */
         get ypos(): number;
         set ypos(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TitleClip.SignalSignatures;
+        $signals: TitleClip.SignalSignatures;
 
         // Constructors
 
@@ -27967,14 +28007,15 @@ export namespace GES {
      */
     class TitleSource extends VideoSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TitleSource>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TitleSource.SignalSignatures;
+        $signals: TitleSource.SignalSignatures;
 
         // Constructors
 
@@ -28671,14 +28712,15 @@ export namespace GES {
          * this.
          */
         get trackType(): TrackType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Track.SignalSignatures;
+        $signals: Track.SignalSignatures;
 
         // Fields
 
@@ -29925,14 +29967,15 @@ export namespace GES {
          */
         get trackType(): TrackType;
         set trackType(val: TrackType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TrackElement.SignalSignatures;
+        $signals: TrackElement.SignalSignatures;
 
         // Constructors
 
@@ -31069,14 +31112,15 @@ export namespace GES {
         set track_type(val: TrackType);
         get trackType(): TrackType;
         set trackType(val: TrackType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TrackElementAsset.SignalSignatures;
+        $signals: TrackElementAsset.SignalSignatures;
 
         // Constructors
 
@@ -32257,14 +32301,15 @@ export namespace GES {
      */
     abstract class Transition extends Operation implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Transition>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Transition.SignalSignatures;
+        $signals: Transition.SignalSignatures;
 
         // Constructors
 
@@ -32785,14 +32830,15 @@ export namespace GES {
          */
         get vtype(): VideoStandardTransitionType;
         set vtype(val: VideoStandardTransitionType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TransitionClip.SignalSignatures;
+        $signals: TransitionClip.SignalSignatures;
 
         // Constructors
 
@@ -33334,14 +33380,15 @@ export namespace GES {
          * The location of the file/resource to use.
          */
         get uri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UriClip.SignalSignatures;
+        $signals: UriClip.SignalSignatures;
 
         // Constructors
 
@@ -33877,14 +33924,15 @@ export namespace GES {
          * The duration (in nanoseconds) of the media file
          */
         get isNestedTimeline(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UriClipAsset.SignalSignatures;
+        $signals: UriClipAsset.SignalSignatures;
 
         // Constructors
 
@@ -34667,14 +34715,15 @@ export namespace GES {
         implements MetaContainer, Gio.AsyncInitable<UriSourceAsset>, Gio.Initable
     {
         static $gtype: GObject.GType<UriSourceAsset>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UriSourceAsset.SignalSignatures;
+        $signals: UriSourceAsset.SignalSignatures;
 
         // Constructors
 
@@ -35392,14 +35441,15 @@ export namespace GES {
      */
     abstract class VideoSource extends Source implements Extractable, MetaContainer {
         static $gtype: GObject.GType<VideoSource>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VideoSource.SignalSignatures;
+        $signals: VideoSource.SignalSignatures;
 
         // Constructors
 
@@ -35915,14 +35965,15 @@ export namespace GES {
      */
     class VideoTestSource extends VideoSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<VideoTestSource>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VideoTestSource.SignalSignatures;
+        $signals: VideoTestSource.SignalSignatures;
 
         // Constructors
 
@@ -36447,14 +36498,15 @@ export namespace GES {
      */
     class VideoTrack extends Track implements MetaContainer, Gst.ChildProxy {
         static $gtype: GObject.GType<VideoTrack>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VideoTrack.SignalSignatures;
+        $signals: VideoTrack.SignalSignatures;
 
         // Constructors
 
@@ -37353,14 +37405,15 @@ export namespace GES {
         set transition_type(val: VideoStandardTransitionType);
         get transitionType(): VideoStandardTransitionType;
         set transitionType(val: VideoStandardTransitionType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VideoTransition.SignalSignatures;
+        $signals: VideoTransition.SignalSignatures;
 
         // Constructors
 
@@ -37916,14 +37969,15 @@ export namespace GES {
          * The location of the file/resource to use.
          */
         get uri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VideoUriSource.SignalSignatures;
+        $signals: VideoUriSource.SignalSignatures;
 
         // Constructors
 
@@ -38402,14 +38456,15 @@ export namespace GES {
 
     class XmlFormatter extends BaseXmlFormatter implements Extractable {
         static $gtype: GObject.GType<XmlFormatter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XmlFormatter.SignalSignatures;
+        $signals: XmlFormatter.SignalSignatures;
 
         // Constructors
 

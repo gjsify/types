@@ -194,14 +194,15 @@ export namespace ClutterGst {
          */
         get paintBorders(): boolean;
         set paintBorders(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Aspectratio.SignalSignatures;
+        $signals: Aspectratio.SignalSignatures;
 
         // Constructors
 
@@ -743,14 +744,15 @@ export namespace ClutterGst {
 
         get device(): CameraDevice;
         set device(val: CameraDevice);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Camera.SignalSignatures;
+        $signals: Camera.SignalSignatures;
 
         // Constructors
 
@@ -1569,14 +1571,15 @@ export namespace ClutterGst {
          * The device node.
          */
         get node(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CameraDevice.SignalSignatures;
+        $signals: CameraDevice.SignalSignatures;
 
         // Constructors
 
@@ -1655,14 +1658,15 @@ export namespace ClutterGst {
      */
     class CameraManager extends GObject.Object {
         static $gtype: GObject.GType<CameraManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CameraManager.SignalSignatures;
+        $signals: CameraManager.SignalSignatures;
 
         // Constructors
 
@@ -1754,14 +1758,15 @@ export namespace ClutterGst {
         set player(val: GObject.Object);
         get sink(): VideoSink;
         set sink(val: VideoSink);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Content.SignalSignatures;
+        $signals: Content.SignalSignatures;
 
         // Constructors
 
@@ -2368,14 +2373,15 @@ export namespace ClutterGst {
          */
         get paintBorders(): boolean;
         set paintBorders(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Crop.SignalSignatures;
+        $signals: Crop.SignalSignatures;
 
         // Constructors
 
@@ -3071,14 +3077,15 @@ export namespace ClutterGst {
          */
         get userAgent(): string;
         set userAgent(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Playback.SignalSignatures;
+        $signals: Playback.SignalSignatures;
 
         // Constructors
 
@@ -3885,14 +3892,15 @@ export namespace ClutterGst {
         set update_priority(val: number);
         get updatePriority(): number;
         set updatePriority(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VideoSink.SignalSignatures;
+        $signals: VideoSink.SignalSignatures;
 
         // Constructors
 

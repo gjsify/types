@@ -439,14 +439,15 @@ export namespace Modulemd {
 
     class BuildConfig extends GObject.Object {
         static $gtype: GObject.GType<BuildConfig>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BuildConfig.SignalSignatures;
+        $signals: BuildConfig.SignalSignatures;
 
         // Constructors
 
@@ -578,14 +579,15 @@ export namespace Modulemd {
         set rpm_macros(val: string);
         get rpmMacros(): string;
         set rpmMacros(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Buildopts.SignalSignatures;
+        $signals: Buildopts.SignalSignatures;
 
         // Constructors
 
@@ -681,14 +683,15 @@ export namespace Modulemd {
         get name(): string;
         get rationale(): string;
         set rationale(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Component.SignalSignatures;
+        $signals: Component.SignalSignatures;
 
         // Constructors
 
@@ -787,14 +790,15 @@ export namespace Modulemd {
         ref: string | any;
         get repository(): string;
         set repository(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ComponentModule.SignalSignatures;
+        $signals: ComponentModule.SignalSignatures;
 
         // Constructors
 
@@ -873,14 +877,15 @@ export namespace Modulemd {
         set srpm_buildroot(val: boolean);
         get srpmBuildroot(): boolean;
         set srpmBuildroot(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ComponentRpm.SignalSignatures;
+        $signals: ComponentRpm.SignalSignatures;
 
         // Constructors
 
@@ -979,14 +984,15 @@ export namespace Modulemd {
         get mdversion(): number;
         get module_name(): string;
         get moduleName(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Defaults.SignalSignatures;
+        $signals: Defaults.SignalSignatures;
 
         // Constructors
 
@@ -1047,14 +1053,15 @@ export namespace Modulemd {
 
     class DefaultsV1 extends Defaults {
         static $gtype: GObject.GType<DefaultsV1>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DefaultsV1.SignalSignatures;
+        $signals: DefaultsV1.SignalSignatures;
 
         // Constructors
 
@@ -1132,14 +1139,15 @@ export namespace Modulemd {
 
     class Dependencies extends GObject.Object {
         static $gtype: GObject.GType<Dependencies>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Dependencies.SignalSignatures;
+        $signals: Dependencies.SignalSignatures;
 
         // Constructors
 
@@ -1243,14 +1251,15 @@ export namespace Modulemd {
 
         get module_name(): string;
         get moduleName(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Module.SignalSignatures;
+        $signals: Module.SignalSignatures;
 
         // Constructors
 
@@ -1351,14 +1360,15 @@ export namespace Modulemd {
 
     class ModuleIndex extends GObject.Object {
         static $gtype: GObject.GType<ModuleIndex>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ModuleIndex.SignalSignatures;
+        $signals: ModuleIndex.SignalSignatures;
 
         // Constructors
 
@@ -1501,14 +1511,15 @@ export namespace Modulemd {
 
     class ModuleIndexMerger extends GObject.Object {
         static $gtype: GObject.GType<ModuleIndexMerger>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ModuleIndexMerger.SignalSignatures;
+        $signals: ModuleIndexMerger.SignalSignatures;
 
         // Constructors
 
@@ -1619,14 +1630,15 @@ export namespace Modulemd {
         get streamName(): string;
         get version(): number;
         set version(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ModuleStream.SignalSignatures;
+        $signals: ModuleStream.SignalSignatures;
 
         // Constructors
 
@@ -1820,14 +1832,15 @@ export namespace Modulemd {
         set documentation(val: string);
         get tracker(): string;
         set tracker(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ModuleStreamV1.SignalSignatures;
+        $signals: ModuleStreamV1.SignalSignatures;
 
         // Constructors
 
@@ -2095,14 +2108,15 @@ export namespace Modulemd {
         set staticContext(val: boolean);
         get tracker(): string;
         set tracker(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ModuleStreamV2.SignalSignatures;
+        $signals: ModuleStreamV2.SignalSignatures;
 
         // Constructors
 
@@ -2402,14 +2416,15 @@ export namespace Modulemd {
         set override_previous(val: boolean);
         get overridePrevious(): boolean;
         set overridePrevious(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Obsoletes.SignalSignatures;
+        $signals: Obsoletes.SignalSignatures;
 
         // Constructors
 
@@ -2494,14 +2509,15 @@ export namespace Modulemd {
 
     class PackagerV3 extends GObject.Object {
         static $gtype: GObject.GType<PackagerV3>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PackagerV3.SignalSignatures;
+        $signals: PackagerV3.SignalSignatures;
 
         // Constructors
 
@@ -2707,14 +2723,15 @@ export namespace Modulemd {
         // Properties
 
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Profile.SignalSignatures;
+        $signals: Profile.SignalSignatures;
 
         // Constructors
 
@@ -2814,14 +2831,15 @@ export namespace Modulemd {
         set release(val: string);
         get version(): string;
         set version(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RpmMapEntry.SignalSignatures;
+        $signals: RpmMapEntry.SignalSignatures;
 
         // Constructors
 
@@ -2886,14 +2904,15 @@ export namespace Modulemd {
         // Properties
 
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ServiceLevel.SignalSignatures;
+        $signals: ServiceLevel.SignalSignatures;
 
         // Constructors
 
@@ -2960,14 +2979,15 @@ export namespace Modulemd {
 
     class SubdocumentInfo extends GObject.Object {
         static $gtype: GObject.GType<SubdocumentInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SubdocumentInfo.SignalSignatures;
+        $signals: SubdocumentInfo.SignalSignatures;
 
         // Constructors
 
@@ -3032,14 +3052,15 @@ export namespace Modulemd {
         get module_stream(): string;
         get moduleStream(): string;
         get version(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Translation.SignalSignatures;
+        $signals: Translation.SignalSignatures;
 
         // Constructors
 
@@ -3114,14 +3135,15 @@ export namespace Modulemd {
         get locale(): string;
         get summary(): string;
         set summary(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TranslationEntry.SignalSignatures;
+        $signals: TranslationEntry.SignalSignatures;
 
         // Constructors
 

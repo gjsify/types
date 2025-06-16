@@ -822,14 +822,15 @@ export namespace GooCanvas {
         set y1(val: number);
         get y2(): number;
         set y2(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Canvas.SignalSignatures;
+        $signals: Canvas.SignalSignatures;
 
         // Fields
 
@@ -1888,14 +1889,15 @@ export namespace GooCanvas {
 
     class CanvasAccessibleFactory extends Atk.ObjectFactory {
         static $gtype: GObject.GType<CanvasAccessibleFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasAccessibleFactory.SignalSignatures;
+        $signals: CanvasAccessibleFactory.SignalSignatures;
 
         // Constructors
 
@@ -2035,14 +2037,15 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasEllipse.SignalSignatures;
+        $signals: CanvasEllipse.SignalSignatures;
 
         // Fields
 
@@ -3295,14 +3298,15 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasEllipseModel.SignalSignatures;
+        $signals: CanvasEllipseModel.SignalSignatures;
 
         // Fields
 
@@ -4360,14 +4364,15 @@ export namespace GooCanvas {
         set y_step(val: number);
         get yStep(): number;
         set yStep(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasGrid.SignalSignatures;
+        $signals: CanvasGrid.SignalSignatures;
 
         // Fields
 
@@ -5776,14 +5781,15 @@ export namespace GooCanvas {
         set y_step(val: number);
         get yStep(): number;
         set yStep(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasGridModel.SignalSignatures;
+        $signals: CanvasGridModel.SignalSignatures;
 
         // Fields
 
@@ -6644,14 +6650,15 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasGroup.SignalSignatures;
+        $signals: CanvasGroup.SignalSignatures;
 
         // Fields
 
@@ -7878,14 +7885,15 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasGroupModel.SignalSignatures;
+        $signals: CanvasGroupModel.SignalSignatures;
 
         // Fields
 
@@ -8761,14 +8769,15 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasImage.SignalSignatures;
+        $signals: CanvasImage.SignalSignatures;
 
         // Fields
 
@@ -10013,14 +10022,15 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasImageModel.SignalSignatures;
+        $signals: CanvasImageModel.SignalSignatures;
 
         // Fields
 
@@ -10804,14 +10814,15 @@ export namespace GooCanvas {
 
     class CanvasItemAccessibleFactory extends Atk.ObjectFactory {
         static $gtype: GObject.GType<CanvasItemAccessibleFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasItemAccessibleFactory.SignalSignatures;
+        $signals: CanvasItemAccessibleFactory.SignalSignatures;
 
         // Constructors
 
@@ -11036,14 +11047,15 @@ export namespace GooCanvas {
         set strokePattern(val: CairoPattern);
         set stroke_pixbuf(val: GdkPixbuf.Pixbuf);
         set strokePixbuf(val: GdkPixbuf.Pixbuf);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasItemModelSimple.SignalSignatures;
+        $signals: CanvasItemModelSimple.SignalSignatures;
 
         // Fields
 
@@ -12027,14 +12039,15 @@ export namespace GooCanvas {
         set strokePattern(val: CairoPattern);
         set stroke_pixbuf(val: GdkPixbuf.Pixbuf);
         set strokePixbuf(val: GdkPixbuf.Pixbuf);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasItemSimple.SignalSignatures;
+        $signals: CanvasItemSimple.SignalSignatures;
 
         // Fields
 
@@ -13355,14 +13368,15 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasPath.SignalSignatures;
+        $signals: CanvasPath.SignalSignatures;
 
         // Fields
 
@@ -14590,14 +14604,15 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasPathModel.SignalSignatures;
+        $signals: CanvasPathModel.SignalSignatures;
 
         // Fields
 
@@ -15498,14 +15513,15 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasPolyline.SignalSignatures;
+        $signals: CanvasPolyline.SignalSignatures;
 
         // Fields
 
@@ -16773,14 +16789,15 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasPolylineModel.SignalSignatures;
+        $signals: CanvasPolylineModel.SignalSignatures;
 
         // Fields
 
@@ -17649,14 +17666,15 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasRect.SignalSignatures;
+        $signals: CanvasRect.SignalSignatures;
 
         // Fields
 
@@ -18890,14 +18908,15 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasRectModel.SignalSignatures;
+        $signals: CanvasRectModel.SignalSignatures;
 
         // Fields
 
@@ -19699,14 +19718,15 @@ export namespace GooCanvas {
      */
     class CanvasStyle extends GObject.Object {
         static $gtype: GObject.GType<CanvasStyle>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasStyle.SignalSignatures;
+        $signals: CanvasStyle.SignalSignatures;
 
         // Fields
 
@@ -19921,14 +19941,15 @@ export namespace GooCanvas {
         set y_border_spacing(val: number);
         get yBorderSpacing(): number;
         set yBorderSpacing(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasTable.SignalSignatures;
+        $signals: CanvasTable.SignalSignatures;
 
         // Constructors
 
@@ -20522,14 +20543,15 @@ export namespace GooCanvas {
         set y_border_spacing(val: number);
         get yBorderSpacing(): number;
         set yBorderSpacing(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasTableModel.SignalSignatures;
+        $signals: CanvasTableModel.SignalSignatures;
 
         // Fields
 
@@ -21111,14 +21133,15 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasText.SignalSignatures;
+        $signals: CanvasText.SignalSignatures;
 
         // Fields
 
@@ -22376,14 +22399,15 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasTextModel.SignalSignatures;
+        $signals: CanvasTextModel.SignalSignatures;
 
         // Fields
 
@@ -23254,14 +23278,15 @@ export namespace GooCanvas {
         set x(val: number);
         get y(): number;
         set y(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasWidget.SignalSignatures;
+        $signals: CanvasWidget.SignalSignatures;
 
         // Fields
 
@@ -24409,14 +24434,15 @@ export namespace GooCanvas {
 
     class CanvasWidgetAccessibleFactory extends Atk.ObjectFactory {
         static $gtype: GObject.GType<CanvasWidgetAccessibleFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CanvasWidgetAccessibleFactory.SignalSignatures;
+        $signals: CanvasWidgetAccessibleFactory.SignalSignatures;
 
         // Constructors
 

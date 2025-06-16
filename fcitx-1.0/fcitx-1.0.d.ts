@@ -58,14 +58,15 @@ export namespace Fcitx {
         // Properties
 
         set connection(val: Connection);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -233,14 +234,15 @@ export namespace Fcitx {
      */
     class Connection extends GObject.Object {
         static $gtype: GObject.GType<Connection>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Connection.SignalSignatures;
+        $signals: Connection.SignalSignatures;
 
         // Constructors
 
@@ -328,14 +330,15 @@ export namespace Fcitx {
          */
         get currentIm(): string;
         set currentIm(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InputMethod.SignalSignatures;
+        $signals: InputMethod.SignalSignatures;
 
         // Constructors
 
@@ -1238,14 +1241,15 @@ export namespace Fcitx {
      */
     class Kbd extends Gio.DBusProxy implements Gio.AsyncInitable<Kbd>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Kbd>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Kbd.SignalSignatures;
+        $signals: Kbd.SignalSignatures;
 
         // Constructors
 

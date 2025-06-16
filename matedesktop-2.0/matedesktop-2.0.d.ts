@@ -387,14 +387,15 @@ export namespace MateDesktop {
 
     class BG extends GObject.Object {
         static $gtype: GObject.GType<BG>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BG.SignalSignatures;
+        $signals: BG.SignalSignatures;
 
         // Constructors
 
@@ -567,14 +568,15 @@ export namespace MateDesktop {
          * surface.
          */
         get width(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BGCrossfade.SignalSignatures;
+        $signals: BGCrossfade.SignalSignatures;
 
         // Fields
 
@@ -763,14 +765,15 @@ export namespace MateDesktop {
         set hasPalette(val: boolean);
         get hex_string(): string;
         get hexString(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ColorSelection.SignalSignatures;
+        $signals: ColorSelection.SignalSignatures;
 
         // Constructors
 
@@ -1473,14 +1476,15 @@ export namespace MateDesktop {
         get helpButton(): Gtk.Widget;
         get ok_button(): Gtk.Widget;
         get okButton(): Gtk.Widget;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ColorSelectionDialog.SignalSignatures;
+        $signals: ColorSelectionDialog.SignalSignatures;
 
         // Fields
 
@@ -1978,14 +1982,15 @@ export namespace MateDesktop {
 
     class DesktopThumbnailFactory extends GObject.Object {
         static $gtype: GObject.GType<DesktopThumbnailFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DesktopThumbnailFactory.SignalSignatures;
+        $signals: DesktopThumbnailFactory.SignalSignatures;
 
         // Constructors
 
@@ -2135,14 +2140,15 @@ export namespace MateDesktop {
 
     class HSV extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<HSV>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HSV.SignalSignatures;
+        $signals: HSV.SignalSignatures;
 
         // Constructors
 
@@ -2909,14 +2915,15 @@ export namespace MateDesktop {
          */
         get image(): Gtk.Widget;
         set image(val: Gtk.Widget);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ImageMenuItem.SignalSignatures;
+        $signals: ImageMenuItem.SignalSignatures;
 
         // Fields
 
@@ -7512,14 +7519,15 @@ export namespace MateDesktop {
         // Properties
 
         set screen(val: RRScreen);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RRConfig.SignalSignatures;
+        $signals: RRConfig.SignalSignatures;
 
         // Constructors
 
@@ -7590,14 +7598,15 @@ export namespace MateDesktop {
         // Properties
 
         set config(val: RRConfig);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RRLabeler.SignalSignatures;
+        $signals: RRLabeler.SignalSignatures;
 
         // Constructors
 
@@ -7649,14 +7658,15 @@ export namespace MateDesktop {
 
     class RROutputInfo extends GObject.Object {
         static $gtype: GObject.GType<RROutputInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RROutputInfo.SignalSignatures;
+        $signals: RROutputInfo.SignalSignatures;
 
         // Constructors
 
@@ -7734,14 +7744,15 @@ export namespace MateDesktop {
 
         get gdk_screen(): Gdk.Screen;
         get gdkScreen(): Gdk.Screen;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RRScreen.SignalSignatures;
+        $signals: RRScreen.SignalSignatures;
 
         // Constructors
 

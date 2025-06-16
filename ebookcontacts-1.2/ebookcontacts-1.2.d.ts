@@ -1171,14 +1171,15 @@ export namespace EBookContacts {
      */
     abstract class BookIndicesUpdater extends GObject.Object {
         static $gtype: GObject.GType<BookIndicesUpdater>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BookIndicesUpdater.SignalSignatures;
+        $signals: BookIndicesUpdater.SignalSignatures;
 
         // Constructors
 
@@ -2225,14 +2226,15 @@ export namespace EBookContacts {
         set wantsHtml(val: boolean);
         get x509Cert(): ContactCert;
         set x509Cert(val: ContactCert);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Contact.SignalSignatures;
+        $signals: Contact.SignalSignatures;
 
         // Constructors
 
@@ -2399,14 +2401,15 @@ export namespace EBookContacts {
         set summary_fields(val: string);
         get summaryFields(): string;
         set summaryFields(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceBackendSummarySetup.SignalSignatures;
+        $signals: SourceBackendSummarySetup.SignalSignatures;
 
         // Constructors
 
@@ -2493,14 +2496,15 @@ export namespace EBookContacts {
 
     class VCard extends GObject.Object {
         static $gtype: GObject.GType<VCard>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VCard.SignalSignatures;
+        $signals: VCard.SignalSignatures;
 
         // Constructors
 

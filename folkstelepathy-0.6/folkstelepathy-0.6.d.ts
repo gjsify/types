@@ -57,14 +57,15 @@ export namespace FolksTelepathy {
         // Properties
 
         get account(): TelepathyGLib.Account;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PersonaStore.SignalSignatures;
+        $signals: PersonaStore.SignalSignatures;
 
         // Constructors
 
@@ -185,14 +186,15 @@ export namespace FolksTelepathy {
         get isInContactList(): boolean;
         set isInContactList(val: boolean);
         get contact(): TelepathyGLib.Contact;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Persona.SignalSignatures;
+        $signals: Persona.SignalSignatures;
 
         // Constructors
 

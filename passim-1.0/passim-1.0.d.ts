@@ -80,14 +80,15 @@ export namespace Passim {
      */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -185,14 +186,15 @@ export namespace Passim {
      */
     class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Item.SignalSignatures;
+        $signals: Item.SignalSignatures;
 
         // Constructors
 

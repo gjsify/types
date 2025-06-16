@@ -156,14 +156,15 @@ export namespace Manette {
      */
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Device.SignalSignatures;
+        $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -282,14 +283,15 @@ export namespace Manette {
      */
     class Monitor extends GObject.Object {
         static $gtype: GObject.GType<Monitor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Monitor.SignalSignatures;
+        $signals: Monitor.SignalSignatures;
 
         // Constructors
 

@@ -128,14 +128,15 @@ export namespace RygelCore {
 
     class ConnectionManager extends GUPnP.Service {
         static $gtype: GObject.GType<ConnectionManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConnectionManager.SignalSignatures;
+        $signals: ConnectionManager.SignalSignatures;
 
         // Fields
 
@@ -212,14 +213,15 @@ export namespace RygelCore {
         set max_history_size(val: number);
         get maxHistorySize(): number;
         set maxHistorySize(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BasicManagement.SignalSignatures;
+        $signals: BasicManagement.SignalSignatures;
 
         // Fields
 
@@ -268,14 +270,15 @@ export namespace RygelCore {
 
     class DescriptionFile extends GObject.Object {
         static $gtype: GObject.GType<DescriptionFile>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DescriptionFile.SignalSignatures;
+        $signals: DescriptionFile.SignalSignatures;
 
         // Constructors
 
@@ -390,14 +393,15 @@ export namespace RygelCore {
 
     class EnergyManagement extends GUPnP.Service {
         static $gtype: GObject.GType<EnergyManagement>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EnergyManagement.SignalSignatures;
+        $signals: EnergyManagement.SignalSignatures;
 
         // Constructors
 
@@ -459,14 +463,15 @@ export namespace RygelCore {
 
         get services(): Gee.ArrayList;
         set services(val: Gee.ArrayList);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RootDevice.SignalSignatures;
+        $signals: RootDevice.SignalSignatures;
 
         // Constructors
 
@@ -1053,14 +1058,15 @@ export namespace RygelCore {
         // Properties
 
         get context(): GUPnP.Context;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RootDeviceFactory.SignalSignatures;
+        $signals: RootDeviceFactory.SignalSignatures;
 
         // Constructors
 
@@ -1631,14 +1637,15 @@ export namespace RygelCore {
 
     class LogHandler extends GObject.Object {
         static $gtype: GObject.GType<LogHandler>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LogHandler.SignalSignatures;
+        $signals: LogHandler.SignalSignatures;
 
         // Constructors
 
@@ -1680,14 +1687,15 @@ export namespace RygelCore {
 
     class MetaConfig extends GObject.Object implements Configuration {
         static $gtype: GObject.GType<MetaConfig>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MetaConfig.SignalSignatures;
+        $signals: MetaConfig.SignalSignatures;
 
         // Constructors
 
@@ -2217,14 +2225,15 @@ export namespace RygelCore {
 
     class PluginLoader extends RecursiveModuleLoader {
         static $gtype: GObject.GType<PluginLoader>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PluginLoader.SignalSignatures;
+        $signals: PluginLoader.SignalSignatures;
 
         // Constructors
 
@@ -2283,14 +2292,15 @@ export namespace RygelCore {
         set base_path(val: string);
         get basePath(): string;
         set basePath(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RecursiveModuleLoader.SignalSignatures;
+        $signals: RecursiveModuleLoader.SignalSignatures;
 
         // Constructors
 
@@ -2393,14 +2403,15 @@ export namespace RygelCore {
         set default_icons(val: Gee.ArrayList);
         get defaultIcons(): Gee.ArrayList;
         set defaultIcons(val: Gee.ArrayList);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Plugin.SignalSignatures;
+        $signals: Plugin.SignalSignatures;
 
         // Constructors
 
@@ -2527,14 +2538,15 @@ export namespace RygelCore {
         set plugin(val: Plugin);
         get title(): string;
         get capabilities(): PluginCapabilities;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaDevice.SignalSignatures;
+        $signals: MediaDevice.SignalSignatures;
 
         // Constructors
 
@@ -2582,14 +2594,15 @@ export namespace RygelCore {
 
     class BaseConfiguration extends GObject.Object implements Configuration {
         static $gtype: GObject.GType<BaseConfiguration>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BaseConfiguration.SignalSignatures;
+        $signals: BaseConfiguration.SignalSignatures;
 
         // Constructors
 
@@ -3116,14 +3129,15 @@ export namespace RygelCore {
 
     class CmdlineConfig extends GObject.Object implements Configuration {
         static $gtype: GObject.GType<CmdlineConfig>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CmdlineConfig.SignalSignatures;
+        $signals: CmdlineConfig.SignalSignatures;
 
         // Constructors
 
@@ -3653,14 +3667,15 @@ export namespace RygelCore {
 
     class EnvironmentConfig extends GObject.Object implements Configuration {
         static $gtype: GObject.GType<EnvironmentConfig>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EnvironmentConfig.SignalSignatures;
+        $signals: EnvironmentConfig.SignalSignatures;
 
         // Constructors
 
@@ -4185,14 +4200,15 @@ export namespace RygelCore {
 
     class UserConfig extends GObject.Object implements Configuration {
         static $gtype: GObject.GType<UserConfig>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserConfig.SignalSignatures;
+        $signals: UserConfig.SignalSignatures;
 
         // Fields
 
@@ -4741,14 +4757,15 @@ export namespace RygelCore {
         set deviceType(val: string);
         get service_types(): string[];
         get serviceTypes(): string[];
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: V1Hacks.SignalSignatures;
+        $signals: V1Hacks.SignalSignatures;
 
         // Fields
 
@@ -4981,14 +4998,15 @@ export namespace RygelCore {
         set module_loaded(val: boolean);
         get moduleLoaded(): boolean;
         set moduleLoaded(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PluginInformation.SignalSignatures;
+        $signals: PluginInformation.SignalSignatures;
 
         // Constructors
 

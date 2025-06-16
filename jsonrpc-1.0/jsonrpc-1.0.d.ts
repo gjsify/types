@@ -142,14 +142,15 @@ export namespace Jsonrpc {
          */
         get useGvariant(): boolean;
         set useGvariant(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -548,14 +549,15 @@ export namespace Jsonrpc {
 
     class InputStream extends Gio.DataInputStream implements Gio.Seekable {
         static $gtype: GObject.GType<InputStream>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InputStream.SignalSignatures;
+        $signals: InputStream.SignalSignatures;
 
         // Constructors
 
@@ -1062,14 +1064,15 @@ export namespace Jsonrpc {
         set use_gvariant(val: boolean);
         get useGvariant(): boolean;
         set useGvariant(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OutputStream.SignalSignatures;
+        $signals: OutputStream.SignalSignatures;
 
         // Constructors
 
@@ -1713,14 +1716,15 @@ export namespace Jsonrpc {
      */
     class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Server.SignalSignatures;
+        $signals: Server.SignalSignatures;
 
         // Constructors
 

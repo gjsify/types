@@ -119,14 +119,15 @@ export namespace Gucharmap {
         implements Gtk.Buildable, Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel, Gtk.TreeSortable
     {
         static $gtype: GObject.GType<BlockChaptersModel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BlockChaptersModel.SignalSignatures;
+        $signals: BlockChaptersModel.SignalSignatures;
 
         // Constructors
 
@@ -624,14 +625,15 @@ export namespace Gucharmap {
         get firstCodepoint(): number;
         get last_codepoint(): number;
         get lastCodepoint(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BlockCodepointList.SignalSignatures;
+        $signals: BlockCodepointList.SignalSignatures;
 
         // Constructors
 
@@ -680,14 +682,15 @@ export namespace Gucharmap {
         implements Gtk.Buildable, Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel, Gtk.TreeSortable
     {
         static $gtype: GObject.GType<ChaptersModel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ChaptersModel.SignalSignatures;
+        $signals: ChaptersModel.SignalSignatures;
 
         // Constructors
 
@@ -2039,14 +2042,15 @@ export namespace Gucharmap {
 
     class ChaptersView extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<ChaptersView>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ChaptersView.SignalSignatures;
+        $signals: ChaptersView.SignalSignatures;
 
         // Constructors
 
@@ -2750,14 +2754,15 @@ export namespace Gucharmap {
         set snap_power_2(val: boolean);
         get snapPower2(): boolean;
         set snapPower2(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Charmap.SignalSignatures;
+        $signals: Charmap.SignalSignatures;
 
         // Constructors
 
@@ -3387,14 +3392,15 @@ export namespace Gucharmap {
         set zoomEnabled(val: boolean);
         get zoom_showing(): boolean;
         get zoomShowing(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Chartable.SignalSignatures;
+        $signals: Chartable.SignalSignatures;
 
         // Constructors
 
@@ -3998,14 +4004,15 @@ export namespace Gucharmap {
 
     abstract class CodepointList extends GObject.Object {
         static $gtype: GObject.GType<CodepointList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CodepointList.SignalSignatures;
+        $signals: CodepointList.SignalSignatures;
 
         // Constructors
 
@@ -4064,14 +4071,15 @@ export namespace Gucharmap {
         implements Gtk.Buildable, Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel, Gtk.TreeSortable
     {
         static $gtype: GObject.GType<ScriptChaptersModel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScriptChaptersModel.SignalSignatures;
+        $signals: ScriptChaptersModel.SignalSignatures;
 
         // Constructors
 
@@ -4556,14 +4564,15 @@ export namespace Gucharmap {
 
     class ScriptCodepointList extends CodepointList {
         static $gtype: GObject.GType<ScriptCodepointList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScriptCodepointList.SignalSignatures;
+        $signals: ScriptCodepointList.SignalSignatures;
 
         // Constructors
 

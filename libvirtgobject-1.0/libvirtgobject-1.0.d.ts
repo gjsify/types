@@ -410,14 +410,15 @@ export namespace LibvirtGObject {
 
         get handle(): ConnectionHandle;
         get uri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Connection.SignalSignatures;
+        $signals: Connection.SignalSignatures;
 
         // Constructors
 
@@ -761,14 +762,15 @@ export namespace LibvirtGObject {
 
         get handle(): DomainHandle;
         get persistent(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Domain.SignalSignatures;
+        $signals: Domain.SignalSignatures;
 
         // Constructors
 
@@ -1191,14 +1193,15 @@ export namespace LibvirtGObject {
 
         get config(): LibvirtGConfig.DomainDevice;
         get domain(): Domain;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainDevice.SignalSignatures;
+        $signals: DomainDevice.SignalSignatures;
 
         // Constructors
 
@@ -1244,14 +1247,15 @@ export namespace LibvirtGObject {
 
     class DomainDisk extends DomainDevice {
         static $gtype: GObject.GType<DomainDisk>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainDisk.SignalSignatures;
+        $signals: DomainDisk.SignalSignatures;
 
         // Constructors
 
@@ -1309,14 +1313,15 @@ export namespace LibvirtGObject {
 
     class DomainInterface extends DomainDevice {
         static $gtype: GObject.GType<DomainInterface>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainInterface.SignalSignatures;
+        $signals: DomainInterface.SignalSignatures;
 
         // Constructors
 
@@ -1372,14 +1377,15 @@ export namespace LibvirtGObject {
         // Properties
 
         get handle(): DomainSnapshotHandle;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainSnapshot.SignalSignatures;
+        $signals: DomainSnapshot.SignalSignatures;
 
         // Constructors
 
@@ -1464,14 +1470,15 @@ export namespace LibvirtGObject {
         // Properties
 
         get handle(): InterfaceHandle;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Interface.SignalSignatures;
+        $signals: Interface.SignalSignatures;
 
         // Constructors
 
@@ -1518,14 +1525,15 @@ export namespace LibvirtGObject {
 
     class Manager extends GObject.Object {
         static $gtype: GObject.GType<Manager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Manager.SignalSignatures;
+        $signals: Manager.SignalSignatures;
 
         // Constructors
 
@@ -1585,14 +1593,15 @@ export namespace LibvirtGObject {
         // Properties
 
         get handle(): NetworkHandle;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Network.SignalSignatures;
+        $signals: Network.SignalSignatures;
 
         // Constructors
 
@@ -1659,14 +1668,15 @@ export namespace LibvirtGObject {
         // Properties
 
         get handle(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NetworkDHCPLease.SignalSignatures;
+        $signals: NetworkDHCPLease.SignalSignatures;
 
         // Constructors
 
@@ -1724,14 +1734,15 @@ export namespace LibvirtGObject {
         // Properties
 
         get handle(): NetworkFilterHandle;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NetworkFilter.SignalSignatures;
+        $signals: NetworkFilter.SignalSignatures;
 
         // Constructors
 
@@ -1783,14 +1794,15 @@ export namespace LibvirtGObject {
         // Properties
 
         get handle(): NodeDeviceHandle;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NodeDevice.SignalSignatures;
+        $signals: NodeDevice.SignalSignatures;
 
         // Constructors
 
@@ -1841,14 +1853,15 @@ export namespace LibvirtGObject {
         // Properties
 
         get handle(): SecretHandle;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Secret.SignalSignatures;
+        $signals: Secret.SignalSignatures;
 
         // Constructors
 
@@ -1900,14 +1913,15 @@ export namespace LibvirtGObject {
         // Properties
 
         get handle(): StoragePoolHandle;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StoragePool.SignalSignatures;
+        $signals: StoragePool.SignalSignatures;
 
         // Constructors
 
@@ -2038,14 +2052,15 @@ export namespace LibvirtGObject {
 
         get handle(): StorageVolHandle;
         get pool(): StoragePool;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StorageVol.SignalSignatures;
+        $signals: StorageVol.SignalSignatures;
 
         // Constructors
 
@@ -2116,14 +2131,15 @@ export namespace LibvirtGObject {
         // Properties
 
         get handle(): StreamHandle;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Stream.SignalSignatures;
+        $signals: Stream.SignalSignatures;
 
         // Constructors
 

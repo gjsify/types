@@ -75,14 +75,15 @@ export namespace Gvc {
 
     class ChannelMap extends GObject.Object {
         static $gtype: GObject.GType<ChannelMap>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ChannelMap.SignalSignatures;
+        $signals: ChannelMap.SignalSignatures;
 
         // Constructors
 
@@ -170,14 +171,15 @@ export namespace Gvc {
         get paContext(): any;
         get profile(): string;
         set profile(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MixerCard.SignalSignatures;
+        $signals: MixerCard.SignalSignatures;
 
         // Constructors
 
@@ -259,14 +261,15 @@ export namespace Gvc {
         // Properties
 
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MixerControl.SignalSignatures;
+        $signals: MixerControl.SignalSignatures;
 
         // Constructors
 
@@ -381,14 +384,15 @@ export namespace Gvc {
 
         get device(): string;
         set device(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MixerEventRole.SignalSignatures;
+        $signals: MixerEventRole.SignalSignatures;
 
         // Constructors
 
@@ -446,14 +450,15 @@ export namespace Gvc {
 
     class MixerSink extends MixerStream {
         static $gtype: GObject.GType<MixerSink>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MixerSink.SignalSignatures;
+        $signals: MixerSink.SignalSignatures;
 
         // Constructors
 
@@ -511,14 +516,15 @@ export namespace Gvc {
 
     class MixerSinkInput extends MixerStream {
         static $gtype: GObject.GType<MixerSinkInput>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MixerSinkInput.SignalSignatures;
+        $signals: MixerSinkInput.SignalSignatures;
 
         // Constructors
 
@@ -576,14 +582,15 @@ export namespace Gvc {
 
     class MixerSource extends MixerStream {
         static $gtype: GObject.GType<MixerSource>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MixerSource.SignalSignatures;
+        $signals: MixerSource.SignalSignatures;
 
         // Constructors
 
@@ -641,14 +648,15 @@ export namespace Gvc {
 
     class MixerSourceOutput extends MixerStream {
         static $gtype: GObject.GType<MixerSourceOutput>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MixerSourceOutput.SignalSignatures;
+        $signals: MixerSourceOutput.SignalSignatures;
 
         // Constructors
 
@@ -796,14 +804,15 @@ export namespace Gvc {
         set sysfsPath(val: string);
         get volume(): number;
         set volume(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MixerStream.SignalSignatures;
+        $signals: MixerStream.SignalSignatures;
 
         // Constructors
 
@@ -939,14 +948,15 @@ export namespace Gvc {
         set streamId(val: number);
         get type(): number;
         set type(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MixerUIDevice.SignalSignatures;
+        $signals: MixerUIDevice.SignalSignatures;
 
         // Constructors
 

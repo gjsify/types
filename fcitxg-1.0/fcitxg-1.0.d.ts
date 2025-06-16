@@ -60,14 +60,15 @@ export namespace FcitxG {
         // Properties
 
         set watcher(val: Watcher);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -257,14 +258,15 @@ export namespace FcitxG {
      */
     class Watcher extends GObject.Object {
         static $gtype: GObject.GType<Watcher>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Watcher.SignalSignatures;
+        $signals: Watcher.SignalSignatures;
 
         // Constructors
 

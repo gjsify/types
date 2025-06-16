@@ -808,14 +808,15 @@ export namespace Arrow {
 
     class AggregateNodeOptions extends ExecuteNodeOptions {
         static $gtype: GObject.GType<AggregateNodeOptions>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AggregateNodeOptions.SignalSignatures;
+        $signals: AggregateNodeOptions.SignalSignatures;
 
         // Constructors
 
@@ -886,14 +887,15 @@ export namespace Arrow {
          * The output field name of aggregate function.
          */
         get output(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Aggregation.SignalSignatures;
+        $signals: Aggregation.SignalSignatures;
 
         // Constructors
 
@@ -960,14 +962,15 @@ export namespace Arrow {
         get parent(): Array;
         get value_data_type(): DataType;
         get valueDataType(): DataType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Array.SignalSignatures;
+        $signals: Array.SignalSignatures;
 
         // Constructors
 
@@ -1059,14 +1062,15 @@ export namespace Arrow {
 
         set array_builder(val: any);
         set arrayBuilder(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ArrayBuilder.SignalSignatures;
+        $signals: ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -1143,14 +1147,15 @@ export namespace Arrow {
         // Properties
 
         get value(): Array;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ArrayDatum.SignalSignatures;
+        $signals: ArrayDatum.SignalSignatures;
 
         // Constructors
 
@@ -1202,14 +1207,15 @@ export namespace Arrow {
          */
         get order(): SortOrder;
         set order(val: SortOrder);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ArraySortOptions.SignalSignatures;
+        $signals: ArraySortOptions.SignalSignatures;
 
         // Constructors
 
@@ -1268,14 +1274,15 @@ export namespace Arrow {
          * The value of the scalar.
          */
         set value(val: Buffer);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BaseBinaryScalar.SignalSignatures;
+        $signals: BaseBinaryScalar.SignalSignatures;
 
         // Constructors
 
@@ -1330,14 +1337,15 @@ export namespace Arrow {
          * The value of the scalar.
          */
         set value(val: Array);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BaseListScalar.SignalSignatures;
+        $signals: BaseListScalar.SignalSignatures;
 
         // Constructors
 
@@ -1386,14 +1394,15 @@ export namespace Arrow {
 
     class BinaryArray extends Array {
         static $gtype: GObject.GType<BinaryArray>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BinaryArray.SignalSignatures;
+        $signals: BinaryArray.SignalSignatures;
 
         // Constructors
 
@@ -1448,14 +1457,15 @@ export namespace Arrow {
 
     class BinaryArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<BinaryArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BinaryArrayBuilder.SignalSignatures;
+        $signals: BinaryArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -1511,14 +1521,15 @@ export namespace Arrow {
 
     class BinaryDataType extends DataType {
         static $gtype: GObject.GType<BinaryDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BinaryDataType.SignalSignatures;
+        $signals: BinaryDataType.SignalSignatures;
 
         // Constructors
 
@@ -1560,14 +1571,15 @@ export namespace Arrow {
 
     class BinaryDictionaryArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<BinaryDictionaryArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BinaryDictionaryArrayBuilder.SignalSignatures;
+        $signals: BinaryDictionaryArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -1633,14 +1645,15 @@ export namespace Arrow {
 
     class BinaryScalar extends BaseBinaryScalar {
         static $gtype: GObject.GType<BinaryScalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BinaryScalar.SignalSignatures;
+        $signals: BinaryScalar.SignalSignatures;
 
         // Constructors
 
@@ -1687,14 +1700,15 @@ export namespace Arrow {
 
     class BooleanArray extends PrimitiveArray {
         static $gtype: GObject.GType<BooleanArray>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BooleanArray.SignalSignatures;
+        $signals: BooleanArray.SignalSignatures;
 
         // Constructors
 
@@ -1745,14 +1759,15 @@ export namespace Arrow {
 
     class BooleanArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<BooleanArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BooleanArrayBuilder.SignalSignatures;
+        $signals: BooleanArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -1809,14 +1824,15 @@ export namespace Arrow {
 
     class BooleanDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<BooleanDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BooleanDataType.SignalSignatures;
+        $signals: BooleanDataType.SignalSignatures;
 
         // Constructors
 
@@ -1859,14 +1875,15 @@ export namespace Arrow {
 
     class BooleanScalar extends Scalar {
         static $gtype: GObject.GType<BooleanScalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BooleanScalar.SignalSignatures;
+        $signals: BooleanScalar.SignalSignatures;
 
         // Constructors
 
@@ -1924,14 +1941,15 @@ export namespace Arrow {
         set buffer(val: any);
         set data(val: GLib.Bytes);
         get parent(): Buffer;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Buffer.SignalSignatures;
+        $signals: Buffer.SignalSignatures;
 
         // Constructors
 
@@ -2000,14 +2018,15 @@ export namespace Arrow {
         // Properties
 
         get buffer(): Buffer;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BufferInputStream.SignalSignatures;
+        $signals: BufferInputStream.SignalSignatures;
 
         // Constructors
 
@@ -2497,14 +2516,15 @@ export namespace Arrow {
 
     class BufferOutputStream extends OutputStream implements File, Writable {
         static $gtype: GObject.GType<BufferOutputStream>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BufferOutputStream.SignalSignatures;
+        $signals: BufferOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -3184,14 +3204,15 @@ export namespace Arrow {
          */
         get useThreads(): boolean;
         set useThreads(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CSVReadOptions.SignalSignatures;
+        $signals: CSVReadOptions.SignalSignatures;
 
         // Constructors
 
@@ -3274,14 +3295,15 @@ export namespace Arrow {
         set csv_table_reader(val: any);
         set csvTableReader(val: any);
         get input(): InputStream;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CSVReader.SignalSignatures;
+        $signals: CSVReader.SignalSignatures;
 
         // Constructors
 
@@ -3325,14 +3347,15 @@ export namespace Arrow {
 
     class CallExpression extends Expression {
         static $gtype: GObject.GType<CallExpression>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CallExpression.SignalSignatures;
+        $signals: CallExpression.SignalSignatures;
 
         // Constructors
 
@@ -3468,14 +3491,15 @@ export namespace Arrow {
          */
         get toDataType(): DataType;
         set toDataType(val: DataType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CastOptions.SignalSignatures;
+        $signals: CastOptions.SignalSignatures;
 
         // Constructors
 
@@ -3530,14 +3554,15 @@ export namespace Arrow {
         set chunkedArray(val: any);
         set data_type(val: DataType);
         set dataType(val: DataType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ChunkedArray.SignalSignatures;
+        $signals: ChunkedArray.SignalSignatures;
 
         // Constructors
 
@@ -3608,14 +3633,15 @@ export namespace Arrow {
         // Properties
 
         get value(): ChunkedArray;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ChunkedArrayDatum.SignalSignatures;
+        $signals: ChunkedArrayDatum.SignalSignatures;
 
         // Constructors
 
@@ -3663,14 +3689,15 @@ export namespace Arrow {
         // Properties
 
         set codec(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Codec.SignalSignatures;
+        $signals: Codec.SignalSignatures;
 
         // Constructors
 
@@ -3731,14 +3758,15 @@ export namespace Arrow {
 
         get codec(): Codec;
         get raw(): InputStream;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CompressedInputStream.SignalSignatures;
+        $signals: CompressedInputStream.SignalSignatures;
 
         // Constructors
 
@@ -4246,14 +4274,15 @@ export namespace Arrow {
 
         get codec(): Codec;
         get raw(): OutputStream;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CompressedOutputStream.SignalSignatures;
+        $signals: CompressedOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -4755,14 +4784,15 @@ export namespace Arrow {
 
         get mode(): CountMode;
         set mode(val: CountMode);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CountOptions.SignalSignatures;
+        $signals: CountOptions.SignalSignatures;
 
         // Constructors
 
@@ -4812,14 +4842,15 @@ export namespace Arrow {
 
         set data_type(val: any);
         set dataType(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataType.SignalSignatures;
+        $signals: DataType.SignalSignatures;
 
         // Constructors
 
@@ -4876,14 +4907,15 @@ export namespace Arrow {
 
     class Date32Array extends NumericArray {
         static $gtype: GObject.GType<Date32Array>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Date32Array.SignalSignatures;
+        $signals: Date32Array.SignalSignatures;
 
         // Constructors
 
@@ -4930,14 +4962,15 @@ export namespace Arrow {
 
     class Date32ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Date32ArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Date32ArrayBuilder.SignalSignatures;
+        $signals: Date32ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -4992,14 +5025,15 @@ export namespace Arrow {
 
     class Date32DataType extends TemporalDataType {
         static $gtype: GObject.GType<Date32DataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Date32DataType.SignalSignatures;
+        $signals: Date32DataType.SignalSignatures;
 
         // Constructors
 
@@ -5042,14 +5076,15 @@ export namespace Arrow {
 
     class Date32Scalar extends Scalar {
         static $gtype: GObject.GType<Date32Scalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Date32Scalar.SignalSignatures;
+        $signals: Date32Scalar.SignalSignatures;
 
         // Constructors
 
@@ -5100,14 +5135,15 @@ export namespace Arrow {
 
     class Date64Array extends NumericArray {
         static $gtype: GObject.GType<Date64Array>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Date64Array.SignalSignatures;
+        $signals: Date64Array.SignalSignatures;
 
         // Constructors
 
@@ -5154,14 +5190,15 @@ export namespace Arrow {
 
     class Date64ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Date64ArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Date64ArrayBuilder.SignalSignatures;
+        $signals: Date64ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -5216,14 +5253,15 @@ export namespace Arrow {
 
     class Date64DataType extends TemporalDataType {
         static $gtype: GObject.GType<Date64DataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Date64DataType.SignalSignatures;
+        $signals: Date64DataType.SignalSignatures;
 
         // Constructors
 
@@ -5266,14 +5304,15 @@ export namespace Arrow {
 
     class Date64Scalar extends Scalar {
         static $gtype: GObject.GType<Date64Scalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Date64Scalar.SignalSignatures;
+        $signals: Date64Scalar.SignalSignatures;
 
         // Constructors
 
@@ -5325,14 +5364,15 @@ export namespace Arrow {
         // Properties
 
         set datum(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Datum.SignalSignatures;
+        $signals: Datum.SignalSignatures;
 
         // Constructors
 
@@ -5398,14 +5438,15 @@ export namespace Arrow {
          */
         get millisecond(): number;
         set millisecond(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DayMillisecond.SignalSignatures;
+        $signals: DayMillisecond.SignalSignatures;
 
         // Constructors
 
@@ -5457,14 +5498,15 @@ export namespace Arrow {
 
     class DayTimeIntervalArray extends PrimitiveArray {
         static $gtype: GObject.GType<DayTimeIntervalArray>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DayTimeIntervalArray.SignalSignatures;
+        $signals: DayTimeIntervalArray.SignalSignatures;
 
         // Constructors
 
@@ -5513,14 +5555,15 @@ export namespace Arrow {
 
     class DayTimeIntervalArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<DayTimeIntervalArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DayTimeIntervalArrayBuilder.SignalSignatures;
+        $signals: DayTimeIntervalArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -5576,14 +5619,15 @@ export namespace Arrow {
 
     class DayTimeIntervalDataType extends IntervalDataType {
         static $gtype: GObject.GType<DayTimeIntervalDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DayTimeIntervalDataType.SignalSignatures;
+        $signals: DayTimeIntervalDataType.SignalSignatures;
 
         // Constructors
 
@@ -5628,14 +5672,15 @@ export namespace Arrow {
 
     class DayTimeIntervalScalar extends Scalar {
         static $gtype: GObject.GType<DayTimeIntervalScalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DayTimeIntervalScalar.SignalSignatures;
+        $signals: DayTimeIntervalScalar.SignalSignatures;
 
         // Constructors
 
@@ -5689,14 +5734,15 @@ export namespace Arrow {
         // Properties
 
         set decimal128(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Decimal128.SignalSignatures;
+        $signals: Decimal128.SignalSignatures;
 
         // Constructors
 
@@ -5772,14 +5818,15 @@ export namespace Arrow {
 
     class Decimal128Array extends FixedSizeBinaryArray {
         static $gtype: GObject.GType<Decimal128Array>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Decimal128Array.SignalSignatures;
+        $signals: Decimal128Array.SignalSignatures;
 
         // Constructors
 
@@ -5826,14 +5873,15 @@ export namespace Arrow {
 
     class Decimal128ArrayBuilder extends FixedSizeBinaryArrayBuilder {
         static $gtype: GObject.GType<Decimal128ArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Decimal128ArrayBuilder.SignalSignatures;
+        $signals: Decimal128ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -5894,14 +5942,15 @@ export namespace Arrow {
 
     class Decimal128DataType extends DecimalDataType {
         static $gtype: GObject.GType<Decimal128DataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Decimal128DataType.SignalSignatures;
+        $signals: Decimal128DataType.SignalSignatures;
 
         // Constructors
 
@@ -5961,14 +6010,15 @@ export namespace Arrow {
          * The value of the scalar.
          */
         set value(val: Decimal128);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Decimal128Scalar.SignalSignatures;
+        $signals: Decimal128Scalar.SignalSignatures;
 
         // Constructors
 
@@ -6020,14 +6070,15 @@ export namespace Arrow {
         // Properties
 
         set decimal256(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Decimal256.SignalSignatures;
+        $signals: Decimal256.SignalSignatures;
 
         // Constructors
 
@@ -6101,14 +6152,15 @@ export namespace Arrow {
 
     class Decimal256Array extends FixedSizeBinaryArray {
         static $gtype: GObject.GType<Decimal256Array>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Decimal256Array.SignalSignatures;
+        $signals: Decimal256Array.SignalSignatures;
 
         // Constructors
 
@@ -6155,14 +6207,15 @@ export namespace Arrow {
 
     class Decimal256ArrayBuilder extends FixedSizeBinaryArrayBuilder {
         static $gtype: GObject.GType<Decimal256ArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Decimal256ArrayBuilder.SignalSignatures;
+        $signals: Decimal256ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -6222,14 +6275,15 @@ export namespace Arrow {
 
     class Decimal256DataType extends DecimalDataType {
         static $gtype: GObject.GType<Decimal256DataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Decimal256DataType.SignalSignatures;
+        $signals: Decimal256DataType.SignalSignatures;
 
         // Constructors
 
@@ -6289,14 +6343,15 @@ export namespace Arrow {
          * The value of the scalar.
          */
         set value(val: Decimal256);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Decimal256Scalar.SignalSignatures;
+        $signals: Decimal256Scalar.SignalSignatures;
 
         // Constructors
 
@@ -6342,14 +6397,15 @@ export namespace Arrow {
 
     abstract class DecimalDataType extends FixedSizeBinaryDataType {
         static $gtype: GObject.GType<DecimalDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DecimalDataType.SignalSignatures;
+        $signals: DecimalDataType.SignalSignatures;
 
         // Constructors
 
@@ -6414,14 +6470,15 @@ export namespace Arrow {
 
         get value_offsets(): Int32Array;
         get valueOffsets(): Int32Array;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DenseUnionArray.SignalSignatures;
+        $signals: DenseUnionArray.SignalSignatures;
 
         // Constructors
 
@@ -6474,14 +6531,15 @@ export namespace Arrow {
 
     class DenseUnionArrayBuilder extends UnionArrayBuilder {
         static $gtype: GObject.GType<DenseUnionArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DenseUnionArrayBuilder.SignalSignatures;
+        $signals: DenseUnionArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -6525,14 +6583,15 @@ export namespace Arrow {
 
     class DenseUnionDataType extends UnionDataType {
         static $gtype: GObject.GType<DenseUnionDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DenseUnionDataType.SignalSignatures;
+        $signals: DenseUnionDataType.SignalSignatures;
 
         // Constructors
 
@@ -6576,14 +6635,15 @@ export namespace Arrow {
 
     class DenseUnionScalar extends UnionScalar {
         static $gtype: GObject.GType<DenseUnionScalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DenseUnionScalar.SignalSignatures;
+        $signals: DenseUnionScalar.SignalSignatures;
 
         // Constructors
 
@@ -6640,14 +6700,15 @@ export namespace Arrow {
 
         get dictionary(): Array;
         get indices(): Array;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DictionaryArray.SignalSignatures;
+        $signals: DictionaryArray.SignalSignatures;
 
         // Constructors
 
@@ -6695,14 +6756,15 @@ export namespace Arrow {
 
     class DictionaryDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<DictionaryDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DictionaryDataType.SignalSignatures;
+        $signals: DictionaryDataType.SignalSignatures;
 
         // Constructors
 
@@ -6755,14 +6817,15 @@ export namespace Arrow {
 
     class DoubleArray extends NumericArray {
         static $gtype: GObject.GType<DoubleArray>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DoubleArray.SignalSignatures;
+        $signals: DoubleArray.SignalSignatures;
 
         // Constructors
 
@@ -6810,14 +6873,15 @@ export namespace Arrow {
 
     class DoubleArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<DoubleArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DoubleArrayBuilder.SignalSignatures;
+        $signals: DoubleArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -6872,14 +6936,15 @@ export namespace Arrow {
 
     class DoubleDataType extends FloatingPointDataType {
         static $gtype: GObject.GType<DoubleDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DoubleDataType.SignalSignatures;
+        $signals: DoubleDataType.SignalSignatures;
 
         // Constructors
 
@@ -6922,14 +6987,15 @@ export namespace Arrow {
 
     class DoubleScalar extends Scalar {
         static $gtype: GObject.GType<DoubleScalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DoubleScalar.SignalSignatures;
+        $signals: DoubleScalar.SignalSignatures;
 
         // Constructors
 
@@ -7013,14 +7079,15 @@ export namespace Arrow {
          */
         get nansEqual(): boolean;
         set nansEqual(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EqualOptions.SignalSignatures;
+        $signals: EqualOptions.SignalSignatures;
 
         // Constructors
 
@@ -7064,14 +7131,15 @@ export namespace Arrow {
 
     class ExecuteContext extends GObject.Object {
         static $gtype: GObject.GType<ExecuteContext>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExecuteContext.SignalSignatures;
+        $signals: ExecuteContext.SignalSignatures;
 
         // Constructors
 
@@ -7122,14 +7190,15 @@ export namespace Arrow {
 
         set node(val: any);
         get options(): ExecuteNodeOptions;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExecuteNode.SignalSignatures;
+        $signals: ExecuteNode.SignalSignatures;
 
         // Constructors
 
@@ -7180,14 +7249,15 @@ export namespace Arrow {
         // Properties
 
         set options(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExecuteNodeOptions.SignalSignatures;
+        $signals: ExecuteNodeOptions.SignalSignatures;
 
         // Constructors
 
@@ -7233,14 +7303,15 @@ export namespace Arrow {
         // Properties
 
         set plan(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExecutePlan.SignalSignatures;
+        $signals: ExecutePlan.SignalSignatures;
 
         // Constructors
 
@@ -7347,14 +7418,15 @@ export namespace Arrow {
 
     abstract class Expression extends GObject.Object {
         static $gtype: GObject.GType<Expression>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Expression.SignalSignatures;
+        $signals: Expression.SignalSignatures;
 
         // Constructors
 
@@ -7411,14 +7483,15 @@ export namespace Arrow {
         // Properties
 
         get storage(): Array;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExtensionArray.SignalSignatures;
+        $signals: ExtensionArray.SignalSignatures;
 
         // Constructors
 
@@ -7471,14 +7544,15 @@ export namespace Arrow {
 
         get storage_data_type(): DataType;
         get storageDataType(): DataType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExtensionDataType.SignalSignatures;
+        $signals: ExtensionDataType.SignalSignatures;
 
         // Constructors
 
@@ -7553,14 +7627,15 @@ export namespace Arrow {
         // Properties
 
         set registry(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExtensionDataTypeRegistry.SignalSignatures;
+        $signals: ExtensionDataTypeRegistry.SignalSignatures;
 
         // Constructors
 
@@ -7624,14 +7699,15 @@ export namespace Arrow {
 
     class ExtensionScalar extends Scalar {
         static $gtype: GObject.GType<ExtensionScalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExtensionScalar.SignalSignatures;
+        $signals: ExtensionScalar.SignalSignatures;
 
         // Constructors
 
@@ -7679,14 +7755,15 @@ export namespace Arrow {
 
         set feather_reader(val: any);
         set featherReader(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FeatherFileReader.SignalSignatures;
+        $signals: FeatherFileReader.SignalSignatures;
 
         // Constructors
 
@@ -7752,14 +7829,15 @@ export namespace Arrow {
          */
         get compression(): CompressionType;
         set compression(val: CompressionType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FeatherWriteProperties.SignalSignatures;
+        $signals: FeatherWriteProperties.SignalSignatures;
 
         // Constructors
 
@@ -7814,14 +7892,15 @@ export namespace Arrow {
         set data_type(val: DataType);
         set dataType(val: DataType);
         set field(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Field.SignalSignatures;
+        $signals: Field.SignalSignatures;
 
         // Constructors
 
@@ -7882,14 +7961,15 @@ export namespace Arrow {
 
     class FieldExpression extends Expression {
         static $gtype: GObject.GType<FieldExpression>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FieldExpression.SignalSignatures;
+        $signals: FieldExpression.SignalSignatures;
 
         // Constructors
 
@@ -7991,14 +8071,15 @@ export namespace Arrow {
          */
         get type(): FileType;
         set type(val: FileType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileInfo.SignalSignatures;
+        $signals: FileInfo.SignalSignatures;
 
         // Constructors
 
@@ -8050,14 +8131,15 @@ export namespace Arrow {
 
     class FileInputStream extends SeekableInputStream implements File, Readable {
         static $gtype: GObject.GType<FileInputStream>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileInputStream.SignalSignatures;
+        $signals: FileInputStream.SignalSignatures;
 
         // Constructors
 
@@ -8549,14 +8631,15 @@ export namespace Arrow {
 
     class FileOutputStream extends OutputStream implements File, Writable {
         static $gtype: GObject.GType<FileOutputStream>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileOutputStream.SignalSignatures;
+        $signals: FileOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -9104,14 +9187,15 @@ export namespace Arrow {
          */
         get recursive(): boolean;
         set recursive(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileSelector.SignalSignatures;
+        $signals: FileSelector.SignalSignatures;
 
         // Constructors
 
@@ -9159,14 +9243,15 @@ export namespace Arrow {
 
         set file_system(val: any);
         set fileSystem(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileSystem.SignalSignatures;
+        $signals: FileSystem.SignalSignatures;
 
         // Constructors
 
@@ -9329,14 +9414,15 @@ export namespace Arrow {
 
     class FilterNodeOptions extends ExecuteNodeOptions {
         static $gtype: GObject.GType<FilterNodeOptions>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilterNodeOptions.SignalSignatures;
+        $signals: FilterNodeOptions.SignalSignatures;
 
         // Constructors
 
@@ -9394,14 +9480,15 @@ export namespace Arrow {
          */
         get nullSelectionBehavior(): FilterNullSelectionBehavior;
         set nullSelectionBehavior(val: FilterNullSelectionBehavior);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilterOptions.SignalSignatures;
+        $signals: FilterOptions.SignalSignatures;
 
         // Constructors
 
@@ -9448,14 +9535,15 @@ export namespace Arrow {
 
     class FixedSizeBinaryArray extends PrimitiveArray {
         static $gtype: GObject.GType<FixedSizeBinaryArray>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FixedSizeBinaryArray.SignalSignatures;
+        $signals: FixedSizeBinaryArray.SignalSignatures;
 
         // Constructors
 
@@ -9511,14 +9599,15 @@ export namespace Arrow {
 
     class FixedSizeBinaryArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<FixedSizeBinaryArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FixedSizeBinaryArrayBuilder.SignalSignatures;
+        $signals: FixedSizeBinaryArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -9586,14 +9675,15 @@ export namespace Arrow {
 
     class FixedSizeBinaryDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<FixedSizeBinaryDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FixedSizeBinaryDataType.SignalSignatures;
+        $signals: FixedSizeBinaryDataType.SignalSignatures;
 
         // Constructors
 
@@ -9643,14 +9733,15 @@ export namespace Arrow {
 
     class FixedSizeBinaryScalar extends BaseBinaryScalar {
         static $gtype: GObject.GType<FixedSizeBinaryScalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FixedSizeBinaryScalar.SignalSignatures;
+        $signals: FixedSizeBinaryScalar.SignalSignatures;
 
         // Constructors
 
@@ -9694,14 +9785,15 @@ export namespace Arrow {
 
     abstract class FixedWidthDataType extends DataType {
         static $gtype: GObject.GType<FixedWidthDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FixedWidthDataType.SignalSignatures;
+        $signals: FixedWidthDataType.SignalSignatures;
 
         // Constructors
 
@@ -9750,14 +9842,15 @@ export namespace Arrow {
 
     class FloatArray extends NumericArray {
         static $gtype: GObject.GType<FloatArray>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FloatArray.SignalSignatures;
+        $signals: FloatArray.SignalSignatures;
 
         // Constructors
 
@@ -9805,14 +9898,15 @@ export namespace Arrow {
 
     class FloatArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<FloatArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FloatArrayBuilder.SignalSignatures;
+        $signals: FloatArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -9867,14 +9961,15 @@ export namespace Arrow {
 
     class FloatDataType extends FloatingPointDataType {
         static $gtype: GObject.GType<FloatDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FloatDataType.SignalSignatures;
+        $signals: FloatDataType.SignalSignatures;
 
         // Constructors
 
@@ -9917,14 +10012,15 @@ export namespace Arrow {
 
     class FloatScalar extends Scalar {
         static $gtype: GObject.GType<FloatScalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FloatScalar.SignalSignatures;
+        $signals: FloatScalar.SignalSignatures;
 
         // Constructors
 
@@ -9970,14 +10066,15 @@ export namespace Arrow {
 
     abstract class FloatingPointDataType extends NumericDataType {
         static $gtype: GObject.GType<FloatingPointDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FloatingPointDataType.SignalSignatures;
+        $signals: FloatingPointDataType.SignalSignatures;
 
         // Constructors
 
@@ -10025,14 +10122,15 @@ export namespace Arrow {
         // Properties
 
         set function(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Function.SignalSignatures;
+        $signals: Function.SignalSignatures;
 
         // Constructors
 
@@ -10093,14 +10191,15 @@ export namespace Arrow {
         // Properties
 
         set doc(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FunctionDoc.SignalSignatures;
+        $signals: FunctionDoc.SignalSignatures;
 
         // Constructors
 
@@ -10145,14 +10244,15 @@ export namespace Arrow {
 
     class FunctionOptions extends GObject.Object {
         static $gtype: GObject.GType<FunctionOptions>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FunctionOptions.SignalSignatures;
+        $signals: FunctionOptions.SignalSignatures;
 
         // Constructors
 
@@ -10197,14 +10297,15 @@ export namespace Arrow {
 
     class GCSFileSystem extends FileSystem {
         static $gtype: GObject.GType<GCSFileSystem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GCSFileSystem.SignalSignatures;
+        $signals: GCSFileSystem.SignalSignatures;
 
         // Constructors
 
@@ -10254,14 +10355,15 @@ export namespace Arrow {
         // Properties
 
         get raw(): Gio.InputStream;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GIOInputStream.SignalSignatures;
+        $signals: GIOInputStream.SignalSignatures;
 
         // Constructors
 
@@ -10758,14 +10860,15 @@ export namespace Arrow {
         // Properties
 
         get raw(): Gio.OutputStream;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GIOOutputStream.SignalSignatures;
+        $signals: GIOOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -11262,14 +11365,15 @@ export namespace Arrow {
 
     class HDFSFileSystem extends FileSystem {
         static $gtype: GObject.GType<HDFSFileSystem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HDFSFileSystem.SignalSignatures;
+        $signals: HDFSFileSystem.SignalSignatures;
 
         // Constructors
 
@@ -11314,14 +11418,15 @@ export namespace Arrow {
 
     class HalfFloatArray extends NumericArray {
         static $gtype: GObject.GType<HalfFloatArray>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HalfFloatArray.SignalSignatures;
+        $signals: HalfFloatArray.SignalSignatures;
 
         // Constructors
 
@@ -11368,14 +11473,15 @@ export namespace Arrow {
 
     class HalfFloatArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<HalfFloatArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HalfFloatArrayBuilder.SignalSignatures;
+        $signals: HalfFloatArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -11431,14 +11537,15 @@ export namespace Arrow {
 
     class HalfFloatDataType extends FloatingPointDataType {
         static $gtype: GObject.GType<HalfFloatDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HalfFloatDataType.SignalSignatures;
+        $signals: HalfFloatDataType.SignalSignatures;
 
         // Constructors
 
@@ -11481,14 +11588,15 @@ export namespace Arrow {
 
     class HalfFloatScalar extends Scalar {
         static $gtype: GObject.GType<HalfFloatScalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HalfFloatScalar.SignalSignatures;
+        $signals: HalfFloatScalar.SignalSignatures;
 
         // Constructors
 
@@ -11534,14 +11642,15 @@ export namespace Arrow {
 
     class HashJoinNodeOptions extends ExecuteNodeOptions {
         static $gtype: GObject.GType<HashJoinNodeOptions>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HashJoinNodeOptions.SignalSignatures;
+        $signals: HashJoinNodeOptions.SignalSignatures;
 
         // Constructors
 
@@ -11590,14 +11699,15 @@ export namespace Arrow {
 
     class ISO8601TimestampParser extends TimestampParser {
         static $gtype: GObject.GType<ISO8601TimestampParser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ISO8601TimestampParser.SignalSignatures;
+        $signals: ISO8601TimestampParser.SignalSignatures;
 
         // Constructors
 
@@ -11651,14 +11761,15 @@ export namespace Arrow {
          */
         get value(): Scalar;
         set value(val: Scalar);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IndexOptions.SignalSignatures;
+        $signals: IndexOptions.SignalSignatures;
 
         // Constructors
 
@@ -11711,14 +11822,15 @@ export namespace Arrow {
 
         set input_stream(val: any);
         set inputStream(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InputStream.SignalSignatures;
+        $signals: InputStream.SignalSignatures;
 
         // Constructors
 
@@ -12221,14 +12333,15 @@ export namespace Arrow {
 
     class Int16Array extends NumericArray {
         static $gtype: GObject.GType<Int16Array>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Int16Array.SignalSignatures;
+        $signals: Int16Array.SignalSignatures;
 
         // Constructors
 
@@ -12276,14 +12389,15 @@ export namespace Arrow {
 
     class Int16ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Int16ArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Int16ArrayBuilder.SignalSignatures;
+        $signals: Int16ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -12338,14 +12452,15 @@ export namespace Arrow {
 
     class Int16DataType extends IntegerDataType {
         static $gtype: GObject.GType<Int16DataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Int16DataType.SignalSignatures;
+        $signals: Int16DataType.SignalSignatures;
 
         // Constructors
 
@@ -12388,14 +12503,15 @@ export namespace Arrow {
 
     class Int16Scalar extends Scalar {
         static $gtype: GObject.GType<Int16Scalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Int16Scalar.SignalSignatures;
+        $signals: Int16Scalar.SignalSignatures;
 
         // Constructors
 
@@ -12446,14 +12562,15 @@ export namespace Arrow {
 
     class Int32Array extends NumericArray {
         static $gtype: GObject.GType<Int32Array>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Int32Array.SignalSignatures;
+        $signals: Int32Array.SignalSignatures;
 
         // Constructors
 
@@ -12501,14 +12618,15 @@ export namespace Arrow {
 
     class Int32ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Int32ArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Int32ArrayBuilder.SignalSignatures;
+        $signals: Int32ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -12563,14 +12681,15 @@ export namespace Arrow {
 
     class Int32DataType extends IntegerDataType {
         static $gtype: GObject.GType<Int32DataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Int32DataType.SignalSignatures;
+        $signals: Int32DataType.SignalSignatures;
 
         // Constructors
 
@@ -12613,14 +12732,15 @@ export namespace Arrow {
 
     class Int32Scalar extends Scalar {
         static $gtype: GObject.GType<Int32Scalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Int32Scalar.SignalSignatures;
+        $signals: Int32Scalar.SignalSignatures;
 
         // Constructors
 
@@ -12671,14 +12791,15 @@ export namespace Arrow {
 
     class Int64Array extends NumericArray {
         static $gtype: GObject.GType<Int64Array>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Int64Array.SignalSignatures;
+        $signals: Int64Array.SignalSignatures;
 
         // Constructors
 
@@ -12726,14 +12847,15 @@ export namespace Arrow {
 
     class Int64ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Int64ArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Int64ArrayBuilder.SignalSignatures;
+        $signals: Int64ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -12788,14 +12910,15 @@ export namespace Arrow {
 
     class Int64DataType extends IntegerDataType {
         static $gtype: GObject.GType<Int64DataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Int64DataType.SignalSignatures;
+        $signals: Int64DataType.SignalSignatures;
 
         // Constructors
 
@@ -12838,14 +12961,15 @@ export namespace Arrow {
 
     class Int64Scalar extends Scalar {
         static $gtype: GObject.GType<Int64Scalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Int64Scalar.SignalSignatures;
+        $signals: Int64Scalar.SignalSignatures;
 
         // Constructors
 
@@ -12896,14 +13020,15 @@ export namespace Arrow {
 
     class Int8Array extends NumericArray {
         static $gtype: GObject.GType<Int8Array>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Int8Array.SignalSignatures;
+        $signals: Int8Array.SignalSignatures;
 
         // Constructors
 
@@ -12951,14 +13076,15 @@ export namespace Arrow {
 
     class Int8ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Int8ArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Int8ArrayBuilder.SignalSignatures;
+        $signals: Int8ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -13013,14 +13139,15 @@ export namespace Arrow {
 
     class Int8DataType extends IntegerDataType {
         static $gtype: GObject.GType<Int8DataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Int8DataType.SignalSignatures;
+        $signals: Int8DataType.SignalSignatures;
 
         // Constructors
 
@@ -13063,14 +13190,15 @@ export namespace Arrow {
 
     class Int8Scalar extends Scalar {
         static $gtype: GObject.GType<Int8Scalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Int8Scalar.SignalSignatures;
+        $signals: Int8Scalar.SignalSignatures;
 
         // Constructors
 
@@ -13116,14 +13244,15 @@ export namespace Arrow {
 
     class IntArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<IntArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IntArrayBuilder.SignalSignatures;
+        $signals: IntArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -13178,14 +13307,15 @@ export namespace Arrow {
 
     abstract class IntegerDataType extends NumericDataType {
         static $gtype: GObject.GType<IntegerDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IntegerDataType.SignalSignatures;
+        $signals: IntegerDataType.SignalSignatures;
 
         // Constructors
 
@@ -13229,14 +13359,15 @@ export namespace Arrow {
 
     abstract class IntervalDataType extends TemporalDataType {
         static $gtype: GObject.GType<IntervalDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IntervalDataType.SignalSignatures;
+        $signals: IntervalDataType.SignalSignatures;
 
         // Constructors
 
@@ -13346,14 +13477,15 @@ export namespace Arrow {
          */
         get useThreads(): boolean;
         set useThreads(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JSONReadOptions.SignalSignatures;
+        $signals: JSONReadOptions.SignalSignatures;
 
         // Constructors
 
@@ -13406,14 +13538,15 @@ export namespace Arrow {
         get input(): InputStream;
         set json_table_reader(val: any);
         set jsonTableReader(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JSONReader.SignalSignatures;
+        $signals: JSONReader.SignalSignatures;
 
         // Constructors
 
@@ -13464,14 +13597,15 @@ export namespace Arrow {
 
     class LargeBinaryArray extends Array {
         static $gtype: GObject.GType<LargeBinaryArray>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LargeBinaryArray.SignalSignatures;
+        $signals: LargeBinaryArray.SignalSignatures;
 
         // Constructors
 
@@ -13526,14 +13660,15 @@ export namespace Arrow {
 
     class LargeBinaryArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<LargeBinaryArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LargeBinaryArrayBuilder.SignalSignatures;
+        $signals: LargeBinaryArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -13590,14 +13725,15 @@ export namespace Arrow {
 
     class LargeBinaryDataType extends DataType {
         static $gtype: GObject.GType<LargeBinaryDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LargeBinaryDataType.SignalSignatures;
+        $signals: LargeBinaryDataType.SignalSignatures;
 
         // Constructors
 
@@ -13643,14 +13779,15 @@ export namespace Arrow {
 
     class LargeBinaryScalar extends BaseBinaryScalar {
         static $gtype: GObject.GType<LargeBinaryScalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LargeBinaryScalar.SignalSignatures;
+        $signals: LargeBinaryScalar.SignalSignatures;
 
         // Constructors
 
@@ -13706,14 +13843,15 @@ export namespace Arrow {
 
         get raw_values(): Array;
         get rawValues(): Array;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LargeListArray.SignalSignatures;
+        $signals: LargeListArray.SignalSignatures;
 
         // Constructors
 
@@ -13773,14 +13911,15 @@ export namespace Arrow {
 
     class LargeListArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<LargeListArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LargeListArrayBuilder.SignalSignatures;
+        $signals: LargeListArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -13829,14 +13968,15 @@ export namespace Arrow {
 
     class LargeListDataType extends DataType {
         static $gtype: GObject.GType<LargeListDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LargeListDataType.SignalSignatures;
+        $signals: LargeListDataType.SignalSignatures;
 
         // Constructors
 
@@ -13884,14 +14024,15 @@ export namespace Arrow {
 
     class LargeListScalar extends BaseListScalar {
         static $gtype: GObject.GType<LargeListScalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LargeListScalar.SignalSignatures;
+        $signals: LargeListScalar.SignalSignatures;
 
         // Constructors
 
@@ -13938,14 +14079,15 @@ export namespace Arrow {
 
     class LargeStringArray extends LargeBinaryArray {
         static $gtype: GObject.GType<LargeStringArray>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LargeStringArray.SignalSignatures;
+        $signals: LargeStringArray.SignalSignatures;
 
         // Constructors
 
@@ -13997,14 +14139,15 @@ export namespace Arrow {
 
     class LargeStringArrayBuilder extends LargeBinaryArrayBuilder {
         static $gtype: GObject.GType<LargeStringArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LargeStringArrayBuilder.SignalSignatures;
+        $signals: LargeStringArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -14061,14 +14204,15 @@ export namespace Arrow {
 
     class LargeStringDataType extends DataType {
         static $gtype: GObject.GType<LargeStringDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LargeStringDataType.SignalSignatures;
+        $signals: LargeStringDataType.SignalSignatures;
 
         // Constructors
 
@@ -14114,14 +14258,15 @@ export namespace Arrow {
 
     class LargeStringScalar extends BaseBinaryScalar {
         static $gtype: GObject.GType<LargeStringScalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LargeStringScalar.SignalSignatures;
+        $signals: LargeStringScalar.SignalSignatures;
 
         // Constructors
 
@@ -14177,14 +14322,15 @@ export namespace Arrow {
 
         get raw_values(): Array;
         get rawValues(): Array;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ListArray.SignalSignatures;
+        $signals: ListArray.SignalSignatures;
 
         // Constructors
 
@@ -14244,14 +14390,15 @@ export namespace Arrow {
 
     class ListArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<ListArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ListArrayBuilder.SignalSignatures;
+        $signals: ListArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -14299,14 +14446,15 @@ export namespace Arrow {
 
     class ListDataType extends DataType {
         static $gtype: GObject.GType<ListDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ListDataType.SignalSignatures;
+        $signals: ListDataType.SignalSignatures;
 
         // Constructors
 
@@ -14355,14 +14503,15 @@ export namespace Arrow {
 
     class ListScalar extends BaseListScalar {
         static $gtype: GObject.GType<ListScalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ListScalar.SignalSignatures;
+        $signals: ListScalar.SignalSignatures;
 
         // Constructors
 
@@ -14402,14 +14551,15 @@ export namespace Arrow {
 
     class LiteralExpression extends Expression {
         static $gtype: GObject.GType<LiteralExpression>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LiteralExpression.SignalSignatures;
+        $signals: LiteralExpression.SignalSignatures;
 
         // Constructors
 
@@ -14451,14 +14601,15 @@ export namespace Arrow {
 
     class LocalFileSystem extends FileSystem {
         static $gtype: GObject.GType<LocalFileSystem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LocalFileSystem.SignalSignatures;
+        $signals: LocalFileSystem.SignalSignatures;
 
         // Constructors
 
@@ -14518,14 +14669,15 @@ export namespace Arrow {
          */
         get useMmap(): boolean;
         set useMmap(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LocalFileSystemOptions.SignalSignatures;
+        $signals: LocalFileSystemOptions.SignalSignatures;
 
         // Constructors
 
@@ -14588,14 +14740,15 @@ export namespace Arrow {
         get items(): Array;
         get keys(): Array;
         get offsets(): Array;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MapArray.SignalSignatures;
+        $signals: MapArray.SignalSignatures;
 
         // Constructors
 
@@ -14645,14 +14798,15 @@ export namespace Arrow {
 
     class MapArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<MapArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MapArrayBuilder.SignalSignatures;
+        $signals: MapArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -14709,14 +14863,15 @@ export namespace Arrow {
 
     class MapDataType extends ListDataType {
         static $gtype: GObject.GType<MapDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MapDataType.SignalSignatures;
+        $signals: MapDataType.SignalSignatures;
 
         // Constructors
 
@@ -14768,14 +14923,15 @@ export namespace Arrow {
 
     class MapScalar extends BaseListScalar {
         static $gtype: GObject.GType<MapScalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MapScalar.SignalSignatures;
+        $signals: MapScalar.SignalSignatures;
 
         // Constructors
 
@@ -14841,14 +14997,15 @@ export namespace Arrow {
          */
         get pattern(): string;
         set pattern(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MatchSubstringOptions.SignalSignatures;
+        $signals: MatchSubstringOptions.SignalSignatures;
 
         // Constructors
 
@@ -14895,14 +15052,15 @@ export namespace Arrow {
 
     class MemoryMappedInputStream extends SeekableInputStream implements File, Readable {
         static $gtype: GObject.GType<MemoryMappedInputStream>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MemoryMappedInputStream.SignalSignatures;
+        $signals: MemoryMappedInputStream.SignalSignatures;
 
         // Constructors
 
@@ -15395,14 +15553,15 @@ export namespace Arrow {
 
         set memory_pool(val: any);
         set memoryPool(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MemoryPool.SignalSignatures;
+        $signals: MemoryPool.SignalSignatures;
 
         // Constructors
 
@@ -15456,14 +15615,15 @@ export namespace Arrow {
 
     class MockFileSystem extends FileSystem {
         static $gtype: GObject.GType<MockFileSystem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MockFileSystem.SignalSignatures;
+        $signals: MockFileSystem.SignalSignatures;
 
         // Constructors
 
@@ -15527,14 +15687,15 @@ export namespace Arrow {
          */
         get nanosecond(): number;
         set nanosecond(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MonthDayNano.SignalSignatures;
+        $signals: MonthDayNano.SignalSignatures;
 
         // Constructors
 
@@ -15585,14 +15746,15 @@ export namespace Arrow {
 
     class MonthDayNanoIntervalArray extends PrimitiveArray {
         static $gtype: GObject.GType<MonthDayNanoIntervalArray>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MonthDayNanoIntervalArray.SignalSignatures;
+        $signals: MonthDayNanoIntervalArray.SignalSignatures;
 
         // Constructors
 
@@ -15646,14 +15808,15 @@ export namespace Arrow {
 
     class MonthDayNanoIntervalArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<MonthDayNanoIntervalArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MonthDayNanoIntervalArrayBuilder.SignalSignatures;
+        $signals: MonthDayNanoIntervalArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -15712,14 +15875,15 @@ export namespace Arrow {
 
     class MonthDayNanoIntervalDataType extends IntervalDataType {
         static $gtype: GObject.GType<MonthDayNanoIntervalDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MonthDayNanoIntervalDataType.SignalSignatures;
+        $signals: MonthDayNanoIntervalDataType.SignalSignatures;
 
         // Constructors
 
@@ -15764,14 +15928,15 @@ export namespace Arrow {
 
     class MonthDayNanoIntervalScalar extends Scalar {
         static $gtype: GObject.GType<MonthDayNanoIntervalScalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MonthDayNanoIntervalScalar.SignalSignatures;
+        $signals: MonthDayNanoIntervalScalar.SignalSignatures;
 
         // Constructors
 
@@ -15824,14 +15989,15 @@ export namespace Arrow {
 
     class MonthIntervalArray extends NumericArray {
         static $gtype: GObject.GType<MonthIntervalArray>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MonthIntervalArray.SignalSignatures;
+        $signals: MonthIntervalArray.SignalSignatures;
 
         // Constructors
 
@@ -15878,14 +16044,15 @@ export namespace Arrow {
 
     class MonthIntervalArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<MonthIntervalArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MonthIntervalArrayBuilder.SignalSignatures;
+        $signals: MonthIntervalArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -15941,14 +16108,15 @@ export namespace Arrow {
 
     class MonthIntervalDataType extends IntervalDataType {
         static $gtype: GObject.GType<MonthIntervalDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MonthIntervalDataType.SignalSignatures;
+        $signals: MonthIntervalDataType.SignalSignatures;
 
         // Constructors
 
@@ -15993,14 +16161,15 @@ export namespace Arrow {
 
     class MonthIntervalScalar extends Scalar {
         static $gtype: GObject.GType<MonthIntervalScalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MonthIntervalScalar.SignalSignatures;
+        $signals: MonthIntervalScalar.SignalSignatures;
 
         // Constructors
 
@@ -16050,14 +16219,15 @@ export namespace Arrow {
 
     class MutableBuffer extends Buffer {
         static $gtype: GObject.GType<MutableBuffer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MutableBuffer.SignalSignatures;
+        $signals: MutableBuffer.SignalSignatures;
 
         // Constructors
 
@@ -16113,14 +16283,15 @@ export namespace Arrow {
 
     class NullArray extends Array {
         static $gtype: GObject.GType<NullArray>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NullArray.SignalSignatures;
+        $signals: NullArray.SignalSignatures;
 
         // Constructors
 
@@ -16162,14 +16333,15 @@ export namespace Arrow {
 
     class NullArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<NullArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NullArrayBuilder.SignalSignatures;
+        $signals: NullArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -16211,14 +16383,15 @@ export namespace Arrow {
 
     class NullDataType extends DataType {
         static $gtype: GObject.GType<NullDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NullDataType.SignalSignatures;
+        $signals: NullDataType.SignalSignatures;
 
         // Constructors
 
@@ -16261,14 +16434,15 @@ export namespace Arrow {
 
     class NullScalar extends Scalar {
         static $gtype: GObject.GType<NullScalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NullScalar.SignalSignatures;
+        $signals: NullScalar.SignalSignatures;
 
         // Constructors
 
@@ -16315,14 +16489,15 @@ export namespace Arrow {
 
     class NumericArray extends PrimitiveArray {
         static $gtype: GObject.GType<NumericArray>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NumericArray.SignalSignatures;
+        $signals: NumericArray.SignalSignatures;
 
         // Constructors
 
@@ -16366,14 +16541,15 @@ export namespace Arrow {
 
     abstract class NumericDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<NumericDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NumericDataType.SignalSignatures;
+        $signals: NumericDataType.SignalSignatures;
 
         // Constructors
 
@@ -16424,14 +16600,15 @@ export namespace Arrow {
         get input(): SeekableInputStream;
         set orc_file_reader(val: any);
         set orcFileReader(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ORCFileReader.SignalSignatures;
+        $signals: ORCFileReader.SignalSignatures;
 
         // Constructors
 
@@ -16496,14 +16673,15 @@ export namespace Arrow {
 
         set output_stream(val: any);
         set outputStream(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OutputStream.SignalSignatures;
+        $signals: OutputStream.SignalSignatures;
 
         // Constructors
 
@@ -17005,14 +17183,15 @@ export namespace Arrow {
 
     class PrimitiveArray extends Array {
         static $gtype: GObject.GType<PrimitiveArray>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PrimitiveArray.SignalSignatures;
+        $signals: PrimitiveArray.SignalSignatures;
 
         // Constructors
 
@@ -17057,14 +17236,15 @@ export namespace Arrow {
 
     class ProjectNodeOptions extends ExecuteNodeOptions {
         static $gtype: GObject.GType<ProjectNodeOptions>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProjectNodeOptions.SignalSignatures;
+        $signals: ProjectNodeOptions.SignalSignatures;
 
         // Constructors
 
@@ -17145,14 +17325,15 @@ export namespace Arrow {
          */
         get skipNulls(): boolean;
         set skipNulls(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: QuantileOptions.SignalSignatures;
+        $signals: QuantileOptions.SignalSignatures;
 
         // Constructors
 
@@ -17223,14 +17404,15 @@ export namespace Arrow {
          */
         get tiebreaker(): RankTiebreaker;
         set tiebreaker(val: RankTiebreaker);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RankOptions.SignalSignatures;
+        $signals: RankOptions.SignalSignatures;
 
         // Constructors
 
@@ -17318,14 +17500,15 @@ export namespace Arrow {
          */
         get useThreads(): boolean;
         set useThreads(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ReadOptions.SignalSignatures;
+        $signals: ReadOptions.SignalSignatures;
 
         // Constructors
 
@@ -17380,14 +17563,15 @@ export namespace Arrow {
 
         set record_batch(val: any);
         set recordBatch(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RecordBatch.SignalSignatures;
+        $signals: RecordBatch.SignalSignatures;
 
         // Constructors
 
@@ -17460,14 +17644,15 @@ export namespace Arrow {
 
         set record_batch_builder(val: any);
         set recordBatchBuilder(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RecordBatchBuilder.SignalSignatures;
+        $signals: RecordBatchBuilder.SignalSignatures;
 
         // Constructors
 
@@ -17527,14 +17712,15 @@ export namespace Arrow {
         // Properties
 
         get value(): RecordBatch;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RecordBatchDatum.SignalSignatures;
+        $signals: RecordBatchDatum.SignalSignatures;
 
         // Constructors
 
@@ -17584,14 +17770,15 @@ export namespace Arrow {
 
         set record_batch_file_reader(val: any);
         set recordBatchFileReader(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RecordBatchFileReader.SignalSignatures;
+        $signals: RecordBatchFileReader.SignalSignatures;
 
         // Constructors
 
@@ -17643,14 +17830,15 @@ export namespace Arrow {
 
     class RecordBatchFileWriter extends RecordBatchStreamWriter {
         static $gtype: GObject.GType<RecordBatchFileWriter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RecordBatchFileWriter.SignalSignatures;
+        $signals: RecordBatchFileWriter.SignalSignatures;
 
         // Constructors
 
@@ -17700,14 +17888,15 @@ export namespace Arrow {
         // Properties
 
         set iterator(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RecordBatchIterator.SignalSignatures;
+        $signals: RecordBatchIterator.SignalSignatures;
 
         // Constructors
 
@@ -17768,14 +17957,15 @@ export namespace Arrow {
         set record_batch_reader(val: any);
         set recordBatchReader(val: any);
         set sources(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RecordBatchReader.SignalSignatures;
+        $signals: RecordBatchReader.SignalSignatures;
 
         // Constructors
 
@@ -17832,14 +18022,15 @@ export namespace Arrow {
 
     class RecordBatchStreamReader extends RecordBatchReader {
         static $gtype: GObject.GType<RecordBatchStreamReader>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RecordBatchStreamReader.SignalSignatures;
+        $signals: RecordBatchStreamReader.SignalSignatures;
 
         // Constructors
 
@@ -17886,14 +18077,15 @@ export namespace Arrow {
 
     class RecordBatchStreamWriter extends RecordBatchWriter {
         static $gtype: GObject.GType<RecordBatchStreamWriter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RecordBatchStreamWriter.SignalSignatures;
+        $signals: RecordBatchStreamWriter.SignalSignatures;
 
         // Constructors
 
@@ -17945,14 +18137,15 @@ export namespace Arrow {
 
         set record_batch_writer(val: any);
         set recordBatchWriter(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RecordBatchWriter.SignalSignatures;
+        $signals: RecordBatchWriter.SignalSignatures;
 
         // Constructors
 
@@ -18000,14 +18193,15 @@ export namespace Arrow {
 
     class ResizableBuffer extends MutableBuffer {
         static $gtype: GObject.GType<ResizableBuffer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ResizableBuffer.SignalSignatures;
+        $signals: ResizableBuffer.SignalSignatures;
 
         // Constructors
 
@@ -18080,14 +18274,15 @@ export namespace Arrow {
          */
         get nDigits(): number;
         set nDigits(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RoundOptions.SignalSignatures;
+        $signals: RoundOptions.SignalSignatures;
 
         // Constructors
 
@@ -18151,14 +18346,15 @@ export namespace Arrow {
          */
         get multiple(): Scalar;
         set multiple(val: Scalar);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RoundToMultipleOptions.SignalSignatures;
+        $signals: RoundToMultipleOptions.SignalSignatures;
 
         // Constructors
 
@@ -18218,14 +18414,15 @@ export namespace Arrow {
          */
         get runEndDataType(): DataType;
         set runEndDataType(val: DataType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RunEndEncodeOptions.SignalSignatures;
+        $signals: RunEndEncodeOptions.SignalSignatures;
 
         // Constructors
 
@@ -18286,14 +18483,15 @@ export namespace Arrow {
         get run_ends(): Array;
         get runEnds(): Array;
         get values(): Array;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RunEndEncodedArray.SignalSignatures;
+        $signals: RunEndEncodedArray.SignalSignatures;
 
         // Constructors
 
@@ -18351,14 +18549,15 @@ export namespace Arrow {
 
     class RunEndEncodedDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<RunEndEncodedDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RunEndEncodedDataType.SignalSignatures;
+        $signals: RunEndEncodedDataType.SignalSignatures;
 
         // Constructors
 
@@ -18407,14 +18606,15 @@ export namespace Arrow {
 
     class S3FileSystem extends FileSystem {
         static $gtype: GObject.GType<S3FileSystem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: S3FileSystem.SignalSignatures;
+        $signals: S3FileSystem.SignalSignatures;
 
         // Constructors
 
@@ -18470,14 +18670,15 @@ export namespace Arrow {
          */
         get logLevel(): S3LogLevel;
         set logLevel(val: S3LogLevel);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: S3GlobalOptions.SignalSignatures;
+        $signals: S3GlobalOptions.SignalSignatures;
 
         // Constructors
 
@@ -18536,14 +18737,15 @@ export namespace Arrow {
          */
         set dataType(val: DataType);
         set scalar(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Scalar.SignalSignatures;
+        $signals: Scalar.SignalSignatures;
 
         // Constructors
 
@@ -18625,14 +18827,15 @@ export namespace Arrow {
          */
         get skipNulls(): boolean;
         set skipNulls(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScalarAggregateOptions.SignalSignatures;
+        $signals: ScalarAggregateOptions.SignalSignatures;
 
         // Constructors
 
@@ -18683,14 +18886,15 @@ export namespace Arrow {
         // Properties
 
         get value(): Scalar;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScalarDatum.SignalSignatures;
+        $signals: ScalarDatum.SignalSignatures;
 
         // Constructors
 
@@ -18738,14 +18942,15 @@ export namespace Arrow {
         // Properties
 
         set schema(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Schema.SignalSignatures;
+        $signals: Schema.SignalSignatures;
 
         // Constructors
 
@@ -18812,14 +19017,15 @@ export namespace Arrow {
 
     class SeekableInputStream extends InputStream implements File, Readable {
         static $gtype: GObject.GType<SeekableInputStream>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SeekableInputStream.SignalSignatures;
+        $signals: SeekableInputStream.SignalSignatures;
 
         // Constructors
 
@@ -19349,14 +19555,15 @@ export namespace Arrow {
          */
         get valueSet(): Datum;
         set valueSet(val: Datum);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SetLookupOptions.SignalSignatures;
+        $signals: SetLookupOptions.SignalSignatures;
 
         // Constructors
 
@@ -19398,14 +19605,15 @@ export namespace Arrow {
 
     class SinkNodeOptions extends ExecuteNodeOptions {
         static $gtype: GObject.GType<SinkNodeOptions>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SinkNodeOptions.SignalSignatures;
+        $signals: SinkNodeOptions.SignalSignatures;
 
         // Constructors
 
@@ -19460,14 +19668,15 @@ export namespace Arrow {
 
         get base_file_system(): FileSystem;
         get baseFileSystem(): FileSystem;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SlowFileSystem.SignalSignatures;
+        $signals: SlowFileSystem.SignalSignatures;
 
         // Constructors
 
@@ -19534,14 +19743,15 @@ export namespace Arrow {
          *              | dot_path+
          */
         get target(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SortKey.SignalSignatures;
+        $signals: SortKey.SignalSignatures;
 
         // Constructors
 
@@ -19585,14 +19795,15 @@ export namespace Arrow {
 
     class SortOptions extends FunctionOptions {
         static $gtype: GObject.GType<SortOptions>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SortOptions.SignalSignatures;
+        $signals: SortOptions.SignalSignatures;
 
         // Constructors
 
@@ -19663,14 +19874,15 @@ export namespace Arrow {
         get reader(): RecordBatchReader;
         get record_batch(): RecordBatch;
         get recordBatch(): RecordBatch;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceNodeOptions.SignalSignatures;
+        $signals: SourceNodeOptions.SignalSignatures;
 
         // Constructors
 
@@ -19722,14 +19934,15 @@ export namespace Arrow {
 
     class SparseUnionArray extends UnionArray {
         static $gtype: GObject.GType<SparseUnionArray>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SparseUnionArray.SignalSignatures;
+        $signals: SparseUnionArray.SignalSignatures;
 
         // Constructors
 
@@ -19773,14 +19986,15 @@ export namespace Arrow {
 
     class SparseUnionArrayBuilder extends UnionArrayBuilder {
         static $gtype: GObject.GType<SparseUnionArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SparseUnionArrayBuilder.SignalSignatures;
+        $signals: SparseUnionArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -19824,14 +20038,15 @@ export namespace Arrow {
 
     class SparseUnionDataType extends UnionDataType {
         static $gtype: GObject.GType<SparseUnionDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SparseUnionDataType.SignalSignatures;
+        $signals: SparseUnionDataType.SignalSignatures;
 
         // Constructors
 
@@ -19877,14 +20092,15 @@ export namespace Arrow {
 
     class SparseUnionScalar extends UnionScalar {
         static $gtype: GObject.GType<SparseUnionScalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SparseUnionScalar.SignalSignatures;
+        $signals: SparseUnionScalar.SignalSignatures;
 
         // Constructors
 
@@ -19951,14 +20167,15 @@ export namespace Arrow {
          */
         get reverse(): boolean;
         set reverse(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SplitPatternOptions.SignalSignatures;
+        $signals: SplitPatternOptions.SignalSignatures;
 
         // Constructors
 
@@ -20019,14 +20236,15 @@ export namespace Arrow {
          */
         get locale(): string;
         set locale(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StrftimeOptions.SignalSignatures;
+        $signals: StrftimeOptions.SignalSignatures;
 
         // Constructors
 
@@ -20073,14 +20291,15 @@ export namespace Arrow {
 
     class StringArray extends BinaryArray {
         static $gtype: GObject.GType<StringArray>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StringArray.SignalSignatures;
+        $signals: StringArray.SignalSignatures;
 
         // Constructors
 
@@ -20132,14 +20351,15 @@ export namespace Arrow {
 
     class StringArrayBuilder extends BinaryArrayBuilder {
         static $gtype: GObject.GType<StringArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StringArrayBuilder.SignalSignatures;
+        $signals: StringArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -20197,14 +20417,15 @@ export namespace Arrow {
 
     class StringDataType extends DataType {
         static $gtype: GObject.GType<StringDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StringDataType.SignalSignatures;
+        $signals: StringDataType.SignalSignatures;
 
         // Constructors
 
@@ -20246,14 +20467,15 @@ export namespace Arrow {
 
     class StringDictionaryArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<StringDictionaryArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StringDictionaryArrayBuilder.SignalSignatures;
+        $signals: StringDictionaryArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -20318,14 +20540,15 @@ export namespace Arrow {
 
     class StringScalar extends BaseBinaryScalar {
         static $gtype: GObject.GType<StringScalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StringScalar.SignalSignatures;
+        $signals: StringScalar.SignalSignatures;
 
         // Constructors
 
@@ -20397,14 +20620,15 @@ export namespace Arrow {
          */
         get unit(): TimeUnit;
         set unit(val: TimeUnit);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StrptimeOptions.SignalSignatures;
+        $signals: StrptimeOptions.SignalSignatures;
 
         // Constructors
 
@@ -20446,14 +20670,15 @@ export namespace Arrow {
 
     class StrptimeTimestampParser extends TimestampParser {
         static $gtype: GObject.GType<StrptimeTimestampParser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StrptimeTimestampParser.SignalSignatures;
+        $signals: StrptimeTimestampParser.SignalSignatures;
 
         // Constructors
 
@@ -20506,14 +20731,15 @@ export namespace Arrow {
 
     class StructArray extends Array {
         static $gtype: GObject.GType<StructArray>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StructArray.SignalSignatures;
+        $signals: StructArray.SignalSignatures;
 
         // Constructors
 
@@ -20567,14 +20793,15 @@ export namespace Arrow {
 
     class StructArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<StructArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StructArrayBuilder.SignalSignatures;
+        $signals: StructArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -20623,14 +20850,15 @@ export namespace Arrow {
 
     class StructDataType extends DataType {
         static $gtype: GObject.GType<StructDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StructDataType.SignalSignatures;
+        $signals: StructDataType.SignalSignatures;
 
         // Constructors
 
@@ -20688,14 +20916,15 @@ export namespace Arrow {
 
         get field_ref(): string;
         get fieldRef(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StructFieldOptions.SignalSignatures;
+        $signals: StructFieldOptions.SignalSignatures;
 
         // Constructors
 
@@ -20742,14 +20971,15 @@ export namespace Arrow {
 
     class StructScalar extends Scalar {
         static $gtype: GObject.GType<StructScalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StructScalar.SignalSignatures;
+        $signals: StructScalar.SignalSignatures;
 
         // Constructors
 
@@ -20804,14 +21034,15 @@ export namespace Arrow {
 
         get base_file_system(): FileSystem;
         get baseFileSystem(): FileSystem;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SubTreeFileSystem.SignalSignatures;
+        $signals: SubTreeFileSystem.SignalSignatures;
 
         // Constructors
 
@@ -20859,14 +21090,15 @@ export namespace Arrow {
         // Properties
 
         set table(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Table.SignalSignatures;
+        $signals: Table.SignalSignatures;
 
         // Constructors
 
@@ -20941,14 +21173,15 @@ export namespace Arrow {
 
     class TableBatchReader extends RecordBatchReader {
         static $gtype: GObject.GType<TableBatchReader>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TableBatchReader.SignalSignatures;
+        $signals: TableBatchReader.SignalSignatures;
 
         // Constructors
 
@@ -21055,14 +21288,15 @@ export namespace Arrow {
          */
         get unifySchemas(): boolean;
         set unifySchemas(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TableConcatenateOptions.SignalSignatures;
+        $signals: TableConcatenateOptions.SignalSignatures;
 
         // Constructors
 
@@ -21113,14 +21347,15 @@ export namespace Arrow {
         // Properties
 
         get value(): Table;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TableDatum.SignalSignatures;
+        $signals: TableDatum.SignalSignatures;
 
         // Constructors
 
@@ -21160,14 +21395,15 @@ export namespace Arrow {
 
     class TakeOptions extends FunctionOptions {
         static $gtype: GObject.GType<TakeOptions>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TakeOptions.SignalSignatures;
+        $signals: TakeOptions.SignalSignatures;
 
         // Constructors
 
@@ -21209,14 +21445,15 @@ export namespace Arrow {
 
     abstract class TemporalDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<TemporalDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TemporalDataType.SignalSignatures;
+        $signals: TemporalDataType.SignalSignatures;
 
         // Constructors
 
@@ -21265,14 +21502,15 @@ export namespace Arrow {
 
         get buffer(): Buffer;
         set tensor(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Tensor.SignalSignatures;
+        $signals: Tensor.SignalSignatures;
 
         // Constructors
 
@@ -21341,14 +21579,15 @@ export namespace Arrow {
 
     class Time32Array extends NumericArray {
         static $gtype: GObject.GType<Time32Array>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Time32Array.SignalSignatures;
+        $signals: Time32Array.SignalSignatures;
 
         // Constructors
 
@@ -21401,14 +21640,15 @@ export namespace Arrow {
 
     class Time32ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Time32ArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Time32ArrayBuilder.SignalSignatures;
+        $signals: Time32ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -21463,14 +21703,15 @@ export namespace Arrow {
 
     class Time32DataType extends TimeDataType {
         static $gtype: GObject.GType<Time32DataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Time32DataType.SignalSignatures;
+        $signals: Time32DataType.SignalSignatures;
 
         // Constructors
 
@@ -21513,14 +21754,15 @@ export namespace Arrow {
 
     class Time32Scalar extends Scalar {
         static $gtype: GObject.GType<Time32Scalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Time32Scalar.SignalSignatures;
+        $signals: Time32Scalar.SignalSignatures;
 
         // Constructors
 
@@ -21571,14 +21813,15 @@ export namespace Arrow {
 
     class Time64Array extends NumericArray {
         static $gtype: GObject.GType<Time64Array>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Time64Array.SignalSignatures;
+        $signals: Time64Array.SignalSignatures;
 
         // Constructors
 
@@ -21631,14 +21874,15 @@ export namespace Arrow {
 
     class Time64ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Time64ArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Time64ArrayBuilder.SignalSignatures;
+        $signals: Time64ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -21693,14 +21937,15 @@ export namespace Arrow {
 
     class Time64DataType extends TimeDataType {
         static $gtype: GObject.GType<Time64DataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Time64DataType.SignalSignatures;
+        $signals: Time64DataType.SignalSignatures;
 
         // Constructors
 
@@ -21743,14 +21988,15 @@ export namespace Arrow {
 
     class Time64Scalar extends Scalar {
         static $gtype: GObject.GType<Time64Scalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Time64Scalar.SignalSignatures;
+        $signals: Time64Scalar.SignalSignatures;
 
         // Constructors
 
@@ -21796,14 +22042,15 @@ export namespace Arrow {
 
     abstract class TimeDataType extends TemporalDataType {
         static $gtype: GObject.GType<TimeDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TimeDataType.SignalSignatures;
+        $signals: TimeDataType.SignalSignatures;
 
         // Constructors
 
@@ -21852,14 +22099,15 @@ export namespace Arrow {
 
     class TimestampArray extends NumericArray {
         static $gtype: GObject.GType<TimestampArray>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TimestampArray.SignalSignatures;
+        $signals: TimestampArray.SignalSignatures;
 
         // Constructors
 
@@ -21912,14 +22160,15 @@ export namespace Arrow {
 
     class TimestampArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<TimestampArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TimestampArrayBuilder.SignalSignatures;
+        $signals: TimestampArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -21991,14 +22240,15 @@ export namespace Arrow {
          * The time zone of this data type.
          */
         get timeZone(): GLib.TimeZone;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TimestampDataType.SignalSignatures;
+        $signals: TimestampDataType.SignalSignatures;
 
         // Constructors
 
@@ -22050,14 +22300,15 @@ export namespace Arrow {
         // Properties
 
         set parser(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TimestampParser.SignalSignatures;
+        $signals: TimestampParser.SignalSignatures;
 
         // Constructors
 
@@ -22102,14 +22353,15 @@ export namespace Arrow {
 
     class TimestampScalar extends Scalar {
         static $gtype: GObject.GType<TimestampScalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TimestampScalar.SignalSignatures;
+        $signals: TimestampScalar.SignalSignatures;
 
         // Constructors
 
@@ -22160,14 +22412,15 @@ export namespace Arrow {
 
     class UInt16Array extends NumericArray {
         static $gtype: GObject.GType<UInt16Array>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UInt16Array.SignalSignatures;
+        $signals: UInt16Array.SignalSignatures;
 
         // Constructors
 
@@ -22215,14 +22468,15 @@ export namespace Arrow {
 
     class UInt16ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UInt16ArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UInt16ArrayBuilder.SignalSignatures;
+        $signals: UInt16ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -22277,14 +22531,15 @@ export namespace Arrow {
 
     class UInt16DataType extends IntegerDataType {
         static $gtype: GObject.GType<UInt16DataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UInt16DataType.SignalSignatures;
+        $signals: UInt16DataType.SignalSignatures;
 
         // Constructors
 
@@ -22327,14 +22582,15 @@ export namespace Arrow {
 
     class UInt16Scalar extends Scalar {
         static $gtype: GObject.GType<UInt16Scalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UInt16Scalar.SignalSignatures;
+        $signals: UInt16Scalar.SignalSignatures;
 
         // Constructors
 
@@ -22385,14 +22641,15 @@ export namespace Arrow {
 
     class UInt32Array extends NumericArray {
         static $gtype: GObject.GType<UInt32Array>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UInt32Array.SignalSignatures;
+        $signals: UInt32Array.SignalSignatures;
 
         // Constructors
 
@@ -22440,14 +22697,15 @@ export namespace Arrow {
 
     class UInt32ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UInt32ArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UInt32ArrayBuilder.SignalSignatures;
+        $signals: UInt32ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -22502,14 +22760,15 @@ export namespace Arrow {
 
     class UInt32DataType extends IntegerDataType {
         static $gtype: GObject.GType<UInt32DataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UInt32DataType.SignalSignatures;
+        $signals: UInt32DataType.SignalSignatures;
 
         // Constructors
 
@@ -22552,14 +22811,15 @@ export namespace Arrow {
 
     class UInt32Scalar extends Scalar {
         static $gtype: GObject.GType<UInt32Scalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UInt32Scalar.SignalSignatures;
+        $signals: UInt32Scalar.SignalSignatures;
 
         // Constructors
 
@@ -22610,14 +22870,15 @@ export namespace Arrow {
 
     class UInt64Array extends NumericArray {
         static $gtype: GObject.GType<UInt64Array>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UInt64Array.SignalSignatures;
+        $signals: UInt64Array.SignalSignatures;
 
         // Constructors
 
@@ -22665,14 +22926,15 @@ export namespace Arrow {
 
     class UInt64ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UInt64ArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UInt64ArrayBuilder.SignalSignatures;
+        $signals: UInt64ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -22727,14 +22989,15 @@ export namespace Arrow {
 
     class UInt64DataType extends IntegerDataType {
         static $gtype: GObject.GType<UInt64DataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UInt64DataType.SignalSignatures;
+        $signals: UInt64DataType.SignalSignatures;
 
         // Constructors
 
@@ -22777,14 +23040,15 @@ export namespace Arrow {
 
     class UInt64Scalar extends Scalar {
         static $gtype: GObject.GType<UInt64Scalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UInt64Scalar.SignalSignatures;
+        $signals: UInt64Scalar.SignalSignatures;
 
         // Constructors
 
@@ -22835,14 +23099,15 @@ export namespace Arrow {
 
     class UInt8Array extends NumericArray {
         static $gtype: GObject.GType<UInt8Array>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UInt8Array.SignalSignatures;
+        $signals: UInt8Array.SignalSignatures;
 
         // Constructors
 
@@ -22890,14 +23155,15 @@ export namespace Arrow {
 
     class UInt8ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UInt8ArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UInt8ArrayBuilder.SignalSignatures;
+        $signals: UInt8ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -22952,14 +23218,15 @@ export namespace Arrow {
 
     class UInt8DataType extends IntegerDataType {
         static $gtype: GObject.GType<UInt8DataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UInt8DataType.SignalSignatures;
+        $signals: UInt8DataType.SignalSignatures;
 
         // Constructors
 
@@ -23002,14 +23269,15 @@ export namespace Arrow {
 
     class UInt8Scalar extends Scalar {
         static $gtype: GObject.GType<UInt8Scalar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UInt8Scalar.SignalSignatures;
+        $signals: UInt8Scalar.SignalSignatures;
 
         // Constructors
 
@@ -23055,14 +23323,15 @@ export namespace Arrow {
 
     class UIntArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UIntArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UIntArrayBuilder.SignalSignatures;
+        $signals: UIntArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -23127,14 +23396,15 @@ export namespace Arrow {
          */
         get form(): UTF8NormalizeForm;
         set form(val: UTF8NormalizeForm);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UTF8NormalizeOptions.SignalSignatures;
+        $signals: UTF8NormalizeOptions.SignalSignatures;
 
         // Constructors
 
@@ -23192,14 +23462,15 @@ export namespace Arrow {
 
         get type_ids(): Int8Array;
         get typeIds(): Int8Array;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UnionArray.SignalSignatures;
+        $signals: UnionArray.SignalSignatures;
 
         // Constructors
 
@@ -23245,14 +23516,15 @@ export namespace Arrow {
 
     abstract class UnionArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UnionArrayBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UnionArrayBuilder.SignalSignatures;
+        $signals: UnionArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -23311,14 +23583,15 @@ export namespace Arrow {
 
     abstract class UnionDataType extends DataType {
         static $gtype: GObject.GType<UnionDataType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UnionDataType.SignalSignatures;
+        $signals: UnionDataType.SignalSignatures;
 
         // Constructors
 
@@ -23376,14 +23649,15 @@ export namespace Arrow {
          * The value of the scalar.
          */
         set value(val: Scalar);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UnionScalar.SignalSignatures;
+        $signals: UnionScalar.SignalSignatures;
 
         // Constructors
 
@@ -23464,14 +23738,15 @@ export namespace Arrow {
          */
         get skipNulls(): boolean;
         set skipNulls(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VarianceOptions.SignalSignatures;
+        $signals: VarianceOptions.SignalSignatures;
 
         // Constructors
 
@@ -23592,14 +23867,15 @@ export namespace Arrow {
          */
         get writeLegacyIpcFormat(): boolean;
         set writeLegacyIpcFormat(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WriteOptions.SignalSignatures;
+        $signals: WriteOptions.SignalSignatures;
 
         // Constructors
 

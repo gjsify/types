@@ -73,14 +73,15 @@ export namespace PolkitAgent {
      */
     abstract class Listener extends GObject.Object {
         static $gtype: GObject.GType<Listener>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Listener.SignalSignatures;
+        $signals: Listener.SignalSignatures;
 
         // Constructors
 
@@ -382,14 +383,15 @@ export namespace PolkitAgent {
          * The identity to authenticate.
          */
         get identity(): Polkit.Identity;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Session.SignalSignatures;
+        $signals: Session.SignalSignatures;
 
         // Constructors
 
@@ -457,14 +459,15 @@ export namespace PolkitAgent {
      */
     class TextListener extends Listener implements Gio.Initable {
         static $gtype: GObject.GType<TextListener>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TextListener.SignalSignatures;
+        $signals: TextListener.SignalSignatures;
 
         // Constructors
 

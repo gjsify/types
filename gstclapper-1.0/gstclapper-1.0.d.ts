@@ -303,14 +303,15 @@ export namespace GstClapper {
         set videoRenderer(val: ClapperVideoRenderer);
         get volume(): number;
         set volume(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Clapper.SignalSignatures;
+        $signals: Clapper.SignalSignatures;
 
         // Constructors
 
@@ -590,14 +591,15 @@ export namespace GstClapper {
      */
     class ClapperAudioInfo extends ClapperStreamInfo {
         static $gtype: GObject.GType<ClapperAudioInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClapperAudioInfo.SignalSignatures;
+        $signals: ClapperAudioInfo.SignalSignatures;
 
         // Constructors
 
@@ -653,14 +655,15 @@ export namespace GstClapper {
 
         get application_context(): GLib.MainContext;
         get applicationContext(): GLib.MainContext;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClapperGMainContextSignalDispatcher.SignalSignatures;
+        $signals: ClapperGMainContextSignalDispatcher.SignalSignatures;
 
         // Constructors
 
@@ -1167,14 +1170,15 @@ export namespace GstClapper {
 
         get video_sink(): Gst.Element;
         get videoSink(): Gst.Element;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClapperGtk4Plugin.SignalSignatures;
+        $signals: ClapperGtk4Plugin.SignalSignatures;
 
         // Constructors
 
@@ -1217,14 +1221,15 @@ export namespace GstClapper {
      */
     class ClapperMediaInfo extends GObject.Object {
         static $gtype: GObject.GType<ClapperMediaInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClapperMediaInfo.SignalSignatures;
+        $signals: ClapperMediaInfo.SignalSignatures;
 
         // Constructors
 
@@ -1319,14 +1324,15 @@ export namespace GstClapper {
         get ownName(): string;
         get volume(): number;
         set volume(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClapperMpris.SignalSignatures;
+        $signals: ClapperMpris.SignalSignatures;
 
         // Constructors
 
@@ -1377,14 +1383,15 @@ export namespace GstClapper {
      */
     abstract class ClapperStreamInfo extends GObject.Object {
         static $gtype: GObject.GType<ClapperStreamInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClapperStreamInfo.SignalSignatures;
+        $signals: ClapperStreamInfo.SignalSignatures;
 
         // Constructors
 
@@ -1446,14 +1453,15 @@ export namespace GstClapper {
      */
     class ClapperSubtitleInfo extends ClapperStreamInfo {
         static $gtype: GObject.GType<ClapperSubtitleInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClapperSubtitleInfo.SignalSignatures;
+        $signals: ClapperSubtitleInfo.SignalSignatures;
 
         // Constructors
 
@@ -1501,14 +1509,15 @@ export namespace GstClapper {
      */
     class ClapperVideoInfo extends ClapperStreamInfo {
         static $gtype: GObject.GType<ClapperVideoInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClapperVideoInfo.SignalSignatures;
+        $signals: ClapperVideoInfo.SignalSignatures;
 
         // Constructors
 
@@ -1577,14 +1586,15 @@ export namespace GstClapper {
         set window_handle(val: any);
         get windowHandle(): any;
         set windowHandle(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClapperVideoOverlayVideoRenderer.SignalSignatures;
+        $signals: ClapperVideoOverlayVideoRenderer.SignalSignatures;
 
         // Constructors
 

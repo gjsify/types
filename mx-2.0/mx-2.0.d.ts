@@ -528,14 +528,15 @@ export namespace Mx {
         set displayName(val: string);
         get icon(): string;
         set icon(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Action.SignalSignatures;
+        $signals: Action.SignalSignatures;
 
         // Constructors
 
@@ -1327,14 +1328,15 @@ export namespace Mx {
         set time_slice(val: number);
         get timeSlice(): number;
         set timeSlice(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ActorManager.SignalSignatures;
+        $signals: ActorManager.SignalSignatures;
 
         // Constructors
 
@@ -1531,14 +1533,15 @@ export namespace Mx {
         set upper(val: number);
         get value(): number;
         set value(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Adjustment.SignalSignatures;
+        $signals: Adjustment.SignalSignatures;
 
         // Constructors
 
@@ -1730,14 +1733,15 @@ export namespace Mx {
      */
     class Application extends Gio.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Application.SignalSignatures;
+        $signals: Application.SignalSignatures;
 
         // Constructors
 
@@ -2943,14 +2947,15 @@ export namespace Mx {
          */
         get yFill(): boolean;
         set yFill(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Bin.SignalSignatures;
+        $signals: Bin.SignalSignatures;
 
         // Constructors
 
@@ -3797,14 +3802,15 @@ export namespace Mx {
         set scrollToFocused(val: boolean);
         get spacing(): number;
         set spacing(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BoxLayout.SignalSignatures;
+        $signals: BoxLayout.SignalSignatures;
 
         // Constructors
 
@@ -4635,14 +4641,15 @@ export namespace Mx {
         set y_fill(val: boolean);
         get yFill(): boolean;
         set yFill(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BoxLayoutChild.SignalSignatures;
+        $signals: BoxLayoutChild.SignalSignatures;
 
         // Constructors
 
@@ -4844,14 +4851,15 @@ export namespace Mx {
         set labelVisible(val: boolean);
         get toggled(): boolean;
         set toggled(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Button.SignalSignatures;
+        $signals: Button.SignalSignatures;
 
         // Constructors
 
@@ -5639,14 +5647,15 @@ export namespace Mx {
         set allow_no_active(val: boolean);
         get allowNoActive(): boolean;
         set allowNoActive(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ButtonGroup.SignalSignatures;
+        $signals: ButtonGroup.SignalSignatures;
 
         // Constructors
 
@@ -5734,14 +5743,15 @@ export namespace Mx {
      */
     class Clipboard extends GObject.Object {
         static $gtype: GObject.GType<Clipboard>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Clipboard.SignalSignatures;
+        $signals: Clipboard.SignalSignatures;
 
         // Constructors
 
@@ -5927,14 +5937,15 @@ export namespace Mx {
         set activeText(val: string);
         get index(): number;
         set index(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ComboBox.SignalSignatures;
+        $signals: ComboBox.SignalSignatures;
 
         // Constructors
 
@@ -6761,14 +6772,15 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
         static $gtype: GObject.GType<Dialog>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Dialog.SignalSignatures;
+        $signals: Dialog.SignalSignatures;
 
         // Constructors
 
@@ -7607,14 +7619,15 @@ export namespace Mx {
         set secondaryIconTooltipText(val: string);
         get text(): string;
         set text(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Entry.SignalSignatures;
+        $signals: Entry.SignalSignatures;
 
         // Constructors
 
@@ -8462,14 +8475,15 @@ export namespace Mx {
         set expanded(val: boolean);
         get label(): string;
         set label(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Expander.SignalSignatures;
+        $signals: Expander.SignalSignatures;
 
         // Constructors
 
@@ -9200,14 +9214,15 @@ export namespace Mx {
         set freeze_update(val: boolean);
         get freezeUpdate(): boolean;
         set freezeUpdate(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FadeEffect.SignalSignatures;
+        $signals: FadeEffect.SignalSignatures;
 
         // Constructors
 
@@ -9397,14 +9412,15 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
         static $gtype: GObject.GType<FloatingWidget>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FloatingWidget.SignalSignatures;
+        $signals: FloatingWidget.SignalSignatures;
 
         // Constructors
 
@@ -10050,14 +10066,15 @@ export namespace Mx {
 
         get focused(): Clutter.Actor;
         get stage(): Clutter.Stage;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FocusManager.SignalSignatures;
+        $signals: FocusManager.SignalSignatures;
 
         // Constructors
 
@@ -10244,14 +10261,15 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
         static $gtype: GObject.GType<Frame>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Frame.SignalSignatures;
+        $signals: Frame.SignalSignatures;
 
         // Constructors
 
@@ -11065,14 +11083,15 @@ export namespace Mx {
         set row_spacing(val: number);
         get rowSpacing(): number;
         set rowSpacing(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Grid.SignalSignatures;
+        $signals: Grid.SignalSignatures;
 
         // Constructors
 
@@ -11892,14 +11911,15 @@ export namespace Mx {
         set icon_size(val: number);
         get iconSize(): number;
         set iconSize(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Icon.SignalSignatures;
+        $signals: Icon.SignalSignatures;
 
         // Constructors
 
@@ -12555,14 +12575,15 @@ export namespace Mx {
         set theme_name(val: string);
         get themeName(): string;
         set themeName(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IconTheme.SignalSignatures;
+        $signals: IconTheme.SignalSignatures;
 
         // Constructors
 
@@ -12817,14 +12838,15 @@ export namespace Mx {
         set transition_duration(val: number);
         get transitionDuration(): number;
         set transitionDuration(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Image.SignalSignatures;
+        $signals: Image.SignalSignatures;
 
         // Constructors
 
@@ -13772,14 +13794,15 @@ export namespace Mx {
         set itemType(val: GObject.GType);
         get model(): Clutter.Model;
         set model(val: Clutter.Model);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ItemView.SignalSignatures;
+        $signals: ItemView.SignalSignatures;
 
         // Constructors
 
@@ -14550,14 +14573,15 @@ export namespace Mx {
         set use_grab(val: boolean);
         get useGrab(): boolean;
         set useGrab(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: KineticScrollView.SignalSignatures;
+        $signals: KineticScrollView.SignalSignatures;
 
         // Constructors
 
@@ -15558,14 +15582,15 @@ export namespace Mx {
         get yAlign(): Align | any;
         // This accessor conflicts with another accessor's type in a parent class or interface.
         set yAlign(val: Align | any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Label.SignalSignatures;
+        $signals: Label.SignalSignatures;
 
         // Constructors
 
@@ -16418,14 +16443,15 @@ export namespace Mx {
         set itemType(val: GObject.GType);
         get model(): Clutter.Model;
         set model(val: Clutter.Model);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ListView.SignalSignatures;
+        $signals: ListView.SignalSignatures;
 
         // Constructors
 
@@ -17106,14 +17132,15 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
         static $gtype: GObject.GType<Menu>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Menu.SignalSignatures;
+        $signals: Menu.SignalSignatures;
 
         // Constructors
 
@@ -17765,14 +17792,15 @@ export namespace Mx {
         set current_page(val: Clutter.Actor);
         get currentPage(): Clutter.Actor;
         set currentPage(val: Clutter.Actor);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Notebook.SignalSignatures;
+        $signals: Notebook.SignalSignatures;
 
         // Constructors
 
@@ -18569,14 +18597,15 @@ export namespace Mx {
         set page_num(val: number);
         get pageNum(): number;
         set pageNum(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Pager.SignalSignatures;
+        $signals: Pager.SignalSignatures;
 
         // Constructors
 
@@ -19246,14 +19275,15 @@ export namespace Mx {
         set editable(val: boolean);
         get entry(): Entry;
         get level(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PathBar.SignalSignatures;
+        $signals: PathBar.SignalSignatures;
 
         // Constructors
 
@@ -20070,14 +20100,15 @@ export namespace Mx {
 
         get progress(): number;
         set progress(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProgressBar.SignalSignatures;
+        $signals: ProgressBar.SignalSignatures;
 
         // Constructors
 
@@ -20841,14 +20872,15 @@ export namespace Mx {
         set adjustment(val: Adjustment);
         get orientation(): Orientation;
         set orientation(val: Orientation);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScrollBar.SignalSignatures;
+        $signals: ScrollBar.SignalSignatures;
 
         // Constructors
 
@@ -21629,14 +21661,15 @@ export namespace Mx {
         set scroll_visibility(val: ScrollPolicy);
         get scrollVisibility(): ScrollPolicy;
         set scrollVisibility(val: ScrollPolicy);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScrollView.SignalSignatures;
+        $signals: ScrollView.SignalSignatures;
 
         // Constructors
 
@@ -22331,14 +22364,15 @@ export namespace Mx {
         set touch_mode(val: boolean);
         get touchMode(): boolean;
         set touchMode(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Settings.SignalSignatures;
+        $signals: Settings.SignalSignatures;
 
         // Constructors
 
@@ -22505,14 +22539,15 @@ export namespace Mx {
         set bufferValue(val: number);
         get value(): number;
         set value(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Slider.SignalSignatures;
+        $signals: Slider.SignalSignatures;
 
         // Constructors
 
@@ -23305,14 +23340,15 @@ export namespace Mx {
 
         get animating(): boolean;
         set animating(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Spinner.SignalSignatures;
+        $signals: Spinner.SignalSignatures;
 
         // Constructors
 
@@ -24068,14 +24104,15 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
         static $gtype: GObject.GType<Stack>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Stack.SignalSignatures;
+        $signals: Stack.SignalSignatures;
 
         // Constructors
 
@@ -24854,14 +24891,15 @@ export namespace Mx {
         set y_fill(val: boolean);
         get yFill(): boolean;
         set yFill(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StackChild.SignalSignatures;
+        $signals: StackChild.SignalSignatures;
 
         // Constructors
 
@@ -24905,14 +24943,15 @@ export namespace Mx {
      */
     class Style extends GObject.Object {
         static $gtype: GObject.GType<Style>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Style.SignalSignatures;
+        $signals: Style.SignalSignatures;
 
         // Constructors
 
@@ -25124,14 +25163,15 @@ export namespace Mx {
         set row_spacing(val: number);
         get rowSpacing(): number;
         set rowSpacing(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Table.SignalSignatures;
+        $signals: Table.SignalSignatures;
 
         // Constructors
 
@@ -26040,14 +26080,15 @@ export namespace Mx {
         set y_fill(val: boolean);
         get yFill(): boolean;
         set yFill(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TableChild.SignalSignatures;
+        $signals: TableChild.SignalSignatures;
 
         // Constructors
 
@@ -26089,14 +26130,15 @@ export namespace Mx {
      */
     class TextureCache extends GObject.Object {
         static $gtype: GObject.GType<TextureCache>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TextureCache.SignalSignatures;
+        $signals: TextureCache.SignalSignatures;
 
         // Constructors
 
@@ -26361,14 +26403,15 @@ export namespace Mx {
         set right(val: number);
         get top(): number;
         set top(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TextureFrame.SignalSignatures;
+        $signals: TextureFrame.SignalSignatures;
 
         // Constructors
 
@@ -27463,14 +27506,15 @@ export namespace Mx {
 
         get active(): boolean;
         set active(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Toggle.SignalSignatures;
+        $signals: Toggle.SignalSignatures;
 
         // Constructors
 
@@ -28249,14 +28293,15 @@ export namespace Mx {
         set has_close_button(val: boolean);
         get hasCloseButton(): boolean;
         set hasCloseButton(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Toolbar.SignalSignatures;
+        $signals: Toolbar.SignalSignatures;
 
         // Constructors
 
@@ -29046,14 +29091,15 @@ export namespace Mx {
         set tip_area(val: Clutter.Geometry);
         get tipArea(): Clutter.Geometry;
         set tipArea(val: Clutter.Geometry);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Tooltip.SignalSignatures;
+        $signals: Tooltip.SignalSignatures;
 
         // Constructors
 
@@ -29727,14 +29773,15 @@ export namespace Mx {
         set z_origin(val: number);
         get zOrigin(): number;
         set zOrigin(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Viewport.SignalSignatures;
+        $signals: Viewport.SignalSignatures;
 
         // Constructors
 
@@ -30405,14 +30452,15 @@ export namespace Mx {
          */
         get tooltipText(): string;
         set tooltipText(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Widget.SignalSignatures;
+        $signals: Widget.SignalSignatures;
 
         // Constructors
 
@@ -31657,14 +31705,15 @@ export namespace Mx {
         get windowRotationAngle(): number;
         get window_rotation_timeline(): Clutter.Timeline;
         get windowRotationTimeline(): Clutter.Timeline;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Window.SignalSignatures;
+        $signals: Window.SignalSignatures;
 
         // Constructors
 

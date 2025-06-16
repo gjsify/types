@@ -159,14 +159,15 @@ export namespace InputPad {
 
     class GtkApplication extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<GtkApplication>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GtkApplication.SignalSignatures;
+        $signals: GtkApplication.SignalSignatures;
 
         // Constructors
 
@@ -713,14 +714,15 @@ export namespace InputPad {
 
     class GtkButton extends Gtk.Button implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable {
         static $gtype: GObject.GType<GtkButton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GtkButton.SignalSignatures;
+        $signals: GtkButton.SignalSignatures;
 
         // Constructors
 
@@ -5370,14 +5372,15 @@ export namespace InputPad {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.CellLayout
     {
         static $gtype: GObject.GType<GtkComboBox>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GtkComboBox.SignalSignatures;
+        $signals: GtkComboBox.SignalSignatures;
 
         // Constructors
 
@@ -9904,14 +9907,15 @@ export namespace InputPad {
 
     abstract class GtkKbdui extends GObject.Object {
         static $gtype: GObject.GType<GtkKbdui>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GtkKbdui.SignalSignatures;
+        $signals: GtkKbdui.SignalSignatures;
 
         // Constructors
 
@@ -10005,14 +10009,15 @@ export namespace InputPad {
 
     class GtkViewport extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<GtkViewport>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GtkViewport.SignalSignatures;
+        $signals: GtkViewport.SignalSignatures;
 
         // Fields
 
@@ -10691,14 +10696,15 @@ export namespace InputPad {
         implements Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, Gtk.Buildable
     {
         static $gtype: GObject.GType<GtkWindow>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GtkWindow.SignalSignatures;
+        $signals: GtkWindow.SignalSignatures;
 
         // Fields
 

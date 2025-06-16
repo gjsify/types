@@ -272,14 +272,15 @@ export namespace Unity {
      */
     class AppInfoManager extends GObject.Object {
         static $gtype: GObject.GType<AppInfoManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AppInfoManager.SignalSignatures;
+        $signals: AppInfoManager.SignalSignatures;
 
         // Constructors
 
@@ -406,14 +407,15 @@ export namespace Unity {
         set size_hint(val: IconSizeHint);
         get sizeHint(): IconSizeHint;
         set sizeHint(val: IconSizeHint);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AnnotatedIcon.SignalSignatures;
+        $signals: AnnotatedIcon.SignalSignatures;
 
         // Constructors
 
@@ -488,14 +490,15 @@ export namespace Unity {
          * <para>Property holding the unique DBus name of the Unity process if Unity is running, or null otherwise.</para>
          */
         get unityBusName(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Inspector.SignalSignatures;
+        $signals: Inspector.SignalSignatures;
 
         // Constructors
 
@@ -588,14 +591,15 @@ export namespace Unity {
         set urgent(val: boolean);
         get quicklist(): Dbusmenu.Menuitem;
         set quicklist(val: Dbusmenu.Menuitem);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LauncherEntry.SignalSignatures;
+        $signals: LauncherEntry.SignalSignatures;
 
         // Constructors
 
@@ -1109,14 +1113,15 @@ export namespace Unity {
 
     class LauncherFavorites extends GObject.Object {
         static $gtype: GObject.GType<LauncherFavorites>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LauncherFavorites.SignalSignatures;
+        $signals: LauncherFavorites.SignalSignatures;
 
         // Constructors
 
@@ -1184,14 +1189,15 @@ export namespace Unity {
         set goto_uri(val: string);
         get gotoUri(): string;
         set gotoUri(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ActivationResponse.SignalSignatures;
+        $signals: ActivationResponse.SignalSignatures;
 
         // Constructors
 
@@ -1251,14 +1257,15 @@ export namespace Unity {
         get iconHint(): Gio.Icon;
         get default_renderer(): CategoryRenderer;
         get defaultRenderer(): CategoryRenderer;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Category.SignalSignatures;
+        $signals: Category.SignalSignatures;
 
         // Constructors
 
@@ -1333,14 +1340,15 @@ export namespace Unity {
         get collapsed(): boolean;
         get filtering(): boolean;
         set filtering(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Filter.SignalSignatures;
+        $signals: Filter.SignalSignatures;
 
         // Constructors
 
@@ -1400,14 +1408,15 @@ export namespace Unity {
         get iconHint(): Gio.Icon;
         get active(): boolean;
         set active(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilterOption.SignalSignatures;
+        $signals: FilterOption.SignalSignatures;
 
         // Constructors
 
@@ -1466,14 +1475,15 @@ export namespace Unity {
         set sort_type(val: OptionsFilterSortType);
         get sortType(): OptionsFilterSortType;
         set sortType(val: OptionsFilterSortType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OptionsFilter.SignalSignatures;
+        $signals: OptionsFilter.SignalSignatures;
 
         // Fields
 
@@ -1537,14 +1547,15 @@ export namespace Unity {
 
     class RadioOptionFilter extends OptionsFilter {
         static $gtype: GObject.GType<RadioOptionFilter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RadioOptionFilter.SignalSignatures;
+        $signals: RadioOptionFilter.SignalSignatures;
 
         // Constructors
 
@@ -1600,14 +1611,15 @@ export namespace Unity {
 
     class CheckOptionFilter extends OptionsFilter {
         static $gtype: GObject.GType<CheckOptionFilter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CheckOptionFilter.SignalSignatures;
+        $signals: CheckOptionFilter.SignalSignatures;
 
         // Constructors
 
@@ -1659,14 +1671,15 @@ export namespace Unity {
 
     class CheckOptionFilterCompact extends OptionsFilter {
         static $gtype: GObject.GType<CheckOptionFilterCompact>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CheckOptionFilterCompact.SignalSignatures;
+        $signals: CheckOptionFilterCompact.SignalSignatures;
 
         // Constructors
 
@@ -1732,14 +1745,15 @@ export namespace Unity {
 
         get rating(): number;
         set rating(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RatingsFilter.SignalSignatures;
+        $signals: RatingsFilter.SignalSignatures;
 
         // Constructors
 
@@ -1788,14 +1802,15 @@ export namespace Unity {
 
     class MultiRangeFilter extends OptionsFilter {
         static $gtype: GObject.GType<MultiRangeFilter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MultiRangeFilter.SignalSignatures;
+        $signals: MultiRangeFilter.SignalSignatures;
 
         // Constructors
 
@@ -1858,14 +1873,15 @@ export namespace Unity {
         set remote_content_search(val: PreferencesManagerRemoteContent);
         get remoteContentSearch(): PreferencesManagerRemoteContent;
         set remoteContentSearch(val: PreferencesManagerRemoteContent);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PreferencesManager.SignalSignatures;
+        $signals: PreferencesManager.SignalSignatures;
 
         // Constructors
 
@@ -1929,14 +1945,15 @@ export namespace Unity {
         get hints(): GLib.HashTable<string, GLib.Variant>;
         get results_model(): Dee.SerializableModel;
         get resultsModel(): Dee.SerializableModel;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LensSearch.SignalSignatures;
+        $signals: LensSearch.SignalSignatures;
 
         // Constructors
 
@@ -2065,14 +2082,15 @@ export namespace Unity {
         set sources_display_name(val: string);
         get sourcesDisplayName(): string;
         set sourcesDisplayName(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Lens.SignalSignatures;
+        $signals: Lens.SignalSignatures;
 
         // Constructors
 
@@ -2149,14 +2167,15 @@ export namespace Unity {
         set imageSourceUri(val: string);
         get image(): Gio.Icon;
         set image(val: Gio.Icon);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Preview.SignalSignatures;
+        $signals: Preview.SignalSignatures;
 
         // Constructors
 
@@ -2701,14 +2720,15 @@ export namespace Unity {
         get layout_hint(): LayoutHint;
         get layoutHint(): LayoutHint;
         get hints(): GLib.HashTable<string, GLib.Variant>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PreviewAction.SignalSignatures;
+        $signals: PreviewAction.SignalSignatures;
 
         // Constructors
 
@@ -3244,14 +3264,15 @@ export namespace Unity {
         get icon_hint(): Gio.Icon;
         get iconHint(): Gio.Icon;
         get data(): GLib.Variant;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InfoHint.SignalSignatures;
+        $signals: InfoHint.SignalSignatures;
 
         // Constructors
 
@@ -3299,14 +3320,15 @@ export namespace Unity {
 
     class GenericPreview extends Preview {
         static $gtype: GObject.GType<GenericPreview>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GenericPreview.SignalSignatures;
+        $signals: GenericPreview.SignalSignatures;
 
         // Constructors
 
@@ -3378,14 +3400,15 @@ export namespace Unity {
         set last_update(val: string);
         get lastUpdate(): string;
         set lastUpdate(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ApplicationPreview.SignalSignatures;
+        $signals: ApplicationPreview.SignalSignatures;
 
         // Constructors
 
@@ -3468,14 +3491,15 @@ export namespace Unity {
         set current_track_state(val: MusicPreviewTrackState);
         get currentTrackState(): MusicPreviewTrackState;
         set currentTrackState(val: MusicPreviewTrackState);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MusicPreview.SignalSignatures;
+        $signals: MusicPreview.SignalSignatures;
 
         // Constructors
 
@@ -3533,14 +3557,15 @@ export namespace Unity {
 
         get year(): string;
         set year(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MoviePreview.SignalSignatures;
+        $signals: MoviePreview.SignalSignatures;
 
         // Constructors
 
@@ -3606,14 +3631,15 @@ export namespace Unity {
         set content(val: string);
         get sender(): string;
         set sender(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SocialPreview.SignalSignatures;
+        $signals: SocialPreview.SignalSignatures;
 
         // Constructors
 
@@ -3674,14 +3700,15 @@ export namespace Unity {
         get name(): string;
         get text(): string;
         get time(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SocialPreviewComment.SignalSignatures;
+        $signals: SocialPreviewComment.SignalSignatures;
 
         // Constructors
 
@@ -3738,14 +3765,15 @@ export namespace Unity {
 
         get cancellable(): Gio.Cancellable;
         set cancellable(val: Gio.Cancellable);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AsyncPreview.SignalSignatures;
+        $signals: AsyncPreview.SignalSignatures;
 
         // Constructors
 
@@ -3846,14 +3874,15 @@ export namespace Unity {
         get resultsModel(): Dee.SerializableModel;
         get global_results_model(): Dee.SerializableModel;
         get globalResultsModel(): Dee.SerializableModel;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Scope.SignalSignatures;
+        $signals: Scope.SignalSignatures;
 
         // Constructors
 
@@ -3959,14 +3988,15 @@ export namespace Unity {
         set art_icon(val: Gio.Icon);
         get artIcon(): Gio.Icon;
         set artIcon(val: Gio.Icon);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TrackMetadata.SignalSignatures;
+        $signals: TrackMetadata.SignalSignatures;
 
         // Constructors
 
@@ -4052,14 +4082,15 @@ export namespace Unity {
         set last_play_date(val: GLib.DateTime);
         get lastPlayDate(): GLib.DateTime;
         set lastPlayDate(val: GLib.DateTime);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Playlist.SignalSignatures;
+        $signals: Playlist.SignalSignatures;
 
         // Constructors
 
@@ -4193,14 +4224,15 @@ export namespace Unity {
         set player_menu(val: Dbusmenu.Menuitem);
         get playerMenu(): Dbusmenu.Menuitem;
         set playerMenu(val: Dbusmenu.Menuitem);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MusicPlayer.SignalSignatures;
+        $signals: MusicPlayer.SignalSignatures;
 
         // Constructors
 

@@ -177,14 +177,15 @@ export namespace PackageKitPlugin {
 
     class Backend extends GObject.Object {
         static $gtype: GObject.GType<Backend>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Backend.SignalSignatures;
+        $signals: Backend.SignalSignatures;
 
         // Constructors
 
@@ -357,14 +358,15 @@ export namespace PackageKitPlugin {
 
     class BackendJob extends GObject.Object {
         static $gtype: GObject.GType<BackendJob>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BackendJob.SignalSignatures;
+        $signals: BackendJob.SignalSignatures;
 
         // Constructors
 
@@ -539,14 +541,15 @@ export namespace PackageKitPlugin {
 
     class Transaction extends GObject.Object {
         static $gtype: GObject.GType<Transaction>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Transaction.SignalSignatures;
+        $signals: Transaction.SignalSignatures;
 
         // Constructors
 

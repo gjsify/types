@@ -188,14 +188,15 @@ export namespace Guestfs {
          */
         get readonlydisk(): string;
         set readonlydisk(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AddDomain.SignalSignatures;
+        $signals: AddDomain.SignalSignatures;
 
         // Constructors
 
@@ -320,14 +321,15 @@ export namespace Guestfs {
          */
         get username(): string;
         set username(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AddDrive.SignalSignatures;
+        $signals: AddDrive.SignalSignatures;
 
         // Constructors
 
@@ -389,14 +391,15 @@ export namespace Guestfs {
          */
         get name(): string;
         set name(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AddDriveScratch.SignalSignatures;
+        $signals: AddDriveScratch.SignalSignatures;
 
         // Constructors
 
@@ -493,14 +496,15 @@ export namespace Guestfs {
          */
         get readonlydisk(): string;
         set readonlydisk(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AddLibvirtDom.SignalSignatures;
+        $signals: AddLibvirtDom.SignalSignatures;
 
         // Constructors
 
@@ -555,14 +559,15 @@ export namespace Guestfs {
          */
         get remove(): Tristate;
         set remove(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AugTransform.SignalSignatures;
+        $signals: AugTransform.SignalSignatures;
 
         // Constructors
 
@@ -624,14 +629,15 @@ export namespace Guestfs {
          */
         get flush(): Tristate;
         set flush(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BTRFSFilesystemDefragment.SignalSignatures;
+        $signals: BTRFSFilesystemDefragment.SignalSignatures;
 
         // Constructors
 
@@ -688,14 +694,15 @@ export namespace Guestfs {
          */
         get size(): number;
         set size(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BTRFSFilesystemResize.SignalSignatures;
+        $signals: BTRFSFilesystemResize.SignalSignatures;
 
         // Constructors
 
@@ -752,14 +759,15 @@ export namespace Guestfs {
          */
         get compresslevel(): number;
         set compresslevel(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BTRFSImage.SignalSignatures;
+        $signals: BTRFSImage.SignalSignatures;
 
         // Constructors
 
@@ -814,14 +822,15 @@ export namespace Guestfs {
          */
         get qgroupid(): string;
         set qgroupid(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BTRFSSubvolumeCreate.SignalSignatures;
+        $signals: BTRFSSubvolumeCreate.SignalSignatures;
 
         // Constructors
 
@@ -885,14 +894,15 @@ export namespace Guestfs {
          */
         get ro(): Tristate;
         set ro(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BTRFSSubvolumeSnapshot.SignalSignatures;
+        $signals: BTRFSSubvolumeSnapshot.SignalSignatures;
 
         // Constructors
 
@@ -956,14 +966,15 @@ export namespace Guestfs {
          */
         get superblock(): number;
         set superblock(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BtrfsFsck.SignalSignatures;
+        $signals: BtrfsFsck.SignalSignatures;
 
         // Constructors
 
@@ -1018,14 +1029,15 @@ export namespace Guestfs {
          */
         get level(): number;
         set level(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CompressDeviceOut.SignalSignatures;
+        $signals: CompressDeviceOut.SignalSignatures;
 
         // Constructors
 
@@ -1080,14 +1092,15 @@ export namespace Guestfs {
          */
         get level(): number;
         set level(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CompressOut.SignalSignatures;
+        $signals: CompressOut.SignalSignatures;
 
         // Constructors
 
@@ -1163,14 +1176,15 @@ export namespace Guestfs {
          */
         get xattributes(): Tristate;
         set xattributes(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CopyAttributes.SignalSignatures;
+        $signals: CopyAttributes.SignalSignatures;
 
         // Constructors
 
@@ -1253,14 +1267,15 @@ export namespace Guestfs {
          */
         get srcoffset(): number;
         set srcoffset(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CopyDeviceToDevice.SignalSignatures;
+        $signals: CopyDeviceToDevice.SignalSignatures;
 
         // Constructors
 
@@ -1343,14 +1358,15 @@ export namespace Guestfs {
          */
         get srcoffset(): number;
         set srcoffset(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CopyDeviceToFile.SignalSignatures;
+        $signals: CopyDeviceToFile.SignalSignatures;
 
         // Constructors
 
@@ -1433,14 +1449,15 @@ export namespace Guestfs {
          */
         get srcoffset(): number;
         set srcoffset(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CopyFileToDevice.SignalSignatures;
+        $signals: CopyFileToDevice.SignalSignatures;
 
         // Constructors
 
@@ -1523,14 +1540,15 @@ export namespace Guestfs {
          */
         get srcoffset(): number;
         set srcoffset(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CopyFileToFile.SignalSignatures;
+        $signals: CopyFileToFile.SignalSignatures;
 
         // Constructors
 
@@ -1585,14 +1603,15 @@ export namespace Guestfs {
          */
         get format(): string;
         set format(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CpioOut.SignalSignatures;
+        $signals: CpioOut.SignalSignatures;
 
         // Constructors
 
@@ -1675,14 +1694,15 @@ export namespace Guestfs {
          */
         get preallocation(): string;
         set preallocation(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DiskCreate.SignalSignatures;
+        $signals: DiskCreate.SignalSignatures;
 
         // Constructors
 
@@ -1737,14 +1757,15 @@ export namespace Guestfs {
          */
         get unallocated(): Tristate;
         set unallocated(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DownloadBlocks.SignalSignatures;
+        $signals: DownloadBlocks.SignalSignatures;
 
         // Constructors
 
@@ -1806,14 +1827,15 @@ export namespace Guestfs {
          */
         get forceall(): Tristate;
         set forceall(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: E2fsck.SignalSignatures;
+        $signals: E2fsck.SignalSignatures;
 
         // Constructors
 
@@ -1882,14 +1904,15 @@ export namespace Guestfs {
          */
         get offset(): number;
         set offset(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Fstrim.SignalSignatures;
+        $signals: Fstrim.SignalSignatures;
 
         // Constructors
 
@@ -1944,14 +1967,15 @@ export namespace Guestfs {
          */
         get directoryslash(): Tristate;
         set directoryslash(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GlobExpand.SignalSignatures;
+        $signals: GlobExpand.SignalSignatures;
 
         // Constructors
 
@@ -2027,14 +2051,15 @@ export namespace Guestfs {
          */
         get insensitive(): Tristate;
         set insensitive(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Grep.SignalSignatures;
+        $signals: Grep.SignalSignatures;
 
         // Constructors
 
@@ -2110,14 +2135,15 @@ export namespace Guestfs {
          */
         get write(): Tristate;
         set write(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HivexOpen.SignalSignatures;
+        $signals: HivexOpen.SignalSignatures;
 
         // Constructors
 
@@ -2179,14 +2205,15 @@ export namespace Guestfs {
          */
         get highquality(): Tristate;
         set highquality(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InspectGetIcon.SignalSignatures;
+        $signals: InspectGetIcon.SignalSignatures;
 
         // Constructors
 
@@ -2262,14 +2289,15 @@ export namespace Guestfs {
          */
         get ostring(): string;
         set ostring(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InternalTest.SignalSignatures;
+        $signals: InternalTest.SignalSignatures;
 
         // Constructors
 
@@ -2758,14 +2786,15 @@ export namespace Guestfs {
          */
         get opt9(): number;
         set opt9(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InternalTest63Optargs.SignalSignatures;
+        $signals: InternalTest63Optargs.SignalSignatures;
 
         // Constructors
 
@@ -2822,14 +2851,15 @@ export namespace Guestfs {
          */
         get test(): number;
         set test(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InternalTestOnlyOptargs.SignalSignatures;
+        $signals: InternalTestOnlyOptargs.SignalSignatures;
 
         // Constructors
 
@@ -2886,14 +2916,15 @@ export namespace Guestfs {
          */
         get followsymlinks(): Tristate;
         set followsymlinks(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IsBlockdev.SignalSignatures;
+        $signals: IsBlockdev.SignalSignatures;
 
         // Constructors
 
@@ -2948,14 +2979,15 @@ export namespace Guestfs {
          */
         get followsymlinks(): Tristate;
         set followsymlinks(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IsChardev.SignalSignatures;
+        $signals: IsChardev.SignalSignatures;
 
         // Constructors
 
@@ -3010,14 +3042,15 @@ export namespace Guestfs {
          */
         get followsymlinks(): Tristate;
         set followsymlinks(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IsDir.SignalSignatures;
+        $signals: IsDir.SignalSignatures;
 
         // Constructors
 
@@ -3072,14 +3105,15 @@ export namespace Guestfs {
          */
         get followsymlinks(): Tristate;
         set followsymlinks(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IsFifo.SignalSignatures;
+        $signals: IsFifo.SignalSignatures;
 
         // Constructors
 
@@ -3134,14 +3168,15 @@ export namespace Guestfs {
          */
         get followsymlinks(): Tristate;
         set followsymlinks(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IsFile.SignalSignatures;
+        $signals: IsFile.SignalSignatures;
 
         // Constructors
 
@@ -3196,14 +3231,15 @@ export namespace Guestfs {
          */
         get followsymlinks(): Tristate;
         set followsymlinks(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IsSocket.SignalSignatures;
+        $signals: IsSocket.SignalSignatures;
 
         // Constructors
 
@@ -3286,14 +3322,15 @@ export namespace Guestfs {
          */
         get spare(): number;
         set spare(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MDCreate.SignalSignatures;
+        $signals: MDCreate.SignalSignatures;
 
         // Constructors
 
@@ -3607,14 +3644,15 @@ export namespace Guestfs {
          */
         get writesbandgrouponly(): Tristate;
         set writesbandgrouponly(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Mke2fs.SignalSignatures;
+        $signals: Mke2fs.SignalSignatures;
 
         // Constructors
 
@@ -3697,14 +3735,15 @@ export namespace Guestfs {
          */
         get sectorsize(): number;
         set sectorsize(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Mkfs.SignalSignatures;
+        $signals: Mkfs.SignalSignatures;
 
         // Constructors
 
@@ -3808,14 +3847,15 @@ export namespace Guestfs {
          */
         get sectorsize(): number;
         set sectorsize(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MkfsBtrfs.SignalSignatures;
+        $signals: MkfsBtrfs.SignalSignatures;
 
         // Constructors
 
@@ -3870,14 +3910,15 @@ export namespace Guestfs {
          */
         get compress(): string;
         set compress(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Mksquashfs.SignalSignatures;
+        $signals: Mksquashfs.SignalSignatures;
 
         // Constructors
 
@@ -3939,14 +3980,15 @@ export namespace Guestfs {
          */
         get uuid(): string;
         set uuid(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Mkswap.SignalSignatures;
+        $signals: Mkswap.SignalSignatures;
 
         // Constructors
 
@@ -4001,14 +4043,15 @@ export namespace Guestfs {
          */
         get suffix(): string;
         set suffix(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Mktemp.SignalSignatures;
+        $signals: Mktemp.SignalSignatures;
 
         // Constructors
 
@@ -4063,14 +4106,15 @@ export namespace Guestfs {
          */
         get options(): string;
         set options(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Mount9P.SignalSignatures;
+        $signals: Mount9P.SignalSignatures;
 
         // Constructors
 
@@ -4146,14 +4190,15 @@ export namespace Guestfs {
          */
         get readonly(): Tristate;
         set readonly(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MountLocal.SignalSignatures;
+        $signals: MountLocal.SignalSignatures;
 
         // Constructors
 
@@ -4215,14 +4260,15 @@ export namespace Guestfs {
          */
         get size(): number;
         set size(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NTFSResizeOpts.SignalSignatures;
+        $signals: NTFSResizeOpts.SignalSignatures;
 
         // Constructors
 
@@ -4305,14 +4351,15 @@ export namespace Guestfs {
          */
         get rescue(): Tristate;
         set rescue(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NtfscloneOut.SignalSignatures;
+        $signals: NtfscloneOut.SignalSignatures;
 
         // Constructors
 
@@ -4367,14 +4414,15 @@ export namespace Guestfs {
          */
         get clearbadsectors(): Tristate;
         set clearbadsectors(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Ntfsfix.SignalSignatures;
+        $signals: Ntfsfix.SignalSignatures;
 
         // Constructors
 
@@ -4429,14 +4477,15 @@ export namespace Guestfs {
          */
         get rw(): Tristate;
         set rw(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Remount.SignalSignatures;
+        $signals: Remount.SignalSignatures;
 
         // Constructors
 
@@ -4498,14 +4547,15 @@ export namespace Guestfs {
          */
         get deletedest(): Tristate;
         set deletedest(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Rsync.SignalSignatures;
+        $signals: Rsync.SignalSignatures;
 
         // Constructors
 
@@ -4567,14 +4617,15 @@ export namespace Guestfs {
          */
         get deletedest(): Tristate;
         set deletedest(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RsyncIn.SignalSignatures;
+        $signals: RsyncIn.SignalSignatures;
 
         // Constructors
 
@@ -4636,14 +4687,15 @@ export namespace Guestfs {
          */
         get deletedest(): Tristate;
         set deletedest(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RsyncOut.SignalSignatures;
+        $signals: RsyncOut.SignalSignatures;
 
         // Constructors
 
@@ -4698,14 +4750,15 @@ export namespace Guestfs {
          */
         get force(): Tristate;
         set force(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SelinuxRelabel.SignalSignatures;
+        $signals: SelinuxRelabel.SignalSignatures;
 
         // Constructors
 
@@ -4759,14 +4812,15 @@ export namespace Guestfs {
      */
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Session.SignalSignatures;
+        $signals: Session.SignalSignatures;
 
         // Constructors
 
@@ -15317,14 +15371,15 @@ export namespace Guestfs {
          */
         get clear(): Tristate;
         set clear(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SetE2attrs.SignalSignatures;
+        $signals: SetE2attrs.SignalSignatures;
 
         // Constructors
 
@@ -15379,14 +15434,15 @@ export namespace Guestfs {
          */
         get directory(): string;
         set directory(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Syslinux.SignalSignatures;
+        $signals: Syslinux.SignalSignatures;
 
         // Constructors
 
@@ -15462,14 +15518,15 @@ export namespace Guestfs {
          */
         get xattrs(): Tristate;
         set xattrs(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TarIn.SignalSignatures;
+        $signals: TarIn.SignalSignatures;
 
         // Constructors
 
@@ -15552,14 +15609,15 @@ export namespace Guestfs {
          */
         get xattrs(): Tristate;
         set xattrs(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TarOut.SignalSignatures;
+        $signals: TarOut.SignalSignatures;
 
         // Constructors
 
@@ -15677,14 +15735,15 @@ export namespace Guestfs {
          */
         get user(): number;
         set user(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Tune2FS.SignalSignatures;
+        $signals: Tune2FS.SignalSignatures;
 
         // Constructors
 
@@ -15746,14 +15805,15 @@ export namespace Guestfs {
          */
         get lazyunmount(): Tristate;
         set lazyunmount(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Umount.SignalSignatures;
+        $signals: Umount.SignalSignatures;
 
         // Constructors
 
@@ -15808,14 +15868,15 @@ export namespace Guestfs {
          */
         get retry(): Tristate;
         set retry(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UmountLocal.SignalSignatures;
+        $signals: UmountLocal.SignalSignatures;
 
         // Constructors
 
@@ -15912,14 +15973,15 @@ export namespace Guestfs {
          */
         get v2log(): Tristate;
         set v2log(val: Tristate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XfsAdmin.SignalSignatures;
+        $signals: XfsAdmin.SignalSignatures;
 
         // Constructors
 
@@ -16023,14 +16085,15 @@ export namespace Guestfs {
          */
         get rtsize(): number;
         set rtsize(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XfsGrowfs.SignalSignatures;
+        $signals: XfsGrowfs.SignalSignatures;
 
         // Constructors
 
@@ -16148,14 +16211,15 @@ export namespace Guestfs {
          */
         get rtdev(): string;
         set rtdev(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XfsRepair.SignalSignatures;
+        $signals: XfsRepair.SignalSignatures;
 
         // Constructors
 

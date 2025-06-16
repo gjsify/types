@@ -321,14 +321,15 @@ export namespace Dee {
      */
     class Analyzer extends GObject.Object {
         static $gtype: GObject.GType<Analyzer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Analyzer.SignalSignatures;
+        $signals: Analyzer.SignalSignatures;
 
         // Constructors
 
@@ -510,14 +511,15 @@ export namespace Dee {
 
         get bus_address(): string;
         get busAddress(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -575,14 +577,15 @@ export namespace Dee {
          * Property holding the primary path used to store and load resources
          */
         get primaryPath(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileResourceManager.SignalSignatures;
+        $signals: FileResourceManager.SignalSignatures;
 
         // Constructors
 
@@ -1160,14 +1163,15 @@ export namespace Dee {
          * defined in the #DeeFilterModel:back-end property.
          */
         get filter(): Filter;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilterModel.SignalSignatures;
+        $signals: FilterModel.SignalSignatures;
 
         // Constructors
 
@@ -1712,14 +1716,15 @@ export namespace Dee {
 
     class GListResultSet extends GObject.Object implements ResultSet {
         static $gtype: GObject.GType<GListResultSet>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GListResultSet.SignalSignatures;
+        $signals: GListResultSet.SignalSignatures;
 
         // Constructors
 
@@ -2288,14 +2293,15 @@ export namespace Dee {
      */
     class HashIndex extends Index {
         static $gtype: GObject.GType<HashIndex>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HashIndex.SignalSignatures;
+        $signals: HashIndex.SignalSignatures;
 
         // Constructors
 
@@ -2362,14 +2368,15 @@ export namespace Dee {
          * The #DeeModelReader used to extract terms from rows in the model
          */
         set reader(val: ModelReader);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Index.SignalSignatures;
+        $signals: Index.SignalSignatures;
 
         // Constructors
 
@@ -2531,14 +2538,15 @@ export namespace Dee {
         set swarmName(val: string);
         get swarm_owner(): boolean;
         get swarmOwner(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Peer.SignalSignatures;
+        $signals: Peer.SignalSignatures;
 
         // Constructors
 
@@ -2690,14 +2698,15 @@ export namespace Dee {
          * to do their own more advanced signal forwarding.
          */
         get proxySignals(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProxyModel.SignalSignatures;
+        $signals: ProxyModel.SignalSignatures;
 
         // Constructors
 
@@ -3832,14 +3841,15 @@ export namespace Dee {
      */
     class SequenceModel extends SerializableModel implements Model, Serializable {
         static $gtype: GObject.GType<SequenceModel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SequenceModel.SignalSignatures;
+        $signals: SequenceModel.SignalSignatures;
 
         // Constructors
 
@@ -4976,14 +4986,15 @@ export namespace Dee {
      */
     abstract class SerializableModel extends GObject.Object implements Model, Serializable {
         static $gtype: GObject.GType<SerializableModel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SerializableModel.SignalSignatures;
+        $signals: SerializableModel.SignalSignatures;
 
         // Constructors
 
@@ -6142,14 +6153,15 @@ export namespace Dee {
         get busAddress(): string;
         get same_user_only(): boolean;
         get sameUserOnly(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Server.SignalSignatures;
+        $signals: Server.SignalSignatures;
 
         // Constructors
 
@@ -6293,14 +6305,15 @@ export namespace Dee {
          * you should wait for it to become synchronized.
          */
         get synchronized(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SharedModel.SignalSignatures;
+        $signals: SharedModel.SignalSignatures;
 
         // Constructors
 
@@ -6858,14 +6871,15 @@ export namespace Dee {
      */
     class TermList extends GObject.Object {
         static $gtype: GObject.GType<TermList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TermList.SignalSignatures;
+        $signals: TermList.SignalSignatures;
 
         // Constructors
 
@@ -6997,14 +7011,15 @@ export namespace Dee {
      */
     class TextAnalyzer extends Analyzer {
         static $gtype: GObject.GType<TextAnalyzer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TextAnalyzer.SignalSignatures;
+        $signals: TextAnalyzer.SignalSignatures;
 
         // Constructors
 
@@ -7059,14 +7074,15 @@ export namespace Dee {
         // Properties
 
         get target(): Model;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Transaction.SignalSignatures;
+        $signals: Transaction.SignalSignatures;
 
         // Constructors
 
@@ -8229,14 +8245,15 @@ export namespace Dee {
      */
     class TreeIndex extends Index {
         static $gtype: GObject.GType<TreeIndex>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TreeIndex.SignalSignatures;
+        $signals: TreeIndex.SignalSignatures;
 
         // Constructors
 

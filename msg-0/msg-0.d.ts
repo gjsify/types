@@ -104,14 +104,15 @@ export namespace Msg {
      */
     class Contact extends GObject.Object {
         static $gtype: GObject.GType<Contact>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Contact.SignalSignatures;
+        $signals: Contact.SignalSignatures;
 
         // Constructors
 
@@ -184,14 +185,15 @@ export namespace Msg {
 
     class ContactService extends Service {
         static $gtype: GObject.GType<ContactService>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ContactService.SignalSignatures;
+        $signals: ContactService.SignalSignatures;
 
         // Constructors
 
@@ -259,14 +261,15 @@ export namespace Msg {
      */
     class Drive extends GObject.Object {
         static $gtype: GObject.GType<Drive>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Drive.SignalSignatures;
+        $signals: Drive.SignalSignatures;
 
         // Constructors
 
@@ -351,14 +354,15 @@ export namespace Msg {
 
     class DriveItem extends GObject.Object {
         static $gtype: GObject.GType<DriveItem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DriveItem.SignalSignatures;
+        $signals: DriveItem.SignalSignatures;
 
         // Constructors
 
@@ -466,14 +470,15 @@ export namespace Msg {
 
     class DriveItemFile extends DriveItem {
         static $gtype: GObject.GType<DriveItemFile>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DriveItemFile.SignalSignatures;
+        $signals: DriveItemFile.SignalSignatures;
 
         // Constructors
 
@@ -528,14 +533,15 @@ export namespace Msg {
 
     class DriveItemFolder extends DriveItem {
         static $gtype: GObject.GType<DriveItemFolder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DriveItemFolder.SignalSignatures;
+        $signals: DriveItemFolder.SignalSignatures;
 
         // Constructors
 
@@ -579,14 +585,15 @@ export namespace Msg {
 
     class DriveService extends Service {
         static $gtype: GObject.GType<DriveService>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DriveService.SignalSignatures;
+        $signals: DriveService.SignalSignatures;
 
         // Constructors
 
@@ -745,14 +752,15 @@ export namespace Msg {
 
         get goa_object(): Goa.Object;
         get goaObject(): Goa.Object;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GoaAuthorizer.SignalSignatures;
+        $signals: GoaAuthorizer.SignalSignatures;
 
         // Constructors
 
@@ -1276,14 +1284,15 @@ export namespace Msg {
 
     class InputStream extends Gio.InputStream implements Gio.Seekable {
         static $gtype: GObject.GType<InputStream>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InputStream.SignalSignatures;
+        $signals: InputStream.SignalSignatures;
 
         // Constructors
 
@@ -1881,14 +1890,15 @@ export namespace Msg {
      */
     class MailFolder extends GObject.Object {
         static $gtype: GObject.GType<MailFolder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MailFolder.SignalSignatures;
+        $signals: MailFolder.SignalSignatures;
 
         // Constructors
 
@@ -1941,14 +1951,15 @@ export namespace Msg {
      */
     class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Message.SignalSignatures;
+        $signals: Message.SignalSignatures;
 
         // Constructors
 
@@ -2000,14 +2011,15 @@ export namespace Msg {
 
     class MessageService extends Service {
         static $gtype: GObject.GType<MessageService>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MessageService.SignalSignatures;
+        $signals: MessageService.SignalSignatures;
 
         // Constructors
 
@@ -2105,14 +2117,15 @@ export namespace Msg {
         set refresh_token(val: string);
         get refreshToken(): string;
         set refreshToken(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OAuth2Authorizer.SignalSignatures;
+        $signals: OAuth2Authorizer.SignalSignatures;
 
         // Constructors
 
@@ -2646,14 +2659,15 @@ export namespace Msg {
         // Properties
 
         set authorizer(val: Authorizer);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Service.SignalSignatures;
+        $signals: Service.SignalSignatures;
 
         // Constructors
 
@@ -2765,14 +2779,15 @@ export namespace Msg {
      */
     class User extends GObject.Object {
         static $gtype: GObject.GType<User>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: User.SignalSignatures;
+        $signals: User.SignalSignatures;
 
         // Constructors
 
@@ -2820,14 +2835,15 @@ export namespace Msg {
 
     class UserService extends Service {
         static $gtype: GObject.GType<UserService>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserService.SignalSignatures;
+        $signals: UserService.SignalSignatures;
 
         // Constructors
 

@@ -704,14 +704,15 @@ export namespace GWeather {
         set enabledProviders(val: Provider);
         get location(): Location;
         set location(val: Location);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Info.SignalSignatures;
+        $signals: Info.SignalSignatures;
 
         // Constructors
 
@@ -1012,14 +1013,15 @@ export namespace GWeather {
         get show_named_timezones(): boolean;
         get showNamedTimezones(): boolean;
         set top(val: Location);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LocationEntry.SignalSignatures;
+        $signals: LocationEntry.SignalSignatures;
 
         // Constructors
 
@@ -5450,14 +5452,15 @@ export namespace GWeather {
         set top(val: Location);
         get tzid(): string;
         set tzid(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TimezoneMenu.SignalSignatures;
+        $signals: TimezoneMenu.SignalSignatures;
 
         // Constructors
 

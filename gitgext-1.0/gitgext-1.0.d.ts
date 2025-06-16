@@ -70,14 +70,15 @@ export namespace GitgExt {
 
     class CommandLines extends GObject.Object {
         static $gtype: GObject.GType<CommandLines>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CommandLines.SignalSignatures;
+        $signals: CommandLines.SignalSignatures;
 
         // Constructors
 
@@ -127,14 +128,15 @@ export namespace GitgExt {
 
     class MessageBus extends GObject.Object {
         static $gtype: GObject.GType<MessageBus>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MessageBus.SignalSignatures;
+        $signals: MessageBus.SignalSignatures;
 
         // Constructors
 
@@ -215,14 +217,15 @@ export namespace GitgExt {
         get method(): string;
         set method(val: string);
         get id(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MessageId.SignalSignatures;
+        $signals: MessageId.SignalSignatures;
 
         // Constructors
 
@@ -286,14 +289,15 @@ export namespace GitgExt {
 
         get id(): MessageId;
         set id(val: MessageId);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Message.SignalSignatures;
+        $signals: Message.SignalSignatures;
 
         // Constructors
 
@@ -379,14 +383,15 @@ export namespace GitgExt {
 
     class UserQueryResponse extends GObject.Object {
         static $gtype: GObject.GType<UserQueryResponse>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserQueryResponse.SignalSignatures;
+        $signals: UserQueryResponse.SignalSignatures;
 
         // Fields
 
@@ -474,14 +479,15 @@ export namespace GitgExt {
         set message_use_markup(val: boolean);
         get messageUseMarkup(): boolean;
         set messageUseMarkup(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserQuery.SignalSignatures;
+        $signals: UserQuery.SignalSignatures;
 
         // Constructors
 

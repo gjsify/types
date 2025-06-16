@@ -7041,14 +7041,15 @@ export namespace Gio {
      */
     class AppInfoMonitor extends GObject.Object {
         static $gtype: GObject.GType<AppInfoMonitor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AppInfoMonitor.SignalSignatures;
+        $signals: AppInfoMonitor.SignalSignatures;
 
         // Constructors
 
@@ -7114,14 +7115,15 @@ export namespace Gio {
      */
     class AppLaunchContext extends GObject.Object {
         static $gtype: GObject.GType<AppLaunchContext>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AppLaunchContext.SignalSignatures;
+        $signals: AppLaunchContext.SignalSignatures;
 
         // Constructors
 
@@ -7501,14 +7503,15 @@ export namespace Gio {
          */
         get version(): string;
         set version(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Application.SignalSignatures;
+        $signals: Application.SignalSignatures;
 
         // Constructors
 
@@ -9516,14 +9519,15 @@ export namespace Gio {
          * Platform-specific data for the commandline.
          */
         set platformData(val: GLib.Variant);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ApplicationCommandLine.SignalSignatures;
+        $signals: ApplicationCommandLine.SignalSignatures;
 
         // Constructors
 
@@ -9846,14 +9850,15 @@ export namespace Gio {
          */
         get bufferSize(): number;
         set bufferSize(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BufferedInputStream.SignalSignatures;
+        $signals: BufferedInputStream.SignalSignatures;
 
         // Constructors
 
@@ -10679,14 +10684,15 @@ export namespace Gio {
          */
         get bufferSize(): number;
         set bufferSize(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BufferedOutputStream.SignalSignatures;
+        $signals: BufferedOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -11314,14 +11320,15 @@ export namespace Gio {
          * The bytes containing the icon.
          */
         get bytes(): GLib.Bytes;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BytesIcon.SignalSignatures;
+        $signals: BytesIcon.SignalSignatures;
 
         // Constructors
 
@@ -11950,14 +11957,15 @@ export namespace Gio {
      */
     class Cancellable extends GObject.Object {
         static $gtype: GObject.GType<Cancellable>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Cancellable.SignalSignatures;
+        $signals: Cancellable.SignalSignatures;
 
         // Constructors
 
@@ -12261,14 +12269,15 @@ export namespace Gio {
          */
         get useFallback(): boolean;
         set useFallback(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CharsetConverter.SignalSignatures;
+        $signals: CharsetConverter.SignalSignatures;
 
         // Constructors
 
@@ -13075,14 +13084,15 @@ export namespace Gio {
          * The converter object.
          */
         get converter(): Converter;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConverterInputStream.SignalSignatures;
+        $signals: ConverterInputStream.SignalSignatures;
 
         // Constructors
 
@@ -14022,14 +14032,15 @@ export namespace Gio {
          * The converter object.
          */
         get converter(): Converter;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConverterOutputStream.SignalSignatures;
+        $signals: ConverterOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -15470,14 +15481,15 @@ export namespace Gio {
      */
     class Credentials extends GObject.Object {
         static $gtype: GObject.GType<Credentials>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Credentials.SignalSignatures;
+        $signals: Credentials.SignalSignatures;
 
         // Constructors
 
@@ -15589,14 +15601,15 @@ export namespace Gio {
      */
     class DBusActionGroup extends GObject.Object implements ActionGroup, RemoteActionGroup {
         static $gtype: GObject.GType<DBusActionGroup>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DBusActionGroup.SignalSignatures;
+        $signals: DBusActionGroup.SignalSignatures;
 
         // Constructors
 
@@ -16667,14 +16680,15 @@ export namespace Gio {
      */
     class DBusAuthObserver extends GObject.Object {
         static $gtype: GObject.GType<DBusAuthObserver>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DBusAuthObserver.SignalSignatures;
+        $signals: DBusAuthObserver.SignalSignatures;
 
         // Constructors
 
@@ -16906,14 +16920,15 @@ export namespace Gio {
          * connection is not open or not a message bus connection.
          */
         get uniqueName(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DBusConnection.SignalSignatures;
+        $signals: DBusConnection.SignalSignatures;
 
         // Constructors
 
@@ -19116,14 +19131,15 @@ export namespace Gio {
          */
         get gFlags(): DBusInterfaceSkeletonFlags;
         set gFlags(val: DBusInterfaceSkeletonFlags);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DBusInterfaceSkeleton.SignalSignatures;
+        $signals: DBusInterfaceSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -19758,14 +19774,15 @@ export namespace Gio {
      */
     class DBusMenuModel extends MenuModel {
         static $gtype: GObject.GType<DBusMenuModel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DBusMenuModel.SignalSignatures;
+        $signals: DBusMenuModel.SignalSignatures;
 
         // Constructors
 
@@ -19832,14 +19849,15 @@ export namespace Gio {
         // Properties
 
         get locked(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DBusMessage.SignalSignatures;
+        $signals: DBusMessage.SignalSignatures;
 
         // Constructors
 
@@ -20214,14 +20232,15 @@ export namespace Gio {
      */
     class DBusMethodInvocation extends GObject.Object {
         static $gtype: GObject.GType<DBusMethodInvocation>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DBusMethodInvocation.SignalSignatures;
+        $signals: DBusMethodInvocation.SignalSignatures;
 
         // Constructors
 
@@ -20628,14 +20647,15 @@ export namespace Gio {
          * The object path the manager is for.
          */
         get objectPath(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DBusObjectManagerClient.SignalSignatures;
+        $signals: DBusObjectManagerClient.SignalSignatures;
 
         // Constructors
 
@@ -21657,14 +21677,15 @@ export namespace Gio {
          * The object path to register the manager object at.
          */
         get objectPath(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DBusObjectManagerServer.SignalSignatures;
+        $signals: DBusObjectManagerServer.SignalSignatures;
 
         // Constructors
 
@@ -22298,14 +22319,15 @@ export namespace Gio {
          * The object path of the proxy.
          */
         get gObjectPath(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DBusObjectProxy.SignalSignatures;
+        $signals: DBusObjectProxy.SignalSignatures;
 
         // Constructors
 
@@ -22861,14 +22883,15 @@ export namespace Gio {
          */
         get gObjectPath(): string;
         set gObjectPath(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DBusObjectSkeleton.SignalSignatures;
+        $signals: DBusObjectSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -23682,14 +23705,15 @@ export namespace Gio {
          * The object path the proxy is for.
          */
         get gObjectPath(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DBusProxy.SignalSignatures;
+        $signals: DBusProxy.SignalSignatures;
 
         // Constructors
 
@@ -25140,14 +25164,15 @@ export namespace Gio {
          * See #GDBusConnection:guid for more details.
          */
         get guid(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DBusServer.SignalSignatures;
+        $signals: DBusServer.SignalSignatures;
 
         // Constructors
 
@@ -25798,14 +25823,15 @@ export namespace Gio {
          */
         get newlineType(): DataStreamNewlineType;
         set newlineType(val: DataStreamNewlineType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataInputStream.SignalSignatures;
+        $signals: DataInputStream.SignalSignatures;
 
         // Constructors
 
@@ -26813,14 +26839,15 @@ export namespace Gio {
          */
         get byteOrder(): DataStreamByteOrder;
         set byteOrder(val: DataStreamByteOrder);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataOutputStream.SignalSignatures;
+        $signals: DataOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -27601,14 +27628,15 @@ export namespace Gio {
          * on.
          */
         get connection(): DBusConnection;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DebugControllerDBus.SignalSignatures;
+        $signals: DebugControllerDBus.SignalSignatures;
 
         // Constructors
 
@@ -28249,14 +28277,15 @@ export namespace Gio {
          * The origin filename of this [class`Gio`.DesktopAppInfo]
          */
         get filename(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DesktopAppInfo.SignalSignatures;
+        $signals: DesktopAppInfo.SignalSignatures;
 
         // Constructors
 
@@ -29458,14 +29487,15 @@ export namespace Gio {
          * The origin the emblem is derived from.
          */
         get origin(): EmblemOrigin;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Emblem.SignalSignatures;
+        $signals: Emblem.SignalSignatures;
 
         // Constructors
 
@@ -30042,14 +30072,15 @@ export namespace Gio {
          * The [iface`Gio`.Icon] to attach emblems to.
          */
         get gicon(): Icon;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EmblemedIcon.SignalSignatures;
+        $signals: EmblemedIcon.SignalSignatures;
 
         // Constructors
 
@@ -30653,14 +30684,15 @@ export namespace Gio {
          * The container that is being enumerated.
          */
         set container(val: File);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileEnumerator.SignalSignatures;
+        $signals: FileEnumerator.SignalSignatures;
 
         // Fields
 
@@ -31306,14 +31338,15 @@ export namespace Gio {
      */
     class FileIOStream extends IOStream implements Seekable {
         static $gtype: GObject.GType<FileIOStream>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileIOStream.SignalSignatures;
+        $signals: FileIOStream.SignalSignatures;
 
         // Constructors
 
@@ -32012,14 +32045,15 @@ export namespace Gio {
          * The file containing the icon.
          */
         get file(): File;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileIcon.SignalSignatures;
+        $signals: FileIcon.SignalSignatures;
 
         // Constructors
 
@@ -32677,14 +32711,15 @@ export namespace Gio {
      */
     class FileInfo extends GObject.Object {
         static $gtype: GObject.GType<FileInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileInfo.SignalSignatures;
+        $signals: FileInfo.SignalSignatures;
 
         // Constructors
 
@@ -33284,14 +33319,15 @@ export namespace Gio {
      */
     class FileInputStream extends InputStream implements Seekable {
         static $gtype: GObject.GType<FileInputStream>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileInputStream.SignalSignatures;
+        $signals: FileInputStream.SignalSignatures;
 
         // Constructors
 
@@ -34008,14 +34044,15 @@ export namespace Gio {
          */
         get rateLimit(): number;
         set rateLimit(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileMonitor.SignalSignatures;
+        $signals: FileMonitor.SignalSignatures;
 
         // Constructors
 
@@ -34109,14 +34146,15 @@ export namespace Gio {
      */
     class FileOutputStream extends OutputStream implements Seekable {
         static $gtype: GObject.GType<FileOutputStream>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileOutputStream.SignalSignatures;
+        $signals: FileOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -34802,14 +34840,15 @@ export namespace Gio {
      */
     class FilenameCompleter extends GObject.Object {
         static $gtype: GObject.GType<FilenameCompleter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilenameCompleter.SignalSignatures;
+        $signals: FilenameCompleter.SignalSignatures;
 
         // Constructors
 
@@ -34909,14 +34948,15 @@ export namespace Gio {
          */
         get closeBaseStream(): boolean;
         set closeBaseStream(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilterInputStream.SignalSignatures;
+        $signals: FilterInputStream.SignalSignatures;
 
         // Constructors
 
@@ -35006,14 +35046,15 @@ export namespace Gio {
          * Whether the base stream should be closed when the filter stream is closed.
          */
         get closeBaseStream(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilterOutputStream.SignalSignatures;
+        $signals: FilterOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -35075,14 +35116,15 @@ export namespace Gio {
      */
     class IOModule extends GObject.TypeModule implements GObject.TypePlugin {
         static $gtype: GObject.GType<IOModule>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IOModule.SignalSignatures;
+        $signals: IOModule.SignalSignatures;
 
         // Constructors
 
@@ -35719,14 +35761,15 @@ export namespace Gio {
          * The [class`Gio`.OutputStream] to write to.
          */
         get outputStream(): OutputStream;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IOStream.SignalSignatures;
+        $signals: IOStream.SignalSignatures;
 
         // Constructors
 
@@ -36126,14 +36169,15 @@ export namespace Gio {
          * See g_inet_address_get_is_loopback().
          */
         get isSiteLocal(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InetAddress.SignalSignatures;
+        $signals: InetAddress.SignalSignatures;
 
         // Constructors
 
@@ -36297,14 +36341,15 @@ export namespace Gio {
          */
         get length(): number;
         set length(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InetAddressMask.SignalSignatures;
+        $signals: InetAddressMask.SignalSignatures;
 
         // Constructors
 
@@ -36949,14 +36994,15 @@ export namespace Gio {
          * The `sin6_scope_id` field, for IPv6 addresses.
          */
         get scopeId(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InetSocketAddress.SignalSignatures;
+        $signals: InetSocketAddress.SignalSignatures;
 
         // Constructors
 
@@ -37530,14 +37576,15 @@ export namespace Gio {
      */
     abstract class InputStream extends GObject.Object {
         static $gtype: GObject.GType<InputStream>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InputStream.SignalSignatures;
+        $signals: InputStream.SignalSignatures;
 
         // Constructors
 
@@ -38370,14 +38417,15 @@ export namespace Gio {
          * The number of items contained in this list store.
          */
         get nItems(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ListStore.SignalSignatures;
+        $signals: ListStore.SignalSignatures;
 
         // Fields
 
@@ -39080,14 +39128,15 @@ export namespace Gio {
      */
     class MemoryInputStream extends InputStream implements PollableInputStream, Seekable {
         static $gtype: GObject.GType<MemoryInputStream>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MemoryInputStream.SignalSignatures;
+        $signals: MemoryInputStream.SignalSignatures;
 
         // Constructors
 
@@ -40591,14 +40640,15 @@ export namespace Gio {
          * Current size of the data buffer.
          */
         get size(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MemoryOutputStream.SignalSignatures;
+        $signals: MemoryOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -42579,14 +42629,15 @@ export namespace Gio {
      */
     class Menu extends MenuModel {
         static $gtype: GObject.GType<Menu>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Menu.SignalSignatures;
+        $signals: Menu.SignalSignatures;
 
         // Constructors
 
@@ -42773,14 +42824,15 @@ export namespace Gio {
      */
     abstract class MenuAttributeIter extends GObject.Object {
         static $gtype: GObject.GType<MenuAttributeIter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MenuAttributeIter.SignalSignatures;
+        $signals: MenuAttributeIter.SignalSignatures;
 
         // Constructors
 
@@ -42893,14 +42945,15 @@ export namespace Gio {
      */
     class MenuItem extends GObject.Object {
         static $gtype: GObject.GType<MenuItem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MenuItem.SignalSignatures;
+        $signals: MenuItem.SignalSignatures;
 
         // Constructors
 
@@ -43111,14 +43164,15 @@ export namespace Gio {
      */
     abstract class MenuLinkIter extends GObject.Object {
         static $gtype: GObject.GType<MenuLinkIter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MenuLinkIter.SignalSignatures;
+        $signals: MenuLinkIter.SignalSignatures;
 
         // Constructors
 
@@ -43346,14 +43400,15 @@ export namespace Gio {
      */
     abstract class MenuModel extends GObject.Object {
         static $gtype: GObject.GType<MenuModel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MenuModel.SignalSignatures;
+        $signals: MenuModel.SignalSignatures;
 
         // Constructors
 
@@ -43680,14 +43735,15 @@ export namespace Gio {
          */
         get username(): string;
         set username(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MountOperation.SignalSignatures;
+        $signals: MountOperation.SignalSignatures;
 
         // Constructors
 
@@ -43865,14 +43921,15 @@ export namespace Gio {
      */
     class NativeSocketAddress extends SocketAddress implements SocketConnectable {
         static $gtype: GObject.GType<NativeSocketAddress>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NativeSocketAddress.SignalSignatures;
+        $signals: NativeSocketAddress.SignalSignatures;
 
         // Constructors
 
@@ -44406,14 +44463,15 @@ export namespace Gio {
 
     abstract class NativeVolumeMonitor extends VolumeMonitor {
         static $gtype: GObject.GType<NativeVolumeMonitor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NativeVolumeMonitor.SignalSignatures;
+        $signals: NativeVolumeMonitor.SignalSignatures;
 
         // Constructors
 
@@ -44488,14 +44546,15 @@ export namespace Gio {
          * URI scheme.
          */
         get scheme(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NetworkAddress.SignalSignatures;
+        $signals: NetworkAddress.SignalSignatures;
 
         // Constructors
 
@@ -45129,14 +45188,15 @@ export namespace Gio {
          * Service name, for example `ldap`.
          */
         get service(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NetworkService.SignalSignatures;
+        $signals: NetworkService.SignalSignatures;
 
         // Constructors
 
@@ -45746,14 +45806,15 @@ export namespace Gio {
      */
     class Notification extends GObject.Object {
         static $gtype: GObject.GType<Notification>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Notification.SignalSignatures;
+        $signals: Notification.SignalSignatures;
 
         // Constructors
 
@@ -45904,14 +45965,15 @@ export namespace Gio {
      */
     abstract class OutputStream extends GObject.Object {
         static $gtype: GObject.GType<OutputStream>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OutputStream.SignalSignatures;
+        $signals: OutputStream.SignalSignatures;
 
         // Constructors
 
@@ -47187,14 +47249,15 @@ export namespace Gio {
          * g_permission_release().
          */
         get canRelease(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Permission.SignalSignatures;
+        $signals: Permission.SignalSignatures;
 
         // Constructors
 
@@ -47607,14 +47670,15 @@ export namespace Gio {
          * action is stateless.
          */
         get stateType(): GLib.VariantType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PropertyAction.SignalSignatures;
+        $signals: PropertyAction.SignalSignatures;
 
         // Constructors
 
@@ -48364,14 +48428,15 @@ export namespace Gio {
          * The proxy username.
          */
         get username(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProxyAddress.SignalSignatures;
+        $signals: ProxyAddress.SignalSignatures;
 
         // Constructors
 
@@ -48961,14 +49026,15 @@ export namespace Gio {
          * The destination URI. Use `none://` for a generic socket.
          */
         get uri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProxyAddressEnumerator.SignalSignatures;
+        $signals: ProxyAddressEnumerator.SignalSignatures;
 
         // Constructors
 
@@ -49051,14 +49117,15 @@ export namespace Gio {
          */
         get timeout(): number;
         set timeout(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Resolver.SignalSignatures;
+        $signals: Resolver.SignalSignatures;
 
         // Constructors
 
@@ -50211,14 +50278,15 @@ export namespace Gio {
          * than the schema itself.  Take care.
          */
         get settingsSchema(): SettingsSchema;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Settings.SignalSignatures;
+        $signals: Settings.SignalSignatures;
 
         // Fields
 
@@ -50894,14 +50962,15 @@ export namespace Gio {
      */
     abstract class SettingsBackend extends GObject.Object {
         static $gtype: GObject.GType<SettingsBackend>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingsBackend.SignalSignatures;
+        $signals: SettingsBackend.SignalSignatures;
 
         // Constructors
 
@@ -51185,14 +51254,15 @@ export namespace Gio {
          * action is stateless.
          */
         get stateType(): GLib.VariantType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimpleAction.SignalSignatures;
+        $signals: SimpleAction.SignalSignatures;
 
         // Constructors
 
@@ -51915,14 +51985,15 @@ export namespace Gio {
      */
     class SimpleActionGroup extends GObject.Object implements ActionGroup, ActionMap {
         static $gtype: GObject.GType<SimpleActionGroup>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimpleActionGroup.SignalSignatures;
+        $signals: SimpleActionGroup.SignalSignatures;
 
         // Constructors
 
@@ -53125,14 +53196,15 @@ export namespace Gio {
      */
     class SimpleAsyncResult extends GObject.Object implements AsyncResult {
         static $gtype: GObject.GType<SimpleAsyncResult>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimpleAsyncResult.SignalSignatures;
+        $signals: SimpleAsyncResult.SignalSignatures;
 
         // Constructors
 
@@ -53816,14 +53888,15 @@ export namespace Gio {
          * The [class`Gio`.OutputStream] to write to.
          */
         get outputStream(): OutputStream;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimpleIOStream.SignalSignatures;
+        $signals: SimpleIOStream.SignalSignatures;
 
         // Constructors
 
@@ -53875,14 +53948,15 @@ export namespace Gio {
      */
     class SimplePermission extends Permission {
         static $gtype: GObject.GType<SimplePermission>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimplePermission.SignalSignatures;
+        $signals: SimplePermission.SignalSignatures;
 
         // Constructors
 
@@ -54041,14 +54115,15 @@ export namespace Gio {
          */
         get ignoreHosts(): string[];
         set ignoreHosts(val: string[]);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimpleProxyResolver.SignalSignatures;
+        $signals: SimpleProxyResolver.SignalSignatures;
 
         // Constructors
 
@@ -54884,14 +54959,15 @@ export namespace Gio {
          * The socket’s type.
          */
         get type(): SocketType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Socket.SignalSignatures;
+        $signals: Socket.SignalSignatures;
 
         // Constructors
 
@@ -56645,14 +56721,15 @@ export namespace Gio {
          * The family of the socket address.
          */
         get family(): SocketFamily;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SocketAddress.SignalSignatures;
+        $signals: SocketAddress.SignalSignatures;
 
         // Constructors
 
@@ -57252,14 +57329,15 @@ export namespace Gio {
      */
     abstract class SocketAddressEnumerator extends GObject.Object {
         static $gtype: GObject.GType<SocketAddressEnumerator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SocketAddressEnumerator.SignalSignatures;
+        $signals: SocketAddressEnumerator.SignalSignatures;
 
         // Constructors
 
@@ -57537,14 +57615,15 @@ export namespace Gio {
          */
         get type(): SocketType;
         set type(val: SocketType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SocketClient.SignalSignatures;
+        $signals: SocketClient.SignalSignatures;
 
         // Constructors
 
@@ -58159,14 +58238,15 @@ export namespace Gio {
          * The underlying [class`Gio`.Socket].
          */
         get socket(): Socket;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SocketConnection.SignalSignatures;
+        $signals: SocketConnection.SignalSignatures;
 
         // Constructors
 
@@ -58357,14 +58437,15 @@ export namespace Gio {
      */
     abstract class SocketControlMessage extends GObject.Object {
         static $gtype: GObject.GType<SocketControlMessage>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SocketControlMessage.SignalSignatures;
+        $signals: SocketControlMessage.SignalSignatures;
 
         // Constructors
 
@@ -58514,14 +58595,15 @@ export namespace Gio {
          */
         get listenBacklog(): number;
         set listenBacklog(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SocketListener.SignalSignatures;
+        $signals: SocketListener.SignalSignatures;
 
         // Constructors
 
@@ -58826,14 +58908,15 @@ export namespace Gio {
          */
         get active(): boolean;
         set active(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SocketService.SignalSignatures;
+        $signals: SocketService.SignalSignatures;
 
         // Constructors
 
@@ -59003,14 +59086,15 @@ export namespace Gio {
          * Subprocess flags.
          */
         set flags(val: SubprocessFlags);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Subprocess.SignalSignatures;
+        $signals: Subprocess.SignalSignatures;
 
         // Constructors
 
@@ -59947,14 +60031,15 @@ export namespace Gio {
          * [flags`Gio`.SubprocessFlags] for launched processes.
          */
         set flags(val: SubprocessFlags);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SubprocessLauncher.SignalSignatures;
+        $signals: SubprocessLauncher.SignalSignatures;
 
         // Constructors
 
@@ -60774,14 +60859,15 @@ export namespace Gio {
          * context as the task’s callback, immediately after that callback is invoked.
          */
         get completed(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Task.SignalSignatures;
+        $signals: Task.SignalSignatures;
 
         // Constructors
 
@@ -61714,14 +61800,15 @@ export namespace Gio {
          */
         get gracefulDisconnect(): boolean;
         set gracefulDisconnect(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TcpConnection.SignalSignatures;
+        $signals: TcpConnection.SignalSignatures;
 
         // Constructors
 
@@ -61805,14 +61892,15 @@ export namespace Gio {
          * The wrapped [class`Gio`.IOStream].
          */
         get baseIoStream(): IOStream;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TcpWrapperConnection.SignalSignatures;
+        $signals: TcpWrapperConnection.SignalSignatures;
 
         // Constructors
 
@@ -61949,14 +62037,15 @@ export namespace Gio {
          * #GTestDBusFlags specifying the behaviour of the D-Bus session.
          */
         get flags(): TestDBusFlags;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TestDBus.SignalSignatures;
+        $signals: TestDBus.SignalSignatures;
 
         // Constructors
 
@@ -62128,14 +62217,15 @@ export namespace Gio {
          *
          */
         get useDefaultFallbacks(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ThemedIcon.SignalSignatures;
+        $signals: ThemedIcon.SignalSignatures;
 
         // Constructors
 
@@ -62712,14 +62802,15 @@ export namespace Gio {
      */
     class ThreadedResolver extends Resolver {
         static $gtype: GObject.GType<ThreadedResolver>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ThreadedResolver.SignalSignatures;
+        $signals: ThreadedResolver.SignalSignatures;
 
         // Constructors
 
@@ -62794,14 +62885,15 @@ export namespace Gio {
          * The maximum number of threads handling clients for this service.
          */
         get maxThreads(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ThreadedSocketService.SignalSignatures;
+        $signals: ThreadedSocketService.SignalSignatures;
 
         // Constructors
 
@@ -63125,14 +63217,15 @@ export namespace Gio {
          * %NULL if unavailable.
          */
         get subjectName(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TlsCertificate.SignalSignatures;
+        $signals: TlsCertificate.SignalSignatures;
 
         // Constructors
 
@@ -63555,14 +63648,15 @@ export namespace Gio {
          */
         get useSystemCertdb(): boolean;
         set useSystemCertdb(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TlsConnection.SignalSignatures;
+        $signals: TlsConnection.SignalSignatures;
 
         // Constructors
 
@@ -63988,14 +64082,15 @@ export namespace Gio {
      */
     abstract class TlsDatabase extends GObject.Object {
         static $gtype: GObject.GType<TlsDatabase>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TlsDatabase.SignalSignatures;
+        $signals: TlsDatabase.SignalSignatures;
 
         // Constructors
 
@@ -64746,14 +64841,15 @@ export namespace Gio {
      */
     class TlsInteraction extends GObject.Object {
         static $gtype: GObject.GType<TlsInteraction>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TlsInteraction.SignalSignatures;
+        $signals: TlsInteraction.SignalSignatures;
 
         // Constructors
 
@@ -65202,14 +65298,15 @@ export namespace Gio {
          */
         get warning(): string;
         set warning(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TlsPassword.SignalSignatures;
+        $signals: TlsPassword.SignalSignatures;
 
         // Constructors
 
@@ -65369,14 +65466,15 @@ export namespace Gio {
      */
     class UnixConnection extends SocketConnection {
         static $gtype: GObject.GType<UnixConnection>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UnixConnection.SignalSignatures;
+        $signals: UnixConnection.SignalSignatures;
 
         // Constructors
 
@@ -65606,14 +65704,15 @@ export namespace Gio {
          * The credentials stored in the message.
          */
         get credentials(): Credentials;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UnixCredentialsMessage.SignalSignatures;
+        $signals: UnixCredentialsMessage.SignalSignatures;
 
         // Constructors
 
@@ -65688,14 +65787,15 @@ export namespace Gio {
      */
     class UnixFDList extends GObject.Object {
         static $gtype: GObject.GType<UnixFDList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UnixFDList.SignalSignatures;
+        $signals: UnixFDList.SignalSignatures;
 
         // Constructors
 
@@ -65850,14 +65950,15 @@ export namespace Gio {
          * The [class`Gio`.UnixFDList] object to send with the message.
          */
         get fdList(): UnixFDList;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UnixFDMessage.SignalSignatures;
+        $signals: UnixFDMessage.SignalSignatures;
 
         // Constructors
 
@@ -65981,14 +66082,15 @@ export namespace Gio {
          * The file descriptor that the stream reads from.
          */
         get fd(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UnixInputStream.SignalSignatures;
+        $signals: UnixInputStream.SignalSignatures;
 
         // Constructors
 
@@ -67374,14 +67476,15 @@ export namespace Gio {
      */
     class UnixMountMonitor extends GObject.Object {
         static $gtype: GObject.GType<UnixMountMonitor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UnixMountMonitor.SignalSignatures;
+        $signals: UnixMountMonitor.SignalSignatures;
 
         // Constructors
 
@@ -67488,14 +67591,15 @@ export namespace Gio {
          * The file descriptor that the stream writes to.
          */
         get fd(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UnixOutputStream.SignalSignatures;
+        $signals: UnixOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -69413,14 +69517,15 @@ export namespace Gio {
          * Unix socket path, as a byte array.
          */
         get pathAsArray(): Uint8Array;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UnixSocketAddress.SignalSignatures;
+        $signals: UnixSocketAddress.SignalSignatures;
 
         // Constructors
 
@@ -69996,14 +70101,15 @@ export namespace Gio {
      */
     class Vfs extends GObject.Object {
         static $gtype: GObject.GType<Vfs>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Vfs.SignalSignatures;
+        $signals: Vfs.SignalSignatures;
 
         // Constructors
 
@@ -70206,14 +70312,15 @@ export namespace Gio {
      */
     class VolumeMonitor extends GObject.Object {
         static $gtype: GObject.GType<VolumeMonitor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VolumeMonitor.SignalSignatures;
+        $signals: VolumeMonitor.SignalSignatures;
 
         // Constructors
 
@@ -70414,14 +70521,15 @@ export namespace Gio {
          * compression). `-1` for the default level.
          */
         get level(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ZlibCompressor.SignalSignatures;
+        $signals: ZlibCompressor.SignalSignatures;
 
         // Constructors
 
@@ -71157,14 +71265,15 @@ export namespace Gio {
          * The format of the compressed data.
          */
         get format(): ZlibCompressorFormat;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ZlibDecompressor.SignalSignatures;
+        $signals: ZlibDecompressor.SignalSignatures;
 
         // Constructors
 

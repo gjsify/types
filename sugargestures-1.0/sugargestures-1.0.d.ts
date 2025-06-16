@@ -96,14 +96,15 @@ export namespace SugarGestures {
         get state(): EventControllerState;
         get widget(): Gtk.Widget;
         set widget(val: Gtk.Widget);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EventController.SignalSignatures;
+        $signals: EventController.SignalSignatures;
 
         // Constructors
 
@@ -177,14 +178,15 @@ export namespace SugarGestures {
         set trigger_delay(val: number);
         get triggerDelay(): number;
         set triggerDelay(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LongPressController.SignalSignatures;
+        $signals: LongPressController.SignalSignatures;
 
         // Constructors
 
@@ -236,14 +238,15 @@ export namespace SugarGestures {
 
     class RotateController extends TouchController {
         static $gtype: GObject.GType<RotateController>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RotateController.SignalSignatures;
+        $signals: RotateController.SignalSignatures;
 
         // Fields
 
@@ -312,14 +315,15 @@ export namespace SugarGestures {
         // Properties
 
         get directions(): SwipeDirectionFlags;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SwipeController.SignalSignatures;
+        $signals: SwipeController.SignalSignatures;
 
         // Constructors
 
@@ -384,14 +388,15 @@ export namespace SugarGestures {
         set min_touches(val: number);
         get minTouches(): number;
         set minTouches(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TouchController.SignalSignatures;
+        $signals: TouchController.SignalSignatures;
 
         // Constructors
 
@@ -461,14 +466,15 @@ export namespace SugarGestures {
 
     class ZoomController extends TouchController {
         static $gtype: GObject.GType<ZoomController>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ZoomController.SignalSignatures;
+        $signals: ZoomController.SignalSignatures;
 
         // Fields
 

@@ -82,14 +82,15 @@ export namespace RygelRendererGst {
         set playbin(val: Gst.Element);
         get supported_profiles(): RygelCore.DLNAProfile[];
         get supportedProfiles(): RygelCore.DLNAProfile[];
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlaybinPlayer.SignalSignatures;
+        $signals: PlaybinPlayer.SignalSignatures;
 
         // Constructors
 
@@ -679,14 +680,15 @@ export namespace RygelRendererGst {
 
     class PlaybinRenderer extends RygelRenderer.MediaRenderer {
         static $gtype: GObject.GType<PlaybinRenderer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlaybinRenderer.SignalSignatures;
+        $signals: PlaybinRenderer.SignalSignatures;
 
         // Constructors
 

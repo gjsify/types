@@ -33,14 +33,15 @@ export namespace Grss {
 
     class FeedAtomFormatter extends FeedFormatter {
         static $gtype: GObject.GType<FeedAtomFormatter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FeedAtomFormatter.SignalSignatures;
+        $signals: FeedAtomFormatter.SignalSignatures;
 
         // Constructors
 
@@ -80,14 +81,15 @@ export namespace Grss {
 
     class FeedChannel extends GObject.Object {
         static $gtype: GObject.GType<FeedChannel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FeedChannel.SignalSignatures;
+        $signals: FeedChannel.SignalSignatures;
 
         // Constructors
 
@@ -427,14 +429,15 @@ export namespace Grss {
 
     class FeedEnclosure extends GObject.Object {
         static $gtype: GObject.GType<FeedEnclosure>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FeedEnclosure.SignalSignatures;
+        $signals: FeedEnclosure.SignalSignatures;
 
         // Constructors
 
@@ -530,14 +533,15 @@ export namespace Grss {
 
     abstract class FeedFormatter extends GObject.Object {
         static $gtype: GObject.GType<FeedFormatter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FeedFormatter.SignalSignatures;
+        $signals: FeedFormatter.SignalSignatures;
 
         // Constructors
 
@@ -625,14 +629,15 @@ export namespace Grss {
 
     class FeedItem extends GObject.Object {
         static $gtype: GObject.GType<FeedItem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FeedItem.SignalSignatures;
+        $signals: FeedItem.SignalSignatures;
 
         // Constructors
 
@@ -839,14 +844,15 @@ export namespace Grss {
 
     class FeedParser extends GObject.Object {
         static $gtype: GObject.GType<FeedParser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FeedParser.SignalSignatures;
+        $signals: FeedParser.SignalSignatures;
 
         // Constructors
 
@@ -906,14 +912,15 @@ export namespace Grss {
 
     class FeedRssFormatter extends FeedFormatter {
         static $gtype: GObject.GType<FeedRssFormatter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FeedRssFormatter.SignalSignatures;
+        $signals: FeedRssFormatter.SignalSignatures;
 
         // Constructors
 
@@ -953,14 +960,15 @@ export namespace Grss {
 
     class FeedsGroup extends GObject.Object {
         static $gtype: GObject.GType<FeedsGroup>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FeedsGroup.SignalSignatures;
+        $signals: FeedsGroup.SignalSignatures;
 
         // Constructors
 
@@ -1027,14 +1035,15 @@ export namespace Grss {
 
     class FeedsPool extends GObject.Object {
         static $gtype: GObject.GType<FeedsPool>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FeedsPool.SignalSignatures;
+        $signals: FeedsPool.SignalSignatures;
 
         // Constructors
 
@@ -1120,14 +1129,15 @@ export namespace Grss {
 
     class FeedsPublisher extends GObject.Object {
         static $gtype: GObject.GType<FeedsPublisher>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FeedsPublisher.SignalSignatures;
+        $signals: FeedsPublisher.SignalSignatures;
 
         // Constructors
 
@@ -1225,14 +1235,15 @@ export namespace Grss {
 
     abstract class FeedsStore extends GObject.Object {
         static $gtype: GObject.GType<FeedsStore>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FeedsStore.SignalSignatures;
+        $signals: FeedsStore.SignalSignatures;
 
         // Constructors
 
@@ -1334,14 +1345,15 @@ export namespace Grss {
 
     class FeedsSubscriber extends GObject.Object {
         static $gtype: GObject.GType<FeedsSubscriber>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FeedsSubscriber.SignalSignatures;
+        $signals: FeedsSubscriber.SignalSignatures;
 
         // Constructors
 

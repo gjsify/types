@@ -88,14 +88,15 @@ export namespace Cally {
      */
     class Actor extends Atk.GObjectAccessible implements Atk.Action, Atk.Component {
         static $gtype: GObject.GType<Actor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Actor.SignalSignatures;
+        $signals: Actor.SignalSignatures;
 
         // Constructors
 
@@ -1030,14 +1031,15 @@ export namespace Cally {
      */
     class Clone extends Actor implements Atk.Action, Atk.Component {
         static $gtype: GObject.GType<Clone>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Clone.SignalSignatures;
+        $signals: Clone.SignalSignatures;
 
         // Constructors
 
@@ -1943,14 +1945,15 @@ export namespace Cally {
      */
     class Root extends Atk.GObjectAccessible {
         static $gtype: GObject.GType<Root>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Root.SignalSignatures;
+        $signals: Root.SignalSignatures;
 
         // Constructors
 
@@ -2023,14 +2026,15 @@ export namespace Cally {
      */
     class Stage extends Actor implements Atk.Action, Atk.Component, Atk.Window {
         static $gtype: GObject.GType<Stage>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Stage.SignalSignatures;
+        $signals: Stage.SignalSignatures;
 
         // Constructors
 
@@ -3275,14 +3279,15 @@ export namespace Cally {
      */
     class Text extends Actor implements Atk.Action, Atk.Component, Atk.EditableText, Atk.Text {
         static $gtype: GObject.GType<Text>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Text.SignalSignatures;
+        $signals: Text.SignalSignatures;
 
         // Constructors
 
@@ -4751,14 +4756,15 @@ export namespace Cally {
      */
     class Util extends Atk.Util {
         static $gtype: GObject.GType<Util>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Util.SignalSignatures;
+        $signals: Util.SignalSignatures;
 
         // Constructors
 

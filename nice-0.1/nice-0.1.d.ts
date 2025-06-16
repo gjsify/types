@@ -1190,14 +1190,15 @@ export namespace Nice {
          */
         get upnpTimeout(): number;
         set upnpTimeout(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Agent.SignalSignatures;
+        $signals: Agent.SignalSignatures;
 
         // Constructors
 
@@ -2015,14 +2016,15 @@ export namespace Nice {
          * Support is enabled by default.
          */
         get supportFinAck(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PseudoTcpSocket.SignalSignatures;
+        $signals: PseudoTcpSocket.SignalSignatures;
 
         // Constructors
 

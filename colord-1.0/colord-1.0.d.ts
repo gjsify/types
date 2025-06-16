@@ -1058,14 +1058,15 @@ export namespace Colord {
          * The system vendor.
          */
         get systemVendor(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -2117,14 +2118,15 @@ export namespace Colord {
          * The device vendor.
          */
         get vendor(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Device.SignalSignatures;
+        $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -2839,14 +2841,15 @@ export namespace Colord {
 
     class Edid extends GObject.Object {
         static $gtype: GObject.GType<Edid>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Edid.SignalSignatures;
+        $signals: Edid.SignalSignatures;
 
         // Constructors
 
@@ -3017,14 +3020,15 @@ export namespace Colord {
         get version(): number;
         set version(val: number);
         get white(): ColorXYZ;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Icc.SignalSignatures;
+        $signals: Icc.SignalSignatures;
 
         // Constructors
 
@@ -3492,14 +3496,15 @@ export namespace Colord {
          * The file title, e.g. "Factor calibration".
          */
         get title(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: It8.SignalSignatures;
+        $signals: It8.SignalSignatures;
 
         // Constructors
 
@@ -3840,14 +3845,15 @@ export namespace Colord {
          * The profile warnings, e.g. "vcgt-non-monotonic".
          */
         get warnings(): string[];
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Profile.SignalSignatures;
+        $signals: Profile.SignalSignatures;
 
         // Constructors
 
@@ -4260,14 +4266,15 @@ export namespace Colord {
          * The sensor vendor.
          */
         get vendor(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Sensor.SignalSignatures;
+        $signals: Sensor.SignalSignatures;
 
         // Constructors
 

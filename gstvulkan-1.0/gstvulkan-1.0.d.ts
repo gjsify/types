@@ -413,14 +413,15 @@ export namespace GstVulkan {
      */
     class VulkanBufferMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VulkanBufferMemoryAllocator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VulkanBufferMemoryAllocator.SignalSignatures;
+        $signals: VulkanBufferMemoryAllocator.SignalSignatures;
 
         // Constructors
 
@@ -466,14 +467,15 @@ export namespace GstVulkan {
      */
     class VulkanBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VulkanBufferPool>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VulkanBufferPool.SignalSignatures;
+        $signals: VulkanBufferPool.SignalSignatures;
 
         // Fields
 
@@ -524,14 +526,15 @@ export namespace GstVulkan {
 
     class VulkanCommandPool extends Gst.Object {
         static $gtype: GObject.GType<VulkanCommandPool>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VulkanCommandPool.SignalSignatures;
+        $signals: VulkanCommandPool.SignalSignatures;
 
         // Fields
 
@@ -595,14 +598,15 @@ export namespace GstVulkan {
 
     class VulkanDescriptorCache extends VulkanHandlePool {
         static $gtype: GObject.GType<VulkanDescriptorCache>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VulkanDescriptorCache.SignalSignatures;
+        $signals: VulkanDescriptorCache.SignalSignatures;
 
         // Fields
 
@@ -657,14 +661,15 @@ export namespace GstVulkan {
 
     class VulkanDescriptorPool extends Gst.Object {
         static $gtype: GObject.GType<VulkanDescriptorPool>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VulkanDescriptorPool.SignalSignatures;
+        $signals: VulkanDescriptorPool.SignalSignatures;
 
         // Fields
 
@@ -731,14 +736,15 @@ export namespace GstVulkan {
         get instance(): VulkanInstance;
         get physical_device(): VulkanPhysicalDevice;
         get physicalDevice(): VulkanPhysicalDevice;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VulkanDevice.SignalSignatures;
+        $signals: VulkanDevice.SignalSignatures;
 
         // Constructors
 
@@ -828,14 +834,15 @@ export namespace GstVulkan {
      */
     class VulkanDisplay extends Gst.Object {
         static $gtype: GObject.GType<VulkanDisplay>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VulkanDisplay.SignalSignatures;
+        $signals: VulkanDisplay.SignalSignatures;
 
         // Constructors
 
@@ -927,14 +934,15 @@ export namespace GstVulkan {
 
     class VulkanFenceCache extends VulkanHandlePool {
         static $gtype: GObject.GType<VulkanFenceCache>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VulkanFenceCache.SignalSignatures;
+        $signals: VulkanFenceCache.SignalSignatures;
 
         // Constructors
 
@@ -977,14 +985,15 @@ export namespace GstVulkan {
 
     class VulkanFullScreenQuad extends Gst.Object {
         static $gtype: GObject.GType<VulkanFullScreenQuad>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VulkanFullScreenQuad.SignalSignatures;
+        $signals: VulkanFullScreenQuad.SignalSignatures;
 
         // Fields
 
@@ -1051,14 +1060,15 @@ export namespace GstVulkan {
 
     abstract class VulkanHandlePool extends Gst.Object {
         static $gtype: GObject.GType<VulkanHandlePool>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VulkanHandlePool.SignalSignatures;
+        $signals: VulkanHandlePool.SignalSignatures;
 
         // Fields
 
@@ -1121,14 +1131,15 @@ export namespace GstVulkan {
      */
     class VulkanImageBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VulkanImageBufferPool>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VulkanImageBufferPool.SignalSignatures;
+        $signals: VulkanImageBufferPool.SignalSignatures;
 
         // Fields
 
@@ -1184,14 +1195,15 @@ export namespace GstVulkan {
      */
     class VulkanImageMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VulkanImageMemoryAllocator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VulkanImageMemoryAllocator.SignalSignatures;
+        $signals: VulkanImageMemoryAllocator.SignalSignatures;
 
         // Constructors
 
@@ -1235,14 +1247,15 @@ export namespace GstVulkan {
 
     class VulkanInstance extends Gst.Object {
         static $gtype: GObject.GType<VulkanInstance>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VulkanInstance.SignalSignatures;
+        $signals: VulkanInstance.SignalSignatures;
 
         // Fields
 
@@ -1323,14 +1336,15 @@ export namespace GstVulkan {
      */
     class VulkanMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VulkanMemoryAllocator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VulkanMemoryAllocator.SignalSignatures;
+        $signals: VulkanMemoryAllocator.SignalSignatures;
 
         // Constructors
 
@@ -1387,14 +1401,15 @@ export namespace GstVulkan {
         get deviceIndex(): number;
         get instance(): VulkanInstance;
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VulkanPhysicalDevice.SignalSignatures;
+        $signals: VulkanPhysicalDevice.SignalSignatures;
 
         // Fields
 
@@ -1453,14 +1468,15 @@ export namespace GstVulkan {
 
     class VulkanQueue extends Gst.Object {
         static $gtype: GObject.GType<VulkanQueue>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VulkanQueue.SignalSignatures;
+        $signals: VulkanQueue.SignalSignatures;
 
         // Fields
 
@@ -1562,14 +1578,15 @@ export namespace GstVulkan {
         set pixel_aspect_ratio(val: Gst.Fraction);
         get pixelAspectRatio(): Gst.Fraction;
         set pixelAspectRatio(val: Gst.Fraction);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VulkanSwapper.SignalSignatures;
+        $signals: VulkanSwapper.SignalSignatures;
 
         // Fields
 
@@ -1631,14 +1648,15 @@ export namespace GstVulkan {
 
     class VulkanTrashFenceList extends VulkanTrashList {
         static $gtype: GObject.GType<VulkanTrashFenceList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VulkanTrashFenceList.SignalSignatures;
+        $signals: VulkanTrashFenceList.SignalSignatures;
 
         // Constructors
 
@@ -1683,14 +1701,15 @@ export namespace GstVulkan {
 
     class VulkanTrashList extends VulkanHandlePool {
         static $gtype: GObject.GType<VulkanTrashList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VulkanTrashList.SignalSignatures;
+        $signals: VulkanTrashList.SignalSignatures;
 
         // Constructors
 
@@ -1747,14 +1766,15 @@ export namespace GstVulkan {
 
     class VulkanVideoFilter extends GstBase.BaseTransform {
         static $gtype: GObject.GType<VulkanVideoFilter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VulkanVideoFilter.SignalSignatures;
+        $signals: VulkanVideoFilter.SignalSignatures;
 
         // Fields
 
@@ -1817,14 +1837,15 @@ export namespace GstVulkan {
         // Properties
 
         get display(): VulkanDisplay;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VulkanWindow.SignalSignatures;
+        $signals: VulkanWindow.SignalSignatures;
 
         // Constructors
 

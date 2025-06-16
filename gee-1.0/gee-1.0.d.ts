@@ -55,14 +55,15 @@ export namespace Gee {
         get isEmpty(): boolean;
         get read_only_view(): Collection;
         get readOnlyView(): Collection;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AbstractCollection.SignalSignatures;
+        $signals: AbstractCollection.SignalSignatures;
 
         // Constructors
 
@@ -584,14 +585,15 @@ export namespace Gee {
 
         get read_only_view(): List;
         get readOnlyView(): List;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AbstractList.SignalSignatures;
+        $signals: AbstractList.SignalSignatures;
 
         // Constructors
 
@@ -721,14 +723,15 @@ export namespace Gee {
         get entries(): Set;
         get read_only_view(): Map;
         get readOnlyView(): Map;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AbstractMap.SignalSignatures;
+        $signals: AbstractMap.SignalSignatures;
 
         // Constructors
 
@@ -1250,14 +1253,15 @@ export namespace Gee {
 
     abstract class AbstractMultiMap extends GObject.Object implements MultiMap {
         static $gtype: GObject.GType<AbstractMultiMap>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AbstractMultiMap.SignalSignatures;
+        $signals: AbstractMultiMap.SignalSignatures;
 
         // Constructors
 
@@ -1771,14 +1775,15 @@ export namespace Gee {
 
     abstract class AbstractMultiSet extends AbstractCollection implements MultiSet {
         static $gtype: GObject.GType<AbstractMultiSet>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AbstractMultiSet.SignalSignatures;
+        $signals: AbstractMultiSet.SignalSignatures;
 
         // Constructors
 
@@ -1871,14 +1876,15 @@ export namespace Gee {
         get remainingCapacity(): number;
         get is_full(): boolean;
         get isFull(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AbstractQueue.SignalSignatures;
+        $signals: AbstractQueue.SignalSignatures;
 
         // Constructors
 
@@ -1974,14 +1980,15 @@ export namespace Gee {
 
         get read_only_view(): Set;
         get readOnlyView(): Set;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AbstractSet.SignalSignatures;
+        $signals: AbstractSet.SignalSignatures;
 
         // Constructors
 
@@ -2063,14 +2070,15 @@ export namespace Gee {
         set equal_func(val: GLib.EqualFunc);
         get equalFunc(): GLib.EqualFunc;
         set equalFunc(val: GLib.EqualFunc);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ArrayList.SignalSignatures;
+        $signals: ArrayList.SignalSignatures;
 
         // Constructors
 
@@ -2146,14 +2154,15 @@ export namespace Gee {
         set value_equal_func(val: GLib.EqualFunc);
         get valueEqualFunc(): GLib.EqualFunc;
         set valueEqualFunc(val: GLib.EqualFunc);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HashMap.SignalSignatures;
+        $signals: HashMap.SignalSignatures;
 
         // Constructors
 
@@ -2226,14 +2235,15 @@ export namespace Gee {
         set value_equal_func(val: GLib.EqualFunc);
         get valueEqualFunc(): GLib.EqualFunc;
         set valueEqualFunc(val: GLib.EqualFunc);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HashMultiMap.SignalSignatures;
+        $signals: HashMultiMap.SignalSignatures;
 
         // Constructors
 
@@ -2296,14 +2306,15 @@ export namespace Gee {
         get hashFunc(): GLib.HashFunc;
         get equal_func(): GLib.EqualFunc;
         get equalFunc(): GLib.EqualFunc;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HashMultiSet.SignalSignatures;
+        $signals: HashMultiSet.SignalSignatures;
 
         // Constructors
 
@@ -2365,14 +2376,15 @@ export namespace Gee {
         set equal_func(val: GLib.EqualFunc);
         get equalFunc(): GLib.EqualFunc;
         set equalFunc(val: GLib.EqualFunc);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HashSet.SignalSignatures;
+        $signals: HashSet.SignalSignatures;
 
         // Constructors
 
@@ -2437,14 +2449,15 @@ export namespace Gee {
         set equalFunc(val: GLib.EqualFunc);
         get readOnlyView(): LinkedList;
         get read_only_view(): LinkedList;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LinkedList.SignalSignatures;
+        $signals: LinkedList.SignalSignatures;
 
         // Constructors
 
@@ -2535,14 +2548,15 @@ export namespace Gee {
         set compare_func(val: GLib.CompareFunc);
         get compareFunc(): GLib.CompareFunc;
         set compareFunc(val: GLib.CompareFunc);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PriorityQueue.SignalSignatures;
+        $signals: PriorityQueue.SignalSignatures;
 
         // Constructors
 
@@ -2607,14 +2621,15 @@ export namespace Gee {
         set value_equal_func(val: GLib.EqualFunc);
         get valueEqualFunc(): GLib.EqualFunc;
         set valueEqualFunc(val: GLib.EqualFunc);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TreeMap.SignalSignatures;
+        $signals: TreeMap.SignalSignatures;
 
         // Constructors
 
@@ -2671,14 +2686,15 @@ export namespace Gee {
         set value_compare_func(val: GLib.CompareFunc);
         get valueCompareFunc(): GLib.CompareFunc;
         set valueCompareFunc(val: GLib.CompareFunc);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TreeMultiMap.SignalSignatures;
+        $signals: TreeMultiMap.SignalSignatures;
 
         // Constructors
 
@@ -2731,14 +2747,15 @@ export namespace Gee {
 
         get compare_func(): GLib.CompareFunc;
         get compareFunc(): GLib.CompareFunc;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TreeMultiSet.SignalSignatures;
+        $signals: TreeMultiSet.SignalSignatures;
 
         // Constructors
 
@@ -2793,14 +2810,15 @@ export namespace Gee {
         set compare_func(val: GLib.CompareFunc);
         get compareFunc(): GLib.CompareFunc;
         set compareFunc(val: GLib.CompareFunc);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TreeSet.SignalSignatures;
+        $signals: TreeSet.SignalSignatures;
 
         // Constructors
 
@@ -2880,14 +2898,15 @@ export namespace Gee {
         get key(): any;
         get value(): any;
         set value(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MapEntry.SignalSignatures;
+        $signals: MapEntry.SignalSignatures;
 
         // Constructors
 

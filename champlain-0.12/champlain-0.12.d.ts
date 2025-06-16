@@ -245,14 +245,15 @@ export namespace Champlain {
         set upper(val: number);
         get value(): number;
         set value(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Adjustment.SignalSignatures;
+        $signals: Adjustment.SignalSignatures;
 
         // Constructors
 
@@ -313,14 +314,15 @@ export namespace Champlain {
      */
     class Coordinate extends GObject.InitiallyUnowned implements Location {
         static $gtype: GObject.GType<Coordinate>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Coordinate.SignalSignatures;
+        $signals: Coordinate.SignalSignatures;
 
         // Constructors
 
@@ -947,14 +949,15 @@ export namespace Champlain {
         implements Atk.ImplementorIface, Location, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<CustomMarker>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CustomMarker.SignalSignatures;
+        $signals: CustomMarker.SignalSignatures;
 
         // Constructors
 
@@ -1499,14 +1502,15 @@ export namespace Champlain {
          */
         get tileSize(): number;
         set tileSize(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ErrorTileRenderer.SignalSignatures;
+        $signals: ErrorTileRenderer.SignalSignatures;
 
         // Constructors
 
@@ -1598,14 +1602,15 @@ export namespace Champlain {
          */
         get sizeLimit(): number;
         set sizeLimit(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileCache.SignalSignatures;
+        $signals: FileCache.SignalSignatures;
 
         // Constructors
 
@@ -1688,14 +1693,15 @@ export namespace Champlain {
      */
     class FileTileSource extends TileSource {
         static $gtype: GObject.GType<FileTileSource>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileTileSource.SignalSignatures;
+        $signals: FileTileSource.SignalSignatures;
 
         // Constructors
 
@@ -1757,14 +1763,15 @@ export namespace Champlain {
      */
     class ImageRenderer extends Renderer {
         static $gtype: GObject.GType<ImageRenderer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ImageRenderer.SignalSignatures;
+        $signals: ImageRenderer.SignalSignatures;
 
         // Constructors
 
@@ -1919,14 +1926,15 @@ export namespace Champlain {
         set motion_buffer(val: number);
         get motionBuffer(): number;
         set motionBuffer(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: KineticScrollView.SignalSignatures;
+        $signals: KineticScrollView.SignalSignatures;
 
         // Constructors
 
@@ -3094,14 +3102,15 @@ export namespace Champlain {
          */
         get wrapMode(): Pango.WrapMode;
         set wrapMode(val: Pango.WrapMode);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Label.SignalSignatures;
+        $signals: Label.SignalSignatures;
 
         // Constructors
 
@@ -3876,14 +3885,15 @@ export namespace Champlain {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<Layer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Layer.SignalSignatures;
+        $signals: Layer.SignalSignatures;
 
         // Constructors
 
@@ -4960,14 +4970,15 @@ export namespace Champlain {
          */
         get extraText(): string;
         set extraText(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: License.SignalSignatures;
+        $signals: License.SignalSignatures;
 
         // Constructors
 
@@ -5952,14 +5963,15 @@ export namespace Champlain {
          */
         get renderer(): Renderer;
         set renderer(val: Renderer);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MapSource.SignalSignatures;
+        $signals: MapSource.SignalSignatures;
 
         // Constructors
 
@@ -6167,14 +6179,15 @@ export namespace Champlain {
      */
     class MapSourceChain extends MapSource {
         static $gtype: GObject.GType<MapSourceChain>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MapSourceChain.SignalSignatures;
+        $signals: MapSourceChain.SignalSignatures;
 
         // Constructors
 
@@ -6320,14 +6333,15 @@ export namespace Champlain {
          * The URI format of a network map source
          */
         get uriFormat(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MapSourceDesc.SignalSignatures;
+        $signals: MapSourceDesc.SignalSignatures;
 
         // Constructors
 
@@ -6422,14 +6436,15 @@ export namespace Champlain {
      */
     class MapSourceFactory extends GObject.Object {
         static $gtype: GObject.GType<MapSourceFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MapSourceFactory.SignalSignatures;
+        $signals: MapSourceFactory.SignalSignatures;
 
         // Constructors
 
@@ -6644,14 +6659,15 @@ export namespace Champlain {
          */
         get selected(): boolean;
         set selected(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Marker.SignalSignatures;
+        $signals: Marker.SignalSignatures;
 
         // Constructors
 
@@ -7807,14 +7823,15 @@ export namespace Champlain {
          */
         get selectionMode(): SelectionMode;
         set selectionMode(val: SelectionMode);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MarkerLayer.SignalSignatures;
+        $signals: MarkerLayer.SignalSignatures;
 
         // Constructors
 
@@ -8420,14 +8437,15 @@ export namespace Champlain {
          */
         get sizeLimit(): number;
         set sizeLimit(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MemoryCache.SignalSignatures;
+        $signals: MemoryCache.SignalSignatures;
 
         // Constructors
 
@@ -8549,14 +8567,15 @@ export namespace Champlain {
          * The HTTP user agent used for requests
          */
         set userAgent(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NetworkBboxTileSource.SignalSignatures;
+        $signals: NetworkBboxTileSource.SignalSignatures;
 
         // Constructors
 
@@ -8722,14 +8741,15 @@ export namespace Champlain {
          * The HTTP user agent used for requests
          */
         set userAgent(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NetworkTileSource.SignalSignatures;
+        $signals: NetworkTileSource.SignalSignatures;
 
         // Constructors
 
@@ -8855,14 +8875,15 @@ export namespace Champlain {
      */
     class NullTileSource extends TileSource {
         static $gtype: GObject.GType<NullTileSource>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NullTileSource.SignalSignatures;
+        $signals: NullTileSource.SignalSignatures;
 
         // Constructors
 
@@ -9070,14 +9091,15 @@ export namespace Champlain {
          */
         get visible(): boolean;
         set visible(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PathLayer.SignalSignatures;
+        $signals: PathLayer.SignalSignatures;
 
         // Constructors
 
@@ -9815,14 +9837,15 @@ export namespace Champlain {
         get size(): number | any;
         // This accessor conflicts with another accessor's type in a parent class or interface.
         set size(val: number | any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Point.SignalSignatures;
+        $signals: Point.SignalSignatures;
 
         // Constructors
 
@@ -10400,14 +10423,15 @@ export namespace Champlain {
      */
     class Renderer extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Renderer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Renderer.SignalSignatures;
+        $signals: Renderer.SignalSignatures;
 
         // Constructors
 
@@ -10599,14 +10623,15 @@ export namespace Champlain {
          */
         get unit(): Unit;
         set unit(val: Unit);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Scale.SignalSignatures;
+        $signals: Scale.SignalSignatures;
 
         // Constructors
 
@@ -11735,14 +11760,15 @@ export namespace Champlain {
          */
         get zoomLevel(): number;
         set zoomLevel(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Tile.SignalSignatures;
+        $signals: Tile.SignalSignatures;
 
         // Constructors
 
@@ -12803,14 +12829,15 @@ export namespace Champlain {
      */
     abstract class TileCache extends MapSource {
         static $gtype: GObject.GType<TileCache>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TileCache.SignalSignatures;
+        $signals: TileCache.SignalSignatures;
 
         // Constructors
 
@@ -12998,14 +13025,15 @@ export namespace Champlain {
          */
         get tileSize(): number;
         set tileSize(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TileSource.SignalSignatures;
+        $signals: TileSource.SignalSignatures;
 
         // Constructors
 
@@ -13507,14 +13535,15 @@ export namespace Champlain {
          */
         get zoomOnDoubleClick(): boolean;
         set zoomOnDoubleClick(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: View.SignalSignatures;
+        $signals: View.SignalSignatures;
 
         // Constructors
 
@@ -14847,14 +14876,15 @@ export namespace Champlain {
         set y_origin(val: number);
         get yOrigin(): number;
         set yOrigin(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Viewport.SignalSignatures;
+        $signals: Viewport.SignalSignatures;
 
         // Constructors
 

@@ -133,14 +133,15 @@ export namespace Gxps {
         // Properties
 
         set source(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CoreProperties.SignalSignatures;
+        $signals: CoreProperties.SignalSignatures;
 
         // Constructors
 
@@ -800,14 +801,15 @@ export namespace Gxps {
         // Properties
 
         set source(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Document.SignalSignatures;
+        $signals: Document.SignalSignatures;
 
         // Constructors
 
@@ -1424,14 +1426,15 @@ export namespace Gxps {
         // Properties
 
         set source(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentStructure.SignalSignatures;
+        $signals: DocumentStructure.SignalSignatures;
 
         // Constructors
 
@@ -1523,14 +1526,15 @@ export namespace Gxps {
         // Properties
 
         set file(val: Gio.File);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: File.SignalSignatures;
+        $signals: File.SignalSignatures;
 
         // Constructors
 
@@ -2146,14 +2150,15 @@ export namespace Gxps {
         // Properties
 
         set source(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Page.SignalSignatures;
+        $signals: Page.SignalSignatures;
 
         // Constructors
 

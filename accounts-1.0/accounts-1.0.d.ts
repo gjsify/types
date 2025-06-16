@@ -189,14 +189,15 @@ export namespace Accounts {
          * The ID of the provider for the account.
          */
         get provider(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Account.SignalSignatures;
+        $signals: Account.SignalSignatures;
 
         // Constructors
 
@@ -998,14 +999,15 @@ export namespace Accounts {
          * The #AgService used by the account service.
          */
         get service(): Service;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AccountService.SignalSignatures;
+        $signals: AccountService.SignalSignatures;
 
         // Constructors
 
@@ -1209,14 +1211,15 @@ export namespace Accounts {
          * such as maintenance programs.
          */
         get useDbus(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Manager.SignalSignatures;
+        $signals: Manager.SignalSignatures;
 
         // Constructors
 

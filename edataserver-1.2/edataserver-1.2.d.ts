@@ -2711,14 +2711,15 @@ export namespace EDataServer {
          * The #ESource for which this client was created.
          */
         get source(): Source;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -3485,14 +3486,15 @@ export namespace EDataServer {
         // Properties
 
         get extensible(): Extensible;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Extension.SignalSignatures;
+        $signals: Extension.SignalSignatures;
 
         // Constructors
 
@@ -3558,14 +3560,15 @@ export namespace EDataServer {
      */
     class GDataSession extends SoupSession {
         static $gtype: GObject.GType<GDataSession>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GDataSession.SignalSignatures;
+        $signals: GDataSession.SignalSignatures;
 
         // Constructors
 
@@ -3795,14 +3798,15 @@ export namespace EDataServer {
          * The filename of the module.
          */
         get filename(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Module.SignalSignatures;
+        $signals: Module.SignalSignatures;
 
         // Constructors
 
@@ -4387,14 +4391,15 @@ export namespace EDataServer {
          */
         get gioName(): string;
         set gioName(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NetworkMonitor.SignalSignatures;
+        $signals: NetworkMonitor.SignalSignatures;
 
         // Constructors
 
@@ -5261,14 +5266,15 @@ export namespace EDataServer {
 
     abstract class OAuth2ServiceBase extends Extension {
         static $gtype: GObject.GType<OAuth2ServiceBase>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OAuth2ServiceBase.SignalSignatures;
+        $signals: OAuth2ServiceBase.SignalSignatures;
 
         // Constructors
 
@@ -5308,14 +5314,15 @@ export namespace EDataServer {
 
     class OAuth2ServiceGoogle extends OAuth2ServiceBase implements OAuth2Service {
         static $gtype: GObject.GType<OAuth2ServiceGoogle>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OAuth2ServiceGoogle.SignalSignatures;
+        $signals: OAuth2ServiceGoogle.SignalSignatures;
 
         // Constructors
 
@@ -6236,14 +6243,15 @@ export namespace EDataServer {
 
     class OAuth2ServiceOutlook extends OAuth2ServiceBase implements OAuth2Service {
         static $gtype: GObject.GType<OAuth2ServiceOutlook>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OAuth2ServiceOutlook.SignalSignatures;
+        $signals: OAuth2ServiceOutlook.SignalSignatures;
 
         // Constructors
 
@@ -7164,14 +7172,15 @@ export namespace EDataServer {
 
     class OAuth2ServiceYahoo extends OAuth2ServiceBase implements OAuth2Service {
         static $gtype: GObject.GType<OAuth2ServiceYahoo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OAuth2ServiceYahoo.SignalSignatures;
+        $signals: OAuth2ServiceYahoo.SignalSignatures;
 
         // Constructors
 
@@ -8092,14 +8101,15 @@ export namespace EDataServer {
      */
     class OAuth2Services extends GObject.Object implements Extensible {
         static $gtype: GObject.GType<OAuth2Services>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OAuth2Services.SignalSignatures;
+        $signals: OAuth2Services.SignalSignatures;
 
         // Constructors
 
@@ -8674,14 +8684,15 @@ export namespace EDataServer {
      */
     class SoupAuthBearer extends Soup.Auth {
         static $gtype: GObject.GType<SoupAuthBearer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SoupAuthBearer.SignalSignatures;
+        $signals: SoupAuthBearer.SignalSignatures;
 
         // Constructors
 
@@ -8789,14 +8800,15 @@ export namespace EDataServer {
          * The #ESource being used for this soup session.
          */
         get source(): Source;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SoupSession.SignalSignatures;
+        $signals: SoupSession.SignalSignatures;
 
         // Constructors
 
@@ -9204,14 +9216,15 @@ export namespace EDataServer {
         get removable(): boolean;
         get uid(): string;
         get writable(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Source.SignalSignatures;
+        $signals: Source.SignalSignatures;
 
         // Constructors
 
@@ -11491,14 +11504,15 @@ export namespace EDataServer {
 
         get order(): number;
         set order(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceAddressBook.SignalSignatures;
+        $signals: SourceAddressBook.SignalSignatures;
 
         // Constructors
 
@@ -11569,14 +11583,15 @@ export namespace EDataServer {
         set last_notified(val: string);
         get lastNotified(): string;
         set lastNotified(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceAlarms.SignalSignatures;
+        $signals: SourceAlarms.SignalSignatures;
 
         // Constructors
 
@@ -11722,14 +11737,15 @@ export namespace EDataServer {
         set rememberPassword(val: boolean);
         get user(): string;
         set user(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceAuthentication.SignalSignatures;
+        $signals: SourceAuthentication.SignalSignatures;
 
         // Constructors
 
@@ -11961,14 +11977,15 @@ export namespace EDataServer {
         set include_me(val: boolean);
         get includeMe(): boolean;
         set includeMe(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceAutocomplete.SignalSignatures;
+        $signals: SourceAutocomplete.SignalSignatures;
 
         // Constructors
 
@@ -12037,14 +12054,15 @@ export namespace EDataServer {
 
         get revision(): string;
         set revision(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceAutoconfig.SignalSignatures;
+        $signals: SourceAutoconfig.SignalSignatures;
 
         // Constructors
 
@@ -12137,14 +12155,15 @@ export namespace EDataServer {
         set backend_name(val: string);
         get backendName(): string;
         set backendName(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceBackend.SignalSignatures;
+        $signals: SourceBackend.SignalSignatures;
 
         // Constructors
 
@@ -12217,14 +12236,15 @@ export namespace EDataServer {
      */
     class SourceCalendar extends SourceSelectable {
         static $gtype: GObject.GType<SourceCalendar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceCalendar.SignalSignatures;
+        $signals: SourceCalendar.SignalSignatures;
 
         // Constructors
 
@@ -12275,14 +12295,15 @@ export namespace EDataServer {
         // Properties
 
         get settings(): Camel.Settings;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceCamel.SignalSignatures;
+        $signals: SourceCamel.SignalSignatures;
 
         // Constructors
 
@@ -12436,14 +12457,15 @@ export namespace EDataServer {
         set mail_enabled(val: boolean);
         get mailEnabled(): boolean;
         set mailEnabled(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceCollection.SignalSignatures;
+        $signals: SourceCollection.SignalSignatures;
 
         // Constructors
 
@@ -12645,14 +12667,15 @@ export namespace EDataServer {
         set include_me(val: boolean);
         get includeMe(): boolean;
         set includeMe(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceContacts.SignalSignatures;
+        $signals: SourceContacts.SignalSignatures;
 
         // Constructors
 
@@ -12710,14 +12733,15 @@ export namespace EDataServer {
          * The Source Registry object, which can be either #ESourceregistry or #ESourceRegistryServer.
          */
         get registry(): GObject.Object;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceCredentialsProvider.SignalSignatures;
+        $signals: SourceCredentialsProvider.SignalSignatures;
 
         // Constructors
 
@@ -13492,14 +13516,15 @@ export namespace EDataServer {
      */
     abstract class SourceCredentialsProviderImpl extends Extension {
         static $gtype: GObject.GType<SourceCredentialsProviderImpl>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceCredentialsProviderImpl.SignalSignatures;
+        $signals: SourceCredentialsProviderImpl.SignalSignatures;
 
         // Constructors
 
@@ -13667,14 +13692,15 @@ export namespace EDataServer {
      */
     class SourceCredentialsProviderImplOAuth2 extends SourceCredentialsProviderImpl {
         static $gtype: GObject.GType<SourceCredentialsProviderImplOAuth2>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceCredentialsProviderImplOAuth2.SignalSignatures;
+        $signals: SourceCredentialsProviderImplOAuth2.SignalSignatures;
 
         // Constructors
 
@@ -13722,14 +13748,15 @@ export namespace EDataServer {
      */
     class SourceCredentialsProviderImplPassword extends SourceCredentialsProviderImpl {
         static $gtype: GObject.GType<SourceCredentialsProviderImplPassword>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceCredentialsProviderImplPassword.SignalSignatures;
+        $signals: SourceCredentialsProviderImplPassword.SignalSignatures;
 
         // Constructors
 
@@ -13784,14 +13811,15 @@ export namespace EDataServer {
         // Properties
 
         get source(): Source;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceExtension.SignalSignatures;
+        $signals: SourceExtension.SignalSignatures;
 
         // Constructors
 
@@ -13897,14 +13925,15 @@ export namespace EDataServer {
         set contactsUrl(val: string);
         get name(): string;
         set name(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceGoa.SignalSignatures;
+        $signals: SourceGoa.SignalSignatures;
 
         // Constructors
 
@@ -14109,14 +14138,15 @@ export namespace EDataServer {
         set scope(val: SourceLDAPScope);
         get security(): SourceLDAPSecurity;
         set security(val: SourceLDAPSecurity);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceLDAP.SignalSignatures;
+        $signals: SourceLDAP.SignalSignatures;
 
         // Constructors
 
@@ -14197,14 +14227,15 @@ export namespace EDataServer {
         set emailAddress(val: string);
         get writable(): boolean;
         set writable(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceLocal.SignalSignatures;
+        $signals: SourceLocal.SignalSignatures;
 
         // Constructors
 
@@ -14315,14 +14346,15 @@ export namespace EDataServer {
         set response_policy(val: MdnResponsePolicy);
         get responsePolicy(): MdnResponsePolicy;
         set responsePolicy(val: MdnResponsePolicy);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceMDN.SignalSignatures;
+        $signals: SourceMDN.SignalSignatures;
 
         // Constructors
 
@@ -14425,14 +14457,15 @@ export namespace EDataServer {
         set needs_initial_setup(val: boolean);
         get needsInitialSetup(): boolean;
         set needsInitialSetup(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceMailAccount.SignalSignatures;
+        $signals: SourceMailAccount.SignalSignatures;
 
         // Constructors
 
@@ -14619,14 +14652,15 @@ export namespace EDataServer {
         set top_signature(val: ThreeState);
         get topSignature(): ThreeState;
         set topSignature(val: ThreeState);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceMailComposition.SignalSignatures;
+        $signals: SourceMailComposition.SignalSignatures;
 
         // Constructors
 
@@ -14884,14 +14918,15 @@ export namespace EDataServer {
         set signature_uid(val: string);
         get signatureUid(): string;
         set signatureUid(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceMailIdentity.SignalSignatures;
+        $signals: SourceMailIdentity.SignalSignatures;
 
         // Constructors
 
@@ -15108,14 +15143,15 @@ export namespace EDataServer {
         set mime_type(val: string);
         get mimeType(): string;
         set mimeType(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceMailSignature.SignalSignatures;
+        $signals: SourceMailSignature.SignalSignatures;
 
         // Constructors
 
@@ -15235,14 +15271,15 @@ export namespace EDataServer {
         set use_sent_folder(val: boolean);
         get useSentFolder(): boolean;
         set useSentFolder(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceMailSubmission.SignalSignatures;
+        $signals: SourceMailSubmission.SignalSignatures;
 
         // Constructors
 
@@ -15354,14 +15391,15 @@ export namespace EDataServer {
      */
     class SourceMailTransport extends SourceBackend {
         static $gtype: GObject.GType<SourceMailTransport>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceMailTransport.SignalSignatures;
+        $signals: SourceMailTransport.SignalSignatures;
 
         // Constructors
 
@@ -15411,14 +15449,15 @@ export namespace EDataServer {
      */
     class SourceMemoList extends SourceSelectable {
         static $gtype: GObject.GType<SourceMemoList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceMemoList.SignalSignatures;
+        $signals: SourceMemoList.SignalSignatures;
 
         // Constructors
 
@@ -15473,14 +15512,15 @@ export namespace EDataServer {
         set stay_synchronized(val: boolean);
         get staySynchronized(): boolean;
         set staySynchronized(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceOffline.SignalSignatures;
+        $signals: SourceOffline.SignalSignatures;
 
         // Constructors
 
@@ -15615,14 +15655,15 @@ export namespace EDataServer {
         set signing_algorithm(val: string);
         get signingAlgorithm(): string;
         set signingAlgorithm(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceOpenPGP.SignalSignatures;
+        $signals: SourceOpenPGP.SignalSignatures;
 
         // Constructors
 
@@ -15907,14 +15948,15 @@ export namespace EDataServer {
         set socks_port(val: number);
         get socksPort(): number;
         set socksPort(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceProxy.SignalSignatures;
+        $signals: SourceProxy.SignalSignatures;
 
         // Constructors
 
@@ -16238,14 +16280,15 @@ export namespace EDataServer {
         set interval_minutes(val: number);
         get intervalMinutes(): number;
         set intervalMinutes(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceRefresh.SignalSignatures;
+        $signals: SourceRefresh.SignalSignatures;
 
         // Constructors
 
@@ -16438,14 +16481,15 @@ export namespace EDataServer {
          */
         get defaultTaskList(): Source;
         set defaultTaskList(val: Source);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceRegistry.SignalSignatures;
+        $signals: SourceRegistry.SignalSignatures;
 
         // Constructors
 
@@ -17841,14 +17885,15 @@ export namespace EDataServer {
          * The #ESourceRegistry manages #ESource instances.
          */
         get registry(): SourceRegistry;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceRegistryWatcher.SignalSignatures;
+        $signals: SourceRegistryWatcher.SignalSignatures;
 
         // Constructors
 
@@ -17925,14 +17970,15 @@ export namespace EDataServer {
 
         get identity(): string;
         set identity(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceResource.SignalSignatures;
+        $signals: SourceResource.SignalSignatures;
 
         // Constructors
 
@@ -18011,14 +18057,15 @@ export namespace EDataServer {
 
         get enabled(): boolean;
         set enabled(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceRevisionGuards.SignalSignatures;
+        $signals: SourceRevisionGuards.SignalSignatures;
 
         // Constructors
 
@@ -18125,14 +18172,15 @@ export namespace EDataServer {
         set signing_certificate(val: string);
         get signingCertificate(): string;
         set signingCertificate(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceSMIME.SignalSignatures;
+        $signals: SourceSMIME.SignalSignatures;
 
         // Constructors
 
@@ -18289,14 +18337,15 @@ export namespace EDataServer {
         set method(val: string);
         get secure(): boolean;
         set secure(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceSecurity.SignalSignatures;
+        $signals: SourceSecurity.SignalSignatures;
 
         // Constructors
 
@@ -18404,14 +18453,15 @@ export namespace EDataServer {
         set order(val: number);
         get selected(): boolean;
         set selected(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceSelectable.SignalSignatures;
+        $signals: SourceSelectable.SignalSignatures;
 
         // Constructors
 
@@ -18513,14 +18563,15 @@ export namespace EDataServer {
      */
     class SourceTaskList extends SourceSelectable {
         static $gtype: GObject.GType<SourceTaskList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceTaskList.SignalSignatures;
+        $signals: SourceTaskList.SignalSignatures;
 
         // Constructors
 
@@ -18575,14 +18626,15 @@ export namespace EDataServer {
         set account_id(val: number);
         get accountId(): number;
         set accountId(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceUoa.SignalSignatures;
+        $signals: SourceUoa.SignalSignatures;
 
         // Constructors
 
@@ -18649,14 +18701,15 @@ export namespace EDataServer {
         set location(val: string);
         get units(): SourceWeatherUnits;
         set units(val: SourceWeatherUnits);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceWeather.SignalSignatures;
+        $signals: SourceWeather.SignalSignatures;
 
         // Constructors
 
@@ -18719,14 +18772,15 @@ export namespace EDataServer {
         set default_ext(val: string);
         get defaultExt(): string;
         set defaultExt(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceWebDAVNotes.SignalSignatures;
+        $signals: SourceWebDAVNotes.SignalSignatures;
 
         // Constructors
 
@@ -18860,14 +18914,15 @@ export namespace EDataServer {
         set sslTrust(val: string);
         get uri(): GLib.Uri;
         set uri(val: GLib.Uri);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceWebdav.SignalSignatures;
+        $signals: SourceWebdav.SignalSignatures;
 
         // Constructors
 
@@ -19176,14 +19231,15 @@ export namespace EDataServer {
      */
     class WebDAVSession extends SoupSession {
         static $gtype: GObject.GType<WebDAVSession>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebDAVSession.SignalSignatures;
+        $signals: WebDAVSession.SignalSignatures;
 
         // Constructors
 
@@ -20034,14 +20090,15 @@ export namespace EDataServer {
      */
     class XmlDocument extends GObject.Object {
         static $gtype: GObject.GType<XmlDocument>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XmlDocument.SignalSignatures;
+        $signals: XmlDocument.SignalSignatures;
 
         // Constructors
 

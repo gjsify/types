@@ -208,14 +208,15 @@ export namespace GstCuda {
      */
     class CudaAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<CudaAllocator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CudaAllocator.SignalSignatures;
+        $signals: CudaAllocator.SignalSignatures;
 
         // Constructors
 
@@ -326,14 +327,15 @@ export namespace GstCuda {
 
     class CudaBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<CudaBufferPool>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CudaBufferPool.SignalSignatures;
+        $signals: CudaBufferPool.SignalSignatures;
 
         // Fields
 
@@ -414,14 +416,15 @@ export namespace GstCuda {
          * Virtual memory management supportability
          */
         get virtualMemory(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CudaContext.SignalSignatures;
+        $signals: CudaContext.SignalSignatures;
 
         // Fields
 
@@ -508,14 +511,15 @@ export namespace GstCuda {
      */
     class CudaPoolAllocator extends CudaAllocator {
         static $gtype: GObject.GType<CudaPoolAllocator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CudaPoolAllocator.SignalSignatures;
+        $signals: CudaPoolAllocator.SignalSignatures;
 
         // Fields
 

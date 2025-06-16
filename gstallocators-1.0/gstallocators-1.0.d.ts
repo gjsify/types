@@ -153,14 +153,15 @@ export namespace GstAllocators {
         get drmDevicePath(): string;
         get drm_fd(): number;
         get drmFd(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DRMDumbAllocator.SignalSignatures;
+        $signals: DRMDumbAllocator.SignalSignatures;
 
         // Constructors
 
@@ -229,14 +230,15 @@ export namespace GstAllocators {
      */
     class DmaBufAllocator extends FdAllocator {
         static $gtype: GObject.GType<DmaBufAllocator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DmaBufAllocator.SignalSignatures;
+        $signals: DmaBufAllocator.SignalSignatures;
 
         // Constructors
 
@@ -305,14 +307,15 @@ export namespace GstAllocators {
      */
     class FdAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<FdAllocator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FdAllocator.SignalSignatures;
+        $signals: FdAllocator.SignalSignatures;
 
         // Constructors
 

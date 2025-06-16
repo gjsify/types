@@ -2277,14 +2277,15 @@ export namespace Kkc {
         set description(val: string);
         get filename(): string;
         set filename(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MetadataFile.SignalSignatures;
+        $signals: MetadataFile.SignalSignatures;
 
         // Constructors
 
@@ -3014,14 +3015,15 @@ export namespace Kkc {
         set model_type(val: GObject.GType);
         get modelType(): GObject.GType;
         set modelType(val: GObject.GType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LanguageModelMetadata.SignalSignatures;
+        $signals: LanguageModelMetadata.SignalSignatures;
 
         // Constructors
 
@@ -3088,14 +3090,15 @@ export namespace Kkc {
         set metadata(val: LanguageModelMetadata);
         get bos(): LanguageModelEntry;
         get eos(): LanguageModelEntry;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LanguageModel.SignalSignatures;
+        $signals: LanguageModel.SignalSignatures;
 
         // Constructors
 
@@ -3690,14 +3693,15 @@ export namespace Kkc {
 
     class TextBigramLanguageModel extends LanguageModel implements UnigramLanguageModel, BigramLanguageModel {
         static $gtype: GObject.GType<TextBigramLanguageModel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TextBigramLanguageModel.SignalSignatures;
+        $signals: TextBigramLanguageModel.SignalSignatures;
 
         // Fields
 
@@ -3790,14 +3794,15 @@ export namespace Kkc {
 
     class TextTrigramLanguageModel extends TextBigramLanguageModel implements TrigramLanguageModel {
         static $gtype: GObject.GType<TextTrigramLanguageModel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TextTrigramLanguageModel.SignalSignatures;
+        $signals: TextTrigramLanguageModel.SignalSignatures;
 
         // Constructors
 
@@ -3877,14 +3882,15 @@ export namespace Kkc {
 
         get min_cost(): number;
         get minCost(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SortedBigramLanguageModel.SignalSignatures;
+        $signals: SortedBigramLanguageModel.SignalSignatures;
 
         // Constructors
 
@@ -3971,14 +3977,15 @@ export namespace Kkc {
 
     class SortedTrigramLanguageModel extends SortedBigramLanguageModel implements TrigramLanguageModel {
         static $gtype: GObject.GType<SortedTrigramLanguageModel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SortedTrigramLanguageModel.SignalSignatures;
+        $signals: SortedTrigramLanguageModel.SignalSignatures;
 
         // Constructors
 
@@ -4042,14 +4049,15 @@ export namespace Kkc {
 
     abstract class Decoder extends GObject.Object {
         static $gtype: GObject.GType<Decoder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Decoder.SignalSignatures;
+        $signals: Decoder.SignalSignatures;
 
         // Constructors
 
@@ -4121,14 +4129,15 @@ export namespace Kkc {
         // Properties
 
         get model(): BigramLanguageModel;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BigramDecoder.SignalSignatures;
+        $signals: BigramDecoder.SignalSignatures;
 
         // Constructors
 
@@ -4188,14 +4197,15 @@ export namespace Kkc {
 
     class TrigramDecoder extends BigramDecoder {
         static $gtype: GObject.GType<TrigramDecoder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TrigramDecoder.SignalSignatures;
+        $signals: TrigramDecoder.SignalSignatures;
 
         // Constructors
 
@@ -4250,14 +4260,15 @@ export namespace Kkc {
         get cursorPos(): number;
         set cursorPos(val: number);
         get size(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SegmentList.SignalSignatures;
+        $signals: SegmentList.SignalSignatures;
 
         // Constructors
 
@@ -4328,14 +4339,15 @@ export namespace Kkc {
         set input(val: string);
         get output(): string;
         set output(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Segment.SignalSignatures;
+        $signals: Segment.SignalSignatures;
 
         // Fields
 
@@ -4426,14 +4438,15 @@ export namespace Kkc {
         set round(val: boolean);
         get page_visible(): boolean;
         get pageVisible(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CandidateList.SignalSignatures;
+        $signals: CandidateList.SignalSignatures;
 
         // Constructors
 
@@ -4526,14 +4539,15 @@ export namespace Kkc {
         set annotation(val: string);
         get output(): string;
         set output(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Candidate.SignalSignatures;
+        $signals: Candidate.SignalSignatures;
 
         // Constructors
 
@@ -4595,14 +4609,15 @@ export namespace Kkc {
 
     abstract class KeyEventFilter extends GObject.Object {
         static $gtype: GObject.GType<KeyEventFilter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: KeyEventFilter.SignalSignatures;
+        $signals: KeyEventFilter.SignalSignatures;
 
         // Constructors
 
@@ -4675,14 +4690,15 @@ export namespace Kkc {
         set keycode(val: number);
         get modifiers(): ModifierType;
         set modifiers(val: ModifierType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: KeyEvent.SignalSignatures;
+        $signals: KeyEvent.SignalSignatures;
 
         // Constructors
 
@@ -4749,14 +4765,15 @@ export namespace Kkc {
 
         get parent(): Keymap;
         set parent(val: Keymap);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Keymap.SignalSignatures;
+        $signals: Keymap.SignalSignatures;
 
         // Constructors
 
@@ -4813,14 +4830,15 @@ export namespace Kkc {
 
     class NicolaKeyEventFilter extends KeyEventFilter {
         static $gtype: GObject.GType<NicolaKeyEventFilter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NicolaKeyEventFilter.SignalSignatures;
+        $signals: NicolaKeyEventFilter.SignalSignatures;
 
         // Fields
 
@@ -4879,14 +4897,15 @@ export namespace Kkc {
         // Properties
 
         get size(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RomKanaCharacterList.SignalSignatures;
+        $signals: RomKanaCharacterList.SignalSignatures;
 
         // Constructors
 
@@ -4981,14 +5000,15 @@ export namespace Kkc {
         get pending_input(): string;
         get pendingInput(): string;
         get produced(): RomKanaCharacterList;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RomKanaConverter.SignalSignatures;
+        $signals: RomKanaConverter.SignalSignatures;
 
         // Constructors
 
@@ -5065,14 +5085,15 @@ export namespace Kkc {
         set filter(val: string);
         get priority(): number;
         set priority(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RuleMetadata.SignalSignatures;
+        $signals: RuleMetadata.SignalSignatures;
 
         // Constructors
 
@@ -5138,14 +5159,15 @@ export namespace Kkc {
         set metadata(val: RuleMetadata);
         get filter(): KeyEventFilter;
         set filter(val: KeyEventFilter);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Rule.SignalSignatures;
+        $signals: Rule.SignalSignatures;
 
         // Fields
 
@@ -5730,14 +5752,15 @@ export namespace Kkc {
 
     class UserRule extends Rule {
         static $gtype: GObject.GType<UserRule>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserRule.SignalSignatures;
+        $signals: UserRule.SignalSignatures;
 
         // Constructors
 
@@ -5846,14 +5869,15 @@ export namespace Kkc {
         set typingRule(val: Rule);
         get key_event_filter(): KeyEventFilter;
         get keyEventFilter(): KeyEventFilter;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Context.SignalSignatures;
+        $signals: Context.SignalSignatures;
 
         // Constructors
 
@@ -5923,14 +5947,15 @@ export namespace Kkc {
 
     class EmptySegmentDictionary extends GObject.Object implements Dictionary, SegmentDictionary {
         static $gtype: GObject.GType<EmptySegmentDictionary>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EmptySegmentDictionary.SignalSignatures;
+        $signals: EmptySegmentDictionary.SignalSignatures;
 
         // Constructors
 
@@ -6428,14 +6453,15 @@ export namespace Kkc {
 
     class SystemSegmentDictionary extends GObject.Object implements Dictionary, SegmentDictionary {
         static $gtype: GObject.GType<SystemSegmentDictionary>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SystemSegmentDictionary.SignalSignatures;
+        $signals: SystemSegmentDictionary.SignalSignatures;
 
         // Constructors
 
@@ -6933,14 +6959,15 @@ export namespace Kkc {
 
     class UserSegmentDictionary extends GObject.Object implements Dictionary, SegmentDictionary {
         static $gtype: GObject.GType<UserSegmentDictionary>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserSegmentDictionary.SignalSignatures;
+        $signals: UserSegmentDictionary.SignalSignatures;
 
         // Constructors
 
@@ -7438,14 +7465,15 @@ export namespace Kkc {
 
     class UserSentenceDictionary extends GObject.Object implements Dictionary, SentenceDictionary {
         static $gtype: GObject.GType<UserSentenceDictionary>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserSentenceDictionary.SignalSignatures;
+        $signals: UserSentenceDictionary.SignalSignatures;
 
         // Constructors
 
@@ -7942,14 +7970,15 @@ export namespace Kkc {
 
     class UserDictionary extends GObject.Object implements Dictionary, SegmentDictionary, SentenceDictionary {
         static $gtype: GObject.GType<UserDictionary>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserDictionary.SignalSignatures;
+        $signals: UserDictionary.SignalSignatures;
 
         // Constructors
 
@@ -8460,14 +8489,15 @@ export namespace Kkc {
         // Properties
 
         get size(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DictionaryList.SignalSignatures;
+        $signals: DictionaryList.SignalSignatures;
 
         // Constructors
 
@@ -8549,14 +8579,15 @@ export namespace Kkc {
         get round(): boolean;
         get page_visible(): boolean;
         get pageVisible(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DBusCandidateList.SignalSignatures;
+        $signals: DBusCandidateList.SignalSignatures;
 
         // Constructors
 
@@ -8632,14 +8663,15 @@ export namespace Kkc {
         get cursor_pos(): number;
         get cursorPos(): number;
         get size(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DBusSegmentList.SignalSignatures;
+        $signals: DBusSegmentList.SignalSignatures;
 
         // Constructors
 
@@ -8725,14 +8757,15 @@ export namespace Kkc {
         set auto_correct(val: boolean);
         get autoCorrect(): boolean;
         set autoCorrect(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DBusContext.SignalSignatures;
+        $signals: DBusContext.SignalSignatures;
 
         // Constructors
 
@@ -8790,14 +8823,15 @@ export namespace Kkc {
 
     class DBusServer extends GObject.Object {
         static $gtype: GObject.GType<DBusServer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DBusServer.SignalSignatures;
+        $signals: DBusServer.SignalSignatures;
 
         // Constructors
 

@@ -170,14 +170,15 @@ export namespace ClapperGtk {
      */
     class Billboard extends Container implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Billboard>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Billboard.SignalSignatures;
+        $signals: Billboard.SignalSignatures;
 
         // Constructors
 
@@ -813,14 +814,15 @@ export namespace ClapperGtk {
          */
         get widthTarget(): number;
         set widthTarget(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Container.SignalSignatures;
+        $signals: Container.SignalSignatures;
 
         // Constructors
 
@@ -1733,14 +1735,15 @@ export namespace ClapperGtk {
          */
         get volumeVisible(): boolean;
         set volumeVisible(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExtraMenuButton.SignalSignatures;
+        $signals: ExtraMenuButton.SignalSignatures;
 
         // Constructors
 
@@ -2623,14 +2626,15 @@ export namespace ClapperGtk {
          */
         get leading(): boolean;
         set leading(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LeadContainer.SignalSignatures;
+        $signals: LeadContainer.SignalSignatures;
 
         // Constructors
 
@@ -3193,14 +3197,15 @@ export namespace ClapperGtk {
         implements Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk.ConstraintTarget
     {
         static $gtype: GObject.GType<NextItemButton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NextItemButton.SignalSignatures;
+        $signals: NextItemButton.SignalSignatures;
 
         // Constructors
 
@@ -6340,14 +6345,15 @@ export namespace ClapperGtk {
         implements Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk.ConstraintTarget
     {
         static $gtype: GObject.GType<PreviousItemButton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PreviousItemButton.SignalSignatures;
+        $signals: PreviousItemButton.SignalSignatures;
 
         // Constructors
 
@@ -9506,14 +9512,15 @@ export namespace ClapperGtk {
          */
         get seekMethod(): Clapper.PlayerSeekMethod;
         set seekMethod(val: Clapper.PlayerSeekMethod);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SeekBar.SignalSignatures;
+        $signals: SeekBar.SignalSignatures;
 
         // Constructors
 
@@ -10389,14 +10396,15 @@ export namespace ClapperGtk {
          */
         get seekMethod(): Clapper.PlayerSeekMethod;
         set seekMethod(val: Clapper.PlayerSeekMethod);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimpleControls.SignalSignatures;
+        $signals: SimpleControls.SignalSignatures;
 
         // Constructors
 
@@ -10994,14 +11002,15 @@ export namespace ClapperGtk {
          */
         get fallbackToUri(): boolean;
         set fallbackToUri(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TitleHeader.SignalSignatures;
+        $signals: TitleHeader.SignalSignatures;
 
         // Constructors
 
@@ -11596,14 +11605,15 @@ export namespace ClapperGtk {
          */
         get mediaItem(): Clapper.MediaItem;
         set mediaItem(val: Clapper.MediaItem);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TitleLabel.SignalSignatures;
+        $signals: TitleLabel.SignalSignatures;
 
         // Constructors
 
@@ -12453,14 +12463,15 @@ export namespace ClapperGtk {
         implements Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk.ConstraintTarget
     {
         static $gtype: GObject.GType<ToggleFullscreenButton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ToggleFullscreenButton.SignalSignatures;
+        $signals: ToggleFullscreenButton.SignalSignatures;
 
         // Constructors
 
@@ -15602,14 +15613,15 @@ export namespace ClapperGtk {
         implements Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk.ConstraintTarget
     {
         static $gtype: GObject.GType<TogglePlayButton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TogglePlayButton.SignalSignatures;
+        $signals: TogglePlayButton.SignalSignatures;
 
         // Constructors
 
@@ -18866,14 +18878,15 @@ export namespace ClapperGtk {
          */
         get touchFadeDelay(): number;
         set touchFadeDelay(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Video.SignalSignatures;
+        $signals: Video.SignalSignatures;
 
         // Constructors
 

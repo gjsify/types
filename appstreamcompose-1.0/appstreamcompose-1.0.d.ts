@@ -421,14 +421,15 @@ export namespace AppStreamCompose {
 
     class Canvas extends GObject.Object {
         static $gtype: GObject.GType<Canvas>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Canvas.SignalSignatures;
+        $signals: Canvas.SignalSignatures;
 
         // Constructors
 
@@ -489,14 +490,15 @@ export namespace AppStreamCompose {
 
     class Compose extends GObject.Object {
         static $gtype: GObject.GType<Compose>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Compose.SignalSignatures;
+        $signals: Compose.SignalSignatures;
 
         // Constructors
 
@@ -753,14 +755,15 @@ export namespace AppStreamCompose {
 
     class DirectoryUnit extends Unit {
         static $gtype: GObject.GType<DirectoryUnit>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DirectoryUnit.SignalSignatures;
+        $signals: DirectoryUnit.SignalSignatures;
 
         // Constructors
 
@@ -815,14 +818,15 @@ export namespace AppStreamCompose {
 
     class Hint extends GObject.Object {
         static $gtype: GObject.GType<Hint>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Hint.SignalSignatures;
+        $signals: Hint.SignalSignatures;
 
         // Constructors
 
@@ -919,14 +923,15 @@ export namespace AppStreamCompose {
 
     class IconPolicy extends GObject.Object {
         static $gtype: GObject.GType<IconPolicy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IconPolicy.SignalSignatures;
+        $signals: IconPolicy.SignalSignatures;
 
         // Constructors
 
@@ -986,14 +991,15 @@ export namespace AppStreamCompose {
 
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Image.SignalSignatures;
+        $signals: Image.SignalSignatures;
 
         // Constructors
 
@@ -1122,14 +1128,15 @@ export namespace AppStreamCompose {
 
     class Result extends GObject.Object {
         static $gtype: GObject.GType<Result>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Result.SignalSignatures;
+        $signals: Result.SignalSignatures;
 
         // Constructors
 
@@ -1317,14 +1324,15 @@ export namespace AppStreamCompose {
 
     class Unit extends GObject.Object {
         static $gtype: GObject.GType<Unit>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Unit.SignalSignatures;
+        $signals: Unit.SignalSignatures;
 
         // Constructors
 

@@ -57,14 +57,15 @@ export namespace GstInsertBin {
      */
     class InsertBin extends Gst.Bin implements Gst.ChildProxy {
         static $gtype: GObject.GType<InsertBin>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InsertBin.SignalSignatures;
+        $signals: InsertBin.SignalSignatures;
 
         // Constructors
 

@@ -231,14 +231,15 @@ export namespace Amtk {
 
     class ActionInfoCentralStore extends GObject.Object {
         static $gtype: GObject.GType<ActionInfoCentralStore>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ActionInfoCentralStore.SignalSignatures;
+        $signals: ActionInfoCentralStore.SignalSignatures;
 
         // Constructors
 
@@ -286,14 +287,15 @@ export namespace Amtk {
 
     class ActionInfoStore extends GObject.Object {
         static $gtype: GObject.GType<ActionInfoStore>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ActionInfoStore.SignalSignatures;
+        $signals: ActionInfoStore.SignalSignatures;
 
         // Constructors
 
@@ -389,14 +391,15 @@ export namespace Amtk {
          */
         get statusbar(): Gtk.Statusbar;
         set statusbar(val: Gtk.Statusbar);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ApplicationWindow.SignalSignatures;
+        $signals: ApplicationWindow.SignalSignatures;
 
         // Constructors
 
@@ -524,14 +527,15 @@ export namespace Amtk {
          */
         get defaultFlags(): FactoryFlags;
         set defaultFlags(val: FactoryFlags);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Factory.SignalSignatures;
+        $signals: Factory.SignalSignatures;
 
         // Constructors
 
@@ -676,14 +680,15 @@ export namespace Amtk {
          * The #GtkMenuShell.
          */
         get menuShell(): Gtk.MenuShell;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MenuShell.SignalSignatures;
+        $signals: MenuShell.SignalSignatures;
 
         // Constructors
 

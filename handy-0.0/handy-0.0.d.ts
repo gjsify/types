@@ -435,14 +435,15 @@ export namespace Handy {
          */
         get useUnderline(): boolean;
         set useUnderline(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ActionRow.SignalSignatures;
+        $signals: ActionRow.SignalSignatures;
 
         // Constructors
 
@@ -4889,14 +4890,15 @@ export namespace Handy {
         set direction(val: ArrowsDirection);
         get duration(): number;
         set duration(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Arrows.SignalSignatures;
+        $signals: Arrows.SignalSignatures;
 
         // Constructors
 
@@ -5482,14 +5484,15 @@ export namespace Handy {
         set maximum_width(val: number);
         get maximumWidth(): number;
         set maximumWidth(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Column.SignalSignatures;
+        $signals: Column.SignalSignatures;
 
         // Constructors
 
@@ -6091,14 +6094,15 @@ export namespace Handy {
          */
         get useSubtitle(): boolean;
         set useSubtitle(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ComboRow.SignalSignatures;
+        $signals: ComboRow.SignalSignatures;
 
         // Constructors
 
@@ -10585,14 +10589,15 @@ export namespace Handy {
         set show_action_buttons(val: boolean);
         get showActionButtons(): boolean;
         set showActionButtons(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Dialer.SignalSignatures;
+        $signals: Dialer.SignalSignatures;
 
         // Constructors
 
@@ -11194,14 +11199,15 @@ export namespace Handy {
         get digit(): number;
         get symbols(): string;
         set symbols(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DialerButton.SignalSignatures;
+        $signals: DialerButton.SignalSignatures;
 
         // Constructors
 
@@ -15852,14 +15858,15 @@ export namespace Handy {
         set cycle_timeout(val: number);
         get cycleTimeout(): number;
         set cycleTimeout(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DialerCycleButton.SignalSignatures;
+        $signals: DialerCycleButton.SignalSignatures;
 
         // Constructors
 
@@ -20298,14 +20305,15 @@ export namespace Handy {
          * %TRUE if the dialog is narrow.
          */
         get narrow(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Dialog.SignalSignatures;
+        $signals: Dialog.SignalSignatures;
 
         // Constructors
 
@@ -20797,14 +20805,15 @@ export namespace Handy {
 
     class EnumValueObject extends GObject.Object {
         static $gtype: GObject.GType<EnumValueObject>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EnumValueObject.SignalSignatures;
+        $signals: EnumValueObject.SignalSignatures;
 
         // Constructors
 
@@ -20941,14 +20950,15 @@ export namespace Handy {
          */
         get showEnableSwitch(): boolean;
         set showEnableSwitch(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpanderRow.SignalSignatures;
+        $signals: ExpanderRow.SignalSignatures;
 
         // Constructors
 
@@ -25459,14 +25469,15 @@ export namespace Handy {
         set transitionDuration(val: number);
         get transition_running(): boolean;
         get transitionRunning(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HeaderBar.SignalSignatures;
+        $signals: HeaderBar.SignalSignatures;
 
         // Constructors
 
@@ -26118,14 +26129,15 @@ export namespace Handy {
          */
         get focus(): Gtk.HeaderBar;
         set focus(val: Gtk.HeaderBar);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HeaderGroup.SignalSignatures;
+        $signals: HeaderGroup.SignalSignatures;
 
         // Constructors
 
@@ -26901,14 +26913,15 @@ export namespace Handy {
         set show_symbols(val: boolean);
         get showSymbols(): boolean;
         set showSymbols(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Keypad.SignalSignatures;
+        $signals: Keypad.SignalSignatures;
 
         // Constructors
 
@@ -27655,14 +27668,15 @@ export namespace Handy {
         set visible_child_name(val: string);
         get visibleChildName(): string;
         set visibleChildName(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Leaflet.SignalSignatures;
+        $signals: Leaflet.SignalSignatures;
 
         // Constructors
 
@@ -32322,14 +32336,15 @@ export namespace Handy {
          */
         get spacing(): number;
         set spacing(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Paginator.SignalSignatures;
+        $signals: Paginator.SignalSignatures;
 
         // Constructors
 
@@ -36861,14 +36876,15 @@ export namespace Handy {
          */
         get title(): string;
         set title(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PreferencesGroup.SignalSignatures;
+        $signals: PreferencesGroup.SignalSignatures;
 
         // Constructors
 
@@ -37470,14 +37486,15 @@ export namespace Handy {
          */
         get title(): string;
         set title(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PreferencesPage.SignalSignatures;
+        $signals: PreferencesPage.SignalSignatures;
 
         // Constructors
 
@@ -38058,14 +38075,15 @@ export namespace Handy {
          */
         get useUnderline(): boolean;
         set useUnderline(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PreferencesRow.SignalSignatures;
+        $signals: PreferencesRow.SignalSignatures;
 
         // Constructors
 
@@ -42609,14 +42627,15 @@ export namespace Handy {
 
     class PreferencesWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PreferencesWindow>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PreferencesWindow.SignalSignatures;
+        $signals: PreferencesWindow.SignalSignatures;
 
         // Constructors
 
@@ -43177,14 +43196,15 @@ export namespace Handy {
          */
         get showCloseButton(): boolean;
         set showCloseButton(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SearchBar.SignalSignatures;
+        $signals: SearchBar.SignalSignatures;
 
         // Constructors
 
@@ -43831,14 +43851,15 @@ export namespace Handy {
         set transitionType(val: SqueezerTransitionType);
         get visible_child(): Gtk.Widget;
         get visibleChild(): Gtk.Widget;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Squeezer.SignalSignatures;
+        $signals: Squeezer.SignalSignatures;
 
         // Constructors
 
@@ -44429,14 +44450,15 @@ export namespace Handy {
 
     class SwipeGroup extends GObject.Object implements Gtk.Buildable {
         static $gtype: GObject.GType<SwipeGroup>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SwipeGroup.SignalSignatures;
+        $signals: SwipeGroup.SignalSignatures;
 
         // Constructors
 
@@ -45169,14 +45191,15 @@ export namespace Handy {
         set selection_mode(val: boolean);
         get selectionMode(): boolean;
         set selectionMode(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TitleBar.SignalSignatures;
+        $signals: TitleBar.SignalSignatures;
 
         // Constructors
 
@@ -45678,14 +45701,15 @@ export namespace Handy {
         // Properties
 
         get value(): GObject.Value;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueObject.SignalSignatures;
+        $signals: ValueObject.SignalSignatures;
 
         // Constructors
 
@@ -45859,14 +45883,15 @@ export namespace Handy {
          */
         get stack(): Gtk.Stack;
         set stack(val: Gtk.Stack);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ViewSwitcher.SignalSignatures;
+        $signals: ViewSwitcher.SignalSignatures;
 
         // Constructors
 
@@ -46500,14 +46525,15 @@ export namespace Handy {
          */
         get stack(): Gtk.Stack;
         set stack(val: Gtk.Stack);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ViewSwitcherBar.SignalSignatures;
+        $signals: ViewSwitcherBar.SignalSignatures;
 
         // Constructors
 

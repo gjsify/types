@@ -267,14 +267,15 @@ export namespace XApp {
 
     class DarkModeManager extends GObject.Object {
         static $gtype: GObject.GType<DarkModeManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DarkModeManager.SignalSignatures;
+        $signals: DarkModeManager.SignalSignatures;
 
         // Constructors
 
@@ -316,14 +317,15 @@ export namespace XApp {
 
     class Favorites extends GObject.Object {
         static $gtype: GObject.GType<Favorites>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Favorites.SignalSignatures;
+        $signals: Favorites.SignalSignatures;
 
         // Constructors
 
@@ -431,14 +433,15 @@ export namespace XApp {
 
     class GpuOffloadHelper extends GObject.Object {
         static $gtype: GObject.GType<GpuOffloadHelper>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GpuOffloadHelper.SignalSignatures;
+        $signals: GpuOffloadHelper.SignalSignatures;
 
         // Constructors
 
@@ -606,14 +609,15 @@ export namespace XApp {
 
     class GtkWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<GtkWindow>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GtkWindow.SignalSignatures;
+        $signals: GtkWindow.SignalSignatures;
 
         // Constructors
 
@@ -1242,14 +1246,15 @@ export namespace XApp {
          */
         get iconSize(): Gtk.IconSize;
         set iconSize(val: Gtk.IconSize);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IconChooserButton.SignalSignatures;
+        $signals: IconChooserButton.SignalSignatures;
 
         // Constructors
 
@@ -5968,14 +5973,15 @@ export namespace XApp {
          */
         get iconSize(): IconSize;
         set iconSize(val: IconSize);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IconChooserDialog.SignalSignatures;
+        $signals: IconChooserDialog.SignalSignatures;
 
         // Constructors
 
@@ -6541,14 +6547,15 @@ export namespace XApp {
         // Properties
 
         get enabled(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: KbdLayoutController.SignalSignatures;
+        $signals: KbdLayoutController.SignalSignatures;
 
         // Fields
 
@@ -6689,14 +6696,15 @@ export namespace XApp {
 
     class MonitorBlanker extends GObject.Object {
         static $gtype: GObject.GType<MonitorBlanker>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MonitorBlanker.SignalSignatures;
+        $signals: MonitorBlanker.SignalSignatures;
 
         // Constructors
 
@@ -6775,14 +6783,15 @@ export namespace XApp {
         implements Gio.AsyncInitable<ObjectManagerClient>, Gio.DBusObjectManager, Gio.Initable
     {
         static $gtype: GObject.GType<ObjectManagerClient>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ObjectManagerClient.SignalSignatures;
+        $signals: ObjectManagerClient.SignalSignatures;
 
         // Constructors
 
@@ -7718,14 +7727,15 @@ export namespace XApp {
      */
     class ObjectProxy extends Gio.DBusObjectProxy implements Gio.DBusObject, Object {
         static $gtype: GObject.GType<ObjectProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ObjectProxy.SignalSignatures;
+        $signals: ObjectProxy.SignalSignatures;
 
         // Constructors
 
@@ -8277,14 +8287,15 @@ export namespace XApp {
      */
     class ObjectSkeleton extends Gio.DBusObjectSkeleton implements Gio.DBusObject, Object {
         static $gtype: GObject.GType<ObjectSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ObjectSkeleton.SignalSignatures;
+        $signals: ObjectSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -8915,14 +8926,15 @@ export namespace XApp {
 
     class PreferencesWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PreferencesWindow>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PreferencesWindow.SignalSignatures;
+        $signals: PreferencesWindow.SignalSignatures;
 
         // Constructors
 
@@ -9482,14 +9494,15 @@ export namespace XApp {
 
         get stack(): Gtk.Stack;
         set stack(val: Gtk.Stack);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StackSidebar.SignalSignatures;
+        $signals: StackSidebar.SignalSignatures;
 
         // Constructors
 
@@ -10122,14 +10135,15 @@ export namespace XApp {
          */
         get secondaryMenu(): Gtk.Widget;
         set secondaryMenu(val: Gtk.Widget);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StatusIcon.SignalSignatures;
+        $signals: StatusIcon.SignalSignatures;
 
         // Constructors
 
@@ -10298,14 +10312,15 @@ export namespace XApp {
         implements Gio.AsyncInitable<StatusIconInterfaceProxy>, Gio.DBusInterface, Gio.Initable, StatusIconInterface
     {
         static $gtype: GObject.GType<StatusIconInterfaceProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StatusIconInterfaceProxy.SignalSignatures;
+        $signals: StatusIconInterfaceProxy.SignalSignatures;
 
         // Constructors
 
@@ -11637,14 +11652,15 @@ export namespace XApp {
         implements Gio.DBusInterface, StatusIconInterface
     {
         static $gtype: GObject.GType<StatusIconInterfaceSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StatusIconInterfaceSkeleton.SignalSignatures;
+        $signals: StatusIconInterfaceSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -12595,14 +12611,15 @@ export namespace XApp {
 
     class StatusIconMonitor extends GObject.Object {
         static $gtype: GObject.GType<StatusIconMonitor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StatusIconMonitor.SignalSignatures;
+        $signals: StatusIconMonitor.SignalSignatures;
 
         // Constructors
 
@@ -12662,14 +12679,15 @@ export namespace XApp {
          */
         get widget(): Gtk.Widget;
         set widget(val: Gtk.Widget);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StyleManager.SignalSignatures;
+        $signals: StyleManager.SignalSignatures;
 
         // Constructors
 
@@ -12762,14 +12780,15 @@ export namespace XApp {
         implements Gio.AsyncInitable<SwitcherooControlProxy>, Gio.DBusInterface, Gio.Initable, SwitcherooControl
     {
         static $gtype: GObject.GType<SwitcherooControlProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SwitcherooControlProxy.SignalSignatures;
+        $signals: SwitcherooControlProxy.SignalSignatures;
 
         // Constructors
 
@@ -13698,14 +13717,15 @@ export namespace XApp {
      */
     class SwitcherooControlSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, SwitcherooControl {
         static $gtype: GObject.GType<SwitcherooControlSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SwitcherooControlSkeleton.SignalSignatures;
+        $signals: SwitcherooControlSkeleton.SignalSignatures;
 
         // Constructors
 

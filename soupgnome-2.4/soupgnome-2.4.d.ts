@@ -38,14 +38,15 @@ export namespace SoupGNOME {
 
     class CookieJarSqlite extends Soup.CookieJarDB implements Soup.SessionFeature {
         static $gtype: GObject.GType<CookieJarSqlite>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CookieJarSqlite.SignalSignatures;
+        $signals: CookieJarSqlite.SignalSignatures;
 
         // Constructors
 
@@ -529,14 +530,15 @@ export namespace SoupGNOME {
 
     class PasswordManagerGNOME extends GObject.Object implements Soup.SessionFeature {
         static $gtype: GObject.GType<PasswordManagerGNOME>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PasswordManagerGNOME.SignalSignatures;
+        $signals: PasswordManagerGNOME.SignalSignatures;
 
         // Constructors
 
@@ -1096,14 +1098,15 @@ export namespace SoupGNOME {
 
     class ProxyResolverGNOME extends Soup.ProxyResolverDefault implements Soup.ProxyURIResolver, Soup.SessionFeature {
         static $gtype: GObject.GType<ProxyResolverGNOME>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProxyResolverGNOME.SignalSignatures;
+        $signals: ProxyResolverGNOME.SignalSignatures;
 
         // Constructors
 

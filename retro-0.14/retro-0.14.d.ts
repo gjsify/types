@@ -479,14 +479,15 @@ export namespace Retro {
 
     class ControllerIterator extends GObject.Object {
         static $gtype: GObject.GType<ControllerIterator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ControllerIterator.SignalSignatures;
+        $signals: ControllerIterator.SignalSignatures;
 
         // Constructors
 
@@ -654,14 +655,15 @@ export namespace Retro {
          */
         get systemDirectory(): string;
         set systemDirectory(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Core.SignalSignatures;
+        $signals: Core.SignalSignatures;
 
         // Constructors
 
@@ -871,14 +873,15 @@ export namespace Retro {
 
     class CoreDescriptor extends GObject.Object {
         static $gtype: GObject.GType<CoreDescriptor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CoreDescriptor.SignalSignatures;
+        $signals: CoreDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -1099,14 +1102,15 @@ export namespace Retro {
         set snap_pointer_to_borders(val: boolean);
         get snapPointerToBorders(): boolean;
         set snapPointerToBorders(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CoreView.SignalSignatures;
+        $signals: CoreView.SignalSignatures;
 
         // Constructors
 
@@ -1682,14 +1686,15 @@ export namespace Retro {
 
     class KeyJoypadMapping extends GObject.Object {
         static $gtype: GObject.GType<KeyJoypadMapping>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: KeyJoypadMapping.SignalSignatures;
+        $signals: KeyJoypadMapping.SignalSignatures;
 
         // Constructors
 
@@ -1762,14 +1767,15 @@ export namespace Retro {
         set speed_rate(val: number);
         get speedRate(): number;
         set speedRate(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MainLoop.SignalSignatures;
+        $signals: MainLoop.SignalSignatures;
 
         // Constructors
 
@@ -1844,14 +1850,15 @@ export namespace Retro {
 
     class ModuleIterator extends GObject.Object {
         static $gtype: GObject.GType<ModuleIterator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ModuleIterator.SignalSignatures;
+        $signals: ModuleIterator.SignalSignatures;
 
         // Constructors
 
@@ -1905,14 +1912,15 @@ export namespace Retro {
 
     class ModuleQuery extends GObject.Object {
         static $gtype: GObject.GType<ModuleQuery>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ModuleQuery.SignalSignatures;
+        $signals: ModuleQuery.SignalSignatures;
 
         // Constructors
 
@@ -1962,14 +1970,15 @@ export namespace Retro {
 
     class Option extends GObject.Object {
         static $gtype: GObject.GType<Option>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Option.SignalSignatures;
+        $signals: Option.SignalSignatures;
 
         // Constructors
 
@@ -2036,14 +2045,15 @@ export namespace Retro {
 
     class OptionIterator extends GObject.Object {
         static $gtype: GObject.GType<OptionIterator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OptionIterator.SignalSignatures;
+        $signals: OptionIterator.SignalSignatures;
 
         // Constructors
 

@@ -210,14 +210,15 @@ export namespace Mks {
          * The device name.
          */
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Device.SignalSignatures;
+        $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -325,14 +326,15 @@ export namespace Mks {
         set ungrab_trigger(val: Gtk.ShortcutTrigger);
         get ungrabTrigger(): Gtk.ShortcutTrigger;
         set ungrabTrigger(val: Gtk.ShortcutTrigger);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Display.SignalSignatures;
+        $signals: Display.SignalSignatures;
 
         // Constructors
 
@@ -1146,14 +1148,15 @@ export namespace Mks {
          * Active keyboard modifiers.
          */
         get modifiers(): KeyboardModifier;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Keyboard.SignalSignatures;
+        $signals: Keyboard.SignalSignatures;
 
         // Constructors
 
@@ -1309,14 +1312,15 @@ export namespace Mks {
          * Whether the mouse is using absolute movements.
          */
         get isAbsolute(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Mouse.SignalSignatures;
+        $signals: Mouse.SignalSignatures;
 
         // Constructors
 
@@ -1566,14 +1570,15 @@ export namespace Mks {
         get mouse(): Mouse;
         get number(): number;
         get width(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Screen.SignalSignatures;
+        $signals: Screen.SignalSignatures;
 
         // Constructors
 
@@ -1791,14 +1796,15 @@ export namespace Mks {
          * The VM unique identifier specified by the QEMU instance.
          */
         get uuid(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Session.SignalSignatures;
+        $signals: Session.SignalSignatures;
 
         // Constructors
 
@@ -2638,14 +2644,15 @@ export namespace Mks {
          * The maximum number of slots.
          */
         get maxSlots(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Touchable.SignalSignatures;
+        $signals: Touchable.SignalSignatures;
 
         // Constructors
 

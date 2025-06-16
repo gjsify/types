@@ -443,14 +443,15 @@ export namespace GSignond {
         // Properties
 
         get config(): Config;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AccessControlManager.SignalSignatures;
+        $signals: AccessControlManager.SignalSignatures;
 
         // Constructors
 
@@ -635,14 +636,15 @@ export namespace GSignond {
      */
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Config.SignalSignatures;
+        $signals: Config.SignalSignatures;
 
         // Constructors
 
@@ -712,14 +714,15 @@ export namespace GSignond {
      */
     class Credentials extends GObject.Object {
         static $gtype: GObject.GType<Credentials>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Credentials.SignalSignatures;
+        $signals: Credentials.SignalSignatures;
 
         // Constructors
 
@@ -814,14 +817,15 @@ export namespace GSignond {
      */
     class Dictionary extends GObject.Object {
         static $gtype: GObject.GType<Dictionary>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Dictionary.SignalSignatures;
+        $signals: Dictionary.SignalSignatures;
 
         // Constructors
 
@@ -1007,14 +1011,15 @@ export namespace GSignond {
      */
     class Extension extends GObject.Object {
         static $gtype: GObject.GType<Extension>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Extension.SignalSignatures;
+        $signals: Extension.SignalSignatures;
 
         // Constructors
 
@@ -1121,14 +1126,15 @@ export namespace GSignond {
         // Properties
 
         get config(): Config;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SecretStorage.SignalSignatures;
+        $signals: SecretStorage.SignalSignatures;
 
         // Constructors
 
@@ -1317,14 +1323,15 @@ export namespace GSignond {
      */
     class SessionData extends Dictionary {
         static $gtype: GObject.GType<SessionData>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SessionData.SignalSignatures;
+        $signals: SessionData.SignalSignatures;
 
         // Constructors
 
@@ -1488,14 +1495,15 @@ export namespace GSignond {
      */
     class SignonuiData extends Dictionary {
         static $gtype: GObject.GType<SignonuiData>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SignonuiData.SignalSignatures;
+        $signals: SignonuiData.SignalSignatures;
 
         // Constructors
 
@@ -1765,14 +1773,15 @@ export namespace GSignond {
         // Properties
 
         get config(): Config;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StorageManager.SignalSignatures;
+        $signals: StorageManager.SignalSignatures;
 
         // Fields
 

@@ -3088,14 +3088,15 @@ export namespace GObject {
          * best performance.
          */
         get targetProperty(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Binding.SignalSignatures;
+        $signals: Binding.SignalSignatures;
 
         // Constructors
 
@@ -3232,14 +3233,15 @@ export namespace GObject {
          */
         get source(): Object;
         set source(val: Object);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BindingGroup.SignalSignatures;
+        $signals: BindingGroup.SignalSignatures;
 
         // Constructors
 
@@ -3363,14 +3365,15 @@ export namespace GObject {
      */
     class InitiallyUnowned extends Object {
         static $gtype: GType<InitiallyUnowned>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InitiallyUnowned.SignalSignatures;
+        $signals: InitiallyUnowned.SignalSignatures;
 
         // Constructors
 
@@ -3434,14 +3437,15 @@ export namespace GObject {
      */
     class Object {
         static $gtype: GType<Object>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Object.SignalSignatures;
+        $signals: Object.SignalSignatures;
 
         // Constructors
 
@@ -4513,14 +4517,15 @@ export namespace GObject {
          * The #GType of the target property.
          */
         get targetType(): GType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SignalGroup.SignalSignatures;
+        $signals: SignalGroup.SignalSignatures;
 
         // Constructors
 
@@ -4663,14 +4668,15 @@ export namespace GObject {
      */
     abstract class TypeModule extends Object implements TypePlugin {
         static $gtype: GType<TypeModule>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TypeModule.SignalSignatures;
+        $signals: TypeModule.SignalSignatures;
 
         // Fields
 

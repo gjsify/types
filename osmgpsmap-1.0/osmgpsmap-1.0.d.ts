@@ -491,14 +491,15 @@ export namespace OsmGpsMap {
          * when this changes.
          */
         get zoom(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Map.SignalSignatures;
+        $signals: Map.SignalSignatures;
 
         // Constructors
 
@@ -1136,14 +1137,15 @@ export namespace OsmGpsMap {
         set z_order(val: number);
         get zOrder(): number;
         set zOrder(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MapImage.SignalSignatures;
+        $signals: MapImage.SignalSignatures;
 
         // Constructors
 
@@ -1326,14 +1328,15 @@ export namespace OsmGpsMap {
          */
         get showZoom(): boolean;
         set showZoom(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MapOsd.SignalSignatures;
+        $signals: MapOsd.SignalSignatures;
 
         // Constructors
 
@@ -1843,14 +1846,15 @@ export namespace OsmGpsMap {
         set track(val: any);
         get visible(): boolean;
         set visible(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MapPolygon.SignalSignatures;
+        $signals: MapPolygon.SignalSignatures;
 
         // Constructors
 
@@ -1925,14 +1929,15 @@ export namespace OsmGpsMap {
         get track(): any;
         get visible(): boolean;
         set visible(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MapTrack.SignalSignatures;
+        $signals: MapTrack.SignalSignatures;
 
         // Constructors
 

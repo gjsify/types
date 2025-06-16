@@ -127,14 +127,15 @@ export namespace Pnl {
          * animated.
          */
         set target(val: GObject.Object);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Animation.SignalSignatures;
+        $signals: Animation.SignalSignatures;
 
         // Constructors
 
@@ -251,14 +252,15 @@ export namespace Pnl {
 
     class DockBin extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Dock, DockItem {
         static $gtype: GObject.GType<DockBin>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockBin.SignalSignatures;
+        $signals: DockBin.SignalSignatures;
 
         // Constructors
 
@@ -5017,14 +5019,15 @@ export namespace Pnl {
 
         get edge(): Gtk.PositionType;
         set edge(val: Gtk.PositionType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockBinEdge.SignalSignatures;
+        $signals: DockBinEdge.SignalSignatures;
 
         // Constructors
 
@@ -9357,14 +9360,15 @@ export namespace Pnl {
 
     class DockManager extends GObject.Object {
         static $gtype: GObject.GType<DockManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockManager.SignalSignatures;
+        $signals: DockManager.SignalSignatures;
 
         // Constructors
 
@@ -9466,14 +9470,15 @@ export namespace Pnl {
 
     class DockOverlay extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable, Dock, DockItem {
         static $gtype: GObject.GType<DockOverlay>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockOverlay.SignalSignatures;
+        $signals: DockOverlay.SignalSignatures;
 
         // Constructors
 
@@ -14226,14 +14231,15 @@ export namespace Pnl {
         set edge(val: Gtk.PositionType);
         get position(): number;
         set position(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockOverlayEdge.SignalSignatures;
+        $signals: DockOverlayEdge.SignalSignatures;
 
         // Constructors
 
@@ -18610,14 +18616,15 @@ export namespace Pnl {
 
     class DockPaned extends MultiPaned implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, DockItem {
         static $gtype: GObject.GType<DockPaned>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockPaned.SignalSignatures;
+        $signals: DockPaned.SignalSignatures;
 
         // Constructors
 
@@ -23055,14 +23062,15 @@ export namespace Pnl {
         set transition_type(val: DockRevealerTransitionType);
         get transitionType(): DockRevealerTransitionType;
         set transitionType(val: DockRevealerTransitionType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockRevealer.SignalSignatures;
+        $signals: DockRevealer.SignalSignatures;
 
         // Constructors
 
@@ -23618,14 +23626,15 @@ export namespace Pnl {
 
         get edge(): Gtk.PositionType;
         set edge(val: Gtk.PositionType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockStack.SignalSignatures;
+        $signals: DockStack.SignalSignatures;
 
         // Constructors
 
@@ -28020,14 +28029,15 @@ export namespace Pnl {
 
     class DockTabStrip extends TabStrip implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<DockTabStrip>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockTabStrip.SignalSignatures;
+        $signals: DockTabStrip.SignalSignatures;
 
         // Constructors
 
@@ -28517,14 +28527,15 @@ export namespace Pnl {
 
         get timeout(): number;
         set timeout(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockTransientGrab.SignalSignatures;
+        $signals: DockTransientGrab.SignalSignatures;
 
         // Constructors
 
@@ -28635,14 +28646,15 @@ export namespace Pnl {
         set manager(val: DockManager);
         get title(): string;
         set title(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockWidget.SignalSignatures;
+        $signals: DockWidget.SignalSignatures;
 
         // Constructors
 
@@ -33052,14 +33064,15 @@ export namespace Pnl {
 
     class DockWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable, Dock, DockItem {
         static $gtype: GObject.GType<DockWindow>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockWindow.SignalSignatures;
+        $signals: DockWindow.SignalSignatures;
 
         // Constructors
 
@@ -37808,14 +37821,15 @@ export namespace Pnl {
 
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MultiPaned.SignalSignatures;
+        $signals: MultiPaned.SignalSignatures;
 
         // Constructors
 
@@ -38391,14 +38405,15 @@ export namespace Pnl {
         set title(val: string);
         // This accessor conflicts with a property or field in a parent class or interface.
         widget: Gtk.Widget | any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Tab.SignalSignatures;
+        $signals: Tab.SignalSignatures;
 
         // Constructors
 
@@ -42783,14 +42798,15 @@ export namespace Pnl {
         set edge(val: Gtk.PositionType);
         get stack(): Gtk.Stack;
         set stack(val: Gtk.Stack);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TabStrip.SignalSignatures;
+        $signals: TabStrip.SignalSignatures;
 
         // Constructors
 

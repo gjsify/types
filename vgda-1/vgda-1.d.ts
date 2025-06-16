@@ -42,14 +42,15 @@ export namespace Vgda {
 
     class GProvider extends GObject.Object implements Vda.Connection {
         static $gtype: GObject.GType<GProvider>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GProvider.SignalSignatures;
+        $signals: GProvider.SignalSignatures;
 
         // Constructors
 

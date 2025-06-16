@@ -176,14 +176,15 @@ export namespace Template {
 
         get locator(): TemplateLocator;
         set locator(val: TemplateLocator);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Template.SignalSignatures;
+        $signals: Template.SignalSignatures;
 
         // Constructors
 
@@ -267,14 +268,15 @@ export namespace Template {
      */
     class TemplateLocator extends GObject.Object {
         static $gtype: GObject.GType<TemplateLocator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TemplateLocator.SignalSignatures;
+        $signals: TemplateLocator.SignalSignatures;
 
         // Constructors
 

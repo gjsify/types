@@ -58,14 +58,15 @@ export namespace GstDxva {
 
     abstract class DxvaAV1Decoder extends GstCodecs.AV1Decoder {
         static $gtype: GObject.GType<DxvaAV1Decoder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DxvaAV1Decoder.SignalSignatures;
+        $signals: DxvaAV1Decoder.SignalSignatures;
 
         // Constructors
 
@@ -144,14 +145,15 @@ export namespace GstDxva {
 
     abstract class DxvaH264Decoder extends GstCodecs.H264Decoder {
         static $gtype: GObject.GType<DxvaH264Decoder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DxvaH264Decoder.SignalSignatures;
+        $signals: DxvaH264Decoder.SignalSignatures;
 
         // Constructors
 
@@ -227,14 +229,15 @@ export namespace GstDxva {
 
     abstract class DxvaH265Decoder extends GstCodecs.H265Decoder {
         static $gtype: GObject.GType<DxvaH265Decoder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DxvaH265Decoder.SignalSignatures;
+        $signals: DxvaH265Decoder.SignalSignatures;
 
         // Constructors
 
@@ -309,14 +312,15 @@ export namespace GstDxva {
 
     abstract class DxvaMpeg2Decoder extends GstCodecs.Mpeg2Decoder {
         static $gtype: GObject.GType<DxvaMpeg2Decoder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DxvaMpeg2Decoder.SignalSignatures;
+        $signals: DxvaMpeg2Decoder.SignalSignatures;
 
         // Constructors
 
@@ -396,14 +400,15 @@ export namespace GstDxva {
 
     abstract class DxvaVp8Decoder extends GstCodecs.Vp8Decoder {
         static $gtype: GObject.GType<DxvaVp8Decoder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DxvaVp8Decoder.SignalSignatures;
+        $signals: DxvaVp8Decoder.SignalSignatures;
 
         // Constructors
 
@@ -478,14 +483,15 @@ export namespace GstDxva {
 
     abstract class DxvaVp9Decoder extends GstCodecs.Vp9Decoder {
         static $gtype: GObject.GType<DxvaVp9Decoder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DxvaVp9Decoder.SignalSignatures;
+        $signals: DxvaVp9Decoder.SignalSignatures;
 
         // Constructors
 

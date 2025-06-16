@@ -145,14 +145,15 @@ export namespace Gm {
          * The SVG path that describes the display cutout or notch.
          */
         get path(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Cutout.SignalSignatures;
+        $signals: Cutout.SignalSignatures;
 
         // Constructors
 
@@ -230,14 +231,15 @@ export namespace Gm {
          * The compatibles to look up device information for.
          */
         get compatibles(): string[];
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceInfo.SignalSignatures;
+        $signals: DeviceInfo.SignalSignatures;
 
         // Constructors
 
@@ -364,14 +366,15 @@ export namespace Gm {
          */
         get yRes(): number;
         set yRes(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DisplayPanel.SignalSignatures;
+        $signals: DisplayPanel.SignalSignatures;
 
         // Constructors
 

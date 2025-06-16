@@ -86,14 +86,15 @@ export namespace Gdm {
         implements Chooser, Gio.AsyncInitable<ChooserProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<ChooserProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ChooserProxy.SignalSignatures;
+        $signals: ChooserProxy.SignalSignatures;
 
         // Constructors
 
@@ -945,14 +946,15 @@ export namespace Gdm {
 
     class ChooserSkeleton extends Gio.DBusInterfaceSkeleton implements Chooser, Gio.DBusInterface {
         static $gtype: GObject.GType<ChooserSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ChooserSkeleton.SignalSignatures;
+        $signals: ChooserSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -1490,14 +1492,15 @@ export namespace Gdm {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -1773,14 +1776,15 @@ export namespace Gdm {
         implements Greeter, Gio.AsyncInitable<GreeterProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<GreeterProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GreeterProxy.SignalSignatures;
+        $signals: GreeterProxy.SignalSignatures;
 
         // Constructors
 
@@ -2721,14 +2725,15 @@ export namespace Gdm {
 
     class GreeterSkeleton extends Gio.DBusInterfaceSkeleton implements Greeter, Gio.DBusInterface {
         static $gtype: GObject.GType<GreeterSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GreeterSkeleton.SignalSignatures;
+        $signals: GreeterSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -3374,14 +3379,15 @@ export namespace Gdm {
         implements Manager, Gio.AsyncInitable<ManagerProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<ManagerProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ManagerProxy.SignalSignatures;
+        $signals: ManagerProxy.SignalSignatures;
 
         // Constructors
 
@@ -4279,14 +4285,15 @@ export namespace Gdm {
 
     class ManagerSkeleton extends Gio.DBusInterfaceSkeleton implements Manager, Gio.DBusInterface {
         static $gtype: GObject.GType<ManagerSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ManagerSkeleton.SignalSignatures;
+        $signals: ManagerSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -4887,14 +4894,15 @@ export namespace Gdm {
         implements RemoteGreeter, Gio.AsyncInitable<RemoteGreeterProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<RemoteGreeterProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RemoteGreeterProxy.SignalSignatures;
+        $signals: RemoteGreeterProxy.SignalSignatures;
 
         // Constructors
 
@@ -5731,14 +5739,15 @@ export namespace Gdm {
 
     class RemoteGreeterSkeleton extends Gio.DBusInterfaceSkeleton implements RemoteGreeter, Gio.DBusInterface {
         static $gtype: GObject.GType<RemoteGreeterSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RemoteGreeterSkeleton.SignalSignatures;
+        $signals: RemoteGreeterSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -6285,14 +6294,15 @@ export namespace Gdm {
             Gio.Initable
     {
         static $gtype: GObject.GType<UserVerifierChoiceListProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserVerifierChoiceListProxy.SignalSignatures;
+        $signals: UserVerifierChoiceListProxy.SignalSignatures;
 
         // Constructors
 
@@ -7155,14 +7165,15 @@ export namespace Gdm {
         implements UserVerifierChoiceList, Gio.DBusInterface
     {
         static $gtype: GObject.GType<UserVerifierChoiceListSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserVerifierChoiceListSkeleton.SignalSignatures;
+        $signals: UserVerifierChoiceListSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -7726,14 +7737,15 @@ export namespace Gdm {
         implements UserVerifier, Gio.AsyncInitable<UserVerifierProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<UserVerifierProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserVerifierProxy.SignalSignatures;
+        $signals: UserVerifierProxy.SignalSignatures;
 
         // Constructors
 
@@ -8680,14 +8692,15 @@ export namespace Gdm {
 
     class UserVerifierSkeleton extends Gio.DBusInterfaceSkeleton implements UserVerifier, Gio.DBusInterface {
         static $gtype: GObject.GType<UserVerifierSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserVerifierSkeleton.SignalSignatures;
+        $signals: UserVerifierSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -9340,14 +9353,15 @@ export namespace Gdm {
         implements WorkerManager, Gio.AsyncInitable<WorkerManagerProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<WorkerManagerProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WorkerManagerProxy.SignalSignatures;
+        $signals: WorkerManagerProxy.SignalSignatures;
 
         // Constructors
 
@@ -10321,14 +10335,15 @@ export namespace Gdm {
 
     class WorkerManagerSkeleton extends Gio.DBusInterfaceSkeleton implements WorkerManager, Gio.DBusInterface {
         static $gtype: GObject.GType<WorkerManagerSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WorkerManagerSkeleton.SignalSignatures;
+        $signals: WorkerManagerSkeleton.SignalSignatures;
 
         // Constructors
 

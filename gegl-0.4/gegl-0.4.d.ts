@@ -739,14 +739,15 @@ export namespace Gegl {
 
         get string(): string;
         set string(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AudioFragment.SignalSignatures;
+        $signals: AudioFragment.SignalSignatures;
 
         // Fields
 
@@ -894,14 +895,15 @@ export namespace Gegl {
         set x(val: number);
         get y(): number;
         set y(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Buffer.SignalSignatures;
+        $signals: Buffer.SignalSignatures;
 
         // Constructors
 
@@ -1167,14 +1169,15 @@ export namespace Gegl {
 
         get string(): string;
         set string(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Color.SignalSignatures;
+        $signals: Color.SignalSignatures;
 
         // Constructors
 
@@ -1376,14 +1379,15 @@ export namespace Gegl {
         set use_opencl(val: boolean);
         get useOpencl(): boolean;
         set useOpencl(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Config.SignalSignatures;
+        $signals: Config.SignalSignatures;
 
         // Constructors
 
@@ -1421,14 +1425,15 @@ export namespace Gegl {
 
     class Curve extends GObject.Object {
         static $gtype: GObject.GType<Curve>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Curve.SignalSignatures;
+        $signals: Curve.SignalSignatures;
 
         // Constructors
 
@@ -1530,14 +1535,15 @@ export namespace Gegl {
 
     class MetadataHash extends MetadataStore implements Metadata {
         static $gtype: GObject.GType<MetadataHash>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MetadataHash.SignalSignatures;
+        $signals: MetadataHash.SignalSignatures;
 
         // Constructors
 
@@ -2334,14 +2340,15 @@ export namespace Gegl {
          */
         get warning(): string;
         set warning(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MetadataStore.SignalSignatures;
+        $signals: MetadataStore.SignalSignatures;
 
         // Constructors
 
@@ -3244,14 +3251,15 @@ export namespace Gegl {
         set use_opencl(val: boolean);
         get useOpencl(): boolean;
         set useOpencl(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Node.SignalSignatures;
+        $signals: Node.SignalSignatures;
 
         // Constructors
 
@@ -3523,14 +3531,15 @@ export namespace Gegl {
 
     class Operation extends GObject.Object {
         static $gtype: GObject.GType<Operation>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Operation.SignalSignatures;
+        $signals: Operation.SignalSignatures;
 
         // Constructors
 
@@ -3584,14 +3593,15 @@ export namespace Gegl {
 
     class Path extends GObject.Object {
         static $gtype: GObject.GType<Path>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Path.SignalSignatures;
+        $signals: Path.SignalSignatures;
 
         // Constructors
 
@@ -3786,14 +3796,15 @@ export namespace Gegl {
         set progress(val: number);
         get rectangle(): any;
         set rectangle(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Processor.SignalSignatures;
+        $signals: Processor.SignalSignatures;
 
         // Constructors
 
@@ -3972,14 +3983,15 @@ export namespace Gegl {
         get tileCacheTotalUncompressed(): number;
         get zoom_total(): number;
         get zoomTotal(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Stats.SignalSignatures;
+        $signals: Stats.SignalSignatures;
 
         // Constructors
 
@@ -4052,14 +4064,15 @@ export namespace Gegl {
         get tileSize(): number;
         get tile_width(): number;
         get tileWidth(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TileBackend.SignalSignatures;
+        $signals: TileBackend.SignalSignatures;
 
         // Constructors
 
@@ -4143,14 +4156,15 @@ export namespace Gegl {
 
         get source(): GObject.Object;
         set source(val: GObject.Object);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TileHandler.SignalSignatures;
+        $signals: TileHandler.SignalSignatures;
 
         // Constructors
 
@@ -4196,14 +4210,15 @@ export namespace Gegl {
 
     class TileSource extends GObject.Object {
         static $gtype: GObject.GType<TileSource>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TileSource.SignalSignatures;
+        $signals: TileSource.SignalSignatures;
 
         // Fields
 

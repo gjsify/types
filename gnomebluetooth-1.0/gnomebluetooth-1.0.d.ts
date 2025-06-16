@@ -475,14 +475,15 @@ export namespace GnomeBluetooth {
         set show_searching(val: boolean);
         get showSearching(): boolean;
         set showSearching(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Chooser.SignalSignatures;
+        $signals: Chooser.SignalSignatures;
 
         // Constructors
 
@@ -1140,14 +1141,15 @@ export namespace GnomeBluetooth {
          * See also: bluetooth_chooser_button_available()
          */
         get isAvailable(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ChooserButton.SignalSignatures;
+        $signals: ChooserButton.SignalSignatures;
 
         // Constructors
 
@@ -5792,14 +5794,15 @@ export namespace GnomeBluetooth {
          */
         get device(): string;
         set device(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ChooserCombo.SignalSignatures;
+        $signals: ChooserCombo.SignalSignatures;
 
         // Constructors
 
@@ -6370,14 +6373,15 @@ export namespace GnomeBluetooth {
          * %TRUE if the default Bluetooth adapter is powered.
          */
         get defaultAdapterPowered(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -6570,14 +6574,15 @@ export namespace GnomeBluetooth {
         set show_device_type(val: boolean);
         get showDeviceType(): boolean;
         set showDeviceType(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilterWidget.SignalSignatures;
+        $signals: FilterWidget.SignalSignatures;
 
         // Constructors
 
@@ -7148,14 +7153,15 @@ export namespace GnomeBluetooth {
      */
     class SettingsWidget extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SettingsWidget>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingsWidget.SignalSignatures;
+        $signals: SettingsWidget.SignalSignatures;
 
         // Constructors
 

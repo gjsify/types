@@ -41,14 +41,15 @@ export namespace Plasma {
         // Properties
 
         set client(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -108,14 +109,15 @@ export namespace Plasma {
         set gpu_device(val: number);
         get gpuDevice(): number;
         set gpuDevice(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientCreateOptions.SignalSignatures;
+        $signals: ClientCreateOptions.SignalSignatures;
 
         // Constructors
 
@@ -174,14 +176,15 @@ export namespace Plasma {
         set n_retries(val: number);
         get nRetries(): number;
         set nRetries(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientOptions.SignalSignatures;
+        $signals: ClientOptions.SignalSignatures;
 
         // Constructors
 
@@ -234,14 +237,15 @@ export namespace Plasma {
 
     class CreatedObject extends Object {
         static $gtype: GObject.GType<CreatedObject>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CreatedObject.SignalSignatures;
+        $signals: CreatedObject.SignalSignatures;
 
         // Constructors
 
@@ -326,14 +330,15 @@ export namespace Plasma {
         set rawData(val: any);
         set raw_metadata(val: any);
         set rawMetadata(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Object.SignalSignatures;
+        $signals: Object.SignalSignatures;
 
         // Constructors
 
@@ -371,14 +376,15 @@ export namespace Plasma {
 
     class ObjectID extends GObject.Object {
         static $gtype: GObject.GType<ObjectID>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ObjectID.SignalSignatures;
+        $signals: ObjectID.SignalSignatures;
 
         // Constructors
 
@@ -431,14 +437,15 @@ export namespace Plasma {
 
     class ReferredObject extends Object {
         static $gtype: GObject.GType<ReferredObject>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ReferredObject.SignalSignatures;
+        $signals: ReferredObject.SignalSignatures;
 
         // Constructors
 

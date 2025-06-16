@@ -163,14 +163,15 @@ export namespace AppStreamBuilder {
 
     class App extends AppStreamGlib.App {
         static $gtype: GObject.GType<App>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: App.SignalSignatures;
+        $signals: App.SignalSignatures;
 
         // Constructors
 
@@ -237,14 +238,15 @@ export namespace AppStreamBuilder {
 
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Context.SignalSignatures;
+        $signals: Context.SignalSignatures;
 
         // Constructors
 
@@ -425,14 +427,15 @@ export namespace AppStreamBuilder {
 
     class Package extends GObject.Object {
         static $gtype: GObject.GType<Package>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Package.SignalSignatures;
+        $signals: Package.SignalSignatures;
 
         // Constructors
 
@@ -752,14 +755,15 @@ export namespace AppStreamBuilder {
 
     class Task extends GObject.Object {
         static $gtype: GObject.GType<Task>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Task.SignalSignatures;
+        $signals: Task.SignalSignatures;
 
         // Constructors
 

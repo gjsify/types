@@ -166,14 +166,15 @@ export namespace Libinsane {
 
     class Api extends GObject.Object {
         static $gtype: GObject.GType<Api>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Api.SignalSignatures;
+        $signals: Api.SignalSignatures;
 
         // Constructors
 
@@ -225,14 +226,15 @@ export namespace Libinsane {
 
     class DeviceDescriptor extends GObject.Object {
         static $gtype: GObject.GType<DeviceDescriptor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceDescriptor.SignalSignatures;
+        $signals: DeviceDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -282,14 +284,15 @@ export namespace Libinsane {
 
     class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Item.SignalSignatures;
+        $signals: Item.SignalSignatures;
 
         // Constructors
 
@@ -344,14 +347,15 @@ export namespace Libinsane {
 
     class OptionDescriptor extends GObject.Object {
         static $gtype: GObject.GType<OptionDescriptor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OptionDescriptor.SignalSignatures;
+        $signals: OptionDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -408,14 +412,15 @@ export namespace Libinsane {
 
     class ScanParameters extends GObject.Object {
         static $gtype: GObject.GType<ScanParameters>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScanParameters.SignalSignatures;
+        $signals: ScanParameters.SignalSignatures;
 
         // Constructors
 
@@ -460,14 +465,15 @@ export namespace Libinsane {
 
     class ScanSession extends GObject.Object {
         static $gtype: GObject.GType<ScanSession>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScanSession.SignalSignatures;
+        $signals: ScanSession.SignalSignatures;
 
         // Constructors
 

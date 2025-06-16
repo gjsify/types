@@ -1961,14 +1961,15 @@ export namespace Cogl {
 
     class Atlas extends GObject.Object {
         static $gtype: GObject.GType<Atlas>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Atlas.SignalSignatures;
+        $signals: Atlas.SignalSignatures;
 
         // Constructors
 
@@ -2037,14 +2038,15 @@ export namespace Cogl {
      */
     class AtlasTexture extends Texture {
         static $gtype: GObject.GType<AtlasTexture>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AtlasTexture.SignalSignatures;
+        $signals: AtlasTexture.SignalSignatures;
 
         // Constructors
 
@@ -2086,14 +2088,15 @@ export namespace Cogl {
 
     class Attribute extends GObject.Object {
         static $gtype: GObject.GType<Attribute>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Attribute.SignalSignatures;
+        $signals: Attribute.SignalSignatures;
 
         // Constructors
 
@@ -2165,14 +2168,15 @@ export namespace Cogl {
      */
     class AttributeBuffer extends Buffer {
         static $gtype: GObject.GType<AttributeBuffer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AttributeBuffer.SignalSignatures;
+        $signals: AttributeBuffer.SignalSignatures;
 
         // Constructors
 
@@ -2220,14 +2224,15 @@ export namespace Cogl {
      */
     class Bitmap extends GObject.Object {
         static $gtype: GObject.GType<Bitmap>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Bitmap.SignalSignatures;
+        $signals: Bitmap.SignalSignatures;
 
         // Constructors
 
@@ -2333,14 +2338,15 @@ export namespace Cogl {
         set size(val: number);
         set update_hint(val: BufferUpdateHint);
         set updateHint(val: BufferUpdateHint);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Buffer.SignalSignatures;
+        $signals: Buffer.SignalSignatures;
 
         // Constructors
 
@@ -2496,14 +2502,15 @@ export namespace Cogl {
      */
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Context.SignalSignatures;
+        $signals: Context.SignalSignatures;
 
         // Constructors
 
@@ -2657,14 +2664,15 @@ export namespace Cogl {
      */
     class Display extends GObject.Object {
         static $gtype: GObject.GType<Display>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Display.SignalSignatures;
+        $signals: Display.SignalSignatures;
 
         // Constructors
 
@@ -2739,14 +2747,15 @@ export namespace Cogl {
      */
     class FrameInfo extends GObject.Object {
         static $gtype: GObject.GType<FrameInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FrameInfo.SignalSignatures;
+        $signals: FrameInfo.SignalSignatures;
 
         // Constructors
 
@@ -2858,14 +2867,15 @@ export namespace Cogl {
         set height(val: number);
         get width(): number;
         set width(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Framebuffer.SignalSignatures;
+        $signals: Framebuffer.SignalSignatures;
 
         // Constructors
 
@@ -3560,14 +3570,15 @@ export namespace Cogl {
      */
     class IndexBuffer extends Buffer {
         static $gtype: GObject.GType<IndexBuffer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IndexBuffer.SignalSignatures;
+        $signals: IndexBuffer.SignalSignatures;
 
         // Constructors
 
@@ -3663,14 +3674,15 @@ export namespace Cogl {
      */
     class Indices extends GObject.Object {
         static $gtype: GObject.GType<Indices>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Indices.SignalSignatures;
+        $signals: Indices.SignalSignatures;
 
         // Constructors
 
@@ -3750,14 +3762,15 @@ export namespace Cogl {
      */
     class MatrixStack extends GObject.Object {
         static $gtype: GObject.GType<MatrixStack>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MatrixStack.SignalSignatures;
+        $signals: MatrixStack.SignalSignatures;
 
         // Constructors
 
@@ -3925,14 +3938,15 @@ export namespace Cogl {
      */
     class Offscreen extends Framebuffer {
         static $gtype: GObject.GType<Offscreen>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Offscreen.SignalSignatures;
+        $signals: Offscreen.SignalSignatures;
 
         // Constructors
 
@@ -3981,14 +3995,15 @@ export namespace Cogl {
 
     class Onscreen extends Framebuffer {
         static $gtype: GObject.GType<Onscreen>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Onscreen.SignalSignatures;
+        $signals: Onscreen.SignalSignatures;
 
         // Constructors
 
@@ -4327,14 +4342,15 @@ export namespace Cogl {
      */
     class Pipeline extends GObject.Object {
         static $gtype: GObject.GType<Pipeline>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Pipeline.SignalSignatures;
+        $signals: Pipeline.SignalSignatures;
 
         // Constructors
 
@@ -4936,14 +4952,15 @@ export namespace Cogl {
 
     class PixelBuffer extends Buffer {
         static $gtype: GObject.GType<PixelBuffer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PixelBuffer.SignalSignatures;
+        $signals: PixelBuffer.SignalSignatures;
 
         // Constructors
 
@@ -4986,14 +5003,15 @@ export namespace Cogl {
      */
     class Primitive extends GObject.Object {
         static $gtype: GObject.GType<Primitive>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Primitive.SignalSignatures;
+        $signals: Primitive.SignalSignatures;
 
         // Constructors
 
@@ -5095,14 +5113,15 @@ export namespace Cogl {
 
     class Program extends GObject.Object {
         static $gtype: GObject.GType<Program>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Program.SignalSignatures;
+        $signals: Program.SignalSignatures;
 
         // Constructors
 
@@ -5229,14 +5248,15 @@ export namespace Cogl {
      */
     class Renderer extends GObject.Object {
         static $gtype: GObject.GType<Renderer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Renderer.SignalSignatures;
+        $signals: Renderer.SignalSignatures;
 
         // Constructors
 
@@ -5332,14 +5352,15 @@ export namespace Cogl {
 
     class Scanout extends GObject.Object {
         static $gtype: GObject.GType<Scanout>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Scanout.SignalSignatures;
+        $signals: Scanout.SignalSignatures;
 
         // Constructors
 
@@ -5467,14 +5488,15 @@ export namespace Cogl {
      */
     class Shader extends GObject.Object {
         static $gtype: GObject.GType<Shader>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Shader.SignalSignatures;
+        $signals: Shader.SignalSignatures;
 
         // Constructors
 
@@ -5704,14 +5726,15 @@ export namespace Cogl {
      */
     class Snippet extends GObject.Object {
         static $gtype: GObject.GType<Snippet>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Snippet.SignalSignatures;
+        $signals: Snippet.SignalSignatures;
 
         // Constructors
 
@@ -5821,14 +5844,15 @@ export namespace Cogl {
      */
     class SubTexture extends Texture {
         static $gtype: GObject.GType<SubTexture>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SubTexture.SignalSignatures;
+        $signals: SubTexture.SignalSignatures;
 
         // Constructors
 
@@ -5912,14 +5936,15 @@ export namespace Cogl {
         set height(val: number);
         set loader(val: any);
         set width(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Texture.SignalSignatures;
+        $signals: Texture.SignalSignatures;
 
         // Constructors
 
@@ -6247,14 +6272,15 @@ export namespace Cogl {
      */
     class Texture2D extends Texture {
         static $gtype: GObject.GType<Texture2D>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Texture2D.SignalSignatures;
+        $signals: Texture2D.SignalSignatures;
 
         // Constructors
 
@@ -6355,14 +6381,15 @@ export namespace Cogl {
      */
     class Texture2DSliced extends Texture {
         static $gtype: GObject.GType<Texture2DSliced>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Texture2DSliced.SignalSignatures;
+        $signals: Texture2DSliced.SignalSignatures;
 
         // Constructors
 

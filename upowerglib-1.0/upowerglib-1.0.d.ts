@@ -215,14 +215,15 @@ export namespace UPowerGlib {
          * If the computer is on battery power.
          */
         get onBattery(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -331,14 +332,15 @@ export namespace UPowerGlib {
         implements Gio.AsyncInitable<ClientGlueProxy>, Gio.DBusInterface, Gio.Initable, ClientGlue
     {
         static $gtype: GObject.GType<ClientGlueProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientGlueProxy.SignalSignatures;
+        $signals: ClientGlueProxy.SignalSignatures;
 
         // Constructors
 
@@ -1473,14 +1475,15 @@ export namespace UPowerGlib {
      */
     class ClientGlueSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, ClientGlue {
         static $gtype: GObject.GType<ClientGlueSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientGlueSkeleton.SignalSignatures;
+        $signals: ClientGlueSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -2537,14 +2540,15 @@ export namespace UPowerGlib {
          */
         get warningLevel(): number;
         set warningLevel(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Device.SignalSignatures;
+        $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -2724,14 +2728,15 @@ export namespace UPowerGlib {
         implements Gio.AsyncInitable<DeviceGlueProxy>, Gio.DBusInterface, Gio.Initable, DeviceGlue
     {
         static $gtype: GObject.GType<DeviceGlueProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceGlueProxy.SignalSignatures;
+        $signals: DeviceGlueProxy.SignalSignatures;
 
         // Constructors
 
@@ -4158,14 +4163,15 @@ export namespace UPowerGlib {
      */
     class DeviceGlueSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, DeviceGlue {
         static $gtype: GObject.GType<DeviceGlueSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceGlueSkeleton.SignalSignatures;
+        $signals: DeviceGlueSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -5209,14 +5215,15 @@ export namespace UPowerGlib {
         set time(val: number);
         get value(): number;
         set value(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HistoryItem.SignalSignatures;
+        $signals: HistoryItem.SignalSignatures;
 
         // Constructors
 
@@ -5312,14 +5319,15 @@ export namespace UPowerGlib {
         set accuracy(val: number);
         get value(): number;
         set value(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StatsItem.SignalSignatures;
+        $signals: StatsItem.SignalSignatures;
 
         // Constructors
 
@@ -5412,14 +5420,15 @@ export namespace UPowerGlib {
         set old(val: number);
         get value(): number;
         set value(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WakeupItem.SignalSignatures;
+        $signals: WakeupItem.SignalSignatures;
 
         // Constructors
 
@@ -5525,14 +5534,15 @@ export namespace UPowerGlib {
 
     class Wakeups extends GObject.Object {
         static $gtype: GObject.GType<Wakeups>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Wakeups.SignalSignatures;
+        $signals: Wakeups.SignalSignatures;
 
         // Constructors
 
@@ -5625,14 +5635,15 @@ export namespace UPowerGlib {
         implements Gio.AsyncInitable<WakeupsGlueProxy>, Gio.DBusInterface, Gio.Initable, WakeupsGlue
     {
         static $gtype: GObject.GType<WakeupsGlueProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WakeupsGlueProxy.SignalSignatures;
+        $signals: WakeupsGlueProxy.SignalSignatures;
 
         // Constructors
 
@@ -6657,14 +6668,15 @@ export namespace UPowerGlib {
      */
     class WakeupsGlueSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, WakeupsGlue {
         static $gtype: GObject.GType<WakeupsGlueSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WakeupsGlueSkeleton.SignalSignatures;
+        $signals: WakeupsGlueSkeleton.SignalSignatures;
 
         // Constructors
 

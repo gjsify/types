@@ -113,14 +113,15 @@ export namespace PeasGtk {
          * The [class`PluginManagerView]` shown in the #PeasGtkPluginManager.
          */
         get view(): PluginManagerView;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PluginManager.SignalSignatures;
+        $signals: PluginManager.SignalSignatures;
 
         // Fields
 
@@ -727,14 +728,15 @@ export namespace PeasGtk {
          */
         get showBuiltin(): boolean;
         set showBuiltin(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PluginManagerView.SignalSignatures;
+        $signals: PluginManagerView.SignalSignatures;
 
         // Constructors
 

@@ -147,14 +147,15 @@ export namespace Peas {
          * See [ctor`Engine`.new_with_nonglobal_loaders] for more information.
          */
         get nonglobalLoaders(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Engine.SignalSignatures;
+        $signals: Engine.SignalSignatures;
 
         // Constructors
 
@@ -924,14 +925,15 @@ export namespace Peas {
          * The [class`PluginInfo]` related to the current plugin.
          */
         get pluginInfo(): PluginInfo;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExtensionBase.SignalSignatures;
+        $signals: ExtensionBase.SignalSignatures;
 
         // Constructors
 
@@ -1058,14 +1060,15 @@ export namespace Peas {
         get engine(): Engine;
         get extension_type(): GObject.GType;
         get extensionType(): GObject.GType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExtensionSet.SignalSignatures;
+        $signals: ExtensionSet.SignalSignatures;
 
         // Constructors
 
@@ -1699,14 +1702,15 @@ export namespace Peas {
         get path(): string;
         get resident(): boolean;
         get symbol(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ObjectModule.SignalSignatures;
+        $signals: ObjectModule.SignalSignatures;
 
         // Constructors
 
@@ -2319,14 +2323,15 @@ export namespace Peas {
         get name(): string;
         get version(): string;
         get website(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PluginInfo.SignalSignatures;
+        $signals: PluginInfo.SignalSignatures;
 
         // Constructors
 

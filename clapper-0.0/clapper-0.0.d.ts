@@ -348,14 +348,15 @@ export namespace Clapper {
          * Stream sample rate (in Hz).
          */
         get sampleRate(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AudioStream.SignalSignatures;
+        $signals: AudioStream.SignalSignatures;
 
         // Constructors
 
@@ -473,14 +474,15 @@ export namespace Clapper {
          */
         get discoveryMode(): DiscovererDiscoveryMode;
         set discoveryMode(val: DiscovererDiscoveryMode);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Discoverer.SignalSignatures;
+        $signals: Discoverer.SignalSignatures;
 
         // Constructors
 
@@ -548,14 +550,15 @@ export namespace Clapper {
      */
     class Feature extends Gst.Object {
         static $gtype: GObject.GType<Feature>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Feature.SignalSignatures;
+        $signals: Feature.SignalSignatures;
 
         // Constructors
 
@@ -690,14 +693,15 @@ export namespace Clapper {
      */
     class Harvest extends Gst.Object {
         static $gtype: GObject.GType<Harvest>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Harvest.SignalSignatures;
+        $signals: Harvest.SignalSignatures;
 
         // Constructors
 
@@ -870,14 +874,15 @@ export namespace Clapper {
          * Title of marker.
          */
         get title(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Marker.SignalSignatures;
+        $signals: Marker.SignalSignatures;
 
         // Constructors
 
@@ -1012,14 +1017,15 @@ export namespace Clapper {
          * Media URI.
          */
         get uri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaItem.SignalSignatures;
+        $signals: MediaItem.SignalSignatures;
 
         // Constructors
 
@@ -1191,14 +1197,15 @@ export namespace Clapper {
          */
         get queueControllable(): boolean;
         set queueControllable(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Mpris.SignalSignatures;
+        $signals: Mpris.SignalSignatures;
 
         // Constructors
 
@@ -1699,14 +1706,15 @@ export namespace Clapper {
          */
         get volume(): number;
         set volume(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Player.SignalSignatures;
+        $signals: Player.SignalSignatures;
 
         // Constructors
 
@@ -2140,14 +2148,15 @@ export namespace Clapper {
          */
         get progressionMode(): QueueProgressionMode;
         set progressionMode(val: QueueProgressionMode);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Queue.SignalSignatures;
+        $signals: Queue.SignalSignatures;
 
         // Constructors
 
@@ -2911,14 +2920,15 @@ export namespace Clapper {
          * Title of stream.
          */
         get title(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Stream.SignalSignatures;
+        $signals: Stream.SignalSignatures;
 
         // Constructors
 
@@ -3029,14 +3039,15 @@ export namespace Clapper {
          * Number of streams in the list.
          */
         get nStreams(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StreamList.SignalSignatures;
+        $signals: StreamList.SignalSignatures;
 
         // Constructors
 
@@ -3687,14 +3698,15 @@ export namespace Clapper {
          * Stream language name.
          */
         get langName(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SubtitleStream.SignalSignatures;
+        $signals: SubtitleStream.SignalSignatures;
 
         // Constructors
 
@@ -3754,14 +3766,15 @@ export namespace Clapper {
      */
     class ThreadedObject extends Gst.Object {
         static $gtype: GObject.GType<ThreadedObject>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ThreadedObject.SignalSignatures;
+        $signals: ThreadedObject.SignalSignatures;
 
         // Constructors
 
@@ -3848,14 +3861,15 @@ export namespace Clapper {
          * Number of markers in the timeline.
          */
         get nMarkers(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Timeline.SignalSignatures;
+        $signals: Timeline.SignalSignatures;
 
         // Constructors
 
@@ -4517,14 +4531,15 @@ export namespace Clapper {
          * Stream width.
          */
         get width(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VideoStream.SignalSignatures;
+        $signals: VideoStream.SignalSignatures;
 
         // Constructors
 

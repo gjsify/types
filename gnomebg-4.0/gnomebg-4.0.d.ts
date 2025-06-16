@@ -43,14 +43,15 @@ export namespace GnomeBG {
 
     class BG extends GObject.Object {
         static $gtype: GObject.GType<BG>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BG.SignalSignatures;
+        $signals: BG.SignalSignatures;
 
         // Constructors
 
@@ -167,14 +168,15 @@ export namespace GnomeBG {
         get startTime(): number;
         get total_duration(): number;
         get totalDuration(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BGSlideShow.SignalSignatures;
+        $signals: BGSlideShow.SignalSignatures;
 
         // Fields
 

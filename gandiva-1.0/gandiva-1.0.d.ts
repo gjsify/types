@@ -79,14 +79,15 @@ export namespace Gandiva {
 
     class AndNode extends BooleanNode {
         static $gtype: GObject.GType<AndNode>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AndNode.SignalSignatures;
+        $signals: AndNode.SignalSignatures;
 
         // Constructors
 
@@ -129,14 +130,15 @@ export namespace Gandiva {
 
     class BinaryLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<BinaryLiteralNode>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BinaryLiteralNode.SignalSignatures;
+        $signals: BinaryLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -185,14 +187,15 @@ export namespace Gandiva {
 
     class BooleanLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<BooleanLiteralNode>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BooleanLiteralNode.SignalSignatures;
+        $signals: BooleanLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -239,14 +242,15 @@ export namespace Gandiva {
 
     class BooleanNode extends Node {
         static $gtype: GObject.GType<BooleanNode>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BooleanNode.SignalSignatures;
+        $signals: BooleanNode.SignalSignatures;
 
         // Constructors
 
@@ -291,14 +295,15 @@ export namespace Gandiva {
 
     class DoubleLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<DoubleLiteralNode>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DoubleLiteralNode.SignalSignatures;
+        $signals: DoubleLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -360,14 +365,15 @@ export namespace Gandiva {
         get resultField(): Arrow.Field;
         get root_node(): Node;
         get rootNode(): Node;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Expression.SignalSignatures;
+        $signals: Expression.SignalSignatures;
 
         // Constructors
 
@@ -421,14 +427,15 @@ export namespace Gandiva {
         // Properties
 
         get field(): Arrow.Field;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FieldNode.SignalSignatures;
+        $signals: FieldNode.SignalSignatures;
 
         // Constructors
 
@@ -471,14 +478,15 @@ export namespace Gandiva {
 
     class FloatLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<FloatLiteralNode>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FloatLiteralNode.SignalSignatures;
+        $signals: FloatLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -532,14 +540,15 @@ export namespace Gandiva {
         // Properties
 
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FunctionNode.SignalSignatures;
+        $signals: FunctionNode.SignalSignatures;
 
         // Constructors
 
@@ -583,14 +592,15 @@ export namespace Gandiva {
 
     class FunctionRegistry extends GObject.Object {
         static $gtype: GObject.GType<FunctionRegistry>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FunctionRegistry.SignalSignatures;
+        $signals: FunctionRegistry.SignalSignatures;
 
         // Constructors
 
@@ -645,14 +655,15 @@ export namespace Gandiva {
 
         set function_signature(val: any);
         set functionSignature(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FunctionSignature.SignalSignatures;
+        $signals: FunctionSignature.SignalSignatures;
 
         // Constructors
 
@@ -726,14 +737,15 @@ export namespace Gandiva {
         get elseNode(): Node;
         get then_node(): Node;
         get thenNode(): Node;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IfNode.SignalSignatures;
+        $signals: IfNode.SignalSignatures;
 
         // Constructors
 
@@ -776,14 +788,15 @@ export namespace Gandiva {
 
     class Int16LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int16LiteralNode>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Int16LiteralNode.SignalSignatures;
+        $signals: Int16LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -830,14 +843,15 @@ export namespace Gandiva {
 
     class Int32LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int32LiteralNode>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Int32LiteralNode.SignalSignatures;
+        $signals: Int32LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -884,14 +898,15 @@ export namespace Gandiva {
 
     class Int64LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int64LiteralNode>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Int64LiteralNode.SignalSignatures;
+        $signals: Int64LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -938,14 +953,15 @@ export namespace Gandiva {
 
     class Int8LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int8LiteralNode>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Int8LiteralNode.SignalSignatures;
+        $signals: Int8LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -992,14 +1008,15 @@ export namespace Gandiva {
 
     class LiteralNode extends Node {
         static $gtype: GObject.GType<LiteralNode>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LiteralNode.SignalSignatures;
+        $signals: LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -1047,14 +1064,15 @@ export namespace Gandiva {
 
         set native_function(val: any);
         set nativeFunction(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NativeFunction.SignalSignatures;
+        $signals: NativeFunction.SignalSignatures;
 
         // Constructors
 
@@ -1115,14 +1133,15 @@ export namespace Gandiva {
         set node(val: any);
         get return_type(): Arrow.DataType;
         get returnType(): Arrow.DataType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Node.SignalSignatures;
+        $signals: Node.SignalSignatures;
 
         // Constructors
 
@@ -1167,14 +1186,15 @@ export namespace Gandiva {
 
     class NullLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<NullLiteralNode>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NullLiteralNode.SignalSignatures;
+        $signals: NullLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -1217,14 +1237,15 @@ export namespace Gandiva {
 
     class OrNode extends BooleanNode {
         static $gtype: GObject.GType<OrNode>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OrNode.SignalSignatures;
+        $signals: OrNode.SignalSignatures;
 
         // Constructors
 
@@ -1272,14 +1293,15 @@ export namespace Gandiva {
         // Properties
 
         set projector(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Projector.SignalSignatures;
+        $signals: Projector.SignalSignatures;
 
         // Constructors
 
@@ -1326,14 +1348,15 @@ export namespace Gandiva {
 
     class StringLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<StringLiteralNode>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StringLiteralNode.SignalSignatures;
+        $signals: StringLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -1380,14 +1403,15 @@ export namespace Gandiva {
 
     class UInt16LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt16LiteralNode>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UInt16LiteralNode.SignalSignatures;
+        $signals: UInt16LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -1434,14 +1458,15 @@ export namespace Gandiva {
 
     class UInt32LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt32LiteralNode>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UInt32LiteralNode.SignalSignatures;
+        $signals: UInt32LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -1488,14 +1513,15 @@ export namespace Gandiva {
 
     class UInt64LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt64LiteralNode>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UInt64LiteralNode.SignalSignatures;
+        $signals: UInt64LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -1542,14 +1568,15 @@ export namespace Gandiva {
 
     class UInt8LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt8LiteralNode>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UInt8LiteralNode.SignalSignatures;
+        $signals: UInt8LiteralNode.SignalSignatures;
 
         // Constructors
 

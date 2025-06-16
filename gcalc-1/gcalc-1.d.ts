@@ -206,14 +206,15 @@ export namespace GCalc {
 
         get parent(): Expression;
         set parent(val: Expression);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionContainer.SignalSignatures;
+        $signals: ExpressionContainer.SignalSignatures;
 
         // Constructors
 
@@ -830,14 +831,15 @@ export namespace GCalc {
 
         get parent(): Expression;
         set parent(val: Expression);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionHashMap.SignalSignatures;
+        $signals: ExpressionHashMap.SignalSignatures;
 
         // Constructors
 
@@ -887,14 +889,15 @@ export namespace GCalc {
 
     class GFunctionAcos extends GFunction {
         static $gtype: GObject.GType<GFunctionAcos>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GFunctionAcos.SignalSignatures;
+        $signals: GFunctionAcos.SignalSignatures;
 
         // Constructors
 
@@ -934,14 +937,15 @@ export namespace GCalc {
 
     class GFunctionAcosh extends GFunction {
         static $gtype: GObject.GType<GFunctionAcosh>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GFunctionAcosh.SignalSignatures;
+        $signals: GFunctionAcosh.SignalSignatures;
 
         // Constructors
 
@@ -981,14 +985,15 @@ export namespace GCalc {
 
     class GFunctionAsin extends GFunction {
         static $gtype: GObject.GType<GFunctionAsin>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GFunctionAsin.SignalSignatures;
+        $signals: GFunctionAsin.SignalSignatures;
 
         // Constructors
 
@@ -1028,14 +1033,15 @@ export namespace GCalc {
 
     class GFunctionAsinh extends GFunction {
         static $gtype: GObject.GType<GFunctionAsinh>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GFunctionAsinh.SignalSignatures;
+        $signals: GFunctionAsinh.SignalSignatures;
 
         // Constructors
 
@@ -1075,14 +1081,15 @@ export namespace GCalc {
 
     class GFunctionAtan extends GFunction {
         static $gtype: GObject.GType<GFunctionAtan>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GFunctionAtan.SignalSignatures;
+        $signals: GFunctionAtan.SignalSignatures;
 
         // Constructors
 
@@ -1122,14 +1129,15 @@ export namespace GCalc {
 
     class GFunctionAtanh extends GFunction {
         static $gtype: GObject.GType<GFunctionAtanh>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GFunctionAtanh.SignalSignatures;
+        $signals: GFunctionAtanh.SignalSignatures;
 
         // Constructors
 
@@ -1169,14 +1177,15 @@ export namespace GCalc {
 
     class GFunctionCos extends GFunction {
         static $gtype: GObject.GType<GFunctionCos>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GFunctionCos.SignalSignatures;
+        $signals: GFunctionCos.SignalSignatures;
 
         // Constructors
 
@@ -1216,14 +1225,15 @@ export namespace GCalc {
 
     class GFunctionCosh extends GFunction {
         static $gtype: GObject.GType<GFunctionCosh>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GFunctionCosh.SignalSignatures;
+        $signals: GFunctionCosh.SignalSignatures;
 
         // Constructors
 
@@ -1263,14 +1273,15 @@ export namespace GCalc {
 
     class GFunctionExp extends GFunction {
         static $gtype: GObject.GType<GFunctionExp>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GFunctionExp.SignalSignatures;
+        $signals: GFunctionExp.SignalSignatures;
 
         // Constructors
 
@@ -1310,14 +1321,15 @@ export namespace GCalc {
 
     class GFunctionLog extends GFunction {
         static $gtype: GObject.GType<GFunctionLog>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GFunctionLog.SignalSignatures;
+        $signals: GFunctionLog.SignalSignatures;
 
         // Constructors
 
@@ -1357,14 +1369,15 @@ export namespace GCalc {
 
     class GFunctionSin extends GFunction {
         static $gtype: GObject.GType<GFunctionSin>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GFunctionSin.SignalSignatures;
+        $signals: GFunctionSin.SignalSignatures;
 
         // Constructors
 
@@ -1404,14 +1417,15 @@ export namespace GCalc {
 
     class GFunctionSinh extends GFunction {
         static $gtype: GObject.GType<GFunctionSinh>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GFunctionSinh.SignalSignatures;
+        $signals: GFunctionSinh.SignalSignatures;
 
         // Constructors
 
@@ -1451,14 +1465,15 @@ export namespace GCalc {
 
     class GFunctionSqrt extends GFunction {
         static $gtype: GObject.GType<GFunctionSqrt>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GFunctionSqrt.SignalSignatures;
+        $signals: GFunctionSqrt.SignalSignatures;
 
         // Constructors
 
@@ -1498,14 +1513,15 @@ export namespace GCalc {
 
     class GFunctionTan extends GFunction {
         static $gtype: GObject.GType<GFunctionTan>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GFunctionTan.SignalSignatures;
+        $signals: GFunctionTan.SignalSignatures;
 
         // Constructors
 
@@ -1545,14 +1561,15 @@ export namespace GCalc {
 
     class GFunctionTanh extends GFunction {
         static $gtype: GObject.GType<GFunctionTanh>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GFunctionTanh.SignalSignatures;
+        $signals: GFunctionTanh.SignalSignatures;
 
         // Constructors
 
@@ -1595,14 +1612,15 @@ export namespace GCalc {
 
     class GExpression extends GObject.Object implements Expression {
         static $gtype: GObject.GType<GExpression>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GExpression.SignalSignatures;
+        $signals: GExpression.SignalSignatures;
 
         // Constructors
 
@@ -2104,14 +2122,15 @@ export namespace GCalc {
 
     class GErrorExpression extends GExpression implements ErrorExpression {
         static $gtype: GObject.GType<GErrorExpression>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GErrorExpression.SignalSignatures;
+        $signals: GErrorExpression.SignalSignatures;
 
         // Constructors
 
@@ -2596,14 +2615,15 @@ export namespace GCalc {
 
     class GAssign extends GExpression implements Operator, BinaryOperator, Assign {
         static $gtype: GObject.GType<GAssign>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GAssign.SignalSignatures;
+        $signals: GAssign.SignalSignatures;
 
         // Constructors
 
@@ -3085,14 +3105,15 @@ export namespace GCalc {
 
     class GConstant extends GExpression implements Constant {
         static $gtype: GObject.GType<GConstant>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GConstant.SignalSignatures;
+        $signals: GConstant.SignalSignatures;
 
         // Constructors
 
@@ -3605,14 +3626,15 @@ export namespace GCalc {
 
     class GDivision extends GExpression implements Operator, BinaryOperator, Division {
         static $gtype: GObject.GType<GDivision>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GDivision.SignalSignatures;
+        $signals: GDivision.SignalSignatures;
 
         // Constructors
 
@@ -4099,14 +4121,15 @@ export namespace GCalc {
 
     class GErrorResult extends GObject.Object implements Result, ErrorResult {
         static $gtype: GObject.GType<GErrorResult>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GErrorResult.SignalSignatures;
+        $signals: GErrorResult.SignalSignatures;
 
         // Constructors
 
@@ -4605,14 +4628,15 @@ export namespace GCalc {
 
     class GFunction extends GExpression implements Function, Hashable {
         static $gtype: GObject.GType<GFunction>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GFunction.SignalSignatures;
+        $signals: GFunction.SignalSignatures;
 
         // Constructors
 
@@ -5135,14 +5159,15 @@ export namespace GCalc {
 
     class GMathEquation extends GExpression implements MathEquation {
         static $gtype: GObject.GType<GMathEquation>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GMathEquation.SignalSignatures;
+        $signals: GMathEquation.SignalSignatures;
 
         // Constructors
 
@@ -5631,14 +5656,15 @@ export namespace GCalc {
 
     class GMathEquationManager extends GObject.Object implements MathEquationManager {
         static $gtype: GObject.GType<GMathEquationManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GMathEquationManager.SignalSignatures;
+        $signals: GMathEquationManager.SignalSignatures;
 
         // Constructors
 
@@ -6135,14 +6161,15 @@ export namespace GCalc {
 
     class GMinus extends GExpression implements Operator, BinaryOperator, Minus {
         static $gtype: GObject.GType<GMinus>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GMinus.SignalSignatures;
+        $signals: GMinus.SignalSignatures;
 
         // Constructors
 
@@ -6627,14 +6654,15 @@ export namespace GCalc {
 
     class GMultiply extends GExpression implements Operator, BinaryOperator, Multiply {
         static $gtype: GObject.GType<GMultiply>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GMultiply.SignalSignatures;
+        $signals: GMultiply.SignalSignatures;
 
         // Constructors
 
@@ -7115,14 +7143,15 @@ export namespace GCalc {
 
     class GParser extends GObject.Object {
         static $gtype: GObject.GType<GParser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GParser.SignalSignatures;
+        $signals: GParser.SignalSignatures;
 
         // Constructors
 
@@ -7172,14 +7201,15 @@ export namespace GCalc {
 
     class GPlus extends GExpression implements Operator, BinaryOperator, Plus {
         static $gtype: GObject.GType<GPlus>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GPlus.SignalSignatures;
+        $signals: GPlus.SignalSignatures;
 
         // Constructors
 
@@ -7660,14 +7690,15 @@ export namespace GCalc {
 
     class GPolynomial extends GExpression implements Polynomial {
         static $gtype: GObject.GType<GPolynomial>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GPolynomial.SignalSignatures;
+        $signals: GPolynomial.SignalSignatures;
 
         // Constructors
 
@@ -8153,14 +8184,15 @@ export namespace GCalc {
 
     class GPow extends GExpression implements Operator, Pow {
         static $gtype: GObject.GType<GPow>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GPow.SignalSignatures;
+        $signals: GPow.SignalSignatures;
 
         // Constructors
 
@@ -8643,14 +8675,15 @@ export namespace GCalc {
 
     class GResult extends GObject.Object implements Result {
         static $gtype: GObject.GType<GResult>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GResult.SignalSignatures;
+        $signals: GResult.SignalSignatures;
 
         // Constructors
 
@@ -9141,14 +9174,15 @@ export namespace GCalc {
 
     class GGroup extends GExpression implements Group {
         static $gtype: GObject.GType<GGroup>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GGroup.SignalSignatures;
+        $signals: GGroup.SignalSignatures;
 
         // Constructors
 
@@ -9647,14 +9681,15 @@ export namespace GCalc {
 
     class GSolver extends GObject.Object implements Solver {
         static $gtype: GObject.GType<GSolver>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GSolver.SignalSignatures;
+        $signals: GSolver.SignalSignatures;
 
         // Constructors
 
@@ -10147,14 +10182,15 @@ export namespace GCalc {
 
     class GTerm extends GExpression implements Term {
         static $gtype: GObject.GType<GTerm>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GTerm.SignalSignatures;
+        $signals: GTerm.SignalSignatures;
 
         // Constructors
 
@@ -10646,14 +10682,15 @@ export namespace GCalc {
 
     class GVariable extends GExpression implements Variable, Hashable {
         static $gtype: GObject.GType<GVariable>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GVariable.SignalSignatures;
+        $signals: GVariable.SignalSignatures;
 
         // Constructors
 

@@ -357,14 +357,15 @@ export namespace GXml {
 
     class ArrayList extends BaseCollection implements List {
         static $gtype: GObject.GType<ArrayList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ArrayList.SignalSignatures;
+        $signals: ArrayList.SignalSignatures;
 
         // Constructors
 
@@ -860,14 +861,15 @@ export namespace GXml {
 
         get is_referenced(): boolean;
         get isReferenced(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Attr.SignalSignatures;
+        $signals: Attr.SignalSignatures;
 
         // Fields
 
@@ -1402,14 +1404,15 @@ export namespace GXml {
 
     abstract class BaseCollection extends GObject.Object implements Gee.Traversable, Gee.Iterable, Collection {
         static $gtype: GObject.GType<BaseCollection>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BaseCollection.SignalSignatures;
+        $signals: BaseCollection.SignalSignatures;
 
         // Constructors
 
@@ -1993,14 +1996,15 @@ export namespace GXml {
         set value(val: string);
         get combiner(): CssCombiner;
         set combiner(val: CssCombiner);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CssSelector.SignalSignatures;
+        $signals: CssSelector.SignalSignatures;
 
         // Constructors
 
@@ -2076,14 +2080,15 @@ export namespace GXml {
         set local_name(val: string);
         get localName(): string;
         set localName(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CssElementSelector.SignalSignatures;
+        $signals: CssElementSelector.SignalSignatures;
 
         // Constructors
 
@@ -2154,14 +2159,15 @@ export namespace GXml {
         set local_name(val: string);
         get localName(): string;
         set localName(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CssAttributeSelector.SignalSignatures;
+        $signals: CssAttributeSelector.SignalSignatures;
 
         // Constructors
 
@@ -2225,14 +2231,15 @@ export namespace GXml {
         // Properties
 
         get selectors(): Gee.List;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CssNotSelector.SignalSignatures;
+        $signals: CssNotSelector.SignalSignatures;
 
         // Constructors
 
@@ -2284,14 +2291,15 @@ export namespace GXml {
         // Properties
 
         get selectors(): Gee.List;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CssSelectorParser.SignalSignatures;
+        $signals: CssSelectorParser.SignalSignatures;
 
         // Constructors
 
@@ -2357,14 +2365,15 @@ export namespace GXml {
 
     class Document extends Node implements DomParentNode, DomNonElementParentNode, DomDocument, DomXMLDocument {
         static $gtype: GObject.GType<Document>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Document.SignalSignatures;
+        $signals: Document.SignalSignatures;
 
         // Constructors
 
@@ -3078,14 +3087,15 @@ export namespace GXml {
 
     class Implementation extends GObject.Object implements DomImplementation {
         static $gtype: GObject.GType<Implementation>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Implementation.SignalSignatures;
+        $signals: Implementation.SignalSignatures;
 
         // Constructors
 
@@ -3589,14 +3599,15 @@ export namespace GXml {
 
     class DocumentType extends Node implements DomChildNode, DomDocumentType {
         static $gtype: GObject.GType<DocumentType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentType.SignalSignatures;
+        $signals: DocumentType.SignalSignatures;
 
         // Constructors
 
@@ -4113,14 +4124,15 @@ export namespace GXml {
 
     class DocumentFragment extends Node implements DomParentNode, DomNonElementParentNode, DomDocumentFragment {
         static $gtype: GObject.GType<DocumentFragment>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentFragment.SignalSignatures;
+        $signals: DocumentFragment.SignalSignatures;
 
         // Constructors
 
@@ -4629,14 +4641,15 @@ export namespace GXml {
 
     class DomNodeFilter extends GObject.Object {
         static $gtype: GObject.GType<DomNodeFilter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomNodeFilter.SignalSignatures;
+        $signals: DomNodeFilter.SignalSignatures;
 
         // Constructors
 
@@ -4683,14 +4696,15 @@ export namespace GXml {
 
     class DomElementList extends Gee.ArrayList implements DomHTMLCollection {
         static $gtype: GObject.GType<DomElementList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomElementList.SignalSignatures;
+        $signals: DomElementList.SignalSignatures;
 
         // Constructors
 
@@ -5200,14 +5214,15 @@ export namespace GXml {
         set bubbles(val: boolean);
         get cancelable(): boolean;
         set cancelable(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomEventInit.SignalSignatures;
+        $signals: DomEventInit.SignalSignatures;
 
         // Constructors
 
@@ -5265,14 +5280,15 @@ export namespace GXml {
 
         get detail(): GObject.Value;
         set detail(val: GObject.Value);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomCustomEventInit.SignalSignatures;
+        $signals: DomCustomEventInit.SignalSignatures;
 
         // Constructors
 
@@ -5326,14 +5342,15 @@ export namespace GXml {
 
         get time(): GLib.DateTime;
         set time(val: GLib.DateTime);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomTimeStamp.SignalSignatures;
+        $signals: DomTimeStamp.SignalSignatures;
 
         // Constructors
 
@@ -5427,14 +5444,15 @@ export namespace GXml {
         set attribute_filter(val: Gee.List);
         get attributeFilter(): Gee.List;
         set attributeFilter(val: Gee.List);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomMutationObserverInit.SignalSignatures;
+        $signals: DomMutationObserverInit.SignalSignatures;
 
         // Constructors
 
@@ -5493,14 +5511,15 @@ export namespace GXml {
 
     class DomErrorName extends GObject.Object {
         static $gtype: GObject.GType<DomErrorName>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomErrorName.SignalSignatures;
+        $signals: DomErrorName.SignalSignatures;
 
         // Constructors
 
@@ -5588,14 +5607,15 @@ export namespace GXml {
         set read_buffer(val: Gio.MemoryOutputStream);
         get readBuffer(): Gio.MemoryOutputStream;
         set readBuffer(val: Gio.MemoryOutputStream);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Element.SignalSignatures;
+        $signals: Element.SignalSignatures;
 
         // Constructors
 
@@ -6386,14 +6406,15 @@ export namespace GXml {
 
     class ElementAttributes extends Gee.HashMap implements DomNamedNodeMap {
         static $gtype: GObject.GType<ElementAttributes>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ElementAttributes.SignalSignatures;
+        $signals: ElementAttributes.SignalSignatures;
 
         // Constructors
 
@@ -6959,14 +6980,15 @@ export namespace GXml {
 
     class Event extends GObject.Object implements DomEvent {
         static $gtype: GObject.GType<Event>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Event.SignalSignatures;
+        $signals: Event.SignalSignatures;
 
         // Constructors
 
@@ -7498,14 +7520,15 @@ export namespace GXml {
         // Properties
 
         get detail(): GObject.Value;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CustomEvent.SignalSignatures;
+        $signals: CustomEvent.SignalSignatures;
 
         // Constructors
 
@@ -7553,14 +7576,15 @@ export namespace GXml {
 
     class HashMap extends BaseCollection implements Map {
         static $gtype: GObject.GType<HashMap>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HashMap.SignalSignatures;
+        $signals: HashMap.SignalSignatures;
 
         // Constructors
 
@@ -8070,14 +8094,15 @@ export namespace GXml {
 
     class HashPairedMap extends BaseCollection implements PairedMap {
         static $gtype: GObject.GType<HashPairedMap>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HashPairedMap.SignalSignatures;
+        $signals: HashPairedMap.SignalSignatures;
 
         // Constructors
 
@@ -8610,14 +8635,15 @@ export namespace GXml {
 
     class HashThreeMap extends BaseCollection implements ThreeMap {
         static $gtype: GObject.GType<HashThreeMap>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HashThreeMap.SignalSignatures;
+        $signals: HashThreeMap.SignalSignatures;
 
         // Constructors
 
@@ -9167,14 +9193,15 @@ export namespace GXml {
 
     class HTMLCollection extends Gee.ArrayList implements DomHTMLCollection {
         static $gtype: GObject.GType<HTMLCollection>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HTMLCollection.SignalSignatures;
+        $signals: HTMLCollection.SignalSignatures;
 
         // Constructors
 
@@ -9680,14 +9707,15 @@ export namespace GXml {
 
         get html(): DomElement;
         set html(val: DomElement);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HtmlDocument.SignalSignatures;
+        $signals: HtmlDocument.SignalSignatures;
 
         // Constructors
 
@@ -9736,14 +9764,15 @@ export namespace GXml {
 
     class HtmlElement extends Element {
         static $gtype: GObject.GType<HtmlElement>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HtmlElement.SignalSignatures;
+        $signals: HtmlElement.SignalSignatures;
 
         // Constructors
 
@@ -9789,14 +9818,15 @@ export namespace GXml {
 
     class LXPathObject extends GObject.Object implements XPathObject {
         static $gtype: GObject.GType<LXPathObject>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LXPathObject.SignalSignatures;
+        $signals: LXPathObject.SignalSignatures;
 
         // Constructors
 
@@ -10315,14 +10345,15 @@ export namespace GXml {
 
     class Node extends GObject.Object implements DomEventTarget, DomNode {
         static $gtype: GObject.GType<Node>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Node.SignalSignatures;
+        $signals: Node.SignalSignatures;
 
         // Constructors
 
@@ -10907,14 +10938,15 @@ export namespace GXml {
 
     class NodeList extends Gee.ArrayList implements DomNodeList {
         static $gtype: GObject.GType<NodeList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NodeList.SignalSignatures;
+        $signals: NodeList.SignalSignatures;
 
         // Constructors
 
@@ -11409,14 +11441,15 @@ export namespace GXml {
 
     class NodeIterator extends GObject.Object implements DomNodeIterator {
         static $gtype: GObject.GType<NodeIterator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NodeIterator.SignalSignatures;
+        $signals: NodeIterator.SignalSignatures;
 
         // Constructors
 
@@ -11929,14 +11962,15 @@ export namespace GXml {
 
         get value(): string;
         set value(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BaseProperty.SignalSignatures;
+        $signals: BaseProperty.SignalSignatures;
 
         // Constructors
 
@@ -12429,14 +12463,15 @@ export namespace GXml {
 
     class String extends BaseProperty {
         static $gtype: GObject.GType<String>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: String.SignalSignatures;
+        $signals: String.SignalSignatures;
 
         // Constructors
 
@@ -12480,14 +12515,15 @@ export namespace GXml {
 
     class ArrayString extends BaseProperty {
         static $gtype: GObject.GType<ArrayString>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ArrayString.SignalSignatures;
+        $signals: ArrayString.SignalSignatures;
 
         // Constructors
 
@@ -12552,14 +12588,15 @@ export namespace GXml {
         set simpleType(val: string);
         get source(): Gio.File;
         set source(val: Gio.File);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdArrayString.SignalSignatures;
+        $signals: XsdArrayString.SignalSignatures;
 
         // Constructors
 
@@ -12617,14 +12654,15 @@ export namespace GXml {
 
         get decimals(): number;
         set decimals(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Double.SignalSignatures;
+        $signals: Double.SignalSignatures;
 
         // Constructors
 
@@ -12674,14 +12712,15 @@ export namespace GXml {
 
     class Float extends Double {
         static $gtype: GObject.GType<Float>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Float.SignalSignatures;
+        $signals: Float.SignalSignatures;
 
         // Constructors
 
@@ -12728,14 +12767,15 @@ export namespace GXml {
 
     class Int extends BaseProperty {
         static $gtype: GObject.GType<Int>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Int.SignalSignatures;
+        $signals: Int.SignalSignatures;
 
         // Constructors
 
@@ -12782,14 +12822,15 @@ export namespace GXml {
 
     class Boolean extends BaseProperty {
         static $gtype: GObject.GType<Boolean>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Boolean.SignalSignatures;
+        $signals: Boolean.SignalSignatures;
 
         // Constructors
 
@@ -12868,14 +12909,15 @@ export namespace GXml {
         set enum_type(val: GObject.GType);
         get enumType(): GObject.GType;
         set enumType(val: GObject.GType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Enum.SignalSignatures;
+        $signals: Enum.SignalSignatures;
 
         // Constructors
 
@@ -12932,14 +12974,15 @@ export namespace GXml {
 
     class Date extends BaseProperty {
         static $gtype: GObject.GType<Date>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Date.SignalSignatures;
+        $signals: Date.SignalSignatures;
 
         // Constructors
 
@@ -12994,14 +13037,15 @@ export namespace GXml {
 
         get format(): string;
         set format(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DateTime.SignalSignatures;
+        $signals: DateTime.SignalSignatures;
 
         // Constructors
 
@@ -13055,14 +13099,15 @@ export namespace GXml {
 
     class Range extends GObject.Object implements DomRange {
         static $gtype: GObject.GType<Range>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Range.SignalSignatures;
+        $signals: Range.SignalSignatures;
 
         // Constructors
 
@@ -13618,14 +13663,15 @@ export namespace GXml {
 
     class SettableTokenList extends TokenList implements DomSettableTokenList {
         static $gtype: GObject.GType<SettableTokenList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettableTokenList.SignalSignatures;
+        $signals: SettableTokenList.SignalSignatures;
 
         // Constructors
 
@@ -14121,14 +14167,15 @@ export namespace GXml {
 
     class StringRef extends GObject.Object implements Property {
         static $gtype: GObject.GType<StringRef>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StringRef.SignalSignatures;
+        $signals: StringRef.SignalSignatures;
 
         // Constructors
 
@@ -14627,14 +14674,15 @@ export namespace GXml {
 
     class CharacterData extends Node implements DomNonDocumentTypeChildNode, DomChildNode, DomCharacterData {
         static $gtype: GObject.GType<CharacterData>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CharacterData.SignalSignatures;
+        $signals: CharacterData.SignalSignatures;
 
         // Constructors
 
@@ -15128,14 +15176,15 @@ export namespace GXml {
 
     class Text extends CharacterData implements DomText {
         static $gtype: GObject.GType<Text>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Text.SignalSignatures;
+        $signals: Text.SignalSignatures;
 
         // Constructors
 
@@ -15209,14 +15258,15 @@ export namespace GXml {
 
     class ProcessingInstruction extends CharacterData implements DomProcessingInstruction {
         static $gtype: GObject.GType<ProcessingInstruction>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProcessingInstruction.SignalSignatures;
+        $signals: ProcessingInstruction.SignalSignatures;
 
         // Constructors
 
@@ -15290,14 +15340,15 @@ export namespace GXml {
 
     class Comment extends CharacterData implements DomComment {
         static $gtype: GObject.GType<Comment>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Comment.SignalSignatures;
+        $signals: Comment.SignalSignatures;
 
         // Constructors
 
@@ -15372,14 +15423,15 @@ export namespace GXml {
 
     class TokenList extends Gee.ArrayList implements DomTokenList {
         static $gtype: GObject.GType<TokenList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TokenList.SignalSignatures;
+        $signals: TokenList.SignalSignatures;
 
         // Constructors
 
@@ -15902,14 +15954,15 @@ export namespace GXml {
 
     class TreeWalker extends GObject.Object implements DomTreeWalker {
         static $gtype: GObject.GType<TreeWalker>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TreeWalker.SignalSignatures;
+        $signals: TreeWalker.SignalSignatures;
 
         // Constructors
 
@@ -16428,14 +16481,15 @@ export namespace GXml {
 
     class XAttribute extends XNode implements DomAttr {
         static $gtype: GObject.GType<XAttribute>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XAttribute.SignalSignatures;
+        $signals: XAttribute.SignalSignatures;
 
         // Constructors
 
@@ -16957,14 +17011,15 @@ export namespace GXml {
 
         get str(): string;
         set str(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XCharacterData.SignalSignatures;
+        $signals: XCharacterData.SignalSignatures;
 
         // Constructors
 
@@ -17459,14 +17514,15 @@ export namespace GXml {
 
     class XChildNode extends XNode implements DomChildNode {
         static $gtype: GObject.GType<XChildNode>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XChildNode.SignalSignatures;
+        $signals: XChildNode.SignalSignatures;
 
         // Constructors
 
@@ -17959,14 +18015,15 @@ export namespace GXml {
 
     class XNonDocumentChildNode extends XChildNode implements DomNonDocumentTypeChildNode {
         static $gtype: GObject.GType<XNonDocumentChildNode>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XNonDocumentChildNode.SignalSignatures;
+        $signals: XNonDocumentChildNode.SignalSignatures;
 
         // Constructors
 
@@ -18469,14 +18526,15 @@ export namespace GXml {
 
     class XComment extends XCharacterData implements DomComment {
         static $gtype: GObject.GType<XComment>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XComment.SignalSignatures;
+        $signals: XComment.SignalSignatures;
 
         // Constructors
 
@@ -18606,14 +18664,15 @@ export namespace GXml {
         get file(): Gio.File;
         set file(val: Gio.File);
         get root(): DomNode;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XDocument.SignalSignatures;
+        $signals: XDocument.SignalSignatures;
 
         // Fields
 
@@ -19387,14 +19446,15 @@ export namespace GXml {
 
         get content(): string;
         set content(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XElement.SignalSignatures;
+        $signals: XElement.SignalSignatures;
 
         // Constructors
 
@@ -20137,14 +20197,15 @@ export namespace GXml {
 
     class XHashMapAttr extends Gee.AbstractMap implements DomNamedNodeMap {
         static $gtype: GObject.GType<XHashMapAttr>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XHashMapAttr.SignalSignatures;
+        $signals: XHashMapAttr.SignalSignatures;
 
         // Constructors
 
@@ -20656,14 +20717,15 @@ export namespace GXml {
 
     class XHashMapAttrEntry extends Gee.MapEntry {
         static $gtype: GObject.GType<XHashMapAttrEntry>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XHashMapAttrEntry.SignalSignatures;
+        $signals: XHashMapAttrEntry.SignalSignatures;
 
         // Constructors
 
@@ -20707,14 +20769,15 @@ export namespace GXml {
 
     class XHashMapAttrIterator extends GObject.Object implements Gee.MapIterator {
         static $gtype: GObject.GType<XHashMapAttrIterator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XHashMapAttrIterator.SignalSignatures;
+        $signals: XHashMapAttrIterator.SignalSignatures;
 
         // Constructors
 
@@ -21239,14 +21302,15 @@ export namespace GXml {
 
     class XHtmlDocument extends XDocument implements DomHtmlDocument {
         static $gtype: GObject.GType<XHtmlDocument>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XHtmlDocument.SignalSignatures;
+        $signals: XHtmlDocument.SignalSignatures;
 
         // Constructors
 
@@ -21760,14 +21824,15 @@ export namespace GXml {
 
     class XListChildren extends Gee.AbstractBidirList implements DomNodeList, DomHTMLCollection {
         static $gtype: GObject.GType<XListChildren>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XListChildren.SignalSignatures;
+        $signals: XListChildren.SignalSignatures;
 
         // Constructors
 
@@ -22283,14 +22348,15 @@ export namespace GXml {
         implements Gee.Traversable, Gee.Iterator, Gee.BidirIterator, Gee.ListIterator, Gee.BidirListIterator
     {
         static $gtype: GObject.GType<XListChildrenIterator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XListChildrenIterator.SignalSignatures;
+        $signals: XListChildrenIterator.SignalSignatures;
 
         // Constructors
 
@@ -22882,14 +22948,15 @@ export namespace GXml {
         get name(): string;
         get value(): string;
         set value(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XNode.SignalSignatures;
+        $signals: XNode.SignalSignatures;
 
         // Fields
 
@@ -23506,14 +23573,15 @@ export namespace GXml {
 
     class XParser extends GObject.Object implements Parser {
         static $gtype: GObject.GType<XParser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XParser.SignalSignatures;
+        $signals: XParser.SignalSignatures;
 
         // Constructors
 
@@ -24147,14 +24215,15 @@ export namespace GXml {
 
         get data(): string;
         set data(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XProcessingInstruction.SignalSignatures;
+        $signals: XProcessingInstruction.SignalSignatures;
 
         // Constructors
 
@@ -24256,14 +24325,15 @@ export namespace GXml {
         set complex_type_definitions(val: XsdListComplexTypes);
         get complexTypeDefinitions(): XsdListComplexTypes;
         set complexTypeDefinitions(val: XsdListComplexTypes);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdSchema.SignalSignatures;
+        $signals: XsdSchema.SignalSignatures;
 
         // Constructors
 
@@ -24344,14 +24414,15 @@ export namespace GXml {
         set union(val: XsdTypeUnion);
         get restriction(): XsdTypeRestriction;
         set restriction(val: XsdTypeRestriction);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdSimpleType.SignalSignatures;
+        $signals: XsdSimpleType.SignalSignatures;
 
         // Constructors
 
@@ -24418,14 +24489,15 @@ export namespace GXml {
 
         get annotation(): XsdAnnotation;
         set annotation(val: XsdAnnotation);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdTypeDefinition.SignalSignatures;
+        $signals: XsdTypeDefinition.SignalSignatures;
 
         // Constructors
 
@@ -24475,14 +24547,15 @@ export namespace GXml {
 
     class XsdTypeList extends XsdTypeDefinition {
         static $gtype: GObject.GType<XsdTypeList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdTypeList.SignalSignatures;
+        $signals: XsdTypeList.SignalSignatures;
 
         // Constructors
 
@@ -24527,14 +24600,15 @@ export namespace GXml {
 
     class XsdTypeUnion extends XsdTypeDefinition {
         static $gtype: GObject.GType<XsdTypeUnion>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdTypeUnion.SignalSignatures;
+        $signals: XsdTypeUnion.SignalSignatures;
 
         // Constructors
 
@@ -24605,14 +24679,15 @@ export namespace GXml {
         set white_spaces(val: XsdListTypeRestrictionWhiteSpaces);
         get whiteSpaces(): XsdListTypeRestrictionWhiteSpaces;
         set whiteSpaces(val: XsdListTypeRestrictionWhiteSpaces);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdTypeRestriction.SignalSignatures;
+        $signals: XsdTypeRestriction.SignalSignatures;
 
         // Constructors
 
@@ -24675,14 +24750,15 @@ export namespace GXml {
 
         get annotation(): XsdAnnotation;
         set annotation(val: XsdAnnotation);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdTypeRestrictionDef.SignalSignatures;
+        $signals: XsdTypeRestrictionDef.SignalSignatures;
 
         // Constructors
 
@@ -24734,14 +24810,15 @@ export namespace GXml {
 
     class XsdTypeRestrictionMinExclusive extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionMinExclusive>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdTypeRestrictionMinExclusive.SignalSignatures;
+        $signals: XsdTypeRestrictionMinExclusive.SignalSignatures;
 
         // Constructors
 
@@ -24788,14 +24865,15 @@ export namespace GXml {
 
     class XsdTypeRestrictionMinInclusive extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionMinInclusive>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdTypeRestrictionMinInclusive.SignalSignatures;
+        $signals: XsdTypeRestrictionMinInclusive.SignalSignatures;
 
         // Constructors
 
@@ -24842,14 +24920,15 @@ export namespace GXml {
 
     class XsdTypeRestrictionMaxExclusive extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionMaxExclusive>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdTypeRestrictionMaxExclusive.SignalSignatures;
+        $signals: XsdTypeRestrictionMaxExclusive.SignalSignatures;
 
         // Constructors
 
@@ -24896,14 +24975,15 @@ export namespace GXml {
 
     class XsdTypeRestrictionMaxInclusive extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionMaxInclusive>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdTypeRestrictionMaxInclusive.SignalSignatures;
+        $signals: XsdTypeRestrictionMaxInclusive.SignalSignatures;
 
         // Constructors
 
@@ -24950,14 +25030,15 @@ export namespace GXml {
 
     class XsdTypeRestrictionTotalDigits extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionTotalDigits>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdTypeRestrictionTotalDigits.SignalSignatures;
+        $signals: XsdTypeRestrictionTotalDigits.SignalSignatures;
 
         // Constructors
 
@@ -25004,14 +25085,15 @@ export namespace GXml {
 
     class XsdTypeRestrictionFractionDigits extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionFractionDigits>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdTypeRestrictionFractionDigits.SignalSignatures;
+        $signals: XsdTypeRestrictionFractionDigits.SignalSignatures;
 
         // Constructors
 
@@ -25061,14 +25143,15 @@ export namespace GXml {
 
     class XsdTypeRestrictionLength extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionLength>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdTypeRestrictionLength.SignalSignatures;
+        $signals: XsdTypeRestrictionLength.SignalSignatures;
 
         // Constructors
 
@@ -25115,14 +25198,15 @@ export namespace GXml {
 
     class XsdTypeRestrictionMinLength extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionMinLength>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdTypeRestrictionMinLength.SignalSignatures;
+        $signals: XsdTypeRestrictionMinLength.SignalSignatures;
 
         // Constructors
 
@@ -25169,14 +25253,15 @@ export namespace GXml {
 
     class XsdTypeRestrictionMaxLength extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionMaxLength>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdTypeRestrictionMaxLength.SignalSignatures;
+        $signals: XsdTypeRestrictionMaxLength.SignalSignatures;
 
         // Constructors
 
@@ -25231,14 +25316,15 @@ export namespace GXml {
 
         get value(): string;
         set value(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdTypeRestrictionEnumeration.SignalSignatures;
+        $signals: XsdTypeRestrictionEnumeration.SignalSignatures;
 
         // Constructors
 
@@ -25302,14 +25388,15 @@ export namespace GXml {
         set fixed(val: XsdTypeRestrictionWhiteSpaceFixed);
         get value(): string;
         set value(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdTypeRestrictionWhiteSpace.SignalSignatures;
+        $signals: XsdTypeRestrictionWhiteSpace.SignalSignatures;
 
         // Constructors
 
@@ -25360,14 +25447,15 @@ export namespace GXml {
 
     class XsdTypeRestrictionWhiteSpaceFixed extends Boolean {
         static $gtype: GObject.GType<XsdTypeRestrictionWhiteSpaceFixed>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdTypeRestrictionWhiteSpaceFixed.SignalSignatures;
+        $signals: XsdTypeRestrictionWhiteSpaceFixed.SignalSignatures;
 
         // Constructors
 
@@ -25417,14 +25505,15 @@ export namespace GXml {
 
     class XsdTypeRestrictionPattern extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionPattern>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdTypeRestrictionPattern.SignalSignatures;
+        $signals: XsdTypeRestrictionPattern.SignalSignatures;
 
         // Constructors
 
@@ -25471,14 +25560,15 @@ export namespace GXml {
 
     class XsdTypeRestrictionAssertion extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionAssertion>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdTypeRestrictionAssertion.SignalSignatures;
+        $signals: XsdTypeRestrictionAssertion.SignalSignatures;
 
         // Constructors
 
@@ -25525,14 +25615,15 @@ export namespace GXml {
 
     class XsdTypeRestrictionExplicitTimezone extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionExplicitTimezone>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdTypeRestrictionExplicitTimezone.SignalSignatures;
+        $signals: XsdTypeRestrictionExplicitTimezone.SignalSignatures;
 
         // Constructors
 
@@ -25630,14 +25721,15 @@ export namespace GXml {
         get typeAttributes(): XsdList;
         get group_attributes(): XsdList;
         get groupAttributes(): XsdList;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdComplexType.SignalSignatures;
+        $signals: XsdComplexType.SignalSignatures;
 
         // Constructors
 
@@ -25708,14 +25800,15 @@ export namespace GXml {
 
         get base(): string;
         set base(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdExtension.SignalSignatures;
+        $signals: XsdExtension.SignalSignatures;
 
         // Constructors
 
@@ -25857,14 +25950,15 @@ export namespace GXml {
         set complex_type(val: XsdComplexType);
         get complexType(): XsdComplexType;
         set complexType(val: XsdComplexType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdElement.SignalSignatures;
+        $signals: XsdElement.SignalSignatures;
 
         // Constructors
 
@@ -25945,14 +26039,15 @@ export namespace GXml {
 
     class XsdAnnotation extends Element {
         static $gtype: GObject.GType<XsdAnnotation>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdAnnotation.SignalSignatures;
+        $signals: XsdAnnotation.SignalSignatures;
 
         // Constructors
 
@@ -26004,14 +26099,15 @@ export namespace GXml {
 
         get anotation(): XsdAnnotation;
         set anotation(val: XsdAnnotation);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdBaseType.SignalSignatures;
+        $signals: XsdBaseType.SignalSignatures;
 
         // Constructors
 
@@ -26068,14 +26164,15 @@ export namespace GXml {
 
         get anotation(): XsdAnnotation;
         set anotation(val: XsdAnnotation);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdBaseContent.SignalSignatures;
+        $signals: XsdBaseContent.SignalSignatures;
 
         // Constructors
 
@@ -26125,14 +26222,15 @@ export namespace GXml {
 
     class XsdSimpleContent extends XsdBaseContent {
         static $gtype: GObject.GType<XsdSimpleContent>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdSimpleContent.SignalSignatures;
+        $signals: XsdSimpleContent.SignalSignatures;
 
         // Constructors
 
@@ -26177,14 +26275,15 @@ export namespace GXml {
 
     class XsdComplexContent extends XsdBaseContent {
         static $gtype: GObject.GType<XsdComplexContent>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdComplexContent.SignalSignatures;
+        $signals: XsdComplexContent.SignalSignatures;
 
         // Constructors
 
@@ -26229,14 +26328,15 @@ export namespace GXml {
 
     class XsdOpenContent extends XsdBaseContent {
         static $gtype: GObject.GType<XsdOpenContent>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdOpenContent.SignalSignatures;
+        $signals: XsdOpenContent.SignalSignatures;
 
         // Constructors
 
@@ -26288,14 +26388,15 @@ export namespace GXml {
 
         get anotation(): XsdAnnotation;
         set anotation(val: XsdAnnotation);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdBaseAttribute.SignalSignatures;
+        $signals: XsdBaseAttribute.SignalSignatures;
 
         // Constructors
 
@@ -26345,14 +26446,15 @@ export namespace GXml {
 
     class XsdAttribute extends XsdBaseAttribute {
         static $gtype: GObject.GType<XsdAttribute>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdAttribute.SignalSignatures;
+        $signals: XsdAttribute.SignalSignatures;
 
         // Constructors
 
@@ -26397,14 +26499,15 @@ export namespace GXml {
 
     class XsdAttributeGroup extends XsdBaseAttribute {
         static $gtype: GObject.GType<XsdAttributeGroup>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdAttributeGroup.SignalSignatures;
+        $signals: XsdAttributeGroup.SignalSignatures;
 
         // Constructors
 
@@ -26452,14 +26555,15 @@ export namespace GXml {
         // Properties
 
         get length(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdList.SignalSignatures;
+        $signals: XsdList.SignalSignatures;
 
         // Constructors
 
@@ -26507,14 +26611,15 @@ export namespace GXml {
 
     class XsdListElements extends XsdList {
         static $gtype: GObject.GType<XsdListElements>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdListElements.SignalSignatures;
+        $signals: XsdListElements.SignalSignatures;
 
         // Constructors
 
@@ -26556,14 +26661,15 @@ export namespace GXml {
 
     class XsdListSimpleTypes extends XsdList {
         static $gtype: GObject.GType<XsdListSimpleTypes>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdListSimpleTypes.SignalSignatures;
+        $signals: XsdListSimpleTypes.SignalSignatures;
 
         // Constructors
 
@@ -26605,14 +26711,15 @@ export namespace GXml {
 
     class XsdListComplexTypes extends XsdList {
         static $gtype: GObject.GType<XsdListComplexTypes>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdListComplexTypes.SignalSignatures;
+        $signals: XsdListComplexTypes.SignalSignatures;
 
         // Constructors
 
@@ -26656,14 +26763,15 @@ export namespace GXml {
 
     class XsdListTypeRestrictionEnumerations extends XsdList {
         static $gtype: GObject.GType<XsdListTypeRestrictionEnumerations>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdListTypeRestrictionEnumerations.SignalSignatures;
+        $signals: XsdListTypeRestrictionEnumerations.SignalSignatures;
 
         // Constructors
 
@@ -26710,14 +26818,15 @@ export namespace GXml {
 
     class XsdListTypeRestrictionWhiteSpaces extends XsdList {
         static $gtype: GObject.GType<XsdListTypeRestrictionWhiteSpaces>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XsdListTypeRestrictionWhiteSpaces.SignalSignatures;
+        $signals: XsdListTypeRestrictionWhiteSpaces.SignalSignatures;
 
         // Constructors
 
@@ -26772,14 +26881,15 @@ export namespace GXml {
 
     class XText extends XCharacterData implements DomText {
         static $gtype: GObject.GType<XText>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XText.SignalSignatures;
+        $signals: XText.SignalSignatures;
 
         // Constructors
 

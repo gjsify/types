@@ -121,14 +121,15 @@ export namespace EBook {
          * The currently active locale for this addressbook.
          */
         get locale(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BookClient.SignalSignatures;
+        $signals: BookClient.SignalSignatures;
 
         // Constructors
 
@@ -2014,14 +2015,15 @@ export namespace EBook {
          * default context at cursor creation time.
          */
         get total(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BookClientCursor.SignalSignatures;
+        $signals: BookClientCursor.SignalSignatures;
 
         // Constructors
 
@@ -2972,14 +2974,15 @@ export namespace EBook {
         get nTotal(): number;
         get object_path(): string;
         get objectPath(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BookClientView.SignalSignatures;
+        $signals: BookClientView.SignalSignatures;
 
         // Constructors
 
@@ -3677,14 +3680,15 @@ export namespace EBook {
 
     class Destination extends GObject.Object {
         static $gtype: GObject.GType<Destination>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Destination.SignalSignatures;
+        $signals: Destination.SignalSignatures;
 
         // Fields
 

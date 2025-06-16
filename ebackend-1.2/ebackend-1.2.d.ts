@@ -418,14 +418,15 @@ export namespace EBackend {
         get source(): EDataServer.Source;
         get user_prompter(): UserPrompter;
         get userPrompter(): UserPrompter;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Backend.SignalSignatures;
+        $signals: Backend.SignalSignatures;
 
         // Constructors
 
@@ -794,14 +795,15 @@ export namespace EBackend {
      */
     abstract class BackendFactory extends EDataServer.Extension {
         static $gtype: GObject.GType<BackendFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BackendFactory.SignalSignatures;
+        $signals: BackendFactory.SignalSignatures;
 
         // Constructors
 
@@ -901,14 +903,15 @@ export namespace EBackend {
      */
     abstract class Cache extends GObject.Object {
         static $gtype: GObject.GType<Cache>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Cache.SignalSignatures;
+        $signals: Cache.SignalSignatures;
 
         // Constructors
 
@@ -1337,14 +1340,15 @@ export namespace EBackend {
          * The column name for the values.
          */
         get valueColumnName(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CacheKeys.SignalSignatures;
+        $signals: CacheKeys.SignalSignatures;
 
         // Constructors
 
@@ -1483,14 +1487,15 @@ export namespace EBackend {
 
     class CacheReaper extends EDataServer.Extension implements EDataServer.Extensible {
         static $gtype: GObject.GType<CacheReaper>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CacheReaper.SignalSignatures;
+        $signals: CacheReaper.SignalSignatures;
 
         // Constructors
 
@@ -2042,14 +2047,15 @@ export namespace EBackend {
         get proxy_resolver(): Gio.ProxyResolver;
         get proxyResolver(): Gio.ProxyResolver;
         get server(): SourceRegistryServer;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CollectionBackend.SignalSignatures;
+        $signals: CollectionBackend.SignalSignatures;
 
         // Constructors
 
@@ -2568,14 +2574,15 @@ export namespace EBackend {
      */
     class CollectionBackendFactory extends BackendFactory {
         static $gtype: GObject.GType<CollectionBackendFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CollectionBackendFactory.SignalSignatures;
+        $signals: CollectionBackendFactory.SignalSignatures;
 
         // Constructors
 
@@ -2661,14 +2668,15 @@ export namespace EBackend {
      */
     abstract class DBusServer extends GObject.Object implements EDataServer.Extensible {
         static $gtype: GObject.GType<DBusServer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DBusServer.SignalSignatures;
+        $signals: DBusServer.SignalSignatures;
 
         // Constructors
 
@@ -3251,14 +3259,15 @@ export namespace EBackend {
         get registry(): EDataServer.SourceRegistry;
         get reload_supported(): boolean;
         get reloadSupported(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataFactory.SignalSignatures;
+        $signals: DataFactory.SignalSignatures;
 
         // Constructors
 
@@ -3959,14 +3968,15 @@ export namespace EBackend {
          * The filename of the cache.
          */
         get filename(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileCache.SignalSignatures;
+        $signals: FileCache.SignalSignatures;
 
         // Constructors
 
@@ -4138,14 +4148,15 @@ export namespace EBackend {
         set write_directory(val: string);
         get writeDirectory(): string;
         set writeDirectory(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ServerSideSource.SignalSignatures;
+        $signals: ServerSideSource.SignalSignatures;
 
         // Constructors
 
@@ -5010,14 +5021,15 @@ export namespace EBackend {
         implements EDataServer.Extensible
     {
         static $gtype: GObject.GType<ServerSideSourceCredentialsProvider>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ServerSideSourceCredentialsProvider.SignalSignatures;
+        $signals: ServerSideSourceCredentialsProvider.SignalSignatures;
 
         // Constructors
 
@@ -5547,14 +5559,15 @@ export namespace EBackend {
      */
     class SourceRegistryServer extends DataFactory implements OAuth2Support, EDataServer.Extensible, Gio.Initable {
         static $gtype: GObject.GType<SourceRegistryServer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceRegistryServer.SignalSignatures;
+        $signals: SourceRegistryServer.SignalSignatures;
 
         // Constructors
 
@@ -6406,14 +6419,15 @@ export namespace EBackend {
         // Properties
 
         get registry(): EDataServer.SourceRegistry;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SubprocessFactory.SignalSignatures;
+        $signals: SubprocessFactory.SignalSignatures;
 
         // Constructors
 
@@ -7066,14 +7080,15 @@ export namespace EBackend {
      */
     class UserPrompter extends GObject.Object {
         static $gtype: GObject.GType<UserPrompter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserPrompter.SignalSignatures;
+        $signals: UserPrompter.SignalSignatures;
 
         // Constructors
 
@@ -7362,14 +7377,15 @@ export namespace EBackend {
      */
     class UserPrompterServer extends DBusServer implements EDataServer.Extensible {
         static $gtype: GObject.GType<UserPrompterServer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserPrompterServer.SignalSignatures;
+        $signals: UserPrompterServer.SignalSignatures;
 
         // Constructors
 
@@ -7907,14 +7923,15 @@ export namespace EBackend {
      */
     abstract class UserPrompterServerExtension extends EDataServer.Extension {
         static $gtype: GObject.GType<UserPrompterServerExtension>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserPrompterServerExtension.SignalSignatures;
+        $signals: UserPrompterServerExtension.SignalSignatures;
 
         // Constructors
 
@@ -8022,14 +8039,15 @@ export namespace EBackend {
      */
     class WebDAVCollectionBackend extends CollectionBackend {
         static $gtype: GObject.GType<WebDAVCollectionBackend>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebDAVCollectionBackend.SignalSignatures;
+        $signals: WebDAVCollectionBackend.SignalSignatures;
 
         // Constructors
 

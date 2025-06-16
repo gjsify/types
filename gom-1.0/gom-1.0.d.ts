@@ -93,14 +93,15 @@ export namespace Gom {
 
     class Adapter extends GObject.Object {
         static $gtype: GObject.GType<Adapter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Adapter.SignalSignatures;
+        $signals: Adapter.SignalSignatures;
 
         // Constructors
 
@@ -211,14 +212,15 @@ export namespace Gom {
 
         get adapter(): Adapter;
         set sql(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Command.SignalSignatures;
+        $signals: Command.SignalSignatures;
 
         // Constructors
 
@@ -313,14 +315,15 @@ export namespace Gom {
         set resourceType(val: GObject.GType);
         get sorting(): Sorting;
         set sorting(val: Sorting);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CommandBuilder.SignalSignatures;
+        $signals: CommandBuilder.SignalSignatures;
 
         // Constructors
 
@@ -408,14 +411,15 @@ export namespace Gom {
         // Properties
 
         get statement(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Cursor.SignalSignatures;
+        $signals: Cursor.SignalSignatures;
 
         // Constructors
 
@@ -479,14 +483,15 @@ export namespace Gom {
 
         get mode(): FilterMode;
         set sql(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Filter.SignalSignatures;
+        $signals: Filter.SignalSignatures;
 
         // Constructors
 
@@ -572,14 +577,15 @@ export namespace Gom {
         // Properties
 
         get adapter(): Adapter;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Repository.SignalSignatures;
+        $signals: Repository.SignalSignatures;
 
         // Constructors
 
@@ -799,14 +805,15 @@ export namespace Gom {
 
         get repository(): Repository;
         set repository(val: Repository);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Resource.SignalSignatures;
+        $signals: Resource.SignalSignatures;
 
         // Constructors
 
@@ -939,14 +946,15 @@ export namespace Gom {
         get resource_type(): GObject.GType;
         get resourceType(): GObject.GType;
         get sorting(): Sorting;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ResourceGroup.SignalSignatures;
+        $signals: ResourceGroup.SignalSignatures;
 
         // Constructors
 
@@ -1026,14 +1034,15 @@ export namespace Gom {
 
     class Sorting extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Sorting>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Sorting.SignalSignatures;
+        $signals: Sorting.SignalSignatures;
 
         // Constructors
 

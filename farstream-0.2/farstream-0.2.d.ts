@@ -540,14 +540,15 @@ export namespace Farstream {
      */
     abstract class Conference extends Gst.Bin implements Gst.ChildProxy {
         static $gtype: GObject.GType<Conference>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Conference.SignalSignatures;
+        $signals: Conference.SignalSignatures;
 
         // Constructors
 
@@ -1134,14 +1135,15 @@ export namespace Farstream {
      */
     class ElementAddedNotifier extends GObject.Object {
         static $gtype: GObject.GType<ElementAddedNotifier>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ElementAddedNotifier.SignalSignatures;
+        $signals: ElementAddedNotifier.SignalSignatures;
 
         // Constructors
 
@@ -1230,14 +1232,15 @@ export namespace Farstream {
      */
     abstract class Participant extends GObject.Object {
         static $gtype: GObject.GType<Participant>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Participant.SignalSignatures;
+        $signals: Participant.SignalSignatures;
 
         // Constructors
 
@@ -1278,14 +1281,15 @@ export namespace Farstream {
      */
     class Plugin extends GObject.TypeModule implements GObject.TypePlugin {
         static $gtype: GObject.GType<Plugin>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Plugin.SignalSignatures;
+        $signals: Plugin.SignalSignatures;
 
         // Constructors
 
@@ -2018,14 +2022,15 @@ export namespace Farstream {
          */
         get tos(): number;
         set tos(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Session.SignalSignatures;
+        $signals: Session.SignalSignatures;
 
         // Constructors
 
@@ -2419,14 +2424,15 @@ export namespace Farstream {
          * is read-only construction.
          */
         get session(): Session;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Stream.SignalSignatures;
+        $signals: Stream.SignalSignatures;
 
         // Constructors
 
@@ -2710,14 +2716,15 @@ export namespace Farstream {
          */
         get sending(): boolean;
         set sending(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StreamTransmitter.SignalSignatures;
+        $signals: StreamTransmitter.SignalSignatures;
 
         // Constructors
 
@@ -2894,14 +2901,15 @@ export namespace Farstream {
          */
         get tos(): number;
         set tos(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Transmitter.SignalSignatures;
+        $signals: Transmitter.SignalSignatures;
 
         // Constructors
 

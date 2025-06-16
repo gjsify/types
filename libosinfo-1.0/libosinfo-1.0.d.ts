@@ -505,14 +505,15 @@ export namespace Libosinfo {
          * The required width (in pixels) of the avatar.
          */
         get width(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AvatarFormat.SignalSignatures;
+        $signals: AvatarFormat.SignalSignatures;
 
         // Constructors
 
@@ -561,14 +562,15 @@ export namespace Libosinfo {
 
     class Datamap extends Entity {
         static $gtype: GObject.GType<Datamap>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Datamap.SignalSignatures;
+        $signals: Datamap.SignalSignatures;
 
         // Constructors
 
@@ -630,14 +632,15 @@ export namespace Libosinfo {
 
     class DatamapList extends List {
         static $gtype: GObject.GType<DatamapList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DatamapList.SignalSignatures;
+        $signals: DatamapList.SignalSignatures;
 
         // Constructors
 
@@ -677,14 +680,15 @@ export namespace Libosinfo {
 
     class Db extends GObject.Object {
         static $gtype: GObject.GType<Db>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Db.SignalSignatures;
+        $signals: Db.SignalSignatures;
 
         // Constructors
 
@@ -880,14 +884,15 @@ export namespace Libosinfo {
          * The platform to deploy on
          */
         get platform(): Platform;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Deployment.SignalSignatures;
+        $signals: Deployment.SignalSignatures;
 
         // Constructors
 
@@ -976,14 +981,15 @@ export namespace Libosinfo {
 
     class DeploymentList extends List {
         static $gtype: GObject.GType<DeploymentList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeploymentList.SignalSignatures;
+        $signals: DeploymentList.SignalSignatures;
 
         // Constructors
 
@@ -1055,14 +1061,15 @@ export namespace Libosinfo {
 
     class Device extends Entity {
         static $gtype: GObject.GType<Device>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Device.SignalSignatures;
+        $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -1115,14 +1122,15 @@ export namespace Libosinfo {
 
     class DeviceDriver extends Entity {
         static $gtype: GObject.GType<DeviceDriver>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceDriver.SignalSignatures;
+        $signals: DeviceDriver.SignalSignatures;
 
         // Constructors
 
@@ -1195,14 +1203,15 @@ export namespace Libosinfo {
 
     class DeviceDriverList extends List {
         static $gtype: GObject.GType<DeviceDriverList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceDriverList.SignalSignatures;
+        $signals: DeviceDriverList.SignalSignatures;
 
         // Constructors
 
@@ -1254,14 +1263,15 @@ export namespace Libosinfo {
          * The target of the device link.
          */
         get target(): Device;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceLink.SignalSignatures;
+        $signals: DeviceLink.SignalSignatures;
 
         // Constructors
 
@@ -1326,14 +1336,15 @@ export namespace Libosinfo {
          * The operating system to be deployed
          */
         get targetFilter(): Filter;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceLinkFilter.SignalSignatures;
+        $signals: DeviceLinkFilter.SignalSignatures;
 
         // Constructors
 
@@ -1387,14 +1398,15 @@ export namespace Libosinfo {
 
     class DeviceLinkList extends List {
         static $gtype: GObject.GType<DeviceLinkList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceLinkList.SignalSignatures;
+        $signals: DeviceLinkList.SignalSignatures;
 
         // Constructors
 
@@ -1472,14 +1484,15 @@ export namespace Libosinfo {
 
     class DeviceList extends List {
         static $gtype: GObject.GType<DeviceList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceList.SignalSignatures;
+        $signals: DeviceList.SignalSignatures;
 
         // Constructors
 
@@ -1564,14 +1577,15 @@ export namespace Libosinfo {
          */
         get id(): string;
         set id(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Entity.SignalSignatures;
+        $signals: Entity.SignalSignatures;
 
         // Constructors
 
@@ -1732,14 +1746,15 @@ export namespace Libosinfo {
 
     class Filter extends GObject.Object {
         static $gtype: GObject.GType<Filter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Filter.SignalSignatures;
+        $signals: Filter.SignalSignatures;
 
         // Constructors
 
@@ -1844,14 +1859,15 @@ export namespace Libosinfo {
         set architecture(val: string);
         get type(): string;
         set type(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Firmware.SignalSignatures;
+        $signals: Firmware.SignalSignatures;
 
         // Constructors
 
@@ -1911,14 +1927,15 @@ export namespace Libosinfo {
 
     class FirmwareList extends List {
         static $gtype: GObject.GType<FirmwareList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FirmwareList.SignalSignatures;
+        $signals: FirmwareList.SignalSignatures;
 
         // Constructors
 
@@ -1998,14 +2015,15 @@ export namespace Libosinfo {
          */
         get url(): string;
         set url(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Image.SignalSignatures;
+        $signals: Image.SignalSignatures;
 
         // Constructors
 
@@ -2081,14 +2099,15 @@ export namespace Libosinfo {
 
     class ImageList extends List {
         static $gtype: GObject.GType<ImageList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ImageList.SignalSignatures;
+        $signals: ImageList.SignalSignatures;
 
         // Constructors
 
@@ -2130,14 +2149,15 @@ export namespace Libosinfo {
 
     class InstallConfig extends Entity {
         static $gtype: GObject.GType<InstallConfig>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InstallConfig.SignalSignatures;
+        $signals: InstallConfig.SignalSignatures;
 
         // Constructors
 
@@ -2437,14 +2457,15 @@ export namespace Libosinfo {
          */
         get valueMap(): Datamap;
         set valueMap(val: Datamap);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InstallConfigParam.SignalSignatures;
+        $signals: InstallConfigParam.SignalSignatures;
 
         // Constructors
 
@@ -2501,14 +2522,15 @@ export namespace Libosinfo {
 
     class InstallConfigParamList extends List {
         static $gtype: GObject.GType<InstallConfigParamList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InstallConfigParamList.SignalSignatures;
+        $signals: InstallConfigParamList.SignalSignatures;
 
         // Constructors
 
@@ -2596,14 +2618,15 @@ export namespace Libosinfo {
         get templateData(): string;
         get template_uri(): string;
         get templateUri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InstallScript.SignalSignatures;
+        $signals: InstallScript.SignalSignatures;
 
         // Constructors
 
@@ -3214,14 +3237,15 @@ export namespace Libosinfo {
 
     class InstallScriptList extends List {
         static $gtype: GObject.GType<InstallScriptList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InstallScriptList.SignalSignatures;
+        $signals: InstallScriptList.SignalSignatures;
 
         // Constructors
 
@@ -3311,14 +3335,15 @@ export namespace Libosinfo {
          * the specified type.
          */
         get elementType(): GObject.GType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: List.SignalSignatures;
+        $signals: List.SignalSignatures;
 
         // Constructors
 
@@ -3456,14 +3481,15 @@ export namespace Libosinfo {
 
     class Loader extends GObject.Object {
         static $gtype: GObject.GType<Loader>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Loader.SignalSignatures;
+        $signals: Loader.SignalSignatures;
 
         // Constructors
 
@@ -3760,14 +3786,15 @@ export namespace Libosinfo {
          */
         get volumeSize(): number;
         set volumeSize(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Media.SignalSignatures;
+        $signals: Media.SignalSignatures;
 
         // Constructors
 
@@ -4010,14 +4037,15 @@ export namespace Libosinfo {
 
     class MediaList extends List {
         static $gtype: GObject.GType<MediaList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaList.SignalSignatures;
+        $signals: MediaList.SignalSignatures;
 
         // Constructors
 
@@ -4137,14 +4165,15 @@ export namespace Libosinfo {
          * tree based installation of this OS.
          */
         get kernelUrlArgument(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Os.SignalSignatures;
+        $signals: Os.SignalSignatures;
 
         // Constructors
 
@@ -4385,14 +4414,15 @@ export namespace Libosinfo {
 
     class OsList extends ProductList {
         static $gtype: GObject.GType<OsList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OsList.SignalSignatures;
+        $signals: OsList.SignalSignatures;
 
         // Constructors
 
@@ -4475,14 +4505,15 @@ export namespace Libosinfo {
          */
         get name(): string;
         set name(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OsVariant.SignalSignatures;
+        $signals: OsVariant.SignalSignatures;
 
         // Constructors
 
@@ -4532,14 +4563,15 @@ export namespace Libosinfo {
 
     class OsVariantList extends List {
         static $gtype: GObject.GType<OsVariantList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OsVariantList.SignalSignatures;
+        $signals: OsVariantList.SignalSignatures;
 
         // Constructors
 
@@ -4587,14 +4619,15 @@ export namespace Libosinfo {
 
     class Platform extends Product {
         static $gtype: GObject.GType<Platform>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Platform.SignalSignatures;
+        $signals: Platform.SignalSignatures;
 
         // Constructors
 
@@ -4668,14 +4701,15 @@ export namespace Libosinfo {
 
     class PlatformList extends ProductList {
         static $gtype: GObject.GType<PlatformList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlatformList.SignalSignatures;
+        $signals: PlatformList.SignalSignatures;
 
         // Constructors
 
@@ -4792,14 +4826,15 @@ export namespace Libosinfo {
          * The version of the product.
          */
         get version(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Product.SignalSignatures;
+        $signals: Product.SignalSignatures;
 
         // Constructors
 
@@ -4868,14 +4903,15 @@ export namespace Libosinfo {
 
     class ProductFilter extends Filter {
         static $gtype: GObject.GType<ProductFilter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProductFilter.SignalSignatures;
+        $signals: ProductFilter.SignalSignatures;
 
         // Constructors
 
@@ -4947,14 +4983,15 @@ export namespace Libosinfo {
 
     class ProductList extends List {
         static $gtype: GObject.GType<ProductList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProductList.SignalSignatures;
+        $signals: ProductList.SignalSignatures;
 
         // Constructors
 
@@ -5070,14 +5107,15 @@ export namespace Libosinfo {
          */
         get storage(): number;
         set storage(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Resources.SignalSignatures;
+        $signals: Resources.SignalSignatures;
 
         // Constructors
 
@@ -5173,14 +5211,15 @@ export namespace Libosinfo {
 
     class ResourcesList extends List {
         static $gtype: GObject.GType<ResourcesList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ResourcesList.SignalSignatures;
+        $signals: ResourcesList.SignalSignatures;
 
         // Constructors
 
@@ -5384,14 +5423,15 @@ export namespace Libosinfo {
          */
         get url(): string;
         set url(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Tree.SignalSignatures;
+        $signals: Tree.SignalSignatures;
 
         // Constructors
 
@@ -5555,14 +5595,15 @@ export namespace Libosinfo {
 
     class TreeList extends List {
         static $gtype: GObject.GType<TreeList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TreeList.SignalSignatures;
+        $signals: TreeList.SignalSignatures;
 
         // Constructors
 

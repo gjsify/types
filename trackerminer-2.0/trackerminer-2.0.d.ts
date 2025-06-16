@@ -352,14 +352,15 @@ export namespace TrackerMiner {
         get dataSource(): string;
         set priority_rdf_types(val: string[]);
         set priorityRdfTypes(val: string[]);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Decorator.SignalSignatures;
+        $signals: Decorator.SignalSignatures;
 
         // Fields
 
@@ -1041,14 +1042,15 @@ export namespace TrackerMiner {
      */
     abstract class DecoratorFS extends Decorator implements Gio.Initable {
         static $gtype: GObject.GType<DecoratorFS>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DecoratorFS.SignalSignatures;
+        $signals: DecoratorFS.SignalSignatures;
 
         // Fields
 
@@ -1562,14 +1564,15 @@ export namespace TrackerMiner {
         get filterHidden(): boolean;
         set filterHidden(val: boolean);
         get root(): Gio.File;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IndexingTree.SignalSignatures;
+        $signals: IndexingTree.SignalSignatures;
 
         // Fields
 
@@ -1805,14 +1808,15 @@ export namespace TrackerMiner {
         set remainingTime(val: number);
         get status(): string;
         set status(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Miner.SignalSignatures;
+        $signals: Miner.SignalSignatures;
 
         // Constructors
 
@@ -2472,14 +2476,15 @@ export namespace TrackerMiner {
         get root(): Gio.File;
         get throttle(): number;
         set throttle(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MinerFS.SignalSignatures;
+        $signals: MinerFS.SignalSignatures;
 
         // Constructors
 
@@ -3163,14 +3168,15 @@ export namespace TrackerMiner {
      */
     abstract class MinerOnline extends Miner implements Gio.Initable {
         static $gtype: GObject.GType<MinerOnline>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MinerOnline.SignalSignatures;
+        $signals: MinerOnline.SignalSignatures;
 
         // Constructors
 
@@ -3765,14 +3771,15 @@ export namespace TrackerMiner {
         get dbus_path(): string;
         get dbusPath(): string;
         get miner(): Miner;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MinerProxy.SignalSignatures;
+        $signals: MinerProxy.SignalSignatures;
 
         // Constructors
 

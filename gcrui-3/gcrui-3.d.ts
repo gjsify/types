@@ -141,14 +141,15 @@ export namespace GcrUi {
          */
         get label(): string;
         set label(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertificateRenderer.SignalSignatures;
+        $signals: CertificateRenderer.SignalSignatures;
 
         // Constructors
 
@@ -976,14 +977,15 @@ export namespace GcrUi {
         set attributes(val: Gck.Attributes);
         get certificate(): Gcr.Certificate;
         set certificate(val: Gcr.Certificate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertificateWidget.SignalSignatures;
+        $signals: CertificateWidget.SignalSignatures;
 
         // Constructors
 
@@ -1526,14 +1528,15 @@ export namespace GcrUi {
         get collection(): Gcr.Collection;
         set collection(val: Gcr.Collection);
         get columns(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CollectionModel.SignalSignatures;
+        $signals: CollectionModel.SignalSignatures;
 
         // Constructors
 
@@ -2673,14 +2676,15 @@ export namespace GcrUi {
          * The collection which contains the objects to display in the selector.
          */
         get collection(): Gcr.Collection;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ComboSelector.SignalSignatures;
+        $signals: ComboSelector.SignalSignatures;
 
         // Constructors
 
@@ -7237,14 +7241,15 @@ export namespace GcrUi {
         set attributes(val: Gck.Attributes);
         get label(): string;
         set label(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FailureRenderer.SignalSignatures;
+        $signals: FailureRenderer.SignalSignatures;
 
         // Constructors
 
@@ -7840,14 +7845,15 @@ export namespace GcrUi {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<ImportButton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ImportButton.SignalSignatures;
+        $signals: ImportButton.SignalSignatures;
 
         // Constructors
 
@@ -12437,14 +12443,15 @@ export namespace GcrUi {
 
         get object(): Gck.Object;
         set object(val: Gck.Object);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: KeyRenderer.SignalSignatures;
+        $signals: KeyRenderer.SignalSignatures;
 
         // Constructors
 
@@ -13041,14 +13048,15 @@ export namespace GcrUi {
 
         get attributes(): Gck.Attributes;
         set attributes(val: Gck.Attributes);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: KeyWidget.SignalSignatures;
+        $signals: KeyWidget.SignalSignatures;
 
         // Constructors
 
@@ -13627,14 +13635,15 @@ export namespace GcrUi {
          * The collection which contains the objects to display in the selector.
          */
         get collection(): Gcr.Collection;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ListSelector.SignalSignatures;
+        $signals: ListSelector.SignalSignatures;
 
         // Constructors
 
@@ -14379,14 +14388,15 @@ export namespace GcrUi {
          * Whether the warning label is visible or not.
          */
         get warningVisible(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PromptDialog.SignalSignatures;
+        $signals: PromptDialog.SignalSignatures;
 
         // Constructors
 
@@ -15427,14 +15437,15 @@ export namespace GcrUi {
      */
     class SecureEntryBuffer extends Gtk.EntryBuffer {
         static $gtype: GObject.GType<SecureEntryBuffer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SecureEntryBuffer.SignalSignatures;
+        $signals: SecureEntryBuffer.SignalSignatures;
 
         // Constructors
 
@@ -15563,14 +15574,15 @@ export namespace GcrUi {
          * The columns to use to display the objects.
          */
         get columns(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TreeSelector.SignalSignatures;
+        $signals: TreeSelector.SignalSignatures;
 
         // Constructors
 
@@ -16234,14 +16246,15 @@ export namespace GcrUi {
         set choice(val: string);
         get ttl(): number;
         set ttl(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UnlockOptionsWidget.SignalSignatures;
+        $signals: UnlockOptionsWidget.SignalSignatures;
 
         // Constructors
 
@@ -16871,14 +16884,15 @@ export namespace GcrUi {
          * The parser used to parse loaded data into viewable items.
          */
         get parser(): Gcr.Parser;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ViewerWidget.SignalSignatures;
+        $signals: ViewerWidget.SignalSignatures;
 
         // Constructors
 

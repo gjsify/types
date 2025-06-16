@@ -104,14 +104,15 @@ export namespace Qrtr {
 
         get lookup_timeout(): number;
         get lookupTimeout(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Bus.SignalSignatures;
+        $signals: Bus.SignalSignatures;
 
         // Constructors
 
@@ -921,14 +922,15 @@ export namespace Qrtr {
         get clientNode(): Node;
         get client_port(): number;
         get clientPort(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -1540,14 +1542,15 @@ export namespace Qrtr {
         get bus(): Bus;
         get node_id(): number;
         get nodeId(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Node.SignalSignatures;
+        $signals: Node.SignalSignatures;
 
         // Constructors
 

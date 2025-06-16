@@ -94,14 +94,15 @@ export namespace Gkbd {
 
     class Configuration extends GObject.Object {
         static $gtype: GObject.GType<Configuration>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Configuration.SignalSignatures;
+        $signals: Configuration.SignalSignatures;
 
         // Constructors
 
@@ -229,14 +230,15 @@ export namespace Gkbd {
 
     class Indicator extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Indicator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Indicator.SignalSignatures;
+        $signals: Indicator.SignalSignatures;
 
         // Constructors
 
@@ -778,14 +780,15 @@ export namespace Gkbd {
 
     class KeyboardDrawing extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<KeyboardDrawing>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: KeyboardDrawing.SignalSignatures;
+        $signals: KeyboardDrawing.SignalSignatures;
 
         // Constructors
 
@@ -1330,14 +1333,15 @@ export namespace Gkbd {
 
     class Status extends Gtk.StatusIcon {
         static $gtype: GObject.GType<Status>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Status.SignalSignatures;
+        $signals: Status.SignalSignatures;
 
         // Constructors
 

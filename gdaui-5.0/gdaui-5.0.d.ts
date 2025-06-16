@@ -298,14 +298,15 @@ export namespace Gdaui {
         set showActions(val: boolean);
         set xml_layout(val: any);
         set xmlLayout(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BasicForm.SignalSignatures;
+        $signals: BasicForm.SignalSignatures;
 
         // Fields
 
@@ -1018,14 +1019,15 @@ export namespace Gdaui {
         set weight_column(val: number);
         get weightColumn(): number;
         set weightColumn(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Cloud.SignalSignatures;
+        $signals: Cloud.SignalSignatures;
 
         // Fields
 
@@ -1753,14 +1755,15 @@ export namespace Gdaui {
         get model(): Gda.DataModel | any;
         // This accessor conflicts with another accessor's type in a parent class or interface.
         set model(val: Gda.DataModel | any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Combo.SignalSignatures;
+        $signals: Combo.SignalSignatures;
 
         // Fields
 
@@ -6468,14 +6471,15 @@ export namespace Gdaui {
         set type(val: GObject.GType);
         get value(): GObject.Value;
         set value(val: GObject.Value);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataCellRendererBin.SignalSignatures;
+        $signals: DataCellRendererBin.SignalSignatures;
 
         // Constructors
 
@@ -6572,14 +6576,15 @@ export namespace Gdaui {
         set type(val: GObject.GType);
         get value(): GObject.Value;
         set value(val: GObject.Value);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataCellRendererBoolean.SignalSignatures;
+        $signals: DataCellRendererBoolean.SignalSignatures;
 
         // Constructors
 
@@ -6733,14 +6738,15 @@ export namespace Gdaui {
         set values(val: any);
         set values_display(val: any);
         set valuesDisplay(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataCellRendererCombo.SignalSignatures;
+        $signals: DataCellRendererCombo.SignalSignatures;
 
         // Constructors
 
@@ -6825,14 +6831,15 @@ export namespace Gdaui {
         set store(val: DataStore);
         set to_be_deleted(val: boolean);
         set toBeDeleted(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataCellRendererInfo.SignalSignatures;
+        $signals: DataCellRendererInfo.SignalSignatures;
 
         // Constructors
 
@@ -6967,14 +6974,15 @@ export namespace Gdaui {
         set toBeDeleted(val: boolean);
         set type(val: GObject.GType);
         set value(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataCellRendererTextual.SignalSignatures;
+        $signals: DataCellRendererTextual.SignalSignatures;
 
         // Constructors
 
@@ -7085,14 +7093,15 @@ export namespace Gdaui {
         set data_widget(val: DataProxy);
         get dataWidget(): DataProxy;
         set dataWidget(val: DataProxy);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataFilter.SignalSignatures;
+        $signals: DataFilter.SignalSignatures;
 
         // Fields
 
@@ -7672,14 +7681,15 @@ export namespace Gdaui {
          * for example).
          */
         get uiManager(): Gtk.UIManager;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataProxyInfo.SignalSignatures;
+        $signals: DataProxyInfo.SignalSignatures;
 
         // Fields
 
@@ -8202,14 +8212,15 @@ export namespace Gdaui {
         get prependNullEntry(): boolean;
         set prependNullEntry(val: boolean);
         get proxy(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataStore.SignalSignatures;
+        $signals: DataStore.SignalSignatures;
 
         // Fields
 
@@ -9254,14 +9265,15 @@ export namespace Gdaui {
         set prefix(val: string);
         get suffix(): string;
         set suffix(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Entry.SignalSignatures;
+        $signals: Entry.SignalSignatures;
 
         // Fields
 
@@ -13967,14 +13979,15 @@ export namespace Gdaui {
 
     class EntryBin extends EntryWrapper implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<EntryBin>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EntryBin.SignalSignatures;
+        $signals: EntryBin.SignalSignatures;
 
         // Fields
 
@@ -18518,14 +18531,15 @@ export namespace Gdaui {
 
     class EntryBoolean extends EntryWrapper implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<EntryBoolean>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EntryBoolean.SignalSignatures;
+        $signals: EntryBoolean.SignalSignatures;
 
         // Fields
 
@@ -23079,14 +23093,15 @@ export namespace Gdaui {
         set set_default_if_invalid(val: boolean);
         get setDefaultIfInvalid(): boolean;
         set setDefaultIfInvalid(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EntryCombo.SignalSignatures;
+        $signals: EntryCombo.SignalSignatures;
 
         // Fields
 
@@ -27698,14 +27713,15 @@ export namespace Gdaui {
         set editingCanceled(val: boolean);
         get type(): number;
         set type(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EntryCommonTime.SignalSignatures;
+        $signals: EntryCommonTime.SignalSignatures;
 
         // Fields
 
@@ -32294,14 +32310,15 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.CellEditable, Gtk.Scrollable
     {
         static $gtype: GObject.GType<EntryDate>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EntryDate.SignalSignatures;
+        $signals: EntryDate.SignalSignatures;
 
         // Fields
 
@@ -36730,14 +36747,15 @@ export namespace Gdaui {
 
     class EntryNone extends EntryWrapper implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<EntryNone>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EntryNone.SignalSignatures;
+        $signals: EntryNone.SignalSignatures;
 
         // Fields
 
@@ -41299,14 +41317,15 @@ export namespace Gdaui {
         get editingCanceled(): boolean;
         set editingCanceled(val: boolean);
         set options(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EntryNumber.SignalSignatures;
+        $signals: EntryNumber.SignalSignatures;
 
         // Fields
 
@@ -45916,14 +45935,15 @@ export namespace Gdaui {
         set is_cell_renderer(val: boolean);
         get isCellRenderer(): boolean;
         set isCellRenderer(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EntryShell.SignalSignatures;
+        $signals: EntryShell.SignalSignatures;
 
         // Fields
 
@@ -46607,14 +46627,15 @@ export namespace Gdaui {
         get multiline(): boolean;
         set multiline(val: boolean);
         set options(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EntryString.SignalSignatures;
+        $signals: EntryString.SignalSignatures;
 
         // Fields
 
@@ -51208,14 +51229,15 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.CellEditable, Gtk.Scrollable
     {
         static $gtype: GObject.GType<EntryTime>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EntryTime.SignalSignatures;
+        $signals: EntryTime.SignalSignatures;
 
         // Fields
 
@@ -55650,14 +55672,15 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.CellEditable, Gtk.Scrollable
     {
         static $gtype: GObject.GType<EntryTimestamp>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EntryTimestamp.SignalSignatures;
+        $signals: EntryTimestamp.SignalSignatures;
 
         // Fields
 
@@ -60096,14 +60119,15 @@ export namespace Gdaui {
         set set_default_if_invalid(val: boolean);
         get setDefaultIfInvalid(): boolean;
         set setDefaultIfInvalid(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EntryWrapper.SignalSignatures;
+        $signals: EntryWrapper.SignalSignatures;
 
         // Fields
 
@@ -64665,14 +64689,15 @@ export namespace Gdaui {
         get model(): Gda.DataModel;
         get raw_form(): RawForm;
         get rawForm(): RawForm;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Form.SignalSignatures;
+        $signals: Form.SignalSignatures;
 
         // Fields
 
@@ -65489,14 +65514,15 @@ export namespace Gdaui {
         set format(val: string);
         get mask(): string;
         set mask(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FormattedEntry.SignalSignatures;
+        $signals: FormattedEntry.SignalSignatures;
 
         // Fields
 
@@ -69901,14 +69927,15 @@ export namespace Gdaui {
         set model(val: Gda.DataModel);
         get raw_grid(): RawGrid;
         get rawGrid(): RawGrid;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Grid.SignalSignatures;
+        $signals: Grid.SignalSignatures;
 
         // Fields
 
@@ -70687,14 +70714,15 @@ export namespace Gdaui {
         get dsn(): string;
         set dsn(val: string);
         get valid(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Login.SignalSignatures;
+        $signals: Login.SignalSignatures;
 
         // Constructors
 
@@ -71364,14 +71392,15 @@ export namespace Gdaui {
         set thousandsSep(val: number);
         get type(): GObject.GType;
         set type(val: GObject.GType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NumericEntry.SignalSignatures;
+        $signals: NumericEntry.SignalSignatures;
 
         // Fields
 
@@ -75764,14 +75793,15 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataSelector, Gtk.Buildable, Gtk.CellEditable, Gtk.CellLayout
     {
         static $gtype: GObject.GType<ProviderSelector>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProviderSelector.SignalSignatures;
+        $signals: ProviderSelector.SignalSignatures;
 
         // Constructors
 
@@ -80291,14 +80321,15 @@ export namespace Gdaui {
 
         get model(): Gda.DataModel;
         set model(val: Gda.DataModel);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RawForm.SignalSignatures;
+        $signals: RawForm.SignalSignatures;
 
         // Fields
 
@@ -81092,14 +81123,15 @@ export namespace Gdaui {
         set model(val: Gda.DataModel | any);
         set xml_layout(val: any);
         set xmlLayout(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RawGrid.SignalSignatures;
+        $signals: RawGrid.SignalSignatures;
 
         // Fields
 
@@ -82036,14 +82068,15 @@ export namespace Gdaui {
          */
         get showMarkup(): boolean;
         set showMarkup(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RtEditor.SignalSignatures;
+        $signals: RtEditor.SignalSignatures;
 
         // Fields
 
@@ -82635,14 +82668,15 @@ export namespace Gdaui {
         set hideSingleHeader(val: boolean);
         get server_operation(): Gda.ServerOperation;
         get serverOperation(): Gda.ServerOperation;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ServerOperation.SignalSignatures;
+        $signals: ServerOperation.SignalSignatures;
 
         // Fields
 
@@ -83165,14 +83199,15 @@ export namespace Gdaui {
 
         // This accessor conflicts with a property or field in a parent class or interface.
         set: Gda.Set | any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Set.SignalSignatures;
+        $signals: Set.SignalSignatures;
 
         // Fields
 
@@ -83242,14 +83277,15 @@ export namespace Gdaui {
         // Properties
 
         get tree(): Gda.Tree;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TreeStore.SignalSignatures;
+        $signals: TreeStore.SignalSignatures;
 
         // Fields
 

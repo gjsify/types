@@ -150,14 +150,15 @@ export namespace Nautilus {
          */
         get xalign(): number;
         set xalign(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Column.SignalSignatures;
+        $signals: Column.SignalSignatures;
 
         // Constructors
 
@@ -197,14 +198,15 @@ export namespace Nautilus {
 
     class Menu extends GObject.Object {
         static $gtype: GObject.GType<Menu>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Menu.SignalSignatures;
+        $signals: Menu.SignalSignatures;
 
         // Constructors
 
@@ -282,14 +284,15 @@ export namespace Nautilus {
         set sensitive(val: boolean);
         get tip(): string;
         set tip(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MenuItem.SignalSignatures;
+        $signals: MenuItem.SignalSignatures;
 
         // Constructors
 
@@ -363,14 +366,15 @@ export namespace Nautilus {
 
         get name(): string;
         get value(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PropertiesItem.SignalSignatures;
+        $signals: PropertiesItem.SignalSignatures;
 
         // Constructors
 
@@ -427,14 +431,15 @@ export namespace Nautilus {
         get model(): Gio.ListModel;
         get title(): string;
         set title(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PropertiesModel.SignalSignatures;
+        $signals: PropertiesModel.SignalSignatures;
 
         // Constructors
 

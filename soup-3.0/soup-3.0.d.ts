@@ -1839,14 +1839,15 @@ export namespace Soup {
          * The authentication scheme name.
          */
         get schemeName(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Auth.SignalSignatures;
+        $signals: Auth.SignalSignatures;
 
         // Constructors
 
@@ -2051,14 +2052,15 @@ export namespace Soup {
      */
     class AuthBasic extends Auth {
         static $gtype: GObject.GType<AuthBasic>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AuthBasic.SignalSignatures;
+        $signals: AuthBasic.SignalSignatures;
 
         // Constructors
 
@@ -2110,14 +2112,15 @@ export namespace Soup {
      */
     class AuthDigest extends Auth {
         static $gtype: GObject.GType<AuthDigest>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AuthDigest.SignalSignatures;
+        $signals: AuthDigest.SignalSignatures;
 
         // Constructors
 
@@ -2237,14 +2240,15 @@ export namespace Soup {
          * The realm of this auth domain.
          */
         get realm(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AuthDomain.SignalSignatures;
+        $signals: AuthDomain.SignalSignatures;
 
         // Constructors
 
@@ -2471,14 +2475,15 @@ export namespace Soup {
          */
         get authData(): any;
         set authData(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AuthDomainBasic.SignalSignatures;
+        $signals: AuthDomainBasic.SignalSignatures;
 
         // Constructors
 
@@ -2577,14 +2582,15 @@ export namespace Soup {
          */
         get authData(): any;
         set authData(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AuthDomainDigest.SignalSignatures;
+        $signals: AuthDomainDigest.SignalSignatures;
 
         // Constructors
 
@@ -2683,14 +2689,15 @@ export namespace Soup {
      */
     class AuthManager extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<AuthManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AuthManager.SignalSignatures;
+        $signals: AuthManager.SignalSignatures;
 
         // Constructors
 
@@ -3205,14 +3212,15 @@ export namespace Soup {
      */
     class AuthNTLM extends Auth {
         static $gtype: GObject.GType<AuthNTLM>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AuthNTLM.SignalSignatures;
+        $signals: AuthNTLM.SignalSignatures;
 
         // Constructors
 
@@ -3269,14 +3277,15 @@ export namespace Soup {
      */
     class AuthNegotiate extends Auth {
         static $gtype: GObject.GType<AuthNegotiate>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AuthNegotiate.SignalSignatures;
+        $signals: AuthNegotiate.SignalSignatures;
 
         // Constructors
 
@@ -3355,14 +3364,15 @@ export namespace Soup {
          * Whether the cache is private or shared.
          */
         get cacheType(): CacheType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Cache.SignalSignatures;
+        $signals: Cache.SignalSignatures;
 
         // Constructors
 
@@ -3920,14 +3930,15 @@ export namespace Soup {
      */
     class ContentDecoder extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<ContentDecoder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ContentDecoder.SignalSignatures;
+        $signals: ContentDecoder.SignalSignatures;
 
         // Constructors
 
@@ -4416,14 +4427,15 @@ export namespace Soup {
      */
     class ContentSniffer extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<ContentSniffer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ContentSniffer.SignalSignatures;
+        $signals: ContentSniffer.SignalSignatures;
 
         // Constructors
 
@@ -4958,14 +4970,15 @@ export namespace Soup {
          * Whether or not the cookie jar is read-only.
          */
         get readOnly(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CookieJar.SignalSignatures;
+        $signals: CookieJar.SignalSignatures;
 
         // Constructors
 
@@ -5641,14 +5654,15 @@ export namespace Soup {
          * Cookie-storage filename.
          */
         get filename(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CookieJarDB.SignalSignatures;
+        $signals: CookieJarDB.SignalSignatures;
 
         // Constructors
 
@@ -6151,14 +6165,15 @@ export namespace Soup {
          * Cookie-storage filename.
          */
         get filename(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CookieJarText.SignalSignatures;
+        $signals: CookieJarText.SignalSignatures;
 
         // Constructors
 
@@ -6668,14 +6683,15 @@ export namespace Soup {
      */
     class HSTSEnforcer extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<HSTSEnforcer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HSTSEnforcer.SignalSignatures;
+        $signals: HSTSEnforcer.SignalSignatures;
 
         // Constructors
 
@@ -7238,14 +7254,15 @@ export namespace Soup {
          * The filename of the SQLite database where HSTS policies are stored.
          */
         get filename(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HSTSEnforcerDB.SignalSignatures;
+        $signals: HSTSEnforcerDB.SignalSignatures;
 
         // Constructors
 
@@ -7818,14 +7835,15 @@ export namespace Soup {
          */
         get maxBodySize(): number;
         set maxBodySize(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Logger.SignalSignatures;
+        $signals: Logger.SignalSignatures;
 
         // Constructors
 
@@ -8596,14 +8614,15 @@ export namespace Soup {
          */
         get uri(): GLib.Uri;
         set uri(val: GLib.Uri);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Message.SignalSignatures;
+        $signals: Message.SignalSignatures;
 
         // Constructors
 
@@ -8984,14 +9003,15 @@ export namespace Soup {
          * The [class`Message]`.
          */
         get message(): Message;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MultipartInputStream.SignalSignatures;
+        $signals: MultipartInputStream.SignalSignatures;
 
         // Constructors
 
@@ -10198,14 +10218,15 @@ export namespace Soup {
          */
         get tlsDatabase(): Gio.TlsDatabase;
         set tlsDatabase(val: Gio.TlsDatabase);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Server.SignalSignatures;
+        $signals: Server.SignalSignatures;
 
         // Constructors
 
@@ -10631,14 +10652,15 @@ export namespace Soup {
          * The verification errors on #SoupServerMessage:tls-peer-certificate
          */
         get tlsPeerCertificateErrors(): Gio.TlsCertificateFlags;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ServerMessage.SignalSignatures;
+        $signals: ServerMessage.SignalSignatures;
 
         // Constructors
 
@@ -11161,14 +11183,15 @@ export namespace Soup {
          */
         get userAgent(): string;
         set userAgent(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Session.SignalSignatures;
+        $signals: Session.SignalSignatures;
 
         // Constructors
 
@@ -12009,14 +12032,15 @@ export namespace Soup {
          * and for clients it is the address connected to.
          */
         get uri(): GLib.Uri;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebsocketConnection.SignalSignatures;
+        $signals: WebsocketConnection.SignalSignatures;
 
         // Constructors
 
@@ -12214,14 +12238,15 @@ export namespace Soup {
      */
     abstract class WebsocketExtension extends GObject.Object {
         static $gtype: GObject.GType<WebsocketExtension>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebsocketExtension.SignalSignatures;
+        $signals: WebsocketExtension.SignalSignatures;
 
         // Constructors
 
@@ -12365,14 +12390,15 @@ export namespace Soup {
      */
     class WebsocketExtensionDeflate extends WebsocketExtension {
         static $gtype: GObject.GType<WebsocketExtensionDeflate>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebsocketExtensionDeflate.SignalSignatures;
+        $signals: WebsocketExtensionDeflate.SignalSignatures;
 
         // Constructors
 
@@ -12422,14 +12448,15 @@ export namespace Soup {
      */
     class WebsocketExtensionManager extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<WebsocketExtensionManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebsocketExtensionManager.SignalSignatures;
+        $signals: WebsocketExtensionManager.SignalSignatures;
 
         // Constructors
 

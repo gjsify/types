@@ -44,14 +44,15 @@ export namespace UMockdev {
 
     class Testbed extends GObject.Object {
         static $gtype: GObject.GType<Testbed>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Testbed.SignalSignatures;
+        $signals: Testbed.SignalSignatures;
 
         // Constructors
 
@@ -131,14 +132,15 @@ export namespace UMockdev {
 
     class IoctlData extends GObject.Object {
         static $gtype: GObject.GType<IoctlData>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IoctlData.SignalSignatures;
+        $signals: IoctlData.SignalSignatures;
 
         // Fields
 
@@ -209,14 +211,15 @@ export namespace UMockdev {
         get request(): number;
         get arg(): IoctlData;
         get connected(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IoctlClient.SignalSignatures;
+        $signals: IoctlClient.SignalSignatures;
 
         // Constructors
 
@@ -267,14 +270,15 @@ export namespace UMockdev {
 
     class IoctlBase extends GObject.Object {
         static $gtype: GObject.GType<IoctlBase>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IoctlBase.SignalSignatures;
+        $signals: IoctlBase.SignalSignatures;
 
         // Constructors
 

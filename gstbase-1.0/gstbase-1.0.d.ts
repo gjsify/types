@@ -535,14 +535,15 @@ export namespace GstBase {
      */
     class Adapter extends GObject.Object {
         static $gtype: GObject.GType<Adapter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Adapter.SignalSignatures;
+        $signals: Adapter.SignalSignatures;
 
         // Constructors
 
@@ -1046,14 +1047,15 @@ export namespace GstBase {
         set start_time_selection(val: AggregatorStartTimeSelection);
         get startTimeSelection(): AggregatorStartTimeSelection;
         set startTimeSelection(val: AggregatorStartTimeSelection);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Aggregator.SignalSignatures;
+        $signals: Aggregator.SignalSignatures;
 
         // Fields
 
@@ -1434,14 +1436,15 @@ export namespace GstBase {
          */
         get emitSignals(): boolean;
         set emitSignals(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AggregatorPad.SignalSignatures;
+        $signals: AggregatorPad.SignalSignatures;
 
         // Constructors
 
@@ -1692,14 +1695,15 @@ export namespace GstBase {
          */
         get disablePassthrough(): boolean;
         set disablePassthrough(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BaseParse.SignalSignatures;
+        $signals: BaseParse.SignalSignatures;
 
         // Fields
 
@@ -2307,14 +2311,15 @@ export namespace GstBase {
          */
         get tsOffset(): number;
         set tsOffset(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BaseSink.SignalSignatures;
+        $signals: BaseSink.SignalSignatures;
 
         // Fields
 
@@ -2900,14 +2905,15 @@ export namespace GstBase {
         set numBuffers(val: number);
         get typefind(): boolean;
         set typefind(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BaseSrc.SignalSignatures;
+        $signals: BaseSrc.SignalSignatures;
 
         // Fields
 
@@ -3411,14 +3417,15 @@ export namespace GstBase {
 
         get qos(): boolean;
         set qos(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BaseTransform.SignalSignatures;
+        $signals: BaseTransform.SignalSignatures;
 
         // Fields
 
@@ -3787,14 +3794,15 @@ export namespace GstBase {
      */
     class CollectPads extends Gst.Object {
         static $gtype: GObject.GType<CollectPads>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CollectPads.SignalSignatures;
+        $signals: CollectPads.SignalSignatures;
 
         // Fields
 
@@ -4135,14 +4143,15 @@ export namespace GstBase {
         get currentLevelTime(): number;
         get current_level_visible(): number;
         get currentLevelVisible(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataQueue.SignalSignatures;
+        $signals: DataQueue.SignalSignatures;
 
         // Fields
 
@@ -4218,14 +4227,15 @@ export namespace GstBase {
      */
     class PushSrc extends BaseSrc {
         static $gtype: GObject.GType<PushSrc>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PushSrc.SignalSignatures;
+        $signals: PushSrc.SignalSignatures;
 
         // Constructors
 

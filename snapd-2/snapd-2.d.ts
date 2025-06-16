@@ -922,14 +922,15 @@ export namespace Snapd {
         get name(): string;
         get snap(): string;
         get status(): AliasStatus;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Alias.SignalSignatures;
+        $signals: Alias.SignalSignatures;
 
         // Constructors
 
@@ -1047,14 +1048,15 @@ export namespace Snapd {
         get enabled(): boolean;
         get name(): string;
         get snap(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: App.SignalSignatures;
+        $signals: App.SignalSignatures;
 
         // Constructors
 
@@ -1149,14 +1151,15 @@ export namespace Snapd {
         // Properties
 
         get content(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Assertion.SignalSignatures;
+        $signals: Assertion.SignalSignatures;
 
         // Constructors
 
@@ -1238,14 +1241,15 @@ export namespace Snapd {
         set discharges(val: string[]);
         get macaroon(): string;
         set macaroon(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AuthData.SignalSignatures;
+        $signals: AuthData.SignalSignatures;
 
         // Constructors
 
@@ -1313,14 +1317,15 @@ export namespace Snapd {
 
         get featured(): boolean;
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Category.SignalSignatures;
+        $signals: Category.SignalSignatures;
 
         // Constructors
 
@@ -1383,14 +1388,15 @@ export namespace Snapd {
         // Properties
 
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CategoryDetails.SignalSignatures;
+        $signals: CategoryDetails.SignalSignatures;
 
         // Constructors
 
@@ -1475,14 +1481,15 @@ export namespace Snapd {
         get status(): string;
         get summary(): string;
         get tasks(): any[];
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Change.SignalSignatures;
+        $signals: Change.SignalSignatures;
 
         // Constructors
 
@@ -1600,14 +1607,15 @@ export namespace Snapd {
         get revision(): string;
         get size(): number;
         get version(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Channel.SignalSignatures;
+        $signals: Channel.SignalSignatures;
 
         // Constructors
 
@@ -1715,14 +1723,15 @@ export namespace Snapd {
      */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -5328,14 +5337,15 @@ export namespace Snapd {
         get slot_attrs(): GLib.HashTable<any, any>;
         get slotAttrs(): GLib.HashTable<any, any>;
         get snap(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Connection.SignalSignatures;
+        $signals: Connection.SignalSignatures;
 
         // Constructors
 
@@ -5461,14 +5471,15 @@ export namespace Snapd {
         get data(): GLib.Bytes;
         get mime_type(): string;
         get mimeType(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Icon.SignalSignatures;
+        $signals: Icon.SignalSignatures;
 
         // Constructors
 
@@ -5546,14 +5557,15 @@ export namespace Snapd {
         get plugs(): any[];
         get slots(): any[];
         get summary(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Interface.SignalSignatures;
+        $signals: Interface.SignalSignatures;
 
         // Constructors
 
@@ -5645,14 +5657,15 @@ export namespace Snapd {
         get pid(): string;
         get sid(): string;
         get timestamp(): GLib.DateTime;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Log.SignalSignatures;
+        $signals: Log.SignalSignatures;
 
         // Constructors
 
@@ -5727,14 +5740,15 @@ export namespace Snapd {
 
         get kind(): MaintenanceKind;
         get message(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Maintenance.SignalSignatures;
+        $signals: Maintenance.SignalSignatures;
 
         // Constructors
 
@@ -5805,14 +5819,15 @@ export namespace Snapd {
         get node_type(): MarkdownNodeType;
         get nodeType(): MarkdownNodeType;
         get text(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MarkdownNode.SignalSignatures;
+        $signals: MarkdownNode.SignalSignatures;
 
         // Constructors
 
@@ -5873,14 +5888,15 @@ export namespace Snapd {
      */
     class MarkdownParser extends GObject.Object {
         static $gtype: GObject.GType<MarkdownParser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MarkdownParser.SignalSignatures;
+        $signals: MarkdownParser.SignalSignatures;
 
         // Constructors
 
@@ -5962,14 +5978,15 @@ export namespace Snapd {
         get type(): string;
         get url(): string;
         get width(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Media.SignalSignatures;
+        $signals: Media.SignalSignatures;
 
         // Constructors
 
@@ -6056,14 +6073,15 @@ export namespace Snapd {
         get label(): string;
         get name(): string;
         get snap(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Plug.SignalSignatures;
+        $signals: Plug.SignalSignatures;
 
         // Constructors
 
@@ -6165,14 +6183,15 @@ export namespace Snapd {
 
         get plug(): string;
         get snap(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlugRef.SignalSignatures;
+        $signals: PlugRef.SignalSignatures;
 
         // Constructors
 
@@ -6237,14 +6256,15 @@ export namespace Snapd {
 
         get amount(): number;
         get currency(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Price.SignalSignatures;
+        $signals: Price.SignalSignatures;
 
         // Constructors
 
@@ -6312,14 +6332,15 @@ export namespace Snapd {
         get height(): number;
         get url(): string;
         get width(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Screenshot.SignalSignatures;
+        $signals: Screenshot.SignalSignatures;
 
         // Constructors
 
@@ -6401,14 +6422,15 @@ export namespace Snapd {
         get label(): string;
         get name(): string;
         get snap(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Slot.SignalSignatures;
+        $signals: Slot.SignalSignatures;
 
         // Constructors
 
@@ -6510,14 +6532,15 @@ export namespace Snapd {
 
         get slot(): string;
         get snap(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SlotRef.SignalSignatures;
+        $signals: SlotRef.SignalSignatures;
 
         // Constructors
 
@@ -6723,14 +6746,15 @@ export namespace Snapd {
         get trymode(): boolean;
         get version(): string;
         get website(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Snap.SignalSignatures;
+        $signals: Snap.SignalSignatures;
 
         // Constructors
 
@@ -7081,14 +7105,15 @@ export namespace Snapd {
         get series(): string;
         get store(): string;
         get version(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SystemInformation.SignalSignatures;
+        $signals: SystemInformation.SignalSignatures;
 
         // Constructors
 
@@ -7274,14 +7299,15 @@ export namespace Snapd {
         get spawnTime(): GLib.DateTime;
         get status(): string;
         get summary(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Task.SignalSignatures;
+        $signals: Task.SignalSignatures;
 
         // Constructors
 
@@ -7400,14 +7426,15 @@ export namespace Snapd {
         get ssh_keys(): string[];
         get sshKeys(): string[];
         get username(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserInformation.SignalSignatures;
+        $signals: UserInformation.SignalSignatures;
 
         // Constructors
 

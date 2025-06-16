@@ -82,14 +82,15 @@ export namespace Sushi {
         get cover(): GdkPixbuf.Pixbuf;
         get taglist(): Gst.TagList;
         set taglist(val: Gst.TagList);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CoverArtFetcher.SignalSignatures;
+        $signals: CoverArtFetcher.SignalSignatures;
 
         // Constructors
 
@@ -155,14 +156,15 @@ export namespace Sushi {
         get name(): string;
         get size(): string;
         get time(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileLoader.SignalSignatures;
+        $signals: FileLoader.SignalSignatures;
 
         // Constructors
 
@@ -264,14 +266,15 @@ export namespace Sushi {
 
         get uri(): string;
         set uri(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FontWidget.SignalSignatures;
+        $signals: FontWidget.SignalSignatures;
 
         // Constructors
 
@@ -767,14 +770,15 @@ export namespace Sushi {
         get document(): EvinceDocument.Document;
         get uri(): string;
         set uri(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PdfLoader.SignalSignatures;
+        $signals: PdfLoader.SignalSignatures;
 
         // Constructors
 
@@ -845,14 +849,15 @@ export namespace Sushi {
         get taglist(): Gst.TagList;
         get uri(): string;
         set uri(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SoundPlayer.SignalSignatures;
+        $signals: SoundPlayer.SignalSignatures;
 
         // Constructors
 
@@ -900,14 +905,15 @@ export namespace Sushi {
 
         get uri(): string;
         set uri(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TextLoader.SignalSignatures;
+        $signals: TextLoader.SignalSignatures;
 
         // Constructors
 

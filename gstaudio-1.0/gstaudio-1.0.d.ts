@@ -1819,14 +1819,15 @@ export namespace GstAudio {
          */
         get outputBufferDurationFraction(): Gst.Fraction;
         set outputBufferDurationFraction(val: Gst.Fraction);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AudioAggregator.SignalSignatures;
+        $signals: AudioAggregator.SignalSignatures;
 
         // Constructors
 
@@ -1905,14 +1906,15 @@ export namespace GstAudio {
         set converter_config(val: Gst.Structure);
         get converterConfig(): Gst.Structure;
         set converterConfig(val: Gst.Structure);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AudioAggregatorConvertPad.SignalSignatures;
+        $signals: AudioAggregatorConvertPad.SignalSignatures;
 
         // Constructors
 
@@ -1980,14 +1982,15 @@ export namespace GstAudio {
          */
         get qosMessages(): boolean;
         set qosMessages(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AudioAggregatorPad.SignalSignatures;
+        $signals: AudioAggregatorPad.SignalSignatures;
 
         // Constructors
 
@@ -2127,14 +2130,15 @@ export namespace GstAudio {
         set slave_method(val: AudioBaseSinkSlaveMethod);
         get slaveMethod(): AudioBaseSinkSlaveMethod;
         set slaveMethod(val: AudioBaseSinkSlaveMethod);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AudioBaseSink.SignalSignatures;
+        $signals: AudioBaseSink.SignalSignatures;
 
         // Fields
 
@@ -2341,14 +2345,15 @@ export namespace GstAudio {
         set slave_method(val: AudioBaseSrcSlaveMethod);
         get slaveMethod(): AudioBaseSrcSlaveMethod;
         set slaveMethod(val: AudioBaseSrcSlaveMethod);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AudioBaseSrc.SignalSignatures;
+        $signals: AudioBaseSrc.SignalSignatures;
 
         // Fields
 
@@ -2504,14 +2509,15 @@ export namespace GstAudio {
         set mode(val: AudioCdSrcMode);
         get track(): number;
         set track(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AudioCdSrc.SignalSignatures;
+        $signals: AudioCdSrc.SignalSignatures;
 
         // Fields
 
@@ -3058,14 +3064,15 @@ export namespace GstAudio {
      */
     class AudioClock extends Gst.SystemClock {
         static $gtype: GObject.GType<AudioClock>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AudioClock.SignalSignatures;
+        $signals: AudioClock.SignalSignatures;
 
         // Fields
 
@@ -3272,14 +3279,15 @@ export namespace GstAudio {
         set plc(val: boolean);
         get tolerance(): number;
         set tolerance(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AudioDecoder.SignalSignatures;
+        $signals: AudioDecoder.SignalSignatures;
 
         // Fields
 
@@ -3693,14 +3701,15 @@ export namespace GstAudio {
         set perfectTimestamp(val: boolean);
         get tolerance(): number;
         set tolerance(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AudioEncoder.SignalSignatures;
+        $signals: AudioEncoder.SignalSignatures;
 
         // Fields
 
@@ -4546,14 +4555,15 @@ export namespace GstAudio {
      */
     abstract class AudioFilter extends GstBase.BaseTransform {
         static $gtype: GObject.GType<AudioFilter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AudioFilter.SignalSignatures;
+        $signals: AudioFilter.SignalSignatures;
 
         // Fields
 
@@ -4616,14 +4626,15 @@ export namespace GstAudio {
      */
     abstract class AudioRingBuffer extends Gst.Object {
         static $gtype: GObject.GType<AudioRingBuffer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AudioRingBuffer.SignalSignatures;
+        $signals: AudioRingBuffer.SignalSignatures;
 
         // Fields
 
@@ -5054,14 +5065,15 @@ export namespace GstAudio {
      */
     class AudioSink extends AudioBaseSink {
         static $gtype: GObject.GType<AudioSink>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AudioSink.SignalSignatures;
+        $signals: AudioSink.SignalSignatures;
 
         // Fields
 
@@ -5154,14 +5166,15 @@ export namespace GstAudio {
      */
     class AudioSrc extends AudioBaseSrc {
         static $gtype: GObject.GType<AudioSrc>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AudioSrc.SignalSignatures;
+        $signals: AudioSrc.SignalSignatures;
 
         // Fields
 

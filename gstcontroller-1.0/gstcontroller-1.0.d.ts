@@ -148,14 +148,15 @@ export namespace GstController {
         set control_source_r(val: Gst.ControlSource);
         get controlSourceR(): Gst.ControlSource;
         set controlSourceR(val: Gst.ControlSource);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ARGBControlBinding.SignalSignatures;
+        $signals: ARGBControlBinding.SignalSignatures;
 
         // Constructors
 
@@ -228,14 +229,15 @@ export namespace GstController {
         set control_source(val: Gst.ControlSource);
         get controlSource(): Gst.ControlSource;
         set controlSource(val: Gst.ControlSource);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DirectControlBinding.SignalSignatures;
+        $signals: DirectControlBinding.SignalSignatures;
 
         // Constructors
 
@@ -300,14 +302,15 @@ export namespace GstController {
 
         get mode(): InterpolationMode;
         set mode(val: InterpolationMode);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InterpolationControlSource.SignalSignatures;
+        $signals: InterpolationControlSource.SignalSignatures;
 
         // Constructors
 
@@ -407,14 +410,15 @@ export namespace GstController {
          */
         get waveform(): LFOWaveform;
         set waveform(val: LFOWaveform);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LFOControlSource.SignalSignatures;
+        $signals: LFOControlSource.SignalSignatures;
 
         // Constructors
 
@@ -461,14 +465,15 @@ export namespace GstController {
      */
     class ProxyControlBinding extends Gst.ControlBinding {
         static $gtype: GObject.GType<ProxyControlBinding>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProxyControlBinding.SignalSignatures;
+        $signals: ProxyControlBinding.SignalSignatures;
 
         // Constructors
 
@@ -529,14 +534,15 @@ export namespace GstController {
      */
     abstract class TimedValueControlSource extends Gst.ControlSource {
         static $gtype: GObject.GType<TimedValueControlSource>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TimedValueControlSource.SignalSignatures;
+        $signals: TimedValueControlSource.SignalSignatures;
 
         // Fields
 
@@ -652,14 +658,15 @@ export namespace GstController {
 
         get tolerance(): number;
         set tolerance(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TriggerControlSource.SignalSignatures;
+        $signals: TriggerControlSource.SignalSignatures;
 
         // Constructors
 

@@ -141,14 +141,15 @@ export namespace AyatanaIdo3 {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<CalendarMenuItem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CalendarMenuItem.SignalSignatures;
+        $signals: CalendarMenuItem.SignalSignatures;
 
         // Constructors
 
@@ -4820,14 +4821,15 @@ export namespace AyatanaIdo3 {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<EntryMenuItem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EntryMenuItem.SignalSignatures;
+        $signals: EntryMenuItem.SignalSignatures;
 
         // Constructors
 
@@ -9455,14 +9457,15 @@ export namespace AyatanaIdo3 {
 
     class Range extends Gtk.Scale implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Range>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Range.SignalSignatures;
+        $signals: Range.SignalSignatures;
 
         // Constructors
 
@@ -10026,14 +10029,15 @@ export namespace AyatanaIdo3 {
         set reverse_scroll_events(val: boolean);
         get reverseScrollEvents(): boolean;
         set reverseScrollEvents(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScaleMenuItem.SignalSignatures;
+        $signals: ScaleMenuItem.SignalSignatures;
 
         // Constructors
 
@@ -14756,14 +14760,15 @@ export namespace AyatanaIdo3 {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<SwitchMenuItem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SwitchMenuItem.SignalSignatures;
+        $signals: SwitchMenuItem.SignalSignatures;
 
         // Constructors
 
@@ -19129,14 +19134,15 @@ export namespace AyatanaIdo3 {
         set loop(val: boolean);
         get screen(): Gdk.Screen;
         set screen(val: Gdk.Screen);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Timeline.SignalSignatures;
+        $signals: Timeline.SignalSignatures;
 
         // Constructors
 

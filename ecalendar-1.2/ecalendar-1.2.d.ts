@@ -396,14 +396,15 @@ export namespace ECalendar {
 
     class Cal extends GObject.Object {
         static $gtype: GObject.GType<Cal>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Cal.SignalSignatures;
+        $signals: Cal.SignalSignatures;
 
         // Fields
 
@@ -688,14 +689,15 @@ export namespace ECalendar {
      */
     class CalClient extends EDataServer.Client {
         static $gtype: GObject.GType<CalClient>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CalClient.SignalSignatures;
+        $signals: CalClient.SignalSignatures;
 
         // Constructors
 
@@ -1281,14 +1283,15 @@ export namespace ECalendar {
 
         get client(): CalClient;
         get view(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CalClientView.SignalSignatures;
+        $signals: CalClientView.SignalSignatures;
 
         // Fields
 
@@ -1375,14 +1378,15 @@ export namespace ECalendar {
 
     class CalComponent extends GObject.Object {
         static $gtype: GObject.GType<CalComponent>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CalComponent.SignalSignatures;
+        $signals: CalComponent.SignalSignatures;
 
         // Fields
 
@@ -2005,14 +2009,15 @@ export namespace ECalendar {
 
         get client(): Cal;
         get view(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CalView.SignalSignatures;
+        $signals: CalView.SignalSignatures;
 
         // Fields
 

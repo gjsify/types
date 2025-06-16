@@ -369,14 +369,15 @@ export namespace gSignon {
      */
     class AuthService extends GObject.Object {
         static $gtype: GObject.GType<AuthService>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AuthService.SignalSignatures;
+        $signals: AuthService.SignalSignatures;
 
         // Constructors
 
@@ -477,14 +478,15 @@ export namespace gSignon {
         // Properties
 
         get identity(): Identity;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AuthSession.SignalSignatures;
+        $signals: AuthSession.SignalSignatures;
 
         // Constructors
 
@@ -660,14 +662,15 @@ export namespace gSignon {
         set appCtx(val: string);
         get id(): number;
         set id(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Identity.SignalSignatures;
+        $signals: Identity.SignalSignatures;
 
         // Constructors
 

@@ -229,14 +229,15 @@ export namespace Playerctl {
         get status(): string;
         get volume(): number;
         set volume(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Player.SignalSignatures;
+        $signals: Player.SignalSignatures;
 
         // Constructors
 
@@ -401,14 +402,15 @@ export namespace Playerctl {
          * A list of players that are currently connected and managed by this class.
          */
         get players(): Player[];
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlayerManager.SignalSignatures;
+        $signals: PlayerManager.SignalSignatures;
 
         // Constructors
 

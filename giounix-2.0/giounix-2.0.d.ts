@@ -613,14 +613,15 @@ export namespace GioUnix {
          * The origin filename of this [class`Gio`.DesktopAppInfo]
          */
         get filename(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DesktopAppInfo.SignalSignatures;
+        $signals: DesktopAppInfo.SignalSignatures;
 
         // Constructors
 
@@ -1832,14 +1833,15 @@ export namespace GioUnix {
          * The [class`Gio`.UnixFDList] object to send with the message.
          */
         get fdList(): Gio.UnixFDList;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FDMessage.SignalSignatures;
+        $signals: FDMessage.SignalSignatures;
 
         // Constructors
 
@@ -1963,14 +1965,15 @@ export namespace GioUnix {
          * The file descriptor that the stream reads from.
          */
         get fd(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InputStream.SignalSignatures;
+        $signals: InputStream.SignalSignatures;
 
         // Constructors
 
@@ -3353,14 +3356,15 @@ export namespace GioUnix {
      */
     class MountMonitor extends GObject.Object {
         static $gtype: GObject.GType<MountMonitor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MountMonitor.SignalSignatures;
+        $signals: MountMonitor.SignalSignatures;
 
         // Constructors
 
@@ -3465,14 +3469,15 @@ export namespace GioUnix {
          * The file descriptor that the stream writes to.
          */
         get fd(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OutputStream.SignalSignatures;
+        $signals: OutputStream.SignalSignatures;
 
         // Constructors
 

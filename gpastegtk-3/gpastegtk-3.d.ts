@@ -137,14 +137,15 @@ export namespace GPasteGtk {
 
     class SettingsUiPanel extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SettingsUiPanel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingsUiPanel.SignalSignatures;
+        $signals: SettingsUiPanel.SignalSignatures;
 
         // Constructors
 
@@ -752,14 +753,15 @@ export namespace GPasteGtk {
 
     class SettingsUiStack extends Gtk.Stack implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SettingsUiStack>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingsUiStack.SignalSignatures;
+        $signals: SettingsUiStack.SignalSignatures;
 
         // Constructors
 
@@ -1307,14 +1309,15 @@ export namespace GPasteGtk {
 
     class SettingsUiWidget extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SettingsUiWidget>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingsUiWidget.SignalSignatures;
+        $signals: SettingsUiWidget.SignalSignatures;
 
         // Constructors
 

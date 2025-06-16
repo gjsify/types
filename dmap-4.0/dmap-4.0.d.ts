@@ -472,14 +472,15 @@ export namespace Dmap {
 
     class AvConnection extends Connection {
         static $gtype: GObject.GType<AvConnection>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AvConnection.SignalSignatures;
+        $signals: AvConnection.SignalSignatures;
 
         // Fields
 
@@ -533,14 +534,15 @@ export namespace Dmap {
 
     class AvShare extends Share {
         static $gtype: GObject.GType<AvShare>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AvShare.SignalSignatures;
+        $signals: AvShare.SignalSignatures;
 
         // Fields
 
@@ -663,14 +665,15 @@ export namespace Dmap {
         get sessionId(): number;
         set sessionId(val: number);
         get username(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Connection.SignalSignatures;
+        $signals: Connection.SignalSignatures;
 
         // Constructors
 
@@ -766,14 +769,15 @@ export namespace Dmap {
 
     class ControlConnection extends Connection {
         static $gtype: GObject.GType<ControlConnection>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ControlConnection.SignalSignatures;
+        $signals: ControlConnection.SignalSignatures;
 
         // Fields
 
@@ -846,14 +850,15 @@ export namespace Dmap {
         get libraryName(): string;
         set libraryName(val: string);
         get player(): GObject.Object;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ControlShare.SignalSignatures;
+        $signals: ControlShare.SignalSignatures;
 
         // Fields
 
@@ -942,14 +947,15 @@ export namespace Dmap {
 
     class ImageConnection extends Connection {
         static $gtype: GObject.GType<ImageConnection>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ImageConnection.SignalSignatures;
+        $signals: ImageConnection.SignalSignatures;
 
         // Fields
 
@@ -1003,14 +1009,15 @@ export namespace Dmap {
 
     class ImageShare extends Share {
         static $gtype: GObject.GType<ImageShare>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ImageShare.SignalSignatures;
+        $signals: ImageShare.SignalSignatures;
 
         // Fields
 
@@ -1063,14 +1070,15 @@ export namespace Dmap {
 
     class MdnsBrowser extends GObject.Object {
         static $gtype: GObject.GType<MdnsBrowser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MdnsBrowser.SignalSignatures;
+        $signals: MdnsBrowser.SignalSignatures;
 
         // Fields
 
@@ -1137,14 +1145,15 @@ export namespace Dmap {
 
     class MdnsPublisher extends GObject.Object {
         static $gtype: GObject.GType<MdnsPublisher>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MdnsPublisher.SignalSignatures;
+        $signals: MdnsPublisher.SignalSignatures;
 
         // Fields
 
@@ -1247,14 +1256,15 @@ export namespace Dmap {
         set transport_protocol(val: number);
         get transportProtocol(): number;
         set transportProtocol(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MdnsService.SignalSignatures;
+        $signals: MdnsService.SignalSignatures;
 
         // Fields
 
@@ -1347,14 +1357,15 @@ export namespace Dmap {
         set txt_records(val: string[]);
         get txtRecords(): string[];
         set txtRecords(val: string[]);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Share.SignalSignatures;
+        $signals: Share.SignalSignatures;
 
         // Constructors
 
@@ -1457,14 +1468,15 @@ export namespace Dmap {
 
     class TranscodeStream extends Gio.InputStream implements Gio.Seekable {
         static $gtype: GObject.GType<TranscodeStream>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TranscodeStream.SignalSignatures;
+        $signals: TranscodeStream.SignalSignatures;
 
         // Constructors
 

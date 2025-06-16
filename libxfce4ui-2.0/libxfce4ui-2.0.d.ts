@@ -887,14 +887,15 @@ export namespace Libxfce4ui {
          * filename.
          */
         set originalFilename(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilenameInput.SignalSignatures;
+        $signals: FilenameInput.SignalSignatures;
 
         // Constructors
 
@@ -1487,14 +1488,15 @@ export namespace Libxfce4ui {
         get restartStyle(): SMClientRestartStyle;
         set restartStyle(val: SMClientRestartStyle);
         get resumed(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SMClient.SignalSignatures;
+        $signals: SMClient.SignalSignatures;
 
         // Constructors
 
@@ -1757,14 +1759,15 @@ export namespace Libxfce4ui {
         set lock_on_sleep(val: boolean);
         get lockOnSleep(): boolean;
         set lockOnSleep(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Screensaver.SignalSignatures;
+        $signals: Screensaver.SignalSignatures;
 
         // Constructors
 
@@ -1918,14 +1921,15 @@ export namespace Libxfce4ui {
          */
         get subtitle(): string;
         set subtitle(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TitledDialog.SignalSignatures;
+        $signals: TitledDialog.SignalSignatures;
 
         // Constructors
 

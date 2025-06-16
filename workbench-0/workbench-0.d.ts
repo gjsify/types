@@ -74,14 +74,15 @@ export namespace Workbench {
      */
     class CompletionProvider extends GObject.Object implements GtkSource.CompletionProvider {
         static $gtype: GObject.GType<CompletionProvider>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CompletionProvider.SignalSignatures;
+        $signals: CompletionProvider.SignalSignatures;
 
         // Constructors
 
@@ -930,14 +931,15 @@ export namespace Workbench {
          * to `WORKBENCH_REQUEST_STATE_CANCELLED` before finalization.
          */
         get state(): RequestState;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CompletionRequest.SignalSignatures;
+        $signals: CompletionRequest.SignalSignatures;
 
         // Constructors
 
@@ -1628,14 +1630,15 @@ export namespace Workbench {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Native, Gtk.Root, Gtk.ShortcutManager
     {
         static $gtype: GObject.GType<PreviewWindow>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PreviewWindow.SignalSignatures;
+        $signals: PreviewWindow.SignalSignatures;
 
         // Constructors
 

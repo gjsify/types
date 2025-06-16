@@ -548,14 +548,15 @@ export namespace GstValidate {
 
         get handles_states(): boolean;
         get handlesStates(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BinMonitor.SignalSignatures;
+        $signals: BinMonitor.SignalSignatures;
 
         // Fields
 
@@ -1060,14 +1061,15 @@ export namespace GstValidate {
      */
     class ElementMonitor extends Monitor implements Reporter {
         static $gtype: GObject.GType<ElementMonitor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ElementMonitor.SignalSignatures;
+        $signals: ElementMonitor.SignalSignatures;
 
         // Constructors
 
@@ -1613,14 +1615,15 @@ export namespace GstValidate {
 
         get validate_runner(): Runner;
         get validateRunner(): Runner;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaDescriptor.SignalSignatures;
+        $signals: MediaDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -2160,14 +2163,15 @@ export namespace GstValidate {
 
     class MediaDescriptorParser extends MediaDescriptor implements Reporter {
         static $gtype: GObject.GType<MediaDescriptorParser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaDescriptorParser.SignalSignatures;
+        $signals: MediaDescriptorParser.SignalSignatures;
 
         // Constructors
 
@@ -2717,14 +2721,15 @@ export namespace GstValidate {
 
     class MediaDescriptorWriter extends MediaDescriptor implements Reporter {
         static $gtype: GObject.GType<MediaDescriptorWriter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaDescriptorWriter.SignalSignatures;
+        $signals: MediaDescriptorWriter.SignalSignatures;
 
         // Constructors
 
@@ -3314,14 +3319,15 @@ export namespace GstValidate {
         get validateRunner(): Runner;
         get verbosity(): VerbosityFlags;
         set verbosity(val: VerbosityFlags);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Monitor.SignalSignatures;
+        $signals: Monitor.SignalSignatures;
 
         // Fields
 
@@ -3892,14 +3898,15 @@ export namespace GstValidate {
 
         get validate_runner(): Runner;
         get validateRunner(): Runner;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Override.SignalSignatures;
+        $signals: Override.SignalSignatures;
 
         // Constructors
 
@@ -4459,14 +4466,15 @@ export namespace GstValidate {
      */
     class PadMonitor extends Monitor implements Reporter {
         static $gtype: GObject.GType<PadMonitor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PadMonitor.SignalSignatures;
+        $signals: PadMonitor.SignalSignatures;
 
         // Fields
 
@@ -5025,14 +5033,15 @@ export namespace GstValidate {
      */
     class PipelineMonitor extends BinMonitor implements Reporter {
         static $gtype: GObject.GType<PipelineMonitor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PipelineMonitor.SignalSignatures;
+        $signals: PipelineMonitor.SignalSignatures;
 
         // Constructors
 
@@ -5533,14 +5542,15 @@ export namespace GstValidate {
 
         get params(): string;
         set params(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Runner.SignalSignatures;
+        $signals: Runner.SignalSignatures;
 
         // Fields
 
@@ -5629,14 +5639,15 @@ export namespace GstValidate {
         get handlesStates(): boolean;
         get validate_runner(): Runner;
         get validateRunner(): Runner;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Scenario.SignalSignatures;
+        $signals: Scenario.SignalSignatures;
 
         // Constructors
 

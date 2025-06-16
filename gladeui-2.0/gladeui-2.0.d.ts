@@ -979,14 +979,15 @@ export namespace Gladeui {
 
         get project(): Project;
         set project(val: Project);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AdaptorChooser.SignalSignatures;
+        $signals: AdaptorChooser.SignalSignatures;
 
         // Constructors
 
@@ -1493,14 +1494,15 @@ export namespace Gladeui {
 
     class App extends GObject.Object {
         static $gtype: GObject.GType<App>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: App.SignalSignatures;
+        $signals: App.SignalSignatures;
 
         // Constructors
 
@@ -1660,14 +1662,15 @@ export namespace Gladeui {
 
         // This accessor conflicts with a property or field in a parent class or interface.
         container: GObject.Object | any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BaseEditor.SignalSignatures;
+        $signals: BaseEditor.SignalSignatures;
 
         // Constructors
 
@@ -2248,14 +2251,15 @@ export namespace Gladeui {
         set activatable(val: boolean);
         get active(): boolean;
         set active(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CellRendererIcon.SignalSignatures;
+        $signals: CellRendererIcon.SignalSignatures;
 
         // Constructors
 
@@ -2318,14 +2322,15 @@ export namespace Gladeui {
 
         get has_selection(): boolean;
         get hasSelection(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Clipboard.SignalSignatures;
+        $signals: Clipboard.SignalSignatures;
 
         // Constructors
 
@@ -2380,14 +2385,15 @@ export namespace Gladeui {
 
     class Command extends GObject.Object {
         static $gtype: GObject.GType<Command>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Command.SignalSignatures;
+        $signals: Command.SignalSignatures;
 
         // Constructors
 
@@ -2688,14 +2694,15 @@ export namespace Gladeui {
         // Properties
 
         get project(): Project;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DesignView.SignalSignatures;
+        $signals: DesignView.SignalSignatures;
 
         // Constructors
 
@@ -3259,14 +3266,15 @@ export namespace Gladeui {
 
     class EPropBool extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropBool>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EPropBool.SignalSignatures;
+        $signals: EPropBool.SignalSignatures;
 
         // Constructors
 
@@ -7674,14 +7682,15 @@ export namespace Gladeui {
 
     class EPropCheck extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropCheck>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EPropCheck.SignalSignatures;
+        $signals: EPropCheck.SignalSignatures;
 
         // Constructors
 
@@ -12089,14 +12098,15 @@ export namespace Gladeui {
 
     class EPropColor extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropColor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EPropColor.SignalSignatures;
+        $signals: EPropColor.SignalSignatures;
 
         // Constructors
 
@@ -16504,14 +16514,15 @@ export namespace Gladeui {
 
     class EPropEnum extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropEnum>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EPropEnum.SignalSignatures;
+        $signals: EPropEnum.SignalSignatures;
 
         // Constructors
 
@@ -20919,14 +20930,15 @@ export namespace Gladeui {
 
     class EPropFlags extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropFlags>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EPropFlags.SignalSignatures;
+        $signals: EPropFlags.SignalSignatures;
 
         // Constructors
 
@@ -25337,14 +25349,15 @@ export namespace Gladeui {
         implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable
     {
         static $gtype: GObject.GType<EPropNamedIcon>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EPropNamedIcon.SignalSignatures;
+        $signals: EPropNamedIcon.SignalSignatures;
 
         // Constructors
 
@@ -29752,14 +29765,15 @@ export namespace Gladeui {
 
     class EPropNumeric extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropNumeric>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EPropNumeric.SignalSignatures;
+        $signals: EPropNumeric.SignalSignatures;
 
         // Constructors
 
@@ -34167,14 +34181,15 @@ export namespace Gladeui {
 
     class EPropObject extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropObject>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EPropObject.SignalSignatures;
+        $signals: EPropObject.SignalSignatures;
 
         // Constructors
 
@@ -38582,14 +38597,15 @@ export namespace Gladeui {
 
     class EPropObjects extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropObjects>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EPropObjects.SignalSignatures;
+        $signals: EPropObjects.SignalSignatures;
 
         // Constructors
 
@@ -42997,14 +43013,15 @@ export namespace Gladeui {
 
     class EPropText extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropText>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EPropText.SignalSignatures;
+        $signals: EPropText.SignalSignatures;
 
         // Constructors
 
@@ -47412,14 +47429,15 @@ export namespace Gladeui {
 
     class EPropUnichar extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropUnichar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EPropUnichar.SignalSignatures;
+        $signals: EPropUnichar.SignalSignatures;
 
         // Constructors
 
@@ -51860,14 +51878,15 @@ export namespace Gladeui {
         get signalEditor(): SignalEditor;
         // This accessor conflicts with a property or field in a parent class or interface.
         widget: Widget | any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Editor.SignalSignatures;
+        $signals: Editor.SignalSignatures;
 
         // Constructors
 
@@ -52470,14 +52489,15 @@ export namespace Gladeui {
         set use_command(val: boolean);
         get useCommand(): boolean;
         set useCommand(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EditorProperty.SignalSignatures;
+        $signals: EditorProperty.SignalSignatures;
 
         // Constructors
 
@@ -56940,14 +56960,15 @@ export namespace Gladeui {
 
     class EditorSkeleton extends Gtk.Box implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EditorSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EditorSkeleton.SignalSignatures;
+        $signals: EditorSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -61378,14 +61399,15 @@ export namespace Gladeui {
 
         set page_type(val: EditorPageType);
         set pageType(val: EditorPageType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EditorTable.SignalSignatures;
+        $signals: EditorTable.SignalSignatures;
 
         // Constructors
 
@@ -65816,14 +65838,15 @@ export namespace Gladeui {
 
         get project(): Project;
         set project(val: Project);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Inspector.SignalSignatures;
+        $signals: Inspector.SignalSignatures;
 
         // Constructors
 
@@ -66429,14 +66452,15 @@ export namespace Gladeui {
 
     class NamedIconChooserDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<NamedIconChooserDialog>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NamedIconChooserDialog.SignalSignatures;
+        $signals: NamedIconChooserDialog.SignalSignatures;
 
         // Constructors
 
@@ -67014,14 +67038,15 @@ export namespace Gladeui {
         set use_small_item_icons(val: boolean);
         get useSmallItemIcons(): boolean;
         set useSmallItemIcons(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Palette.SignalSignatures;
+        $signals: Palette.SignalSignatures;
 
         // Constructors
 
@@ -67595,14 +67620,15 @@ export namespace Gladeui {
 
     class Placeholder extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<Placeholder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Placeholder.SignalSignatures;
+        $signals: Placeholder.SignalSignatures;
 
         // Fields
 
@@ -68448,14 +68474,15 @@ export namespace Gladeui {
         set translation_domain(val: string);
         get translationDomain(): string;
         set translationDomain(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Project.SignalSignatures;
+        $signals: Project.SignalSignatures;
 
         // Constructors
 
@@ -69734,14 +69761,15 @@ export namespace Gladeui {
         get sensitive(): boolean;
         set sensitive(val: boolean);
         get state(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Property.SignalSignatures;
+        $signals: Property.SignalSignatures;
 
         // Constructors
 
@@ -70005,14 +70033,15 @@ export namespace Gladeui {
         set property_name(val: string);
         get propertyName(): string;
         set propertyName(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PropertyLabel.SignalSignatures;
+        $signals: PropertyLabel.SignalSignatures;
 
         // Constructors
 
@@ -74454,14 +74483,15 @@ export namespace Gladeui {
         set use_command(val: boolean);
         get useCommand(): boolean;
         set useCommand(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PropertyShell.SignalSignatures;
+        $signals: PropertyShell.SignalSignatures;
 
         // Constructors
 
@@ -78873,14 +78903,15 @@ export namespace Gladeui {
         set swapped(val: boolean);
         get userdata(): string;
         set userdata(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Signal.SignalSignatures;
+        $signals: Signal.SignalSignatures;
 
         // Fields
 
@@ -79073,14 +79104,15 @@ export namespace Gladeui {
         set glade_widget(val: Gtk.TreeModel);
         get gladeWidget(): Gtk.TreeModel;
         set gladeWidget(val: Gtk.TreeModel);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SignalEditor.SignalSignatures;
+        $signals: SignalEditor.SignalSignatures;
 
         // Constructors
 
@@ -79610,14 +79642,15 @@ export namespace Gladeui {
 
         set signals(val: any);
         set widget(val: Widget);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SignalModel.SignalSignatures;
+        $signals: SignalModel.SignalSignatures;
 
         // Constructors
 
@@ -80643,14 +80676,15 @@ export namespace Gladeui {
         get toplevelWidth(): number;
         set toplevelWidth(val: number);
         get visible(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Widget.SignalSignatures;
+        $signals: Widget.SignalSignatures;
 
         // Constructors
 
@@ -81278,14 +81312,15 @@ export namespace Gladeui {
         set sensitive(val: boolean);
         get visible(): boolean;
         set visible(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WidgetAction.SignalSignatures;
+        $signals: WidgetAction.SignalSignatures;
 
         // Constructors
 
@@ -81379,14 +81414,15 @@ export namespace Gladeui {
         get title(): string;
         set title(val: string);
         get type(): GObject.GType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WidgetAdaptor.SignalSignatures;
+        $signals: WidgetAdaptor.SignalSignatures;
 
         // Constructors
 

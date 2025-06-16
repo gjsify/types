@@ -7299,14 +7299,15 @@ export namespace Gimp {
      */
     class BatchProcedure extends Procedure {
         static $gtype: GObject.GType<BatchProcedure>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BatchProcedure.SignalSignatures;
+        $signals: BatchProcedure.SignalSignatures;
 
         // Constructors
 
@@ -7391,14 +7392,15 @@ export namespace Gimp {
      */
     class Brush extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Brush>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Brush.SignalSignatures;
+        $signals: Brush.SignalSignatures;
 
         // Constructors
 
@@ -8089,14 +8091,15 @@ export namespace Gimp {
      */
     class Channel extends Drawable {
         static $gtype: GObject.GType<Channel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Channel.SignalSignatures;
+        $signals: Channel.SignalSignatures;
 
         // Constructors
 
@@ -8230,14 +8233,15 @@ export namespace Gimp {
 
     class Choice extends GObject.Object {
         static $gtype: GObject.GType<Choice>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Choice.SignalSignatures;
+        $signals: Choice.SignalSignatures;
 
         // Constructors
 
@@ -8451,14 +8455,15 @@ export namespace Gimp {
         set simulation_use_black_point_compensation(val: boolean);
         get simulationUseBlackPointCompensation(): boolean;
         set simulationUseBlackPointCompensation(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ColorConfig.SignalSignatures;
+        $signals: ColorConfig.SignalSignatures;
 
         // Constructors
 
@@ -8958,14 +8963,15 @@ export namespace Gimp {
      */
     class ColorProfile extends GObject.Object {
         static $gtype: GObject.GType<ColorProfile>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ColorProfile.SignalSignatures;
+        $signals: ColorProfile.SignalSignatures;
 
         // Constructors
 
@@ -9126,14 +9132,15 @@ export namespace Gimp {
      */
     class ColorTransform extends GObject.Object {
         static $gtype: GObject.GType<ColorTransform>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ColorTransform.SignalSignatures;
+        $signals: ColorTransform.SignalSignatures;
 
         // Constructors
 
@@ -9331,14 +9338,15 @@ export namespace Gimp {
         // Properties
 
         get id(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Display.SignalSignatures;
+        $signals: Display.SignalSignatures;
 
         // Constructors
 
@@ -9465,14 +9473,15 @@ export namespace Gimp {
      */
     abstract class Drawable extends Item {
         static $gtype: GObject.GType<Drawable>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Drawable.SignalSignatures;
+        $signals: Drawable.SignalSignatures;
 
         // Constructors
 
@@ -10244,14 +10253,15 @@ export namespace Gimp {
          */
         get capabilities(): number;
         set capabilities(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExportOptions.SignalSignatures;
+        $signals: ExportOptions.SignalSignatures;
 
         // Constructors
 
@@ -10415,14 +10425,15 @@ export namespace Gimp {
          */
         get supportsXmp(): boolean;
         set supportsXmp(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExportProcedure.SignalSignatures;
+        $signals: ExportProcedure.SignalSignatures;
 
         // Constructors
 
@@ -10648,14 +10659,15 @@ export namespace Gimp {
      */
     abstract class FileProcedure extends Procedure {
         static $gtype: GObject.GType<FileProcedure>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileProcedure.SignalSignatures;
+        $signals: FileProcedure.SignalSignatures;
 
         // Constructors
 
@@ -10815,14 +10827,15 @@ export namespace Gimp {
      */
     class Font extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Font>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Font.SignalSignatures;
+        $signals: Font.SignalSignatures;
 
         // Constructors
 
@@ -11332,14 +11345,15 @@ export namespace Gimp {
      */
     class Gradient extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Gradient>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Gradient.SignalSignatures;
+        $signals: Gradient.SignalSignatures;
 
         // Constructors
 
@@ -12155,14 +12169,15 @@ export namespace Gimp {
      */
     class GroupLayer extends Layer {
         static $gtype: GObject.GType<GroupLayer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GroupLayer.SignalSignatures;
+        $signals: GroupLayer.SignalSignatures;
 
         // Constructors
 
@@ -12236,14 +12251,15 @@ export namespace Gimp {
         // Properties
 
         get id(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Image.SignalSignatures;
+        $signals: Image.SignalSignatures;
 
         // Constructors
 
@@ -14074,14 +14090,15 @@ export namespace Gimp {
      */
     class ImageProcedure extends Procedure {
         static $gtype: GObject.GType<ImageProcedure>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ImageProcedure.SignalSignatures;
+        $signals: ImageProcedure.SignalSignatures;
 
         // Constructors
 
@@ -14141,14 +14158,15 @@ export namespace Gimp {
         // Properties
 
         get id(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Item.SignalSignatures;
+        $signals: Item.SignalSignatures;
 
         // Constructors
 
@@ -14909,14 +14927,15 @@ export namespace Gimp {
      */
     class Layer extends Drawable {
         static $gtype: GObject.GType<Layer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Layer.SignalSignatures;
+        $signals: Layer.SignalSignatures;
 
         // Constructors
 
@@ -15318,14 +15337,15 @@ export namespace Gimp {
 
     class LayerMask extends Channel {
         static $gtype: GObject.GType<LayerMask>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LayerMask.SignalSignatures;
+        $signals: LayerMask.SignalSignatures;
 
         // Constructors
 
@@ -15397,14 +15417,15 @@ export namespace Gimp {
      */
     class LoadProcedure extends FileProcedure {
         static $gtype: GObject.GType<LoadProcedure>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LoadProcedure.SignalSignatures;
+        $signals: LoadProcedure.SignalSignatures;
 
         // Constructors
 
@@ -15542,14 +15563,15 @@ export namespace Gimp {
      */
     class Metadata extends GObject.Object {
         static $gtype: GObject.GType<Metadata>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Metadata.SignalSignatures;
+        $signals: Metadata.SignalSignatures;
 
         // Constructors
 
@@ -15717,14 +15739,15 @@ export namespace Gimp {
         set autoLoad(val: boolean);
         get on_disk(): boolean;
         get onDisk(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Module.SignalSignatures;
+        $signals: Module.SignalSignatures;
 
         // Constructors
 
@@ -16289,14 +16312,15 @@ export namespace Gimp {
      */
     class ModuleDB<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<ModuleDB>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ModuleDB.SignalSignatures;
+        $signals: ModuleDB.SignalSignatures;
 
         // Constructors
 
@@ -16916,14 +16940,15 @@ export namespace Gimp {
      */
     class PDB extends GObject.Object {
         static $gtype: GObject.GType<PDB>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PDB.SignalSignatures;
+        $signals: PDB.SignalSignatures;
 
         // Constructors
 
@@ -17060,14 +17085,15 @@ export namespace Gimp {
      */
     class Palette extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Palette>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Palette.SignalSignatures;
+        $signals: Palette.SignalSignatures;
 
         // Constructors
 
@@ -18222,14 +18248,15 @@ export namespace Gimp {
      */
     class Path extends Item {
         static $gtype: GObject.GType<Path>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Path.SignalSignatures;
+        $signals: Path.SignalSignatures;
 
         // Constructors
 
@@ -18528,14 +18555,15 @@ export namespace Gimp {
      */
     class Pattern extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Pattern>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Pattern.SignalSignatures;
+        $signals: Pattern.SignalSignatures;
 
         // Constructors
 
@@ -19146,14 +19174,15 @@ export namespace Gimp {
          * The [struct`GLib`.IOChannel] to write to GIMP
          */
         get writeChannel(): GLib.IOChannel;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlugIn.SignalSignatures;
+        $signals: PlugIn.SignalSignatures;
 
         // Constructors
 
@@ -19464,14 +19493,15 @@ export namespace Gimp {
         get plugIn(): PlugIn;
         get procedure_type(): PDBProcType;
         get procedureType(): PDBProcType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Procedure.SignalSignatures;
+        $signals: Procedure.SignalSignatures;
 
         // Constructors
 
@@ -21319,14 +21349,15 @@ export namespace Gimp {
         // Properties
 
         get procedure(): Procedure;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProcedureConfig.SignalSignatures;
+        $signals: ProcedureConfig.SignalSignatures;
 
         // Constructors
 
@@ -21411,14 +21442,15 @@ export namespace Gimp {
         // Properties
 
         get id(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Resource.SignalSignatures;
+        $signals: Resource.SignalSignatures;
 
         // Constructors
 
@@ -22083,14 +22115,15 @@ export namespace Gimp {
      */
     class Selection extends Channel {
         static $gtype: GObject.GType<Selection>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Selection.SignalSignatures;
+        $signals: Selection.SignalSignatures;
 
         // Constructors
 
@@ -22294,14 +22327,15 @@ export namespace Gimp {
      */
     class TextLayer extends Layer {
         static $gtype: GObject.GType<TextLayer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TextLayer.SignalSignatures;
+        $signals: TextLayer.SignalSignatures;
 
         // Constructors
 
@@ -22613,14 +22647,15 @@ export namespace Gimp {
 
     class ThumbnailProcedure extends Procedure {
         static $gtype: GObject.GType<ThumbnailProcedure>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ThumbnailProcedure.SignalSignatures;
+        $signals: ThumbnailProcedure.SignalSignatures;
 
         // Constructors
 
@@ -22696,14 +22731,15 @@ export namespace Gimp {
         get id(): number;
         get name(): string;
         get symbol(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Unit.SignalSignatures;
+        $signals: Unit.SignalSignatures;
 
         // Constructors
 
@@ -22928,14 +22964,15 @@ export namespace Gimp {
      */
     class VectorLoadProcedure extends LoadProcedure {
         static $gtype: GObject.GType<VectorLoadProcedure>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VectorLoadProcedure.SignalSignatures;
+        $signals: VectorLoadProcedure.SignalSignatures;
 
         // Constructors
 

@@ -480,14 +480,15 @@ export namespace Xmlb {
 
     class Builder extends GObject.Object {
         static $gtype: GObject.GType<Builder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Builder.SignalSignatures;
+        $signals: Builder.SignalSignatures;
 
         // Constructors
 
@@ -594,14 +595,15 @@ export namespace Xmlb {
 
     class BuilderFixup extends GObject.Object {
         static $gtype: GObject.GType<BuilderFixup>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BuilderFixup.SignalSignatures;
+        $signals: BuilderFixup.SignalSignatures;
 
         // Constructors
 
@@ -658,14 +660,15 @@ export namespace Xmlb {
 
     class BuilderNode extends GObject.Object {
         static $gtype: GObject.GType<BuilderNode>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BuilderNode.SignalSignatures;
+        $signals: BuilderNode.SignalSignatures;
 
         // Constructors
 
@@ -883,14 +886,15 @@ export namespace Xmlb {
 
     class BuilderSource extends GObject.Object {
         static $gtype: GObject.GType<BuilderSource>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BuilderSource.SignalSignatures;
+        $signals: BuilderSource.SignalSignatures;
 
         // Constructors
 
@@ -972,14 +976,15 @@ export namespace Xmlb {
 
     class BuilderSourceCtx extends GObject.Object {
         static $gtype: GObject.GType<BuilderSourceCtx>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BuilderSourceCtx.SignalSignatures;
+        $signals: BuilderSourceCtx.SignalSignatures;
 
         // Constructors
 
@@ -1040,14 +1045,15 @@ export namespace Xmlb {
 
     class Machine extends GObject.Object {
         static $gtype: GObject.GType<Machine>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Machine.SignalSignatures;
+        $signals: Machine.SignalSignatures;
 
         // Constructors
 
@@ -1248,14 +1254,15 @@ export namespace Xmlb {
 
     class Node extends GObject.Object {
         static $gtype: GObject.GType<Node>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Node.SignalSignatures;
+        $signals: Node.SignalSignatures;
 
         // Constructors
 
@@ -1535,14 +1542,15 @@ export namespace Xmlb {
 
     class Query extends GObject.Object {
         static $gtype: GObject.GType<Query>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Query.SignalSignatures;
+        $signals: Query.SignalSignatures;
 
         // Constructors
 
@@ -1679,14 +1687,15 @@ export namespace Xmlb {
         get guid(): string;
         set guid(val: string);
         get valid(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Silo.SignalSignatures;
+        $signals: Silo.SignalSignatures;
 
         // Constructors
 

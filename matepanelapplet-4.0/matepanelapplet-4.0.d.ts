@@ -186,14 +186,15 @@ export namespace MatePanelApplet {
         set size_hints(val: any);
         get sizeHints(): any;
         set sizeHints(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Applet.SignalSignatures;
+        $signals: Applet.SignalSignatures;
 
         // Constructors
 

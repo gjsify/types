@@ -377,14 +377,15 @@ export namespace GnomeAutoar {
         get size(): number;
         get source_files(): any;
         get sourceFiles(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Compressor.SignalSignatures;
+        $signals: Compressor.SignalSignatures;
 
         // Constructors
 
@@ -607,14 +608,15 @@ export namespace GnomeAutoar {
         get totalFiles(): number;
         get total_size(): number;
         get totalSize(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Extractor.SignalSignatures;
+        $signals: Extractor.SignalSignatures;
 
         // Constructors
 

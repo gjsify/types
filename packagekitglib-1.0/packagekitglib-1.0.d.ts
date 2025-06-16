@@ -2176,14 +2176,15 @@ export namespace PackageKitGlib {
         set parentId(val: string);
         get summary(): string;
         set summary(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Category.SignalSignatures;
+        $signals: Category.SignalSignatures;
 
         // Constructors
 
@@ -2318,14 +2319,15 @@ export namespace PackageKitGlib {
         set interactive(val: boolean);
         get locale(): string;
         set locale(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -3552,14 +3554,15 @@ export namespace PackageKitGlib {
 
     class ClientHelper extends GObject.Object {
         static $gtype: GObject.GType<ClientHelper>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientHelper.SignalSignatures;
+        $signals: ClientHelper.SignalSignatures;
 
         // Constructors
 
@@ -3717,14 +3720,15 @@ export namespace PackageKitGlib {
         get versionMicro(): number;
         get version_minor(): number;
         get versionMinor(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Control.SignalSignatures;
+        $signals: Control.SignalSignatures;
 
         // Constructors
 
@@ -4115,14 +4119,15 @@ export namespace PackageKitGlib {
 
     class Desktop extends GObject.Object {
         static $gtype: GObject.GType<Desktop>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Desktop.SignalSignatures;
+        $signals: Desktop.SignalSignatures;
 
         // Constructors
 
@@ -4236,14 +4241,15 @@ export namespace PackageKitGlib {
         set summary(val: string);
         get url(): string;
         set url(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Details.SignalSignatures;
+        $signals: Details.SignalSignatures;
 
         // Constructors
 
@@ -4346,14 +4352,15 @@ export namespace PackageKitGlib {
         set state(val: DistroUpgradeEnum);
         get summary(): string;
         set summary(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DistroUpgrade.SignalSignatures;
+        $signals: DistroUpgrade.SignalSignatures;
 
         // Constructors
 
@@ -4427,14 +4434,15 @@ export namespace PackageKitGlib {
         set code(val: ErrorEnum);
         get details(): string;
         set details(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Error.SignalSignatures;
+        $signals: Error.SignalSignatures;
 
         // Constructors
 
@@ -4546,14 +4554,15 @@ export namespace PackageKitGlib {
          */
         get vendorName(): string;
         set vendorName(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EulaRequired.SignalSignatures;
+        $signals: EulaRequired.SignalSignatures;
 
         // Constructors
 
@@ -4634,14 +4643,15 @@ export namespace PackageKitGlib {
         set package_id(val: string);
         get packageId(): string;
         set packageId(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Files.SignalSignatures;
+        $signals: Files.SignalSignatures;
 
         // Constructors
 
@@ -4716,14 +4726,15 @@ export namespace PackageKitGlib {
         set percentage(val: number);
         get status(): number;
         set status(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ItemProgress.SignalSignatures;
+        $signals: ItemProgress.SignalSignatures;
 
         // Constructors
 
@@ -4809,14 +4820,15 @@ export namespace PackageKitGlib {
         set media_type(val: MediaTypeEnum);
         get mediaType(): MediaTypeEnum;
         set mediaType(val: MediaTypeEnum);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaChangeRequired.SignalSignatures;
+        $signals: MediaChangeRequired.SignalSignatures;
 
         // Constructors
 
@@ -4991,14 +5003,15 @@ export namespace PackageKitGlib {
         set updateVendorUrls(val: string[]);
         get url(): string;
         set url(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Package.SignalSignatures;
+        $signals: Package.SignalSignatures;
 
         // Constructors
 
@@ -5216,14 +5229,15 @@ export namespace PackageKitGlib {
 
     class PackageSack extends GObject.Object {
         static $gtype: GObject.GType<PackageSack>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PackageSack.SignalSignatures;
+        $signals: PackageSack.SignalSignatures;
 
         // Constructors
 
@@ -5605,14 +5619,15 @@ export namespace PackageKitGlib {
          */
         get uid(): number;
         set uid(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Progress.SignalSignatures;
+        $signals: Progress.SignalSignatures;
 
         // Constructors
 
@@ -5853,14 +5868,15 @@ export namespace PackageKitGlib {
         set repo_id(val: string);
         get repoId(): string;
         set repoId(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RepoDetail.SignalSignatures;
+        $signals: RepoDetail.SignalSignatures;
 
         // Constructors
 
@@ -5978,14 +5994,15 @@ export namespace PackageKitGlib {
         set repositoryName(val: string);
         get type(): SigTypeEnum;
         set type(val: SigTypeEnum);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RepoSignatureRequired.SignalSignatures;
+        $signals: RepoSignatureRequired.SignalSignatures;
 
         // Constructors
 
@@ -6045,14 +6062,15 @@ export namespace PackageKitGlib {
         set packageId(val: string);
         get restart(): RestartEnum;
         set restart(val: RestartEnum);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RequireRestart.SignalSignatures;
+        $signals: RequireRestart.SignalSignatures;
 
         // Constructors
 
@@ -6125,14 +6143,15 @@ export namespace PackageKitGlib {
          */
         get transactionFlags(): number;
         set transactionFlags(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Results.SignalSignatures;
+        $signals: Results.SignalSignatures;
 
         // Constructors
 
@@ -6378,14 +6397,15 @@ export namespace PackageKitGlib {
         set transaction_id(val: string);
         get transactionId(): string;
         set transactionId(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Source.SignalSignatures;
+        $signals: Source.SignalSignatures;
 
         // Constructors
 
@@ -6495,14 +6515,15 @@ export namespace PackageKitGlib {
          */
         get simulate(): boolean;
         set simulate(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Task.SignalSignatures;
+        $signals: Task.SignalSignatures;
 
         // Constructors
 
@@ -7315,14 +7336,15 @@ export namespace PackageKitGlib {
 
     class TransactionList extends GObject.Object {
         static $gtype: GObject.GType<TransactionList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TransactionList.SignalSignatures;
+        $signals: TransactionList.SignalSignatures;
 
         // Constructors
 
@@ -7413,14 +7435,15 @@ export namespace PackageKitGlib {
         set timespec(val: string);
         get uid(): number;
         set uid(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TransactionPast.SignalSignatures;
+        $signals: TransactionPast.SignalSignatures;
 
         // Constructors
 
@@ -7585,14 +7608,15 @@ export namespace PackageKitGlib {
         set vendor_urls(val: string[]);
         get vendorUrls(): string[];
         set vendorUrls(val: string[]);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UpdateDetail.SignalSignatures;
+        $signals: UpdateDetail.SignalSignatures;
 
         // Constructors
 

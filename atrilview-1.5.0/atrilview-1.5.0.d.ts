@@ -186,14 +186,15 @@ export namespace AtrilView {
         set sizing_mode(val: SizingMode);
         get sizingMode(): SizingMode;
         set sizingMode(val: SizingMode);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentModel.SignalSignatures;
+        $signals: DocumentModel.SignalSignatures;
 
         // Constructors
 
@@ -272,14 +273,15 @@ export namespace AtrilView {
 
     abstract class Job extends GObject.Object {
         static $gtype: GObject.GType<Job>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Job.SignalSignatures;
+        $signals: Job.SignalSignatures;
 
         // Fields
 
@@ -351,14 +353,15 @@ export namespace AtrilView {
 
     class JobAnnots extends Job {
         static $gtype: GObject.GType<JobAnnots>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobAnnots.SignalSignatures;
+        $signals: JobAnnots.SignalSignatures;
 
         // Fields
 
@@ -402,14 +405,15 @@ export namespace AtrilView {
 
     class JobAttachments extends Job {
         static $gtype: GObject.GType<JobAttachments>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobAttachments.SignalSignatures;
+        $signals: JobAttachments.SignalSignatures;
 
         // Fields
 
@@ -453,14 +457,15 @@ export namespace AtrilView {
 
     class JobExport extends Job {
         static $gtype: GObject.GType<JobExport>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobExport.SignalSignatures;
+        $signals: JobExport.SignalSignatures;
 
         // Fields
 
@@ -511,14 +516,15 @@ export namespace AtrilView {
 
     class JobFind extends Job {
         static $gtype: GObject.GType<JobFind>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobFind.SignalSignatures;
+        $signals: JobFind.SignalSignatures;
 
         // Fields
 
@@ -586,14 +592,15 @@ export namespace AtrilView {
 
     class JobFonts extends Job {
         static $gtype: GObject.GType<JobFonts>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobFonts.SignalSignatures;
+        $signals: JobFonts.SignalSignatures;
 
         // Fields
 
@@ -641,14 +648,15 @@ export namespace AtrilView {
 
     class JobLayers extends Job {
         static $gtype: GObject.GType<JobLayers>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobLayers.SignalSignatures;
+        $signals: JobLayers.SignalSignatures;
 
         // Fields
 
@@ -692,14 +700,15 @@ export namespace AtrilView {
 
     class JobLinks extends Job {
         static $gtype: GObject.GType<JobLinks>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobLinks.SignalSignatures;
+        $signals: JobLinks.SignalSignatures;
 
         // Fields
 
@@ -743,14 +752,15 @@ export namespace AtrilView {
 
     class JobLoad extends Job {
         static $gtype: GObject.GType<JobLoad>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobLoad.SignalSignatures;
+        $signals: JobLoad.SignalSignatures;
 
         // Fields
 
@@ -800,14 +810,15 @@ export namespace AtrilView {
 
     class JobPageData extends Job {
         static $gtype: GObject.GType<JobPageData>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobPageData.SignalSignatures;
+        $signals: JobPageData.SignalSignatures;
 
         // Fields
 
@@ -857,14 +868,15 @@ export namespace AtrilView {
 
     class JobPrint extends Job {
         static $gtype: GObject.GType<JobPrint>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobPrint.SignalSignatures;
+        $signals: JobPrint.SignalSignatures;
 
         // Fields
 
@@ -913,14 +925,15 @@ export namespace AtrilView {
 
     class JobRender extends Job {
         static $gtype: GObject.GType<JobRender>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobRender.SignalSignatures;
+        $signals: JobRender.SignalSignatures;
 
         // Fields
 
@@ -990,14 +1003,15 @@ export namespace AtrilView {
 
     class JobSave extends Job {
         static $gtype: GObject.GType<JobSave>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobSave.SignalSignatures;
+        $signals: JobSave.SignalSignatures;
 
         // Fields
 
@@ -1042,14 +1056,15 @@ export namespace AtrilView {
 
     class JobThumbnail extends Job {
         static $gtype: GObject.GType<JobThumbnail>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobThumbnail.SignalSignatures;
+        $signals: JobThumbnail.SignalSignatures;
 
         // Fields
 
@@ -1107,14 +1122,15 @@ export namespace AtrilView {
         // Properties
 
         set document(val: AtrilDocument.Document);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PrintOperation.SignalSignatures;
+        $signals: PrintOperation.SignalSignatures;
 
         // Constructors
 
@@ -1246,14 +1262,15 @@ export namespace AtrilView {
 
         get is_loading(): boolean;
         get isLoading(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: View.SignalSignatures;
+        $signals: View.SignalSignatures;
 
         // Constructors
 
@@ -1954,14 +1971,15 @@ export namespace AtrilView {
         set invertedColors(val: boolean);
         get rotation(): number;
         set rotation(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ViewPresentation.SignalSignatures;
+        $signals: ViewPresentation.SignalSignatures;
 
         // Constructors
 
@@ -2677,14 +2695,15 @@ export namespace AtrilView {
 
     class WebView extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WebView>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebView.SignalSignatures;
+        $signals: WebView.SignalSignatures;
 
         // Constructors
 

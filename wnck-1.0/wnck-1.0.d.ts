@@ -615,14 +615,15 @@ export namespace Wnck {
 
         // This accessor conflicts with another accessor's type in a parent class or interface.
         get window(): any | any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ActionMenu.SignalSignatures;
+        $signals: ActionMenu.SignalSignatures;
 
         // Constructors
 
@@ -1113,14 +1114,15 @@ export namespace Wnck {
      */
     class Application extends GObject.Object {
         static $gtype: GObject.GType<Application>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Application.SignalSignatures;
+        $signals: Application.SignalSignatures;
 
         // Constructors
 
@@ -1230,14 +1232,15 @@ export namespace Wnck {
      */
     class ClassGroup extends GObject.Object {
         static $gtype: GObject.GType<ClassGroup>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClassGroup.SignalSignatures;
+        $signals: ClassGroup.SignalSignatures;
 
         // Constructors
 
@@ -1339,14 +1342,15 @@ export namespace Wnck {
      */
     class Pager extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Pager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Pager.SignalSignatures;
+        $signals: Pager.SignalSignatures;
 
         // Constructors
 
@@ -2087,14 +2091,15 @@ export namespace Wnck {
      */
     class Screen extends GObject.Object {
         static $gtype: GObject.GType<Screen>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Screen.SignalSignatures;
+        $signals: Screen.SignalSignatures;
 
         // Constructors
 
@@ -2398,14 +2403,15 @@ export namespace Wnck {
      */
     class Selector extends Gtk.MenuBar implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Selector>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Selector.SignalSignatures;
+        $signals: Selector.SignalSignatures;
 
         // Constructors
 
@@ -2921,14 +2927,15 @@ export namespace Wnck {
      */
     class Tasklist extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Tasklist>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Tasklist.SignalSignatures;
+        $signals: Tasklist.SignalSignatures;
 
         // Constructors
 
@@ -3501,14 +3508,15 @@ export namespace Wnck {
      */
     class Window extends GObject.Object {
         static $gtype: GObject.GType<Window>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Window.SignalSignatures;
+        $signals: Window.SignalSignatures;
 
         // Constructors
 
@@ -4072,14 +4080,15 @@ export namespace Wnck {
      */
     class Workspace extends GObject.Object {
         static $gtype: GObject.GType<Workspace>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Workspace.SignalSignatures;
+        $signals: Workspace.SignalSignatures;
 
         // Constructors
 

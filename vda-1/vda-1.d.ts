@@ -288,14 +288,15 @@ export namespace Vda {
 
     class AffectedRows extends GObject.Object implements Result, SqlAffectedRows {
         static $gtype: GObject.GType<AffectedRows>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AffectedRows.SignalSignatures;
+        $signals: AffectedRows.SignalSignatures;
 
         // Constructors
 
@@ -803,14 +804,15 @@ export namespace Vda {
             SqlCommandDelete
     {
         static $gtype: GObject.GType<CommandDelete>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CommandDelete.SignalSignatures;
+        $signals: CommandDelete.SignalSignatures;
 
         // Constructors
 
@@ -1325,14 +1327,15 @@ export namespace Vda {
 
     class CommandInsert extends CommandModification implements Stringifiable, SqlCommandInsert {
         static $gtype: GObject.GType<CommandInsert>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CommandInsert.SignalSignatures;
+        $signals: CommandInsert.SignalSignatures;
 
         // Constructors
 
@@ -1836,14 +1839,15 @@ export namespace Vda {
         implements SqlCommand, SqlCommandTableRelated, SqlCommandModification, SqlCommandParametrized
     {
         static $gtype: GObject.GType<CommandModification>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CommandModification.SignalSignatures;
+        $signals: CommandModification.SignalSignatures;
 
         // Constructors
 
@@ -2377,14 +2381,15 @@ export namespace Vda {
         implements SqlCommand, SqlCommandConditional, Stringifiable, SqlCommandParametrized, SqlCommandSelect
     {
         static $gtype: GObject.GType<CommandSelect>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CommandSelect.SignalSignatures;
+        $signals: CommandSelect.SignalSignatures;
 
         // Constructors
 
@@ -2904,14 +2909,15 @@ export namespace Vda {
 
     class CommandUpdate extends CommandModification implements SqlCommandConditional, Stringifiable, SqlCommandUpdate {
         static $gtype: GObject.GType<CommandUpdate>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CommandUpdate.SignalSignatures;
+        $signals: CommandUpdate.SignalSignatures;
 
         // Constructors
 
@@ -3418,14 +3424,15 @@ export namespace Vda {
         set name(val: string);
         get value(): string;
         set value(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConnectionParameter.SignalSignatures;
+        $signals: ConnectionParameter.SignalSignatures;
 
         // Constructors
 
@@ -3477,14 +3484,15 @@ export namespace Vda {
 
     class ConnectionParameterDbName extends ConnectionParameter {
         static $gtype: GObject.GType<ConnectionParameterDbName>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConnectionParameterDbName.SignalSignatures;
+        $signals: ConnectionParameterDbName.SignalSignatures;
 
         // Constructors
 
@@ -3529,14 +3537,15 @@ export namespace Vda {
 
     class ConnectionParameterHost extends ConnectionParameter {
         static $gtype: GObject.GType<ConnectionParameterHost>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConnectionParameterHost.SignalSignatures;
+        $signals: ConnectionParameterHost.SignalSignatures;
 
         // Constructors
 
@@ -3581,14 +3590,15 @@ export namespace Vda {
 
     class ConnectionParameterPort extends ConnectionParameter {
         static $gtype: GObject.GType<ConnectionParameterPort>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConnectionParameterPort.SignalSignatures;
+        $signals: ConnectionParameterPort.SignalSignatures;
 
         // Constructors
 
@@ -3633,14 +3643,15 @@ export namespace Vda {
 
     class ConnectionParameterUserName extends ConnectionParameter {
         static $gtype: GObject.GType<ConnectionParameterUserName>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConnectionParameterUserName.SignalSignatures;
+        $signals: ConnectionParameterUserName.SignalSignatures;
 
         // Constructors
 
@@ -3685,14 +3696,15 @@ export namespace Vda {
 
     class ConnectionParameterPassword extends ConnectionParameter {
         static $gtype: GObject.GType<ConnectionParameterPassword>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConnectionParameterPassword.SignalSignatures;
+        $signals: ConnectionParameterPassword.SignalSignatures;
 
         // Constructors
 
@@ -3747,14 +3759,15 @@ export namespace Vda {
 
     class ConnectionParameters extends Gee.HashMap {
         static $gtype: GObject.GType<ConnectionParameters>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConnectionParameters.SignalSignatures;
+        $signals: ConnectionParameters.SignalSignatures;
 
         // Constructors
 
@@ -3822,14 +3835,15 @@ export namespace Vda {
         implements Gio.ListModel<A>, SqlExpression
     {
         static $gtype: GObject.GType<Expression>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Expression.SignalSignatures;
+        $signals: Expression.SignalSignatures;
 
         // Constructors
 
@@ -4435,14 +4449,15 @@ export namespace Vda {
         implements SqlExpressionField
     {
         static $gtype: GObject.GType<ExpressionField>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionField.SignalSignatures;
+        $signals: ExpressionField.SignalSignatures;
 
         // Constructors
 
@@ -4960,14 +4975,15 @@ export namespace Vda {
         implements SqlExpressionOperator
     {
         static $gtype: GObject.GType<ExpressionOperator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperator.SignalSignatures;
+        $signals: ExpressionOperator.SignalSignatures;
 
         // Constructors
 
@@ -5562,14 +5578,15 @@ export namespace Vda {
         implements SqlExpressionOperatorGroup
     {
         static $gtype: GObject.GType<ExpressionOperatorGroup>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorGroup.SignalSignatures;
+        $signals: ExpressionOperatorGroup.SignalSignatures;
 
         // Constructors
 
@@ -6066,14 +6083,15 @@ export namespace Vda {
         implements SqlExpressionOperatorMultiterm
     {
         static $gtype: GObject.GType<ExpressionOperatorMultiterm>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorMultiterm.SignalSignatures;
+        $signals: ExpressionOperatorMultiterm.SignalSignatures;
 
         // Constructors
 
@@ -6570,14 +6588,15 @@ export namespace Vda {
         implements SqlExpressionOperatorAnd
     {
         static $gtype: GObject.GType<ExpressionOperatorAnd>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorAnd.SignalSignatures;
+        $signals: ExpressionOperatorAnd.SignalSignatures;
 
         // Constructors
 
@@ -7074,14 +7093,15 @@ export namespace Vda {
         implements SqlExpressionOperatorOr
     {
         static $gtype: GObject.GType<ExpressionOperatorOr>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorOr.SignalSignatures;
+        $signals: ExpressionOperatorOr.SignalSignatures;
 
         // Constructors
 
@@ -7578,14 +7598,15 @@ export namespace Vda {
         implements SqlExpressionOperatorBinaryterm
     {
         static $gtype: GObject.GType<ExpressionOperatorBinaryterm>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorBinaryterm.SignalSignatures;
+        $signals: ExpressionOperatorBinaryterm.SignalSignatures;
 
         // Constructors
 
@@ -8082,14 +8103,15 @@ export namespace Vda {
         implements SqlExpressionOperatorEq
     {
         static $gtype: GObject.GType<ExpressionOperatorEq>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorEq.SignalSignatures;
+        $signals: ExpressionOperatorEq.SignalSignatures;
 
         // Constructors
 
@@ -8586,14 +8608,15 @@ export namespace Vda {
         implements SqlExpressionOperatorNotEq
     {
         static $gtype: GObject.GType<ExpressionOperatorNotEq>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorNotEq.SignalSignatures;
+        $signals: ExpressionOperatorNotEq.SignalSignatures;
 
         // Constructors
 
@@ -9090,14 +9113,15 @@ export namespace Vda {
         implements SqlExpressionOperatorDiff
     {
         static $gtype: GObject.GType<ExpressionOperatorDiff>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorDiff.SignalSignatures;
+        $signals: ExpressionOperatorDiff.SignalSignatures;
 
         // Constructors
 
@@ -9594,14 +9618,15 @@ export namespace Vda {
         implements SqlExpressionOperatorGt
     {
         static $gtype: GObject.GType<ExpressionOperatorGt>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorGt.SignalSignatures;
+        $signals: ExpressionOperatorGt.SignalSignatures;
 
         // Constructors
 
@@ -10098,14 +10123,15 @@ export namespace Vda {
         implements SqlExpressionOperatorLt
     {
         static $gtype: GObject.GType<ExpressionOperatorLt>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorLt.SignalSignatures;
+        $signals: ExpressionOperatorLt.SignalSignatures;
 
         // Constructors
 
@@ -10602,14 +10628,15 @@ export namespace Vda {
         implements SqlExpressionOperatorGeq
     {
         static $gtype: GObject.GType<ExpressionOperatorGeq>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorGeq.SignalSignatures;
+        $signals: ExpressionOperatorGeq.SignalSignatures;
 
         // Constructors
 
@@ -11106,14 +11133,15 @@ export namespace Vda {
         implements SqlExpressionOperatorLeq
     {
         static $gtype: GObject.GType<ExpressionOperatorLeq>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorLeq.SignalSignatures;
+        $signals: ExpressionOperatorLeq.SignalSignatures;
 
         // Constructors
 
@@ -11610,14 +11638,15 @@ export namespace Vda {
         implements SqlExpressionOperatorRegexp
     {
         static $gtype: GObject.GType<ExpressionOperatorRegexp>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorRegexp.SignalSignatures;
+        $signals: ExpressionOperatorRegexp.SignalSignatures;
 
         // Constructors
 
@@ -12114,14 +12143,15 @@ export namespace Vda {
         implements SqlExpressionOperatorStar
     {
         static $gtype: GObject.GType<ExpressionOperatorStar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorStar.SignalSignatures;
+        $signals: ExpressionOperatorStar.SignalSignatures;
 
         // Constructors
 
@@ -12618,14 +12648,15 @@ export namespace Vda {
         implements SqlExpressionOperatorDiv
     {
         static $gtype: GObject.GType<ExpressionOperatorDiv>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorDiv.SignalSignatures;
+        $signals: ExpressionOperatorDiv.SignalSignatures;
 
         // Constructors
 
@@ -13122,14 +13153,15 @@ export namespace Vda {
         implements SqlExpressionOperatorIn
     {
         static $gtype: GObject.GType<ExpressionOperatorIn>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorIn.SignalSignatures;
+        $signals: ExpressionOperatorIn.SignalSignatures;
 
         // Constructors
 
@@ -13626,14 +13658,15 @@ export namespace Vda {
         implements SqlExpressionOperatorNotIn
     {
         static $gtype: GObject.GType<ExpressionOperatorNotIn>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorNotIn.SignalSignatures;
+        $signals: ExpressionOperatorNotIn.SignalSignatures;
 
         // Constructors
 
@@ -14130,14 +14163,15 @@ export namespace Vda {
         implements SqlExpressionOperatorConcatenate
     {
         static $gtype: GObject.GType<ExpressionOperatorConcatenate>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorConcatenate.SignalSignatures;
+        $signals: ExpressionOperatorConcatenate.SignalSignatures;
 
         // Constructors
 
@@ -14634,14 +14668,15 @@ export namespace Vda {
         implements SqlExpressionOperatorSimilarTo
     {
         static $gtype: GObject.GType<ExpressionOperatorSimilarTo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorSimilarTo.SignalSignatures;
+        $signals: ExpressionOperatorSimilarTo.SignalSignatures;
 
         // Constructors
 
@@ -15138,14 +15173,15 @@ export namespace Vda {
         implements SqlExpressionOperatorLike
     {
         static $gtype: GObject.GType<ExpressionOperatorLike>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorLike.SignalSignatures;
+        $signals: ExpressionOperatorLike.SignalSignatures;
 
         // Constructors
 
@@ -15642,14 +15678,15 @@ export namespace Vda {
         implements SqlExpressionOperatorNotLike
     {
         static $gtype: GObject.GType<ExpressionOperatorNotLike>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorNotLike.SignalSignatures;
+        $signals: ExpressionOperatorNotLike.SignalSignatures;
 
         // Constructors
 
@@ -16146,14 +16183,15 @@ export namespace Vda {
         implements SqlExpressionOperatorIlike
     {
         static $gtype: GObject.GType<ExpressionOperatorIlike>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorIlike.SignalSignatures;
+        $signals: ExpressionOperatorIlike.SignalSignatures;
 
         // Constructors
 
@@ -16650,14 +16688,15 @@ export namespace Vda {
         implements SqlExpressionOperatorNotIlike
     {
         static $gtype: GObject.GType<ExpressionOperatorNotIlike>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorNotIlike.SignalSignatures;
+        $signals: ExpressionOperatorNotIlike.SignalSignatures;
 
         // Constructors
 
@@ -17154,14 +17193,15 @@ export namespace Vda {
         implements SqlExpressionOperatorBinaryUnaryterm
     {
         static $gtype: GObject.GType<ExpressionOperatorBinaryUnaryterm>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorBinaryUnaryterm.SignalSignatures;
+        $signals: ExpressionOperatorBinaryUnaryterm.SignalSignatures;
 
         // Constructors
 
@@ -17661,14 +17701,15 @@ export namespace Vda {
         implements SqlExpressionOperatorMinus
     {
         static $gtype: GObject.GType<ExpressionOperatorMinus>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorMinus.SignalSignatures;
+        $signals: ExpressionOperatorMinus.SignalSignatures;
 
         // Constructors
 
@@ -18165,14 +18206,15 @@ export namespace Vda {
         implements SqlExpressionOperatorPlus
     {
         static $gtype: GObject.GType<ExpressionOperatorPlus>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorPlus.SignalSignatures;
+        $signals: ExpressionOperatorPlus.SignalSignatures;
 
         // Constructors
 
@@ -18669,14 +18711,15 @@ export namespace Vda {
         implements SqlExpressionOperatorInitialUnaryterm
     {
         static $gtype: GObject.GType<ExpressionOperatorInitialUnaryterm>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorInitialUnaryterm.SignalSignatures;
+        $signals: ExpressionOperatorInitialUnaryterm.SignalSignatures;
 
         // Constructors
 
@@ -19176,14 +19219,15 @@ export namespace Vda {
         implements SqlExpressionOperatorNot
     {
         static $gtype: GObject.GType<ExpressionOperatorNot>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorNot.SignalSignatures;
+        $signals: ExpressionOperatorNot.SignalSignatures;
 
         // Constructors
 
@@ -19680,14 +19724,15 @@ export namespace Vda {
         implements SqlExpressionOperatorFinalUnaryterm
     {
         static $gtype: GObject.GType<ExpressionOperatorFinalUnaryterm>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorFinalUnaryterm.SignalSignatures;
+        $signals: ExpressionOperatorFinalUnaryterm.SignalSignatures;
 
         // Constructors
 
@@ -20187,14 +20232,15 @@ export namespace Vda {
         implements SqlExpressionOperatorIs
     {
         static $gtype: GObject.GType<ExpressionOperatorIs>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorIs.SignalSignatures;
+        $signals: ExpressionOperatorIs.SignalSignatures;
 
         // Constructors
 
@@ -20691,14 +20737,15 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNot
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNot>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorIsNot.SignalSignatures;
+        $signals: ExpressionOperatorIsNot.SignalSignatures;
 
         // Constructors
 
@@ -21195,14 +21242,15 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNull
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNull>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorIsNull.SignalSignatures;
+        $signals: ExpressionOperatorIsNull.SignalSignatures;
 
         // Constructors
 
@@ -21699,14 +21747,15 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotNull
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotNull>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorIsNotNull.SignalSignatures;
+        $signals: ExpressionOperatorIsNotNull.SignalSignatures;
 
         // Constructors
 
@@ -22203,14 +22252,15 @@ export namespace Vda {
         implements SqlExpressionOperatorIsTrue
     {
         static $gtype: GObject.GType<ExpressionOperatorIsTrue>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorIsTrue.SignalSignatures;
+        $signals: ExpressionOperatorIsTrue.SignalSignatures;
 
         // Constructors
 
@@ -22707,14 +22757,15 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotTrue
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotTrue>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorIsNotTrue.SignalSignatures;
+        $signals: ExpressionOperatorIsNotTrue.SignalSignatures;
 
         // Constructors
 
@@ -23211,14 +23262,15 @@ export namespace Vda {
         implements SqlExpressionOperatorIsFalse
     {
         static $gtype: GObject.GType<ExpressionOperatorIsFalse>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorIsFalse.SignalSignatures;
+        $signals: ExpressionOperatorIsFalse.SignalSignatures;
 
         // Constructors
 
@@ -23715,14 +23767,15 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotFalse
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotFalse>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorIsNotFalse.SignalSignatures;
+        $signals: ExpressionOperatorIsNotFalse.SignalSignatures;
 
         // Constructors
 
@@ -24219,14 +24272,15 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotUnknown
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotUnknown>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorIsNotUnknown.SignalSignatures;
+        $signals: ExpressionOperatorIsNotUnknown.SignalSignatures;
 
         // Constructors
 
@@ -24723,14 +24777,15 @@ export namespace Vda {
         implements SqlExpressionOperatorIsUnknown
     {
         static $gtype: GObject.GType<ExpressionOperatorIsUnknown>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorIsUnknown.SignalSignatures;
+        $signals: ExpressionOperatorIsUnknown.SignalSignatures;
 
         // Constructors
 
@@ -25227,14 +25282,15 @@ export namespace Vda {
         implements SqlExpressionOperatorIsDistinct
     {
         static $gtype: GObject.GType<ExpressionOperatorIsDistinct>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorIsDistinct.SignalSignatures;
+        $signals: ExpressionOperatorIsDistinct.SignalSignatures;
 
         // Constructors
 
@@ -25731,14 +25787,15 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotDistinct
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotDistinct>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorIsNotDistinct.SignalSignatures;
+        $signals: ExpressionOperatorIsNotDistinct.SignalSignatures;
 
         // Constructors
 
@@ -26238,14 +26295,15 @@ export namespace Vda {
         implements SqlExpressionOperatorIsDistinctFrom
     {
         static $gtype: GObject.GType<ExpressionOperatorIsDistinctFrom>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorIsDistinctFrom.SignalSignatures;
+        $signals: ExpressionOperatorIsDistinctFrom.SignalSignatures;
 
         // Constructors
 
@@ -26745,14 +26803,15 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotDistinctFrom
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotDistinctFrom>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorIsNotDistinctFrom.SignalSignatures;
+        $signals: ExpressionOperatorIsNotDistinctFrom.SignalSignatures;
 
         // Constructors
 
@@ -27252,14 +27311,15 @@ export namespace Vda {
         implements SqlExpressionOperatorThreeterm
     {
         static $gtype: GObject.GType<ExpressionOperatorThreeterm>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorThreeterm.SignalSignatures;
+        $signals: ExpressionOperatorThreeterm.SignalSignatures;
 
         // Constructors
 
@@ -27756,14 +27816,15 @@ export namespace Vda {
         implements SqlExpressionOperatorBetween
     {
         static $gtype: GObject.GType<ExpressionOperatorBetween>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorBetween.SignalSignatures;
+        $signals: ExpressionOperatorBetween.SignalSignatures;
 
         // Constructors
 
@@ -28260,14 +28321,15 @@ export namespace Vda {
         implements SqlExpressionOperatorBetweenAnd
     {
         static $gtype: GObject.GType<ExpressionOperatorBetweenAnd>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorBetweenAnd.SignalSignatures;
+        $signals: ExpressionOperatorBetweenAnd.SignalSignatures;
 
         // Constructors
 
@@ -28764,14 +28826,15 @@ export namespace Vda {
         implements SqlExpressionOperatorNotBetween
     {
         static $gtype: GObject.GType<ExpressionOperatorNotBetween>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorNotBetween.SignalSignatures;
+        $signals: ExpressionOperatorNotBetween.SignalSignatures;
 
         // Constructors
 
@@ -29268,14 +29331,15 @@ export namespace Vda {
         implements SqlExpressionOperatorNotBetweenAnd
     {
         static $gtype: GObject.GType<ExpressionOperatorNotBetweenAnd>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorNotBetweenAnd.SignalSignatures;
+        $signals: ExpressionOperatorNotBetweenAnd.SignalSignatures;
 
         // Constructors
 
@@ -29775,14 +29839,15 @@ export namespace Vda {
         implements SqlExpressionOperatorBetweenSymmetric
     {
         static $gtype: GObject.GType<ExpressionOperatorBetweenSymmetric>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorBetweenSymmetric.SignalSignatures;
+        $signals: ExpressionOperatorBetweenSymmetric.SignalSignatures;
 
         // Constructors
 
@@ -30282,14 +30347,15 @@ export namespace Vda {
         implements SqlExpressionOperatorBetweenSymmetricAnd
     {
         static $gtype: GObject.GType<ExpressionOperatorBetweenSymmetricAnd>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorBetweenSymmetricAnd.SignalSignatures;
+        $signals: ExpressionOperatorBetweenSymmetricAnd.SignalSignatures;
 
         // Constructors
 
@@ -30789,14 +30855,15 @@ export namespace Vda {
         implements SqlExpressionOperatorNotBetweenSymmetric
     {
         static $gtype: GObject.GType<ExpressionOperatorNotBetweenSymmetric>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorNotBetweenSymmetric.SignalSignatures;
+        $signals: ExpressionOperatorNotBetweenSymmetric.SignalSignatures;
 
         // Constructors
 
@@ -31296,14 +31363,15 @@ export namespace Vda {
         implements SqlExpressionOperatorNotBetweenSymmetricAnd
     {
         static $gtype: GObject.GType<ExpressionOperatorNotBetweenSymmetricAnd>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures;
+        $signals: ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures;
 
         // Constructors
 
@@ -31805,14 +31873,15 @@ export namespace Vda {
         implements SqlExpressionValue
     {
         static $gtype: GObject.GType<ExpressionValue>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionValue.SignalSignatures;
+        $signals: ExpressionValue.SignalSignatures;
 
         // Constructors
 
@@ -32326,14 +32395,15 @@ export namespace Vda {
         implements SqlExpressionValueParameter
     {
         static $gtype: GObject.GType<ExpressionValueParameter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpressionValueParameter.SignalSignatures;
+        $signals: ExpressionValueParameter.SignalSignatures;
 
         // Constructors
 
@@ -32853,14 +32923,15 @@ export namespace Vda {
         implements Gio.ListModel<A>, HashModel
     {
         static $gtype: GObject.GType<HashList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HashList.SignalSignatures;
+        $signals: HashList.SignalSignatures;
 
         // Constructors
 
@@ -33462,14 +33533,15 @@ export namespace Vda {
 
         get message(): string;
         set message(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InvalidQuery.SignalSignatures;
+        $signals: InvalidQuery.SignalSignatures;
 
         // Constructors
 
@@ -33981,14 +34053,15 @@ export namespace Vda {
 
     class InvalidPreparedQuery extends InvalidQuery implements PreparedQuery {
         static $gtype: GObject.GType<InvalidPreparedQuery>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InvalidPreparedQuery.SignalSignatures;
+        $signals: InvalidPreparedQuery.SignalSignatures;
 
         // Constructors
 
@@ -34488,14 +34561,15 @@ export namespace Vda {
 
         get message(): string;
         set message(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InvalidResult.SignalSignatures;
+        $signals: InvalidResult.SignalSignatures;
 
         // Constructors
 
@@ -34994,14 +35068,15 @@ export namespace Vda {
 
     class Parameters extends Gee.HashMap implements SqlParameters {
         static $gtype: GObject.GType<Parameters>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Parameters.SignalSignatures;
+        $signals: Parameters.SignalSignatures;
 
         // Constructors
 
@@ -35494,14 +35569,15 @@ export namespace Vda {
 
     class Parser extends GObject.Object implements SqlParser {
         static $gtype: GObject.GType<Parser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Parser.SignalSignatures;
+        $signals: Parser.SignalSignatures;
 
         // Constructors
 
@@ -35987,14 +36063,15 @@ export namespace Vda {
 
     class TableReference extends GObject.Object implements SqlTableReference {
         static $gtype: GObject.GType<TableReference>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TableReference.SignalSignatures;
+        $signals: TableReference.SignalSignatures;
 
         // Constructors
 
@@ -36494,14 +36571,15 @@ export namespace Vda {
 
     class Value extends GObject.Object implements Stringifiable, SqlValue {
         static $gtype: GObject.GType<Value>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Value.SignalSignatures;
+        $signals: Value.SignalSignatures;
 
         // Constructors
 
@@ -37011,14 +37089,15 @@ export namespace Vda {
 
     class ValueNull extends Value implements SqlValueNull {
         static $gtype: GObject.GType<ValueNull>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueNull.SignalSignatures;
+        $signals: ValueNull.SignalSignatures;
 
         // Constructors
 
@@ -37499,14 +37578,15 @@ export namespace Vda {
 
     class ValueString extends Value implements SqlValueString {
         static $gtype: GObject.GType<ValueString>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueString.SignalSignatures;
+        $signals: ValueString.SignalSignatures;
 
         // Constructors
 
@@ -37989,14 +38069,15 @@ export namespace Vda {
 
     class ValueXml extends ValueString implements SqlValueXml {
         static $gtype: GObject.GType<ValueXml>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueXml.SignalSignatures;
+        $signals: ValueXml.SignalSignatures;
 
         // Constructors
 
@@ -38484,14 +38565,15 @@ export namespace Vda {
 
     class ValueJson extends ValueString implements SqlValueJson {
         static $gtype: GObject.GType<ValueJson>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueJson.SignalSignatures;
+        $signals: ValueJson.SignalSignatures;
 
         // Constructors
 
@@ -38977,14 +39059,15 @@ export namespace Vda {
 
     class ValueText extends ValueString implements SqlValueText {
         static $gtype: GObject.GType<ValueText>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueText.SignalSignatures;
+        $signals: ValueText.SignalSignatures;
 
         // Constructors
 
@@ -39465,14 +39548,15 @@ export namespace Vda {
 
     class ValueName extends ValueString implements SqlValueName {
         static $gtype: GObject.GType<ValueName>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueName.SignalSignatures;
+        $signals: ValueName.SignalSignatures;
 
         // Constructors
 
@@ -39953,14 +40037,15 @@ export namespace Vda {
 
     class ValueBool extends Value implements SqlValueBool {
         static $gtype: GObject.GType<ValueBool>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueBool.SignalSignatures;
+        $signals: ValueBool.SignalSignatures;
 
         // Constructors
 
@@ -40441,14 +40526,15 @@ export namespace Vda {
 
     class ValueBit extends ValueBool implements SqlValueBit {
         static $gtype: GObject.GType<ValueBit>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueBit.SignalSignatures;
+        $signals: ValueBit.SignalSignatures;
 
         // Constructors
 
@@ -40934,14 +41020,15 @@ export namespace Vda {
 
     class ValueInteger extends Value implements SqlValue, SqlValueInteger {
         static $gtype: GObject.GType<ValueInteger>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueInteger.SignalSignatures;
+        $signals: ValueInteger.SignalSignatures;
 
         // Constructors
 
@@ -41441,14 +41528,15 @@ export namespace Vda {
 
     class ValueByte extends ValueInteger implements SqlValueByte {
         static $gtype: GObject.GType<ValueByte>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueByte.SignalSignatures;
+        $signals: ValueByte.SignalSignatures;
 
         // Constructors
 
@@ -41929,14 +42017,15 @@ export namespace Vda {
 
     class ValueInt2 extends ValueInteger implements SqlValueInt2 {
         static $gtype: GObject.GType<ValueInt2>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueInt2.SignalSignatures;
+        $signals: ValueInt2.SignalSignatures;
 
         // Constructors
 
@@ -42417,14 +42506,15 @@ export namespace Vda {
 
     class ValueInt4 extends ValueInteger implements SqlValueInt4 {
         static $gtype: GObject.GType<ValueInt4>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueInt4.SignalSignatures;
+        $signals: ValueInt4.SignalSignatures;
 
         // Constructors
 
@@ -42905,14 +42995,15 @@ export namespace Vda {
 
     class ValueInt8 extends ValueInteger implements SqlValueInt8 {
         static $gtype: GObject.GType<ValueInt8>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueInt8.SignalSignatures;
+        $signals: ValueInt8.SignalSignatures;
 
         // Constructors
 
@@ -43398,14 +43489,15 @@ export namespace Vda {
 
     class ValueUnsignedInteger extends Value implements SqlValue, SqlValueUnsignedInteger {
         static $gtype: GObject.GType<ValueUnsignedInteger>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueUnsignedInteger.SignalSignatures;
+        $signals: ValueUnsignedInteger.SignalSignatures;
 
         // Constructors
 
@@ -43909,14 +44001,15 @@ export namespace Vda {
 
     class ValueUnsignedByte extends ValueUnsignedInteger implements SqlValueUnsignedByte {
         static $gtype: GObject.GType<ValueUnsignedByte>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueUnsignedByte.SignalSignatures;
+        $signals: ValueUnsignedByte.SignalSignatures;
 
         // Constructors
 
@@ -44399,14 +44492,15 @@ export namespace Vda {
 
     class ValueUnsignedInt2 extends ValueUnsignedInteger implements SqlValueUnsignedInt2 {
         static $gtype: GObject.GType<ValueUnsignedInt2>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueUnsignedInt2.SignalSignatures;
+        $signals: ValueUnsignedInt2.SignalSignatures;
 
         // Constructors
 
@@ -44889,14 +44983,15 @@ export namespace Vda {
 
     class ValueUnsignedInt4 extends ValueUnsignedInteger implements SqlValueUnsignedInt4 {
         static $gtype: GObject.GType<ValueUnsignedInt4>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueUnsignedInt4.SignalSignatures;
+        $signals: ValueUnsignedInt4.SignalSignatures;
 
         // Constructors
 
@@ -45379,14 +45474,15 @@ export namespace Vda {
 
     class ValueUnsignedInt8 extends ValueUnsignedInteger implements SqlValueUnsignedInt8 {
         static $gtype: GObject.GType<ValueUnsignedInt8>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueUnsignedInt8.SignalSignatures;
+        $signals: ValueUnsignedInt8.SignalSignatures;
 
         // Constructors
 
@@ -45867,14 +45963,15 @@ export namespace Vda {
 
     class ValueOid extends ValueInteger implements SqlValueOid {
         static $gtype: GObject.GType<ValueOid>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueOid.SignalSignatures;
+        $signals: ValueOid.SignalSignatures;
 
         // Constructors
 
@@ -46355,14 +46452,15 @@ export namespace Vda {
 
     class ValueNumeric extends Value implements SqlValueNumeric {
         static $gtype: GObject.GType<ValueNumeric>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueNumeric.SignalSignatures;
+        $signals: ValueNumeric.SignalSignatures;
 
         // Constructors
 
@@ -46867,14 +46965,15 @@ export namespace Vda {
 
     class ValueFloat extends ValueNumeric implements SqlValueFloat {
         static $gtype: GObject.GType<ValueFloat>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueFloat.SignalSignatures;
+        $signals: ValueFloat.SignalSignatures;
 
         // Constructors
 
@@ -47357,14 +47456,15 @@ export namespace Vda {
 
     class ValueDouble extends ValueNumeric implements SqlValueDouble {
         static $gtype: GObject.GType<ValueDouble>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueDouble.SignalSignatures;
+        $signals: ValueDouble.SignalSignatures;
 
         // Constructors
 
@@ -47845,14 +47945,15 @@ export namespace Vda {
 
     class ValueMoney extends ValueNumeric implements SqlValueMoney {
         static $gtype: GObject.GType<ValueMoney>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueMoney.SignalSignatures;
+        $signals: ValueMoney.SignalSignatures;
 
         // Constructors
 
@@ -48341,14 +48442,15 @@ export namespace Vda {
 
     class ValueTimestamp extends Value implements SqlValueTimestamp {
         static $gtype: GObject.GType<ValueTimestamp>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueTimestamp.SignalSignatures;
+        $signals: ValueTimestamp.SignalSignatures;
 
         // Constructors
 
@@ -48855,14 +48957,15 @@ export namespace Vda {
 
     class ValueTimestampNtz extends ValueTimestamp implements SqlValueTimestampNtz {
         static $gtype: GObject.GType<ValueTimestampNtz>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueTimestampNtz.SignalSignatures;
+        $signals: ValueTimestampNtz.SignalSignatures;
 
         // Constructors
 
@@ -49343,14 +49446,15 @@ export namespace Vda {
 
     class ValueTime extends ValueTimestamp implements SqlValueTime {
         static $gtype: GObject.GType<ValueTime>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueTime.SignalSignatures;
+        $signals: ValueTime.SignalSignatures;
 
         // Constructors
 
@@ -49831,14 +49935,15 @@ export namespace Vda {
 
     class ValueTimeNtz extends ValueTimestampNtz implements SqlValueTimeNtz {
         static $gtype: GObject.GType<ValueTimeNtz>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueTimeNtz.SignalSignatures;
+        $signals: ValueTimeNtz.SignalSignatures;
 
         // Constructors
 
@@ -50319,14 +50424,15 @@ export namespace Vda {
 
     class ValueDate extends Value implements SqlValueDate {
         static $gtype: GObject.GType<ValueDate>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueDate.SignalSignatures;
+        $signals: ValueDate.SignalSignatures;
 
         // Fields
 
@@ -50817,14 +50923,15 @@ export namespace Vda {
 
     class ValueBinary extends Value implements SqlValueBinary {
         static $gtype: GObject.GType<ValueBinary>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueBinary.SignalSignatures;
+        $signals: ValueBinary.SignalSignatures;
 
         // Constructors
 
@@ -51335,14 +51442,15 @@ export namespace Vda {
 
         get parameters(): SqlParameters;
         set parameters(val: SqlParameters);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ValueMathExp.SignalSignatures;
+        $signals: ValueMathExp.SignalSignatures;
 
         // Constructors
 

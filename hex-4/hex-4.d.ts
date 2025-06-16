@@ -174,14 +174,15 @@ export namespace Hex {
         set buffer(val: Buffer);
         get file(): Gio.File;
         set file(val: Gio.File);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Document.SignalSignatures;
+        $signals: Document.SignalSignatures;
 
         // Constructors
 
@@ -684,14 +685,15 @@ export namespace Hex {
          */
         get fadeZeroes(): boolean;
         set fadeZeroes(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Widget.SignalSignatures;
+        $signals: Widget.SignalSignatures;
 
         // Constructors
 
@@ -1679,14 +1681,15 @@ export namespace Hex {
          * Whether the `HexWidgetMark` has a custom color.
          */
         get haveCustomColor(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WidgetMark.SignalSignatures;
+        $signals: WidgetMark.SignalSignatures;
 
         // Constructors
 

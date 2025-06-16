@@ -380,14 +380,15 @@ export namespace Eog {
 
     class Application extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Application.SignalSignatures;
+        $signals: Application.SignalSignatures;
 
         // Fields
 
@@ -932,14 +933,15 @@ export namespace Eog {
 
         get pixbuf(): GdkPixbuf.Pixbuf;
         get uri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClipboardHandler.SignalSignatures;
+        $signals: ClipboardHandler.SignalSignatures;
 
         // Constructors
 
@@ -1062,14 +1064,15 @@ export namespace Eog {
 
     class DetailsDialog extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DetailsDialog>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DetailsDialog.SignalSignatures;
+        $signals: DetailsDialog.SignalSignatures;
 
         // Fields
 
@@ -1654,14 +1657,15 @@ export namespace Eog {
 
     class FileChooser extends Gtk.FileChooserDialog implements Atk.ImplementorIface, Gtk.Buildable, Gtk.FileChooser {
         static $gtype: GObject.GType<FileChooser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileChooser.SignalSignatures;
+        $signals: FileChooser.SignalSignatures;
 
         // Constructors
 
@@ -2818,14 +2822,15 @@ export namespace Eog {
 
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Image.SignalSignatures;
+        $signals: Image.SignalSignatures;
 
         // Constructors
 
@@ -2969,14 +2974,15 @@ export namespace Eog {
 
     class ImageSaveInfo extends GObject.Object {
         static $gtype: GObject.GType<ImageSaveInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ImageSaveInfo.SignalSignatures;
+        $signals: ImageSaveInfo.SignalSignatures;
 
         // Fields
 
@@ -3035,14 +3041,15 @@ export namespace Eog {
 
     abstract class Job extends GObject.Object {
         static $gtype: GObject.GType<Job>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Job.SignalSignatures;
+        $signals: Job.SignalSignatures;
 
         // Fields
 
@@ -3110,14 +3117,15 @@ export namespace Eog {
 
     class JobCopy extends Job {
         static $gtype: GObject.GType<JobCopy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobCopy.SignalSignatures;
+        $signals: JobCopy.SignalSignatures;
 
         // Fields
 
@@ -3163,14 +3171,15 @@ export namespace Eog {
 
     class JobLoad extends Job {
         static $gtype: GObject.GType<JobLoad>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobLoad.SignalSignatures;
+        $signals: JobLoad.SignalSignatures;
 
         // Fields
 
@@ -3215,14 +3224,15 @@ export namespace Eog {
 
     class JobModel extends Job {
         static $gtype: GObject.GType<JobModel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobModel.SignalSignatures;
+        $signals: JobModel.SignalSignatures;
 
         // Fields
 
@@ -3267,14 +3277,15 @@ export namespace Eog {
 
     class JobSave extends Job {
         static $gtype: GObject.GType<JobSave>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobSave.SignalSignatures;
+        $signals: JobSave.SignalSignatures;
 
         // Fields
 
@@ -3320,14 +3331,15 @@ export namespace Eog {
 
     class JobSaveAs extends JobSave {
         static $gtype: GObject.GType<JobSaveAs>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobSaveAs.SignalSignatures;
+        $signals: JobSaveAs.SignalSignatures;
 
         // Fields
 
@@ -3375,14 +3387,15 @@ export namespace Eog {
 
     class JobThumbnail extends Job {
         static $gtype: GObject.GType<JobThumbnail>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobThumbnail.SignalSignatures;
+        $signals: JobThumbnail.SignalSignatures;
 
         // Fields
 
@@ -3427,14 +3440,15 @@ export namespace Eog {
 
     class JobTransform extends Job {
         static $gtype: GObject.GType<JobTransform>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobTransform.SignalSignatures;
+        $signals: JobTransform.SignalSignatures;
 
         // Fields
 
@@ -3490,14 +3504,15 @@ export namespace Eog {
         implements Gtk.Buildable, Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel, Gtk.TreeSortable
     {
         static $gtype: GObject.GType<ListStore>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ListStore.SignalSignatures;
+        $signals: ListStore.SignalSignatures;
 
         // Constructors
 
@@ -4946,14 +4961,15 @@ export namespace Eog {
         get prev_action(): string;
         get prevAction(): string;
         get thumbview(): ThumbView;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RemotePresenter.SignalSignatures;
+        $signals: RemotePresenter.SignalSignatures;
 
         // Fields
 
@@ -5634,14 +5650,15 @@ export namespace Eog {
          */
         get zoomMultiplier(): number;
         set zoomMultiplier(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScrollView.SignalSignatures;
+        $signals: ScrollView.SignalSignatures;
 
         // Fields
 
@@ -6337,14 +6354,15 @@ export namespace Eog {
         set current_page(val: Gtk.Widget);
         get currentPage(): Gtk.Widget;
         set currentPage(val: Gtk.Widget);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Sidebar.SignalSignatures;
+        $signals: Sidebar.SignalSignatures;
 
         // Fields
 
@@ -6911,14 +6929,15 @@ export namespace Eog {
 
     class Statusbar extends Gtk.Statusbar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Statusbar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Statusbar.SignalSignatures;
+        $signals: Statusbar.SignalSignatures;
 
         // Constructors
 
@@ -7473,14 +7492,15 @@ export namespace Eog {
         get showButtons(): boolean;
         set showButtons(val: boolean);
         get thumbview(): ThumbView;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ThumbNav.SignalSignatures;
+        $signals: ThumbNav.SignalSignatures;
 
         // Fields
 
@@ -8082,14 +8102,15 @@ export namespace Eog {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellLayout, Gtk.Orientable, Gtk.Scrollable
     {
         static $gtype: GObject.GType<ThumbView>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ThumbView.SignalSignatures;
+        $signals: ThumbView.SignalSignatures;
 
         // Fields
 
@@ -8896,14 +8917,15 @@ export namespace Eog {
 
     class Transform extends GObject.Object {
         static $gtype: GObject.GType<Transform>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Transform.SignalSignatures;
+        $signals: Transform.SignalSignatures;
 
         // Constructors
 
@@ -9007,14 +9029,15 @@ export namespace Eog {
         set space_character(val: number);
         get spaceCharacter(): number;
         set spaceCharacter(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: URIConverter.SignalSignatures;
+        $signals: URIConverter.SignalSignatures;
 
         // Constructors
 
@@ -9206,14 +9229,15 @@ export namespace Eog {
          * should behave upon creation.
          */
         get startupFlags(): StartupFlags;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Window.SignalSignatures;
+        $signals: Window.SignalSignatures;
 
         // Constructors
 

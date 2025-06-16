@@ -1601,14 +1601,15 @@ export namespace Poppler {
 
     class Annot extends GObject.Object {
         static $gtype: GObject.GType<Annot>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Annot.SignalSignatures;
+        $signals: Annot.SignalSignatures;
 
         // Constructors
 
@@ -1715,14 +1716,15 @@ export namespace Poppler {
 
     class AnnotCircle extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotCircle>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AnnotCircle.SignalSignatures;
+        $signals: AnnotCircle.SignalSignatures;
 
         // Constructors
 
@@ -1775,14 +1777,15 @@ export namespace Poppler {
 
     class AnnotFileAttachment extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotFileAttachment>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AnnotFileAttachment.SignalSignatures;
+        $signals: AnnotFileAttachment.SignalSignatures;
 
         // Constructors
 
@@ -1836,14 +1839,15 @@ export namespace Poppler {
 
     class AnnotFreeText extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotFreeText>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AnnotFreeText.SignalSignatures;
+        $signals: AnnotFreeText.SignalSignatures;
 
         // Constructors
 
@@ -1895,14 +1899,15 @@ export namespace Poppler {
 
     class AnnotLine extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotLine>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AnnotLine.SignalSignatures;
+        $signals: AnnotLine.SignalSignatures;
 
         // Constructors
 
@@ -1951,14 +1956,15 @@ export namespace Poppler {
 
     class AnnotMarkup extends Annot {
         static $gtype: GObject.GType<AnnotMarkup>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AnnotMarkup.SignalSignatures;
+        $signals: AnnotMarkup.SignalSignatures;
 
         // Constructors
 
@@ -2075,14 +2081,15 @@ export namespace Poppler {
 
     class AnnotMovie extends Annot {
         static $gtype: GObject.GType<AnnotMovie>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AnnotMovie.SignalSignatures;
+        $signals: AnnotMovie.SignalSignatures;
 
         // Constructors
 
@@ -2133,14 +2140,15 @@ export namespace Poppler {
 
     class AnnotScreen extends Annot {
         static $gtype: GObject.GType<AnnotScreen>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AnnotScreen.SignalSignatures;
+        $signals: AnnotScreen.SignalSignatures;
 
         // Constructors
 
@@ -2186,14 +2194,15 @@ export namespace Poppler {
 
     class AnnotSquare extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotSquare>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AnnotSquare.SignalSignatures;
+        $signals: AnnotSquare.SignalSignatures;
 
         // Constructors
 
@@ -2246,14 +2255,15 @@ export namespace Poppler {
 
     class AnnotStamp extends Annot {
         static $gtype: GObject.GType<AnnotStamp>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AnnotStamp.SignalSignatures;
+        $signals: AnnotStamp.SignalSignatures;
 
         // Constructors
 
@@ -2308,14 +2318,15 @@ export namespace Poppler {
 
     class AnnotText extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotText>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AnnotText.SignalSignatures;
+        $signals: AnnotText.SignalSignatures;
 
         // Constructors
 
@@ -2413,14 +2424,15 @@ export namespace Poppler {
 
     class AnnotTextMarkup extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotTextMarkup>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AnnotTextMarkup.SignalSignatures;
+        $signals: AnnotTextMarkup.SignalSignatures;
 
         // Constructors
 
@@ -2481,14 +2493,15 @@ export namespace Poppler {
 
     class Attachment extends GObject.Object {
         static $gtype: GObject.GType<Attachment>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Attachment.SignalSignatures;
+        $signals: Attachment.SignalSignatures;
 
         // Fields
 
@@ -2805,14 +2818,15 @@ export namespace Poppler {
         set title(val: string);
         get viewer_preferences(): ViewerPreferences;
         get viewerPreferences(): ViewerPreferences;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Document.SignalSignatures;
+        $signals: Document.SignalSignatures;
 
         // Constructors
 
@@ -3248,14 +3262,15 @@ export namespace Poppler {
 
     class FontInfo extends GObject.Object {
         static $gtype: GObject.GType<FontInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FontInfo.SignalSignatures;
+        $signals: FontInfo.SignalSignatures;
 
         // Constructors
 
@@ -3325,14 +3340,15 @@ export namespace Poppler {
 
     class FormField extends GObject.Object {
         static $gtype: GObject.GType<FormField>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FormField.SignalSignatures;
+        $signals: FormField.SignalSignatures;
 
         // Constructors
 
@@ -3596,14 +3612,15 @@ export namespace Poppler {
 
     class Layer extends GObject.Object {
         static $gtype: GObject.GType<Layer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Layer.SignalSignatures;
+        $signals: Layer.SignalSignatures;
 
         // Constructors
 
@@ -3675,14 +3692,15 @@ export namespace Poppler {
 
     class Media extends GObject.Object {
         static $gtype: GObject.GType<Media>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Media.SignalSignatures;
+        $signals: Media.SignalSignatures;
 
         // Constructors
 
@@ -3787,14 +3805,15 @@ export namespace Poppler {
 
     class Movie extends GObject.Object {
         static $gtype: GObject.GType<Movie>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Movie.SignalSignatures;
+        $signals: Movie.SignalSignatures;
 
         // Constructors
 
@@ -3896,14 +3915,15 @@ export namespace Poppler {
 
     class PSFile extends GObject.Object {
         static $gtype: GObject.GType<PSFile>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PSFile.SignalSignatures;
+        $signals: PSFile.SignalSignatures;
 
         // Constructors
 
@@ -3976,14 +3996,15 @@ export namespace Poppler {
          * The label of the page or %NULL. See also poppler_page_get_label()
          */
         get label(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Page.SignalSignatures;
+        $signals: Page.SignalSignatures;
 
         // Constructors
 
@@ -4352,14 +4373,15 @@ export namespace Poppler {
 
     class StructureElement extends GObject.Object {
         static $gtype: GObject.GType<StructureElement>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StructureElement.SignalSignatures;
+        $signals: StructureElement.SignalSignatures;
 
         // Constructors
 

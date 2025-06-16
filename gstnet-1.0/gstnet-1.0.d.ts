@@ -232,14 +232,15 @@ export namespace GstNet {
         set round_trip_limit(val: number);
         get roundTripLimit(): number;
         set roundTripLimit(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NetClientClock.SignalSignatures;
+        $signals: NetClientClock.SignalSignatures;
 
         // Fields
 
@@ -326,14 +327,15 @@ export namespace GstNet {
         set qos_dscp(val: number);
         get qosDscp(): number;
         set qosDscp(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NetTimeProvider.SignalSignatures;
+        $signals: NetTimeProvider.SignalSignatures;
 
         // Constructors
 
@@ -916,14 +918,15 @@ export namespace GstNet {
 
     class NtpClock extends NetClientClock {
         static $gtype: GObject.GType<NtpClock>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NtpClock.SignalSignatures;
+        $signals: NtpClock.SignalSignatures;
 
         // Fields
 
@@ -1024,14 +1027,15 @@ export namespace GstNet {
         get internalClock(): Gst.Clock;
         get master_clock_id(): number;
         get masterClockId(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PtpClock.SignalSignatures;
+        $signals: PtpClock.SignalSignatures;
 
         // Fields
 

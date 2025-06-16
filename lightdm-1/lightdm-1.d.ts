@@ -318,14 +318,15 @@ export namespace LightDM {
         get showManualLoginHint(): boolean;
         get show_remote_login_hint(): boolean;
         get showRemoteLoginHint(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Greeter.SignalSignatures;
+        $signals: Greeter.SignalSignatures;
 
         // Constructors
 
@@ -712,14 +713,15 @@ export namespace LightDM {
         get code(): string;
         get name(): string;
         get territory(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Language.SignalSignatures;
+        $signals: Language.SignalSignatures;
 
         // Constructors
 
@@ -801,14 +803,15 @@ export namespace LightDM {
         get name(): string;
         get short_description(): string;
         get shortDescription(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Layout.SignalSignatures;
+        $signals: Layout.SignalSignatures;
 
         // Constructors
 
@@ -882,14 +885,15 @@ export namespace LightDM {
         get comment(): string;
         get key(): string;
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Session.SignalSignatures;
+        $signals: Session.SignalSignatures;
 
         // Constructors
 
@@ -1014,14 +1018,15 @@ export namespace LightDM {
         get realName(): string;
         get session(): string;
         get uid(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: User.SignalSignatures;
+        $signals: User.SignalSignatures;
 
         // Constructors
 
@@ -1156,14 +1161,15 @@ export namespace LightDM {
         get length(): number;
         get num_users(): number;
         get numUsers(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserList.SignalSignatures;
+        $signals: UserList.SignalSignatures;
 
         // Constructors
 

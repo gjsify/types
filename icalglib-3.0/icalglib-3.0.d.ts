@@ -1188,14 +1188,15 @@ export namespace ICalGLib {
      */
     class Array extends Object {
         static $gtype: GObject.GType<Array>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Array.SignalSignatures;
+        $signals: Array.SignalSignatures;
 
         // Constructors
 
@@ -1260,14 +1261,15 @@ export namespace ICalGLib {
      */
     class Attach extends Object {
         static $gtype: GObject.GType<Attach>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Attach.SignalSignatures;
+        $signals: Attach.SignalSignatures;
 
         // Constructors
 
@@ -1340,14 +1342,15 @@ export namespace ICalGLib {
      */
     class CompIter extends Object {
         static $gtype: GObject.GType<CompIter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CompIter.SignalSignatures;
+        $signals: CompIter.SignalSignatures;
 
         // Constructors
 
@@ -1412,14 +1415,15 @@ export namespace ICalGLib {
      */
     class Component extends Object {
         static $gtype: GObject.GType<Component>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Component.SignalSignatures;
+        $signals: Component.SignalSignatures;
 
         // Constructors
 
@@ -1848,14 +1852,15 @@ export namespace ICalGLib {
      */
     class Datetimeperiod extends Object {
         static $gtype: GObject.GType<Datetimeperiod>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Datetimeperiod.SignalSignatures;
+        $signals: Datetimeperiod.SignalSignatures;
 
         // Constructors
 
@@ -1927,14 +1932,15 @@ export namespace ICalGLib {
      */
     class Duration extends Object {
         static $gtype: GObject.GType<Duration>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Duration.SignalSignatures;
+        $signals: Duration.SignalSignatures;
 
         // Constructors
 
@@ -2072,14 +2078,15 @@ export namespace ICalGLib {
      */
     class Geo extends Object {
         static $gtype: GObject.GType<Geo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Geo.SignalSignatures;
+        $signals: Geo.SignalSignatures;
 
         // Constructors
 
@@ -2210,14 +2217,15 @@ export namespace ICalGLib {
          */
         get owner(): GObject.Object;
         set owner(val: GObject.Object);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Object.SignalSignatures;
+        $signals: Object.SignalSignatures;
 
         // Constructors
 
@@ -2334,14 +2342,15 @@ export namespace ICalGLib {
      */
     class Parameter extends Object {
         static $gtype: GObject.GType<Parameter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Parameter.SignalSignatures;
+        $signals: Parameter.SignalSignatures;
 
         // Constructors
 
@@ -2696,14 +2705,15 @@ export namespace ICalGLib {
      */
     class Parser extends Object {
         static $gtype: GObject.GType<Parser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Parser.SignalSignatures;
+        $signals: Parser.SignalSignatures;
 
         // Constructors
 
@@ -2799,14 +2809,15 @@ export namespace ICalGLib {
      */
     class Period extends Object {
         static $gtype: GObject.GType<Period>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Period.SignalSignatures;
+        $signals: Period.SignalSignatures;
 
         // Constructors
 
@@ -2905,14 +2916,15 @@ export namespace ICalGLib {
      */
     class Property extends Object {
         static $gtype: GObject.GType<Property>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Property.SignalSignatures;
+        $signals: Property.SignalSignatures;
 
         // Constructors
 
@@ -4540,14 +4552,15 @@ export namespace ICalGLib {
      */
     class RecurIterator extends Object {
         static $gtype: GObject.GType<RecurIterator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RecurIterator.SignalSignatures;
+        $signals: RecurIterator.SignalSignatures;
 
         // Constructors
 
@@ -4612,14 +4625,15 @@ export namespace ICalGLib {
      */
     class Recurrence extends Object {
         static $gtype: GObject.GType<Recurrence>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Recurrence.SignalSignatures;
+        $signals: Recurrence.SignalSignatures;
 
         // Constructors
 
@@ -4996,14 +5010,15 @@ export namespace ICalGLib {
      */
     class Reqstat extends Object {
         static $gtype: GObject.GType<Reqstat>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Reqstat.SignalSignatures;
+        $signals: Reqstat.SignalSignatures;
 
         // Constructors
 
@@ -5080,14 +5095,15 @@ export namespace ICalGLib {
      */
     class Time extends Object {
         static $gtype: GObject.GType<Time>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Time.SignalSignatures;
+        $signals: Time.SignalSignatures;
 
         // Constructors
 
@@ -5422,14 +5438,15 @@ export namespace ICalGLib {
      */
     class TimeSpan extends Object {
         static $gtype: GObject.GType<TimeSpan>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TimeSpan.SignalSignatures;
+        $signals: TimeSpan.SignalSignatures;
 
         // Constructors
 
@@ -5530,14 +5547,15 @@ export namespace ICalGLib {
      */
     class Timezone extends Object {
         static $gtype: GObject.GType<Timezone>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Timezone.SignalSignatures;
+        $signals: Timezone.SignalSignatures;
 
         // Constructors
 
@@ -5753,14 +5771,15 @@ export namespace ICalGLib {
      */
     class Trigger extends Object {
         static $gtype: GObject.GType<Trigger>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Trigger.SignalSignatures;
+        $signals: Trigger.SignalSignatures;
 
         // Constructors
 
@@ -5844,14 +5863,15 @@ export namespace ICalGLib {
      */
     class Value extends Object {
         static $gtype: GObject.GType<Value>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Value.SignalSignatures;
+        $signals: Value.SignalSignatures;
 
         // Constructors
 

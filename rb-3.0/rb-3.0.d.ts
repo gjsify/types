@@ -1786,14 +1786,15 @@ export namespace RB {
         // Properties
 
         get shell(): Shell;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Application.SignalSignatures;
+        $signals: Application.SignalSignatures;
 
         // Constructors
 
@@ -2346,14 +2347,15 @@ export namespace RB {
 
     class AsyncCopy extends GObject.Object {
         static $gtype: GObject.GType<AsyncCopy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AsyncCopy.SignalSignatures;
+        $signals: AsyncCopy.SignalSignatures;
 
         // Constructors
 
@@ -2483,14 +2485,15 @@ export namespace RB {
 
     class AutoPlaylistSource extends PlaylistSource implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<AutoPlaylistSource>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AutoPlaylistSource.SignalSignatures;
+        $signals: AutoPlaylistSource.SignalSignatures;
 
         // Constructors
 
@@ -3052,14 +3055,15 @@ export namespace RB {
 
         get populate(): boolean;
         set populate(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BrowserSource.SignalSignatures;
+        $signals: BrowserSource.SignalSignatures;
 
         // Constructors
 
@@ -3620,14 +3624,15 @@ export namespace RB {
 
         get model(): Gio.MenuModel;
         get target(): GObject.Object;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ButtonBar.SignalSignatures;
+        $signals: ButtonBar.SignalSignatures;
 
         // Constructors
 
@@ -4170,14 +4175,15 @@ export namespace RB {
 
     class CellRendererPixbuf extends Gtk.CellRendererPixbuf {
         static $gtype: GObject.GType<CellRendererPixbuf>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CellRendererPixbuf.SignalSignatures;
+        $signals: CellRendererPixbuf.SignalSignatures;
 
         // Constructors
 
@@ -4251,14 +4257,15 @@ export namespace RB {
          */
         get rating(): number;
         set rating(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CellRendererRating.SignalSignatures;
+        $signals: CellRendererRating.SignalSignatures;
 
         // Constructors
 
@@ -4302,14 +4309,15 @@ export namespace RB {
 
     class ChunkLoader extends GObject.Object {
         static $gtype: GObject.GType<ChunkLoader>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ChunkLoader.SignalSignatures;
+        $signals: ChunkLoader.SignalSignatures;
 
         // Constructors
 
@@ -4482,14 +4490,15 @@ export namespace RB {
          */
         get visibility(): boolean;
         set visibility(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DisplayPage.SignalSignatures;
+        $signals: DisplayPage.SignalSignatures;
 
         // Constructors
 
@@ -5169,14 +5178,15 @@ export namespace RB {
          */
         get id(): string;
         get loaded(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DisplayPageGroup.SignalSignatures;
+        $signals: DisplayPageGroup.SignalSignatures;
 
         // Constructors
 
@@ -5688,14 +5698,15 @@ export namespace RB {
 
     class DisplayPageModel extends Gtk.TreeModelFilter implements Gtk.TreeDragSource, Gtk.TreeModel {
         static $gtype: GObject.GType<DisplayPageModel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DisplayPageModel.SignalSignatures;
+        $signals: DisplayPageModel.SignalSignatures;
 
         // Constructors
 
@@ -6750,14 +6761,15 @@ export namespace RB {
          * The #RBShell instance
          */
         get shell(): Shell;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DisplayPageTree.SignalSignatures;
+        $signals: DisplayPageTree.SignalSignatures;
 
         // Constructors
 
@@ -7287,14 +7299,15 @@ export namespace RB {
 
     class EncoderFactory extends GObject.Object {
         static $gtype: GObject.GType<EncoderFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EncoderFactory.SignalSignatures;
+        $signals: EncoderFactory.SignalSignatures;
 
         // Fields
 
@@ -7497,14 +7510,15 @@ export namespace RB {
          */
         get visibleColumns(): string[];
         set visibleColumns(val: string[]);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EntryView.SignalSignatures;
+        $signals: EntryView.SignalSignatures;
 
         // Constructors
 
@@ -8220,14 +8234,15 @@ export namespace RB {
          * Name of the metadata store.  Used to locate instances.
          */
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExtDB.SignalSignatures;
+        $signals: ExtDB.SignalSignatures;
 
         // Constructors
 
@@ -8390,14 +8405,15 @@ export namespace RB {
          * Whether to display a tooltip on the image
          */
         get useTooltip(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FadingImage.SignalSignatures;
+        $signals: FadingImage.SignalSignatures;
 
         // Constructors
 
@@ -9100,14 +9116,15 @@ export namespace RB {
          */
         get truncateOnPlay(): boolean;
         set truncateOnPlay(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: History.SignalSignatures;
+        $signals: History.SignalSignatures;
 
         // Constructors
 
@@ -9388,14 +9405,15 @@ export namespace RB {
          * it changes.
          */
         get outputModel(): RhythmDBQueryModel;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LibraryBrowser.SignalSignatures;
+        $signals: LibraryBrowser.SignalSignatures;
 
         // Constructors
 
@@ -9943,14 +9961,15 @@ export namespace RB {
 
     class ListModel extends GObject.Object {
         static $gtype: GObject.GType<ListModel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ListModel.SignalSignatures;
+        $signals: ListModel.SignalSignatures;
 
         // Constructors
 
@@ -10066,14 +10085,15 @@ export namespace RB {
         get keyPrefix(): string;
         get uri_prefix(): string;
         get uriPrefix(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaPlayerEntryType.SignalSignatures;
+        $signals: MediaPlayerEntryType.SignalSignatures;
 
         // Constructors
 
@@ -10212,14 +10232,15 @@ export namespace RB {
         get encodingTarget(): GstPbutils.EncodingTarget;
         set encodingTarget(val: GstPbutils.EncodingTarget);
         get serial(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaPlayerSource.SignalSignatures;
+        $signals: MediaPlayerSource.SignalSignatures;
 
         // Constructors
 
@@ -10718,14 +10739,15 @@ export namespace RB {
 
     class MetaData extends GObject.Object {
         static $gtype: GObject.GType<MetaData>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MetaData.SignalSignatures;
+        $signals: MetaData.SignalSignatures;
 
         // Constructors
 
@@ -10879,14 +10901,15 @@ export namespace RB {
          */
         get playingEntry(): RhythmDBEntry;
         set playingEntry(val: RhythmDBEntry);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlayOrder.SignalSignatures;
+        $signals: PlayOrder.SignalSignatures;
 
         // Constructors
 
@@ -11084,14 +11107,15 @@ export namespace RB {
         set shell(val: Shell);
         get source(): Source;
         set source(val: Source);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlaylistManager.SignalSignatures;
+        $signals: PlaylistManager.SignalSignatures;
 
         // Constructors
 
@@ -11337,14 +11361,15 @@ export namespace RB {
          * Remote DAAP playlists, for example, are not local.
          */
         get isLocal(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlaylistSource.SignalSignatures;
+        $signals: PlaylistSource.SignalSignatures;
 
         // Constructors
 
@@ -11916,14 +11941,15 @@ export namespace RB {
         get db(): RhythmDB;
         set db(val: RhythmDB);
         get updating(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PodcastManager.SignalSignatures;
+        $signals: PodcastManager.SignalSignatures;
 
         // Constructors
 
@@ -12008,14 +12034,15 @@ export namespace RB {
 
     class PodcastSearch extends GObject.Object {
         static $gtype: GObject.GType<PodcastSearch>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PodcastSearch.SignalSignatures;
+        $signals: PodcastSearch.SignalSignatures;
 
         // Constructors
 
@@ -12065,14 +12092,15 @@ export namespace RB {
 
     class PodcastSearchITunes extends PodcastSearch {
         static $gtype: GObject.GType<PodcastSearchITunes>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PodcastSearchITunes.SignalSignatures;
+        $signals: PodcastSearchITunes.SignalSignatures;
 
         // Constructors
 
@@ -12219,14 +12247,15 @@ export namespace RB {
          * The title displayed in the header of the property view
          */
         get title(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PropertyView.SignalSignatures;
+        $signals: PropertyView.SignalSignatures;
 
         // Constructors
 
@@ -12833,14 +12862,15 @@ export namespace RB {
          */
         get rating(): number;
         set rating(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Rating.SignalSignatures;
+        $signals: Rating.SignalSignatures;
 
         // Constructors
 
@@ -13527,14 +13557,15 @@ export namespace RB {
          * The #RBShell instance.
          */
         get shell(): Shell;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RemovableMediaManager.SignalSignatures;
+        $signals: RemovableMediaManager.SignalSignatures;
 
         // Constructors
 
@@ -13668,14 +13699,15 @@ export namespace RB {
          */
         get noUpdate(): boolean;
         set noUpdate(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RhythmDB.SignalSignatures;
+        $signals: RhythmDB.SignalSignatures;
 
         // Constructors
 
@@ -14224,14 +14256,15 @@ export namespace RB {
          * entry of this type.
          */
         get typeDataSize(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RhythmDBEntryType.SignalSignatures;
+        $signals: RhythmDBEntryType.SignalSignatures;
 
         // Constructors
 
@@ -14330,14 +14363,15 @@ export namespace RB {
         get errorType(): RhythmDBEntryType;
         get ignore_type(): RhythmDBEntryType;
         get ignoreType(): RhythmDBEntryType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RhythmDBImportJob.SignalSignatures;
+        $signals: RhythmDBImportJob.SignalSignatures;
 
         // Constructors
 
@@ -14943,14 +14977,15 @@ export namespace RB {
          */
         get queryModel(): RhythmDBQueryModel;
         set queryModel(val: RhythmDBQueryModel);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RhythmDBPropertyModel.SignalSignatures;
+        $signals: RhythmDBPropertyModel.SignalSignatures;
 
         // Constructors
 
@@ -15928,14 +15963,15 @@ export namespace RB {
         set sort_reverse(val: boolean);
         get sortReverse(): boolean;
         set sortReverse(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RhythmDBQueryModel.SignalSignatures;
+        $signals: RhythmDBQueryModel.SignalSignatures;
 
         // Constructors
 
@@ -17085,14 +17121,15 @@ export namespace RB {
 
     class RhythmDBQueryResultList extends GObject.Object implements RhythmDBQueryResults {
         static $gtype: GObject.GType<RhythmDBQueryResultList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RhythmDBQueryResultList.SignalSignatures;
+        $signals: RhythmDBQueryResultList.SignalSignatures;
 
         // Constructors
 
@@ -17699,14 +17736,15 @@ export namespace RB {
          * If TRUE, show a primary icon and emit the show-popup when clicked.
          */
         get hasPopup(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SearchEntry.SignalSignatures;
+        $signals: SearchEntry.SignalSignatures;
 
         // Constructors
 
@@ -18337,14 +18375,15 @@ export namespace RB {
          */
         get showReflection(): boolean;
         set showReflection(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SegmentedBar.SignalSignatures;
+        $signals: SegmentedBar.SignalSignatures;
 
         // Constructors
 
@@ -19221,14 +19260,15 @@ export namespace RB {
          * The main Rhythmbox window.
          */
         get window(): Gtk.Window;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Shell.SignalSignatures;
+        $signals: Shell.SignalSignatures;
 
         // Constructors
 
@@ -19527,14 +19567,15 @@ export namespace RB {
          */
         get volume(): number;
         set volume(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ShellPlayer.SignalSignatures;
+        $signals: ShellPlayer.SignalSignatures;
 
         // Constructors
 
@@ -19846,14 +19887,15 @@ export namespace RB {
 
     class ShellPreferences extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ShellPreferences>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ShellPreferences.SignalSignatures;
+        $signals: ShellPreferences.SignalSignatures;
 
         // Constructors
 
@@ -20497,14 +20539,15 @@ export namespace RB {
          * to use for tag edit completion.
          */
         get source(): Source;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SongInfo.SignalSignatures;
+        $signals: SongInfo.SignalSignatures;
 
         // Constructors
 
@@ -21205,14 +21248,15 @@ export namespace RB {
          * responsibility of a subclass such as #RBBrowserSource.
          */
         get toolbarMenu(): Gio.MenuModel;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Source.SignalSignatures;
+        $signals: Source.SignalSignatures;
 
         // Constructors
 
@@ -22068,14 +22112,15 @@ export namespace RB {
 
     class SourceSearch extends GObject.Object {
         static $gtype: GObject.GType<SourceSearch>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceSearch.SignalSignatures;
+        $signals: SourceSearch.SignalSignatures;
 
         // Constructors
 
@@ -22191,14 +22236,15 @@ export namespace RB {
 
         get description(): string;
         get prop(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceSearchBasic.SignalSignatures;
+        $signals: SourceSearchBasic.SignalSignatures;
 
         // Fields
 
@@ -22347,14 +22393,15 @@ export namespace RB {
          * The #RBDisplayPage the toolbar is associated with
          */
         get page(): DisplayPage;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceToolbar.SignalSignatures;
+        $signals: SourceToolbar.SignalSignatures;
 
         // Constructors
 
@@ -22941,14 +22988,15 @@ export namespace RB {
 
     class StaticPlaylistSource extends PlaylistSource implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<StaticPlaylistSource>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StaticPlaylistSource.SignalSignatures;
+        $signals: StaticPlaylistSource.SignalSignatures;
 
         // Constructors
 
@@ -23556,14 +23604,15 @@ export namespace RB {
 
     class StreamingSource extends Source implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<StreamingSource>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StreamingSource.SignalSignatures;
+        $signals: StreamingSource.SignalSignatures;
 
         // Constructors
 
@@ -24068,14 +24117,15 @@ export namespace RB {
 
     class StringValueMap extends GObject.Object {
         static $gtype: GObject.GType<StringValueMap>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StringValueMap.SignalSignatures;
+        $signals: StringValueMap.SignalSignatures;
 
         // Constructors
 
@@ -24165,14 +24215,15 @@ export namespace RB {
         // Properties
 
         get model(): ListModel;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TaskList.SignalSignatures;
+        $signals: TaskList.SignalSignatures;
 
         // Constructors
 
@@ -24230,14 +24281,15 @@ export namespace RB {
 
     class TaskProgressSimple extends GObject.Object implements TaskProgress {
         static $gtype: GObject.GType<TaskProgressSimple>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TaskProgressSimple.SignalSignatures;
+        $signals: TaskProgressSimple.SignalSignatures;
 
         // Constructors
 
@@ -24856,14 +24908,15 @@ export namespace RB {
          * Total number of entries in the transfer batch.
          */
         get totalEntries(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TrackTransferBatch.SignalSignatures;
+        $signals: TrackTransferBatch.SignalSignatures;
 
         // Constructors
 
@@ -25442,14 +25495,15 @@ export namespace RB {
          * The #RBShell
          */
         get shell(): Shell;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TrackTransferQueue.SignalSignatures;
+        $signals: TrackTransferQueue.SignalSignatures;
 
         // Constructors
 
@@ -25615,14 +25669,15 @@ export namespace RB {
          * The label displayed in the dialog.
          */
         get label(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: URIDialog.SignalSignatures;
+        $signals: URIDialog.SignalSignatures;
 
         // Constructors
 

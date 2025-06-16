@@ -4945,14 +4945,15 @@ export namespace Gdk {
 
     class AppLaunchContext extends Gio.AppLaunchContext {
         static $gtype: GObject.GType<AppLaunchContext>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AppLaunchContext.SignalSignatures;
+        $signals: AppLaunchContext.SignalSignatures;
 
         // Constructors
 
@@ -5058,14 +5059,15 @@ export namespace Gdk {
 
     class Colormap extends GObject.Object {
         static $gtype: GObject.GType<Colormap>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Colormap.SignalSignatures;
+        $signals: Colormap.SignalSignatures;
 
         // Fields
 
@@ -5179,14 +5181,15 @@ export namespace Gdk {
 
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Device.SignalSignatures;
+        $signals: Device.SignalSignatures;
 
         // Fields
 
@@ -5318,14 +5321,15 @@ export namespace Gdk {
 
     class Display extends GObject.Object {
         static $gtype: GObject.GType<Display>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Display.SignalSignatures;
+        $signals: Display.SignalSignatures;
 
         // Constructors
 
@@ -5604,14 +5608,15 @@ export namespace Gdk {
         set default_display(val: Display);
         get defaultDisplay(): Display;
         set defaultDisplay(val: Display);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DisplayManager.SignalSignatures;
+        $signals: DisplayManager.SignalSignatures;
 
         // Constructors
 
@@ -5678,14 +5683,15 @@ export namespace Gdk {
 
     class DragContext extends GObject.Object {
         static $gtype: GObject.GType<DragContext>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DragContext.SignalSignatures;
+        $signals: DragContext.SignalSignatures;
 
         // Fields
 
@@ -5786,14 +5792,15 @@ export namespace Gdk {
 
     abstract class Drawable extends GObject.Object {
         static $gtype: GObject.GType<Drawable>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Drawable.SignalSignatures;
+        $signals: Drawable.SignalSignatures;
 
         // Constructors
 
@@ -5987,14 +5994,15 @@ export namespace Gdk {
 
     class GC extends GObject.Object {
         static $gtype: GObject.GType<GC>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GC.SignalSignatures;
+        $signals: GC.SignalSignatures;
 
         // Fields
 
@@ -6283,14 +6291,15 @@ export namespace Gdk {
 
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Image.SignalSignatures;
+        $signals: Image.SignalSignatures;
 
         // Fields
 
@@ -6411,14 +6420,15 @@ export namespace Gdk {
 
     class Keymap extends GObject.Object {
         static $gtype: GObject.GType<Keymap>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Keymap.SignalSignatures;
+        $signals: Keymap.SignalSignatures;
 
         // Fields
 
@@ -6658,14 +6668,15 @@ export namespace Gdk {
         // Properties
 
         get screen(): Screen;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PangoRenderer.SignalSignatures;
+        $signals: PangoRenderer.SignalSignatures;
 
         // Constructors
 
@@ -6741,14 +6752,15 @@ export namespace Gdk {
 
     class Pixmap extends Drawable {
         static $gtype: GObject.GType<Pixmap>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Pixmap.SignalSignatures;
+        $signals: Pixmap.SignalSignatures;
 
         // Constructors
 
@@ -6876,14 +6888,15 @@ export namespace Gdk {
         set fontOptions(val: any);
         get resolution(): number;
         set resolution(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Screen.SignalSignatures;
+        $signals: Screen.SignalSignatures;
 
         // Fields
 
@@ -7207,14 +7220,15 @@ export namespace Gdk {
 
     class Visual extends GObject.Object {
         static $gtype: GObject.GType<Visual>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Visual.SignalSignatures;
+        $signals: Visual.SignalSignatures;
 
         // Fields
 
@@ -7388,14 +7402,15 @@ export namespace Gdk {
          */
         get cursor(): Cursor;
         set cursor(val: Cursor);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Window.SignalSignatures;
+        $signals: Window.SignalSignatures;
 
         // Constructors
 

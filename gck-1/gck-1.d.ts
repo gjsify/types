@@ -421,14 +421,15 @@ export namespace Gck {
          */
         get interaction(): Gio.TlsInteraction;
         set interaction(val: Gio.TlsInteraction);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Enumerator.SignalSignatures;
+        $signals: Enumerator.SignalSignatures;
 
         // Constructors
 
@@ -607,14 +608,15 @@ export namespace Gck {
          * initialized module via the gck_module_new() function.
          */
         get path(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Module.SignalSignatures;
+        $signals: Module.SignalSignatures;
 
         // Constructors
 
@@ -756,14 +758,15 @@ export namespace Gck {
          * such as gck_object_get(), gck_object_set() or gck_object_destroy().
          */
         get session(): Session;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Object.SignalSignatures;
+        $signals: Object.SignalSignatures;
 
         // Constructors
 
@@ -1298,14 +1301,15 @@ export namespace Gck {
          * the GckPassword:object property will be %NULL
          */
         get token(): Slot;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Password.SignalSignatures;
+        $signals: Password.SignalSignatures;
 
         // Constructors
 
@@ -1433,14 +1437,15 @@ export namespace Gck {
          * The GckSlot this session is opened on.
          */
         get slot(): Slot;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Session.SignalSignatures;
+        $signals: Session.SignalSignatures;
 
         // Constructors
 
@@ -3461,14 +3466,15 @@ export namespace Gck {
          * The PKCS11 object that this slot is a part of.
          */
         get module(): Module;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Slot.SignalSignatures;
+        $signals: Slot.SignalSignatures;
 
         // Constructors
 

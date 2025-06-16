@@ -635,14 +635,15 @@ export namespace Anjuta {
 
     class AsyncCommand extends Command {
         static $gtype: GObject.GType<AsyncCommand>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AsyncCommand.SignalSignatures;
+        $signals: AsyncCommand.SignalSignatures;
 
         // Constructors
 
@@ -703,14 +704,15 @@ export namespace Anjuta {
 
     class AsyncNotify extends GObject.Object {
         static $gtype: GObject.GType<AsyncNotify>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AsyncNotify.SignalSignatures;
+        $signals: AsyncNotify.SignalSignatures;
 
         // Constructors
 
@@ -775,14 +777,15 @@ export namespace Anjuta {
      */
     class Autogen extends GObject.Object {
         static $gtype: GObject.GType<Autogen>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Autogen.SignalSignatures;
+        $signals: Autogen.SignalSignatures;
 
         // Constructors
 
@@ -898,14 +901,15 @@ export namespace Anjuta {
 
     class CModule extends GObject.TypeModule implements GObject.TypePlugin {
         static $gtype: GObject.GType<CModule>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CModule.SignalSignatures;
+        $signals: CModule.SignalSignatures;
 
         // Constructors
 
@@ -1430,14 +1434,15 @@ export namespace Anjuta {
 
     class CPluginFactory extends GObject.Object {
         static $gtype: GObject.GType<CPluginFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CPluginFactory.SignalSignatures;
+        $signals: CPluginFactory.SignalSignatures;
 
         // Constructors
 
@@ -1513,14 +1518,15 @@ export namespace Anjuta {
         set pixbuf(val: GdkPixbuf.Pixbuf);
         get text(): string;
         set text(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CellRendererCaptionedImage.SignalSignatures;
+        $signals: CellRendererCaptionedImage.SignalSignatures;
 
         // Fields
 
@@ -1591,14 +1597,15 @@ export namespace Anjuta {
         // Properties
 
         set diff(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CellRendererDiff.SignalSignatures;
+        $signals: CellRendererDiff.SignalSignatures;
 
         // Constructors
 
@@ -1706,14 +1713,15 @@ export namespace Anjuta {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<CloseButton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CloseButton.SignalSignatures;
+        $signals: CloseButton.SignalSignatures;
 
         // Constructors
 
@@ -6324,14 +6332,15 @@ export namespace Anjuta {
 
     class ColumnTextView extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ColumnTextView>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ColumnTextView.SignalSignatures;
+        $signals: ColumnTextView.SignalSignatures;
 
         // Constructors
 
@@ -6838,14 +6847,15 @@ export namespace Anjuta {
 
     class Command extends GObject.Object {
         static $gtype: GObject.GType<Command>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Command.SignalSignatures;
+        $signals: Command.SignalSignatures;
 
         // Constructors
 
@@ -7065,14 +7075,15 @@ export namespace Anjuta {
 
         get max_text_width(): number;
         get maxTextWidth(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CommandBar.SignalSignatures;
+        $signals: CommandBar.SignalSignatures;
 
         // Constructors
 
@@ -7576,14 +7587,15 @@ export namespace Anjuta {
 
     class CommandQueue extends GObject.Object {
         static $gtype: GObject.GType<CommandQueue>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CommandQueue.SignalSignatures;
+        $signals: CommandQueue.SignalSignatures;
 
         // Constructors
 
@@ -7649,14 +7661,15 @@ export namespace Anjuta {
         set case_sensitive(val: boolean);
         get caseSensitive(): boolean;
         set caseSensitive(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Completion.SignalSignatures;
+        $signals: Completion.SignalSignatures;
 
         // Constructors
 
@@ -7766,14 +7779,15 @@ export namespace Anjuta {
 
     class Dock extends Gdl.Dock implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Dock>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Dock.SignalSignatures;
+        $signals: Dock.SignalSignatures;
 
         // Constructors
 
@@ -8362,14 +8376,15 @@ export namespace Anjuta {
 
         get plugin(): Plugin;
         set plugin(val: Plugin);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockPane.SignalSignatures;
+        $signals: DockPane.SignalSignatures;
 
         // Constructors
 
@@ -8530,14 +8545,15 @@ export namespace Anjuta {
 
     class DropEntry extends Entry implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable {
         static $gtype: GObject.GType<DropEntry>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DropEntry.SignalSignatures;
+        $signals: DropEntry.SignalSignatures;
 
         // Constructors
 
@@ -12958,14 +12974,15 @@ export namespace Anjuta {
         set help_text(val: string);
         get helpText(): string;
         set helpText(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Entry.SignalSignatures;
+        $signals: Entry.SignalSignatures;
 
         // Constructors
 
@@ -17590,14 +17607,15 @@ export namespace Anjuta {
 
     class EnvironmentEditor extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<EnvironmentEditor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EnvironmentEditor.SignalSignatures;
+        $signals: EnvironmentEditor.SignalSignatures;
 
         // Constructors
 
@@ -18198,14 +18216,15 @@ export namespace Anjuta {
         set relative_path(val: string);
         get relativePath(): string;
         set relativePath(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileDropEntry.SignalSignatures;
+        $signals: FileDropEntry.SignalSignatures;
 
         // Constructors
 
@@ -22591,14 +22610,15 @@ export namespace Anjuta {
         set show_add_button(val: boolean);
         get showAddButton(): boolean;
         set showAddButton(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileList.SignalSignatures;
+        $signals: FileList.SignalSignatures;
 
         // Constructors
 
@@ -23101,14 +23121,15 @@ export namespace Anjuta {
 
     class LanguageProvider extends GObject.Object {
         static $gtype: GObject.GType<LanguageProvider>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LanguageProvider.SignalSignatures;
+        $signals: LanguageProvider.SignalSignatures;
 
         // Constructors
 
@@ -23194,14 +23215,15 @@ export namespace Anjuta {
 
     class Launcher extends GObject.Object {
         static $gtype: GObject.GType<Launcher>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Launcher.SignalSignatures;
+        $signals: Launcher.SignalSignatures;
 
         // Constructors
 
@@ -23390,14 +23412,15 @@ export namespace Anjuta {
 
     class PkgConfigChooser extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<PkgConfigChooser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PkgConfigChooser.SignalSignatures;
+        $signals: PkgConfigChooser.SignalSignatures;
 
         // Constructors
 
@@ -24001,14 +24024,15 @@ export namespace Anjuta {
         set package(val: string);
         get version(): string;
         set version(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PkgScanner.SignalSignatures;
+        $signals: PkgScanner.SignalSignatures;
 
         // Constructors
 
@@ -24067,14 +24091,15 @@ export namespace Anjuta {
          */
         get shell(): Shell;
         set shell(val: Shell);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Plugin.SignalSignatures;
+        $signals: Plugin.SignalSignatures;
 
         // Constructors
 
@@ -24241,14 +24266,15 @@ export namespace Anjuta {
         get resolvePass(): number;
         get user_activatable(): boolean;
         get userActivatable(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PluginHandle.SignalSignatures;
+        $signals: PluginHandle.SignalSignatures;
 
         // Constructors
 
@@ -24337,14 +24363,15 @@ export namespace Anjuta {
         set shell(val: GObject.Object);
         get status(): Status;
         set status(val: Status);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PluginManager.SignalSignatures;
+        $signals: PluginManager.SignalSignatures;
 
         // Constructors
 
@@ -24440,14 +24467,15 @@ export namespace Anjuta {
 
     class Preferences extends GObject.Object {
         static $gtype: GObject.GType<Preferences>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Preferences.SignalSignatures;
+        $signals: Preferences.SignalSignatures;
 
         // Constructors
 
@@ -24602,14 +24630,15 @@ export namespace Anjuta {
 
     class PreferencesDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PreferencesDialog>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PreferencesDialog.SignalSignatures;
+        $signals: PreferencesDialog.SignalSignatures;
 
         // Constructors
 
@@ -25141,14 +25170,15 @@ export namespace Anjuta {
         set sync_file(val: Gio.File);
         get syncFile(): Gio.File;
         set syncFile(val: Gio.File);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Profile.SignalSignatures;
+        $signals: Profile.SignalSignatures;
 
         // Constructors
 
@@ -25264,14 +25294,15 @@ export namespace Anjuta {
         set plugin_manager(val: PluginManager);
         get pluginManager(): PluginManager;
         set pluginManager(val: PluginManager);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProfileManager.SignalSignatures;
+        $signals: ProfileManager.SignalSignatures;
 
         // Constructors
 
@@ -25389,14 +25420,15 @@ export namespace Anjuta {
         set state(val: ProjectNodeState);
         get type(): ProjectNodeType;
         set type(val: ProjectNodeType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProjectNode.SignalSignatures;
+        $signals: ProjectNode.SignalSignatures;
 
         // Constructors
 
@@ -25563,14 +25595,15 @@ export namespace Anjuta {
 
     class SavePrompt extends Gtk.MessageDialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SavePrompt>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SavePrompt.SignalSignatures;
+        $signals: SavePrompt.SignalSignatures;
 
         // Constructors
 
@@ -26069,14 +26102,15 @@ export namespace Anjuta {
 
         get filepath(): string;
         get mode(): SerializerMode;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Serializer.SignalSignatures;
+        $signals: Serializer.SignalSignatures;
 
         // Constructors
 
@@ -26125,14 +26159,15 @@ export namespace Anjuta {
 
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Session.SignalSignatures;
+        $signals: Session.SignalSignatures;
 
         // Constructors
 
@@ -26315,14 +26350,15 @@ export namespace Anjuta {
 
     class Status extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Status>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Status.SignalSignatures;
+        $signals: Status.SignalSignatures;
 
         // Constructors
 
@@ -26841,14 +26877,15 @@ export namespace Anjuta {
 
     class SyncCommand extends Command {
         static $gtype: GObject.GType<SyncCommand>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SyncCommand.SignalSignatures;
+        $signals: SyncCommand.SignalSignatures;
 
         // Constructors
 
@@ -26939,14 +26976,15 @@ export namespace Anjuta {
         // Properties
 
         set notebook(val: GObject.Object);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Tabber.SignalSignatures;
+        $signals: Tabber.SignalSignatures;
 
         // Constructors
 
@@ -27440,14 +27478,15 @@ export namespace Anjuta {
 
     class TokenFile extends GObject.Object {
         static $gtype: GObject.GType<TokenFile>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TokenFile.SignalSignatures;
+        $signals: TokenFile.SignalSignatures;
 
         // Constructors
 
@@ -27586,14 +27625,15 @@ export namespace Anjuta {
 
         get model(): Gtk.TreeModel;
         set model(val: Gtk.TreeModel);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TreeComboBox.SignalSignatures;
+        $signals: TreeComboBox.SignalSignatures;
 
         // Constructors
 
@@ -32076,14 +32116,15 @@ export namespace Anjuta {
 
     class UI extends Gtk.UIManager implements Gtk.Buildable {
         static $gtype: GObject.GType<UI>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UI.SignalSignatures;
+        $signals: UI.SignalSignatures;
 
         // Constructors
 
@@ -32970,14 +33011,15 @@ export namespace Anjuta {
         set showStatus(val: boolean);
         get status_codes(): VcsStatus;
         get statusCodes(): VcsStatus;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VcsStatusTreeView.SignalSignatures;
+        $signals: VcsStatusTreeView.SignalSignatures;
 
         // Constructors
 

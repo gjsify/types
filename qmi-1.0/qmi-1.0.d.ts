@@ -18956,14 +18956,15 @@ export namespace Qmi {
         set client_version_minor(val: number);
         get clientVersionMinor(): number;
         set clientVersionMinor(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -19074,14 +19075,15 @@ export namespace Qmi {
      */
     class ClientAtr extends Client {
         static $gtype: GObject.GType<ClientAtr>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientAtr.SignalSignatures;
+        $signals: ClientAtr.SignalSignatures;
 
         // Constructors
 
@@ -19189,14 +19191,15 @@ export namespace Qmi {
      */
     class ClientDms extends Client {
         static $gtype: GObject.GType<ClientDms>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientDms.SignalSignatures;
+        $signals: ClientDms.SignalSignatures;
 
         // Constructors
 
@@ -22658,14 +22661,15 @@ export namespace Qmi {
      */
     class ClientDpm extends Client {
         static $gtype: GObject.GType<ClientDpm>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientDpm.SignalSignatures;
+        $signals: ClientDpm.SignalSignatures;
 
         // Constructors
 
@@ -22828,14 +22832,15 @@ export namespace Qmi {
      */
     class ClientDsd extends Client {
         static $gtype: GObject.GType<ClientDsd>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientDsd.SignalSignatures;
+        $signals: ClientDsd.SignalSignatures;
 
         // Constructors
 
@@ -23107,14 +23112,15 @@ export namespace Qmi {
      */
     class ClientFox extends Client {
         static $gtype: GObject.GType<ClientFox>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientFox.SignalSignatures;
+        $signals: ClientFox.SignalSignatures;
 
         // Constructors
 
@@ -23221,14 +23227,15 @@ export namespace Qmi {
      */
     class ClientGas extends Client {
         static $gtype: GObject.GType<ClientGas>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientGas.SignalSignatures;
+        $signals: ClientGas.SignalSignatures;
 
         // Constructors
 
@@ -23500,14 +23507,15 @@ export namespace Qmi {
      */
     class ClientGms extends Client {
         static $gtype: GObject.GType<ClientGms>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientGms.SignalSignatures;
+        $signals: ClientGms.SignalSignatures;
 
         // Constructors
 
@@ -23686,14 +23694,15 @@ export namespace Qmi {
      */
     class ClientLoc extends Client {
         static $gtype: GObject.GType<ClientLoc>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientLoc.SignalSignatures;
+        $signals: ClientLoc.SignalSignatures;
 
         // Constructors
 
@@ -24577,14 +24586,15 @@ export namespace Qmi {
      */
     class ClientNas extends Client {
         static $gtype: GObject.GType<ClientNas>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientNas.SignalSignatures;
+        $signals: ClientNas.SignalSignatures;
 
         // Constructors
 
@@ -26308,14 +26318,15 @@ export namespace Qmi {
      */
     class ClientOma extends Client {
         static $gtype: GObject.GType<ClientOma>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientOma.SignalSignatures;
+        $signals: ClientOma.SignalSignatures;
 
         // Constructors
 
@@ -26807,14 +26818,15 @@ export namespace Qmi {
      */
     class ClientPbm extends Client {
         static $gtype: GObject.GType<ClientPbm>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientPbm.SignalSignatures;
+        $signals: ClientPbm.SignalSignatures;
 
         // Constructors
 
@@ -27039,14 +27051,15 @@ export namespace Qmi {
      */
     class ClientPdc extends Client {
         static $gtype: GObject.GType<ClientPdc>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientPdc.SignalSignatures;
+        $signals: ClientPdc.SignalSignatures;
 
         // Constructors
 
@@ -27815,14 +27828,15 @@ export namespace Qmi {
      */
     class ClientPds extends Client {
         static $gtype: GObject.GType<ClientPds>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientPds.SignalSignatures;
+        $signals: ClientPds.SignalSignatures;
 
         // Constructors
 
@@ -28426,14 +28440,15 @@ export namespace Qmi {
      */
     class ClientQos extends Client {
         static $gtype: GObject.GType<ClientQos>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientQos.SignalSignatures;
+        $signals: ClientQos.SignalSignatures;
 
         // Constructors
 
@@ -28705,14 +28720,15 @@ export namespace Qmi {
      */
     class ClientSar extends Client {
         static $gtype: GObject.GType<ClientSar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientSar.SignalSignatures;
+        $signals: ClientSar.SignalSignatures;
 
         // Constructors
 
@@ -28877,14 +28893,15 @@ export namespace Qmi {
      */
     class ClientUim extends Client {
         static $gtype: GObject.GType<ClientUim>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientUim.SignalSignatures;
+        $signals: ClientUim.SignalSignatures;
 
         // Constructors
 
@@ -30151,14 +30168,15 @@ export namespace Qmi {
      */
     class ClientVoice extends Client {
         static $gtype: GObject.GType<ClientVoice>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientVoice.SignalSignatures;
+        $signals: ClientVoice.SignalSignatures;
 
         // Constructors
 
@@ -31145,14 +31163,15 @@ export namespace Qmi {
      */
     class ClientWda extends Client {
         static $gtype: GObject.GType<ClientWda>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientWda.SignalSignatures;
+        $signals: ClientWda.SignalSignatures;
 
         // Constructors
 
@@ -31374,14 +31393,15 @@ export namespace Qmi {
      */
     class ClientWds extends Client {
         static $gtype: GObject.GType<ClientWds>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientWds.SignalSignatures;
+        $signals: ClientWds.SignalSignatures;
 
         // Constructors
 
@@ -33381,14 +33401,15 @@ export namespace Qmi {
      */
     class ClientWms extends Client {
         static $gtype: GObject.GType<ClientWms>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientWms.SignalSignatures;
+        $signals: ClientWms.SignalSignatures;
 
         // Constructors
 
@@ -34240,14 +34261,15 @@ export namespace Qmi {
         set deviceProxyPath(val: string);
         get device_wwan_iface(): string;
         get deviceWwanIface(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Device.SignalSignatures;
+        $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -35948,14 +35970,15 @@ export namespace Qmi {
 
         get qmi_proxy_n_clients(): number;
         get qmiProxyNClients(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Proxy.SignalSignatures;
+        $signals: Proxy.SignalSignatures;
 
         // Constructors
 

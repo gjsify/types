@@ -59,14 +59,15 @@ export namespace Parquet {
 
         set arrow_file_reader(val: any);
         set arrowFileReader(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ArrowFileReader.SignalSignatures;
+        $signals: ArrowFileReader.SignalSignatures;
 
         // Constructors
 
@@ -127,14 +128,15 @@ export namespace Parquet {
 
         set arrow_file_writer(val: any);
         set arrowFileWriter(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ArrowFileWriter.SignalSignatures;
+        $signals: ArrowFileWriter.SignalSignatures;
 
         // Constructors
 
@@ -189,14 +191,15 @@ export namespace Parquet {
 
     class WriterProperties extends GObject.Object {
         static $gtype: GObject.GType<WriterProperties>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WriterProperties.SignalSignatures;
+        $signals: WriterProperties.SignalSignatures;
 
         // Constructors
 

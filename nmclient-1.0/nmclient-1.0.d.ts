@@ -1349,14 +1349,15 @@ export namespace NMClient {
          * The WPA flags of the access point.
          */
         get wpaFlags(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AccessPoint.SignalSignatures;
+        $signals: AccessPoint.SignalSignatures;
 
         // Constructors
 
@@ -2326,14 +2327,15 @@ export namespace NMClient {
          * Whether the active connection is a VPN connection.
          */
         get vpn(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ActiveConnection.SignalSignatures;
+        $signals: ActiveConnection.SignalSignatures;
 
         // Constructors
 
@@ -3372,14 +3374,15 @@ export namespace NMClient {
          * Whether the WWAN hardware is enabled.
          */
         get wwanHardwareEnabled(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -4464,14 +4467,15 @@ export namespace NMClient {
          * The #GHashTable containing options of the configuration.
          */
         get options(): GLib.HashTable<string, GObject.Value>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DHCP4Config.SignalSignatures;
+        $signals: DHCP4Config.SignalSignatures;
 
         // Constructors
 
@@ -5265,14 +5269,15 @@ export namespace NMClient {
          * The #GHashTable containing options of the configuration.
          */
         get options(): GLib.HashTable<string, GObject.Value>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DHCP6Config.SignalSignatures;
+        $signals: DHCP6Config.SignalSignatures;
 
         // Constructors
 
@@ -6273,14 +6278,15 @@ export namespace NMClient {
          * The vendor string of the device.
          */
         get vendor(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Device.SignalSignatures;
+        $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -7358,14 +7364,15 @@ export namespace NMClient {
          * Whether the device has carrier.
          */
         get carrier(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceAdsl.SignalSignatures;
+        $signals: DeviceAdsl.SignalSignatures;
 
         // Constructors
 
@@ -8110,14 +8117,15 @@ export namespace NMClient {
          * The devices (#NMDevice) enslaved to the bond device.
          */
         get slaves(): ObjectArray;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceBond.SignalSignatures;
+        $signals: DeviceBond.SignalSignatures;
 
         // Constructors
 
@@ -8872,14 +8880,15 @@ export namespace NMClient {
          * The devices (#NMDevice) enslaved to the bridge device.
          */
         get slaves(): ObjectArray;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceBridge.SignalSignatures;
+        $signals: DeviceBridge.SignalSignatures;
 
         // Constructors
 
@@ -9639,14 +9648,15 @@ export namespace NMClient {
          * The name of the bluetooth device.
          */
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceBt.SignalSignatures;
+        $signals: DeviceBt.SignalSignatures;
 
         // Constructors
 
@@ -10414,14 +10424,15 @@ export namespace NMClient {
          * The speed of the device.
          */
         get speed(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceEthernet.SignalSignatures;
+        $signals: DeviceEthernet.SignalSignatures;
 
         // Constructors
 
@@ -11182,14 +11193,15 @@ export namespace NMClient {
          * if not known.
          */
         get typeDescription(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceGeneric.SignalSignatures;
+        $signals: DeviceGeneric.SignalSignatures;
 
         // Constructors
 
@@ -11928,14 +11940,15 @@ export namespace NMClient {
          * The hardware (MAC) address of the device.
          */
         get hwAddress(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceInfiniband.SignalSignatures;
+        $signals: DeviceInfiniband.SignalSignatures;
 
         // Constructors
 
@@ -12692,14 +12705,15 @@ export namespace NMClient {
          * CDMA/EVDO and GSM/UMTS.
          */
         get modemCapabilities(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceModem.SignalSignatures;
+        $signals: DeviceModem.SignalSignatures;
 
         // Constructors
 
@@ -13456,14 +13470,15 @@ export namespace NMClient {
          * The hardware (MAC) address of the device.
          */
         get hwAddress(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceOlpcMesh.SignalSignatures;
+        $signals: DeviceOlpcMesh.SignalSignatures;
 
         // Constructors
 
@@ -14218,14 +14233,15 @@ export namespace NMClient {
          * The devices (#NMDevice) enslaved to the team device.
          */
         get slaves(): ObjectArray;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceTeam.SignalSignatures;
+        $signals: DeviceTeam.SignalSignatures;
 
         // Constructors
 
@@ -14991,14 +15007,15 @@ export namespace NMClient {
          * The device's VLAN ID.
          */
         get vlanId(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceVlan.SignalSignatures;
+        $signals: DeviceVlan.SignalSignatures;
 
         // Constructors
 
@@ -15796,14 +15813,15 @@ export namespace NMClient {
          * The wireless capabilities of the device.
          */
         get wirelessCapabilities(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceWifi.SignalSignatures;
+        $signals: DeviceWifi.SignalSignatures;
 
         // Constructors
 
@@ -16659,14 +16677,15 @@ export namespace NMClient {
          * -5.5 dBm.  Has no meaning when the device is not connected.
          */
         get txPower(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceWimax.SignalSignatures;
+        $signals: DeviceWimax.SignalSignatures;
 
         // Constructors
 
@@ -17467,14 +17486,15 @@ export namespace NMClient {
          * The #GArray containing WINS servers (#guint32s) of the configuration.
          */
         get winsServers(): UintArray;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IP4Config.SignalSignatures;
+        $signals: IP4Config.SignalSignatures;
 
         // Constructors
 
@@ -18327,14 +18347,15 @@ export namespace NMClient {
          * The #GPtrArray containing dns search strings of the configuration.
          */
         get searches(): StringArray;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IP6Config.SignalSignatures;
+        $signals: IP6Config.SignalSignatures;
 
         // Constructors
 
@@ -19152,14 +19173,15 @@ export namespace NMClient {
 
         get dbus_path(): string;
         get dbusPath(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Object.SignalSignatures;
+        $signals: Object.SignalSignatures;
 
         // Constructors
 
@@ -19966,14 +19988,15 @@ export namespace NMClient {
          * to disk, %FALSE if the connection is the same as its on-disk representation.
          */
         get unsaved(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RemoteConnection.SignalSignatures;
+        $signals: RemoteConnection.SignalSignatures;
 
         // Constructors
 
@@ -20820,14 +20843,15 @@ export namespace NMClient {
          * Whether the settings service is running.
          */
         get serviceRunning(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RemoteSettings.SignalSignatures;
+        $signals: RemoteSettings.SignalSignatures;
 
         // Constructors
 
@@ -21756,14 +21780,15 @@ export namespace NMClient {
          * %TRUE if the agent is registered with NetworkManager, %FALSE if not.
          */
         get registered(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SecretAgent.SignalSignatures;
+        $signals: SecretAgent.SignalSignatures;
 
         // Constructors
 
@@ -21946,14 +21971,15 @@ export namespace NMClient {
          * The VPN state of the active VPN connection.
          */
         get vpnState(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VPNConnection.SignalSignatures;
+        $signals: VPNConnection.SignalSignatures;
 
         // Constructors
 
@@ -22690,14 +22716,15 @@ export namespace NMClient {
          * The signal quality of the WiMAX NSP.
          */
         get signalQuality(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WimaxNsp.SignalSignatures;
+        $signals: WimaxNsp.SignalSignatures;
 
         // Constructors
 

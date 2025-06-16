@@ -135,14 +135,15 @@ export namespace Avahi {
 
         get flags(): ClientFlags;
         get state(): ClientState;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -197,14 +198,15 @@ export namespace Avahi {
         // Properties
 
         get state(): EntryGroupState;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EntryGroup.SignalSignatures;
+        $signals: EntryGroup.SignalSignatures;
 
         // Constructors
 
@@ -321,14 +323,15 @@ export namespace Avahi {
         set protocol(val: Protocol);
         get type(): number;
         set type(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RecordBrowser.SignalSignatures;
+        $signals: RecordBrowser.SignalSignatures;
 
         // Constructors
 
@@ -425,14 +428,15 @@ export namespace Avahi {
         set protocol(val: Protocol);
         get type(): string;
         set type(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ServiceBrowser.SignalSignatures;
+        $signals: ServiceBrowser.SignalSignatures;
 
         // Constructors
 
@@ -530,14 +534,15 @@ export namespace Avahi {
         set protocol(val: Protocol);
         get type(): string;
         set type(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ServiceResolver.SignalSignatures;
+        $signals: ServiceResolver.SignalSignatures;
 
         // Constructors
 

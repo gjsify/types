@@ -1065,14 +1065,15 @@ export namespace Gsk {
      */
     class BroadwayRenderer extends Renderer {
         static $gtype: GObject.GType<BroadwayRenderer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BroadwayRenderer.SignalSignatures;
+        $signals: BroadwayRenderer.SignalSignatures;
 
         // Constructors
 
@@ -1174,14 +1175,15 @@ export namespace Gsk {
      */
     class CairoRenderer extends Renderer {
         static $gtype: GObject.GType<CairoRenderer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CairoRenderer.SignalSignatures;
+        $signals: CairoRenderer.SignalSignatures;
 
         // Constructors
 
@@ -1663,14 +1665,15 @@ export namespace Gsk {
      */
     class GLRenderer extends Renderer {
         static $gtype: GObject.GType<GLRenderer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLRenderer.SignalSignatures;
+        $signals: GLRenderer.SignalSignatures;
 
         // Constructors
 
@@ -1844,14 +1847,15 @@ export namespace Gsk {
          * The source code for the shader, as a `GBytes`.
          */
         get source(): GLib.Bytes;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLShader.SignalSignatures;
+        $signals: GLShader.SignalSignatures;
 
         // Constructors
 
@@ -2301,14 +2305,15 @@ export namespace Gsk {
      */
     class NglRenderer extends Renderer {
         static $gtype: GObject.GType<NglRenderer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NglRenderer.SignalSignatures;
+        $signals: NglRenderer.SignalSignatures;
 
         // Constructors
 
@@ -2718,14 +2723,15 @@ export namespace Gsk {
          * The surface associated with renderer.
          */
         get surface(): Gdk.Surface;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Renderer.SignalSignatures;
+        $signals: Renderer.SignalSignatures;
 
         // Constructors
 
@@ -3400,14 +3406,15 @@ export namespace Gsk {
      */
     class VulkanRenderer extends Renderer {
         static $gtype: GObject.GType<VulkanRenderer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VulkanRenderer.SignalSignatures;
+        $signals: VulkanRenderer.SignalSignatures;
 
         // Constructors
 

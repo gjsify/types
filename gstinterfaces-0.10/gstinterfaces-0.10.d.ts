@@ -493,14 +493,15 @@ export namespace GstInterfaces {
 
     class ColorBalanceChannel extends GObject.Object {
         static $gtype: GObject.GType<ColorBalanceChannel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ColorBalanceChannel.SignalSignatures;
+        $signals: ColorBalanceChannel.SignalSignatures;
 
         // Fields
 
@@ -554,14 +555,15 @@ export namespace GstInterfaces {
 
     class MixerOptions extends MixerTrack {
         static $gtype: GObject.GType<MixerOptions>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MixerOptions.SignalSignatures;
+        $signals: MixerOptions.SignalSignatures;
 
         // Fields
 
@@ -637,14 +639,15 @@ export namespace GstInterfaces {
         get numChannels(): number;
         get untranslated_label(): string;
         get untranslatedLabel(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MixerTrack.SignalSignatures;
+        $signals: MixerTrack.SignalSignatures;
 
         // Constructors
 
@@ -685,14 +688,15 @@ export namespace GstInterfaces {
 
     class TunerChannel extends GObject.Object {
         static $gtype: GObject.GType<TunerChannel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TunerChannel.SignalSignatures;
+        $signals: TunerChannel.SignalSignatures;
 
         // Fields
 
@@ -740,14 +744,15 @@ export namespace GstInterfaces {
 
     class TunerNorm extends GObject.Object {
         static $gtype: GObject.GType<TunerNorm>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TunerNorm.SignalSignatures;
+        $signals: TunerNorm.SignalSignatures;
 
         // Fields
 

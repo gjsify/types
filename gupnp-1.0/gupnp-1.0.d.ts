@@ -291,14 +291,15 @@ export namespace GUPnP {
          * are never to time out.
          */
         get subscriptionTimeout(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Context.SignalSignatures;
+        $signals: Context.SignalSignatures;
 
         // Constructors
 
@@ -994,14 +995,15 @@ export namespace GUPnP {
          * The white list to use.
          */
         get whiteList(): WhiteList;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ContextManager.SignalSignatures;
+        $signals: ContextManager.SignalSignatures;
 
         // Constructors
 
@@ -1118,14 +1120,15 @@ export namespace GUPnP {
          * The resource factory to use. Set to NULL for default factory.
          */
         get resourceFactory(): ResourceFactory;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ControlPoint.SignalSignatures;
+        $signals: ControlPoint.SignalSignatures;
 
         // Constructors
 
@@ -1229,14 +1232,15 @@ export namespace GUPnP {
          * device.
          */
         get rootDevice(): RootDevice;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Device.SignalSignatures;
+        $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -1346,14 +1350,15 @@ export namespace GUPnP {
          * The URL base (#SoupURI).
          */
         get urlBase(): Soup.URI;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceInfo.SignalSignatures;
+        $signals: DeviceInfo.SignalSignatures;
 
         // Constructors
 
@@ -1589,14 +1594,15 @@ export namespace GUPnP {
      */
     class DeviceProxy extends DeviceInfo {
         static $gtype: GObject.GType<DeviceProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceProxy.SignalSignatures;
+        $signals: DeviceProxy.SignalSignatures;
 
         // Constructors
 
@@ -1638,14 +1644,15 @@ export namespace GUPnP {
      */
     class ResourceFactory extends GObject.Object {
         static $gtype: GObject.GType<ResourceFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ResourceFactory.SignalSignatures;
+        $signals: ResourceFactory.SignalSignatures;
 
         // Constructors
 
@@ -1790,14 +1797,15 @@ export namespace GUPnP {
          * absolute path or path relative to GUPnPRootDevice:description-dir.
          */
         get descriptionPath(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RootDevice.SignalSignatures;
+        $signals: RootDevice.SignalSignatures;
 
         // Constructors
 
@@ -1926,14 +1934,15 @@ export namespace GUPnP {
          * The containing #GUPnPRootDevice.
          */
         get rootDevice(): RootDevice;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Service.SignalSignatures;
+        $signals: Service.SignalSignatures;
 
         // Constructors
 
@@ -2083,14 +2092,15 @@ export namespace GUPnP {
          * The URL base (#SoupURI).
          */
         get urlBase(): Soup.URI;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ServiceInfo.SignalSignatures;
+        $signals: ServiceInfo.SignalSignatures;
 
         // Constructors
 
@@ -2223,14 +2233,15 @@ export namespace GUPnP {
          * The scpd of the device description file.
          */
         set scpd(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ServiceIntrospection.SignalSignatures;
+        $signals: ServiceIntrospection.SignalSignatures;
 
         // Constructors
 
@@ -2331,14 +2342,15 @@ export namespace GUPnP {
          */
         get subscribed(): boolean;
         set subscribed(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ServiceProxy.SignalSignatures;
+        $signals: ServiceProxy.SignalSignatures;
 
         // Constructors
 
@@ -2540,14 +2552,15 @@ export namespace GUPnP {
          * Whether this white list is active or not.
          */
         get entries(): string[];
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WhiteList.SignalSignatures;
+        $signals: WhiteList.SignalSignatures;
 
         // Constructors
 
@@ -2650,14 +2663,15 @@ export namespace GUPnP {
      */
     class XMLDoc extends GObject.Object {
         static $gtype: GObject.GType<XMLDoc>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XMLDoc.SignalSignatures;
+        $signals: XMLDoc.SignalSignatures;
 
         // Constructors
 

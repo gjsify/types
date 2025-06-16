@@ -125,14 +125,15 @@ export namespace EDataCal {
         get registry(): EDataServer.SourceRegistry;
         get writable(): boolean;
         set writable(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CalBackend.SignalSignatures;
+        $signals: CalBackend.SignalSignatures;
 
         // Constructors
 
@@ -1979,14 +1980,15 @@ export namespace EDataCal {
      */
     abstract class CalBackendFactory extends EBackend.BackendFactory {
         static $gtype: GObject.GType<CalBackendFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CalBackendFactory.SignalSignatures;
+        $signals: CalBackendFactory.SignalSignatures;
 
         // Constructors
 
@@ -2024,14 +2026,15 @@ export namespace EDataCal {
 
     class CalBackendSExp extends GObject.Object {
         static $gtype: GObject.GType<CalBackendSExp>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CalBackendSExp.SignalSignatures;
+        $signals: CalBackendSExp.SignalSignatures;
 
         // Constructors
 
@@ -2124,14 +2127,15 @@ export namespace EDataCal {
      */
     class CalBackendSync extends CalBackend implements ECal.TimezoneCache {
         static $gtype: GObject.GType<CalBackendSync>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CalBackendSync.SignalSignatures;
+        $signals: CalBackendSync.SignalSignatures;
 
         // Constructors
 
@@ -2863,14 +2867,15 @@ export namespace EDataCal {
      */
     class CalCache extends EBackend.Cache implements ECal.TimezoneCache, EDataServer.Extensible {
         static $gtype: GObject.GType<CalCache>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CalCache.SignalSignatures;
+        $signals: CalCache.SignalSignatures;
 
         // Constructors
 
@@ -3819,14 +3824,15 @@ export namespace EDataCal {
          */
         get cache(): CalCache;
         set cache(val: CalCache);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CalMetaBackend.SignalSignatures;
+        $signals: CalMetaBackend.SignalSignatures;
 
         // Constructors
 
@@ -4983,14 +4989,15 @@ export namespace EDataCal {
         get connection(): Gio.DBusConnection;
         get object_path(): string;
         get objectPath(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataCal.SignalSignatures;
+        $signals: DataCal.SignalSignatures;
 
         // Constructors
 
@@ -5715,14 +5722,15 @@ export namespace EDataCal {
 
     class DataCalFactory extends EBackend.DataFactory implements EDataServer.Extensible, Gio.Initable {
         static $gtype: GObject.GType<DataCalFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataCalFactory.SignalSignatures;
+        $signals: DataCalFactory.SignalSignatures;
 
         // Constructors
 
@@ -6307,14 +6315,15 @@ export namespace EDataCal {
         get object_path(): string;
         get objectPath(): string;
         get sexp(): CalBackendSExp;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataCalView.SignalSignatures;
+        $signals: DataCalView.SignalSignatures;
 
         // Constructors
 
@@ -7015,14 +7024,15 @@ export namespace EDataCal {
      */
     class IntervalTree extends GObject.Object {
         static $gtype: GObject.GType<IntervalTree>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IntervalTree.SignalSignatures;
+        $signals: IntervalTree.SignalSignatures;
 
         // Constructors
 
@@ -7072,14 +7082,15 @@ export namespace EDataCal {
 
     class SubprocessCalFactory extends EBackend.SubprocessFactory implements Gio.Initable {
         static $gtype: GObject.GType<SubprocessCalFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SubprocessCalFactory.SignalSignatures;
+        $signals: SubprocessCalFactory.SignalSignatures;
 
         // Constructors
 

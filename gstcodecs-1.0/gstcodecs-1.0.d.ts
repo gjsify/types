@@ -365,14 +365,15 @@ export namespace GstCodecs {
      */
     abstract class AV1Decoder extends GstVideo.VideoDecoder {
         static $gtype: GObject.GType<AV1Decoder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AV1Decoder.SignalSignatures;
+        $signals: AV1Decoder.SignalSignatures;
 
         // Constructors
 
@@ -488,14 +489,15 @@ export namespace GstCodecs {
          */
         get compliance(): H264DecoderCompliance;
         set compliance(val: H264DecoderCompliance);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: H264Decoder.SignalSignatures;
+        $signals: H264Decoder.SignalSignatures;
 
         // Constructors
 
@@ -627,14 +629,15 @@ export namespace GstCodecs {
      */
     abstract class H265Decoder extends GstVideo.VideoDecoder {
         static $gtype: GObject.GType<H265Decoder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: H265Decoder.SignalSignatures;
+        $signals: H265Decoder.SignalSignatures;
 
         // Constructors
 
@@ -747,14 +750,15 @@ export namespace GstCodecs {
      */
     abstract class Mpeg2Decoder extends GstVideo.VideoDecoder {
         static $gtype: GObject.GType<Mpeg2Decoder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Mpeg2Decoder.SignalSignatures;
+        $signals: Mpeg2Decoder.SignalSignatures;
 
         // Constructors
 
@@ -863,14 +867,15 @@ export namespace GstCodecs {
      */
     abstract class Vp8Decoder extends GstVideo.VideoDecoder {
         static $gtype: GObject.GType<Vp8Decoder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Vp8Decoder.SignalSignatures;
+        $signals: Vp8Decoder.SignalSignatures;
 
         // Constructors
 
@@ -933,14 +938,15 @@ export namespace GstCodecs {
      */
     abstract class Vp9Decoder extends GstVideo.VideoDecoder {
         static $gtype: GObject.GType<Vp9Decoder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Vp9Decoder.SignalSignatures;
+        $signals: Vp9Decoder.SignalSignatures;
 
         // Constructors
 

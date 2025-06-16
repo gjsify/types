@@ -359,14 +359,15 @@ export namespace GstPlay {
         set videoRenderer(val: PlayVideoRenderer);
         get volume(): number;
         set volume(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Play.SignalSignatures;
+        $signals: Play.SignalSignatures;
 
         // Constructors
 
@@ -686,14 +687,15 @@ export namespace GstPlay {
      */
     class PlayAudioInfo extends PlayStreamInfo {
         static $gtype: GObject.GType<PlayAudioInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlayAudioInfo.SignalSignatures;
+        $signals: PlayAudioInfo.SignalSignatures;
 
         // Constructors
 
@@ -742,14 +744,15 @@ export namespace GstPlay {
      */
     class PlayMediaInfo extends GObject.Object {
         static $gtype: GObject.GType<PlayMediaInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlayMediaInfo.SignalSignatures;
+        $signals: PlayMediaInfo.SignalSignatures;
 
         // Constructors
 
@@ -832,14 +835,15 @@ export namespace GstPlay {
         // Properties
 
         get play(): Play;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlaySignalAdapter.SignalSignatures;
+        $signals: PlaySignalAdapter.SignalSignatures;
 
         // Constructors
 
@@ -892,14 +896,15 @@ export namespace GstPlay {
      */
     abstract class PlayStreamInfo extends GObject.Object {
         static $gtype: GObject.GType<PlayStreamInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlayStreamInfo.SignalSignatures;
+        $signals: PlayStreamInfo.SignalSignatures;
 
         // Constructors
 
@@ -962,14 +967,15 @@ export namespace GstPlay {
      */
     class PlaySubtitleInfo extends PlayStreamInfo {
         static $gtype: GObject.GType<PlaySubtitleInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlaySubtitleInfo.SignalSignatures;
+        $signals: PlaySubtitleInfo.SignalSignatures;
 
         // Constructors
 
@@ -1014,14 +1020,15 @@ export namespace GstPlay {
      */
     class PlayVideoInfo extends PlayStreamInfo {
         static $gtype: GObject.GType<PlayVideoInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlayVideoInfo.SignalSignatures;
+        $signals: PlayVideoInfo.SignalSignatures;
 
         // Constructors
 
@@ -1090,14 +1097,15 @@ export namespace GstPlay {
         set window_handle(val: any);
         get windowHandle(): any;
         set windowHandle(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlayVideoOverlayVideoRenderer.SignalSignatures;
+        $signals: PlayVideoOverlayVideoRenderer.SignalSignatures;
 
         // Constructors
 

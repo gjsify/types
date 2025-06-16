@@ -98,14 +98,15 @@ export namespace GUdev {
          * reported.
          */
         get subsystems(): string[];
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -232,14 +233,15 @@ export namespace GUdev {
      */
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Device.SignalSignatures;
+        $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -599,14 +601,15 @@ export namespace GUdev {
          * The #GUdevClient to enumerate devices from.
          */
         get client(): Client;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Enumerator.SignalSignatures;
+        $signals: Enumerator.SignalSignatures;
 
         // Constructors
 

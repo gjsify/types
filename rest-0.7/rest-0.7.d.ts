@@ -326,14 +326,15 @@ export namespace Rest {
         get authEndpoint(): string;
         get client_id(): string;
         get clientId(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OAuth2Proxy.SignalSignatures;
+        $signals: OAuth2Proxy.SignalSignatures;
 
         // Constructors
 
@@ -445,14 +446,15 @@ export namespace Rest {
      */
     class OAuth2ProxyCall extends ProxyCall {
         static $gtype: GObject.GType<OAuth2ProxyCall>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OAuth2ProxyCall.SignalSignatures;
+        $signals: OAuth2ProxyCall.SignalSignatures;
 
         // Constructors
 
@@ -541,14 +543,15 @@ export namespace Rest {
         set token_secret(val: string);
         get tokenSecret(): string;
         set tokenSecret(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OAuthProxy.SignalSignatures;
+        $signals: OAuthProxy.SignalSignatures;
 
         // Constructors
 
@@ -750,14 +753,15 @@ export namespace Rest {
      */
     class OAuthProxyCall extends ProxyCall {
         static $gtype: GObject.GType<OAuthProxyCall>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OAuthProxyCall.SignalSignatures;
+        $signals: OAuthProxyCall.SignalSignatures;
 
         // Constructors
 
@@ -857,14 +861,15 @@ export namespace Rest {
         set userAgent(val: string);
         get username(): string;
         set username(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Proxy.SignalSignatures;
+        $signals: Proxy.SignalSignatures;
 
         // Constructors
 
@@ -952,14 +957,15 @@ export namespace Rest {
      */
     class ProxyAuth extends GObject.Object {
         static $gtype: GObject.GType<ProxyAuth>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProxyAuth.SignalSignatures;
+        $signals: ProxyAuth.SignalSignatures;
 
         // Constructors
 
@@ -1029,14 +1035,15 @@ export namespace Rest {
         // Properties
 
         get proxy(): Proxy;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProxyCall.SignalSignatures;
+        $signals: ProxyCall.SignalSignatures;
 
         // Constructors
 
@@ -1226,14 +1233,15 @@ export namespace Rest {
 
     class XmlParser extends GObject.Object {
         static $gtype: GObject.GType<XmlParser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XmlParser.SignalSignatures;
+        $signals: XmlParser.SignalSignatures;
 
         // Constructors
 

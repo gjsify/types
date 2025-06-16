@@ -5451,14 +5451,15 @@ export namespace IBus {
      */
     class AttrList extends Serializable {
         static $gtype: GObject.GType<AttrList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AttrList.SignalSignatures;
+        $signals: AttrList.SignalSignatures;
 
         // Fields
 
@@ -5521,14 +5522,15 @@ export namespace IBus {
      */
     class Attribute extends Serializable {
         static $gtype: GObject.GType<Attribute>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Attribute.SignalSignatures;
+        $signals: Attribute.SignalSignatures;
 
         // Fields
 
@@ -5639,14 +5641,15 @@ export namespace IBus {
          * Whether the #IBusBus object should connect asynchronously to the bus.
          */
         get connectAsync(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Bus.SignalSignatures;
+        $signals: Bus.SignalSignatures;
 
         // Constructors
 
@@ -6781,14 +6784,15 @@ export namespace IBus {
          * The version of component
          */
         get version(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Component.SignalSignatures;
+        $signals: Component.SignalSignatures;
 
         // Constructors
 
@@ -6948,14 +6952,15 @@ export namespace IBus {
      */
     class Config extends Proxy implements Gio.AsyncInitable<Config>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Config>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Config.SignalSignatures;
+        $signals: Config.SignalSignatures;
 
         // Constructors
 
@@ -7986,14 +7991,15 @@ export namespace IBus {
      */
     class ConfigService extends Service {
         static $gtype: GObject.GType<ConfigService>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConfigService.SignalSignatures;
+        $signals: ConfigService.SignalSignatures;
 
         // Constructors
 
@@ -8089,14 +8095,15 @@ export namespace IBus {
          * The emoji character
          */
         get emoji(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EmojiData.SignalSignatures;
+        $signals: EmojiData.SignalSignatures;
 
         // Constructors
 
@@ -8261,14 +8268,15 @@ export namespace IBus {
          * See also: IBusEngine::focus-in-id
          */
         get hasFocusId(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Engine.SignalSignatures;
+        $signals: Engine.SignalSignatures;
 
         // Fields
 
@@ -8642,14 +8650,15 @@ export namespace IBus {
          * The version number of engine description
          */
         get version(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EngineDesc.SignalSignatures;
+        $signals: EngineDesc.SignalSignatures;
 
         // Constructors
 
@@ -8810,14 +8819,15 @@ export namespace IBus {
      */
     class EngineSimple extends Engine {
         static $gtype: GObject.GType<EngineSimple>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EngineSimple.SignalSignatures;
+        $signals: EngineSimple.SignalSignatures;
 
         // Constructors
 
@@ -8939,14 +8949,15 @@ export namespace IBus {
          * Version of the #IBusExtensionEvent.
          */
         get version(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExtensionEvent.SignalSignatures;
+        $signals: ExtensionEvent.SignalSignatures;
 
         // Constructors
 
@@ -9001,14 +9012,15 @@ export namespace IBus {
      */
     class Factory extends Service {
         static $gtype: GObject.GType<Factory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Factory.SignalSignatures;
+        $signals: Factory.SignalSignatures;
 
         // Constructors
 
@@ -9079,14 +9091,15 @@ export namespace IBus {
      */
     class HotkeyProfile extends Serializable {
         static $gtype: GObject.GType<HotkeyProfile>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HotkeyProfile.SignalSignatures;
+        $signals: HotkeyProfile.SignalSignatures;
 
         // Constructors
 
@@ -9224,14 +9237,15 @@ export namespace IBus {
      */
     class InputContext extends Proxy implements Gio.AsyncInitable<InputContext>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<InputContext>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InputContext.SignalSignatures;
+        $signals: InputContext.SignalSignatures;
 
         // Constructors
 
@@ -10263,14 +10277,15 @@ export namespace IBus {
      */
     class Keymap extends Object {
         static $gtype: GObject.GType<Keymap>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Keymap.SignalSignatures;
+        $signals: Keymap.SignalSignatures;
 
         // Fields
 
@@ -10349,14 +10364,15 @@ export namespace IBus {
      */
     class LookupTable extends Serializable {
         static $gtype: GObject.GType<LookupTable>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LookupTable.SignalSignatures;
+        $signals: LookupTable.SignalSignatures;
 
         // Fields
 
@@ -10549,14 +10565,15 @@ export namespace IBus {
      */
     class Object extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Object>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Object.SignalSignatures;
+        $signals: Object.SignalSignatures;
 
         // Fields
 
@@ -10628,14 +10645,15 @@ export namespace IBus {
      */
     class ObservedPath extends Serializable {
         static $gtype: GObject.GType<ObservedPath>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ObservedPath.SignalSignatures;
+        $signals: ObservedPath.SignalSignatures;
 
         // Fields
 
@@ -10748,14 +10766,15 @@ export namespace IBus {
      */
     class PanelService extends Service {
         static $gtype: GObject.GType<PanelService>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PanelService.SignalSignatures;
+        $signals: PanelService.SignalSignatures;
 
         // Constructors
 
@@ -10936,14 +10955,15 @@ export namespace IBus {
      */
     class PropList extends Serializable {
         static $gtype: GObject.GType<PropList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PropList.SignalSignatures;
+        $signals: PropList.SignalSignatures;
 
         // Fields
 
@@ -11065,14 +11085,15 @@ export namespace IBus {
         set tooltip(val: Text);
         get visible(): boolean;
         set visible(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Property.SignalSignatures;
+        $signals: Property.SignalSignatures;
 
         // Constructors
 
@@ -11248,14 +11269,15 @@ export namespace IBus {
      */
     class Proxy extends Gio.DBusProxy implements Gio.AsyncInitable<Proxy>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Proxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Proxy.SignalSignatures;
+        $signals: Proxy.SignalSignatures;
 
         // Fields
 
@@ -12092,14 +12114,15 @@ export namespace IBus {
      */
     class Registry extends Serializable {
         static $gtype: GObject.GType<Registry>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Registry.SignalSignatures;
+        $signals: Registry.SignalSignatures;
 
         // Constructors
 
@@ -12227,14 +12250,15 @@ export namespace IBus {
      */
     class Serializable extends Object {
         static $gtype: GObject.GType<Serializable>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Serializable.SignalSignatures;
+        $signals: Serializable.SignalSignatures;
 
         // Constructors
 
@@ -12351,14 +12375,15 @@ export namespace IBus {
          * The path of service object.
          */
         get objectPath(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Service.SignalSignatures;
+        $signals: Service.SignalSignatures;
 
         // Constructors
 
@@ -12501,14 +12526,15 @@ export namespace IBus {
      */
     class Text extends Serializable {
         static $gtype: GObject.GType<Text>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Text.SignalSignatures;
+        $signals: Text.SignalSignatures;
 
         // Fields
 
@@ -12611,14 +12637,15 @@ export namespace IBus {
          * The Uniode start code point
          */
         get start(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UnicodeBlock.SignalSignatures;
+        $signals: UnicodeBlock.SignalSignatures;
 
         // Constructors
 
@@ -12726,14 +12753,15 @@ export namespace IBus {
          */
         get name(): string;
         set name(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UnicodeData.SignalSignatures;
+        $signals: UnicodeData.SignalSignatures;
 
         // Constructors
 
@@ -12993,14 +13021,15 @@ export namespace IBus {
          * root-y of this IBusXEvent.
          */
         get yRoot(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XEvent.SignalSignatures;
+        $signals: XEvent.SignalSignatures;
 
         // Constructors
 

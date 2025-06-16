@@ -54,14 +54,15 @@ export namespace Translit {
          * The transliteration which #TranslitTransliterator supports
          */
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Transliterator.SignalSignatures;
+        $signals: Transliterator.SignalSignatures;
 
         // Constructors
 

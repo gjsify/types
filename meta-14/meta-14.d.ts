@@ -1901,14 +1901,15 @@ export namespace Meta {
 
         get capabilities(): BackendCapabilities;
         get context(): Context;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Backend.SignalSignatures;
+        $signals: Backend.SignalSignatures;
 
         // Constructors
 
@@ -2514,14 +2515,15 @@ export namespace Meta {
 
         get meta_display(): Display;
         get metaDisplay(): Display;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Background.SignalSignatures;
+        $signals: Background.SignalSignatures;
 
         // Constructors
 
@@ -2682,14 +2684,15 @@ export namespace Meta {
         get meta_display(): Display;
         get metaDisplay(): Display;
         get monitor(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BackgroundActor.SignalSignatures;
+        $signals: BackgroundActor.SignalSignatures;
 
         // Constructors
 
@@ -3355,14 +3358,15 @@ export namespace Meta {
         set vignette_sharpness(val: number);
         get vignetteSharpness(): number;
         set vignetteSharpness(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BackgroundContent.SignalSignatures;
+        $signals: BackgroundContent.SignalSignatures;
 
         // Constructors
 
@@ -4020,14 +4024,15 @@ export namespace Meta {
      */
     class BackgroundGroup extends Clutter.Actor implements Atk.ImplementorIface, Clutter.Animatable {
         static $gtype: GObject.GType<BackgroundGroup>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BackgroundGroup.SignalSignatures;
+        $signals: BackgroundGroup.SignalSignatures;
 
         // Constructors
 
@@ -4588,14 +4593,15 @@ export namespace Meta {
      */
     class BackgroundImage extends GObject.Object {
         static $gtype: GObject.GType<BackgroundImage>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BackgroundImage.SignalSignatures;
+        $signals: BackgroundImage.SignalSignatures;
 
         // Constructors
 
@@ -4651,14 +4657,15 @@ export namespace Meta {
      */
     class BackgroundImageCache extends GObject.Object {
         static $gtype: GObject.GType<BackgroundImageCache>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BackgroundImageCache.SignalSignatures;
+        $signals: BackgroundImageCache.SignalSignatures;
 
         // Constructors
 
@@ -4755,14 +4762,15 @@ export namespace Meta {
         get x2(): number;
         get y1(): number;
         get y2(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Barrier.SignalSignatures;
+        $signals: Barrier.SignalSignatures;
 
         // Constructors
 
@@ -5407,14 +5415,15 @@ export namespace Meta {
 
         get backend(): Backend;
         get display(): Display;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Compositor.SignalSignatures;
+        $signals: Compositor.SignalSignatures;
 
         // Constructors
 
@@ -5474,14 +5483,15 @@ export namespace Meta {
         set unsafe_mode(val: boolean);
         get unsafeMode(): boolean;
         set unsafeMode(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Context.SignalSignatures;
+        $signals: Context.SignalSignatures;
 
         // Constructors
 
@@ -5578,14 +5588,15 @@ export namespace Meta {
         // Properties
 
         get backend(): Backend;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CursorTracker.SignalSignatures;
+        $signals: CursorTracker.SignalSignatures;
 
         // Constructors
 
@@ -5709,14 +5720,15 @@ export namespace Meta {
         get compositorModifiers(): Clutter.ModifierType;
         get focus_window(): Window;
         get focusWindow(): Window;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Display.SignalSignatures;
+        $signals: Display.SignalSignatures;
 
         // Constructors
 
@@ -5956,14 +5968,15 @@ export namespace Meta {
 
     class Dnd extends GObject.Object {
         static $gtype: GObject.GType<Dnd>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Dnd.SignalSignatures;
+        $signals: Dnd.SignalSignatures;
 
         // Constructors
 
@@ -6015,14 +6028,15 @@ export namespace Meta {
          * The device to listen to idletime on.
          */
         get device(): Clutter.InputDevice;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IdleMonitor.SignalSignatures;
+        $signals: IdleMonitor.SignalSignatures;
 
         // Constructors
 
@@ -6073,14 +6087,15 @@ export namespace Meta {
 
     class Laters extends GObject.Object {
         static $gtype: GObject.GType<Laters>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Laters.SignalSignatures;
+        $signals: Laters.SignalSignatures;
 
         // Constructors
 
@@ -6154,14 +6169,15 @@ export namespace Meta {
         set timestamp(val: number);
         get workspace(): Workspace;
         set workspace(val: Workspace);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LaunchContext.SignalSignatures;
+        $signals: LaunchContext.SignalSignatures;
 
         // Constructors
 
@@ -6250,14 +6266,15 @@ export namespace Meta {
         get nightLightSupported(): boolean;
         get panel_orientation_managed(): boolean;
         get panelOrientationManaged(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MonitorManager.SignalSignatures;
+        $signals: MonitorManager.SignalSignatures;
 
         // Constructors
 
@@ -6326,14 +6343,15 @@ export namespace Meta {
      */
     class MultiTexture extends GObject.Object {
         static $gtype: GObject.GType<MultiTexture>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MultiTexture.SignalSignatures;
+        $signals: MultiTexture.SignalSignatures;
 
         // Constructors
 
@@ -6427,14 +6445,15 @@ export namespace Meta {
      */
     abstract class Plugin extends GObject.Object {
         static $gtype: GObject.GType<Plugin>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Plugin.SignalSignatures;
+        $signals: Plugin.SignalSignatures;
 
         // Constructors
 
@@ -6573,14 +6592,15 @@ export namespace Meta {
 
     class RemoteAccessController extends GObject.Object {
         static $gtype: GObject.GType<RemoteAccessController>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RemoteAccessController.SignalSignatures;
+        $signals: RemoteAccessController.SignalSignatures;
 
         // Constructors
 
@@ -6645,14 +6665,15 @@ export namespace Meta {
 
         get is_recording(): boolean;
         get isRecording(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RemoteAccessHandle.SignalSignatures;
+        $signals: RemoteAccessHandle.SignalSignatures;
 
         // Constructors
 
@@ -6707,14 +6728,15 @@ export namespace Meta {
 
     class Selection extends GObject.Object {
         static $gtype: GObject.GType<Selection>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Selection.SignalSignatures;
+        $signals: Selection.SignalSignatures;
 
         // Constructors
 
@@ -6838,14 +6860,15 @@ export namespace Meta {
 
     class SelectionSource extends GObject.Object {
         static $gtype: GObject.GType<SelectionSource>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SelectionSource.SignalSignatures;
+        $signals: SelectionSource.SignalSignatures;
 
         // Constructors
 
@@ -6932,14 +6955,15 @@ export namespace Meta {
 
     class SelectionSourceMemory extends SelectionSource {
         static $gtype: GObject.GType<SelectionSourceMemory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SelectionSourceMemory.SignalSignatures;
+        $signals: SelectionSourceMemory.SignalSignatures;
 
         // Constructors
 
@@ -6989,14 +7013,15 @@ export namespace Meta {
      */
     class ShadowFactory extends GObject.Object {
         static $gtype: GObject.GType<ShadowFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ShadowFactory.SignalSignatures;
+        $signals: ShadowFactory.SignalSignatures;
 
         // Constructors
 
@@ -7087,14 +7112,15 @@ export namespace Meta {
      */
     class ShapedTexture extends GObject.Object implements Clutter.Content {
         static $gtype: GObject.GType<ShapedTexture>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ShapedTexture.SignalSignatures;
+        $signals: ShapedTexture.SignalSignatures;
 
         // Constructors
 
@@ -7656,14 +7682,15 @@ export namespace Meta {
 
     class SoundPlayer extends GObject.Object {
         static $gtype: GObject.GType<SoundPlayer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SoundPlayer.SignalSignatures;
+        $signals: SoundPlayer.SignalSignatures;
 
         // Constructors
 
@@ -7797,14 +7824,15 @@ export namespace Meta {
 
     class Stage extends Clutter.Stage implements Atk.ImplementorIface, Clutter.Animatable {
         static $gtype: GObject.GType<Stage>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Stage.SignalSignatures;
+        $signals: Stage.SignalSignatures;
 
         // Constructors
 
@@ -8292,14 +8320,15 @@ export namespace Meta {
         // Properties
 
         get display(): Display;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StartupNotification.SignalSignatures;
+        $signals: StartupNotification.SignalSignatures;
 
         // Constructors
 
@@ -8387,14 +8416,15 @@ export namespace Meta {
         get timestamp(): number;
         get wmclass(): string;
         get workspace(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StartupSequence.SignalSignatures;
+        $signals: StartupSequence.SignalSignatures;
 
         // Constructors
 
@@ -8462,14 +8492,15 @@ export namespace Meta {
      */
     class WaylandClient extends GObject.Object {
         static $gtype: GObject.GType<WaylandClient>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WaylandClient.SignalSignatures;
+        $signals: WaylandClient.SignalSignatures;
 
         // Constructors
 
@@ -8541,14 +8572,15 @@ export namespace Meta {
 
     class WaylandCompositor extends GObject.Object {
         static $gtype: GObject.GType<WaylandCompositor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WaylandCompositor.SignalSignatures;
+        $signals: WaylandCompositor.SignalSignatures;
 
         // Constructors
 
@@ -8606,14 +8638,15 @@ export namespace Meta {
         // Properties
 
         get window(): Window;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WaylandSurface.SignalSignatures;
+        $signals: WaylandSurface.SignalSignatures;
 
         // Constructors
 
@@ -8819,14 +8852,15 @@ export namespace Meta {
         get windowType(): WindowType;
         get wm_class(): string;
         get wmClass(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Window.SignalSignatures;
+        $signals: Window.SignalSignatures;
 
         // Constructors
 
@@ -9844,14 +9878,15 @@ export namespace Meta {
 
         get meta_window(): Window;
         get metaWindow(): Window;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WindowActor.SignalSignatures;
+        $signals: WindowActor.SignalSignatures;
 
         // Constructors
 
@@ -10520,14 +10555,15 @@ export namespace Meta {
 
     class WindowGroup extends Clutter.Actor implements Atk.ImplementorIface, Clutter.Animatable {
         static $gtype: GObject.GType<WindowGroup>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WindowGroup.SignalSignatures;
+        $signals: WindowGroup.SignalSignatures;
 
         // Constructors
 
@@ -11110,14 +11146,15 @@ export namespace Meta {
         get nWindows(): number;
         get workspace_index(): number;
         get workspaceIndex(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Workspace.SignalSignatures;
+        $signals: Workspace.SignalSignatures;
 
         // Constructors
 
@@ -11239,14 +11276,15 @@ export namespace Meta {
         get layoutRows(): number;
         get n_workspaces(): number;
         get nWorkspaces(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WorkspaceManager.SignalSignatures;
+        $signals: WorkspaceManager.SignalSignatures;
 
         // Constructors
 
@@ -11339,14 +11377,15 @@ export namespace Meta {
      */
     class X11Display extends GObject.Object {
         static $gtype: GObject.GType<X11Display>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: X11Display.SignalSignatures;
+        $signals: X11Display.SignalSignatures;
 
         // Constructors
 

@@ -86,14 +86,15 @@ export namespace GUPnPIgd {
 
         get main_context(): any;
         get mainContext(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimpleIgd.SignalSignatures;
+        $signals: SimpleIgd.SignalSignatures;
 
         // Constructors
 
@@ -195,14 +196,15 @@ export namespace GUPnPIgd {
      */
     class SimpleIgdThread extends SimpleIgd {
         static $gtype: GObject.GType<SimpleIgdThread>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimpleIgdThread.SignalSignatures;
+        $signals: SimpleIgdThread.SignalSignatures;
 
         // Constructors
 

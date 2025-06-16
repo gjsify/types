@@ -61,14 +61,15 @@ export namespace TimezoneMap {
 
     class TimezoneCompletion extends Gtk.EntryCompletion implements Gtk.Buildable, Gtk.CellLayout {
         static $gtype: GObject.GType<TimezoneCompletion>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TimezoneCompletion.SignalSignatures;
+        $signals: TimezoneCompletion.SignalSignatures;
 
         // Constructors
 
@@ -908,14 +909,15 @@ export namespace TimezoneMap {
         set longitude(val: number);
         get zone(): string;
         set zone(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TimezoneLocation.SignalSignatures;
+        $signals: TimezoneLocation.SignalSignatures;
 
         // Constructors
 
@@ -999,14 +1001,15 @@ export namespace TimezoneMap {
 
     class TimezoneMap extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<TimezoneMap>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TimezoneMap.SignalSignatures;
+        $signals: TimezoneMap.SignalSignatures;
 
         // Constructors
 

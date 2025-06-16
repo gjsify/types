@@ -398,14 +398,15 @@ export namespace DMAP {
         get sessionId(): number;
         set sessionId(val: number);
         get username(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Connection.SignalSignatures;
+        $signals: Connection.SignalSignatures;
 
         // Constructors
 
@@ -471,14 +472,15 @@ export namespace DMAP {
 
     class GstInputStream extends Gio.InputStream implements Gio.Seekable {
         static $gtype: GObject.GType<GstInputStream>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GstInputStream.SignalSignatures;
+        $signals: GstInputStream.SignalSignatures;
 
         // Constructors
 
@@ -1065,14 +1067,15 @@ export namespace DMAP {
 
     class MdnsBrowser extends GObject.Object {
         static $gtype: GObject.GType<MdnsBrowser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MdnsBrowser.SignalSignatures;
+        $signals: MdnsBrowser.SignalSignatures;
 
         // Fields
 
@@ -1138,14 +1141,15 @@ export namespace DMAP {
 
     class MdnsPublisher extends GObject.Object {
         static $gtype: GObject.GType<MdnsPublisher>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MdnsPublisher.SignalSignatures;
+        $signals: MdnsPublisher.SignalSignatures;
 
         // Fields
 
@@ -1263,14 +1267,15 @@ export namespace DMAP {
         set txt_records(val: string[]);
         get txtRecords(): string[];
         set txtRecords(val: string[]);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Share.SignalSignatures;
+        $signals: Share.SignalSignatures;
 
         // Constructors
 

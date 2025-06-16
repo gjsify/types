@@ -5862,14 +5862,15 @@ export namespace TelepathyGLib {
          * %FALSE.
          */
         get valid(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Account.SignalSignatures;
+        $signals: Account.SignalSignatures;
 
         // Constructors
 
@@ -6983,14 +6984,15 @@ export namespace TelepathyGLib {
          * window to the foreground.
          */
         get userActionTime(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AccountChannelRequest.SignalSignatures;
+        $signals: AccountChannelRequest.SignalSignatures;
 
         // Constructors
 
@@ -7816,14 +7818,15 @@ export namespace TelepathyGLib {
      */
     class AccountManager extends Proxy {
         static $gtype: GObject.GType<AccountManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AccountManager.SignalSignatures;
+        $signals: AccountManager.SignalSignatures;
 
         // Constructors
 
@@ -8384,14 +8387,15 @@ export namespace TelepathyGLib {
          * To add to this property use tp_account_request_add_supersedes().
          */
         get supersedes(): string[];
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AccountRequest.SignalSignatures;
+        $signals: AccountRequest.SignalSignatures;
 
         // Constructors
 
@@ -8649,14 +8653,15 @@ export namespace TelepathyGLib {
          * This property can't be %NULL.
          */
         get dispatchOperation(): ChannelDispatchOperation;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AddDispatchOperationContext.SignalSignatures;
+        $signals: AddDispatchOperationContext.SignalSignatures;
 
         // Constructors
 
@@ -8723,14 +8728,15 @@ export namespace TelepathyGLib {
      */
     class AutomaticClientFactory extends SimpleClientFactory {
         static $gtype: GObject.GType<AutomaticClientFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AutomaticClientFactory.SignalSignatures;
+        $signals: AutomaticClientFactory.SignalSignatures;
 
         // Constructors
 
@@ -8775,14 +8781,15 @@ export namespace TelepathyGLib {
      */
     class AutomaticProxyFactory extends GObject.Object implements ClientChannelFactory {
         static $gtype: GObject.GType<AutomaticProxyFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AutomaticProxyFactory.SignalSignatures;
+        $signals: AutomaticProxyFactory.SignalSignatures;
 
         // Constructors
 
@@ -9458,14 +9465,15 @@ export namespace TelepathyGLib {
          * service bus name and object path to ensure they are unique.
          */
         get uniquifyName(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BaseClient.SignalSignatures;
+        $signals: BaseClient.SignalSignatures;
 
         // Constructors
 
@@ -9962,14 +9970,15 @@ export namespace TelepathyGLib {
          * until the connection becomes disconnected.
          */
         get hasImmortalHandles(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BaseConnection.SignalSignatures;
+        $signals: BaseConnection.SignalSignatures;
 
         // Constructors
 
@@ -10186,14 +10195,15 @@ export namespace TelepathyGLib {
      */
     class BasicProxyFactory extends GObject.Object implements ClientChannelFactory {
         static $gtype: GObject.GType<BasicProxyFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BasicProxyFactory.SignalSignatures;
+        $signals: BasicProxyFactory.SignalSignatures;
 
         // Constructors
 
@@ -10883,14 +10893,15 @@ export namespace TelepathyGLib {
          * Reason why #TpCallChannel:state last changed.
          */
         get stateReason(): CallStateReason;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CallChannel.SignalSignatures;
+        $signals: CallChannel.SignalSignatures;
 
         // Constructors
 
@@ -11297,14 +11308,15 @@ export namespace TelepathyGLib {
          * those objects.
          */
         get streams(): any[];
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CallContent.SignalSignatures;
+        $signals: CallContent.SignalSignatures;
 
         // Constructors
 
@@ -11498,14 +11510,15 @@ export namespace TelepathyGLib {
          * The local user's sending state, from #TpSendingState.
          */
         get localSendingState(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CallStream.SignalSignatures;
+        $signals: CallStream.SignalSignatures;
 
         // Constructors
 
@@ -11717,14 +11730,15 @@ export namespace TelepathyGLib {
          * underlying connection.
          */
         get contactSpecific(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Capabilities.SignalSignatures;
+        $signals: Capabilities.SignalSignatures;
 
         // Constructors
 
@@ -12753,14 +12767,15 @@ export namespace TelepathyGLib {
          * %NULL.
          */
         get targetContact(): Contact;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Channel.SignalSignatures;
+        $signals: Channel.SignalSignatures;
 
         // Constructors
 
@@ -13504,14 +13519,15 @@ export namespace TelepathyGLib {
          * finished preparing %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE.
          */
         get possibleHandlers(): string[];
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ChannelDispatchOperation.SignalSignatures;
+        $signals: ChannelDispatchOperation.SignalSignatures;
 
         // Constructors
 
@@ -14073,14 +14089,15 @@ export namespace TelepathyGLib {
      */
     class ChannelDispatcher extends Proxy {
         static $gtype: GObject.GType<ChannelDispatcher>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ChannelDispatcher.SignalSignatures;
+        $signals: ChannelDispatcher.SignalSignatures;
 
         // Constructors
 
@@ -14358,14 +14375,15 @@ export namespace TelepathyGLib {
          * Read-only.
          */
         get userActionTime(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ChannelRequest.SignalSignatures;
+        $signals: ChannelRequest.SignalSignatures;
 
         // Constructors
 
@@ -14468,14 +14486,15 @@ export namespace TelepathyGLib {
      */
     class ClientMessage extends Message {
         static $gtype: GObject.GType<ClientMessage>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientMessage.SignalSignatures;
+        $signals: ClientMessage.SignalSignatures;
 
         // Constructors
 
@@ -15057,14 +15076,15 @@ export namespace TelepathyGLib {
          * know yet.
          */
         get statusReason(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Connection.SignalSignatures;
+        $signals: Connection.SignalSignatures;
 
         // Constructors
 
@@ -16408,14 +16428,15 @@ export namespace TelepathyGLib {
          */
         get managerFile(): string;
         set managerFile(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConnectionManager.SignalSignatures;
+        $signals: ConnectionManager.SignalSignatures;
 
         // Constructors
 
@@ -16984,14 +17005,15 @@ export namespace TelepathyGLib {
          * %TP_CONTACT_FEATURE_SUBSCRIPTION_STATES has been prepared
          */
         get subscribeState(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Contact.SignalSignatures;
+        $signals: Contact.SignalSignatures;
 
         // Constructors
 
@@ -17615,14 +17637,15 @@ export namespace TelepathyGLib {
          * This search's state, as a %TpChannelContactSearchState.
          */
         get state(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ContactSearch.SignalSignatures;
+        $signals: ContactSearch.SignalSignatures;
 
         // Constructors
 
@@ -18412,14 +18435,15 @@ export namespace TelepathyGLib {
         // Properties
 
         get identifier(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ContactSearchResult.SignalSignatures;
+        $signals: ContactSearchResult.SignalSignatures;
 
         // Constructors
 
@@ -18493,14 +18517,15 @@ export namespace TelepathyGLib {
      */
     class DBusDaemon extends Proxy {
         static $gtype: GObject.GType<DBusDaemon>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DBusDaemon.SignalSignatures;
+        $signals: DBusDaemon.SignalSignatures;
 
         // Constructors
 
@@ -18688,14 +18713,15 @@ export namespace TelepathyGLib {
          * A string representing the service name that will be used over the tube.
          */
         get serviceName(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DBusTubeChannel.SignalSignatures;
+        $signals: DBusTubeChannel.SignalSignatures;
 
         // Constructors
 
@@ -18848,14 +18874,15 @@ export namespace TelepathyGLib {
          * %TP_DEBUG_CLIENT_FEATURE_CORE feature has been prepared.
          */
         get enabled(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DebugClient.SignalSignatures;
+        $signals: DebugClient.SignalSignatures;
 
         // Constructors
 
@@ -19006,14 +19033,15 @@ export namespace TelepathyGLib {
          * Timestamp of the debug message.
          */
         get time(): GLib.DateTime;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DebugMessage.SignalSignatures;
+        $signals: DebugMessage.SignalSignatures;
 
         // Constructors
 
@@ -19277,14 +19305,15 @@ export namespace TelepathyGLib {
          * prepared for this property to be meaningful and kept up to date.
          */
         get transferredBytes(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileTransferChannel.SignalSignatures;
+        $signals: FileTransferChannel.SignalSignatures;
 
         // Constructors
 
@@ -19573,14 +19602,15 @@ export namespace TelepathyGLib {
          * Read-only except during construction.
          */
         get userActionTime(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HandleChannelsContext.SignalSignatures;
+        $signals: HandleChannelsContext.SignalSignatures;
 
         // Constructors
 
@@ -19677,14 +19707,15 @@ export namespace TelepathyGLib {
      */
     class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Message.SignalSignatures;
+        $signals: Message.SignalSignatures;
 
         // Constructors
 
@@ -20025,14 +20056,15 @@ export namespace TelepathyGLib {
          * This property can't be %NULL.
          */
         get requests(): any[];
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ObserveChannelsContext.SignalSignatures;
+        $signals: ObserveChannelsContext.SignalSignatures;
 
         // Constructors
 
@@ -20336,14 +20368,15 @@ export namespace TelepathyGLib {
          * or the %TP_PROTOCOL_FEATURE_CORE feature has not been prepared.
          */
         get vcardField(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Protocol.SignalSignatures;
+        $signals: Protocol.SignalSignatures;
 
         // Constructors
 
@@ -20765,14 +20798,15 @@ export namespace TelepathyGLib {
          * construction.
          */
         get objectPath(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Proxy.SignalSignatures;
+        $signals: Proxy.SignalSignatures;
 
         // Constructors
 
@@ -21059,14 +21093,15 @@ export namespace TelepathyGLib {
      */
     class RoomInfo extends GObject.Object {
         static $gtype: GObject.GType<RoomInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RoomInfo.SignalSignatures;
+        $signals: RoomInfo.SignalSignatures;
 
         // Constructors
 
@@ -21197,14 +21232,15 @@ export namespace TelepathyGLib {
          * %NULL.
          */
         get server(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RoomList.SignalSignatures;
+        $signals: RoomList.SignalSignatures;
 
         // Constructors
 
@@ -21937,14 +21973,15 @@ export namespace TelepathyGLib {
          * otherwise.
          */
         get sender(): Contact;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SignalledMessage.SignalSignatures;
+        $signals: SignalledMessage.SignalSignatures;
 
         // Constructors
 
@@ -22032,14 +22069,15 @@ export namespace TelepathyGLib {
          * The user-data pointer passed to #TpSimpleApprover:callback.
          */
         set userData(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimpleApprover.SignalSignatures;
+        $signals: SimpleApprover.SignalSignatures;
 
         // Constructors
 
@@ -22117,14 +22155,15 @@ export namespace TelepathyGLib {
          * The D-Bus daemon for this object.
          */
         get dbusDaemon(): DBusDaemon;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimpleClientFactory.SignalSignatures;
+        $signals: SimpleClientFactory.SignalSignatures;
 
         // Constructors
 
@@ -22497,14 +22536,15 @@ export namespace TelepathyGLib {
          * The user-data pointer passed to #TpSimpleHandler:callback.
          */
         set userData(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimpleHandler.SignalSignatures;
+        $signals: SimpleHandler.SignalSignatures;
 
         // Constructors
 
@@ -22618,14 +22658,15 @@ export namespace TelepathyGLib {
          * ObserveChannels D-Bus method.
          */
         set userData(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimpleObserver.SignalSignatures;
+        $signals: SimpleObserver.SignalSignatures;
 
         // Constructors
 
@@ -22734,14 +22775,15 @@ export namespace TelepathyGLib {
          * A string representing the service name that will be used over the tube.
          */
         get service(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StreamTubeChannel.SignalSignatures;
+        $signals: StreamTubeChannel.SignalSignatures;
 
         // Constructors
 
@@ -22926,14 +22968,15 @@ export namespace TelepathyGLib {
          * This property can't be %NULL.
          */
         get socketConnection(): Gio.SocketConnection;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StreamTubeConnection.SignalSignatures;
+        $signals: StreamTubeConnection.SignalSignatures;
 
         // Constructors
 
@@ -23064,14 +23107,15 @@ export namespace TelepathyGLib {
          * #GObject::notify::state will be emitted when this changes.
          */
         get state(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TLSCertificate.SignalSignatures;
+        $signals: TLSCertificate.SignalSignatures;
 
         // Constructors
 
@@ -23306,14 +23350,15 @@ export namespace TelepathyGLib {
          * #TpTLSCertificateRejectReason representing the reason of the rejection
          */
         get reason(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TLSCertificateRejection.SignalSignatures;
+        $signals: TLSCertificateRejection.SignalSignatures;
 
         // Constructors
 
@@ -23508,14 +23553,15 @@ export namespace TelepathyGLib {
          * preferred MIME types appearing earlier in the array.
          */
         get supportedContentTypes(): string[];
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TextChannel.SignalSignatures;
+        $signals: TextChannel.SignalSignatures;
 
         // Constructors
 

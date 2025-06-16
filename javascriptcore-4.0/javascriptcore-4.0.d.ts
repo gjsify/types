@@ -459,14 +459,15 @@ export namespace JavaScriptCore {
          * The parent class or %NULL in case of final classes.
          */
         get parent(): Class;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Class.SignalSignatures;
+        $signals: Class.SignalSignatures;
 
         // Constructors
 
@@ -658,14 +659,15 @@ export namespace JavaScriptCore {
          * The #JSCVirtualMachine in which the context was created.
          */
         get virtualMachine(): VirtualMachine;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Context.SignalSignatures;
+        $signals: Context.SignalSignatures;
 
         // Constructors
 
@@ -866,14 +868,15 @@ export namespace JavaScriptCore {
      */
     class Exception extends GObject.Object {
         static $gtype: GObject.GType<Exception>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Exception.SignalSignatures;
+        $signals: Exception.SignalSignatures;
 
         // Constructors
 
@@ -974,14 +977,15 @@ export namespace JavaScriptCore {
          * The #JSCContext in which the value was created.
          */
         get context(): Context;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Value.SignalSignatures;
+        $signals: Value.SignalSignatures;
 
         // Constructors
 
@@ -1394,14 +1398,15 @@ export namespace JavaScriptCore {
      */
     class VirtualMachine extends GObject.Object {
         static $gtype: GObject.GType<VirtualMachine>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VirtualMachine.SignalSignatures;
+        $signals: VirtualMachine.SignalSignatures;
 
         // Constructors
 
@@ -1458,14 +1463,15 @@ export namespace JavaScriptCore {
          * The #JSCValue referencing the JavaScript value.
          */
         set value(val: Value);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WeakValue.SignalSignatures;
+        $signals: WeakValue.SignalSignatures;
 
         // Constructors
 

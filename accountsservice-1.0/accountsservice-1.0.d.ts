@@ -236,14 +236,15 @@ export namespace AccountsService {
         get userName(): string;
         get x_session(): string;
         get xSession(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: User.SignalSignatures;
+        $signals: User.SignalSignatures;
 
         // Constructors
 
@@ -641,14 +642,15 @@ export namespace AccountsService {
         set includeUsernamesList(val: any);
         get is_loaded(): boolean;
         get isLoaded(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserManager.SignalSignatures;
+        $signals: UserManager.SignalSignatures;
 
         // Constructors
 

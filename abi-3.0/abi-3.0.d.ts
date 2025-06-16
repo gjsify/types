@@ -129,14 +129,15 @@ export namespace Abi {
 
     class Table extends Gtk.Button implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable {
         static $gtype: GObject.GType<Table>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Table.SignalSignatures;
+        $signals: Table.SignalSignatures;
 
         // Fields
 
@@ -4861,14 +4862,15 @@ export namespace Abi {
         set view_web_layout(val: boolean);
         get viewWebLayout(): boolean;
         set viewWebLayout(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Widget.SignalSignatures;
+        $signals: Widget.SignalSignatures;
 
         // Fields
 

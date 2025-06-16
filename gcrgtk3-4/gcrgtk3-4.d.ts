@@ -101,14 +101,15 @@ export namespace GcrGtk3 {
 
         get certificate(): Gcr.Certificate;
         set certificate(val: Gcr.Certificate);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertificateWidget.SignalSignatures;
+        $signals: CertificateWidget.SignalSignatures;
 
         // Constructors
 
@@ -641,14 +642,15 @@ export namespace GcrGtk3 {
      */
     class SecureEntryBuffer extends Gtk.EntryBuffer {
         static $gtype: GObject.GType<SecureEntryBuffer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SecureEntryBuffer.SignalSignatures;
+        $signals: SecureEntryBuffer.SignalSignatures;
 
         // Constructors
 

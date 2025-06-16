@@ -260,14 +260,15 @@ export namespace EDataServerUI4 {
 
         get rgba(): Gdk.RGBA;
         set rgba(val: Gdk.RGBA);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CellRendererColor.SignalSignatures;
+        $signals: CellRendererColor.SignalSignatures;
 
         // Constructors
 
@@ -356,14 +357,15 @@ export namespace EDataServerUI4 {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable
     {
         static $gtype: GObject.GType<CertificateWidget>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertificateWidget.SignalSignatures;
+        $signals: CertificateWidget.SignalSignatures;
 
         // Constructors
 
@@ -920,14 +922,15 @@ export namespace EDataServerUI4 {
          * The #ESourceRegistry object, to whose credential requests the prompter listens.
          */
         get registry(): EDataServer.SourceRegistry;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CredentialsPrompter.SignalSignatures;
+        $signals: CredentialsPrompter.SignalSignatures;
 
         // Constructors
 
@@ -1669,14 +1672,15 @@ export namespace EDataServerUI4 {
      */
     abstract class CredentialsPrompterImpl extends EDataServer.Extension {
         static $gtype: GObject.GType<CredentialsPrompterImpl>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CredentialsPrompterImpl.SignalSignatures;
+        $signals: CredentialsPrompterImpl.SignalSignatures;
 
         // Constructors
 
@@ -1788,14 +1792,15 @@ export namespace EDataServerUI4 {
      */
     class CredentialsPrompterImplOAuth2 extends CredentialsPrompterImpl {
         static $gtype: GObject.GType<CredentialsPrompterImplOAuth2>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CredentialsPrompterImplOAuth2.SignalSignatures;
+        $signals: CredentialsPrompterImplOAuth2.SignalSignatures;
 
         // Constructors
 
@@ -1843,14 +1848,15 @@ export namespace EDataServerUI4 {
      */
     class CredentialsPrompterImplPassword extends CredentialsPrompterImpl {
         static $gtype: GObject.GType<CredentialsPrompterImplPassword>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CredentialsPrompterImplPassword.SignalSignatures;
+        $signals: CredentialsPrompterImplPassword.SignalSignatures;
 
         // Constructors
 
@@ -1962,14 +1968,15 @@ export namespace EDataServerUI4 {
 
         get empty(): boolean;
         get watcher(): ECal.ReminderWatcher;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RemindersWidget.SignalSignatures;
+        $signals: RemindersWidget.SignalSignatures;
 
         // Constructors
 
@@ -2567,14 +2574,15 @@ export namespace EDataServerUI4 {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable
     {
         static $gtype: GObject.GType<WebDAVDiscoverContent>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebDAVDiscoverContent.SignalSignatures;
+        $signals: WebDAVDiscoverContent.SignalSignatures;
 
         // Constructors
 
@@ -3270,14 +3278,15 @@ export namespace EDataServerUI4 {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Native, Gtk.Root, Gtk.ShortcutManager
     {
         static $gtype: GObject.GType<WebDAVDiscoverDialog>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebDAVDiscoverDialog.SignalSignatures;
+        $signals: WebDAVDiscoverDialog.SignalSignatures;
 
         // Constructors
 

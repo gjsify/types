@@ -74,14 +74,15 @@ export namespace RestExtras {
         get sharedSecret(): string;
         get token(): string;
         set token(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FlickrProxy.SignalSignatures;
+        $signals: FlickrProxy.SignalSignatures;
 
         // Constructors
 
@@ -198,14 +199,15 @@ export namespace RestExtras {
          */
         // This accessor conflicts with a property or field in a parent class or interface.
         upload: boolean | any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FlickrProxyCall.SignalSignatures;
+        $signals: FlickrProxyCall.SignalSignatures;
 
         // Constructors
 
@@ -274,14 +276,15 @@ export namespace RestExtras {
         set session_key(val: string);
         get sessionKey(): string;
         set sessionKey(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LastfmProxy.SignalSignatures;
+        $signals: LastfmProxy.SignalSignatures;
 
         // Constructors
 
@@ -365,14 +368,15 @@ export namespace RestExtras {
      */
     class LastfmProxyCall extends Rest.ProxyCall {
         static $gtype: GObject.GType<LastfmProxyCall>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LastfmProxyCall.SignalSignatures;
+        $signals: LastfmProxyCall.SignalSignatures;
 
         // Constructors
 
@@ -438,14 +442,15 @@ export namespace RestExtras {
         set user_auth(val: string);
         get userAuth(): string;
         set userAuth(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: YoutubeProxy.SignalSignatures;
+        $signals: YoutubeProxy.SignalSignatures;
 
         // Constructors
 

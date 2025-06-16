@@ -1475,14 +1475,15 @@ export namespace GData {
          * API reference: <ulink type="http" url="http://www.atomenabled.org/developers/protocol/#appCategories2">app:categories</ulink>
          */
         get isFixed(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: APPCategories.SignalSignatures;
+        $signals: APPCategories.SignalSignatures;
 
         // Constructors
 
@@ -1605,14 +1606,15 @@ export namespace GData {
          */
         get scopeValue(): string;
         set scopeValue(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AccessRule.SignalSignatures;
+        $signals: AccessRule.SignalSignatures;
 
         // Constructors
 
@@ -1745,14 +1747,15 @@ export namespace GData {
          */
         get uri(): string;
         set uri(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Author.SignalSignatures;
+        $signals: Author.SignalSignatures;
 
         // Constructors
 
@@ -2311,14 +2314,15 @@ export namespace GData {
          * <ulink type="http" url="http://code.google.com/apis/documents/faq_gdata.html#clientlogin">online documentation</ulink>.
          */
         get serviceName(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AuthorizationDomain.SignalSignatures;
+        $signals: AuthorizationDomain.SignalSignatures;
 
         // Constructors
 
@@ -2415,14 +2419,15 @@ export namespace GData {
          * The service this batch operation is attached to.
          */
         get service(): Service;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BatchOperation.SignalSignatures;
+        $signals: BatchOperation.SignalSignatures;
 
         // Constructors
 
@@ -2622,14 +2627,15 @@ export namespace GData {
      */
     class CalendarAccessRule extends AccessRule {
         static $gtype: GObject.GType<CalendarAccessRule>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CalendarAccessRule.SignalSignatures;
+        $signals: CalendarAccessRule.SignalSignatures;
 
         // Constructors
 
@@ -2749,14 +2755,15 @@ export namespace GData {
          */
         get timezone(): string;
         set timezone(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CalendarCalendar.SignalSignatures;
+        $signals: CalendarCalendar.SignalSignatures;
 
         // Constructors
 
@@ -3309,14 +3316,15 @@ export namespace GData {
          */
         get visibility(): string;
         set visibility(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CalendarEvent.SignalSignatures;
+        $signals: CalendarEvent.SignalSignatures;
 
         // Constructors
 
@@ -3566,14 +3574,15 @@ export namespace GData {
      */
     class CalendarFeed extends Feed {
         static $gtype: GObject.GType<CalendarFeed>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CalendarFeed.SignalSignatures;
+        $signals: CalendarFeed.SignalSignatures;
 
         // Constructors
 
@@ -3756,14 +3765,15 @@ export namespace GData {
          */
         get timezone(): string;
         set timezone(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CalendarQuery.SignalSignatures;
+        $signals: CalendarQuery.SignalSignatures;
 
         // Constructors
 
@@ -3903,14 +3913,15 @@ export namespace GData {
      */
     class CalendarService extends Service implements Batchable {
         static $gtype: GObject.GType<CalendarService>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CalendarService.SignalSignatures;
+        $signals: CalendarService.SignalSignatures;
 
         // Constructors
 
@@ -4760,14 +4771,15 @@ export namespace GData {
          */
         get term(): string;
         set term(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Category.SignalSignatures;
+        $signals: Category.SignalSignatures;
 
         // Constructors
 
@@ -5313,14 +5325,15 @@ export namespace GData {
      */
     abstract class Comment extends Entry {
         static $gtype: GObject.GType<Comment>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Comment.SignalSignatures;
+        $signals: Comment.SignalSignatures;
 
         // Constructors
 
@@ -5379,14 +5392,15 @@ export namespace GData {
      */
     class DocumentsAccessRule extends AccessRule {
         static $gtype: GObject.GType<DocumentsAccessRule>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentsAccessRule.SignalSignatures;
+        $signals: DocumentsAccessRule.SignalSignatures;
 
         // Constructors
 
@@ -5455,14 +5469,15 @@ export namespace GData {
      */
     class DocumentsDocument extends DocumentsEntry implements AccessHandler {
         static $gtype: GObject.GType<DocumentsDocument>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentsDocument.SignalSignatures;
+        $signals: DocumentsDocument.SignalSignatures;
 
         // Constructors
 
@@ -5905,14 +5920,15 @@ export namespace GData {
      */
     class DocumentsDrawing extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsDrawing>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentsDrawing.SignalSignatures;
+        $signals: DocumentsDrawing.SignalSignatures;
 
         // Constructors
 
@@ -6199,14 +6215,15 @@ export namespace GData {
          * The human-readable name of this shared drive.
          */
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentsDrive.SignalSignatures;
+        $signals: DocumentsDrive.SignalSignatures;
 
         // Constructors
 
@@ -6264,14 +6281,15 @@ export namespace GData {
 
     class DocumentsDriveQuery extends Query {
         static $gtype: GObject.GType<DocumentsDriveQuery>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentsDriveQuery.SignalSignatures;
+        $signals: DocumentsDriveQuery.SignalSignatures;
 
         // Constructors
 
@@ -6469,14 +6487,15 @@ export namespace GData {
          */
         get writersCanInvite(): boolean;
         set writersCanInvite(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentsEntry.SignalSignatures;
+        $signals: DocumentsEntry.SignalSignatures;
 
         // Constructors
 
@@ -6894,14 +6913,15 @@ export namespace GData {
      */
     class DocumentsFeed extends Feed {
         static $gtype: GObject.GType<DocumentsFeed>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentsFeed.SignalSignatures;
+        $signals: DocumentsFeed.SignalSignatures;
 
         // Constructors
 
@@ -6963,14 +6983,15 @@ export namespace GData {
      */
     class DocumentsFolder extends DocumentsEntry implements AccessHandler {
         static $gtype: GObject.GType<DocumentsFolder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentsFolder.SignalSignatures;
+        $signals: DocumentsFolder.SignalSignatures;
 
         // Constructors
 
@@ -7329,14 +7350,15 @@ export namespace GData {
          * The amount of user quota used up across all services. Measured in bytes.
          */
         get quotaUsed(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentsMetadata.SignalSignatures;
+        $signals: DocumentsMetadata.SignalSignatures;
 
         // Constructors
 
@@ -7411,14 +7433,15 @@ export namespace GData {
      */
     class DocumentsPdf extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsPdf>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentsPdf.SignalSignatures;
+        $signals: DocumentsPdf.SignalSignatures;
 
         // Constructors
 
@@ -7707,14 +7730,15 @@ export namespace GData {
      */
     class DocumentsPresentation extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsPresentation>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentsPresentation.SignalSignatures;
+        $signals: DocumentsPresentation.SignalSignatures;
 
         // Constructors
 
@@ -8028,14 +8052,15 @@ export namespace GData {
          */
         get visibility(): string;
         set visibility(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentsProperty.SignalSignatures;
+        $signals: DocumentsProperty.SignalSignatures;
 
         // Constructors
 
@@ -8647,14 +8672,15 @@ export namespace GData {
          */
         get title(): string;
         set title(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentsQuery.SignalSignatures;
+        $signals: DocumentsQuery.SignalSignatures;
 
         // Constructors
 
@@ -8767,14 +8793,15 @@ export namespace GData {
      */
     class DocumentsService extends Service implements Batchable {
         static $gtype: GObject.GType<DocumentsService>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentsService.SignalSignatures;
+        $signals: DocumentsService.SignalSignatures;
 
         // Constructors
 
@@ -9966,14 +9993,15 @@ export namespace GData {
      */
     class DocumentsSpreadsheet extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsSpreadsheet>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentsSpreadsheet.SignalSignatures;
+        $signals: DocumentsSpreadsheet.SignalSignatures;
 
         // Constructors
 
@@ -10283,14 +10311,15 @@ export namespace GData {
      */
     class DocumentsText extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsText>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentsText.SignalSignatures;
+        $signals: DocumentsText.SignalSignatures;
 
         // Constructors
 
@@ -10586,14 +10615,15 @@ export namespace GData {
          */
         get folder(): DocumentsFolder;
         set folder(val: DocumentsFolder);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentsUploadQuery.SignalSignatures;
+        $signals: DocumentsUploadQuery.SignalSignatures;
 
         // Constructors
 
@@ -10760,14 +10790,15 @@ export namespace GData {
          * The service which is used to authorize the download, and to which the download relates.
          */
         get service(): Service;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DownloadStream.SignalSignatures;
+        $signals: DownloadStream.SignalSignatures;
 
         // Constructors
 
@@ -11507,14 +11538,15 @@ export namespace GData {
          * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.updated">Atom specification</ulink>.
          */
         get updated(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Entry.SignalSignatures;
+        $signals: Entry.SignalSignatures;
 
         // Constructors
 
@@ -11860,14 +11892,15 @@ export namespace GData {
          * atom:updated</ulink>
          */
         get updated(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Feed.SignalSignatures;
+        $signals: Feed.SignalSignatures;
 
         // Constructors
 
@@ -12079,14 +12112,15 @@ export namespace GData {
          */
         get uri(): string;
         set uri(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GContactCalendar.SignalSignatures;
+        $signals: GContactCalendar.SignalSignatures;
 
         // Constructors
 
@@ -12681,14 +12715,15 @@ export namespace GData {
          */
         get relationType(): string;
         set relationType(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GContactEvent.SignalSignatures;
+        $signals: GContactEvent.SignalSignatures;
 
         // Constructors
 
@@ -12817,14 +12852,15 @@ export namespace GData {
          */
         get value(): string;
         set value(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GContactExternalID.SignalSignatures;
+        $signals: GContactExternalID.SignalSignatures;
 
         // Constructors
 
@@ -13396,14 +13432,15 @@ export namespace GData {
          */
         get relationType(): string;
         set relationType(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GContactJot.SignalSignatures;
+        $signals: GContactJot.SignalSignatures;
 
         // Constructors
 
@@ -13496,14 +13533,15 @@ export namespace GData {
          */
         get label(): string;
         set label(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GContactLanguage.SignalSignatures;
+        $signals: GContactLanguage.SignalSignatures;
 
         // Constructors
 
@@ -14076,14 +14114,15 @@ export namespace GData {
          */
         get relationType(): string;
         set relationType(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GContactRelation.SignalSignatures;
+        $signals: GContactRelation.SignalSignatures;
 
         // Constructors
 
@@ -14233,14 +14272,15 @@ export namespace GData {
          */
         get uri(): string;
         set uri(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GContactWebsite.SignalSignatures;
+        $signals: GContactWebsite.SignalSignatures;
 
         // Constructors
 
@@ -14865,14 +14905,15 @@ export namespace GData {
          */
         get relationType(): string;
         set relationType(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GDEmailAddress.SignalSignatures;
+        $signals: GDEmailAddress.SignalSignatures;
 
         // Constructors
 
@@ -15502,14 +15543,15 @@ export namespace GData {
          */
         get relationType(): string;
         set relationType(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GDIMAddress.SignalSignatures;
+        $signals: GDIMAddress.SignalSignatures;
 
         // Constructors
 
@@ -16168,14 +16210,15 @@ export namespace GData {
          */
         get suffix(): string;
         set suffix(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GDName.SignalSignatures;
+        $signals: GDName.SignalSignatures;
 
         // Constructors
 
@@ -16859,14 +16902,15 @@ export namespace GData {
          */
         get title(): string;
         set title(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GDOrganization.SignalSignatures;
+        $signals: GDOrganization.SignalSignatures;
 
         // Constructors
 
@@ -17547,14 +17591,15 @@ export namespace GData {
          */
         get uri(): string;
         set uri(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GDPhoneNumber.SignalSignatures;
+        $signals: GDPhoneNumber.SignalSignatures;
 
         // Constructors
 
@@ -18347,14 +18392,15 @@ export namespace GData {
          */
         get usage(): string;
         set usage(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GDPostalAddress.SignalSignatures;
+        $signals: GDPostalAddress.SignalSignatures;
 
         // Constructors
 
@@ -19115,14 +19161,15 @@ export namespace GData {
          */
         get relativeTime(): number;
         set relativeTime(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GDReminder.SignalSignatures;
+        $signals: GDReminder.SignalSignatures;
 
         // Constructors
 
@@ -19742,14 +19789,15 @@ export namespace GData {
          */
         get valueString(): string;
         set valueString(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GDWhen.SignalSignatures;
+        $signals: GDWhen.SignalSignatures;
 
         // Constructors
 
@@ -20358,14 +20406,15 @@ export namespace GData {
          */
         get valueString(): string;
         set valueString(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GDWhere.SignalSignatures;
+        $signals: GDWhere.SignalSignatures;
 
         // Constructors
 
@@ -20966,14 +21015,15 @@ export namespace GData {
          */
         get valueString(): string;
         set valueString(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GDWho.SignalSignatures;
+        $signals: GDWho.SignalSignatures;
 
         // Constructors
 
@@ -21549,14 +21599,15 @@ export namespace GData {
          * Atom specification</ulink>.
          */
         get version(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Generator.SignalSignatures;
+        $signals: Generator.SignalSignatures;
 
         // Constructors
 
@@ -22085,14 +22136,15 @@ export namespace GData {
          * The GOA account providing authentication. This should have all the necessary services enabled on it.
          */
         get goaObject(): Goa.Object;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GoaAuthorizer.SignalSignatures;
+        $signals: GoaAuthorizer.SignalSignatures;
 
         // Constructors
 
@@ -22875,14 +22927,15 @@ export namespace GData {
          */
         get uri(): string;
         set uri(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Link.SignalSignatures;
+        $signals: Link.SignalSignatures;
 
         // Constructors
 
@@ -23493,14 +23546,15 @@ export namespace GData {
          */
         get scheme(): string;
         set scheme(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaCategory.SignalSignatures;
+        $signals: MediaCategory.SignalSignatures;
 
         // Constructors
 
@@ -23673,14 +23727,15 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          */
         get width(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaContent.SignalSignatures;
+        $signals: MediaContent.SignalSignatures;
 
         // Constructors
 
@@ -23809,14 +23864,15 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          */
         get scheme(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaCredit.SignalSignatures;
+        $signals: MediaCredit.SignalSignatures;
 
         // Constructors
 
@@ -23913,14 +23969,15 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://video.search.yahoo.com/mrss">Media RSS specification</ulink>.
          */
         get width(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaThumbnail.SignalSignatures;
+        $signals: MediaThumbnail.SignalSignatures;
 
         // Constructors
 
@@ -24179,14 +24236,15 @@ export namespace GData {
          */
         get timeout(): number;
         set timeout(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OAuth2Authorizer.SignalSignatures;
+        $signals: OAuth2Authorizer.SignalSignatures;
 
         // Constructors
 
@@ -25061,14 +25119,15 @@ export namespace GData {
          * Specifies whether the object was constructed by parsing XML or manually.
          */
         get constructedFromXml(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Parsable.SignalSignatures;
+        $signals: Parsable.SignalSignatures;
 
         // Constructors
 
@@ -25350,14 +25409,15 @@ export namespace GData {
          */
         get visibility(): PicasaWebVisibility;
         set visibility(val: PicasaWebVisibility);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PicasaWebAlbum.SignalSignatures;
+        $signals: PicasaWebAlbum.SignalSignatures;
 
         // Constructors
 
@@ -25534,14 +25594,15 @@ export namespace GData {
      */
     class PicasaWebComment extends Comment {
         static $gtype: GObject.GType<PicasaWebComment>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PicasaWebComment.SignalSignatures;
+        $signals: PicasaWebComment.SignalSignatures;
 
         // Constructors
 
@@ -25602,14 +25663,15 @@ export namespace GData {
      */
     class PicasaWebFeed extends Feed {
         static $gtype: GObject.GType<PicasaWebFeed>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PicasaWebFeed.SignalSignatures;
+        $signals: PicasaWebFeed.SignalSignatures;
 
         // Constructors
 
@@ -25976,14 +26038,15 @@ export namespace GData {
          * gphoto specification</ulink>.
          */
         get width(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PicasaWebFile.SignalSignatures;
+        $signals: PicasaWebFile.SignalSignatures;
 
         // Constructors
 
@@ -26756,14 +26819,15 @@ export namespace GData {
          */
         get visibility(): number;
         set visibility(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PicasaWebQuery.SignalSignatures;
+        $signals: PicasaWebQuery.SignalSignatures;
 
         // Constructors
 
@@ -26890,14 +26954,15 @@ export namespace GData {
      */
     class PicasaWebService extends Service {
         static $gtype: GObject.GType<PicasaWebService>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PicasaWebService.SignalSignatures;
+        $signals: PicasaWebService.SignalSignatures;
 
         // Constructors
 
@@ -27254,14 +27319,15 @@ export namespace GData {
          * http://code.google.com/apis/picasaweb/docs/2.0/reference.html#gphoto_user
          */
         get user(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PicasaWebUser.SignalSignatures;
+        $signals: PicasaWebUser.SignalSignatures;
 
         // Constructors
 
@@ -27516,14 +27582,15 @@ export namespace GData {
          */
         get updatedMin(): number;
         set updatedMin(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Query.SignalSignatures;
+        $signals: Query.SignalSignatures;
 
         // Constructors
 
@@ -27788,14 +27855,15 @@ export namespace GData {
          */
         get timeout(): number;
         set timeout(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Service.SignalSignatures;
+        $signals: Service.SignalSignatures;
 
         // Constructors
 
@@ -28513,14 +28581,15 @@ export namespace GData {
          */
         get showHidden(): boolean;
         set showHidden(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TasksQuery.SignalSignatures;
+        $signals: TasksQuery.SignalSignatures;
 
         // Constructors
 
@@ -28653,14 +28722,15 @@ export namespace GData {
      */
     class TasksService extends Service {
         static $gtype: GObject.GType<TasksService>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TasksService.SignalSignatures;
+        $signals: TasksService.SignalSignatures;
 
         // Constructors
 
@@ -29058,14 +29128,15 @@ export namespace GData {
          */
         get status(): string;
         set status(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TasksTask.SignalSignatures;
+        $signals: TasksTask.SignalSignatures;
 
         // Constructors
 
@@ -29196,14 +29267,15 @@ export namespace GData {
      */
     class TasksTasklist extends Entry {
         static $gtype: GObject.GType<TasksTasklist>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TasksTasklist.SignalSignatures;
+        $signals: TasksTasklist.SignalSignatures;
 
         // Constructors
 
@@ -29341,14 +29413,15 @@ export namespace GData {
          * The URI to upload the data and metadata to. This must be HTTPS.
          */
         get uploadUri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UploadStream.SignalSignatures;
+        $signals: UploadStream.SignalSignatures;
 
         // Constructors
 
@@ -29509,14 +29582,15 @@ export namespace GData {
          * Whether the category is deprecated.
          */
         get isDeprecated(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: YouTubeCategory.SignalSignatures;
+        $signals: YouTubeCategory.SignalSignatures;
 
         // Constructors
 
@@ -30054,14 +30128,15 @@ export namespace GData {
          */
         get parentCommentUri(): string;
         set parentCommentUri(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: YouTubeComment.SignalSignatures;
+        $signals: YouTubeComment.SignalSignatures;
 
         // Constructors
 
@@ -30142,14 +30217,15 @@ export namespace GData {
      */
     class YouTubeFeed extends Feed {
         static $gtype: GObject.GType<YouTubeFeed>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: YouTubeFeed.SignalSignatures;
+        $signals: YouTubeFeed.SignalSignatures;
 
         // Constructors
 
@@ -30340,14 +30416,15 @@ export namespace GData {
          */
         get safeSearch(): YouTubeSafeSearch;
         set safeSearch(val: YouTubeSafeSearch);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: YouTubeQuery.SignalSignatures;
+        $signals: YouTubeQuery.SignalSignatures;
 
         // Constructors
 
@@ -30492,14 +30569,15 @@ export namespace GData {
          * developer key.
          */
         get developerKey(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: YouTubeService.SignalSignatures;
+        $signals: YouTubeService.SignalSignatures;
 
         // Constructors
 
@@ -31435,14 +31513,15 @@ export namespace GData {
          * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_yt:state">online documentation</ulink>.
          */
         get reasonCode(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: YouTubeState.SignalSignatures;
+        $signals: YouTubeState.SignalSignatures;
 
         // Constructors
 
@@ -31761,14 +31840,15 @@ export namespace GData {
          * url="https://developers.google.com/youtube/v3/docs/videos#statistics.viewCount">online documentation</ulink>.
          */
         get viewCount(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: YouTubeVideo.SignalSignatures;
+        $signals: YouTubeVideo.SignalSignatures;
 
         // Constructors
 

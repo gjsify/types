@@ -353,14 +353,15 @@ export namespace GeocodeGlib {
          * Top coordinate.
          */
         get top(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BoundingBox.SignalSignatures;
+        $signals: BoundingBox.SignalSignatures;
 
         // Constructors
 
@@ -480,14 +481,15 @@ export namespace GeocodeGlib {
          */
         get searchArea(): BoundingBox;
         set searchArea(val: BoundingBox);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Forward.SignalSignatures;
+        $signals: Forward.SignalSignatures;
 
         // Constructors
 
@@ -680,14 +682,15 @@ export namespace GeocodeGlib {
          * A value of 0 (zero) will be interpreted as the current time.
          */
         get timestamp(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Location.SignalSignatures;
+        $signals: Location.SignalSignatures;
 
         // Constructors
 
@@ -830,14 +833,15 @@ export namespace GeocodeGlib {
      */
     class MockBackend extends GObject.Object implements Backend {
         static $gtype: GObject.GType<MockBackend>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MockBackend.SignalSignatures;
+        $signals: MockBackend.SignalSignatures;
 
         // Constructors
 
@@ -1737,14 +1741,15 @@ export namespace GeocodeGlib {
          */
         get userAgent(): string;
         set userAgent(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Nominatim.SignalSignatures;
+        $signals: Nominatim.SignalSignatures;
 
         // Constructors
 
@@ -2712,14 +2717,15 @@ export namespace GeocodeGlib {
          */
         get town(): string;
         set town(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Place.SignalSignatures;
+        $signals: Place.SignalSignatures;
 
         // Constructors
 
@@ -2949,14 +2955,15 @@ export namespace GeocodeGlib {
      */
     class Reverse extends GObject.Object {
         static $gtype: GObject.GType<Reverse>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Reverse.SignalSignatures;
+        $signals: Reverse.SignalSignatures;
 
         // Constructors
 

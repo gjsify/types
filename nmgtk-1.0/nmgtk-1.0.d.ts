@@ -175,14 +175,15 @@ export namespace NMGtk {
         get countryCodes(): string;
         get service_providers(): string;
         get serviceProviders(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MobileProvidersDatabase.SignalSignatures;
+        $signals: MobileProvidersDatabase.SignalSignatures;
 
         // Constructors
 
@@ -1055,14 +1056,15 @@ export namespace NMGtk {
 
     class VpnPasswordDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<VpnPasswordDialog>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VpnPasswordDialog.SignalSignatures;
+        $signals: VpnPasswordDialog.SignalSignatures;
 
         // Constructors
 
@@ -1645,14 +1647,15 @@ export namespace NMGtk {
 
     class WifiDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WifiDialog>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WifiDialog.SignalSignatures;
+        $signals: WifiDialog.SignalSignatures;
 
         // Constructors
 

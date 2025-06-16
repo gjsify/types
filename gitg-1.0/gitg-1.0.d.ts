@@ -394,14 +394,15 @@ export namespace Gitg {
         get password(): string;
         get life_time(): AuthenticationLifeTime;
         get lifeTime(): AuthenticationLifeTime;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AuthenticationDialog.SignalSignatures;
+        $signals: AuthenticationDialog.SignalSignatures;
 
         // Constructors
 
@@ -452,14 +453,15 @@ export namespace Gitg {
 
     class AvatarCache extends GObject.Object {
         static $gtype: GObject.GType<AvatarCache>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AvatarCache.SignalSignatures;
+        $signals: AvatarCache.SignalSignatures;
 
         // Constructors
 
@@ -527,14 +529,15 @@ export namespace Gitg {
 
     class BranchBase extends Ggit.Branch implements Ref, Branch {
         static $gtype: GObject.GType<BranchBase>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BranchBase.SignalSignatures;
+        $signals: BranchBase.SignalSignatures;
 
         // Constructors
 
@@ -876,14 +879,15 @@ export namespace Gitg {
         set dotWidth(val: number);
         get labels(): Ref[];
         set labels(val: Ref[]);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CellRendererLanes.SignalSignatures;
+        $signals: CellRendererLanes.SignalSignatures;
 
         // Constructors
 
@@ -951,14 +955,15 @@ export namespace Gitg {
         get r(): number;
         get g(): number;
         get b(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Color.SignalSignatures;
+        $signals: Color.SignalSignatures;
 
         // Fields
 
@@ -1077,14 +1082,15 @@ export namespace Gitg {
 
     class CommitListView extends Gtk.TreeView implements Gtk.Buildable {
         static $gtype: GObject.GType<CommitListView>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CommitListView.SignalSignatures;
+        $signals: CommitListView.SignalSignatures;
 
         // Constructors
 
@@ -1599,14 +1605,15 @@ export namespace Gitg {
         set sortMode(val: Ggit.SortMode);
         get repository(): Repository;
         set repository(val: Repository);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CommitModel.SignalSignatures;
+        $signals: CommitModel.SignalSignatures;
 
         // Constructors
 
@@ -2540,14 +2547,15 @@ export namespace Gitg {
         get committerDateForDisplay(): string;
         get author_date_for_display(): string;
         get authorDateForDisplay(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Commit.SignalSignatures;
+        $signals: Commit.SignalSignatures;
 
         // Constructors
 
@@ -2664,14 +2672,15 @@ export namespace Gitg {
         get dateString(): string;
         set dateString(val: string);
         get date(): GLib.DateTime;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Date.SignalSignatures;
+        $signals: Date.SignalSignatures;
 
         // Constructors
 
@@ -3302,14 +3311,15 @@ export namespace Gitg {
         set added(val: number);
         get removed(): number;
         set removed(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DiffStat.SignalSignatures;
+        $signals: DiffStat.SignalSignatures;
 
         // Constructors
 
@@ -3418,14 +3428,15 @@ export namespace Gitg {
         set contextLines(val: number);
         get view(): DiffView;
         set view(val: DiffView);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DiffViewOptions.SignalSignatures;
+        $signals: DiffViewOptions.SignalSignatures;
 
         // Constructors
 
@@ -3632,14 +3643,15 @@ export namespace Gitg {
         set context_lines(val: number);
         get contextLines(): number;
         set contextLines(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DiffView.SignalSignatures;
+        $signals: DiffView.SignalSignatures;
 
         // Constructors
 
@@ -3731,14 +3743,15 @@ export namespace Gitg {
 
     class FontManager extends GObject.Object {
         static $gtype: GObject.GType<FontManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FontManager.SignalSignatures;
+        $signals: FontManager.SignalSignatures;
 
         // Constructors
 
@@ -3842,14 +3855,15 @@ export namespace Gitg {
         get workingDirectory(): Gio.File;
         set workingDirectory(val: Gio.File);
         get output(): string[];
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Hook.SignalSignatures;
+        $signals: Hook.SignalSignatures;
 
         // Constructors
 
@@ -4007,14 +4021,15 @@ export namespace Gitg {
         set miss_commits(val: Gee.LinkedList);
         get missCommits(): Gee.LinkedList;
         set missCommits(val: Gee.LinkedList);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Lanes.SignalSignatures;
+        $signals: Lanes.SignalSignatures;
 
         // Constructors
 
@@ -4069,14 +4084,15 @@ export namespace Gitg {
 
     class Lane extends GObject.Object {
         static $gtype: GObject.GType<Lane>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Lane.SignalSignatures;
+        $signals: Lane.SignalSignatures;
 
         // Fields
 
@@ -4180,14 +4196,15 @@ export namespace Gitg {
 
         get fraction(): number;
         set fraction(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProgressBin.SignalSignatures;
+        $signals: ProgressBin.SignalSignatures;
 
         // Constructors
 
@@ -4238,14 +4255,15 @@ export namespace Gitg {
 
     class RefBase extends Ggit.Ref implements Ref {
         static $gtype: GObject.GType<RefBase>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RefBase.SignalSignatures;
+        $signals: RefBase.SignalSignatures;
 
         // Constructors
 
@@ -4496,14 +4514,15 @@ export namespace Gitg {
         get remote_branch(): string;
         get remoteBranch(): string;
         get prefix(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ParsedRefName.SignalSignatures;
+        $signals: ParsedRefName.SignalSignatures;
 
         // Constructors
 
@@ -4589,14 +4608,15 @@ export namespace Gitg {
         set credentials_provider(val: CredentialsProvider);
         get credentialsProvider(): CredentialsProvider;
         set credentialsProvider(val: CredentialsProvider);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Remote.SignalSignatures;
+        $signals: Remote.SignalSignatures;
 
         // Constructors
 
@@ -4768,14 +4788,15 @@ export namespace Gitg {
         set location(val: Gio.File);
         get has_selection(): boolean;
         get hasSelection(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RepositoryListBox.SignalSignatures;
+        $signals: RepositoryListBox.SignalSignatures;
 
         // Constructors
 
@@ -4930,14 +4951,15 @@ export namespace Gitg {
         set branchName(val: string);
         get loading(): boolean;
         set loading(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RepositoryListBoxRow.SignalSignatures;
+        $signals: RepositoryListBoxRow.SignalSignatures;
 
         // Constructors
 
@@ -5023,14 +5045,15 @@ export namespace Gitg {
 
         get name(): string;
         get stage(): Stage;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Repository.SignalSignatures;
+        $signals: Repository.SignalSignatures;
 
         // Constructors
 
@@ -5154,14 +5177,15 @@ export namespace Gitg {
         // Properties
 
         get clearing(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SidebarStore.SignalSignatures;
+        $signals: SidebarStore.SignalSignatures;
 
         // Constructors
 
@@ -5219,14 +5243,15 @@ export namespace Gitg {
 
     class SidebarStoreSidebarText extends GObject.Object implements SidebarItem {
         static $gtype: GObject.GType<SidebarStoreSidebarText>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SidebarStoreSidebarText.SignalSignatures;
+        $signals: SidebarStoreSidebarText.SignalSignatures;
 
         // Constructors
 
@@ -5728,14 +5753,15 @@ export namespace Gitg {
         // Properties
 
         get id(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SidebarStoreSidebarHeader.SignalSignatures;
+        $signals: SidebarStoreSidebarHeader.SignalSignatures;
 
         // Constructors
 
@@ -5854,14 +5880,15 @@ export namespace Gitg {
 
         get model(): SidebarStore;
         set model(val: SidebarStore);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Sidebar.SignalSignatures;
+        $signals: Sidebar.SignalSignatures;
 
         // Constructors
 
@@ -5936,14 +5963,15 @@ export namespace Gitg {
         // Properties
 
         get flags(): Ggit.StatusFlags;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StageStatusFile.SignalSignatures;
+        $signals: StageStatusFile.SignalSignatures;
 
         // Constructors
 
@@ -6470,14 +6498,15 @@ export namespace Gitg {
         get is_dirty(): boolean;
         get isDirty(): boolean;
         get flags(): Ggit.SubmoduleStatus;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StageStatusSubmodule.SignalSignatures;
+        $signals: StageStatusSubmodule.SignalSignatures;
 
         // Constructors
 
@@ -6987,14 +7016,15 @@ export namespace Gitg {
 
     class StageStatusEnumerator extends GObject.Object {
         static $gtype: GObject.GType<StageStatusEnumerator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StageStatusEnumerator.SignalSignatures;
+        $signals: StageStatusEnumerator.SignalSignatures;
 
         // Constructors
 
@@ -7085,14 +7115,15 @@ export namespace Gitg {
 
     class Stage extends GObject.Object {
         static $gtype: GObject.GType<Stage>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Stage.SignalSignatures;
+        $signals: Stage.SignalSignatures;
 
         // Constructors
 
@@ -7414,14 +7445,15 @@ export namespace Gitg {
 
     class Theme extends Gtk.Widget {
         static $gtype: GObject.GType<Theme>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Theme.SignalSignatures;
+        $signals: Theme.SignalSignatures;
 
         // Constructors
 

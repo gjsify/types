@@ -157,14 +157,15 @@ export namespace Cheese {
          */
         get videoTexture(): any;
         set videoTexture(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Camera.SignalSignatures;
+        $signals: Camera.SignalSignatures;
 
         // Constructors
 
@@ -353,14 +354,15 @@ export namespace Cheese {
          * Path of the video capture device.
          */
         get path(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CameraDevice.SignalSignatures;
+        $signals: CameraDevice.SignalSignatures;
 
         // Constructors
 
@@ -979,14 +981,15 @@ export namespace Cheese {
      */
     class CameraDeviceMonitor extends GObject.Object implements Gio.AsyncInitable<CameraDeviceMonitor>, Gio.Initable {
         static $gtype: GObject.GType<CameraDeviceMonitor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CameraDeviceMonitor.SignalSignatures;
+        $signals: CameraDeviceMonitor.SignalSignatures;
 
         // Constructors
 
@@ -1828,14 +1831,15 @@ export namespace Cheese {
          * Description of the GStreamer pipeline associated with the effect.
          */
         get pipelineDesc(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Effect.SignalSignatures;
+        $signals: Effect.SignalSignatures;
 
         // Constructors
 
@@ -1916,14 +1920,15 @@ export namespace Cheese {
      */
     class FileUtil extends GObject.Object {
         static $gtype: GObject.GType<FileUtil>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileUtil.SignalSignatures;
+        $signals: FileUtil.SignalSignatures;
 
         // Constructors
 

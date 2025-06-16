@@ -122,14 +122,15 @@ export namespace Midori {
         set exec_path(val: Gio.File);
         get execPath(): Gio.File;
         set execPath(val: Gio.File);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: App.SignalSignatures;
+        $signals: App.SignalSignatures;
 
         // Constructors
 
@@ -296,14 +297,15 @@ export namespace Midori {
         set is_locked(val: boolean);
         get isLocked(): boolean;
         set isLocked(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Browser.SignalSignatures;
+        $signals: Browser.SignalSignatures;
 
         // Fields
 
@@ -451,14 +453,15 @@ export namespace Midori {
 
     class ClearPrivateData extends Gtk.Dialog {
         static $gtype: GObject.GType<ClearPrivateData>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClearPrivateData.SignalSignatures;
+        $signals: ClearPrivateData.SignalSignatures;
 
         // Constructors
 
@@ -515,14 +518,15 @@ export namespace Midori {
 
         get search(): string;
         set search(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SuggestionItem.SignalSignatures;
+        $signals: SuggestionItem.SignalSignatures;
 
         // Constructors
 
@@ -582,14 +586,15 @@ export namespace Midori {
         set incognito(val: boolean);
         get key(): string;
         set key(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Completion.SignalSignatures;
+        $signals: Completion.SignalSignatures;
 
         // Constructors
 
@@ -1185,14 +1190,15 @@ export namespace Midori {
         set database(val: Database);
         get query(): string;
         set query(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DatabaseStatement.SignalSignatures;
+        $signals: DatabaseStatement.SignalSignatures;
 
         // Constructors
 
@@ -1716,14 +1722,15 @@ export namespace Midori {
         set title(val: string);
         get date(): number;
         set date(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DatabaseItem.SignalSignatures;
+        $signals: DatabaseItem.SignalSignatures;
 
         // Constructors
 
@@ -1823,14 +1830,15 @@ export namespace Midori {
         get last_row_id(): number;
         get lastRowId(): number;
         get errmsg(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Database.SignalSignatures;
+        $signals: Database.SignalSignatures;
 
         // Fields
 
@@ -2544,14 +2552,15 @@ export namespace Midori {
 
     class DownloadButton extends Gtk.Button {
         static $gtype: GObject.GType<DownloadButton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DownloadButton.SignalSignatures;
+        $signals: DownloadButton.SignalSignatures;
 
         // Fields
 
@@ -2643,14 +2652,15 @@ export namespace Midori {
         set loading(val: boolean);
         get error(): string;
         set error(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DownloadItem.SignalSignatures;
+        $signals: DownloadItem.SignalSignatures;
 
         // Fields
 
@@ -2767,14 +2777,15 @@ export namespace Midori {
 
         get item(): DownloadItem;
         set item(val: DownloadItem);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DownloadRow.SignalSignatures;
+        $signals: DownloadRow.SignalSignatures;
 
         // Fields
 
@@ -2899,14 +2910,15 @@ export namespace Midori {
         set surface(val: cairo.Surface);
         get uri(): string;
         set uri(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Favicon.SignalSignatures;
+        $signals: Favicon.SignalSignatures;
 
         // Constructors
 
@@ -2960,14 +2972,15 @@ export namespace Midori {
 
     class HistoryDatabase<A extends GObject.Object = GObject.Object> extends Database<A> {
         static $gtype: GObject.GType<HistoryDatabase>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HistoryDatabase.SignalSignatures;
+        $signals: HistoryDatabase.SignalSignatures;
 
         // Constructors
 
@@ -3052,14 +3065,15 @@ export namespace Midori {
 
     class Navigationbar extends Gtk.ActionBar {
         static $gtype: GObject.GType<Navigationbar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Navigationbar.SignalSignatures;
+        $signals: Navigationbar.SignalSignatures;
 
         // Fields
 
@@ -3153,14 +3167,15 @@ export namespace Midori {
 
     class NetworkCheck extends Gtk.ActionBar {
         static $gtype: GObject.GType<NetworkCheck>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NetworkCheck.SignalSignatures;
+        $signals: NetworkCheck.SignalSignatures;
 
         // Constructors
 
@@ -3215,14 +3230,15 @@ export namespace Midori {
         set builtin_path(val: string);
         get builtinPath(): string;
         set builtinPath(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Plugins.SignalSignatures;
+        $signals: Plugins.SignalSignatures;
 
         // Constructors
 
@@ -3776,14 +3792,15 @@ export namespace Midori {
         set label(val: Gtk.Label);
         // This accessor conflicts with a property or field in a parent class or interface.
         widget: Gtk.Widget | any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LabelWidget.SignalSignatures;
+        $signals: LabelWidget.SignalSignatures;
 
         // Constructors
 
@@ -3912,14 +3929,15 @@ export namespace Midori {
 
     class Preferences extends Gtk.Dialog {
         static $gtype: GObject.GType<Preferences>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Preferences.SignalSignatures;
+        $signals: Preferences.SignalSignatures;
 
         // Constructors
 
@@ -4083,14 +4101,15 @@ export namespace Midori {
         set maximum_history_age(val: number);
         get maximumHistoryAge(): number;
         set maximumHistoryAge(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CoreSettings.SignalSignatures;
+        $signals: CoreSettings.SignalSignatures;
 
         // Constructors
 
@@ -4179,14 +4198,15 @@ export namespace Midori {
 
         get filename(): string;
         set filename(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Settings.SignalSignatures;
+        $signals: Settings.SignalSignatures;
 
         // Constructors
 
@@ -4289,14 +4309,15 @@ export namespace Midori {
 
         get label(): string;
         set label(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Statusbar.SignalSignatures;
+        $signals: Statusbar.SignalSignatures;
 
         // Fields
 
@@ -4410,14 +4431,15 @@ export namespace Midori {
         set regex(val: GLib.Regex);
         get key(): string;
         set key(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SuggestionRow.SignalSignatures;
+        $signals: SuggestionRow.SignalSignatures;
 
         // Constructors
 
@@ -4532,14 +4554,15 @@ export namespace Midori {
         set show_close_buttons(val: boolean);
         get showCloseButtons(): boolean;
         set showCloseButtons(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Switcher.SignalSignatures;
+        $signals: Switcher.SignalSignatures;
 
         // Constructors
 
@@ -4715,14 +4738,15 @@ export namespace Midori {
         set link_uri(val: string);
         get linkUri(): string;
         set linkUri(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Tab.SignalSignatures;
+        $signals: Tab.SignalSignatures;
 
         // Fields
 
@@ -4871,14 +4895,15 @@ export namespace Midori {
         set showClose(val: boolean);
         get active(): boolean;
         set active(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Tally.SignalSignatures;
+        $signals: Tally.SignalSignatures;
 
         // Constructors
 
@@ -5049,14 +5074,15 @@ export namespace Midori {
         set uri(val: string);
         get secure(): boolean;
         set secure(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Urlbar.SignalSignatures;
+        $signals: Urlbar.SignalSignatures;
 
         // Constructors
 

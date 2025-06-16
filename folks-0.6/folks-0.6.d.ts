@@ -255,14 +255,15 @@ export namespace Folks {
         set id(val: string);
         get parameters(): Gee.MultiMap;
         set parameters(val: Gee.MultiMap);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AbstractFieldDetails.SignalSignatures;
+        $signals: AbstractFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -339,14 +340,15 @@ export namespace Folks {
 
     class AvatarCache extends GObject.Object {
         static $gtype: GObject.GType<AvatarCache>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AvatarCache.SignalSignatures;
+        $signals: AvatarCache.SignalSignatures;
 
         // Constructors
 
@@ -428,14 +430,15 @@ export namespace Folks {
         set is_prepared(val: boolean);
         get isPrepared(): boolean;
         set isPrepared(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BackendStore.SignalSignatures;
+        $signals: BackendStore.SignalSignatures;
 
         // Fields
 
@@ -530,14 +533,15 @@ export namespace Folks {
         get name(): string;
         get persona_stores(): Gee.Map;
         get personaStores(): Gee.Map;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Backend.SignalSignatures;
+        $signals: Backend.SignalSignatures;
 
         // Constructors
 
@@ -627,14 +631,15 @@ export namespace Folks {
         set debug_output_enabled(val: boolean);
         get debugOutputEnabled(): boolean;
         set debugOutputEnabled(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Debug.SignalSignatures;
+        $signals: Debug.SignalSignatures;
 
         // Constructors
 
@@ -695,14 +700,15 @@ export namespace Folks {
 
     class EmailFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<EmailFieldDetails>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EmailFieldDetails.SignalSignatures;
+        $signals: EmailFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -750,14 +756,15 @@ export namespace Folks {
 
     class ExtendedFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<ExtendedFieldDetails>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExtendedFieldDetails.SignalSignatures;
+        $signals: ExtendedFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -807,14 +814,15 @@ export namespace Folks {
 
     class ImFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<ImFieldDetails>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ImFieldDetails.SignalSignatures;
+        $signals: ImFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -895,14 +903,15 @@ export namespace Folks {
         set individuals(val: Gee.Map);
         get user(): Individual;
         set user(val: Individual);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IndividualAggregator.SignalSignatures;
+        $signals: IndividualAggregator.SignalSignatures;
 
         // Constructors
 
@@ -1126,14 +1135,15 @@ export namespace Folks {
         get displayName(): string;
         get personas(): Gee.Set;
         set personas(val: Gee.Set);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Individual.SignalSignatures;
+        $signals: Individual.SignalSignatures;
 
         // Constructors
 
@@ -1990,14 +2000,15 @@ export namespace Folks {
 
     class Location extends GObject.Object {
         static $gtype: GObject.GType<Location>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Location.SignalSignatures;
+        $signals: Location.SignalSignatures;
 
         // Fields
 
@@ -2081,14 +2092,15 @@ export namespace Folks {
         set prefixes(val: string);
         get suffixes(): string;
         set suffixes(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StructuredName.SignalSignatures;
+        $signals: StructuredName.SignalSignatures;
 
         // Constructors
 
@@ -2169,14 +2181,15 @@ export namespace Folks {
 
         get uid(): string;
         set uid(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NoteFieldDetails.SignalSignatures;
+        $signals: NoteFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -2249,14 +2262,15 @@ export namespace Folks {
         get type_id(): string;
         get typeId(): string;
         get id(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ObjectCache.SignalSignatures;
+        $signals: ObjectCache.SignalSignatures;
 
         // Constructors
 
@@ -2418,14 +2432,15 @@ export namespace Folks {
         set is_user_set_default(val: boolean);
         get isUserSetDefault(): boolean;
         set isUserSetDefault(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PersonaStore.SignalSignatures;
+        $signals: PersonaStore.SignalSignatures;
 
         // Constructors
 
@@ -2583,14 +2598,15 @@ export namespace Folks {
         get linkableProperties(): string[];
         get writeable_properties(): string[];
         get writeableProperties(): string[];
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Persona.SignalSignatures;
+        $signals: Persona.SignalSignatures;
 
         // Constructors
 
@@ -2659,14 +2675,15 @@ export namespace Folks {
 
     class PhoneFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<PhoneFieldDetails>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PhoneFieldDetails.SignalSignatures;
+        $signals: PhoneFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -2760,14 +2777,15 @@ export namespace Folks {
         set addressFormat(val: string);
         get uid(): string;
         set uid(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PostalAddress.SignalSignatures;
+        $signals: PostalAddress.SignalSignatures;
 
         // Constructors
 
@@ -2849,14 +2867,15 @@ export namespace Folks {
 
     class PostalAddressFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<PostalAddressFieldDetails>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PostalAddressFieldDetails.SignalSignatures;
+        $signals: PostalAddressFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -2898,14 +2917,15 @@ export namespace Folks {
 
     class PotentialMatch extends GObject.Object {
         static $gtype: GObject.GType<PotentialMatch>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PotentialMatch.SignalSignatures;
+        $signals: PotentialMatch.SignalSignatures;
 
         // Fields
 
@@ -2963,14 +2983,15 @@ export namespace Folks {
 
         get match_fields(): string[];
         get matchFields(): string[];
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Query.SignalSignatures;
+        $signals: Query.SignalSignatures;
 
         // Constructors
 
@@ -3042,14 +3063,15 @@ export namespace Folks {
         set role(val: string);
         get uid(): string;
         set uid(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Role.SignalSignatures;
+        $signals: Role.SignalSignatures;
 
         // Constructors
 
@@ -3115,14 +3137,15 @@ export namespace Folks {
 
     class RoleFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<RoleFieldDetails>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RoleFieldDetails.SignalSignatures;
+        $signals: RoleFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -3188,14 +3211,15 @@ export namespace Folks {
         get isPrepared(): boolean;
         get is_quiescent(): boolean;
         get isQuiescent(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SearchView.SignalSignatures;
+        $signals: SearchView.SignalSignatures;
 
         // Constructors
 
@@ -3276,14 +3300,15 @@ export namespace Folks {
         set query_locale(val: string);
         get queryLocale(): string;
         set queryLocale(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimpleQuery.SignalSignatures;
+        $signals: SimpleQuery.SignalSignatures;
 
         // Constructors
 
@@ -3338,14 +3363,15 @@ export namespace Folks {
 
     class UrlFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<UrlFieldDetails>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UrlFieldDetails.SignalSignatures;
+        $signals: UrlFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -3385,14 +3411,15 @@ export namespace Folks {
 
     class Utils extends GObject.Object {
         static $gtype: GObject.GType<Utils>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Utils.SignalSignatures;
+        $signals: Utils.SignalSignatures;
 
         // Constructors
 
@@ -3447,14 +3474,15 @@ export namespace Folks {
 
     class WebServiceFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<WebServiceFieldDetails>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebServiceFieldDetails.SignalSignatures;
+        $signals: WebServiceFieldDetails.SignalSignatures;
 
         // Constructors
 

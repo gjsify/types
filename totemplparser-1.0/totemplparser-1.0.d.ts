@@ -332,14 +332,15 @@ export namespace TotemPlParser {
          */
         get recurse(): boolean;
         set recurse(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Parser.SignalSignatures;
+        $signals: Parser.SignalSignatures;
 
         // Constructors
 
@@ -648,14 +649,15 @@ export namespace TotemPlParser {
      */
     class Playlist extends GObject.Object {
         static $gtype: GObject.GType<Playlist>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Playlist.SignalSignatures;
+        $signals: Playlist.SignalSignatures;
 
         // Constructors
 

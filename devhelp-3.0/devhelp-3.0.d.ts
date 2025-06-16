@@ -219,14 +219,15 @@ export namespace Devhelp {
 
     class AssistantView extends WebKit2.WebView implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<AssistantView>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AssistantView.SignalSignatures;
+        $signals: AssistantView.SignalSignatures;
 
         // Constructors
 
@@ -725,14 +726,15 @@ export namespace Devhelp {
 
     class Book extends GObject.Object {
         static $gtype: GObject.GType<Book>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Book.SignalSignatures;
+        $signals: Book.SignalSignatures;
 
         // Constructors
 
@@ -811,14 +813,15 @@ export namespace Devhelp {
 
     class BookList extends GObject.Object {
         static $gtype: GObject.GType<BookList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BookList.SignalSignatures;
+        $signals: BookList.SignalSignatures;
 
         // Constructors
 
@@ -917,14 +920,15 @@ export namespace Devhelp {
 
     class BookListBuilder extends GObject.Object {
         static $gtype: GObject.GType<BookListBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BookListBuilder.SignalSignatures;
+        $signals: BookListBuilder.SignalSignatures;
 
         // Constructors
 
@@ -1037,14 +1041,15 @@ export namespace Devhelp {
          * The directory, as a #GFile, containing a set of Devhelp books.
          */
         get directory(): Gio.File;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BookListDirectory.SignalSignatures;
+        $signals: BookListDirectory.SignalSignatures;
 
         // Constructors
 
@@ -1091,14 +1096,15 @@ export namespace Devhelp {
 
     class BookManager extends GObject.Object {
         static $gtype: GObject.GType<BookManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BookManager.SignalSignatures;
+        $signals: BookManager.SignalSignatures;
 
         // Constructors
 
@@ -1223,14 +1229,15 @@ export namespace Devhelp {
          * dh_profile_get_default() is used.
          */
         get profile(): Profile;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BookTree.SignalSignatures;
+        $signals: BookTree.SignalSignatures;
 
         // Constructors
 
@@ -1825,14 +1832,15 @@ export namespace Devhelp {
 
     class Completion extends GObject.Object {
         static $gtype: GObject.GType<Completion>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Completion.SignalSignatures;
+        $signals: Completion.SignalSignatures;
 
         // Constructors
 
@@ -1911,14 +1919,15 @@ export namespace Devhelp {
 
     class KeywordModel extends GObject.Object implements Gtk.TreeModel {
         static $gtype: GObject.GType<KeywordModel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: KeywordModel.SignalSignatures;
+        $signals: KeywordModel.SignalSignatures;
 
         // Constructors
 
@@ -2889,14 +2898,15 @@ export namespace Devhelp {
          * dh_profile_get_default() is used.
          */
         get profile(): Profile;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Notebook.SignalSignatures;
+        $signals: Notebook.SignalSignatures;
 
         // Constructors
 
@@ -3395,14 +3405,15 @@ export namespace Devhelp {
 
     class Profile extends GObject.Object {
         static $gtype: GObject.GType<Profile>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Profile.SignalSignatures;
+        $signals: Profile.SignalSignatures;
 
         // Constructors
 
@@ -3464,14 +3475,15 @@ export namespace Devhelp {
 
     class ProfileBuilder extends GObject.Object {
         static $gtype: GObject.GType<ProfileBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProfileBuilder.SignalSignatures;
+        $signals: ProfileBuilder.SignalSignatures;
 
         // Constructors
 
@@ -3590,14 +3602,15 @@ export namespace Devhelp {
          * the #DhNotebook.
          */
         get notebook(): Notebook;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SearchBar.SignalSignatures;
+        $signals: SearchBar.SignalSignatures;
 
         // Constructors
 
@@ -4156,14 +4169,15 @@ export namespace Devhelp {
          */
         get variableFont(): string;
         set variableFont(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Settings.SignalSignatures;
+        $signals: Settings.SignalSignatures;
 
         // Constructors
 
@@ -4305,14 +4319,15 @@ export namespace Devhelp {
 
     class SettingsBuilder extends GObject.Object {
         static $gtype: GObject.GType<SettingsBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingsBuilder.SignalSignatures;
+        $signals: SettingsBuilder.SignalSignatures;
 
         // Constructors
 
@@ -4437,14 +4452,15 @@ export namespace Devhelp {
          * dh_profile_get_default() is used.
          */
         get profile(): Profile;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Sidebar.SignalSignatures;
+        $signals: Sidebar.SignalSignatures;
 
         // Constructors
 
@@ -5044,14 +5060,15 @@ export namespace Devhelp {
          * with the default #DhProfile.
          */
         get webView(): WebView;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Tab.SignalSignatures;
+        $signals: Tab.SignalSignatures;
 
         // Constructors
 
@@ -5620,14 +5637,15 @@ export namespace Devhelp {
          * #DhTab.
          */
         get tab(): Tab;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TabLabel.SignalSignatures;
+        $signals: TabLabel.SignalSignatures;
 
         // Constructors
 
@@ -6214,14 +6232,15 @@ export namespace Devhelp {
          * dh_profile_get_default() is used.
          */
         get profile(): Profile;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebView.SignalSignatures;
+        $signals: WebView.SignalSignatures;
 
         // Constructors
 

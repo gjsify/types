@@ -150,14 +150,15 @@ export namespace Xkl {
 
     class ConfigItem extends GObject.Object {
         static $gtype: GObject.GType<ConfigItem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConfigItem.SignalSignatures;
+        $signals: ConfigItem.SignalSignatures;
 
         // Fields
 
@@ -227,14 +228,15 @@ export namespace Xkl {
 
     class ConfigRec extends GObject.Object {
         static $gtype: GObject.GType<ConfigRec>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConfigRec.SignalSignatures;
+        $signals: ConfigRec.SignalSignatures;
 
         // Fields
 
@@ -380,14 +382,15 @@ export namespace Xkl {
         // Properties
 
         get engine(): Engine;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConfigRegistry.SignalSignatures;
+        $signals: ConfigRegistry.SignalSignatures;
 
         // Constructors
 
@@ -584,14 +587,15 @@ export namespace Xkl {
         get numGroups(): number;
         get secondary_groups_mask(): number;
         get secondaryGroupsMask(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Engine.SignalSignatures;
+        $signals: Engine.SignalSignatures;
 
         // Constructors
 

@@ -172,14 +172,15 @@ export namespace GPluginGtk4 {
          */
         get settingsBackend(): Gio.SettingsBackend;
         set settingsBackend(val: Gio.SettingsBackend);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PluginPage.SignalSignatures;
+        $signals: PluginPage.SignalSignatures;
 
         // Constructors
 
@@ -776,14 +777,15 @@ export namespace GPluginGtk4 {
          */
         get plugin(): GObject.Object;
         set plugin(val: GObject.Object);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PluginRow.SignalSignatures;
+        $signals: PluginRow.SignalSignatures;
 
         // Constructors
 
@@ -3957,14 +3959,15 @@ export namespace GPluginGtk4 {
          */
         get settings(): Gio.Settings;
         set settings(val: Gio.Settings);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PluginSettingsList.SignalSignatures;
+        $signals: PluginSettingsList.SignalSignatures;
 
         // Constructors
 
@@ -4564,14 +4567,15 @@ export namespace GPluginGtk4 {
          */
         get showInternal(): boolean;
         set showInternal(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: View.SignalSignatures;
+        $signals: View.SignalSignatures;
 
         // Constructors
 

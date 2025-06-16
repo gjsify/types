@@ -110,14 +110,15 @@ export namespace GnomeMaps {
          */
         get name(): string;
         set name(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Contact.SignalSignatures;
+        $signals: Contact.SignalSignatures;
 
         // Constructors
 
@@ -174,14 +175,15 @@ export namespace GnomeMaps {
          * The type of the contact.
          */
         get state(): ContactStoreState;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ContactStore.SignalSignatures;
+        $signals: ContactStore.SignalSignatures;
 
         // Constructors
 
@@ -287,14 +289,15 @@ export namespace GnomeMaps {
          * of this bounding box.
          */
         get world(): Champlain.BoundingBox;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileTileSource.SignalSignatures;
+        $signals: FileTileSource.SignalSignatures;
 
         // Constructors
 
@@ -355,14 +358,15 @@ export namespace GnomeMaps {
         set created_by(val: string);
         get createdBy(): string;
         set createdBy(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OSMChangeset.SignalSignatures;
+        $signals: OSMChangeset.SignalSignatures;
 
         // Constructors
 
@@ -428,14 +432,15 @@ export namespace GnomeMaps {
          */
         get longitude(): number;
         set longitude(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OSMNode.SignalSignatures;
+        $signals: OSMNode.SignalSignatures;
 
         // Constructors
 
@@ -477,14 +482,15 @@ export namespace GnomeMaps {
 
     class OSMOAuthProxyCall extends Rest.OAuthProxyCall {
         static $gtype: GObject.GType<OSMOAuthProxyCall>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OSMOAuthProxyCall.SignalSignatures;
+        $signals: OSMOAuthProxyCall.SignalSignatures;
 
         // Constructors
 
@@ -550,14 +556,15 @@ export namespace GnomeMaps {
          */
         get version(): number;
         set version(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OSMObject.SignalSignatures;
+        $signals: OSMObject.SignalSignatures;
 
         // Constructors
 
@@ -606,14 +613,15 @@ export namespace GnomeMaps {
 
     class OSMRelation extends OSMObject {
         static $gtype: GObject.GType<OSMRelation>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OSMRelation.SignalSignatures;
+        $signals: OSMRelation.SignalSignatures;
 
         // Constructors
 
@@ -661,14 +669,15 @@ export namespace GnomeMaps {
 
     class OSMWay extends OSMObject {
         static $gtype: GObject.GType<OSMWay>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OSMWay.SignalSignatures;
+        $signals: OSMWay.SignalSignatures;
 
         // Constructors
 

@@ -793,14 +793,15 @@ export namespace OSTree {
 
     class AsyncProgress extends GObject.Object {
         static $gtype: GObject.GType<AsyncProgress>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AsyncProgress.SignalSignatures;
+        $signals: AsyncProgress.SignalSignatures;
 
         // Constructors
 
@@ -861,14 +862,15 @@ export namespace OSTree {
 
     class BootconfigParser extends GObject.Object {
         static $gtype: GObject.GType<BootconfigParser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BootconfigParser.SignalSignatures;
+        $signals: BootconfigParser.SignalSignatures;
 
         // Constructors
 
@@ -936,14 +938,15 @@ export namespace OSTree {
         // Properties
 
         get checksum(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ChecksumInputStream.SignalSignatures;
+        $signals: ChecksumInputStream.SignalSignatures;
 
         // Constructors
 
@@ -985,14 +988,15 @@ export namespace OSTree {
 
     class Deployment extends GObject.Object {
         static $gtype: GObject.GType<Deployment>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Deployment.SignalSignatures;
+        $signals: Deployment.SignalSignatures;
 
         // Constructors
 
@@ -1069,14 +1073,15 @@ export namespace OSTree {
 
     class GpgVerifyResult extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<GpgVerifyResult>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GpgVerifyResult.SignalSignatures;
+        $signals: GpgVerifyResult.SignalSignatures;
 
         // Constructors
 
@@ -1759,14 +1764,15 @@ export namespace OSTree {
      */
     class MutableTree extends GObject.Object {
         static $gtype: GObject.GType<MutableTree>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MutableTree.SignalSignatures;
+        $signals: MutableTree.SignalSignatures;
 
         // Constructors
 
@@ -1851,14 +1857,15 @@ export namespace OSTree {
         get remotesConfigDir(): string;
         get sysroot_path(): Gio.File;
         get sysrootPath(): Gio.File;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Repo.SignalSignatures;
+        $signals: Repo.SignalSignatures;
 
         // Constructors
 
@@ -3082,14 +3089,15 @@ export namespace OSTree {
 
     class RepoFile extends GObject.Object implements Gio.File {
         static $gtype: GObject.GType<RepoFile>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RepoFile.SignalSignatures;
+        $signals: RepoFile.SignalSignatures;
 
         // Constructors
 
@@ -8468,14 +8476,15 @@ export namespace OSTree {
         // Properties
 
         get path(): Gio.File;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SePolicy.SignalSignatures;
+        $signals: SePolicy.SignalSignatures;
 
         // Constructors
 
@@ -9088,14 +9097,15 @@ export namespace OSTree {
         // Properties
 
         get path(): Gio.File;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Sysroot.SignalSignatures;
+        $signals: Sysroot.SignalSignatures;
 
         // Constructors
 
@@ -9388,14 +9398,15 @@ export namespace OSTree {
         get flags(): SysrootUpgraderFlags;
         get osname(): string;
         get sysroot(): Sysroot;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SysrootUpgrader.SignalSignatures;
+        $signals: SysrootUpgrader.SignalSignatures;
 
         // Constructors
 

@@ -150,14 +150,15 @@ export namespace Libxfce4windowingui {
          */
         // This accessor conflicts with another accessor's type in a parent class or interface.
         get window(): Libxfce4windowing.Window | any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WindowActionMenu.SignalSignatures;
+        $signals: WindowActionMenu.SignalSignatures;
 
         // Constructors
 

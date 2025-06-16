@@ -326,14 +326,15 @@ export namespace Xed {
 
     class App extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<App>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: App.SignalSignatures;
+        $signals: App.SignalSignatures;
 
         // Constructors
 
@@ -932,14 +933,15 @@ export namespace Xed {
          * </warning>
          */
         get useGvfsMetadata(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Document.SignalSignatures;
+        $signals: Document.SignalSignatures;
 
         // Constructors
 
@@ -1123,14 +1125,15 @@ export namespace Xed {
         set save_mode(val: boolean);
         get saveMode(): boolean;
         set saveMode(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EncodingsComboBox.SignalSignatures;
+        $signals: EncodingsComboBox.SignalSignatures;
 
         // Constructors
 
@@ -5756,14 +5759,15 @@ export namespace Xed {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.FileChooser
     {
         static $gtype: GObject.GType<FileChooserDialog>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileChooserDialog.SignalSignatures;
+        $signals: FileChooserDialog.SignalSignatures;
 
         // Constructors
 
@@ -6930,14 +6934,15 @@ export namespace Xed {
         get object_path(): string;
         get objectPath(): string;
         get type(): MessageType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Message.SignalSignatures;
+        $signals: Message.SignalSignatures;
 
         // Constructors
 
@@ -7027,14 +7032,15 @@ export namespace Xed {
 
     class MessageBus extends GObject.Object {
         static $gtype: GObject.GType<MessageBus>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MessageBus.SignalSignatures;
+        $signals: MessageBus.SignalSignatures;
 
         // Constructors
 
@@ -7252,14 +7258,15 @@ export namespace Xed {
 
     class Notebook extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Notebook>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Notebook.SignalSignatures;
+        $signals: Notebook.SignalSignatures;
 
         // Fields
 
@@ -7882,14 +7889,15 @@ export namespace Xed {
         // Properties
 
         get orientation(): Gtk.Orientation;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Panel.SignalSignatures;
+        $signals: Panel.SignalSignatures;
 
         // Constructors
 
@@ -8478,14 +8486,15 @@ export namespace Xed {
 
         set has_cancel_button(val: boolean);
         set hasCancelButton(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProgressInfoBar.SignalSignatures;
+        $signals: ProgressInfoBar.SignalSignatures;
 
         // Constructors
 
@@ -9028,14 +9037,15 @@ export namespace Xed {
 
     class Searchbar extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Searchbar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Searchbar.SignalSignatures;
+        $signals: Searchbar.SignalSignatures;
 
         // Fields
 
@@ -9614,14 +9624,15 @@ export namespace Xed {
 
     class Statusbar extends Gtk.Statusbar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Statusbar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Statusbar.SignalSignatures;
+        $signals: Statusbar.SignalSignatures;
 
         // Constructors
 
@@ -10189,14 +10200,15 @@ export namespace Xed {
         get canClose(): boolean;
         get name(): string;
         get state(): TabState;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Tab.SignalSignatures;
+        $signals: Tab.SignalSignatures;
 
         // Fields
 
@@ -10830,14 +10842,15 @@ export namespace Xed {
 
     class View extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: View.SignalSignatures;
+        $signals: View.SignalSignatures;
 
         // Fields
 
@@ -11469,14 +11482,15 @@ export namespace Xed {
         // Properties
 
         get state(): WindowState;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Window.SignalSignatures;
+        $signals: Window.SignalSignatures;
 
         // Fields
 

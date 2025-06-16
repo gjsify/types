@@ -3108,14 +3108,15 @@ export namespace Pango {
      */
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Context.SignalSignatures;
+        $signals: Context.SignalSignatures;
 
         // Constructors
 
@@ -3366,14 +3367,15 @@ export namespace Pango {
      */
     class Coverage extends GObject.Object {
         static $gtype: GObject.GType<Coverage>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Coverage.SignalSignatures;
+        $signals: Coverage.SignalSignatures;
 
         // Constructors
 
@@ -3470,14 +3472,15 @@ export namespace Pango {
      */
     abstract class Font extends GObject.Object {
         static $gtype: GObject.GType<Font>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Font.SignalSignatures;
+        $signals: Font.SignalSignatures;
 
         // Constructors
 
@@ -3723,14 +3726,15 @@ export namespace Pango {
      */
     abstract class FontFace extends GObject.Object {
         static $gtype: GObject.GType<FontFace>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FontFace.SignalSignatures;
+        $signals: FontFace.SignalSignatures;
 
         // Constructors
 
@@ -3919,14 +3923,15 @@ export namespace Pango {
          * The name of the family
          */
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FontFamily.SignalSignatures;
+        $signals: FontFamily.SignalSignatures;
 
         // Constructors
 
@@ -4623,14 +4628,15 @@ export namespace Pango {
          * The number of items contained in this list.
          */
         get nItems(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FontMap.SignalSignatures;
+        $signals: FontMap.SignalSignatures;
 
         // Constructors
 
@@ -5365,14 +5371,15 @@ export namespace Pango {
      */
     abstract class Fontset extends GObject.Object {
         static $gtype: GObject.GType<Fontset>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Fontset.SignalSignatures;
+        $signals: Fontset.SignalSignatures;
 
         // Constructors
 
@@ -5465,14 +5472,15 @@ export namespace Pango {
      */
     class FontsetSimple extends Fontset {
         static $gtype: GObject.GType<FontsetSimple>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FontsetSimple.SignalSignatures;
+        $signals: FontsetSimple.SignalSignatures;
 
         // Constructors
 
@@ -5567,14 +5575,15 @@ export namespace Pango {
      */
     class Layout extends GObject.Object {
         static $gtype: GObject.GType<Layout>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Layout.SignalSignatures;
+        $signals: Layout.SignalSignatures;
 
         // Constructors
 
@@ -6347,14 +6356,15 @@ export namespace Pango {
      */
     abstract class Renderer extends GObject.Object {
         static $gtype: GObject.GType<Renderer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Renderer.SignalSignatures;
+        $signals: Renderer.SignalSignatures;
 
         // Fields
 

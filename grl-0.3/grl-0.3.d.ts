@@ -763,14 +763,15 @@ export namespace Grl {
 
     class Caps extends GObject.Object {
         static $gtype: GObject.GType<Caps>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Caps.SignalSignatures;
+        $signals: Caps.SignalSignatures;
 
         // Constructors
 
@@ -842,14 +843,15 @@ export namespace Grl {
 
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Config.SignalSignatures;
+        $signals: Config.SignalSignatures;
 
         // Constructors
 
@@ -1000,14 +1002,15 @@ export namespace Grl {
 
     class Data extends GObject.Object {
         static $gtype: GObject.GType<Data>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Data.SignalSignatures;
+        $signals: Data.SignalSignatures;
 
         // Constructors
 
@@ -1333,14 +1336,15 @@ export namespace Grl {
         set media_type(val: MediaType);
         get mediaType(): MediaType;
         set mediaType(val: MediaType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Media.SignalSignatures;
+        $signals: Media.SignalSignatures;
 
         // Constructors
 
@@ -1968,14 +1972,15 @@ export namespace Grl {
 
     class OperationOptions extends GObject.Object {
         static $gtype: GObject.GType<OperationOptions>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OperationOptions.SignalSignatures;
+        $signals: OperationOptions.SignalSignatures;
 
         // Constructors
 
@@ -2120,14 +2125,15 @@ export namespace Grl {
          * `TRUE` if plugin is loaded.
          */
         get loaded(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Plugin.SignalSignatures;
+        $signals: Plugin.SignalSignatures;
 
         // Constructors
 
@@ -2222,14 +2228,15 @@ export namespace Grl {
 
     class Registry extends GObject.Object {
         static $gtype: GObject.GType<Registry>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Registry.SignalSignatures;
+        $signals: Registry.SignalSignatures;
 
         // Constructors
 
@@ -2458,14 +2465,15 @@ export namespace Grl {
 
     class RelatedKeys extends GObject.Object {
         static $gtype: GObject.GType<RelatedKeys>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RelatedKeys.SignalSignatures;
+        $signals: RelatedKeys.SignalSignatures;
 
         // Constructors
 
@@ -2886,14 +2894,15 @@ export namespace Grl {
          */
         get supportedMedia(): SupportedMedia;
         set supportedMedia(val: SupportedMedia);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Source.SignalSignatures;
+        $signals: Source.SignalSignatures;
 
         // Constructors
 

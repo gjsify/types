@@ -3026,14 +3026,15 @@ export namespace Camel {
 
     class Address extends GObject.Object {
         static $gtype: GObject.GType<Address>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Address.SignalSignatures;
+        $signals: Address.SignalSignatures;
 
         // Constructors
 
@@ -3164,14 +3165,15 @@ export namespace Camel {
 
     class BlockFile extends GObject.Object {
         static $gtype: GObject.GType<BlockFile>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BlockFile.SignalSignatures;
+        $signals: BlockFile.SignalSignatures;
 
         // Constructors
 
@@ -3279,14 +3281,15 @@ export namespace Camel {
 
     class CertDB extends GObject.Object {
         static $gtype: GObject.GType<CertDB>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertDB.SignalSignatures;
+        $signals: CertDB.SignalSignatures;
 
         // Constructors
 
@@ -3378,14 +3381,15 @@ export namespace Camel {
         // Properties
 
         get session(): Session;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CipherContext.SignalSignatures;
+        $signals: CipherContext.SignalSignatures;
 
         // Constructors
 
@@ -3808,14 +3812,15 @@ export namespace Camel {
 
     class DB extends GObject.Object {
         static $gtype: GObject.GType<DB>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DB.SignalSignatures;
+        $signals: DB.SignalSignatures;
 
         // Constructors
 
@@ -4133,14 +4138,15 @@ export namespace Camel {
         set expireEnabled(val: boolean);
         get path(): string;
         set path(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataCache.SignalSignatures;
+        $signals: DataCache.SignalSignatures;
 
         // Constructors
 
@@ -4292,14 +4298,15 @@ export namespace Camel {
 
     class DataWrapper extends GObject.Object {
         static $gtype: GObject.GType<DataWrapper>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataWrapper.SignalSignatures;
+        $signals: DataWrapper.SignalSignatures;
 
         // Constructors
 
@@ -4942,14 +4949,15 @@ export namespace Camel {
 
     class FilterDriver extends GObject.Object {
         static $gtype: GObject.GType<FilterDriver>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilterDriver.SignalSignatures;
+        $signals: FilterDriver.SignalSignatures;
 
         // Constructors
 
@@ -5102,14 +5110,15 @@ export namespace Camel {
         // Properties
 
         get filter(): MimeFilter;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilterInputStream.SignalSignatures;
+        $signals: FilterInputStream.SignalSignatures;
 
         // Constructors
 
@@ -5167,14 +5176,15 @@ export namespace Camel {
         // Properties
 
         get filter(): MimeFilter;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilterOutputStream.SignalSignatures;
+        $signals: FilterOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -5305,14 +5315,15 @@ export namespace Camel {
          * The #CamelStore to which the folder belongs.
          */
         get parentStore(): Store;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Folder.SignalSignatures;
+        $signals: Folder.SignalSignatures;
 
         // Constructors
 
@@ -6462,14 +6473,15 @@ export namespace Camel {
 
     class FolderSearch extends GObject.Object {
         static $gtype: GObject.GType<FolderSearch>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FolderSearch.SignalSignatures;
+        $signals: FolderSearch.SignalSignatures;
 
         // Constructors
 
@@ -6690,14 +6702,15 @@ export namespace Camel {
          * How many visible (not deleted and not junk) infos is saved in a summary.
          */
         get visibleCount(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FolderSummary.SignalSignatures;
+        $signals: FolderSummary.SignalSignatures;
 
         // Constructors
 
@@ -7039,14 +7052,15 @@ export namespace Camel {
         set prefer_inline(val: boolean);
         get preferInline(): boolean;
         set preferInline(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GpgContext.SignalSignatures;
+        $signals: GpgContext.SignalSignatures;
 
         // Constructors
 
@@ -7201,14 +7215,15 @@ export namespace Camel {
 
     class HTMLParser extends GObject.Object {
         static $gtype: GObject.GType<HTMLParser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HTMLParser.SignalSignatures;
+        $signals: HTMLParser.SignalSignatures;
 
         // Constructors
 
@@ -7265,14 +7280,15 @@ export namespace Camel {
 
     class Index extends GObject.Object {
         static $gtype: GObject.GType<Index>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Index.SignalSignatures;
+        $signals: Index.SignalSignatures;
 
         // Fields
 
@@ -7357,14 +7373,15 @@ export namespace Camel {
 
     class IndexCursor extends GObject.Object {
         static $gtype: GObject.GType<IndexCursor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IndexCursor.SignalSignatures;
+        $signals: IndexCursor.SignalSignatures;
 
         // Fields
 
@@ -7414,14 +7431,15 @@ export namespace Camel {
 
     class IndexName extends GObject.Object {
         static $gtype: GObject.GType<IndexName>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IndexName.SignalSignatures;
+        $signals: IndexName.SignalSignatures;
 
         // Fields
 
@@ -7475,14 +7493,15 @@ export namespace Camel {
 
     class InternetAddress extends Address {
         static $gtype: GObject.GType<InternetAddress>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InternetAddress.SignalSignatures;
+        $signals: InternetAddress.SignalSignatures;
 
         // Constructors
 
@@ -7584,14 +7603,15 @@ export namespace Camel {
 
     class KeyFile extends GObject.Object {
         static $gtype: GObject.GType<KeyFile>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: KeyFile.SignalSignatures;
+        $signals: KeyFile.SignalSignatures;
 
         // Constructors
 
@@ -7651,14 +7671,15 @@ export namespace Camel {
 
     class KeyTable extends GObject.Object {
         static $gtype: GObject.GType<KeyTable>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: KeyTable.SignalSignatures;
+        $signals: KeyTable.SignalSignatures;
 
         // Constructors
 
@@ -7745,14 +7766,15 @@ export namespace Camel {
         set maildirAltFlagSep(val: boolean);
         get path(): string;
         set path(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LocalSettings.SignalSignatures;
+        $signals: LocalSettings.SignalSignatures;
 
         // Constructors
 
@@ -7861,14 +7883,15 @@ export namespace Camel {
 
         get content(): DataWrapper;
         set content(val: DataWrapper);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Medium.SignalSignatures;
+        $signals: Medium.SignalSignatures;
 
         // Constructors
 
@@ -8262,14 +8285,15 @@ export namespace Camel {
          */
         get userTags(): NameValueArray;
         set userTags(val: NameValueArray);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MessageInfo.SignalSignatures;
+        $signals: MessageInfo.SignalSignatures;
 
         // Constructors
 
@@ -9082,14 +9106,15 @@ export namespace Camel {
 
     class MessageInfoBase extends MessageInfo {
         static $gtype: GObject.GType<MessageInfoBase>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MessageInfoBase.SignalSignatures;
+        $signals: MessageInfoBase.SignalSignatures;
 
         // Constructors
 
@@ -9127,14 +9152,15 @@ export namespace Camel {
 
     abstract class MimeFilter extends GObject.Object {
         static $gtype: GObject.GType<MimeFilter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MimeFilter.SignalSignatures;
+        $signals: MimeFilter.SignalSignatures;
 
         // Fields
 
@@ -9248,14 +9274,15 @@ export namespace Camel {
 
     class MimeFilterBasic extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterBasic>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MimeFilterBasic.SignalSignatures;
+        $signals: MimeFilterBasic.SignalSignatures;
 
         // Constructors
 
@@ -9298,14 +9325,15 @@ export namespace Camel {
 
     class MimeFilterBestenc extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterBestenc>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MimeFilterBestenc.SignalSignatures;
+        $signals: MimeFilterBestenc.SignalSignatures;
 
         // Constructors
 
@@ -9368,14 +9396,15 @@ export namespace Camel {
 
     class MimeFilterCRLF extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterCRLF>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MimeFilterCRLF.SignalSignatures;
+        $signals: MimeFilterCRLF.SignalSignatures;
 
         // Constructors
 
@@ -9429,14 +9458,15 @@ export namespace Camel {
 
     class MimeFilterCanon extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterCanon>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MimeFilterCanon.SignalSignatures;
+        $signals: MimeFilterCanon.SignalSignatures;
 
         // Constructors
 
@@ -9479,14 +9509,15 @@ export namespace Camel {
 
     class MimeFilterCharset extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterCharset>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MimeFilterCharset.SignalSignatures;
+        $signals: MimeFilterCharset.SignalSignatures;
 
         // Constructors
 
@@ -9529,14 +9560,15 @@ export namespace Camel {
 
     class MimeFilterEnriched extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterEnriched>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MimeFilterEnriched.SignalSignatures;
+        $signals: MimeFilterEnriched.SignalSignatures;
 
         // Constructors
 
@@ -9579,14 +9611,15 @@ export namespace Camel {
 
     class MimeFilterFrom extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterFrom>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MimeFilterFrom.SignalSignatures;
+        $signals: MimeFilterFrom.SignalSignatures;
 
         // Constructors
 
@@ -9626,14 +9659,15 @@ export namespace Camel {
 
     class MimeFilterGZip extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterGZip>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MimeFilterGZip.SignalSignatures;
+        $signals: MimeFilterGZip.SignalSignatures;
 
         // Constructors
 
@@ -9676,14 +9710,15 @@ export namespace Camel {
 
     class MimeFilterHTML extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterHTML>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MimeFilterHTML.SignalSignatures;
+        $signals: MimeFilterHTML.SignalSignatures;
 
         // Constructors
 
@@ -9723,14 +9758,15 @@ export namespace Camel {
 
     class MimeFilterIndex extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterIndex>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MimeFilterIndex.SignalSignatures;
+        $signals: MimeFilterIndex.SignalSignatures;
 
         // Constructors
 
@@ -9786,14 +9822,15 @@ export namespace Camel {
 
     class MimeFilterLinewrap extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterLinewrap>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MimeFilterLinewrap.SignalSignatures;
+        $signals: MimeFilterLinewrap.SignalSignatures;
 
         // Constructors
 
@@ -9836,14 +9873,15 @@ export namespace Camel {
 
     class MimeFilterPgp extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterPgp>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MimeFilterPgp.SignalSignatures;
+        $signals: MimeFilterPgp.SignalSignatures;
 
         // Constructors
 
@@ -9883,14 +9921,15 @@ export namespace Camel {
 
     class MimeFilterProgress extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterProgress>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MimeFilterProgress.SignalSignatures;
+        $signals: MimeFilterProgress.SignalSignatures;
 
         // Constructors
 
@@ -9933,14 +9972,15 @@ export namespace Camel {
 
     class MimeFilterToHTML extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterToHTML>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MimeFilterToHTML.SignalSignatures;
+        $signals: MimeFilterToHTML.SignalSignatures;
 
         // Constructors
 
@@ -9983,14 +10023,15 @@ export namespace Camel {
 
     class MimeFilterWindows extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterWindows>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MimeFilterWindows.SignalSignatures;
+        $signals: MimeFilterWindows.SignalSignatures;
 
         // Constructors
 
@@ -10051,14 +10092,15 @@ export namespace Camel {
 
     class MimeFilterYenc extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterYenc>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MimeFilterYenc.SignalSignatures;
+        $signals: MimeFilterYenc.SignalSignatures;
 
         // Constructors
 
@@ -10130,14 +10172,15 @@ export namespace Camel {
 
     class MimeMessage extends MimePart {
         static $gtype: GObject.GType<MimeMessage>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MimeMessage.SignalSignatures;
+        $signals: MimeMessage.SignalSignatures;
 
         // Constructors
 
@@ -10316,14 +10359,15 @@ export namespace Camel {
 
     class MimeParser extends GObject.Object {
         static $gtype: GObject.GType<MimeParser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MimeParser.SignalSignatures;
+        $signals: MimeParser.SignalSignatures;
 
         // Constructors
 
@@ -10634,14 +10678,15 @@ export namespace Camel {
         set description(val: string);
         get disposition(): string;
         set disposition(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MimePart.SignalSignatures;
+        $signals: MimePart.SignalSignatures;
 
         // Constructors
 
@@ -10869,14 +10914,15 @@ export namespace Camel {
 
     class Multipart extends DataWrapper {
         static $gtype: GObject.GType<Multipart>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Multipart.SignalSignatures;
+        $signals: Multipart.SignalSignatures;
 
         // Constructors
 
@@ -10991,14 +11037,15 @@ export namespace Camel {
 
     class MultipartEncrypted extends Multipart {
         static $gtype: GObject.GType<MultipartEncrypted>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MultipartEncrypted.SignalSignatures;
+        $signals: MultipartEncrypted.SignalSignatures;
 
         // Constructors
 
@@ -11038,14 +11085,15 @@ export namespace Camel {
 
     class MultipartSigned extends Multipart {
         static $gtype: GObject.GType<MultipartSigned>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MultipartSigned.SignalSignatures;
+        $signals: MultipartSigned.SignalSignatures;
 
         // Constructors
 
@@ -11105,14 +11153,15 @@ export namespace Camel {
 
     class NNTPAddress extends Address {
         static $gtype: GObject.GType<NNTPAddress>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NNTPAddress.SignalSignatures;
+        $signals: NNTPAddress.SignalSignatures;
 
         // Constructors
 
@@ -11168,14 +11217,15 @@ export namespace Camel {
 
     class NullOutputStream extends Gio.OutputStream {
         static $gtype: GObject.GType<NullOutputStream>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NullOutputStream.SignalSignatures;
+        $signals: NullOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -11244,14 +11294,15 @@ export namespace Camel {
          */
         get stateFilename(): string;
         set stateFilename(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Object.SignalSignatures;
+        $signals: Object.SignalSignatures;
 
         // Constructors
 
@@ -11340,14 +11391,15 @@ export namespace Camel {
         set offline_sync(val: ThreeState);
         get offlineSync(): ThreeState;
         set offlineSync(val: ThreeState);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OfflineFolder.SignalSignatures;
+        $signals: OfflineFolder.SignalSignatures;
 
         // Constructors
 
@@ -11516,14 +11568,15 @@ export namespace Camel {
         set stay_synchronized(val: boolean);
         get staySynchronized(): boolean;
         set staySynchronized(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OfflineSettings.SignalSignatures;
+        $signals: OfflineSettings.SignalSignatures;
 
         // Constructors
 
@@ -11629,14 +11682,15 @@ export namespace Camel {
         // Properties
 
         get online(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OfflineStore.SignalSignatures;
+        $signals: OfflineStore.SignalSignatures;
 
         // Constructors
 
@@ -12218,14 +12272,15 @@ export namespace Camel {
 
     class Operation extends Gio.Cancellable {
         static $gtype: GObject.GType<Operation>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Operation.SignalSignatures;
+        $signals: Operation.SignalSignatures;
 
         // Constructors
 
@@ -12298,14 +12353,15 @@ export namespace Camel {
 
     class PartitionTable extends GObject.Object {
         static $gtype: GObject.GType<PartitionTable>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PartitionTable.SignalSignatures;
+        $signals: PartitionTable.SignalSignatures;
 
         // Constructors
 
@@ -12352,14 +12408,15 @@ export namespace Camel {
 
     class SExp extends GObject.Object {
         static $gtype: GObject.GType<SExp>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SExp.SignalSignatures;
+        $signals: SExp.SignalSignatures;
 
         // Constructors
 
@@ -12472,14 +12529,15 @@ export namespace Camel {
 
     class SMIMEContext extends CipherContext {
         static $gtype: GObject.GType<SMIMEContext>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SMIMEContext.SignalSignatures;
+        $signals: SMIMEContext.SignalSignatures;
 
         // Constructors
 
@@ -12548,14 +12606,15 @@ export namespace Camel {
         get service(): Service;
         get service_name(): string;
         get serviceName(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Sasl.SignalSignatures;
+        $signals: Sasl.SignalSignatures;
 
         // Constructors
 
@@ -12821,14 +12880,15 @@ export namespace Camel {
 
     class SaslAnonymous extends Sasl {
         static $gtype: GObject.GType<SaslAnonymous>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SaslAnonymous.SignalSignatures;
+        $signals: SaslAnonymous.SignalSignatures;
 
         // Constructors
 
@@ -12876,14 +12936,15 @@ export namespace Camel {
 
     class SaslCramMd5 extends Sasl {
         static $gtype: GObject.GType<SaslCramMd5>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SaslCramMd5.SignalSignatures;
+        $signals: SaslCramMd5.SignalSignatures;
 
         // Constructors
 
@@ -12926,14 +12987,15 @@ export namespace Camel {
 
     class SaslDigestMd5 extends Sasl {
         static $gtype: GObject.GType<SaslDigestMd5>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SaslDigestMd5.SignalSignatures;
+        $signals: SaslDigestMd5.SignalSignatures;
 
         // Constructors
 
@@ -12976,14 +13038,15 @@ export namespace Camel {
 
     class SaslGssapi extends Sasl {
         static $gtype: GObject.GType<SaslGssapi>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SaslGssapi.SignalSignatures;
+        $signals: SaslGssapi.SignalSignatures;
 
         // Constructors
 
@@ -13041,14 +13104,15 @@ export namespace Camel {
 
     class SaslLogin extends Sasl {
         static $gtype: GObject.GType<SaslLogin>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SaslLogin.SignalSignatures;
+        $signals: SaslLogin.SignalSignatures;
 
         // Constructors
 
@@ -13091,14 +13155,15 @@ export namespace Camel {
 
     class SaslNTLM extends Sasl {
         static $gtype: GObject.GType<SaslNTLM>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SaslNTLM.SignalSignatures;
+        $signals: SaslNTLM.SignalSignatures;
 
         // Constructors
 
@@ -13141,14 +13206,15 @@ export namespace Camel {
 
     class SaslPOPB4SMTP extends Sasl {
         static $gtype: GObject.GType<SaslPOPB4SMTP>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SaslPOPB4SMTP.SignalSignatures;
+        $signals: SaslPOPB4SMTP.SignalSignatures;
 
         // Constructors
 
@@ -13191,14 +13257,15 @@ export namespace Camel {
 
     class SaslPlain extends Sasl {
         static $gtype: GObject.GType<SaslPlain>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SaslPlain.SignalSignatures;
+        $signals: SaslPlain.SignalSignatures;
 
         // Constructors
 
@@ -13241,14 +13308,15 @@ export namespace Camel {
 
     class SaslXOAuth2 extends Sasl {
         static $gtype: GObject.GType<SaslXOAuth2>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SaslXOAuth2.SignalSignatures;
+        $signals: SaslXOAuth2.SignalSignatures;
 
         // Constructors
 
@@ -13291,14 +13359,15 @@ export namespace Camel {
 
     class SaslXOAuth2Google extends SaslXOAuth2 {
         static $gtype: GObject.GType<SaslXOAuth2Google>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SaslXOAuth2Google.SignalSignatures;
+        $signals: SaslXOAuth2Google.SignalSignatures;
 
         // Constructors
 
@@ -13341,14 +13410,15 @@ export namespace Camel {
 
     class SaslXOAuth2Outlook extends SaslXOAuth2 {
         static $gtype: GObject.GType<SaslXOAuth2Outlook>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SaslXOAuth2Outlook.SignalSignatures;
+        $signals: SaslXOAuth2Outlook.SignalSignatures;
 
         // Constructors
 
@@ -13391,14 +13461,15 @@ export namespace Camel {
 
     class SaslXOAuth2Yahoo extends SaslXOAuth2 {
         static $gtype: GObject.GType<SaslXOAuth2Yahoo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SaslXOAuth2Yahoo.SignalSignatures;
+        $signals: SaslXOAuth2Yahoo.SignalSignatures;
 
         // Constructors
 
@@ -13478,14 +13549,15 @@ export namespace Camel {
         get settings(): Settings;
         set settings(val: Settings);
         get uid(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Service.SignalSignatures;
+        $signals: Service.SignalSignatures;
 
         // Constructors
 
@@ -14624,14 +14696,15 @@ export namespace Camel {
         set user_data_dir(val: string);
         get userDataDir(): string;
         set userDataDir(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Session.SignalSignatures;
+        $signals: Session.SignalSignatures;
 
         // Constructors
 
@@ -15374,14 +15447,15 @@ export namespace Camel {
      */
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Settings.SignalSignatures;
+        $signals: Settings.SignalSignatures;
 
         // Constructors
 
@@ -15482,14 +15556,15 @@ export namespace Camel {
 
     abstract class Store extends Service implements Gio.Initable {
         static $gtype: GObject.GType<Store>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Store.SignalSignatures;
+        $signals: Store.SignalSignatures;
 
         // Constructors
 
@@ -17011,14 +17086,15 @@ export namespace Camel {
         set store_changes_interval(val: number);
         get storeChangesInterval(): number;
         set storeChangesInterval(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StoreSettings.SignalSignatures;
+        $signals: StoreSettings.SignalSignatures;
 
         // Constructors
 
@@ -17085,14 +17161,15 @@ export namespace Camel {
 
     class StoreSummary extends GObject.Object {
         static $gtype: GObject.GType<StoreSummary>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StoreSummary.SignalSignatures;
+        $signals: StoreSummary.SignalSignatures;
 
         // Constructors
 
@@ -17253,14 +17330,15 @@ export namespace Camel {
         set base_stream(val: Gio.IOStream);
         get baseStream(): Gio.IOStream;
         set baseStream(val: Gio.IOStream);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Stream.SignalSignatures;
+        $signals: Stream.SignalSignatures;
 
         // Constructors
 
@@ -17939,14 +18017,15 @@ export namespace Camel {
 
     class StreamBuffer extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamBuffer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StreamBuffer.SignalSignatures;
+        $signals: StreamBuffer.SignalSignatures;
 
         // Constructors
 
@@ -18563,14 +18642,15 @@ export namespace Camel {
 
     class StreamFilter extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamFilter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StreamFilter.SignalSignatures;
+        $signals: StreamFilter.SignalSignatures;
 
         // Constructors
 
@@ -19174,14 +19254,15 @@ export namespace Camel {
 
     class StreamFs extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamFs>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StreamFs.SignalSignatures;
+        $signals: StreamFs.SignalSignatures;
 
         // Constructors
 
@@ -19769,14 +19850,15 @@ export namespace Camel {
 
     class StreamMem extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamMem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StreamMem.SignalSignatures;
+        $signals: StreamMem.SignalSignatures;
 
         // Constructors
 
@@ -20388,14 +20470,15 @@ export namespace Camel {
 
     class StreamNull extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamNull>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StreamNull.SignalSignatures;
+        $signals: StreamNull.SignalSignatures;
 
         // Constructors
 
@@ -20982,14 +21065,15 @@ export namespace Camel {
 
     class StreamProcess extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamProcess>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StreamProcess.SignalSignatures;
+        $signals: StreamProcess.SignalSignatures;
 
         // Constructors
 
@@ -21574,14 +21658,15 @@ export namespace Camel {
 
     class TextIndex extends Index {
         static $gtype: GObject.GType<TextIndex>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TextIndex.SignalSignatures;
+        $signals: TextIndex.SignalSignatures;
 
         // Constructors
 
@@ -21633,14 +21718,15 @@ export namespace Camel {
 
     class TextIndexCursor extends IndexCursor {
         static $gtype: GObject.GType<TextIndexCursor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TextIndexCursor.SignalSignatures;
+        $signals: TextIndexCursor.SignalSignatures;
 
         // Constructors
 
@@ -21678,14 +21764,15 @@ export namespace Camel {
 
     class TextIndexKeyCursor extends IndexCursor {
         static $gtype: GObject.GType<TextIndexKeyCursor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TextIndexKeyCursor.SignalSignatures;
+        $signals: TextIndexKeyCursor.SignalSignatures;
 
         // Constructors
 
@@ -21723,14 +21810,15 @@ export namespace Camel {
 
     class TextIndexName extends IndexName {
         static $gtype: GObject.GType<TextIndexName>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TextIndexName.SignalSignatures;
+        $signals: TextIndexName.SignalSignatures;
 
         // Constructors
 
@@ -21778,14 +21866,15 @@ export namespace Camel {
 
     abstract class Transport extends Service implements Gio.Initable {
         static $gtype: GObject.GType<Transport>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Transport.SignalSignatures;
+        $signals: Transport.SignalSignatures;
 
         // Constructors
 
@@ -22474,14 +22563,15 @@ export namespace Camel {
 
     class VTrashFolder extends VeeFolder {
         static $gtype: GObject.GType<VTrashFolder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VTrashFolder.SignalSignatures;
+        $signals: VTrashFolder.SignalSignatures;
 
         // Constructors
 
@@ -22532,14 +22622,15 @@ export namespace Camel {
      */
     class VeeDataCache extends GObject.Object {
         static $gtype: GObject.GType<VeeDataCache>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VeeDataCache.SignalSignatures;
+        $signals: VeeDataCache.SignalSignatures;
 
         // Constructors
 
@@ -22654,14 +22745,15 @@ export namespace Camel {
         set auto_update(val: boolean);
         get autoUpdate(): boolean;
         set autoUpdate(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VeeFolder.SignalSignatures;
+        $signals: VeeFolder.SignalSignatures;
 
         // Constructors
 
@@ -22859,14 +22951,15 @@ export namespace Camel {
 
     class VeeMessageInfo extends MessageInfo {
         static $gtype: GObject.GType<VeeMessageInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VeeMessageInfo.SignalSignatures;
+        $signals: VeeMessageInfo.SignalSignatures;
 
         // Constructors
 
@@ -22918,14 +23011,15 @@ export namespace Camel {
      */
     class VeeMessageInfoData extends GObject.Object {
         static $gtype: GObject.GType<VeeMessageInfoData>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VeeMessageInfoData.SignalSignatures;
+        $signals: VeeMessageInfoData.SignalSignatures;
 
         // Constructors
 
@@ -22992,14 +23086,15 @@ export namespace Camel {
         set unmatched_enabled(val: boolean);
         get unmatchedEnabled(): boolean;
         set unmatchedEnabled(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VeeStore.SignalSignatures;
+        $signals: VeeStore.SignalSignatures;
 
         // Constructors
 
@@ -23530,14 +23625,15 @@ export namespace Camel {
      */
     class VeeSubfolderData extends GObject.Object {
         static $gtype: GObject.GType<VeeSubfolderData>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VeeSubfolderData.SignalSignatures;
+        $signals: VeeSubfolderData.SignalSignatures;
 
         // Constructors
 
@@ -23590,14 +23686,15 @@ export namespace Camel {
 
     class VeeSummary extends FolderSummary {
         static $gtype: GObject.GType<VeeSummary>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VeeSummary.SignalSignatures;
+        $signals: VeeSummary.SignalSignatures;
 
         // Constructors
 

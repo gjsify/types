@@ -172,14 +172,15 @@ export namespace Entangle {
         get preferences(): Preferences;
         get supported_cameras(): CameraList;
         get supportedCameras(): CameraList;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Application.SignalSignatures;
+        $signals: Application.SignalSignatures;
 
         // Constructors
 
@@ -738,14 +739,15 @@ export namespace Entangle {
         set progress(val: Progress);
         get serial(): string;
         get summary(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Camera.SignalSignatures;
+        $signals: Camera.SignalSignatures;
 
         // Constructors
 
@@ -1820,14 +1822,15 @@ export namespace Entangle {
         set deleteFile(val: boolean);
         get session(): Session;
         set session(val: Session);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CameraAutomata.SignalSignatures;
+        $signals: CameraAutomata.SignalSignatures;
 
         // Constructors
 
@@ -1922,14 +1925,15 @@ export namespace Entangle {
         get mimetype(): string;
         set mimetype(val: string);
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CameraFile.SignalSignatures;
+        $signals: CameraFile.SignalSignatures;
 
         // Constructors
 
@@ -2042,14 +2046,15 @@ export namespace Entangle {
         get active(): boolean;
         get device_manager(): DeviceManager;
         get deviceManager(): DeviceManager;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CameraList.SignalSignatures;
+        $signals: CameraList.SignalSignatures;
 
         // Constructors
 
@@ -2226,14 +2231,15 @@ export namespace Entangle {
 
         get camera(): Camera;
         set camera(val: Camera);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CameraManager.SignalSignatures;
+        $signals: CameraManager.SignalSignatures;
 
         // Constructors
 
@@ -3348,14 +3354,15 @@ export namespace Entangle {
 
         get cameras(): CameraList;
         set cameras(val: CameraList);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CameraPicker.SignalSignatures;
+        $signals: CameraPicker.SignalSignatures;
 
         // Constructors
 
@@ -3849,14 +3856,15 @@ export namespace Entangle {
 
         get camera(): Camera;
         set camera(val: Camera);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CameraPreferences.SignalSignatures;
+        $signals: CameraPreferences.SignalSignatures;
 
         // Constructors
 
@@ -4002,14 +4010,15 @@ export namespace Entangle {
         set camera_list(val: CameraList);
         get cameraList(): CameraList;
         set cameraList(val: CameraList);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CameraSupport.SignalSignatures;
+        $signals: CameraSupport.SignalSignatures;
 
         // Constructors
 
@@ -4514,14 +4523,15 @@ export namespace Entangle {
 
         get data(): Uint8Array;
         get filename(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ColourProfile.SignalSignatures;
+        $signals: ColourProfile.SignalSignatures;
 
         // Constructors
 
@@ -4601,14 +4611,15 @@ export namespace Entangle {
         get dstProfile(): ColourProfile;
         get src_profile(): ColourProfile;
         get srcProfile(): ColourProfile;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ColourProfileTransform.SignalSignatures;
+        $signals: ColourProfileTransform.SignalSignatures;
 
         // Constructors
 
@@ -4685,14 +4696,15 @@ export namespace Entangle {
         get label(): string;
         get path(): string;
         get readonly(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Control.SignalSignatures;
+        $signals: Control.SignalSignatures;
 
         // Constructors
 
@@ -4750,14 +4762,15 @@ export namespace Entangle {
 
     class ControlButton extends Control {
         static $gtype: GObject.GType<ControlButton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ControlButton.SignalSignatures;
+        $signals: ControlButton.SignalSignatures;
 
         // Constructors
 
@@ -4812,14 +4825,15 @@ export namespace Entangle {
 
         get value(): string;
         set value(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ControlChoice.SignalSignatures;
+        $signals: ControlChoice.SignalSignatures;
 
         // Constructors
 
@@ -4881,14 +4895,15 @@ export namespace Entangle {
 
         get value(): number;
         set value(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ControlDate.SignalSignatures;
+        $signals: ControlDate.SignalSignatures;
 
         // Constructors
 
@@ -4935,14 +4950,15 @@ export namespace Entangle {
 
     class ControlGroup extends Control {
         static $gtype: GObject.GType<ControlGroup>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ControlGroup.SignalSignatures;
+        $signals: ControlGroup.SignalSignatures;
 
         // Constructors
 
@@ -5074,14 +5090,15 @@ export namespace Entangle {
         get cameraPrefs(): CameraPreferences;
         get has_controls(): boolean;
         get hasControls(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ControlPanel.SignalSignatures;
+        $signals: ControlPanel.SignalSignatures;
 
         // Constructors
 
@@ -5604,14 +5621,15 @@ export namespace Entangle {
         get rangeStep(): number;
         get value(): number;
         set value(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ControlRange.SignalSignatures;
+        $signals: ControlRange.SignalSignatures;
 
         // Constructors
 
@@ -5684,14 +5702,15 @@ export namespace Entangle {
 
         get value(): string;
         set value(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ControlText.SignalSignatures;
+        $signals: ControlText.SignalSignatures;
 
         // Constructors
 
@@ -5746,14 +5765,15 @@ export namespace Entangle {
 
         get value(): boolean;
         set value(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ControlToggle.SignalSignatures;
+        $signals: ControlToggle.SignalSignatures;
 
         // Constructors
 
@@ -5796,14 +5816,15 @@ export namespace Entangle {
 
     class DeviceManager extends GObject.Object {
         static $gtype: GObject.GType<DeviceManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceManager.SignalSignatures;
+        $signals: DeviceManager.SignalSignatures;
 
         // Constructors
 
@@ -5942,14 +5963,15 @@ export namespace Entangle {
 
     class HelpAbout extends Gtk.AboutDialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<HelpAbout>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HelpAbout.SignalSignatures;
+        $signals: HelpAbout.SignalSignatures;
 
         // Constructors
 
@@ -6441,14 +6463,15 @@ export namespace Entangle {
 
         get pixbuf(): GdkPixbuf.Pixbuf;
         set pixbuf(val: GdkPixbuf.Pixbuf);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Image.SignalSignatures;
+        $signals: Image.SignalSignatures;
 
         // Constructors
 
@@ -6611,14 +6634,15 @@ export namespace Entangle {
         set overexposureHighlighting(val: boolean);
         get scale(): number;
         set scale(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ImageDisplay.SignalSignatures;
+        $signals: ImageDisplay.SignalSignatures;
 
         // Constructors
 
@@ -7205,14 +7229,15 @@ export namespace Entangle {
 
         get image(): Image;
         set image(val: Image);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ImageHistogram.SignalSignatures;
+        $signals: ImageHistogram.SignalSignatures;
 
         // Constructors
 
@@ -7721,14 +7746,15 @@ export namespace Entangle {
 
         get embedded_preview(): boolean;
         get embeddedPreview(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ImageLoader.SignalSignatures;
+        $signals: ImageLoader.SignalSignatures;
 
         // Constructors
 
@@ -7787,14 +7813,15 @@ export namespace Entangle {
         get filename(): string;
         get metadata(): GExiv2.Metadata;
         set metadata(val: GExiv2.Metadata);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Media.SignalSignatures;
+        $signals: Media.SignalSignatures;
 
         // Constructors
 
@@ -7951,14 +7978,15 @@ export namespace Entangle {
 
         get media(): Media;
         set media(val: Media);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaPopup.SignalSignatures;
+        $signals: MediaPopup.SignalSignatures;
 
         // Constructors
 
@@ -8518,14 +8546,15 @@ export namespace Entangle {
 
         get media(): Media;
         set media(val: Media);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaStatusbar.SignalSignatures;
+        $signals: MediaStatusbar.SignalSignatures;
 
         // Constructors
 
@@ -9060,14 +9089,15 @@ export namespace Entangle {
         get with_metadata(): boolean;
         get withMetadata(): boolean;
         get workers(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PixbufLoader.SignalSignatures;
+        $signals: PixbufLoader.SignalSignatures;
 
         // Constructors
 
@@ -9367,14 +9397,15 @@ export namespace Entangle {
         set interface_screen_blank(val: boolean);
         get interfaceScreenBlank(): boolean;
         set interfaceScreenBlank(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Preferences.SignalSignatures;
+        $signals: Preferences.SignalSignatures;
 
         // Constructors
 
@@ -9823,14 +9854,15 @@ export namespace Entangle {
 
     class PreferencesDisplay extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PreferencesDisplay>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PreferencesDisplay.SignalSignatures;
+        $signals: PreferencesDisplay.SignalSignatures;
 
         // Constructors
 
@@ -10320,14 +10352,15 @@ export namespace Entangle {
 
         get title(): string;
         set title(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Script.SignalSignatures;
+        $signals: Script.SignalSignatures;
 
         // Constructors
 
@@ -10454,14 +10487,15 @@ export namespace Entangle {
 
     class ScriptConfig extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ScriptConfig>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScriptConfig.SignalSignatures;
+        $signals: ScriptConfig.SignalSignatures;
 
         // Constructors
 
@@ -10972,14 +11006,15 @@ export namespace Entangle {
 
     class ScriptSimple extends Script {
         static $gtype: GObject.GType<ScriptSimple>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScriptSimple.SignalSignatures;
+        $signals: ScriptSimple.SignalSignatures;
 
         // Constructors
 
@@ -11057,14 +11092,15 @@ export namespace Entangle {
         get directory(): string;
         get filename_pattern(): string;
         get filenamePattern(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Session.SignalSignatures;
+        $signals: Session.SignalSignatures;
 
         // Constructors
 
@@ -11206,14 +11242,15 @@ export namespace Entangle {
         set thumbnail_loader(val: ThumbnailLoader);
         get thumbnailLoader(): ThumbnailLoader;
         set thumbnailLoader(val: ThumbnailLoader);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SessionBrowser.SignalSignatures;
+        $signals: SessionBrowser.SignalSignatures;
 
         // Constructors
 
@@ -11852,14 +11889,15 @@ export namespace Entangle {
 
         get height(): number;
         get width(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ThumbnailLoader.SignalSignatures;
+        $signals: ThumbnailLoader.SignalSignatures;
 
         // Constructors
 
@@ -11910,14 +11948,15 @@ export namespace Entangle {
 
         get source(): GstBase.BaseSrc;
         set source(val: GstBase.BaseSrc);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Video.SignalSignatures;
+        $signals: Video.SignalSignatures;
 
         // Constructors
 

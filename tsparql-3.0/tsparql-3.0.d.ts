@@ -459,14 +459,15 @@ export namespace Tsparql {
          * The [class`SparqlConnection]` the batch belongs to.
          */
         get connection(): SparqlConnection;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Batch.SignalSignatures;
+        $signals: Batch.SignalSignatures;
 
         // Constructors
 
@@ -704,14 +705,15 @@ export namespace Tsparql {
          * The [class`SparqlConnection]` being proxied by this endpoint.
          */
         get sparqlConnection(): SparqlConnection;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Endpoint.SignalSignatures;
+        $signals: Endpoint.SignalSignatures;
 
         // Constructors
 
@@ -898,14 +900,15 @@ export namespace Tsparql {
          * The DBus object path that this endpoint manages.
          */
         get objectPath(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EndpointDBus.SignalSignatures;
+        $signals: EndpointDBus.SignalSignatures;
 
         // Constructors
 
@@ -1549,14 +1552,15 @@ export namespace Tsparql {
          * HTTP port used to listen requests.
          */
         get httpPort(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EndpointHttp.SignalSignatures;
+        $signals: EndpointHttp.SignalSignatures;
 
         // Constructors
 
@@ -2140,14 +2144,15 @@ export namespace Tsparql {
      */
     class NamespaceManager extends GObject.Object {
         static $gtype: GObject.GType<NamespaceManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NamespaceManager.SignalSignatures;
+        $signals: NamespaceManager.SignalSignatures;
 
         // Constructors
 
@@ -2300,14 +2305,15 @@ export namespace Tsparql {
          * SPARQL connection to listen to.
          */
         get connection(): SparqlConnection;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Notifier.SignalSignatures;
+        $signals: Notifier.SignalSignatures;
 
         // Constructors
 
@@ -2428,14 +2434,15 @@ export namespace Tsparql {
          */
         get identifier(): string;
         set identifier(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Resource.SignalSignatures;
+        $signals: Resource.SignalSignatures;
 
         // Constructors
 
@@ -2932,14 +2939,15 @@ export namespace Tsparql {
      */
     abstract class SparqlConnection extends GObject.Object {
         static $gtype: GObject.GType<SparqlConnection>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SparqlConnection.SignalSignatures;
+        $signals: SparqlConnection.SignalSignatures;
 
         // Constructors
 
@@ -3753,14 +3761,15 @@ export namespace Tsparql {
          * Number of columns available in the result set.
          */
         get nColumns(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SparqlCursor.SignalSignatures;
+        $signals: SparqlCursor.SignalSignatures;
 
         // Constructors
 
@@ -4023,14 +4032,15 @@ export namespace Tsparql {
          * SPARQL query stored in this statement.
          */
         get sparql(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SparqlStatement.SignalSignatures;
+        $signals: SparqlStatement.SignalSignatures;
 
         // Constructors
 

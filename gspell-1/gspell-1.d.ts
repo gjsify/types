@@ -91,14 +91,15 @@ export namespace Gspell {
          */
         get language(): Language;
         set language(val: Language);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Checker.SignalSignatures;
+        $signals: Checker.SignalSignatures;
 
         // Constructors
 
@@ -295,14 +296,15 @@ export namespace Gspell {
          * The #GspellNavigator to use.
          */
         get spellNavigator(): Navigator;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CheckerDialog.SignalSignatures;
+        $signals: CheckerDialog.SignalSignatures;
 
         // Constructors
 
@@ -822,14 +824,15 @@ export namespace Gspell {
          */
         get inlineSpellChecking(): boolean;
         set inlineSpellChecking(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Entry.SignalSignatures;
+        $signals: Entry.SignalSignatures;
 
         // Constructors
 
@@ -948,14 +951,15 @@ export namespace Gspell {
          */
         get spellChecker(): Checker;
         set spellChecker(val: Checker);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EntryBuffer.SignalSignatures;
+        $signals: EntryBuffer.SignalSignatures;
 
         // Constructors
 
@@ -1081,14 +1085,15 @@ export namespace Gspell {
         implements Atk.ImplementorIface, LanguageChooser, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<LanguageChooserButton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LanguageChooserButton.SignalSignatures;
+        $signals: LanguageChooserButton.SignalSignatures;
 
         // Constructors
 
@@ -5769,14 +5774,15 @@ export namespace Gspell {
 
     class LanguageChooserDialog extends Gtk.Dialog implements Atk.ImplementorIface, LanguageChooser, Gtk.Buildable {
         static $gtype: GObject.GType<LanguageChooserDialog>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LanguageChooserDialog.SignalSignatures;
+        $signals: LanguageChooserDialog.SignalSignatures;
 
         // Constructors
 
@@ -6313,14 +6319,15 @@ export namespace Gspell {
          * scroll to the misspelled words.
          */
         get view(): Gtk.TextView;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NavigatorTextView.SignalSignatures;
+        $signals: NavigatorTextView.SignalSignatures;
 
         // Constructors
 
@@ -6445,14 +6452,15 @@ export namespace Gspell {
          */
         get spellChecker(): Checker;
         set spellChecker(val: Checker);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TextBuffer.SignalSignatures;
+        $signals: TextBuffer.SignalSignatures;
 
         // Constructors
 
@@ -6550,14 +6558,15 @@ export namespace Gspell {
          * The #GtkTextView.
          */
         get view(): Gtk.TextView;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TextView.SignalSignatures;
+        $signals: TextView.SignalSignatures;
 
         // Constructors
 

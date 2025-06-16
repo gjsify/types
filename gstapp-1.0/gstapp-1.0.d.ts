@@ -195,14 +195,15 @@ export namespace GstApp {
         set wait_on_eos(val: boolean);
         get waitOnEos(): boolean;
         set waitOnEos(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AppSink.SignalSignatures;
+        $signals: AppSink.SignalSignatures;
 
         // Fields
 
@@ -1302,14 +1303,15 @@ export namespace GstApp {
          */
         get streamType(): AppStreamType;
         set streamType(val: AppStreamType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AppSrc.SignalSignatures;
+        $signals: AppSrc.SignalSignatures;
 
         // Fields
 

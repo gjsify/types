@@ -3715,14 +3715,15 @@ export namespace NetworkManager {
          */
         get path(): string;
         set path(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Connection.SignalSignatures;
+        $signals: Connection.SignalSignatures;
 
         // Constructors
 
@@ -4147,14 +4148,15 @@ export namespace NetworkManager {
          */
         get name(): string;
         set name(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Setting.SignalSignatures;
+        $signals: Setting.SignalSignatures;
 
         // Constructors
 
@@ -4713,14 +4715,15 @@ export namespace NetworkManager {
          */
         get systemCaCerts(): boolean;
         set systemCaCerts(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Setting8021x.SignalSignatures;
+        $signals: Setting8021x.SignalSignatures;
 
         // Constructors
 
@@ -5287,14 +5290,15 @@ export namespace NetworkManager {
          */
         get vpi(): number;
         set vpi(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingAdsl.SignalSignatures;
+        $signals: SettingAdsl.SignalSignatures;
 
         // Constructors
 
@@ -5358,14 +5362,15 @@ export namespace NetworkManager {
          */
         get type(): string;
         set type(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingBluetooth.SignalSignatures;
+        $signals: SettingBluetooth.SignalSignatures;
 
         // Constructors
 
@@ -5439,14 +5444,15 @@ export namespace NetworkManager {
          */
         get interfaceName(): string;
         set interfaceName(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingBond.SignalSignatures;
+        $signals: SettingBond.SignalSignatures;
 
         // Constructors
 
@@ -5637,14 +5643,15 @@ export namespace NetworkManager {
          */
         get stp(): boolean;
         set stp(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingBridge.SignalSignatures;
+        $signals: SettingBridge.SignalSignatures;
 
         // Constructors
 
@@ -5738,14 +5745,15 @@ export namespace NetworkManager {
          */
         get priority(): number;
         set priority(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingBridgePort.SignalSignatures;
+        $signals: SettingBridgePort.SignalSignatures;
 
         // Constructors
 
@@ -5837,14 +5845,15 @@ export namespace NetworkManager {
          */
         get username(): string;
         set username(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingCdma.SignalSignatures;
+        $signals: SettingCdma.SignalSignatures;
 
         // Constructors
 
@@ -6060,14 +6069,15 @@ export namespace NetworkManager {
          */
         get zone(): string;
         set zone(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingConnection.SignalSignatures;
+        $signals: SettingConnection.SignalSignatures;
 
         // Constructors
 
@@ -6385,14 +6395,15 @@ export namespace NetworkManager {
          */
         get priorityGroupFlags(): number;
         set priorityGroupFlags(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingDcb.SignalSignatures;
+        $signals: SettingDcb.SignalSignatures;
 
         // Constructors
 
@@ -6488,14 +6499,15 @@ export namespace NetworkManager {
 
     class SettingGeneric extends Setting {
         static $gtype: GObject.GType<SettingGeneric>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingGeneric.SignalSignatures;
+        $signals: SettingGeneric.SignalSignatures;
 
         // Constructors
 
@@ -6699,14 +6711,15 @@ export namespace NetworkManager {
          */
         get username(): string;
         set username(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingGsm.SignalSignatures;
+        $signals: SettingGsm.SignalSignatures;
 
         // Constructors
 
@@ -6953,14 +6966,15 @@ export namespace NetworkManager {
          */
         get routeMetric(): number;
         set routeMetric(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingIP4Config.SignalSignatures;
+        $signals: SettingIP4Config.SignalSignatures;
 
         // Constructors
 
@@ -7319,14 +7333,15 @@ export namespace NetworkManager {
          */
         get routeMetric(): number;
         set routeMetric(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingIP6Config.SignalSignatures;
+        $signals: SettingIP6Config.SignalSignatures;
 
         // Constructors
 
@@ -7564,14 +7579,15 @@ export namespace NetworkManager {
          */
         get transportMode(): string;
         set transportMode(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingInfiniband.SignalSignatures;
+        $signals: SettingInfiniband.SignalSignatures;
 
         // Constructors
 
@@ -7647,14 +7663,15 @@ export namespace NetworkManager {
          */
         get channel(): number;
         set channel(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingOlpcMesh.SignalSignatures;
+        $signals: SettingOlpcMesh.SignalSignatures;
 
         // Constructors
 
@@ -7932,14 +7949,15 @@ export namespace NetworkManager {
          */
         get requireMppe128(): boolean;
         set requireMppe128(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingPPP.SignalSignatures;
+        $signals: SettingPPP.SignalSignatures;
 
         // Constructors
 
@@ -8043,14 +8061,15 @@ export namespace NetworkManager {
          */
         get username(): string;
         set username(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingPPPOE.SignalSignatures;
+        $signals: SettingPPPOE.SignalSignatures;
 
         // Constructors
 
@@ -8148,14 +8167,15 @@ export namespace NetworkManager {
          */
         get stopbits(): number;
         set stopbits(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingSerial.SignalSignatures;
+        $signals: SettingSerial.SignalSignatures;
 
         // Constructors
 
@@ -8232,14 +8252,15 @@ export namespace NetworkManager {
          */
         get interfaceName(): string;
         set interfaceName(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingTeam.SignalSignatures;
+        $signals: SettingTeam.SignalSignatures;
 
         // Constructors
 
@@ -8300,14 +8321,15 @@ export namespace NetworkManager {
          */
         get config(): string;
         set config(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingTeamPort.SignalSignatures;
+        $signals: SettingTeamPort.SignalSignatures;
 
         // Constructors
 
@@ -8406,14 +8428,15 @@ export namespace NetworkManager {
          */
         get userName(): string;
         set userName(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingVPN.SignalSignatures;
+        $signals: SettingVPN.SignalSignatures;
 
         // Constructors
 
@@ -8588,14 +8611,15 @@ export namespace NetworkManager {
          */
         get parent(): string;
         set parent(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingVlan.SignalSignatures;
+        $signals: SettingVlan.SignalSignatures;
 
         // Constructors
 
@@ -8738,14 +8762,15 @@ export namespace NetworkManager {
          */
         get networkName(): string;
         set networkName(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingWimax.SignalSignatures;
+        $signals: SettingWimax.SignalSignatures;
 
         // Constructors
 
@@ -8872,14 +8897,15 @@ export namespace NetworkManager {
          */
         get speed(): number;
         set speed(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingWired.SignalSignatures;
+        $signals: SettingWired.SignalSignatures;
 
         // Constructors
 
@@ -9114,14 +9140,15 @@ export namespace NetworkManager {
          */
         get txPower(): number;
         set txPower(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingWireless.SignalSignatures;
+        $signals: SettingWireless.SignalSignatures;
 
         // Constructors
 
@@ -9470,14 +9497,15 @@ export namespace NetworkManager {
          */
         get wepTxKeyidx(): number;
         set wepTxKeyidx(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SettingWirelessSecurity.SignalSignatures;
+        $signals: SettingWirelessSecurity.SignalSignatures;
 
         // Constructors
 

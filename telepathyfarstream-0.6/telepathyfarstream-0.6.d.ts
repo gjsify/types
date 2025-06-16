@@ -60,14 +60,15 @@ export namespace TelepathyFarstream {
         get fsConferences(): any[];
         get object_path(): string;
         get objectPath(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Channel.SignalSignatures;
+        $signals: Channel.SignalSignatures;
 
         // Constructors
 
@@ -817,14 +818,15 @@ export namespace TelepathyFarstream {
         get sinkPad(): Gst.Pad;
         get tf_channel(): Channel;
         get tfChannel(): Channel;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Content.SignalSignatures;
+        $signals: Content.SignalSignatures;
 
         // Constructors
 

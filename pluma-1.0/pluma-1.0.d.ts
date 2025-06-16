@@ -344,14 +344,15 @@ export namespace Pluma {
         // Properties
 
         get lockdown(): LockdownMask;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: App.SignalSignatures;
+        $signals: App.SignalSignatures;
 
         // Fields
 
@@ -518,14 +519,15 @@ export namespace Pluma {
         get shortname(): string;
         set shortname(val: string);
         get uri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Document.SignalSignatures;
+        $signals: Document.SignalSignatures;
 
         // Fields
 
@@ -758,14 +760,15 @@ export namespace Pluma {
         set save_mode(val: boolean);
         get saveMode(): boolean;
         set saveMode(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EncodingsComboBox.SignalSignatures;
+        $signals: EncodingsComboBox.SignalSignatures;
 
         // Constructors
 
@@ -5311,14 +5314,15 @@ export namespace Pluma {
         get object_path(): string;
         get objectPath(): string;
         get type(): MessageType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Message.SignalSignatures;
+        $signals: Message.SignalSignatures;
 
         // Constructors
 
@@ -5408,14 +5412,15 @@ export namespace Pluma {
 
     class MessageBus extends GObject.Object {
         static $gtype: GObject.GType<MessageBus>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MessageBus.SignalSignatures;
+        $signals: MessageBus.SignalSignatures;
 
         // Constructors
 
@@ -5633,14 +5638,15 @@ export namespace Pluma {
 
     class Notebook extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Notebook>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Notebook.SignalSignatures;
+        $signals: Notebook.SignalSignatures;
 
         // Fields
 
@@ -6255,14 +6261,15 @@ export namespace Pluma {
 
         get panel_orientation(): Gtk.Orientation;
         get panelOrientation(): Gtk.Orientation;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Panel.SignalSignatures;
+        $signals: Panel.SignalSignatures;
 
         // Fields
 
@@ -6874,14 +6881,15 @@ export namespace Pluma {
 
         set has_cancel_button(val: boolean);
         set hasCancelButton(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProgressMessageArea.SignalSignatures;
+        $signals: ProgressMessageArea.SignalSignatures;
 
         // Constructors
 
@@ -7432,14 +7440,15 @@ export namespace Pluma {
 
         get label(): string;
         set label(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StatusComboBox.SignalSignatures;
+        $signals: StatusComboBox.SignalSignatures;
 
         // Constructors
 
@@ -7988,14 +7997,15 @@ export namespace Pluma {
 
     class Statusbar extends Gtk.Statusbar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Statusbar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Statusbar.SignalSignatures;
+        $signals: Statusbar.SignalSignatures;
 
         // Constructors
 
@@ -8558,14 +8568,15 @@ export namespace Pluma {
         set autosaveInterval(val: number);
         get name(): string;
         get state(): TabState;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Tab.SignalSignatures;
+        $signals: Tab.SignalSignatures;
 
         // Fields
 
@@ -9205,14 +9216,15 @@ export namespace Pluma {
 
     class View extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: View.SignalSignatures;
+        $signals: View.SignalSignatures;
 
         // Fields
 
@@ -9828,14 +9840,15 @@ export namespace Pluma {
         // Properties
 
         get state(): WindowState;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Window.SignalSignatures;
+        $signals: Window.SignalSignatures;
 
         // Fields
 

@@ -259,14 +259,15 @@ export namespace GnomeDesktop {
 
     class DesktopThumbnailFactory extends GObject.Object {
         static $gtype: GObject.GType<DesktopThumbnailFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DesktopThumbnailFactory.SignalSignatures;
+        $signals: DesktopThumbnailFactory.SignalSignatures;
 
         // Constructors
 
@@ -519,14 +520,15 @@ export namespace GnomeDesktop {
 
     class IdleMonitor extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<IdleMonitor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IdleMonitor.SignalSignatures;
+        $signals: IdleMonitor.SignalSignatures;
 
         // Constructors
 
@@ -1105,14 +1107,15 @@ export namespace GnomeDesktop {
 
     class PnpIds extends GObject.Object {
         static $gtype: GObject.GType<PnpIds>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PnpIds.SignalSignatures;
+        $signals: PnpIds.SignalSignatures;
 
         // Constructors
 
@@ -1210,14 +1213,15 @@ export namespace GnomeDesktop {
          * The timezone used for this clock
          */
         get timezone(): GLib.TimeZone;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WallClock.SignalSignatures;
+        $signals: WallClock.SignalSignatures;
 
         // Fields
 
@@ -1284,14 +1288,15 @@ export namespace GnomeDesktop {
 
     class XkbInfo extends GObject.Object {
         static $gtype: GObject.GType<XkbInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XkbInfo.SignalSignatures;
+        $signals: XkbInfo.SignalSignatures;
 
         // Fields
 

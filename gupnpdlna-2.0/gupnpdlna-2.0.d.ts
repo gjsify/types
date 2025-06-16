@@ -54,14 +54,15 @@ export namespace GUPnPDLNA {
 
     abstract class AudioInformation extends GObject.Object {
         static $gtype: GObject.GType<AudioInformation>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AudioInformation.SignalSignatures;
+        $signals: AudioInformation.SignalSignatures;
 
         // Constructors
 
@@ -99,14 +100,15 @@ export namespace GUPnPDLNA {
 
     abstract class ContainerInformation extends GObject.Object {
         static $gtype: GObject.GType<ContainerInformation>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ContainerInformation.SignalSignatures;
+        $signals: ContainerInformation.SignalSignatures;
 
         // Constructors
 
@@ -146,14 +148,15 @@ export namespace GUPnPDLNA {
 
     abstract class ImageInformation extends GObject.Object {
         static $gtype: GObject.GType<ImageInformation>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ImageInformation.SignalSignatures;
+        $signals: ImageInformation.SignalSignatures;
 
         // Constructors
 
@@ -246,14 +249,15 @@ export namespace GUPnPDLNA {
          * Video information of a file.
          */
         get videoInformation(): VideoInformation;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Information.SignalSignatures;
+        $signals: Information.SignalSignatures;
 
         // Constructors
 
@@ -346,14 +350,15 @@ export namespace GUPnPDLNA {
 
     abstract class MetadataExtractor extends GObject.Object {
         static $gtype: GObject.GType<MetadataExtractor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MetadataExtractor.SignalSignatures;
+        $signals: MetadataExtractor.SignalSignatures;
 
         // Constructors
 
@@ -482,14 +487,15 @@ export namespace GUPnPDLNA {
         get name(): string;
         get video_restrictions(): any;
         get videoRestrictions(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Profile.SignalSignatures;
+        $signals: Profile.SignalSignatures;
 
         // Constructors
 
@@ -585,14 +591,15 @@ export namespace GUPnPDLNA {
          * with the DLNA specification.
          */
         get relaxedMode(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProfileGuesser.SignalSignatures;
+        $signals: ProfileGuesser.SignalSignatures;
 
         // Constructors
 
@@ -679,14 +686,15 @@ export namespace GUPnPDLNA {
 
     abstract class VideoInformation extends GObject.Object {
         static $gtype: GObject.GType<VideoInformation>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VideoInformation.SignalSignatures;
+        $signals: VideoInformation.SignalSignatures;
 
         // Constructors
 

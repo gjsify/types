@@ -1848,14 +1848,15 @@ export namespace Atk {
      */
     class GObjectAccessible extends Object {
         static $gtype: GObject.GType<GObjectAccessible>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GObjectAccessible.SignalSignatures;
+        $signals: GObjectAccessible.SignalSignatures;
 
         // Constructors
 
@@ -1951,14 +1952,15 @@ export namespace Atk {
         get selectedLink(): boolean;
         get start_index(): number;
         get startIndex(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Hyperlink.SignalSignatures;
+        $signals: Hyperlink.SignalSignatures;
 
         // Constructors
 
@@ -2695,14 +2697,15 @@ export namespace Atk {
      */
     class Misc extends GObject.Object {
         static $gtype: GObject.GType<Misc>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Misc.SignalSignatures;
+        $signals: Misc.SignalSignatures;
 
         // Constructors
 
@@ -2845,14 +2848,15 @@ export namespace Atk {
             Window
     {
         static $gtype: GObject.GType<NoOpObject>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NoOpObject.SignalSignatures;
+        $signals: NoOpObject.SignalSignatures;
 
         // Constructors
 
@@ -5490,14 +5494,15 @@ export namespace Atk {
      */
     class NoOpObjectFactory extends ObjectFactory {
         static $gtype: GObject.GType<NoOpObjectFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NoOpObjectFactory.SignalSignatures;
+        $signals: NoOpObjectFactory.SignalSignatures;
 
         // Constructors
 
@@ -5792,14 +5797,15 @@ export namespace Atk {
          */
         get accessibleValue(): number;
         set accessibleValue(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Object.SignalSignatures;
+        $signals: Object.SignalSignatures;
 
         // Fields
 
@@ -6155,14 +6161,15 @@ export namespace Atk {
      */
     class ObjectFactory extends GObject.Object {
         static $gtype: GObject.GType<ObjectFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ObjectFactory.SignalSignatures;
+        $signals: ObjectFactory.SignalSignatures;
 
         // Constructors
 
@@ -6257,14 +6264,15 @@ export namespace Atk {
      */
     class Plug extends Object implements Component {
         static $gtype: GObject.GType<Plug>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Plug.SignalSignatures;
+        $signals: Plug.SignalSignatures;
 
         // Constructors
 
@@ -7023,14 +7031,15 @@ export namespace Atk {
      */
     class Registry extends GObject.Object {
         static $gtype: GObject.GType<Registry>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Registry.SignalSignatures;
+        $signals: Registry.SignalSignatures;
 
         // Constructors
 
@@ -7119,14 +7128,15 @@ export namespace Atk {
         set relationType(val: RelationType);
         get target(): GObject.ValueArray;
         set target(val: GObject.ValueArray);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Relation.SignalSignatures;
+        $signals: Relation.SignalSignatures;
 
         // Fields
 
@@ -7208,14 +7218,15 @@ export namespace Atk {
      */
     class RelationSet extends GObject.Object {
         static $gtype: GObject.GType<RelationSet>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RelationSet.SignalSignatures;
+        $signals: RelationSet.SignalSignatures;
 
         // Fields
 
@@ -7366,14 +7377,15 @@ export namespace Atk {
      */
     class Socket extends Object implements Component {
         static $gtype: GObject.GType<Socket>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Socket.SignalSignatures;
+        $signals: Socket.SignalSignatures;
 
         // Constructors
 
@@ -8134,14 +8146,15 @@ export namespace Atk {
      */
     class StateSet extends GObject.Object {
         static $gtype: GObject.GType<StateSet>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StateSet.SignalSignatures;
+        $signals: StateSet.SignalSignatures;
 
         // Constructors
 
@@ -8268,14 +8281,15 @@ export namespace Atk {
      */
     class Util extends GObject.Object {
         static $gtype: GObject.GType<Util>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Util.SignalSignatures;
+        $signals: Util.SignalSignatures;
 
         // Constructors
 

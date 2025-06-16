@@ -726,14 +726,15 @@ export namespace Gsf {
 
     class Blob extends GObject.Object {
         static $gtype: GObject.GType<Blob>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Blob.SignalSignatures;
+        $signals: Blob.SignalSignatures;
 
         // Fields
 
@@ -793,14 +794,15 @@ export namespace Gsf {
 
     class ClipData extends GObject.Object {
         static $gtype: GObject.GType<ClipData>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClipData.SignalSignatures;
+        $signals: ClipData.SignalSignatures;
 
         // Fields
 
@@ -879,14 +881,15 @@ export namespace Gsf {
      */
     class DocMetaData extends GObject.Object {
         static $gtype: GObject.GType<DocMetaData>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocMetaData.SignalSignatures;
+        $signals: DocMetaData.SignalSignatures;
 
         // Constructors
 
@@ -972,14 +975,15 @@ export namespace Gsf {
 
     class DocPropVector extends GObject.Object {
         static $gtype: GObject.GType<DocPropVector>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocPropVector.SignalSignatures;
+        $signals: DocPropVector.SignalSignatures;
 
         // Constructors
 
@@ -1045,14 +1049,15 @@ export namespace Gsf {
      */
     abstract class Infile extends Input {
         static $gtype: GObject.GType<Infile>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Infile.SignalSignatures;
+        $signals: Infile.SignalSignatures;
 
         // Constructors
 
@@ -1137,14 +1142,15 @@ export namespace Gsf {
 
     class InfileMSOle extends Infile {
         static $gtype: GObject.GType<InfileMSOle>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InfileMSOle.SignalSignatures;
+        $signals: InfileMSOle.SignalSignatures;
 
         // Constructors
 
@@ -1202,14 +1208,15 @@ export namespace Gsf {
 
     class InfileMSVBA extends Infile {
         static $gtype: GObject.GType<InfileMSVBA>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InfileMSVBA.SignalSignatures;
+        $signals: InfileMSVBA.SignalSignatures;
 
         // Constructors
 
@@ -1270,14 +1277,15 @@ export namespace Gsf {
 
     class InfileStdio extends Infile {
         static $gtype: GObject.GType<InfileStdio>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InfileStdio.SignalSignatures;
+        $signals: InfileStdio.SignalSignatures;
 
         // Constructors
 
@@ -1332,14 +1340,15 @@ export namespace Gsf {
         // Properties
 
         get source(): Input;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InfileTar.SignalSignatures;
+        $signals: InfileTar.SignalSignatures;
 
         // Constructors
 
@@ -1413,14 +1422,15 @@ export namespace Gsf {
         set internalParent(val: InfileZip);
         get source(): Input;
         get zip64(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InfileZip.SignalSignatures;
+        $signals: InfileZip.SignalSignatures;
 
         // Constructors
 
@@ -1509,14 +1519,15 @@ export namespace Gsf {
          * The total number of bytes in the file.
          */
         get size(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Input.SignalSignatures;
+        $signals: Input.SignalSignatures;
 
         // Fields
 
@@ -1698,14 +1709,15 @@ export namespace Gsf {
         get source(): Input;
         get uncompressed_size(): number;
         get uncompressedSize(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InputGZip.SignalSignatures;
+        $signals: InputGZip.SignalSignatures;
 
         // Constructors
 
@@ -1753,14 +1765,15 @@ export namespace Gsf {
 
     class InputGio extends Input {
         static $gtype: GObject.GType<InputGio>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InputGio.SignalSignatures;
+        $signals: InputGio.SignalSignatures;
 
         // Constructors
 
@@ -1824,14 +1837,15 @@ export namespace Gsf {
         get content_type(): string;
         get contentType(): string;
         get url(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InputHTTP.SignalSignatures;
+        $signals: InputHTTP.SignalSignatures;
 
         // Constructors
 
@@ -1884,14 +1898,15 @@ export namespace Gsf {
 
     class InputMemory extends Input {
         static $gtype: GObject.GType<InputMemory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InputMemory.SignalSignatures;
+        $signals: InputMemory.SignalSignatures;
 
         // Constructors
 
@@ -1945,14 +1960,15 @@ export namespace Gsf {
 
     class InputProxy extends Input {
         static $gtype: GObject.GType<InputProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InputProxy.SignalSignatures;
+        $signals: InputProxy.SignalSignatures;
 
         // Constructors
 
@@ -2002,14 +2018,15 @@ export namespace Gsf {
 
     class InputStdio extends Input {
         static $gtype: GObject.GType<InputStdio>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InputStdio.SignalSignatures;
+        $signals: InputStdio.SignalSignatures;
 
         // Constructors
 
@@ -2059,14 +2076,15 @@ export namespace Gsf {
 
     class InputTextline extends Input {
         static $gtype: GObject.GType<InputTextline>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InputTextline.SignalSignatures;
+        $signals: InputTextline.SignalSignatures;
 
         // Constructors
 
@@ -2135,14 +2153,15 @@ export namespace Gsf {
 
         get odf_version(): number;
         get odfVersion(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ODFOut.SignalSignatures;
+        $signals: ODFOut.SignalSignatures;
 
         // Fields
 
@@ -2200,14 +2219,15 @@ export namespace Gsf {
      */
     abstract class Outfile extends Output {
         static $gtype: GObject.GType<Outfile>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Outfile.SignalSignatures;
+        $signals: Outfile.SignalSignatures;
 
         // Constructors
 
@@ -2283,14 +2303,15 @@ export namespace Gsf {
         get sink(): Output;
         get small_block_size(): number;
         get smallBlockSize(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OutfileMSOle.SignalSignatures;
+        $signals: OutfileMSOle.SignalSignatures;
 
         // Constructors
 
@@ -2365,14 +2386,15 @@ export namespace Gsf {
         get is_dir(): boolean;
         get isDir(): boolean;
         get sink(): Outfile;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OutfileOpenPkg.SignalSignatures;
+        $signals: OutfileOpenPkg.SignalSignatures;
 
         // Constructors
 
@@ -2442,14 +2464,15 @@ export namespace Gsf {
 
     class OutfileStdio extends Outfile {
         static $gtype: GObject.GType<OutfileStdio>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OutfileStdio.SignalSignatures;
+        $signals: OutfileStdio.SignalSignatures;
 
         // Constructors
 
@@ -2521,14 +2544,15 @@ export namespace Gsf {
         get entryName(): string;
         get sink(): Output;
         get zip64(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OutfileZip.SignalSignatures;
+        $signals: OutfileZip.SignalSignatures;
 
         // Constructors
 
@@ -2623,14 +2647,15 @@ export namespace Gsf {
          * The current file size.
          */
         get size(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Output.SignalSignatures;
+        $signals: Output.SignalSignatures;
 
         // Fields
 
@@ -2777,14 +2802,15 @@ export namespace Gsf {
 
     class OutputBzip extends Output {
         static $gtype: GObject.GType<OutputBzip>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OutputBzip.SignalSignatures;
+        $signals: OutputBzip.SignalSignatures;
 
         // Constructors
 
@@ -2872,14 +2898,15 @@ export namespace Gsf {
         set separator(val: string);
         get sink(): Output;
         set sink(val: Output);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OutputCsv.SignalSignatures;
+        $signals: OutputCsv.SignalSignatures;
 
         // Fields
 
@@ -2955,14 +2982,15 @@ export namespace Gsf {
         set deflateLevel(val: number);
         get raw(): boolean;
         get sink(): Output;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OutputGZip.SignalSignatures;
+        $signals: OutputGZip.SignalSignatures;
 
         // Constructors
 
@@ -3009,14 +3037,15 @@ export namespace Gsf {
 
     class OutputGio extends Output {
         static $gtype: GObject.GType<OutputGio>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OutputGio.SignalSignatures;
+        $signals: OutputGio.SignalSignatures;
 
         // Constructors
 
@@ -3067,14 +3096,15 @@ export namespace Gsf {
 
     class OutputIOChannel extends Output {
         static $gtype: GObject.GType<OutputIOChannel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OutputIOChannel.SignalSignatures;
+        $signals: OutputIOChannel.SignalSignatures;
 
         // Constructors
 
@@ -3147,14 +3177,15 @@ export namespace Gsf {
         get output_charset(): string;
         get outputCharset(): string;
         get sink(): Output;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OutputIconv.SignalSignatures;
+        $signals: OutputIconv.SignalSignatures;
 
         // Constructors
 
@@ -3201,14 +3232,15 @@ export namespace Gsf {
 
     class OutputMemory extends Output {
         static $gtype: GObject.GType<OutputMemory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OutputMemory.SignalSignatures;
+        $signals: OutputMemory.SignalSignatures;
 
         // Constructors
 
@@ -3260,14 +3292,15 @@ export namespace Gsf {
 
     class OutputStdio extends Output {
         static $gtype: GObject.GType<OutputStdio>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OutputStdio.SignalSignatures;
+        $signals: OutputStdio.SignalSignatures;
 
         // Constructors
 
@@ -3307,14 +3340,15 @@ export namespace Gsf {
 
     class SharedMemory extends GObject.Object {
         static $gtype: GObject.GType<SharedMemory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SharedMemory.SignalSignatures;
+        $signals: SharedMemory.SignalSignatures;
 
         // Fields
 
@@ -3372,14 +3406,15 @@ export namespace Gsf {
 
     class StructuredBlob extends Infile {
         static $gtype: GObject.GType<StructuredBlob>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StructuredBlob.SignalSignatures;
+        $signals: StructuredBlob.SignalSignatures;
 
         // Constructors
 
@@ -3451,14 +3486,15 @@ export namespace Gsf {
         get prettyPrint(): boolean;
         set prettyPrint(val: boolean);
         get sink(): Output;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XMLOut.SignalSignatures;
+        $signals: XMLOut.SignalSignatures;
 
         // Fields
 

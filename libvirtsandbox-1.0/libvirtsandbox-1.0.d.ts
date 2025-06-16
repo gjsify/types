@@ -47,14 +47,15 @@ export namespace LibvirtSandbox {
         // Properties
 
         get connection(): LibvirtGObject.Connection;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Builder.SignalSignatures;
+        $signals: Builder.SignalSignatures;
 
         // Constructors
 
@@ -159,14 +160,15 @@ export namespace LibvirtSandbox {
 
     class BuilderContainer extends Builder {
         static $gtype: GObject.GType<BuilderContainer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BuilderContainer.SignalSignatures;
+        $signals: BuilderContainer.SignalSignatures;
 
         // Constructors
 
@@ -206,14 +208,15 @@ export namespace LibvirtSandbox {
 
     class BuilderInitrd extends GObject.Object {
         static $gtype: GObject.GType<BuilderInitrd>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BuilderInitrd.SignalSignatures;
+        $signals: BuilderInitrd.SignalSignatures;
 
         // Constructors
 
@@ -259,14 +262,15 @@ export namespace LibvirtSandbox {
 
     class BuilderMachine extends Builder {
         static $gtype: GObject.GType<BuilderMachine>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BuilderMachine.SignalSignatures;
+        $signals: BuilderMachine.SignalSignatures;
 
         // Constructors
 
@@ -371,14 +375,15 @@ export namespace LibvirtSandbox {
         get username(): string;
         set username(val: string);
         get uuid(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Config.SignalSignatures;
+        $signals: Config.SignalSignatures;
 
         // Constructors
 
@@ -776,14 +781,15 @@ export namespace LibvirtSandbox {
         get source(): string;
         get tag(): string;
         get type(): LibvirtGConfig.DomainDiskType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConfigDisk.SignalSignatures;
+        $signals: ConfigDisk.SignalSignatures;
 
         // Constructors
 
@@ -861,14 +867,15 @@ export namespace LibvirtSandbox {
         set kmoddir(val: string);
         get kver(): string;
         set kver(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConfigInitrd.SignalSignatures;
+        $signals: ConfigInitrd.SignalSignatures;
 
         // Constructors
 
@@ -977,14 +984,15 @@ export namespace LibvirtSandbox {
 
         get tty(): string;
         set tty(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConfigInteractive.SignalSignatures;
+        $signals: ConfigInteractive.SignalSignatures;
 
         // Constructors
 
@@ -1051,14 +1059,15 @@ export namespace LibvirtSandbox {
         // Properties
 
         get target(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConfigMount.SignalSignatures;
+        $signals: ConfigMount.SignalSignatures;
 
         // Constructors
 
@@ -1126,14 +1135,15 @@ export namespace LibvirtSandbox {
 
         get source(): string;
         set source(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConfigMountFile.SignalSignatures;
+        $signals: ConfigMountFile.SignalSignatures;
 
         // Constructors
 
@@ -1189,14 +1199,15 @@ export namespace LibvirtSandbox {
 
     class ConfigMountGuestBind extends ConfigMountFile {
         static $gtype: GObject.GType<ConfigMountGuestBind>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConfigMountGuestBind.SignalSignatures;
+        $signals: ConfigMountGuestBind.SignalSignatures;
 
         // Constructors
 
@@ -1241,14 +1252,15 @@ export namespace LibvirtSandbox {
 
     class ConfigMountHostBind extends ConfigMountFile {
         static $gtype: GObject.GType<ConfigMountHostBind>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConfigMountHostBind.SignalSignatures;
+        $signals: ConfigMountHostBind.SignalSignatures;
 
         // Constructors
 
@@ -1300,14 +1312,15 @@ export namespace LibvirtSandbox {
         // Properties
 
         get format(): LibvirtGConfig.DomainDiskFormat;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConfigMountHostImage.SignalSignatures;
+        $signals: ConfigMountHostImage.SignalSignatures;
 
         // Constructors
 
@@ -1370,14 +1383,15 @@ export namespace LibvirtSandbox {
         // Properties
 
         get usage(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConfigMountRam.SignalSignatures;
+        $signals: ConfigMountRam.SignalSignatures;
 
         // Constructors
 
@@ -1447,14 +1461,15 @@ export namespace LibvirtSandbox {
         set mac(val: string);
         get source(): string;
         set source(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConfigNetwork.SignalSignatures;
+        $signals: ConfigNetwork.SignalSignatures;
 
         // Constructors
 
@@ -1549,14 +1564,15 @@ export namespace LibvirtSandbox {
         get broadcast(): Gio.InetAddress;
         get prefix(): number;
         get primary(): Gio.InetAddress;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConfigNetworkAddress.SignalSignatures;
+        $signals: ConfigNetworkAddress.SignalSignatures;
 
         // Constructors
 
@@ -1640,14 +1656,15 @@ export namespace LibvirtSandbox {
 
         get name(): string;
         set name(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConfigNetworkFilterref.SignalSignatures;
+        $signals: ConfigNetworkFilterref.SignalSignatures;
 
         // Constructors
 
@@ -1721,14 +1738,15 @@ export namespace LibvirtSandbox {
         set name(val: string);
         get value(): string;
         set value(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConfigNetworkFilterrefParameter.SignalSignatures;
+        $signals: ConfigNetworkFilterrefParameter.SignalSignatures;
 
         // Constructors
 
@@ -1794,14 +1812,15 @@ export namespace LibvirtSandbox {
         get gateway(): Gio.InetAddress;
         get prefix(): number;
         get target(): Gio.InetAddress;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConfigNetworkRoute.SignalSignatures;
+        $signals: ConfigNetworkRoute.SignalSignatures;
 
         // Constructors
 
@@ -1889,14 +1908,15 @@ export namespace LibvirtSandbox {
 
     abstract class ConfigService extends Config {
         static $gtype: GObject.GType<ConfigService>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConfigService.SignalSignatures;
+        $signals: ConfigService.SignalSignatures;
 
         // Constructors
 
@@ -1949,14 +1969,15 @@ export namespace LibvirtSandbox {
 
     class ConfigServiceGeneric extends ConfigService {
         static $gtype: GObject.GType<ConfigServiceGeneric>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConfigServiceGeneric.SignalSignatures;
+        $signals: ConfigServiceGeneric.SignalSignatures;
 
         // Constructors
 
@@ -2022,14 +2043,15 @@ export namespace LibvirtSandbox {
 
     class ConfigServiceSystemd extends ConfigService {
         static $gtype: GObject.GType<ConfigServiceSystemd>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConfigServiceSystemd.SignalSignatures;
+        $signals: ConfigServiceSystemd.SignalSignatures;
 
         // Constructors
 
@@ -2097,14 +2119,15 @@ export namespace LibvirtSandbox {
         get direct(): boolean;
         get domain(): LibvirtGObject.Domain;
         get escape(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Console.SignalSignatures;
+        $signals: Console.SignalSignatures;
 
         // Constructors
 
@@ -2174,14 +2197,15 @@ export namespace LibvirtSandbox {
 
     class ConsoleRaw extends Console {
         static $gtype: GObject.GType<ConsoleRaw>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConsoleRaw.SignalSignatures;
+        $signals: ConsoleRaw.SignalSignatures;
 
         // Constructors
 
@@ -2236,14 +2260,15 @@ export namespace LibvirtSandbox {
 
     class ConsoleRpc extends Console {
         static $gtype: GObject.GType<ConsoleRpc>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConsoleRpc.SignalSignatures;
+        $signals: ConsoleRpc.SignalSignatures;
 
         // Constructors
 
@@ -2307,14 +2332,15 @@ export namespace LibvirtSandbox {
         get connection(): LibvirtGObject.Connection;
         get domain(): LibvirtGObject.Domain;
         set domain(val: LibvirtGObject.Domain);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Context.SignalSignatures;
+        $signals: Context.SignalSignatures;
 
         // Constructors
 
@@ -2388,14 +2414,15 @@ export namespace LibvirtSandbox {
 
     class ContextInteractive extends Context {
         static $gtype: GObject.GType<ContextInteractive>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ContextInteractive.SignalSignatures;
+        $signals: ContextInteractive.SignalSignatures;
 
         // Constructors
 
@@ -2443,14 +2470,15 @@ export namespace LibvirtSandbox {
 
     class ContextService extends Context {
         static $gtype: GObject.GType<ContextService>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ContextService.SignalSignatures;
+        $signals: ContextService.SignalSignatures;
 
         // Constructors
 

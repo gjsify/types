@@ -84,14 +84,15 @@ export namespace Gepub {
 
     class Archive extends GObject.Object {
         static $gtype: GObject.GType<Archive>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Archive.SignalSignatures;
+        $signals: Archive.SignalSignatures;
 
         // Constructors
 
@@ -149,14 +150,15 @@ export namespace Gepub {
         get chapter(): number;
         set chapter(val: number);
         get path(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Doc.SignalSignatures;
+        $signals: Doc.SignalSignatures;
 
         // Constructors
 
@@ -767,14 +769,15 @@ export namespace Gepub {
 
     class TextChunk extends GObject.Object {
         static $gtype: GObject.GType<TextChunk>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TextChunk.SignalSignatures;
+        $signals: TextChunk.SignalSignatures;
 
         // Constructors
 
@@ -916,14 +919,15 @@ export namespace Gepub {
         get nchapters(): number;
         get paginate(): boolean;
         set paginate(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Widget.SignalSignatures;
+        $signals: Widget.SignalSignatures;
 
         // Constructors
 

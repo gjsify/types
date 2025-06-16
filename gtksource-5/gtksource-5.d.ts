@@ -761,14 +761,15 @@ export namespace GtkSource {
          */
         get styleScheme(): StyleScheme;
         set styleScheme(val: StyleScheme);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Buffer.SignalSignatures;
+        $signals: Buffer.SignalSignatures;
 
         // Constructors
 
@@ -1179,14 +1180,15 @@ export namespace GtkSource {
          * is providing completion features.
          */
         get view(): View;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Completion.SignalSignatures;
+        $signals: Completion.SignalSignatures;
 
         // Constructors
 
@@ -1371,14 +1373,15 @@ export namespace GtkSource {
         set text(val: string);
         get widget(): Gtk.Widget;
         set widget(val: Gtk.Widget);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CompletionCell.SignalSignatures;
+        $signals: CompletionCell.SignalSignatures;
 
         // Constructors
 
@@ -2211,14 +2214,15 @@ export namespace GtkSource {
          * result is removed.
          */
         get empty(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CompletionContext.SignalSignatures;
+        $signals: CompletionContext.SignalSignatures;
 
         // Constructors
 
@@ -2898,14 +2902,15 @@ export namespace GtkSource {
         set priority(val: number);
         get title(): string;
         set title(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CompletionSnippets.SignalSignatures;
+        $signals: CompletionSnippets.SignalSignatures;
 
         // Constructors
 
@@ -3699,14 +3704,15 @@ export namespace GtkSource {
         set scanBatchSize(val: number);
         get title(): string;
         set title(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CompletionWords.SignalSignatures;
+        $signals: CompletionWords.SignalSignatures;
 
         // Constructors
 
@@ -4537,14 +4543,15 @@ export namespace GtkSource {
          * not updated automatically (there is no file monitors).
          */
         get readOnly(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: File.SignalSignatures;
+        $signals: File.SignalSignatures;
 
         // Constructors
 
@@ -4706,14 +4713,15 @@ export namespace GtkSource {
          * construction time.
          */
         get location(): Gio.File;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileLoader.SignalSignatures;
+        $signals: FileLoader.SignalSignatures;
 
         // Constructors
 
@@ -4918,14 +4926,15 @@ export namespace GtkSource {
          */
         get newlineType(): NewlineType;
         set newlineType(val: NewlineType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileSaver.SignalSignatures;
+        $signals: FileSaver.SignalSignatures;
 
         // Constructors
 
@@ -5140,14 +5149,15 @@ export namespace GtkSource {
          * The text window type on which the window is placed.
          */
         get windowType(): Gtk.TextWindowType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Gutter.SignalSignatures;
+        $signals: Gutter.SignalSignatures;
 
         // Constructors
 
@@ -5940,14 +5950,15 @@ export namespace GtkSource {
      */
     class GutterLines extends GObject.Object {
         static $gtype: GObject.GType<GutterLines>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GutterLines.SignalSignatures;
+        $signals: GutterLines.SignalSignatures;
 
         // Constructors
 
@@ -6274,14 +6285,15 @@ export namespace GtkSource {
          */
         get ypad(): number;
         set ypad(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GutterRenderer.SignalSignatures;
+        $signals: GutterRenderer.SignalSignatures;
 
         // Constructors
 
@@ -7282,14 +7294,15 @@ export namespace GtkSource {
         set paintable(val: Gdk.Paintable);
         get pixbuf(): GdkPixbuf.Pixbuf;
         set pixbuf(val: GdkPixbuf.Pixbuf);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GutterRendererPixbuf.SignalSignatures;
+        $signals: GutterRendererPixbuf.SignalSignatures;
 
         // Constructors
 
@@ -7868,14 +7881,15 @@ export namespace GtkSource {
         set markup(val: string);
         get text(): string;
         set text(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GutterRendererText.SignalSignatures;
+        $signals: GutterRendererText.SignalSignatures;
 
         // Constructors
 
@@ -8408,14 +8422,15 @@ export namespace GtkSource {
          */
         get hoverDelay(): number;
         set hoverDelay(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Hover.SignalSignatures;
+        $signals: Hover.SignalSignatures;
 
         // Constructors
 
@@ -8471,14 +8486,15 @@ export namespace GtkSource {
      */
     class HoverContext extends GObject.Object {
         static $gtype: GObject.GType<HoverContext>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HoverContext.SignalSignatures;
+        $signals: HoverContext.SignalSignatures;
 
         // Constructors
 
@@ -8592,14 +8608,15 @@ export namespace GtkSource {
      */
     class HoverDisplay extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<HoverDisplay>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HoverDisplay.SignalSignatures;
+        $signals: HoverDisplay.SignalSignatures;
 
         // Constructors
 
@@ -9396,14 +9413,15 @@ export namespace GtkSource {
         get id(): string;
         get name(): string;
         get section(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Language.SignalSignatures;
+        $signals: Language.SignalSignatures;
 
         // Constructors
 
@@ -9540,14 +9558,15 @@ export namespace GtkSource {
         set search_path(val: string[]);
         get searchPath(): string[];
         set searchPath(val: string[]);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LanguageManager.SignalSignatures;
+        $signals: LanguageManager.SignalSignatures;
 
         // Constructors
 
@@ -9827,14 +9846,15 @@ export namespace GtkSource {
         set fontDesc(val: Pango.FontDescription);
         get view(): View;
         set view(val: View);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Map.SignalSignatures;
+        $signals: Map.SignalSignatures;
 
         // Constructors
 
@@ -10357,14 +10377,15 @@ export namespace GtkSource {
          * which pixbuf is used and with which priority it is drawn.
          */
         get category(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Mark.SignalSignatures;
+        $signals: Mark.SignalSignatures;
 
         // Constructors
 
@@ -10511,14 +10532,15 @@ export namespace GtkSource {
          */
         get pixbuf(): GdkPixbuf.Pixbuf;
         set pixbuf(val: GdkPixbuf.Pixbuf);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MarkAttributes.SignalSignatures;
+        $signals: MarkAttributes.SignalSignatures;
 
         // Constructors
 
@@ -10930,14 +10952,15 @@ export namespace GtkSource {
          */
         get wrapMode(): Gtk.WrapMode;
         set wrapMode(val: Gtk.WrapMode);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PrintCompositor.SignalSignatures;
+        $signals: PrintCompositor.SignalSignatures;
 
         // Constructors
 
@@ -11502,14 +11525,15 @@ export namespace GtkSource {
          * buffer.
          */
         get buffer(): Gtk.TextBuffer;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Region.SignalSignatures;
+        $signals: Region.SignalSignatures;
 
         // Constructors
 
@@ -11751,14 +11775,15 @@ export namespace GtkSource {
          * This property is construct-only since version 4.0.
          */
         get settings(): SearchSettings;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SearchContext.SignalSignatures;
+        $signals: SearchContext.SignalSignatures;
 
         // Constructors
 
@@ -12133,14 +12158,15 @@ export namespace GtkSource {
          */
         get wrapAround(): boolean;
         set wrapAround(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SearchSettings.SignalSignatures;
+        $signals: SearchSettings.SignalSignatures;
 
         // Constructors
 
@@ -12298,14 +12324,15 @@ export namespace GtkSource {
         set name(val: string);
         get trigger(): string;
         set trigger(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Snippet.SignalSignatures;
+        $signals: Snippet.SignalSignatures;
 
         // Constructors
 
@@ -12479,14 +12506,15 @@ export namespace GtkSource {
         set tooltip_text(val: string);
         get tooltipText(): string;
         set tooltipText(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SnippetChunk.SignalSignatures;
+        $signals: SnippetChunk.SignalSignatures;
 
         // Constructors
 
@@ -12633,14 +12661,15 @@ export namespace GtkSource {
      */
     class SnippetContext extends GObject.Object {
         static $gtype: GObject.GType<SnippetContext>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SnippetContext.SignalSignatures;
+        $signals: SnippetContext.SignalSignatures;
 
         // Constructors
 
@@ -12747,14 +12776,15 @@ export namespace GtkSource {
          */
         get searchPath(): string[];
         set searchPath(val: string[]);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SnippetManager.SignalSignatures;
+        $signals: SnippetManager.SignalSignatures;
 
         // Constructors
 
@@ -12967,14 +12997,15 @@ export namespace GtkSource {
          */
         get matrix(): GLib.Variant;
         set matrix(val: GLib.Variant);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SpaceDrawer.SignalSignatures;
+        $signals: SpaceDrawer.SignalSignatures;
 
         // Constructors
 
@@ -13178,14 +13209,15 @@ export namespace GtkSource {
         get weight(): Pango.Weight;
         get weight_set(): boolean;
         get weightSet(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Style.SignalSignatures;
+        $signals: Style.SignalSignatures;
 
         // Constructors
 
@@ -13288,14 +13320,15 @@ export namespace GtkSource {
          * Style scheme name, a translatable string to present to the user.
          */
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StyleScheme.SignalSignatures;
+        $signals: StyleScheme.SignalSignatures;
 
         // Constructors
 
@@ -13413,14 +13446,15 @@ export namespace GtkSource {
         implements Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk.ConstraintTarget, StyleSchemeChooser
     {
         static $gtype: GObject.GType<StyleSchemeChooserButton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StyleSchemeChooserButton.SignalSignatures;
+        $signals: StyleSchemeChooserButton.SignalSignatures;
 
         // Constructors
 
@@ -16598,14 +16632,15 @@ export namespace GtkSource {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, StyleSchemeChooser
     {
         static $gtype: GObject.GType<StyleSchemeChooserWidget>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StyleSchemeChooserWidget.SignalSignatures;
+        $signals: StyleSchemeChooserWidget.SignalSignatures;
 
         // Constructors
 
@@ -17424,14 +17459,15 @@ export namespace GtkSource {
         set search_path(val: string[]);
         get searchPath(): string[];
         set searchPath(val: string[]);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StyleSchemeManager.SignalSignatures;
+        $signals: StyleSchemeManager.SignalSignatures;
 
         // Constructors
 
@@ -17601,14 +17637,15 @@ export namespace GtkSource {
         get scheme(): StyleScheme;
         get selected(): boolean;
         set selected(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StyleSchemePreview.SignalSignatures;
+        $signals: StyleSchemePreview.SignalSignatures;
 
         // Constructors
 
@@ -21127,14 +21164,15 @@ export namespace GtkSource {
          */
         get drawSpacesSet(): boolean;
         set drawSpacesSet(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Tag.SignalSignatures;
+        $signals: Tag.SignalSignatures;
 
         // Constructors
 
@@ -21517,14 +21555,15 @@ export namespace GtkSource {
          */
         get tabWidth(): number;
         set tabWidth(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: View.SignalSignatures;
+        $signals: View.SignalSignatures;
 
         // Constructors
 
@@ -22624,14 +22663,15 @@ export namespace GtkSource {
         get commandBarText(): string;
         get command_text(): string;
         get commandText(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VimIMContext.SignalSignatures;
+        $signals: VimIMContext.SignalSignatures;
 
         // Constructors
 

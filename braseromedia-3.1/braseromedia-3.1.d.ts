@@ -205,14 +205,15 @@ export namespace BraseroMedia {
         get gdrive(): Gio.Drive;
         set gdrive(val: Gio.Drive);
         get udi(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Drive.SignalSignatures;
+        $signals: Drive.SignalSignatures;
 
         // Constructors
 
@@ -466,14 +467,15 @@ export namespace BraseroMedia {
         set drive_type(val: number);
         get driveType(): number;
         set driveType(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DriveSelection.SignalSignatures;
+        $signals: DriveSelection.SignalSignatures;
 
         // Constructors
 
@@ -5024,14 +5026,15 @@ export namespace BraseroMedia {
         // Properties
 
         get drive(): Drive;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Medium.SignalSignatures;
+        $signals: Medium.SignalSignatures;
 
         // Constructors
 
@@ -5224,14 +5227,15 @@ export namespace BraseroMedia {
 
     class MediumMonitor extends GObject.Object {
         static $gtype: GObject.GType<MediumMonitor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediumMonitor.SignalSignatures;
+        $signals: MediumMonitor.SignalSignatures;
 
         // Constructors
 
@@ -5380,14 +5384,15 @@ export namespace BraseroMedia {
         set mediaType(val: number);
         get medium(): Medium;
         set medium(val: Medium);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediumSelection.SignalSignatures;
+        $signals: MediumSelection.SignalSignatures;
 
         // Constructors
 
@@ -9929,14 +9934,15 @@ export namespace BraseroMedia {
 
     class Volume extends Medium {
         static $gtype: GObject.GType<Volume>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Volume.SignalSignatures;
+        $signals: Volume.SignalSignatures;
 
         // Constructors
 

@@ -75,14 +75,15 @@ export namespace Spelling {
          * the default provider.
          */
         get provider(): Provider;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Checker.SignalSignatures;
+        $signals: Checker.SignalSignatures;
 
         // Constructors
 
@@ -192,14 +193,15 @@ export namespace Spelling {
          * The language code, for example `en_US`.
          */
         get code(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Dictionary.SignalSignatures;
+        $signals: Dictionary.SignalSignatures;
 
         // Constructors
 
@@ -300,14 +302,15 @@ export namespace Spelling {
          * The name of the language.
          */
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Language.SignalSignatures;
+        $signals: Language.SignalSignatures;
 
         // Constructors
 
@@ -382,14 +385,15 @@ export namespace Spelling {
          * The display name.
          */
         get displayName(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Provider.SignalSignatures;
+        $signals: Provider.SignalSignatures;
 
         // Constructors
 
@@ -502,14 +506,15 @@ export namespace Spelling {
          */
         get language(): string;
         set language(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TextBufferAdapter.SignalSignatures;
+        $signals: TextBufferAdapter.SignalSignatures;
 
         // Constructors
 

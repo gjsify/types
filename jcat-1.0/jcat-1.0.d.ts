@@ -244,14 +244,15 @@ export namespace Jcat {
 
     class Blob extends GObject.Object {
         static $gtype: GObject.GType<Blob>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Blob.SignalSignatures;
+        $signals: Blob.SignalSignatures;
 
         // Constructors
 
@@ -368,14 +369,15 @@ export namespace Jcat {
 
     class BtCheckpoint extends GObject.Object {
         static $gtype: GObject.GType<BtCheckpoint>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BtCheckpoint.SignalSignatures;
+        $signals: BtCheckpoint.SignalSignatures;
 
         // Constructors
 
@@ -459,14 +461,15 @@ export namespace Jcat {
 
     class BtVerifier extends GObject.Object {
         static $gtype: GObject.GType<BtVerifier>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BtVerifier.SignalSignatures;
+        $signals: BtVerifier.SignalSignatures;
 
         // Constructors
 
@@ -534,14 +537,15 @@ export namespace Jcat {
 
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Context.SignalSignatures;
+        $signals: Context.SignalSignatures;
 
         // Constructors
 
@@ -671,14 +675,15 @@ export namespace Jcat {
         get method(): number;
         get verify_kind(): number;
         get verifyKind(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Engine.SignalSignatures;
+        $signals: Engine.SignalSignatures;
 
         // Constructors
 
@@ -831,14 +836,15 @@ export namespace Jcat {
 
     class File extends GObject.Object {
         static $gtype: GObject.GType<File>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: File.SignalSignatures;
+        $signals: File.SignalSignatures;
 
         // Constructors
 
@@ -971,14 +977,15 @@ export namespace Jcat {
 
     class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Item.SignalSignatures;
+        $signals: Item.SignalSignatures;
 
         // Constructors
 
@@ -1092,14 +1099,15 @@ export namespace Jcat {
         get engine(): Engine;
         get timestamp(): number;
         set timestamp(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Result.SignalSignatures;
+        $signals: Result.SignalSignatures;
 
         // Constructors
 

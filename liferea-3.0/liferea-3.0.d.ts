@@ -289,14 +289,15 @@ export namespace Liferea {
 
     class Application extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Application.SignalSignatures;
+        $signals: Application.SignalSignatures;
 
         // Constructors
 
@@ -794,14 +795,15 @@ export namespace Liferea {
         // Properties
 
         get renderwidget(): Gtk.Widget;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Browser.SignalSignatures;
+        $signals: Browser.SignalSignatures;
 
         // Constructors
 
@@ -916,14 +918,15 @@ export namespace Liferea {
         get head_lines(): Gtk.Widget;
         get headLines(): Gtk.Widget;
         get notebook(): Gtk.Notebook;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BrowserTabs.SignalSignatures;
+        $signals: BrowserTabs.SignalSignatures;
 
         // Constructors
 
@@ -985,14 +988,15 @@ export namespace Liferea {
 
     class FeedList extends GObject.Object {
         static $gtype: GObject.GType<FeedList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FeedList.SignalSignatures;
+        $signals: FeedList.SignalSignatures;
 
         // Constructors
 
@@ -1056,14 +1060,15 @@ export namespace Liferea {
 
     class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Item.SignalSignatures;
+        $signals: Item.SignalSignatures;
 
         // Fields
 
@@ -1136,14 +1141,15 @@ export namespace Liferea {
 
     class ItemList extends GObject.Object {
         static $gtype: GObject.GType<ItemList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ItemList.SignalSignatures;
+        $signals: ItemList.SignalSignatures;
 
         // Constructors
 
@@ -1194,14 +1200,15 @@ export namespace Liferea {
 
     class ItemListView extends GObject.Object {
         static $gtype: GObject.GType<ItemListView>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ItemListView.SignalSignatures;
+        $signals: ItemListView.SignalSignatures;
 
         // Constructors
 
@@ -1285,14 +1292,15 @@ export namespace Liferea {
         get htmlView(): Browser;
         get item_list_view(): ItemListView;
         get itemListView(): ItemListView;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ItemView.SignalSignatures;
+        $signals: ItemView.SignalSignatures;
 
         // Constructors
 
@@ -1396,14 +1404,15 @@ export namespace Liferea {
 
     class NetworkMonitor extends GObject.Object {
         static $gtype: GObject.GType<NetworkMonitor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NetworkMonitor.SignalSignatures;
+        $signals: NetworkMonitor.SignalSignatures;
 
         // Constructors
 
@@ -1485,14 +1494,15 @@ export namespace Liferea {
         get itemList(): ItemList;
         get item_view(): ItemView;
         get itemView(): ItemView;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Shell.SignalSignatures;
+        $signals: Shell.SignalSignatures;
 
         // Constructors
 

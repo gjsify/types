@@ -197,14 +197,15 @@ export namespace Garcon {
          * The #GFile from which the %GarconMenu was loaded.
          */
         get file(): Gio.File;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Menu.SignalSignatures;
+        $signals: Menu.SignalSignatures;
 
         // Constructors
 
@@ -834,14 +835,15 @@ export namespace Garcon {
          */
         get noDisplay(): boolean;
         set noDisplay(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MenuDirectory.SignalSignatures;
+        $signals: MenuDirectory.SignalSignatures;
 
         // Constructors
 
@@ -1116,14 +1118,15 @@ export namespace Garcon {
          */
         get tryExec(): string;
         set tryExec(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MenuItem.SignalSignatures;
+        $signals: MenuItem.SignalSignatures;
 
         // Constructors
 
@@ -1691,14 +1694,15 @@ export namespace Garcon {
          */
         get name(): string;
         set name(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MenuItemAction.SignalSignatures;
+        $signals: MenuItemAction.SignalSignatures;
 
         // Constructors
 
@@ -1755,14 +1759,15 @@ export namespace Garcon {
 
     class MenuItemCache extends GObject.Object {
         static $gtype: GObject.GType<MenuItemCache>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MenuItemCache.SignalSignatures;
+        $signals: MenuItemCache.SignalSignatures;
 
         // Constructors
 
@@ -1809,14 +1814,15 @@ export namespace Garcon {
 
     class MenuItemPool extends GObject.Object {
         static $gtype: GObject.GType<MenuItemPool>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MenuItemPool.SignalSignatures;
+        $signals: MenuItemPool.SignalSignatures;
 
         // Constructors
 
@@ -1876,14 +1882,15 @@ export namespace Garcon {
 
         get tree_provider(): MenuTreeProvider;
         get treeProvider(): MenuTreeProvider;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MenuMerger.SignalSignatures;
+        $signals: MenuMerger.SignalSignatures;
 
         // Constructors
 
@@ -2382,14 +2389,15 @@ export namespace Garcon {
         set node_type(val: MenuNodeType);
         get nodeType(): MenuNodeType;
         set nodeType(val: MenuNodeType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MenuNode.SignalSignatures;
+        $signals: MenuNode.SignalSignatures;
 
         // Constructors
 
@@ -2466,14 +2474,15 @@ export namespace Garcon {
         // Properties
 
         get file(): Gio.File;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MenuParser.SignalSignatures;
+        $signals: MenuParser.SignalSignatures;
 
         // Constructors
 
@@ -2960,14 +2969,15 @@ export namespace Garcon {
 
     class MenuSeparator extends GObject.Object implements MenuElement {
         static $gtype: GObject.GType<MenuSeparator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MenuSeparator.SignalSignatures;
+        $signals: MenuSeparator.SignalSignatures;
 
         // Constructors
 

@@ -41,14 +41,15 @@ export namespace GstGLX11 {
      */
     class GLDisplayX11 extends GstGL.GLDisplay {
         static $gtype: GObject.GType<GLDisplayX11>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLDisplayX11.SignalSignatures;
+        $signals: GLDisplayX11.SignalSignatures;
 
         // Constructors
 

@@ -104,14 +104,15 @@ export namespace Bamf {
 
     class Application extends View {
         static $gtype: GObject.GType<Application>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Application.SignalSignatures;
+        $signals: Application.SignalSignatures;
 
         // Constructors
 
@@ -187,14 +188,15 @@ export namespace Bamf {
 
     class Control extends GObject.Object {
         static $gtype: GObject.GType<Control>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Control.SignalSignatures;
+        $signals: Control.SignalSignatures;
 
         // Constructors
 
@@ -249,14 +251,15 @@ export namespace Bamf {
 
     class Matcher extends GObject.Object {
         static $gtype: GObject.GType<Matcher>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Matcher.SignalSignatures;
+        $signals: Matcher.SignalSignatures;
 
         // Constructors
 
@@ -404,14 +407,15 @@ export namespace Bamf {
         get isForegroundTab(): boolean;
         get location(): string;
         get xid(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Tab.SignalSignatures;
+        $signals: Tab.SignalSignatures;
 
         // Constructors
 
@@ -524,14 +528,15 @@ export namespace Bamf {
         get urgent(): boolean;
         get user_visible(): boolean;
         get userVisible(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: View.SignalSignatures;
+        $signals: View.SignalSignatures;
 
         // Constructors
 
@@ -681,14 +686,15 @@ export namespace Bamf {
 
     class Window extends View {
         static $gtype: GObject.GType<Window>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Window.SignalSignatures;
+        $signals: Window.SignalSignatures;
 
         // Constructors
 

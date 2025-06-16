@@ -1180,14 +1180,15 @@ export namespace Fwupd {
          * If the daemon is tainted by 3rd party code.
          */
         get tainted(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -3341,14 +3342,15 @@ export namespace Fwupd {
         set version_format(val: number);
         get versionFormat(): number;
         set versionFormat(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Device.SignalSignatures;
+        $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -3878,14 +3880,15 @@ export namespace Fwupd {
         set flags(val: number);
         get name(): string;
         set name(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Plugin.SignalSignatures;
+        $signals: Plugin.SignalSignatures;
 
         // Constructors
 
@@ -3997,14 +4000,15 @@ export namespace Fwupd {
 
     class Release extends GObject.Object {
         static $gtype: GObject.GType<Release>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Release.SignalSignatures;
+        $signals: Release.SignalSignatures;
 
         // Constructors
 
@@ -4503,14 +4507,15 @@ export namespace Fwupd {
          */
         get id(): string;
         set id(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Remote.SignalSignatures;
+        $signals: Remote.SignalSignatures;
 
         // Constructors
 
@@ -4763,14 +4768,15 @@ export namespace Fwupd {
 
     class SecurityAttr extends GObject.Object {
         static $gtype: GObject.GType<SecurityAttr>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SecurityAttr.SignalSignatures;
+        $signals: SecurityAttr.SignalSignatures;
 
         // Constructors
 

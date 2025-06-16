@@ -1395,14 +1395,15 @@ export namespace Ggit {
      */
     class Blame extends Native {
         static $gtype: GObject.GType<Blame>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Blame.SignalSignatures;
+        $signals: Blame.SignalSignatures;
 
         // Constructors
 
@@ -1477,14 +1478,15 @@ export namespace Ggit {
      */
     class Blob extends Object {
         static $gtype: GObject.GType<Blob>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Blob.SignalSignatures;
+        $signals: Blob.SignalSignatures;
 
         // Constructors
 
@@ -1551,14 +1553,15 @@ export namespace Ggit {
         // Properties
 
         set repository(val: Repository);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BlobOutputStream.SignalSignatures;
+        $signals: BlobOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -1611,14 +1614,15 @@ export namespace Ggit {
      */
     class Branch extends Ref {
         static $gtype: GObject.GType<Branch>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Branch.SignalSignatures;
+        $signals: Branch.SignalSignatures;
 
         // Constructors
 
@@ -1779,14 +1783,15 @@ export namespace Ggit {
         set their_label(val: string);
         get theirLabel(): string;
         set theirLabel(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CheckoutOptions.SignalSignatures;
+        $signals: CheckoutOptions.SignalSignatures;
 
         // Constructors
 
@@ -1992,14 +1997,15 @@ export namespace Ggit {
         set merge_options(val: MergeOptions);
         get mergeOptions(): MergeOptions;
         set mergeOptions(val: MergeOptions);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CherryPickOptions.SignalSignatures;
+        $signals: CherryPickOptions.SignalSignatures;
 
         // Constructors
 
@@ -2075,14 +2081,15 @@ export namespace Ggit {
      */
     class CloneOptions extends GObject.Object {
         static $gtype: GObject.GType<CloneOptions>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CloneOptions.SignalSignatures;
+        $signals: CloneOptions.SignalSignatures;
 
         // Constructors
 
@@ -2180,14 +2187,15 @@ export namespace Ggit {
      */
     class Commit extends Object {
         static $gtype: GObject.GType<Commit>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Commit.SignalSignatures;
+        $signals: Commit.SignalSignatures;
 
         // Constructors
 
@@ -2325,14 +2333,15 @@ export namespace Ggit {
 
         get commit(): Commit;
         get size(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CommitParents.SignalSignatures;
+        $signals: CommitParents.SignalSignatures;
 
         // Constructors
 
@@ -2397,14 +2406,15 @@ export namespace Ggit {
      */
     class Config extends Native {
         static $gtype: GObject.GType<Config>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Config.SignalSignatures;
+        $signals: Config.SignalSignatures;
 
         // Constructors
 
@@ -2589,14 +2599,15 @@ export namespace Ggit {
      */
     class Cred extends Native {
         static $gtype: GObject.GType<Cred>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Cred.SignalSignatures;
+        $signals: Cred.SignalSignatures;
 
         // Constructors
 
@@ -2649,14 +2660,15 @@ export namespace Ggit {
 
         get password(): string;
         get username(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CredPlaintext.SignalSignatures;
+        $signals: CredPlaintext.SignalSignatures;
 
         // Constructors
 
@@ -3239,14 +3251,15 @@ export namespace Ggit {
         // Properties
 
         get username(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CredSshInteractive.SignalSignatures;
+        $signals: CredSshInteractive.SignalSignatures;
 
         // Constructors
 
@@ -3832,14 +3845,15 @@ export namespace Ggit {
         // Properties
 
         get username(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CredSshKeyFromAgent.SignalSignatures;
+        $signals: CredSshKeyFromAgent.SignalSignatures;
 
         // Constructors
 
@@ -4427,14 +4441,15 @@ export namespace Ggit {
         // Properties
 
         get repository(): Repository;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Diff.SignalSignatures;
+        $signals: Diff.SignalSignatures;
 
         // Constructors
 
@@ -4659,14 +4674,15 @@ export namespace Ggit {
         set rename_threshold(val: number);
         get renameThreshold(): number;
         set renameThreshold(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DiffFindOptions.SignalSignatures;
+        $signals: DiffFindOptions.SignalSignatures;
 
         // Constructors
 
@@ -4808,14 +4824,15 @@ export namespace Ggit {
         set total_patches(val: number);
         get totalPatches(): number;
         set totalPatches(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DiffFormatEmailOptions.SignalSignatures;
+        $signals: DiffFormatEmailOptions.SignalSignatures;
 
         // Constructors
 
@@ -4977,14 +4994,15 @@ export namespace Ggit {
         set oldPrefix(val: string);
         get pathspec(): string[];
         set pathspec(val: string[]);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DiffOptions.SignalSignatures;
+        $signals: DiffOptions.SignalSignatures;
 
         // Constructors
 
@@ -5099,14 +5117,15 @@ export namespace Ggit {
         // Properties
 
         get file(): Gio.File;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Index.SignalSignatures;
+        $signals: Index.SignalSignatures;
 
         // Constructors
 
@@ -5774,14 +5793,15 @@ export namespace Ggit {
      */
     class Mailmap extends Native {
         static $gtype: GObject.GType<Mailmap>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Mailmap.SignalSignatures;
+        $signals: Mailmap.SignalSignatures;
 
         // Constructors
 
@@ -5868,14 +5888,15 @@ export namespace Ggit {
         // Properties
 
         set native(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Native.SignalSignatures;
+        $signals: Native.SignalSignatures;
 
         // Constructors
 
@@ -5918,14 +5939,15 @@ export namespace Ggit {
      */
     abstract class Object extends Native {
         static $gtype: GObject.GType<Object>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Object.SignalSignatures;
+        $signals: Object.SignalSignatures;
 
         // Constructors
 
@@ -5979,14 +6001,15 @@ export namespace Ggit {
      */
     class ObjectFactory extends GObject.Object {
         static $gtype: GObject.GType<ObjectFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ObjectFactory.SignalSignatures;
+        $signals: ObjectFactory.SignalSignatures;
 
         // Constructors
 
@@ -6063,14 +6086,15 @@ export namespace Ggit {
      */
     abstract class ObjectFactoryBase extends GObject.Object {
         static $gtype: GObject.GType<ObjectFactoryBase>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ObjectFactoryBase.SignalSignatures;
+        $signals: ObjectFactoryBase.SignalSignatures;
 
         // Constructors
 
@@ -6111,14 +6135,15 @@ export namespace Ggit {
      */
     class ProxyOptions extends GObject.Object {
         static $gtype: GObject.GType<ProxyOptions>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProxyOptions.SignalSignatures;
+        $signals: ProxyOptions.SignalSignatures;
 
         // Constructors
 
@@ -6174,14 +6199,15 @@ export namespace Ggit {
         set callbacks(val: RemoteCallbacks);
         get parallelism(): number;
         set parallelism(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PushOptions.SignalSignatures;
+        $signals: PushOptions.SignalSignatures;
 
         // Constructors
 
@@ -6253,14 +6279,15 @@ export namespace Ggit {
      */
     class Rebase extends Native {
         static $gtype: GObject.GType<Rebase>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Rebase.SignalSignatures;
+        $signals: Rebase.SignalSignatures;
 
         // Constructors
 
@@ -6355,14 +6382,15 @@ export namespace Ggit {
      */
     class Ref extends Native {
         static $gtype: GObject.GType<Ref>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Ref.SignalSignatures;
+        $signals: Ref.SignalSignatures;
 
         // Constructors
 
@@ -6573,14 +6601,15 @@ export namespace Ggit {
      */
     class Remote extends Native {
         static $gtype: GObject.GType<Remote>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Remote.SignalSignatures;
+        $signals: Remote.SignalSignatures;
 
         // Constructors
 
@@ -6734,14 +6763,15 @@ export namespace Ggit {
      */
     class RemoteCallbacks extends GObject.Object {
         static $gtype: GObject.GType<RemoteCallbacks>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RemoteCallbacks.SignalSignatures;
+        $signals: RemoteCallbacks.SignalSignatures;
 
         // Constructors
 
@@ -6824,14 +6854,15 @@ export namespace Ggit {
         get url(): string;
         get workdir(): Gio.File;
         set workdir(val: Gio.File);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Repository.SignalSignatures;
+        $signals: Repository.SignalSignatures;
 
         // Constructors
 
@@ -8221,14 +8252,15 @@ export namespace Ggit {
 
         get repository(): Repository;
         set repository(val: Repository);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RevisionWalker.SignalSignatures;
+        $signals: RevisionWalker.SignalSignatures;
 
         // Constructors
 
@@ -8913,14 +8945,15 @@ export namespace Ggit {
         // Properties
 
         get encoding(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Signature.SignalSignatures;
+        $signals: Signature.SignalSignatures;
 
         // Constructors
 
@@ -9013,14 +9046,15 @@ export namespace Ggit {
         set fetch_options(val: FetchOptions);
         get fetchOptions(): FetchOptions;
         set fetchOptions(val: FetchOptions);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SubmoduleUpdateOptions.SignalSignatures;
+        $signals: SubmoduleUpdateOptions.SignalSignatures;
 
         // Constructors
 
@@ -9086,14 +9120,15 @@ export namespace Ggit {
      */
     class Tag extends Object {
         static $gtype: GObject.GType<Tag>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Tag.SignalSignatures;
+        $signals: Tag.SignalSignatures;
 
         // Constructors
 
@@ -9178,14 +9213,15 @@ export namespace Ggit {
      */
     class Tree extends Object {
         static $gtype: GObject.GType<Tree>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Tree.SignalSignatures;
+        $signals: Tree.SignalSignatures;
 
         // Constructors
 
@@ -9268,14 +9304,15 @@ export namespace Ggit {
      */
     class TreeBuilder extends Native {
         static $gtype: GObject.GType<TreeBuilder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TreeBuilder.SignalSignatures;
+        $signals: TreeBuilder.SignalSignatures;
 
         // Constructors
 

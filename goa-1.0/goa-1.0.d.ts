@@ -431,14 +431,15 @@ export namespace Goa {
         implements Gio.AsyncInitable<AccountProxy>, Gio.DBusInterface, Gio.Initable, Account
     {
         static $gtype: GObject.GType<AccountProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AccountProxy.SignalSignatures;
+        $signals: AccountProxy.SignalSignatures;
 
         // Constructors
 
@@ -1763,14 +1764,15 @@ export namespace Goa {
      */
     class AccountSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Account {
         static $gtype: GObject.GType<AccountSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AccountSkeleton.SignalSignatures;
+        $signals: AccountSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -2724,14 +2726,15 @@ export namespace Goa {
         implements Gio.AsyncInitable<CalendarProxy>, Gio.DBusInterface, Gio.Initable, Calendar
     {
         static $gtype: GObject.GType<CalendarProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CalendarProxy.SignalSignatures;
+        $signals: CalendarProxy.SignalSignatures;
 
         // Constructors
 
@@ -3643,14 +3646,15 @@ export namespace Goa {
      */
     class CalendarSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Calendar {
         static $gtype: GObject.GType<CalendarSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CalendarSkeleton.SignalSignatures;
+        $signals: CalendarSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -4209,14 +4213,15 @@ export namespace Goa {
         implements Gio.AsyncInitable<ChatProxy>, Gio.DBusInterface, Gio.Initable, Chat
     {
         static $gtype: GObject.GType<ChatProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ChatProxy.SignalSignatures;
+        $signals: ChatProxy.SignalSignatures;
 
         // Constructors
 
@@ -5103,14 +5108,15 @@ export namespace Goa {
      */
     class ChatSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Chat {
         static $gtype: GObject.GType<ChatSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ChatSkeleton.SignalSignatures;
+        $signals: ChatSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -5651,14 +5657,15 @@ export namespace Goa {
          * The [iface`Gio`.DBusObjectManager] used by the [class`Goa`.Client] instance.
          */
         get objectManager(): Gio.DBusObjectManager;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -6494,14 +6501,15 @@ export namespace Goa {
         implements Gio.AsyncInitable<ContactsProxy>, Gio.DBusInterface, Gio.Initable, Contacts
     {
         static $gtype: GObject.GType<ContactsProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ContactsProxy.SignalSignatures;
+        $signals: ContactsProxy.SignalSignatures;
 
         // Constructors
 
@@ -7413,14 +7421,15 @@ export namespace Goa {
      */
     class ContactsSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Contacts {
         static $gtype: GObject.GType<ContactsSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ContactsSkeleton.SignalSignatures;
+        $signals: ContactsSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -7979,14 +7988,15 @@ export namespace Goa {
         implements Gio.AsyncInitable<DocumentsProxy>, Gio.DBusInterface, Gio.Initable, Documents
     {
         static $gtype: GObject.GType<DocumentsProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentsProxy.SignalSignatures;
+        $signals: DocumentsProxy.SignalSignatures;
 
         // Constructors
 
@@ -8873,14 +8883,15 @@ export namespace Goa {
      */
     class DocumentsSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Documents {
         static $gtype: GObject.GType<DocumentsSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentsSkeleton.SignalSignatures;
+        $signals: DocumentsSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -9418,14 +9429,15 @@ export namespace Goa {
         implements Gio.AsyncInitable<ExchangeProxy>, Gio.DBusInterface, Gio.Initable, Exchange
     {
         static $gtype: GObject.GType<ExchangeProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExchangeProxy.SignalSignatures;
+        $signals: ExchangeProxy.SignalSignatures;
 
         // Constructors
 
@@ -10337,14 +10349,15 @@ export namespace Goa {
      */
     class ExchangeSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Exchange {
         static $gtype: GObject.GType<ExchangeSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExchangeSkeleton.SignalSignatures;
+        $signals: ExchangeSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -10905,14 +10918,15 @@ export namespace Goa {
         implements Gio.AsyncInitable<FilesProxy>, Gio.DBusInterface, Gio.Initable, Files
     {
         static $gtype: GObject.GType<FilesProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilesProxy.SignalSignatures;
+        $signals: FilesProxy.SignalSignatures;
 
         // Constructors
 
@@ -11824,14 +11838,15 @@ export namespace Goa {
      */
     class FilesSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Files {
         static $gtype: GObject.GType<FilesSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilesSkeleton.SignalSignatures;
+        $signals: FilesSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -12408,14 +12423,15 @@ export namespace Goa {
         implements Gio.AsyncInitable<MailProxy>, Gio.DBusInterface, Gio.Initable, Mail
     {
         static $gtype: GObject.GType<MailProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MailProxy.SignalSignatures;
+        $signals: MailProxy.SignalSignatures;
 
         // Constructors
 
@@ -13567,14 +13583,15 @@ export namespace Goa {
      */
     class MailSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Mail {
         static $gtype: GObject.GType<MailSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MailSkeleton.SignalSignatures;
+        $signals: MailSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -14357,14 +14374,15 @@ export namespace Goa {
         implements Gio.AsyncInitable<ManagerProxy>, Gio.DBusInterface, Gio.Initable, Manager
     {
         static $gtype: GObject.GType<ManagerProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ManagerProxy.SignalSignatures;
+        $signals: ManagerProxy.SignalSignatures;
 
         // Constructors
 
@@ -15441,14 +15459,15 @@ export namespace Goa {
      */
     class ManagerSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Manager {
         static $gtype: GObject.GType<ManagerSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ManagerSkeleton.SignalSignatures;
+        $signals: ManagerSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -16174,14 +16193,15 @@ export namespace Goa {
         implements Gio.AsyncInitable<MapsProxy>, Gio.DBusInterface, Gio.Initable, Maps
     {
         static $gtype: GObject.GType<MapsProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MapsProxy.SignalSignatures;
+        $signals: MapsProxy.SignalSignatures;
 
         // Constructors
 
@@ -17068,14 +17088,15 @@ export namespace Goa {
      */
     class MapsSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Maps {
         static $gtype: GObject.GType<MapsSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MapsSkeleton.SignalSignatures;
+        $signals: MapsSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -17613,14 +17634,15 @@ export namespace Goa {
         implements Gio.AsyncInitable<MediaServerProxy>, Gio.DBusInterface, Gio.Initable, MediaServer
     {
         static $gtype: GObject.GType<MediaServerProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaServerProxy.SignalSignatures;
+        $signals: MediaServerProxy.SignalSignatures;
 
         // Constructors
 
@@ -18532,14 +18554,15 @@ export namespace Goa {
      */
     class MediaServerSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, MediaServer {
         static $gtype: GObject.GType<MediaServerSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaServerSkeleton.SignalSignatures;
+        $signals: MediaServerSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -19100,14 +19123,15 @@ export namespace Goa {
         implements Gio.AsyncInitable<MusicProxy>, Gio.DBusInterface, Gio.Initable, Music
     {
         static $gtype: GObject.GType<MusicProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MusicProxy.SignalSignatures;
+        $signals: MusicProxy.SignalSignatures;
 
         // Constructors
 
@@ -19994,14 +20018,15 @@ export namespace Goa {
      */
     class MusicSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Music {
         static $gtype: GObject.GType<MusicSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MusicSkeleton.SignalSignatures;
+        $signals: MusicSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -20539,14 +20564,15 @@ export namespace Goa {
         implements Gio.AsyncInitable<OAuth2BasedProxy>, Gio.DBusInterface, Gio.Initable, OAuth2Based
     {
         static $gtype: GObject.GType<OAuth2BasedProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OAuth2BasedProxy.SignalSignatures;
+        $signals: OAuth2BasedProxy.SignalSignatures;
 
         // Constructors
 
@@ -21525,14 +21551,15 @@ export namespace Goa {
      */
     class OAuth2BasedSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, OAuth2Based {
         static $gtype: GObject.GType<OAuth2BasedSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OAuth2BasedSkeleton.SignalSignatures;
+        $signals: OAuth2BasedSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -22162,14 +22189,15 @@ export namespace Goa {
         implements Gio.AsyncInitable<OAuthBasedProxy>, Gio.DBusInterface, Gio.Initable, OAuthBased
     {
         static $gtype: GObject.GType<OAuthBasedProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OAuthBasedProxy.SignalSignatures;
+        $signals: OAuthBasedProxy.SignalSignatures;
 
         // Constructors
 
@@ -23154,14 +23182,15 @@ export namespace Goa {
      */
     class OAuthBasedSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, OAuthBased {
         static $gtype: GObject.GType<OAuthBasedSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OAuthBasedSkeleton.SignalSignatures;
+        $signals: OAuthBasedSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -23792,14 +23821,15 @@ export namespace Goa {
         implements Gio.AsyncInitable<ObjectManagerClient>, Gio.DBusObjectManager, Gio.Initable
     {
         static $gtype: GObject.GType<ObjectManagerClient>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ObjectManagerClient.SignalSignatures;
+        $signals: ObjectManagerClient.SignalSignatures;
 
         // Constructors
 
@@ -24754,14 +24784,15 @@ export namespace Goa {
      */
     class ObjectProxy extends Gio.DBusObjectProxy implements Gio.DBusObject, Object {
         static $gtype: GObject.GType<ObjectProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ObjectProxy.SignalSignatures;
+        $signals: ObjectProxy.SignalSignatures;
 
         // Constructors
 
@@ -25588,14 +25619,15 @@ export namespace Goa {
      */
     class ObjectSkeleton extends Gio.DBusObjectSkeleton implements Gio.DBusObject, Object {
         static $gtype: GObject.GType<ObjectSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ObjectSkeleton.SignalSignatures;
+        $signals: ObjectSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -26518,14 +26550,15 @@ export namespace Goa {
         implements Gio.AsyncInitable<PasswordBasedProxy>, Gio.DBusInterface, Gio.Initable, PasswordBased
     {
         static $gtype: GObject.GType<PasswordBasedProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PasswordBasedProxy.SignalSignatures;
+        $signals: PasswordBasedProxy.SignalSignatures;
 
         // Constructors
 
@@ -27481,14 +27514,15 @@ export namespace Goa {
      */
     class PasswordBasedSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, PasswordBased {
         static $gtype: GObject.GType<PasswordBasedSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PasswordBasedSkeleton.SignalSignatures;
+        $signals: PasswordBasedSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -28095,14 +28129,15 @@ export namespace Goa {
         implements Gio.AsyncInitable<PhotosProxy>, Gio.DBusInterface, Gio.Initable, Photos
     {
         static $gtype: GObject.GType<PhotosProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PhotosProxy.SignalSignatures;
+        $signals: PhotosProxy.SignalSignatures;
 
         // Constructors
 
@@ -28989,14 +29024,15 @@ export namespace Goa {
      */
     class PhotosSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Photos {
         static $gtype: GObject.GType<PhotosSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PhotosSkeleton.SignalSignatures;
+        $signals: PhotosSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -29532,14 +29568,15 @@ export namespace Goa {
         implements Gio.AsyncInitable<PrintersProxy>, Gio.DBusInterface, Gio.Initable, Printers
     {
         static $gtype: GObject.GType<PrintersProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PrintersProxy.SignalSignatures;
+        $signals: PrintersProxy.SignalSignatures;
 
         // Constructors
 
@@ -30426,14 +30463,15 @@ export namespace Goa {
      */
     class PrintersSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Printers {
         static $gtype: GObject.GType<PrintersSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PrintersSkeleton.SignalSignatures;
+        $signals: PrintersSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -30969,14 +31007,15 @@ export namespace Goa {
         implements Gio.AsyncInitable<ReadLaterProxy>, Gio.DBusInterface, Gio.Initable, ReadLater
     {
         static $gtype: GObject.GType<ReadLaterProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ReadLaterProxy.SignalSignatures;
+        $signals: ReadLaterProxy.SignalSignatures;
 
         // Constructors
 
@@ -31863,14 +31902,15 @@ export namespace Goa {
      */
     class ReadLaterSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, ReadLater {
         static $gtype: GObject.GType<ReadLaterSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ReadLaterSkeleton.SignalSignatures;
+        $signals: ReadLaterSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -32407,14 +32447,15 @@ export namespace Goa {
         implements Gio.AsyncInitable<TicketingProxy>, Gio.DBusInterface, Gio.Initable, Ticketing
     {
         static $gtype: GObject.GType<TicketingProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TicketingProxy.SignalSignatures;
+        $signals: TicketingProxy.SignalSignatures;
 
         // Constructors
 
@@ -33369,14 +33410,15 @@ export namespace Goa {
      */
     class TicketingSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Ticketing {
         static $gtype: GObject.GType<TicketingSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TicketingSkeleton.SignalSignatures;
+        $signals: TicketingSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -33979,14 +34021,15 @@ export namespace Goa {
         implements Gio.AsyncInitable<TodoProxy>, Gio.DBusInterface, Gio.Initable, Todo
     {
         static $gtype: GObject.GType<TodoProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TodoProxy.SignalSignatures;
+        $signals: TodoProxy.SignalSignatures;
 
         // Constructors
 
@@ -34873,14 +34916,15 @@ export namespace Goa {
      */
     class TodoSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Todo {
         static $gtype: GObject.GType<TodoSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TodoSkeleton.SignalSignatures;
+        $signals: TodoSkeleton.SignalSignatures;
 
         // Constructors
 

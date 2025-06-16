@@ -126,14 +126,15 @@ export namespace Lasem {
 
     abstract class DomCharacterData extends DomNode {
         static $gtype: GObject.GType<DomCharacterData>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomCharacterData.SignalSignatures;
+        $signals: DomCharacterData.SignalSignatures;
 
         // Fields
 
@@ -183,14 +184,15 @@ export namespace Lasem {
 
     abstract class DomDocument extends DomNode {
         static $gtype: GObject.GType<DomDocument>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomDocument.SignalSignatures;
+        $signals: DomDocument.SignalSignatures;
 
         // Fields
 
@@ -273,14 +275,15 @@ export namespace Lasem {
 
     abstract class DomDocumentFragment extends DomNode {
         static $gtype: GObject.GType<DomDocumentFragment>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomDocumentFragment.SignalSignatures;
+        $signals: DomDocumentFragment.SignalSignatures;
 
         // Fields
 
@@ -326,14 +329,15 @@ export namespace Lasem {
 
     abstract class DomElement extends DomNode {
         static $gtype: GObject.GType<DomElement>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomElement.SignalSignatures;
+        $signals: DomElement.SignalSignatures;
 
         // Fields
 
@@ -397,14 +401,15 @@ export namespace Lasem {
 
     abstract class DomNamedNodeMap extends GObject.Object {
         static $gtype: GObject.GType<DomNamedNodeMap>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomNamedNodeMap.SignalSignatures;
+        $signals: DomNamedNodeMap.SignalSignatures;
 
         // Fields
 
@@ -459,14 +464,15 @@ export namespace Lasem {
 
     abstract class DomNode extends GObject.Object {
         static $gtype: GObject.GType<DomNode>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomNode.SignalSignatures;
+        $signals: DomNode.SignalSignatures;
 
         // Fields
 
@@ -588,14 +594,15 @@ export namespace Lasem {
 
     abstract class DomNodeList extends GObject.Object {
         static $gtype: GObject.GType<DomNodeList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomNodeList.SignalSignatures;
+        $signals: DomNodeList.SignalSignatures;
 
         // Fields
 
@@ -647,14 +654,15 @@ export namespace Lasem {
 
     class DomText extends DomCharacterData {
         static $gtype: GObject.GType<DomText>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomText.SignalSignatures;
+        $signals: DomText.SignalSignatures;
 
         // Fields
 
@@ -698,14 +706,15 @@ export namespace Lasem {
 
     abstract class DomView extends GObject.Object {
         static $gtype: GObject.GType<DomView>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomView.SignalSignatures;
+        $signals: DomView.SignalSignatures;
 
         // Fields
 

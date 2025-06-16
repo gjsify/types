@@ -170,14 +170,15 @@ export namespace Zpj {
         get scope(): string;
         get service_name(): string;
         get serviceName(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AuthorizationDomain.SignalSignatures;
+        $signals: AuthorizationDomain.SignalSignatures;
 
         // Constructors
 
@@ -226,14 +227,15 @@ export namespace Zpj {
      */
     class GoaAuthorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<GoaAuthorizer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GoaAuthorizer.SignalSignatures;
+        $signals: GoaAuthorizer.SignalSignatures;
 
         // Constructors
 
@@ -849,14 +851,15 @@ export namespace Zpj {
 
         get authorizer(): Authorizer;
         set authorizer(val: Authorizer);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Skydrive.SignalSignatures;
+        $signals: Skydrive.SignalSignatures;
 
         // Constructors
 
@@ -1330,14 +1333,15 @@ export namespace Zpj {
         get type(): SkydriveEntryType;
         get updated_time(): GLib.DateTime;
         get updatedTime(): GLib.DateTime;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SkydriveEntry.SignalSignatures;
+        $signals: SkydriveEntry.SignalSignatures;
 
         // Constructors
 
@@ -1469,14 +1473,15 @@ export namespace Zpj {
         // Properties
 
         get size(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SkydriveFile.SignalSignatures;
+        $signals: SkydriveFile.SignalSignatures;
 
         // Constructors
 
@@ -1541,14 +1546,15 @@ export namespace Zpj {
      */
     class SkydriveFolder extends SkydriveEntry {
         static $gtype: GObject.GType<SkydriveFolder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SkydriveFolder.SignalSignatures;
+        $signals: SkydriveFolder.SignalSignatures;
 
         // Constructors
 
@@ -1604,14 +1610,15 @@ export namespace Zpj {
      */
     class SkydrivePhoto extends SkydriveFile {
         static $gtype: GObject.GType<SkydrivePhoto>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SkydrivePhoto.SignalSignatures;
+        $signals: SkydrivePhoto.SignalSignatures;
 
         // Constructors
 
@@ -1683,14 +1690,15 @@ export namespace Zpj {
         get duration(): number;
         get height(): number;
         get width(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SkydriveVideo.SignalSignatures;
+        $signals: SkydriveVideo.SignalSignatures;
 
         // Constructors
 

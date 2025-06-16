@@ -274,14 +274,15 @@ export namespace GstMse {
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-sourcebuffers)
          */
         get sourceBuffers(): SourceBufferList;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaSource.SignalSignatures;
+        $signals: MediaSource.SignalSignatures;
 
         // Constructors
 
@@ -544,14 +545,15 @@ export namespace GstMse {
          * [Specification](https://html.spec.whatwg.org/multipage/media.html#ready-states)
          */
         get readyState(): MseSrcReadyState;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MseSrc.SignalSignatures;
+        $signals: MseSrc.SignalSignatures;
 
         // Constructors
 
@@ -1100,14 +1102,15 @@ export namespace GstMse {
 
     class MseSrcPad extends Gst.Pad {
         static $gtype: GObject.GType<MseSrcPad>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MseSrcPad.SignalSignatures;
+        $signals: MseSrcPad.SignalSignatures;
 
         // Constructors
 
@@ -1296,14 +1299,15 @@ export namespace GstMse {
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-updating)
          */
         get updating(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceBuffer.SignalSignatures;
+        $signals: SourceBuffer.SignalSignatures;
 
         // Constructors
 
@@ -1491,14 +1495,15 @@ export namespace GstMse {
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebufferlist-length)
          */
         get length(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceBufferList.SignalSignatures;
+        $signals: SourceBufferList.SignalSignatures;
 
         // Constructors
 

@@ -1014,14 +1014,15 @@ export namespace Ide {
 
     class Application extends Dazzle.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Application.SignalSignatures;
+        $signals: Application.SignalSignatures;
 
         // Constructors
 
@@ -1615,14 +1616,15 @@ export namespace Ide {
          * IdeWorkbenchAddin::can_open() vfunc and associated functions.
          */
         get uri(): Uri;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BackForwardItem.SignalSignatures;
+        $signals: BackForwardItem.SignalSignatures;
 
         // Constructors
 
@@ -1698,14 +1700,15 @@ export namespace Ide {
         get canGoForward(): boolean;
         get current_item(): BackForwardItem;
         get currentItem(): BackForwardItem;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BackForwardList.SignalSignatures;
+        $signals: BackForwardList.SignalSignatures;
 
         // Constructors
 
@@ -1836,14 +1839,15 @@ export namespace Ide {
         set styleSchemeName(val: string);
         get title(): string;
         set title(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Buffer.SignalSignatures;
+        $signals: Buffer.SignalSignatures;
 
         // Constructors
 
@@ -2094,14 +2098,15 @@ export namespace Ide {
         // Properties
 
         set buffer(val: Buffer);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BufferChangeMonitor.SignalSignatures;
+        $signals: BufferChangeMonitor.SignalSignatures;
 
         // Constructors
 
@@ -2197,14 +2202,15 @@ export namespace Ide {
         set minimum_word_size(val: number);
         get minimumWordSize(): number;
         set minimumWordSize(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BufferManager.SignalSignatures;
+        $signals: BufferManager.SignalSignatures;
 
         // Constructors
 
@@ -3112,14 +3118,15 @@ export namespace Ide {
          * to tranform this to seconds.
          */
         get runningTime(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BuildManager.SignalSignatures;
+        $signals: BuildManager.SignalSignatures;
 
         // Constructors
 
@@ -4298,14 +4305,15 @@ export namespace Ide {
          * The current build phase during execution of the pipeline.
          */
         get phase(): BuildPhase;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BuildPipeline.SignalSignatures;
+        $signals: BuildPipeline.SignalSignatures;
 
         // Constructors
 
@@ -5174,14 +5182,15 @@ export namespace Ide {
          */
         get transient(): boolean;
         set transient(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BuildStage.SignalSignatures;
+        $signals: BuildStage.SignalSignatures;
 
         // Constructors
 
@@ -5331,14 +5340,15 @@ export namespace Ide {
         set ignoreExitStatus(val: boolean);
         get launcher(): SubprocessLauncher;
         set launcher(val: SubprocessLauncher);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BuildStageLauncher.SignalSignatures;
+        $signals: BuildStageLauncher.SignalSignatures;
 
         // Constructors
 
@@ -5408,14 +5418,15 @@ export namespace Ide {
 
     class BuildStageMkdirs extends BuildStage {
         static $gtype: GObject.GType<BuildStageMkdirs>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BuildStageMkdirs.SignalSignatures;
+        $signals: BuildStageMkdirs.SignalSignatures;
 
         // Constructors
 
@@ -5481,14 +5492,15 @@ export namespace Ide {
         get disableWhenMetered(): boolean;
         set disableWhenMetered(val: boolean);
         get transfer(): Transfer;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BuildStageTransfer.SignalSignatures;
+        $signals: BuildStageTransfer.SignalSignatures;
 
         // Constructors
 
@@ -5558,14 +5570,15 @@ export namespace Ide {
         set postbuild(val: string[]);
         get prebuild(): string[];
         set prebuild(val: string[]);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BuildconfigConfiguration.SignalSignatures;
+        $signals: BuildconfigConfiguration.SignalSignatures;
 
         // Constructors
 
@@ -5612,14 +5625,15 @@ export namespace Ide {
 
     class BuildconfigConfigurationProvider extends GObject.Object implements ConfigurationProvider {
         static $gtype: GObject.GType<BuildconfigConfigurationProvider>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BuildconfigConfigurationProvider.SignalSignatures;
+        $signals: BuildconfigConfigurationProvider.SignalSignatures;
 
         // Constructors
 
@@ -6136,14 +6150,15 @@ export namespace Ide {
 
     abstract class CompletionItem extends GObject.Object {
         static $gtype: GObject.GType<CompletionItem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CompletionItem.SignalSignatures;
+        $signals: CompletionItem.SignalSignatures;
 
         // Constructors
 
@@ -6215,14 +6230,15 @@ export namespace Ide {
         // Properties
 
         get query(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CompletionResults.SignalSignatures;
+        $signals: CompletionResults.SignalSignatures;
 
         // Constructors
 
@@ -6286,14 +6302,15 @@ export namespace Ide {
 
     class CompletionWords extends GtkSource.CompletionWords implements GtkSource.CompletionProvider {
         static $gtype: GObject.GType<CompletionWords>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CompletionWords.SignalSignatures;
+        $signals: CompletionWords.SignalSignatures;
 
         // Constructors
 
@@ -7098,14 +7115,15 @@ export namespace Ide {
         set runtime_id(val: string);
         get runtimeId(): string;
         set runtimeId(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Configuration.SignalSignatures;
+        $signals: Configuration.SignalSignatures;
 
         // Constructors
 
@@ -7286,14 +7304,15 @@ export namespace Ide {
         set current(val: Configuration);
         get current_display_name(): string;
         get currentDisplayName(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConfigurationManager.SignalSignatures;
+        $signals: ConfigurationManager.SignalSignatures;
 
         // Constructors
 
@@ -8169,14 +8188,15 @@ export namespace Ide {
         get unsaved_files(): UnsavedFiles;
         get unsavedFiles(): UnsavedFiles;
         get vcs(): Vcs;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Context.SignalSignatures;
+        $signals: Context.SignalSignatures;
 
         // Constructors
 
@@ -9091,14 +9111,15 @@ export namespace Ide {
         set ide_source_view(val: SourceView);
         get ideSourceView(): SourceView;
         set ideSourceView(val: SourceView);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Cursor.SignalSignatures;
+        $signals: Cursor.SignalSignatures;
 
         // Constructors
 
@@ -9165,14 +9186,15 @@ export namespace Ide {
         set id(val: string);
         get system_type(): string;
         get systemType(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Device.SignalSignatures;
+        $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -9265,14 +9287,15 @@ export namespace Ide {
         // Properties
 
         get settled(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceManager.SignalSignatures;
+        $signals: DeviceManager.SignalSignatures;
 
         // Constructors
 
@@ -9872,14 +9895,15 @@ export namespace Ide {
         // Properties
 
         get busy(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DiagnosticsManager.SignalSignatures;
+        $signals: DiagnosticsManager.SignalSignatures;
 
         // Constructors
 
@@ -10478,14 +10502,15 @@ export namespace Ide {
 
         get project_file(): Gio.File;
         get projectFile(): Gio.File;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DirectoryBuildSystem.SignalSignatures;
+        $signals: DirectoryBuildSystem.SignalSignatures;
 
         // Constructors
 
@@ -11248,14 +11273,15 @@ export namespace Ide {
 
     class DirectoryVcs extends Object implements Gio.AsyncInitable<DirectoryVcs>, Vcs {
         static $gtype: GObject.GType<DirectoryVcs>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DirectoryVcs.SignalSignatures;
+        $signals: DirectoryVcs.SignalSignatures;
 
         // Constructors
 
@@ -12065,14 +12091,15 @@ export namespace Ide {
         set name(val: string);
         get shortdesc(): string;
         set shortdesc(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Doap.SignalSignatures;
+        $signals: Doap.SignalSignatures;
 
         // Constructors
 
@@ -12139,14 +12166,15 @@ export namespace Ide {
         set email(val: string);
         get name(): string;
         set name(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DoapPerson.SignalSignatures;
+        $signals: DoapPerson.SignalSignatures;
 
         // Constructors
 
@@ -12259,14 +12287,15 @@ export namespace Ide {
 
         get active_view(): Gtk.Widget;
         get activeView(): Gtk.Widget;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EditorPerspective.SignalSignatures;
+        $signals: EditorPerspective.SignalSignatures;
 
         // Constructors
 
@@ -17311,14 +17340,15 @@ export namespace Ide {
         // Properties
 
         get document(): Buffer;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EditorView.SignalSignatures;
+        $signals: EditorView.SignalSignatures;
 
         // Constructors
 
@@ -17806,14 +17836,15 @@ export namespace Ide {
 
     class Environment<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<Environment>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Environment.SignalSignatures;
+        $signals: Environment.SignalSignatures;
 
         // Constructors
 
@@ -18419,14 +18450,15 @@ export namespace Ide {
         set key(val: string);
         get value(): string;
         set value(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EnvironmentVariable.SignalSignatures;
+        $signals: EnvironmentVariable.SignalSignatures;
 
         // Constructors
 
@@ -18500,14 +18532,15 @@ export namespace Ide {
         set key(val: string);
         get value(): string;
         set value(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExtensionAdapter.SignalSignatures;
+        $signals: ExtensionAdapter.SignalSignatures;
 
         // Constructors
 
@@ -18595,14 +18628,15 @@ export namespace Ide {
         set key(val: string);
         get value(): string;
         set value(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExtensionSetAdapter.SignalSignatures;
+        $signals: ExtensionSetAdapter.SignalSignatures;
 
         // Constructors
 
@@ -18694,14 +18728,15 @@ export namespace Ide {
         get path(): string;
         get temporary_id(): number;
         get temporaryId(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: File.SignalSignatures;
+        $signals: File.SignalSignatures;
 
         // Constructors
 
@@ -18947,14 +18982,15 @@ export namespace Ide {
         set trim_trailing_whitespace_set(val: boolean);
         get trimTrailingWhitespaceSet(): boolean;
         set trimTrailingWhitespaceSet(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileSettings.SignalSignatures;
+        $signals: FileSettings.SignalSignatures;
 
         // Constructors
 
@@ -19042,14 +19078,15 @@ export namespace Ide {
         set tab_width(val: number);
         get tabWidth(): number;
         set tabWidth(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FormatterOptions.SignalSignatures;
+        $signals: FormatterOptions.SignalSignatures;
 
         // Constructors
 
@@ -19108,14 +19145,15 @@ export namespace Ide {
 
         get buffer(): Buffer;
         get highlighter(): Highlighter;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HighlightEngine.SignalSignatures;
+        $signals: HighlightEngine.SignalSignatures;
 
         // Constructors
 
@@ -19206,14 +19244,15 @@ export namespace Ide {
 
         get io_stream(): Gio.IOStream;
         get ioStream(): Gio.IOStream;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LangservClient.SignalSignatures;
+        $signals: LangservClient.SignalSignatures;
 
         // Constructors
 
@@ -19374,14 +19413,15 @@ export namespace Ide {
 
         get client(): LangservClient;
         set client(val: LangservClient);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LangservCompletionProvider.SignalSignatures;
+        $signals: LangservCompletionProvider.SignalSignatures;
 
         // Constructors
 
@@ -20120,14 +20160,15 @@ export namespace Ide {
 
         get client(): LangservClient;
         set client(val: LangservClient);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LangservDiagnosticProvider.SignalSignatures;
+        $signals: LangservDiagnosticProvider.SignalSignatures;
 
         // Constructors
 
@@ -20254,14 +20295,15 @@ export namespace Ide {
 
         get client(): LangservClient;
         set client(val: LangservClient);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LangservFormatter.SignalSignatures;
+        $signals: LangservFormatter.SignalSignatures;
 
         // Constructors
 
@@ -20815,14 +20857,15 @@ export namespace Ide {
 
         get client(): LangservClient;
         set client(val: LangservClient);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LangservHighlighter.SignalSignatures;
+        $signals: LangservHighlighter.SignalSignatures;
 
         // Constructors
 
@@ -20942,14 +20985,15 @@ export namespace Ide {
         set buffer(val: Buffer);
         get client(): LangservClient;
         set client(val: LangservClient);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LangservRenameProvider.SignalSignatures;
+        $signals: LangservRenameProvider.SignalSignatures;
 
         // Constructors
 
@@ -21116,14 +21160,15 @@ export namespace Ide {
 
     class LangservSymbolNode extends SymbolNode {
         static $gtype: GObject.GType<LangservSymbolNode>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LangservSymbolNode.SignalSignatures;
+        $signals: LangservSymbolNode.SignalSignatures;
 
         // Constructors
 
@@ -21187,14 +21232,15 @@ export namespace Ide {
 
         get client(): LangservClient;
         set client(val: LangservClient);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LangservSymbolResolver.SignalSignatures;
+        $signals: LangservSymbolResolver.SignalSignatures;
 
         // Constructors
 
@@ -21428,14 +21474,15 @@ export namespace Ide {
 
     class LangservSymbolTree extends GObject.Object implements SymbolTree {
         static $gtype: GObject.GType<LangservSymbolTree>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LangservSymbolTree.SignalSignatures;
+        $signals: LangservSymbolTree.SignalSignatures;
 
         // Constructors
 
@@ -22004,14 +22051,15 @@ export namespace Ide {
 
         get active_view(): Gtk.Widget;
         get activeView(): Gtk.Widget;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Layout.SignalSignatures;
+        $signals: Layout.SignalSignatures;
 
         // Constructors
 
@@ -26879,14 +26927,15 @@ export namespace Ide {
 
     class LayoutGrid extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<LayoutGrid>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LayoutGrid.SignalSignatures;
+        $signals: LayoutGrid.SignalSignatures;
 
         // Constructors
 
@@ -27444,14 +27493,15 @@ export namespace Ide {
 
     class LayoutPane extends Dazzle.DockBinEdge implements Atk.ImplementorIface, Dazzle.DockItem, Gtk.Buildable {
         static $gtype: GObject.GType<LayoutPane>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LayoutPane.SignalSignatures;
+        $signals: LayoutPane.SignalSignatures;
 
         // Constructors
 
@@ -31965,14 +32015,15 @@ export namespace Ide {
         set active_view(val: LayoutView);
         get activeView(): LayoutView;
         set activeView(val: LayoutView);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LayoutStack.SignalSignatures;
+        $signals: LayoutStack.SignalSignatures;
 
         // Constructors
 
@@ -32532,14 +32583,15 @@ export namespace Ide {
         get special_title(): string;
         get specialTitle(): string;
         get title(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LayoutView.SignalSignatures;
+        $signals: LayoutView.SignalSignatures;
 
         // Constructors
 
@@ -33107,14 +33159,15 @@ export namespace Ide {
 
     class LocalDevice extends Device {
         static $gtype: GObject.GType<LocalDevice>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LocalDevice.SignalSignatures;
+        $signals: LocalDevice.SignalSignatures;
 
         // Constructors
 
@@ -33161,14 +33214,15 @@ export namespace Ide {
         // Properties
 
         get context(): Context;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Object.SignalSignatures;
+        $signals: Object.SignalSignatures;
 
         // Constructors
 
@@ -33299,14 +33353,15 @@ export namespace Ide {
 
     class OmniBar extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<OmniBar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OmniBar.SignalSignatures;
+        $signals: OmniBar.SignalSignatures;
 
         // Constructors
 
@@ -33865,14 +33920,15 @@ export namespace Ide {
 
         get context(): SearchContext;
         set context(val: SearchContext);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OmniSearchDisplay.SignalSignatures;
+        $signals: OmniSearchDisplay.SignalSignatures;
 
         // Constructors
 
@@ -34479,14 +34535,15 @@ export namespace Ide {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable
     {
         static $gtype: GObject.GType<OmniSearchEntry>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OmniSearchEntry.SignalSignatures;
+        $signals: OmniSearchEntry.SignalSignatures;
 
         // Constructors
 
@@ -39122,14 +39179,15 @@ export namespace Ide {
         // Properties
 
         get provider(): SearchProvider;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OmniSearchGroup.SignalSignatures;
+        $signals: OmniSearchGroup.SignalSignatures;
 
         // Constructors
 
@@ -39702,14 +39760,15 @@ export namespace Ide {
         set iconName(val: string);
         get result(): SearchResult;
         set result(val: SearchResult);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OmniSearchRow.SignalSignatures;
+        $signals: OmniSearchRow.SignalSignatures;
 
         // Constructors
 
@@ -40207,14 +40266,15 @@ export namespace Ide {
         // Properties
 
         get packages(): string[];
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PkconTransfer.SignalSignatures;
+        $signals: PkconTransfer.SignalSignatures;
 
         // Constructors
 
@@ -40307,14 +40367,15 @@ export namespace Ide {
         implements Atk.ImplementorIface, Dazzle.Preferences, Gtk.Buildable, Perspective
     {
         static $gtype: GObject.GType<PreferencesPerspective>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PreferencesPerspective.SignalSignatures;
+        $signals: PreferencesPerspective.SignalSignatures;
 
         // Constructors
 
@@ -41121,14 +41182,15 @@ export namespace Ide {
         set fraction(val: number);
         get message(): string;
         set message(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Progress.SignalSignatures;
+        $signals: Progress.SignalSignatures;
 
         // Constructors
 
@@ -41212,14 +41274,15 @@ export namespace Ide {
         get id(): string;
         get name(): string;
         get root(): ProjectItem;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Project.SignalSignatures;
+        $signals: Project.SignalSignatures;
 
         // Constructors
 
@@ -41347,14 +41410,15 @@ export namespace Ide {
         set range(val: SourceRange);
         get replacement(): string;
         set replacement(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProjectEdit.SignalSignatures;
+        $signals: ProjectEdit.SignalSignatures;
 
         // Constructors
 
@@ -41435,14 +41499,15 @@ export namespace Ide {
         get name(): string;
         get path(): string;
         set path(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProjectFile.SignalSignatures;
+        $signals: ProjectFile.SignalSignatures;
 
         // Constructors
 
@@ -41500,14 +41565,15 @@ export namespace Ide {
 
     class ProjectFiles extends ProjectItem {
         static $gtype: GObject.GType<ProjectFiles>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProjectFiles.SignalSignatures;
+        $signals: ProjectFiles.SignalSignatures;
 
         // Constructors
 
@@ -41621,14 +41687,15 @@ export namespace Ide {
         set name(val: string);
         get priority(): number;
         set priority(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProjectInfo.SignalSignatures;
+        $signals: ProjectInfo.SignalSignatures;
 
         // Constructors
 
@@ -41708,14 +41775,15 @@ export namespace Ide {
 
         get parent(): ProjectItem;
         set parent(val: ProjectItem);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProjectItem.SignalSignatures;
+        $signals: ProjectItem.SignalSignatures;
 
         // Constructors
 
@@ -41771,14 +41839,15 @@ export namespace Ide {
 
     class RecentProjects<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<RecentProjects>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RecentProjects.SignalSignatures;
+        $signals: RecentProjects.SignalSignatures;
 
         // Constructors
 
@@ -42430,14 +42499,15 @@ export namespace Ide {
 
     class RunButton extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<RunButton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RunButton.SignalSignatures;
+        $signals: RunButton.SignalSignatures;
 
         // Constructors
 
@@ -42959,14 +43029,15 @@ export namespace Ide {
         set buildTarget(val: BuildTarget);
         get busy(): boolean;
         get handler(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RunManager.SignalSignatures;
+        $signals: RunManager.SignalSignatures;
 
         // Constructors
 
@@ -44054,14 +44125,15 @@ export namespace Ide {
          */
         get runOnHost(): boolean;
         set runOnHost(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Runner.SignalSignatures;
+        $signals: Runner.SignalSignatures;
 
         // Constructors
 
@@ -44184,14 +44256,15 @@ export namespace Ide {
         set displayName(val: string);
         get id(): string;
         set id(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Runtime.SignalSignatures;
+        $signals: Runtime.SignalSignatures;
 
         // Constructors
 
@@ -44300,14 +44373,15 @@ export namespace Ide {
         implements Gio.Initable, Gio.ListModel<A>
     {
         static $gtype: GObject.GType<RuntimeManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RuntimeManager.SignalSignatures;
+        $signals: RuntimeManager.SignalSignatures;
 
         // Constructors
 
@@ -45032,14 +45106,15 @@ export namespace Ide {
 
     class SearchContext extends Object {
         static $gtype: GObject.GType<SearchContext>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SearchContext.SignalSignatures;
+        $signals: SearchContext.SignalSignatures;
 
         // Constructors
 
@@ -45094,14 +45169,15 @@ export namespace Ide {
 
     class SearchEngine extends Object {
         static $gtype: GObject.GType<SearchEngine>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SearchEngine.SignalSignatures;
+        $signals: SearchEngine.SignalSignatures;
 
         // Constructors
 
@@ -45169,14 +45245,15 @@ export namespace Ide {
         get score(): number;
         get subtitle(): string;
         get title(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SearchResult.SignalSignatures;
+        $signals: SearchResult.SignalSignatures;
 
         // Constructors
 
@@ -45268,14 +45345,15 @@ export namespace Ide {
         get relativePath(): string;
         get schema_id(): string;
         get schemaId(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Settings.SignalSignatures;
+        $signals: Settings.SignalSignatures;
 
         // Constructors
 
@@ -45443,14 +45521,15 @@ export namespace Ide {
 
     class SourceMap extends GtkSource.Map implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<SourceMap>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceMap.SignalSignatures;
+        $signals: SourceMap.SignalSignatures;
 
         // Constructors
 
@@ -45971,14 +46050,15 @@ export namespace Ide {
         get tabStop(): number;
         get trigger(): string;
         set trigger(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceSnippet.SignalSignatures;
+        $signals: SourceSnippet.SignalSignatures;
 
         // Constructors
 
@@ -46069,14 +46149,15 @@ export namespace Ide {
         set text_set(val: boolean);
         get textSet(): boolean;
         set textSet(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceSnippetChunk.SignalSignatures;
+        $signals: SourceSnippetChunk.SignalSignatures;
 
         // Constructors
 
@@ -46149,14 +46230,15 @@ export namespace Ide {
      */
     class SourceSnippetContext extends GObject.Object {
         static $gtype: GObject.GType<SourceSnippetContext>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceSnippetContext.SignalSignatures;
+        $signals: SourceSnippetContext.SignalSignatures;
 
         // Constructors
 
@@ -46211,14 +46293,15 @@ export namespace Ide {
 
     class SourceSnippets extends GObject.Object {
         static $gtype: GObject.GType<SourceSnippets>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceSnippets.SignalSignatures;
+        $signals: SourceSnippets.SignalSignatures;
 
         // Constructors
 
@@ -46266,14 +46349,15 @@ export namespace Ide {
 
     class SourceSnippetsManager extends GObject.Object {
         static $gtype: GObject.GType<SourceSnippetsManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceSnippetsManager.SignalSignatures;
+        $signals: SourceSnippetsManager.SignalSignatures;
 
         // Constructors
 
@@ -46636,14 +46720,15 @@ export namespace Ide {
         set spell_checking(val: boolean);
         get spellChecking(): boolean;
         set spellChecking(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceView.SignalSignatures;
+        $signals: SourceView.SignalSignatures;
 
         // Constructors
 
@@ -47475,14 +47560,15 @@ export namespace Ide {
         // Properties
 
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SourceViewMode.SignalSignatures;
+        $signals: SourceViewMode.SignalSignatures;
 
         // Constructors
 
@@ -48171,14 +48257,15 @@ export namespace Ide {
         set run_on_host(val: boolean);
         get runOnHost(): boolean;
         set runOnHost(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SubprocessLauncher.SignalSignatures;
+        $signals: SubprocessLauncher.SignalSignatures;
 
         // Constructors
 
@@ -48284,14 +48371,15 @@ export namespace Ide {
 
     class SubprocessSupervisor extends GObject.Object {
         static $gtype: GObject.GType<SubprocessSupervisor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SubprocessSupervisor.SignalSignatures;
+        $signals: SubprocessSupervisor.SignalSignatures;
 
         // Constructors
 
@@ -48377,14 +48465,15 @@ export namespace Ide {
         set use_markup(val: boolean);
         get useMarkup(): boolean;
         set useMarkup(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SymbolNode.SignalSignatures;
+        $signals: SymbolNode.SignalSignatures;
 
         // Constructors
 
@@ -48468,14 +48557,15 @@ export namespace Ide {
          */
         get locator(): Template.TemplateLocator;
         set locator(val: Template.TemplateLocator);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TemplateBase.SignalSignatures;
+        $signals: TemplateBase.SignalSignatures;
 
         // Constructors
 
@@ -48562,14 +48652,15 @@ export namespace Ide {
         set status(val: string);
         get title(): string;
         set title(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Transfer.SignalSignatures;
+        $signals: Transfer.SignalSignatures;
 
         // Constructors
 
@@ -48706,14 +48797,15 @@ export namespace Ide {
         // Properties
 
         get transfer(): Transfer;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TransferButton.SignalSignatures;
+        $signals: TransferButton.SignalSignatures;
 
         // Constructors
 
@@ -53060,14 +53152,15 @@ export namespace Ide {
          * all tasks.
          */
         get progress(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TransferManager.SignalSignatures;
+        $signals: TransferManager.SignalSignatures;
 
         // Constructors
 
@@ -53749,14 +53842,15 @@ export namespace Ide {
 
         get transfer(): Transfer;
         set transfer(val: Transfer);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TransferRow.SignalSignatures;
+        $signals: TransferRow.SignalSignatures;
 
         // Constructors
 
@@ -54309,14 +54403,15 @@ export namespace Ide {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<TransfersButton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TransfersButton.SignalSignatures;
+        $signals: TransfersButton.SignalSignatures;
 
         // Constructors
 
@@ -58686,14 +58781,15 @@ export namespace Ide {
 
         get progress(): number;
         set progress(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TransfersProgressIcon.SignalSignatures;
+        $signals: TransfersProgressIcon.SignalSignatures;
 
         // Constructors
 
@@ -59183,14 +59279,15 @@ export namespace Ide {
 
     class UnsavedFiles extends Object {
         static $gtype: GObject.GType<UnsavedFiles>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UnsavedFiles.SignalSignatures;
+        $signals: UnsavedFiles.SignalSignatures;
 
         // Constructors
 
@@ -59428,14 +59525,15 @@ export namespace Ide {
          */
         get visiblePerspectiveName(): string;
         set visiblePerspectiveName(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Workbench.SignalSignatures;
+        $signals: Workbench.SignalSignatures;
 
         // Constructors
 
@@ -60622,14 +60720,15 @@ export namespace Ide {
 
     class WorkbenchHeaderBar extends Gtk.HeaderBar implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WorkbenchHeaderBar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WorkbenchHeaderBar.SignalSignatures;
+        $signals: WorkbenchHeaderBar.SignalSignatures;
 
         // Constructors
 
@@ -61186,14 +61285,15 @@ export namespace Ide {
         set subtitle(val: string);
         get title(): string;
         set title(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WorkbenchMessage.SignalSignatures;
+        $signals: WorkbenchMessage.SignalSignatures;
 
         // Constructors
 

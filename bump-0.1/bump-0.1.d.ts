@@ -69,14 +69,15 @@ export namespace Bump {
         set waiting_threads(val: number);
         get waitingThreads(): number;
         set waitingThreads(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AsyncPriorityQueue.SignalSignatures;
+        $signals: AsyncPriorityQueue.SignalSignatures;
 
         // Constructors
 
@@ -160,14 +161,15 @@ export namespace Bump {
         set timeReleased(val: number);
         get duration_held(): GLib.TimeSpan;
         get durationHeld(): GLib.TimeSpan;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Claim.SignalSignatures;
+        $signals: Claim.SignalSignatures;
 
         // Constructors
 
@@ -736,14 +738,15 @@ export namespace Bump {
         get autoReset(): boolean;
         get triggered(): boolean;
         set triggered(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Event.SignalSignatures;
+        $signals: Event.SignalSignatures;
 
         // Constructors
 
@@ -871,14 +874,15 @@ export namespace Bump {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Factory.SignalSignatures;
+        $signals: Factory.SignalSignatures;
 
         // Constructors
 
@@ -1026,14 +1030,15 @@ export namespace Bump {
         get value(): any;
         get is_initialized(): boolean;
         get isInitialized(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Lazy.SignalSignatures;
+        $signals: Lazy.SignalSignatures;
 
         // Constructors
 
@@ -1109,14 +1114,15 @@ export namespace Bump {
         get tDestroyFunc(): GLib.DestroyNotify;
         get pool(): ResourcePool;
         get resource(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ResourceClaim.SignalSignatures;
+        $signals: ResourceClaim.SignalSignatures;
 
         // Constructors
 
@@ -1229,14 +1235,15 @@ export namespace Bump {
         get active_resources(): number;
         get activeResources(): number;
         get pool(): TaskQueue;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ResourcePool.SignalSignatures;
+        $signals: ResourcePool.SignalSignatures;
 
         // Constructors
 
@@ -1376,14 +1383,15 @@ export namespace Bump {
         get claims(): number;
         set claims(val: number);
         get pool(): TaskQueue;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Semaphore.SignalSignatures;
+        $signals: Semaphore.SignalSignatures;
 
         // Constructors
 
@@ -1473,14 +1481,15 @@ export namespace Bump {
         // Properties
 
         get semaphore(): Semaphore;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SemaphoreClaim.SignalSignatures;
+        $signals: SemaphoreClaim.SignalSignatures;
 
         // Constructors
 
@@ -1527,14 +1536,15 @@ export namespace Bump {
 
     class TaskQueue extends GObject.Object implements Queue, Threading {
         static $gtype: GObject.GType<TaskQueue>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TaskQueue.SignalSignatures;
+        $signals: TaskQueue.SignalSignatures;
 
         // Constructors
 

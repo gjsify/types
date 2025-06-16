@@ -122,14 +122,15 @@ export namespace Nemo {
         set widthChars(val: number);
         get xalign(): number;
         set xalign(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Column.SignalSignatures;
+        $signals: Column.SignalSignatures;
 
         // Constructors
 
@@ -235,14 +236,15 @@ export namespace Nemo {
 
     class DesktopPreferences extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DesktopPreferences>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DesktopPreferences.SignalSignatures;
+        $signals: DesktopPreferences.SignalSignatures;
 
         // Constructors
 
@@ -723,14 +725,15 @@ export namespace Nemo {
 
     class Menu extends GObject.Object {
         static $gtype: GObject.GType<Menu>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Menu.SignalSignatures;
+        $signals: Menu.SignalSignatures;
 
         // Constructors
 
@@ -826,14 +829,15 @@ export namespace Nemo {
         set widget_b(val: Gtk.Widget);
         get widgetB(): Gtk.Widget;
         set widgetB(val: Gtk.Widget);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MenuItem.SignalSignatures;
+        $signals: MenuItem.SignalSignatures;
 
         // Constructors
 
@@ -919,14 +923,15 @@ export namespace Nemo {
         get name(): string;
         get page(): Gtk.Widget;
         set page(val: Gtk.Widget);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PropertyPage.SignalSignatures;
+        $signals: PropertyPage.SignalSignatures;
 
         // Constructors
 
@@ -1030,14 +1035,15 @@ export namespace Nemo {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<SimpleButton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimpleButton.SignalSignatures;
+        $signals: SimpleButton.SignalSignatures;
 
         // Constructors
 

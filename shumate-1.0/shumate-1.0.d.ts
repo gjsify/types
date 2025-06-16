@@ -423,14 +423,15 @@ export namespace Shumate {
          */
         get viewport(): Viewport;
         set viewport(val: Viewport);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Compass.SignalSignatures;
+        $signals: Compass.SignalSignatures;
 
         // Constructors
 
@@ -1213,14 +1214,15 @@ export namespace Shumate {
      */
     class Coordinate extends GObject.InitiallyUnowned implements Location {
         static $gtype: GObject.GType<Coordinate>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Coordinate.SignalSignatures;
+        $signals: Coordinate.SignalSignatures;
 
         // Constructors
 
@@ -1790,14 +1792,15 @@ export namespace Shumate {
          */
         get minZoomLevel(): number;
         set minZoomLevel(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataSource.SignalSignatures;
+        $signals: DataSource.SignalSignatures;
 
         // Constructors
 
@@ -2048,14 +2051,15 @@ export namespace Shumate {
          * The zoom level of the requested tile.
          */
         get zoomLevel(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataSourceRequest.SignalSignatures;
+        $signals: DataSourceRequest.SignalSignatures;
 
         // Constructors
 
@@ -2219,14 +2223,15 @@ export namespace Shumate {
          */
         get sizeLimit(): number;
         set sizeLimit(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileCache.SignalSignatures;
+        $signals: FileCache.SignalSignatures;
 
         // Constructors
 
@@ -2503,14 +2508,15 @@ export namespace Shumate {
         // Properties
 
         get viewport(): Viewport;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Layer.SignalSignatures;
+        $signals: Layer.SignalSignatures;
 
         // Constructors
 
@@ -3360,14 +3366,15 @@ export namespace Shumate {
          */
         get xalign(): number;
         set xalign(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: License.SignalSignatures;
+        $signals: License.SignalSignatures;
 
         // Constructors
 
@@ -4321,14 +4328,15 @@ export namespace Shumate {
          */
         get zoomOnDoubleClick(): boolean;
         set zoomOnDoubleClick(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Map.SignalSignatures;
+        $signals: Map.SignalSignatures;
 
         // Constructors
 
@@ -5271,14 +5279,15 @@ export namespace Shumate {
 
         get map_source(): MapSource;
         get mapSource(): MapSource;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MapLayer.SignalSignatures;
+        $signals: MapLayer.SignalSignatures;
 
         // Constructors
 
@@ -5852,14 +5861,15 @@ export namespace Shumate {
          */
         get tileSize(): number;
         set tileSize(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MapSource.SignalSignatures;
+        $signals: MapSource.SignalSignatures;
 
         // Constructors
 
@@ -6109,14 +6119,15 @@ export namespace Shumate {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<MapSourceRegistry>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MapSourceRegistry.SignalSignatures;
+        $signals: MapSourceRegistry.SignalSignatures;
 
         // Constructors
 
@@ -6793,14 +6804,15 @@ export namespace Shumate {
          */
         get selectable(): boolean;
         set selectable(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Marker.SignalSignatures;
+        $signals: Marker.SignalSignatures;
 
         // Constructors
 
@@ -7712,14 +7724,15 @@ export namespace Shumate {
          */
         get selectionMode(): Gtk.SelectionMode;
         set selectionMode(val: Gtk.SelectionMode);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MarkerLayer.SignalSignatures;
+        $signals: MarkerLayer.SignalSignatures;
 
         // Constructors
 
@@ -8410,14 +8423,15 @@ export namespace Shumate {
          */
         get strokeWidth(): number;
         set strokeWidth(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PathLayer.SignalSignatures;
+        $signals: PathLayer.SignalSignatures;
 
         // Constructors
 
@@ -9071,14 +9085,15 @@ export namespace Shumate {
      */
     class Point extends Marker implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Location {
         static $gtype: GObject.GType<Point>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Point.SignalSignatures;
+        $signals: Point.SignalSignatures;
 
         // Constructors
 
@@ -9637,14 +9652,15 @@ export namespace Shumate {
          * a [class`TileDownloader]` is sufficient.
          */
         get dataSource(): DataSource;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RasterRenderer.SignalSignatures;
+        $signals: RasterRenderer.SignalSignatures;
 
         // Constructors
 
@@ -9795,14 +9811,15 @@ export namespace Shumate {
          */
         get viewport(): Viewport;
         set viewport(val: Viewport);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Scale.SignalSignatures;
+        $signals: Scale.SignalSignatures;
 
         // Constructors
 
@@ -10699,14 +10716,15 @@ export namespace Shumate {
         get showZoomButtons(): boolean;
         set showZoomButtons(val: boolean);
         get viewport(): Viewport;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimpleMap.SignalSignatures;
+        $signals: SimpleMap.SignalSignatures;
 
         // Constructors
 
@@ -11584,14 +11602,15 @@ export namespace Shumate {
          * The ID of the source layer of the symbol that this event pertains to.
          */
         get sourceLayer(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SymbolEvent.SignalSignatures;
+        $signals: SymbolEvent.SignalSignatures;
 
         // Constructors
 
@@ -12247,14 +12266,15 @@ export namespace Shumate {
          */
         get zoomLevel(): number;
         set zoomLevel(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Tile.SignalSignatures;
+        $signals: Tile.SignalSignatures;
 
         // Constructors
 
@@ -12417,14 +12437,15 @@ export namespace Shumate {
          * the bottom, rather than top, of the map)
          */
         get urlTemplate(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TileDownloader.SignalSignatures;
+        $signals: TileDownloader.SignalSignatures;
 
         // Constructors
 
@@ -12473,14 +12494,15 @@ export namespace Shumate {
      */
     class VectorReader extends GObject.Object {
         static $gtype: GObject.GType<VectorReader>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VectorReader.SignalSignatures;
+        $signals: VectorReader.SignalSignatures;
 
         // Constructors
 
@@ -12560,14 +12582,15 @@ export namespace Shumate {
         // Properties
 
         get reader(): VectorReader;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VectorReaderIter.SignalSignatures;
+        $signals: VectorReaderIter.SignalSignatures;
 
         // Constructors
 
@@ -12775,14 +12798,15 @@ export namespace Shumate {
          * Note that not all features of the specification are supported.
          */
         get styleJson(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VectorRenderer.SignalSignatures;
+        $signals: VectorRenderer.SignalSignatures;
 
         // Constructors
 
@@ -13455,14 +13479,15 @@ export namespace Shumate {
          * The width at which the sprite should be drawn, in pixels.
          */
         get width(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VectorSprite.SignalSignatures;
+        $signals: VectorSprite.SignalSignatures;
 
         // Constructors
 
@@ -14237,14 +14262,15 @@ export namespace Shumate {
      */
     class VectorSpriteSheet extends GObject.Object {
         static $gtype: GObject.GType<VectorSpriteSheet>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VectorSpriteSheet.SignalSignatures;
+        $signals: VectorSpriteSheet.SignalSignatures;
 
         // Constructors
 
@@ -14407,14 +14433,15 @@ export namespace Shumate {
          */
         get zoomLevel(): number;
         set zoomLevel(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Viewport.SignalSignatures;
+        $signals: Viewport.SignalSignatures;
 
         // Constructors
 

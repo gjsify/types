@@ -1026,14 +1026,15 @@ export namespace GstRtp {
         set buffer_list(val: boolean);
         get bufferList(): boolean;
         set bufferList(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RTPBaseAudioPayload.SignalSignatures;
+        $signals: RTPBaseAudioPayload.SignalSignatures;
 
         // Fields
 
@@ -1223,14 +1224,15 @@ export namespace GstRtp {
          *   * `timestamp`: #G_TYPE_UINT, the last seen RTP timestamp
          */
         get stats(): Gst.Structure;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RTPBaseDepayload.SignalSignatures;
+        $signals: RTPBaseDepayload.SignalSignatures;
 
         // Fields
 
@@ -1527,14 +1529,15 @@ export namespace GstRtp {
         set timestamp_offset(val: number);
         get timestampOffset(): number;
         set timestampOffset(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RTPBasePayload.SignalSignatures;
+        $signals: RTPBasePayload.SignalSignatures;
 
         // Fields
 
@@ -1669,14 +1672,15 @@ export namespace GstRtp {
      */
     abstract class RTPHeaderExtension extends Gst.Element {
         static $gtype: GObject.GType<RTPHeaderExtension>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RTPHeaderExtension.SignalSignatures;
+        $signals: RTPHeaderExtension.SignalSignatures;
 
         // Constructors
 

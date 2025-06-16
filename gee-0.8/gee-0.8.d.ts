@@ -209,14 +209,15 @@ export namespace Gee {
         get gDestroyFunc(): GLib.DestroyNotify;
         get read_only_view(): BidirList;
         get readOnlyView(): BidirList;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AbstractBidirList.SignalSignatures;
+        $signals: AbstractBidirList.SignalSignatures;
 
         // Constructors
 
@@ -337,14 +338,15 @@ export namespace Gee {
         get gDestroyFunc(): GLib.DestroyNotify;
         get read_only_view(): BidirSortedSet;
         get readOnlyView(): BidirSortedSet;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AbstractBidirSortedSet.SignalSignatures;
+        $signals: AbstractBidirSortedSet.SignalSignatures;
 
         // Constructors
 
@@ -485,14 +487,15 @@ export namespace Gee {
         get read_only_view(): BidirSortedMap | any;
         // This accessor conflicts with another accessor's type in a parent class or interface.
         get readOnlyView(): BidirSortedMap | any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AbstractBidirSortedMap.SignalSignatures;
+        $signals: AbstractBidirSortedMap.SignalSignatures;
 
         // Constructors
 
@@ -617,14 +620,15 @@ export namespace Gee {
         get readOnly(): boolean;
         get read_only_view(): Collection;
         get readOnlyView(): Collection;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AbstractCollection.SignalSignatures;
+        $signals: AbstractCollection.SignalSignatures;
 
         // Constructors
 
@@ -1228,14 +1232,15 @@ export namespace Gee {
         get gDestroyFunc(): GLib.DestroyNotify;
         get read_only_view(): List;
         get readOnlyView(): List;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AbstractList.SignalSignatures;
+        $signals: AbstractList.SignalSignatures;
 
         // Constructors
 
@@ -1431,14 +1436,15 @@ export namespace Gee {
         get entries(): Set;
         get read_only_view(): Map;
         get readOnlyView(): Map;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AbstractMap.SignalSignatures;
+        $signals: AbstractMap.SignalSignatures;
 
         // Constructors
 
@@ -2051,14 +2057,15 @@ export namespace Gee {
         get vDupFunc(): GObject.BoxedCopyFunc;
         get v_destroy_func(): GLib.DestroyNotify;
         get vDestroyFunc(): GLib.DestroyNotify;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AbstractMultiMap.SignalSignatures;
+        $signals: AbstractMultiMap.SignalSignatures;
 
         // Constructors
 
@@ -2620,14 +2627,15 @@ export namespace Gee {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AbstractMultiSet.SignalSignatures;
+        $signals: AbstractMultiSet.SignalSignatures;
 
         // Constructors
 
@@ -2776,14 +2784,15 @@ export namespace Gee {
         get remainingCapacity(): number;
         get is_full(): boolean;
         get isFull(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AbstractQueue.SignalSignatures;
+        $signals: AbstractQueue.SignalSignatures;
 
         // Constructors
 
@@ -2937,14 +2946,15 @@ export namespace Gee {
         get gDestroyFunc(): GLib.DestroyNotify;
         get read_only_view(): Set;
         get readOnlyView(): Set;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AbstractSet.SignalSignatures;
+        $signals: AbstractSet.SignalSignatures;
 
         // Constructors
 
@@ -3110,14 +3120,15 @@ export namespace Gee {
         get ascendingEntries(): SortedSet;
         get readOnlyView(): AbstractSortedMap;
         get read_only_view(): AbstractSortedMap;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AbstractSortedMap.SignalSignatures;
+        $signals: AbstractSortedMap.SignalSignatures;
 
         // Constructors
 
@@ -3270,14 +3281,15 @@ export namespace Gee {
         get gDestroyFunc(): GLib.DestroyNotify;
         get read_only_view(): SortedSet;
         get readOnlyView(): SortedSet;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AbstractSortedSet.SignalSignatures;
+        $signals: AbstractSortedSet.SignalSignatures;
 
         // Constructors
 
@@ -3386,14 +3398,15 @@ export namespace Gee {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ArrayList.SignalSignatures;
+        $signals: ArrayList.SignalSignatures;
 
         // Constructors
 
@@ -3480,14 +3493,15 @@ export namespace Gee {
         get gDestroyFunc(): GLib.DestroyNotify;
         get is_empty(): boolean;
         get isEmpty(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ArrayQueue.SignalSignatures;
+        $signals: ArrayQueue.SignalSignatures;
 
         // Constructors
 
@@ -3603,14 +3617,15 @@ export namespace Gee {
         get gDestroyFunc(): GLib.DestroyNotify;
         get is_empty(): boolean;
         get isEmpty(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConcurrentList.SignalSignatures;
+        $signals: ConcurrentList.SignalSignatures;
 
         // Constructors
 
@@ -3682,14 +3697,15 @@ export namespace Gee {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ConcurrentSet.SignalSignatures;
+        $signals: ConcurrentSet.SignalSignatures;
 
         // Constructors
 
@@ -3774,14 +3790,15 @@ export namespace Gee {
         get vDupFunc(): GObject.BoxedCopyFunc;
         get v_destroy_func(): GLib.DestroyNotify;
         get vDestroyFunc(): GLib.DestroyNotify;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HashMap.SignalSignatures;
+        $signals: HashMap.SignalSignatures;
 
         // Constructors
 
@@ -3870,14 +3887,15 @@ export namespace Gee {
         get vDupFunc(): GObject.BoxedCopyFunc;
         get v_destroy_func(): GLib.DestroyNotify;
         get vDestroyFunc(): GLib.DestroyNotify;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HashMultiMap.SignalSignatures;
+        $signals: HashMultiMap.SignalSignatures;
 
         // Constructors
 
@@ -3956,14 +3974,15 @@ export namespace Gee {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HashMultiSet.SignalSignatures;
+        $signals: HashMultiSet.SignalSignatures;
 
         // Constructors
 
@@ -4043,14 +4062,15 @@ export namespace Gee {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HashSet.SignalSignatures;
+        $signals: HashSet.SignalSignatures;
 
         // Constructors
 
@@ -4179,14 +4199,15 @@ export namespace Gee {
         get gDestroyFunc(): GLib.DestroyNotify;
         get readOnlyView(): LinkedList;
         get read_only_view(): LinkedList;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LinkedList.SignalSignatures;
+        $signals: LinkedList.SignalSignatures;
 
         // Constructors
 
@@ -4301,14 +4322,15 @@ export namespace Gee {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PriorityQueue.SignalSignatures;
+        $signals: PriorityQueue.SignalSignatures;
 
         // Constructors
 
@@ -4444,14 +4466,15 @@ export namespace Gee {
         get vDupFunc(): GObject.BoxedCopyFunc;
         get v_destroy_func(): GLib.DestroyNotify;
         get vDestroyFunc(): GLib.DestroyNotify;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TreeMap.SignalSignatures;
+        $signals: TreeMap.SignalSignatures;
 
         // Constructors
 
@@ -4538,14 +4561,15 @@ export namespace Gee {
         get vDupFunc(): GObject.BoxedCopyFunc;
         get v_destroy_func(): GLib.DestroyNotify;
         get vDestroyFunc(): GLib.DestroyNotify;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TreeMultiMap.SignalSignatures;
+        $signals: TreeMultiMap.SignalSignatures;
 
         // Constructors
 
@@ -4620,14 +4644,15 @@ export namespace Gee {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TreeMultiSet.SignalSignatures;
+        $signals: TreeMultiSet.SignalSignatures;
 
         // Constructors
 
@@ -4698,14 +4723,15 @@ export namespace Gee {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TreeSet.SignalSignatures;
+        $signals: TreeSet.SignalSignatures;
 
         // Constructors
 
@@ -4786,14 +4812,15 @@ export namespace Gee {
         get gDestroyFunc(): GLib.DestroyNotify;
         get readOnlyView(): UnrolledLinkedList;
         get read_only_view(): UnrolledLinkedList;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UnrolledLinkedList.SignalSignatures;
+        $signals: UnrolledLinkedList.SignalSignatures;
 
         // Constructors
 
@@ -4927,14 +4954,15 @@ export namespace Gee {
         set value(val: any);
         get read_only(): boolean;
         get readOnly(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MapEntry.SignalSignatures;
+        $signals: MapEntry.SignalSignatures;
 
         // Constructors
 

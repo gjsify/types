@@ -169,14 +169,15 @@ export namespace GstGLEGL {
      */
     class GLDisplayEGL extends GstGL.GLDisplay {
         static $gtype: GObject.GType<GLDisplayEGL>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLDisplayEGL.SignalSignatures;
+        $signals: GLDisplayEGL.SignalSignatures;
 
         // Constructors
 
@@ -244,14 +245,15 @@ export namespace GstGLEGL {
      */
     class GLDisplayEGLDevice extends GstGL.GLDisplay {
         static $gtype: GObject.GType<GLDisplayEGLDevice>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLDisplayEGLDevice.SignalSignatures;
+        $signals: GLDisplayEGLDevice.SignalSignatures;
 
         // Fields
 
@@ -306,14 +308,15 @@ export namespace GstGLEGL {
      */
     class GLMemoryEGLAllocator extends GstGL.GLMemoryAllocator {
         static $gtype: GObject.GType<GLMemoryEGLAllocator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLMemoryEGLAllocator.SignalSignatures;
+        $signals: GLMemoryEGLAllocator.SignalSignatures;
 
         // Constructors
 

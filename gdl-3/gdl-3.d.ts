@@ -451,14 +451,15 @@ export namespace Gdl {
         set skipTaskbar(val: boolean);
         get width(): number;
         set width(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Dock.SignalSignatures;
+        $signals: Dock.SignalSignatures;
 
         // Fields
 
@@ -1092,14 +1093,15 @@ export namespace Gdl {
          */
         get master(): GObject.Object;
         set master(val: GObject.Object);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockBar.SignalSignatures;
+        $signals: DockBar.SignalSignatures;
 
         // Constructors
 
@@ -1730,14 +1732,15 @@ export namespace Gdl {
         set preferredWidth(val: number);
         get resize(): boolean;
         set resize(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockItem.SignalSignatures;
+        $signals: DockItem.SignalSignatures;
 
         // Fields
 
@@ -2460,14 +2463,15 @@ export namespace Gdl {
 
     class DockItemButtonImage extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DockItemButtonImage>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockItemButtonImage.SignalSignatures;
+        $signals: DockItemButtonImage.SignalSignatures;
 
         // Fields
 
@@ -3183,14 +3187,15 @@ export namespace Gdl {
         // Properties
 
         set item(val: DockItem);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockItemGrip.SignalSignatures;
+        $signals: DockItemGrip.SignalSignatures;
 
         // Constructors
 
@@ -3714,14 +3719,15 @@ export namespace Gdl {
         get dirty(): boolean;
         get master(): GObject.Object;
         set master(val: GObject.Object);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockLayout.SignalSignatures;
+        $signals: DockLayout.SignalSignatures;
 
         // Fields
 
@@ -3876,14 +3882,15 @@ export namespace Gdl {
         set tab_reorderable(val: boolean);
         get tabReorderable(): boolean;
         set tabReorderable(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockMaster.SignalSignatures;
+        $signals: DockMaster.SignalSignatures;
 
         // Fields
 
@@ -4041,14 +4048,15 @@ export namespace Gdl {
 
         get page(): number;
         set page(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockNotebook.SignalSignatures;
+        $signals: DockNotebook.SignalSignatures;
 
         // Fields
 
@@ -4637,14 +4645,15 @@ export namespace Gdl {
          */
         get stockId(): string;
         set stockId(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockObject.SignalSignatures;
+        $signals: DockObject.SignalSignatures;
 
         // Fields
 
@@ -5456,14 +5465,15 @@ export namespace Gdl {
 
         get position(): number;
         set position(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockPaned.SignalSignatures;
+        $signals: DockPaned.SignalSignatures;
 
         // Fields
 
@@ -6067,14 +6077,15 @@ export namespace Gdl {
         get sticky(): boolean;
         get width(): number;
         set width(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockPlaceholder.SignalSignatures;
+        $signals: DockPlaceholder.SignalSignatures;
 
         // Fields
 
@@ -6622,14 +6633,15 @@ export namespace Gdl {
 
         get item(): DockItem;
         set item(val: DockItem);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DockTablabel.SignalSignatures;
+        $signals: DockTablabel.SignalSignatures;
 
         // Fields
 
@@ -7217,14 +7229,15 @@ export namespace Gdl {
      */
     class PreviewWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PreviewWindow>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PreviewWindow.SignalSignatures;
+        $signals: PreviewWindow.SignalSignatures;
 
         // Constructors
 
@@ -7792,14 +7805,15 @@ export namespace Gdl {
         set tab_reorderable(val: boolean);
         get tabReorderable(): boolean;
         set tabReorderable(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Switcher.SignalSignatures;
+        $signals: Switcher.SignalSignatures;
 
         // Constructors
 

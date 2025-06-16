@@ -265,14 +265,15 @@ export namespace GExiv2 {
      */
     class Metadata extends GObject.Object {
         static $gtype: GObject.GType<Metadata>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Metadata.SignalSignatures;
+        $signals: Metadata.SignalSignatures;
 
         // Constructors
 
@@ -1031,14 +1032,15 @@ export namespace GExiv2 {
 
     class PreviewImage extends GObject.Object {
         static $gtype: GObject.GType<PreviewImage>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PreviewImage.SignalSignatures;
+        $signals: PreviewImage.SignalSignatures;
 
         // Constructors
 
@@ -1092,14 +1094,15 @@ export namespace GExiv2 {
 
     class PreviewProperties extends GObject.Object {
         static $gtype: GObject.GType<PreviewProperties>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PreviewProperties.SignalSignatures;
+        $signals: PreviewProperties.SignalSignatures;
 
         // Constructors
 

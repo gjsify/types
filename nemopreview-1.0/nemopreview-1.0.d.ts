@@ -76,14 +76,15 @@ export namespace NemoPreview {
         // Properties
 
         get cover(): GdkPixbuf.Pixbuf;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CoverArtFetcher.SignalSignatures;
+        $signals: CoverArtFetcher.SignalSignatures;
 
         // Constructors
 
@@ -154,14 +155,15 @@ export namespace NemoPreview {
         get name(): string;
         get size(): string;
         get time(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileLoader.SignalSignatures;
+        $signals: FileLoader.SignalSignatures;
 
         // Constructors
 
@@ -265,14 +267,15 @@ export namespace NemoPreview {
 
         get uri(): string;
         set uri(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FontWidget.SignalSignatures;
+        $signals: FontWidget.SignalSignatures;
 
         // Constructors
 
@@ -772,14 +775,15 @@ export namespace NemoPreview {
         get document(): XreaderDocument.Document;
         get uri(): string;
         set uri(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PdfLoader.SignalSignatures;
+        $signals: PdfLoader.SignalSignatures;
 
         // Constructors
 
@@ -847,14 +851,15 @@ export namespace NemoPreview {
         get state(): SoundPlayerState;
         get uri(): string;
         set uri(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SoundPlayer.SignalSignatures;
+        $signals: SoundPlayer.SignalSignatures;
 
         // Constructors
 
@@ -902,14 +907,15 @@ export namespace NemoPreview {
 
         get uri(): string;
         set uri(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TextLoader.SignalSignatures;
+        $signals: TextLoader.SignalSignatures;
 
         // Constructors
 

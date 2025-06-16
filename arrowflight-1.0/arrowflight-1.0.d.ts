@@ -32,14 +32,15 @@ export namespace ArrowFlight {
 
     class CallOptions extends GObject.Object {
         static $gtype: GObject.GType<CallOptions>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CallOptions.SignalSignatures;
+        $signals: CallOptions.SignalSignatures;
 
         // Constructors
 
@@ -87,14 +88,15 @@ export namespace ArrowFlight {
         // Properties
 
         set client(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -139,14 +141,15 @@ export namespace ArrowFlight {
 
     class ClientOptions extends GObject.Object {
         static $gtype: GObject.GType<ClientOptions>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientOptions.SignalSignatures;
+        $signals: ClientOptions.SignalSignatures;
 
         // Constructors
 
@@ -188,14 +191,15 @@ export namespace ArrowFlight {
 
     class CommandDescriptor extends Descriptor {
         static $gtype: GObject.GType<CommandDescriptor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CommandDescriptor.SignalSignatures;
+        $signals: CommandDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -251,14 +255,15 @@ export namespace ArrowFlight {
          */
         get expression(): GLib.Bytes;
         set expression(val: GLib.Bytes);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Criteria.SignalSignatures;
+        $signals: Criteria.SignalSignatures;
 
         // Constructors
 
@@ -306,14 +311,15 @@ export namespace ArrowFlight {
         // Properties
 
         set stream(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataStream.SignalSignatures;
+        $signals: DataStream.SignalSignatures;
 
         // Constructors
 
@@ -359,14 +365,15 @@ export namespace ArrowFlight {
         // Properties
 
         set descriptor(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Descriptor.SignalSignatures;
+        $signals: Descriptor.SignalSignatures;
 
         // Constructors
 
@@ -420,14 +427,15 @@ export namespace ArrowFlight {
          * Opaque ticket identify; use with DoGet RPC.
          */
         get ticket(): Ticket;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Endpoint.SignalSignatures;
+        $signals: Endpoint.SignalSignatures;
 
         // Constructors
 
@@ -480,14 +488,15 @@ export namespace ArrowFlight {
         // Properties
 
         set info(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Info.SignalSignatures;
+        $signals: Info.SignalSignatures;
 
         // Constructors
 
@@ -542,14 +551,15 @@ export namespace ArrowFlight {
 
     class Location extends GObject.Object {
         static $gtype: GObject.GType<Location>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Location.SignalSignatures;
+        $signals: Location.SignalSignatures;
 
         // Constructors
 
@@ -597,14 +607,15 @@ export namespace ArrowFlight {
 
     class PathDescriptor extends Descriptor {
         static $gtype: GObject.GType<PathDescriptor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PathDescriptor.SignalSignatures;
+        $signals: PathDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -656,14 +667,15 @@ export namespace ArrowFlight {
         // Properties
 
         set reader(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RecordBatchReader.SignalSignatures;
+        $signals: RecordBatchReader.SignalSignatures;
 
         // Constructors
 
@@ -718,14 +730,15 @@ export namespace ArrowFlight {
          * The reader that produces record batches.
          */
         get reader(): Arrow.RecordBatchReader;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RecordBatchStream.SignalSignatures;
+        $signals: RecordBatchStream.SignalSignatures;
 
         // Constructors
 
@@ -765,14 +778,15 @@ export namespace ArrowFlight {
 
     abstract class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Server.SignalSignatures;
+        $signals: Server.SignalSignatures;
 
         // Constructors
 
@@ -839,14 +853,15 @@ export namespace ArrowFlight {
 
         set call_context(val: any);
         set callContext(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ServerCallContext.SignalSignatures;
+        $signals: ServerCallContext.SignalSignatures;
 
         // Constructors
 
@@ -892,14 +907,15 @@ export namespace ArrowFlight {
         // Properties
 
         get location(): Location;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ServerOptions.SignalSignatures;
+        $signals: ServerOptions.SignalSignatures;
 
         // Constructors
 
@@ -947,14 +963,15 @@ export namespace ArrowFlight {
         // Properties
 
         set chunk(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StreamChunk.SignalSignatures;
+        $signals: StreamChunk.SignalSignatures;
 
         // Constructors
 
@@ -1001,14 +1018,15 @@ export namespace ArrowFlight {
 
     class StreamReader extends RecordBatchReader {
         static $gtype: GObject.GType<StreamReader>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StreamReader.SignalSignatures;
+        $signals: StreamReader.SignalSignatures;
 
         // Constructors
 
@@ -1059,14 +1077,15 @@ export namespace ArrowFlight {
          */
         get data(): GLib.Bytes;
         set data(val: GLib.Bytes);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Ticket.SignalSignatures;
+        $signals: Ticket.SignalSignatures;
 
         // Constructors
 

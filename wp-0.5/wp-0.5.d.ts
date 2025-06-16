@@ -565,14 +565,15 @@ export namespace Wp {
         set executeStep(val: GObject.Closure);
         set get_next_step(val: GObject.Closure);
         set getNextStep(val: GObject.Closure);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AsyncEventHook.SignalSignatures;
+        $signals: AsyncEventHook.SignalSignatures;
 
         // Constructors
 
@@ -634,14 +635,15 @@ export namespace Wp {
      */
     class Client extends GlobalProxy implements PipewireObject {
         static $gtype: GObject.GType<Client>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -942,14 +944,15 @@ export namespace Wp {
 
         get name(): string;
         get properties(): Properties;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Conf.SignalSignatures;
+        $signals: Conf.SignalSignatures;
 
         // Constructors
 
@@ -1077,14 +1080,15 @@ export namespace Wp {
         get pwContext(): any;
         get pw_core(): any;
         get pwCore(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Core.SignalSignatures;
+        $signals: Core.SignalSignatures;
 
         // Constructors
 
@@ -1447,14 +1451,15 @@ export namespace Wp {
      */
     class Device extends GlobalProxy implements PipewireObject {
         static $gtype: GObject.GType<Device>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Device.SignalSignatures;
+        $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -1728,14 +1733,15 @@ export namespace Wp {
      */
     class EventDispatcher extends GObject.Object {
         static $gtype: GObject.GType<EventDispatcher>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EventDispatcher.SignalSignatures;
+        $signals: EventDispatcher.SignalSignatures;
 
         // Constructors
 
@@ -1831,14 +1837,15 @@ export namespace Wp {
         get runsAfterHooks(): string[];
         get runs_before_hooks(): string[];
         get runsBeforeHooks(): string[];
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EventHook.SignalSignatures;
+        $signals: EventHook.SignalSignatures;
 
         // Constructors
 
@@ -1954,14 +1961,15 @@ export namespace Wp {
      */
     class Factory extends GlobalProxy implements PipewireObject {
         static $gtype: GObject.GType<Factory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Factory.SignalSignatures;
+        $signals: Factory.SignalSignatures;
 
         // Constructors
 
@@ -2235,14 +2243,15 @@ export namespace Wp {
      */
     class FeatureActivationTransition extends Transition implements Gio.AsyncResult {
         static $gtype: GObject.GType<FeatureActivationTransition>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FeatureActivationTransition.SignalSignatures;
+        $signals: FeatureActivationTransition.SignalSignatures;
 
         // Constructors
 
@@ -2807,14 +2816,15 @@ export namespace Wp {
         get global_properties(): Properties;
         get globalProperties(): Properties;
         get permissions(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GlobalProxy.SignalSignatures;
+        $signals: GlobalProxy.SignalSignatures;
 
         // Constructors
 
@@ -2906,14 +2916,15 @@ export namespace Wp {
 
         get name(): string;
         get properties(): Properties;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ImplMetadata.SignalSignatures;
+        $signals: ImplMetadata.SignalSignatures;
 
         // Constructors
 
@@ -2981,14 +2992,15 @@ export namespace Wp {
         set properties(val: Properties);
         get pw_impl_module(): any;
         get pwImplModule(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ImplModule.SignalSignatures;
+        $signals: ImplModule.SignalSignatures;
 
         // Constructors
 
@@ -3064,14 +3076,15 @@ export namespace Wp {
 
         get pw_impl_node(): any;
         get pwImplNode(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ImplNode.SignalSignatures;
+        $signals: ImplNode.SignalSignatures;
 
         // Constructors
 
@@ -3352,14 +3365,15 @@ export namespace Wp {
      */
     abstract class InterestEventHook extends EventHook {
         static $gtype: GObject.GType<InterestEventHook>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InterestEventHook.SignalSignatures;
+        $signals: InterestEventHook.SignalSignatures;
 
         // Constructors
 
@@ -3426,14 +3440,15 @@ export namespace Wp {
         // Properties
 
         get state(): LinkState;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Link.SignalSignatures;
+        $signals: Link.SignalSignatures;
 
         // Constructors
 
@@ -3734,14 +3749,15 @@ export namespace Wp {
      */
     class Metadata extends GlobalProxy {
         static $gtype: GObject.GType<Metadata>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Metadata.SignalSignatures;
+        $signals: Metadata.SignalSignatures;
 
         // Constructors
 
@@ -3859,14 +3875,15 @@ export namespace Wp {
         get n_output_ports(): number;
         get nOutputPorts(): number;
         get state(): NodeState;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Node.SignalSignatures;
+        $signals: Node.SignalSignatures;
 
         // Constructors
 
@@ -4228,14 +4245,15 @@ export namespace Wp {
         get id(): number;
         get supported_features(): number;
         get supportedFeatures(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Object.SignalSignatures;
+        $signals: Object.SignalSignatures;
 
         // Constructors
 
@@ -4426,14 +4444,15 @@ export namespace Wp {
         // Properties
 
         get core(): Core;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ObjectManager.SignalSignatures;
+        $signals: ObjectManager.SignalSignatures;
 
         // Constructors
 
@@ -4540,14 +4559,15 @@ export namespace Wp {
         // Properties
 
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Plugin.SignalSignatures;
+        $signals: Plugin.SignalSignatures;
 
         // Constructors
 
@@ -4624,14 +4644,15 @@ export namespace Wp {
      */
     class Port extends GlobalProxy implements PipewireObject {
         static $gtype: GObject.GType<Port>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Port.SignalSignatures;
+        $signals: Port.SignalSignatures;
 
         // Constructors
 
@@ -4938,14 +4959,15 @@ export namespace Wp {
         get boundId(): number;
         get pw_proxy(): any;
         get pwProxy(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Proxy.SignalSignatures;
+        $signals: Proxy.SignalSignatures;
 
         // Constructors
 
@@ -5036,14 +5058,15 @@ export namespace Wp {
         // Properties
 
         get properties(): Properties;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SessionItem.SignalSignatures;
+        $signals: SessionItem.SignalSignatures;
 
         // Constructors
 
@@ -5199,14 +5222,15 @@ export namespace Wp {
 
         get metadata_name(): string;
         get metadataName(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Settings.SignalSignatures;
+        $signals: Settings.SignalSignatures;
 
         // Constructors
 
@@ -5364,14 +5388,15 @@ export namespace Wp {
         // Properties
 
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SiFactory.SignalSignatures;
+        $signals: SiFactory.SignalSignatures;
 
         // Constructors
 
@@ -5457,14 +5482,15 @@ export namespace Wp {
         // Properties
 
         set closure(val: GObject.Closure);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimpleEventHook.SignalSignatures;
+        $signals: SimpleEventHook.SignalSignatures;
 
         // Constructors
 
@@ -5530,14 +5556,15 @@ export namespace Wp {
         get properties(): Properties;
         get spa_device_handle(): any;
         get spaDeviceHandle(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SpaDevice.SignalSignatures;
+        $signals: SpaDevice.SignalSignatures;
 
         // Constructors
 
@@ -5699,14 +5726,15 @@ export namespace Wp {
         get name(): string;
         get timeout(): number;
         set timeout(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: State.SignalSignatures;
+        $signals: State.SignalSignatures;
 
         // Constructors
 
@@ -5800,14 +5828,15 @@ export namespace Wp {
         // Properties
 
         get completed(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Transition.SignalSignatures;
+        $signals: Transition.SignalSignatures;
 
         // Constructors
 

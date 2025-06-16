@@ -79,14 +79,15 @@ export namespace Gepub {
         get page(): number;
         set page(val: number);
         get path(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Doc.SignalSignatures;
+        $signals: Doc.SignalSignatures;
 
         // Constructors
 
@@ -754,14 +755,15 @@ export namespace Gepub {
 
         get doc(): Doc;
         set doc(val: Doc);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Widget.SignalSignatures;
+        $signals: Widget.SignalSignatures;
 
         // Constructors
 

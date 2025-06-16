@@ -300,14 +300,15 @@ export namespace CinnamonDesktop {
 
     class BG extends GObject.Object {
         static $gtype: GObject.GType<BG>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BG.SignalSignatures;
+        $signals: BG.SignalSignatures;
 
         // Constructors
 
@@ -460,14 +461,15 @@ export namespace CinnamonDesktop {
          * surface.
          */
         get width(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BGCrossfade.SignalSignatures;
+        $signals: BGCrossfade.SignalSignatures;
 
         // Fields
 
@@ -556,14 +558,15 @@ export namespace CinnamonDesktop {
 
     class DesktopThumbnailFactory extends GObject.Object {
         static $gtype: GObject.GType<DesktopThumbnailFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DesktopThumbnailFactory.SignalSignatures;
+        $signals: DesktopThumbnailFactory.SignalSignatures;
 
         // Constructors
 
@@ -668,14 +671,15 @@ export namespace CinnamonDesktop {
 
     class IdleMonitor extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<IdleMonitor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IdleMonitor.SignalSignatures;
+        $signals: IdleMonitor.SignalSignatures;
 
         // Constructors
 
@@ -1254,14 +1258,15 @@ export namespace CinnamonDesktop {
 
     class PnpIds extends GObject.Object {
         static $gtype: GObject.GType<PnpIds>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PnpIds.SignalSignatures;
+        $signals: PnpIds.SignalSignatures;
 
         // Constructors
 
@@ -1318,14 +1323,15 @@ export namespace CinnamonDesktop {
         // Properties
 
         set screen(val: RRScreen);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RRConfig.SignalSignatures;
+        $signals: RRConfig.SignalSignatures;
 
         // Constructors
 
@@ -1401,14 +1407,15 @@ export namespace CinnamonDesktop {
         // Properties
 
         set config(val: RRConfig);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RRLabeler.SignalSignatures;
+        $signals: RRLabeler.SignalSignatures;
 
         // Constructors
 
@@ -1464,14 +1471,15 @@ export namespace CinnamonDesktop {
 
     class RROutputInfo extends GObject.Object {
         static $gtype: GObject.GType<RROutputInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RROutputInfo.SignalSignatures;
+        $signals: RROutputInfo.SignalSignatures;
 
         // Constructors
 
@@ -1550,14 +1558,15 @@ export namespace CinnamonDesktop {
 
         get gdk_screen(): Gdk.Screen;
         get gdkScreen(): Gdk.Screen;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RRScreen.SignalSignatures;
+        $signals: RRScreen.SignalSignatures;
 
         // Constructors
 
@@ -2206,14 +2215,15 @@ export namespace CinnamonDesktop {
          */
         get formatString(): string;
         set formatString(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WallClock.SignalSignatures;
+        $signals: WallClock.SignalSignatures;
 
         // Fields
 
@@ -2308,14 +2318,15 @@ export namespace CinnamonDesktop {
 
     class XkbInfo extends GObject.Object {
         static $gtype: GObject.GType<XkbInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XkbInfo.SignalSignatures;
+        $signals: XkbInfo.SignalSignatures;
 
         // Fields
 

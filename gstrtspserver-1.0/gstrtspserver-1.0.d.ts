@@ -412,14 +412,15 @@ export namespace GstRtspServer {
      */
     class RTSPAddressPool extends GObject.Object {
         static $gtype: GObject.GType<RTSPAddressPool>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RTSPAddressPool.SignalSignatures;
+        $signals: RTSPAddressPool.SignalSignatures;
 
         // Constructors
 
@@ -532,14 +533,15 @@ export namespace GstRtspServer {
      */
     class RTSPAuth extends GObject.Object {
         static $gtype: GObject.GType<RTSPAuth>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RTSPAuth.SignalSignatures;
+        $signals: RTSPAuth.SignalSignatures;
 
         // Constructors
 
@@ -768,14 +770,15 @@ export namespace GstRtspServer {
         set session_pool(val: RTSPSessionPool);
         get sessionPool(): RTSPSessionPool;
         set sessionPool(val: RTSPSessionPool);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RTSPClient.SignalSignatures;
+        $signals: RTSPClient.SignalSignatures;
 
         // Constructors
 
@@ -1148,14 +1151,15 @@ export namespace GstRtspServer {
         set transport_mode(val: RTSPTransportMode);
         get transportMode(): RTSPTransportMode;
         set transportMode(val: RTSPTransportMode);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RTSPMedia.SignalSignatures;
+        $signals: RTSPMedia.SignalSignatures;
 
         // Constructors
 
@@ -1811,14 +1815,15 @@ export namespace GstRtspServer {
         set transport_mode(val: RTSPTransportMode);
         get transportMode(): RTSPTransportMode;
         set transportMode(val: RTSPTransportMode);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RTSPMediaFactory.SignalSignatures;
+        $signals: RTSPMediaFactory.SignalSignatures;
 
         // Constructors
 
@@ -2193,14 +2198,15 @@ export namespace GstRtspServer {
         set use_gstpay(val: boolean);
         get useGstpay(): boolean;
         set useGstpay(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RTSPMediaFactoryURI.SignalSignatures;
+        $signals: RTSPMediaFactoryURI.SignalSignatures;
 
         // Constructors
 
@@ -2258,14 +2264,15 @@ export namespace GstRtspServer {
      */
     class RTSPMountPoints extends GObject.Object {
         static $gtype: GObject.GType<RTSPMountPoints>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RTSPMountPoints.SignalSignatures;
+        $signals: RTSPMountPoints.SignalSignatures;
 
         // Constructors
 
@@ -2353,14 +2360,15 @@ export namespace GstRtspServer {
 
     class RTSPOnvifClient extends RTSPClient {
         static $gtype: GObject.GType<RTSPOnvifClient>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RTSPOnvifClient.SignalSignatures;
+        $signals: RTSPOnvifClient.SignalSignatures;
 
         // Constructors
 
@@ -2417,14 +2425,15 @@ export namespace GstRtspServer {
 
     class RTSPOnvifMedia extends RTSPMedia {
         static $gtype: GObject.GType<RTSPOnvifMedia>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RTSPOnvifMedia.SignalSignatures;
+        $signals: RTSPOnvifMedia.SignalSignatures;
 
         // Constructors
 
@@ -2503,14 +2512,15 @@ export namespace GstRtspServer {
 
     class RTSPOnvifMediaFactory extends RTSPMediaFactory {
         static $gtype: GObject.GType<RTSPOnvifMediaFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RTSPOnvifMediaFactory.SignalSignatures;
+        $signals: RTSPOnvifMediaFactory.SignalSignatures;
 
         // Constructors
 
@@ -2628,14 +2638,15 @@ export namespace GstRtspServer {
 
     class RTSPOnvifServer extends RTSPServer {
         static $gtype: GObject.GType<RTSPOnvifServer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RTSPOnvifServer.SignalSignatures;
+        $signals: RTSPOnvifServer.SignalSignatures;
 
         // Constructors
 
@@ -2723,14 +2734,15 @@ export namespace GstRtspServer {
         set session_pool(val: RTSPSessionPool);
         get sessionPool(): RTSPSessionPool;
         set sessionPool(val: RTSPSessionPool);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RTSPServer.SignalSignatures;
+        $signals: RTSPServer.SignalSignatures;
 
         // Constructors
 
@@ -2987,14 +2999,15 @@ export namespace GstRtspServer {
         set timeout_always_visible(val: boolean);
         get timeoutAlwaysVisible(): boolean;
         set timeoutAlwaysVisible(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RTSPSession.SignalSignatures;
+        $signals: RTSPSession.SignalSignatures;
 
         // Constructors
 
@@ -3147,14 +3160,15 @@ export namespace GstRtspServer {
      */
     class RTSPSessionMedia extends GObject.Object {
         static $gtype: GObject.GType<RTSPSessionMedia>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RTSPSessionMedia.SignalSignatures;
+        $signals: RTSPSessionMedia.SignalSignatures;
 
         // Constructors
 
@@ -3277,14 +3291,15 @@ export namespace GstRtspServer {
         set max_sessions(val: number);
         get maxSessions(): number;
         set maxSessions(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RTSPSessionPool.SignalSignatures;
+        $signals: RTSPSessionPool.SignalSignatures;
 
         // Constructors
 
@@ -3421,14 +3436,15 @@ export namespace GstRtspServer {
         set profiles(val: GstRtsp.RTSPProfile);
         get protocols(): GstRtsp.RTSPLowerTrans;
         set protocols(val: GstRtsp.RTSPLowerTrans);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RTSPStream.SignalSignatures;
+        $signals: RTSPStream.SignalSignatures;
 
         // Constructors
 
@@ -3988,14 +4004,15 @@ export namespace GstRtspServer {
      */
     class RTSPStreamTransport extends GObject.Object {
         static $gtype: GObject.GType<RTSPStreamTransport>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RTSPStreamTransport.SignalSignatures;
+        $signals: RTSPStreamTransport.SignalSignatures;
 
         // Constructors
 
@@ -4181,14 +4198,15 @@ export namespace GstRtspServer {
         set max_threads(val: number);
         get maxThreads(): number;
         set maxThreads(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RTSPThreadPool.SignalSignatures;
+        $signals: RTSPThreadPool.SignalSignatures;
 
         // Constructors
 

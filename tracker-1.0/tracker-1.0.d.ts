@@ -89,14 +89,15 @@ export namespace Tracker {
         get length(): number;
         set length(val: number);
         get state(): SparqlBuilderState;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SparqlBuilder.SignalSignatures;
+        $signals: SparqlBuilder.SignalSignatures;
 
         // Constructors
 
@@ -173,14 +174,15 @@ export namespace Tracker {
 
     abstract class SparqlConnection extends GObject.Object {
         static $gtype: GObject.GType<SparqlConnection>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SparqlConnection.SignalSignatures;
+        $signals: SparqlConnection.SignalSignatures;
 
         // Constructors
 
@@ -353,14 +355,15 @@ export namespace Tracker {
         set connection(val: SparqlConnection);
         get n_columns(): number;
         get nColumns(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SparqlCursor.SignalSignatures;
+        $signals: SparqlCursor.SignalSignatures;
 
         // Constructors
 

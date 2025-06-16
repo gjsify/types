@@ -104,14 +104,15 @@ export namespace CloudProviders {
         get path(): string;
         get status_details(): string;
         get statusDetails(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Account.SignalSignatures;
+        $signals: Account.SignalSignatures;
 
         // Constructors
 
@@ -236,14 +237,15 @@ export namespace CloudProviders {
         set status_details(val: string);
         get statusDetails(): string;
         set statusDetails(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AccountExporter.SignalSignatures;
+        $signals: AccountExporter.SignalSignatures;
 
         // Constructors
 
@@ -313,14 +315,15 @@ export namespace CloudProviders {
      */
     class Collector extends GObject.Object {
         static $gtype: GObject.GType<Collector>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Collector.SignalSignatures;
+        $signals: Collector.SignalSignatures;
 
         // Constructors
 
@@ -396,14 +399,15 @@ export namespace CloudProviders {
         implements DbusAccount, Gio.AsyncInitable<DbusAccountProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<DbusAccountProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DbusAccountProxy.SignalSignatures;
+        $signals: DbusAccountProxy.SignalSignatures;
 
         // Constructors
 
@@ -1339,14 +1343,15 @@ export namespace CloudProviders {
      */
     class DbusAccountSkeleton extends Gio.DBusInterfaceSkeleton implements DbusAccount, Gio.DBusInterface {
         static $gtype: GObject.GType<DbusAccountSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DbusAccountSkeleton.SignalSignatures;
+        $signals: DbusAccountSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -1927,14 +1932,15 @@ export namespace CloudProviders {
         implements Gio.AsyncInitable<DbusObjectManagerClient>, Gio.DBusObjectManager, Gio.Initable
     {
         static $gtype: GObject.GType<DbusObjectManagerClient>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DbusObjectManagerClient.SignalSignatures;
+        $signals: DbusObjectManagerClient.SignalSignatures;
 
         // Constructors
 
@@ -2871,14 +2877,15 @@ export namespace CloudProviders {
      */
     class DbusObjectProxy extends Gio.DBusObjectProxy implements DbusObject, Gio.DBusObject {
         static $gtype: GObject.GType<DbusObjectProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DbusObjectProxy.SignalSignatures;
+        $signals: DbusObjectProxy.SignalSignatures;
 
         // Constructors
 
@@ -3436,14 +3443,15 @@ export namespace CloudProviders {
      */
     class DbusObjectSkeleton extends Gio.DBusObjectSkeleton implements DbusObject, Gio.DBusObject {
         static $gtype: GObject.GType<DbusObjectSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DbusObjectSkeleton.SignalSignatures;
+        $signals: DbusObjectSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -4026,14 +4034,15 @@ export namespace CloudProviders {
         implements DbusProvider, Gio.AsyncInitable<DbusProviderProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<DbusProviderProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DbusProviderProxy.SignalSignatures;
+        $signals: DbusProviderProxy.SignalSignatures;
 
         // Constructors
 
@@ -4930,14 +4939,15 @@ export namespace CloudProviders {
      */
     class DbusProviderSkeleton extends Gio.DBusInterfaceSkeleton implements DbusProvider, Gio.DBusInterface {
         static $gtype: GObject.GType<DbusProviderSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DbusProviderSkeleton.SignalSignatures;
+        $signals: DbusProviderSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -5478,14 +5488,15 @@ export namespace CloudProviders {
         // Properties
 
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Provider.SignalSignatures;
+        $signals: Provider.SignalSignatures;
 
         // Constructors
 
@@ -5557,14 +5568,15 @@ export namespace CloudProviders {
         get busPath(): string;
         get name(): string;
         set name(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProviderExporter.SignalSignatures;
+        $signals: ProviderExporter.SignalSignatures;
 
         // Constructors
 

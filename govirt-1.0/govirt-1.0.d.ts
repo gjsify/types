@@ -113,14 +113,15 @@ export namespace GoVirt {
         set ca_cert(val: any[]);
         get caCert(): any[];
         set caCert(val: any[]);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Proxy.SignalSignatures;
+        $signals: Proxy.SignalSignatures;
 
         // Constructors
 
@@ -218,14 +219,15 @@ export namespace GoVirt {
         set state(val: VmState);
         get uuid(): string;
         set uuid(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Vm.SignalSignatures;
+        $signals: Vm.SignalSignatures;
 
         // Constructors
 
@@ -334,14 +336,15 @@ export namespace GoVirt {
         set ticket(val: string);
         get type(): VmDisplayType;
         set type(val: VmDisplayType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VmDisplay.SignalSignatures;
+        $signals: VmDisplay.SignalSignatures;
 
         // Constructors
 

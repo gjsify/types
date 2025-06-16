@@ -219,14 +219,15 @@ export namespace GstVa {
      */
     class VaAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VaAllocator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VaAllocator.SignalSignatures;
+        $signals: VaAllocator.SignalSignatures;
 
         // Constructors
 
@@ -343,14 +344,15 @@ export namespace GstVa {
         get description(): string;
         get va_display(): any;
         get vaDisplay(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VaDisplay.SignalSignatures;
+        $signals: VaDisplay.SignalSignatures;
 
         // Constructors
 
@@ -437,14 +439,15 @@ export namespace GstVa {
         // Properties
 
         get path(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VaDisplayDrm.SignalSignatures;
+        $signals: VaDisplayDrm.SignalSignatures;
 
         // Constructors
 
@@ -493,14 +496,15 @@ export namespace GstVa {
      */
     class VaDisplayWrapped extends VaDisplay {
         static $gtype: GObject.GType<VaDisplayWrapped>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VaDisplayWrapped.SignalSignatures;
+        $signals: VaDisplayWrapped.SignalSignatures;
 
         // Constructors
 
@@ -548,14 +552,15 @@ export namespace GstVa {
      */
     class VaDmabufAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VaDmabufAllocator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VaDmabufAllocator.SignalSignatures;
+        $signals: VaDmabufAllocator.SignalSignatures;
 
         // Constructors
 
@@ -640,14 +645,15 @@ export namespace GstVa {
      */
     class VaPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VaPool>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VaPool.SignalSignatures;
+        $signals: VaPool.SignalSignatures;
 
         // Constructors
 

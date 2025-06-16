@@ -81,14 +81,15 @@ export namespace MetaTest {
 
     class ContextTest extends Meta.Context {
         static $gtype: GObject.GType<ContextTest>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ContextTest.SignalSignatures;
+        $signals: ContextTest.SignalSignatures;
 
         // Constructors
 
@@ -131,14 +132,15 @@ export namespace MetaTest {
 
     class TestMonitor extends GObject.Object {
         static $gtype: GObject.GType<TestMonitor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TestMonitor.SignalSignatures;
+        $signals: TestMonitor.SignalSignatures;
 
         // Constructors
 

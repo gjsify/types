@@ -138,14 +138,15 @@ export namespace PangoOT {
 
     class Info extends GObject.Object {
         static $gtype: GObject.GType<Info>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Info.SignalSignatures;
+        $signals: Info.SignalSignatures;
 
         // Constructors
 
@@ -286,14 +287,15 @@ export namespace PangoOT {
      */
     class Ruleset extends GObject.Object {
         static $gtype: GObject.GType<Ruleset>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Ruleset.SignalSignatures;
+        $signals: Ruleset.SignalSignatures;
 
         // Constructors
 

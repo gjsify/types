@@ -55,14 +55,15 @@ export namespace ArrowDataset {
 
     class CSVFileFormat extends FileFormat {
         static $gtype: GObject.GType<CSVFileFormat>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CSVFileFormat.SignalSignatures;
+        $signals: CSVFileFormat.SignalSignatures;
 
         // Constructors
 
@@ -110,14 +111,15 @@ export namespace ArrowDataset {
         // Properties
 
         set dataset(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Dataset.SignalSignatures;
+        $signals: Dataset.SignalSignatures;
 
         // Constructors
 
@@ -171,14 +173,15 @@ export namespace ArrowDataset {
 
         set dataset_factory(val: any);
         set datasetFactory(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DatasetFactory.SignalSignatures;
+        $signals: DatasetFactory.SignalSignatures;
 
         // Constructors
 
@@ -222,14 +225,15 @@ export namespace ArrowDataset {
 
     class DirectoryPartitioning extends KeyValuePartitioning {
         static $gtype: GObject.GType<DirectoryPartitioning>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DirectoryPartitioning.SignalSignatures;
+        $signals: DirectoryPartitioning.SignalSignatures;
 
         // Constructors
 
@@ -286,14 +290,15 @@ export namespace ArrowDataset {
         // Properties
 
         set format(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileFormat.SignalSignatures;
+        $signals: FileFormat.SignalSignatures;
 
         // Constructors
 
@@ -373,14 +378,15 @@ export namespace ArrowDataset {
          * Partitioning of the dataset.
          */
         get partitioning(): Partitioning;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileSystemDataset.SignalSignatures;
+        $signals: FileSystemDataset.SignalSignatures;
 
         // Constructors
 
@@ -465,14 +471,15 @@ export namespace ArrowDataset {
          */
         get partitioning(): Partitioning;
         set partitioning(val: Partitioning);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileSystemDatasetFactory.SignalSignatures;
+        $signals: FileSystemDatasetFactory.SignalSignatures;
 
         // Constructors
 
@@ -582,14 +589,15 @@ export namespace ArrowDataset {
          */
         get partitioning(): Partitioning;
         set partitioning(val: Partitioning);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileSystemDatasetWriteOptions.SignalSignatures;
+        $signals: FileSystemDatasetWriteOptions.SignalSignatures;
 
         // Constructors
 
@@ -639,14 +647,15 @@ export namespace ArrowDataset {
         // Properties
 
         set options(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileWriteOptions.SignalSignatures;
+        $signals: FileWriteOptions.SignalSignatures;
 
         // Constructors
 
@@ -692,14 +701,15 @@ export namespace ArrowDataset {
         // Properties
 
         set writer(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileWriter.SignalSignatures;
+        $signals: FileWriter.SignalSignatures;
 
         // Constructors
 
@@ -751,14 +761,15 @@ export namespace ArrowDataset {
         // Properties
 
         set fragment(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Fragment.SignalSignatures;
+        $signals: Fragment.SignalSignatures;
 
         // Constructors
 
@@ -798,14 +809,15 @@ export namespace ArrowDataset {
 
     class IPCFileFormat extends FileFormat {
         static $gtype: GObject.GType<IPCFileFormat>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IPCFileFormat.SignalSignatures;
+        $signals: IPCFileFormat.SignalSignatures;
 
         // Constructors
 
@@ -847,14 +859,15 @@ export namespace ArrowDataset {
 
     class InMemoryFragment extends Fragment {
         static $gtype: GObject.GType<InMemoryFragment>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InMemoryFragment.SignalSignatures;
+        $signals: InMemoryFragment.SignalSignatures;
 
         // Constructors
 
@@ -896,14 +909,15 @@ export namespace ArrowDataset {
 
     class KeyValuePartitioning extends Partitioning {
         static $gtype: GObject.GType<KeyValuePartitioning>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: KeyValuePartitioning.SignalSignatures;
+        $signals: KeyValuePartitioning.SignalSignatures;
 
         // Constructors
 
@@ -945,14 +959,15 @@ export namespace ArrowDataset {
 
     class ParquetFileFormat extends FileFormat {
         static $gtype: GObject.GType<ParquetFileFormat>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ParquetFileFormat.SignalSignatures;
+        $signals: ParquetFileFormat.SignalSignatures;
 
         // Constructors
 
@@ -1000,14 +1015,15 @@ export namespace ArrowDataset {
         // Properties
 
         set partitioning(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Partitioning.SignalSignatures;
+        $signals: Partitioning.SignalSignatures;
 
         // Constructors
 
@@ -1101,14 +1117,15 @@ export namespace ArrowDataset {
          */
         get segmentEncoding(): SegmentEncoding;
         set segmentEncoding(val: SegmentEncoding);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PartitioningOptions.SignalSignatures;
+        $signals: PartitioningOptions.SignalSignatures;
 
         // Constructors
 
@@ -1158,14 +1175,15 @@ export namespace ArrowDataset {
         // Properties
 
         set scanner(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Scanner.SignalSignatures;
+        $signals: Scanner.SignalSignatures;
 
         // Constructors
 
@@ -1217,14 +1235,15 @@ export namespace ArrowDataset {
 
         set scanner_builder(val: any);
         set scannerBuilder(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScannerBuilder.SignalSignatures;
+        $signals: ScannerBuilder.SignalSignatures;
 
         // Constructors
 

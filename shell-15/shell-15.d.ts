@@ -492,14 +492,15 @@ export namespace Shell {
          * running or not, or transitioning between those states.
          */
         get state(): AppState;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: App.SignalSignatures;
+        $signals: App.SignalSignatures;
 
         // Constructors
 
@@ -710,14 +711,15 @@ export namespace Shell {
 
     class AppSystem extends GObject.Object {
         static $gtype: GObject.GType<AppSystem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AppSystem.SignalSignatures;
+        $signals: AppSystem.SignalSignatures;
 
         // Constructors
 
@@ -818,14 +820,15 @@ export namespace Shell {
      */
     class AppUsage extends GObject.Object {
         static $gtype: GObject.GType<AppUsage>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AppUsage.SignalSignatures;
+        $signals: AppUsage.SignalSignatures;
 
         // Constructors
 
@@ -914,14 +917,15 @@ export namespace Shell {
         set mode(val: BlurMode);
         get radius(): number;
         set radius(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BlurEffect.SignalSignatures;
+        $signals: BlurEffect.SignalSignatures;
 
         // Constructors
 
@@ -980,14 +984,15 @@ export namespace Shell {
 
         get cameras_in_use(): boolean;
         get camerasInUse(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CameraMonitor.SignalSignatures;
+        $signals: CameraMonitor.SignalSignatures;
 
         // Constructors
 
@@ -1036,14 +1041,15 @@ export namespace Shell {
      */
     class GLSLEffect extends Clutter.OffscreenEffect {
         static $gtype: GObject.GType<GLSLEffect>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLSLEffect.SignalSignatures;
+        $signals: GLSLEffect.SignalSignatures;
 
         // Constructors
 
@@ -1214,14 +1220,15 @@ export namespace Shell {
         get windowManager(): WM;
         get workspace_manager(): Meta.WorkspaceManager;
         get workspaceManager(): Meta.WorkspaceManager;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Global.SignalSignatures;
+        $signals: Global.SignalSignatures;
 
         // Constructors
 
@@ -1408,14 +1415,15 @@ export namespace Shell {
      */
     class InvertLightnessEffect extends Clutter.OffscreenEffect {
         static $gtype: GObject.GType<InvertLightnessEffect>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InvertLightnessEffect.SignalSignatures;
+        $signals: InvertLightnessEffect.SignalSignatures;
 
         // Constructors
 
@@ -1545,14 +1553,15 @@ export namespace Shell {
          * Whether the warning label is visible or not.
          */
         get warningVisible(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: KeyringPrompt.SignalSignatures;
+        $signals: KeyringPrompt.SignalSignatures;
 
         // Constructors
 
@@ -2621,14 +2630,15 @@ export namespace Shell {
 
     class MountOperation extends Gio.MountOperation {
         static $gtype: GObject.GType<MountOperation>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MountOperation.SignalSignatures;
+        $signals: MountOperation.SignalSignatures;
 
         // Constructors
 
@@ -2685,14 +2695,15 @@ export namespace Shell {
 
     class NetworkAgent extends NM.SecretAgentOld implements Gio.AsyncInitable<NetworkAgent>, Gio.Initable {
         static $gtype: GObject.GType<NetworkAgent>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NetworkAgent.SignalSignatures;
+        $signals: NetworkAgent.SignalSignatures;
 
         // Constructors
 
@@ -3487,14 +3498,15 @@ export namespace Shell {
      */
     class PerfLog extends GObject.Object {
         static $gtype: GObject.GType<PerfLog>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PerfLog.SignalSignatures;
+        $signals: PerfLog.SignalSignatures;
 
         // Constructors
 
@@ -3652,14 +3664,15 @@ export namespace Shell {
 
     class PolkitAuthenticationAgent extends PolkitAgent.Listener {
         static $gtype: GObject.GType<PolkitAuthenticationAgent>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PolkitAuthenticationAgent.SignalSignatures;
+        $signals: PolkitAuthenticationAgent.SignalSignatures;
 
         // Constructors
 
@@ -3717,14 +3730,15 @@ export namespace Shell {
      */
     class Screenshot extends GObject.Object {
         static $gtype: GObject.GType<Screenshot>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Screenshot.SignalSignatures;
+        $signals: Screenshot.SignalSignatures;
 
         // Constructors
 
@@ -4008,14 +4022,15 @@ export namespace Shell {
 
     class SecureTextBuffer extends Clutter.TextBuffer {
         static $gtype: GObject.GType<SecureTextBuffer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SecureTextBuffer.SignalSignatures;
+        $signals: SecureTextBuffer.SignalSignatures;
 
         // Constructors
 
@@ -4144,14 +4159,15 @@ export namespace Shell {
         implements Atk.ImplementorIface, Clutter.Animatable
     {
         static $gtype: GObject.GType<SquareBin>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SquareBin.SignalSignatures;
+        $signals: SquareBin.SignalSignatures;
 
         // Constructors
 
@@ -4725,14 +4741,15 @@ export namespace Shell {
      */
     class Stack extends St.Widget implements Atk.ImplementorIface, Clutter.Animatable {
         static $gtype: GObject.GType<Stack>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Stack.SignalSignatures;
+        $signals: Stack.SignalSignatures;
 
         // Constructors
 
@@ -5308,14 +5325,15 @@ export namespace Shell {
         get title(): string;
         get wm_class(): string;
         get wmClass(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TrayIcon.SignalSignatures;
+        $signals: TrayIcon.SignalSignatures;
 
         // Constructors
 
@@ -5818,14 +5836,15 @@ export namespace Shell {
 
         get bg_color(): Cogl.Color;
         get bgColor(): Cogl.Color;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TrayManager.SignalSignatures;
+        $signals: TrayManager.SignalSignatures;
 
         // Constructors
 
@@ -5892,14 +5911,15 @@ export namespace Shell {
 
     class WM extends GObject.Object {
         static $gtype: GObject.GType<WM>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WM.SignalSignatures;
+        $signals: WM.SignalSignatures;
 
         // Constructors
 
@@ -6069,14 +6089,15 @@ export namespace Shell {
         set window_container(val: Clutter.Actor);
         get windowContainer(): Clutter.Actor;
         set windowContainer(val: Clutter.Actor);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WindowPreview.SignalSignatures;
+        $signals: WindowPreview.SignalSignatures;
 
         // Constructors
 
@@ -6565,14 +6586,15 @@ export namespace Shell {
 
         get bounding_box(): Clutter.ActorBox;
         get boundingBox(): Clutter.ActorBox;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WindowPreviewLayout.SignalSignatures;
+        $signals: WindowPreviewLayout.SignalSignatures;
 
         // Constructors
 
@@ -6657,14 +6679,15 @@ export namespace Shell {
 
         get focus_app(): App;
         get focusApp(): App;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WindowTracker.SignalSignatures;
+        $signals: WindowTracker.SignalSignatures;
 
         // Constructors
 
@@ -6818,14 +6841,15 @@ export namespace Shell {
         set state_adjustment_value(val: number);
         get stateAdjustmentValue(): number;
         set stateAdjustmentValue(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WorkspaceBackground.SignalSignatures;
+        $signals: WorkspaceBackground.SignalSignatures;
 
         // Constructors
 

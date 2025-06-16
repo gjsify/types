@@ -467,14 +467,15 @@ export namespace Tepl {
 
     class AbstractFactory extends GObject.Object {
         static $gtype: GObject.GType<AbstractFactory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AbstractFactory.SignalSignatures;
+        $signals: AbstractFactory.SignalSignatures;
 
         // Constructors
 
@@ -592,14 +593,15 @@ export namespace Tepl {
          * The #GtkApplication.
          */
         get application(): Gtk.Application;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Application.SignalSignatures;
+        $signals: Application.SignalSignatures;
 
         // Constructors
 
@@ -766,14 +768,15 @@ export namespace Tepl {
          */
         get handleTitle(): boolean;
         set handleTitle(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ApplicationWindow.SignalSignatures;
+        $signals: ApplicationWindow.SignalSignatures;
 
         // Constructors
 
@@ -1460,14 +1463,15 @@ export namespace Tepl {
          */
         get teplStyleSchemeId(): string;
         set teplStyleSchemeId(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Buffer.SignalSignatures;
+        $signals: Buffer.SignalSignatures;
 
         // Constructors
 
@@ -1610,14 +1614,15 @@ export namespace Tepl {
          * The file short name. See tepl_file_get_short_name().
          */
         get shortName(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: File.SignalSignatures;
+        $signals: File.SignalSignatures;
 
         // Constructors
 
@@ -1730,14 +1735,15 @@ export namespace Tepl {
          * #TeplFile at construction time.
          */
         get location(): Gio.File;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileLoader.SignalSignatures;
+        $signals: FileLoader.SignalSignatures;
 
         // Constructors
 
@@ -1869,14 +1875,15 @@ export namespace Tepl {
          */
         get newlineType(): NewlineType;
         set newlineType(val: NewlineType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileSaver.SignalSignatures;
+        $signals: FileSaver.SignalSignatures;
 
         // Fields
 
@@ -1999,14 +2006,15 @@ export namespace Tepl {
          */
         get folded(): boolean;
         set folded(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FoldRegion.SignalSignatures;
+        $signals: FoldRegion.SignalSignatures;
 
         // Constructors
 
@@ -2120,14 +2128,15 @@ export namespace Tepl {
 
     class GotoLineBar extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<GotoLineBar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GotoLineBar.SignalSignatures;
+        $signals: GotoLineBar.SignalSignatures;
 
         // Constructors
 
@@ -2652,14 +2661,15 @@ export namespace Tepl {
 
     class GutterRendererFolds extends GtkSource.GutterRenderer {
         static $gtype: GObject.GType<GutterRendererFolds>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GutterRendererFolds.SignalSignatures;
+        $signals: GutterRendererFolds.SignalSignatures;
 
         // Constructors
 
@@ -2765,14 +2775,15 @@ export namespace Tepl {
 
     class InfoBar extends Gtk.InfoBar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<InfoBar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InfoBar.SignalSignatures;
+        $signals: InfoBar.SignalSignatures;
 
         // Constructors
 
@@ -3397,14 +3408,15 @@ export namespace Tepl {
 
     class LanguageChooserDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable, LanguageChooser {
         static $gtype: GObject.GType<LanguageChooserDialog>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LanguageChooserDialog.SignalSignatures;
+        $signals: LanguageChooserDialog.SignalSignatures;
 
         // Constructors
 
@@ -3958,14 +3970,15 @@ export namespace Tepl {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, LanguageChooser
     {
         static $gtype: GObject.GType<LanguageChooserWidget>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LanguageChooserWidget.SignalSignatures;
+        $signals: LanguageChooserWidget.SignalSignatures;
 
         // Constructors
 
@@ -4476,14 +4489,15 @@ export namespace Tepl {
 
     class Metadata extends GObject.Object {
         static $gtype: GObject.GType<Metadata>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Metadata.SignalSignatures;
+        $signals: Metadata.SignalSignatures;
 
         // Constructors
 
@@ -4547,14 +4561,15 @@ export namespace Tepl {
 
     class MetadataManager extends GObject.Object {
         static $gtype: GObject.GType<MetadataManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MetadataManager.SignalSignatures;
+        $signals: MetadataManager.SignalSignatures;
 
         // Constructors
 
@@ -4716,14 +4731,15 @@ export namespace Tepl {
 
     class Notebook extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable, TabGroup {
         static $gtype: GObject.GType<Notebook>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Notebook.SignalSignatures;
+        $signals: Notebook.SignalSignatures;
 
         // Constructors
 
@@ -5343,14 +5359,15 @@ export namespace Tepl {
 
     class Panel extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Panel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Panel.SignalSignatures;
+        $signals: Panel.SignalSignatures;
 
         // Constructors
 
@@ -5942,14 +5959,15 @@ export namespace Tepl {
 
     class SpaceDrawerPrefs extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SpaceDrawerPrefs>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SpaceDrawerPrefs.SignalSignatures;
+        $signals: SpaceDrawerPrefs.SignalSignatures;
 
         // Constructors
 
@@ -6507,14 +6525,15 @@ export namespace Tepl {
 
     class Statusbar extends Gtk.Statusbar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Statusbar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Statusbar.SignalSignatures;
+        $signals: Statusbar.SignalSignatures;
 
         // Constructors
 
@@ -7102,14 +7121,15 @@ export namespace Tepl {
          */
         get teplStyleSchemeId(): string;
         set teplStyleSchemeId(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StyleSchemeChooserWidget.SignalSignatures;
+        $signals: StyleSchemeChooserWidget.SignalSignatures;
 
         // Constructors
 
@@ -7709,14 +7729,15 @@ export namespace Tepl {
          * ::pack_view virtual function is called.
          */
         get view(): View;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Tab.SignalSignatures;
+        $signals: Tab.SignalSignatures;
 
         // Constructors
 
@@ -8478,14 +8499,15 @@ export namespace Tepl {
          * #TeplTab.
          */
         get tab(): Tab;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TabLabel.SignalSignatures;
+        $signals: TabLabel.SignalSignatures;
 
         // Constructors
 
@@ -9083,14 +9105,15 @@ export namespace Tepl {
 
     class View extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: View.SignalSignatures;
+        $signals: View.SignalSignatures;
 
         // Constructors
 

@@ -703,14 +703,15 @@ export namespace GWeather {
          */
         get location(): Location;
         set location(val: Location);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Info.SignalSignatures;
+        $signals: Info.SignalSignatures;
 
         // Constructors
 
@@ -900,14 +901,15 @@ export namespace GWeather {
      */
     class Location extends GObject.Object {
         static $gtype: GObject.GType<Location>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Location.SignalSignatures;
+        $signals: Location.SignalSignatures;
 
         // Constructors
 

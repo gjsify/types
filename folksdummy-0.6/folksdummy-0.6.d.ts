@@ -38,14 +38,15 @@ export namespace FolksDummy {
 
     class Backend extends Folks.Backend {
         static $gtype: GObject.GType<Backend>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Backend.SignalSignatures;
+        $signals: Backend.SignalSignatures;
 
         // Constructors
 
@@ -155,14 +156,15 @@ export namespace FolksDummy {
             Folks.WebServiceDetails
     {
         static $gtype: GObject.GType<FullPersona>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FullPersona.SignalSignatures;
+        $signals: FullPersona.SignalSignatures;
 
         // Constructors
 
@@ -1033,14 +1035,15 @@ export namespace FolksDummy {
         set persona_type(val: GObject.GType);
         get personaType(): GObject.GType;
         set personaType(val: GObject.GType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PersonaStore.SignalSignatures;
+        $signals: PersonaStore.SignalSignatures;
 
         // Constructors
 
@@ -1124,14 +1127,15 @@ export namespace FolksDummy {
         set property_change_delay(val: number);
         get propertyChangeDelay(): number;
         set propertyChangeDelay(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Persona.SignalSignatures;
+        $signals: Persona.SignalSignatures;
 
         // Constructors
 

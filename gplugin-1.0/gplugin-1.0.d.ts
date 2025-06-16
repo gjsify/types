@@ -215,14 +215,15 @@ export namespace GPlugin {
          * The [class`GPlugin`.Manager] that this source is working for.
          */
         get manager(): Manager;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileSource.SignalSignatures;
+        $signals: FileSource.SignalSignatures;
 
         // Constructors
 
@@ -743,14 +744,15 @@ export namespace GPlugin {
          * The identifier of the loader.
          */
         get id(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Loader.SignalSignatures;
+        $signals: Loader.SignalSignatures;
 
         // Constructors
 
@@ -855,14 +857,15 @@ export namespace GPlugin {
      */
     class Manager extends GObject.Object {
         static $gtype: GObject.GType<Manager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Manager.SignalSignatures;
+        $signals: Manager.SignalSignatures;
 
         // Constructors
 
@@ -1368,14 +1371,15 @@ export namespace GPlugin {
          * The url of the plugin that can be represented in a user interface.
          */
         get website(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PluginInfo.SignalSignatures;
+        $signals: PluginInfo.SignalSignatures;
 
         // Constructors
 

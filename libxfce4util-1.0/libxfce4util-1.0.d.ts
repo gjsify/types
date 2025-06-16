@@ -532,14 +532,15 @@ export namespace Libxfce4util {
 
     class Kiosk extends GObject.Object {
         static $gtype: GObject.GType<Kiosk>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Kiosk.SignalSignatures;
+        $signals: Kiosk.SignalSignatures;
 
         // Constructors
 

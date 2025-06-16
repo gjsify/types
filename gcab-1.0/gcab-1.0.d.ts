@@ -152,14 +152,15 @@ export namespace GCab {
         set reserved(val: Uint8Array);
         get signature(): Uint8Array;
         set signature(val: Uint8Array);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Cabinet.SignalSignatures;
+        $signals: Cabinet.SignalSignatures;
 
         // Constructors
 
@@ -315,14 +316,15 @@ export namespace GCab {
         set file(val: Gio.File);
         get name(): string;
         set name(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: File.SignalSignatures;
+        $signals: File.SignalSignatures;
 
         // Constructors
 
@@ -460,14 +462,15 @@ export namespace GCab {
         get comptype(): number;
         get reserved(): Uint8Array;
         set reserved(val: Uint8Array);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Folder.SignalSignatures;
+        $signals: Folder.SignalSignatures;
 
         // Constructors
 

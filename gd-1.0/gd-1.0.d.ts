@@ -157,14 +157,15 @@ export namespace Gd {
         set title(val: string);
         get vpadding(): number;
         set vpadding(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HeaderBar.SignalSignatures;
+        $signals: HeaderBar.SignalSignatures;
 
         // Fields
 
@@ -763,14 +764,15 @@ export namespace Gd {
         implements Atk.ImplementorIface, HeaderButton, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<HeaderMenuButton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HeaderMenuButton.SignalSignatures;
+        $signals: HeaderMenuButton.SignalSignatures;
 
         // Constructors
 
@@ -5388,14 +5390,15 @@ export namespace Gd {
         implements Atk.ImplementorIface, HeaderButton, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<HeaderRadioButton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HeaderRadioButton.SignalSignatures;
+        $signals: HeaderRadioButton.SignalSignatures;
 
         // Constructors
 
@@ -10009,14 +10012,15 @@ export namespace Gd {
         implements Atk.ImplementorIface, HeaderButton, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<HeaderSimpleButton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HeaderSimpleButton.SignalSignatures;
+        $signals: HeaderSimpleButton.SignalSignatures;
 
         // Constructors
 
@@ -14874,14 +14878,15 @@ export namespace Gd {
         implements Atk.ImplementorIface, HeaderButton, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<HeaderToggleButton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HeaderToggleButton.SignalSignatures;
+        $signals: HeaderToggleButton.SignalSignatures;
 
         // Constructors
 
@@ -19500,14 +19505,15 @@ export namespace Gd {
         implements Atk.ImplementorIface, MainViewGeneric, Gtk.Buildable, Gtk.CellLayout, Gtk.Scrollable
     {
         static $gtype: GObject.GType<MainIconView>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MainIconView.SignalSignatures;
+        $signals: MainIconView.SignalSignatures;
 
         // Constructors
 
@@ -24161,14 +24167,15 @@ export namespace Gd {
         implements Atk.ImplementorIface, MainViewGeneric, Gtk.Buildable, Gtk.Scrollable
     {
         static $gtype: GObject.GType<MainListView>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MainListView.SignalSignatures;
+        $signals: MainListView.SignalSignatures;
 
         // Constructors
 
@@ -28668,14 +28675,15 @@ export namespace Gd {
         set show_modes(val: boolean);
         get showModes(): boolean;
         set showModes(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MainToolbar.SignalSignatures;
+        $signals: MainToolbar.SignalSignatures;
 
         // Constructors
 
@@ -33215,14 +33223,15 @@ export namespace Gd {
         set view_type(val: number);
         get viewType(): number;
         set viewType(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MainView.SignalSignatures;
+        $signals: MainView.SignalSignatures;
 
         // Constructors
 
@@ -33792,14 +33801,15 @@ export namespace Gd {
         set transition_duration(val: number);
         get transitionDuration(): number;
         set transitionDuration(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Revealer.SignalSignatures;
+        $signals: Revealer.SignalSignatures;
 
         // Constructors
 
@@ -34372,14 +34382,15 @@ export namespace Gd {
         set visible_child_name(val: string);
         get visibleChildName(): string;
         set visibleChildName(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Stack.SignalSignatures;
+        $signals: Stack.SignalSignatures;
 
         // Constructors
 
@@ -34940,14 +34951,15 @@ export namespace Gd {
 
         get stack(): Stack;
         set stack(val: Stack);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StackSwitcher.SignalSignatures;
+        $signals: StackSwitcher.SignalSignatures;
 
         // Fields
 
@@ -35528,14 +35540,15 @@ export namespace Gd {
 
     class StyledTextRenderer extends Gtk.CellRendererText {
         static $gtype: GObject.GType<StyledTextRenderer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StyledTextRenderer.SignalSignatures;
+        $signals: StyledTextRenderer.SignalSignatures;
 
         // Constructors
 
@@ -35872,14 +35885,15 @@ export namespace Gd {
 
         set tag_close_visible(val: boolean);
         set tagCloseVisible(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TaggedEntry.SignalSignatures;
+        $signals: TaggedEntry.SignalSignatures;
 
         // Constructors
 
@@ -40220,14 +40234,15 @@ export namespace Gd {
         set label(val: string);
         get style(): string;
         set style(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TaggedEntryTag.SignalSignatures;
+        $signals: TaggedEntryTag.SignalSignatures;
 
         // Constructors
 
@@ -40323,14 +40338,15 @@ export namespace Gd {
         set toggle_visible(val: boolean);
         get toggleVisible(): boolean;
         set toggleVisible(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TogglePixbufRenderer.SignalSignatures;
+        $signals: TogglePixbufRenderer.SignalSignatures;
 
         // Constructors
 
@@ -40455,14 +40471,15 @@ export namespace Gd {
         set text_lines(val: number);
         get textLines(): number;
         set textLines(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TwoLinesRenderer.SignalSignatures;
+        $signals: TwoLinesRenderer.SignalSignatures;
 
         // Constructors
 

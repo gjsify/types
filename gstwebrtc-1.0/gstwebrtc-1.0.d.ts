@@ -656,14 +656,15 @@ export namespace GstWebRTC {
         get sessionId(): number;
         get state(): WebRTCDTLSTransportState;
         get transport(): WebRTCICETransport;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebRTCDTLSTransport.SignalSignatures;
+        $signals: WebRTCDTLSTransport.SignalSignatures;
 
         // Constructors
 
@@ -762,14 +763,15 @@ export namespace GstWebRTC {
         get protocol(): string;
         get ready_state(): WebRTCDataChannelState;
         get readyState(): WebRTCDataChannelState;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebRTCDataChannel.SignalSignatures;
+        $signals: WebRTCDataChannel.SignalSignatures;
 
         // Constructors
 
@@ -874,14 +876,15 @@ export namespace GstWebRTC {
          */
         get minRtpPort(): number;
         set minRtpPort(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebRTCICE.SignalSignatures;
+        $signals: WebRTCICE.SignalSignatures;
 
         // Fields
 
@@ -995,14 +998,15 @@ export namespace GstWebRTC {
 
         get stream_id(): number;
         get streamId(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebRTCICEStream.SignalSignatures;
+        $signals: WebRTCICEStream.SignalSignatures;
 
         // Constructors
 
@@ -1070,14 +1074,15 @@ export namespace GstWebRTC {
         get gathering_state(): WebRTCICEGatheringState;
         get gatheringState(): WebRTCICEGatheringState;
         get state(): WebRTCICEConnectionState;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebRTCICETransport.SignalSignatures;
+        $signals: WebRTCICETransport.SignalSignatures;
 
         // Fields
 
@@ -1150,14 +1155,15 @@ export namespace GstWebRTC {
          * The DTLS transport for this receiver
          */
         get transport(): WebRTCDTLSTransport;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebRTCRTPReceiver.SignalSignatures;
+        $signals: WebRTCRTPReceiver.SignalSignatures;
 
         // Constructors
 
@@ -1220,14 +1226,15 @@ export namespace GstWebRTC {
          * The DTLS transport for this sender
          */
         get transport(): WebRTCDTLSTransport;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebRTCRTPSender.SignalSignatures;
+        $signals: WebRTCRTPSender.SignalSignatures;
 
         // Constructors
 
@@ -1348,14 +1355,15 @@ export namespace GstWebRTC {
         get mlineindex(): number;
         get receiver(): WebRTCRTPReceiver;
         get sender(): WebRTCRTPSender;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebRTCRTPTransceiver.SignalSignatures;
+        $signals: WebRTCRTPTransceiver.SignalSignatures;
 
         // Constructors
 
@@ -1418,14 +1426,15 @@ export namespace GstWebRTC {
         get maxMessageSize(): number;
         get state(): WebRTCSCTPTransportState;
         get transport(): WebRTCDTLSTransport;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebRTCSCTPTransport.SignalSignatures;
+        $signals: WebRTCSCTPTransport.SignalSignatures;
 
         // Constructors
 

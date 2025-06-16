@@ -244,14 +244,15 @@ export namespace GstBadAudio {
         set num_loops(val: number);
         get numLoops(): number;
         set numLoops(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NonstreamAudioDecoder.SignalSignatures;
+        $signals: NonstreamAudioDecoder.SignalSignatures;
 
         // Fields
 
@@ -443,14 +444,15 @@ export namespace GstBadAudio {
      */
     class PlanarAudioAdapter extends GObject.Object {
         static $gtype: GObject.GType<PlanarAudioAdapter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlanarAudioAdapter.SignalSignatures;
+        $signals: PlanarAudioAdapter.SignalSignatures;
 
         // Constructors
 

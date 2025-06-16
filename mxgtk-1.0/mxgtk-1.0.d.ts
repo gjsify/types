@@ -80,14 +80,15 @@ export namespace MxGtk {
      */
     class Frame extends Gtk.Frame implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Frame>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Frame.SignalSignatures;
+        $signals: Frame.SignalSignatures;
 
         // Constructors
 
@@ -609,14 +610,15 @@ export namespace MxGtk {
 
         get active(): boolean;
         set active(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LightSwitch.SignalSignatures;
+        $signals: LightSwitch.SignalSignatures;
 
         // Constructors
 

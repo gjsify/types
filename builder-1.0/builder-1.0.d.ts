@@ -97,14 +97,15 @@ export namespace Builder {
 
     class Application extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Application.SignalSignatures;
+        $signals: Application.SignalSignatures;
 
         // Constructors
 
@@ -722,14 +723,15 @@ export namespace Builder {
 
     class EditorView extends View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EditorView>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EditorView.SignalSignatures;
+        $signals: EditorView.SignalSignatures;
 
         // Constructors
 
@@ -1216,14 +1218,15 @@ export namespace Builder {
         // Properties
 
         get menu(): Gio.Menu;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MenuExtension.SignalSignatures;
+        $signals: MenuExtension.SignalSignatures;
 
         // Constructors
 
@@ -1361,14 +1364,15 @@ export namespace Builder {
         set show_icons(val: boolean);
         get showIcons(): boolean;
         set showIcons(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Tree.SignalSignatures;
+        $signals: Tree.SignalSignatures;
 
         // Constructors
 
@@ -2032,14 +2036,15 @@ export namespace Builder {
         // Properties
 
         get tree(): Tree;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TreeBuilder.SignalSignatures;
+        $signals: TreeBuilder.SignalSignatures;
 
         // Constructors
 
@@ -2189,14 +2194,15 @@ export namespace Builder {
          */
         get useMarkup(): boolean;
         set useMarkup(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TreeNode.SignalSignatures;
+        $signals: TreeNode.SignalSignatures;
 
         // Constructors
 
@@ -2397,14 +2403,15 @@ export namespace Builder {
         get special_title(): string;
         get specialTitle(): string;
         get title(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: View.SignalSignatures;
+        $signals: View.SignalSignatures;
 
         // Constructors
 
@@ -3016,14 +3023,15 @@ export namespace Builder {
 
     class ViewGrid extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ViewGrid>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ViewGrid.SignalSignatures;
+        $signals: ViewGrid.SignalSignatures;
 
         // Constructors
 
@@ -3584,14 +3592,15 @@ export namespace Builder {
         set active_view(val: View);
         get activeView(): View;
         set activeView(val: View);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ViewStack.SignalSignatures;
+        $signals: ViewStack.SignalSignatures;
 
         // Constructors
 
@@ -4195,14 +4204,15 @@ export namespace Builder {
          * creating a workbench window.
          */
         get context(): Ide.Context;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Workbench.SignalSignatures;
+        $signals: Workbench.SignalSignatures;
 
         // Constructors
 

@@ -2381,14 +2381,15 @@ export namespace Cogl {
         set height(val: number);
         get width(): number;
         set width(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Framebuffer.SignalSignatures;
+        $signals: Framebuffer.SignalSignatures;
 
         // Constructors
 
@@ -3192,14 +3193,15 @@ export namespace Cogl {
 
     class Offscreen extends Framebuffer {
         static $gtype: GObject.GType<Offscreen>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Offscreen.SignalSignatures;
+        $signals: Offscreen.SignalSignatures;
 
         // Constructors
 
@@ -3243,14 +3245,15 @@ export namespace Cogl {
 
     class Onscreen extends Framebuffer {
         static $gtype: GObject.GType<Onscreen>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Onscreen.SignalSignatures;
+        $signals: Onscreen.SignalSignatures;
 
         // Constructors
 

@@ -998,14 +998,15 @@ export namespace GstPbutils {
         set shadeAmount(val: number);
         get shader(): AudioVisualizerShader;
         set shader(val: AudioVisualizerShader);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AudioVisualizer.SignalSignatures;
+        $signals: AudioVisualizer.SignalSignatures;
 
         // Fields
 
@@ -1099,14 +1100,15 @@ export namespace GstPbutils {
         set use_cache(val: boolean);
         get useCache(): boolean;
         set useCache(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Discoverer.SignalSignatures;
+        $signals: Discoverer.SignalSignatures;
 
         // Constructors
 
@@ -1195,14 +1197,15 @@ export namespace GstPbutils {
      */
     class DiscovererAudioInfo extends DiscovererStreamInfo {
         static $gtype: GObject.GType<DiscovererAudioInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DiscovererAudioInfo.SignalSignatures;
+        $signals: DiscovererAudioInfo.SignalSignatures;
 
         // Constructors
 
@@ -1255,14 +1258,15 @@ export namespace GstPbutils {
      */
     class DiscovererContainerInfo extends DiscovererStreamInfo {
         static $gtype: GObject.GType<DiscovererContainerInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DiscovererContainerInfo.SignalSignatures;
+        $signals: DiscovererContainerInfo.SignalSignatures;
 
         // Constructors
 
@@ -1310,14 +1314,15 @@ export namespace GstPbutils {
      */
     class DiscovererInfo extends GObject.Object {
         static $gtype: GObject.GType<DiscovererInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DiscovererInfo.SignalSignatures;
+        $signals: DiscovererInfo.SignalSignatures;
 
         // Constructors
 
@@ -1437,14 +1442,15 @@ export namespace GstPbutils {
      */
     class DiscovererStreamInfo extends GObject.Object {
         static $gtype: GObject.GType<DiscovererStreamInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DiscovererStreamInfo.SignalSignatures;
+        $signals: DiscovererStreamInfo.SignalSignatures;
 
         // Constructors
 
@@ -1509,14 +1515,15 @@ export namespace GstPbutils {
      */
     class DiscovererSubtitleInfo extends DiscovererStreamInfo {
         static $gtype: GObject.GType<DiscovererSubtitleInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DiscovererSubtitleInfo.SignalSignatures;
+        $signals: DiscovererSubtitleInfo.SignalSignatures;
 
         // Constructors
 
@@ -1563,14 +1570,15 @@ export namespace GstPbutils {
      */
     class DiscovererVideoInfo extends DiscovererStreamInfo {
         static $gtype: GObject.GType<DiscovererVideoInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DiscovererVideoInfo.SignalSignatures;
+        $signals: DiscovererVideoInfo.SignalSignatures;
 
         // Constructors
 
@@ -1630,14 +1638,15 @@ export namespace GstPbutils {
      */
     class EncodingAudioProfile extends EncodingProfile {
         static $gtype: GObject.GType<EncodingAudioProfile>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EncodingAudioProfile.SignalSignatures;
+        $signals: EncodingAudioProfile.SignalSignatures;
 
         // Constructors
 
@@ -1690,14 +1699,15 @@ export namespace GstPbutils {
      */
     class EncodingContainerProfile extends EncodingProfile {
         static $gtype: GObject.GType<EncodingContainerProfile>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EncodingContainerProfile.SignalSignatures;
+        $signals: EncodingContainerProfile.SignalSignatures;
 
         // Constructors
 
@@ -1807,14 +1817,15 @@ export namespace GstPbutils {
         set restriction_caps(val: Gst.Caps);
         get restrictionCaps(): Gst.Caps;
         set restrictionCaps(val: Gst.Caps);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EncodingProfile.SignalSignatures;
+        $signals: EncodingProfile.SignalSignatures;
 
         // Constructors
 
@@ -1993,14 +2004,15 @@ export namespace GstPbutils {
      */
     class EncodingTarget extends GObject.Object {
         static $gtype: GObject.GType<EncodingTarget>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EncodingTarget.SignalSignatures;
+        $signals: EncodingTarget.SignalSignatures;
 
         // Constructors
 
@@ -2100,14 +2112,15 @@ export namespace GstPbutils {
      */
     class EncodingVideoProfile extends EncodingProfile {
         static $gtype: GObject.GType<EncodingVideoProfile>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EncodingVideoProfile.SignalSignatures;
+        $signals: EncodingVideoProfile.SignalSignatures;
 
         // Constructors
 

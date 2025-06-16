@@ -423,14 +423,15 @@ export namespace Dbusmenu {
         set group_events(val: boolean);
         get groupEvents(): boolean;
         set groupEvents(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -565,14 +566,15 @@ export namespace Dbusmenu {
         // Properties
 
         get id(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Menuitem.SignalSignatures;
+        $signals: Menuitem.SignalSignatures;
 
         // Constructors
 
@@ -969,14 +971,15 @@ export namespace Dbusmenu {
 
         get menu_item(): Menuitem;
         get menuItem(): Menuitem;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MenuitemProxy.SignalSignatures;
+        $signals: MenuitemProxy.SignalSignatures;
 
         // Constructors
 
@@ -1056,14 +1059,15 @@ export namespace Dbusmenu {
         get rootNode(): Menuitem;
         set rootNode(val: Menuitem);
         get version(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Server.SignalSignatures;
+        $signals: Server.SignalSignatures;
 
         // Constructors
 

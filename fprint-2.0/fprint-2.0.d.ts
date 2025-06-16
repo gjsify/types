@@ -344,14 +344,15 @@ export namespace FPrint {
 
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Context.SignalSignatures;
+        $signals: Context.SignalSignatures;
 
         // Constructors
 
@@ -484,14 +485,15 @@ export namespace FPrint {
         get scan_type(): ScanType;
         get scanType(): ScanType;
         get temperature(): Temperature;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Device.SignalSignatures;
+        $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -1803,14 +1805,15 @@ export namespace FPrint {
 
         get height(): number;
         get width(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Image.SignalSignatures;
+        $signals: Image.SignalSignatures;
 
         // Constructors
 
@@ -1933,14 +1936,15 @@ export namespace FPrint {
 
     abstract class ImageDevice extends Device implements Gio.AsyncInitable<ImageDevice> {
         static $gtype: GObject.GType<ImageDevice>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ImageDevice.SignalSignatures;
+        $signals: ImageDevice.SignalSignatures;
 
         // Constructors
 
@@ -2672,14 +2676,15 @@ export namespace FPrint {
         get image(): Image;
         get username(): string;
         set username(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Print.SignalSignatures;
+        $signals: Print.SignalSignatures;
 
         // Constructors
 

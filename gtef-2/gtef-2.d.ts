@@ -325,14 +325,15 @@ export namespace Gtef {
 
     class ActionInfoCentralStore extends GObject.Object {
         static $gtype: GObject.GType<ActionInfoCentralStore>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ActionInfoCentralStore.SignalSignatures;
+        $signals: ActionInfoCentralStore.SignalSignatures;
 
         // Constructors
 
@@ -392,14 +393,15 @@ export namespace Gtef {
          * reference to the #GtkApplication.
          */
         get application(): Gtk.Application;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ActionInfoStore.SignalSignatures;
+        $signals: ActionInfoStore.SignalSignatures;
 
         // Constructors
 
@@ -502,14 +504,15 @@ export namespace Gtef {
          * The #GtkApplication.
          */
         get application(): Gtk.Application;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Application.SignalSignatures;
+        $signals: Application.SignalSignatures;
 
         // Constructors
 
@@ -602,14 +605,15 @@ export namespace Gtef {
          */
         get statusbar(): Gtk.Statusbar;
         set statusbar(val: Gtk.Statusbar);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ApplicationWindow.SignalSignatures;
+        $signals: ApplicationWindow.SignalSignatures;
 
         // Constructors
 
@@ -761,14 +765,15 @@ export namespace Gtef {
          * The buffer title. See gtef_buffer_get_title().
          */
         get gtefTitle(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Buffer.SignalSignatures;
+        $signals: Buffer.SignalSignatures;
 
         // Constructors
 
@@ -918,14 +923,15 @@ export namespace Gtef {
          * The file short name. See gtef_file_get_short_name().
          */
         get shortName(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: File.SignalSignatures;
+        $signals: File.SignalSignatures;
 
         // Constructors
 
@@ -1107,14 +1113,15 @@ export namespace Gtef {
          */
         get maxSize(): number;
         set maxSize(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileLoader.SignalSignatures;
+        $signals: FileLoader.SignalSignatures;
 
         // Constructors
 
@@ -1232,14 +1239,15 @@ export namespace Gtef {
          * The #GtefFile that the metadata belong to.
          */
         get file(): File;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileMetadata.SignalSignatures;
+        $signals: FileMetadata.SignalSignatures;
 
         // Constructors
 
@@ -1494,14 +1502,15 @@ export namespace Gtef {
          */
         get newlineType(): GtkSource.NewlineType;
         set newlineType(val: GtkSource.NewlineType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileSaver.SignalSignatures;
+        $signals: FileSaver.SignalSignatures;
 
         // Fields
 
@@ -1654,14 +1663,15 @@ export namespace Gtef {
          */
         get folded(): boolean;
         set folded(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FoldRegion.SignalSignatures;
+        $signals: FoldRegion.SignalSignatures;
 
         // Constructors
 
@@ -1734,14 +1744,15 @@ export namespace Gtef {
 
     class GutterRendererFolds extends GtkSource.GutterRenderer {
         static $gtype: GObject.GType<GutterRendererFolds>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GutterRendererFolds.SignalSignatures;
+        $signals: GutterRendererFolds.SignalSignatures;
 
         // Constructors
 
@@ -1847,14 +1858,15 @@ export namespace Gtef {
 
     class InfoBar extends Gtk.InfoBar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<InfoBar>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InfoBar.SignalSignatures;
+        $signals: InfoBar.SignalSignatures;
 
         // Constructors
 
@@ -2402,14 +2414,15 @@ export namespace Gtef {
          * The #GtkMenuShell.
          */
         get menuShell(): Gtk.MenuShell;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MenuShell.SignalSignatures;
+        $signals: MenuShell.SignalSignatures;
 
         // Constructors
 
@@ -2518,14 +2531,15 @@ export namespace Gtef {
 
     class Tab extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Tab>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Tab.SignalSignatures;
+        $signals: Tab.SignalSignatures;
 
         // Constructors
 
@@ -3122,14 +3136,15 @@ export namespace Gtef {
 
     class View extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: View.SignalSignatures;
+        $signals: View.SignalSignatures;
 
         // Constructors
 

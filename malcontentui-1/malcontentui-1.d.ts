@@ -178,14 +178,15 @@ export namespace MalcontentUi {
          */
         get userDisplayName(): string;
         set userDisplayName(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RestrictApplicationsDialog.SignalSignatures;
+        $signals: RestrictApplicationsDialog.SignalSignatures;
 
         // Constructors
 
@@ -3265,14 +3266,15 @@ export namespace MalcontentUi {
          */
         get appFilter(): Malcontent.AppFilter;
         set appFilter(val: Malcontent.AppFilter);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RestrictApplicationsSelector.SignalSignatures;
+        $signals: RestrictApplicationsSelector.SignalSignatures;
 
         // Constructors
 
@@ -3990,14 +3992,15 @@ export namespace MalcontentUi {
          */
         get userLocale(): string;
         set userLocale(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserControls.SignalSignatures;
+        $signals: UserControls.SignalSignatures;
 
         // Constructors
 

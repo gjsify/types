@@ -56,14 +56,15 @@ export namespace Gtd {
 
     class BinLayout extends Gtk.LayoutManager {
         static $gtype: GObject.GType<BinLayout>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BinLayout.SignalSignatures;
+        $signals: BinLayout.SignalSignatures;
 
         // Constructors
 
@@ -109,14 +110,15 @@ export namespace Gtd {
 
     class Clock extends Object {
         static $gtype: GObject.GType<Clock>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Clock.SignalSignatures;
+        $signals: Clock.SignalSignatures;
 
         // Constructors
 
@@ -171,14 +173,15 @@ export namespace Gtd {
 
         get child_model(): Gio.ListModel;
         get childModel(): Gio.ListModel;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ListModelFilter.SignalSignatures;
+        $signals: ListModelFilter.SignalSignatures;
 
         // Constructors
 
@@ -790,14 +793,15 @@ export namespace Gtd {
          * subclasses of #GObject.
          */
         get itemType(): GObject.GType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ListStore.SignalSignatures;
+        $signals: ListStore.SignalSignatures;
 
         // Constructors
 
@@ -1488,14 +1492,15 @@ export namespace Gtd {
         set default_provider(val: Provider);
         get defaultProvider(): Provider;
         set defaultProvider(val: Provider);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Manager.SignalSignatures;
+        $signals: Manager.SignalSignatures;
 
         // Constructors
 
@@ -1701,14 +1706,15 @@ export namespace Gtd {
          */
         get widthChars(): number;
         set widthChars(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MaxSizeLayout.SignalSignatures;
+        $signals: MaxSizeLayout.SignalSignatures;
 
         // Constructors
 
@@ -1907,14 +1913,15 @@ export namespace Gtd {
         set use_underline(val: boolean);
         get useUnderline(): boolean;
         set useUnderline(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MenuButton.SignalSignatures;
+        $signals: MenuButton.SignalSignatures;
 
         // Constructors
 
@@ -2846,14 +2853,15 @@ export namespace Gtd {
         set text(val: string);
         get timeout(): number;
         set timeout(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Notification.SignalSignatures;
+        $signals: Notification.SignalSignatures;
 
         // Constructors
 
@@ -2963,14 +2971,15 @@ export namespace Gtd {
         get loading(): boolean;
         get uid(): string;
         set uid(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Object.SignalSignatures;
+        $signals: Object.SignalSignatures;
 
         // Constructors
 
@@ -3105,14 +3114,15 @@ export namespace Gtd {
 
     class OmniArea extends Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<OmniArea>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OmniArea.SignalSignatures;
+        $signals: OmniArea.SignalSignatures;
 
         // Constructors
 
@@ -3660,14 +3670,15 @@ export namespace Gtd {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Native, Gtk.ShortcutManager
     {
         static $gtype: GObject.GType<ProviderPopover>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProviderPopover.SignalSignatures;
+        $signals: ProviderPopover.SignalSignatures;
 
         // Constructors
 
@@ -6702,14 +6713,15 @@ export namespace Gtd {
          */
         get active(): boolean;
         set active(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StarWidget.SignalSignatures;
+        $signals: StarWidget.SignalSignatures;
 
         // Constructors
 
@@ -7240,14 +7252,15 @@ export namespace Gtd {
         set position(val: number);
         get title(): string;
         set title(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Task.SignalSignatures;
+        $signals: Task.SignalSignatures;
 
         // Constructors
 
@@ -7524,14 +7537,15 @@ export namespace Gtd {
         set name(val: string);
         get provider(): Provider;
         set provider(val: Provider);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TaskList.SignalSignatures;
+        $signals: TaskList.SignalSignatures;
 
         // Constructors
 
@@ -8280,14 +8294,15 @@ export namespace Gtd {
         set show_list_name(val: boolean);
         get showListName(): boolean;
         set showListName(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TaskListView.SignalSignatures;
+        $signals: TaskListView.SignalSignatures;
 
         // Constructors
 
@@ -9001,14 +9016,15 @@ export namespace Gtd {
         set translation_z(val: number);
         get translationZ(): number;
         set translationZ(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Widget.SignalSignatures;
+        $signals: Widget.SignalSignatures;
 
         // Constructors
 
@@ -9974,14 +9990,15 @@ export namespace Gtd {
 
         get current_workspace(): Workspace;
         get currentWorkspace(): Workspace;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Window.SignalSignatures;
+        $signals: Window.SignalSignatures;
 
         // Constructors
 

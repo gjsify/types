@@ -113,14 +113,15 @@ export namespace PangoFc {
      */
     abstract class Decoder extends GObject.Object {
         static $gtype: GObject.GType<Decoder>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Decoder.SignalSignatures;
+        $signals: Decoder.SignalSignatures;
 
         // Constructors
 
@@ -237,14 +238,15 @@ export namespace PangoFc {
          * The fontconfig pattern for this font.
          */
         get pattern(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Font.SignalSignatures;
+        $signals: Font.SignalSignatures;
 
         // Fields
 
@@ -372,14 +374,15 @@ export namespace PangoFc {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<FontMap>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FontMap.SignalSignatures;
+        $signals: FontMap.SignalSignatures;
 
         // Constructors
 

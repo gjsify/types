@@ -91,14 +91,15 @@ export namespace Deviced {
         set name(val: string);
         get provider(): string;
         set provider(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AppInfo.SignalSignatures;
+        $signals: AppInfo.SignalSignatures;
 
         // Constructors
 
@@ -164,14 +165,15 @@ export namespace Deviced {
         set enable_ipv6(val: boolean);
         get enableIpv6(): boolean;
         set enableIpv6(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Browser.SignalSignatures;
+        $signals: Browser.SignalSignatures;
 
         // Constructors
 
@@ -334,14 +336,15 @@ export namespace Deviced {
         get timeout(): number;
         set timeout(val: number);
         get triplet(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -944,14 +947,15 @@ export namespace Deviced {
         set machineId(val: string);
         get name(): string;
         set name(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Device.SignalSignatures;
+        $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -1065,14 +1069,15 @@ export namespace Deviced {
 
     class FlatpakService extends Service {
         static $gtype: GObject.GType<FlatpakService>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FlatpakService.SignalSignatures;
+        $signals: FlatpakService.SignalSignatures;
 
         // Constructors
 
@@ -1151,14 +1156,15 @@ export namespace Deviced {
          */
         get address(): Gio.InetSocketAddress;
         get certificate(): Gio.TlsCertificate;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NetworkClient.SignalSignatures;
+        $signals: NetworkClient.SignalSignatures;
 
         // Constructors
 
@@ -1227,14 +1233,15 @@ export namespace Deviced {
 
         get address(): Gio.InetSocketAddress;
         get certificate(): Gio.TlsCertificate;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NetworkDevice.SignalSignatures;
+        $signals: NetworkDevice.SignalSignatures;
 
         // Constructors
 
@@ -1291,14 +1298,15 @@ export namespace Deviced {
 
     class ProcessService extends Service {
         static $gtype: GObject.GType<ProcessService>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ProcessService.SignalSignatures;
+        $signals: ProcessService.SignalSignatures;
 
         // Constructors
 
@@ -1497,14 +1505,15 @@ export namespace Deviced {
         // Properties
 
         get client(): Client;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Service.SignalSignatures;
+        $signals: Service.SignalSignatures;
 
         // Constructors
 
@@ -1613,14 +1622,15 @@ export namespace Deviced {
 
     class TransferService extends Service {
         static $gtype: GObject.GType<TransferService>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TransferService.SignalSignatures;
+        $signals: TransferService.SignalSignatures;
 
         // Constructors
 

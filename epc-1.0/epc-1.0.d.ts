@@ -171,14 +171,15 @@ export namespace Epc {
         set protocol(val: Protocol);
         get username(): string;
         set username(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Consumer.SignalSignatures;
+        $signals: Consumer.SignalSignatures;
 
         // Constructors
 
@@ -261,14 +262,15 @@ export namespace Epc {
         set cookie(val: string);
         get name(): string;
         set name(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Dispatcher.SignalSignatures;
+        $signals: Dispatcher.SignalSignatures;
 
         // Constructors
 
@@ -392,14 +394,15 @@ export namespace Epc {
         set service_name(val: string);
         get serviceName(): string;
         set serviceName(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Publisher.SignalSignatures;
+        $signals: Publisher.SignalSignatures;
 
         // Constructors
 
@@ -503,14 +506,15 @@ export namespace Epc {
         set skip_our_own(val: boolean);
         get skipOurOwn(): boolean;
         set skipOurOwn(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ServiceMonitor.SignalSignatures;
+        $signals: ServiceMonitor.SignalSignatures;
 
         // Constructors
 

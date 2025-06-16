@@ -69,14 +69,15 @@ export namespace GdkWayland {
      */
     class WaylandDevice extends Gdk.Device {
         static $gtype: GObject.GType<WaylandDevice>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WaylandDevice.SignalSignatures;
+        $signals: WaylandDevice.SignalSignatures;
 
         // Constructors
 
@@ -151,14 +152,15 @@ export namespace GdkWayland {
      */
     class WaylandDisplay extends Gdk.Display {
         static $gtype: GObject.GType<WaylandDisplay>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WaylandDisplay.SignalSignatures;
+        $signals: WaylandDisplay.SignalSignatures;
 
         // Constructors
 
@@ -245,14 +247,15 @@ export namespace GdkWayland {
      */
     class WaylandGLContext extends Gdk.GLContext {
         static $gtype: GObject.GType<WaylandGLContext>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WaylandGLContext.SignalSignatures;
+        $signals: WaylandGLContext.SignalSignatures;
 
         // Constructors
 
@@ -311,14 +314,15 @@ export namespace GdkWayland {
      */
     class WaylandMonitor extends Gdk.Monitor {
         static $gtype: GObject.GType<WaylandMonitor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WaylandMonitor.SignalSignatures;
+        $signals: WaylandMonitor.SignalSignatures;
 
         // Constructors
 
@@ -370,14 +374,15 @@ export namespace GdkWayland {
      */
     class WaylandPopup extends WaylandSurface implements Gdk.Popup {
         static $gtype: GObject.GType<WaylandPopup>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WaylandPopup.SignalSignatures;
+        $signals: WaylandPopup.SignalSignatures;
 
         // Constructors
 
@@ -801,14 +806,15 @@ export namespace GdkWayland {
      */
     class WaylandSeat extends Gdk.Seat {
         static $gtype: GObject.GType<WaylandSeat>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WaylandSeat.SignalSignatures;
+        $signals: WaylandSeat.SignalSignatures;
 
         // Constructors
 
@@ -862,14 +868,15 @@ export namespace GdkWayland {
      */
     class WaylandSurface extends Gdk.Surface {
         static $gtype: GObject.GType<WaylandSurface>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WaylandSurface.SignalSignatures;
+        $signals: WaylandSurface.SignalSignatures;
 
         // Constructors
 
@@ -941,14 +948,15 @@ export namespace GdkWayland {
      */
     class WaylandToplevel extends WaylandSurface implements Gdk.Toplevel {
         static $gtype: GObject.GType<WaylandToplevel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WaylandToplevel.SignalSignatures;
+        $signals: WaylandToplevel.SignalSignatures;
 
         // Constructors
 

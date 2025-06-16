@@ -177,14 +177,15 @@ export namespace NMA {
 
         get size(): number;
         set text(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BarCode.SignalSignatures;
+        $signals: BarCode.SignalSignatures;
 
         // Constructors
 
@@ -297,14 +298,15 @@ export namespace NMA {
 
         get connection(): NM.Connection;
         set connection(val: NM.Connection);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BarCodeWidget.SignalSignatures;
+        $signals: BarCodeWidget.SignalSignatures;
 
         // Constructors
 
@@ -868,14 +870,15 @@ export namespace NMA {
 
         set flags(val: number);
         set title(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertChooser.SignalSignatures;
+        $signals: CertChooser.SignalSignatures;
 
         // Constructors
 
@@ -1550,14 +1553,15 @@ export namespace NMA {
         get countryCodes(): string;
         get service_providers(): string;
         get serviceProviders(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MobileProvidersDatabase.SignalSignatures;
+        $signals: MobileProvidersDatabase.SignalSignatures;
 
         // Constructors
 
@@ -2350,14 +2354,15 @@ export namespace NMA {
 
     class MobileWizard extends GObject.Object {
         static $gtype: GObject.GType<MobileWizard>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MobileWizard.SignalSignatures;
+        $signals: MobileWizard.SignalSignatures;
 
         // Constructors
 
@@ -2480,14 +2485,15 @@ export namespace NMA {
 
     class VpnPasswordDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<VpnPasswordDialog>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VpnPasswordDialog.SignalSignatures;
+        $signals: VpnPasswordDialog.SignalSignatures;
 
         // Constructors
 
@@ -3070,14 +3076,15 @@ export namespace NMA {
 
     class WifiDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WifiDialog>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WifiDialog.SignalSignatures;
+        $signals: WifiDialog.SignalSignatures;
 
         // Constructors
 

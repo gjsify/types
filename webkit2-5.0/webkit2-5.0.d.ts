@@ -1825,14 +1825,15 @@ export namespace WebKit2 {
      */
     class AuthenticationRequest extends GObject.Object {
         static $gtype: GObject.GType<AuthenticationRequest>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AuthenticationRequest.SignalSignatures;
+        $signals: AuthenticationRequest.SignalSignatures;
 
         // Constructors
 
@@ -2002,14 +2003,15 @@ export namespace WebKit2 {
          * The session unique identifier.
          */
         get id(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AutomationSession.SignalSignatures;
+        $signals: AutomationSession.SignalSignatures;
 
         // Constructors
 
@@ -2093,14 +2095,15 @@ export namespace WebKit2 {
      */
     class BackForwardList extends GObject.Object {
         static $gtype: GObject.GType<BackForwardList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BackForwardList.SignalSignatures;
+        $signals: BackForwardList.SignalSignatures;
 
         // Constructors
 
@@ -2195,14 +2198,15 @@ export namespace WebKit2 {
      */
     class BackForwardListItem extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<BackForwardListItem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BackForwardListItem.SignalSignatures;
+        $signals: BackForwardListItem.SignalSignatures;
 
         // Constructors
 
@@ -2296,14 +2300,15 @@ export namespace WebKit2 {
          */
         get rgba(): Gdk.RGBA;
         set rgba(val: Gdk.RGBA);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ColorChooserRequest.SignalSignatures;
+        $signals: ColorChooserRequest.SignalSignatures;
 
         // Constructors
 
@@ -2393,14 +2398,15 @@ export namespace WebKit2 {
      */
     class ContextMenu extends GObject.Object {
         static $gtype: GObject.GType<ContextMenu>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ContextMenu.SignalSignatures;
+        $signals: ContextMenu.SignalSignatures;
 
         // Constructors
 
@@ -2539,14 +2545,15 @@ export namespace WebKit2 {
      */
     class ContextMenuItem extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ContextMenuItem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ContextMenuItem.SignalSignatures;
+        $signals: ContextMenuItem.SignalSignatures;
 
         // Constructors
 
@@ -2641,14 +2648,15 @@ export namespace WebKit2 {
      */
     class CookieManager extends GObject.Object {
         static $gtype: GObject.GType<CookieManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CookieManager.SignalSignatures;
+        $signals: CookieManager.SignalSignatures;
 
         // Constructors
 
@@ -2963,14 +2971,15 @@ export namespace WebKit2 {
      */
     class DeviceInfoPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<DeviceInfoPermissionRequest>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceInfoPermissionRequest.SignalSignatures;
+        $signals: DeviceInfoPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -3536,14 +3545,15 @@ export namespace WebKit2 {
          * The #WebKitURIResponse associated with this download.
          */
         get response(): URIResponse;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Download.SignalSignatures;
+        $signals: Download.SignalSignatures;
 
         // Constructors
 
@@ -3712,14 +3722,15 @@ export namespace WebKit2 {
          * See webkit_editor_state_get_typing_attributes() for more information.
          */
         get typingAttributes(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EditorState.SignalSignatures;
+        $signals: EditorState.SignalSignatures;
 
         // Constructors
 
@@ -3810,14 +3821,15 @@ export namespace WebKit2 {
      */
     class FaviconDatabase extends GObject.Object {
         static $gtype: GObject.GType<FaviconDatabase>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FaviconDatabase.SignalSignatures;
+        $signals: FaviconDatabase.SignalSignatures;
 
         // Constructors
 
@@ -4024,14 +4036,15 @@ export namespace WebKit2 {
          * webkit_file_chooser_request_get_selected_files() for more details.
          */
         get selectedFiles(): string[];
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileChooserRequest.SignalSignatures;
+        $signals: FileChooserRequest.SignalSignatures;
 
         // Constructors
 
@@ -4193,14 +4206,15 @@ export namespace WebKit2 {
          * The #WebKitWebView this controller is associated to.
          */
         get webView(): WebView;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FindController.SignalSignatures;
+        $signals: FindController.SignalSignatures;
 
         // Constructors
 
@@ -4352,14 +4366,15 @@ export namespace WebKit2 {
      */
     class FormSubmissionRequest extends GObject.Object {
         static $gtype: GObject.GType<FormSubmissionRequest>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FormSubmissionRequest.SignalSignatures;
+        $signals: FormSubmissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -4460,14 +4475,15 @@ export namespace WebKit2 {
          * You can connect to notify::enable-high-accuracy signal to monitor it.
          */
         get enableHighAccuracy(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GeolocationManager.SignalSignatures;
+        $signals: GeolocationManager.SignalSignatures;
 
         // Constructors
 
@@ -4549,14 +4565,15 @@ export namespace WebKit2 {
      */
     class GeolocationPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<GeolocationPermissionRequest>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GeolocationPermissionRequest.SignalSignatures;
+        $signals: GeolocationPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -5152,14 +5169,15 @@ export namespace WebKit2 {
          * is present in #WebKitHitTestResult:context
          */
         get mediaUri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HitTestResult.SignalSignatures;
+        $signals: HitTestResult.SignalSignatures;
 
         // Constructors
 
@@ -5314,14 +5332,15 @@ export namespace WebKit2 {
          */
         get inputPurpose(): InputPurpose;
         set inputPurpose(val: InputPurpose);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InputMethodContext.SignalSignatures;
+        $signals: InputMethodContext.SignalSignatures;
 
         // Constructors
 
@@ -5506,14 +5525,15 @@ export namespace WebKit2 {
      */
     class InstallMissingMediaPluginsPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<InstallMissingMediaPluginsPermissionRequest>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InstallMissingMediaPluginsPermissionRequest.SignalSignatures;
+        $signals: InstallMissingMediaPluginsPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -6036,14 +6056,15 @@ export namespace WebKit2 {
      */
     class MediaKeySystemPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<MediaKeySystemPermissionRequest>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaKeySystemPermissionRequest.SignalSignatures;
+        $signals: MediaKeySystemPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -6634,14 +6655,15 @@ export namespace WebKit2 {
          * navigation.
          */
         get request(): URIRequest;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NavigationPolicyDecision.SignalSignatures;
+        $signals: NavigationPolicyDecision.SignalSignatures;
 
         // Constructors
 
@@ -6748,14 +6770,15 @@ export namespace WebKit2 {
          * The title for the notification.
          */
         get title(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Notification.SignalSignatures;
+        $signals: Notification.SignalSignatures;
 
         // Constructors
 
@@ -6837,14 +6860,15 @@ export namespace WebKit2 {
      */
     class NotificationPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<NotificationPermissionRequest>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NotificationPermissionRequest.SignalSignatures;
+        $signals: NotificationPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -7350,14 +7374,15 @@ export namespace WebKit2 {
      */
     class OptionMenu extends GObject.Object {
         static $gtype: GObject.GType<OptionMenu>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OptionMenu.SignalSignatures;
+        $signals: OptionMenu.SignalSignatures;
 
         // Constructors
 
@@ -7449,14 +7474,15 @@ export namespace WebKit2 {
      */
     class Plugin extends GObject.Object {
         static $gtype: GObject.GType<Plugin>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Plugin.SignalSignatures;
+        $signals: Plugin.SignalSignatures;
 
         // Constructors
 
@@ -7530,14 +7556,15 @@ export namespace WebKit2 {
      */
     class PointerLockPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<PointerLockPermissionRequest>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PointerLockPermissionRequest.SignalSignatures;
+        $signals: PointerLockPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -8047,14 +8074,15 @@ export namespace WebKit2 {
      */
     abstract class PolicyDecision extends GObject.Object {
         static $gtype: GObject.GType<PolicyDecision>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PolicyDecision.SignalSignatures;
+        $signals: PolicyDecision.SignalSignatures;
 
         // Constructors
 
@@ -8151,14 +8179,15 @@ export namespace WebKit2 {
          * The custom #GtkWidget that will be embedded in the dialog.
          */
         get widget(): Gtk.Widget;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PrintCustomWidget.SignalSignatures;
+        $signals: PrintCustomWidget.SignalSignatures;
 
         // Constructors
 
@@ -8278,14 +8307,15 @@ export namespace WebKit2 {
          * The #WebKitWebView that will be printed.
          */
         get webView(): WebView;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PrintOperation.SignalSignatures;
+        $signals: PrintOperation.SignalSignatures;
 
         // Constructors
 
@@ -8422,14 +8452,15 @@ export namespace WebKit2 {
          * policy decision.
          */
         get response(): URIResponse;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ResponsePolicyDecision.SignalSignatures;
+        $signals: ResponsePolicyDecision.SignalSignatures;
 
         // Constructors
 
@@ -8505,14 +8536,15 @@ export namespace WebKit2 {
      */
     class SecurityManager extends GObject.Object {
         static $gtype: GObject.GType<SecurityManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SecurityManager.SignalSignatures;
+        $signals: SecurityManager.SignalSignatures;
 
         // Constructors
 
@@ -9720,14 +9752,15 @@ export namespace WebKit2 {
          */
         get zoomTextOnly(): boolean;
         set zoomTextOnly(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Settings.SignalSignatures;
+        $signals: Settings.SignalSignatures;
 
         // Constructors
 
@@ -10429,14 +10462,15 @@ export namespace WebKit2 {
          */
         get uri(): string;
         set uri(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: URIRequest.SignalSignatures;
+        $signals: URIRequest.SignalSignatures;
 
         // Constructors
 
@@ -10572,14 +10606,15 @@ export namespace WebKit2 {
          * The URI for which the response was made.
          */
         get uri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: URIResponse.SignalSignatures;
+        $signals: URIResponse.SignalSignatures;
 
         // Constructors
 
@@ -10673,14 +10708,15 @@ export namespace WebKit2 {
      */
     class URISchemeRequest extends GObject.Object {
         static $gtype: GObject.GType<URISchemeRequest>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: URISchemeRequest.SignalSignatures;
+        $signals: URISchemeRequest.SignalSignatures;
 
         // Constructors
 
@@ -10804,14 +10840,15 @@ export namespace WebKit2 {
          * The input stream length in bytes, `-1` for unknown length.
          */
         set streamLength(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: URISchemeResponse.SignalSignatures;
+        $signals: URISchemeResponse.SignalSignatures;
 
         // Constructors
 
@@ -10903,14 +10940,15 @@ export namespace WebKit2 {
          * directory where user content filters are stored on disk.
          */
         get path(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserContentFilterStore.SignalSignatures;
+        $signals: UserContentFilterStore.SignalSignatures;
 
         // Constructors
 
@@ -11260,14 +11298,15 @@ export namespace WebKit2 {
      */
     class UserContentManager extends GObject.Object {
         static $gtype: GObject.GType<UserContentManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserContentManager.SignalSignatures;
+        $signals: UserContentManager.SignalSignatures;
 
         // Constructors
 
@@ -11481,14 +11520,15 @@ export namespace WebKit2 {
          * Whether the media device to which the permission was requested has a video capture capability or not.
          */
         get isForVideoDevice(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserMediaPermissionRequest.SignalSignatures;
+        $signals: UserMediaPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -12025,14 +12065,15 @@ export namespace WebKit2 {
          * allowed.
          */
         get parameters(): GLib.Variant;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UserMessage.SignalSignatures;
+        $signals: UserMessage.SignalSignatures;
 
         // Constructors
 
@@ -12224,14 +12265,15 @@ export namespace WebKit2 {
          * The #WebKitWebsiteDataManager associated with this context.
          */
         get websiteDataManager(): WebsiteDataManager;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebContext.SignalSignatures;
+        $signals: WebContext.SignalSignatures;
 
         // Constructors
 
@@ -12825,14 +12867,15 @@ export namespace WebKit2 {
          * The URI that is currently being inspected.
          */
         get inspectedUri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebInspector.SignalSignatures;
+        $signals: WebInspector.SignalSignatures;
 
         // Constructors
 
@@ -12970,14 +13013,15 @@ export namespace WebKit2 {
          * See webkit_web_resource_get_uri() for more details.
          */
         get uri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebResource.SignalSignatures;
+        $signals: WebResource.SignalSignatures;
 
         // Constructors
 
@@ -13594,14 +13638,15 @@ export namespace WebKit2 {
          */
         get zoomLevel(): number;
         set zoomLevel(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebView.SignalSignatures;
+        $signals: WebView.SignalSignatures;
 
         // Constructors
 
@@ -15257,14 +15302,15 @@ export namespace WebKit2 {
      */
     class WebViewBase extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<WebViewBase>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebViewBase.SignalSignatures;
+        $signals: WebViewBase.SignalSignatures;
 
         // Fields
 
@@ -16039,14 +16085,15 @@ export namespace WebKit2 {
      */
     class WebsiteDataAccessPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<WebsiteDataAccessPermissionRequest>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebsiteDataAccessPermissionRequest.SignalSignatures;
+        $signals: WebsiteDataAccessPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -16739,14 +16786,15 @@ export namespace WebKit2 {
          * The directory where WebSQL databases will be stored.
          */
         get websqlDirectory(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebsiteDataManager.SignalSignatures;
+        $signals: WebsiteDataManager.SignalSignatures;
 
         // Constructors
 
@@ -17162,14 +17210,15 @@ export namespace WebKit2 {
          * The #WebKitAutoplayPolicy of #WebKitWebsitePolicies.
          */
         get autoplay(): AutoplayPolicy;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebsitePolicies.SignalSignatures;
+        $signals: WebsitePolicies.SignalSignatures;
 
         // Constructors
 
@@ -17351,14 +17400,15 @@ export namespace WebKit2 {
          * Whether the toolbar should be visible for the window.
          */
         get toolbarVisible(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WindowProperties.SignalSignatures;
+        $signals: WindowProperties.SignalSignatures;
 
         // Constructors
 

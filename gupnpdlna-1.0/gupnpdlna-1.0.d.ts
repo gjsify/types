@@ -57,14 +57,15 @@ export namespace GUPnPDLNA {
         get extendedMode(): boolean;
         get relaxed_mode(): boolean;
         get relaxedMode(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Discoverer.SignalSignatures;
+        $signals: Discoverer.SignalSignatures;
 
         // Constructors
 
@@ -157,14 +158,15 @@ export namespace GUPnPDLNA {
         get info(): GstPbutils.DiscovererInfo;
         get mime(): string;
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Information.SignalSignatures;
+        $signals: Information.SignalSignatures;
 
         // Constructors
 
@@ -233,14 +235,15 @@ export namespace GUPnPDLNA {
         get extended(): boolean;
         get mime(): string;
         get name(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Profile.SignalSignatures;
+        $signals: Profile.SignalSignatures;
 
         // Constructors
 

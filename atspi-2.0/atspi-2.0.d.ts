@@ -2391,14 +2391,15 @@ export namespace Atspi {
             Value
     {
         static $gtype: GObject.GType<Accessible>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Accessible.SignalSignatures;
+        $signals: Accessible.SignalSignatures;
 
         // Fields
 
@@ -4198,14 +4199,15 @@ export namespace Atspi {
      */
     class Application extends GObject.Object {
         static $gtype: GObject.GType<Application>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Application.SignalSignatures;
+        $signals: Application.SignalSignatures;
 
         // Fields
 
@@ -4273,14 +4275,15 @@ export namespace Atspi {
          * by some device backends.
          */
         get appId(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Device.SignalSignatures;
+        $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -4521,14 +4524,15 @@ export namespace Atspi {
 
     class DeviceA11yManager extends Device {
         static $gtype: GObject.GType<DeviceA11yManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceA11yManager.SignalSignatures;
+        $signals: DeviceA11yManager.SignalSignatures;
 
         // Constructors
 
@@ -4572,14 +4576,15 @@ export namespace Atspi {
 
     class DeviceLegacy extends Device {
         static $gtype: GObject.GType<DeviceLegacy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceLegacy.SignalSignatures;
+        $signals: DeviceLegacy.SignalSignatures;
 
         // Constructors
 
@@ -4621,14 +4626,15 @@ export namespace Atspi {
 
     class DeviceListener extends GObject.Object {
         static $gtype: GObject.GType<DeviceListener>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceListener.SignalSignatures;
+        $signals: DeviceListener.SignalSignatures;
 
         // Fields
 
@@ -4693,14 +4699,15 @@ export namespace Atspi {
 
     class DeviceX11 extends Device {
         static $gtype: GObject.GType<DeviceX11>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceX11.SignalSignatures;
+        $signals: DeviceX11.SignalSignatures;
 
         // Constructors
 
@@ -4751,14 +4758,15 @@ export namespace Atspi {
      */
     class EventListener extends GObject.Object {
         static $gtype: GObject.GType<EventListener>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EventListener.SignalSignatures;
+        $signals: EventListener.SignalSignatures;
 
         // Fields
 
@@ -4957,14 +4965,15 @@ export namespace Atspi {
      */
     class Hyperlink extends Object {
         static $gtype: GObject.GType<Hyperlink>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Hyperlink.SignalSignatures;
+        $signals: Hyperlink.SignalSignatures;
 
         // Constructors
 
@@ -5053,14 +5062,15 @@ export namespace Atspi {
      */
     class MatchRule extends GObject.Object {
         static $gtype: GObject.GType<MatchRule>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MatchRule.SignalSignatures;
+        $signals: MatchRule.SignalSignatures;
 
         // Fields
 
@@ -5121,14 +5131,15 @@ export namespace Atspi {
 
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Object.SignalSignatures;
+        $signals: Object.SignalSignatures;
 
         // Fields
 
@@ -5179,14 +5190,15 @@ export namespace Atspi {
      */
     class Relation extends GObject.Object {
         static $gtype: GObject.GType<Relation>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Relation.SignalSignatures;
+        $signals: Relation.SignalSignatures;
 
         // Fields
 
@@ -5254,14 +5266,15 @@ export namespace Atspi {
      */
     class StateSet extends GObject.Object {
         static $gtype: GObject.GType<StateSet>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StateSet.SignalSignatures;
+        $signals: StateSet.SignalSignatures;
 
         // Fields
 

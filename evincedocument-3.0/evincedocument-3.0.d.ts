@@ -525,14 +525,15 @@ export namespace EvinceDocument {
          */
         get rgba(): Gdk.RGBA;
         set rgba(val: Gdk.RGBA);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Annotation.SignalSignatures;
+        $signals: Annotation.SignalSignatures;
 
         // Constructors
 
@@ -708,14 +709,15 @@ export namespace EvinceDocument {
 
         get attachment(): Attachment;
         set attachment(val: Attachment);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AnnotationAttachment.SignalSignatures;
+        $signals: AnnotationAttachment.SignalSignatures;
 
         // Constructors
 
@@ -959,14 +961,15 @@ export namespace EvinceDocument {
         set is_open(val: boolean);
         get isOpen(): boolean;
         set isOpen(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AnnotationText.SignalSignatures;
+        $signals: AnnotationText.SignalSignatures;
 
         // Constructors
 
@@ -1203,14 +1206,15 @@ export namespace EvinceDocument {
 
         get type(): AnnotationTextMarkupType;
         set type(val: AnnotationTextMarkupType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AnnotationTextMarkup.SignalSignatures;
+        $signals: AnnotationTextMarkup.SignalSignatures;
 
         // Constructors
 
@@ -1454,14 +1458,15 @@ export namespace EvinceDocument {
         set mtime(val: number);
         set name(val: string);
         set size(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Attachment.SignalSignatures;
+        $signals: Attachment.SignalSignatures;
 
         // Fields
 
@@ -1535,14 +1540,15 @@ export namespace EvinceDocument {
 
         get modified(): boolean;
         set modified(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Document.SignalSignatures;
+        $signals: Document.SignalSignatures;
 
         // Fields
 
@@ -1932,14 +1938,15 @@ export namespace EvinceDocument {
 
     abstract class FormField extends GObject.Object {
         static $gtype: GObject.GType<FormField>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FormField.SignalSignatures;
+        $signals: FormField.SignalSignatures;
 
         // Fields
 
@@ -1986,14 +1993,15 @@ export namespace EvinceDocument {
 
     class FormFieldButton extends FormField {
         static $gtype: GObject.GType<FormFieldButton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FormFieldButton.SignalSignatures;
+        $signals: FormFieldButton.SignalSignatures;
 
         // Fields
 
@@ -2038,14 +2046,15 @@ export namespace EvinceDocument {
 
     class FormFieldChoice extends FormField {
         static $gtype: GObject.GType<FormFieldChoice>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FormFieldChoice.SignalSignatures;
+        $signals: FormFieldChoice.SignalSignatures;
 
         // Fields
 
@@ -2095,14 +2104,15 @@ export namespace EvinceDocument {
 
     class FormFieldSignature extends FormField {
         static $gtype: GObject.GType<FormFieldSignature>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FormFieldSignature.SignalSignatures;
+        $signals: FormFieldSignature.SignalSignatures;
 
         // Constructors
 
@@ -2142,14 +2152,15 @@ export namespace EvinceDocument {
 
     class FormFieldText extends FormField {
         static $gtype: GObject.GType<FormFieldText>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FormFieldText.SignalSignatures;
+        $signals: FormFieldText.SignalSignatures;
 
         // Fields
 
@@ -2200,14 +2211,15 @@ export namespace EvinceDocument {
 
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Image.SignalSignatures;
+        $signals: Image.SignalSignatures;
 
         // Fields
 
@@ -2261,14 +2273,15 @@ export namespace EvinceDocument {
 
     class Layer extends GObject.Object {
         static $gtype: GObject.GType<Layer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Layer.SignalSignatures;
+        $signals: Layer.SignalSignatures;
 
         // Fields
 
@@ -2328,14 +2341,15 @@ export namespace EvinceDocument {
 
         get action(): LinkAction;
         get title(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Link.SignalSignatures;
+        $signals: Link.SignalSignatures;
 
         // Constructors
 
@@ -2428,14 +2442,15 @@ export namespace EvinceDocument {
         get toggleList(): any;
         get type(): LinkActionType;
         get uri(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LinkAction.SignalSignatures;
+        $signals: LinkAction.SignalSignatures;
 
         // Constructors
 
@@ -2544,14 +2559,15 @@ export namespace EvinceDocument {
         get top(): number;
         get type(): LinkDestType;
         get zoom(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LinkDest.SignalSignatures;
+        $signals: LinkDest.SignalSignatures;
 
         // Constructors
 
@@ -2631,14 +2647,15 @@ export namespace EvinceDocument {
 
     class Media extends GObject.Object {
         static $gtype: GObject.GType<Media>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Media.SignalSignatures;
+        $signals: Media.SignalSignatures;
 
         // Fields
 
@@ -2689,14 +2706,15 @@ export namespace EvinceDocument {
 
     class Page extends GObject.Object {
         static $gtype: GObject.GType<Page>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Page.SignalSignatures;
+        $signals: Page.SignalSignatures;
 
         // Fields
 
@@ -2743,14 +2761,15 @@ export namespace EvinceDocument {
 
     class RenderContext extends GObject.Object {
         static $gtype: GObject.GType<RenderContext>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RenderContext.SignalSignatures;
+        $signals: RenderContext.SignalSignatures;
 
         // Fields
 
@@ -2858,14 +2877,15 @@ export namespace EvinceDocument {
         set scale(val: number);
         get type(): TransitionEffectType;
         set type(val: TransitionEffectType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TransitionEffect.SignalSignatures;
+        $signals: TransitionEffect.SignalSignatures;
 
         // Constructors
 

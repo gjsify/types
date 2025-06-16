@@ -1194,14 +1194,15 @@ export namespace GMime {
      */
     class Certificate extends GObject.Object {
         static $gtype: GObject.GType<Certificate>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Certificate.SignalSignatures;
+        $signals: Certificate.SignalSignatures;
 
         // Fields
 
@@ -1372,14 +1373,15 @@ export namespace GMime {
      */
     class CertificateList extends GObject.Object {
         static $gtype: GObject.GType<CertificateList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CertificateList.SignalSignatures;
+        $signals: CertificateList.SignalSignatures;
 
         // Fields
 
@@ -1491,14 +1493,15 @@ export namespace GMime {
      */
     class ContentDisposition extends GObject.Object {
         static $gtype: GObject.GType<ContentDisposition>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ContentDisposition.SignalSignatures;
+        $signals: ContentDisposition.SignalSignatures;
 
         // Fields
 
@@ -1602,14 +1605,15 @@ export namespace GMime {
      */
     class ContentType extends GObject.Object {
         static $gtype: GObject.GType<ContentType>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ContentType.SignalSignatures;
+        $signals: ContentType.SignalSignatures;
 
         // Fields
 
@@ -1723,14 +1727,15 @@ export namespace GMime {
      */
     class CryptoContext extends GObject.Object {
         static $gtype: GObject.GType<CryptoContext>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CryptoContext.SignalSignatures;
+        $signals: CryptoContext.SignalSignatures;
 
         // Fields
 
@@ -2056,14 +2061,15 @@ export namespace GMime {
      */
     class DataWrapper extends GObject.Object {
         static $gtype: GObject.GType<DataWrapper>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataWrapper.SignalSignatures;
+        $signals: DataWrapper.SignalSignatures;
 
         // Fields
 
@@ -2156,14 +2162,15 @@ export namespace GMime {
      */
     class DecryptResult extends GObject.Object {
         static $gtype: GObject.GType<DecryptResult>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DecryptResult.SignalSignatures;
+        $signals: DecryptResult.SignalSignatures;
 
         // Fields
 
@@ -2271,14 +2278,15 @@ export namespace GMime {
      */
     abstract class Filter extends GObject.Object {
         static $gtype: GObject.GType<Filter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Filter.SignalSignatures;
+        $signals: Filter.SignalSignatures;
 
         // Fields
 
@@ -2391,14 +2399,15 @@ export namespace GMime {
      */
     class FilterBasic extends Filter {
         static $gtype: GObject.GType<FilterBasic>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilterBasic.SignalSignatures;
+        $signals: FilterBasic.SignalSignatures;
 
         // Fields
 
@@ -2446,14 +2455,15 @@ export namespace GMime {
      */
     class FilterBest extends Filter {
         static $gtype: GObject.GType<FilterBest>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilterBest.SignalSignatures;
+        $signals: FilterBest.SignalSignatures;
 
         // Fields
 
@@ -2529,14 +2539,15 @@ export namespace GMime {
      */
     class FilterCRLF extends Filter {
         static $gtype: GObject.GType<FilterCRLF>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilterCRLF.SignalSignatures;
+        $signals: FilterCRLF.SignalSignatures;
 
         // Fields
 
@@ -2588,14 +2599,15 @@ export namespace GMime {
      */
     class FilterCharset extends Filter {
         static $gtype: GObject.GType<FilterCharset>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilterCharset.SignalSignatures;
+        $signals: FilterCharset.SignalSignatures;
 
         // Fields
 
@@ -2645,14 +2657,15 @@ export namespace GMime {
      */
     class FilterEnriched extends Filter {
         static $gtype: GObject.GType<FilterEnriched>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilterEnriched.SignalSignatures;
+        $signals: FilterEnriched.SignalSignatures;
 
         // Fields
 
@@ -2701,14 +2714,15 @@ export namespace GMime {
      */
     class FilterFrom extends Filter {
         static $gtype: GObject.GType<FilterFrom>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilterFrom.SignalSignatures;
+        $signals: FilterFrom.SignalSignatures;
 
         // Fields
 
@@ -2757,14 +2771,15 @@ export namespace GMime {
      */
     class FilterGZip extends Filter {
         static $gtype: GObject.GType<FilterGZip>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilterGZip.SignalSignatures;
+        $signals: FilterGZip.SignalSignatures;
 
         // Fields
 
@@ -2814,14 +2829,15 @@ export namespace GMime {
      */
     class FilterHTML extends Filter {
         static $gtype: GObject.GType<FilterHTML>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilterHTML.SignalSignatures;
+        $signals: FilterHTML.SignalSignatures;
 
         // Fields
 
@@ -2873,14 +2889,15 @@ export namespace GMime {
      */
     class FilterMd5 extends Filter {
         static $gtype: GObject.GType<FilterMd5>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilterMd5.SignalSignatures;
+        $signals: FilterMd5.SignalSignatures;
 
         // Fields
 
@@ -2936,14 +2953,15 @@ export namespace GMime {
      */
     class FilterStrip extends Filter {
         static $gtype: GObject.GType<FilterStrip>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilterStrip.SignalSignatures;
+        $signals: FilterStrip.SignalSignatures;
 
         // Fields
 
@@ -2992,14 +3010,15 @@ export namespace GMime {
      */
     class FilterWindows extends Filter {
         static $gtype: GObject.GType<FilterWindows>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilterWindows.SignalSignatures;
+        $signals: FilterWindows.SignalSignatures;
 
         // Fields
 
@@ -3062,14 +3081,15 @@ export namespace GMime {
      */
     class FilterYenc extends Filter {
         static $gtype: GObject.GType<FilterYenc>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FilterYenc.SignalSignatures;
+        $signals: FilterYenc.SignalSignatures;
 
         // Fields
 
@@ -3144,14 +3164,15 @@ export namespace GMime {
      */
     class GpgContext extends CryptoContext {
         static $gtype: GObject.GType<GpgContext>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GpgContext.SignalSignatures;
+        $signals: GpgContext.SignalSignatures;
 
         // Fields
 
@@ -3239,14 +3260,15 @@ export namespace GMime {
      */
     abstract class InternetAddress extends GObject.Object {
         static $gtype: GObject.GType<InternetAddress>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InternetAddress.SignalSignatures;
+        $signals: InternetAddress.SignalSignatures;
 
         // Fields
 
@@ -3319,14 +3341,15 @@ export namespace GMime {
      */
     class InternetAddressGroup extends InternetAddress {
         static $gtype: GObject.GType<InternetAddressGroup>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InternetAddressGroup.SignalSignatures;
+        $signals: InternetAddressGroup.SignalSignatures;
 
         // Fields
 
@@ -3396,14 +3419,15 @@ export namespace GMime {
      */
     class InternetAddressList extends GObject.Object {
         static $gtype: GObject.GType<InternetAddressList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InternetAddressList.SignalSignatures;
+        $signals: InternetAddressList.SignalSignatures;
 
         // Fields
 
@@ -3549,14 +3573,15 @@ export namespace GMime {
      */
     class InternetAddressMailbox extends InternetAddress {
         static $gtype: GObject.GType<InternetAddressMailbox>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InternetAddressMailbox.SignalSignatures;
+        $signals: InternetAddressMailbox.SignalSignatures;
 
         // Fields
 
@@ -3619,14 +3644,15 @@ export namespace GMime {
      */
     class Message extends Object {
         static $gtype: GObject.GType<Message>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Message.SignalSignatures;
+        $signals: Message.SignalSignatures;
 
         // Fields
 
@@ -3811,14 +3837,15 @@ export namespace GMime {
      */
     class MessagePart extends Object {
         static $gtype: GObject.GType<MessagePart>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MessagePart.SignalSignatures;
+        $signals: MessagePart.SignalSignatures;
 
         // Fields
 
@@ -3884,14 +3911,15 @@ export namespace GMime {
      */
     class MessagePartial extends Part {
         static $gtype: GObject.GType<MessagePartial>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MessagePartial.SignalSignatures;
+        $signals: MessagePartial.SignalSignatures;
 
         // Fields
 
@@ -3973,14 +4001,15 @@ export namespace GMime {
      */
     class Multipart extends Object {
         static $gtype: GObject.GType<Multipart>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Multipart.SignalSignatures;
+        $signals: Multipart.SignalSignatures;
 
         // Fields
 
@@ -4198,14 +4227,15 @@ export namespace GMime {
      */
     class MultipartEncrypted extends Multipart {
         static $gtype: GObject.GType<MultipartEncrypted>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MultipartEncrypted.SignalSignatures;
+        $signals: MultipartEncrypted.SignalSignatures;
 
         // Fields
 
@@ -4312,14 +4342,15 @@ export namespace GMime {
      */
     class MultipartSigned extends Multipart {
         static $gtype: GObject.GType<MultipartSigned>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MultipartSigned.SignalSignatures;
+        $signals: MultipartSigned.SignalSignatures;
 
         // Fields
 
@@ -4388,14 +4419,15 @@ export namespace GMime {
      */
     abstract class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Object.SignalSignatures;
+        $signals: Object.SignalSignatures;
 
         // Fields
 
@@ -4675,14 +4707,15 @@ export namespace GMime {
      */
     class Parser extends GObject.Object {
         static $gtype: GObject.GType<Parser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Parser.SignalSignatures;
+        $signals: Parser.SignalSignatures;
 
         // Fields
 
@@ -4851,14 +4884,15 @@ export namespace GMime {
      */
     class Part extends Object {
         static $gtype: GObject.GType<Part>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Part.SignalSignatures;
+        $signals: Part.SignalSignatures;
 
         // Fields
 
@@ -5020,14 +5054,15 @@ export namespace GMime {
      */
     class Pkcs7Context extends CryptoContext {
         static $gtype: GObject.GType<Pkcs7Context>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Pkcs7Context.SignalSignatures;
+        $signals: Pkcs7Context.SignalSignatures;
 
         // Fields
 
@@ -5087,14 +5122,15 @@ export namespace GMime {
      */
     class Signature extends GObject.Object {
         static $gtype: GObject.GType<Signature>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Signature.SignalSignatures;
+        $signals: Signature.SignalSignatures;
 
         // Fields
 
@@ -5201,14 +5237,15 @@ export namespace GMime {
      */
     class SignatureList extends GObject.Object {
         static $gtype: GObject.GType<SignatureList>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SignatureList.SignalSignatures;
+        $signals: SignatureList.SignalSignatures;
 
         // Fields
 
@@ -5320,14 +5357,15 @@ export namespace GMime {
      */
     abstract class Stream extends GObject.Object {
         static $gtype: GObject.GType<Stream>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Stream.SignalSignatures;
+        $signals: Stream.SignalSignatures;
 
         // Fields
 
@@ -5551,14 +5589,15 @@ export namespace GMime {
      */
     class StreamBuffer extends Stream {
         static $gtype: GObject.GType<StreamBuffer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StreamBuffer.SignalSignatures;
+        $signals: StreamBuffer.SignalSignatures;
 
         // Fields
 
@@ -5611,14 +5650,15 @@ export namespace GMime {
      */
     class StreamCat extends Stream {
         static $gtype: GObject.GType<StreamCat>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StreamCat.SignalSignatures;
+        $signals: StreamCat.SignalSignatures;
 
         // Fields
 
@@ -5676,14 +5716,15 @@ export namespace GMime {
      */
     class StreamFile extends Stream {
         static $gtype: GObject.GType<StreamFile>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StreamFile.SignalSignatures;
+        $signals: StreamFile.SignalSignatures;
 
         // Fields
 
@@ -5752,14 +5793,15 @@ export namespace GMime {
      */
     class StreamFilter extends Stream {
         static $gtype: GObject.GType<StreamFilter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StreamFilter.SignalSignatures;
+        $signals: StreamFilter.SignalSignatures;
 
         // Fields
 
@@ -5824,14 +5866,15 @@ export namespace GMime {
      */
     class StreamFs extends Stream {
         static $gtype: GObject.GType<StreamFs>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StreamFs.SignalSignatures;
+        $signals: StreamFs.SignalSignatures;
 
         // Fields
 
@@ -5903,14 +5946,15 @@ export namespace GMime {
      */
     class StreamGIO extends Stream {
         static $gtype: GObject.GType<StreamGIO>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StreamGIO.SignalSignatures;
+        $signals: StreamGIO.SignalSignatures;
 
         // Fields
 
@@ -5982,14 +6026,15 @@ export namespace GMime {
      */
     class StreamMem extends Stream {
         static $gtype: GObject.GType<StreamMem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StreamMem.SignalSignatures;
+        $signals: StreamMem.SignalSignatures;
 
         // Fields
 
@@ -6071,14 +6116,15 @@ export namespace GMime {
      */
     class StreamMmap extends Stream {
         static $gtype: GObject.GType<StreamMmap>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StreamMmap.SignalSignatures;
+        $signals: StreamMmap.SignalSignatures;
 
         // Fields
 
@@ -6134,14 +6180,15 @@ export namespace GMime {
      */
     class StreamNull extends Stream {
         static $gtype: GObject.GType<StreamNull>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StreamNull.SignalSignatures;
+        $signals: StreamNull.SignalSignatures;
 
         // Fields
 
@@ -6190,14 +6237,15 @@ export namespace GMime {
      */
     class StreamPipe extends Stream {
         static $gtype: GObject.GType<StreamPipe>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StreamPipe.SignalSignatures;
+        $signals: StreamPipe.SignalSignatures;
 
         // Fields
 

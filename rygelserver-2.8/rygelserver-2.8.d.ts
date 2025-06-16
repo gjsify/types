@@ -205,14 +205,15 @@ export namespace RygelServer {
         set channels(val: number);
         get album(): string;
         set album(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AudioItem.SignalSignatures;
+        $signals: AudioItem.SignalSignatures;
 
         // Constructors
 
@@ -290,14 +291,15 @@ export namespace RygelServer {
 
     class ImageItem extends MediaFileItem implements VisualItem {
         static $gtype: GObject.GType<ImageItem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ImageItem.SignalSignatures;
+        $signals: ImageItem.SignalSignatures;
 
         // Constructors
 
@@ -435,14 +437,15 @@ export namespace RygelServer {
 
     class MediaArtStore extends GObject.Object {
         static $gtype: GObject.GType<MediaArtStore>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaArtStore.SignalSignatures;
+        $signals: MediaArtStore.SignalSignatures;
 
         // Constructors
 
@@ -497,14 +500,15 @@ export namespace RygelServer {
 
     class MediaObjects extends Gee.ArrayList {
         static $gtype: GObject.GType<MediaObjects>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaObjects.SignalSignatures;
+        $signals: MediaObjects.SignalSignatures;
 
         // Constructors
 
@@ -598,14 +602,15 @@ export namespace RygelServer {
         set album_art(val: Thumbnail);
         get albumArt(): Thumbnail;
         set albumArt(val: Thumbnail);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MusicItem.SignalSignatures;
+        $signals: MusicItem.SignalSignatures;
 
         // Constructors
 
@@ -674,14 +679,15 @@ export namespace RygelServer {
 
     class PhotoItem extends ImageItem {
         static $gtype: GObject.GType<PhotoItem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PhotoItem.SignalSignatures;
+        $signals: PhotoItem.SignalSignatures;
 
         // Constructors
 
@@ -782,14 +788,15 @@ export namespace RygelServer {
 
     class SimpleContainer extends MediaContainer implements SearchableContainer {
         static $gtype: GObject.GType<SimpleContainer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimpleContainer.SignalSignatures;
+        $signals: SimpleContainer.SignalSignatures;
 
         // Fields
 
@@ -1127,14 +1134,15 @@ export namespace RygelServer {
         set author(val: string);
         get subtitles(): Gee.ArrayList;
         set subtitles(val: Gee.ArrayList);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VideoItem.SignalSignatures;
+        $signals: VideoItem.SignalSignatures;
 
         // Constructors
 
@@ -1309,14 +1317,15 @@ export namespace RygelServer {
         set sort_criteria(val: string);
         get sortCriteria(): string;
         set sortCriteria(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaContainer.SignalSignatures;
+        $signals: MediaContainer.SignalSignatures;
 
         // Fields
 
@@ -1449,14 +1458,15 @@ export namespace RygelServer {
 
         get description(): string;
         set description(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaItem.SignalSignatures;
+        $signals: MediaItem.SignalSignatures;
 
         // Constructors
 
@@ -1543,14 +1553,15 @@ export namespace RygelServer {
         set place_holder(val: boolean);
         get placeHolder(): boolean;
         set placeHolder(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaFileItem.SignalSignatures;
+        $signals: MediaFileItem.SignalSignatures;
 
         // Fields
 
@@ -1689,14 +1700,15 @@ export namespace RygelServer {
         set title(val: string);
         get ocm_flags(): GUPnPAV.OCMFlags;
         get ocmFlags(): GUPnPAV.OCMFlags;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaObject.SignalSignatures;
+        $signals: MediaObject.SignalSignatures;
 
         // Fields
 
@@ -1926,14 +1938,15 @@ export namespace RygelServer {
         set dlna_operation(val: GUPnPAV.DLNAOperation);
         get dlnaOperation(): GUPnPAV.DLNAOperation;
         set dlnaOperation(val: GUPnPAV.DLNAOperation);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaResource.SignalSignatures;
+        $signals: MediaResource.SignalSignatures;
 
         // Fields
 
@@ -2087,14 +2100,15 @@ export namespace RygelServer {
         set supported_profiles(val: RygelCore.DLNAProfile[]);
         get supportedProfiles(): RygelCore.DLNAProfile[];
         set supportedProfiles(val: RygelCore.DLNAProfile[]);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaServerPlugin.SignalSignatures;
+        $signals: MediaServerPlugin.SignalSignatures;
 
         // Constructors
 
@@ -2206,14 +2220,15 @@ export namespace RygelServer {
 
         get root_container(): MediaContainer;
         get rootContainer(): MediaContainer;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaServer.SignalSignatures;
+        $signals: MediaServer.SignalSignatures;
 
         // Constructors
 
@@ -2259,14 +2274,15 @@ export namespace RygelServer {
 
     abstract class MediaEngine extends GObject.Object {
         static $gtype: GObject.GType<MediaEngine>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MediaEngine.SignalSignatures;
+        $signals: MediaEngine.SignalSignatures;
 
         // Constructors
 
@@ -2340,14 +2356,15 @@ export namespace RygelServer {
 
     abstract class HTTPSeekRequest extends GObject.Object {
         static $gtype: GObject.GType<HTTPSeekRequest>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HTTPSeekRequest.SignalSignatures;
+        $signals: HTTPSeekRequest.SignalSignatures;
 
         // Constructors
 
@@ -2404,14 +2421,15 @@ export namespace RygelServer {
 
     class PlaylistItem extends MediaFileItem {
         static $gtype: GObject.GType<PlaylistItem>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlaylistItem.SignalSignatures;
+        $signals: PlaylistItem.SignalSignatures;
 
         // Constructors
 
@@ -2460,14 +2478,15 @@ export namespace RygelServer {
 
     class ContentDirectory extends GUPnP.Service {
         static $gtype: GObject.GType<ContentDirectory>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ContentDirectory.SignalSignatures;
+        $signals: ContentDirectory.SignalSignatures;
 
         // Fields
 
@@ -2548,14 +2567,15 @@ export namespace RygelServer {
         set total_size(val: number);
         get totalSize(): number;
         set totalSize(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HTTPByteSeekRequest.SignalSignatures;
+        $signals: HTTPByteSeekRequest.SignalSignatures;
 
         // Constructors
 
@@ -2645,14 +2665,15 @@ export namespace RygelServer {
         set total_size(val: number);
         get totalSize(): number;
         set totalSize(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HTTPByteSeekResponse.SignalSignatures;
+        $signals: HTTPByteSeekResponse.SignalSignatures;
 
         // Constructors
 
@@ -2715,14 +2736,15 @@ export namespace RygelServer {
 
         get cancellable(): Gio.Cancellable;
         set cancellable(val: Gio.Cancellable);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HTTPGetHandler.SignalSignatures;
+        $signals: HTTPGetHandler.SignalSignatures;
 
         // Constructors
 
@@ -2786,14 +2808,15 @@ export namespace RygelServer {
 
     class HTTPGet extends HTTPRequest {
         static $gtype: GObject.GType<HTTPGet>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HTTPGet.SignalSignatures;
+        $signals: HTTPGet.SignalSignatures;
 
         // Fields
 
@@ -2883,14 +2906,15 @@ export namespace RygelServer {
         set httpServer(val: HTTPServer);
         get extension(): string;
         set extension(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HTTPItemURI.SignalSignatures;
+        $signals: HTTPItemURI.SignalSignatures;
 
         // Fields
 
@@ -2960,14 +2984,15 @@ export namespace RygelServer {
 
     abstract class HTTPRequest extends GObject.Object implements RygelCore.StateMachine {
         static $gtype: GObject.GType<HTTPRequest>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HTTPRequest.SignalSignatures;
+        $signals: HTTPRequest.SignalSignatures;
 
         // Fields
 
@@ -3502,14 +3527,15 @@ export namespace RygelServer {
         get server(): Soup.Server;
         set server(val: Soup.Server);
         get priority(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HTTPResponse.SignalSignatures;
+        $signals: HTTPResponse.SignalSignatures;
 
         // Fields
 
@@ -4021,14 +4047,15 @@ export namespace RygelServer {
 
     abstract class HTTPResponseElement extends GObject.Object {
         static $gtype: GObject.GType<HTTPResponseElement>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HTTPResponseElement.SignalSignatures;
+        $signals: HTTPResponseElement.SignalSignatures;
 
         // Constructors
 
@@ -4098,14 +4125,15 @@ export namespace RygelServer {
         set server_name(val: string);
         get serverName(): string;
         set serverName(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HTTPServer.SignalSignatures;
+        $signals: HTTPServer.SignalSignatures;
 
         // Fields
 
@@ -4622,14 +4650,15 @@ export namespace RygelServer {
 
     class HTTPTimeSeekRequest extends HTTPSeekRequest {
         static $gtype: GObject.GType<HTTPTimeSeekRequest>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HTTPTimeSeekRequest.SignalSignatures;
+        $signals: HTTPTimeSeekRequest.SignalSignatures;
 
         // Fields
 
@@ -4746,14 +4775,15 @@ export namespace RygelServer {
         set total_size(val: number);
         get totalSize(): number;
         set totalSize(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HTTPTimeSeekResponse.SignalSignatures;
+        $signals: HTTPTimeSeekResponse.SignalSignatures;
 
         // Constructors
 
@@ -4837,14 +4867,15 @@ export namespace RygelServer {
 
         get serializer_type(): SerializerType;
         get serializerType(): SerializerType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Serializer.SignalSignatures;
+        $signals: Serializer.SignalSignatures;
 
         // Constructors
 
@@ -4950,14 +4981,15 @@ export namespace RygelServer {
 
         get speed(): PlaySpeed;
         set speed(val: PlaySpeed);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlaySpeedRequest.SignalSignatures;
+        $signals: PlaySpeedRequest.SignalSignatures;
 
         // Constructors
 
@@ -5008,14 +5040,15 @@ export namespace RygelServer {
 
     class PlaySpeedResponse extends HTTPResponseElement {
         static $gtype: GObject.GType<PlaySpeedResponse>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlaySpeedResponse.SignalSignatures;
+        $signals: PlaySpeedResponse.SignalSignatures;
 
         // Fields
 
@@ -5100,14 +5133,15 @@ export namespace RygelServer {
         set total_size(val: number);
         get totalSize(): number;
         set totalSize(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DTCPCleartextRequest.SignalSignatures;
+        $signals: DTCPCleartextRequest.SignalSignatures;
 
         // Constructors
 
@@ -5201,14 +5235,15 @@ export namespace RygelServer {
         set encrypted_length(val: number);
         get encryptedLength(): number;
         set encryptedLength(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DTCPCleartextResponse.SignalSignatures;
+        $signals: DTCPCleartextResponse.SignalSignatures;
 
         // Constructors
 
@@ -5266,14 +5301,15 @@ export namespace RygelServer {
 
     class DLNAAvailableSeekRangeRequest extends HTTPSeekRequest {
         static $gtype: GObject.GType<DLNAAvailableSeekRangeRequest>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DLNAAvailableSeekRangeRequest.SignalSignatures;
+        $signals: DLNAAvailableSeekRangeRequest.SignalSignatures;
 
         // Constructors
 
@@ -5362,14 +5398,15 @@ export namespace RygelServer {
         set range_length(val: number);
         get rangeLength(): number;
         set rangeLength(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DLNAAvailableSeekRangeResponse.SignalSignatures;
+        $signals: DLNAAvailableSeekRangeResponse.SignalSignatures;
 
         // Constructors
 

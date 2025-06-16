@@ -346,14 +346,15 @@ export namespace Gpseq {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ArraySpliterator.SignalSignatures;
+        $signals: ArraySpliterator.SignalSignatures;
 
         // Constructors
 
@@ -919,14 +920,15 @@ export namespace Gpseq {
         get sharedResult(): ForkJoinTaskSharedResult;
         get is_cancelled(): boolean;
         get isCancelled(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ForkJoinTask.SignalSignatures;
+        $signals: ForkJoinTask.SignalSignatures;
 
         // Constructors
 
@@ -1502,14 +1504,15 @@ export namespace Gpseq {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FuncTask.SignalSignatures;
+        $signals: FuncTask.SignalSignatures;
 
         // Constructors
 
@@ -2024,14 +2027,15 @@ export namespace Gpseq {
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
         get ready(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Future.SignalSignatures;
+        $signals: Future.SignalSignatures;
 
         // Constructors
 
@@ -2592,14 +2596,15 @@ export namespace Gpseq {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GenericArraySpliterator.SignalSignatures;
+        $signals: GenericArraySpliterator.SignalSignatures;
 
         // Constructors
 
@@ -3129,14 +3134,15 @@ export namespace Gpseq {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IteratorSpliterator.SignalSignatures;
+        $signals: IteratorSpliterator.SignalSignatures;
 
         // Constructors
 
@@ -3672,14 +3678,15 @@ export namespace Gpseq {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ListSpliterator.SignalSignatures;
+        $signals: ListSpliterator.SignalSignatures;
 
         // Constructors
 
@@ -4218,14 +4225,15 @@ export namespace Gpseq {
         get value(): any;
         get is_present(): boolean;
         get isPresent(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Optional.SignalSignatures;
+        $signals: Optional.SignalSignatures;
 
         // Constructors
 
@@ -4366,14 +4374,15 @@ export namespace Gpseq {
         get isClosed(): boolean;
         get is_parallel(): boolean;
         get isParallel(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Seq.SignalSignatures;
+        $signals: Seq.SignalSignatures;
 
         // Constructors
 
@@ -4615,14 +4624,15 @@ export namespace Gpseq {
         get isLeftmost(): boolean;
         get empty_result(): any;
         get emptyResult(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SpliteratorTask.SignalSignatures;
+        $signals: SpliteratorTask.SignalSignatures;
 
         // Constructors
 
@@ -4706,14 +4716,15 @@ export namespace Gpseq {
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
         get size(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SubArray.SignalSignatures;
+        $signals: SubArray.SignalSignatures;
 
         // Constructors
 
@@ -5262,14 +5273,15 @@ export namespace Gpseq {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SubArraySpliterator.SignalSignatures;
+        $signals: SubArraySpliterator.SignalSignatures;
 
         // Constructors
 
@@ -5799,14 +5811,15 @@ export namespace Gpseq {
         get gDupFunc(): GObject.BoxedCopyFunc;
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SupplierSpliterator.SignalSignatures;
+        $signals: SupplierSpliterator.SignalSignatures;
 
         // Constructors
 
@@ -6320,14 +6333,15 @@ export namespace Gpseq {
         // Properties
 
         get executor(): Executor;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TaskEnv.SignalSignatures;
+        $signals: TaskEnv.SignalSignatures;
 
         // Constructors
 
@@ -6386,14 +6400,15 @@ export namespace Gpseq {
 
     class WaitGroup extends GObject.Object {
         static $gtype: GObject.GType<WaitGroup>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WaitGroup.SignalSignatures;
+        $signals: WaitGroup.SignalSignatures;
 
         // Constructors
 
@@ -6478,14 +6493,15 @@ export namespace Gpseq {
         get isTerminated(): boolean;
         get is_terminating_started(): boolean;
         get isTerminatingStarted(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WorkerPool.SignalSignatures;
+        $signals: WorkerPool.SignalSignatures;
 
         // Constructors
 
@@ -7022,14 +7038,15 @@ export namespace Gpseq {
         get isTerminated(): boolean;
         get is_alive(): boolean;
         get isAlive(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WorkerThread.SignalSignatures;
+        $signals: WorkerThread.SignalSignatures;
 
         // Constructors
 
@@ -7114,14 +7131,15 @@ export namespace Gpseq {
         get value(): any;
         get value_type(): GObject.GType;
         get valueType(): GObject.GType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Wrapper.SignalSignatures;
+        $signals: Wrapper.SignalSignatures;
 
         // Constructors
 

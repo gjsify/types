@@ -504,14 +504,15 @@ export namespace Json {
          * of traversing it to make it immutable later.
          */
         get immutable(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Builder.SignalSignatures;
+        $signals: Builder.SignalSignatures;
 
         // Constructors
 
@@ -742,14 +743,15 @@ export namespace Json {
          */
         get root(): Node;
         set root(val: Node);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Generator.SignalSignatures;
+        $signals: Generator.SignalSignatures;
 
         // Constructors
 
@@ -948,14 +950,15 @@ export namespace Json {
          */
         get strict(): boolean;
         set strict(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Parser.SignalSignatures;
+        $signals: Parser.SignalSignatures;
 
         // Constructors
 
@@ -1345,14 +1348,15 @@ export namespace Json {
      */
     class Path extends GObject.Object {
         static $gtype: GObject.GType<Path>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Path.SignalSignatures;
+        $signals: Path.SignalSignatures;
 
         // Constructors
 
@@ -1516,14 +1520,15 @@ export namespace Json {
          */
         get root(): Node;
         set root(val: Node);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Reader.SignalSignatures;
+        $signals: Reader.SignalSignatures;
 
         // Constructors
 

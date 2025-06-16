@@ -340,14 +340,15 @@ export namespace Gthree {
 
     class AmbientLight extends Light {
         static $gtype: GObject.GType<AmbientLight>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AmbientLight.SignalSignatures;
+        $signals: AmbientLight.SignalSignatures;
 
         // Constructors
 
@@ -390,14 +391,15 @@ export namespace Gthree {
 
     class AnimationAction extends GObject.Object {
         static $gtype: GObject.GType<AnimationAction>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AnimationAction.SignalSignatures;
+        $signals: AnimationAction.SignalSignatures;
 
         // Constructors
 
@@ -469,14 +471,15 @@ export namespace Gthree {
 
     class AnimationClip extends GObject.Object {
         static $gtype: GObject.GType<AnimationClip>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AnimationClip.SignalSignatures;
+        $signals: AnimationClip.SignalSignatures;
 
         // Constructors
 
@@ -529,14 +532,15 @@ export namespace Gthree {
 
     class AnimationMixer extends GObject.Object {
         static $gtype: GObject.GType<AnimationMixer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: AnimationMixer.SignalSignatures;
+        $signals: AnimationMixer.SignalSignatures;
 
         // Constructors
 
@@ -588,14 +592,15 @@ export namespace Gthree {
 
     class Attribute extends Resource {
         static $gtype: GObject.GType<Attribute>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Attribute.SignalSignatures;
+        $signals: Attribute.SignalSignatures;
 
         // Constructors
 
@@ -722,14 +727,15 @@ export namespace Gthree {
 
     class BloomPass extends Pass {
         static $gtype: GObject.GType<BloomPass>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BloomPass.SignalSignatures;
+        $signals: BloomPass.SignalSignatures;
 
         // Constructors
 
@@ -776,14 +782,15 @@ export namespace Gthree {
 
     class Bone extends Object {
         static $gtype: GObject.GType<Bone>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Bone.SignalSignatures;
+        $signals: Bone.SignalSignatures;
 
         // Constructors
 
@@ -842,14 +849,15 @@ export namespace Gthree {
         set far(val: number);
         get near(): number;
         set near(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Camera.SignalSignatures;
+        $signals: Camera.SignalSignatures;
 
         // Constructors
 
@@ -914,14 +922,15 @@ export namespace Gthree {
 
     class ClearPass extends Pass {
         static $gtype: GObject.GType<ClearPass>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClearPass.SignalSignatures;
+        $signals: ClearPass.SignalSignatures;
 
         // Constructors
 
@@ -965,14 +974,15 @@ export namespace Gthree {
 
     class ColorKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<ColorKeyframeTrack>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ColorKeyframeTrack.SignalSignatures;
+        $signals: ColorKeyframeTrack.SignalSignatures;
 
         // Constructors
 
@@ -1015,14 +1025,15 @@ export namespace Gthree {
 
     class CubeTexture extends Texture {
         static $gtype: GObject.GType<CubeTexture>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CubeTexture.SignalSignatures;
+        $signals: CubeTexture.SignalSignatures;
 
         // Constructors
 
@@ -1074,14 +1085,15 @@ export namespace Gthree {
 
     class CubicInterpolant extends Interpolant {
         static $gtype: GObject.GType<CubicInterpolant>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CubicInterpolant.SignalSignatures;
+        $signals: CubicInterpolant.SignalSignatures;
 
         // Constructors
 
@@ -1138,14 +1150,15 @@ export namespace Gthree {
 
         get target(): Object;
         set target(val: Object);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DirectionalLight.SignalSignatures;
+        $signals: DirectionalLight.SignalSignatures;
 
         // Constructors
 
@@ -1192,14 +1205,15 @@ export namespace Gthree {
 
     class DirectionalLightShadow extends LightShadow {
         static $gtype: GObject.GType<DirectionalLightShadow>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DirectionalLightShadow.SignalSignatures;
+        $signals: DirectionalLightShadow.SignalSignatures;
 
         // Constructors
 
@@ -1239,14 +1253,15 @@ export namespace Gthree {
 
     class DiscreteInterpolant extends Interpolant {
         static $gtype: GObject.GType<DiscreteInterpolant>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DiscreteInterpolant.SignalSignatures;
+        $signals: DiscreteInterpolant.SignalSignatures;
 
         // Constructors
 
@@ -1288,14 +1303,15 @@ export namespace Gthree {
 
     class EffectComposer extends GObject.Object {
         static $gtype: GObject.GType<EffectComposer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: EffectComposer.SignalSignatures;
+        $signals: EffectComposer.SignalSignatures;
 
         // Constructors
 
@@ -1342,14 +1358,15 @@ export namespace Gthree {
 
     class Fog extends GObject.Object {
         static $gtype: GObject.GType<Fog>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Fog.SignalSignatures;
+        $signals: Fog.SignalSignatures;
 
         // Constructors
 
@@ -1404,14 +1421,15 @@ export namespace Gthree {
 
     class FullscreenQuadPass extends Pass {
         static $gtype: GObject.GType<FullscreenQuadPass>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FullscreenQuadPass.SignalSignatures;
+        $signals: FullscreenQuadPass.SignalSignatures;
 
         // Constructors
 
@@ -1455,14 +1473,15 @@ export namespace Gthree {
 
     class Geometry extends GObject.Object {
         static $gtype: GObject.GType<Geometry>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Geometry.SignalSignatures;
+        $signals: Geometry.SignalSignatures;
 
         // Fields
 
@@ -1611,14 +1630,15 @@ export namespace Gthree {
 
     class Group extends Object {
         static $gtype: GObject.GType<Group>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Group.SignalSignatures;
+        $signals: Group.SignalSignatures;
 
         // Constructors
 
@@ -1678,14 +1698,15 @@ export namespace Gthree {
         set ground_color(val: Graphene.Vec3);
         get groundColor(): Graphene.Vec3;
         set groundColor(val: Graphene.Vec3);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: HemisphereLight.SignalSignatures;
+        $signals: HemisphereLight.SignalSignatures;
 
         // Constructors
 
@@ -1728,14 +1749,15 @@ export namespace Gthree {
 
     class Interpolant extends GObject.Object {
         static $gtype: GObject.GType<Interpolant>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Interpolant.SignalSignatures;
+        $signals: Interpolant.SignalSignatures;
 
         // Constructors
 
@@ -1787,14 +1809,15 @@ export namespace Gthree {
 
     class InterpolantSettings extends GObject.Object {
         static $gtype: GObject.GType<InterpolantSettings>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InterpolantSettings.SignalSignatures;
+        $signals: InterpolantSettings.SignalSignatures;
 
         // Constructors
 
@@ -1843,14 +1866,15 @@ export namespace Gthree {
 
     class KeyframeTrack extends GObject.Object {
         static $gtype: GObject.GType<KeyframeTrack>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: KeyframeTrack.SignalSignatures;
+        $signals: KeyframeTrack.SignalSignatures;
 
         // Constructors
 
@@ -1918,14 +1942,15 @@ export namespace Gthree {
         set color(val: Graphene.Vec3);
         get intensity(): number;
         set intensity(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Light.SignalSignatures;
+        $signals: Light.SignalSignatures;
 
         // Constructors
 
@@ -1976,14 +2001,15 @@ export namespace Gthree {
 
     class LightShadow extends GObject.Object {
         static $gtype: GObject.GType<LightShadow>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LightShadow.SignalSignatures;
+        $signals: LightShadow.SignalSignatures;
 
         // Constructors
 
@@ -2048,14 +2074,15 @@ export namespace Gthree {
 
         get geometry(): Geometry;
         get material(): Material;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Line.SignalSignatures;
+        $signals: Line.SignalSignatures;
 
         // Constructors
 
@@ -2120,14 +2147,15 @@ export namespace Gthree {
         set line_width(val: number);
         get lineWidth(): number;
         set lineWidth(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LineBasicMaterial.SignalSignatures;
+        $signals: LineBasicMaterial.SignalSignatures;
 
         // Constructors
 
@@ -2183,14 +2211,15 @@ export namespace Gthree {
 
     class LineSegments extends Line {
         static $gtype: GObject.GType<LineSegments>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LineSegments.SignalSignatures;
+        $signals: LineSegments.SignalSignatures;
 
         // Constructors
 
@@ -2233,14 +2262,15 @@ export namespace Gthree {
 
     class LinearInterpolant extends Interpolant {
         static $gtype: GObject.GType<LinearInterpolant>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LinearInterpolant.SignalSignatures;
+        $signals: LinearInterpolant.SignalSignatures;
 
         // Constructors
 
@@ -2280,14 +2310,15 @@ export namespace Gthree {
 
     class Loader extends GObject.Object {
         static $gtype: GObject.GType<Loader>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Loader.SignalSignatures;
+        $signals: Loader.SignalSignatures;
 
         // Constructors
 
@@ -2373,14 +2404,15 @@ export namespace Gthree {
         set vertex_colors(val: boolean);
         get vertexColors(): boolean;
         set vertexColors(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Material.SignalSignatures;
+        $signals: Material.SignalSignatures;
 
         // Constructors
 
@@ -2484,14 +2516,15 @@ export namespace Gthree {
         get geometry(): Geometry;
         get materials(): any[];
         set materials(val: any[]);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Mesh.SignalSignatures;
+        $signals: Mesh.SignalSignatures;
 
         // Constructors
 
@@ -2586,14 +2619,15 @@ export namespace Gthree {
         set refraction_ratio(val: number);
         get refractionRatio(): number;
         set refractionRatio(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MeshBasicMaterial.SignalSignatures;
+        $signals: MeshBasicMaterial.SignalSignatures;
 
         // Constructors
 
@@ -2658,14 +2692,15 @@ export namespace Gthree {
 
     class MeshDepthMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshDepthMaterial>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MeshDepthMaterial.SignalSignatures;
+        $signals: MeshDepthMaterial.SignalSignatures;
 
         // Constructors
 
@@ -2722,14 +2757,15 @@ export namespace Gthree {
 
     class MeshDistanceMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshDistanceMaterial>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MeshDistanceMaterial.SignalSignatures;
+        $signals: MeshDistanceMaterial.SignalSignatures;
 
         // Constructors
 
@@ -2829,14 +2865,15 @@ export namespace Gthree {
         set refraction_ratio(val: number);
         get refractionRatio(): number;
         set refractionRatio(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MeshLambertMaterial.SignalSignatures;
+        $signals: MeshLambertMaterial.SignalSignatures;
 
         // Constructors
 
@@ -2933,14 +2970,15 @@ export namespace Gthree {
         set wireframe_line_width(val: number);
         get wireframeLineWidth(): number;
         set wireframeLineWidth(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MeshMaterial.SignalSignatures;
+        $signals: MeshMaterial.SignalSignatures;
 
         // Constructors
 
@@ -3003,14 +3041,15 @@ export namespace Gthree {
 
     class MeshNormalMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshNormalMaterial>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MeshNormalMaterial.SignalSignatures;
+        $signals: MeshNormalMaterial.SignalSignatures;
 
         // Constructors
 
@@ -3143,14 +3182,15 @@ export namespace Gthree {
         set specular_map(val: Texture);
         get specularMap(): Texture;
         set specularMap(val: Texture);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MeshPhongMaterial.SignalSignatures;
+        $signals: MeshPhongMaterial.SignalSignatures;
 
         // Constructors
 
@@ -3392,14 +3432,15 @@ export namespace Gthree {
         set specular_map(val: Texture);
         get specularMap(): Texture;
         set specularMap(val: Texture);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MeshSpecglosMaterial.SignalSignatures;
+        $signals: MeshSpecglosMaterial.SignalSignatures;
 
         // Constructors
 
@@ -3655,14 +3696,15 @@ export namespace Gthree {
         set roughness_map(val: Texture);
         get roughnessMap(): Texture;
         set roughnessMap(val: Texture);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MeshStandardMaterial.SignalSignatures;
+        $signals: MeshStandardMaterial.SignalSignatures;
 
         // Constructors
 
@@ -3882,14 +3924,15 @@ export namespace Gthree {
         set normal_scale(val: Graphene.Vec2);
         get normalScale(): Graphene.Vec2;
         set normalScale(val: Graphene.Vec2);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MeshToonMaterial.SignalSignatures;
+        $signals: MeshToonMaterial.SignalSignatures;
 
         // Constructors
 
@@ -3961,14 +4004,15 @@ export namespace Gthree {
 
     class NumberKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<NumberKeyframeTrack>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NumberKeyframeTrack.SignalSignatures;
+        $signals: NumberKeyframeTrack.SignalSignatures;
 
         // Constructors
 
@@ -4044,14 +4088,15 @@ export namespace Gthree {
         get previousSibling(): Object;
         get visible(): boolean;
         set visible(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Object.SignalSignatures;
+        $signals: Object.SignalSignatures;
 
         // Constructors
 
@@ -4196,14 +4241,15 @@ export namespace Gthree {
         set right(val: number);
         get top(): number;
         set top(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OrthographicCamera.SignalSignatures;
+        $signals: OrthographicCamera.SignalSignatures;
 
         // Constructors
 
@@ -4264,14 +4310,15 @@ export namespace Gthree {
 
     class Pass extends GObject.Object {
         static $gtype: GObject.GType<Pass>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Pass.SignalSignatures;
+        $signals: Pass.SignalSignatures;
 
         // Fields
 
@@ -4365,14 +4412,15 @@ export namespace Gthree {
         set aspect(val: number);
         get fov(): number;
         set fov(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PerspectiveCamera.SignalSignatures;
+        $signals: PerspectiveCamera.SignalSignatures;
 
         // Constructors
 
@@ -4445,14 +4493,15 @@ export namespace Gthree {
         set plane(val: Graphene.Plane);
         get size(): number;
         set size(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlaneHelper.SignalSignatures;
+        $signals: PlaneHelper.SignalSignatures;
 
         // Constructors
 
@@ -4525,14 +4574,15 @@ export namespace Gthree {
         set decay(val: number);
         get distance(): number;
         set distance(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PointLight.SignalSignatures;
+        $signals: PointLight.SignalSignatures;
 
         // Constructors
 
@@ -4600,14 +4650,15 @@ export namespace Gthree {
         get geometry(): Geometry;
         get material(): Material;
         set material(val: Material);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Points.SignalSignatures;
+        $signals: Points.SignalSignatures;
 
         // Constructors
 
@@ -4684,14 +4735,15 @@ export namespace Gthree {
         set size_attenuation(val: boolean);
         get sizeAttenuation(): boolean;
         set sizeAttenuation(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PointsMaterial.SignalSignatures;
+        $signals: PointsMaterial.SignalSignatures;
 
         // Constructors
 
@@ -4741,14 +4793,15 @@ export namespace Gthree {
 
     class Program extends GObject.Object {
         static $gtype: GObject.GType<Program>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Program.SignalSignatures;
+        $signals: Program.SignalSignatures;
 
         // Constructors
 
@@ -4796,14 +4849,15 @@ export namespace Gthree {
 
     class QuaternionInterpolant extends Interpolant {
         static $gtype: GObject.GType<QuaternionInterpolant>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: QuaternionInterpolant.SignalSignatures;
+        $signals: QuaternionInterpolant.SignalSignatures;
 
         // Constructors
 
@@ -4845,14 +4899,15 @@ export namespace Gthree {
 
     class QuaternionKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<QuaternionKeyframeTrack>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: QuaternionKeyframeTrack.SignalSignatures;
+        $signals: QuaternionKeyframeTrack.SignalSignatures;
 
         // Constructors
 
@@ -4894,14 +4949,15 @@ export namespace Gthree {
 
     class Raycaster extends GObject.Object {
         static $gtype: GObject.GType<Raycaster>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Raycaster.SignalSignatures;
+        $signals: Raycaster.SignalSignatures;
 
         // Constructors
 
@@ -4951,14 +5007,15 @@ export namespace Gthree {
 
     class RenderPass extends Pass {
         static $gtype: GObject.GType<RenderPass>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RenderPass.SignalSignatures;
+        $signals: RenderPass.SignalSignatures;
 
         // Constructors
 
@@ -5002,14 +5059,15 @@ export namespace Gthree {
 
     class RenderTarget extends Resource {
         static $gtype: GObject.GType<RenderTarget>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RenderTarget.SignalSignatures;
+        $signals: RenderTarget.SignalSignatures;
 
         // Constructors
 
@@ -5063,14 +5121,15 @@ export namespace Gthree {
 
     class Renderer extends GObject.Object {
         static $gtype: GObject.GType<Renderer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Renderer.SignalSignatures;
+        $signals: Renderer.SignalSignatures;
 
         // Constructors
 
@@ -5153,14 +5212,15 @@ export namespace Gthree {
 
     class Resource extends GObject.Object {
         static $gtype: GObject.GType<Resource>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Resource.SignalSignatures;
+        $signals: Resource.SignalSignatures;
 
         // Constructors
 
@@ -5219,14 +5279,15 @@ export namespace Gthree {
 
     class Scene extends Object {
         static $gtype: GObject.GType<Scene>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Scene.SignalSignatures;
+        $signals: Scene.SignalSignatures;
 
         // Constructors
 
@@ -5276,14 +5337,15 @@ export namespace Gthree {
 
     class Shader extends GObject.Object {
         static $gtype: GObject.GType<Shader>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Shader.SignalSignatures;
+        $signals: Shader.SignalSignatures;
 
         // Constructors
 
@@ -5363,14 +5425,15 @@ export namespace Gthree {
         set vertex_colors(val: boolean);
         get vertexColors(): boolean;
         set vertexColors(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ShaderMaterial.SignalSignatures;
+        $signals: ShaderMaterial.SignalSignatures;
 
         // Constructors
 
@@ -5419,14 +5482,15 @@ export namespace Gthree {
 
     class ShaderPass extends Pass {
         static $gtype: GObject.GType<ShaderPass>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ShaderPass.SignalSignatures;
+        $signals: ShaderPass.SignalSignatures;
 
         // Constructors
 
@@ -5466,14 +5530,15 @@ export namespace Gthree {
 
     class Skeleton extends GObject.Object {
         static $gtype: GObject.GType<Skeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Skeleton.SignalSignatures;
+        $signals: Skeleton.SignalSignatures;
 
         // Constructors
 
@@ -5535,14 +5600,15 @@ export namespace Gthree {
         // Properties
 
         get root(): Object;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SkeletonHelper.SignalSignatures;
+        $signals: SkeletonHelper.SignalSignatures;
 
         // Constructors
 
@@ -5594,14 +5660,15 @@ export namespace Gthree {
 
     class SkinnedMesh extends Mesh {
         static $gtype: GObject.GType<SkinnedMesh>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SkinnedMesh.SignalSignatures;
+        $signals: SkinnedMesh.SignalSignatures;
 
         // Constructors
 
@@ -5686,14 +5753,15 @@ export namespace Gthree {
         set penumbra(val: number);
         get target(): Object;
         set target(val: Object);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SpotLight.SignalSignatures;
+        $signals: SpotLight.SignalSignatures;
 
         // Constructors
 
@@ -5754,14 +5822,15 @@ export namespace Gthree {
 
     class SpotLightShadow extends LightShadow {
         static $gtype: GObject.GType<SpotLightShadow>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SpotLightShadow.SignalSignatures;
+        $signals: SpotLightShadow.SignalSignatures;
 
         // Constructors
 
@@ -5814,14 +5883,15 @@ export namespace Gthree {
 
         get material(): Material;
         set material(val: Material);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Sprite.SignalSignatures;
+        $signals: Sprite.SignalSignatures;
 
         // Constructors
 
@@ -5900,14 +5970,15 @@ export namespace Gthree {
         set size_attenuation(val: boolean);
         get sizeAttenuation(): boolean;
         set sizeAttenuation(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SpriteMaterial.SignalSignatures;
+        $signals: SpriteMaterial.SignalSignatures;
 
         // Constructors
 
@@ -5968,14 +6039,15 @@ export namespace Gthree {
 
         get pixbuf(): GdkPixbuf.Pixbuf;
         get surface(): cairo.Surface;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Texture.SignalSignatures;
+        $signals: Texture.SignalSignatures;
 
         // Constructors
 
@@ -6058,14 +6130,15 @@ export namespace Gthree {
 
     class Uniforms extends GObject.Object {
         static $gtype: GObject.GType<Uniforms>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Uniforms.SignalSignatures;
+        $signals: Uniforms.SignalSignatures;
 
         // Constructors
 
@@ -6120,14 +6193,15 @@ export namespace Gthree {
 
     class VectorKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<VectorKeyframeTrack>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VectorKeyframeTrack.SignalSignatures;
+        $signals: VectorKeyframeTrack.SignalSignatures;
 
         // Constructors
 

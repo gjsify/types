@@ -269,14 +269,15 @@ export namespace GUsb {
 
     class BosDescriptor extends GObject.Object {
         static $gtype: GObject.GType<BosDescriptor>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BosDescriptor.SignalSignatures;
+        $signals: BosDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -347,14 +348,15 @@ export namespace GUsb {
         set debugLevel(val: number);
         get libusb_context(): any;
         get libusbContext(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Context.SignalSignatures;
+        $signals: Context.SignalSignatures;
 
         // Constructors
 
@@ -1064,14 +1066,15 @@ export namespace GUsb {
         get libusbDevice(): any;
         set platform_id(val: string);
         set platformId(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Device.SignalSignatures;
+        $signals: Device.SignalSignatures;
 
         // Constructors
 
@@ -2178,14 +2181,15 @@ export namespace GUsb {
 
     class DeviceEvent extends GObject.Object {
         static $gtype: GObject.GType<DeviceEvent>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceEvent.SignalSignatures;
+        $signals: DeviceEvent.SignalSignatures;
 
         // Constructors
 
@@ -2261,14 +2265,15 @@ export namespace GUsb {
         // Properties
 
         get context(): Context;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DeviceList.SignalSignatures;
+        $signals: DeviceList.SignalSignatures;
 
         // Constructors
 
@@ -2335,14 +2340,15 @@ export namespace GUsb {
 
     class Endpoint extends GObject.Object {
         static $gtype: GObject.GType<Endpoint>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Endpoint.SignalSignatures;
+        $signals: Endpoint.SignalSignatures;
 
         // Constructors
 
@@ -2428,14 +2434,15 @@ export namespace GUsb {
 
     class Interface extends GObject.Object {
         static $gtype: GObject.GType<Interface>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Interface.SignalSignatures;
+        $signals: Interface.SignalSignatures;
 
         // Constructors
 

@@ -1069,14 +1069,15 @@ export namespace GstGL {
         // Properties
 
         get context(): GLContext;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLBaseFilter.SignalSignatures;
+        $signals: GLBaseFilter.SignalSignatures;
 
         // Fields
 
@@ -1135,14 +1136,15 @@ export namespace GstGL {
      */
     abstract class GLBaseMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<GLBaseMemoryAllocator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLBaseMemoryAllocator.SignalSignatures;
+        $signals: GLBaseMemoryAllocator.SignalSignatures;
 
         // Constructors
 
@@ -1212,14 +1214,15 @@ export namespace GstGL {
          * The #GstGLContext in use by this #GstGLBaseMixer
          */
         get context(): GLContext;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLBaseMixer.SignalSignatures;
+        $signals: GLBaseMixer.SignalSignatures;
 
         // Fields
 
@@ -1287,14 +1290,15 @@ export namespace GstGL {
 
     class GLBaseMixerPad extends GstVideo.VideoAggregatorPad {
         static $gtype: GObject.GType<GLBaseMixerPad>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLBaseMixerPad.SignalSignatures;
+        $signals: GLBaseMixerPad.SignalSignatures;
 
         // Constructors
 
@@ -1357,14 +1361,15 @@ export namespace GstGL {
         set timestamp_offset(val: number);
         get timestampOffset(): number;
         set timestampOffset(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLBaseSrc.SignalSignatures;
+        $signals: GLBaseSrc.SignalSignatures;
 
         // Fields
 
@@ -1420,14 +1425,15 @@ export namespace GstGL {
      */
     class GLBufferAllocator extends GLBaseMemoryAllocator {
         static $gtype: GObject.GType<GLBufferAllocator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLBufferAllocator.SignalSignatures;
+        $signals: GLBufferAllocator.SignalSignatures;
 
         // Constructors
 
@@ -1478,14 +1484,15 @@ export namespace GstGL {
      */
     class GLBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<GLBufferPool>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLBufferPool.SignalSignatures;
+        $signals: GLBufferPool.SignalSignatures;
 
         // Fields
 
@@ -1558,14 +1565,15 @@ export namespace GstGL {
      */
     class GLColorConvert extends Gst.Object {
         static $gtype: GObject.GType<GLColorConvert>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLColorConvert.SignalSignatures;
+        $signals: GLColorConvert.SignalSignatures;
 
         // Constructors
 
@@ -1675,14 +1683,15 @@ export namespace GstGL {
      */
     abstract class GLContext extends Gst.Object {
         static $gtype: GObject.GType<GLContext>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLContext.SignalSignatures;
+        $signals: GLContext.SignalSignatures;
 
         // Constructors
 
@@ -2055,14 +2064,15 @@ export namespace GstGL {
      */
     class GLDisplay extends Gst.Object {
         static $gtype: GObject.GType<GLDisplay>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLDisplay.SignalSignatures;
+        $signals: GLDisplay.SignalSignatures;
 
         // Constructors
 
@@ -2178,14 +2188,15 @@ export namespace GstGL {
      */
     class GLFilter extends GLBaseFilter {
         static $gtype: GObject.GType<GLFilter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLFilter.SignalSignatures;
+        $signals: GLFilter.SignalSignatures;
 
         // Fields
 
@@ -2295,14 +2306,15 @@ export namespace GstGL {
      */
     class GLFramebuffer extends Gst.Object {
         static $gtype: GObject.GType<GLFramebuffer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLFramebuffer.SignalSignatures;
+        $signals: GLFramebuffer.SignalSignatures;
 
         // Constructors
 
@@ -2390,14 +2402,15 @@ export namespace GstGL {
      */
     class GLMemoryAllocator extends GLBaseMemoryAllocator {
         static $gtype: GObject.GType<GLMemoryAllocator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLMemoryAllocator.SignalSignatures;
+        $signals: GLMemoryAllocator.SignalSignatures;
 
         // Constructors
 
@@ -2445,14 +2458,15 @@ export namespace GstGL {
      */
     class GLMemoryPBOAllocator extends GLMemoryAllocator {
         static $gtype: GObject.GType<GLMemoryPBOAllocator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLMemoryPBOAllocator.SignalSignatures;
+        $signals: GLMemoryPBOAllocator.SignalSignatures;
 
         // Constructors
 
@@ -2505,14 +2519,15 @@ export namespace GstGL {
      */
     abstract class GLMixer extends GLBaseMixer {
         static $gtype: GObject.GType<GLMixer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLMixer.SignalSignatures;
+        $signals: GLMixer.SignalSignatures;
 
         // Constructors
 
@@ -2593,14 +2608,15 @@ export namespace GstGL {
 
     class GLMixerPad extends GLBaseMixerPad {
         static $gtype: GObject.GType<GLMixerPad>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLMixerPad.SignalSignatures;
+        $signals: GLMixerPad.SignalSignatures;
 
         // Fields
 
@@ -2656,14 +2672,15 @@ export namespace GstGL {
 
         get yinvert(): boolean;
         set yinvert(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLOverlayCompositor.SignalSignatures;
+        $signals: GLOverlayCompositor.SignalSignatures;
 
         // Constructors
 
@@ -2721,14 +2738,15 @@ export namespace GstGL {
      */
     class GLRenderbufferAllocator extends GLBaseMemoryAllocator {
         static $gtype: GObject.GType<GLRenderbufferAllocator>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLRenderbufferAllocator.SignalSignatures;
+        $signals: GLRenderbufferAllocator.SignalSignatures;
 
         // Constructors
 
@@ -2774,14 +2792,15 @@ export namespace GstGL {
      */
     class GLSLStage extends Gst.Object {
         static $gtype: GObject.GType<GLSLStage>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLSLStage.SignalSignatures;
+        $signals: GLSLStage.SignalSignatures;
 
         // Constructors
 
@@ -2866,14 +2885,15 @@ export namespace GstGL {
         // Properties
 
         get linked(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLShader.SignalSignatures;
+        $signals: GLShader.SignalSignatures;
 
         // Fields
 
@@ -3220,14 +3240,15 @@ export namespace GstGL {
      */
     class GLUpload extends Gst.Object {
         static $gtype: GObject.GType<GLUpload>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLUpload.SignalSignatures;
+        $signals: GLUpload.SignalSignatures;
 
         // Fields
 
@@ -3351,14 +3372,15 @@ export namespace GstGL {
         set output_mode_override(val: GstVideo.VideoMultiviewMode);
         get outputModeOverride(): GstVideo.VideoMultiviewMode;
         set outputModeOverride(val: GstVideo.VideoMultiviewMode);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLViewConvert.SignalSignatures;
+        $signals: GLViewConvert.SignalSignatures;
 
         // Fields
 
@@ -3475,14 +3497,15 @@ export namespace GstGL {
      */
     abstract class GLWindow extends Gst.Object {
         static $gtype: GObject.GType<GLWindow>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GLWindow.SignalSignatures;
+        $signals: GLWindow.SignalSignatures;
 
         // Constructors
 

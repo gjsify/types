@@ -516,14 +516,15 @@ export namespace LibvirtGConfig {
 
     class Capabilities extends Object {
         static $gtype: GObject.GType<Capabilities>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Capabilities.SignalSignatures;
+        $signals: Capabilities.SignalSignatures;
 
         // Constructors
 
@@ -584,14 +585,15 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesCpu extends Object {
         static $gtype: GObject.GType<CapabilitiesCpu>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CapabilitiesCpu.SignalSignatures;
+        $signals: CapabilitiesCpu.SignalSignatures;
 
         // Constructors
 
@@ -668,14 +670,15 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesCpuFeature extends Object {
         static $gtype: GObject.GType<CapabilitiesCpuFeature>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CapabilitiesCpuFeature.SignalSignatures;
+        $signals: CapabilitiesCpuFeature.SignalSignatures;
 
         // Constructors
 
@@ -723,14 +726,15 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesCpuModel extends Object {
         static $gtype: GObject.GType<CapabilitiesCpuModel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CapabilitiesCpuModel.SignalSignatures;
+        $signals: CapabilitiesCpuModel.SignalSignatures;
 
         // Constructors
 
@@ -785,14 +789,15 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesCpuTopology extends Object {
         static $gtype: GObject.GType<CapabilitiesCpuTopology>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CapabilitiesCpuTopology.SignalSignatures;
+        $signals: CapabilitiesCpuTopology.SignalSignatures;
 
         // Constructors
 
@@ -851,14 +856,15 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesGuest extends Object {
         static $gtype: GObject.GType<CapabilitiesGuest>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CapabilitiesGuest.SignalSignatures;
+        $signals: CapabilitiesGuest.SignalSignatures;
 
         // Constructors
 
@@ -913,14 +919,15 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesGuestArch extends Object {
         static $gtype: GObject.GType<CapabilitiesGuestArch>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CapabilitiesGuestArch.SignalSignatures;
+        $signals: CapabilitiesGuestArch.SignalSignatures;
 
         // Constructors
 
@@ -973,14 +980,15 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesGuestDomain extends Object {
         static $gtype: GObject.GType<CapabilitiesGuestDomain>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CapabilitiesGuestDomain.SignalSignatures;
+        $signals: CapabilitiesGuestDomain.SignalSignatures;
 
         // Constructors
 
@@ -1028,14 +1036,15 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesGuestFeature extends Object {
         static $gtype: GObject.GType<CapabilitiesGuestFeature>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CapabilitiesGuestFeature.SignalSignatures;
+        $signals: CapabilitiesGuestFeature.SignalSignatures;
 
         // Constructors
 
@@ -1082,14 +1091,15 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesHost extends Object {
         static $gtype: GObject.GType<CapabilitiesHost>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CapabilitiesHost.SignalSignatures;
+        $signals: CapabilitiesHost.SignalSignatures;
 
         // Constructors
 
@@ -1144,14 +1154,15 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesHostSecModel extends Object {
         static $gtype: GObject.GType<CapabilitiesHostSecModel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CapabilitiesHostSecModel.SignalSignatures;
+        $signals: CapabilitiesHostSecModel.SignalSignatures;
 
         // Constructors
 
@@ -1238,14 +1249,15 @@ export namespace LibvirtGConfig {
         set uuid(val: string);
         get vcpu(): number;
         set vcpu(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Domain.SignalSignatures;
+        $signals: Domain.SignalSignatures;
 
         // Constructors
 
@@ -1366,14 +1378,15 @@ export namespace LibvirtGConfig {
 
     abstract class DomainAddress extends Object {
         static $gtype: GObject.GType<DomainAddress>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainAddress.SignalSignatures;
+        $signals: DomainAddress.SignalSignatures;
 
         // Constructors
 
@@ -1414,14 +1427,15 @@ export namespace LibvirtGConfig {
 
     class DomainAddressPci extends DomainAddress {
         static $gtype: GObject.GType<DomainAddressPci>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainAddressPci.SignalSignatures;
+        $signals: DomainAddressPci.SignalSignatures;
 
         // Constructors
 
@@ -1482,14 +1496,15 @@ export namespace LibvirtGConfig {
 
     class DomainAddressUsb extends DomainAddress {
         static $gtype: GObject.GType<DomainAddressUsb>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainAddressUsb.SignalSignatures;
+        $signals: DomainAddressUsb.SignalSignatures;
 
         // Constructors
 
@@ -1542,14 +1557,15 @@ export namespace LibvirtGConfig {
 
     class DomainCapabilities extends Object {
         static $gtype: GObject.GType<DomainCapabilities>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainCapabilities.SignalSignatures;
+        $signals: DomainCapabilities.SignalSignatures;
 
         // Constructors
 
@@ -1605,14 +1621,15 @@ export namespace LibvirtGConfig {
 
     class DomainCapabilitiesOs extends Object {
         static $gtype: GObject.GType<DomainCapabilitiesOs>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainCapabilitiesOs.SignalSignatures;
+        $signals: DomainCapabilitiesOs.SignalSignatures;
 
         // Constructors
 
@@ -1672,14 +1689,15 @@ export namespace LibvirtGConfig {
 
     class DomainChannel extends DomainChardev {
         static $gtype: GObject.GType<DomainChannel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainChannel.SignalSignatures;
+        $signals: DomainChannel.SignalSignatures;
 
         // Constructors
 
@@ -1734,14 +1752,15 @@ export namespace LibvirtGConfig {
 
     abstract class DomainChardev extends DomainDevice {
         static $gtype: GObject.GType<DomainChardev>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainChardev.SignalSignatures;
+        $signals: DomainChardev.SignalSignatures;
 
         // Constructors
 
@@ -1791,14 +1810,15 @@ export namespace LibvirtGConfig {
 
     abstract class DomainChardevSource extends Object {
         static $gtype: GObject.GType<DomainChardevSource>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainChardevSource.SignalSignatures;
+        $signals: DomainChardevSource.SignalSignatures;
 
         // Constructors
 
@@ -1841,14 +1861,15 @@ export namespace LibvirtGConfig {
 
     class DomainChardevSourcePty extends DomainChardevSource {
         static $gtype: GObject.GType<DomainChardevSourcePty>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainChardevSourcePty.SignalSignatures;
+        $signals: DomainChardevSourcePty.SignalSignatures;
 
         // Constructors
 
@@ -1903,14 +1924,15 @@ export namespace LibvirtGConfig {
 
     class DomainChardevSourceSpicePort extends DomainChardevSource {
         static $gtype: GObject.GType<DomainChardevSourceSpicePort>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainChardevSourceSpicePort.SignalSignatures;
+        $signals: DomainChardevSourceSpicePort.SignalSignatures;
 
         // Constructors
 
@@ -1965,14 +1987,15 @@ export namespace LibvirtGConfig {
 
     class DomainChardevSourceSpiceVmc extends DomainChardevSource {
         static $gtype: GObject.GType<DomainChardevSourceSpiceVmc>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainChardevSourceSpiceVmc.SignalSignatures;
+        $signals: DomainChardevSourceSpiceVmc.SignalSignatures;
 
         // Constructors
 
@@ -2022,14 +2045,15 @@ export namespace LibvirtGConfig {
 
     class DomainChardevSourceUnix extends DomainChardevSource {
         static $gtype: GObject.GType<DomainChardevSourceUnix>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainChardevSourceUnix.SignalSignatures;
+        $signals: DomainChardevSourceUnix.SignalSignatures;
 
         // Constructors
 
@@ -2079,14 +2103,15 @@ export namespace LibvirtGConfig {
 
     class DomainClock extends Object {
         static $gtype: GObject.GType<DomainClock>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainClock.SignalSignatures;
+        $signals: DomainClock.SignalSignatures;
 
         // Constructors
 
@@ -2144,14 +2169,15 @@ export namespace LibvirtGConfig {
 
     class DomainConsole extends DomainChardev {
         static $gtype: GObject.GType<DomainConsole>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainConsole.SignalSignatures;
+        $signals: DomainConsole.SignalSignatures;
 
         // Constructors
 
@@ -2203,14 +2229,15 @@ export namespace LibvirtGConfig {
 
     abstract class DomainController extends DomainDevice {
         static $gtype: GObject.GType<DomainController>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainController.SignalSignatures;
+        $signals: DomainController.SignalSignatures;
 
         // Constructors
 
@@ -2264,14 +2291,15 @@ export namespace LibvirtGConfig {
      */
     class DomainControllerUsb extends DomainController {
         static $gtype: GObject.GType<DomainControllerUsb>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainControllerUsb.SignalSignatures;
+        $signals: DomainControllerUsb.SignalSignatures;
 
         // Constructors
 
@@ -2337,14 +2365,15 @@ export namespace LibvirtGConfig {
 
     class DomainCpu extends CapabilitiesCpu {
         static $gtype: GObject.GType<DomainCpu>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainCpu.SignalSignatures;
+        $signals: DomainCpu.SignalSignatures;
 
         // Constructors
 
@@ -2400,14 +2429,15 @@ export namespace LibvirtGConfig {
 
     class DomainCpuFeature extends CapabilitiesCpuFeature {
         static $gtype: GObject.GType<DomainCpuFeature>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainCpuFeature.SignalSignatures;
+        $signals: DomainCpuFeature.SignalSignatures;
 
         // Constructors
 
@@ -2460,14 +2490,15 @@ export namespace LibvirtGConfig {
 
     class DomainCpuModel extends CapabilitiesCpuModel {
         static $gtype: GObject.GType<DomainCpuModel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainCpuModel.SignalSignatures;
+        $signals: DomainCpuModel.SignalSignatures;
 
         // Constructors
 
@@ -2515,14 +2546,15 @@ export namespace LibvirtGConfig {
 
     class DomainDevice extends Object {
         static $gtype: GObject.GType<DomainDevice>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainDevice.SignalSignatures;
+        $signals: DomainDevice.SignalSignatures;
 
         // Constructors
 
@@ -2567,14 +2599,15 @@ export namespace LibvirtGConfig {
 
     class DomainDisk extends DomainDevice {
         static $gtype: GObject.GType<DomainDisk>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainDisk.SignalSignatures;
+        $signals: DomainDisk.SignalSignatures;
 
         // Constructors
 
@@ -2658,14 +2691,15 @@ export namespace LibvirtGConfig {
 
     class DomainDiskDriver extends Object {
         static $gtype: GObject.GType<DomainDiskDriver>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainDiskDriver.SignalSignatures;
+        $signals: DomainDiskDriver.SignalSignatures;
 
         // Constructors
 
@@ -2730,14 +2764,15 @@ export namespace LibvirtGConfig {
 
     class DomainFilesys extends DomainDevice {
         static $gtype: GObject.GType<DomainFilesys>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainFilesys.SignalSignatures;
+        $signals: DomainFilesys.SignalSignatures;
 
         // Constructors
 
@@ -2796,14 +2831,15 @@ export namespace LibvirtGConfig {
 
     abstract class DomainGraphics extends DomainDevice {
         static $gtype: GObject.GType<DomainGraphics>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainGraphics.SignalSignatures;
+        $signals: DomainGraphics.SignalSignatures;
 
         // Constructors
 
@@ -2844,14 +2880,15 @@ export namespace LibvirtGConfig {
 
     class DomainGraphicsDesktop extends DomainGraphics {
         static $gtype: GObject.GType<DomainGraphicsDesktop>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainGraphicsDesktop.SignalSignatures;
+        $signals: DomainGraphicsDesktop.SignalSignatures;
 
         // Constructors
 
@@ -2908,14 +2945,15 @@ export namespace LibvirtGConfig {
 
     class DomainGraphicsRdp extends DomainGraphics {
         static $gtype: GObject.GType<DomainGraphicsRdp>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainGraphicsRdp.SignalSignatures;
+        $signals: DomainGraphicsRdp.SignalSignatures;
 
         // Constructors
 
@@ -2973,14 +3011,15 @@ export namespace LibvirtGConfig {
 
     class DomainGraphicsSdl extends DomainGraphics {
         static $gtype: GObject.GType<DomainGraphicsSdl>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainGraphicsSdl.SignalSignatures;
+        $signals: DomainGraphicsSdl.SignalSignatures;
 
         // Constructors
 
@@ -3034,14 +3073,15 @@ export namespace LibvirtGConfig {
 
     class DomainGraphicsSpice extends DomainGraphics {
         static $gtype: GObject.GType<DomainGraphicsSpice>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainGraphicsSpice.SignalSignatures;
+        $signals: DomainGraphicsSpice.SignalSignatures;
 
         // Constructors
 
@@ -3102,14 +3142,15 @@ export namespace LibvirtGConfig {
 
     class DomainGraphicsVnc extends DomainGraphics {
         static $gtype: GObject.GType<DomainGraphicsVnc>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainGraphicsVnc.SignalSignatures;
+        $signals: DomainGraphicsVnc.SignalSignatures;
 
         // Constructors
 
@@ -3166,14 +3207,15 @@ export namespace LibvirtGConfig {
 
     abstract class DomainHostdev extends DomainDevice {
         static $gtype: GObject.GType<DomainHostdev>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainHostdev.SignalSignatures;
+        $signals: DomainHostdev.SignalSignatures;
 
         // Constructors
 
@@ -3236,14 +3278,15 @@ export namespace LibvirtGConfig {
 
     class DomainHostdevPci extends DomainHostdev {
         static $gtype: GObject.GType<DomainHostdevPci>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainHostdevPci.SignalSignatures;
+        $signals: DomainHostdevPci.SignalSignatures;
 
         // Constructors
 
@@ -3306,14 +3349,15 @@ export namespace LibvirtGConfig {
 
     class DomainInput extends DomainDevice {
         static $gtype: GObject.GType<DomainInput>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainInput.SignalSignatures;
+        $signals: DomainInput.SignalSignatures;
 
         // Constructors
 
@@ -3368,14 +3412,15 @@ export namespace LibvirtGConfig {
 
     abstract class DomainInterface extends DomainDevice {
         static $gtype: GObject.GType<DomainInterface>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainInterface.SignalSignatures;
+        $signals: DomainInterface.SignalSignatures;
 
         // Constructors
 
@@ -3433,14 +3478,15 @@ export namespace LibvirtGConfig {
 
     class DomainInterfaceBridge extends DomainInterface {
         static $gtype: GObject.GType<DomainInterfaceBridge>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainInterfaceBridge.SignalSignatures;
+        $signals: DomainInterfaceBridge.SignalSignatures;
 
         // Constructors
 
@@ -3494,14 +3540,15 @@ export namespace LibvirtGConfig {
 
     class DomainInterfaceFilterref extends Object {
         static $gtype: GObject.GType<DomainInterfaceFilterref>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainInterfaceFilterref.SignalSignatures;
+        $signals: DomainInterfaceFilterref.SignalSignatures;
 
         // Constructors
 
@@ -3564,14 +3611,15 @@ export namespace LibvirtGConfig {
 
     class DomainInterfaceFilterrefParameter extends Object {
         static $gtype: GObject.GType<DomainInterfaceFilterrefParameter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainInterfaceFilterrefParameter.SignalSignatures;
+        $signals: DomainInterfaceFilterrefParameter.SignalSignatures;
 
         // Constructors
 
@@ -3631,14 +3679,15 @@ export namespace LibvirtGConfig {
 
     class DomainInterfaceNetwork extends DomainInterface {
         static $gtype: GObject.GType<DomainInterfaceNetwork>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainInterfaceNetwork.SignalSignatures;
+        $signals: DomainInterfaceNetwork.SignalSignatures;
 
         // Constructors
 
@@ -3692,14 +3741,15 @@ export namespace LibvirtGConfig {
 
     class DomainInterfaceUser extends DomainInterface {
         static $gtype: GObject.GType<DomainInterfaceUser>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainInterfaceUser.SignalSignatures;
+        $signals: DomainInterfaceUser.SignalSignatures;
 
         // Constructors
 
@@ -3749,14 +3799,15 @@ export namespace LibvirtGConfig {
 
     class DomainMemballoon extends DomainDevice {
         static $gtype: GObject.GType<DomainMemballoon>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainMemballoon.SignalSignatures;
+        $signals: DomainMemballoon.SignalSignatures;
 
         // Constructors
 
@@ -3808,14 +3859,15 @@ export namespace LibvirtGConfig {
 
     class DomainOs extends Object {
         static $gtype: GObject.GType<DomainOs>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainOs.SignalSignatures;
+        $signals: DomainOs.SignalSignatures;
 
         // Constructors
 
@@ -3889,14 +3941,15 @@ export namespace LibvirtGConfig {
 
     class DomainParallel extends DomainChardev {
         static $gtype: GObject.GType<DomainParallel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainParallel.SignalSignatures;
+        $signals: DomainParallel.SignalSignatures;
 
         // Constructors
 
@@ -3944,14 +3997,15 @@ export namespace LibvirtGConfig {
 
     class DomainPowerManagement extends Object {
         static $gtype: GObject.GType<DomainPowerManagement>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainPowerManagement.SignalSignatures;
+        $signals: DomainPowerManagement.SignalSignatures;
 
         // Constructors
 
@@ -4006,14 +4060,15 @@ export namespace LibvirtGConfig {
 
     class DomainRedirdev extends DomainChardev {
         static $gtype: GObject.GType<DomainRedirdev>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainRedirdev.SignalSignatures;
+        $signals: DomainRedirdev.SignalSignatures;
 
         // Constructors
 
@@ -4066,14 +4121,15 @@ export namespace LibvirtGConfig {
 
     class DomainSeclabel extends Object {
         static $gtype: GObject.GType<DomainSeclabel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainSeclabel.SignalSignatures;
+        $signals: DomainSeclabel.SignalSignatures;
 
         // Constructors
 
@@ -4128,14 +4184,15 @@ export namespace LibvirtGConfig {
 
     class DomainSerial extends DomainChardev {
         static $gtype: GObject.GType<DomainSerial>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainSerial.SignalSignatures;
+        $signals: DomainSerial.SignalSignatures;
 
         // Constructors
 
@@ -4183,14 +4240,15 @@ export namespace LibvirtGConfig {
 
     abstract class DomainSmartcard extends DomainDevice {
         static $gtype: GObject.GType<DomainSmartcard>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainSmartcard.SignalSignatures;
+        $signals: DomainSmartcard.SignalSignatures;
 
         // Constructors
 
@@ -4235,14 +4293,15 @@ export namespace LibvirtGConfig {
 
     class DomainSmartcardHost extends DomainSmartcard {
         static $gtype: GObject.GType<DomainSmartcardHost>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainSmartcardHost.SignalSignatures;
+        $signals: DomainSmartcardHost.SignalSignatures;
 
         // Constructors
 
@@ -4292,14 +4351,15 @@ export namespace LibvirtGConfig {
 
     class DomainSmartcardHostCertificates extends DomainSmartcard {
         static $gtype: GObject.GType<DomainSmartcardHostCertificates>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainSmartcardHostCertificates.SignalSignatures;
+        $signals: DomainSmartcardHostCertificates.SignalSignatures;
 
         // Constructors
 
@@ -4357,14 +4417,15 @@ export namespace LibvirtGConfig {
 
     class DomainSmartcardPassthrough extends DomainSmartcard {
         static $gtype: GObject.GType<DomainSmartcardPassthrough>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainSmartcardPassthrough.SignalSignatures;
+        $signals: DomainSmartcardPassthrough.SignalSignatures;
 
         // Constructors
 
@@ -4418,14 +4479,15 @@ export namespace LibvirtGConfig {
 
     class DomainSnapshot extends Object {
         static $gtype: GObject.GType<DomainSnapshot>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainSnapshot.SignalSignatures;
+        $signals: DomainSnapshot.SignalSignatures;
 
         // Constructors
 
@@ -4501,14 +4563,15 @@ export namespace LibvirtGConfig {
 
     class DomainSnapshotDisk extends Object {
         static $gtype: GObject.GType<DomainSnapshotDisk>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainSnapshotDisk.SignalSignatures;
+        $signals: DomainSnapshotDisk.SignalSignatures;
 
         // Constructors
 
@@ -4567,14 +4630,15 @@ export namespace LibvirtGConfig {
 
     class DomainSound extends DomainDevice {
         static $gtype: GObject.GType<DomainSound>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainSound.SignalSignatures;
+        $signals: DomainSound.SignalSignatures;
 
         // Constructors
 
@@ -4626,14 +4690,15 @@ export namespace LibvirtGConfig {
 
     abstract class DomainTimer extends Object {
         static $gtype: GObject.GType<DomainTimer>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainTimer.SignalSignatures;
+        $signals: DomainTimer.SignalSignatures;
 
         // Constructors
 
@@ -4681,14 +4746,15 @@ export namespace LibvirtGConfig {
 
     class DomainTimerHpet extends DomainTimer {
         static $gtype: GObject.GType<DomainTimerHpet>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainTimerHpet.SignalSignatures;
+        $signals: DomainTimerHpet.SignalSignatures;
 
         // Constructors
 
@@ -4736,14 +4802,15 @@ export namespace LibvirtGConfig {
 
     class DomainTimerPit extends DomainTimer {
         static $gtype: GObject.GType<DomainTimerPit>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainTimerPit.SignalSignatures;
+        $signals: DomainTimerPit.SignalSignatures;
 
         // Constructors
 
@@ -4791,14 +4858,15 @@ export namespace LibvirtGConfig {
 
     class DomainTimerRtc extends DomainTimer {
         static $gtype: GObject.GType<DomainTimerRtc>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainTimerRtc.SignalSignatures;
+        $signals: DomainTimerRtc.SignalSignatures;
 
         // Constructors
 
@@ -4846,14 +4914,15 @@ export namespace LibvirtGConfig {
 
     class DomainVideo extends DomainDevice {
         static $gtype: GObject.GType<DomainVideo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DomainVideo.SignalSignatures;
+        $signals: DomainVideo.SignalSignatures;
 
         // Constructors
 
@@ -4911,14 +4980,15 @@ export namespace LibvirtGConfig {
 
     class Interface extends Object {
         static $gtype: GObject.GType<Interface>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Interface.SignalSignatures;
+        $signals: Interface.SignalSignatures;
 
         // Constructors
 
@@ -4966,14 +5036,15 @@ export namespace LibvirtGConfig {
 
     class Network extends Object {
         static $gtype: GObject.GType<Network>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Network.SignalSignatures;
+        $signals: Network.SignalSignatures;
 
         // Constructors
 
@@ -5021,14 +5092,15 @@ export namespace LibvirtGConfig {
 
     class NetworkFilter extends Object {
         static $gtype: GObject.GType<NetworkFilter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NetworkFilter.SignalSignatures;
+        $signals: NetworkFilter.SignalSignatures;
 
         // Constructors
 
@@ -5076,14 +5148,15 @@ export namespace LibvirtGConfig {
 
     class NodeDevice extends Object {
         static $gtype: GObject.GType<NodeDevice>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NodeDevice.SignalSignatures;
+        $signals: NodeDevice.SignalSignatures;
 
         // Constructors
 
@@ -5139,14 +5212,15 @@ export namespace LibvirtGConfig {
 
         get node(): any;
         get schema(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Object.SignalSignatures;
+        $signals: Object.SignalSignatures;
 
         // Constructors
 
@@ -5201,14 +5275,15 @@ export namespace LibvirtGConfig {
 
     class Secret extends Object {
         static $gtype: GObject.GType<Secret>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Secret.SignalSignatures;
+        $signals: Secret.SignalSignatures;
 
         // Constructors
 
@@ -5256,14 +5331,15 @@ export namespace LibvirtGConfig {
 
     class StoragePermissions extends Object {
         static $gtype: GObject.GType<StoragePermissions>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StoragePermissions.SignalSignatures;
+        $signals: StoragePermissions.SignalSignatures;
 
         // Constructors
 
@@ -5338,14 +5414,15 @@ export namespace LibvirtGConfig {
 
     class StoragePool extends Object {
         static $gtype: GObject.GType<StoragePool>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StoragePool.SignalSignatures;
+        $signals: StoragePool.SignalSignatures;
 
         // Constructors
 
@@ -5444,14 +5521,15 @@ export namespace LibvirtGConfig {
 
     class StoragePoolSource extends Object {
         static $gtype: GObject.GType<StoragePoolSource>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StoragePoolSource.SignalSignatures;
+        $signals: StoragePoolSource.SignalSignatures;
 
         // Constructors
 
@@ -5555,14 +5633,15 @@ export namespace LibvirtGConfig {
 
     class StoragePoolTarget extends Object {
         static $gtype: GObject.GType<StoragePoolTarget>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StoragePoolTarget.SignalSignatures;
+        $signals: StoragePoolTarget.SignalSignatures;
 
         // Constructors
 
@@ -5626,14 +5705,15 @@ export namespace LibvirtGConfig {
 
     class StorageVol extends Object {
         static $gtype: GObject.GType<StorageVol>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StorageVol.SignalSignatures;
+        $signals: StorageVol.SignalSignatures;
 
         // Constructors
 
@@ -5689,14 +5769,15 @@ export namespace LibvirtGConfig {
 
     class StorageVolBackingStore extends Object {
         static $gtype: GObject.GType<StorageVolBackingStore>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StorageVolBackingStore.SignalSignatures;
+        $signals: StorageVolBackingStore.SignalSignatures;
 
         // Constructors
 
@@ -5751,14 +5832,15 @@ export namespace LibvirtGConfig {
 
     class StorageVolTarget extends Object {
         static $gtype: GObject.GType<StorageVolTarget>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: StorageVolTarget.SignalSignatures;
+        $signals: StorageVolTarget.SignalSignatures;
 
         // Constructors
 

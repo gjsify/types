@@ -110,14 +110,15 @@ export namespace GnomeRR {
         // Properties
 
         set screen(val: Screen);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Config.SignalSignatures;
+        $signals: Config.SignalSignatures;
 
         // Constructors
 
@@ -175,14 +176,15 @@ export namespace GnomeRR {
      */
     class OutputInfo extends GObject.Object {
         static $gtype: GObject.GType<OutputInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: OutputInfo.SignalSignatures;
+        $signals: OutputInfo.SignalSignatures;
 
         // Constructors
 
@@ -287,14 +289,15 @@ export namespace GnomeRR {
         set dpmsMode(val: DpmsModeType);
         get gdk_display(): Gdk.Display;
         get gdkDisplay(): Gdk.Display;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Screen.SignalSignatures;
+        $signals: Screen.SignalSignatures;
 
         // Constructors
 

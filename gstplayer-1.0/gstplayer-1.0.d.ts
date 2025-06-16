@@ -252,14 +252,15 @@ export namespace GstPlayer {
         get videoRenderer(): PlayerVideoRenderer;
         get volume(): number;
         set volume(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Player.SignalSignatures;
+        $signals: Player.SignalSignatures;
 
         // Constructors
 
@@ -569,14 +570,15 @@ export namespace GstPlayer {
      */
     class PlayerAudioInfo extends PlayerStreamInfo {
         static $gtype: GObject.GType<PlayerAudioInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlayerAudioInfo.SignalSignatures;
+        $signals: PlayerAudioInfo.SignalSignatures;
 
         // Constructors
 
@@ -632,14 +634,15 @@ export namespace GstPlayer {
 
         get application_context(): GLib.MainContext;
         get applicationContext(): GLib.MainContext;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlayerGMainContextSignalDispatcher.SignalSignatures;
+        $signals: PlayerGMainContextSignalDispatcher.SignalSignatures;
 
         // Constructors
 
@@ -1136,14 +1139,15 @@ export namespace GstPlayer {
      */
     class PlayerMediaInfo extends GObject.Object {
         static $gtype: GObject.GType<PlayerMediaInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlayerMediaInfo.SignalSignatures;
+        $signals: PlayerMediaInfo.SignalSignatures;
 
         // Constructors
 
@@ -1210,14 +1214,15 @@ export namespace GstPlayer {
      */
     abstract class PlayerStreamInfo extends GObject.Object {
         static $gtype: GObject.GType<PlayerStreamInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlayerStreamInfo.SignalSignatures;
+        $signals: PlayerStreamInfo.SignalSignatures;
 
         // Constructors
 
@@ -1280,14 +1285,15 @@ export namespace GstPlayer {
      */
     class PlayerSubtitleInfo extends PlayerStreamInfo {
         static $gtype: GObject.GType<PlayerSubtitleInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlayerSubtitleInfo.SignalSignatures;
+        $signals: PlayerSubtitleInfo.SignalSignatures;
 
         // Constructors
 
@@ -1332,14 +1338,15 @@ export namespace GstPlayer {
      */
     class PlayerVideoInfo extends PlayerStreamInfo {
         static $gtype: GObject.GType<PlayerVideoInfo>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlayerVideoInfo.SignalSignatures;
+        $signals: PlayerVideoInfo.SignalSignatures;
 
         // Constructors
 
@@ -1408,14 +1415,15 @@ export namespace GstPlayer {
         set window_handle(val: any);
         get windowHandle(): any;
         set windowHandle(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlayerVideoOverlayVideoRenderer.SignalSignatures;
+        $signals: PlayerVideoOverlayVideoRenderer.SignalSignatures;
 
         // Constructors
 

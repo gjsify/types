@@ -229,14 +229,15 @@ export namespace EvinceView {
         set sizing_mode(val: SizingMode);
         get sizingMode(): SizingMode;
         set sizingMode(val: SizingMode);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DocumentModel.SignalSignatures;
+        $signals: DocumentModel.SignalSignatures;
 
         // Constructors
 
@@ -326,14 +327,15 @@ export namespace EvinceView {
 
     abstract class Job extends GObject.Object {
         static $gtype: GObject.GType<Job>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Job.SignalSignatures;
+        $signals: Job.SignalSignatures;
 
         // Fields
 
@@ -410,14 +412,15 @@ export namespace EvinceView {
 
     class JobAnnots extends Job {
         static $gtype: GObject.GType<JobAnnots>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobAnnots.SignalSignatures;
+        $signals: JobAnnots.SignalSignatures;
 
         // Fields
 
@@ -461,14 +464,15 @@ export namespace EvinceView {
 
     class JobAttachments extends Job {
         static $gtype: GObject.GType<JobAttachments>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobAttachments.SignalSignatures;
+        $signals: JobAttachments.SignalSignatures;
 
         // Fields
 
@@ -512,14 +516,15 @@ export namespace EvinceView {
 
     class JobExport extends Job {
         static $gtype: GObject.GType<JobExport>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobExport.SignalSignatures;
+        $signals: JobExport.SignalSignatures;
 
         // Fields
 
@@ -570,14 +575,15 @@ export namespace EvinceView {
 
     class JobFind extends Job {
         static $gtype: GObject.GType<JobFind>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobFind.SignalSignatures;
+        $signals: JobFind.SignalSignatures;
 
         // Fields
 
@@ -654,14 +660,15 @@ export namespace EvinceView {
 
     class JobFonts extends Job {
         static $gtype: GObject.GType<JobFonts>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobFonts.SignalSignatures;
+        $signals: JobFonts.SignalSignatures;
 
         // Fields
 
@@ -709,14 +716,15 @@ export namespace EvinceView {
 
     class JobLayers extends Job {
         static $gtype: GObject.GType<JobLayers>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobLayers.SignalSignatures;
+        $signals: JobLayers.SignalSignatures;
 
         // Fields
 
@@ -760,14 +768,15 @@ export namespace EvinceView {
 
     class JobLinks extends Job {
         static $gtype: GObject.GType<JobLinks>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobLinks.SignalSignatures;
+        $signals: JobLinks.SignalSignatures;
 
         // Fields
 
@@ -819,14 +828,15 @@ export namespace EvinceView {
 
     class JobLoad extends Job {
         static $gtype: GObject.GType<JobLoad>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobLoad.SignalSignatures;
+        $signals: JobLoad.SignalSignatures;
 
         // Fields
 
@@ -880,14 +890,15 @@ export namespace EvinceView {
      */
     class JobLoadFd extends Job {
         static $gtype: GObject.GType<JobLoadFd>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobLoadFd.SignalSignatures;
+        $signals: JobLoadFd.SignalSignatures;
 
         // Fields
 
@@ -959,14 +970,15 @@ export namespace EvinceView {
      */
     class JobLoadGFile extends Job {
         static $gtype: GObject.GType<JobLoadGFile>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobLoadGFile.SignalSignatures;
+        $signals: JobLoadGFile.SignalSignatures;
 
         // Fields
 
@@ -1021,14 +1033,15 @@ export namespace EvinceView {
      */
     class JobLoadStream extends Job {
         static $gtype: GObject.GType<JobLoadStream>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobLoadStream.SignalSignatures;
+        $signals: JobLoadStream.SignalSignatures;
 
         // Fields
 
@@ -1081,14 +1094,15 @@ export namespace EvinceView {
 
     class JobPageData extends Job {
         static $gtype: GObject.GType<JobPageData>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobPageData.SignalSignatures;
+        $signals: JobPageData.SignalSignatures;
 
         // Fields
 
@@ -1138,14 +1152,15 @@ export namespace EvinceView {
 
     class JobPrint extends Job {
         static $gtype: GObject.GType<JobPrint>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobPrint.SignalSignatures;
+        $signals: JobPrint.SignalSignatures;
 
         // Fields
 
@@ -1194,14 +1209,15 @@ export namespace EvinceView {
 
     class JobRender extends Job {
         static $gtype: GObject.GType<JobRender>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobRender.SignalSignatures;
+        $signals: JobRender.SignalSignatures;
 
         // Fields
 
@@ -1271,14 +1287,15 @@ export namespace EvinceView {
 
     class JobSave extends Job {
         static $gtype: GObject.GType<JobSave>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobSave.SignalSignatures;
+        $signals: JobSave.SignalSignatures;
 
         // Fields
 
@@ -1323,14 +1340,15 @@ export namespace EvinceView {
 
     class JobThumbnail extends Job {
         static $gtype: GObject.GType<JobThumbnail>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: JobThumbnail.SignalSignatures;
+        $signals: JobThumbnail.SignalSignatures;
 
         // Fields
 
@@ -1409,14 +1427,15 @@ export namespace EvinceView {
         // Properties
 
         set document(val: EvinceDocument.Document);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PrintOperation.SignalSignatures;
+        $signals: PrintOperation.SignalSignatures;
 
         // Constructors
 
@@ -1567,14 +1586,15 @@ export namespace EvinceView {
          * Allows to implement a custom notification system.
          */
         get isLoading(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: View.SignalSignatures;
+        $signals: View.SignalSignatures;
 
         // Constructors
 
@@ -2307,14 +2327,15 @@ export namespace EvinceView {
         set invertedColors(val: boolean);
         get rotation(): number;
         set rotation(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ViewPresentation.SignalSignatures;
+        $signals: ViewPresentation.SignalSignatures;
 
         // Constructors
 

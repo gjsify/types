@@ -692,14 +692,15 @@ export namespace SpiceClientGLib {
          * #SpiceSession this #SpiceAudio is associated with
          */
         get session(): Session;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Audio.SignalSignatures;
+        $signals: Audio.SignalSignatures;
 
         // Constructors
 
@@ -818,14 +819,15 @@ export namespace SpiceClientGLib {
         get spiceSession(): Session;
         get total_read_bytes(): number;
         get totalReadBytes(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Channel.SignalSignatures;
+        $signals: Channel.SignalSignatures;
 
         // Constructors
 
@@ -1007,14 +1009,15 @@ export namespace SpiceClientGLib {
          * The last #SpiceCursorShape received.
          */
         get cursor(): CursorShape;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CursorChannel.SignalSignatures;
+        $signals: CursorChannel.SignalSignatures;
 
         // Constructors
 
@@ -1119,14 +1122,15 @@ export namespace SpiceClientGLib {
          */
         get monitorsMax(): number;
         get width(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DisplayChannel.SignalSignatures;
+        $signals: DisplayChannel.SignalSignatures;
 
         // Constructors
 
@@ -1230,14 +1234,15 @@ export namespace SpiceClientGLib {
         get totalBytes(): number;
         get transferred_bytes(): number;
         get transferredBytes(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileTransferTask.SignalSignatures;
+        $signals: FileTransferTask.SignalSignatures;
 
         // Constructors
 
@@ -1302,14 +1307,15 @@ export namespace SpiceClientGLib {
 
         get key_modifiers(): number;
         get keyModifiers(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InputsChannel.SignalSignatures;
+        $signals: InputsChannel.SignalSignatures;
 
         // Constructors
 
@@ -1514,14 +1520,15 @@ export namespace SpiceClientGLib {
          * position and shape commands.
          */
         get mouseMode(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MainChannel.SignalSignatures;
+        $signals: MainChannel.SignalSignatures;
 
         // Constructors
 
@@ -1785,14 +1792,15 @@ export namespace SpiceClientGLib {
         set nchannels(val: number);
         get volume(): any;
         set volume(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PlaybackChannel.SignalSignatures;
+        $signals: PlaybackChannel.SignalSignatures;
 
         // Constructors
 
@@ -1864,14 +1872,15 @@ export namespace SpiceClientGLib {
         get portName(): string;
         get port_opened(): boolean;
         get portOpened(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PortChannel.SignalSignatures;
+        $signals: PortChannel.SignalSignatures;
 
         // Constructors
 
@@ -1974,14 +1983,15 @@ export namespace SpiceClientGLib {
 
         get channel(): PortChannel;
         get ready(): boolean;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: QmpPort.SignalSignatures;
+        $signals: QmpPort.SignalSignatures;
 
         // Constructors
 
@@ -2117,14 +2127,15 @@ export namespace SpiceClientGLib {
         set nchannels(val: number);
         get volume(): any;
         set volume(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RecordChannel.SignalSignatures;
+        $signals: RecordChannel.SignalSignatures;
 
         // Constructors
 
@@ -2559,14 +2570,15 @@ export namespace SpiceClientGLib {
          */
         get verify(): SessionVerify;
         set verify(val: SessionVerify);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Session.SignalSignatures;
+        $signals: Session.SignalSignatures;
 
         // Constructors
 
@@ -2683,14 +2695,15 @@ export namespace SpiceClientGLib {
      */
     class SmartcardChannel extends Channel {
         static $gtype: GObject.GType<SmartcardChannel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SmartcardChannel.SignalSignatures;
+        $signals: SmartcardChannel.SignalSignatures;
 
         // Constructors
 
@@ -2731,14 +2744,15 @@ export namespace SpiceClientGLib {
      */
     class SmartcardManager extends GObject.Object {
         static $gtype: GObject.GType<SmartcardManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SmartcardManager.SignalSignatures;
+        $signals: SmartcardManager.SignalSignatures;
 
         // Constructors
 
@@ -2845,14 +2859,15 @@ export namespace SpiceClientGLib {
         set scheme(val: string);
         get user(): string;
         set user(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: URI.SignalSignatures;
+        $signals: URI.SignalSignatures;
 
         // Constructors
 
@@ -3022,14 +3037,15 @@ export namespace SpiceClientGLib {
          * #SpiceSession this #SpiceUsbDeviceManager is associated with
          */
         get session(): Session;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UsbDeviceManager.SignalSignatures;
+        $signals: UsbDeviceManager.SignalSignatures;
 
         // Constructors
 
@@ -3738,14 +3754,15 @@ export namespace SpiceClientGLib {
      */
     class UsbredirChannel extends Channel {
         static $gtype: GObject.GType<UsbredirChannel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: UsbredirChannel.SignalSignatures;
+        $signals: UsbredirChannel.SignalSignatures;
 
         // Constructors
 
@@ -3789,14 +3806,15 @@ export namespace SpiceClientGLib {
      */
     class WebdavChannel extends PortChannel {
         static $gtype: GObject.GType<WebdavChannel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: WebdavChannel.SignalSignatures;
+        $signals: WebdavChannel.SignalSignatures;
 
         // Constructors
 

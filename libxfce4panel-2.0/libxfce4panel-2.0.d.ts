@@ -416,14 +416,15 @@ export namespace Libxfce4panel {
          */
         get arrowType(): Gtk.ArrowType;
         set arrowType(val: Gtk.ArrowType);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ArrowButton.SignalSignatures;
+        $signals: ArrowButton.SignalSignatures;
 
         // Constructors
 
@@ -4832,14 +4833,15 @@ export namespace Libxfce4panel {
         set size(val: number);
         get source(): string;
         set source(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PanelImage.SignalSignatures;
+        $signals: PanelImage.SignalSignatures;
 
         // Constructors
 
@@ -5741,14 +5743,15 @@ export namespace Libxfce4panel {
         set small(val: boolean);
         get unique_id(): number;
         get uniqueId(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PanelPlugin.SignalSignatures;
+        $signals: PanelPlugin.SignalSignatures;
 
         // Constructors
 

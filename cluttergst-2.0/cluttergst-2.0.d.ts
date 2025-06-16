@@ -203,14 +203,15 @@ export namespace ClutterGst {
          */
         get updatePriority(): number;
         set updatePriority(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VideoSink.SignalSignatures;
+        $signals: VideoSink.SignalSignatures;
 
         // Constructors
 
@@ -887,14 +888,15 @@ export namespace ClutterGst {
         set pixel_aspect_ratio(val: Gst.Fraction);
         get pixelAspectRatio(): Gst.Fraction;
         set pixelAspectRatio(val: Gst.Fraction);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VideoTexture.SignalSignatures;
+        $signals: VideoTexture.SignalSignatures;
 
         // Constructors
 

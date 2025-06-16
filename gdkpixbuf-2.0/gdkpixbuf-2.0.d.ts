@@ -567,14 +567,15 @@ export namespace GdkPixbuf {
          * The number of columns of the pixbuf.
          */
         get width(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Pixbuf.SignalSignatures;
+        $signals: Pixbuf.SignalSignatures;
 
         // Constructors
 
@@ -1927,14 +1928,15 @@ export namespace GdkPixbuf {
      */
     class PixbufAnimation extends GObject.Object {
         static $gtype: GObject.GType<PixbufAnimation>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PixbufAnimation.SignalSignatures;
+        $signals: PixbufAnimation.SignalSignatures;
 
         // Constructors
 
@@ -2152,14 +2154,15 @@ export namespace GdkPixbuf {
      */
     class PixbufAnimationIter extends GObject.Object {
         static $gtype: GObject.GType<PixbufAnimationIter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PixbufAnimationIter.SignalSignatures;
+        $signals: PixbufAnimationIter.SignalSignatures;
 
         // Constructors
 
@@ -2389,14 +2392,15 @@ export namespace GdkPixbuf {
      */
     class PixbufLoader extends GObject.Object {
         static $gtype: GObject.GType<PixbufLoader>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PixbufLoader.SignalSignatures;
+        $signals: PixbufLoader.SignalSignatures;
 
         // Constructors
 
@@ -2531,14 +2535,15 @@ export namespace GdkPixbuf {
 
     class PixbufNonAnim extends PixbufAnimation {
         static $gtype: GObject.GType<PixbufNonAnim>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PixbufNonAnim.SignalSignatures;
+        $signals: PixbufNonAnim.SignalSignatures;
 
         // Constructors
 
@@ -2593,14 +2598,15 @@ export namespace GdkPixbuf {
          */
         get loop(): boolean;
         set loop(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PixbufSimpleAnim.SignalSignatures;
+        $signals: PixbufSimpleAnim.SignalSignatures;
 
         // Constructors
 
@@ -2660,14 +2666,15 @@ export namespace GdkPixbuf {
 
     class PixbufSimpleAnimIter extends PixbufAnimationIter {
         static $gtype: GObject.GType<PixbufSimpleAnimIter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: PixbufSimpleAnimIter.SignalSignatures;
+        $signals: PixbufSimpleAnimIter.SignalSignatures;
 
         // Constructors
 

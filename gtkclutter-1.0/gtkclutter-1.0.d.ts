@@ -191,14 +191,15 @@ export namespace GtkClutter {
          */
         get contents(): Gtk.Widget;
         set contents(val: Gtk.Widget);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Actor.SignalSignatures;
+        $signals: Actor.SignalSignatures;
 
         // Constructors
 
@@ -1217,14 +1218,15 @@ export namespace GtkClutter {
          */
         get useLayoutSize(): boolean;
         set useLayoutSize(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Embed.SignalSignatures;
+        $signals: Embed.SignalSignatures;
 
         // Constructors
 
@@ -1844,14 +1846,15 @@ export namespace GtkClutter {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<Texture>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Texture.SignalSignatures;
+        $signals: Texture.SignalSignatures;
 
         // Constructors
 
@@ -2448,14 +2451,15 @@ export namespace GtkClutter {
      */
     class Window extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Window>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Window.SignalSignatures;
+        $signals: Window.SignalSignatures;
 
         // Constructors
 

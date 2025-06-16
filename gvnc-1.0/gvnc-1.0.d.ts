@@ -233,14 +233,15 @@ export namespace GVnc {
 
     class BaseAudio extends GObject.Object implements Audio {
         static $gtype: GObject.GType<BaseAudio>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BaseAudio.SignalSignatures;
+        $signals: BaseAudio.SignalSignatures;
 
         // Constructors
 
@@ -777,14 +778,15 @@ export namespace GVnc {
         get remoteFormat(): PixelFormat;
         get rowstride(): number;
         get width(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: BaseFramebuffer.SignalSignatures;
+        $signals: BaseFramebuffer.SignalSignatures;
 
         // Constructors
 
@@ -1472,14 +1474,15 @@ export namespace GVnc {
 
         get framebuffer(): Framebuffer;
         set framebuffer(val: Framebuffer);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Connection.SignalSignatures;
+        $signals: Connection.SignalSignatures;
 
         // Constructors
 
@@ -1847,14 +1850,15 @@ export namespace GVnc {
         set hoty(val: number);
         get width(): number;
         set width(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Cursor.SignalSignatures;
+        $signals: Cursor.SignalSignatures;
 
         // Constructors
 

@@ -158,14 +158,15 @@ export namespace SugarExt {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -296,14 +297,15 @@ export namespace SugarExt {
 
     class ClientXSMP extends Client {
         static $gtype: GObject.GType<ClientXSMP>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientXSMP.SignalSignatures;
+        $signals: ClientXSMP.SignalSignatures;
 
         // Fields
 
@@ -360,14 +362,15 @@ export namespace SugarExt {
 
     class CursorTracker extends GObject.Object {
         static $gtype: GObject.GType<CursorTracker>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CursorTracker.SignalSignatures;
+        $signals: CursorTracker.SignalSignatures;
 
         // Constructors
 
@@ -407,14 +410,15 @@ export namespace SugarExt {
 
     class GestureGrabber extends GObject.Object {
         static $gtype: GObject.GType<GestureGrabber>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GestureGrabber.SignalSignatures;
+        $signals: GestureGrabber.SignalSignatures;
 
         // Constructors
 
@@ -459,14 +463,15 @@ export namespace SugarExt {
 
     class Grid extends GObject.Object {
         static $gtype: GObject.GType<Grid>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Grid.SignalSignatures;
+        $signals: Grid.SignalSignatures;
 
         // Fields
 
@@ -521,14 +526,15 @@ export namespace SugarExt {
 
     class KeyGrabber extends GObject.Object {
         static $gtype: GObject.GType<KeyGrabber>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: KeyGrabber.SignalSignatures;
+        $signals: KeyGrabber.SignalSignatures;
 
         // Fields
 
@@ -589,14 +595,15 @@ export namespace SugarExt {
 
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Session.SignalSignatures;
+        $signals: Session.SignalSignatures;
 
         // Constructors
 
@@ -654,14 +661,15 @@ export namespace SugarExt {
 
     class Volume extends GObject.Object {
         static $gtype: GObject.GType<Volume>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Volume.SignalSignatures;
+        $signals: Volume.SignalSignatures;
 
         // Constructors
 
@@ -718,14 +726,15 @@ export namespace SugarExt {
 
     class VolumeAlsa extends Volume {
         static $gtype: GObject.GType<VolumeAlsa>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: VolumeAlsa.SignalSignatures;
+        $signals: VolumeAlsa.SignalSignatures;
 
         // Constructors
 

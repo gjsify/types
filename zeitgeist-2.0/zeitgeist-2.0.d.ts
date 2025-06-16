@@ -283,14 +283,15 @@ export namespace Zeitgeist {
 
     class DataSourceRegistry extends QueuedProxyWrapper {
         static $gtype: GObject.GType<DataSourceRegistry>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataSourceRegistry.SignalSignatures;
+        $signals: DataSourceRegistry.SignalSignatures;
 
         // Constructors
 
@@ -385,14 +386,15 @@ export namespace Zeitgeist {
 
     class Index extends QueuedProxyWrapper {
         static $gtype: GObject.GType<Index>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Index.SignalSignatures;
+        $signals: Index.SignalSignatures;
 
         // Constructors
 
@@ -501,14 +503,15 @@ export namespace Zeitgeist {
 
     class Log extends QueuedProxyWrapper {
         static $gtype: GObject.GType<Log>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Log.SignalSignatures;
+        $signals: Log.SignalSignatures;
 
         // Constructors
 
@@ -722,14 +725,15 @@ export namespace Zeitgeist {
         set event_templates(val: Event[]);
         get eventTemplates(): Event[];
         set eventTemplates(val: Event[]);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Monitor.SignalSignatures;
+        $signals: Monitor.SignalSignatures;
 
         // Constructors
 
@@ -1274,14 +1278,15 @@ export namespace Zeitgeist {
         set is_connected(val: boolean);
         get isConnected(): boolean;
         set isConnected(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: QueuedProxyWrapper.SignalSignatures;
+        $signals: QueuedProxyWrapper.SignalSignatures;
 
         // Constructors
 
@@ -1421,14 +1426,15 @@ export namespace Zeitgeist {
         set running(val: boolean);
         get timestamp(): number;
         set timestamp(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DataSource.SignalSignatures;
+        $signals: DataSource.SignalSignatures;
 
         // Constructors
 
@@ -1527,14 +1533,15 @@ export namespace Zeitgeist {
         set subjects(val: Subject[]);
         get payload(): GLib.ByteArray;
         set payload(val: GLib.ByteArray);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Event.SignalSignatures;
+        $signals: Event.SignalSignatures;
 
         // Constructors
 
@@ -1650,14 +1657,15 @@ export namespace Zeitgeist {
         set interpretation(val: string);
         get manifestation(): string;
         set manifestation(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Subject.SignalSignatures;
+        $signals: Subject.SignalSignatures;
 
         // Constructors
 
@@ -1757,14 +1765,15 @@ export namespace Zeitgeist {
         set start(val: number);
         get end(): number;
         set end(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TimeRange.SignalSignatures;
+        $signals: TimeRange.SignalSignatures;
 
         // Constructors
 
@@ -1819,14 +1828,15 @@ export namespace Zeitgeist {
 
     class SimpleResultSet extends GObject.Object implements ResultSet {
         static $gtype: GObject.GType<SimpleResultSet>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: SimpleResultSet.SignalSignatures;
+        $signals: SimpleResultSet.SignalSignatures;
 
         // Constructors
 

@@ -1590,14 +1590,15 @@ export namespace ECal {
         set defaultTimezone(val: ICalGLib.Timezone);
         get source_type(): ClientSourceType;
         get sourceType(): ClientSourceType;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Client.SignalSignatures;
+        $signals: Client.SignalSignatures;
 
         // Constructors
 
@@ -4058,14 +4059,15 @@ export namespace ECal {
          * The object path used to create the D-Bus proxy
          */
         get objectPath(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientView.SignalSignatures;
+        $signals: ClientView.SignalSignatures;
 
         // Constructors
 
@@ -4687,14 +4689,15 @@ export namespace ECal {
 
     class Component extends GObject.Object {
         static $gtype: GObject.GType<Component>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Component.SignalSignatures;
+        $signals: Component.SignalSignatures;
 
         // Constructors
 
@@ -5443,14 +5446,15 @@ export namespace ECal {
          */
         get timersEnabled(): boolean;
         set timersEnabled(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ReminderWatcher.SignalSignatures;
+        $signals: ReminderWatcher.SignalSignatures;
 
         // Constructors
 

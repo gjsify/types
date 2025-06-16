@@ -118,14 +118,15 @@ export namespace Geoclue {
         implements Client, Gio.AsyncInitable<ClientProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<ClientProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientProxy.SignalSignatures;
+        $signals: ClientProxy.SignalSignatures;
 
         // Constructors
 
@@ -1294,14 +1295,15 @@ export namespace Geoclue {
      */
     class ClientSkeleton extends Gio.DBusInterfaceSkeleton implements Client, Gio.DBusInterface {
         static $gtype: GObject.GType<ClientSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ClientSkeleton.SignalSignatures;
+        $signals: ClientSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -2032,14 +2034,15 @@ export namespace Geoclue {
         implements Location, Gio.AsyncInitable<LocationProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<LocationProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LocationProxy.SignalSignatures;
+        $signals: LocationProxy.SignalSignatures;
 
         // Constructors
 
@@ -2992,14 +2995,15 @@ export namespace Geoclue {
      */
     class LocationSkeleton extends Gio.DBusInterfaceSkeleton implements Location, Gio.DBusInterface {
         static $gtype: GObject.GType<LocationSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LocationSkeleton.SignalSignatures;
+        $signals: LocationSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -3595,14 +3599,15 @@ export namespace Geoclue {
         implements Manager, Gio.AsyncInitable<ManagerProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<ManagerProxy>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ManagerProxy.SignalSignatures;
+        $signals: ManagerProxy.SignalSignatures;
 
         // Constructors
 
@@ -4757,14 +4762,15 @@ export namespace Geoclue {
      */
     class ManagerSkeleton extends Gio.DBusInterfaceSkeleton implements Manager, Gio.DBusInterface {
         static $gtype: GObject.GType<ManagerSkeleton>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ManagerSkeleton.SignalSignatures;
+        $signals: ManagerSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -5623,14 +5629,15 @@ export namespace Geoclue {
          * When set to 0 (default), it always emits the signal.
          */
         get timeThreshold(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Simple.SignalSignatures;
+        $signals: Simple.SignalSignatures;
 
         // Constructors
 

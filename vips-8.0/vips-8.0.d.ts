@@ -3771,14 +3771,15 @@ export namespace Vips {
 
     abstract class Foreign extends Operation {
         static $gtype: GObject.GType<Foreign>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Foreign.SignalSignatures;
+        $signals: Foreign.SignalSignatures;
 
         // Fields
 
@@ -3968,14 +3969,15 @@ export namespace Vips {
         set revalidate(val: boolean);
         get sequential(): boolean;
         set sequential(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ForeignLoad.SignalSignatures;
+        $signals: ForeignLoad.SignalSignatures;
 
         // Fields
 
@@ -4062,14 +4064,15 @@ export namespace Vips {
         set profile(val: string);
         get strip(): boolean;
         set strip(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ForeignSave.SignalSignatures;
+        $signals: ForeignSave.SignalSignatures;
 
         // Fields
 
@@ -4200,14 +4203,15 @@ export namespace Vips {
         set yoffset(val: number);
         get yres(): number;
         set yres(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Image.SignalSignatures;
+        $signals: Image.SignalSignatures;
 
         // Constructors
 
@@ -5039,14 +5043,15 @@ export namespace Vips {
 
     abstract class Interpolate extends Object {
         static $gtype: GObject.GType<Interpolate>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Interpolate.SignalSignatures;
+        $signals: Interpolate.SignalSignatures;
 
         // Fields
 
@@ -5152,14 +5157,15 @@ export namespace Vips {
         set description(val: string);
         get nickname(): string;
         set nickname(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Object.SignalSignatures;
+        $signals: Object.SignalSignatures;
 
         // Fields
 
@@ -5321,14 +5327,15 @@ export namespace Vips {
 
     abstract class Operation extends Object {
         static $gtype: GObject.GType<Operation>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Operation.SignalSignatures;
+        $signals: Operation.SignalSignatures;
 
         // Fields
 
@@ -5427,14 +5434,15 @@ export namespace Vips {
      */
     class Region extends Object {
         static $gtype: GObject.GType<Region>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Region.SignalSignatures;
+        $signals: Region.SignalSignatures;
 
         // Fields
 

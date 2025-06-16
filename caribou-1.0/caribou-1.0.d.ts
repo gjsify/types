@@ -71,14 +71,15 @@ export namespace Caribou {
         // Properties
 
         get display(): Gdk.Display;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: DisplayAdapter.SignalSignatures;
+        $signals: DisplayAdapter.SignalSignatures;
 
         // Constructors
 
@@ -150,14 +151,15 @@ export namespace Caribou {
 
     class NullAdapter extends DisplayAdapter {
         static $gtype: GObject.GType<NullAdapter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: NullAdapter.SignalSignatures;
+        $signals: NullAdapter.SignalSignatures;
 
         // Constructors
 
@@ -199,14 +201,15 @@ export namespace Caribou {
 
     class XAdapter extends DisplayAdapter {
         static $gtype: GObject.GType<XAdapter>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: XAdapter.SignalSignatures;
+        $signals: XAdapter.SignalSignatures;
 
         // Constructors
 
@@ -270,14 +273,15 @@ export namespace Caribou {
         get keyboardType(): string;
         get keyboard_file(): string;
         get keyboardFile(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: KeyboardModel.SignalSignatures;
+        $signals: KeyboardModel.SignalSignatures;
 
         // Constructors
 
@@ -770,14 +774,15 @@ export namespace Caribou {
 
     abstract class KeyboardService extends GObject.Object {
         static $gtype: GObject.GType<KeyboardService>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: KeyboardService.SignalSignatures;
+        $signals: KeyboardService.SignalSignatures;
 
         // Constructors
 
@@ -844,14 +849,15 @@ export namespace Caribou {
         set active_level(val: string);
         get activeLevel(): string;
         set activeLevel(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: GroupModel.SignalSignatures;
+        $signals: GroupModel.SignalSignatures;
 
         // Fields
 
@@ -1361,14 +1367,15 @@ export namespace Caribou {
 
         get mode(): string;
         set mode(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LevelModel.SignalSignatures;
+        $signals: LevelModel.SignalSignatures;
 
         // Constructors
 
@@ -1864,14 +1871,15 @@ export namespace Caribou {
 
     class RowModel extends ScannableGroup implements IScannableItem, IKeyboardObject {
         static $gtype: GObject.GType<RowModel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: RowModel.SignalSignatures;
+        $signals: RowModel.SignalSignatures;
 
         // Constructors
 
@@ -2436,14 +2444,15 @@ export namespace Caribou {
         set text(val: string);
         get label(): string;
         set label(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: KeyModel.SignalSignatures;
+        $signals: KeyModel.SignalSignatures;
 
         // Fields
 
@@ -2979,14 +2988,15 @@ export namespace Caribou {
 
     class ColumnModel extends ScannableGroup implements IScannableItem, IKeyboardObject {
         static $gtype: GObject.GType<ColumnModel>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ColumnModel.SignalSignatures;
+        $signals: ColumnModel.SignalSignatures;
 
         // Constructors
 
@@ -3564,14 +3574,15 @@ export namespace Caribou {
         set inverse_scanning(val: boolean);
         get inverseScanning(): boolean;
         set inverseScanning(val: boolean);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Scanner.SignalSignatures;
+        $signals: Scanner.SignalSignatures;
 
         // Constructors
 
@@ -3637,14 +3648,15 @@ export namespace Caribou {
 
     abstract class ScannableGroup extends GObject.Object implements IScannableGroup {
         static $gtype: GObject.GType<ScannableGroup>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScannableGroup.SignalSignatures;
+        $signals: ScannableGroup.SignalSignatures;
 
         // Constructors
 

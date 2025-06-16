@@ -79,14 +79,15 @@ export namespace TrackerControl {
         get autoStart(): boolean;
         get domain_ontology(): string;
         get domainOntology(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: MinerManager.SignalSignatures;
+        $signals: MinerManager.SignalSignatures;
 
         // Constructors
 

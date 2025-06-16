@@ -1443,14 +1443,15 @@ export namespace AgsGui {
          */
         get yUnitY0(): number;
         set yUnitY0(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Cartesian.SignalSignatures;
+        $signals: Cartesian.SignalSignatures;
 
         // Fields
 
@@ -2850,14 +2851,15 @@ export namespace AgsGui {
          */
         get scalePrecision(): number;
         set scalePrecision(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Dial.SignalSignatures;
+        $signals: Dial.SignalSignatures;
 
         // Fields
 
@@ -3793,14 +3795,15 @@ export namespace AgsGui {
 
     class Expander extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Expander>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Expander.SignalSignatures;
+        $signals: Expander.SignalSignatures;
 
         // Fields
 
@@ -4376,14 +4379,15 @@ export namespace AgsGui {
 
     class ExpanderSet extends Gtk.Grid implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<ExpanderSet>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ExpanderSet.SignalSignatures;
+        $signals: ExpanderSet.SignalSignatures;
 
         // Fields
 
@@ -4995,14 +4999,15 @@ export namespace AgsGui {
         set file_widget(val: any);
         get fileWidget(): any;
         set fileWidget(val: any);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileDialog.SignalSignatures;
+        $signals: FileDialog.SignalSignatures;
 
         // Fields
 
@@ -8185,14 +8190,15 @@ export namespace AgsGui {
          */
         get recentlyUsedFilename(): string;
         set recentlyUsedFilename(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: FileWidget.SignalSignatures;
+        $signals: FileWidget.SignalSignatures;
 
         // Fields
 
@@ -8997,14 +9003,15 @@ export namespace AgsGui {
          */
         get action(): string;
         set action(val: string);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: IconLink.SignalSignatures;
+        $signals: IconLink.SignalSignatures;
 
         // Fields
 
@@ -9688,14 +9695,15 @@ export namespace AgsGui {
          */
         get segmentWidth(): number;
         set segmentWidth(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Indicator.SignalSignatures;
+        $signals: Indicator.SignalSignatures;
 
         // Fields
 
@@ -10600,14 +10608,15 @@ export namespace AgsGui {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Native, Gtk.Root, Gtk.ShortcutManager
     {
         static $gtype: GObject.GType<InputDialog>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: InputDialog.SignalSignatures;
+        $signals: InputDialog.SignalSignatures;
 
         // Fields
 
@@ -13740,14 +13749,15 @@ export namespace AgsGui {
          */
         get segmentWidth(): number;
         set segmentWidth(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Led.SignalSignatures;
+        $signals: Led.SignalSignatures;
 
         // Fields
 
@@ -14638,14 +14648,15 @@ export namespace AgsGui {
          */
         get segmentWidth(): number;
         set segmentWidth(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LedArray.SignalSignatures;
+        $signals: LedArray.SignalSignatures;
 
         // Fields
 
@@ -15292,14 +15303,15 @@ export namespace AgsGui {
          */
         get upper(): number;
         set upper(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Level.SignalSignatures;
+        $signals: Level.SignalSignatures;
 
         // Fields
 
@@ -16190,14 +16202,15 @@ export namespace AgsGui {
 
     class LevelBox extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<LevelBox>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LevelBox.SignalSignatures;
+        $signals: LevelBox.SignalSignatures;
 
         // Fields
 
@@ -16821,14 +16834,15 @@ export namespace AgsGui {
          */
         get tabWidth(): number;
         set tabWidth(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Notebook.SignalSignatures;
+        $signals: Notebook.SignalSignatures;
 
         // Fields
 
@@ -17480,14 +17494,15 @@ export namespace AgsGui {
          */
         get keyWidth(): number;
         set keyWidth(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Piano.SignalSignatures;
+        $signals: Piano.SignalSignatures;
 
         // Fields
 
@@ -18515,14 +18530,15 @@ export namespace AgsGui {
          */
         get step(): number;
         set step(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Ruler.SignalSignatures;
+        $signals: Ruler.SignalSignatures;
 
         // Fields
 
@@ -19477,14 +19493,15 @@ export namespace AgsGui {
          */
         get upper(): number;
         set upper(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Scale.SignalSignatures;
+        $signals: Scale.SignalSignatures;
 
         // Fields
 
@@ -20376,14 +20393,15 @@ export namespace AgsGui {
 
     class ScaleBox extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<ScaleBox>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScaleBox.SignalSignatures;
+        $signals: ScaleBox.SignalSignatures;
 
         // Fields
 
@@ -20981,14 +20999,15 @@ export namespace AgsGui {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable
     {
         static $gtype: GObject.GType<ScrolledLevelBox>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScrolledLevelBox.SignalSignatures;
+        $signals: ScrolledLevelBox.SignalSignatures;
 
         // Fields
 
@@ -21555,14 +21574,15 @@ export namespace AgsGui {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable
     {
         static $gtype: GObject.GType<ScrolledPiano>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScrolledPiano.SignalSignatures;
+        $signals: ScrolledPiano.SignalSignatures;
 
         // Fields
 
@@ -22129,14 +22149,15 @@ export namespace AgsGui {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable
     {
         static $gtype: GObject.GType<ScrolledScaleBox>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: ScrolledScaleBox.SignalSignatures;
+        $signals: ScrolledScaleBox.SignalSignatures;
 
         // Fields
 
@@ -22735,14 +22756,15 @@ export namespace AgsGui {
          */
         get upper(): number;
         set upper(val: number);
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Tempo.SignalSignatures;
+        $signals: Tempo.SignalSignatures;
 
         // Fields
 

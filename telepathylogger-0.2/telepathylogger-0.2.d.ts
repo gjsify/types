@@ -128,14 +128,15 @@ export namespace TelepathyLogger {
         get endActor(): Entity;
         get end_reason(): number;
         get endReason(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: CallEvent.SignalSignatures;
+        $signals: CallEvent.SignalSignatures;
 
         // Constructors
 
@@ -217,14 +218,15 @@ export namespace TelepathyLogger {
          * The entity's type (see #TplEntityType).
          */
         get type(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Entity.SignalSignatures;
+        $signals: Entity.SignalSignatures;
 
         // Constructors
 
@@ -305,14 +307,15 @@ export namespace TelepathyLogger {
         get receiver(): Entity;
         get sender(): Entity;
         get timestamp(): number;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: Event.SignalSignatures;
+        $signals: Event.SignalSignatures;
 
         // Constructors
 
@@ -375,14 +378,15 @@ export namespace TelepathyLogger {
      */
     class LogManager extends GObject.Object {
         static $gtype: GObject.GType<LogManager>;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LogManager.SignalSignatures;
+        $signals: LogManager.SignalSignatures;
 
         // Fields
 
@@ -682,14 +686,15 @@ export namespace TelepathyLogger {
         get filter(): any;
         get filter_data(): any;
         get filterData(): any;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: LogWalker.SignalSignatures;
+        $signals: LogWalker.SignalSignatures;
 
         // Constructors
 
@@ -819,14 +824,15 @@ export namespace TelepathyLogger {
         get messageType(): number;
         get supersedes_token(): string;
         get supersedesToken(): string;
+
         /**
          * Compile-time signal type information.
          *
-         * This static property is generated only for TypeScript type checking.
+         * This instance property is generated only for TypeScript type checking.
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        static $signals: TextEvent.SignalSignatures;
+        $signals: TextEvent.SignalSignatures;
 
         // Constructors
 
