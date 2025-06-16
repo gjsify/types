@@ -2942,11 +2942,11 @@ export namespace GObject {
     namespace Binding {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::flags': (pspec: GObject.ParamSpec) => void;
-            'notify::source': (pspec: GObject.ParamSpec) => void;
-            'notify::source-property': (pspec: GObject.ParamSpec) => void;
-            'notify::target': (pspec: GObject.ParamSpec) => void;
-            'notify::target-property': (pspec: GObject.ParamSpec) => void;
+            'notify::flags': (pspec: ParamSpec) => void;
+            'notify::source': (pspec: ParamSpec) => void;
+            'notify::source-property': (pspec: ParamSpec) => void;
+            'notify::target': (pspec: ParamSpec) => void;
+            'notify::target-property': (pspec: ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3204,7 +3204,7 @@ export namespace GObject {
     namespace BindingGroup {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -4465,8 +4465,8 @@ export namespace GObject {
         interface SignalSignatures extends Object.SignalSignatures {
             bind: (arg0: Object) => void;
             unbind: () => void;
-            'notify::target': (pspec: GObject.ParamSpec) => void;
-            'notify::target-type': (pspec: GObject.ParamSpec) => void;
+            'notify::target': (pspec: ParamSpec) => void;
+            'notify::target-type': (pspec: ParamSpec) => void;
         }
 
         // Constructor properties interface

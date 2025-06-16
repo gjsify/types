@@ -59,8 +59,12 @@ export namespace Jsonrpc {
             notification: (arg0: string, arg1: GLib.Variant | null) => void;
             'notify::io-stream': (pspec: GObject.ParamSpec) => void;
             'notify::use-gvariant': (pspec: GObject.ParamSpec) => void;
-            'handle-call::io-stream': (arg0: string, arg1: GLib.Variant, arg2: GLib.Variant | null) => boolean;
-            'handle-call::use-gvariant': (arg0: string, arg1: GLib.Variant, arg2: GLib.Variant | null) => boolean;
+            'handle-call::io-stream': (arg0: string, arg1: GLib.Variant, arg2: GLib.Variant | null) => boolean | void;
+            'handle-call::use-gvariant': (
+                arg0: string,
+                arg1: GLib.Variant,
+                arg2: GLib.Variant | null,
+            ) => boolean | void;
             'notification::io-stream': (arg0: string, arg1: GLib.Variant | null) => void;
             'notification::use-gvariant': (arg0: string, arg1: GLib.Variant | null) => void;
         }

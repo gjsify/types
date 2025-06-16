@@ -542,7 +542,7 @@ export namespace Dbusmenu {
             realized: () => void;
             'show-to-user': (arg0: number) => void;
             'notify::id': (pspec: GObject.ParamSpec) => void;
-            'event::id': (arg0: string, arg1: GLib.Variant, arg2: number) => boolean;
+            'event::id': (arg0: string, arg1: GLib.Variant, arg2: number) => boolean | void;
         }
 
         // Constructor properties interface

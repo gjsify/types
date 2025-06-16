@@ -1042,22 +1042,22 @@ export namespace GstRtspServer {
             'notify::suspend-mode': (pspec: GObject.ParamSpec) => void;
             'notify::time-provider': (pspec: GObject.ParamSpec) => void;
             'notify::transport-mode': (pspec: GObject.ParamSpec) => void;
-            'handle-message::bind-mcast-address': (arg0: Gst.Message) => boolean;
-            'handle-message::buffer-size': (arg0: Gst.Message) => boolean;
-            'handle-message::clock': (arg0: Gst.Message) => boolean;
-            'handle-message::dscp-qos': (arg0: Gst.Message) => boolean;
-            'handle-message::element': (arg0: Gst.Message) => boolean;
-            'handle-message::eos-shutdown': (arg0: Gst.Message) => boolean;
-            'handle-message::latency': (arg0: Gst.Message) => boolean;
-            'handle-message::max-mcast-ttl': (arg0: Gst.Message) => boolean;
-            'handle-message::profiles': (arg0: Gst.Message) => boolean;
-            'handle-message::protocols': (arg0: Gst.Message) => boolean;
-            'handle-message::reusable': (arg0: Gst.Message) => boolean;
-            'handle-message::shared': (arg0: Gst.Message) => boolean;
-            'handle-message::stop-on-disconnect': (arg0: Gst.Message) => boolean;
-            'handle-message::suspend-mode': (arg0: Gst.Message) => boolean;
-            'handle-message::time-provider': (arg0: Gst.Message) => boolean;
-            'handle-message::transport-mode': (arg0: Gst.Message) => boolean;
+            'handle-message::bind-mcast-address': (arg0: Gst.Message) => boolean | void;
+            'handle-message::buffer-size': (arg0: Gst.Message) => boolean | void;
+            'handle-message::clock': (arg0: Gst.Message) => boolean | void;
+            'handle-message::dscp-qos': (arg0: Gst.Message) => boolean | void;
+            'handle-message::element': (arg0: Gst.Message) => boolean | void;
+            'handle-message::eos-shutdown': (arg0: Gst.Message) => boolean | void;
+            'handle-message::latency': (arg0: Gst.Message) => boolean | void;
+            'handle-message::max-mcast-ttl': (arg0: Gst.Message) => boolean | void;
+            'handle-message::profiles': (arg0: Gst.Message) => boolean | void;
+            'handle-message::protocols': (arg0: Gst.Message) => boolean | void;
+            'handle-message::reusable': (arg0: Gst.Message) => boolean | void;
+            'handle-message::shared': (arg0: Gst.Message) => boolean | void;
+            'handle-message::stop-on-disconnect': (arg0: Gst.Message) => boolean | void;
+            'handle-message::suspend-mode': (arg0: Gst.Message) => boolean | void;
+            'handle-message::time-provider': (arg0: Gst.Message) => boolean | void;
+            'handle-message::transport-mode': (arg0: Gst.Message) => boolean | void;
         }
 
         // Constructor properties interface
