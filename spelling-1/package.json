@@ -1,6 +1,6 @@
 {
     "name": "@girs/spelling-1",
-    "version": "1.0.0-4.0.0-beta.23",
+    "version": "1.0.0-4.0.0-beta.24",
     "description": "GJS TypeScript type definitions for Spelling-1, generated from library version 1.0.0",
     "type": "module",
     "module": "spelling-1.js",

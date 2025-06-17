@@ -1,6 +1,6 @@
 {
     "name": "@girs/udisks-2.0",
-    "version": "2.10.1-4.0.0-beta.23",
+    "version": "2.10.1-4.0.0-beta.24",
     "description": "GJS TypeScript type definitions for UDisks-2.0, generated from library version 2.10.1",
     "type": "module",
     "module": "udisks-2.0.js",

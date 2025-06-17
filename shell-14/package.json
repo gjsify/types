@@ -1,6 +1,6 @@
 {
     "name": "@girs/shell-14",
-    "version": "14.0.0-4.0.0-beta.23",
+    "version": "14.0.0-4.0.0-beta.24",
     "description": "GJS TypeScript type definitions for Shell-14, generated from library version 14.0.0",
     "type": "module",
     "module": "shell-14.js",
