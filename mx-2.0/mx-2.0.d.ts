@@ -7679,7 +7679,7 @@ export namespace Mx {
          * Gets the character to display instead of the text.
          * @returns a character, or 0 if input should not be hidden.
          */
-        get_password_char(): number;
+        get_password_char(): string;
         /**
          * Gets the text that is displayed when the entry is empty and unfocused
          * @returns the current value of the placeholder property. This string is owned by the #MxEntry and should not be freed or modified.
@@ -7703,7 +7703,7 @@ export namespace Mx {
          * the actual text.
          * @param password_char character to display instead of text
          */
-        set_password_char(password_char: number): void;
+        set_password_char(password_char: string): void;
         /**
          * Sets the text to display when the entry is empty and unfocused. When the
          * entry is displaying the hint, it has a pseudo class of "indeterminate".

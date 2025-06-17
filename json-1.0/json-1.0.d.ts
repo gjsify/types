@@ -790,7 +790,7 @@ export namespace Json {
          * Retrieves the value set using [method`Json`.Generator.set_indent_char].
          * @returns the character to be used when indenting
          */
-        get_indent_char(): number;
+        get_indent_char(): string;
         /**
          * Retrieves the value set using [method`Json`.Generator.set_pretty].
          * @returns `TRUE` if the generated JSON should be pretty-printed, and   `FALSE` otherwise
@@ -811,7 +811,7 @@ export namespace Json {
          * Sets the character to be used when indenting.
          * @param indent_char a Unicode character to be used when indenting
          */
-        set_indent_char(indent_char: number): void;
+        set_indent_char(indent_char: string): void;
         /**
          * Sets whether the generated JSON should be pretty printed.
          *

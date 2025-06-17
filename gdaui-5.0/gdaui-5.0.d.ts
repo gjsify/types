@@ -131,7 +131,7 @@ export namespace Gdaui {
         (model: Gda.DataModel, row: number, data?: any | null): number;
     }
     interface FormattedEntryInsertFunc {
-        (entry: FormattedEntry, insert_char: number, virt_pos: number, data?: any | null): void;
+        (entry: FormattedEntry, insert_char: string, virt_pos: number, data?: any | null): void;
     }
     interface RawGridFormatFunc {
         (

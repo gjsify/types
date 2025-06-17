@@ -75,29 +75,29 @@ export namespace Gucharmap {
     const VERSION_MAJOR: number;
     const VERSION_MICRO: number;
     const VERSION_MINOR: number;
-    function get_nameslist_exes(uc: number): number;
-    function get_unicode_category_name(uc: number): string;
-    function get_unicode_data_name(uc: number): string;
+    function get_nameslist_exes(uc: string): string;
+    function get_unicode_category_name(uc: string): string;
+    function get_unicode_data_name(uc: string): string;
     function get_unicode_data_name_count(): number;
-    function get_unicode_kCantonese(uc: number): string;
-    function get_unicode_kDefinition(uc: number): string;
-    function get_unicode_kHangul(uc: number): string;
-    function get_unicode_kJapaneseKun(uc: number): string;
-    function get_unicode_kJapaneseOn(uc: number): string;
-    function get_unicode_kKorean(uc: number): string;
-    function get_unicode_kMandarin(uc: number): string;
-    function get_unicode_kTang(uc: number): string;
-    function get_unicode_kVietnamese(uc: number): string;
-    function get_unicode_name(uc: number): string;
-    function get_unicode_version(uc: number): UnicodeVersion;
+    function get_unicode_kCantonese(uc: string): string;
+    function get_unicode_kDefinition(uc: string): string;
+    function get_unicode_kHangul(uc: string): string;
+    function get_unicode_kJapaneseKun(uc: string): string;
+    function get_unicode_kJapaneseOn(uc: string): string;
+    function get_unicode_kKorean(uc: string): string;
+    function get_unicode_kMandarin(uc: string): string;
+    function get_unicode_kTang(uc: string): string;
+    function get_unicode_kVietnamese(uc: string): string;
+    function get_unicode_name(uc: string): string;
+    function get_unicode_version(uc: string): UnicodeVersion;
     function get_unihan_count(): number;
-    function unichar_isdefined(uc: number): boolean;
-    function unichar_isgraph(uc: number): boolean;
-    function unichar_to_printable_utf8(uc: number, outbuf: string): number;
-    function unichar_type(uc: number): GLib.UnicodeType;
-    function unichar_validate(uc: number): boolean;
-    function unicode_get_locale_character(): number;
-    function unicode_get_script_for_char(wc: number): string;
+    function unichar_isdefined(uc: string): boolean;
+    function unichar_isgraph(uc: string): boolean;
+    function unichar_to_printable_utf8(uc: string, outbuf: string): number;
+    function unichar_type(uc: string): GLib.UnicodeType;
+    function unichar_validate(uc: string): boolean;
+    function unicode_get_locale_character(): string;
+    function unicode_get_script_for_char(wc: string): string;
     function unicode_version_to_string(version: UnicodeVersion | null): string;
     namespace BlockChaptersModel {
         // Signal signatures
@@ -641,7 +641,7 @@ export namespace Gucharmap {
 
         _init(...args: any[]): void;
 
-        static ['new'](start: number, end: number): BlockCodepointList;
+        static ['new'](start: string, end: string): BlockCodepointList;
 
         // Signals
 
@@ -718,11 +718,11 @@ export namespace Gucharmap {
 
         // Virtual methods
 
-        vfunc_character_to_iter(wc: number, iter: Gtk.TreeIter): boolean;
+        vfunc_character_to_iter(wc: string, iter: Gtk.TreeIter): boolean;
 
         // Methods
 
-        character_to_iter(wc: number, iter: Gtk.TreeIter): boolean;
+        character_to_iter(wc: string, iter: Gtk.TreeIter): boolean;
         get_title(): string;
         id_to_iter(id: string, _iter: Gtk.TreeIter): boolean;
 
@@ -2083,7 +2083,7 @@ export namespace Gucharmap {
         get_selected(): string;
         next(): void;
         previous(): void;
-        select_character(wc: number): boolean;
+        select_character(wc: string): boolean;
         select_locale(): boolean;
         set_model(model: ChaptersModel): void;
         // Conflicted with Gtk.TreeView.set_model
@@ -2792,13 +2792,13 @@ export namespace Gucharmap {
 
         // Virtual methods
 
-        vfunc_link_clicked(old_character: number, new_character: number): void;
+        vfunc_link_clicked(old_character: string, new_character: string): void;
         vfunc_status_message(message: string): void;
 
         // Methods
 
         get_active_chapter(): string;
-        get_active_character(): number;
+        get_active_character(): string;
         get_active_page(): number;
         get_chapters_visible(): boolean;
         get_font_desc(): Pango.FontDescription;
@@ -2808,7 +2808,7 @@ export namespace Gucharmap {
         next_chapter(): void;
         previous_chapter(): void;
         set_active_chapter(chapter: string): void;
-        set_active_character(uc: number): void;
+        set_active_character(uc: string): void;
         set_active_page(page: number): void;
         set_chapters_model(model: ChaptersModel): void;
         set_chapters_visible(visible: boolean): void;
@@ -3440,12 +3440,12 @@ export namespace Gucharmap {
 
         // Methods
 
-        get_active_character(): number;
+        get_active_character(): string;
         get_font_desc(): Pango.FontDescription;
         get_font_fallback(): boolean;
         get_snap_pow2(): boolean;
         get_zoom_enabled(): boolean;
-        set_active_character(wc: number): void;
+        set_active_character(wc: string): void;
         set_codepoint_list(codepoint_list: CodepointList): void;
         set_font_desc(font_desc: Pango.FontDescription): void;
         set_font_fallback(enable_font_fallback: boolean): void;
@@ -4040,14 +4040,14 @@ export namespace Gucharmap {
 
         // Virtual methods
 
-        vfunc_get_char(index: number): number;
-        vfunc_get_index(wc: number): number;
+        vfunc_get_char(index: number): string;
+        vfunc_get_index(wc: string): number;
         vfunc_get_last_index(): number;
 
         // Methods
 
-        get_char(index: number): number;
-        get_index(wc: number): number;
+        get_char(index: number): string;
+        get_index(wc: string): number;
         get_last_index(): number;
     }
 

@@ -2266,11 +2266,11 @@ export namespace Skk {
 
         // Methods
 
-        is_valid(uc: number): boolean;
+        is_valid(uc: string): boolean;
         output_nn_if_any(): boolean;
         append_text(text: string): void;
-        append(uc: number): boolean;
-        can_consume(uc: number, preedit_only: boolean, no_carryover: boolean): boolean;
+        append(uc: string): boolean;
+        can_consume(uc: string, preedit_only: boolean, no_carryover: boolean): boolean;
         reset(): void;
         ['delete'](): boolean;
         get_kana_mode(): KanaMode;
@@ -2621,7 +2621,7 @@ export namespace Skk {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             name: string;
-            code: number;
+            code: string;
             modifiers: ModifierType;
         }
     }
@@ -2633,8 +2633,8 @@ export namespace Skk {
 
         get name(): string;
         set name(val: string);
-        get code(): number;
-        set code(val: number);
+        get code(): string;
+        set code(val: string);
         get modifiers(): ModifierType;
         set modifiers(val: ModifierType);
 
@@ -2653,7 +2653,7 @@ export namespace Skk {
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string | null, code: number, modifiers: ModifierType): KeyEvent;
+        static ['new'](name: string | null, code: string, modifiers: ModifierType): KeyEvent;
 
         static from_string(key: string): KeyEvent;
 
@@ -2683,7 +2683,7 @@ export namespace Skk {
         to_string(): string;
         base_equal(key: KeyEvent): boolean;
         get_name(): string | null;
-        get_code(): number;
+        get_code(): string;
         get_modifiers(): ModifierType;
         set_modifiers(value: ModifierType | null): void;
     }

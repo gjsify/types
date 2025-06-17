@@ -216,7 +216,7 @@ export namespace PangoXft {
          * @param wc Unicode codepoint to look up
          * @returns the glyph index, or 0, if the Unicode  character does not exist in the font.
          */
-        get_glyph(wc: number): number;
+        get_glyph(wc: string): number;
         /**
          * Returns the index of a glyph suitable for drawing `wc` as an
          * unknown character.
@@ -225,7 +225,7 @@ export namespace PangoXft {
          * @param wc the Unicode character for which a glyph is needed.
          * @returns a glyph index into @font.
          */
-        get_unknown_glyph(wc: number): Pango.Glyph;
+        get_unknown_glyph(wc: string): Pango.Glyph;
         /**
          * Determines whether `font` has a glyph for the codepoint `wc`.
          *
@@ -233,7 +233,7 @@ export namespace PangoXft {
          * @param wc Unicode codepoint to look up
          * @returns %TRUE if @font has the requested codepoint.
          */
-        has_char(wc: number): boolean;
+        has_char(wc: string): boolean;
     }
 
     namespace FontMap {

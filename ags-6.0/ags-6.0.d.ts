@@ -17585,7 +17585,7 @@ export namespace Ags {
          * @param execute_flags the execute flags
          * @returns %TRUE on success, otherwise %FALSE
          */
-        execute_unichar(str: number, match_count: number, match: RegexMatch, execute_flags: number): boolean;
+        execute_unichar(str: string, match_count: number, match: RegexMatch, execute_flags: number): boolean;
         /**
          * Execute `regex_util` and fill `match`.
          * @param str the input string

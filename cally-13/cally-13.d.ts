@@ -3837,7 +3837,7 @@ export namespace Cally {
          * @param offset a character offset within @text
          * @returns the character at @offset or 0 in the case of failure.
          */
-        get_character_at_offset(offset: number): number;
+        get_character_at_offset(offset: number): string;
         /**
          * Gets the character count.
          * @returns the number of characters or -1 in case of failure.
@@ -4083,7 +4083,7 @@ export namespace Cally {
          * Gets the specified text.
          * @param offset a character offset within @text
          */
-        vfunc_get_character_at_offset(offset: number): number;
+        vfunc_get_character_at_offset(offset: number): string;
         /**
          * Gets the character count.
          */

@@ -11280,7 +11280,7 @@ export namespace GLib {
      * @param str a UCS-4 encoded string
      * @returns a pointer to a newly allocated UTF-16 string.   This value must be freed with [func@GLib.free].
      */
-    function ucs4_to_utf16(str: number[]): [number, number, number];
+    function ucs4_to_utf16(str: string): [number, number, number];
     /**
      * Convert a string from a 32-bit fixed width representation as UCS-4.
      * to UTF-8.
@@ -11289,7 +11289,7 @@ export namespace GLib {
      * @param str a UCS-4 encoded string
      * @returns a pointer to a newly allocated UTF-8 string.   This value must be freed with [func@GLib.free]. If an error occurs,   @items_read will be set to the position of the first invalid input   character.
      */
-    function ucs4_to_utf8(str: number[]): [string, number, number];
+    function ucs4_to_utf8(str: string): [string, number, number];
     /**
      * Determines the break type of `c`. `c` should be a Unicode character
      * (to derive a character from UTF-8 encoded text, use
@@ -11300,13 +11300,13 @@ export namespace GLib {
      * @param c a Unicode character
      * @returns the break type of @c
      */
-    function unichar_break_type(c: number): UnicodeBreakType;
+    function unichar_break_type(c: string): UnicodeBreakType;
     /**
      * Determines the canonical combining class of a Unicode character.
      * @param uc a Unicode character
      * @returns the combining class of the character
      */
-    function unichar_combining_class(uc: number): number;
+    function unichar_combining_class(uc: string): number;
     /**
      * Performs a single composition step of the
      * Unicode canonical composition algorithm.
@@ -11328,7 +11328,7 @@ export namespace GLib {
      * @param b a Unicode character
      * @returns %TRUE if the characters could be composed
      */
-    function unichar_compose(a: number, b: number): [boolean, number];
+    function unichar_compose(a: string, b: string): [boolean, string];
     /**
      * Performs a single decomposition step of the
      * Unicode canonical decomposition algorithm.
@@ -11356,14 +11356,14 @@ export namespace GLib {
      * @param ch a Unicode character
      * @returns %TRUE if the character could be decomposed
      */
-    function unichar_decompose(ch: number): [boolean, number, number];
+    function unichar_decompose(ch: string): [boolean, string, string];
     /**
      * Determines the numeric value of a character as a decimal
      * digit.
      * @param c a Unicode character
      * @returns If @c is a decimal digit (according to g_unichar_isdigit()), its numeric value. Otherwise, -1.
      */
-    function unichar_digit_value(c: number): number;
+    function unichar_digit_value(c: string): number;
     /**
      * Computes the canonical or compatibility decomposition of a
      * Unicode character.  For compatibility decomposition,
@@ -11389,7 +11389,7 @@ export namespace GLib {
      * @param result_len length of @result
      * @returns the length of the full decomposition.
      */
-    function unichar_fully_decompose(ch: number, compat: boolean, result_len: number): [number, number];
+    function unichar_fully_decompose(ch: string, compat: boolean, result_len: number): [number, string];
     /**
      * In Unicode, some characters are "mirrored". This means that their
      * images are mirrored horizontally in text that is laid out from right
@@ -11403,7 +11403,7 @@ export namespace GLib {
      * @param ch a Unicode character
      * @returns %TRUE if @ch has a mirrored character, %FALSE otherwise
      */
-    function unichar_get_mirror_char(ch: number): [boolean, number];
+    function unichar_get_mirror_char(ch: string): [boolean, string];
     /**
      * Looks up the #GUnicodeScript for a particular character (as defined
      * by Unicode Standard Annex \#24). No check is made for `ch` being a
@@ -11415,7 +11415,7 @@ export namespace GLib {
      * @param ch a Unicode character
      * @returns the #GUnicodeScript for the character.
      */
-    function unichar_get_script(ch: number): UnicodeScript;
+    function unichar_get_script(ch: string): UnicodeScript;
     /**
      * Determines whether a character is alphanumeric.
      * Given some UTF-8 text, obtain a character value
@@ -11423,7 +11423,7 @@ export namespace GLib {
      * @param c a Unicode character
      * @returns %TRUE if @c is an alphanumeric character
      */
-    function unichar_isalnum(c: number): boolean;
+    function unichar_isalnum(c: string): boolean;
     /**
      * Determines whether a character is alphabetic (i.e. a letter).
      * Given some UTF-8 text, obtain a character value with
@@ -11431,7 +11431,7 @@ export namespace GLib {
      * @param c a Unicode character
      * @returns %TRUE if @c is an alphabetic character
      */
-    function unichar_isalpha(c: number): boolean;
+    function unichar_isalpha(c: string): boolean;
     /**
      * Determines whether a character is a control character.
      * Given some UTF-8 text, obtain a character value with
@@ -11439,14 +11439,14 @@ export namespace GLib {
      * @param c a Unicode character
      * @returns %TRUE if @c is a control character
      */
-    function unichar_iscntrl(c: number): boolean;
+    function unichar_iscntrl(c: string): boolean;
     /**
      * Determines if a given character is assigned in the Unicode
      * standard.
      * @param c a Unicode character
      * @returns %TRUE if the character has an assigned value
      */
-    function unichar_isdefined(c: number): boolean;
+    function unichar_isdefined(c: string): boolean;
     /**
      * Determines whether a character is numeric (i.e. a digit).  This
      * covers ASCII 0-9 and also digits in other languages/scripts.  Given
@@ -11454,7 +11454,7 @@ export namespace GLib {
      * @param c a Unicode character
      * @returns %TRUE if @c is a digit
      */
-    function unichar_isdigit(c: number): boolean;
+    function unichar_isdigit(c: string): boolean;
     /**
      * Determines whether a character is printable and not a space
      * (returns %FALSE for control characters, format characters, and
@@ -11464,7 +11464,7 @@ export namespace GLib {
      * @param c a Unicode character
      * @returns %TRUE if @c is printable unless it's a space
      */
-    function unichar_isgraph(c: number): boolean;
+    function unichar_isgraph(c: string): boolean;
     /**
      * Determines whether a character is a lowercase letter.
      * Given some UTF-8 text, obtain a character value with
@@ -11472,7 +11472,7 @@ export namespace GLib {
      * @param c a Unicode character
      * @returns %TRUE if @c is a lowercase letter
      */
-    function unichar_islower(c: number): boolean;
+    function unichar_islower(c: string): boolean;
     /**
      * Determines whether a character is a mark (non-spacing mark,
      * combining mark, or enclosing mark in Unicode speak).
@@ -11486,7 +11486,7 @@ export namespace GLib {
      * @param c a Unicode character
      * @returns %TRUE if @c is a mark character
      */
-    function unichar_ismark(c: number): boolean;
+    function unichar_ismark(c: string): boolean;
     /**
      * Determines whether a character is printable.
      * Unlike g_unichar_isgraph(), returns %TRUE for spaces.
@@ -11495,7 +11495,7 @@ export namespace GLib {
      * @param c a Unicode character
      * @returns %TRUE if @c is printable
      */
-    function unichar_isprint(c: number): boolean;
+    function unichar_isprint(c: string): boolean;
     /**
      * Determines whether a character is punctuation or a symbol.
      * Given some UTF-8 text, obtain a character value with
@@ -11503,7 +11503,7 @@ export namespace GLib {
      * @param c a Unicode character
      * @returns %TRUE if @c is a punctuation or symbol character
      */
-    function unichar_ispunct(c: number): boolean;
+    function unichar_ispunct(c: string): boolean;
     /**
      * Determines whether a character is a space, tab, or line separator
      * (newline, carriage return, etc.).  Given some UTF-8 text, obtain a
@@ -11515,7 +11515,7 @@ export namespace GLib {
      * @param c a Unicode character
      * @returns %TRUE if @c is a space character
      */
-    function unichar_isspace(c: number): boolean;
+    function unichar_isspace(c: string): boolean;
     /**
      * Determines if a character is titlecase. Some characters in
      * Unicode which are composites, such as the DZ digraph
@@ -11526,20 +11526,20 @@ export namespace GLib {
      * @param c a Unicode character
      * @returns %TRUE if the character is titlecase
      */
-    function unichar_istitle(c: number): boolean;
+    function unichar_istitle(c: string): boolean;
     /**
      * Determines if a character is uppercase.
      * @param c a Unicode character
      * @returns %TRUE if @c is an uppercase character
      */
-    function unichar_isupper(c: number): boolean;
+    function unichar_isupper(c: string): boolean;
     /**
      * Determines if a character is typically rendered in a double-width
      * cell.
      * @param c a Unicode character
      * @returns %TRUE if the character is wide
      */
-    function unichar_iswide(c: number): boolean;
+    function unichar_iswide(c: string): boolean;
     /**
      * Determines if a character is typically rendered in a double-width
      * cell under legacy East Asian locales.  If a character is wide according to
@@ -11554,13 +11554,13 @@ export namespace GLib {
      * @param c a Unicode character
      * @returns %TRUE if the character is wide in legacy East Asian locales
      */
-    function unichar_iswide_cjk(c: number): boolean;
+    function unichar_iswide_cjk(c: string): boolean;
     /**
      * Determines if a character is a hexadecimal digit.
      * @param c a Unicode character.
      * @returns %TRUE if the character is a hexadecimal digit
      */
-    function unichar_isxdigit(c: number): boolean;
+    function unichar_isxdigit(c: string): boolean;
     /**
      * Determines if a given character typically takes zero width when rendered.
      * The return value is %TRUE for all non-spacing and enclosing marks
@@ -11574,37 +11574,37 @@ export namespace GLib {
      * @param c a Unicode character
      * @returns %TRUE if the character has zero width
      */
-    function unichar_iszerowidth(c: number): boolean;
+    function unichar_iszerowidth(c: string): boolean;
     /**
      * Converts a single character to UTF-8.
      * @param c a Unicode character code
      * @returns number of bytes written
      */
-    function unichar_to_utf8(c: number): [number, string];
+    function unichar_to_utf8(c: string): [number, string];
     /**
      * Converts a character to lower case.
      * @param c a Unicode character.
      * @returns the result of converting @c to lower case.               If @c is not an upperlower or titlecase character,               or has no lowercase equivalent @c is returned unchanged.
      */
-    function unichar_tolower(c: number): number;
+    function unichar_tolower(c: string): string;
     /**
      * Converts a character to the titlecase.
      * @param c a Unicode character
      * @returns the result of converting @c to titlecase.               If @c is not an uppercase or lowercase character,               @c is returned unchanged.
      */
-    function unichar_totitle(c: number): number;
+    function unichar_totitle(c: string): string;
     /**
      * Converts a character to uppercase.
      * @param c a Unicode character
      * @returns the result of converting @c to uppercase.               If @c is not a lowercase or titlecase character,               or has no upper case equivalent @c is returned unchanged.
      */
-    function unichar_toupper(c: number): number;
+    function unichar_toupper(c: string): string;
     /**
      * Classifies a Unicode character by type.
      * @param c a Unicode character
      * @returns the type of the character.
      */
-    function unichar_type(c: number): UnicodeType;
+    function unichar_type(c: string): UnicodeType;
     /**
      * Checks whether `ch` is a valid Unicode character.
      *
@@ -11613,21 +11613,21 @@ export namespace GLib {
      * @param ch a Unicode character
      * @returns `TRUE` if @ch is a valid Unicode character
      */
-    function unichar_validate(ch: number): boolean;
+    function unichar_validate(ch: string): boolean;
     /**
      * Determines the numeric value of a character as a hexadecimal
      * digit.
      * @param c a Unicode character
      * @returns If @c is a hex digit (according to g_unichar_isxdigit()), its numeric value. Otherwise, -1.
      */
-    function unichar_xdigit_value(c: number): number;
+    function unichar_xdigit_value(c: string): number;
     /**
      * Computes the canonical decomposition of a Unicode character.
      * @param ch a Unicode character.
      * @param result_len location to store the length of the return value.
      * @returns a newly allocated string of Unicode characters.   @result_len is set to the resulting length of the string.
      */
-    function unicode_canonical_decomposition(ch: number, result_len: number): number;
+    function unicode_canonical_decomposition(ch: string, result_len: number): string;
     /**
      * Computes the canonical ordering of a string in-place.
      * This rearranges decomposed characters in the string
@@ -11635,7 +11635,7 @@ export namespace GLib {
      * manual for more information.
      * @param string a UCS-4 encoded string.
      */
-    function unicode_canonical_ordering(string: number[]): void;
+    function unicode_canonical_ordering(string: string): void;
     /**
      * Looks up the Unicode script for `iso1`5924.  ISO 15924 assigns four-letter
      * codes to scripts.  For example, the code for Arabic is 'Arab'.
@@ -12217,7 +12217,7 @@ export namespace GLib {
      * @param str a UTF-16 encoded string
      * @returns a pointer to a newly allocated UCS-4 string.   This value must be freed with [func@GLib.free].
      */
-    function utf16_to_ucs4(str: number[]): [number, number, number];
+    function utf16_to_ucs4(str: number[]): [string, number, number];
     /**
      * Convert a string from UTF-16 to UTF-8.
      *
@@ -12349,7 +12349,7 @@ export namespace GLib {
      * @param p a pointer to Unicode character encoded as UTF-8
      * @returns the resulting character
      */
-    function utf8_get_char(p: string): number;
+    function utf8_get_char(p: string): string;
     /**
      * Convert a sequence of bytes encoded as UTF-8 to a Unicode character.
      *
@@ -12364,7 +12364,7 @@ export namespace GLib {
      * @param max_len the maximum number of bytes to read, or `-1` if @p is nul-terminated
      * @returns the resulting character. If @p points to a partial   sequence at the end of a string that could begin a valid   character (or if @max_len is zero), returns `(gunichar)-2`;   otherwise, if @p does not point to a valid UTF-8 encoded   Unicode character, returns `(gunichar)-1`.
      */
-    function utf8_get_char_validated(p: string, max_len: number): number;
+    function utf8_get_char_validated(p: string, max_len: number): string;
     /**
      * If the provided string is valid UTF-8, return a copy of it. If not,
      * return a copy in which bytes that could not be interpreted as valid Unicode
@@ -12464,7 +12464,7 @@ export namespace GLib {
      * @param c a Unicode character
      * @returns `NULL` if the string does not contain   the character, otherwise, a pointer to the start of the leftmost occurrence   of the character in the string.
      */
-    function utf8_strchr(p: string, len: number, c: number): string | null;
+    function utf8_strchr(p: string, len: number, c: string): string | null;
     /**
      * Converts all Unicode characters in the string that have a case
      * to lowercase. The exact manner that this is done depends
@@ -12510,7 +12510,7 @@ export namespace GLib {
      * @param c a Unicode character
      * @returns `NULL` if the string does not contain   the character, otherwise, a pointer to the start of the rightmost   occurrence of the character in the string.
      */
-    function utf8_strrchr(p: string, len: number, c: number): string | null;
+    function utf8_strrchr(p: string, len: number, c: string): string | null;
     /**
      * Reverses a UTF-8 string.
      *
@@ -12563,7 +12563,7 @@ export namespace GLib {
      * @param len the maximum length of @str to use, in bytes. If @len is negative,   then the string is nul-terminated.
      * @returns a pointer to a newly allocated UCS-4 string.   This value must be freed with [func@GLib.free].
      */
-    function utf8_to_ucs4(str: string, len: number): [number, number, number];
+    function utf8_to_ucs4(str: string, len: number): [string, number, number];
     /**
      * Convert a string from UTF-8 to a 32-bit fixed width
      * representation as UCS-4, assuming valid UTF-8 input.
@@ -12575,7 +12575,7 @@ export namespace GLib {
      * @param len the maximum length of @str to use, in bytes. If @len is negative,   then the string is nul-terminated.
      * @returns a pointer to a newly allocated UCS-4 string.   This value must be freed with [func@GLib.free].
      */
-    function utf8_to_ucs4_fast(str: string, len: number): [number, number];
+    function utf8_to_ucs4_fast(str: string, len: number): [string, number];
     /**
      * Convert a string from UTF-8 to UTF-16.
      *
@@ -17765,7 +17765,7 @@ export namespace GLib {
          * This function cannot be called on a channel with %NULL encoding.
          * @returns a #GIOStatus
          */
-        read_unichar(): [IOStatus, number];
+        read_unichar(): [IOStatus, string];
         /**
          * Increments the reference count of a #GIOChannel.
          * @returns the @channel that was passed in (since 2.6)
@@ -17922,7 +17922,7 @@ export namespace GLib {
          * @param thechar a character
          * @returns a #GIOStatus
          */
-        write_unichar(thechar: number): IOStatus;
+        write_unichar(thechar: string): IOStatus;
     }
 
     /**
@@ -23131,7 +23131,7 @@ export namespace GLib {
          * @param wc a Unicode character
          * @returns @string
          */
-        append_unichar(wc: number): String;
+        append_unichar(wc: string): String;
         /**
          * Appends `unescaped` to `string,` escaping any characters that
          * are reserved in URIs using URI-style escape sequences.
@@ -23256,7 +23256,7 @@ export namespace GLib {
          * @param wc a Unicode character
          * @returns @string
          */
-        insert_unichar(pos: number, wc: number): String;
+        insert_unichar(pos: number, wc: string): String;
         /**
          * Overwrites part of a string, lengthening it if necessary.
          * @param pos the position at which to start overwriting
@@ -23308,7 +23308,7 @@ export namespace GLib {
          * @param wc a Unicode character
          * @returns @string
          */
-        prepend_unichar(wc: number): String;
+        prepend_unichar(wc: string): String;
         /**
          * Replaces the string `find` with the string `replace` in a #GString up to
          * `limit` times. If the number of instances of `find` in the #GString is

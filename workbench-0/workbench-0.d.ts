@@ -180,7 +180,7 @@ export namespace Workbench {
          * @param iter a #GtkTextIter
          * @param ch a #gunichar of the character inserted
          */
-        is_trigger(iter: Gtk.TextIter, ch: number): boolean;
+        is_trigger(iter: Gtk.TextIter, ch: string): boolean;
         /**
          * This function is used to determine if a key typed by the user should
          * activate `proposal` (resulting in committing the text to the editor).
@@ -341,7 +341,7 @@ export namespace Workbench {
          * @param iter a #GtkTextIter
          * @param ch a #gunichar of the character inserted
          */
-        vfunc_is_trigger(iter: Gtk.TextIter, ch: number): boolean;
+        vfunc_is_trigger(iter: Gtk.TextIter, ch: string): boolean;
         /**
          * This function is used to determine if a key typed by the user should
          * activate `proposal` (resulting in committing the text to the editor).

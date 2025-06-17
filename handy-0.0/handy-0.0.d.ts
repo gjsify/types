@@ -15908,7 +15908,7 @@ export namespace Handy {
          * Get the symbol the dialer should display
          * @returns a pointer to the symbol
          */
-        get_current_symbol(): number;
+        get_current_symbol(): string;
         /**
          * Get the cycle timeout in milliseconds.
          */

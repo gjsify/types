@@ -58,15 +58,15 @@ export namespace Gc {
         FAILED,
         INVALID_STATE,
     }
-    function character_is_composite(chars: number[]): boolean;
-    function character_is_invisible(chars: number[]): boolean;
-    function character_name(chars: number[]): string | null;
+    function character_is_composite(chars: string): boolean;
+    function character_is_invisible(chars: string): boolean;
+    function character_name(chars: string): string | null;
     function get_current_language(): string;
     function get_scripts_for_language(language: string): GLib.UnicodeScript[];
     function search_result_get(result: SearchResult, index: number): string;
     function search_result_get_type(): GObject.GType;
     interface SearchFunc {
-        (uc: number): boolean;
+        (uc: string): boolean;
     }
 
     export namespace SearchFlag {

@@ -2063,7 +2063,7 @@ export namespace Pango {
      * @param ch a Unicode character
      * @returns the bidirectional character type, as used in the Unicode bidirectional algorithm.
      */
-    function bidi_type_for_unichar(ch: number): BidiType;
+    function bidi_type_for_unichar(ch: string): BidiType;
     /**
      * Determines possible line, word, and character breaks
      * for a string of Unicode text with a single analysis.
@@ -2215,7 +2215,7 @@ export namespace Pango {
      * @param ch a Unicode character
      * @returns %TRUE if @ch has a mirrored character and @mirrored_ch is filled in, %FALSE otherwise
      */
-    function get_mirror_char(ch: number): [boolean, number];
+    function get_mirror_char(ch: string): [boolean, string];
     /**
      * Finds the gravity that best matches the rotation component
      * in a `PangoMatrix`.
@@ -2289,7 +2289,7 @@ export namespace Pango {
      * @param ch a Unicode character
      * @returns %TRUE if @ch is a zero-width character, %FALSE otherwise
      */
-    function is_zero_width(ch: number): boolean;
+    function is_zero_width(ch: string): boolean;
     /**
      * Breaks a piece of text into segments with consistent directional
      * level and font.
@@ -2439,7 +2439,7 @@ export namespace Pango {
      * @param context A valid parse context that was returned from [func@markup_parser_new]
      * @returns %FALSE if @error is set, otherwise %TRUE
      */
-    function markup_parser_finish(context: GLib.MarkupParseContext): [boolean, AttrList | null, string, number];
+    function markup_parser_finish(context: GLib.MarkupParseContext): [boolean, AttrList | null, string, string];
     /**
      * Incrementally parses marked-up text to create a plain-text string
      * and an attribute list.
@@ -2466,7 +2466,7 @@ export namespace Pango {
      * @param accel_marker character that precedes an accelerator, or 0 for none
      * @returns a `GMarkupParseContext` that should be destroyed with [method@GLib.MarkupParseContext.free].
      */
-    function markup_parser_new(accel_marker: number): GLib.MarkupParseContext;
+    function markup_parser_new(accel_marker: string): GLib.MarkupParseContext;
     /**
      * Parses an enum type and stores the result in `value`.
      *
@@ -2510,8 +2510,8 @@ export namespace Pango {
     function parse_markup(
         markup_text: string,
         length: number,
-        accel_marker: number,
-    ): [boolean, AttrList | null, string, number];
+        accel_marker: string,
+    ): [boolean, AttrList | null, string, string];
     /**
      * Parses a font stretch.
      *
@@ -2643,7 +2643,7 @@ export namespace Pango {
      * @param ch a Unicode character
      * @returns the `PangoScript` for the character.
      */
-    function script_for_unichar(ch: number): Script;
+    function script_for_unichar(ch: string): Script;
     /**
      * Finds a language tag that is reasonably representative of `script`.
      *
@@ -2855,7 +2855,7 @@ export namespace Pango {
      * @param ch a Unicode character
      * @returns the direction of the character.
      */
-    function unichar_direction(ch: number): Direction;
+    function unichar_direction(ch: string): Direction;
     /**
      * Converts a floating-point number to Pango units.
      *
@@ -3695,7 +3695,7 @@ export namespace Pango {
          * @param wc a Unicode character
          * @returns `TRUE` if @font can render @wc
          */
-        has_char(wc: number): boolean;
+        has_char(wc: string): boolean;
         /**
          * Serializes the `font` in a way that can be uniquely identified.
          *
@@ -6221,7 +6221,7 @@ export namespace Pango {
          * @param length length of marked-up text in bytes, or -1 if @markup is   `NUL`-terminated
          * @param accel_marker marker for accelerators in the text
          */
-        set_markup_with_accel(markup: string, length: number, accel_marker: number): number;
+        set_markup_with_accel(markup: string, length: number, accel_marker: string): string;
         /**
          * Sets the single paragraph mode of `layout`.
          *
@@ -9380,7 +9380,7 @@ export namespace Pango {
          * decimal point according to the current locale.
          * @param tab_index the index of a tab stop
          */
-        get_decimal_point(tab_index: number): number;
+        get_decimal_point(tab_index: number): string;
         /**
          * Returns %TRUE if the tab positions are in pixels,
          * %FALSE if they are in Pango units.
@@ -9425,7 +9425,7 @@ export namespace Pango {
          * @param tab_index the index of a tab stop
          * @param decimal_point the decimal point to use
          */
-        set_decimal_point(tab_index: number, decimal_point: number): void;
+        set_decimal_point(tab_index: number, decimal_point: string): void;
         /**
          * Sets whether positions in this array are specified in
          * pixels.

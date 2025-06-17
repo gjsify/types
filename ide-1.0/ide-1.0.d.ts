@@ -64128,7 +64128,7 @@ export namespace Ide {
          * @returns A #GtkWidget.
          */
         create_row(result: SearchResult): Gtk.Widget;
-        get_prefix(): number;
+        get_prefix(): string;
         get_priority(): number;
         get_verb(): string;
         populate(
@@ -64146,7 +64146,7 @@ export namespace Ide {
          * @param result A #IdeSearchResult.
          */
         vfunc_create_row(result: SearchResult): Gtk.Widget;
-        vfunc_get_prefix(): number;
+        vfunc_get_prefix(): string;
         vfunc_get_priority(): number;
         vfunc_get_verb(): string;
         vfunc_populate(

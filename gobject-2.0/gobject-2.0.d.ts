@@ -1351,7 +1351,7 @@ export namespace GObject {
         name: string,
         nick: string | null,
         blurb: string | null,
-        default_value: number,
+        default_value: string,
         flags: ParamFlags | null,
     ): ParamSpec;
     /**

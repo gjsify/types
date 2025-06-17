@@ -4668,7 +4668,7 @@ export namespace Kkc {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             name: string;
-            unicode: number;
+            unicode: string;
             keyval: number;
             keycode: number;
             modifiers: ModifierType;
@@ -4682,8 +4682,8 @@ export namespace Kkc {
 
         get name(): string;
         set name(val: string);
-        get unicode(): number;
-        set unicode(val: number);
+        get unicode(): string;
+        set unicode(val: string);
         get keyval(): number;
         set keyval(val: number);
         get keycode(): number;
@@ -4735,8 +4735,8 @@ export namespace Kkc {
         to_string(): string;
         get_name(): string;
         set_name(value: string): void;
-        get_unicode(): number;
-        set_unicode(value: number): void;
+        get_unicode(): string;
+        set_unicode(value: string): void;
         get_keyval(): number;
         set_keyval(value: number): void;
         get_keycode(): number;
@@ -5039,11 +5039,11 @@ export namespace Kkc {
         // Methods
 
         get_produced_output(): string;
-        is_valid(uc: number): boolean;
+        is_valid(uc: string): boolean;
         flush_partial(): boolean;
         append_text(text: string): void;
-        append(uc: number): boolean;
-        can_consume(uc: number, no_carryover: boolean): boolean;
+        append(uc: string): boolean;
+        can_consume(uc: string, no_carryover: boolean): boolean;
         reset(): void;
         ['delete'](): boolean;
         get_kana_mode(): KanaMode;

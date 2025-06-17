@@ -9074,7 +9074,7 @@ export namespace Eog {
             counter: number,
             n_images: number,
             convert_spaces: boolean,
-            space_char: number,
+            space_char: string,
         ): string;
 
         // Methods

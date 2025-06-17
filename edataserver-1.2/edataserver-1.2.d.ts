@@ -2161,7 +2161,7 @@ export namespace EDataServer {
      * @param out The location to store the UTF-8 character in.
      * @returns A pointer to the next character in @text after @out.
      */
-    function util_unicode_get_utf8(text: string, out: number): string | null;
+    function util_unicode_get_utf8(text: string, out: string): string | null;
     /**
      * Unrefs the given `object` in a dedicated thread. This is useful when unreffing
      * object deep in call stack when the caller might still use the object and

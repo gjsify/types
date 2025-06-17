@@ -1683,7 +1683,7 @@ export namespace Vte {
          * @param c a candidate Unicode code point
          * @returns %TRUE if the character is considered to be part of a word
          */
-        is_word_char(c: number): boolean;
+        is_word_char(c: string): boolean;
         /**
          * Adds the regular expression `regex` to the list of matching expressions.  When the
          * user moves the mouse cursor over a section of displayed text which matches

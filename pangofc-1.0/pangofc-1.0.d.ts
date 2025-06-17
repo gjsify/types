@@ -305,7 +305,7 @@ export namespace PangoFc {
          * @param wc Unicode character to look up
          * @returns the glyph index, or 0, if the Unicode   character doesn't exist in the font.
          */
-        get_glyph(wc: number): number;
+        get_glyph(wc: string): number;
         /**
          * Returns the languages that are supported by `font`.
          *
@@ -324,13 +324,13 @@ export namespace PangoFc {
          * @param wc the Unicode character for which a glyph is needed.
          * @returns a glyph index into @font.
          */
-        get_unknown_glyph(wc: number): Pango.Glyph;
+        get_unknown_glyph(wc: string): Pango.Glyph;
         /**
          * Determines whether `font` has a glyph for the codepoint `wc`.
          * @param wc Unicode codepoint to look up
          * @returns %TRUE if @font has the requested codepoint.
          */
-        has_char(wc: number): boolean;
+        has_char(wc: string): boolean;
         /**
          * This function used to adjust each adjacent pair of glyphs
          * in `glyphs` according to kerning information in `font`.

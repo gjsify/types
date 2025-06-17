@@ -40249,7 +40249,7 @@ export namespace Clutter {
          * as set by clutter_text_set_password_char().
          * @returns a Unicode character or 0 if the password   character is not set
          */
-        get_password_char(): number;
+        get_password_char(): string;
         /**
          * Retrieves whether a #ClutterText is selectable or not.
          * @returns %TRUE if the actor is selectable
@@ -40321,7 +40321,7 @@ export namespace Clutter {
          * #ClutterText actor.
          * @param wc a Unicode character
          */
-        insert_unichar(wc: number): void;
+        insert_unichar(wc: string): void;
         /**
          * Retrieves the coordinates of the given `position`.
          * @param position position in characters
@@ -40509,7 +40509,7 @@ export namespace Clutter {
          * #ClutterText actor.
          * @param wc a Unicode character, or 0 to unset the password character
          */
-        set_password_char(wc: number): void;
+        set_password_char(wc: string): void;
         /**
          * Sets, or unsets, the pre-edit string. This function is useful
          * for input methods to display a string (with eventual specific
@@ -46446,7 +46446,7 @@ export namespace Clutter {
         modifier_state: ModifierType;
         keyval: number;
         hardware_keycode: number;
-        unicode_value: number;
+        unicode_value: string;
         device: InputDevice;
 
         // Constructors
@@ -47979,7 +47979,7 @@ export namespace Clutter {
          * Retrieves the unicode value for the key that caused `keyev`.
          * @returns The unicode value representing the key
          */
-        get_key_unicode(): number;
+        get_key_unicode(): string;
         /**
          * Retrieves the event coordinates as a #ClutterPoint.
          * @param position a #ClutterPoint
@@ -48120,7 +48120,7 @@ export namespace Clutter {
          * Sets the Unicode value of `event`.
          * @param key_unicode the Unicode value representing the key
          */
-        set_key_unicode(key_unicode: number): void;
+        set_key_unicode(key_unicode: string): void;
         /**
          * Sets the related actor of a crossing event
          * @param actor a #ClutterActor or %NULL

@@ -5068,7 +5068,7 @@ export namespace IBus {
      * @param keyval an IBus key symbol
      * @returns the corresponding unicode character, or 0 if there          is no corresponding character.
      */
-    function keyval_to_unicode(keyval: number): number;
+    function keyval_to_unicode(keyval: number): string;
     /**
      * Converts a key value to upper case, if applicable.
      * @param keyval a key value.
@@ -5113,7 +5113,7 @@ export namespace IBus {
      * @param wc a ISO10646 encoded character
      * @returns the corresponding IBus key symbol, if one exists.          or, if there is no corresponding symbol,          wc | 0x01000000
      */
-    function unicode_to_keyval(wc: number): number;
+    function unicode_to_keyval(wc: string): number;
     /**
      * Remove the log handler which is set by ibus_set_log_handler.
      */
@@ -12550,9 +12550,9 @@ export namespace IBus {
 
         static new_from_string(str: string): Text;
 
-        static new_from_ucs4(str: number): Text;
+        static new_from_ucs4(str: string): Text;
 
-        static new_from_unichar(c: number): Text;
+        static new_from_unichar(c: string): Text;
 
         // Signals
 
@@ -12687,7 +12687,7 @@ export namespace IBus {
          * Gets the end code point in #IBusUnicodeBlock.
          * @returns end property in #IBusUnicodeBlock
          */
-        get_end(): number;
+        get_end(): string;
         /**
          * Gets the name in #IBusUnicodeBlock. It should not be freed.
          * @returns name property in #IBusUnicodeBlock
@@ -12697,7 +12697,7 @@ export namespace IBus {
          * Gets the start code point in #IBusUnicodeBlock.
          * @returns start property in #IBusUnicodeBlock
          */
-        get_start(): number;
+        get_start(): string;
     }
 
     namespace UnicodeData {
@@ -12826,7 +12826,7 @@ export namespace IBus {
          * Gets the code point in #IBusUnicodeData.
          * @returns code property in #IBusUnicodeData
          */
-        get_code(): number;
+        get_code(): string;
         /**
          * Gets the name in #IBusUnicodeData. It should not be freed.
          * @returns name property in #IBusUnicodeData

@@ -9064,7 +9064,7 @@ export namespace Mx {
          * Gets the character to display instead of the text.
          * @returns a character, or 0 if input should not be hidden.
          */
-        get_password_char(): number;
+        get_password_char(): string;
         /**
          * Get the text displayed on the entry
          * @returns the text for the entry. This must not be freed by the application
@@ -9090,7 +9090,7 @@ export namespace Mx {
          * the actual text.
          * @param password_char text to set as the entry hint
          */
-        set_password_char(password_char: number): void;
+        set_password_char(password_char: string): void;
         /**
          * Set the primary icon of the entry to the given filename
          * @param filename filename of an icon
