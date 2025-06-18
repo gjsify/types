@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/goa-1.0)
 
 
-GJS TypeScript type definitions for Goa-1.0, generated from library version 3.52.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.24.
+GJS TypeScript type definitions for Goa-1.0, generated from library version 3.52.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.25.
 
 
 ## Install

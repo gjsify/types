@@ -3701,8 +3701,8 @@ export namespace GObject {
             target: Object,
             target_property: string,
             flags: BindingFlags | null,
-            transform_to: Closure,
-            transform_from: Closure,
+            transform_to: Closure | null,
+            transform_from: Closure | null,
         ): Binding;
         /**
          * This function is intended for #GObject implementations to re-enforce

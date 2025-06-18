@@ -1,6 +1,6 @@
 {
     "name": "@girs/telepathyfarstream-0.6",
-    "version": "0.6.0-4.0.0-beta.24",
+    "version": "0.6.0-4.0.0-beta.25",
     "description": "GJS TypeScript type definitions for TelepathyFarstream-0.6, generated from library version 0.6.0",
     "type": "module",
     "module": "telepathyfarstream-0.6.js",

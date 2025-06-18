@@ -1,6 +1,6 @@
 {
     "name": "@girs/gplugingtk4-1.0",
-    "version": "0.44.0-4.0.0-beta.24",
+    "version": "0.44.0-4.0.0-beta.25",
     "description": "GJS TypeScript type definitions for GPluginGtk4-1.0, generated from library version 0.44.0",
     "type": "module",
     "module": "gplugingtk4-1.0.js",
