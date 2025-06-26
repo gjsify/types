@@ -83197,7 +83197,7 @@ export namespace Gdaui {
 
         // Properties
 
-        // This accessor conflicts with a property or field in a parent class or interface.
+        // This accessor conflicts with a field or function name in a parent class or interface.
         set: Gda.Set | any;
 
         /**

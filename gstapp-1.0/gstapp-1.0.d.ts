@@ -1191,7 +1191,7 @@ export namespace GstApp {
          * Instruct the source to behave like a live source. This includes that it
          * will only push out buffers in the PLAYING state.
          */
-        // This accessor conflicts with a property or field in a parent class or interface.
+        // This accessor conflicts with a field or function name in a parent class or interface.
         is_live: boolean | any;
         /**
          * Instruct the source to behave like a live source. This includes that it

@@ -7,7 +7,6 @@
 
 GJS TypeScript type definitions for GtkSource-300, generated from library version 300.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.25.
 
-
 ## Install
 
 To use this type definitions, install them with NPM:

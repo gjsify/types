@@ -786,7 +786,7 @@ export namespace Modulemd {
 
         // Properties
 
-        // This accessor conflicts with a property or field in a parent class or interface.
+        // This accessor conflicts with a field or function name in a parent class or interface.
         ref: string | any;
         get repository(): string;
         set repository(val: string);
@@ -869,7 +869,7 @@ export namespace Modulemd {
         set buildroot(val: boolean);
         get cache(): string;
         set cache(val: string);
-        // This accessor conflicts with a property or field in a parent class or interface.
+        // This accessor conflicts with a field or function name in a parent class or interface.
         ref: string | any;
         get repository(): string;
         set repository(val: string);

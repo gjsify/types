@@ -190,7 +190,7 @@ export namespace RestExtras {
          * Set if the call should be sent to the photo upload endpoint and not the
          * general-purpose endpoint.
          */
-        // This accessor conflicts with a property or field in a parent class or interface.
+        // This accessor conflicts with a field or function name in a parent class or interface.
         upload: boolean | any;
 
         /**

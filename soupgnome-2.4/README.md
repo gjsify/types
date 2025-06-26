@@ -7,7 +7,6 @@
 
 GJS TypeScript type definitions for SoupGNOME-2.4, generated from library version 2.4.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.25.
 
-
 ## Install
 
 To use this type definitions, install them with NPM:

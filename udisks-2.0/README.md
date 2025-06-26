@@ -7,7 +7,6 @@
 
 GJS TypeScript type definitions for UDisks-2.0, generated from library version 2.10.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.25.
 
-
 ## Install
 
 To use this type definitions, install them with NPM:

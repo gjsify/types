@@ -7,7 +7,6 @@
 
 GJS TypeScript type definitions for WebKit2-4.1, generated from library version 2.48.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.25.
 
-
 ## Install
 
 To use this type definitions, install them with NPM:

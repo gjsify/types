@@ -7,7 +7,6 @@
 
 GJS TypeScript type definitions for Poppler-0.18, generated from library version 24.8.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.25.
 
-
 ## Install
 
 To use this type definitions, install them with NPM:

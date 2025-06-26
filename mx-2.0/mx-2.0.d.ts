@@ -15551,7 +15551,7 @@ export namespace Mx {
          * to %TRUE, this will also cause the #ClutterActor:reactive property to be
          * enabled.
          */
-        // This accessor conflicts with a property or field in a parent class or interface.
+        // This accessor conflicts with a field or function name in a parent class or interface.
         show_tooltip: boolean | any;
         /**
          * Show a tooltip when there is not enough space to display the text. If set

@@ -7,7 +7,6 @@
 
 GJS TypeScript type definitions for Vte-4-2.91, generated from library version 0.69.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.25.
 
-
 ## Install
 
 To use this type definitions, install them with NPM:

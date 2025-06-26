@@ -6846,7 +6846,7 @@ export namespace Ggit {
         get clone_options(): CloneOptions;
         get cloneOptions(): CloneOptions;
         get head(): Ref;
-        // This accessor conflicts with a property or field in a parent class or interface.
+        // This accessor conflicts with a field or function name in a parent class or interface.
         init: boolean | any;
         get is_bare(): boolean;
         get isBare(): boolean;

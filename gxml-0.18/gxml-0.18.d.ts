@@ -12970,7 +12970,7 @@ export namespace GXml {
         set name(val: string);
         get nillable(): boolean;
         set nillable(val: boolean);
-        // This accessor conflicts with a property or field in a parent class or interface.
+        // This accessor conflicts with a field or function name in a parent class or interface.
         ref: string | any;
         get substitution_group(): DomTokenList;
         set substitution_group(val: DomTokenList);
@@ -44931,7 +44931,7 @@ export namespace GXml {
         set name(val: string);
         get nillable(): boolean;
         set nillable(val: boolean);
-        // This accessor conflicts with a property or field in a parent class or interface.
+        // This accessor conflicts with a field or function name in a parent class or interface.
         ref: string | any;
         get substitution_group(): DomTokenList;
         set substitution_group(val: DomTokenList);

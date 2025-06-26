@@ -753,11 +753,11 @@ export namespace EvinceDocument {
         set_attachment(attachment: Attachment): boolean;
 
         // Inherited properties
-        // This accessor conflicts with a property or field in a parent class or interface.
+        // This accessor conflicts with a field or function name in a parent class or interface.
         can_have_popup: boolean | any;
         get canHavePopup(): boolean;
         set canHavePopup(val: boolean);
-        // This accessor conflicts with a property or field in a parent class or interface.
+        // This accessor conflicts with a field or function name in a parent class or interface.
         has_popup: boolean | any;
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
@@ -1005,11 +1005,11 @@ export namespace EvinceDocument {
         set_is_open(is_open: boolean): boolean;
 
         // Inherited properties
-        // This accessor conflicts with a property or field in a parent class or interface.
+        // This accessor conflicts with a field or function name in a parent class or interface.
         can_have_popup: boolean | any;
         get canHavePopup(): boolean;
         set canHavePopup(val: boolean);
-        // This accessor conflicts with a property or field in a parent class or interface.
+        // This accessor conflicts with a field or function name in a parent class or interface.
         has_popup: boolean | any;
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
@@ -1256,11 +1256,11 @@ export namespace EvinceDocument {
         set_markup_type(markup_type: AnnotationTextMarkupType | null): boolean;
 
         // Inherited properties
-        // This accessor conflicts with a property or field in a parent class or interface.
+        // This accessor conflicts with a field or function name in a parent class or interface.
         can_have_popup: boolean | any;
         get canHavePopup(): boolean;
         set canHavePopup(val: boolean);
-        // This accessor conflicts with a property or field in a parent class or interface.
+        // This accessor conflicts with a field or function name in a parent class or interface.
         has_popup: boolean | any;
         get hasPopup(): boolean;
         set hasPopup(val: boolean);

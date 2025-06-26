@@ -10704,7 +10704,7 @@ export namespace Shumate {
         get baseMapLayer(): MapLayer;
         get compass(): Compass;
         get license(): License;
-        // This accessor conflicts with a property or field in a parent class or interface.
+        // This accessor conflicts with a field or function name in a parent class or interface.
         map: Map | any;
         get map_source(): MapSource;
         set map_source(val: MapSource);

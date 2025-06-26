@@ -4710,11 +4710,11 @@ export namespace Midori {
         get id(): string;
         get progress(): number;
         set progress(val: number);
-        // This accessor conflicts with a property or field in a parent class or interface.
+        // This accessor conflicts with a field or function name in a parent class or interface.
         can_go_back: boolean | any;
         get canGoBack(): boolean;
         set canGoBack(val: boolean);
-        // This accessor conflicts with a property or field in a parent class or interface.
+        // This accessor conflicts with a field or function name in a parent class or interface.
         can_go_forward: boolean | any;
         get canGoForward(): boolean;
         set canGoForward(val: boolean);

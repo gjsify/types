@@ -7,7 +7,6 @@
 
 GJS TypeScript type definitions for Granite-7.0, generated from library version 7.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.25.
 
-
 ## Install
 
 To use this type definitions, install them with NPM:
