@@ -1289,7 +1289,7 @@ export namespace Poppler {
      * @param timet an uninitialized #time_t
      * @returns #TRUE, if @timet was set
      */
-    function date_parse(date: string, timet: never): boolean;
+    function date_parse(date: string, timet: number): boolean;
     function error_quark(): GLib.Quark;
     /**
      * Get all available signing certificate information
@@ -2911,7 +2911,7 @@ export namespace Poppler {
          * Returns the date the document was created as seconds since the Epoch
          * @returns the date the document was created, or -1
          */
-        get_creation_date(): never;
+        get_creation_date(): number;
         /**
          * Returns the date the document was created as a #GDateTime
          * @returns the date the document was created, or %NULL
@@ -2957,7 +2957,7 @@ export namespace Poppler {
          * Returns the date the document was most recently modified as seconds since the Epoch
          * @returns the date the document was most recently modified, or -1
          */
-        get_modification_date(): never;
+        get_modification_date(): number;
         /**
          * Returns the date the document was most recently modified as a #GDateTime
          * @returns the date the document was modified, or %NULL
@@ -3166,7 +3166,7 @@ export namespace Poppler {
          * entry is removed from the document's Info dictionary.
          * @param creation_date A new creation date
          */
-        set_creation_date(creation_date: never): void;
+        set_creation_date(creation_date: number): void;
         /**
          * Sets the document's creation date. If `creation_datetime` is %NULL,
          * CreationDate entry is removed from the document's Info dictionary.
@@ -3190,7 +3190,7 @@ export namespace Poppler {
          * entry is removed from the document's Info dictionary.
          * @param modification_date A new modification date
          */
-        set_modification_date(modification_date: never): void;
+        set_modification_date(modification_date: number): void;
         /**
          * Sets the document's modification date. If `modification_datetime` is %NULL,
          * ModDate entry is removed from the document's Info dictionary.

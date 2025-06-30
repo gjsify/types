@@ -580,7 +580,7 @@ export namespace GstBase {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {
-            blocksize: never;
+            blocksize: number;
             do_timestamp: boolean;
             doTimestamp: boolean;
             num_buffers: number;
@@ -597,8 +597,8 @@ export namespace GstBase {
 
         // Properties
 
-        get blocksize(): never;
-        set blocksize(val: never);
+        get blocksize(): number;
+        set blocksize(val: number);
         get do_timestamp(): boolean;
         set do_timestamp(val: boolean);
         get doTimestamp(): boolean;
@@ -666,8 +666,8 @@ export namespace GstBase {
         is_live(): boolean;
         set_format(format: Gst.Format | null): void;
         query_latency(min_latency: Gst.ClockTime, max_latency: Gst.ClockTime): [boolean, boolean];
-        set_blocksize(blocksize: never): void;
-        get_blocksize(): never;
+        set_blocksize(blocksize: number): void;
+        get_blocksize(): number;
         set_do_timestamp(timestamp: boolean): void;
         get_do_timestamp(): boolean;
         new_seamless_segment(start: number, stop: number, position: number): boolean;

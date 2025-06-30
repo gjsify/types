@@ -13063,7 +13063,7 @@ export namespace Ags {
          * Get unix time.
          * @returns the unix time as time_t value
          */
-        get_unix_time(): never;
+        get_unix_time(): number;
         /**
          * Set AGS offset as unsigned 64 bit integer.
          * @param ags_offset the AGS offset
@@ -13078,7 +13078,7 @@ export namespace Ags {
          * Set unix time.
          * @param unix_time the unix time value
          */
-        set_unix_time(unix_time: never): void;
+        set_unix_time(unix_time: number): void;
         /**
          * Test `flags` to be set.
          * @param flags the flags

@@ -2370,7 +2370,7 @@ export namespace Gst {
         // Constructor properties interface
 
         interface ConstructorProps extends Element.ConstructorProps {
-            blocksize: never;
+            blocksize: number;
             do_timestamp: boolean;
             doTimestamp: boolean;
             num_buffers: number;
@@ -2387,8 +2387,8 @@ export namespace Gst {
 
         // Properties
 
-        get blocksize(): never;
-        set blocksize(val: never);
+        get blocksize(): number;
+        set blocksize(val: number);
         get do_timestamp(): boolean;
         set do_timestamp(val: boolean);
         get doTimestamp(): boolean;
@@ -2477,8 +2477,8 @@ export namespace Gst {
         is_live(): boolean;
         set_format(format: Format | null): void;
         query_latency(min_latency: ClockTime, max_latency: ClockTime): [boolean, boolean];
-        set_blocksize(blocksize: never): void;
-        get_blocksize(): never;
+        set_blocksize(blocksize: number): void;
+        get_blocksize(): number;
         set_do_timestamp(timestamp: boolean): void;
         get_do_timestamp(): boolean;
         new_seamless_segment(start: number, stop: number, position: number): boolean;
@@ -4442,14 +4442,14 @@ export namespace Gst {
         query_peer_position(format: Format | null): [boolean, number];
         query_peer_duration(format: Format | null): [boolean, number];
         query_peer_convert(src_format: Format | null, src_val: number, dest_format: Format | null): [boolean, number];
-        add_data_probe(handler: GObject.Callback, data: any): never;
-        add_data_probe_full(handler: GObject.Callback, data: any): never;
+        add_data_probe(handler: GObject.Callback, data: any): number;
+        add_data_probe_full(handler: GObject.Callback, data: any): number;
         remove_data_probe(handler_id: number): void;
-        add_event_probe(handler: GObject.Callback, data: any): never;
-        add_event_probe_full(handler: GObject.Callback, data: any): never;
+        add_event_probe(handler: GObject.Callback, data: any): number;
+        add_event_probe_full(handler: GObject.Callback, data: any): number;
         remove_event_probe(handler_id: number): void;
-        add_buffer_probe(handler: GObject.Callback, data: any): never;
-        add_buffer_probe_full(handler: GObject.Callback, data: any): never;
+        add_buffer_probe(handler: GObject.Callback, data: any): number;
+        add_buffer_probe_full(handler: GObject.Callback, data: any): number;
         remove_buffer_probe(handler_id: number): void;
     }
 

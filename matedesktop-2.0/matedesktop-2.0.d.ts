@@ -228,7 +228,7 @@ export namespace MateDesktop {
      * @param mtime the mtime
      * @returns TRUE if the thumbnail has the right @uri and @mtime
      */
-    function desktop_thumbnail_is_valid(pixbuf: GdkPixbuf.Pixbuf, uri: string, mtime: never): boolean;
+    function desktop_thumbnail_is_valid(pixbuf: GdkPixbuf.Pixbuf, uri: string, mtime: number): boolean;
     /**
      * Returns the filename that a thumbnail of size `size` for `uri` would have.
      * @param uri an uri
@@ -2032,7 +2032,7 @@ export namespace MateDesktop {
          * @param mtime the mtime of the file
          * @returns TRUE if the file can be thumbnailed.
          */
-        can_thumbnail(uri: string, mime_type: string, mtime: never): boolean;
+        can_thumbnail(uri: string, mime_type: string, mtime: number): boolean;
         /**
          * Creates a failed thumbnail for the file so that we don't try
          * to re-thumbnail the file later.
@@ -2041,7 +2041,7 @@ export namespace MateDesktop {
          * @param uri the uri of a file
          * @param mtime the modification time of the file
          */
-        create_failed_thumbnail(uri: string, mtime: never): void;
+        create_failed_thumbnail(uri: string, mtime: number): void;
         /**
          * Tries to generate a thumbnail for the specified file. If it succeeds
          * it returns a pixbuf that can be used as a thumbnail.
@@ -2062,7 +2062,7 @@ export namespace MateDesktop {
          * @param mtime the mtime of the file
          * @returns TRUE if there is a failed thumbnail for the file.
          */
-        has_valid_failed_thumbnail(uri: string, mtime: never): boolean;
+        has_valid_failed_thumbnail(uri: string, mtime: number): boolean;
         /**
          * Tries to locate an existing thumbnail for the file specified.
          *
@@ -2071,7 +2071,7 @@ export namespace MateDesktop {
          * @param mtime the mtime of the file
          * @returns The absolute path of the thumbnail, or %NULL if none exist.
          */
-        lookup(uri: string, mtime: never): string;
+        lookup(uri: string, mtime: number): string;
         /**
          * Saves `thumbnail` at the right place. If the save fails a
          * failed thumbnail is written.
@@ -2081,7 +2081,7 @@ export namespace MateDesktop {
          * @param uri the uri of a file
          * @param original_mtime the modification time of the original file
          */
-        save_thumbnail(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: never): void;
+        save_thumbnail(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: number): void;
     }
 
     namespace HSV {

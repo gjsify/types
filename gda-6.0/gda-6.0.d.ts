@@ -2180,7 +2180,7 @@ export namespace Gda {
      * @param val value to set for the new #GValue.
      * @returns the newly created #GValue, or %NULL in case of error Free-function: gda_value_free
      */
-    function value_new_date_time_from_timet(val: never): unknown;
+    function value_new_date_time_from_timet(val: number): unknown;
     /**
      * Creates a new default value.
      * @param default_val the default value as a string, or %NULL
@@ -2231,7 +2231,7 @@ export namespace Gda {
      * @param val value to set for the new #GValue.
      * @returns the newly created #GValue, or %NULL in case of error Free-function: gda_value_free
      */
-    function value_new_time_from_timet(val: never): unknown;
+    function value_new_time_from_timet(val: number): unknown;
     /**
      * Resets the #GValue and set a new type to #GType.
      * @param value the #GValue to be reseted

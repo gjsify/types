@@ -659,7 +659,7 @@ export namespace EvinceDocument {
          * @param utime a #time_t
          * @returns %TRUE if the last modified date has been updated, %FALSE otherwise.
          */
-        set_modified_from_time_t(utime: never): boolean;
+        set_modified_from_time_t(utime: number): boolean;
         /**
          * Set the name of `annot`.
          * You can monitor changes of the annotation name by connecting
@@ -904,7 +904,7 @@ export namespace EvinceDocument {
          * @param utime a #time_t
          * @returns %TRUE if the last modified date has been updated, %FALSE otherwise.
          */
-        set_modified_from_time_t(utime: never): boolean;
+        set_modified_from_time_t(utime: number): boolean;
         /**
          * Set the name of `annot`.
          * You can monitor changes of the annotation name by connecting
@@ -1156,7 +1156,7 @@ export namespace EvinceDocument {
          * @param utime a #time_t
          * @returns %TRUE if the last modified date has been updated, %FALSE otherwise.
          */
-        set_modified_from_time_t(utime: never): boolean;
+        set_modified_from_time_t(utime: number): boolean;
         /**
          * Set the name of `annot`.
          * You can monitor changes of the annotation name by connecting
@@ -1407,7 +1407,7 @@ export namespace EvinceDocument {
          * @param utime a #time_t
          * @returns %TRUE if the last modified date has been updated, %FALSE otherwise.
          */
-        set_modified_from_time_t(utime: never): boolean;
+        set_modified_from_time_t(utime: number): boolean;
         /**
          * Set the name of `annot`.
          * You can monitor changes of the annotation name by connecting

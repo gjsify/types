@@ -14630,7 +14630,7 @@ export namespace GLib {
          * @param uri a valid URI
          * @returns a timestamp
          */
-        get_added(uri: string): never;
+        get_added(uri: string): number;
         /**
          * Gets the time the bookmark for `uri` was added to `bookmark`
          *
@@ -14658,7 +14658,7 @@ export namespace GLib {
          * @param name an application's name
          * @returns %TRUE on success.
          */
-        get_app_info(uri: string, name: string): [boolean, string, number, never | null];
+        get_app_info(uri: string, name: string): [boolean, string, number, number];
         /**
          * Gets the registration information of `app_name` for the bookmark for
          * `uri`.  See g_bookmark_file_set_application_info() for more information about
@@ -14748,7 +14748,7 @@ export namespace GLib {
          * @param uri a valid URI
          * @returns a timestamp
          */
-        get_modified(uri: string): never;
+        get_modified(uri: string): number;
         /**
          * Gets the time when the bookmark for `uri` was last modified.
          *
@@ -14789,7 +14789,7 @@ export namespace GLib {
          * @param uri a valid URI
          * @returns a timestamp.
          */
-        get_visited(uri: string): never;
+        get_visited(uri: string): number;
         /**
          * Gets the time the bookmark for `uri` was last visited.
          *
@@ -14905,7 +14905,7 @@ export namespace GLib {
          * @param uri a valid URI
          * @param added a timestamp or -1 to use the current time
          */
-        set_added(uri: string, added: never): void;
+        set_added(uri: string, added: number): void;
         /**
          * Sets the time the bookmark for `uri` was added into `bookmark`.
          *
@@ -14950,7 +14950,7 @@ export namespace GLib {
          * @param stamp the time of the last registration for this application
          * @returns %TRUE if the application's meta-data was successfully   changed.
          */
-        set_app_info(uri: string, name: string, exec: string, count: number, stamp: never): boolean;
+        set_app_info(uri: string, name: string, exec: string, count: number, stamp: number): boolean;
         /**
          * Sets the meta-data of application `name` inside the list of
          * applications that have registered a bookmark for `uri` inside
@@ -15045,7 +15045,7 @@ export namespace GLib {
          * @param uri a valid URI
          * @param modified a timestamp or -1 to use the current time
          */
-        set_modified(uri: string, modified: never): void;
+        set_modified(uri: string, modified: number): void;
         /**
          * Sets the last time the bookmark for `uri` was last modified.
          *
@@ -15083,7 +15083,7 @@ export namespace GLib {
          * @param uri a valid URI
          * @param visited a timestamp or -1 to use the current time
          */
-        set_visited(uri: string, visited: never): void;
+        set_visited(uri: string, visited: number): void;
         /**
          * Sets the time the bookmark for `uri` was last visited.
          *
@@ -16247,7 +16247,7 @@ export namespace GLib {
          *
          * @param timet time_t value to set
          */
-        set_time_t(timet: never): void;
+        set_time_t(timet: number): void;
         /**
          * Sets the value of a date from a #GTimeVal value.  Note that the
          * `tv_usec` member is ignored, because #GDate can't make use of the

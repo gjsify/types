@@ -20160,7 +20160,7 @@ export namespace Soup {
 
         static new_from_string(date_string: string): Date;
 
-        static new_from_time_t(when: never): Date;
+        static new_from_time_t(when: number): Date;
 
         // Methods
 
@@ -20232,7 +20232,7 @@ export namespace Soup {
          * expiration dates after "Y2.038k" (2038-01-19T03:14:07Z).)
          * @returns @date as a <type>time_t</type>
          */
-        to_time_t(): never;
+        to_time_t(): number;
         /**
          * Converts `date` to a #GTimeVal.
          */

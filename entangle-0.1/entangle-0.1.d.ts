@@ -7869,7 +7869,7 @@ export namespace Entangle {
          * it is backed by a file on disk
          * @returns the last modification time in seconds since epoch, or 0
          */
-        get_last_modified(): never;
+        get_last_modified(): number;
         /**
          * Get the metadata associated with the media, if it is available
          * @returns the media metadata or NULL
