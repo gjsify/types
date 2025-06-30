@@ -804,7 +804,12 @@ export namespace ECalendar {
          * @param auid Alarm identifier to remove
          * @param cancellable a #GCancellable; can be %NULL
          */
-        discard_alarm(uid: string, rid: string, auid: string, cancellable: Gio.Cancellable): Promise<boolean>;
+        discard_alarm(
+            uid: string,
+            rid: string,
+            auid: string,
+            cancellable: Gio.Cancellable,
+        ): globalThis.Promise<boolean>;
         /**
          * Removes alarm `auid` from a given component identified by `uid` and `rid`.
          * The call is finished by e_cal_client_discard_alarm_finish() from
@@ -838,7 +843,7 @@ export namespace ECalendar {
             auid: string,
             cancellable: Gio.Cancellable,
             callback?: Gio.AsyncReadyCallback<this>,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes previous call of e_cal_client_discard_alarm().
          * @param result a #GAsyncResult
@@ -888,7 +893,7 @@ export namespace ECalendar {
          * @param rid Recurrence identifier
          * @param cancellable a #GCancellable; can be %NULL
          */
-        get_attachment_uris(uid: string, rid: string, cancellable: Gio.Cancellable): Promise<string[]>;
+        get_attachment_uris(uid: string, rid: string, cancellable: Gio.Cancellable): globalThis.Promise<string[]>;
         /**
          * Queries a calendar for a specified component's object attachment uris.
          * The call is finished by e_cal_client_get_attachment_uris_finish() from
@@ -918,7 +923,7 @@ export namespace ECalendar {
             rid: string,
             cancellable: Gio.Cancellable,
             callback?: Gio.AsyncReadyCallback<this>,
-        ): Promise<string[]> | void;
+        ): globalThis.Promise<string[]> | void;
         /**
          * Finishes previous call of e_cal_client_get_attachment_uris() and
          * sets `attachment_uris` to uris for component's attachments.
@@ -955,7 +960,12 @@ export namespace ECalendar {
          * @param users List of users to retrieve free/busy information for
          * @param cancellable a #GCancellable; can be %NULL
          */
-        get_free_busy(start: number, end: number, users: string[], cancellable: Gio.Cancellable): Promise<boolean>;
+        get_free_busy(
+            start: number,
+            end: number,
+            users: string[],
+            cancellable: Gio.Cancellable,
+        ): globalThis.Promise<boolean>;
         /**
          * Begins retrieval of free/busy information from the calendar server
          * as a list of #ECalComponent-s. Connect to "free-busy-data" signal
@@ -993,7 +1003,7 @@ export namespace ECalendar {
             users: string[],
             cancellable: Gio.Cancellable,
             callback?: Gio.AsyncReadyCallback<this>,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes previous call of e_cal_client_get_free_busy().
          * All VFREEBUSY #ECalComponent-s were received by "free-busy-data" signal.
@@ -1057,7 +1067,7 @@ export namespace ECalendar {
          * @param sexp an S-expression representing the query
          * @param cancellable a #GCancellable; can be %NULL
          */
-        get_object_list_as_comps(sexp: string, cancellable: Gio.Cancellable): Promise<CalComponent[]>;
+        get_object_list_as_comps(sexp: string, cancellable: Gio.Cancellable): globalThis.Promise<CalComponent[]>;
         /**
          * Gets a list of objects from the calendar that match the query specified
          * by the `sexp` argument, returning matching objects as a list of #ECalComponent-s.
@@ -1085,7 +1095,7 @@ export namespace ECalendar {
             sexp: string,
             cancellable: Gio.Cancellable,
             callback?: Gio.AsyncReadyCallback<this>,
-        ): Promise<CalComponent[]> | void;
+        ): globalThis.Promise<CalComponent[]> | void;
         /**
          * Finishes previous call of e_cal_client_get_object_list_as_comps() and
          * sets `ecalcomps` to a matching list of #ECalComponent-s.
@@ -1113,7 +1123,7 @@ export namespace ECalendar {
          * @param uid Unique identifier for a calendar component
          * @param cancellable a #GCancellable; can be %NULL
          */
-        get_objects_for_uid(uid: string, cancellable: Gio.Cancellable): Promise<CalComponent[]>;
+        get_objects_for_uid(uid: string, cancellable: Gio.Cancellable): globalThis.Promise<CalComponent[]>;
         /**
          * Queries a calendar for all calendar components with the given unique
          * ID. This will return any recurring event and all its detached recurrences.
@@ -1139,7 +1149,7 @@ export namespace ECalendar {
             uid: string,
             cancellable: Gio.Cancellable,
             callback?: Gio.AsyncReadyCallback<this>,
-        ): Promise<CalComponent[]> | void;
+        ): globalThis.Promise<CalComponent[]> | void;
         /**
          * Finishes previous call of e_cal_client_get_objects_for_uid() and
          * sets `ecalcomps` to a list of #ECalComponent<!-- -->s corresponding to
@@ -1180,7 +1190,7 @@ export namespace ECalendar {
          * @param sexp an S-expression representing the query.
          * @param cancellable a #GCancellable; can be %NULL
          */
-        get_view(sexp: string, cancellable: Gio.Cancellable): Promise<CalClientView>;
+        get_view(sexp: string, cancellable: Gio.Cancellable): globalThis.Promise<CalClientView>;
         /**
          * Query `client` with `sexp,` creating an #ECalClientView.
          * The call is finished by e_cal_client_get_view_finish()
@@ -1202,7 +1212,7 @@ export namespace ECalendar {
             sexp: string,
             cancellable: Gio.Cancellable,
             callback?: Gio.AsyncReadyCallback<this>,
-        ): Promise<CalClientView> | void;
+        ): globalThis.Promise<CalClientView> | void;
         /**
          * Finishes previous call of e_cal_client_get_view().
          * If successful, then the `view` is set to newly allocated #ECalClientView,

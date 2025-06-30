@@ -554,7 +554,7 @@ export namespace GeocodeGlib {
          * geocode_forward_search_finish() to get the result of the operation.
          * @param cancellable optional #GCancellable forward, %NULL to ignore.
          */
-        search_async(cancellable?: Gio.Cancellable | null): Promise<Place[]>;
+        search_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Place[]>;
         /**
          * Asynchronously performs a forward geocoding
          * query using a web service. Use geocode_forward_search() to do the same
@@ -579,7 +579,7 @@ export namespace GeocodeGlib {
         search_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Place[]> | void;
+        ): globalThis.Promise<Place[]> | void;
         /**
          * Finishes a forward geocoding operation. See geocode_forward_search_async().
          * @param res a #GAsyncResult.
@@ -971,7 +971,7 @@ export namespace GeocodeGlib {
         forward_search_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Place[]>;
+        ): globalThis.Promise<Place[]>;
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
          * geocode_backend_forward_search() to do the same thing synchronously.
@@ -1011,7 +1011,7 @@ export namespace GeocodeGlib {
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Place[]> | void;
+        ): globalThis.Promise<Place[]> | void;
         /**
          * Finishes a forward geocoding operation. See
          * geocode_backend_forward_search_async().
@@ -1063,7 +1063,7 @@ export namespace GeocodeGlib {
         reverse_resolve_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Place[]>;
+        ): globalThis.Promise<Place[]>;
         /**
          * Asynchronously gets the result of a reverse geocoding query using the
          * backend.
@@ -1119,7 +1119,7 @@ export namespace GeocodeGlib {
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Place[]> | void;
+        ): globalThis.Promise<Place[]> | void;
         /**
          * Finishes a reverse geocoding operation. See geocode_backend_reverse_resolve_async().
          * @param result a #GAsyncResult.
@@ -1831,7 +1831,7 @@ export namespace GeocodeGlib {
         forward_search_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Place[]>;
+        ): globalThis.Promise<Place[]>;
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
          * geocode_backend_forward_search() to do the same thing synchronously.
@@ -1871,7 +1871,7 @@ export namespace GeocodeGlib {
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Place[]> | void;
+        ): globalThis.Promise<Place[]> | void;
         /**
          * Finishes a forward geocoding operation. See
          * geocode_backend_forward_search_async().
@@ -1923,7 +1923,7 @@ export namespace GeocodeGlib {
         reverse_resolve_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Place[]>;
+        ): globalThis.Promise<Place[]>;
         /**
          * Asynchronously gets the result of a reverse geocoding query using the
          * backend.
@@ -1979,7 +1979,7 @@ export namespace GeocodeGlib {
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Place[]> | void;
+        ): globalThis.Promise<Place[]> | void;
         /**
          * Finishes a reverse geocoding operation. See geocode_backend_reverse_resolve_async().
          * @param result a #GAsyncResult.
@@ -3014,7 +3014,7 @@ export namespace GeocodeGlib {
          * geocode_reverse_resolve_finish() to get the result of the operation.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        resolve_async(cancellable?: Gio.Cancellable | null): Promise<Place>;
+        resolve_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Place>;
         /**
          * Asynchronously gets the result of a reverse geocoding
          * query using a web service. Use geocode_reverse_resolve() to do the same
@@ -3039,7 +3039,7 @@ export namespace GeocodeGlib {
         resolve_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Place> | void;
+        ): globalThis.Promise<Place> | void;
         /**
          * Finishes a reverse geocoding operation. See geocode_reverse_resolve_async().
          * @param res a #GAsyncResult.
@@ -3173,7 +3173,7 @@ export namespace GeocodeGlib {
         forward_search_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Place[]>;
+        ): globalThis.Promise<Place[]>;
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
          * geocode_backend_forward_search() to do the same thing synchronously.
@@ -3213,7 +3213,7 @@ export namespace GeocodeGlib {
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Place[]> | void;
+        ): globalThis.Promise<Place[]> | void;
         /**
          * Finishes a forward geocoding operation. See
          * geocode_backend_forward_search_async().
@@ -3265,7 +3265,7 @@ export namespace GeocodeGlib {
         reverse_resolve_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Place[]>;
+        ): globalThis.Promise<Place[]>;
         /**
          * Asynchronously gets the result of a reverse geocoding query using the
          * backend.
@@ -3321,7 +3321,7 @@ export namespace GeocodeGlib {
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Place[]> | void;
+        ): globalThis.Promise<Place[]> | void;
         /**
          * Finishes a reverse geocoding operation. See geocode_backend_reverse_resolve_async().
          * @param result a #GAsyncResult.

@@ -599,7 +599,7 @@ export namespace Wp {
             id?: string | null,
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Iterator | null>;
+        ): globalThis.Promise<Iterator | null>;
         /**
          * Enumerate object parameters.
          *
@@ -631,7 +631,7 @@ export namespace Wp {
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Iterator | null> | void;
+        ): globalThis.Promise<Iterator | null> | void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
@@ -1088,7 +1088,7 @@ export namespace Wp {
          * @param cancellable a GCancellable to cancel the operation
          * @returns TRUE if the sync operation was started, FALSE if an error occurred before returning from this function
          */
-        sync(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        sync(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asks the PipeWire server to call the `callback` via an event.
          *
@@ -1113,7 +1113,7 @@ export namespace Wp {
         sync(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Asks the PipeWire server to invoke the `closure` via an event.
          *
@@ -1320,7 +1320,7 @@ export namespace Wp {
             id?: string | null,
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Iterator | null>;
+        ): globalThis.Promise<Iterator | null>;
         /**
          * Enumerate object parameters.
          *
@@ -1352,7 +1352,7 @@ export namespace Wp {
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Iterator | null> | void;
+        ): globalThis.Promise<Iterator | null> | void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
@@ -1655,7 +1655,7 @@ export namespace Wp {
             id?: string | null,
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Iterator | null>;
+        ): globalThis.Promise<Iterator | null>;
         /**
          * Enumerate object parameters.
          *
@@ -1687,7 +1687,7 @@ export namespace Wp {
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Iterator | null> | void;
+        ): globalThis.Promise<Iterator | null> | void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
@@ -1948,7 +1948,7 @@ export namespace Wp {
             id?: string | null,
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Iterator | null>;
+        ): globalThis.Promise<Iterator | null>;
         /**
          * Enumerate object parameters.
          *
@@ -1980,7 +1980,7 @@ export namespace Wp {
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Iterator | null> | void;
+        ): globalThis.Promise<Iterator | null> | void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
@@ -2902,7 +2902,7 @@ export namespace Wp {
             id?: string | null,
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Iterator | null>;
+        ): globalThis.Promise<Iterator | null>;
         /**
          * Enumerate object parameters.
          *
@@ -2934,7 +2934,7 @@ export namespace Wp {
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Iterator | null> | void;
+        ): globalThis.Promise<Iterator | null> | void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
@@ -3373,7 +3373,7 @@ export namespace Wp {
             id?: string | null,
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Iterator | null>;
+        ): globalThis.Promise<Iterator | null>;
         /**
          * Enumerate object parameters.
          *
@@ -3405,7 +3405,7 @@ export namespace Wp {
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Iterator | null> | void;
+        ): globalThis.Promise<Iterator | null> | void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
@@ -3691,7 +3691,7 @@ export namespace Wp {
             id?: string | null,
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Iterator | null>;
+        ): globalThis.Promise<Iterator | null>;
         /**
          * Enumerate object parameters.
          *
@@ -3723,7 +3723,7 @@ export namespace Wp {
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Iterator | null> | void;
+        ): globalThis.Promise<Iterator | null> | void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
@@ -4184,7 +4184,7 @@ export namespace Wp {
             id?: string | null,
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Iterator | null>;
+        ): globalThis.Promise<Iterator | null>;
         /**
          * Enumerate object parameters.
          *
@@ -4216,7 +4216,7 @@ export namespace Wp {
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Iterator | null> | void;
+        ): globalThis.Promise<Iterator | null> | void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
@@ -4497,7 +4497,7 @@ export namespace Wp {
          * @param features the features to enable
          * @param cancellable a cancellable for the async operation
          */
-        activate(features: ObjectFeatures, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        activate(features: ObjectFeatures, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Callback version of wp_object_activate_closure()
          * @param features the features to enable
@@ -4519,7 +4519,7 @@ export namespace Wp {
             features: ObjectFeatures,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Activates the requested `features` and invokes `closure` when this is done. `features` may contain unsupported or already active features. The operation will filter them and activate only ones that are supported and inactive.
          *
@@ -4878,7 +4878,7 @@ export namespace Wp {
             id?: string | null,
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Iterator | null>;
+        ): globalThis.Promise<Iterator | null>;
         /**
          * Enumerate object parameters.
          *
@@ -4910,7 +4910,7 @@ export namespace Wp {
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Iterator | null> | void;
+        ): globalThis.Promise<Iterator | null> | void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
@@ -7640,7 +7640,7 @@ export namespace Wp {
             id?: string | null,
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Iterator | null>;
+        ): globalThis.Promise<Iterator | null>;
         /**
          * Enumerate object parameters.
          *
@@ -7672,7 +7672,7 @@ export namespace Wp {
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Iterator | null> | void;
+        ): globalThis.Promise<Iterator | null> | void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
@@ -7845,7 +7845,7 @@ export namespace Wp {
          * @param acquisitor the link that is trying to acquire a port info item
          * @param item the item that is being acquired
          */
-        acquire(acquisitor: SiLink, item: SiLinkable): Promise<boolean>;
+        acquire(acquisitor: SiLink, item: SiLinkable): globalThis.Promise<boolean>;
         /**
          * Acquires the `item` for linking by `acquisitor`.
          *
@@ -7871,7 +7871,7 @@ export namespace Wp {
             acquisitor: SiLink,
             item: SiLinkable,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started by wp_si_acquisition_acquire(). This is meant to be called in the callback that was passed to that method.
          * @param res the async result
@@ -7946,7 +7946,7 @@ export namespace Wp {
          * @param format the format to be set
          * @param mode the mode
          */
-        set_ports_format(format?: SpaPod | null, mode?: string | null): Promise<boolean>;
+        set_ports_format(format?: SpaPod | null, mode?: string | null): globalThis.Promise<boolean>;
         /**
          * Sets the format and configures the adapter session item ports using the given format.
          *
@@ -7974,7 +7974,7 @@ export namespace Wp {
             format?: SpaPod | null,
             mode?: string | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started by wp_si_adapter_set_format(). This is meant to be called in the callback that was passed to that method.
          * @param res the async result

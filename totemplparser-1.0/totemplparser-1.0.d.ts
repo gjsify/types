@@ -459,7 +459,11 @@ export namespace TotemPlParser {
          * @param fallback %TRUE if the parser should add the playlist URI to the end of the playlist on parse failure
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        parse_async(uri: string, fallback: boolean, cancellable?: Gio.Cancellable | null): Promise<ParserResult>;
+        parse_async(
+            uri: string,
+            fallback: boolean,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<ParserResult>;
         /**
          * Starts asynchronous parsing of a playlist given by the absolute URI `uri`. `parser` and `uri` are both reffed/copied
          * when this function is called, so can safely be freed after this function returns.
@@ -497,7 +501,7 @@ export namespace TotemPlParser {
             fallback: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<ParserResult> | void;
+        ): globalThis.Promise<ParserResult> | void;
         /**
          * Finishes an asynchronous playlist parsing operation started with totem_pl_parser_parse_async()
          * or totem_pl_parser_parse_with_base_async().
@@ -581,7 +585,7 @@ export namespace TotemPlParser {
             title: string,
             type: ParserType | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous version of totem_pl_parser_save(). For more details
          * see totem_pl_parser_save().
@@ -623,7 +627,7 @@ export namespace TotemPlParser {
             type: ParserType | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous playlist saving operation started with totem_pl_parser_save_async().
          *

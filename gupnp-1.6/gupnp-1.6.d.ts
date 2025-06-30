@@ -1831,7 +1831,7 @@ export namespace GUPnP {
             requested_height: number,
             prefer_bigger: boolean,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[GLib.Bytes, string, number, number, number]>;
+        ): globalThis.Promise<[GLib.Bytes, string, number, number, number]>;
         /**
          * Download the device icon matching the request parameters. For details on
          * the lookup procedure, see [method`GUPnP`.DeviceInfo.get_icon_url]
@@ -1871,7 +1871,7 @@ export namespace GUPnP {
             prefer_bigger: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[GLib.Bytes, string, number, number, number]> | void;
+        ): globalThis.Promise<[GLib.Bytes, string, number, number, number]> | void;
         get_icon_finish(res: Gio.AsyncResult): [GLib.Bytes, string, number, number, number];
         /**
          * Get an URL pointing to the icon most closely matching the
@@ -3200,7 +3200,7 @@ export namespace GUPnP {
          * error code %G_IO_ERROR_CANCELLED.
          * @param cancellable a #GCancellable that can be used to cancel the call.
          */
-        introspect_async(cancellable?: Gio.Cancellable | null): Promise<ServiceIntrospection | null>;
+        introspect_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<ServiceIntrospection | null>;
         /**
          * Note that introspection object is created from the information in service
          * description document (SCPD) provided by the service so it can not be created
@@ -3225,7 +3225,7 @@ export namespace GUPnP {
         introspect_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<ServiceIntrospection | null> | void;
+        ): globalThis.Promise<ServiceIntrospection | null> | void;
         /**
          * Finish an asynchronous call initiated with
          * gupnp_service_info_introspect_async().
@@ -3997,7 +3997,7 @@ export namespace GUPnP {
         call_action_async(
             action: ServiceProxyAction,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<ServiceProxyAction | null>;
+        ): globalThis.Promise<ServiceProxyAction | null>;
         /**
          * Start a call on the remote UPnP service using the pre-configured `action`.
          * Use gupnp_service_proxy_call_action_finish() in the `callback` to finalize
@@ -4029,7 +4029,7 @@ export namespace GUPnP {
             action: ServiceProxyAction,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<ServiceProxyAction | null> | void;
+        ): globalThis.Promise<ServiceProxyAction | null> | void;
         /**
          * Finish an asynchronous call initiated with
          * gupnp_service_proxy_call_action_async().
@@ -5023,7 +5023,7 @@ export namespace GUPnP {
             address: string,
             agent?: string | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Check asynchronously whether an IP address is allowed to access
          * this resource.
@@ -5081,7 +5081,7 @@ export namespace GUPnP {
             agent?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Get the result of [method`GUPnP`.Acl.is_allowed_async].
          * @param res [iface@Gio.AsyncResult] obtained from the callback passed to [method@GUPnP.Acl.is_allowed_async]

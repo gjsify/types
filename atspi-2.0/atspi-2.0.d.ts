@@ -2267,7 +2267,7 @@ export namespace Atspi {
         (event: Event): void;
     }
     interface GenerateMouseEventCB {
-        (): void;
+        (user_data?: any | null): void;
     }
     interface KeyCallback {
         (device: Device, pressed: boolean, keycode: number, keysym: number, modifiers: number, keystring: string): void;

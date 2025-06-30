@@ -459,7 +459,11 @@ export namespace TelepathyLogger {
          * @param target a non-NULL #TplEntity
          * @param type_mask event type filter see #TplEventTypeMask
          */
-        get_dates_async(account: TelepathyGLib.Account, target: Entity, type_mask: number): Promise<GLib.Date[]>;
+        get_dates_async(
+            account: TelepathyGLib.Account,
+            target: Entity,
+            type_mask: number,
+        ): globalThis.Promise<GLib.Date[]>;
         /**
          * Retrieves a list of #GDate corresponding to each day where
          * at least one event exist for `target`.
@@ -493,13 +497,13 @@ export namespace TelepathyLogger {
             target: Entity,
             type_mask: number,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.Date[]> | void;
+        ): globalThis.Promise<GLib.Date[]> | void;
         get_dates_finish(result: Gio.AsyncResult): [boolean, GLib.Date[]];
         /**
          * Start a query looking for all entities for which you have logs in the `account`.
          * @param account a #TpAccount
          */
-        get_entities_async(account: TelepathyGLib.Account): Promise<Entity[]>;
+        get_entities_async(account: TelepathyGLib.Account): globalThis.Promise<Entity[]>;
         /**
          * Start a query looking for all entities for which you have logs in the `account`.
          * @param account a #TpAccount
@@ -514,7 +518,7 @@ export namespace TelepathyLogger {
         get_entities_async(
             account: TelepathyGLib.Account,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Entity[]> | void;
+        ): globalThis.Promise<Entity[]> | void;
         get_entities_finish(result: Gio.AsyncResult): [boolean, Entity[]];
         /**
          * Retrieve a list of #TplEvent at `date` with `target`.
@@ -528,7 +532,7 @@ export namespace TelepathyLogger {
             target: Entity,
             type_mask: number,
             date: GLib.Date,
-        ): Promise<Event[]>;
+        ): globalThis.Promise<Event[]>;
         /**
          * Retrieve a list of #TplEvent at `date` with `target`.
          * @param account a #TpAccount
@@ -558,7 +562,7 @@ export namespace TelepathyLogger {
             type_mask: number,
             date: GLib.Date,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Event[]> | void;
+        ): globalThis.Promise<Event[]> | void;
         get_events_for_date_finish(result: Gio.AsyncResult): [boolean, Event[]];
         /**
          * Retrieve the most recent `num_event` events exchanged with `target`.
@@ -574,7 +578,7 @@ export namespace TelepathyLogger {
             type_mask: number,
             num_events: number,
             filter?: LogEventFilter | null,
-        ): Promise<Event[]>;
+        ): globalThis.Promise<Event[]>;
         /**
          * Retrieve the most recent `num_event` events exchanged with `target`.
          * @param account a #TpAccount
@@ -608,7 +612,7 @@ export namespace TelepathyLogger {
             num_events: number,
             filter?: LogEventFilter | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Event[]> | void;
+        ): globalThis.Promise<Event[]> | void;
         get_filtered_events_finish(result: Gio.AsyncResult): [boolean, Event[]];
         /**
          * Checks, whether logging is disabled for given entity. By default, logging
@@ -623,7 +627,7 @@ export namespace TelepathyLogger {
          * @param text the pattern to search
          * @param type_mask event type filter see #TplEventTypeMask
          */
-        search_async(text: string, type_mask: number): Promise<LogSearchHit[]>;
+        search_async(text: string, type_mask: number): globalThis.Promise<LogSearchHit[]>;
         /**
          * Search for all the conversations containing `text`.
          * @param text the pattern to search
@@ -641,7 +645,7 @@ export namespace TelepathyLogger {
             text: string,
             type_mask: number,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<LogSearchHit[]> | void;
+        ): globalThis.Promise<LogSearchHit[]> | void;
         search_finish(result: Gio.AsyncResult): [boolean, LogSearchHit[]];
         /**
          * Create a #TplLogWalker to traverse all the events exchanged with `target`.
@@ -726,7 +730,7 @@ export namespace TelepathyLogger {
          * Walk the logs to retrieve the next most recent `num_event` events.
          * @param num_events number of maximum events to fetch
          */
-        get_events_async(num_events: number): Promise<Event[]>;
+        get_events_async(num_events: number): globalThis.Promise<Event[]>;
         /**
          * Walk the logs to retrieve the next most recent `num_event` events.
          * @param num_events number of maximum events to fetch
@@ -738,7 +742,10 @@ export namespace TelepathyLogger {
          * @param num_events number of maximum events to fetch
          * @param callback a callback to call when the request is satisfied
          */
-        get_events_async(num_events: number, callback?: Gio.AsyncReadyCallback<this> | null): Promise<Event[]> | void;
+        get_events_async(
+            num_events: number,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<Event[]> | void;
         get_events_finish(result: Gio.AsyncResult): [boolean, Event[]];
         /**
          * Determines whether `walker` has run out of events. This is the case
@@ -758,7 +765,7 @@ export namespace TelepathyLogger {
          * returned by tpl_log_walker_get_events_async().
          * @param num_events number of events to move back
          */
-        rewind_async(num_events: number): Promise<boolean>;
+        rewind_async(num_events: number): globalThis.Promise<boolean>;
         /**
          * Move the `walker` back by the last `num_event` events that were
          * returned by tpl_log_walker_get_events_async().
@@ -772,7 +779,10 @@ export namespace TelepathyLogger {
          * @param num_events number of events to move back
          * @param callback a callback to call when the request is satisfied
          */
-        rewind_async(num_events: number, callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
+        rewind_async(
+            num_events: number,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<boolean> | void;
         rewind_finish(result: Gio.AsyncResult): boolean;
     }
 

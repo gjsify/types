@@ -1202,7 +1202,7 @@ export namespace Mks {
          * @param keycode the hardware keycode
          * @param cancellable a #GCancellable
          */
-        press(keycode: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        press(keycode: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Presses `keycode`.
          * @param keycode the hardware keycode
@@ -1224,7 +1224,7 @@ export namespace Mks {
             keycode: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Completes a call to [method`Mks`.Keyboard.press].
          * @param result a #GAsyncResult provided to callback
@@ -1243,7 +1243,7 @@ export namespace Mks {
          * @param keycode the hardware keycode
          * @param cancellable a #GCancellable
          */
-        release(keycode: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        release(keycode: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Releases `keycode`.
          * @param keycode the hardware keycode
@@ -1265,7 +1265,7 @@ export namespace Mks {
             keycode: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Completes a call to [method`Mks`.Keyboard.release].
          * @param result a #GAsyncResult provided to callback
@@ -1358,7 +1358,7 @@ export namespace Mks {
          * @param delta_y the y coordinate delta
          * @param cancellable a #GCancellable
          */
-        move_by(delta_x: number, delta_y: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        move_by(delta_x: number, delta_y: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Moves the mouse by delta_x and delta_y.
          * @param delta_x the x coordinate delta
@@ -1384,7 +1384,7 @@ export namespace Mks {
             delta_y: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Completes a call to [method`Mks`.Mouse.move_by].
          * @param result a #GAsyncResult provided to callback
@@ -1405,7 +1405,7 @@ export namespace Mks {
          * @param y the y coordinate
          * @param cancellable a #GCancellable
          */
-        move_to(x: number, y: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        move_to(x: number, y: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Moves to the absolute position at coordinates (x,y).
          * @param x the x coordinate
@@ -1431,7 +1431,7 @@ export namespace Mks {
             y: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Completes a call to [method`Mks`.Mouse.move_to].
          * @param result a #GAsyncResult provided to callback
@@ -1451,7 +1451,7 @@ export namespace Mks {
          * @param button the #MksMouseButton that was pressed
          * @param cancellable a #GCancellable
          */
-        press(button: MouseButton | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        press(button: MouseButton | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Presses a mouse button.
          * @param button the #MksMouseButton that was pressed
@@ -1473,7 +1473,7 @@ export namespace Mks {
             button: MouseButton | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Completes a call to [method`Mks`.Mouse.press].
          * @param result a #GAsyncResult provided to callback
@@ -1492,7 +1492,7 @@ export namespace Mks {
          * @param button the #MksMouseButton that was released
          * @param cancellable a #GCancellable
          */
-        release(button: MouseButton | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        release(button: MouseButton | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Releases a mouse button.
          * @param button the #MksMouseButton that was released
@@ -1514,7 +1514,7 @@ export namespace Mks {
             button: MouseButton | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Completes a call to [method`Mks`.Mouse.release].
          * @param result a #GAsyncResult provided to callback
@@ -1616,7 +1616,7 @@ export namespace Mks {
          * using mks_screen_attach_finish() from `callback`.
          * @param cancellable a #GCancellable
          */
-        attach(cancellable?: Gio.Cancellable | null): Promise<Gdk.Paintable>;
+        attach(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gdk.Paintable>;
         /**
          * Asynchronously creates a #GdkPaintable that is updated with the
          * contents of the screen.
@@ -1643,7 +1643,7 @@ export namespace Mks {
         attach(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gdk.Paintable> | void;
+        ): globalThis.Promise<Gdk.Paintable> | void;
         /**
          * Completes an asynchronous request to create a [iface`Gdk`.Paintable] containing
          * the contents of #MksScreen in the QEMU instance.
@@ -1662,7 +1662,7 @@ export namespace Mks {
          * @returns a #GdkPaintable if successful; otherwise %NULL   and @error is set.
          */
         attach_sync(cancellable?: Gio.Cancellable | null): Gdk.Paintable;
-        configure(attributes: ScreenAttributes, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        configure(attributes: ScreenAttributes, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         configure(
             attributes: ScreenAttributes,
             cancellable: Gio.Cancellable | null,
@@ -1672,7 +1672,7 @@ export namespace Mks {
             attributes: ScreenAttributes,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Completes a call to mks_screen_configure().
          * @param result a #GAsyncResult provided to callback
@@ -1928,7 +1928,7 @@ export namespace Mks {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -2020,7 +2020,7 @@ export namespace Mks {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -2698,7 +2698,7 @@ export namespace Mks {
             x: number,
             y: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Send a touch event.
          * @param kind
@@ -2732,7 +2732,7 @@ export namespace Mks {
             y: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Completes a call to [method`Mks`.Touchable.send_event].
          * @param result a #GAsyncResult provided to callback

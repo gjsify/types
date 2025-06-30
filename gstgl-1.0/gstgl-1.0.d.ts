@@ -802,7 +802,7 @@ export namespace GstGL {
         (params?: any | null): void;
     }
     interface GLAsyncDebugLogGetMessage {
-        (): string;
+        (user_data?: any | null): string;
     }
     interface GLBaseMemoryAllocatorAllocFunction {
         (allocator: GLBaseMemoryAllocator, params: GLAllocationParams): GLBaseMemory | null;

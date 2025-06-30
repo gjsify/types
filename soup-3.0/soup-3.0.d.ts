@@ -9082,7 +9082,10 @@ export namespace Soup {
          * @param io_priority the I/O priority for the request.
          * @param cancellable a #GCancellable.
          */
-        next_part_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<Gio.InputStream | null>;
+        next_part_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<Gio.InputStream | null>;
         /**
          * Obtains a [class`Gio`.InputStream] for the next request.
          *
@@ -9108,7 +9111,7 @@ export namespace Soup {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gio.InputStream | null> | void;
+        ): globalThis.Promise<Gio.InputStream | null> | void;
         /**
          * Finishes an asynchronous request for the next part.
          * @param result a #GAsyncResult.
@@ -9280,7 +9283,7 @@ export namespace Soup {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional cancellable object
          */
-        close_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        close_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Requests an asynchronous closes of the stream, releasing resources related to it.
          * When the operation is finished `callback` will be called.
@@ -9320,7 +9323,7 @@ export namespace Soup {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
          * @param result a #GAsyncResult.
@@ -9401,7 +9404,10 @@ export namespace Soup {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
-        read_all_async(io_priority: number, cancellable?: Gio.Cancellable | null): [Promise<number>, Uint8Array];
+        read_all_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): [globalThis.Promise<number>, Uint8Array];
         /**
          * Request an asynchronous read of `count` bytes from the stream into the
          * buffer starting at `buffer`.
@@ -9441,7 +9447,7 @@ export namespace Soup {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): [Promise<number> | void, Uint8Array];
+        ): [globalThis.Promise<number> | void, Uint8Array];
         /**
          * Finishes an asynchronous stream read operation started with
          * [method`InputStream`.read_all_async].
@@ -9483,7 +9489,7 @@ export namespace Soup {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        read_async(io_priority: number, cancellable?: Gio.Cancellable | null): [Promise<number>, Uint8Array];
+        read_async(io_priority: number, cancellable?: Gio.Cancellable | null): [globalThis.Promise<number>, Uint8Array];
         /**
          * Request an asynchronous read of `count` bytes from the stream into the buffer
          * starting at `buffer`. When the operation is finished `callback` will be called.
@@ -9549,7 +9555,7 @@ export namespace Soup {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): [Promise<number> | void, Uint8Array];
+        ): [globalThis.Promise<number> | void, Uint8Array];
         /**
          * Like g_input_stream_read(), this tries to read `count` bytes from
          * the stream in a blocking fashion. However, rather than reading into
@@ -9604,7 +9610,11 @@ export namespace Soup {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        read_bytes_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<GLib.Bytes>;
+        read_bytes_async(
+            count: number,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<GLib.Bytes>;
         /**
          * Request an asynchronous read of `count` bytes from the stream into a
          * new #GBytes. When the operation is finished `callback` will be
@@ -9668,7 +9678,7 @@ export namespace Soup {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.Bytes> | void;
+        ): globalThis.Promise<GLib.Bytes> | void;
         /**
          * Finishes an asynchronous stream read-into-#GBytes operation.
          * @param result a #GAsyncResult.
@@ -9736,7 +9746,11 @@ export namespace Soup {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        skip_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<number>;
+        skip_async(
+            count: number,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<number>;
         /**
          * Request an asynchronous skip of `count` bytes from the stream.
          * When the operation is finished `callback` will be called.
@@ -9806,7 +9820,7 @@ export namespace Soup {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes a stream skip operation.
          * @param result a #GAsyncResult.
@@ -11368,7 +11382,11 @@ export namespace Soup {
          * @param io_priority the I/O priority of the request
          * @param cancellable a #GCancellable
          */
-        preconnect_async(msg: Message, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        preconnect_async(
+            msg: Message,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Start a preconnection to `msg`.
          *
@@ -11414,7 +11432,7 @@ export namespace Soup {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Complete a preconnect async operation started with [method`Session`.preconnect_async].
          * @param result the #GAsyncResult passed to your callback
@@ -11490,7 +11508,7 @@ export namespace Soup {
             msg: Message,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<GLib.Bytes>;
+        ): globalThis.Promise<GLib.Bytes>;
         /**
          * Asynchronously sends `msg` and reads the response body.
          *
@@ -11532,7 +11550,7 @@ export namespace Soup {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.Bytes> | void;
+        ): globalThis.Promise<GLib.Bytes> | void;
         /**
          * Gets the response to a [method`Session`.send_and_read_async].
          *
@@ -11575,7 +11593,7 @@ export namespace Soup {
             flags: Gio.OutputStreamSpliceFlags | null,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<number>;
+        ): globalThis.Promise<number>;
         /**
          * Asynchronously sends `msg` and splices the response body stream into `out_stream`.
          * When `callback` is called, then either `msg` has been sent and its response body
@@ -11617,7 +11635,7 @@ export namespace Soup {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Gets the response to a [method`Session`.send_and_splice_async].
          * @param result the #GAsyncResult passed to your callback
@@ -11637,7 +11655,11 @@ export namespace Soup {
          * @param io_priority the I/O priority of the request
          * @param cancellable a #GCancellable
          */
-        send_async(msg: Message, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<Gio.InputStream>;
+        send_async(
+            msg: Message,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<Gio.InputStream>;
         /**
          * Asynchronously sends `msg` and waits for the beginning of a response.
          *
@@ -11677,7 +11699,7 @@ export namespace Soup {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gio.InputStream> | void;
+        ): globalThis.Promise<Gio.InputStream> | void;
         /**
          * Gets the response to a [method`Session`.send_async] call.
          *
@@ -11788,7 +11810,7 @@ export namespace Soup {
             protocols: string[] | null,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<WebsocketConnection>;
+        ): globalThis.Promise<WebsocketConnection>;
         /**
          * Asynchronously creates a [class`WebsocketConnection]` to communicate with a
          * remote server.
@@ -11854,7 +11876,7 @@ export namespace Soup {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<WebsocketConnection> | void;
+        ): globalThis.Promise<WebsocketConnection> | void;
         /**
          * Gets the [class`WebsocketConnection]` response to a
          * [method`Session`.websocket_connect_async] call.

@@ -311,10 +311,10 @@ export namespace GstRtspServer {
         (client: RTSPClient, sess: RTSPSession): RTSPFilterResult;
     }
     interface RTSPKeepAliveFunc {
-        (): void;
+        (user_data?: any | null): void;
     }
     interface RTSPMessageSentFunc {
-        (): void;
+        (user_data?: any | null): void;
     }
     interface RTSPMessageSentFuncFull {
         (trans: RTSPStreamTransport): void;

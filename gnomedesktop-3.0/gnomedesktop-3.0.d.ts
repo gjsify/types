@@ -131,7 +131,7 @@ export namespace GnomeDesktop {
      */
     function get_default_input_sources(
         cancellable?: Gio.Cancellable | null,
-    ): Promise<[string[], string[], string[], string]>;
+    ): globalThis.Promise<[string[], string[], string[], string]>;
     /**
      * Asynchronously fetches a list of of default input sources based on locale and system
      * configuration. This is for when a user has no input sources configured
@@ -153,7 +153,7 @@ export namespace GnomeDesktop {
     function get_default_input_sources(
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Gio.Cancellable | null> | null,
-    ): Promise<[string[], string[], string[], string]> | void;
+    ): globalThis.Promise<[string[], string[], string[], string]> | void;
     function get_default_input_sources_finish(result: Gio.AsyncResult): [boolean, string[], string[], string[], string];
     /**
      * Gets the default input source's type and identifier for a given
@@ -261,7 +261,7 @@ export namespace GnomeDesktop {
         description?: string | null,
         connection?: Gio.DBusConnection | null,
         cancellable?: Gio.Cancellable | null,
-    ): Promise<boolean>;
+    ): globalThis.Promise<boolean>;
     /**
      * If the current process is running inside a user systemd instance, then move
      * the launched PID into a transient scope. The given `name` will be used to
@@ -331,7 +331,7 @@ export namespace GnomeDesktop {
         connection?: Gio.DBusConnection | null,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<string> | null,
-    ): Promise<boolean> | void;
+    ): globalThis.Promise<boolean> | void;
     /**
      * Finish an asynchronous operation to create a transient scope that was
      * started with gnome_start_systemd_scope().
@@ -792,7 +792,7 @@ export namespace GnomeDesktop {
             uri: string,
             original_mtime: never,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronous version of gnome_desktop_thumbnail_factory_create_failed_thumbnail()
          *
@@ -822,7 +822,7 @@ export namespace GnomeDesktop {
             original_mtime: never,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         create_failed_thumbnail_finish(result: Gio.AsyncResult): boolean;
         /**
          * Tries to generate a thumbnail for the specified file. If it succeeds
@@ -847,7 +847,7 @@ export namespace GnomeDesktop {
             uri: string,
             mime_type: string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<GdkPixbuf.Pixbuf>;
+        ): globalThis.Promise<GdkPixbuf.Pixbuf>;
         /**
          * Asynchronous version of gnome_desktop_thumbnail_factory_generate_thumbnail()
          *
@@ -877,7 +877,7 @@ export namespace GnomeDesktop {
             mime_type: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GdkPixbuf.Pixbuf> | void;
+        ): globalThis.Promise<GdkPixbuf.Pixbuf> | void;
         generate_thumbnail_finish(result: Gio.AsyncResult): GdkPixbuf.Pixbuf;
         /**
          * Tries to locate an failed thumbnail for the file specified. Writing
@@ -930,7 +930,7 @@ export namespace GnomeDesktop {
             uri: string,
             original_mtime: never,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronous version of gnome_desktop_thumbnail_factory_save_thumbnail()
          *
@@ -964,7 +964,7 @@ export namespace GnomeDesktop {
             original_mtime: never,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         save_thumbnail_finish(result: Gio.AsyncResult): boolean;
     }
 
@@ -1930,7 +1930,7 @@ export namespace GnomeDesktop {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -2022,7 +2022,7 @@ export namespace GnomeDesktop {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().

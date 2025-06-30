@@ -1296,7 +1296,7 @@ export namespace EDataServer {
         file: Gio.File,
         io_priority: number,
         cancellable?: Gio.Cancellable | null,
-    ): Promise<boolean>;
+    ): globalThis.Promise<boolean>;
     /**
      * Asynchronously deletes `file`.  If `file` is a directory, its contents
      * are deleted recursively before `file` itself is deleted.  The recursive
@@ -1338,7 +1338,7 @@ export namespace EDataServer {
         io_priority: number,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Gio.File> | null,
-    ): Promise<boolean> | void;
+    ): globalThis.Promise<boolean> | void;
     /**
      * Finishes the operation started with e_file_recursive_delete().
      *
@@ -2265,7 +2265,7 @@ export namespace EDataServer {
         only_supports: number,
         credentials?: NamedParameters | null,
         cancellable?: Gio.Cancellable | null,
-    ): Promise<[string, Gio.TlsCertificateFlags | null, WebDAVDiscoveredSource[] | null, string[] | null]>;
+    ): globalThis.Promise<[string, Gio.TlsCertificateFlags | null, WebDAVDiscoveredSource[] | null, string[] | null]>;
     /**
      * Asynchronously runs discovery of the WebDAV sources (CalDAV and CardDAV), eventually
      * limited by the `only_supports` filter, which can be %E_WEBDAV_DISCOVER_SUPPORTS_NONE
@@ -2315,7 +2315,9 @@ export namespace EDataServer {
         credentials?: NamedParameters | null,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Source> | null,
-    ): Promise<[string, Gio.TlsCertificateFlags | null, WebDAVDiscoveredSource[] | null, string[] | null]> | void;
+    ): globalThis.Promise<
+        [string, Gio.TlsCertificateFlags | null, WebDAVDiscoveredSource[] | null, string[] | null]
+    > | void;
     /**
      * Finishes the operation started with e_webdav_discover_sources(). If an
      * error occurred, the function will set `error` and return %FALSE. The function
@@ -2518,7 +2520,7 @@ export namespace EDataServer {
         (gdata: GDataSession, object: Json.Object): boolean;
     }
     interface OAuth2ServiceRefSourceFunc {
-        (uid: string): Source | null;
+        (user_data: any | null, uid: string): Source | null;
     }
     interface SourceRefreshFunc {
         (source: Source): void;
@@ -2527,7 +2529,7 @@ export namespace EDataServer {
         (type: GObject.GType): void;
     }
     interface WebDAVDiscoverRefSourceFunc {
-        (uid: string): Source | null;
+        (user_data: any | null, uid: string): Source | null;
     }
     interface WebDAVPropstatTraverseFunc {
         (
@@ -3021,7 +3023,7 @@ export namespace EDataServer {
          * @param prop_name property name, whose value to retrieve; cannot be %NULL
          * @param cancellable a #GCancellable; can be %NULL
          */
-        get_backend_property(prop_name: string, cancellable?: Gio.Cancellable | null): Promise<string>;
+        get_backend_property(prop_name: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Queries `client'`s backend for a property of name `prop_name`.
          * The call is finished by e_client_get_backend_property_finish()
@@ -3047,7 +3049,7 @@ export namespace EDataServer {
             prop_name: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         /**
          * Finishes previous call of e_client_get_backend_property().
          * @param result a #GAsyncResult
@@ -3098,7 +3100,7 @@ export namespace EDataServer {
          * @param only_if_exists this parameter is not used anymore
          * @param cancellable a #GCancellable; can be %NULL
          */
-        open(only_if_exists: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        open(only_if_exists: boolean, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Opens the `client,` making it ready for queries and other operations.
          * The call is finished by e_client_open_finish() from the `callback`.
@@ -3122,7 +3124,7 @@ export namespace EDataServer {
             only_if_exists: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes previous call of e_client_open().
          * @param result a #GAsyncResult
@@ -3153,7 +3155,7 @@ export namespace EDataServer {
          * The call is finished by e_client_refresh_finish() from the `callback`.
          * @param cancellable a #GCancellable; can be %NULL
          */
-        refresh(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        refresh(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Initiates refresh on the `client`. Finishing the method doesn't mean
          * that the refresh is done, backend only notifies whether it started
@@ -3176,7 +3178,7 @@ export namespace EDataServer {
         refresh(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes previous call of e_client_refresh().
          * @param result a #GAsyncResult
@@ -3198,7 +3200,7 @@ export namespace EDataServer {
          * The call is finished by e_client_remove_finish() from the `callback`.
          * @param cancellable a #GCancellable; can be %NULL
          */
-        remove(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        remove(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Removes the backing data for this #EClient. For example, with the file
          * backend this deletes the database file. You cannot get it back!
@@ -3217,7 +3219,7 @@ export namespace EDataServer {
         remove(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes previous call of e_client_remove().
          * @param result a #GAsyncResult
@@ -3240,7 +3242,7 @@ export namespace EDataServer {
          * from the `callback`.
          * @param cancellable a #GCancellable; can be %NULL
          */
-        retrieve_capabilities(cancellable?: Gio.Cancellable | null): Promise<string>;
+        retrieve_capabilities(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Initiates retrieval of capabilities on the `client`. This is usually
          * required only once, after the `client` is opened. The returned value
@@ -3265,7 +3267,7 @@ export namespace EDataServer {
         retrieve_capabilities(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         /**
          * Finishes previous call of e_client_retrieve_capabilities().
          * Returned value of `capabilities` should be freed with g_free(),
@@ -3292,7 +3294,7 @@ export namespace EDataServer {
          * call e_client_retrieve_properties_finish() to get the result of the operation.
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        retrieve_properties(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        retrieve_properties(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously retrieves `client` properties to match server-side values,
          * without waiting for the D-Bus property change notifications delivery.
@@ -3315,7 +3317,7 @@ export namespace EDataServer {
         retrieve_properties(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_client_retrieve_properties().
          *
@@ -3345,7 +3347,7 @@ export namespace EDataServer {
             prop_name: string,
             prop_value: string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Sets `client'`s backend property of name `prop_name`
          * to value `prop_value`. The call is finished
@@ -3375,7 +3377,7 @@ export namespace EDataServer {
             prop_value: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes previous call of e_client_set_backend_property().
          * @param result a #GAsyncResult
@@ -3412,7 +3414,7 @@ export namespace EDataServer {
          * @param timeout_seconds a timeout for the wait, in seconds
          * @param cancellable a #GCancellable; or %NULL
          */
-        wait_for_connected(timeout_seconds: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        wait_for_connected(timeout_seconds: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously waits until the `client` is connected (according
          * to `ESource:`:connection-status property), but not longer than `timeout_seconds`.
@@ -3442,7 +3444,7 @@ export namespace EDataServer {
             timeout_seconds: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes previous call of e_client_wait_for_connected().
          * @param result a #GAsyncResult
@@ -4676,7 +4678,10 @@ export namespace EDataServer {
          * @param connectable a #GSocketConnectable
          * @param cancellable a #GCancellable, or %NULL
          */
-        can_reach_async(connectable: Gio.SocketConnectable, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        can_reach_async(
+            connectable: Gio.SocketConnectable,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously attempts to determine whether or not the host
          * pointed to by `connectable` can be reached, without actually
@@ -4714,7 +4719,7 @@ export namespace EDataServer {
             connectable: Gio.SocketConnectable,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an async network connectivity test.
          * See g_network_monitor_can_reach_async().
@@ -9015,7 +9020,7 @@ export namespace EDataServer {
             io_priority: number,
             prepare_data?: any | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[Gio.InputStream | null, string, Gio.TlsCertificateFlags | null]>;
+        ): globalThis.Promise<[Gio.InputStream | null, string, Gio.TlsCertificateFlags | null]>;
         /**
          * Asynchronously sends the `message`. Finish the call with
          * e_soup_session_send_message_finish().
@@ -9055,7 +9060,7 @@ export namespace EDataServer {
             prepare_data?: any | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[Gio.InputStream | null, string, Gio.TlsCertificateFlags | null]> | void;
+        ): globalThis.Promise<[Gio.InputStream | null, string, Gio.TlsCertificateFlags | null]> | void;
         /**
          * Finishes the call of e_soup_session_send_message(). This is supposed to
          * be called from the callback passed to the e_soup_session_send_message().
@@ -9488,7 +9493,7 @@ export namespace EDataServer {
          * call e_source_delete_password_finish() to get the result of the operation.
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        delete_password(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        delete_password(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously deletes the password for `source` from either the default
          * keyring or session keyring.  This operation does not rely on the registry
@@ -9513,7 +9518,7 @@ export namespace EDataServer {
         delete_password(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_delete_password().
          *
@@ -9647,7 +9652,7 @@ export namespace EDataServer {
          */
         get_last_credentials_required_arguments(
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[SourceCredentialsReason, string, Gio.TlsCertificateFlags, GLib.Error]>;
+        ): globalThis.Promise<[SourceCredentialsReason, string, Gio.TlsCertificateFlags, GLib.Error]>;
         /**
          * Asynchronously calls the GetLastCredentialsRequiredArguments method
          * on the server side, to get the last values used for the 'credentials-required'
@@ -9679,7 +9684,7 @@ export namespace EDataServer {
         get_last_credentials_required_arguments(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[SourceCredentialsReason, string, Gio.TlsCertificateFlags, GLib.Error]> | void;
+        ): globalThis.Promise<[SourceCredentialsReason, string, Gio.TlsCertificateFlags, GLib.Error]> | void;
         /**
          * Finishes the operation started with e_source_get_last_credentials_required_arguments().
          * See e_source_get_last_credentials_required_arguments_sync() for more information
@@ -9715,7 +9720,7 @@ export namespace EDataServer {
          * operation.
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        get_oauth2_access_token(cancellable?: Gio.Cancellable | null): Promise<[string, number]>;
+        get_oauth2_access_token(cancellable?: Gio.Cancellable | null): globalThis.Promise<[string, number]>;
         /**
          * Asynchronously obtains the OAuth 2.0 access token for `source` along
          * with its expiry in seconds from the current time (or 0 if unknown).
@@ -9743,7 +9748,7 @@ export namespace EDataServer {
         get_oauth2_access_token(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[string, number]> | void;
+        ): globalThis.Promise<[string, number]> | void;
         /**
          * Finishes the operation started with e_source_get_oauth2_access_token().
          *
@@ -9834,7 +9839,7 @@ export namespace EDataServer {
         invoke_authenticate(
             credentials?: NamedParameters | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously calls the InvokeAuthenticate method on the server side,
          * thus the backend knows what credentials to use to connect to its (possibly
@@ -9866,7 +9871,7 @@ export namespace EDataServer {
             credentials?: NamedParameters | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_invoke_authenticate().
          *
@@ -9903,7 +9908,7 @@ export namespace EDataServer {
             certificate_errors: Gio.TlsCertificateFlags | null,
             op_error?: GLib.Error | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously calls the InvokeCredentialsRequired method on the server side,
          * to inform clients that credentials are required.
@@ -9945,7 +9950,7 @@ export namespace EDataServer {
             op_error?: GLib.Error | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_invoke_credentials_required().
          *
@@ -9997,7 +10002,7 @@ export namespace EDataServer {
          * call e_source_lookup_password_finish() to get the result of the operation.
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        lookup_password(cancellable?: Gio.Cancellable | null): Promise<string>;
+        lookup_password(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously looks up a password for `source`.  Both the default and
          * session keyrings are queried.  This operation does not rely on the
@@ -10024,7 +10029,7 @@ export namespace EDataServer {
         lookup_password(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         /**
          * Finishes the operation started with e_source_lookup_password().
          *
@@ -10065,7 +10070,10 @@ export namespace EDataServer {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        mail_signature_load(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<[string, number]>;
+        mail_signature_load(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<[string, number]>;
         /**
          * Asynchronously loads a signature from the signature file for `source,`
          * which is given by e_source_mail_signature_get_file().
@@ -10105,7 +10113,7 @@ export namespace EDataServer {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[string, number]> | void;
+        ): globalThis.Promise<[string, number]> | void;
         /**
          * Finishes an operation started with e_source_mail_signature_load().  The
          * signature file contents are placed in `contents,` and `length` is set to
@@ -10147,7 +10155,7 @@ export namespace EDataServer {
             length: number,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchrously replaces the signature file for `source` with the given
          * `contents` of `length` bytes.  The signature file for `source` is given
@@ -10189,7 +10197,7 @@ export namespace EDataServer {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with e_source_mail_signature_replace().
          * @param result a #GAsyncResult
@@ -10223,7 +10231,7 @@ export namespace EDataServer {
             symlink_target: string,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously replaces the signature file for `source` with a symbolic
          * link to `symlink_target,` which should be an executable file that prints
@@ -10263,7 +10271,7 @@ export namespace EDataServer {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with e_source_mail_signature_symlink().
          * @param result a #GAsyncResult
@@ -10289,7 +10297,7 @@ export namespace EDataServer {
          * @param uri a URI representing the destination to connect to
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        proxy_lookup(uri: string, cancellable?: Gio.Cancellable | null): Promise<string[] | null>;
+        proxy_lookup(uri: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string[] | null>;
         /**
          * Asynchronously determines what proxy, if any, to use to connect to `uri`.
          * See e_source_proxy_lookup_sync() for more details.
@@ -10319,7 +10327,7 @@ export namespace EDataServer {
             uri: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string[] | null> | void;
+        ): globalThis.Promise<string[] | null> | void;
         /**
          * Finishes the operation started with e_source_proxy_lookup().
          *
@@ -10435,7 +10443,7 @@ export namespace EDataServer {
          * @param scratch_source an #ESource describing the resource to create
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        remote_create(scratch_source: Source, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        remote_create(scratch_source: Source, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously creates a new remote resource by picking out relevant
          * details from `scratch_source`.  The `scratch_source` must be an #ESource
@@ -10477,7 +10485,7 @@ export namespace EDataServer {
             scratch_source: Source,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_remote_create().  If
          * an error occurred, the function will set `error` and return %FALSE.
@@ -10511,7 +10519,7 @@ export namespace EDataServer {
          * call e_source_remote_delete_finish() to get the result of the operation.
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        remote_delete(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        remote_delete(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously deletes the resource represented by `source` from a remote
          * server.  The `source` must be #ESource:remote-deletable.  This will also
@@ -10538,7 +10546,7 @@ export namespace EDataServer {
         remote_delete(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_remote_delete().  If
          * an error occurred, the function will set `error` and return %FALSE.
@@ -10566,7 +10574,7 @@ export namespace EDataServer {
          * call e_source_remove_finish() to get the result of the operation.
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        remove(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        remove(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously requests the D-Bus service to delete the key files for
          * `source` and all of its descendants and broadcast their removal to all
@@ -10591,7 +10599,7 @@ export namespace EDataServer {
         remove(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_remove().  If an
          * error occurred, the function will set `error` and return %FALSE.
@@ -10658,7 +10666,11 @@ export namespace EDataServer {
          * @param permanently store permanently or just for the session
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        store_password(password: string, permanently: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        store_password(
+            password: string,
+            permanently: boolean,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously stores a password for `source`.  This operation does
          * not rely on the registry service and therefore works for any #ESource
@@ -10702,7 +10714,7 @@ export namespace EDataServer {
             permanently: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_store_password().
          * @param result a #GAsyncResult
@@ -10739,7 +10751,7 @@ export namespace EDataServer {
          * the result of the operation.
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        unset_last_credentials_required_arguments(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        unset_last_credentials_required_arguments(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously calls the UnsetLastCredentialsRequiredArguments method
          * on the server side, to unset the last values used for the 'credentials-required'
@@ -10769,7 +10781,7 @@ export namespace EDataServer {
         unset_last_credentials_required_arguments(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_unset_last_credentials_required_arguments().
          *
@@ -10795,7 +10807,7 @@ export namespace EDataServer {
          * call e_source_write_finish() to get the result of the operation.
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        write(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        write(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously submits the current contents of `source` to the D-Bus
          * service to be written to disk and broadcast to other clients.  The
@@ -10820,7 +10832,7 @@ export namespace EDataServer {
         write(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_write().  If an
          * error occurred, the function will set `error` and return %FALSE.
@@ -10959,7 +10971,7 @@ export namespace EDataServer {
          * @param uri a URI representing the destination to connect to
          * @param cancellable a #GCancellable, or %NULL
          */
-        lookup_async(uri: string, cancellable?: Gio.Cancellable | null): Promise<string[]>;
+        lookup_async(uri: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string[]>;
         /**
          * Asynchronous lookup of proxy. See g_proxy_resolver_lookup() for more
          * details.
@@ -10983,7 +10995,7 @@ export namespace EDataServer {
             uri: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string[]> | void;
+        ): globalThis.Promise<string[]> | void;
         /**
          * Call this function to obtain the array of proxy URIs when
          * g_proxy_resolver_lookup_async() is complete. See
@@ -12804,7 +12816,7 @@ export namespace EDataServer {
          * @param source an #ESource, to lookup credentials for
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        ['delete'](source: Source, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        ['delete'](source: Source, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously deletes any previously stored credentials for `source`.
          *
@@ -12834,7 +12846,7 @@ export namespace EDataServer {
             source: Source,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_credentials_provider_delete().
          *
@@ -12861,7 +12873,7 @@ export namespace EDataServer {
          * @param source an #ESource, to lookup credentials for
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        lookup(source: Source, cancellable?: Gio.Cancellable | null): Promise<NamedParameters>;
+        lookup(source: Source, cancellable?: Gio.Cancellable | null): globalThis.Promise<NamedParameters>;
         /**
          * Asynchronously looks up for credentials for `source`.
          *
@@ -12891,7 +12903,7 @@ export namespace EDataServer {
             source: Source,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<NamedParameters> | void;
+        ): globalThis.Promise<NamedParameters> | void;
         /**
          * Finishes the operation started with e_source_credentials_provider_lookup().
          *
@@ -12955,7 +12967,7 @@ export namespace EDataServer {
             credentials: NamedParameters,
             permanently: boolean,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously stores the `credentials` for `source`. Note the actual stored
          * values can differ for each storage. In other words, not all named parameters
@@ -12997,7 +13009,7 @@ export namespace EDataServer {
             permanently: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_credentials_provider_store().
          *
@@ -16588,7 +16600,7 @@ export namespace EDataServer {
          * @param source an #ESource with changes to commit
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        commit_source(source: Source, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        commit_source(source: Source, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * See e_source_registry_commit_source_sync() for details.
          *
@@ -16618,7 +16630,7 @@ export namespace EDataServer {
             source: Source,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_registry_commit_source().
          *
@@ -16658,7 +16670,7 @@ export namespace EDataServer {
          * @param list_of_sources a list of #ESource instances with no #GDBusObject
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        create_sources(list_of_sources: Source[], cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        create_sources(list_of_sources: Source[], cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously requests the D-Bus service create new key files for each
          * #ESource in `list_of_sources`.  Each list element must be a scratch
@@ -16692,7 +16704,7 @@ export namespace EDataServer {
             list_of_sources: Source[],
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_registry_create_sources().
          *
@@ -16979,7 +16991,7 @@ export namespace EDataServer {
          * @param source_uid UID of a collection #ESource whose backend to refresh
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        refresh_backend(source_uid: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        refresh_backend(source_uid: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously requests the D-Bus service to refresh collection backend
          * for an #ESource with UID `source_uid`. The result means that the refresh
@@ -17015,7 +17027,7 @@ export namespace EDataServer {
             source_uid: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_registry_refresh_backend().
          *
@@ -17154,7 +17166,7 @@ export namespace EDataServer {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -17246,7 +17258,7 @@ export namespace EDataServer {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().

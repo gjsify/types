@@ -853,7 +853,7 @@ export namespace Vte {
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<GLib.Pid | null>;
+        ): globalThis.Promise<GLib.Pid | null>;
         /**
          * Like vte_pty_spawn_with_fds_async(), except that this function does not
          * allow passing file descriptors to the child process. See vte_pty_spawn_with_fds_async()
@@ -903,7 +903,7 @@ export namespace Vte {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.Pid | null> | void;
+        ): globalThis.Promise<GLib.Pid | null> | void;
         spawn_finish(result: Gio.AsyncResult): [boolean, GLib.Pid | null];
         /**
          * Starts the specified command under the pseudo-terminal `pty`.

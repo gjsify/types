@@ -359,7 +359,7 @@ export namespace Accounts {
          * `callback` when the operation has been completed.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        store_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        store_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Commit the changed account settings to the account database, and invoke
          * `callback` when the operation has been completed.
@@ -376,7 +376,7 @@ export namespace Accounts {
         store_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Commit the changed account settings to the account database, and invoke
          * `callback` when the operation has been completed.

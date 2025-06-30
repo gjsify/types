@@ -2370,7 +2370,7 @@ export namespace Camel {
         (enc: any | null, length1: number, data1: any | null, length2: number, data2?: any | null): number;
     }
     interface DBSelectCB {
-        (colvalues: string[], colnames: string[]): number;
+        (user_data: any | null, colvalues: string[], colnames: string[]): number;
     }
     interface DataCacheRemoveFunc {
         (cdc: DataCache, filename: string): boolean;
@@ -3491,7 +3491,7 @@ export namespace Camel {
             opart: MimePart,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<CipherValidity>;
+        ): globalThis.Promise<CipherValidity>;
         /**
          * Asynchronously decrypts `ipart` into `opart`.
          *
@@ -3529,7 +3529,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<CipherValidity> | void;
+        ): globalThis.Promise<CipherValidity> | void;
         /**
          * Finishes the operation started with camel_cipher_context_decrypt().
          * @param result a #GAsyncResult
@@ -3567,7 +3567,7 @@ export namespace Camel {
             opart: MimePart,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously encrypts the clear-text `ipart` and
          * writes the resulting cipher-text to `opart`.
@@ -3619,7 +3619,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with camel_cipher_context_encrypt().
          * @param result a #GAsyncResult
@@ -3668,7 +3668,7 @@ export namespace Camel {
             opart: MimePart,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously converts the (unsigned) part `ipart` into a new
          * self-contained MIME part `opart`.  This may be a multipart/signed part,
@@ -3716,7 +3716,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with camel_cipher_context_sign().
          * @param result a #GAsyncResult
@@ -3751,7 +3751,11 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        verify(ipart: MimePart, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<CipherValidity>;
+        verify(
+            ipart: MimePart,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<CipherValidity>;
         /**
          * Asynchronously verifies the signature.
          *
@@ -3785,7 +3789,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<CipherValidity> | void;
+        ): globalThis.Promise<CipherValidity> | void;
         /**
          * Finishes the operation started with camel_cipher_context_verify().
          * @param result a #GAsyncResult
@@ -4480,7 +4484,7 @@ export namespace Camel {
             input_stream: Gio.InputStream,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously constructs the content of `data_wrapper` from `input_stream`.
          *
@@ -4514,7 +4518,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with
          * camel_data_wrapper_construct_from_input_stream().
@@ -4544,7 +4548,7 @@ export namespace Camel {
             stream: Stream,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously constructs the content of `data_wrapper` from the given
          * `stream`.
@@ -4580,7 +4584,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with
          * camel_data_wrapper_construct_from_stream().
@@ -4609,7 +4613,7 @@ export namespace Camel {
             output_stream: Gio.OutputStream,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<number>;
+        ): globalThis.Promise<number>;
         /**
          * Asynchronously writes the decoded data content to `output_stream`.
          *
@@ -4643,7 +4647,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes the operation started with
          * camel_data_wrapper_decode_to_output_stream().
@@ -4676,7 +4680,11 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        decode_to_stream(stream: Stream, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<number>;
+        decode_to_stream(
+            stream: Stream,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<number>;
         /**
          * Asynchronously writes the decoded data content to `stream`.
          *
@@ -4710,7 +4718,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes the operation started with camel_data_wrapper_decode_to_stream().
          * @param result a #GAsyncResult
@@ -4798,7 +4806,7 @@ export namespace Camel {
             output_stream: Gio.OutputStream,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<number>;
+        ): globalThis.Promise<number>;
         /**
          * Asynchronously writes the content of `data_wrapper` to `output_stream` in
          * a machine-independent format appropriate for the data.
@@ -4834,7 +4842,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes the operation started with
          * camel_data_wrapper_write_to_output_stream().
@@ -4871,7 +4879,11 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        write_to_stream(stream: Stream, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<number>;
+        write_to_stream(
+            stream: Stream,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<number>;
         /**
          * Asynchronously writes the content of `data_wrapper` to `stream` in a
          * machine-independent format appropriate for the data.  It should be
@@ -4911,7 +4923,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes the operation started with camel_data_wrapper_write_to_stream().
          * @param result a #GAsyncResult
@@ -5605,7 +5617,7 @@ export namespace Camel {
             info: MessageInfo | null,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<string>;
+        ): globalThis.Promise<string>;
         /**
          * Appends `message` to `folder` asynchronously.  Only the flag and tag data
          * from `info` are used.  If `info` is %NULL, no flags or tags will be set.
@@ -5645,7 +5657,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         /**
          * Finishes the operation started with camel_folder_append_message_finish().
          * @param result a #GAsyncResult
@@ -5726,7 +5738,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        expunge(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        expunge(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously deletes messages which have been marked as "DELETED".
          *
@@ -5754,7 +5766,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with camel_folder_expunge().
          * @param result a #GAsyncResult
@@ -5841,7 +5853,7 @@ export namespace Camel {
             message_uid: string,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<MimeMessage>;
+        ): globalThis.Promise<MimeMessage>;
         /**
          * Asynchronously gets the message corresponding to `message_uid` from `folder`.
          *
@@ -5873,7 +5885,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<MimeMessage> | void;
+        ): globalThis.Promise<MimeMessage> | void;
         /**
          * Gets the message corresponding to `message_uid` from the `folder` cache,
          * if available locally. This should not do any network I/O, only check
@@ -5921,7 +5933,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        get_quota_info(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<FolderQuotaInfo>;
+        get_quota_info(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<FolderQuotaInfo>;
         /**
          * Asynchronously gets a list of known quotas for `folder`.
          *
@@ -5951,7 +5963,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<FolderQuotaInfo> | void;
+        ): globalThis.Promise<FolderQuotaInfo> | void;
         /**
          * Finishes the operation started with camel_folder_get_quota_info().
          * Free the returned #CamelFolderQuotaInfo struct with
@@ -6029,7 +6041,7 @@ export namespace Camel {
             end_uid: string,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Delete the local cache of all messages between these uids.
          *
@@ -6067,7 +6079,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with camel_folder_purge_message_cache().
          * @param result a #GAsyncResult
@@ -6090,7 +6102,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        refresh_info(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        refresh_info(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously synchronizes a folder's summary with its backing store.
          *
@@ -6118,7 +6130,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with camel_folder_refresh_info().
          * @param result a #GAsyncResult
@@ -6234,7 +6246,11 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        synchronize(expunge: boolean, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        synchronize(
+            expunge: boolean,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Synchronizes any changes that have been made to `folder` to its backing
          * store asynchronously, optionally expunging deleted messages as well.
@@ -6268,7 +6284,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with camel_folder_synchronize().
          * @param result a #GAsyncResult
@@ -6291,7 +6307,7 @@ export namespace Camel {
             message_uid: string,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously ensure that a message identified by `message_uid` has been
          * synchronized in `folder` so that calling camel_folder_get_message() on it
@@ -6329,7 +6345,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with camel_folder_synchronize_message().
          * @param result a #GAsyncResult
@@ -6387,7 +6403,7 @@ export namespace Camel {
             delete_originals: boolean,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<string[] | null>;
+        ): globalThis.Promise<string[] | null>;
         /**
          * Asynchronously copies or moves messages from one folder to another.
          * If the `source` or `destination` folders have the same parent store,
@@ -6433,7 +6449,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string[] | null> | void;
+        ): globalThis.Promise<string[] | null> | void;
         /**
          * Finishes the operation started with camel_folder_transfer_messages_to().
          * @param result a #GAsyncResult
@@ -10230,8 +10246,9 @@ export namespace Camel {
          * Calls `callback` for each part of the `message,` including the message itself.
          * The traverse of the `message` parts can be stopped when the `callback`
          * returns %FALSE.
+         * @param callback a #CamelForeachPartFunc callback to call for each part
          */
-        foreach_part(): void;
+        foreach_part(callback?: ForeachPartFunc | null): void;
         /**
          * Get the date and UTC offset of a message.
          * See camel_mime_message_set_date() for information about the `offset` format.
@@ -10746,7 +10763,7 @@ export namespace Camel {
             parser: MimeParser,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously constructs a MIME part from a parser.
          *
@@ -10780,7 +10797,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with camel_mime_part_construct_from_parser().
          * @param result a #GAsyncResult
@@ -11459,7 +11476,7 @@ export namespace Camel {
             expression: string | null,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Synchronizes messages in `folder` described by the search `expression` to
          * the local machine asynchronously for offline availability.
@@ -11495,7 +11512,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with camel_offline_folder_downsync().
          * @param result a #GAsyncResult
@@ -11769,7 +11786,11 @@ export namespace Camel {
          * @param io_priority the I/O priority for the request
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        set_online(online: boolean, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        set_online(
+            online: boolean,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * An asynchronous variant of camel_offline_store_set_online_sync().
          * Call camel_offline_store_set_online_finish() from within the `callback`.
@@ -11797,7 +11818,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with camel_offline_store_set_online().
          * @param result a #GAsyncResult
@@ -12687,7 +12708,7 @@ export namespace Camel {
             token: Uint8Array | null,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Uint8Array | null>;
+        ): globalThis.Promise<Uint8Array | null>;
         /**
          * If `token` is %NULL, asynchronously generate the initial SASL message
          * to send to the server.  (This will be %NULL if the client doesn't
@@ -12725,7 +12746,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Uint8Array | null> | void;
+        ): globalThis.Promise<Uint8Array | null> | void;
         /**
          * As with camel_sasl_challenge(), but the challenge `token` and the
          * response are both base64-encoded.
@@ -12737,7 +12758,11 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        challenge_base64(token: string, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<string>;
+        challenge_base64(
+            token: string,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<string>;
         /**
          * As with camel_sasl_challenge(), but the challenge `token` and the
          * response are both base64-encoded.
@@ -12773,7 +12798,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         /**
          * Finishes the operation started with camel_sasl_challenge_base64().
          * @param result a #GAsyncResult
@@ -12822,7 +12847,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        try_empty_password(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        try_empty_password(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously determine whether `sasl` can be used for password-less
          * authentication, for example single-sign-on using system credentials.
@@ -12854,7 +12879,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with camel_sasl_try_empty_password().
          * @param result a #GAsyncResult
@@ -13664,7 +13689,7 @@ export namespace Camel {
             mechanism: string | null,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<AuthenticationResult>;
+        ): globalThis.Promise<AuthenticationResult>;
         /**
          * Asynchronously attempts to authenticate `service` using `mechanism` and,
          * if necessary, `service'`s #CamelService:password property.  The function
@@ -13708,7 +13733,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<AuthenticationResult> | void;
+        ): globalThis.Promise<AuthenticationResult> | void;
         /**
          * Finishes the operation started with camel_service_authenticate().
          *
@@ -13763,7 +13788,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        connect(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        connect(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously connects `service` to a remote server using the information
          * in its #CamelService:settings instance.
@@ -13807,7 +13832,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         connect(...args: never[]): any;
         /**
          * Finishes the operation started with camel_service_connect().
@@ -13839,7 +13864,11 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        disconnect(clean: boolean, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        disconnect(
+            clean: boolean,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * If a disconnect operation is already in progress when this function is
          * called, its results will be reflected in this disconnect operation.
@@ -13881,7 +13910,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         // Conflicted with GObject.Object.disconnect
         disconnect(...args: never[]): any;
         /**
@@ -13998,7 +14027,10 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        query_auth_types(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<ServiceAuthType[]>;
+        query_auth_types(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<ServiceAuthType[]>;
         /**
          * Asynchronously obtains a list of authentication types supported by
          * `service`.
@@ -14030,7 +14062,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<ServiceAuthType[]> | void;
+        ): globalThis.Promise<ServiceAuthType[]> | void;
         /**
          * Finishes the operation started with camel_service_query_auth_types().
          * Free the returned list with g_list_free().
@@ -14995,7 +15027,7 @@ export namespace Camel {
             mechanism: string | null,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously authenticates `service,` which may involve repeated calls
          * to camel_service_authenticate() or camel_service_authenticate_sync().
@@ -15041,7 +15073,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with camel_session_authenticate().
          *
@@ -15099,7 +15131,7 @@ export namespace Camel {
             address: string,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously forwards `message` in `folder` to the email address(s)
          * given by `address`.
@@ -15143,7 +15175,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with camel_session_forward_to().
          *
@@ -15780,7 +15812,7 @@ export namespace Camel {
             folder_name: string,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<FolderInfo | null>;
+        ): globalThis.Promise<FolderInfo | null>;
         /**
          * Asynchronously creates a new folder as a child of an existing folder.
          * `parent_name` can be %NULL to create a new top-level folder.
@@ -15818,7 +15850,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<FolderInfo | null> | void;
+        ): globalThis.Promise<FolderInfo | null> | void;
         /**
          * Finishes the operation started with camel_store_create_folder().
          * The returned #CamelFolderInfo struct should be freed with
@@ -15862,7 +15894,11 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        delete_folder(folder_name: string, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        delete_folder(
+            folder_name: string,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously deletes the folder described by `folder_name`.  The
          * folder must be empty.
@@ -15896,7 +15932,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with camel_store_delete_folder().
          * @param result a #GAsyncResult
@@ -15989,7 +16025,7 @@ export namespace Camel {
             flags: StoreGetFolderFlags | null,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Folder | null>;
+        ): globalThis.Promise<Folder | null>;
         /**
          * Asynchronously gets a specific folder object from `store` by name.
          *
@@ -16025,7 +16061,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Folder | null> | void;
+        ): globalThis.Promise<Folder | null> | void;
         /**
          * Finishes the operation started with camel_store_get_folder().
          * @param result a #GAsyncResult
@@ -16050,7 +16086,7 @@ export namespace Camel {
             flags: StoreGetFolderInfoFlags | null,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<FolderInfo | null>;
+        ): globalThis.Promise<FolderInfo | null>;
         /**
          * Asynchronously fetches information about the folder structure of `store,`
          * starting with `top`.  For details of the behavior, see
@@ -16092,7 +16128,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<FolderInfo | null> | void;
+        ): globalThis.Promise<FolderInfo | null> | void;
         /**
          * Finishes the operation started with camel_store_get_folder_info().
          * The returned #CamelFolderInfo tree should be freed with
@@ -16155,7 +16191,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        get_inbox_folder(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<Folder | null>;
+        get_inbox_folder(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<Folder | null>;
         /**
          * Asynchronously gets the folder in `store` into which new mail is delivered.
          *
@@ -16185,7 +16221,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Folder | null> | void;
+        ): globalThis.Promise<Folder | null> | void;
         /**
          * Finishes the operation started with camel_store_get_inbox_folder().
          * @param result a #GAsyncResult
@@ -16207,7 +16243,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        get_junk_folder(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<Folder | null>;
+        get_junk_folder(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<Folder | null>;
         /**
          * Asynchronously gets the folder in `store` into which junk is delivered.
          *
@@ -16237,7 +16273,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Folder | null> | void;
+        ): globalThis.Promise<Folder | null> | void;
         /**
          * Finishes the operation started with camel_store_get_junk_folder().
          * @param result a #GAsyncResult
@@ -16260,7 +16296,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        get_trash_folder(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<Folder | null>;
+        get_trash_folder(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<Folder | null>;
         /**
          * Asynchronously gets the folder in `store` into which trash is delivered.
          *
@@ -16290,7 +16326,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Folder | null> | void;
+        ): globalThis.Promise<Folder | null> | void;
         /**
          * Finishes the operation started with camel_store_get_trash_folder().
          * @param result a #GAsyncResult
@@ -16317,7 +16353,7 @@ export namespace Camel {
         initial_setup(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<GLib.HashTable<string, string>>;
+        ): globalThis.Promise<GLib.HashTable<string, string>>;
         /**
          * Runs initial setup for the `store` asynchronously.
          *
@@ -16351,7 +16387,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.HashTable<string, string>> | void;
+        ): globalThis.Promise<GLib.HashTable<string, string>> | void;
         /**
          * Finishes the operation started with camel_store_initial_setup().
          *
@@ -16402,7 +16438,7 @@ export namespace Camel {
             new_name: string,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously renames the folder described by `old_name` to `new_name`.
          *
@@ -16438,7 +16474,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with camel_store_rename_folder().
          * @param result a #GAsyncResult
@@ -16473,7 +16509,11 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        synchronize(expunge: boolean, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        synchronize(
+            expunge: boolean,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Synchronizes any changes that have been made to `store` and its folders
          * with the real store asynchronously.
@@ -16507,7 +16547,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with camel_store_synchronize().
          * @param result a #GAsyncResult
@@ -21940,7 +21980,7 @@ export namespace Camel {
             recipients: Address,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Sends the message asynchronously to the given recipients, regardless of
          * the contents of `message`.  If the message contains a "Bcc" header, the
@@ -21984,7 +22024,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with camel_transport_send_to().
          * @param result a #GAsyncResult
@@ -26815,7 +26855,7 @@ export namespace Camel {
          * operation.
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        can_reach(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        can_reach(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously attempts to determine whether or not the host described by
          * `service'`s #CamelNetworkService:connectable property can be reached, without
@@ -26846,7 +26886,7 @@ export namespace Camel {
         can_reach(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with camel_network_service_can_reach().
          * @param result a #GAsyncResult
@@ -27153,7 +27193,7 @@ export namespace Camel {
             folder_name: string,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously subscribes to the folder described by `folder_name`.
          *
@@ -27187,7 +27227,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with camel_subscribable_subscribe_folder().
          * @param result a #GAsyncResult
@@ -27215,7 +27255,7 @@ export namespace Camel {
             folder_name: string,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously unsubscribes from the folder described by `folder_name`.
          *
@@ -27249,7 +27289,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with camel_subscribable_unsubscribe_folder().
          * @param result a #GAsyncResult

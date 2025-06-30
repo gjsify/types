@@ -5883,7 +5883,7 @@ export namespace Mbim {
             base_ifname: string,
             ifname_prefix: string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<string>;
+        ): globalThis.Promise<string>;
         /**
          * Asynchronously creates a new virtual network device node on top of
          * `base_ifname`. This allows having multiple net interfaces running on top of
@@ -5943,7 +5943,7 @@ export namespace Mbim {
             ifname_prefix: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         /**
          * Finishes an operation started with mbim_device_add_link().
          * @param res a #GAsyncResult.
@@ -5972,7 +5972,7 @@ export namespace Mbim {
          * @param timeout maximum time, in seconds, to wait for the device to be closed.
          * @param cancellable optional #GCancellable object, #NULL to ignore.
          */
-        close(timeout: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        close(timeout: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously closes a #MbimDevice for I/O.
          *
@@ -6000,7 +6000,7 @@ export namespace Mbim {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous close operation started with mbim_device_close().
          * @param res a #GAsyncResult.
@@ -6021,7 +6021,7 @@ export namespace Mbim {
          * @param timeout maximum time, in seconds, to wait for the response.
          * @param cancellable a #GCancellable, or %NULL.
          */
-        command(message: Message, timeout: number, cancellable?: Gio.Cancellable | null): Promise<Message>;
+        command(message: Message, timeout: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<Message>;
         /**
          * Asynchronously sends a #MbimMessage to the device.
          *
@@ -6053,7 +6053,7 @@ export namespace Mbim {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Message> | void;
+        ): globalThis.Promise<Message> | void;
         /**
          * Finishes an operation started with mbim_device_command().
          *
@@ -6079,7 +6079,7 @@ export namespace Mbim {
          * @param base_ifname the interface where all links are available.
          * @param cancellable a #GCancellable, or %NULL.
          */
-        delete_all_links(base_ifname: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        delete_all_links(base_ifname: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously deletes all virtual network interfaces that have been previously
          * created with mbim_device_add_link() in `base_ifname`.
@@ -6123,7 +6123,7 @@ export namespace Mbim {
             base_ifname: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with mbim_device_delete_all_links().
          * @param res a #GAsyncResult.
@@ -6142,7 +6142,7 @@ export namespace Mbim {
          * @param ifname the name of the link to remove.
          * @param cancellable a #GCancellable, or %NULL.
          */
-        delete_link(ifname: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        delete_link(ifname: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously deletes a virtual network interface that has been previously
          * created with mbim_device_add_link().
@@ -6178,7 +6178,7 @@ export namespace Mbim {
             ifname: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with mbim_device_delete_link().
          * @param res a #GAsyncResult.
@@ -6243,7 +6243,7 @@ export namespace Mbim {
          * @param timeout maximum time, in seconds, to wait for the device to be opened.
          * @param cancellable optional #GCancellable object, #NULL to ignore.
          */
-        open(timeout: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        open(timeout: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously opens a #MbimDevice for I/O.
          *
@@ -6267,7 +6267,7 @@ export namespace Mbim {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous open operation started with mbim_device_open().
          * @param res a #GAsyncResult.
@@ -6290,7 +6290,7 @@ export namespace Mbim {
             flags: DeviceOpenFlags | null,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously opens a #MbimDevice for I/O.
          *
@@ -6328,7 +6328,7 @@ export namespace Mbim {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous open operation started with mbim_device_open_full().
          * @param res a #GAsyncResult.
@@ -6394,7 +6394,7 @@ export namespace Mbim {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -6486,7 +6486,7 @@ export namespace Mbim {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().

@@ -155,7 +155,7 @@ export namespace Grss {
         /**
          * Similar to grss_feed_channel_fetch_all(), but asyncronous.
          */
-        fetch_all_async(): Promise<FeedItem[]>;
+        fetch_all_async(): globalThis.Promise<FeedItem[]>;
         /**
          * Similar to grss_feed_channel_fetch_all(), but asyncronous.
          * @param callback function to invoke at the end of the download.
@@ -165,7 +165,7 @@ export namespace Grss {
          * Similar to grss_feed_channel_fetch_all(), but asyncronous.
          * @param callback function to invoke at the end of the download.
          */
-        fetch_all_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<FeedItem[]> | void;
+        fetch_all_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<FeedItem[]> | void;
         /**
          * Finalizes an asyncronous operation started with
          * grss_feed_channel_fetch_all_async().
@@ -176,7 +176,7 @@ export namespace Grss {
         /**
          * Similar to grss_feed_channel_fetch(), but asyncronous.
          */
-        fetch_async(): Promise<boolean>;
+        fetch_async(): globalThis.Promise<boolean>;
         /**
          * Similar to grss_feed_channel_fetch(), but asyncronous.
          * @param callback function to invoke at the end of the download.
@@ -186,7 +186,7 @@ export namespace Grss {
          * Similar to grss_feed_channel_fetch(), but asyncronous.
          * @param callback function to invoke at the end of the download.
          */
-        fetch_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
+        fetch_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
         /**
          * If a fetch operation was scheduled with grss_feed_channel_fetch_async() or
          * grss_feed_channel_fetch_all_async(), cancel it.
@@ -477,7 +477,7 @@ export namespace Grss {
         /**
          * Similar to grss_feed_enclosure_fetch(), but asyncronous.
          */
-        fetch_async(): Promise<Gio.File>;
+        fetch_async(): globalThis.Promise<Gio.File>;
         /**
          * Similar to grss_feed_enclosure_fetch(), but asyncronous.
          * @param callback function to invoke at the end of the download.
@@ -487,7 +487,7 @@ export namespace Grss {
          * Similar to grss_feed_enclosure_fetch(), but asyncronous.
          * @param callback function to invoke at the end of the download.
          */
-        fetch_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<Gio.File> | void;
+        fetch_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.File> | void;
         /**
          * Finalizes an asyncronous operation started with
          * grss_feed_enclosure_fetch_async().

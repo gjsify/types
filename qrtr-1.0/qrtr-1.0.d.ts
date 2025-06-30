@@ -208,7 +208,11 @@ export namespace Qrtr {
          * @param timeout_ms the timeout, in milliseconds, to wait for the node to appear in  the bus.
          * @param cancellable a #GCancellable, or #NULL.
          */
-        wait_for_node(node_id: number, timeout_ms: number, cancellable?: Gio.Cancellable | null): Promise<Node>;
+        wait_for_node(
+            node_id: number,
+            timeout_ms: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<Node>;
         /**
          * Asynchronously waits for the node with ID `node_id`.
          *
@@ -242,7 +246,7 @@ export namespace Qrtr {
             timeout_ms: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Node> | void;
+        ): globalThis.Promise<Node> | void;
         /**
          * Finishes an operation started with qrtr_bus_wait_for_node().
          * @param res a #GAsyncResult.
@@ -291,7 +295,7 @@ export namespace Qrtr {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -383,7 +387,7 @@ export namespace Qrtr {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -1641,7 +1645,7 @@ export namespace Qrtr {
             services: number[],
             timeout_ms: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously waits until all the services listed in `services` are present
          * on the node.
@@ -1683,7 +1687,7 @@ export namespace Qrtr {
             timeout_ms: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with qrtr_node_wait_for_services().
          * @param result a #GAsyncResult.

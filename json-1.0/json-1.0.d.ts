@@ -1143,7 +1143,10 @@ export namespace Json {
          * @param stream the input stream with the JSON data
          * @param cancellable a #GCancellable
          */
-        load_from_stream_async(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        load_from_stream_async(
+            stream: Gio.InputStream,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously reads the contents of a stream.
          *
@@ -1179,7 +1182,7 @@ export namespace Json {
             stream: Gio.InputStream,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous stream loading started with
          * [method`Json`.Parser.load_from_stream_async].

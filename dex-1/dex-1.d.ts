@@ -266,13 +266,13 @@ export namespace Dex {
      */
     function value_take_object(value: GObject.Value | any, object?: Object | null): void;
     interface FiberFunc {
-        (): Future | null;
+        (user_data?: any | null): Future | null;
     }
     interface FutureCallback {
         (future: Future): Future | null;
     }
     interface SchedulerFunc {
-        (): void;
+        (user_data?: any | null): void;
     }
     type FileInfoList = object | null;
     type InetAddressList = object | null;

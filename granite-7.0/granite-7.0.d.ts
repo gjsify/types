@@ -127,14 +127,14 @@ export namespace Granite {
     function date_time_is_same_day(day1: GLib.DateTime, day2: GLib.DateTime): boolean;
     function date_time_get_default_date_format(with_weekday: boolean, with_day: boolean, with_year: boolean): string;
     function date_time_seconds_to_time(seconds: number): string;
-    function services_application_set_badge(count: number): Promise<boolean>;
+    function services_application_set_badge(count: number): globalThis.Promise<boolean>;
     function services_application_set_badge(count: number, _callback_: Gio.AsyncReadyCallback<number> | null): void;
     function services_application_set_badge(
         count: number,
         _callback_?: Gio.AsyncReadyCallback<number> | null,
-    ): Promise<boolean> | void;
+    ): globalThis.Promise<boolean> | void;
     function services_application_set_badge_finish(_res_: Gio.AsyncResult): boolean;
-    function services_application_set_badge_visible(visible: boolean): Promise<boolean>;
+    function services_application_set_badge_visible(visible: boolean): globalThis.Promise<boolean>;
     function services_application_set_badge_visible(
         visible: boolean,
         _callback_: Gio.AsyncReadyCallback<boolean> | null,
@@ -142,9 +142,9 @@ export namespace Granite {
     function services_application_set_badge_visible(
         visible: boolean,
         _callback_?: Gio.AsyncReadyCallback<boolean> | null,
-    ): Promise<boolean> | void;
+    ): globalThis.Promise<boolean> | void;
     function services_application_set_badge_visible_finish(_res_: Gio.AsyncResult): boolean;
-    function services_application_set_progress(progress: number): Promise<boolean>;
+    function services_application_set_progress(progress: number): globalThis.Promise<boolean>;
     function services_application_set_progress(
         progress: number,
         _callback_: Gio.AsyncReadyCallback<number> | null,
@@ -152,9 +152,9 @@ export namespace Granite {
     function services_application_set_progress(
         progress: number,
         _callback_?: Gio.AsyncReadyCallback<number> | null,
-    ): Promise<boolean> | void;
+    ): globalThis.Promise<boolean> | void;
     function services_application_set_progress_finish(_res_: Gio.AsyncResult): boolean;
-    function services_application_set_progress_visible(visible: boolean): Promise<boolean>;
+    function services_application_set_progress_visible(visible: boolean): globalThis.Promise<boolean>;
     function services_application_set_progress_visible(
         visible: boolean,
         _callback_: Gio.AsyncReadyCallback<boolean> | null,
@@ -162,7 +162,7 @@ export namespace Granite {
     function services_application_set_progress_visible(
         visible: boolean,
         _callback_?: Gio.AsyncReadyCallback<boolean> | null,
-    ): Promise<boolean> | void;
+    ): globalThis.Promise<boolean> | void;
     function services_application_set_progress_visible_finish(_res_: Gio.AsyncResult): boolean;
     function widgets_utils_set_color_primary(
         window: Gtk.Widget,

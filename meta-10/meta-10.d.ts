@@ -6312,7 +6312,7 @@ export namespace Meta {
             size: number,
             output: Gio.OutputStream,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Requests a transfer of `mimetype` on the selection given by
          * `selection_type`.
@@ -6348,7 +6348,7 @@ export namespace Meta {
             output: Gio.OutputStream,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the transfer of a queried mimetype.
          * @param result The async result
@@ -6443,7 +6443,7 @@ export namespace Meta {
          * @returns #TRUE if the source owns a selection.
          */
         is_active(): boolean;
-        read_async(mimetype: string, cancellable?: Gio.Cancellable | null): Promise<Gio.InputStream>;
+        read_async(mimetype: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
         read_async(
             mimetype: string,
             cancellable: Gio.Cancellable | null,
@@ -6453,7 +6453,7 @@ export namespace Meta {
             mimetype: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gio.InputStream> | void;
+        ): globalThis.Promise<Gio.InputStream> | void;
         /**
          * Finishes a read from the selection source.
          * @param result The async result

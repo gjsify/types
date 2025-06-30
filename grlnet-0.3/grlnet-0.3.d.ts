@@ -170,7 +170,7 @@ export namespace GrlNet {
          * @param uri The URI of the resource to request
          * @param cancellable a #GCancellable instance or %NULL to ignore
          */
-        request_async(uri: string, cancellable?: Gio.Cancellable | null): Promise<Uint8Array | null>;
+        request_async(uri: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Uint8Array | null>;
         /**
          * Request the fetching of a web resource given the `uri`. This request is
          * asynchronous, thus the result will be returned within the `callback`.
@@ -194,7 +194,7 @@ export namespace GrlNet {
             uri: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Uint8Array | null> | void;
+        ): globalThis.Promise<Uint8Array | null> | void;
         /**
          * Finishes an asynchronous load of the file's contents.
          * The contents are placed in contents, and length is set to the size of the

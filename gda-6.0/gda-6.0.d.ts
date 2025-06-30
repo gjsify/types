@@ -2386,7 +2386,7 @@ export namespace Gda {
         (worker: Worker, job_id: number, result_data: any | null, error: GLib.Error): void;
     }
     interface WorkerFunc {
-        (): any | null;
+        (user_data?: any | null): any | null;
     }
     type Default = object | null;
     type Null = object | null;

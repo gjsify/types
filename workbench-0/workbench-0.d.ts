@@ -227,7 +227,7 @@ export namespace Workbench {
         populate_async(
             context: GtkSource.CompletionContext,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Gio.ListModel>;
+        ): globalThis.Promise<Gio.ListModel>;
         /**
          * Asynchronously requests that the provider populates the completion
          * results for `context`.
@@ -261,7 +261,7 @@ export namespace Workbench {
             context: GtkSource.CompletionContext,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gio.ListModel> | void;
+        ): globalThis.Promise<Gio.ListModel> | void;
         /**
          * Completes an asynchronous operation to populate a completion provider.
          * @param result a #GAsyncResult provided to callback

@@ -3005,7 +3005,7 @@ export namespace GUPnP {
          * error code %G_IO_ERROR_CANCELLED.
          * @param cancellable #GCancellable that can be used to cancel the call, or %NULL.
          */
-        introspect_async(cancellable?: Gio.Cancellable | null): Promise<ServiceIntrospection | null>;
+        introspect_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<ServiceIntrospection | null>;
         /**
          * Note that introspection object is created from the information in service
          * description document (SCPD) provided by the service so it can not be created
@@ -3030,7 +3030,7 @@ export namespace GUPnP {
         introspect_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<ServiceIntrospection | null> | void;
+        ): globalThis.Promise<ServiceIntrospection | null> | void;
         /**
          * Finish an asynchronous call initiated with
          * gupnp_service_info_introspect_async().
@@ -3266,7 +3266,7 @@ export namespace GUPnP {
         call_action_async(
             action: ServiceProxyAction,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<ServiceProxyAction | null>;
+        ): globalThis.Promise<ServiceProxyAction | null>;
         /**
          * Start a call on the remote UPnP service using the pre-configured `action`.
          * Use gupnp_service_proxy_call_action_finish() in the `callback` to finalize
@@ -3298,7 +3298,7 @@ export namespace GUPnP {
             action: ServiceProxyAction,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<ServiceProxyAction | null> | void;
+        ): globalThis.Promise<ServiceProxyAction | null> | void;
         /**
          * Finish an asynchronous call initiated with
          * gupnp_service_proxy_call_action_async().
@@ -3795,7 +3795,7 @@ export namespace GUPnP {
             address: string,
             agent?: string | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Optional. Check asynchronously whether an IP address is allowed to access
          * this resource. Use this function if the process of verifying the access right
@@ -3845,7 +3845,7 @@ export namespace GUPnP {
             agent?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         is_allowed_finish(res: Gio.AsyncResult): boolean;
 
         // Virtual methods

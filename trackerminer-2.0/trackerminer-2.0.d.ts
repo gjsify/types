@@ -442,7 +442,7 @@ export namespace TrackerMiner {
          * time it is called.
          * @param cancellable a #GCancellable.
          */
-        next(cancellable?: Gio.Cancellable | null): Promise<DecoratorInfo>;
+        next(cancellable?: Gio.Cancellable | null): globalThis.Promise<DecoratorInfo>;
         /**
          * Processes the next resource in the queue to have extended metadata
          * extracted. If the item in the queue has been completed already, it
@@ -467,7 +467,7 @@ export namespace TrackerMiner {
         next(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<DecoratorInfo> | void;
+        ): globalThis.Promise<DecoratorInfo> | void;
         /**
          * Should be called in the callback function provided to
          * tracker_decorator_next() to return the result of the task be it an
@@ -4499,7 +4499,7 @@ export namespace TrackerMiner {
             flags: DirectoryFlags | null,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Gio.FileEnumerator>;
+        ): globalThis.Promise<Gio.FileEnumerator>;
         /**
          * Precisely the same operation as tracker_data_provider_begin()
          * is performing, but asynchronously.
@@ -4571,7 +4571,7 @@ export namespace TrackerMiner {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gio.FileEnumerator> | void;
+        ): globalThis.Promise<Gio.FileEnumerator> | void;
         /**
          * Finishes the asynchronous operation started with
          * tracker_data_provider_begin_async().

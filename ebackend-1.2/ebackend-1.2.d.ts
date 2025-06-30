@@ -499,7 +499,7 @@ export namespace EBackend {
             certificate_errors: Gio.TlsCertificateFlags | null,
             op_error?: GLib.Error | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously calls the e_backend_credentials_required_sync() on the `backend,`
          * to inform clients that credentials are required.
@@ -541,7 +541,7 @@ export namespace EBackend {
             op_error?: GLib.Error | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_backend_credentials_required().
          *
@@ -728,7 +728,7 @@ export namespace EBackend {
         trust_prompt(
             parameters: EDataServer.NamedParameters,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<EDataServer.TrustPromptResponse>;
+        ): globalThis.Promise<EDataServer.TrustPromptResponse>;
         /**
          * Initiates a user trust prompt with given `parameters`.
          *
@@ -756,7 +756,7 @@ export namespace EBackend {
             parameters: EDataServer.NamedParameters,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<EDataServer.TrustPromptResponse> | void;
+        ): globalThis.Promise<EDataServer.TrustPromptResponse> | void;
         /**
          * Finishes the operation started with e_backend_trust_prompt().
          * If an error occurred, the function will set `error` and return
@@ -2251,7 +2251,7 @@ export namespace EBackend {
          * @param source an #ESource
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        create_resource(source: EDataServer.Source, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        create_resource(source: EDataServer.Source, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously creates a server-side resource described by `source`.
          * For example, if `source` describes a new calendar, an equivalent calendar
@@ -2305,7 +2305,7 @@ export namespace EBackend {
             source: EDataServer.Source,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_collection_backend_create_resource().
          *
@@ -2350,7 +2350,7 @@ export namespace EBackend {
          * @param source an #ESource
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        delete_resource(source: EDataServer.Source, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        delete_resource(source: EDataServer.Source, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously deletes a server-side resource described by `source`.
          * The `source` must be a child of `backend'`s collection #EBackend:source.
@@ -2392,7 +2392,7 @@ export namespace EBackend {
             source: EDataServer.Source,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_collection_backend_delete_resource().
          *
@@ -4480,7 +4480,7 @@ export namespace EBackend {
          * @param uri a URI representing the destination to connect to
          * @param cancellable a #GCancellable, or %NULL
          */
-        lookup_async(uri: string, cancellable?: Gio.Cancellable | null): Promise<string[]>;
+        lookup_async(uri: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string[]>;
         /**
          * Asynchronous lookup of proxy. See g_proxy_resolver_lookup() for more
          * details.
@@ -4504,7 +4504,7 @@ export namespace EBackend {
             uri: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string[]> | void;
+        ): globalThis.Promise<string[]> | void;
         /**
          * Call this function to obtain the array of proxy URIs when
          * g_proxy_resolver_lookup_async() is complete. See
@@ -5777,7 +5777,10 @@ export namespace EBackend {
          * @param source an #ESource
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        get_access_token(source: EDataServer.Source, cancellable?: Gio.Cancellable | null): Promise<[string, number]>;
+        get_access_token(
+            source: EDataServer.Source,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<[string, number]>;
         /**
          * Asynchronously obtains the OAuth 2.0 access token for `source` along
          * with its expiry in seconds from the current time (or 0 if unknown).
@@ -5809,7 +5812,7 @@ export namespace EBackend {
             source: EDataServer.Source,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[string, number]> | void;
+        ): globalThis.Promise<[string, number]> | void;
         /**
          * Finishes the operation started with e_oauth2_support_get_access_token().
          *
@@ -7137,7 +7140,7 @@ export namespace EBackend {
             dialog_name: string,
             in_parameters?: EDataServer.NamedParameters | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<number>;
+        ): globalThis.Promise<number>;
         /**
          * Asynchronously prompt a user for a decision on an extension-provided dialog.
          * The caller usually provides an extension for #EUserPrompterServer, a descendant
@@ -7181,7 +7184,7 @@ export namespace EBackend {
             in_parameters?: EDataServer.NamedParameters | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes the operation started with e_user_prompter_extension_prompt().
          * Caller can provide `out_values` to get additional values provided by the extension.
@@ -7253,7 +7256,7 @@ export namespace EBackend {
             use_markup: boolean,
             button_captions?: string[] | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<number>;
+        ): globalThis.Promise<number>;
         /**
          * Asynchronously prompt a user for a decision.
          *
@@ -7313,7 +7316,7 @@ export namespace EBackend {
             button_captions?: string[] | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes the operation started with e_user_prompter_prompt().
          *
@@ -8450,7 +8453,10 @@ export namespace EBackend {
          * @param source an #ESource
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        get_access_token(source: EDataServer.Source, cancellable?: Gio.Cancellable | null): Promise<[string, number]>;
+        get_access_token(
+            source: EDataServer.Source,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<[string, number]>;
         /**
          * Asynchronously obtains the OAuth 2.0 access token for `source` along
          * with its expiry in seconds from the current time (or 0 if unknown).
@@ -8482,7 +8488,7 @@ export namespace EBackend {
             source: EDataServer.Source,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[string, number]> | void;
+        ): globalThis.Promise<[string, number]> | void;
         /**
          * Finishes the operation started with e_oauth2_support_get_access_token().
          *

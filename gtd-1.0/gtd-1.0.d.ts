@@ -13931,7 +13931,7 @@ export namespace Gtd {
             title: string,
             due_date?: GLib.DateTime | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Task | null>;
+        ): globalThis.Promise<Task | null>;
         /**
          * Creates the given task in `provider`.
          * @param list
@@ -13961,7 +13961,7 @@ export namespace Gtd {
             due_date?: GLib.DateTime | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Task | null> | void;
+        ): globalThis.Promise<Task | null> | void;
         /**
          * Finishes creating the task.
          * @param result a #GAsyncResult
@@ -13973,7 +13973,7 @@ export namespace Gtd {
          * @param name the name of the new task list
          * @param cancellable a #GCancellable
          */
-        create_task_list(name?: string | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        create_task_list(name?: string | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Creates the given list in `provider`.
          * @param name the name of the new task list
@@ -13995,7 +13995,7 @@ export namespace Gtd {
             name?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes updating the task list. The provider will emit the
          * GtdProvider:list-updated signal after updating the task list.
@@ -14062,7 +14062,7 @@ export namespace Gtd {
          * @param task a #GtdTask
          * @param cancellable a #GCancellable
          */
-        remove_task(task: Task, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        remove_task(task: Task, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Removes the given task from `provider`.
          * @param task a #GtdTask
@@ -14084,7 +14084,7 @@ export namespace Gtd {
             task: Task,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes removing the task.
          * @param result a #GAsyncResult
@@ -14096,7 +14096,7 @@ export namespace Gtd {
          * @param list a #GtdTaskList
          * @param cancellable a #GCancellable
          */
-        remove_task_list(list: TaskList, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        remove_task_list(list: TaskList, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Removes the given list from `provider`.
          * @param list a #GtdTaskList
@@ -14118,7 +14118,7 @@ export namespace Gtd {
             list: TaskList,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes removing the task list. The provider will emit the
          * GtdProvider:list-removed signal after removing the task list.
@@ -14131,7 +14131,7 @@ export namespace Gtd {
          * @param task a #GtdTask
          * @param cancellable a #GCancellable
          */
-        update_task(task: Task, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        update_task(task: Task, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Updates the given task in `provider`.
          * @param task a #GtdTask
@@ -14153,7 +14153,7 @@ export namespace Gtd {
             task: Task,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes updating the task list.
          * @param result a #GAsyncResult
@@ -14165,7 +14165,7 @@ export namespace Gtd {
          * @param list a #GtdTaskList
          * @param cancellable a #GCancellable
          */
-        update_task_list(list: TaskList, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        update_task_list(list: TaskList, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Updates the given list in `provider`.
          * @param list a #GtdTaskList
@@ -14187,7 +14187,7 @@ export namespace Gtd {
             list: TaskList,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         update_task_list_finish(result: Gio.AsyncResult): boolean;
 
         // Virtual methods

@@ -3012,7 +3012,7 @@ export namespace GUPnP {
             address: string,
             agent?: string | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Optional. Check asynchronously whether an IP address is allowed to access
          * this resource. Use this function if the process of verifying the access right
@@ -3062,7 +3062,7 @@ export namespace GUPnP {
             agent?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         is_allowed_finish(res: Gio.AsyncResult): boolean;
 
         // Virtual methods

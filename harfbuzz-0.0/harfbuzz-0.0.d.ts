@@ -6031,7 +6031,7 @@ export namespace HarfBuzz {
         (color_line: color_line_t, color_line_data?: any | null): paint_extend_t;
     }
     interface destroy_func_t {
-        (): void;
+        (user_data?: any | null): void;
     }
     interface draw_close_path_func_t {
         (dfuncs: draw_funcs_t, draw_data: any | null, st: draw_state_t): void;

@@ -1892,7 +1892,7 @@ export namespace Tepl {
             cancellable?: Gio.Cancellable | null,
             progress_callback?: Gio.FileProgressCallback | null,
             progress_callback_notify?: GLib.DestroyNotify | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Loads asynchronously the file content into the #TeplBuffer.
          *
@@ -1926,7 +1926,7 @@ export namespace Tepl {
             progress_callback?: Gio.FileProgressCallback | null,
             progress_callback_notify?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes a file loading started with tepl_file_loader_load_async().
          * @param result a #GAsyncResult.
@@ -2030,7 +2030,7 @@ export namespace Tepl {
          * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        load_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        load_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * The asynchronous version of tepl_file_metadata_load().
          *
@@ -2064,7 +2064,7 @@ export namespace Tepl {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the metadata loading started with tepl_file_metadata_load_async().
          * @param result a #GAsyncResult.
@@ -2092,7 +2092,7 @@ export namespace Tepl {
          * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        save_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        save_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * The asynchronous version of tepl_file_metadata_save().
          *
@@ -2124,7 +2124,7 @@ export namespace Tepl {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the metadata saving started with tepl_file_metadata_save_async().
          * @param result a #GAsyncResult.
@@ -2286,7 +2286,7 @@ export namespace Tepl {
             cancellable?: Gio.Cancellable | null,
             progress_callback?: Gio.FileProgressCallback | null,
             progress_callback_notify?: GLib.DestroyNotify | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Saves asynchronously the buffer into the file. See the #GAsyncResult
          * documentation to know how to use this function.
@@ -2318,7 +2318,7 @@ export namespace Tepl {
             progress_callback?: Gio.FileProgressCallback | null,
             progress_callback_notify?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes a file saving started with tepl_file_saver_save_async().
          *
@@ -3200,7 +3200,7 @@ export namespace Tepl {
          * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        load_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        load_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Loads asynchronously the content of the store file. You need to call
          * tepl_metadata_store_set_store_file() before.
@@ -3238,7 +3238,7 @@ export namespace Tepl {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the metadata loading started with tepl_metadata_store_load_async().
          *
@@ -4082,7 +4082,7 @@ export namespace Tepl {
          *
          * See the #GAsyncResult documentation to know how to use this function.
          */
-        save_as_async(): Promise<boolean>;
+        save_as_async(): globalThis.Promise<boolean>;
         /**
          * Shows a #GtkFileChooser to save the `tab` to a different location, creates an
          * appropriate #TeplFileSaver and asynchronously runs it.
@@ -4098,7 +4098,7 @@ export namespace Tepl {
          * See the #GAsyncResult documentation to know how to use this function.
          * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
          */
-        save_as_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
+        save_as_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
         /**
          * The same as tepl_tab_save_as_async(), but without callback.
          *
@@ -4119,7 +4119,7 @@ export namespace Tepl {
          *
          * See the #GAsyncResult documentation to know how to use this function.
          */
-        save_async(): Promise<boolean>;
+        save_async(): globalThis.Promise<boolean>;
         /**
          * Saves asynchronously the content of the `tab`. The #TeplFile:location must not
          * be %NULL.
@@ -4135,7 +4135,7 @@ export namespace Tepl {
          * See the #GAsyncResult documentation to know how to use this function.
          * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
          */
-        save_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
+        save_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
         /**
          * The same as tepl_tab_save_async(), but without callback.
          *

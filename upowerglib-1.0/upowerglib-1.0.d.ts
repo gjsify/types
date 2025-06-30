@@ -545,7 +545,7 @@ export namespace UPowerGlib {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -637,7 +637,7 @@ export namespace UPowerGlib {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -833,7 +833,7 @@ export namespace UPowerGlib {
          * See up_client_glue_call_enumerate_devices_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_enumerate_devices(cancellable?: Gio.Cancellable | null): Promise<string>;
+        call_enumerate_devices(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -859,7 +859,7 @@ export namespace UPowerGlib {
         call_enumerate_devices(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         /**
          * Finishes an operation started with up_client_glue_call_enumerate_devices().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_enumerate_devices().
@@ -882,7 +882,7 @@ export namespace UPowerGlib {
          * See up_client_glue_call_get_critical_action_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_get_critical_action(cancellable?: Gio.Cancellable | null): Promise<string>;
+        call_get_critical_action(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -908,7 +908,7 @@ export namespace UPowerGlib {
         call_get_critical_action(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         /**
          * Finishes an operation started with up_client_glue_call_get_critical_action().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_get_critical_action().
@@ -931,7 +931,7 @@ export namespace UPowerGlib {
          * See up_client_glue_call_get_display_device_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_get_display_device(cancellable?: Gio.Cancellable | null): Promise<string>;
+        call_get_display_device(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -957,7 +957,7 @@ export namespace UPowerGlib {
         call_get_display_device(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         /**
          * Finishes an operation started with up_client_glue_call_get_display_device().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_get_display_device().
@@ -1612,7 +1612,7 @@ export namespace UPowerGlib {
          * See up_client_glue_call_enumerate_devices_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_enumerate_devices(cancellable?: Gio.Cancellable | null): Promise<string>;
+        call_enumerate_devices(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -1638,7 +1638,7 @@ export namespace UPowerGlib {
         call_enumerate_devices(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         /**
          * Finishes an operation started with up_client_glue_call_enumerate_devices().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_enumerate_devices().
@@ -1661,7 +1661,7 @@ export namespace UPowerGlib {
          * See up_client_glue_call_get_critical_action_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_get_critical_action(cancellable?: Gio.Cancellable | null): Promise<string>;
+        call_get_critical_action(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -1687,7 +1687,7 @@ export namespace UPowerGlib {
         call_get_critical_action(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         /**
          * Finishes an operation started with up_client_glue_call_get_critical_action().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_get_critical_action().
@@ -1710,7 +1710,7 @@ export namespace UPowerGlib {
          * See up_client_glue_call_get_display_device_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_get_display_device(cancellable?: Gio.Cancellable | null): Promise<string>;
+        call_get_display_device(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -1736,7 +1736,7 @@ export namespace UPowerGlib {
         call_get_display_device(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         /**
          * Finishes an operation started with up_client_glue_call_get_display_device().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_get_display_device().
@@ -3186,7 +3186,7 @@ export namespace UPowerGlib {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -3278,7 +3278,7 @@ export namespace UPowerGlib {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -3482,7 +3482,7 @@ export namespace UPowerGlib {
             arg_timespan: number,
             arg_resolution: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<GLib.Variant>;
+        ): globalThis.Promise<GLib.Variant>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -3520,7 +3520,7 @@ export namespace UPowerGlib {
             arg_resolution: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.Variant> | void;
+        ): globalThis.Promise<GLib.Variant> | void;
         /**
          * Finishes an operation started with up_device_glue_call_get_history().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_get_history().
@@ -3552,7 +3552,7 @@ export namespace UPowerGlib {
          * @param arg_type Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_get_statistics(arg_type: string, cancellable?: Gio.Cancellable | null): Promise<GLib.Variant>;
+        call_get_statistics(arg_type: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -3582,7 +3582,7 @@ export namespace UPowerGlib {
             arg_type: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.Variant> | void;
+        ): globalThis.Promise<GLib.Variant> | void;
         /**
          * Finishes an operation started with up_device_glue_call_get_statistics().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_get_statistics().
@@ -3606,7 +3606,7 @@ export namespace UPowerGlib {
          * See up_device_glue_call_refresh_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_refresh(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        call_refresh(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -3629,7 +3629,7 @@ export namespace UPowerGlib {
         call_refresh(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with up_device_glue_call_refresh().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_refresh().
@@ -4553,7 +4553,7 @@ export namespace UPowerGlib {
             arg_timespan: number,
             arg_resolution: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<GLib.Variant>;
+        ): globalThis.Promise<GLib.Variant>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -4591,7 +4591,7 @@ export namespace UPowerGlib {
             arg_resolution: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.Variant> | void;
+        ): globalThis.Promise<GLib.Variant> | void;
         /**
          * Finishes an operation started with up_device_glue_call_get_history().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_get_history().
@@ -4623,7 +4623,7 @@ export namespace UPowerGlib {
          * @param arg_type Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_get_statistics(arg_type: string, cancellable?: Gio.Cancellable | null): Promise<GLib.Variant>;
+        call_get_statistics(arg_type: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -4653,7 +4653,7 @@ export namespace UPowerGlib {
             arg_type: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.Variant> | void;
+        ): globalThis.Promise<GLib.Variant> | void;
         /**
          * Finishes an operation started with up_device_glue_call_get_statistics().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_get_statistics().
@@ -4677,7 +4677,7 @@ export namespace UPowerGlib {
          * See up_device_glue_call_refresh_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_refresh(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        call_refresh(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -4700,7 +4700,7 @@ export namespace UPowerGlib {
         call_refresh(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with up_device_glue_call_refresh().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_refresh().
@@ -5806,7 +5806,7 @@ export namespace UPowerGlib {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -5898,7 +5898,7 @@ export namespace UPowerGlib {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -6094,7 +6094,7 @@ export namespace UPowerGlib {
          * See up_wakeups_glue_call_get_data_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_get_data(cancellable?: Gio.Cancellable | null): Promise<GLib.Variant>;
+        call_get_data(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -6117,7 +6117,7 @@ export namespace UPowerGlib {
         call_get_data(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.Variant> | void;
+        ): globalThis.Promise<GLib.Variant> | void;
         /**
          * Finishes an operation started with up_wakeups_glue_call_get_data().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_wakeups_glue_call_get_data().
@@ -6140,7 +6140,7 @@ export namespace UPowerGlib {
          * See up_wakeups_glue_call_get_total_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_get_total(cancellable?: Gio.Cancellable | null): Promise<number>;
+        call_get_total(cancellable?: Gio.Cancellable | null): globalThis.Promise<number>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -6163,7 +6163,7 @@ export namespace UPowerGlib {
         call_get_total(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes an operation started with up_wakeups_glue_call_get_total().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_wakeups_glue_call_get_total().
@@ -6765,7 +6765,7 @@ export namespace UPowerGlib {
          * See up_wakeups_glue_call_get_data_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_get_data(cancellable?: Gio.Cancellable | null): Promise<GLib.Variant>;
+        call_get_data(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -6788,7 +6788,7 @@ export namespace UPowerGlib {
         call_get_data(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.Variant> | void;
+        ): globalThis.Promise<GLib.Variant> | void;
         /**
          * Finishes an operation started with up_wakeups_glue_call_get_data().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_wakeups_glue_call_get_data().
@@ -6811,7 +6811,7 @@ export namespace UPowerGlib {
          * See up_wakeups_glue_call_get_total_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_get_total(cancellable?: Gio.Cancellable | null): Promise<number>;
+        call_get_total(cancellable?: Gio.Cancellable | null): globalThis.Promise<number>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -6834,7 +6834,7 @@ export namespace UPowerGlib {
         call_get_total(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes an operation started with up_wakeups_glue_call_get_total().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_wakeups_glue_call_get_total().
@@ -7537,7 +7537,7 @@ export namespace UPowerGlib {
          * See up_client_glue_call_enumerate_devices_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_enumerate_devices(cancellable?: Gio.Cancellable | null): Promise<string>;
+        call_enumerate_devices(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -7563,7 +7563,7 @@ export namespace UPowerGlib {
         call_enumerate_devices(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         /**
          * Finishes an operation started with up_client_glue_call_enumerate_devices().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_enumerate_devices().
@@ -7586,7 +7586,7 @@ export namespace UPowerGlib {
          * See up_client_glue_call_get_critical_action_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_get_critical_action(cancellable?: Gio.Cancellable | null): Promise<string>;
+        call_get_critical_action(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -7612,7 +7612,7 @@ export namespace UPowerGlib {
         call_get_critical_action(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         /**
          * Finishes an operation started with up_client_glue_call_get_critical_action().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_get_critical_action().
@@ -7635,7 +7635,7 @@ export namespace UPowerGlib {
          * See up_client_glue_call_get_display_device_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_get_display_device(cancellable?: Gio.Cancellable | null): Promise<string>;
+        call_get_display_device(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -7661,7 +7661,7 @@ export namespace UPowerGlib {
         call_get_display_device(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         /**
          * Finishes an operation started with up_client_glue_call_get_display_device().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_get_display_device().
@@ -8113,7 +8113,7 @@ export namespace UPowerGlib {
             arg_timespan: number,
             arg_resolution: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<GLib.Variant>;
+        ): globalThis.Promise<GLib.Variant>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -8151,7 +8151,7 @@ export namespace UPowerGlib {
             arg_resolution: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.Variant> | void;
+        ): globalThis.Promise<GLib.Variant> | void;
         /**
          * Finishes an operation started with up_device_glue_call_get_history().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_get_history().
@@ -8183,7 +8183,7 @@ export namespace UPowerGlib {
          * @param arg_type Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_get_statistics(arg_type: string, cancellable?: Gio.Cancellable | null): Promise<GLib.Variant>;
+        call_get_statistics(arg_type: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -8213,7 +8213,7 @@ export namespace UPowerGlib {
             arg_type: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.Variant> | void;
+        ): globalThis.Promise<GLib.Variant> | void;
         /**
          * Finishes an operation started with up_device_glue_call_get_statistics().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_get_statistics().
@@ -8237,7 +8237,7 @@ export namespace UPowerGlib {
          * See up_device_glue_call_refresh_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_refresh(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        call_refresh(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -8260,7 +8260,7 @@ export namespace UPowerGlib {
         call_refresh(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with up_device_glue_call_refresh().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_refresh().
@@ -8368,7 +8368,7 @@ export namespace UPowerGlib {
          * See up_wakeups_glue_call_get_data_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_get_data(cancellable?: Gio.Cancellable | null): Promise<GLib.Variant>;
+        call_get_data(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -8391,7 +8391,7 @@ export namespace UPowerGlib {
         call_get_data(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.Variant> | void;
+        ): globalThis.Promise<GLib.Variant> | void;
         /**
          * Finishes an operation started with up_wakeups_glue_call_get_data().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_wakeups_glue_call_get_data().
@@ -8414,7 +8414,7 @@ export namespace UPowerGlib {
          * See up_wakeups_glue_call_get_total_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_get_total(cancellable?: Gio.Cancellable | null): Promise<number>;
+        call_get_total(cancellable?: Gio.Cancellable | null): globalThis.Promise<number>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -8437,7 +8437,7 @@ export namespace UPowerGlib {
         call_get_total(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes an operation started with up_wakeups_glue_call_get_total().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_wakeups_glue_call_get_total().

@@ -805,7 +805,7 @@ export namespace Entangle {
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        autofocus_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        autofocus_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Trigger the autofocus mechanism on the camera, waiting
          * until focus is achieved or fails.
@@ -834,7 +834,7 @@ export namespace Entangle {
         autofocus_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_autofocus_async.
@@ -869,7 +869,7 @@ export namespace Entangle {
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        capture_image_async(cancellable?: Gio.Cancellable | null): Promise<CameraFile>;
+        capture_image_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<CameraFile>;
         /**
          * Trigger the camera shutter and download the first resulting
          * image. If the camera is shooting in multiple formats (eg JPEG
@@ -904,7 +904,7 @@ export namespace Entangle {
         capture_image_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<CameraFile> | void;
+        ): globalThis.Promise<CameraFile> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_capture_image_async.
@@ -929,7 +929,7 @@ export namespace Entangle {
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        close_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        close_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Close from the camera, enabling it to be used by
          * other applications.
@@ -954,7 +954,7 @@ export namespace Entangle {
         close_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_close_async
@@ -983,7 +983,7 @@ export namespace Entangle {
          * @param file the file to delete
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        delete_file_async(file: CameraFile, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        delete_file_async(file: CameraFile, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Delete `file` from the camera capture target.
          *
@@ -1017,7 +1017,7 @@ export namespace Entangle {
             file: CameraFile,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_delete_file_async.
@@ -1048,7 +1048,7 @@ export namespace Entangle {
          * @param file the file whose contents to download
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        download_file_async(file: CameraFile, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        download_file_async(file: CameraFile, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Download the data associated with `file` and set the data
          * on `file`.
@@ -1084,7 +1084,7 @@ export namespace Entangle {
             file: CameraFile,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_download_file_async.
@@ -1183,7 +1183,7 @@ export namespace Entangle {
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        load_controls_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        load_controls_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Loads the configuration controls from the camera.
          *
@@ -1210,7 +1210,7 @@ export namespace Entangle {
         load_controls_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_load_controls_async.
@@ -1241,7 +1241,10 @@ export namespace Entangle {
          * @param step how much to change focus by
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        manualfocus_async(step: CameraManualFocusStep | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        manualfocus_async(
+            step: CameraManualFocusStep | null,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Trigger the focus mechanism on the camera, to move
          * by `step`.
@@ -1277,7 +1280,7 @@ export namespace Entangle {
             step: CameraManualFocusStep | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_manualfocus_async.
@@ -1285,12 +1288,12 @@ export namespace Entangle {
          * @returns TRUE if manual focus was performed, FALSE on error
          */
         manualfocus_finish(result: Gio.AsyncResult): boolean;
-        mount_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        mount_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         mount_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         mount_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         mount_finish(result: Gio.AsyncResult): boolean;
         /**
          * Attempt to open to and initialize the camera. This
@@ -1311,7 +1314,7 @@ export namespace Entangle {
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        open_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        open_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Attempt to open to and initialize the camera. This
          * may fail if the camera is in use by another application,
@@ -1338,7 +1341,7 @@ export namespace Entangle {
         open_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_open_async
@@ -1369,7 +1372,7 @@ export namespace Entangle {
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        preview_image_async(cancellable?: Gio.Cancellable | null): Promise<CameraFile>;
+        preview_image_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<CameraFile>;
         /**
          * Enable "live view", if not already enabled, and capture a
          * low resolution preview image. The "live view" mode will
@@ -1400,7 +1403,7 @@ export namespace Entangle {
         preview_image_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<CameraFile> | void;
+        ): globalThis.Promise<CameraFile> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_preview_image_async.
@@ -1435,7 +1438,7 @@ export namespace Entangle {
          * @param waitms the number of milliseconds to wait
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        process_events_async(waitms: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        process_events_async(waitms: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Wait upto `waitms` milliseconds for events to arrive from
          * the camera. Signals will be emitted for any interesting
@@ -1475,7 +1478,7 @@ export namespace Entangle {
             waitms: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_process_events_async.
@@ -1502,7 +1505,7 @@ export namespace Entangle {
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        save_controls_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        save_controls_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Saves the configuration controls to the camera.
          *
@@ -1529,7 +1532,7 @@ export namespace Entangle {
         save_controls_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_save_controls_async.
@@ -1563,7 +1566,7 @@ export namespace Entangle {
         set_capture_target_async(
             target: CameraCaptureTarget | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Set the destination for storing captured images
          * to `target`.
@@ -1599,7 +1602,7 @@ export namespace Entangle {
             target: CameraCaptureTarget | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         set_capture_target_finish(result: Gio.AsyncResult): boolean;
         /**
          * Update the camera clock to be `epochsecs` seconds since
@@ -1624,7 +1627,7 @@ export namespace Entangle {
          * @param epochsecs new time in seconds since the epoch
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        set_clock_async(epochsecs: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        set_clock_async(epochsecs: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Update the camera clock to be `epochsecs` seconds since
          * the epoch.
@@ -1660,7 +1663,7 @@ export namespace Entangle {
             epochsecs: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_set_clock_async.
@@ -1699,7 +1702,7 @@ export namespace Entangle {
          * @param enabled TRUE to turn on the view finder
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        set_viewfinder_async(enabled: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        set_viewfinder_async(enabled: boolean, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * If `enabled` is TRUE, the view finder will be activated
          * allowing preview images to be captured. If `enabled` is
@@ -1737,7 +1740,7 @@ export namespace Entangle {
             enabled: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_set_viewfinder_async.
@@ -1754,7 +1757,7 @@ export namespace Entangle {
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        unmount_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        unmount_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Unmount the camera virtual filesystem, allowing it to be
          * opened.
@@ -1779,7 +1782,7 @@ export namespace Entangle {
         unmount_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_unmount_async.
@@ -1860,12 +1863,12 @@ export namespace Entangle {
 
         // Methods
 
-        capture_async(cancel?: Gio.Cancellable | null): Promise<boolean>;
+        capture_async(cancel?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         capture_async(cancel: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         capture_async(
             cancel?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         capture_finish(res: Gio.AsyncResult): boolean;
         /**
          * Get the camera associated with the automata
@@ -1878,7 +1881,7 @@ export namespace Entangle {
          * @returns the session or NULL
          */
         get_session(): Session;
-        preview_async(cancel?: Gio.Cancellable | null, confirm?: Gio.Cancellable | null): Promise<boolean>;
+        preview_async(cancel?: Gio.Cancellable | null, confirm?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         preview_async(
             cancel: Gio.Cancellable | null,
             confirm: Gio.Cancellable | null,
@@ -1888,7 +1891,7 @@ export namespace Entangle {
             cancel?: Gio.Cancellable | null,
             confirm?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         preview_finish(res: Gio.AsyncResult): boolean;
         set_camera(camera: Camera): void;
         set_delete_file(value: boolean): void;
@@ -10401,7 +10404,7 @@ export namespace Entangle {
 
         // Methods
 
-        execute_async(automata: CameraAutomata, cancel?: Gio.Cancellable | null): Promise<boolean>;
+        execute_async(automata: CameraAutomata, cancel?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         execute_async(
             automata: CameraAutomata,
             cancel: Gio.Cancellable | null,
@@ -10411,7 +10414,7 @@ export namespace Entangle {
             automata: CameraAutomata,
             cancel?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         execute_finish(result: Gio.AsyncResult): boolean;
         /**
          * Get the configuration controls for the script

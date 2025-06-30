@@ -14607,7 +14607,7 @@ export namespace GcrUi {
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          */
-        confirm_async(cancellable?: Gio.Cancellable | null): Promise<Gcr.PromptReply>;
+        confirm_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gcr.PromptReply>;
         /**
          * Prompts for confirmation asking a cancel/continue style question.
          * Set the various properties on the prompt before calling this method to
@@ -14630,7 +14630,7 @@ export namespace GcrUi {
         confirm_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gcr.PromptReply> | void;
+        ): globalThis.Promise<Gcr.PromptReply> | void;
         /**
          * Complete an operation to prompt for confirmation.
          *
@@ -14774,7 +14774,7 @@ export namespace GcrUi {
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          */
-        password_async(cancellable?: Gio.Cancellable | null): Promise<string>;
+        password_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Prompts for password. Set the various properties on the prompt before calling
          * this method to explain which password should be entered.
@@ -14795,7 +14795,7 @@ export namespace GcrUi {
         password_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         /**
          * Complete an operation to prompt for a password.
          *

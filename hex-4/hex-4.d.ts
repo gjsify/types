@@ -415,7 +415,7 @@ export namespace Hex {
          * the operation completes.
          * @param cancellable a #GCancellable
          */
-        read_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        read_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Read the #GFile into the buffer connected to the #HexDocument object.
          *
@@ -440,7 +440,7 @@ export namespace Hex {
         read_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Obtain the result of a completed file read operation.
          *
@@ -528,7 +528,7 @@ export namespace Hex {
          * value in your #GAsyncReadyCallback function.
          * @param cancellable a #GCancellable
          */
-        write_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        write_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Write the buffer to the pre-existing #GFile connected to the #HexDocument
          * object. This can be used for a 'Save (in place)' operation. This is the
@@ -557,7 +557,7 @@ export namespace Hex {
         write_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Obtain the result of a completed write-to-file operation.
          *
@@ -1911,7 +1911,7 @@ export namespace Hex {
          * version of [method`Hex`.Buffer.read].
          * @param cancellable a #GCancellable
          */
-        read_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        read_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Read the #GFile, previously set, into the buffer. This is the non-blocking
          * version of [method`Hex`.Buffer.read].
@@ -1928,7 +1928,7 @@ export namespace Hex {
         read_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Obtain the result of a completed file read operation.
          *
@@ -1974,7 +1974,7 @@ export namespace Hex {
          * @param file #GFile to write to
          * @param cancellable a #GCancellable
          */
-        write_to_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        write_to_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Write the buffer to the #GFile specified. This is the non-blocking
          * version of [method`Hex`.Buffer.write_to_file].
@@ -1998,7 +1998,7 @@ export namespace Hex {
             file: Gio.File,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Obtain the result of a completed write-to-file operation.
          *

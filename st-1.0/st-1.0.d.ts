@@ -7271,7 +7271,7 @@ export namespace St {
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        load_async(size: number, cancellable?: Gio.Cancellable | null): Promise<[Gio.InputStream, string]>;
+        load_async(size: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<[Gio.InputStream, string]>;
         /**
          * Loads an icon asynchronously. To finish this function, see
          * g_loadable_icon_load_finish(). For the synchronous, blocking
@@ -7297,7 +7297,7 @@ export namespace St {
             size: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[Gio.InputStream, string]> | void;
+        ): globalThis.Promise<[Gio.InputStream, string]> | void;
         /**
          * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
          * @param res a #GAsyncResult.

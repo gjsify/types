@@ -377,9 +377,9 @@ export namespace RygelServer {
         get_primary_resource(): MediaResource;
         get_extension(): string;
         ext_from_mime_type(mime_type: string): string;
-        add_engine_resources(): Promise<void>;
+        add_engine_resources(): globalThis.Promise<void>;
         add_engine_resources(_callback_: Gio.AsyncReadyCallback<this> | null): void;
-        add_engine_resources(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        add_engine_resources(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         add_engine_resources_finish(_res_: Gio.AsyncResult): void;
         add_additional_resources(server: HTTPServer): void;
         get_mime_type(): string;
@@ -865,7 +865,7 @@ export namespace RygelServer {
             max_count: number,
             sort_criteria: string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[MediaObjects | null, number]>;
+        ): globalThis.Promise<[MediaObjects | null, number]>;
         search(
             expression: SearchExpression | null,
             offset: number,
@@ -881,7 +881,7 @@ export namespace RygelServer {
             sort_criteria: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[MediaObjects | null, number]> | void;
+        ): globalThis.Promise<[MediaObjects | null, number]> | void;
         search_finish(_res_: Gio.AsyncResult): [MediaObjects | null, number];
         simple_search(
             expression: SearchExpression | null,
@@ -889,7 +889,7 @@ export namespace RygelServer {
             max_count: number,
             sort_criteria: string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[MediaObjects | null, number]>;
+        ): globalThis.Promise<[MediaObjects | null, number]>;
         simple_search(
             expression: SearchExpression | null,
             offset: number,
@@ -905,9 +905,9 @@ export namespace RygelServer {
             sort_criteria: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[MediaObjects | null, number]> | void;
+        ): globalThis.Promise<[MediaObjects | null, number]> | void;
         simple_search_finish(_res_: Gio.AsyncResult): [MediaObjects | null, number];
-        find_object(id: string, cancellable?: Gio.Cancellable | null): Promise<MediaObject | null>;
+        find_object(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<MediaObject | null>;
         find_object(
             id: string,
             cancellable: Gio.Cancellable | null,
@@ -917,7 +917,7 @@ export namespace RygelServer {
             id: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<MediaObject | null> | void;
+        ): globalThis.Promise<MediaObject | null> | void;
         find_object_finish(_res_: Gio.AsyncResult): MediaObject | null;
         get_search_classes(): Gee.ArrayList;
         set_search_classes(value: Gee.ArrayList): void;
@@ -937,7 +937,7 @@ export namespace RygelServer {
             max_count: number,
             sort_criteria: string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<MediaObjects | null>;
+        ): globalThis.Promise<MediaObjects | null>;
         get_children(
             offset: number,
             max_count: number,
@@ -951,7 +951,7 @@ export namespace RygelServer {
             sort_criteria: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<MediaObjects | null> | void;
+        ): globalThis.Promise<MediaObjects | null> | void;
         get_children_finish(_res_: Gio.AsyncResult): MediaObjects | null;
         updated(object: MediaObject | null, event_type: ObjectEventType | null, sub_tree_update: boolean): void;
         get_child_count(): number;
@@ -1223,9 +1223,9 @@ export namespace RygelServer {
         get_primary_resource(): MediaResource;
         get_extension(): string;
         ext_from_mime_type(mime_type: string): string;
-        add_engine_resources(): Promise<void>;
+        add_engine_resources(): globalThis.Promise<void>;
         add_engine_resources(_callback_: Gio.AsyncReadyCallback<this> | null): void;
-        add_engine_resources(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        add_engine_resources(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         add_engine_resources_finish(_res_: Gio.AsyncResult): void;
         add_additional_resources(server: HTTPServer): void;
         get_mime_type(): string;
@@ -1380,7 +1380,7 @@ export namespace RygelServer {
             max_count: number,
             sort_criteria: string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<MediaObjects | null>;
+        ): globalThis.Promise<MediaObjects | null>;
         get_children(
             offset: number,
             max_count: number,
@@ -1394,9 +1394,9 @@ export namespace RygelServer {
             sort_criteria: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<MediaObjects | null> | void;
+        ): globalThis.Promise<MediaObjects | null> | void;
         get_children_finish(_res_: Gio.AsyncResult): MediaObjects | null;
-        find_object(id: string, cancellable?: Gio.Cancellable | null): Promise<MediaObject | null>;
+        find_object(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<MediaObject | null>;
         find_object(
             id: string,
             cancellable: Gio.Cancellable | null,
@@ -1406,7 +1406,7 @@ export namespace RygelServer {
             id: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<MediaObject | null> | void;
+        ): globalThis.Promise<MediaObject | null> | void;
         find_object_finish(_res_: Gio.AsyncResult): MediaObject | null;
         updated(object: MediaObject | null, event_type: ObjectEventType | null, sub_tree_update: boolean): void;
         get_child_count(): number;
@@ -1599,9 +1599,9 @@ export namespace RygelServer {
         get_primary_resource(): MediaResource;
         get_extension(): string;
         ext_from_mime_type(mime_type: string): string;
-        add_engine_resources(): Promise<void>;
+        add_engine_resources(): globalThis.Promise<void>;
         add_engine_resources(_callback_: Gio.AsyncReadyCallback<this> | null): void;
-        add_engine_resources(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        add_engine_resources(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         add_engine_resources_finish(_res_: Gio.AsyncResult): void;
         add_additional_resources(server: HTTPServer): void;
         get_mime_type(): string;
@@ -1754,19 +1754,19 @@ export namespace RygelServer {
         get_uris(): Gee.List;
         get_primary_uri(): string | null;
         add_uri(uri: string): void;
-        get_writable(cancellable?: Gio.Cancellable | null): Promise<Gio.File | null>;
+        get_writable(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.File | null>;
         get_writable(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         get_writable(
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gio.File | null> | void;
+        ): globalThis.Promise<Gio.File | null> | void;
         get_writable_finish(_res_: Gio.AsyncResult): Gio.File | null;
-        get_writables(cancellable?: Gio.Cancellable | null): Promise<Gee.ArrayList>;
+        get_writables(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gee.ArrayList>;
         get_writables(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         get_writables(
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gee.ArrayList> | void;
+        ): globalThis.Promise<Gee.ArrayList> | void;
         get_writables_finish(_res_: Gio.AsyncResult): Gee.ArrayList;
         get_resource_list(): Gee.List;
         get_resource_by_name(resource_name: string): MediaResource | null;
@@ -2324,12 +2324,12 @@ export namespace RygelServer {
         // Methods
 
         get_dlna_profiles(): RygelCore.DLNAProfile[];
-        get_resources_for_item(item: MediaObject): Promise<Gee.List | null>;
+        get_resources_for_item(item: MediaObject): globalThis.Promise<Gee.List | null>;
         get_resources_for_item(item: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         get_resources_for_item(
             item: MediaObject,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gee.List | null> | void;
+        ): globalThis.Promise<Gee.List | null> | void;
         get_resources_for_item_finish(_res_: Gio.AsyncResult): Gee.List | null;
         create_data_source_for_resource(
             item: MediaObject,
@@ -3031,13 +3031,13 @@ export namespace RygelServer {
 
         // Methods
 
-        handle(): Promise<void>;
+        handle(): globalThis.Promise<void>;
         handle(_callback_: Gio.AsyncReadyCallback<this> | null): void;
-        handle(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        handle(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         handle_finish(_res_: Gio.AsyncResult): void;
-        find_item(): Promise<void>;
+        find_item(): globalThis.Promise<void>;
         find_item(_callback_: Gio.AsyncReadyCallback<this> | null): void;
-        find_item(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        find_item(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         find_item_finish(_res_: Gio.AsyncResult): void;
         handle_error(_error_: GLib.Error): void;
         end(status: number, reason?: string | null): void;
@@ -3047,9 +3047,9 @@ export namespace RygelServer {
         set cancellable(val: Gio.Cancellable);
 
         // Inherited methods
-        run(): Promise<void>;
+        run(): globalThis.Promise<void>;
         run(_callback_: Gio.AsyncReadyCallback<this> | null): void;
-        run(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        run(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         run_finish(_res_: Gio.AsyncResult): void;
         get_cancellable(): Gio.Cancellable;
         set_cancellable(value: Gio.Cancellable): void;
@@ -3580,9 +3580,9 @@ export namespace RygelServer {
         set cancellable(val: Gio.Cancellable);
 
         // Inherited methods
-        run(): Promise<void>;
+        run(): globalThis.Promise<void>;
         run(_callback_: Gio.AsyncReadyCallback<this> | null): void;
-        run(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        run(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         run_finish(_res_: Gio.AsyncResult): void;
         get_cancellable(): Gio.Cancellable;
         set_cancellable(value: Gio.Cancellable): void;
@@ -4183,9 +4183,9 @@ export namespace RygelServer {
         set cancellable(val: Gio.Cancellable);
 
         // Inherited methods
-        run(): Promise<void>;
+        run(): globalThis.Promise<void>;
         run(_callback_: Gio.AsyncReadyCallback<this> | null): void;
-        run(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        run(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         run_finish(_res_: Gio.AsyncResult): void;
         get_cancellable(): Gio.Cancellable;
         set_cancellable(value: Gio.Cancellable): void;
@@ -5872,7 +5872,7 @@ export namespace RygelServer {
             max_count: number,
             sort_criteria: string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[MediaObjects | null, number]>;
+        ): globalThis.Promise<[MediaObjects | null, number]>;
         search(
             expression: SearchExpression | null,
             offset: number,
@@ -5888,7 +5888,7 @@ export namespace RygelServer {
             sort_criteria: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[MediaObjects | null, number]> | void;
+        ): globalThis.Promise<[MediaObjects | null, number]> | void;
         search_finish(_res_: Gio.AsyncResult): [MediaObjects | null, number];
         simple_search(
             expression: SearchExpression | null,
@@ -5896,7 +5896,7 @@ export namespace RygelServer {
             max_count: number,
             sort_criteria: string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[MediaObjects | null, number]>;
+        ): globalThis.Promise<[MediaObjects | null, number]>;
         simple_search(
             expression: SearchExpression | null,
             offset: number,
@@ -5912,9 +5912,9 @@ export namespace RygelServer {
             sort_criteria: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[MediaObjects | null, number]> | void;
+        ): globalThis.Promise<[MediaObjects | null, number]> | void;
         simple_search_finish(_res_: Gio.AsyncResult): [MediaObjects | null, number];
-        find_object(id: string, cancellable?: Gio.Cancellable | null): Promise<MediaObject | null>;
+        find_object(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<MediaObject | null>;
         find_object(
             id: string,
             cancellable: Gio.Cancellable | null,
@@ -5924,7 +5924,7 @@ export namespace RygelServer {
             id: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<MediaObject | null> | void;
+        ): globalThis.Promise<MediaObject | null> | void;
         find_object_finish(_res_: Gio.AsyncResult): MediaObject | null;
         get_search_classes(): Gee.ArrayList;
         set_search_classes(value: Gee.ArrayList): void;
@@ -5961,28 +5961,37 @@ export namespace RygelServer {
     interface TrackableContainer extends MediaContainer {
         // Methods
 
-        clear(): Promise<void>;
+        clear(): globalThis.Promise<void>;
         clear(_callback_: Gio.AsyncReadyCallback<this> | null): void;
-        clear(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        clear(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         clear_finish(_res_: Gio.AsyncResult): void;
-        add_child(object: MediaObject): Promise<void>;
+        add_child(object: MediaObject): globalThis.Promise<void>;
         add_child(object: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        add_child(object: MediaObject, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        add_child(
+            object: MediaObject,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<void> | void;
         add_child_finish(_res_: Gio.AsyncResult): void;
-        add_child_tracked(object: MediaObject): Promise<void>;
+        add_child_tracked(object: MediaObject): globalThis.Promise<void>;
         add_child_tracked(object: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        add_child_tracked(object: MediaObject, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        add_child_tracked(
+            object: MediaObject,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<void> | void;
         add_child_tracked_finish(_res_: Gio.AsyncResult): void;
-        remove_child(object: MediaObject): Promise<void>;
+        remove_child(object: MediaObject): globalThis.Promise<void>;
         remove_child(object: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        remove_child(object: MediaObject, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        remove_child(
+            object: MediaObject,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<void> | void;
         remove_child_finish(_res_: Gio.AsyncResult): void;
-        remove_child_tracked(object: MediaObject): Promise<void>;
+        remove_child_tracked(object: MediaObject): globalThis.Promise<void>;
         remove_child_tracked(object: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         remove_child_tracked(
             object: MediaObject,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         remove_child_tracked_finish(_res_: Gio.AsyncResult): void;
         get_service_reset_token(): string;
         set_service_reset_token(token: string): void;
@@ -6104,7 +6113,7 @@ export namespace RygelServer {
         // Methods
 
         can_create(upnp_class: string): boolean;
-        add_item(item: MediaFileItem, cancellable?: Gio.Cancellable | null): Promise<void>;
+        add_item(item: MediaFileItem, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         add_item(
             item: MediaFileItem,
             cancellable: Gio.Cancellable | null,
@@ -6114,9 +6123,9 @@ export namespace RygelServer {
             item: MediaFileItem,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         add_item_finish(_res_: Gio.AsyncResult): void;
-        add_container(container: MediaContainer, cancellable?: Gio.Cancellable | null): Promise<void>;
+        add_container(container: MediaContainer, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         add_container(
             container: MediaContainer,
             cancellable: Gio.Cancellable | null,
@@ -6126,9 +6135,9 @@ export namespace RygelServer {
             container: MediaContainer,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         add_container_finish(_res_: Gio.AsyncResult): void;
-        add_reference(object: MediaObject, cancellable?: Gio.Cancellable | null): Promise<string>;
+        add_reference(object: MediaObject, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         add_reference(
             object: MediaObject,
             cancellable: Gio.Cancellable | null,
@@ -6138,9 +6147,9 @@ export namespace RygelServer {
             object: MediaObject,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         add_reference_finish(_res_: Gio.AsyncResult): string;
-        remove_item(id: string, cancellable?: Gio.Cancellable | null): Promise<void>;
+        remove_item(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         remove_item(
             id: string,
             cancellable: Gio.Cancellable | null,
@@ -6150,9 +6159,9 @@ export namespace RygelServer {
             id: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         remove_item_finish(_res_: Gio.AsyncResult): void;
-        remove_container(id: string, cancellable?: Gio.Cancellable | null): Promise<void>;
+        remove_container(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         remove_container(
             id: string,
             cancellable: Gio.Cancellable | null,
@@ -6162,7 +6171,7 @@ export namespace RygelServer {
             id: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         remove_container_finish(_res_: Gio.AsyncResult): void;
         get_create_classes(): Gee.ArrayList;
         set_create_classes(value: Gee.ArrayList): void;
@@ -6252,9 +6261,9 @@ export namespace RygelServer {
     interface UpdatableObject extends MediaObject {
         // Methods
 
-        commit(): Promise<void>;
+        commit(): globalThis.Promise<void>;
         commit(_callback_: Gio.AsyncReadyCallback<this> | null): void;
-        commit(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        commit(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         commit_finish(_res_: Gio.AsyncResult): void;
 
         // Virtual methods

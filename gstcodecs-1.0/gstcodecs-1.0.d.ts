@@ -1102,9 +1102,9 @@ export namespace GstCodecs {
          *
          * If a `user_data` was previously set, then the previous set `notify` will be called
          * before the `user_data` is replaced.
-         * @param notify a #GDestroyNotify
+         * @param user_data private data
          */
-        set_user_data(notify: GLib.DestroyNotify): void;
+        set_user_data(user_data?: any | null): void;
     }
 
     class AV1Tile {
@@ -1246,9 +1246,9 @@ export namespace GstCodecs {
          *
          * If a `user_data` was previously set, then the previous set `notify` will be called
          * before the `user_data` is replaced.
-         * @param notify a #GDestroyNotify
+         * @param user_data private data
          */
-        set_user_data(notify: GLib.DestroyNotify): void;
+        set_user_data(user_data?: any | null): void;
     }
 
     class H264Slice {
@@ -1374,9 +1374,9 @@ export namespace GstCodecs {
          *
          * If a `user_data` was previously set, then the previous set `notify` will be called
          * before the `user_data` is replaced.
-         * @param notify a #GDestroyNotify
+         * @param user_data private data
          */
-        set_user_data(notify: GLib.DestroyNotify): void;
+        set_user_data(user_data?: any | null): void;
     }
 
     class H265Slice {
@@ -1461,9 +1461,9 @@ export namespace GstCodecs {
          *
          * If a `user_data` was previously set, then the previous set `notify` will be called
          * before the `user_data` is replaced.
-         * @param notify a #GDestroyNotify
+         * @param user_data private data
          */
-        set_user_data(notify: GLib.DestroyNotify): void;
+        set_user_data(user_data?: any | null): void;
     }
 
     class Mpeg2Slice {
@@ -1508,9 +1508,9 @@ export namespace GstCodecs {
          *
          * If a `user_data` was previously set, then the previous set `notify` will be called
          * before the `user_data` is replaced.
-         * @param notify a #GDestroyNotify
+         * @param user_data private data
          */
-        set_user_data(notify: GLib.DestroyNotify): void;
+        set_user_data(user_data?: any | null): void;
     }
 
     type Vp9DecoderClass = typeof Vp9Decoder;
@@ -1683,9 +1683,9 @@ export namespace GstCodecs {
          *
          * If a `user_data` was previously set, then the previous set `notify` will be called
          * before the `user_data` is replaced.
-         * @param notify a #GDestroyNotify
+         * @param user_data private data
          */
-        set_user_data(notify: GLib.DestroyNotify): void;
+        set_user_data(user_data?: any | null): void;
     }
 
     class Vp9QuantizationParams {

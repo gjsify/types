@@ -22228,7 +22228,11 @@ export namespace Egg {
 
         evict(key?: any | null): boolean;
         evict_all(): void;
-        get_async(key: any | null, force_update: boolean, cancellable?: Gio.Cancellable | null): Promise<any | null>;
+        get_async(
+            key: any | null,
+            force_update: boolean,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<any | null>;
         get_async(
             key: any | null,
             force_update: boolean,
@@ -22240,7 +22244,7 @@ export namespace Egg {
             force_update: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<any | null> | void;
+        ): globalThis.Promise<any | null> | void;
         /**
          * Finish a call to egg_task_cache_get_async().
          * @param result

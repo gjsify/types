@@ -1071,7 +1071,7 @@ export namespace GioUnix {
             uris?: string[] | null,
             context?: Gio.AppLaunchContext | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Async version of [method`Gio`.AppInfo.launch_uris].
          *
@@ -1107,7 +1107,7 @@ export namespace GioUnix {
             context?: Gio.AppLaunchContext | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes a [method`Gio`.AppInfo.launch_uris_async] operation.
          * @param result the async result
@@ -2186,7 +2186,7 @@ export namespace GioUnix {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional cancellable object
          */
-        close_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        close_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Requests an asynchronous closes of the stream, releasing resources related to it.
          * When the operation is finished `callback` will be called.
@@ -2226,7 +2226,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
          * @param result a #GAsyncResult.
@@ -2307,7 +2307,10 @@ export namespace GioUnix {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
-        read_all_async(io_priority: number, cancellable?: Gio.Cancellable | null): [Promise<number>, Uint8Array];
+        read_all_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): [globalThis.Promise<number>, Uint8Array];
         /**
          * Request an asynchronous read of `count` bytes from the stream into the
          * buffer starting at `buffer`.
@@ -2347,7 +2350,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): [Promise<number> | void, Uint8Array];
+        ): [globalThis.Promise<number> | void, Uint8Array];
         /**
          * Finishes an asynchronous stream read operation started with
          * [method`InputStream`.read_all_async].
@@ -2389,7 +2392,7 @@ export namespace GioUnix {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        read_async(io_priority: number, cancellable?: Gio.Cancellable | null): [Promise<number>, Uint8Array];
+        read_async(io_priority: number, cancellable?: Gio.Cancellable | null): [globalThis.Promise<number>, Uint8Array];
         /**
          * Request an asynchronous read of `count` bytes from the stream into the buffer
          * starting at `buffer`. When the operation is finished `callback` will be called.
@@ -2455,7 +2458,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): [Promise<number> | void, Uint8Array];
+        ): [globalThis.Promise<number> | void, Uint8Array];
         /**
          * Like g_input_stream_read(), this tries to read `count` bytes from
          * the stream in a blocking fashion. However, rather than reading into
@@ -2510,7 +2513,11 @@ export namespace GioUnix {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        read_bytes_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<GLib.Bytes>;
+        read_bytes_async(
+            count: number,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<GLib.Bytes>;
         /**
          * Request an asynchronous read of `count` bytes from the stream into a
          * new #GBytes. When the operation is finished `callback` will be
@@ -2574,7 +2581,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.Bytes> | void;
+        ): globalThis.Promise<GLib.Bytes> | void;
         /**
          * Finishes an asynchronous stream read-into-#GBytes operation.
          * @param result a #GAsyncResult.
@@ -2642,7 +2649,11 @@ export namespace GioUnix {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        skip_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<number>;
+        skip_async(
+            count: number,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<number>;
         /**
          * Request an asynchronous skip of `count` bytes from the stream.
          * When the operation is finished `callback` will be called.
@@ -2712,7 +2723,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes a stream skip operation.
          * @param result a #GAsyncResult.
@@ -3757,7 +3768,7 @@ export namespace GioUnix {
          * @param io_priority the io priority of the request.
          * @param cancellable optional cancellable object
          */
-        close_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        close_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Requests an asynchronous close of the stream, releasing resources
          * related to it. When the operation is finished `callback` will be
@@ -3797,7 +3808,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Closes an output stream.
          * @param result a #GAsyncResult.
@@ -3829,7 +3840,7 @@ export namespace GioUnix {
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        flush_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        flush_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Forces an asynchronous write of all user-space buffered data for
          * the given `stream`.
@@ -3863,7 +3874,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes flushing an output stream.
          * @param result a GAsyncResult.
@@ -3925,7 +3936,7 @@ export namespace GioUnix {
             flags: Gio.OutputStreamSpliceFlags | null,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<number>;
+        ): globalThis.Promise<number>;
         /**
          * Splices a stream asynchronously.
          * When the operation is finished `callback` will be called.
@@ -3967,7 +3978,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes an asynchronous stream splice operation.
          * @param result a #GAsyncResult.
@@ -4049,7 +4060,7 @@ export namespace GioUnix {
             buffer: Uint8Array | string,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<number>;
+        ): globalThis.Promise<number>;
         /**
          * Request an asynchronous write of `count` bytes from `buffer` into
          * the stream. When the operation is finished `callback` will be called.
@@ -4103,7 +4114,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes an asynchronous stream write operation started with
          * g_output_stream_write_all_async().
@@ -4163,7 +4174,7 @@ export namespace GioUnix {
             buffer: Uint8Array | string,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<number>;
+        ): globalThis.Promise<number>;
         /**
          * Request an asynchronous write of `count` bytes from `buffer` into
          * the stream. When the operation is finished `callback` will be called.
@@ -4257,7 +4268,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * A wrapper function for g_output_stream_write() which takes a
          * #GBytes as input.  This can be more convenient for use by language
@@ -4297,7 +4308,7 @@ export namespace GioUnix {
             bytes: GLib.Bytes | Uint8Array,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<number>;
+        ): globalThis.Promise<number>;
         /**
          * This function is similar to g_output_stream_write_async(), but
          * takes a #GBytes as input.  Due to the refcounted nature of #GBytes,
@@ -4347,7 +4358,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes a stream write-from-#GBytes operation.
          * @param result a #GAsyncResult.
@@ -4442,7 +4453,7 @@ export namespace GioUnix {
             vectors: Gio.OutputVector[],
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<number>;
+        ): globalThis.Promise<number>;
         /**
          * Request an asynchronous write of the bytes contained in the `n_vectors` `vectors` into
          * the stream. When the operation is finished `callback` will be called.
@@ -4498,7 +4509,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes an asynchronous stream write operation started with
          * g_output_stream_writev_all_async().
@@ -4553,7 +4564,7 @@ export namespace GioUnix {
             vectors: Gio.OutputVector[],
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<number>;
+        ): globalThis.Promise<number>;
         /**
          * Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
          * the stream. When the operation is finished `callback` will be called.
@@ -4637,7 +4648,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes a stream writev operation.
          * @param result a #GAsyncResult.

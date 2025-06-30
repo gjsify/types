@@ -244,7 +244,7 @@ export namespace GFBGraph {
             node_type: GObject.GType,
             authorizer: Authorizer,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Node[]>;
+        ): globalThis.Promise<Node[]>;
         /**
          * Asynchronously retrieve the list of nodes of type `node_type` connected to the `node` object. See
          * gfbgraph_node_get_connection_nodes() for the synchronous version of this call.
@@ -278,7 +278,7 @@ export namespace GFBGraph {
             authorizer: Authorizer,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Node[]> | void;
+        ): globalThis.Promise<Node[]> | void;
         /**
          * Finishes an asynchronous operation started with
          * gfbgraph_node_get_connection_nodes_async().
@@ -963,7 +963,7 @@ export namespace GFBGraph {
             node_type: GObject.GType,
             authorizer: Authorizer,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Node[]>;
+        ): globalThis.Promise<Node[]>;
         /**
          * Asynchronously retrieve the list of nodes of type `node_type` connected to the `node` object. See
          * gfbgraph_node_get_connection_nodes() for the synchronous version of this call.
@@ -997,7 +997,7 @@ export namespace GFBGraph {
             authorizer: Authorizer,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Node[]> | void;
+        ): globalThis.Promise<Node[]> | void;
         /**
          * Finishes an asynchronous operation started with
          * gfbgraph_node_get_connection_nodes_async().
@@ -1438,7 +1438,7 @@ export namespace GFBGraph {
             node_type: GObject.GType,
             authorizer: Authorizer,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Node[]>;
+        ): globalThis.Promise<Node[]>;
         /**
          * Asynchronously retrieve the list of nodes of type `node_type` connected to the `node` object. See
          * gfbgraph_node_get_connection_nodes() for the synchronous version of this call.
@@ -1472,7 +1472,7 @@ export namespace GFBGraph {
             authorizer: Authorizer,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Node[]> | void;
+        ): globalThis.Promise<Node[]> | void;
         /**
          * Finishes an asynchronous operation started with
          * gfbgraph_node_get_connection_nodes_async().
@@ -2571,7 +2571,7 @@ export namespace GFBGraph {
          * @param authorizer a #GFBGraphAuthorizer.
          * @param cancellable An optional #GCancellable object, or %NULL.
          */
-        get_albums_async(authorizer: Authorizer, cancellable?: Gio.Cancellable | null): Promise<Album[]>;
+        get_albums_async(authorizer: Authorizer, cancellable?: Gio.Cancellable | null): globalThis.Promise<Album[]>;
         /**
          * Asynchronously retrieve the albums nodes owned by the `user`. See gfbgraph_user_get_albums() for the
          * synchronous version of this call.
@@ -2601,7 +2601,7 @@ export namespace GFBGraph {
             authorizer: Authorizer,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Album[]> | void;
+        ): globalThis.Promise<Album[]> | void;
         /**
          * Finishes an asynchronous operation started with
          * gfbgraph_user_get_albums_async().

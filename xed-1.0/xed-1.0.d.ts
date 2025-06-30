@@ -119,7 +119,7 @@ export namespace Xed {
         document: Document,
         window: Window,
         cancellable?: Gio.Cancellable | null,
-    ): Promise<boolean>;
+    ): globalThis.Promise<boolean>;
     /**
      * Asynchronously save the `document`. `document` must belong to `window`. The
      * source object of the async task is `document` (which will be the first
@@ -155,7 +155,7 @@ export namespace Xed {
         window: Window,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Document> | null,
-    ): Promise<boolean> | void;
+    ): globalThis.Promise<boolean> | void;
     /**
      * Finishes an asynchronous document saving operation started with
      * xed_commands_save_document_async().

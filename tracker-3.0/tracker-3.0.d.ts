@@ -575,7 +575,7 @@ export namespace Tracker {
          * finished `callback` will be executed.
          * @param cancellable Optional [type@Gio.Cancellable]
          */
-        execute_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        execute_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Executes the batch. This operation happens asynchronously, when
          * finished `callback` will be executed.
@@ -592,7 +592,7 @@ export namespace Tracker {
         execute_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with [method`Batch`.execute_async].
          * @param res A [type@Gio.AsyncResult] with the result of the operation
@@ -3046,7 +3046,7 @@ export namespace Tracker {
          * No other API calls than g_object_unref() should happen after this call.
          * @param cancellable Optional [type@Gio.Cancellable]
          */
-        close_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        close_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Closes a SPARQL connection asynchronously.
          *
@@ -3065,7 +3065,7 @@ export namespace Tracker {
         close_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with [method`SparqlConnection`.close_async].
          * @param res A [type@Gio.AsyncResult] with the result of the operation
@@ -3114,7 +3114,7 @@ export namespace Tracker {
             default_graph: string,
             stream: Gio.InputStream,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Loads the RDF data contained in `stream` into the given `connection`.
          *
@@ -3170,7 +3170,7 @@ export namespace Tracker {
             stream: Gio.InputStream,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with [method`SparqlConnection`.deserialize_async].
          * @param result A [type@Gio.AsyncResult] with the result of the operation
@@ -3258,7 +3258,7 @@ export namespace Tracker {
          * @param sparql String containing the SPARQL query
          * @param cancellable Optional [type@Gio.Cancellable]
          */
-        query_async(sparql: string, cancellable?: Gio.Cancellable | null): Promise<SparqlCursor>;
+        query_async(sparql: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<SparqlCursor>;
         /**
          * Executes asynchronously a SPARQL query on `connection`
          *
@@ -3294,7 +3294,7 @@ export namespace Tracker {
             sparql: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<SparqlCursor> | void;
+        ): globalThis.Promise<SparqlCursor> | void;
         /**
          * Finishes the operation started with [method`SparqlConnection`.query_async].
          * @param res A [type@Gio.AsyncResult] with the result of the operation
@@ -3333,7 +3333,7 @@ export namespace Tracker {
             format: RdfFormat | null,
             query: string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Gio.InputStream>;
+        ): globalThis.Promise<Gio.InputStream>;
         /**
          * Serializes a `DESCRIBE` or `CONSTRUCT` query into the specified RDF format.
          *
@@ -3381,7 +3381,7 @@ export namespace Tracker {
             query: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gio.InputStream> | void;
+        ): globalThis.Promise<Gio.InputStream> | void;
         /**
          * Finishes the operation started with [method`SparqlConnection`.serialize_async].
          * @param result A [type@Gio.AsyncResult] with the result of the operation
@@ -3429,7 +3429,7 @@ export namespace Tracker {
             sparql: string,
             sparql_length: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Executes asynchronously an array of SPARQL updates. All updates in the
          * array are handled within a single transaction.
@@ -3473,7 +3473,7 @@ export namespace Tracker {
             sparql_length: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with [method`SparqlConnection`.update_array_async].
          * @param res A [type@Gio.AsyncResult] with the result of the operation
@@ -3497,7 +3497,7 @@ export namespace Tracker {
          * @param sparql String containing the SPARQL update query
          * @param cancellable Optional [type@Gio.Cancellable]
          */
-        update_async(sparql: string, cancellable?: Gio.Cancellable | null): Promise<void>;
+        update_async(sparql: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * Executes asynchronously a SPARQL update.
          *
@@ -3543,7 +3543,7 @@ export namespace Tracker {
             sparql: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         /**
          * Executes a SPARQL update and returns the names of the generated blank nodes.
          *
@@ -3574,7 +3574,7 @@ export namespace Tracker {
          * @param sparql String containing the SPARQL update query
          * @param cancellable Optional [type@Gio.Cancellable]
          */
-        update_blank_async(sparql: string, cancellable?: Gio.Cancellable | null): Promise<GLib.Variant>;
+        update_blank_async(sparql: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
         /**
          * Executes asynchronously a SPARQL update and returns the names of the generated blank nodes.
          *
@@ -3602,7 +3602,7 @@ export namespace Tracker {
             sparql: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.Variant> | void;
+        ): globalThis.Promise<GLib.Variant> | void;
         /**
          * Finishes the operation started with [method`SparqlConnection`.update_blank_async].
          *
@@ -3648,7 +3648,7 @@ export namespace Tracker {
             graph: string | null,
             resource: Resource,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Inserts asynchronously a resource as described by `resource` on the given `graph`.
          *
@@ -3682,7 +3682,7 @@ export namespace Tracker {
             resource: Resource,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with [method`SparqlConnection`.update_resource_async].
          * @param res A [type@Gio.AsyncResult] with the result of the operation
@@ -3927,7 +3927,7 @@ export namespace Tracker {
          * be iterated once at a time.
          * @param cancellable Optional [type@Gio.Cancellable]
          */
-        next_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        next_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Iterates the cursor asyncronously to the next result.
          *
@@ -3958,7 +3958,7 @@ export namespace Tracker {
         next_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the asynchronous iteration to the next result started with
          * [method`SparqlCursor`.next_async].
@@ -4144,7 +4144,7 @@ export namespace Tracker {
          * SPARQL query.
          * @param cancellable Optional [type@Gio.Cancellable]
          */
-        execute_async(cancellable?: Gio.Cancellable | null): Promise<SparqlCursor>;
+        execute_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<SparqlCursor>;
         /**
          * Executes asynchronously the `SELECT` or `ASK` SPARQL query with the currently bound values.
          *
@@ -4181,7 +4181,7 @@ export namespace Tracker {
         execute_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<SparqlCursor> | void;
+        ): globalThis.Promise<SparqlCursor> | void;
         /**
          * Finishes the asynchronous operation started through
          * [method`SparqlStatement`.execute_async].
@@ -4221,7 +4221,7 @@ export namespace Tracker {
             flags: SerializeFlags | null,
             format: RdfFormat | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Gio.InputStream>;
+        ): globalThis.Promise<Gio.InputStream>;
         /**
          * Serializes a `DESCRIBE` or `CONSTRUCT` query into the given RDF `format`.
          *
@@ -4271,7 +4271,7 @@ export namespace Tracker {
             format: RdfFormat | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gio.InputStream> | void;
+        ): globalThis.Promise<Gio.InputStream> | void;
         /**
          * Finishes the asynchronous operation started through
          * [method`SparqlStatement`.serialize_async].
@@ -4303,7 +4303,7 @@ export namespace Tracker {
          * `SELECT`/`ASK`/`DESCRIBE`/`CONSTRUCT` SPARQL queries.
          * @param cancellable Optional [type@Gio.Cancellable]
          */
-        update_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        update_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Executes asynchronously the `INSERT`/`DELETE` SPARQL query series with the currently bound values.
          *
@@ -4332,7 +4332,7 @@ export namespace Tracker {
         update_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the asynchronous update started through
          * [method`SparqlStatement`.update_async].

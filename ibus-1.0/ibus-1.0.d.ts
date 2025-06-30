@@ -5695,7 +5695,11 @@ export namespace IBus {
          * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
          * @param cancellable A #GCancellable or %NULL.
          */
-        add_match_async(rule: string, timeout_msec: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        add_match_async(
+            rule: string,
+            timeout_msec: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Add a match rule to an #IBusBus asynchronously.
          * @param rule Match rule.
@@ -5721,7 +5725,7 @@ export namespace IBus {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with ibus_bus_add_match_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_add_match_async().
@@ -5744,7 +5748,7 @@ export namespace IBus {
             client_name: string,
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<InputContext>;
+        ): globalThis.Promise<InputContext>;
         /**
          * Create an input context for client asynchronously.
          * @param client_name Name of client.
@@ -5770,7 +5774,7 @@ export namespace IBus {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<InputContext> | void;
+        ): globalThis.Promise<InputContext> | void;
         /**
          * Finishes an operation started with ibus_bus_create_input_context_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_create_input_context_async().
@@ -5787,7 +5791,10 @@ export namespace IBus {
          * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
          * @param cancellable A #GCancellable or %NULL.
          */
-        current_input_context_async(timeout_msec: number, cancellable?: Gio.Cancellable | null): Promise<string>;
+        current_input_context_async(
+            timeout_msec: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<string>;
         /**
          * Get the current focused input context asynchronously.
          * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
@@ -5809,7 +5816,7 @@ export namespace IBus {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         /**
          * Finishes an operation started with ibus_bus_current_input_context_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_current_input_context_async().
@@ -5828,7 +5835,11 @@ export namespace IBus {
          * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
          * @param cancellable A #GCancellable or %NULL.
          */
-        exit_async(restart: boolean, timeout_msec: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        exit_async(
+            restart: boolean,
+            timeout_msec: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Exit or restart ibus-daemon asynchronously.
          * @param restart Whether restarting the ibus.
@@ -5854,7 +5865,7 @@ export namespace IBus {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with ibus_bus_exit_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_exit_async().
@@ -5889,7 +5900,10 @@ export namespace IBus {
          * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
          * @param cancellable A #GCancellable or %NULL.
          */
-        get_global_engine_async(timeout_msec: number, cancellable?: Gio.Cancellable | null): Promise<EngineDesc>;
+        get_global_engine_async(
+            timeout_msec: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<EngineDesc>;
         /**
          * Get the description of current global engine asynchronously.
          * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
@@ -5911,7 +5925,7 @@ export namespace IBus {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<EngineDesc> | void;
+        ): globalThis.Promise<EngineDesc> | void;
         /**
          * Finishes an operation started with ibus_bus_get_global_engine_async_finish().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_get_global_engine_async_finish().
@@ -5934,7 +5948,7 @@ export namespace IBus {
             property_name: string,
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<GLib.Variant>;
+        ): globalThis.Promise<GLib.Variant>;
         /**
          * Get org.freedesktop.DBus.Properties asynchronously.
          * @param property_name property name in org.freedesktop.DBus.Properties.Get
@@ -5960,7 +5974,7 @@ export namespace IBus {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.Variant> | void;
+        ): globalThis.Promise<GLib.Variant> | void;
         /**
          * Finishes an operation started with ibus_bus_get_ibus_property_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_get_ibus_property_async().
@@ -5979,7 +5993,11 @@ export namespace IBus {
          * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
          * @param cancellable A #GCancellable or %NULL.
          */
-        get_name_owner_async(name: string, timeout_msec: number, cancellable?: Gio.Cancellable | null): Promise<string>;
+        get_name_owner_async(
+            name: string,
+            timeout_msec: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<string>;
         /**
          * Return the name owner asynchronously.
          * @param name Name.
@@ -6005,7 +6023,7 @@ export namespace IBus {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         /**
          * Finishes an operation started with ibus_bus_get_name_owner_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_get_name_owner_async().
@@ -6028,7 +6046,10 @@ export namespace IBus {
          * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
          * @param cancellable A #GCancellable or %NULL.
          */
-        get_use_global_engine_async(timeout_msec: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        get_use_global_engine_async(
+            timeout_msec: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Check if the bus's "use_global_engine" option is enabled or not asynchronously.
          * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
@@ -6050,7 +6071,7 @@ export namespace IBus {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with ibus_bus_get_use_global_engine_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_get_use_global_engine_async().
@@ -6067,7 +6088,10 @@ export namespace IBus {
          * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
          * @param cancellable A #GCancellable or %NULL.
          */
-        get_use_sys_layout_async(timeout_msec: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        get_use_sys_layout_async(
+            timeout_msec: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Check if the bus's "use_sys_layout" option is enabled or not asynchronously.
          * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
@@ -6089,7 +6113,7 @@ export namespace IBus {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with ibus_bus_get_use_sys_layout_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_get_use_sys_layout_async().
@@ -6117,7 +6141,10 @@ export namespace IBus {
          * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
          * @param cancellable A #GCancellable or %NULL.
          */
-        is_global_engine_enabled_async(timeout_msec: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        is_global_engine_enabled_async(
+            timeout_msec: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Check if the current global engine is enabled or not asynchronously.
          * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
@@ -6139,7 +6166,7 @@ export namespace IBus {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with ibus_bus_is_global_engine_enabled_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_is_global_engine_enabled_async().
@@ -6156,7 +6183,10 @@ export namespace IBus {
          * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
          * @param cancellable A #GCancellable or %NULL.
          */
-        list_active_engines_async(timeout_msec: number, cancellable?: Gio.Cancellable | null): Promise<EngineDesc[]>;
+        list_active_engines_async(
+            timeout_msec: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<EngineDesc[]>;
         /**
          * List active engines asynchronously.
          * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
@@ -6178,7 +6208,7 @@ export namespace IBus {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<EngineDesc[]> | void;
+        ): globalThis.Promise<EngineDesc[]> | void;
         /**
          * Finishes an operation started with ibus_bus_list_active_engines_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_list_active_engines_async().
@@ -6195,7 +6225,10 @@ export namespace IBus {
          * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
          * @param cancellable A #GCancellable or %NULL.
          */
-        list_engines_async(timeout_msec: number, cancellable?: Gio.Cancellable | null): Promise<EngineDesc[]>;
+        list_engines_async(
+            timeout_msec: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<EngineDesc[]>;
         /**
          * List engines asynchronously.
          * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
@@ -6217,7 +6250,7 @@ export namespace IBus {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<EngineDesc[]> | void;
+        ): globalThis.Promise<EngineDesc[]> | void;
         /**
          * Finishes an operation started with ibus_bus_list_engines_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_list_engines_async().
@@ -6254,7 +6287,7 @@ export namespace IBus {
             name: string,
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Checks whether the name has owner asynchronously.
          * @param name Name to be checked.
@@ -6280,7 +6313,7 @@ export namespace IBus {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with ibus_bus_name_has_owner_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_name_has_owner_async().
@@ -6303,7 +6336,7 @@ export namespace IBus {
             names: string[],
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Start bus components by engine names asynchronously.
          * @param names A %NULL-terminated array of engine names.
@@ -6329,7 +6362,7 @@ export namespace IBus {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with ibus_bus_preload_engines_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_preload_engines_async().
@@ -6352,7 +6385,7 @@ export namespace IBus {
             component: Component,
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Register a component to an #IBusBus asynchronously.
          * @param component A input engine component.
@@ -6378,7 +6411,7 @@ export namespace IBus {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with ibus_bus_register_component_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_register_component_async().
@@ -6397,7 +6430,11 @@ export namespace IBus {
          * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
          * @param cancellable A #GCancellable or %NULL.
          */
-        release_name_async(name: string, timeout_msec: number, cancellable?: Gio.Cancellable | null): Promise<number>;
+        release_name_async(
+            name: string,
+            timeout_msec: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<number>;
         /**
          * Release a name to IBus daemon asynchronously.
          * @param name Name to be released.
@@ -6423,7 +6460,7 @@ export namespace IBus {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes an operation started with ibus_bus_release_name_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_release_name_async().
@@ -6442,7 +6479,11 @@ export namespace IBus {
          * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
          * @param cancellable A #GCancellable or %NULL.
          */
-        remove_match_async(rule: string, timeout_msec: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        remove_match_async(
+            rule: string,
+            timeout_msec: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Remove a match rule to an IBusBus asynchronously.
          * @param rule Match rule.
@@ -6468,7 +6509,7 @@ export namespace IBus {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with ibus_bus_remove_match_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_remove_match_async().
@@ -6494,7 +6535,7 @@ export namespace IBus {
             flags: number,
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<number>;
+        ): globalThis.Promise<number>;
         /**
          * Request a name from IBus daemon asynchronously.
          * @param name Name to be requested.
@@ -6524,7 +6565,7 @@ export namespace IBus {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes an operation started with ibus_bus_request_name_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_request_name_async().
@@ -6547,7 +6588,7 @@ export namespace IBus {
             global_engine: string,
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Set current global engine asynchronously.
          * @param global_engine A new engine name.
@@ -6573,7 +6614,7 @@ export namespace IBus {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with ibus_bus_set_global_engine_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_set_global_engine_async().
@@ -6599,7 +6640,7 @@ export namespace IBus {
             keys: ProcessKeyEventData[],
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Sete global shorcut keys for the Wayland session asynchronously.
          * @param gtype A #IBusBusGlobalBindingType.
@@ -6629,7 +6670,7 @@ export namespace IBus {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with ibus_bus_set_global_shortcut_keys_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_set_global_shortcut_keys_async().
@@ -6654,7 +6695,7 @@ export namespace IBus {
             value: GLib.Variant,
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Set org.freedesktop.DBus.Properties asynchronously.
          * @param property_name property name in org.freedesktop.DBus.Properties.Set
@@ -6684,7 +6725,7 @@ export namespace IBus {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with ibus_bus_set_ibus_property_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_set_ibus_property_async().
@@ -7039,7 +7080,7 @@ export namespace IBus {
             name: string,
             timeout_ms: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<GLib.Variant>;
+        ): globalThis.Promise<GLib.Variant>;
         /**
          * Get the value of a configuration option asynchronously.
          *
@@ -7073,7 +7114,7 @@ export namespace IBus {
             timeout_ms: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.Variant> | void;
+        ): globalThis.Promise<GLib.Variant> | void;
         /**
          * Finish get value of a configuration option.
          * @param result A #GAsyncResult.
@@ -7098,7 +7139,7 @@ export namespace IBus {
             section: string,
             timeout_ms: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<GLib.Variant>;
+        ): globalThis.Promise<GLib.Variant>;
         /**
          * Get all values in a section asynchronously.
          *
@@ -7128,7 +7169,7 @@ export namespace IBus {
             timeout_ms: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.Variant> | void;
+        ): globalThis.Promise<GLib.Variant> | void;
         /**
          * Finish get values in a section.
          * @param result A #GAsyncResult.
@@ -7159,7 +7200,7 @@ export namespace IBus {
             value: GLib.Variant,
             timeout_ms: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Set the value of a configuration option asynchronously.
          *
@@ -7197,7 +7238,7 @@ export namespace IBus {
             timeout_ms: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finish set value of a configuration option.
          * @param result A #GAsyncResult.
@@ -7272,7 +7313,7 @@ export namespace IBus {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -7364,7 +7405,7 @@ export namespace IBus {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -9356,7 +9397,7 @@ export namespace IBus {
          * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
          * @param cancellable A #GCancellable or %NULL.
          */
-        get_engine_async(timeout_msec: number, cancellable?: Gio.Cancellable | null): Promise<EngineDesc>;
+        get_engine_async(timeout_msec: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<EngineDesc>;
         /**
          * An asynchronous IPC will be performed.
          * @param timeout_msec The timeout in milliseconds or -1 to use the default timeout.
@@ -9378,7 +9419,7 @@ export namespace IBus {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<EngineDesc> | void;
+        ): globalThis.Promise<EngineDesc> | void;
         /**
          * Finishes an operation started with ibus_input_context_get_engine_async().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_input_context_get_engine_async().
@@ -9455,7 +9496,7 @@ export namespace IBus {
             state: number,
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Pass the key event to input method engine.
          *
@@ -9525,7 +9566,7 @@ export namespace IBus {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with
          *      ibus_input_context_process_key_event_async().
@@ -9650,7 +9691,7 @@ export namespace IBus {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -9742,7 +9783,7 @@ export namespace IBus {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -11375,7 +11416,7 @@ export namespace IBus {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -11467,7 +11508,7 @@ export namespace IBus {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().

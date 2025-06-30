@@ -1897,7 +1897,7 @@ export namespace Shumate {
             y: number,
             zoom_level: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<GLib.Bytes | null>;
+        ): globalThis.Promise<GLib.Bytes | null>;
         /**
          * Gets the data for the tile at the given coordinates.
          *
@@ -1937,7 +1937,7 @@ export namespace Shumate {
             zoom_level: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.Bytes | null> | void;
+        ): globalThis.Promise<GLib.Bytes | null> | void;
         /**
          * Gets the final result of a request started with
          * shumate_data_source_get_tile_data_async().
@@ -2289,7 +2289,7 @@ export namespace Shumate {
             y: number,
             zoom_level: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[GLib.Bytes, string, GLib.DateTime | null]>;
+        ): globalThis.Promise<[GLib.Bytes, string, GLib.DateTime | null]>;
         /**
          * Gets tile data from the cache, if it is available.
          * @param x the X coordinate of the tile
@@ -2319,7 +2319,7 @@ export namespace Shumate {
             zoom_level: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[GLib.Bytes, string, GLib.DateTime | null]> | void;
+        ): globalThis.Promise<[GLib.Bytes, string, GLib.DateTime | null]> | void;
         /**
          * Gets the tile data from a completed shumate_file_cache_get_tile_async()
          * operation.
@@ -2347,7 +2347,7 @@ export namespace Shumate {
          * the size limit.
          * @param cancellable a #GCancellable
          */
-        purge_cache_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        purge_cache_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Removes less used tiles from the cache, if necessary, until it fits in
          * the size limit.
@@ -2364,7 +2364,7 @@ export namespace Shumate {
         purge_cache_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Gets the result of an async operation started using
          * shumate_file_cache_purge_cache_async().
@@ -2393,7 +2393,7 @@ export namespace Shumate {
             bytes: GLib.Bytes | Uint8Array,
             etag?: string | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Stores a tile in the cache.
          * @param x the X coordinate of the tile
@@ -2431,7 +2431,7 @@ export namespace Shumate {
             etag?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Gets the success value of a completed shumate_file_cache_store_tile_async()
          * operation.
@@ -5922,7 +5922,7 @@ export namespace Shumate {
          * @param tile a #ShumateTile
          * @param cancellable a #GCancellable
          */
-        fill_tile_async(tile: Tile, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        fill_tile_async(tile: Tile, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronous version of shumate_map_source_fill_tile().
          * @param tile a #ShumateTile
@@ -5944,7 +5944,7 @@ export namespace Shumate {
             tile: Tile,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Gets the success value of a completed shumate_map_source_fill_tile_async()
          * operation.

@@ -389,12 +389,14 @@ export namespace AyatanaAppIndicator {
         vfunc_connection_changed(connected: boolean): void;
         /**
          * Slot for #AppIndicator::new-attention-icon.
+         * @param user_data
          */
-        vfunc_new_attention_icon(): void;
+        vfunc_new_attention_icon(user_data?: any | null): void;
         /**
          * Slot for #AppIndicator::new-icon.
+         * @param user_data
          */
-        vfunc_new_icon(): void;
+        vfunc_new_icon(user_data?: any | null): void;
         /**
          * Slot for #AppIndicator::new-icon-theme-path
          * @param icon_theme_path

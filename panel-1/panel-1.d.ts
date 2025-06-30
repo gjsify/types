@@ -1706,7 +1706,7 @@ export namespace Panel {
 
         add_delegate(delegate: SaveDelegate): void;
         get_close_after_save(): boolean;
-        run_async(parent: Gtk.Widget, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        run_async(parent: Gtk.Widget, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         run_async(
             parent: Gtk.Widget,
             cancellable: Gio.Cancellable | null,
@@ -1716,7 +1716,7 @@ export namespace Panel {
             parent: Gtk.Widget,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         run_finish(result: Gio.AsyncResult): boolean;
         set_close_after_save(close_after_save: boolean): void;
 
@@ -18523,7 +18523,7 @@ export namespace Panel {
          * Request to close, asynchronously. This will display the save dialog.
          * @param cancellable
          */
-        agree_to_close_async(cancellable: Gio.Cancellable | null): Promise<boolean>;
+        agree_to_close_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Request to close, asynchronously. This will display the save dialog.
          * @param cancellable
@@ -18538,7 +18538,7 @@ export namespace Panel {
         agree_to_close_async(
             cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this>,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         agree_to_close_finish(result: Gio.AsyncResult): boolean;
         /**
          * Calls `callback` for each #PanelFrame within `grid`.
@@ -25168,12 +25168,12 @@ export namespace Panel {
          * @returns the title or %NULL
          */
         get_title(): string | null;
-        save_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        save_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         save_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         save_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         save_finish(result: Gio.AsyncResult): boolean;
         /**
          * Sets the #GIcon for the save delegate. Pass %NULL to unset.
@@ -25346,12 +25346,12 @@ export namespace Panel {
 
         add_delegate(delegate: SaveDelegate): void;
         get_close_after_save(): boolean;
-        run_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        run_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         run_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         run_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         run_finish(result: Gio.AsyncResult): boolean;
         set_close_after_save(close_after_save: boolean): void;
 

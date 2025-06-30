@@ -327,7 +327,7 @@ export namespace Lfb {
          * soon as possible.
          * @param cancellable A #GCancellable to cancel the operation or %NULL.
          */
-        end_feedback_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        end_feedback_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Tells the feedback server to end all feedback for the given event as
          * soon as possible.
@@ -344,7 +344,7 @@ export namespace Lfb {
         end_feedback_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finish an async operation started by lfb_event_end_feedback_async. You
          * must call this function in the callback to free memory and receive any
@@ -448,7 +448,7 @@ export namespace Lfb {
          * [method`LfbEvent`.trigger_feedback].
          * @param cancellable A #GCancellable to cancel the operation or %NULL.
          */
-        trigger_feedback_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        trigger_feedback_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Tells the feedback server to provide proper feedback for the give
          * event to the user. This is the sync version of
@@ -470,7 +470,7 @@ export namespace Lfb {
         trigger_feedback_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finish an async operation started by [method`LfbEvent`.trigger_feedback_async]. You
          * must call this function in the callback to free memory and receive any
@@ -678,7 +678,7 @@ export namespace Lfb {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -770,7 +770,7 @@ export namespace Lfb {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -967,7 +967,7 @@ export namespace Lfb {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_end_feedback(arg_id: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        call_end_feedback(arg_id: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -997,7 +997,7 @@ export namespace Lfb {
             arg_id: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with lfb_gdbus_feedback_call_end_feedback().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to lfb_gdbus_feedback_call_end_feedback().
@@ -1031,7 +1031,7 @@ export namespace Lfb {
             arg_hints: GLib.Variant,
             arg_timeout: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<number>;
+        ): globalThis.Promise<number>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -1073,7 +1073,7 @@ export namespace Lfb {
             arg_timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes an operation started with lfb_gdbus_feedback_call_trigger_feedback().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to lfb_gdbus_feedback_call_trigger_feedback().
@@ -1698,7 +1698,7 @@ export namespace Lfb {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_end_feedback(arg_id: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        call_end_feedback(arg_id: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -1728,7 +1728,7 @@ export namespace Lfb {
             arg_id: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with lfb_gdbus_feedback_call_end_feedback().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to lfb_gdbus_feedback_call_end_feedback().
@@ -1762,7 +1762,7 @@ export namespace Lfb {
             arg_hints: GLib.Variant,
             arg_timeout: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<number>;
+        ): globalThis.Promise<number>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -1804,7 +1804,7 @@ export namespace Lfb {
             arg_timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes an operation started with lfb_gdbus_feedback_call_trigger_feedback().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to lfb_gdbus_feedback_call_trigger_feedback().
@@ -2384,7 +2384,7 @@ export namespace Lfb {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_end_feedback(arg_id: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        call_end_feedback(arg_id: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -2414,7 +2414,7 @@ export namespace Lfb {
             arg_id: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with lfb_gdbus_feedback_call_end_feedback().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to lfb_gdbus_feedback_call_end_feedback().
@@ -2448,7 +2448,7 @@ export namespace Lfb {
             arg_hints: GLib.Variant,
             arg_timeout: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<number>;
+        ): globalThis.Promise<number>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -2490,7 +2490,7 @@ export namespace Lfb {
             arg_timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes an operation started with lfb_gdbus_feedback_call_trigger_feedback().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to lfb_gdbus_feedback_call_trigger_feedback().

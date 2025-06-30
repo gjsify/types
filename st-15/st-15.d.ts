@@ -6389,7 +6389,7 @@ export namespace St {
          * version of this call.
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
-        load_icon_async(cancellable?: Gio.Cancellable | null): Promise<GdkPixbuf.Pixbuf>;
+        load_icon_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<GdkPixbuf.Pixbuf>;
         /**
          * Asynchronously load, render and scale an icon previously looked up
          * from the icon theme using [method`St`.IconTheme.lookup_icon].
@@ -6412,7 +6412,7 @@ export namespace St {
         load_icon_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GdkPixbuf.Pixbuf> | void;
+        ): globalThis.Promise<GdkPixbuf.Pixbuf> | void;
         /**
          * Finishes an async icon load, see st_icon_info_load_icon_async().
          * @param res a #GAsyncResult
@@ -6452,7 +6452,7 @@ export namespace St {
         load_symbolic_async(
             colors: IconColors,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[GdkPixbuf.Pixbuf, boolean]>;
+        ): globalThis.Promise<[GdkPixbuf.Pixbuf, boolean]>;
         /**
          * Asynchronously load, render and scale a symbolic icon previously looked up
          * from the icon theme using [method`St`.IconTheme.lookup_icon].
@@ -6482,7 +6482,7 @@ export namespace St {
             colors: IconColors,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[GdkPixbuf.Pixbuf, boolean]> | void;
+        ): globalThis.Promise<[GdkPixbuf.Pixbuf, boolean]> | void;
         /**
          * Finishes an async icon load, see st_icon_info_load_symbolic_async().
          * @param res a #GAsyncResult
@@ -7029,7 +7029,7 @@ export namespace St {
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        load_async(size: number, cancellable?: Gio.Cancellable | null): Promise<[Gio.InputStream, string]>;
+        load_async(size: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<[Gio.InputStream, string]>;
         /**
          * Loads an icon asynchronously. To finish this function, see
          * g_loadable_icon_load_finish(). For the synchronous, blocking
@@ -7055,7 +7055,7 @@ export namespace St {
             size: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[Gio.InputStream, string]> | void;
+        ): globalThis.Promise<[Gio.InputStream, string]> | void;
         /**
          * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
          * @param res a #GAsyncResult.

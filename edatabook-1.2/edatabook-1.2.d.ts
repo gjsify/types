@@ -586,7 +586,7 @@ export namespace EDataBook {
          * @param email_address an email address
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        contains_email(email_address: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        contains_email(email_address: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously checks whether contains an `email_address`. When the `email_address`
          * contains multiple addresses, then returns %TRUE when at least one
@@ -620,7 +620,7 @@ export namespace EDataBook {
             email_address: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_book_backend_contains_email().
          *
@@ -650,7 +650,11 @@ export namespace EDataBook {
          * @param opflags bit-or of #EBookOperationFlags
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        create_contacts(vcards: string, opflags: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        create_contacts(
+            vcards: string,
+            opflags: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously creates one or more new contacts from `vcards`.
          *
@@ -684,7 +688,7 @@ export namespace EDataBook {
             opflags: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_book_backend_create_contacts().
          *
@@ -812,9 +816,10 @@ export namespace EDataBook {
         /**
          * Calls `func` for each existing view (as returned by e_book_backend_list_views()).
          * The `func` can return %FALSE to stop early.
+         * @param func an #EBookBackendForeachViewFunc function to call
          * @returns whether the call had been stopped by @func
          */
-        foreach_view(): boolean;
+        foreach_view(func?: BookBackendForeachViewFunc | null): boolean;
         /**
          * Notifies each view of the `backend` about progress. When `only_completed_views`
          * is %TRUE, notifies only completed views.
@@ -844,7 +849,7 @@ export namespace EDataBook {
          * @param uid a contact ID
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        get_contact(uid: string, cancellable?: Gio.Cancellable | null): Promise<EBookContacts.Contact>;
+        get_contact(uid: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<EBookContacts.Contact>;
         /**
          * Asynchronously obtains an #EContact for `uid`.
          *
@@ -874,7 +879,7 @@ export namespace EDataBook {
             uid: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<EBookContacts.Contact> | void;
+        ): globalThis.Promise<EBookContacts.Contact> | void;
         /**
          * Finishes the operation started with e_book_backend_get_contact_finish().
          *
@@ -896,7 +901,7 @@ export namespace EDataBook {
          * @param query a search query in S-expression format
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        get_contact_list(query: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        get_contact_list(query: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously obtains a set of #EContact instances which satisfy the
          * criteria specified in `query`.
@@ -928,7 +933,7 @@ export namespace EDataBook {
             query: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_book_backend_get_contact_list().
          *
@@ -968,7 +973,7 @@ export namespace EDataBook {
          * @param query a search query in S-expression format
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        get_contact_list_uids(query: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        get_contact_list_uids(query: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously obtains a set of ID strings for contacts which satisfy
          * the criteria specified in `query`.
@@ -1000,7 +1005,7 @@ export namespace EDataBook {
             query: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with
          * e_book_backend_get_contact_list_uids_finish().
@@ -1111,7 +1116,11 @@ export namespace EDataBook {
          * @param opflags bit-or of #EBookOperationFlags
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        modify_contacts(vcards: string, opflags: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        modify_contacts(
+            vcards: string,
+            opflags: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously modifies one or more contacts according to `vcards`.
          *
@@ -1145,7 +1154,7 @@ export namespace EDataBook {
             opflags: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_book_backend_modify_contacts().
          *
@@ -1213,7 +1222,7 @@ export namespace EDataBook {
          * call e_book_backend_open_finish() to get the result of the operation.
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        open(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        open(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously "opens" the `backend`.  Opening a backend is something of
          * an outdated concept, but the operation is hanging around for a little
@@ -1240,7 +1249,7 @@ export namespace EDataBook {
         open(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_book_backend_open().
          *
@@ -1327,7 +1336,7 @@ export namespace EDataBook {
          * call e_book_backend_refresh_finish() to get the result of the initiation.
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        refresh(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        refresh(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously initiates a refresh for `backend,` if the `backend` supports
          * refreshing.  The actual refresh operation completes on its own time.  This
@@ -1354,7 +1363,7 @@ export namespace EDataBook {
         refresh(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the refresh initiation started with e_book_backend_refresh().
          *
@@ -1389,7 +1398,11 @@ export namespace EDataBook {
          * @param opflags bit-or of #EBookOperationFlags
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        remove_contacts(uids: string[], opflags: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        remove_contacts(
+            uids: string[],
+            opflags: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously removes one or more contacts according to `uids`.
          *
@@ -1423,7 +1436,7 @@ export namespace EDataBook {
             opflags: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_book_backend_remove_contacts().
          *

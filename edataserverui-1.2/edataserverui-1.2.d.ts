@@ -75,7 +75,7 @@ export namespace EDataServerUI {
         error_text: string | null,
         allow_source_save: boolean,
         cancellable?: Gio.Cancellable | null,
-    ): Promise<boolean>;
+    ): globalThis.Promise<boolean>;
     /**
      * Similar to e_trust_prompt_run_modal(), except it also manages all the necessary things
      * around the `source<`!-- -->'s SSL/TLS trust properties when it also contains %E_SOURCE_EXTENSION_WEBDAV,
@@ -137,7 +137,7 @@ export namespace EDataServerUI {
         allow_source_save: boolean,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Gtk.Window> | null,
-    ): Promise<boolean> | void;
+    ): globalThis.Promise<boolean> | void;
     /**
      * Finishes the operation started with e_trust_prompt_run_for_source().
      * The `response` will contain a code of the user's choice.
@@ -1086,7 +1086,7 @@ export namespace EDataServerUI {
             source: EDataServer.Source,
             error_text: string | null,
             flags: CredentialsPrompterPromptFlags | null,
-        ): Promise<[EDataServer.Source | null, EDataServer.NamedParameters | null]>;
+        ): globalThis.Promise<[EDataServer.Source | null, EDataServer.NamedParameters | null]>;
         /**
          * Asks the `prompter` to prompt for credentials, which are returned
          * to the caller through `callback,` when available.The `flags` are ignored,
@@ -1122,7 +1122,7 @@ export namespace EDataServerUI {
             error_text: string | null,
             flags: CredentialsPrompterPromptFlags | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[EDataServer.Source | null, EDataServer.NamedParameters | null]> | void;
+        ): globalThis.Promise<[EDataServer.Source | null, EDataServer.NamedParameters | null]> | void;
         /**
          * Finishes a credentials prompt previously started with e_credentials_prompter_prompt().
          * The `out_source` will have set a referenced #ESource, for which the prompt
@@ -2670,7 +2670,7 @@ export namespace EDataServerUI {
          * @param display_name optional display name to use for scratch sources
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        refresh(display_name?: string | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        refresh(display_name?: string | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously starts refresh of the `content`. This means to access the server
          * and search it for available sources. The `content` shows a feedback and a Cancel
@@ -2708,7 +2708,7 @@ export namespace EDataServerUI {
             display_name?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the operation started with e_webdav_discover_content_refresh(). If an
          * error occurred, the function will set `error` and return %FALSE. There is

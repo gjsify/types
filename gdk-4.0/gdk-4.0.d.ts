@@ -3872,7 +3872,7 @@ export namespace Gdk {
         type: GObject.GType,
         io_priority: number,
         cancellable?: Gio.Cancellable | null,
-    ): Promise<[GObject.Value]>;
+    ): globalThis.Promise<[GObject.Value]>;
     /**
      * Reads content from the given input stream and deserialize it, asynchronously.
      *
@@ -3912,7 +3912,7 @@ export namespace Gdk {
         io_priority: number,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Gio.InputStream> | null,
-    ): Promise<[GObject.Value]> | void;
+    ): globalThis.Promise<[GObject.Value]> | void;
     /**
      * Finishes a content deserialization operation.
      * @param result the `GAsyncResult`
@@ -3967,7 +3967,7 @@ export namespace Gdk {
         value: GObject.Value | any,
         io_priority: number,
         cancellable?: Gio.Cancellable | null,
-    ): Promise<boolean>;
+    ): globalThis.Promise<boolean>;
     /**
      * Serialize content and write it to the given output stream, asynchronously.
      *
@@ -4007,7 +4007,7 @@ export namespace Gdk {
         io_priority: number,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Gio.OutputStream> | null,
-    ): Promise<boolean> | void;
+    ): globalThis.Promise<boolean> | void;
     /**
      * Finishes a content serialization operation.
      * @param result the `GAsyncResult`
@@ -5355,7 +5355,7 @@ export namespace Gdk {
             mime_types: string[],
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[Gio.InputStream | null, string]>;
+        ): globalThis.Promise<[Gio.InputStream | null, string]>;
         /**
          * Asynchronously requests an input stream to read the `clipboard'`s
          * contents from.
@@ -5389,7 +5389,7 @@ export namespace Gdk {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[Gio.InputStream | null, string]> | void;
+        ): globalThis.Promise<[Gio.InputStream | null, string]> | void;
         /**
          * Finishes an asynchronous clipboard read.
          *
@@ -5406,7 +5406,7 @@ export namespace Gdk {
          * need more control over the operation.
          * @param cancellable optional `GCancellable` object
          */
-        read_text_async(cancellable?: Gio.Cancellable | null): Promise<string | null>;
+        read_text_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string | null>;
         /**
          * Asynchronously request the `clipboard` contents converted to a string.
          *
@@ -5429,7 +5429,7 @@ export namespace Gdk {
         read_text_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string | null> | void;
+        ): globalThis.Promise<string | null> | void;
         /**
          * Finishes an asynchronous clipboard read.
          *
@@ -5446,7 +5446,7 @@ export namespace Gdk {
          * need more control over the operation.
          * @param cancellable optional `GCancellable` object, %NULL to ignore.
          */
-        read_texture_async(cancellable?: Gio.Cancellable | null): Promise<Texture | null>;
+        read_texture_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Texture | null>;
         /**
          * Asynchronously request the `clipboard` contents converted to a `GdkPixbuf`.
          *
@@ -5469,7 +5469,7 @@ export namespace Gdk {
         read_texture_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Texture | null> | void;
+        ): globalThis.Promise<Texture | null> | void;
         /**
          * Finishes an asynchronous clipboard read.
          *
@@ -5493,7 +5493,7 @@ export namespace Gdk {
             type: GObject.GType,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<GObject.Value>;
+        ): globalThis.Promise<GObject.Value>;
         /**
          * Asynchronously request the `clipboard` contents converted to the given
          * `type`.
@@ -5529,7 +5529,7 @@ export namespace Gdk {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GObject.Value> | void;
+        ): globalThis.Promise<GObject.Value> | void;
         /**
          * Finishes an asynchronous clipboard read.
          *
@@ -5578,7 +5578,7 @@ export namespace Gdk {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional `GCancellable` object
          */
-        store_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        store_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously instructs the `clipboard` to store its contents remotely.
          *
@@ -5622,7 +5622,7 @@ export namespace Gdk {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous clipboard store.
          *
@@ -6438,7 +6438,7 @@ export namespace Gdk {
             stream: Gio.OutputStream,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously writes the contents of `provider` to `stream` in the given
          * `mime_type`.
@@ -6482,7 +6482,7 @@ export namespace Gdk {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous write operation.
          *
@@ -8888,7 +8888,7 @@ export namespace Gdk {
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        load_async(size: number, cancellable?: Gio.Cancellable | null): Promise<[Gio.InputStream, string]>;
+        load_async(size: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<[Gio.InputStream, string]>;
         /**
          * Loads an icon asynchronously. To finish this function, see
          * g_loadable_icon_load_finish(). For the synchronous, blocking
@@ -8914,7 +8914,7 @@ export namespace Gdk {
             size: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[Gio.InputStream, string]> | void;
+        ): globalThis.Promise<[Gio.InputStream, string]> | void;
         /**
          * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
          * @param res a #GAsyncResult.
@@ -10341,7 +10341,7 @@ export namespace Gdk {
             mime_types: string[],
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[Gio.InputStream | null, string]>;
+        ): globalThis.Promise<[Gio.InputStream | null, string]>;
         /**
          * Asynchronously read the dropped data from a `GdkDrop`
          * in a format that complies with one of the mime types.
@@ -10369,7 +10369,7 @@ export namespace Gdk {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[Gio.InputStream | null, string]> | void;
+        ): globalThis.Promise<[Gio.InputStream | null, string]> | void;
         /**
          * Finishes an async drop read operation.
          *
@@ -10398,7 +10398,7 @@ export namespace Gdk {
             type: GObject.GType,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<GObject.Value>;
+        ): globalThis.Promise<GObject.Value>;
         /**
          * Asynchronously request the drag operation's contents converted
          * to the given `type`.
@@ -10434,7 +10434,7 @@ export namespace Gdk {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GObject.Value> | void;
+        ): globalThis.Promise<GObject.Value> | void;
         /**
          * Finishes an async drop read.
          *
@@ -11577,7 +11577,7 @@ export namespace Gdk {
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        load_async(size: number, cancellable?: Gio.Cancellable | null): Promise<[Gio.InputStream, string]>;
+        load_async(size: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<[Gio.InputStream, string]>;
         /**
          * Loads an icon asynchronously. To finish this function, see
          * g_loadable_icon_load_finish(). For the synchronous, blocking
@@ -11603,7 +11603,7 @@ export namespace Gdk {
             size: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[Gio.InputStream, string]> | void;
+        ): globalThis.Promise<[Gio.InputStream, string]> | void;
         /**
          * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
          * @param res a #GAsyncResult.
@@ -12893,7 +12893,7 @@ export namespace Gdk {
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        load_async(size: number, cancellable?: Gio.Cancellable | null): Promise<[Gio.InputStream, string]>;
+        load_async(size: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<[Gio.InputStream, string]>;
         /**
          * Loads an icon asynchronously. To finish this function, see
          * g_loadable_icon_load_finish(). For the synchronous, blocking
@@ -12919,7 +12919,7 @@ export namespace Gdk {
             size: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[Gio.InputStream, string]> | void;
+        ): globalThis.Promise<[Gio.InputStream, string]> | void;
         /**
          * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
          * @param res a #GAsyncResult.
@@ -15180,7 +15180,7 @@ export namespace Gdk {
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        load_async(size: number, cancellable?: Gio.Cancellable | null): Promise<[Gio.InputStream, string]>;
+        load_async(size: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<[Gio.InputStream, string]>;
         /**
          * Loads an icon asynchronously. To finish this function, see
          * g_loadable_icon_load_finish(). For the synchronous, blocking
@@ -15206,7 +15206,7 @@ export namespace Gdk {
             size: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[Gio.InputStream, string]> | void;
+        ): globalThis.Promise<[Gio.InputStream, string]> | void;
         /**
          * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
          * @param res a #GAsyncResult.

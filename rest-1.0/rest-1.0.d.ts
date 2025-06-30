@@ -419,7 +419,7 @@ export namespace Rest {
             authorization_code: string,
             code_verifier: string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         fetch_access_token_async(
             authorization_code: string,
             code_verifier: string,
@@ -431,7 +431,7 @@ export namespace Rest {
             code_verifier: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         fetch_access_token_finish(result: Gio.AsyncResult): boolean;
         get_access_token(): string;
         get_auth_url(): string;
@@ -442,7 +442,7 @@ export namespace Rest {
         get_refresh_token(): string;
         get_token_url(): string;
         refresh_access_token(): boolean;
-        refresh_access_token_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        refresh_access_token_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         refresh_access_token_async(
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -450,7 +450,7 @@ export namespace Rest {
         refresh_access_token_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         refresh_access_token_finish(result: Gio.AsyncResult): boolean;
         set_access_token(access_token: string): void;
         set_auth_url(tokenurl: string): void;
@@ -855,12 +855,12 @@ export namespace Rest {
          * @returns The status message. This string is owned by #RestProxyCall and should not be freed.
          */
         get_status_message(): string;
-        invoke_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        invoke_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         invoke_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         invoke_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         invoke_finish(result: Gio.AsyncResult): boolean;
         /**
          * Get the value of the header called `header`.

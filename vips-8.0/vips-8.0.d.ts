@@ -4767,10 +4767,11 @@ export namespace Vips {
          * iteration, or a non-%NULL pointer to indicate early termination.
          *
          * See also: vips_image_get_typeof(), vips_image_get().
+         * @param fn function to call for each header field
          * @param a user data for function
          * @returns %NULL on success, the failing pointer otherwise.
          */
-        map(a?: any | null): any | null;
+        map(fn?: ImageMapFn | null, a?: any | null): any | null;
         /**
          * Minimise memory use on this image and any upstream images, that is, images
          * which this image depends upon. This function is called automatically at the

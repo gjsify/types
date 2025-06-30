@@ -195,7 +195,7 @@ export namespace Gck {
      * Load and initialize all the registered modules asynchronously.
      * @param cancellable optional cancellation object
      */
-    function modules_initialize_registered_async(cancellable?: Gio.Cancellable | null): Promise<Module[]>;
+    function modules_initialize_registered_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Module[]>;
     /**
      * Load and initialize all the registered modules asynchronously.
      * @param cancellable optional cancellation object
@@ -213,7 +213,7 @@ export namespace Gck {
     function modules_initialize_registered_async(
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Gio.Cancellable | null> | null,
-    ): Promise<Module[]> | void;
+    ): globalThis.Promise<Module[]> | void;
     /**
      * Finishes the asynchronous operation to initialize the registered
      * PKCS#11 modules.
@@ -491,7 +491,7 @@ export namespace Gck {
          * @param max_objects The maximum number of objects to get
          * @param cancellable A #GCancellable or %NULL
          */
-        next_async(max_objects: number, cancellable?: Gio.Cancellable | null): Promise<Object[]>;
+        next_async(max_objects: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<Object[]>;
         /**
          * Get the next set of objects from the enumerator. This operation completes
          * asynchronously.The maximum number of objects can be specified with
@@ -519,7 +519,7 @@ export namespace Gck {
             max_objects: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Object[]> | void;
+        ): globalThis.Promise<Object[]> | void;
         /**
          * Complete an operation to enumerate next objects.
          *
@@ -826,7 +826,7 @@ export namespace Gck {
          * @param attr_types the types of attributes to update
          * @param cancellable optional cancellation object
          */
-        cache_lookup_async(attr_types: number[], cancellable?: Gio.Cancellable | null): Promise<Attributes>;
+        cache_lookup_async(attr_types: number[], cancellable?: Gio.Cancellable | null): globalThis.Promise<Attributes>;
         /**
          * Lookup attributes in the cache, or retrieve them from the object if necessary.
          *
@@ -866,7 +866,7 @@ export namespace Gck {
             attr_types: number[],
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Attributes> | void;
+        ): globalThis.Promise<Attributes> | void;
         /**
          * Complete an operation to lookup attributes in the cache or retrieve them
          * from the object if necessary.
@@ -886,7 +886,7 @@ export namespace Gck {
          * This call will return immediately and complete asynchronously.
          * @param cancellable Optional cancellable object, or %NULL to ignore.
          */
-        destroy_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        destroy_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Destroy a PKCS#11 object, deleting it from storage or the session.
          * This call will return immediately and complete asynchronously.
@@ -903,7 +903,7 @@ export namespace Gck {
         destroy_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Get the status of the operation to destroy a PKCS#11 object, begun with
          * gck_object_destroy_async().
@@ -928,7 +928,7 @@ export namespace Gck {
          * @param attr_types the types of the attributes to get
          * @param cancellable optional cancellation object, or %NULL
          */
-        get_async(attr_types: number[], cancellable?: Gio.Cancellable | null): Promise<Attributes>;
+        get_async(attr_types: number[], cancellable?: Gio.Cancellable | null): globalThis.Promise<Attributes>;
         /**
          * Get the specified attributes from the object. The attributes will be cleared
          * of their current values, and new attributes will be stored. The attributes
@@ -960,7 +960,7 @@ export namespace Gck {
             attr_types: number[],
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Attributes> | void;
+        ): globalThis.Promise<Attributes> | void;
         /**
          * Get the data for the specified attribute from the object. For convenience
          * the returned data has a null terminator.
@@ -985,7 +985,7 @@ export namespace Gck {
             attr_type: number,
             allocator: Allocator,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Uint8Array>;
+        ): globalThis.Promise<Uint8Array>;
         /**
          * Get the data for the specified attribute from the object.
          *
@@ -1015,7 +1015,7 @@ export namespace Gck {
             allocator: Allocator,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Uint8Array> | void;
+        ): globalThis.Promise<Uint8Array> | void;
         /**
          * Get the result of an operation to get attribute data from
          * an object. For convenience the returned data has an extra null terminator,
@@ -1082,7 +1082,7 @@ export namespace Gck {
          * @param attr_type The template attribute type.
          * @param cancellable Optional cancellation object, or %NULL.
          */
-        get_template_async(attr_type: number, cancellable?: Gio.Cancellable | null): Promise<Attributes>;
+        get_template_async(attr_type: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<Attributes>;
         /**
          * Get an attribute template from the object. The `attr_type` must be for
          * an attribute which returns a template.
@@ -1110,7 +1110,7 @@ export namespace Gck {
             attr_type: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Attributes> | void;
+        ): globalThis.Promise<Attributes> | void;
         /**
          * Get the result of an operation to get attribute template from
          * an object.
@@ -1145,7 +1145,7 @@ export namespace Gck {
          * @param attrs The attributes to set on the object.
          * @param cancellable Optional cancellable object, or %NULL to ignore.
          */
-        set_async(attrs: Attributes, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        set_async(attrs: Attributes, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Set PKCS#11 attributes on an object. This call will return
          * immediately and completes asynchronously.
@@ -1173,7 +1173,7 @@ export namespace Gck {
             attrs: Attributes,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Get the status of the operation to set attributes on a PKCS#11 object,
          * begun with gck_object_set_async().
@@ -1209,7 +1209,7 @@ export namespace Gck {
             attr_type: number,
             attrs: Attributes,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Set an attribute template on the object. The attr_type must be for
          * an attribute which contains a template.
@@ -1245,7 +1245,7 @@ export namespace Gck {
             attrs: Attributes,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Get the result of an operation to set attribute template on
          * an object.
@@ -1537,7 +1537,7 @@ export namespace Gck {
          * @param attrs The attributes to create the object with.
          * @param cancellable Optional cancellation object or %NULL.
          */
-        create_object_async(attrs: Attributes, cancellable?: Gio.Cancellable | null): Promise<Object>;
+        create_object_async(attrs: Attributes, cancellable?: Gio.Cancellable | null): globalThis.Promise<Object>;
         /**
          * Create a new PKCS#11 object. This call will return immediately
          * and complete asynchronously.
@@ -1565,7 +1565,7 @@ export namespace Gck {
             attrs: Attributes,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Object> | void;
+        ): globalThis.Promise<Object> | void;
         /**
          * Get the result of creating a new PKCS#11 object.
          * @param result The result passed to the callback.
@@ -1600,7 +1600,7 @@ export namespace Gck {
             mechanism: Mechanism,
             input: Uint8Array | string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Uint8Array>;
+        ): globalThis.Promise<Uint8Array>;
         /**
          * Decrypt data in a mechanism specific manner. This call will
          * return immediately and complete asynchronously.
@@ -1632,7 +1632,7 @@ export namespace Gck {
             input: Uint8Array | string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Uint8Array> | void;
+        ): globalThis.Promise<Uint8Array> | void;
         /**
          * Get the result of an decryption operation.
          * @param result The result object passed to the callback.
@@ -1681,7 +1681,7 @@ export namespace Gck {
             mechanism: Mechanism,
             attrs: Attributes,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Object>;
+        ): globalThis.Promise<Object>;
         /**
          * Derive a key from another key. This call will
          * return immediately and complete asynchronously.
@@ -1717,7 +1717,7 @@ export namespace Gck {
             attrs: Attributes,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Object> | void;
+        ): globalThis.Promise<Object> | void;
         /**
          * Get the result of a derive key operation.
          * @param result The async result passed to the callback.
@@ -1769,7 +1769,7 @@ export namespace Gck {
             mechanism: Mechanism,
             input: Uint8Array | string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Uint8Array>;
+        ): globalThis.Promise<Uint8Array>;
         /**
          * Encrypt data in a mechanism specific manner. This call will
          * return immediately and complete asynchronously.
@@ -1801,7 +1801,7 @@ export namespace Gck {
             input: Uint8Array | string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Uint8Array> | void;
+        ): globalThis.Promise<Uint8Array> | void;
         /**
          * Get the result of an encryption operation.
          * @param result The result object passed to the callback.
@@ -1851,7 +1851,10 @@ export namespace Gck {
          * @param match the attributes to match against the objects
          * @param cancellable optional cancellation object or %NULL
          */
-        find_handles_async(match: Attributes, cancellable?: Gio.Cancellable | null): Promise<number[] | null>;
+        find_handles_async(
+            match: Attributes,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<number[] | null>;
         /**
          * Find the objects matching the passed attributes. This call will
          * return immediately and complete asynchronously.
@@ -1879,7 +1882,7 @@ export namespace Gck {
             match: Attributes,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number[] | null> | void;
+        ): globalThis.Promise<number[] | null> | void;
         /**
          * Get the result of a find handles operation.
          * @param result the asynchronous result
@@ -1904,7 +1907,7 @@ export namespace Gck {
          * @param match The attributes to match.
          * @param cancellable Optional cancellation object or %NULL.
          */
-        find_objects_async(match: Attributes, cancellable?: Gio.Cancellable | null): Promise<Object[]>;
+        find_objects_async(match: Attributes, cancellable?: Gio.Cancellable | null): globalThis.Promise<Object[]>;
         /**
          * Find the objects matching the passed attributes. This call will
          * return immediately and complete asynchronously.
@@ -1932,7 +1935,7 @@ export namespace Gck {
             match: Attributes,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Object[]> | void;
+        ): globalThis.Promise<Object[]> | void;
         /**
          * Get the result of a find operation.
          * @param result The attributes to match.
@@ -1973,7 +1976,7 @@ export namespace Gck {
             public_attrs: Attributes,
             private_attrs: Attributes,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[Object | null, Object | null]>;
+        ): globalThis.Promise<[Object | null, Object | null]>;
         /**
          * Generate a new key pair of public and private keys. This call will
          * return immediately and complete asynchronously.
@@ -2011,7 +2014,7 @@ export namespace Gck {
             private_attrs: Attributes,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[Object | null, Object | null]> | void;
+        ): globalThis.Promise<[Object | null, Object | null]> | void;
         /**
          * Get the result of a generate key pair operation.
          * @param result The async result passed to the callback.
@@ -2092,7 +2095,7 @@ export namespace Gck {
          * @param pin the user's PIN, or %NULL for protected authentication path
          * @param cancellable Optional cancellation object, or %NULL.
          */
-        init_pin_async(pin?: Uint8Array | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        init_pin_async(pin?: Uint8Array | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Initialize the user's pin on this slot that this session is opened on.
          * According to the PKCS#11 standards, the session must be logged in with
@@ -2122,7 +2125,7 @@ export namespace Gck {
             pin?: Uint8Array | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Get the result of initializing a user's PIN.
          * @param result The result passed to the callback.
@@ -2145,7 +2148,11 @@ export namespace Gck {
          * @param pin the user's PIN, or %NULL for       protected authentication path
          * @param cancellable Optional cancellation object, or %NULL.
          */
-        login_async(user_type: number, pin?: Uint8Array | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        login_async(
+            user_type: number,
+            pin?: Uint8Array | null,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Login the user on the session. This call will return
          * immediately and completes asynchronously.
@@ -2173,7 +2180,7 @@ export namespace Gck {
             pin?: Uint8Array | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Get the result of a login operation.
          * @param result The result passed to the callback.
@@ -2204,7 +2211,7 @@ export namespace Gck {
             user_type: number,
             interaction?: Gio.TlsInteraction | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Login the user on the session prompting for passwords interactively when
          * necessary. This call will return immediately and completes asynchronously.
@@ -2232,7 +2239,7 @@ export namespace Gck {
             interaction?: Gio.TlsInteraction | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Get the result of a login operation.
          * @param result the result passed to the callback
@@ -2250,7 +2257,7 @@ export namespace Gck {
          * asynchronously.
          * @param cancellable Optional cancellation object, or %NULL.
          */
-        logout_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        logout_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Log out of the session. This call returns immediately and completes
          * asynchronously.
@@ -2267,7 +2274,7 @@ export namespace Gck {
         logout_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Get the result of logging out of a session.
          * @param result The result passed to the callback.
@@ -2308,7 +2315,7 @@ export namespace Gck {
             n_old_pin: number,
             new_pin?: Uint8Array | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Change the user's pin on this slot that this session is opened on.
          *
@@ -2342,7 +2349,7 @@ export namespace Gck {
             new_pin?: Uint8Array | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Get the result of changing a user's PIN.
          * @param result The result passed to the callback.
@@ -2377,7 +2384,7 @@ export namespace Gck {
             mechanism: Mechanism,
             input: Uint8Array | string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Uint8Array>;
+        ): globalThis.Promise<Uint8Array>;
         /**
          * Sign data in a mechanism specific manner. This call will
          * return immediately and complete asynchronously.
@@ -2409,7 +2416,7 @@ export namespace Gck {
             input: Uint8Array | string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Uint8Array> | void;
+        ): globalThis.Promise<Uint8Array> | void;
         /**
          * Get the result of an signing operation.
          * @param result The result object passed to the callback.
@@ -2469,7 +2476,7 @@ export namespace Gck {
             input: Uint8Array | string,
             attrs: Attributes,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Object>;
+        ): globalThis.Promise<Object>;
         /**
          * Unwrap a key from a byte stream. This call will
          * return immediately and complete asynchronously.
@@ -2509,7 +2516,7 @@ export namespace Gck {
             attrs: Attributes,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Object> | void;
+        ): globalThis.Promise<Object> | void;
         /**
          * Get the result of a unwrap key operation.
          * @param result The async result passed to the callback.
@@ -2567,7 +2574,7 @@ export namespace Gck {
             input: Uint8Array | string,
             signature: Uint8Array | string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Verify data in a mechanism specific manner. This call returns
          * immediately and completes asynchronously.
@@ -2603,7 +2610,7 @@ export namespace Gck {
             signature: Uint8Array | string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Get the result of an verify operation.
          * @param result The result object passed to the callback.
@@ -2650,7 +2657,7 @@ export namespace Gck {
             mechanism: Mechanism,
             wrapped: Object,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Uint8Array>;
+        ): globalThis.Promise<Uint8Array>;
         /**
          * Wrap a key into a byte stream. This call will
          * return immediately and complete asynchronously.
@@ -2682,7 +2689,7 @@ export namespace Gck {
             wrapped: Object,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Uint8Array> | void;
+        ): globalThis.Promise<Uint8Array> | void;
         /**
          * Get the result of a wrap key operation.
          * @param result The async result passed to the callback.
@@ -2746,7 +2753,7 @@ export namespace Gck {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -2838,7 +2845,7 @@ export namespace Gck {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -3598,7 +3605,10 @@ export namespace Gck {
          * @param options The options to open the new session with.
          * @param cancellable Optional cancellation object, or %NULL.
          */
-        open_session_async(options: SessionOptions | null, cancellable?: Gio.Cancellable | null): Promise<Session>;
+        open_session_async(
+            options: SessionOptions | null,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<Session>;
         /**
          * Open a session on the slot. If the 'auto reuse' setting is set,
          * then this may be a recycled session with the same flags.
@@ -3626,7 +3636,7 @@ export namespace Gck {
             options: SessionOptions | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Session> | void;
+        ): globalThis.Promise<Session> | void;
         /**
          * Get the result of an open session operation. If the 'auto reuse' setting is set,
          * then this may be a recycled session with the same flags.
@@ -4683,7 +4693,7 @@ export namespace Gck {
          * @param attr_types the types of attributes to update
          * @param cancellable optional cancellation object
          */
-        update_async(attr_types: number[], cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        update_async(attr_types: number[], cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Update the object cache with given attributes. If an attribute already
          * exists in the cache, it will be updated, and if it doesn't it will be added.
@@ -4711,7 +4721,7 @@ export namespace Gck {
             attr_types: number[],
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Complete an asynchronous operation to update the object cache with given
          * attributes.

@@ -138,7 +138,7 @@ export namespace Gc {
         // Methods
 
         is_finished(): boolean;
-        search(max_matches: number, cancellable?: Gio.Cancellable | null): Promise<SearchResult>;
+        search(max_matches: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<SearchResult>;
         search(
             max_matches: number,
             cancellable: Gio.Cancellable | null,
@@ -148,7 +148,7 @@ export namespace Gc {
             max_matches: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<SearchResult> | void;
+        ): globalThis.Promise<SearchResult> | void;
         search_finish(result: Gio.AsyncResult): SearchResult;
     }
 

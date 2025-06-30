@@ -565,7 +565,7 @@ export namespace gSignon {
             session_data: GLib.Variant,
             mechanism: string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<GLib.Variant>;
+        ): globalThis.Promise<GLib.Variant>;
         /**
          * Performs one step of the authentication process.
          * `session_data` should be used to add additional authentication parameters to the
@@ -615,7 +615,7 @@ export namespace gSignon {
             mechanism: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.Variant> | void;
+        ): globalThis.Promise<GLib.Variant> | void;
         /**
          * Collect the result of the signon_auth_session_process_async() operation.
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to signon_auth_session_process_async().

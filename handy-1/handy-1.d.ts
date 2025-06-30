@@ -6281,7 +6281,7 @@ export namespace Handy {
             size: number,
             scale_factor: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<GdkPixbuf.Pixbuf>;
+        ): globalThis.Promise<GdkPixbuf.Pixbuf>;
         /**
          * Renders asynchronously `self` into a pixbuf at `size` and `scale_factor`.
          *
@@ -6311,7 +6311,7 @@ export namespace Handy {
             scale_factor: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GdkPixbuf.Pixbuf> | void;
+        ): globalThis.Promise<GdkPixbuf.Pixbuf> | void;
         /**
          * Finishes an asynchronous draw of an avatar to a pixbuf.
          * @param async_result a [iface@Gio.AsyncResult]

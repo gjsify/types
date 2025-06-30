@@ -4871,7 +4871,7 @@ export namespace Gst {
         (obj: MiniObject): void;
     }
     interface MiniObjectNotify {
-        (obj: MiniObject): void;
+        (user_data: any | null, obj: MiniObject): void;
     }
     interface PadActivateFunction {
         (pad: Pad, parent: Object): boolean;
@@ -4955,10 +4955,10 @@ export namespace Gst {
         (dest: GObject.Value | any, src: GObject.Value | any): void;
     }
     interface TaskFunction {
-        (): void;
+        (user_data?: any | null): void;
     }
     interface TaskPoolFunction {
-        (): void;
+        (user_data?: any | null): void;
     }
     interface TaskThreadFunc {
         (task: Task, thread: GLib.Thread): void;

@@ -12944,7 +12944,7 @@ export namespace GLib {
         (): void;
     }
     interface SourceFunc {
-        (): boolean;
+        (user_data?: any | null): boolean;
     }
     interface SourceFuncsCheckFunc {
         (source: Source): boolean;
@@ -12956,13 +12956,13 @@ export namespace GLib {
         (source: Source): boolean;
     }
     interface SourceOnceFunc {
-        (): void;
+        (user_data?: any | null): void;
     }
     interface SpawnChildSetupFunc {
         (data?: any | null): void;
     }
     interface TestDataFunc {
-        (): void;
+        (user_data?: any | null): void;
     }
     interface TestFixtureFunc {
         (fixture: any): void;

@@ -2679,7 +2679,7 @@ export namespace Libosinfo {
          * @param config the install script config
          * @param cancellable a #GCancellable, or %NULL
          */
-        generate_async(os: Os, config: InstallConfig, cancellable?: Gio.Cancellable | null): Promise<string>;
+        generate_async(os: Os, config: InstallConfig, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronous variant of #osinfo_install_script_generate(). From the callback,
          * call #osinfo_install_script_generate_finish() to conclude this call and get
@@ -2715,7 +2715,7 @@ export namespace Libosinfo {
             config: InstallConfig,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         /**
          * Some install scripts need to pass a command line to the kernel, Such install
          * scripts belong to OSs that provide paths to the kernel and initrd files that
@@ -2785,7 +2785,7 @@ export namespace Libosinfo {
             media: Media,
             config: InstallConfig,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<string>;
+        ): globalThis.Promise<string>;
         /**
          * Asynchronous variant of #osinfo_install_script_generate_for_media(). From the
          * callback, call #osinfo_install_script_generate_for_media_finish() to
@@ -2815,7 +2815,7 @@ export namespace Libosinfo {
             config: InstallConfig,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         generate_for_media_finish(res: Gio.AsyncResult): string;
         /**
          * Creates an install script. The tree `tree` must have been identified
@@ -2838,7 +2838,7 @@ export namespace Libosinfo {
             tree: Tree,
             config: InstallConfig,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<string>;
+        ): globalThis.Promise<string>;
         /**
          * Asynchronous variant of #osinfo_install_script_generate_for_tree(). From the
          * callback, call #osinfo_install_script_generate_for_tree_finish() to
@@ -2868,7 +2868,7 @@ export namespace Libosinfo {
             config: InstallConfig,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         generate_for_tree_finish(res: Gio.AsyncResult): string;
         /**
          * Creates an install script that is written to the returned file.
@@ -2901,7 +2901,7 @@ export namespace Libosinfo {
             config: InstallConfig,
             output_dir: Gio.File,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Gio.File>;
+        ): globalThis.Promise<Gio.File>;
         /**
          * Asynchronous variant of #osinfo_install_script_generate_output(). From the
          * callback, call #osinfo_install_script_generate_output_finish() to conclude
@@ -2941,7 +2941,7 @@ export namespace Libosinfo {
             output_dir: Gio.File,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gio.File> | void;
+        ): globalThis.Promise<Gio.File> | void;
         generate_output_finish(res: Gio.AsyncResult): Gio.File;
         /**
          * Creates an install script that is written to the returned file.
@@ -2972,7 +2972,7 @@ export namespace Libosinfo {
             config: InstallConfig,
             output_dir: Gio.File,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Gio.File>;
+        ): globalThis.Promise<Gio.File>;
         /**
          * Asynchronous variant of #osinfo_install_script_generate_output_for_media().
          * From the callback, call
@@ -3008,7 +3008,7 @@ export namespace Libosinfo {
             output_dir: Gio.File,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gio.File> | void;
+        ): globalThis.Promise<Gio.File> | void;
         generate_output_for_media_finish(res: Gio.AsyncResult): Gio.File;
         /**
          * Creates an install script that is written to the returned file.
@@ -3039,7 +3039,7 @@ export namespace Libosinfo {
             config: InstallConfig,
             output_dir: Gio.File,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Gio.File>;
+        ): globalThis.Promise<Gio.File>;
         /**
          * Asynchronous variant of #osinfo_install_script_generate_output_for_tree().
          * From the callback, call
@@ -3075,7 +3075,7 @@ export namespace Libosinfo {
             output_dir: Gio.File,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gio.File> | void;
+        ): globalThis.Promise<Gio.File> | void;
         generate_output_for_tree_finish(res: Gio.AsyncResult): Gio.File;
         /**
          * Some install scripts have restrictions on the format of the user avatar. Use

@@ -45351,7 +45351,10 @@ export namespace WebKit2WebExtension {
          * @param message a #WebKitUserMessage
          * @param cancellable a #GCancellable or %NULL to ignore
          */
-        send_message_to_context(message: UserMessage, cancellable?: Gio.Cancellable | null): Promise<UserMessage>;
+        send_message_to_context(
+            message: UserMessage,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<UserMessage>;
         /**
          * Send `message` to the #WebKitWebContext corresponding to `extension`. If `message` is floating, it's consumed.
          *
@@ -45381,7 +45384,7 @@ export namespace WebKit2WebExtension {
             message: UserMessage,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<UserMessage> | void;
+        ): globalThis.Promise<UserMessage> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_extension_send_message_to_context().
          * @param result a #GAsyncResult
@@ -45580,7 +45583,10 @@ export namespace WebKit2WebExtension {
          * @param message a #WebKitUserMessage
          * @param cancellable a #GCancellable or %NULL to ignore
          */
-        send_message_to_view(message: UserMessage, cancellable?: Gio.Cancellable | null): Promise<UserMessage>;
+        send_message_to_view(
+            message: UserMessage,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<UserMessage>;
         /**
          * Send `message` to the #WebKitWebView corresponding to `web_page`. If `message` is floating, it's consumed.
          *
@@ -45610,7 +45616,7 @@ export namespace WebKit2WebExtension {
             message: UserMessage,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<UserMessage> | void;
+        ): globalThis.Promise<UserMessage> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_page_send_message_to_view().
          * @param result a #GAsyncResult

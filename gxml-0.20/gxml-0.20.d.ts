@@ -2480,7 +2480,7 @@ export namespace GXml {
         create_node_iterator(root: DomNode, whatToShow: number): DomNodeIterator;
         create_tree_walker(root: DomNode, what_to_show: number): DomTreeWalker;
         write_file(file: Gio.File, cancellable?: Gio.Cancellable | null): void;
-        write_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): Promise<void>;
+        write_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         write_file_async(
             file: Gio.File,
             cancellable: Gio.Cancellable | null,
@@ -2490,10 +2490,10 @@ export namespace GXml {
             file: Gio.File,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         write_file_finish(_res_: Gio.AsyncResult): void;
         write_stream(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): void;
-        write_stream_async(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): Promise<void>;
+        write_stream_async(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         write_stream_async(
             stream: Gio.OutputStream,
             cancellable: Gio.Cancellable | null,
@@ -2503,26 +2503,26 @@ export namespace GXml {
             stream: Gio.OutputStream,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         write_stream_finish(_res_: Gio.AsyncResult): void;
         create_stream(): Gio.InputStream;
-        create_stream_async(cancellable?: Gio.Cancellable | null): Promise<Gio.InputStream>;
+        create_stream_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
         create_stream_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         create_stream_async(
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gio.InputStream> | void;
+        ): globalThis.Promise<Gio.InputStream> | void;
         create_stream_finish(_res_: Gio.AsyncResult): Gio.InputStream;
         write_string(cancellable?: Gio.Cancellable | null): string;
-        write_string_async(cancellable?: Gio.Cancellable | null): Promise<string>;
+        write_string_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         write_string_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         write_string_async(
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         write_string_finish(_res_: Gio.AsyncResult): string;
         read_from_file(file: Gio.File, cancellable?: Gio.Cancellable | null): void;
-        read_from_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): Promise<void>;
+        read_from_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         read_from_file_async(
             file: Gio.File,
             cancellable: Gio.Cancellable | null,
@@ -2532,10 +2532,10 @@ export namespace GXml {
             file: Gio.File,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_from_file_finish(_res_: Gio.AsyncResult): void;
         read_from_string(str: string, cancellable?: Gio.Cancellable | null): void;
-        read_from_string_async(str: string, cancellable?: Gio.Cancellable | null): Promise<void>;
+        read_from_string_async(str: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         read_from_string_async(
             str: string,
             cancellable: Gio.Cancellable | null,
@@ -2545,10 +2545,10 @@ export namespace GXml {
             str: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_from_string_finish(_res_: Gio.AsyncResult): void;
         read_from_stream(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void;
-        read_from_stream_async(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): Promise<void>;
+        read_from_stream_async(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         read_from_stream_async(
             stream: Gio.InputStream,
             cancellable: Gio.Cancellable | null,
@@ -2558,7 +2558,7 @@ export namespace GXml {
             stream: Gio.InputStream,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_from_stream_finish(_res_: Gio.AsyncResult): void;
         get_xml_parser(): Parser;
         set_xml_parser(parser: Parser): void;
@@ -5665,9 +5665,9 @@ export namespace GXml {
         set_read_buffer(value: Gio.MemoryOutputStream): void;
         parse_buffer(): void;
         parse_pending(): number;
-        parse_buffer_async(): Promise<void>;
+        parse_buffer_async(): globalThis.Promise<void>;
         parse_buffer_async(_callback_: Gio.AsyncReadyCallback<this> | null): void;
-        parse_buffer_async(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        parse_buffer_async(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         parse_buffer_finish(_res_: Gio.AsyncResult): void;
 
         // Inherited properties
@@ -5747,7 +5747,7 @@ export namespace GXml {
         get_elements_by_class_name(class_names: string): DomHTMLCollection;
         matches(selectors: string): boolean;
         read_from_uri(uri: string): void;
-        read_from_uri_async(uri: string, cancellable?: Gio.Cancellable | null): Promise<void>;
+        read_from_uri_async(uri: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         read_from_uri_async(
             uri: string,
             cancellable: Gio.Cancellable | null,
@@ -5757,10 +5757,10 @@ export namespace GXml {
             uri: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_from_uri_finish(_res_: Gio.AsyncResult): void;
         read_from_file(f: Gio.File, cancellable?: Gio.Cancellable | null): void;
-        read_from_file_async(f: Gio.File, cancellable?: Gio.Cancellable | null): Promise<void>;
+        read_from_file_async(f: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         read_from_file_async(
             f: Gio.File,
             cancellable: Gio.Cancellable | null,
@@ -5770,10 +5770,13 @@ export namespace GXml {
             f: Gio.File,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_from_file_finish(_res_: Gio.AsyncResult): void;
         read_from_stream(istream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void;
-        read_from_stream_async(istream: Gio.InputStream, cancellable?: Gio.Cancellable | null): Promise<void>;
+        read_from_stream_async(
+            istream: Gio.InputStream,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<void>;
         read_from_stream_async(
             istream: Gio.InputStream,
             cancellable: Gio.Cancellable | null,
@@ -5783,10 +5786,10 @@ export namespace GXml {
             istream: Gio.InputStream,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_from_stream_finish(_res_: Gio.AsyncResult): void;
         read_from_string(str: string, cancellable?: Gio.Cancellable | null): void;
-        read_from_string_async(str: string, cancellable?: Gio.Cancellable | null): Promise<void>;
+        read_from_string_async(str: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         read_from_string_async(
             str: string,
             cancellable: Gio.Cancellable | null,
@@ -5796,18 +5799,18 @@ export namespace GXml {
             str: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_from_string_finish(_res_: Gio.AsyncResult): void;
         write_string(cancellable?: Gio.Cancellable | null): string;
-        write_string_async(cancellable?: Gio.Cancellable | null): Promise<string>;
+        write_string_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         write_string_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         write_string_async(
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         write_string_finish(_res_: Gio.AsyncResult): string;
         write_file(f: Gio.File, cancellable?: Gio.Cancellable | null): void;
-        write_file_async(f: Gio.File, cancellable?: Gio.Cancellable | null): Promise<void>;
+        write_file_async(f: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         write_file_async(
             f: Gio.File,
             cancellable: Gio.Cancellable | null,
@@ -5817,10 +5820,10 @@ export namespace GXml {
             f: Gio.File,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         write_file_finish(_res_: Gio.AsyncResult): void;
         write_stream(stream: Gio.OutputStream): void;
-        write_stream_async(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): Promise<void>;
+        write_stream_async(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         write_stream_async(
             stream: Gio.OutputStream,
             cancellable: Gio.Cancellable | null,
@@ -5830,15 +5833,15 @@ export namespace GXml {
             stream: Gio.OutputStream,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         write_stream_finish(_res_: Gio.AsyncResult): void;
         create_stream(): Gio.InputStream;
-        create_stream_async(cancellable?: Gio.Cancellable | null): Promise<Gio.InputStream>;
+        create_stream_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
         create_stream_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         create_stream_async(
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gio.InputStream> | void;
+        ): globalThis.Promise<Gio.InputStream> | void;
         create_stream_finish(_res_: Gio.AsyncResult): Gio.InputStream;
         vfunc_get_namespace_uri(): string | null;
         vfunc_get_prefix(): string | null;
@@ -18805,7 +18808,7 @@ export namespace GXml {
         create_node_iterator(root: DomNode, whatToShow: number): DomNodeIterator;
         create_tree_walker(root: DomNode, what_to_show: number): DomTreeWalker;
         write_file(file: Gio.File, cancellable?: Gio.Cancellable | null): void;
-        write_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): Promise<void>;
+        write_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         write_file_async(
             file: Gio.File,
             cancellable: Gio.Cancellable | null,
@@ -18815,10 +18818,10 @@ export namespace GXml {
             file: Gio.File,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         write_file_finish(_res_: Gio.AsyncResult): void;
         write_stream(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): void;
-        write_stream_async(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): Promise<void>;
+        write_stream_async(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         write_stream_async(
             stream: Gio.OutputStream,
             cancellable: Gio.Cancellable | null,
@@ -18828,26 +18831,26 @@ export namespace GXml {
             stream: Gio.OutputStream,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         write_stream_finish(_res_: Gio.AsyncResult): void;
         create_stream(): Gio.InputStream;
-        create_stream_async(cancellable?: Gio.Cancellable | null): Promise<Gio.InputStream>;
+        create_stream_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
         create_stream_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         create_stream_async(
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gio.InputStream> | void;
+        ): globalThis.Promise<Gio.InputStream> | void;
         create_stream_finish(_res_: Gio.AsyncResult): Gio.InputStream;
         write_string(cancellable?: Gio.Cancellable | null): string;
-        write_string_async(cancellable?: Gio.Cancellable | null): Promise<string>;
+        write_string_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         write_string_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         write_string_async(
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         write_string_finish(_res_: Gio.AsyncResult): string;
         read_from_file(file: Gio.File, cancellable?: Gio.Cancellable | null): void;
-        read_from_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): Promise<void>;
+        read_from_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         read_from_file_async(
             file: Gio.File,
             cancellable: Gio.Cancellable | null,
@@ -18857,10 +18860,10 @@ export namespace GXml {
             file: Gio.File,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_from_file_finish(_res_: Gio.AsyncResult): void;
         read_from_string(str: string, cancellable?: Gio.Cancellable | null): void;
-        read_from_string_async(str: string, cancellable?: Gio.Cancellable | null): Promise<void>;
+        read_from_string_async(str: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         read_from_string_async(
             str: string,
             cancellable: Gio.Cancellable | null,
@@ -18870,10 +18873,10 @@ export namespace GXml {
             str: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_from_string_finish(_res_: Gio.AsyncResult): void;
         read_from_stream(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void;
-        read_from_stream_async(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): Promise<void>;
+        read_from_stream_async(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         read_from_stream_async(
             stream: Gio.InputStream,
             cancellable: Gio.Cancellable | null,
@@ -18883,7 +18886,7 @@ export namespace GXml {
             stream: Gio.InputStream,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_from_stream_finish(_res_: Gio.AsyncResult): void;
         get_xml_parser(): Parser;
         set_xml_parser(parser: Parser): void;
@@ -19560,7 +19563,7 @@ export namespace GXml {
         get_elements_by_class_name(class_names: string): DomHTMLCollection;
         matches(selectors: string): boolean;
         read_from_uri(uri: string): void;
-        read_from_uri_async(uri: string, cancellable?: Gio.Cancellable | null): Promise<void>;
+        read_from_uri_async(uri: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         read_from_uri_async(
             uri: string,
             cancellable: Gio.Cancellable | null,
@@ -19570,10 +19573,10 @@ export namespace GXml {
             uri: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_from_uri_finish(_res_: Gio.AsyncResult): void;
         read_from_file(f: Gio.File, cancellable?: Gio.Cancellable | null): void;
-        read_from_file_async(f: Gio.File, cancellable?: Gio.Cancellable | null): Promise<void>;
+        read_from_file_async(f: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         read_from_file_async(
             f: Gio.File,
             cancellable: Gio.Cancellable | null,
@@ -19583,10 +19586,13 @@ export namespace GXml {
             f: Gio.File,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_from_file_finish(_res_: Gio.AsyncResult): void;
         read_from_stream(istream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void;
-        read_from_stream_async(istream: Gio.InputStream, cancellable?: Gio.Cancellable | null): Promise<void>;
+        read_from_stream_async(
+            istream: Gio.InputStream,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<void>;
         read_from_stream_async(
             istream: Gio.InputStream,
             cancellable: Gio.Cancellable | null,
@@ -19596,10 +19602,10 @@ export namespace GXml {
             istream: Gio.InputStream,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_from_stream_finish(_res_: Gio.AsyncResult): void;
         read_from_string(str: string, cancellable?: Gio.Cancellable | null): void;
-        read_from_string_async(str: string, cancellable?: Gio.Cancellable | null): Promise<void>;
+        read_from_string_async(str: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         read_from_string_async(
             str: string,
             cancellable: Gio.Cancellable | null,
@@ -19609,18 +19615,18 @@ export namespace GXml {
             str: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_from_string_finish(_res_: Gio.AsyncResult): void;
         write_string(cancellable?: Gio.Cancellable | null): string;
-        write_string_async(cancellable?: Gio.Cancellable | null): Promise<string>;
+        write_string_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         write_string_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         write_string_async(
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         write_string_finish(_res_: Gio.AsyncResult): string;
         write_file(f: Gio.File, cancellable?: Gio.Cancellable | null): void;
-        write_file_async(f: Gio.File, cancellable?: Gio.Cancellable | null): Promise<void>;
+        write_file_async(f: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         write_file_async(
             f: Gio.File,
             cancellable: Gio.Cancellable | null,
@@ -19630,10 +19636,10 @@ export namespace GXml {
             f: Gio.File,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         write_file_finish(_res_: Gio.AsyncResult): void;
         write_stream(stream: Gio.OutputStream): void;
-        write_stream_async(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): Promise<void>;
+        write_stream_async(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         write_stream_async(
             stream: Gio.OutputStream,
             cancellable: Gio.Cancellable | null,
@@ -19643,15 +19649,15 @@ export namespace GXml {
             stream: Gio.OutputStream,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         write_stream_finish(_res_: Gio.AsyncResult): void;
         create_stream(): Gio.InputStream;
-        create_stream_async(cancellable?: Gio.Cancellable | null): Promise<Gio.InputStream>;
+        create_stream_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
         create_stream_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         create_stream_async(
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gio.InputStream> | void;
+        ): globalThis.Promise<Gio.InputStream> | void;
         create_stream_finish(_res_: Gio.AsyncResult): Gio.InputStream;
         vfunc_get_namespace_uri(): string | null;
         vfunc_get_prefix(): string | null;
@@ -23612,12 +23618,12 @@ export namespace GXml {
         // Methods
 
         read_node(node: DomNode): void;
-        read_child_nodes_stream_async(istream: Gio.InputStream): Promise<void>;
+        read_child_nodes_stream_async(istream: Gio.InputStream): globalThis.Promise<void>;
         read_child_nodes_stream_async(istream: Gio.InputStream, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         read_child_nodes_stream_async(
             istream: Gio.InputStream,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_child_nodes_stream_finish(_res_: Gio.AsyncResult): void;
 
         // Inherited properties
@@ -23640,50 +23646,64 @@ export namespace GXml {
         get_node(): DomNode;
         get_types(): GLib.HashTable<GObject.GType, GLib.HashTable>;
         write_file(file: Gio.File): void;
-        write_file_async(file: Gio.File): Promise<void>;
+        write_file_async(file: Gio.File): globalThis.Promise<void>;
         write_file_async(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        write_file_async(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        write_file_async(
+            file: Gio.File,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<void> | void;
         write_file_finish(_res_: Gio.AsyncResult): void;
         write_string(): string;
-        write_string_async(): Promise<string>;
+        write_string_async(): globalThis.Promise<string>;
         write_string_async(_callback_: Gio.AsyncReadyCallback<this> | null): void;
-        write_string_async(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<string> | void;
+        write_string_async(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
         write_string_finish(_res_: Gio.AsyncResult): string;
         write_stream(stream: Gio.OutputStream): void;
-        write_stream_async(stream: Gio.OutputStream): Promise<void>;
+        write_stream_async(stream: Gio.OutputStream): globalThis.Promise<void>;
         write_stream_async(stream: Gio.OutputStream, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         write_stream_async(
             stream: Gio.OutputStream,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         write_stream_finish(_res_: Gio.AsyncResult): void;
         read_file(file: Gio.File): void;
-        read_file_async(file: Gio.File): Promise<void>;
+        read_file_async(file: Gio.File): globalThis.Promise<void>;
         read_file_async(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        read_file_async(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        read_file_async(
+            file: Gio.File,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<void> | void;
         read_file_finish(_res_: Gio.AsyncResult): void;
         read_stream(stream: Gio.InputStream): void;
-        read_stream_async(stream: Gio.InputStream): Promise<void>;
+        read_stream_async(stream: Gio.InputStream): globalThis.Promise<void>;
         read_stream_async(stream: Gio.InputStream, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         read_stream_async(
             stream: Gio.InputStream,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_stream_finish(_res_: Gio.AsyncResult): void;
         read_string(str: string): void;
-        read_string_async(str: string): Promise<void>;
+        read_string_async(str: string): globalThis.Promise<void>;
         read_string_async(str: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        read_string_async(str: string, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        read_string_async(
+            str: string,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<void> | void;
         read_string_finish(_res_: Gio.AsyncResult): void;
         create_stream(): Gio.InputStream;
-        create_stream_async(): Promise<Gio.InputStream>;
+        create_stream_async(): globalThis.Promise<Gio.InputStream>;
         create_stream_async(_callback_: Gio.AsyncReadyCallback<this> | null): void;
-        create_stream_async(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<Gio.InputStream> | void;
+        create_stream_async(
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<Gio.InputStream> | void;
         create_stream_finish(_res_: Gio.AsyncResult): Gio.InputStream;
         read_child_nodes(parent: DomNode): void;
-        read_child_nodes_async(parent: DomNode): Promise<void>;
+        read_child_nodes_async(parent: DomNode): globalThis.Promise<void>;
         read_child_nodes_async(parent: DomNode, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        read_child_nodes_async(parent: DomNode, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        read_child_nodes_async(
+            parent: DomNode,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<void> | void;
         read_child_nodes_finish(_res_: Gio.AsyncResult): void;
         read_child_node(parent: DomNode): boolean;
         read_child_element(parent: DomNode): boolean;
@@ -29091,7 +29111,7 @@ export namespace GXml {
         create_node_iterator(root: DomNode, whatToShow: number): DomNodeIterator;
         create_tree_walker(root: DomNode, what_to_show: number): DomTreeWalker;
         write_file(file: Gio.File, cancellable?: Gio.Cancellable | null): void;
-        write_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): Promise<void>;
+        write_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         write_file_async(
             file: Gio.File,
             cancellable: Gio.Cancellable | null,
@@ -29101,10 +29121,10 @@ export namespace GXml {
             file: Gio.File,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         write_file_finish(_res_: Gio.AsyncResult): void;
         write_stream(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): void;
-        write_stream_async(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): Promise<void>;
+        write_stream_async(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         write_stream_async(
             stream: Gio.OutputStream,
             cancellable: Gio.Cancellable | null,
@@ -29114,26 +29134,26 @@ export namespace GXml {
             stream: Gio.OutputStream,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         write_stream_finish(_res_: Gio.AsyncResult): void;
         create_stream(): Gio.InputStream;
-        create_stream_async(cancellable?: Gio.Cancellable | null): Promise<Gio.InputStream>;
+        create_stream_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
         create_stream_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         create_stream_async(
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gio.InputStream> | void;
+        ): globalThis.Promise<Gio.InputStream> | void;
         create_stream_finish(_res_: Gio.AsyncResult): Gio.InputStream;
         write_string(cancellable?: Gio.Cancellable | null): string;
-        write_string_async(cancellable?: Gio.Cancellable | null): Promise<string>;
+        write_string_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         write_string_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         write_string_async(
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         write_string_finish(_res_: Gio.AsyncResult): string;
         read_from_file(file: Gio.File, cancellable?: Gio.Cancellable | null): void;
-        read_from_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): Promise<void>;
+        read_from_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         read_from_file_async(
             file: Gio.File,
             cancellable: Gio.Cancellable | null,
@@ -29143,10 +29163,10 @@ export namespace GXml {
             file: Gio.File,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_from_file_finish(_res_: Gio.AsyncResult): void;
         read_from_string(str: string, cancellable?: Gio.Cancellable | null): void;
-        read_from_string_async(str: string, cancellable?: Gio.Cancellable | null): Promise<void>;
+        read_from_string_async(str: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         read_from_string_async(
             str: string,
             cancellable: Gio.Cancellable | null,
@@ -29156,10 +29176,10 @@ export namespace GXml {
             str: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_from_string_finish(_res_: Gio.AsyncResult): void;
         read_from_stream(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void;
-        read_from_stream_async(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): Promise<void>;
+        read_from_stream_async(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         read_from_stream_async(
             stream: Gio.InputStream,
             cancellable: Gio.Cancellable | null,
@@ -29169,7 +29189,7 @@ export namespace GXml {
             stream: Gio.InputStream,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_from_stream_finish(_res_: Gio.AsyncResult): void;
         get_xml_parser(): Parser;
         set_xml_parser(parser: Parser): void;
@@ -29464,7 +29484,7 @@ export namespace GXml {
         get_elements_by_class_name(class_names: string): DomHTMLCollection;
         matches(selectors: string): boolean;
         read_from_uri(uri: string): void;
-        read_from_uri_async(uri: string, cancellable?: Gio.Cancellable | null): Promise<void>;
+        read_from_uri_async(uri: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         read_from_uri_async(
             uri: string,
             cancellable: Gio.Cancellable | null,
@@ -29474,10 +29494,10 @@ export namespace GXml {
             uri: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_from_uri_finish(_res_: Gio.AsyncResult): void;
         read_from_file(f: Gio.File, cancellable?: Gio.Cancellable | null): void;
-        read_from_file_async(f: Gio.File, cancellable?: Gio.Cancellable | null): Promise<void>;
+        read_from_file_async(f: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         read_from_file_async(
             f: Gio.File,
             cancellable: Gio.Cancellable | null,
@@ -29487,10 +29507,13 @@ export namespace GXml {
             f: Gio.File,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_from_file_finish(_res_: Gio.AsyncResult): void;
         read_from_stream(istream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void;
-        read_from_stream_async(istream: Gio.InputStream, cancellable?: Gio.Cancellable | null): Promise<void>;
+        read_from_stream_async(
+            istream: Gio.InputStream,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<void>;
         read_from_stream_async(
             istream: Gio.InputStream,
             cancellable: Gio.Cancellable | null,
@@ -29500,10 +29523,10 @@ export namespace GXml {
             istream: Gio.InputStream,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_from_stream_finish(_res_: Gio.AsyncResult): void;
         read_from_string(str: string, cancellable?: Gio.Cancellable | null): void;
-        read_from_string_async(str: string, cancellable?: Gio.Cancellable | null): Promise<void>;
+        read_from_string_async(str: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         read_from_string_async(
             str: string,
             cancellable: Gio.Cancellable | null,
@@ -29513,18 +29536,18 @@ export namespace GXml {
             str: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_from_string_finish(_res_: Gio.AsyncResult): void;
         write_string(cancellable?: Gio.Cancellable | null): string;
-        write_string_async(cancellable?: Gio.Cancellable | null): Promise<string>;
+        write_string_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         write_string_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         write_string_async(
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         write_string_finish(_res_: Gio.AsyncResult): string;
         write_file(f: Gio.File, cancellable?: Gio.Cancellable | null): void;
-        write_file_async(f: Gio.File, cancellable?: Gio.Cancellable | null): Promise<void>;
+        write_file_async(f: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         write_file_async(
             f: Gio.File,
             cancellable: Gio.Cancellable | null,
@@ -29534,10 +29557,10 @@ export namespace GXml {
             f: Gio.File,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         write_file_finish(_res_: Gio.AsyncResult): void;
         write_stream(stream: Gio.OutputStream): void;
-        write_stream_async(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): Promise<void>;
+        write_stream_async(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         write_stream_async(
             stream: Gio.OutputStream,
             cancellable: Gio.Cancellable | null,
@@ -29547,15 +29570,15 @@ export namespace GXml {
             stream: Gio.OutputStream,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         write_stream_finish(_res_: Gio.AsyncResult): void;
         create_stream(): Gio.InputStream;
-        create_stream_async(cancellable?: Gio.Cancellable | null): Promise<Gio.InputStream>;
+        create_stream_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
         create_stream_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         create_stream_async(
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gio.InputStream> | void;
+        ): globalThis.Promise<Gio.InputStream> | void;
         create_stream_finish(_res_: Gio.AsyncResult): Gio.InputStream;
 
         // Virtual methods
@@ -31474,50 +31497,64 @@ export namespace GXml {
         get_node(): DomNode;
         get_types(): GLib.HashTable<GObject.GType, GLib.HashTable>;
         write_file(file: Gio.File): void;
-        write_file_async(file: Gio.File): Promise<void>;
+        write_file_async(file: Gio.File): globalThis.Promise<void>;
         write_file_async(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        write_file_async(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        write_file_async(
+            file: Gio.File,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<void> | void;
         write_file_finish(_res_: Gio.AsyncResult): void;
         write_string(): string;
-        write_string_async(): Promise<string>;
+        write_string_async(): globalThis.Promise<string>;
         write_string_async(_callback_: Gio.AsyncReadyCallback<this> | null): void;
-        write_string_async(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<string> | void;
+        write_string_async(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
         write_string_finish(_res_: Gio.AsyncResult): string;
         write_stream(stream: Gio.OutputStream): void;
-        write_stream_async(stream: Gio.OutputStream): Promise<void>;
+        write_stream_async(stream: Gio.OutputStream): globalThis.Promise<void>;
         write_stream_async(stream: Gio.OutputStream, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         write_stream_async(
             stream: Gio.OutputStream,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         write_stream_finish(_res_: Gio.AsyncResult): void;
         read_file(file: Gio.File): void;
-        read_file_async(file: Gio.File): Promise<void>;
+        read_file_async(file: Gio.File): globalThis.Promise<void>;
         read_file_async(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        read_file_async(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        read_file_async(
+            file: Gio.File,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<void> | void;
         read_file_finish(_res_: Gio.AsyncResult): void;
         read_stream(stream: Gio.InputStream): void;
-        read_stream_async(stream: Gio.InputStream): Promise<void>;
+        read_stream_async(stream: Gio.InputStream): globalThis.Promise<void>;
         read_stream_async(stream: Gio.InputStream, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         read_stream_async(
             stream: Gio.InputStream,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         read_stream_finish(_res_: Gio.AsyncResult): void;
         read_string(str: string): void;
-        read_string_async(str: string): Promise<void>;
+        read_string_async(str: string): globalThis.Promise<void>;
         read_string_async(str: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        read_string_async(str: string, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        read_string_async(
+            str: string,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<void> | void;
         read_string_finish(_res_: Gio.AsyncResult): void;
         create_stream(): Gio.InputStream;
-        create_stream_async(): Promise<Gio.InputStream>;
+        create_stream_async(): globalThis.Promise<Gio.InputStream>;
         create_stream_async(_callback_: Gio.AsyncReadyCallback<this> | null): void;
-        create_stream_async(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<Gio.InputStream> | void;
+        create_stream_async(
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<Gio.InputStream> | void;
         create_stream_finish(_res_: Gio.AsyncResult): Gio.InputStream;
         read_child_nodes(parent: DomNode): void;
-        read_child_nodes_async(parent: DomNode): Promise<void>;
+        read_child_nodes_async(parent: DomNode): globalThis.Promise<void>;
         read_child_nodes_async(parent: DomNode, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        read_child_nodes_async(parent: DomNode, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        read_child_nodes_async(
+            parent: DomNode,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<void> | void;
         read_child_nodes_finish(_res_: Gio.AsyncResult): void;
         read_child_node(parent: DomNode): boolean;
         read_child_element(parent: DomNode): boolean;

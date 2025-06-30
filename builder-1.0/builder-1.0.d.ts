@@ -149,7 +149,7 @@ export namespace Builder {
          * @param plugin_name The name of the plugin.
          * @param cancellable A #GCancellable or %NULL.
          */
-        get_worker_async(plugin_name: string, cancellable?: Gio.Cancellable | null): Promise<Gio.DBusProxy>;
+        get_worker_async(plugin_name: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.DBusProxy>;
         /**
          * Asynchronously requests a #GDBusProxy to a service provided in a worker
          * process. The worker should be an #IdeWorker implemented by the plugin named
@@ -187,7 +187,7 @@ export namespace Builder {
             plugin_name: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gio.DBusProxy> | void;
+        ): globalThis.Promise<Gio.DBusProxy> | void;
         /**
          * Completes an asynchronous request to get a proxy to a worker process.
          * @param result A #GAsyncResult
@@ -198,7 +198,7 @@ export namespace Builder {
             file: Gio.File,
             additional_files?: Gio.File[] | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         open_project_async(
             file: Gio.File,
             additional_files: Gio.File[] | null,
@@ -210,7 +210,7 @@ export namespace Builder {
             additional_files?: Gio.File[] | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         open_project_finish(result: Gio.AsyncResult): boolean;
         show_projects_window(): void;
 
@@ -4241,7 +4241,7 @@ export namespace Builder {
         // Methods
 
         add_temporary_buffer(): void;
-        build_async(force_rebuild: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        build_async(force_rebuild: boolean, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         build_async(
             force_rebuild: boolean,
             cancellable: Gio.Cancellable | null,
@@ -4251,7 +4251,7 @@ export namespace Builder {
             force_rebuild: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         build_finish(result: Gio.AsyncResult): boolean;
         get_active_view(): Gtk.Widget;
         get_closing(): boolean;
@@ -5309,7 +5309,7 @@ export namespace Builder {
         get_read_only(): boolean;
         get_title(): string;
         is_untitled(): boolean;
-        save_as_async(toplevel: Gtk.Widget, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        save_as_async(toplevel: Gtk.Widget, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         save_as_async(
             toplevel: Gtk.Widget,
             cancellable: Gio.Cancellable | null,
@@ -5319,9 +5319,9 @@ export namespace Builder {
             toplevel: Gtk.Widget,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         save_as_finish(result: Gio.AsyncResult): boolean;
-        save_async(toplevel: Gtk.Widget, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        save_async(toplevel: Gtk.Widget, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         save_async(
             toplevel: Gtk.Widget,
             cancellable: Gio.Cancellable | null,
@@ -5331,7 +5331,7 @@ export namespace Builder {
             toplevel: Gtk.Widget,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         save_finish(result: Gio.AsyncResult): boolean;
 
         // Virtual methods

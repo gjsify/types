@@ -148,9 +148,12 @@ export namespace FolksLibsocialweb {
         set webServiceAddresses(val: Gee.MultiMap);
 
         // Inherited methods
-        change_avatar(avatar: Gio.LoadableIcon): Promise<void>;
+        change_avatar(avatar: Gio.LoadableIcon): globalThis.Promise<void>;
         change_avatar(avatar: Gio.LoadableIcon, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_avatar(avatar: Gio.LoadableIcon, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
+        change_avatar(
+            avatar: Gio.LoadableIcon,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): globalThis.Promise<void> | void;
         change_avatar_finish(_res_: Gio.AsyncResult): void;
         get_avatar(): Gio.LoadableIcon;
         set_avatar(value: Gio.LoadableIcon): void;
@@ -158,9 +161,12 @@ export namespace FolksLibsocialweb {
         vfunc_change_avatar_finish(_res_: Gio.AsyncResult): void;
         vfunc_get_avatar(): Gio.LoadableIcon;
         vfunc_set_avatar(value: Gio.LoadableIcon): void;
-        change_gender(gender: Folks.Gender | null): Promise<void>;
+        change_gender(gender: Folks.Gender | null): globalThis.Promise<void>;
         change_gender(gender: Folks.Gender | null, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_gender(gender: Folks.Gender | null, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
+        change_gender(
+            gender: Folks.Gender | null,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): globalThis.Promise<void> | void;
         change_gender_finish(_res_: Gio.AsyncResult): void;
         get_gender(): Folks.Gender;
         set_gender(value: Folks.Gender | null): void;
@@ -168,12 +174,12 @@ export namespace FolksLibsocialweb {
         vfunc_change_gender_finish(_res_: Gio.AsyncResult): void;
         vfunc_get_gender(): Folks.Gender;
         vfunc_set_gender(value: Folks.Gender): void;
-        change_im_addresses(im_addresses: Gee.MultiMap): Promise<void>;
+        change_im_addresses(im_addresses: Gee.MultiMap): globalThis.Promise<void>;
         change_im_addresses(im_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void;
         change_im_addresses(
             im_addresses: Gee.MultiMap,
             _callback_?: Gio.AsyncReadyCallback<this>,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         change_im_addresses_finish(_res_: Gio.AsyncResult): void;
         get_im_addresses(): Gee.MultiMap;
         set_im_addresses(value: Gee.MultiMap): void;
@@ -181,20 +187,20 @@ export namespace FolksLibsocialweb {
         vfunc_change_im_addresses_finish(_res_: Gio.AsyncResult): void;
         vfunc_get_im_addresses(): Gee.MultiMap;
         vfunc_set_im_addresses(value: Gee.MultiMap): void;
-        change_structured_name(name: Folks.StructuredName): Promise<void>;
+        change_structured_name(name: Folks.StructuredName): globalThis.Promise<void>;
         change_structured_name(name: Folks.StructuredName, _callback_: Gio.AsyncReadyCallback<this>): void;
         change_structured_name(
             name: Folks.StructuredName,
             _callback_?: Gio.AsyncReadyCallback<this>,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         change_structured_name_finish(_res_: Gio.AsyncResult): void;
-        change_full_name(full_name: string): Promise<void>;
+        change_full_name(full_name: string): globalThis.Promise<void>;
         change_full_name(full_name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_full_name(full_name: string, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
+        change_full_name(full_name: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
         change_full_name_finish(_res_: Gio.AsyncResult): void;
-        change_nickname(nickname: string): Promise<void>;
+        change_nickname(nickname: string): globalThis.Promise<void>;
         change_nickname(nickname: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_nickname(nickname: string, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
+        change_nickname(nickname: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
         change_nickname_finish(_res_: Gio.AsyncResult): void;
         get_structured_name(): Folks.StructuredName;
         set_structured_name(value: Folks.StructuredName): void;
@@ -214,9 +220,9 @@ export namespace FolksLibsocialweb {
         vfunc_set_full_name(value: string): void;
         vfunc_get_nickname(): string;
         vfunc_set_nickname(value: string): void;
-        change_urls(urls: Gee.Set): Promise<void>;
+        change_urls(urls: Gee.Set): globalThis.Promise<void>;
         change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_urls(urls: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
+        change_urls(urls: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
         change_urls_finish(_res_: Gio.AsyncResult): void;
         get_urls(): Gee.Set;
         set_urls(value: Gee.Set): void;
@@ -224,7 +230,7 @@ export namespace FolksLibsocialweb {
         vfunc_change_urls_finish(_res_: Gio.AsyncResult): void;
         vfunc_get_urls(): Gee.Set;
         vfunc_set_urls(value: Gee.Set): void;
-        change_web_service_addresses(web_service_addresses: Gee.MultiMap): Promise<void>;
+        change_web_service_addresses(web_service_addresses: Gee.MultiMap): globalThis.Promise<void>;
         change_web_service_addresses(
             web_service_addresses: Gee.MultiMap,
             _callback_: Gio.AsyncReadyCallback<this>,
@@ -232,7 +238,7 @@ export namespace FolksLibsocialweb {
         change_web_service_addresses(
             web_service_addresses: Gee.MultiMap,
             _callback_?: Gio.AsyncReadyCallback<this>,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         change_web_service_addresses_finish(_res_: Gio.AsyncResult): void;
         get_web_service_addresses(): Gee.MultiMap;
         set_web_service_addresses(value: Gee.MultiMap): void;

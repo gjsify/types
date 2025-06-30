@@ -1814,7 +1814,7 @@ export namespace Cogl {
     function value_get_color(value: GObject.Value | any): Color;
     function value_set_color(value: GObject.Value | any, color: Color): void;
     interface AtlasUpdatePositionCallback {
-        (new_texture: Texture, rect: Mtk.Rectangle): void;
+        (user_data: any | null, new_texture: Texture, rect: Mtk.Rectangle): void;
     }
     interface FrameCallback {
         (onscreen: Onscreen, event: FrameEvent, info: FrameInfo): void;

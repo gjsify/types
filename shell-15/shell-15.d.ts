@@ -280,7 +280,7 @@ export namespace Shell {
         unit: string,
         mode: string,
         cancellable?: Gio.Cancellable | null,
-    ): Promise<boolean>;
+    ): globalThis.Promise<boolean>;
     function util_start_systemd_unit(
         unit: string,
         mode: string,
@@ -292,9 +292,13 @@ export namespace Shell {
         mode: string,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<string> | null,
-    ): Promise<boolean> | void;
+    ): globalThis.Promise<boolean> | void;
     function util_start_systemd_unit_finish(res: Gio.AsyncResult): boolean;
-    function util_stop_systemd_unit(unit: string, mode: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    function util_stop_systemd_unit(
+        unit: string,
+        mode: string,
+        cancellable?: Gio.Cancellable | null,
+    ): globalThis.Promise<boolean>;
     function util_stop_systemd_unit(
         unit: string,
         mode: string,
@@ -306,9 +310,9 @@ export namespace Shell {
         mode: string,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<string> | null,
-    ): Promise<boolean> | void;
+    ): globalThis.Promise<boolean> | void;
     function util_stop_systemd_unit_finish(res: Gio.AsyncResult): boolean;
-    function util_systemd_unit_exists(unit: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+    function util_systemd_unit_exists(unit: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
     function util_systemd_unit_exists(
         unit: string,
         cancellable: Gio.Cancellable | null,
@@ -318,14 +322,14 @@ export namespace Shell {
         unit: string,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<string> | null,
-    ): Promise<boolean> | void;
+    ): globalThis.Promise<boolean> | void;
     function util_systemd_unit_exists_finish(res: Gio.AsyncResult): boolean;
-    function util_touch_file_async(file: Gio.File): Promise<boolean>;
+    function util_touch_file_async(file: Gio.File): globalThis.Promise<boolean>;
     function util_touch_file_async(file: Gio.File, callback: Gio.AsyncReadyCallback<Gio.File> | null): void;
     function util_touch_file_async(
         file: Gio.File,
         callback?: Gio.AsyncReadyCallback<Gio.File> | null,
-    ): Promise<boolean> | void;
+    ): globalThis.Promise<boolean> | void;
     function util_touch_file_finish(file: Gio.File, res: Gio.AsyncResult): boolean;
     /**
      * Translate `str` according to the locale defined by LC_TIME; unlike
@@ -550,7 +554,7 @@ export namespace Shell {
             timestamp: number,
             workspace: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * This activates an action using 'org.freedesktop.Application' DBus interface.
          *
@@ -590,7 +594,7 @@ export namespace Shell {
             workspace: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finish the asynchronous operation started by shell_app_activate_action()
          * and obtain its result.
@@ -1807,7 +1811,7 @@ export namespace Shell {
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          */
-        confirm_async(cancellable?: Gio.Cancellable | null): Promise<Gcr.PromptReply>;
+        confirm_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gcr.PromptReply>;
         /**
          * Prompts for confirmation asking a cancel/continue style question.
          * Set the various properties on the prompt before calling this method to
@@ -1830,7 +1834,7 @@ export namespace Shell {
         confirm_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gcr.PromptReply> | void;
+        ): globalThis.Promise<Gcr.PromptReply> | void;
         /**
          * Complete an operation to prompt for confirmation.
          *
@@ -1972,7 +1976,7 @@ export namespace Shell {
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          */
-        password_async(cancellable?: Gio.Cancellable | null): Promise<string>;
+        password_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Prompts for password. Set the various properties on the prompt before calling
          * this method to explain which password should be entered.
@@ -1993,7 +1997,7 @@ export namespace Shell {
         password_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         /**
          * Complete an operation to prompt for a password.
          *
@@ -2733,12 +2737,12 @@ export namespace Shell {
 
         add_vpn_secret(request_id: string, setting_key: string, setting_value: string): void;
         respond(request_id: string, response: NetworkAgentResponse | null): void;
-        search_vpn_plugin(service: string): Promise<NM.VpnPluginInfo | null>;
+        search_vpn_plugin(service: string): globalThis.Promise<NM.VpnPluginInfo | null>;
         search_vpn_plugin(service: string, callback: Gio.AsyncReadyCallback<this> | null): void;
         search_vpn_plugin(
             service: string,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<NM.VpnPluginInfo | null> | void;
+        ): globalThis.Promise<NM.VpnPluginInfo | null> | void;
         search_vpn_plugin_finish(result: Gio.AsyncResult): NM.VpnPluginInfo | null;
         set_password(request_id: string, setting_key: string, setting_value: string): void;
 
@@ -2783,7 +2787,7 @@ export namespace Shell {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -2875,7 +2879,7 @@ export namespace Shell {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -3812,7 +3816,7 @@ export namespace Shell {
          * @param x The X coordinate to pick
          * @param y The Y coordinate to pick
          */
-        pick_color(x: number, y: number): Promise<Cogl.Color>;
+        pick_color(x: number, y: number): globalThis.Promise<Cogl.Color>;
         /**
          * Picks the pixel at `x,` `y` and returns its color as #CoglColor.
          * @param x The X coordinate to pick
@@ -3826,7 +3830,11 @@ export namespace Shell {
          * @param y The Y coordinate to pick
          * @param callback function to call returning success or failure of the async grabbing
          */
-        pick_color(x: number, y: number, callback?: Gio.AsyncReadyCallback<this> | null): Promise<Cogl.Color> | void;
+        pick_color(
+            x: number,
+            y: number,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<Cogl.Color> | void;
         /**
          * Finish the asynchronous operation started by shell_screenshot_pick_color()
          * and obtain its result.
@@ -3840,7 +3848,7 @@ export namespace Shell {
          * @param include_cursor Whether to include the cursor or not
          * @param stream The stream for the screenshot
          */
-        screenshot(include_cursor: boolean, stream: Gio.OutputStream): Promise<Mtk.Rectangle>;
+        screenshot(include_cursor: boolean, stream: Gio.OutputStream): globalThis.Promise<Mtk.Rectangle>;
         /**
          * Takes a screenshot of the whole screen
          * in `stream` as png image.
@@ -3864,7 +3872,7 @@ export namespace Shell {
             include_cursor: boolean,
             stream: Gio.OutputStream,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Mtk.Rectangle> | void;
+        ): globalThis.Promise<Mtk.Rectangle> | void;
         /**
          * Takes a screenshot of the passed in area and saves it
          * in `stream` as png image.
@@ -3880,7 +3888,7 @@ export namespace Shell {
             width: number,
             height: number,
             stream: Gio.OutputStream,
-        ): Promise<Mtk.Rectangle>;
+        ): globalThis.Promise<Mtk.Rectangle>;
         /**
          * Takes a screenshot of the passed in area and saves it
          * in `stream` as png image.
@@ -3916,7 +3924,7 @@ export namespace Shell {
             height: number,
             stream: Gio.OutputStream,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Mtk.Rectangle> | void;
+        ): globalThis.Promise<Mtk.Rectangle> | void;
         /**
          * Finish the asynchronous operation started by shell_screenshot_screenshot_area()
          * and obtain its result.
@@ -3934,7 +3942,7 @@ export namespace Shell {
         /**
          * Takes a screenshot of the whole screen as #ClutterContent.
          */
-        screenshot_stage_to_content(): Promise<
+        screenshot_stage_to_content(): globalThis.Promise<
             [Clutter.Content, number, Clutter.Content | null, Graphene.Point | null, number]
         >;
         /**
@@ -3948,7 +3956,7 @@ export namespace Shell {
          */
         screenshot_stage_to_content(
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[Clutter.Content, number, Clutter.Content | null, Graphene.Point | null, number]> | void;
+        ): globalThis.Promise<[Clutter.Content, number, Clutter.Content | null, Graphene.Point | null, number]> | void;
         /**
          * Finish the asynchronous operation started by
          * shell_screenshot_screenshot_stage_to_content() and obtain its result.
@@ -3969,7 +3977,7 @@ export namespace Shell {
             include_frame: boolean,
             include_cursor: boolean,
             stream: Gio.OutputStream,
-        ): Promise<Mtk.Rectangle>;
+        ): globalThis.Promise<Mtk.Rectangle>;
         /**
          * Takes a screenshot of the focused window (optionally omitting the frame)
          * in `stream` as png image.
@@ -3997,7 +4005,7 @@ export namespace Shell {
             include_cursor: boolean,
             stream: Gio.OutputStream,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Mtk.Rectangle> | void;
+        ): globalThis.Promise<Mtk.Rectangle> | void;
         /**
          * Finish the asynchronous operation started by shell_screenshot_screenshot_window()
          * and obtain its result.

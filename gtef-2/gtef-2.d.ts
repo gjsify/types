@@ -1172,7 +1172,7 @@ export namespace Gtef {
             cancellable?: Gio.Cancellable | null,
             progress_callback?: Gio.FileProgressCallback | null,
             progress_callback_notify?: GLib.DestroyNotify | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Loads asynchronously the file content into the #GtefBuffer.
          *
@@ -1206,7 +1206,7 @@ export namespace Gtef {
             progress_callback?: Gio.FileProgressCallback | null,
             progress_callback_notify?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes a file loading started with gtef_file_loader_load_async().
          * @param result a #GAsyncResult.
@@ -1310,7 +1310,7 @@ export namespace Gtef {
          * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        load_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        load_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * The asynchronous version of gtef_file_metadata_load().
          *
@@ -1344,7 +1344,7 @@ export namespace Gtef {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the metadata loading started with gtef_file_metadata_load_async().
          * @param result a #GAsyncResult.
@@ -1372,7 +1372,7 @@ export namespace Gtef {
          * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        save_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        save_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * The asynchronous version of gtef_file_metadata_save().
          *
@@ -1404,7 +1404,7 @@ export namespace Gtef {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the metadata saving started with gtef_file_metadata_save_async().
          * @param result a #GAsyncResult.
@@ -1566,7 +1566,7 @@ export namespace Gtef {
             cancellable?: Gio.Cancellable | null,
             progress_callback?: Gio.FileProgressCallback | null,
             progress_callback_notify?: GLib.DestroyNotify | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Saves asynchronously the buffer into the file. See the #GAsyncResult
          * documentation to know how to use this function.
@@ -1598,7 +1598,7 @@ export namespace Gtef {
             progress_callback?: Gio.FileProgressCallback | null,
             progress_callback_notify?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes a file saving started with gtef_file_saver_save_async().
          *

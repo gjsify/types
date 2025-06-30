@@ -170,7 +170,7 @@ export namespace Unity {
         input: Gio.InputStream,
         io_priority: number,
         cancellable: Gio.Cancellable,
-    ): Promise<[Uint8Array, number]>;
+    ): globalThis.Promise<[Uint8Array, number]>;
     /**
      * <para>Asynchronously read a stream into memory. This method will close the input stream when done.</para>
      * @param input
@@ -196,7 +196,7 @@ export namespace Unity {
         io_priority: number,
         cancellable: Gio.Cancellable,
         _callback_: Gio.AsyncReadyCallback<Gio.InputStream>,
-    ): Promise<[Uint8Array, number]> | void;
+    ): globalThis.Promise<[Uint8Array, number]> | void;
     function io_read_stream_finish(_res_: Gio.AsyncResult): [Uint8Array, number];
     /**
      * <para>Asynchronously looks for a file with base name &apos;filename&apos; in all the directories defined in &apos;dirs&apos; and returns a file input
@@ -205,7 +205,7 @@ export namespace Unity {
      * @param filename
      * @param dirs
      */
-    function io_open_from_dirs(filename: string, dirs: string[]): Promise<Gio.FileInputStream>;
+    function io_open_from_dirs(filename: string, dirs: string[]): globalThis.Promise<Gio.FileInputStream>;
     /**
      * <para>Asynchronously looks for a file with base name &apos;filename&apos; in all the directories defined in &apos;dirs&apos; and returns a file input
      * stream for it.</para>
@@ -227,14 +227,14 @@ export namespace Unity {
         filename: string,
         dirs: string[],
         _callback_: Gio.AsyncReadyCallback<string>,
-    ): Promise<Gio.FileInputStream> | void;
+    ): globalThis.Promise<Gio.FileInputStream> | void;
     function io_open_from_dirs_finish(_res_: Gio.AsyncResult): Gio.FileInputStream;
     /**
      * <para>Like open_from_dirs&lpar;&rpar; but scans first the user data dir and then the system data dirs as defined by the XDG_DATA_DIRS environment
      * variable.</para>
      * @param filename
      */
-    function io_open_from_data_dirs(filename: string): Promise<Gio.FileInputStream>;
+    function io_open_from_data_dirs(filename: string): globalThis.Promise<Gio.FileInputStream>;
     /**
      * <para>Like open_from_dirs&lpar;&rpar; but scans first the user data dir and then the system data dirs as defined by the XDG_DATA_DIRS environment
      * variable.</para>
@@ -251,7 +251,7 @@ export namespace Unity {
     function io_open_from_data_dirs(
         filename: string,
         _callback_: Gio.AsyncReadyCallback<string>,
-    ): Promise<Gio.FileInputStream> | void;
+    ): globalThis.Promise<Gio.FileInputStream> | void;
     function io_open_from_data_dirs_finish(_res_: Gio.AsyncResult): Gio.FileInputStream;
     function io_get_system_data_dirs(): string[];
     namespace AppInfoManager {
@@ -351,7 +351,7 @@ export namespace Unity {
          * <para>If the AppInfo is not already cached this method will do asynchronous IO to look it up.</para>
          * @param id
          */
-        lookup_async(id: string): Promise<Gio.AppInfo>;
+        lookup_async(id: string): globalThis.Promise<Gio.AppInfo>;
         /**
          * <para>Look up an AppInfo given its desktop id or absolute path. The desktop id is the base filename of the .desktop file for the application
          * including the .desktop extension.</para>
@@ -367,7 +367,7 @@ export namespace Unity {
          * @param id
          * @param _callback_
          */
-        lookup_async(id: string, _callback_?: Gio.AsyncReadyCallback<this>): Promise<Gio.AppInfo> | void;
+        lookup_async(id: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Gio.AppInfo> | void;
         lookup_finish(_res_: Gio.AsyncResult): Gio.AppInfo;
         clear(): void;
     }

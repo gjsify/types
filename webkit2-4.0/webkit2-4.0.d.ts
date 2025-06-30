@@ -3335,7 +3335,7 @@ export namespace WebKit2 {
          * @param cookie the #SoupCookie to be added
          * @param cancellable a #GCancellable or %NULL to ignore
          */
-        add_cookie(cookie: Soup.Cookie, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        add_cookie(cookie: Soup.Cookie, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously add a #SoupCookie to the underlying storage.
          *
@@ -3363,7 +3363,7 @@ export namespace WebKit2 {
             cookie: Soup.Cookie,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finish an asynchronous operation started with webkit_cookie_manager_add_cookie().
          * @param result a #GAsyncResult
@@ -3382,7 +3382,7 @@ export namespace WebKit2 {
          * @param cookie the #SoupCookie to be deleted
          * @param cancellable a #GCancellable or %NULL to ignore
          */
-        delete_cookie(cookie: Soup.Cookie, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        delete_cookie(cookie: Soup.Cookie, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously delete a #SoupCookie from the current session.
          *
@@ -3410,7 +3410,7 @@ export namespace WebKit2 {
             cookie: Soup.Cookie,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finish an asynchronous operation started with webkit_cookie_manager_delete_cookie().
          * @param result a #GAsyncResult
@@ -3433,7 +3433,7 @@ export namespace WebKit2 {
          * webkit_cookie_manager_get_accept_policy_finish() to get the result of the operation.
          * @param cancellable a #GCancellable or %NULL to ignore
          */
-        get_accept_policy(cancellable?: Gio.Cancellable | null): Promise<CookieAcceptPolicy>;
+        get_accept_policy(cancellable?: Gio.Cancellable | null): globalThis.Promise<CookieAcceptPolicy>;
         /**
          * Asynchronously get the cookie acceptance policy of `cookie_manager`.
          *
@@ -3462,7 +3462,7 @@ export namespace WebKit2 {
         get_accept_policy(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<CookieAcceptPolicy> | void;
+        ): globalThis.Promise<CookieAcceptPolicy> | void;
         /**
          * Finish an asynchronous operation started with webkit_cookie_manager_get_accept_policy().
          * @param result a #GAsyncResult
@@ -3476,7 +3476,7 @@ export namespace WebKit2 {
          * webkit_cookie_manager_get_all_cookies_finish() to get the result of the operation.
          * @param cancellable a #GCancellable or %NULL to ignore
          */
-        get_all_cookies(cancellable?: Gio.Cancellable | null): Promise<Soup.Cookie[]>;
+        get_all_cookies(cancellable?: Gio.Cancellable | null): globalThis.Promise<Soup.Cookie[]>;
         /**
          * Asynchronously get a list of #SoupCookie from `cookie_manager`.
          *
@@ -3497,7 +3497,7 @@ export namespace WebKit2 {
         get_all_cookies(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Soup.Cookie[]> | void;
+        ): globalThis.Promise<Soup.Cookie[]> | void;
         /**
          * Finish an asynchronous operation started with webkit_cookie_manager_get_all_cookies().
          *
@@ -3518,7 +3518,7 @@ export namespace WebKit2 {
          * @param uri the URI associated to the cookies to be retrieved
          * @param cancellable a #GCancellable or %NULL to ignore
          */
-        get_cookies(uri: string, cancellable?: Gio.Cancellable | null): Promise<Soup.Cookie[]>;
+        get_cookies(uri: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Soup.Cookie[]>;
         /**
          * Asynchronously get a list of #SoupCookie from `cookie_manager`.
          *
@@ -3552,7 +3552,7 @@ export namespace WebKit2 {
             uri: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Soup.Cookie[]> | void;
+        ): globalThis.Promise<Soup.Cookie[]> | void;
         /**
          * Finish an asynchronous operation started with webkit_cookie_manager_get_cookies().
          *
@@ -3569,7 +3569,7 @@ export namespace WebKit2 {
          * webkit_cookie_manager_get_domains_with_cookies_finish() to get the result of the operation.
          * @param cancellable a #GCancellable or %NULL to ignore
          */
-        get_domains_with_cookies(cancellable?: Gio.Cancellable | null): Promise<string[]>;
+        get_domains_with_cookies(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[]>;
         /**
          * Asynchronously get the list of domains for which `cookie_manager` contains cookies.
          *
@@ -3593,7 +3593,7 @@ export namespace WebKit2 {
         get_domains_with_cookies(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string[]> | void;
+        ): globalThis.Promise<string[]> | void;
         /**
          * Finish an asynchronous operation started with webkit_cookie_manager_get_domains_with_cookies().
          *
@@ -3611,7 +3611,7 @@ export namespace WebKit2 {
          * @param cookies a #GList of #SoupCookie to be added
          * @param cancellable a #GCancellable or %NULL to ignore
          */
-        replace_cookies(cookies: Soup.Cookie[], cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        replace_cookies(cookies: Soup.Cookie[], cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously replace all cookies in `cookie_manager` with the given list of `cookies`.
          *
@@ -3639,7 +3639,7 @@ export namespace WebKit2 {
             cookies: Soup.Cookie[],
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finish an asynchronous operation started with webkit_cookie_manager_replace_cookies().
          * @param result a #GAsyncResult
@@ -4599,7 +4599,7 @@ export namespace WebKit2 {
          * @param page_uri URI of the page for which we want to retrieve the favicon
          * @param cancellable A #GCancellable or %NULL.
          */
-        get_favicon(page_uri: string, cancellable?: Gio.Cancellable | null): Promise<cairo.Surface>;
+        get_favicon(page_uri: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<cairo.Surface>;
         /**
          * Asynchronously obtains a favicon image.
          *
@@ -4637,7 +4637,7 @@ export namespace WebKit2 {
             page_uri: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<cairo.Surface> | void;
+        ): globalThis.Promise<cairo.Surface> | void;
         /**
          * Finishes an operation started with webkit_favicon_database_get_favicon().
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to webkit_favicon_database_get_favicon()
@@ -11853,7 +11853,7 @@ export namespace WebKit2 {
          * filter identifiers.
          * @param cancellable a #GCancellable or %NULL to ignore
          */
-        fetch_identifiers(cancellable?: Gio.Cancellable | null): Promise<string[]>;
+        fetch_identifiers(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[]>;
         /**
          * Asynchronously retrieve a list of the identifiers for all the stored filters.
          *
@@ -11876,7 +11876,7 @@ export namespace WebKit2 {
         fetch_identifiers(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string[]> | void;
+        ): globalThis.Promise<string[]> | void;
         /**
          * Finishes an asynchronous fetch of the list of stored filters.
          *
@@ -11902,7 +11902,7 @@ export namespace WebKit2 {
          * @param identifier a filter identifier
          * @param cancellable a #GCancellable or %NULL to ignore
          */
-        load(identifier: string, cancellable?: Gio.Cancellable | null): Promise<UserContentFilter>;
+        load(identifier: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<UserContentFilter>;
         /**
          * Asynchronously load a content filter given its `identifier`.
          *
@@ -11936,7 +11936,7 @@ export namespace WebKit2 {
             identifier: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<UserContentFilter> | void;
+        ): globalThis.Promise<UserContentFilter> | void;
         /**
          * Finishes an asynchronous filter load previously started with
          * webkit_user_content_filter_store_load().
@@ -11953,7 +11953,7 @@ export namespace WebKit2 {
          * @param identifier a filter identifier
          * @param cancellable a #GCancellable or %NULL to ignore
          */
-        remove(identifier: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        remove(identifier: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously remove a content filter given its `identifier`.
          *
@@ -11983,7 +11983,7 @@ export namespace WebKit2 {
             identifier: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous filter removal previously started with
          * webkit_user_content_filter_store_remove().
@@ -12012,7 +12012,7 @@ export namespace WebKit2 {
             identifier: string,
             source: GLib.Bytes | Uint8Array,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<UserContentFilter>;
+        ): globalThis.Promise<UserContentFilter>;
         /**
          * Asynchronously save a content filter from a set source rule.
          *
@@ -12060,7 +12060,7 @@ export namespace WebKit2 {
             source: GLib.Bytes | Uint8Array,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<UserContentFilter> | void;
+        ): globalThis.Promise<UserContentFilter> | void;
         /**
          * Finishes an asynchronous filter save previously started with
          * webkit_user_content_filter_store_save().
@@ -12085,7 +12085,7 @@ export namespace WebKit2 {
             identifier: string,
             file: Gio.File,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<UserContentFilter>;
+        ): globalThis.Promise<UserContentFilter>;
         /**
          * Asynchronously save a content filter from the contents of a file.
          *
@@ -12125,7 +12125,7 @@ export namespace WebKit2 {
             file: Gio.File,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<UserContentFilter> | void;
+        ): globalThis.Promise<UserContentFilter> | void;
         /**
          * Finishes and asynchronous filter save previously started with
          * webkit_user_content_filter_store_save_from_file().
@@ -13321,7 +13321,7 @@ export namespace WebKit2 {
          * webkit_web_context_get_plugins_finish() to get the result of the operation.
          * @param cancellable a #GCancellable or %NULL to ignore
          */
-        get_plugins(cancellable?: Gio.Cancellable | null): Promise<Plugin[]>;
+        get_plugins(cancellable?: Gio.Cancellable | null): globalThis.Promise<Plugin[]>;
         /**
          * Asynchronously get the list of installed plugins.
          *
@@ -13342,7 +13342,7 @@ export namespace WebKit2 {
         get_plugins(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Plugin[]> | void;
+        ): globalThis.Promise<Plugin[]> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_context_get_plugins.
          * @param result a #GAsyncResult
@@ -13957,7 +13957,7 @@ export namespace WebKit2 {
          * webkit_web_resource_get_data_finish() to get the result of the operation.
          * @param cancellable a #GCancellable or %NULL to ignore
          */
-        get_data(cancellable?: Gio.Cancellable | null): Promise<Uint8Array>;
+        get_data(cancellable?: Gio.Cancellable | null): globalThis.Promise<Uint8Array>;
         /**
          * Asynchronously get the raw data for `resource`.
          *
@@ -13978,7 +13978,7 @@ export namespace WebKit2 {
         get_data(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Uint8Array> | void;
+        ): globalThis.Promise<Uint8Array> | void;
         // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         /**
@@ -14713,7 +14713,7 @@ export namespace WebKit2 {
             world_name?: string | null,
             source_uri?: string | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<JavaScriptCore.Value>;
+        ): globalThis.Promise<JavaScriptCore.Value>;
         /**
          * Asynchronously call `body` with `arguments` in the script world with name `world_name` of the main frame current context in `web_view`.
          * The `arguments` values must be one of the following types, or contain only the following GVariant types: number, string and dictionary.
@@ -14865,7 +14865,7 @@ export namespace WebKit2 {
             source_uri?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<JavaScriptCore.Value> | void;
+        ): globalThis.Promise<JavaScriptCore.Value> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_view_call_async_javascript_function().
          * @param result a #GAsyncResult
@@ -14880,7 +14880,7 @@ export namespace WebKit2 {
          * @param command the command to check
          * @param cancellable a #GCancellable or %NULL to ignore
          */
-        can_execute_editing_command(command: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        can_execute_editing_command(command: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously check if it is possible to execute the given editing command.
          *
@@ -14908,7 +14908,7 @@ export namespace WebKit2 {
             command: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_view_can_execute_editing_command().
          * @param result a #GAsyncResult
@@ -15004,7 +15004,7 @@ export namespace WebKit2 {
             world_name?: string | null,
             source_uri?: string | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<JavaScriptCore.Value>;
+        ): globalThis.Promise<JavaScriptCore.Value>;
         /**
          * Asynchronously evaluate `script` in the script world with name `world_name` of the main frame current context in `web_view`.
          * If `world_name` is %NULL, the default world is used. Any value that is not %NULL is a distinct world.
@@ -15144,7 +15144,7 @@ export namespace WebKit2 {
             source_uri?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<JavaScriptCore.Value> | void;
+        ): globalThis.Promise<JavaScriptCore.Value> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_view_evaluate_javascript().
          * @param result a #GAsyncResult
@@ -15323,7 +15323,7 @@ export namespace WebKit2 {
             region: SnapshotRegion | null,
             options: SnapshotOptions | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<cairo.Surface>;
+        ): globalThis.Promise<cairo.Surface>;
         /**
          * Asynchronously retrieves a snapshot of `web_view` for `region`.
          *
@@ -15361,7 +15361,7 @@ export namespace WebKit2 {
             options: SnapshotOptions | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<cairo.Surface> | void;
+        ): globalThis.Promise<cairo.Surface> | void;
         /**
          * Finishes an asynchronous operation started with webkit_web_view_get_snapshot().
          * @param result a #GAsyncResult
@@ -15692,7 +15692,7 @@ export namespace WebKit2 {
          * @param script the script to run
          * @param cancellable a #GCancellable or %NULL to ignore
          */
-        run_javascript(script: string, cancellable?: Gio.Cancellable | null): Promise<JavascriptResult>;
+        run_javascript(script: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<JavascriptResult>;
         /**
          * Asynchronously run `script` in the context of the current page in `web_view`.
          *
@@ -15724,7 +15724,7 @@ export namespace WebKit2 {
             script: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<JavascriptResult> | void;
+        ): globalThis.Promise<JavascriptResult> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_view_run_javascript().
          *
@@ -15791,7 +15791,7 @@ export namespace WebKit2 {
         run_javascript_from_gresource(
             resource: string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<JavascriptResult>;
+        ): globalThis.Promise<JavascriptResult>;
         /**
          * Asynchronously run the script from `resource`.
          *
@@ -15827,7 +15827,7 @@ export namespace WebKit2 {
             resource: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<JavascriptResult> | void;
+        ): globalThis.Promise<JavascriptResult> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_view_run_javascript_from_gresource().
          *
@@ -15852,7 +15852,7 @@ export namespace WebKit2 {
             script: string,
             world_name: string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<JavascriptResult>;
+        ): globalThis.Promise<JavascriptResult>;
         /**
          * Asynchronously run `script` in the script world.
          *
@@ -15890,7 +15890,7 @@ export namespace WebKit2 {
             world_name: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<JavascriptResult> | void;
+        ): globalThis.Promise<JavascriptResult> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_view_run_javascript_in_world().
          * @param result a #GAsyncResult
@@ -15910,7 +15910,7 @@ export namespace WebKit2 {
          * @param save_mode the #WebKitSaveMode specifying how the web page should be saved.
          * @param cancellable a #GCancellable or %NULL to ignore
          */
-        save(save_mode: SaveMode | null, cancellable?: Gio.Cancellable | null): Promise<Gio.InputStream>;
+        save(save_mode: SaveMode | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
         /**
          * Asynchronously save the current web page.
          *
@@ -15948,7 +15948,7 @@ export namespace WebKit2 {
             save_mode: SaveMode | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gio.InputStream> | void;
+        ): globalThis.Promise<Gio.InputStream> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_view_save().
          * @param result a #GAsyncResult
@@ -15973,7 +15973,7 @@ export namespace WebKit2 {
             file: Gio.File,
             save_mode: SaveMode | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously save the current web page.
          *
@@ -16015,7 +16015,7 @@ export namespace WebKit2 {
             save_mode: SaveMode | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_view_save_to_file().
          * @param result a #GAsyncResult
@@ -16032,7 +16032,10 @@ export namespace WebKit2 {
          * @param message a #WebKitUserMessage
          * @param cancellable a #GCancellable or %NULL to ignore
          */
-        send_message_to_page(message: UserMessage, cancellable?: Gio.Cancellable | null): Promise<UserMessage>;
+        send_message_to_page(
+            message: UserMessage,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<UserMessage>;
         /**
          * Send `message` to the #WebKitWebPage corresponding to `web_view`.
          *
@@ -16064,7 +16067,7 @@ export namespace WebKit2 {
             message: UserMessage,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<UserMessage> | void;
+        ): globalThis.Promise<UserMessage> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_view_send_message_to_page().
          * @param result a #GAsyncResult
@@ -18018,7 +18021,7 @@ export namespace WebKit2 {
             types: WebsiteDataTypes | null,
             timespan: GLib.TimeSpan,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously clear the website data of the given `types` modified in the past `timespan`.
          *
@@ -18062,7 +18065,7 @@ export namespace WebKit2 {
             timespan: GLib.TimeSpan,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finish an asynchronous operation started with webkit_website_data_manager_clear()
          * @param result a #GAsyncResult
@@ -18077,7 +18080,7 @@ export namespace WebKit2 {
          * @param types #WebKitWebsiteDataTypes
          * @param cancellable a #GCancellable or %NULL to ignore
          */
-        fetch(types: WebsiteDataTypes | null, cancellable?: Gio.Cancellable | null): Promise<WebsiteData[]>;
+        fetch(types: WebsiteDataTypes | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<WebsiteData[]>;
         /**
          * Asynchronously get the list of #WebKitWebsiteData for the given `types`.
          *
@@ -18105,7 +18108,7 @@ export namespace WebKit2 {
             types: WebsiteDataTypes | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<WebsiteData[]> | void;
+        ): globalThis.Promise<WebsiteData[]> | void;
         /**
          * Finish an asynchronous operation started with webkit_website_data_manager_fetch().
          * @param result a #GAsyncResult
@@ -18167,7 +18170,7 @@ export namespace WebKit2 {
          * webkit_website_data_manager_get_itp_summary_finish() to get the result of the operation.
          * @param cancellable a #GCancellable or %NULL to ignore
          */
-        get_itp_summary(cancellable?: Gio.Cancellable | null): Promise<ITPThirdParty[]>;
+        get_itp_summary(cancellable?: Gio.Cancellable | null): globalThis.Promise<ITPThirdParty[]>;
         /**
          * Asynchronously get the list of #WebKitITPThirdParty seen for `manager`.
          *
@@ -18194,7 +18197,7 @@ export namespace WebKit2 {
         get_itp_summary(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<ITPThirdParty[]> | void;
+        ): globalThis.Promise<ITPThirdParty[]> | void;
         /**
          * Finish an asynchronous operation started with webkit_website_data_manager_get_itp_summary().
          * @param result a #GAsyncResult
@@ -18249,7 +18252,7 @@ export namespace WebKit2 {
             types: WebsiteDataTypes | null,
             website_data: WebsiteData[],
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously removes the website data in the given `website_data` list.
          *
@@ -18287,7 +18290,7 @@ export namespace WebKit2 {
             website_data: WebsiteData[],
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finish an asynchronous operation started with webkit_website_data_manager_remove().
          * @param result a #GAsyncResult

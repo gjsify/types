@@ -1646,7 +1646,7 @@ export namespace ColorHug {
         buffer_out: number,
         buffer_out_len: number,
         cancellable?: Gio.Cancellable | null,
-    ): Promise<boolean>;
+    ): globalThis.Promise<boolean>;
     /**
      * Sends a message to the device and waits for a reply.
      * @param device A #GUsbDevice
@@ -1688,7 +1688,7 @@ export namespace ColorHug {
         buffer_out_len: number,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<GUsb.Device> | null,
-    ): Promise<boolean> | void;
+    ): globalThis.Promise<boolean> | void;
     /**
      * Gets the result from the asynchronous function.
      * @param device a #GUsbDevice instance.
@@ -2100,7 +2100,7 @@ export namespace ColorHug {
         process_async(
             process_flags: DeviceQueueProcessFlags | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Processes all commands in the command queue.
          * @param process_flags
@@ -2122,7 +2122,7 @@ export namespace ColorHug {
             process_flags: DeviceQueueProcessFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult

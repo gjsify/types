@@ -7025,13 +7025,13 @@ export namespace Gimp {
         (min: number, max: number, current: number): void;
     }
     interface ProgressVtableEndFunc {
-        (): void;
+        (user_data?: any | null): void;
     }
     interface ProgressVtableGetWindowFunc {
-        (): GLib.Bytes;
+        (user_data?: any | null): GLib.Bytes;
     }
     interface ProgressVtablePulseFunc {
-        (): void;
+        (user_data?: any | null): void;
     }
     interface ProgressVtableSetTextFunc {
         (message: string): void;

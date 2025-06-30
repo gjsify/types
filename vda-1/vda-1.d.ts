@@ -33579,13 +33579,16 @@ export namespace Vda {
         get connection(): Connection;
 
         // Inherited methods
-        execute(cancellable: Gio.Cancellable): Promise<Result>;
+        execute(cancellable: Gio.Cancellable): globalThis.Promise<Result>;
         execute(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
-        execute(cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): Promise<Result> | void;
+        execute(
+            cancellable: Gio.Cancellable,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): globalThis.Promise<Result> | void;
         execute_finish(_res_: Gio.AsyncResult): Result;
-        cancel(): Promise<void>;
+        cancel(): globalThis.Promise<void>;
         cancel(_callback_: Gio.AsyncReadyCallback<this>): void;
-        cancel(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
+        cancel(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
         cancel_finish(_res_: Gio.AsyncResult): void;
         render_sql(): string;
         get_sql(): string;
@@ -53180,20 +53183,20 @@ export namespace Vda {
 
         // Methods
 
-        close(): Promise<void>;
+        close(): globalThis.Promise<void>;
         close(_callback_: Gio.AsyncReadyCallback<this>): void;
-        close(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
+        close(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
         close_finish(_res_: Gio.AsyncResult): void;
-        open(): Promise<ConnectionStatus>;
+        open(): globalThis.Promise<ConnectionStatus>;
         open(_callback_: Gio.AsyncReadyCallback<this>): void;
-        open(_callback_?: Gio.AsyncReadyCallback<this>): Promise<ConnectionStatus> | void;
+        open(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<ConnectionStatus> | void;
         open_finish(_res_: Gio.AsyncResult): ConnectionStatus;
-        open_from_string(cnc_string: string): Promise<ConnectionStatus>;
+        open_from_string(cnc_string: string): globalThis.Promise<ConnectionStatus>;
         open_from_string(cnc_string: string, _callback_: Gio.AsyncReadyCallback<this>): void;
         open_from_string(
             cnc_string: string,
             _callback_?: Gio.AsyncReadyCallback<this>,
-        ): Promise<ConnectionStatus> | void;
+        ): globalThis.Promise<ConnectionStatus> | void;
         open_from_string_finish(_res_: Gio.AsyncResult): ConnectionStatus;
         parse_string(sql: string): Query;
         parse_string_prepared(name: string, sql: string): PreparedQuery;
@@ -53356,45 +53359,54 @@ export namespace Vda {
 
         // Methods
 
-        update_data_from_db(): Promise<void>;
+        update_data_from_db(): globalThis.Promise<void>;
         update_data_from_db(_callback_: Gio.AsyncReadyCallback<this>): void;
-        update_data_from_db(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
+        update_data_from_db(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
         update_data_from_db_finish(_res_: Gio.AsyncResult): void;
-        update_data_from_db_pkey(): Promise<void>;
+        update_data_from_db_pkey(): globalThis.Promise<void>;
         update_data_from_db_pkey(_callback_: Gio.AsyncReadyCallback<this>): void;
-        update_data_from_db_pkey(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
+        update_data_from_db_pkey(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
         update_data_from_db_pkey_finish(_res_: Gio.AsyncResult): void;
-        update_data_from_db_full(use_pkey: boolean): Promise<void>;
+        update_data_from_db_full(use_pkey: boolean): globalThis.Promise<void>;
         update_data_from_db_full(use_pkey: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
-        update_data_from_db_full(use_pkey: boolean, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
+        update_data_from_db_full(
+            use_pkey: boolean,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): globalThis.Promise<void> | void;
         update_data_from_db_full_finish(_res_: Gio.AsyncResult): void;
-        insert_data_into_db(): Promise<void>;
+        insert_data_into_db(): globalThis.Promise<void>;
         insert_data_into_db(_callback_: Gio.AsyncReadyCallback<this>): void;
-        insert_data_into_db(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
+        insert_data_into_db(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
         insert_data_into_db_finish(_res_: Gio.AsyncResult): void;
-        delete_data_from_db(): Promise<void>;
+        delete_data_from_db(): globalThis.Promise<void>;
         delete_data_from_db(_callback_: Gio.AsyncReadyCallback<this>): void;
-        delete_data_from_db(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
+        delete_data_from_db(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
         delete_data_from_db_finish(_res_: Gio.AsyncResult): void;
-        delete_data_from_db_pkey(): Promise<void>;
+        delete_data_from_db_pkey(): globalThis.Promise<void>;
         delete_data_from_db_pkey(_callback_: Gio.AsyncReadyCallback<this>): void;
-        delete_data_from_db_pkey(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
+        delete_data_from_db_pkey(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
         delete_data_from_db_pkey_finish(_res_: Gio.AsyncResult): void;
-        delete_data_from_db_full(use_pkey: boolean): Promise<void>;
+        delete_data_from_db_full(use_pkey: boolean): globalThis.Promise<void>;
         delete_data_from_db_full(use_pkey: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
-        delete_data_from_db_full(use_pkey: boolean, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
+        delete_data_from_db_full(
+            use_pkey: boolean,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): globalThis.Promise<void> | void;
         delete_data_from_db_full_finish(_res_: Gio.AsyncResult): void;
-        update_data_into_db(): Promise<void>;
+        update_data_into_db(): globalThis.Promise<void>;
         update_data_into_db(_callback_: Gio.AsyncReadyCallback<this>): void;
-        update_data_into_db(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
+        update_data_into_db(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
         update_data_into_db_finish(_res_: Gio.AsyncResult): void;
-        update_data_into_db_pkey(): Promise<void>;
+        update_data_into_db_pkey(): globalThis.Promise<void>;
         update_data_into_db_pkey(_callback_: Gio.AsyncReadyCallback<this>): void;
-        update_data_into_db_pkey(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
+        update_data_into_db_pkey(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
         update_data_into_db_pkey_finish(_res_: Gio.AsyncResult): void;
-        update_data_into_db_full(use_pkey: boolean): Promise<void>;
+        update_data_into_db_full(use_pkey: boolean): globalThis.Promise<void>;
         update_data_into_db_full(use_pkey: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
-        update_data_into_db_full(use_pkey: boolean, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
+        update_data_into_db_full(
+            use_pkey: boolean,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): globalThis.Promise<void> | void;
         update_data_into_db_full_finish(_res_: Gio.AsyncResult): void;
         update_from_row(table: TableModel, nrow: number): void;
         get_database_connection(): Connection;
@@ -53479,9 +53491,9 @@ export namespace Vda {
 
         // Methods
 
-        get_objects(): Promise<TableModel>;
+        get_objects(): globalThis.Promise<TableModel>;
         get_objects(_callback_: Gio.AsyncReadyCallback<this>): void;
-        get_objects(_callback_?: Gio.AsyncReadyCallback<this>): Promise<TableModel> | void;
+        get_objects(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<TableModel> | void;
         get_objects_finish(_res_: Gio.AsyncResult): TableModel;
         get_database_connection(): Connection;
         set_database_connection(value: Connection): void;
@@ -53659,13 +53671,16 @@ export namespace Vda {
 
         // Methods
 
-        execute(cancellable: Gio.Cancellable): Promise<Result>;
+        execute(cancellable: Gio.Cancellable): globalThis.Promise<Result>;
         execute(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
-        execute(cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): Promise<Result> | void;
+        execute(
+            cancellable: Gio.Cancellable,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): globalThis.Promise<Result> | void;
         execute_finish(_res_: Gio.AsyncResult): Result;
-        cancel(): Promise<void>;
+        cancel(): globalThis.Promise<void>;
         cancel(_callback_: Gio.AsyncReadyCallback<this>): void;
-        cancel(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
+        cancel(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
         cancel_finish(_res_: Gio.AsyncResult): void;
         render_sql(): string;
         get_sql(): string;
@@ -53721,25 +53736,25 @@ export namespace Vda {
 
         // Methods
 
-        name(): Promise<string>;
+        name(): globalThis.Promise<string>;
         name(_callback_: Gio.AsyncReadyCallback<this>): void;
-        name(_callback_?: Gio.AsyncReadyCallback<this>): Promise<string> | void;
+        name(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<string> | void;
         name_finish(_res_: Gio.AsyncResult): string;
-        membership(): Promise<HashModel>;
+        membership(): globalThis.Promise<HashModel>;
         membership(_callback_: Gio.AsyncReadyCallback<this>): void;
-        membership(_callback_?: Gio.AsyncReadyCallback<this>): Promise<HashModel> | void;
+        membership(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<HashModel> | void;
         membership_finish(_res_: Gio.AsyncResult): HashModel;
-        privilages(object: MetaObject): Promise<RoleGrant>;
+        privilages(object: MetaObject): globalThis.Promise<RoleGrant>;
         privilages(object: MetaObject, _callback_: Gio.AsyncReadyCallback<this>): void;
-        privilages(object: MetaObject, _callback_?: Gio.AsyncReadyCallback<this>): Promise<RoleGrant> | void;
+        privilages(object: MetaObject, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<RoleGrant> | void;
         privilages_finish(_res_: Gio.AsyncResult): RoleGrant;
-        change_privilages(object: MetaObject, grant: RoleGrant | null): Promise<void>;
+        change_privilages(object: MetaObject, grant: RoleGrant | null): globalThis.Promise<void>;
         change_privilages(object: MetaObject, grant: RoleGrant | null, _callback_: Gio.AsyncReadyCallback<this>): void;
         change_privilages(
             object: MetaObject,
             grant: RoleGrant | null,
             _callback_?: Gio.AsyncReadyCallback<this>,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         change_privilages_finish(_res_: Gio.AsyncResult): void;
         get_connection(): Connection;
 

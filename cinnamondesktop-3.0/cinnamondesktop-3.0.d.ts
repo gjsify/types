@@ -187,7 +187,7 @@ export namespace CinnamonDesktop {
         description?: string | null,
         connection?: Gio.DBusConnection | null,
         cancellable?: Gio.Cancellable | null,
-    ): Promise<boolean>;
+    ): globalThis.Promise<boolean>;
     /**
      * If the current process is running inside a user systemd instance, then move
      * the launched PID into a transient scope. The given `name` will be used to
@@ -255,7 +255,7 @@ export namespace CinnamonDesktop {
         connection?: Gio.DBusConnection | null,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<string> | null,
-    ): Promise<boolean> | void;
+    ): globalThis.Promise<boolean> | void;
     /**
      * Finish an asynchronous operation to create a transient scope that was
      * started with gnome_start_systemd_scope().

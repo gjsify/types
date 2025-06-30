@@ -310,9 +310,9 @@ export namespace Unity {
         get_categories(id: string): string[];
         get_keywords(id: string): string[];
         get_path(id: string): string;
-        lookup_async(id: string): Promise<Gio.AppInfo>;
+        lookup_async(id: string): globalThis.Promise<Gio.AppInfo>;
         lookup_async(id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        lookup_async(id: string, _callback_?: Gio.AsyncReadyCallback<this>): Promise<Gio.AppInfo> | void;
+        lookup_async(id: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Gio.AppInfo> | void;
         lookup_finish(_res_: Gio.AsyncResult): Gio.AppInfo;
         clear(): void;
     }
@@ -2646,7 +2646,7 @@ export namespace Unity {
             search_string: string,
             search_type: SearchType | null,
             hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
-        ): Promise<GLib.HashTable<string, GLib.Variant>>;
+        ): globalThis.Promise<GLib.HashTable<string, GLib.Variant>>;
         search_scope(
             scope_id: string,
             search_string: string,
@@ -2660,9 +2660,13 @@ export namespace Unity {
             search_type: SearchType | null,
             hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             _callback_?: Gio.AsyncReadyCallback<this>,
-        ): Promise<GLib.HashTable<string, GLib.Variant>> | void;
+        ): globalThis.Promise<GLib.HashTable<string, GLib.Variant>> | void;
         search_scope_finish(_res_: Gio.AsyncResult): GLib.HashTable<string, GLib.Variant>;
-        push_results(scope_id: string, results_model: Dee.SerializableModel, category_ids: string[]): Promise<void>;
+        push_results(
+            scope_id: string,
+            results_model: Dee.SerializableModel,
+            category_ids: string[],
+        ): globalThis.Promise<void>;
         push_results(
             scope_id: string,
             results_model: Dee.SerializableModel,
@@ -2674,7 +2678,7 @@ export namespace Unity {
             results_model: Dee.SerializableModel,
             category_ids: string[],
             _callback_?: Gio.AsyncReadyCallback<this>,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         push_results_finish(_res_: Gio.AsyncResult): void;
         push_filter_settings(filters: FilterSet): void;
     }
@@ -5563,16 +5567,19 @@ export namespace Unity {
 
         // Methods
 
-        preview_result(result: ScopeResult): Promise<Preview>;
+        preview_result(result: ScopeResult): globalThis.Promise<Preview>;
         preview_result(result: ScopeResult, _callback_: Gio.AsyncReadyCallback<this>): void;
-        preview_result(result: ScopeResult, _callback_?: Gio.AsyncReadyCallback<this>): Promise<Preview> | void;
+        preview_result(
+            result: ScopeResult,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): globalThis.Promise<Preview> | void;
         preview_result_finish(_res_: Gio.AsyncResult): Preview;
-        activate_result(result: ScopeResult): Promise<ActivationResponse>;
+        activate_result(result: ScopeResult): globalThis.Promise<ActivationResponse>;
         activate_result(result: ScopeResult, _callback_: Gio.AsyncReadyCallback<this>): void;
         activate_result(
             result: ScopeResult,
             _callback_?: Gio.AsyncReadyCallback<this>,
-        ): Promise<ActivationResponse> | void;
+        ): globalThis.Promise<ActivationResponse> | void;
         activate_result_finish(_res_: Gio.AsyncResult): ActivationResponse;
         queue_search_changed(search_type: SearchType | null): void;
     }
@@ -5671,16 +5678,19 @@ export namespace Unity {
         category_index_for_scope_id(scope_id: string): number;
         add_sorter(category_index: number, field: string, flags: AggregatorScopeSortFlags | null): void;
         add_constraint(category_index: number, field: string): void;
-        search(scope_search: AggregatedScopeSearch): Promise<void>;
+        search(scope_search: AggregatedScopeSearch): globalThis.Promise<void>;
         search(scope_search: AggregatedScopeSearch, _callback_: Gio.AsyncReadyCallback<this>): void;
-        search(scope_search: AggregatedScopeSearch, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
+        search(
+            scope_search: AggregatedScopeSearch,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): globalThis.Promise<void> | void;
         search_finish(_res_: Gio.AsyncResult): void;
-        activate(activation: AggregatorActivation): Promise<ActivationResponse>;
+        activate(activation: AggregatorActivation): globalThis.Promise<ActivationResponse>;
         activate(activation: AggregatorActivation, _callback_: Gio.AsyncReadyCallback<this>): void;
         activate(
             activation: AggregatorActivation,
             _callback_?: Gio.AsyncReadyCallback<this>,
-        ): Promise<ActivationResponse> | void;
+        ): globalThis.Promise<ActivationResponse> | void;
         activate_finish(_res_: Gio.AsyncResult): ActivationResponse;
         get_merge_mode(): AggregatorScopeMergeMode;
         set_merge_mode(value: AggregatorScopeMergeMode | null): void;

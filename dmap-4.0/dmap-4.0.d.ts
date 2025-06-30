@@ -2734,7 +2734,7 @@ export namespace Dmap {
 
         // Virtual methods
 
-        vfunc_create(): Record;
+        vfunc_create(user_data?: any | null): Record;
     }
 
     export const RecordFactory: RecordFactoryNamespace & {

@@ -343,7 +343,7 @@ export namespace Signon {
          * @param method the name of the method whose mechanisms must be retrieved.
          * @param cancellable a #GCancellable or %NULL
          */
-        get_mechanisms(method: string, cancellable?: Gio.Cancellable | null): Promise<string[]>;
+        get_mechanisms(method: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string[]>;
         /**
          * Lists all the available mechanisms.
          * @param method the name of the method whose mechanisms must be retrieved.
@@ -365,7 +365,7 @@ export namespace Signon {
             method: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string[]> | void;
+        ): globalThis.Promise<string[]> | void;
         /**
          * Completes an asynchronous request to signon_auth_service_get_mechanisms().
          * @param result a #GAsyncResult
@@ -384,7 +384,7 @@ export namespace Signon {
          * Lists all the available methods.
          * @param cancellable a #GCancellable or %NULL
          */
-        get_methods(cancellable?: Gio.Cancellable | null): Promise<string[]>;
+        get_methods(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[]>;
         /**
          * Lists all the available methods.
          * @param cancellable a #GCancellable or %NULL
@@ -399,7 +399,7 @@ export namespace Signon {
         get_methods(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string[]> | void;
+        ): globalThis.Promise<string[]> | void;
         /**
          * Completes an asynchronous request to signon_auth_service_get_methods().
          * @param result a #GAsyncResult
@@ -493,7 +493,7 @@ export namespace Signon {
             session_data: GLib.Variant,
             mechanism: string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<GLib.Variant>;
+        ): globalThis.Promise<GLib.Variant>;
         /**
          * Performs one step of the authentication process. If the #SignonAuthSession
          * object is bound to an existing identity, the identity properties such as
@@ -529,7 +529,7 @@ export namespace Signon {
             mechanism: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.Variant> | void;
+        ): globalThis.Promise<GLib.Variant> | void;
         /**
          * Collect the result of the signon_auth_session_process() operation.
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to signon_auth_session_process().
@@ -621,7 +621,7 @@ export namespace Signon {
          * Fetches the #SignonIdentityInfo associated with this identity.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        query_info(cancellable?: Gio.Cancellable | null): Promise<IdentityInfo>;
+        query_info(cancellable?: Gio.Cancellable | null): globalThis.Promise<IdentityInfo>;
         /**
          * Fetches the #SignonIdentityInfo associated with this identity.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
@@ -636,7 +636,7 @@ export namespace Signon {
         query_info(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<IdentityInfo> | void;
+        ): globalThis.Promise<IdentityInfo> | void;
         /**
          * Collect the result of the signon_identity_query_info() operation.
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to signon_identity_query_info().
@@ -647,7 +647,7 @@ export namespace Signon {
          * Removes the corresponding credentials record from the database.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        remove(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        remove(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Removes the corresponding credentials record from the database.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
@@ -662,7 +662,7 @@ export namespace Signon {
         remove(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         remove_finish(res: Gio.AsyncResult): boolean;
         /**
          * Asks signond to close all authentication sessions for this
@@ -670,7 +670,7 @@ export namespace Signon {
          * authentication tokens).
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        sign_out(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        sign_out(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asks signond to close all authentication sessions for this
          * identity, and to remove any stored secrets associated with it (password and
@@ -689,14 +689,14 @@ export namespace Signon {
         sign_out(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         sign_out_finish(res: Gio.AsyncResult): boolean;
         /**
          * Stores the data from `info` into the identity.
          * @param info the #SignonIdentityInfo data to store.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        store_info(info: IdentityInfo, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        store_info(info: IdentityInfo, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Stores the data from `info` into the identity.
          * @param info the #SignonIdentityInfo data to store.
@@ -718,7 +718,7 @@ export namespace Signon {
             info: IdentityInfo,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Collect the result of the signon_identity_store_info() operation.
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to signon_identity_store_info().
@@ -730,7 +730,7 @@ export namespace Signon {
          * @param secret the secret (password) to be verified.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        verify_secret(secret: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        verify_secret(secret: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Verifies the given secret.
          * @param secret the secret (password) to be verified.
@@ -752,7 +752,7 @@ export namespace Signon {
             secret: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Collect the result of the signon_identity_verify_secret() operation.
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to signon_identity_verify_secret().

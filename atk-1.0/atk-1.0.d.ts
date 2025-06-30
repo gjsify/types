@@ -1786,7 +1786,7 @@ export namespace Atk {
         (object: Object, focus_in: boolean): void;
     }
     interface Function {
-        (): boolean;
+        (user_data?: any | null): boolean;
     }
     interface KeySnoopFunc {
         (event: KeyEventStruct): number;

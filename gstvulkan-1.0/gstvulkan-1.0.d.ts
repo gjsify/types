@@ -799,8 +799,9 @@ export namespace GstVulkan {
         create_fence(): VulkanFence;
         /**
          * Iterate over each queue family available on #GstVulkanDevice
+         * @param func a #GstVulkanDeviceForEachQueueFunc to run for each #GstVulkanQueue
          */
-        foreach_queue(): void;
+        foreach_queue(func?: VulkanDeviceForEachQueueFunc | null): void;
         get_instance(): VulkanInstance;
         /**
          * Performs vkGetDeviceProcAddr() with `device` and `name`

@@ -716,7 +716,7 @@ export namespace AccountsService {
          * @param username a unix user name
          * @param cancellable optional #GCancellable object,     %NULL to ignore
          */
-        cache_user_async(username: string, cancellable?: Gio.Cancellable | null): Promise<User>;
+        cache_user_async(username: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<User>;
         /**
          * Asynchronously caches a user account so it shows up via
          * act_user_manager_list_users().
@@ -746,7 +746,7 @@ export namespace AccountsService {
             username: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<User> | void;
+        ): globalThis.Promise<User> | void;
         /**
          * Finishes an asynchronous user caching.
          *
@@ -783,7 +783,7 @@ export namespace AccountsService {
             fullname: string,
             accounttype: UserAccountType | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<User>;
+        ): globalThis.Promise<User>;
         /**
          * Asynchronously creates a user account on the system.
          *
@@ -819,7 +819,7 @@ export namespace AccountsService {
             accounttype: UserAccountType | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<User> | void;
+        ): globalThis.Promise<User> | void;
         /**
          * Finishes an asynchronous user creation.
          *
@@ -844,7 +844,11 @@ export namespace AccountsService {
          * @param remove_files %TRUE to delete the users home directory
          * @param cancellable optional #GCancellable object,     %NULL to ignore
          */
-        delete_user_async(user: User, remove_files: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        delete_user_async(
+            user: User,
+            remove_files: boolean,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously deletes a user account from the system.
          *
@@ -876,7 +880,7 @@ export namespace AccountsService {
             remove_files: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous user account deletion.
          *
@@ -927,7 +931,7 @@ export namespace AccountsService {
          * @returns %TRUE if successful, otherwise %FALSE
          */
         uncache_user(username: string): boolean;
-        uncache_user_async(username: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        uncache_user_async(username: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         uncache_user_async(
             username: string,
             cancellable: Gio.Cancellable | null,
@@ -937,7 +941,7 @@ export namespace AccountsService {
             username: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous user uncaching.
          *

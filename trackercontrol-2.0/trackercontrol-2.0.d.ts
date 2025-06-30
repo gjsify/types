@@ -180,7 +180,7 @@ export namespace TrackerControl {
          * @param file a URL valid in GIO of a file to give to the miner for processing
          * @param cancellable a #GCancellable, or %NULL
          */
-        index_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        index_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Tells the filesystem miner to start indexing the `file`. Once the message has been sent,
          * `callback` will be called. You can then call tracker_miner_manager_index_file_finish()
@@ -206,7 +206,7 @@ export namespace TrackerControl {
             file: Gio.File,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes a request to index a file. See tracker_miner_manager_index_file_async()
          *
@@ -241,7 +241,7 @@ export namespace TrackerControl {
          * @param file a URL valid in GIO of a file to give to the miner for processing
          * @param cancellable a #GCancellable, or %NULL
          */
-        index_file_for_process_async(file: Gio.File, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        index_file_for_process_async(file: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * This function operates exactly the same way as
          * tracker_miner_manager_index_file() with the exception that if the
@@ -279,7 +279,7 @@ export namespace TrackerControl {
             file: Gio.File,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes a request to index a file. See tracker_miner_manager_index_file_for_process_async()
          *

@@ -6419,7 +6419,11 @@ export namespace GnomeBluetooth {
          * @param connect Whether try to connect or disconnect from services on a device
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
-        connect_service(path: string, connect: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        connect_service(
+            path: string,
+            connect: boolean,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * When the connection operation is finished, `callback` will be called. You can
          * then call bluetooth_client_connect_service_finish() to get the result of the
@@ -6449,7 +6453,7 @@ export namespace GnomeBluetooth {
             connect: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the connection operation. See bluetooth_client_connect_service().
          * @param res a #GAsyncResult

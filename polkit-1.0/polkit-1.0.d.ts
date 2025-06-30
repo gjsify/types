@@ -433,7 +433,7 @@ export namespace Polkit {
             cookie: string,
             identity: Identity,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously provide response that `identity` successfully authenticated
          * for the authentication request identified by `cookie`.
@@ -481,7 +481,7 @@ export namespace Polkit {
             identity: Identity,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes providing response from an authentication agent.
          * @param res A #GAsyncResult obtained from the callback.
@@ -543,7 +543,7 @@ export namespace Polkit {
             details: Details | null,
             flags: CheckAuthorizationFlags | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<AuthorizationResult>;
+        ): globalThis.Promise<AuthorizationResult>;
         /**
          * Asynchronously checks if `subject` is authorized to perform the action represented
          * by `action_id`.
@@ -623,7 +623,7 @@ export namespace Polkit {
             flags: CheckAuthorizationFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<AuthorizationResult> | void;
+        ): globalThis.Promise<AuthorizationResult> | void;
         /**
          * Finishes checking if a subject is authorized for an action.
          * @param res A #GAsyncResult obtained from the callback.
@@ -676,7 +676,7 @@ export namespace Polkit {
          * to get the result of the operation.
          * @param cancellable A #GCancellable or %NULL.
          */
-        enumerate_actions(cancellable?: Gio.Cancellable | null): Promise<ActionDescription[]>;
+        enumerate_actions(cancellable?: Gio.Cancellable | null): globalThis.Promise<ActionDescription[]>;
         /**
          * Asynchronously retrieves all registered actions.
          *
@@ -703,7 +703,7 @@ export namespace Polkit {
         enumerate_actions(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<ActionDescription[]> | void;
+        ): globalThis.Promise<ActionDescription[]> | void;
         /**
          * Finishes retrieving all registered actions.
          * @param res A #GAsyncResult obtained from the callback.
@@ -733,7 +733,7 @@ export namespace Polkit {
         enumerate_temporary_authorizations(
             subject: Subject,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<TemporaryAuthorization[]>;
+        ): globalThis.Promise<TemporaryAuthorization[]>;
         /**
          * Asynchronously gets all temporary authorizations for `subject`.
          *
@@ -769,7 +769,7 @@ export namespace Polkit {
             subject: Subject,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<TemporaryAuthorization[]> | void;
+        ): globalThis.Promise<TemporaryAuthorization[]> | void;
         /**
          * Finishes retrieving all registered actions.
          * @param res A #GAsyncResult obtained from the callback.
@@ -836,7 +836,7 @@ export namespace Polkit {
             locale: string,
             object_path: string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously registers an authentication agent.
          *
@@ -888,7 +888,7 @@ export namespace Polkit {
             object_path: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes registering an authentication agent.
          * @param res A #GAsyncResult obtained from the callback.
@@ -943,7 +943,7 @@ export namespace Polkit {
             object_path: string,
             options?: GLib.Variant | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously registers an authentication agent.
          *
@@ -999,7 +999,7 @@ export namespace Polkit {
             options?: GLib.Variant | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes registering an authentication agent.
          * @param res A #GAsyncResult obtained from the callback.
@@ -1043,7 +1043,10 @@ export namespace Polkit {
          * @param id The opaque identifier for the temporary authorization.
          * @param cancellable A #GCancellable or %NULL.
          */
-        revoke_temporary_authorization_by_id(id: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        revoke_temporary_authorization_by_id(
+            id: string,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously revoke a temporary authorization.
          *
@@ -1079,7 +1082,7 @@ export namespace Polkit {
             id: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes revoking a temporary authorization by id.
          * @param res A #GAsyncResult obtained from the callback.
@@ -1109,7 +1112,10 @@ export namespace Polkit {
          * @param subject The subject to revoke authorizations from, typically a #PolkitUnixSession.
          * @param cancellable A #GCancellable or %NULL.
          */
-        revoke_temporary_authorizations(subject: Subject, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        revoke_temporary_authorizations(
+            subject: Subject,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously revokes all temporary authorizations for `subject`.
          *
@@ -1145,7 +1151,7 @@ export namespace Polkit {
             subject: Subject,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes revoking temporary authorizations.
          * @param res A #GAsyncResult obtained from the callback.
@@ -1180,7 +1186,7 @@ export namespace Polkit {
             subject: Subject,
             object_path: string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously unregisters an authentication agent.
          *
@@ -1220,7 +1226,7 @@ export namespace Polkit {
             object_path: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes unregistering an authentication agent.
          * @param res A #GAsyncResult obtained from the callback.
@@ -1284,7 +1290,7 @@ export namespace Polkit {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -1376,7 +1382,7 @@ export namespace Polkit {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -2320,7 +2326,7 @@ export namespace Polkit {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -2412,7 +2418,7 @@ export namespace Polkit {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -3121,7 +3127,7 @@ export namespace Polkit {
          * result of the operation.
          * @param cancellable A #GCancellable or %NULL.
          */
-        exists(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        exists(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously checks if `subject` exists.
          *
@@ -3148,7 +3154,7 @@ export namespace Polkit {
         exists(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes checking whether a subject exists.
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to polkit_subject_exists().
@@ -5059,7 +5065,7 @@ export namespace Polkit {
          * result of the operation.
          * @param cancellable A #GCancellable or %NULL.
          */
-        exists(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        exists(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously checks if `subject` exists.
          *
@@ -5086,7 +5092,7 @@ export namespace Polkit {
         exists(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes checking whether a subject exists.
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to polkit_subject_exists().
@@ -5776,7 +5782,7 @@ export namespace Polkit {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -5868,7 +5874,7 @@ export namespace Polkit {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -6040,7 +6046,7 @@ export namespace Polkit {
          * result of the operation.
          * @param cancellable A #GCancellable or %NULL.
          */
-        exists(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        exists(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously checks if `subject` exists.
          *
@@ -6067,7 +6073,7 @@ export namespace Polkit {
         exists(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes checking whether a subject exists.
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to polkit_subject_exists().
@@ -7266,7 +7272,7 @@ export namespace Polkit {
          * result of the operation.
          * @param cancellable A #GCancellable or %NULL.
          */
-        exists(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        exists(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously checks if `subject` exists.
          *
@@ -7293,7 +7299,7 @@ export namespace Polkit {
         exists(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes checking whether a subject exists.
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to polkit_subject_exists().

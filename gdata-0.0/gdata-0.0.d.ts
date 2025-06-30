@@ -2555,7 +2555,7 @@ export namespace GData {
          * the batch operation.
          * @param cancellable a #GCancellable, or %NULL
          */
-        run_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        run_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Run the #GDataBatchOperation asynchronously. This will send all the operations in the batch operation to the server, and call their respective
          * callbacks asynchronously (i.e. in idle functions in the main thread, usually after gdata_batch_operation_run_async() has returned) as the
@@ -2584,7 +2584,7 @@ export namespace GData {
         run_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous batch operation run with gdata_batch_operation_run_async().
          *
@@ -4207,7 +4207,7 @@ export namespace GData {
             domain: AuthorizationDomain | null,
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Deletes `entry` from the server. `self` and `entry` are both reffed when this function is called,
          * so can safely be unreffed after this function returns.
@@ -4245,7 +4245,7 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous entry deletion operation started with gdata_service_delete_entry_async().
          * @param async_result a #GAsyncResult
@@ -4320,7 +4320,7 @@ export namespace GData {
             upload_uri: string,
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Entry>;
+        ): globalThis.Promise<Entry>;
         /**
          * Inserts `entry` by uploading it to the online service at `upload_uri`. `self,` `upload_uri` and
          * `entry` are all reffed/copied when this function is called, so can safely be freed after this function returns.
@@ -4362,7 +4362,7 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Entry> | void;
+        ): globalThis.Promise<Entry> | void;
         /**
          * Finishes an asynchronous entry insertion operation started with gdata_service_insert_entry_async().
          * @param async_result a #GAsyncResult
@@ -4438,7 +4438,7 @@ export namespace GData {
             cancellable?: Gio.Cancellable | null,
             progress_callback?: QueryProgressCallback | null,
             destroy_progress_user_data?: GLib.DestroyNotify | null,
-        ): Promise<Feed>;
+        ): globalThis.Promise<Feed>;
         /**
          * Queries the service's `feed_uri` feed to build a #GDataFeed. `self,` `feed_uri` and
          * `query` are all reffed/copied when this function is called, so can safely be freed after this function returns.
@@ -4492,7 +4492,7 @@ export namespace GData {
             progress_callback?: QueryProgressCallback | null,
             destroy_progress_user_data?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Feed> | void;
+        ): globalThis.Promise<Feed> | void;
         /**
          * Finishes an asynchronous query operation started with gdata_service_query_async().
          * @param async_result a #GAsyncResult
@@ -4543,7 +4543,7 @@ export namespace GData {
             query: Query | null,
             entry_type: GObject.GType,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Entry>;
+        ): globalThis.Promise<Entry>;
         /**
          * Retrieves information about the single entry with the given `entry_id`. `entry_id` should be as returned by
          * gdata_entry_get_id(). `self,` `query` and `entry_id` are reffed/copied when this
@@ -4591,7 +4591,7 @@ export namespace GData {
             entry_type: GObject.GType,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Entry> | void;
+        ): globalThis.Promise<Entry> | void;
         /**
          * Finishes an asynchronous query operation for a single entry, as started with gdata_service_query_single_entry_async().
          * @param async_result a #GAsyncResult
@@ -4663,7 +4663,7 @@ export namespace GData {
             domain: AuthorizationDomain | null,
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Entry>;
+        ): globalThis.Promise<Entry>;
         /**
          * Updates `entry` by PUTting it to its <literal>edit</literal> link's URI. `self` and
          * `entry` are both reffed when this function is called, so can safely be unreffed after this function returns.
@@ -4701,7 +4701,7 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Entry> | void;
+        ): globalThis.Promise<Entry> | void;
         /**
          * Finishes an asynchronous entry update operation started with gdata_service_update_entry_async().
          * @param async_result a #GAsyncResult
@@ -8891,7 +8891,7 @@ export namespace GData {
             entry: DocumentsEntry,
             folder: DocumentsFolder,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<DocumentsEntry>;
+        ): globalThis.Promise<DocumentsEntry>;
         /**
          * Add the given `entry` to the specified `folder`. `self,` `entry` and `folder` are all reffed when this function is called, so can safely be unreffed
          * after this function returns.
@@ -8929,7 +8929,7 @@ export namespace GData {
             folder: DocumentsFolder,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<DocumentsEntry> | void;
+        ): globalThis.Promise<DocumentsEntry> | void;
         /**
          * Finish an asynchronous operation to add a #GDataDocumentsEntry to a folder started with gdata_documents_service_add_entry_to_folder_async().
          * @param async_result a #GAsyncResult
@@ -8959,7 +8959,7 @@ export namespace GData {
         copy_document_async(
             document: DocumentsDocument,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<DocumentsDocument>;
+        ): globalThis.Promise<DocumentsDocument>;
         /**
          * Copy the given `document,` producing a duplicate document in the same folder and returning its #GDataDocumentsDocument. `self` and `document` are
          * both reffed when this function is called, so can safely be unreffed after this function returns.
@@ -8993,7 +8993,7 @@ export namespace GData {
             document: DocumentsDocument,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<DocumentsDocument> | void;
+        ): globalThis.Promise<DocumentsDocument> | void;
         /**
          * Finish an asynchronous operation to copy a #GDataDocumentsDocument started with gdata_documents_service_copy_document_async().
          * @param async_result a #GAsyncResult
@@ -9032,7 +9032,7 @@ export namespace GData {
          * of the operation.
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        get_metadata_async(cancellable?: Gio.Cancellable | null): Promise<DocumentsMetadata>;
+        get_metadata_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<DocumentsMetadata>;
         /**
          * Gets a #GDataDocumentsMetadata object containing metadata about the documents
          * service itself, like how large the user quota is.
@@ -9059,7 +9059,7 @@ export namespace GData {
         get_metadata_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<DocumentsMetadata> | void;
+        ): globalThis.Promise<DocumentsMetadata> | void;
         /**
          * Finish an asynchronous operation to get a #GDataDocumentsMetadata started with gdata_documents_service_get_metadata_async().
          * @param async_result a #GAsyncResult
@@ -9164,7 +9164,7 @@ export namespace GData {
             entry: DocumentsEntry,
             folder: DocumentsFolder,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<DocumentsEntry>;
+        ): globalThis.Promise<DocumentsEntry>;
         /**
          * Remove the given `entry` from the specified `folder`. `self,` `entry` and `folder` are all reffed when this function is called, so can safely be unreffed
          * after this function returns.
@@ -9202,7 +9202,7 @@ export namespace GData {
             folder: DocumentsFolder,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<DocumentsEntry> | void;
+        ): globalThis.Promise<DocumentsEntry> | void;
         /**
          * Finish an asynchronous operation to remove a #GDataDocumentsEntry from a folder started with
          * gdata_documents_service_remove_entry_from_folder_async().
@@ -9447,7 +9447,7 @@ export namespace GData {
             domain: AuthorizationDomain | null,
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Deletes `entry` from the server. `self` and `entry` are both reffed when this function is called,
          * so can safely be unreffed after this function returns.
@@ -9485,7 +9485,7 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous entry deletion operation started with gdata_service_delete_entry_async().
          * @param async_result a #GAsyncResult
@@ -9560,7 +9560,7 @@ export namespace GData {
             upload_uri: string,
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Entry>;
+        ): globalThis.Promise<Entry>;
         /**
          * Inserts `entry` by uploading it to the online service at `upload_uri`. `self,` `upload_uri` and
          * `entry` are all reffed/copied when this function is called, so can safely be freed after this function returns.
@@ -9602,7 +9602,7 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Entry> | void;
+        ): globalThis.Promise<Entry> | void;
         /**
          * Finishes an asynchronous entry insertion operation started with gdata_service_insert_entry_async().
          * @param async_result a #GAsyncResult
@@ -9678,7 +9678,7 @@ export namespace GData {
             cancellable?: Gio.Cancellable | null,
             progress_callback?: QueryProgressCallback | null,
             destroy_progress_user_data?: GLib.DestroyNotify | null,
-        ): Promise<Feed>;
+        ): globalThis.Promise<Feed>;
         /**
          * Queries the service's `feed_uri` feed to build a #GDataFeed. `self,` `feed_uri` and
          * `query` are all reffed/copied when this function is called, so can safely be freed after this function returns.
@@ -9732,7 +9732,7 @@ export namespace GData {
             progress_callback?: QueryProgressCallback | null,
             destroy_progress_user_data?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Feed> | void;
+        ): globalThis.Promise<Feed> | void;
         /**
          * Finishes an asynchronous query operation started with gdata_service_query_async().
          * @param async_result a #GAsyncResult
@@ -9783,7 +9783,7 @@ export namespace GData {
             query: Query | null,
             entry_type: GObject.GType,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Entry>;
+        ): globalThis.Promise<Entry>;
         /**
          * Retrieves information about the single entry with the given `entry_id`. `entry_id` should be as returned by
          * gdata_entry_get_id(). `self,` `query` and `entry_id` are reffed/copied when this
@@ -9831,7 +9831,7 @@ export namespace GData {
             entry_type: GObject.GType,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Entry> | void;
+        ): globalThis.Promise<Entry> | void;
         /**
          * Finishes an asynchronous query operation for a single entry, as started with gdata_service_query_single_entry_async().
          * @param async_result a #GAsyncResult
@@ -9903,7 +9903,7 @@ export namespace GData {
             domain: AuthorizationDomain | null,
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Entry>;
+        ): globalThis.Promise<Entry>;
         /**
          * Updates `entry` by PUTting it to its <literal>edit</literal> link's URI. `self` and
          * `entry` are both reffed when this function is called, so can safely be unreffed after this function returns.
@@ -9941,7 +9941,7 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Entry> | void;
+        ): globalThis.Promise<Entry> | void;
         /**
          * Finishes an asynchronous entry update operation started with gdata_service_update_entry_async().
          * @param async_result a #GAsyncResult
@@ -22255,7 +22255,7 @@ export namespace GData {
          * This method is thread safe.
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        refresh_authorization_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        refresh_authorization_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Forces the #GDataAuthorizer to refresh any authorization tokens it holds with the online service. `self` and `cancellable` are reffed when this
          * method is called, so can safely be freed after this method returns.
@@ -22293,7 +22293,7 @@ export namespace GData {
         refresh_authorization_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous authorization refresh operation for the #GDataAuthorizer, as started with gdata_authorizer_refresh_authorization_async().
          *
@@ -24377,7 +24377,10 @@ export namespace GData {
          * @param authorization_code code returned from the authentication page
          * @param cancellable an optional #GCancellable, or %NULL
          */
-        request_authorization_async(authorization_code: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        request_authorization_async(
+            authorization_code: string,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronous version of gdata_oauth2_authorizer_request_authorization().
          * @param authorization_code code returned from the authentication page
@@ -24399,7 +24402,7 @@ export namespace GData {
             authorization_code: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous authorization operation started with
          * gdata_oauth2_authorizer_request_authorization_async().
@@ -24517,7 +24520,7 @@ export namespace GData {
          * This method is thread safe.
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        refresh_authorization_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        refresh_authorization_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Forces the #GDataAuthorizer to refresh any authorization tokens it holds with the online service. `self` and `cancellable` are reffed when this
          * method is called, so can safely be freed after this method returns.
@@ -24555,7 +24558,7 @@ export namespace GData {
         refresh_authorization_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous authorization refresh operation for the #GDataAuthorizer, as started with gdata_authorizer_refresh_authorization_async().
          *
@@ -25164,8 +25167,8 @@ export namespace GData {
         vfunc_get_xml(xml_string: GLib.String): void;
         vfunc_parse_json(reader: Json.Reader): boolean;
         vfunc_parse_xml(doc: libxml2.Doc, node: libxml2.Node): boolean;
-        vfunc_post_parse_json(): boolean;
-        vfunc_post_parse_xml(): boolean;
+        vfunc_post_parse_json(user_data?: any | null): boolean;
+        vfunc_post_parse_xml(user_data?: any | null): boolean;
         vfunc_pre_get_xml(xml_string: GLib.String): void;
         vfunc_pre_parse_xml(doc: libxml2.Doc, root_node: libxml2.Node): boolean;
 
@@ -26390,7 +26393,7 @@ export namespace GData {
             service: Service,
             comment_: Comment,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Deletes `comment` from the #GDataCommentable. `self,` `service` and `comment_` are all reffed when this method is called, so can safely be freed after
          * this method returns.
@@ -26428,7 +26431,7 @@ export namespace GData {
             comment_: Comment,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous comment deletion operation started with gdata_commentable_delete_comment_async().
          * @param result a #GAsyncResult
@@ -26461,7 +26464,7 @@ export namespace GData {
             service: Service,
             comment_: Comment,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Comment | null>;
+        ): globalThis.Promise<Comment | null>;
         /**
          * Adds `comment` to the #GDataCommentable. `self,` `service` and `comment_` are all reffed when this method is called, so can safely be freed after this
          * method returns.
@@ -26499,7 +26502,7 @@ export namespace GData {
             comment_: Comment,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Comment | null> | void;
+        ): globalThis.Promise<Comment | null> | void;
         /**
          * Finishes an asynchronous comment insertion operation started with gdata_commentable_insert_comment_async().
          * @param result a #GAsyncResult
@@ -26544,7 +26547,7 @@ export namespace GData {
             cancellable?: Gio.Cancellable | null,
             progress_callback?: QueryProgressCallback | null,
             destroy_progress_user_data?: GLib.DestroyNotify | null,
-        ): Promise<Feed | null>;
+        ): globalThis.Promise<Feed | null>;
         /**
          * Retrieves a #GDataFeed containing the #GDataComments representing the comments on the #GDataCommentable which match the given `query`.
          * `self,` `service` and `query` are all reffed when this method is called, so can safely be freed after this method returns.
@@ -26590,7 +26593,7 @@ export namespace GData {
             progress_callback?: QueryProgressCallback | null,
             destroy_progress_user_data?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Feed | null> | void;
+        ): globalThis.Promise<Feed | null> | void;
         /**
          * Finishes an asynchronous comment query operation started with gdata_commentable_query_comments_async().
          * @param result a #GAsyncResult
@@ -27030,7 +27033,10 @@ export namespace GData {
          * @param username the username of the user whose information you wish to retrieve, or %NULL for the currently authenticated user
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        get_user_async(username?: string | null, cancellable?: Gio.Cancellable | null): Promise<PicasaWebUser>;
+        get_user_async(
+            username?: string | null,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<PicasaWebUser>;
         /**
          * Queries the service to return the user specified by `username`.
          *
@@ -27062,7 +27068,7 @@ export namespace GData {
             username?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<PicasaWebUser> | void;
+        ): globalThis.Promise<PicasaWebUser> | void;
         /**
          * Finishes an asynchronous user retrieval operation started with gdata_picasaweb_service_get_user_async().
          * @param result a #GAsyncResult
@@ -27949,7 +27955,7 @@ export namespace GData {
             domain: AuthorizationDomain | null,
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Deletes `entry` from the server. `self` and `entry` are both reffed when this function is called,
          * so can safely be unreffed after this function returns.
@@ -27987,7 +27993,7 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous entry deletion operation started with gdata_service_delete_entry_async().
          * @param async_result a #GAsyncResult
@@ -28062,7 +28068,7 @@ export namespace GData {
             upload_uri: string,
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Entry>;
+        ): globalThis.Promise<Entry>;
         /**
          * Inserts `entry` by uploading it to the online service at `upload_uri`. `self,` `upload_uri` and
          * `entry` are all reffed/copied when this function is called, so can safely be freed after this function returns.
@@ -28104,7 +28110,7 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Entry> | void;
+        ): globalThis.Promise<Entry> | void;
         /**
          * Finishes an asynchronous entry insertion operation started with gdata_service_insert_entry_async().
          * @param async_result a #GAsyncResult
@@ -28180,7 +28186,7 @@ export namespace GData {
             cancellable?: Gio.Cancellable | null,
             progress_callback?: QueryProgressCallback | null,
             destroy_progress_user_data?: GLib.DestroyNotify | null,
-        ): Promise<Feed>;
+        ): globalThis.Promise<Feed>;
         /**
          * Queries the service's `feed_uri` feed to build a #GDataFeed. `self,` `feed_uri` and
          * `query` are all reffed/copied when this function is called, so can safely be freed after this function returns.
@@ -28234,7 +28240,7 @@ export namespace GData {
             progress_callback?: QueryProgressCallback | null,
             destroy_progress_user_data?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Feed> | void;
+        ): globalThis.Promise<Feed> | void;
         /**
          * Finishes an asynchronous query operation started with gdata_service_query_async().
          * @param async_result a #GAsyncResult
@@ -28285,7 +28291,7 @@ export namespace GData {
             query: Query | null,
             entry_type: GObject.GType,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Entry>;
+        ): globalThis.Promise<Entry>;
         /**
          * Retrieves information about the single entry with the given `entry_id`. `entry_id` should be as returned by
          * gdata_entry_get_id(). `self,` `query` and `entry_id` are reffed/copied when this
@@ -28333,7 +28339,7 @@ export namespace GData {
             entry_type: GObject.GType,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Entry> | void;
+        ): globalThis.Promise<Entry> | void;
         /**
          * Finishes an asynchronous query operation for a single entry, as started with gdata_service_query_single_entry_async().
          * @param async_result a #GAsyncResult
@@ -28405,7 +28411,7 @@ export namespace GData {
             domain: AuthorizationDomain | null,
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Entry>;
+        ): globalThis.Promise<Entry>;
         /**
          * Updates `entry` by PUTting it to its <literal>edit</literal> link's URI. `self` and
          * `entry` are both reffed when this function is called, so can safely be unreffed after this function returns.
@@ -28443,7 +28449,7 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Entry> | void;
+        ): globalThis.Promise<Entry> | void;
         /**
          * Finishes an asynchronous entry update operation started with gdata_service_update_entry_async().
          * @param async_result a #GAsyncResult
@@ -30647,7 +30653,7 @@ export namespace GData {
          * operation.
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        get_categories_async(cancellable?: Gio.Cancellable | null): Promise<APPCategories>;
+        get_categories_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<APPCategories>;
         /**
          * Gets a list of the categories currently in use on YouTube. `self` is reffed when this function is called, so can safely be unreffed after this
          * function returns.
@@ -30674,7 +30680,7 @@ export namespace GData {
         get_categories_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<APPCategories> | void;
+        ): globalThis.Promise<APPCategories> | void;
         /**
          * Finishes an asynchronous request for a list of categories on YouTube, as started with gdata_youtube_service_get_categories_async().
          * @param async_result a #GAsyncResult
@@ -30928,7 +30934,7 @@ export namespace GData {
             domain: AuthorizationDomain | null,
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Deletes `entry` from the server. `self` and `entry` are both reffed when this function is called,
          * so can safely be unreffed after this function returns.
@@ -30966,7 +30972,7 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous entry deletion operation started with gdata_service_delete_entry_async().
          * @param async_result a #GAsyncResult
@@ -31041,7 +31047,7 @@ export namespace GData {
             upload_uri: string,
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Entry>;
+        ): globalThis.Promise<Entry>;
         /**
          * Inserts `entry` by uploading it to the online service at `upload_uri`. `self,` `upload_uri` and
          * `entry` are all reffed/copied when this function is called, so can safely be freed after this function returns.
@@ -31083,7 +31089,7 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Entry> | void;
+        ): globalThis.Promise<Entry> | void;
         /**
          * Finishes an asynchronous entry insertion operation started with gdata_service_insert_entry_async().
          * @param async_result a #GAsyncResult
@@ -31159,7 +31165,7 @@ export namespace GData {
             cancellable?: Gio.Cancellable | null,
             progress_callback?: QueryProgressCallback | null,
             destroy_progress_user_data?: GLib.DestroyNotify | null,
-        ): Promise<Feed>;
+        ): globalThis.Promise<Feed>;
         /**
          * Queries the service's `feed_uri` feed to build a #GDataFeed. `self,` `feed_uri` and
          * `query` are all reffed/copied when this function is called, so can safely be freed after this function returns.
@@ -31213,7 +31219,7 @@ export namespace GData {
             progress_callback?: QueryProgressCallback | null,
             destroy_progress_user_data?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Feed> | void;
+        ): globalThis.Promise<Feed> | void;
         /**
          * Finishes an asynchronous query operation started with gdata_service_query_async().
          * @param async_result a #GAsyncResult
@@ -31264,7 +31270,7 @@ export namespace GData {
             query: Query | null,
             entry_type: GObject.GType,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Entry>;
+        ): globalThis.Promise<Entry>;
         /**
          * Retrieves information about the single entry with the given `entry_id`. `entry_id` should be as returned by
          * gdata_entry_get_id(). `self,` `query` and `entry_id` are reffed/copied when this
@@ -31312,7 +31318,7 @@ export namespace GData {
             entry_type: GObject.GType,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Entry> | void;
+        ): globalThis.Promise<Entry> | void;
         /**
          * Finishes an asynchronous query operation for a single entry, as started with gdata_service_query_single_entry_async().
          * @param async_result a #GAsyncResult
@@ -31384,7 +31390,7 @@ export namespace GData {
             domain: AuthorizationDomain | null,
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Entry>;
+        ): globalThis.Promise<Entry>;
         /**
          * Updates `entry` by PUTting it to its <literal>edit</literal> link's URI. `self` and
          * `entry` are both reffed when this function is called, so can safely be unreffed after this function returns.
@@ -31422,7 +31428,7 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Entry> | void;
+        ): globalThis.Promise<Entry> | void;
         /**
          * Finishes an asynchronous entry update operation started with gdata_service_update_entry_async().
          * @param async_result a #GAsyncResult
@@ -32188,7 +32194,7 @@ export namespace GData {
             service: Service,
             comment_: Comment,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Deletes `comment` from the #GDataCommentable. `self,` `service` and `comment_` are all reffed when this method is called, so can safely be freed after
          * this method returns.
@@ -32226,7 +32232,7 @@ export namespace GData {
             comment_: Comment,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous comment deletion operation started with gdata_commentable_delete_comment_async().
          * @param result a #GAsyncResult
@@ -32259,7 +32265,7 @@ export namespace GData {
             service: Service,
             comment_: Comment,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Comment | null>;
+        ): globalThis.Promise<Comment | null>;
         /**
          * Adds `comment` to the #GDataCommentable. `self,` `service` and `comment_` are all reffed when this method is called, so can safely be freed after this
          * method returns.
@@ -32297,7 +32303,7 @@ export namespace GData {
             comment_: Comment,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Comment | null> | void;
+        ): globalThis.Promise<Comment | null> | void;
         /**
          * Finishes an asynchronous comment insertion operation started with gdata_commentable_insert_comment_async().
          * @param result a #GAsyncResult
@@ -32342,7 +32348,7 @@ export namespace GData {
             cancellable?: Gio.Cancellable | null,
             progress_callback?: QueryProgressCallback | null,
             destroy_progress_user_data?: GLib.DestroyNotify | null,
-        ): Promise<Feed | null>;
+        ): globalThis.Promise<Feed | null>;
         /**
          * Retrieves a #GDataFeed containing the #GDataComments representing the comments on the #GDataCommentable which match the given `query`.
          * `self,` `service` and `query` are all reffed when this method is called, so can safely be freed after this method returns.
@@ -32388,7 +32394,7 @@ export namespace GData {
             progress_callback?: QueryProgressCallback | null,
             destroy_progress_user_data?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Feed | null> | void;
+        ): globalThis.Promise<Feed | null> | void;
         /**
          * Finishes an asynchronous comment query operation started with gdata_commentable_query_comments_async().
          * @param result a #GAsyncResult
@@ -33413,7 +33419,7 @@ export namespace GData {
          * This method is thread safe.
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        refresh_authorization_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        refresh_authorization_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Forces the #GDataAuthorizer to refresh any authorization tokens it holds with the online service. `self` and `cancellable` are reffed when this
          * method is called, so can safely be freed after this method returns.
@@ -33451,7 +33457,7 @@ export namespace GData {
         refresh_authorization_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous authorization refresh operation for the #GDataAuthorizer, as started with gdata_authorizer_refresh_authorization_async().
          *
@@ -33622,7 +33628,7 @@ export namespace GData {
             service: Service,
             comment_: Comment,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Deletes `comment` from the #GDataCommentable. `self,` `service` and `comment_` are all reffed when this method is called, so can safely be freed after
          * this method returns.
@@ -33660,7 +33666,7 @@ export namespace GData {
             comment_: Comment,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous comment deletion operation started with gdata_commentable_delete_comment_async().
          * @param result a #GAsyncResult
@@ -33693,7 +33699,7 @@ export namespace GData {
             service: Service,
             comment_: Comment,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Comment | null>;
+        ): globalThis.Promise<Comment | null>;
         /**
          * Adds `comment` to the #GDataCommentable. `self,` `service` and `comment_` are all reffed when this method is called, so can safely be freed after this
          * method returns.
@@ -33731,7 +33737,7 @@ export namespace GData {
             comment_: Comment,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Comment | null> | void;
+        ): globalThis.Promise<Comment | null> | void;
         /**
          * Finishes an asynchronous comment insertion operation started with gdata_commentable_insert_comment_async().
          * @param result a #GAsyncResult
@@ -33776,7 +33782,7 @@ export namespace GData {
             cancellable?: Gio.Cancellable | null,
             progress_callback?: QueryProgressCallback | null,
             destroy_progress_user_data?: GLib.DestroyNotify | null,
-        ): Promise<Feed | null>;
+        ): globalThis.Promise<Feed | null>;
         /**
          * Retrieves a #GDataFeed containing the #GDataComments representing the comments on the #GDataCommentable which match the given `query`.
          * `self,` `service` and `query` are all reffed when this method is called, so can safely be freed after this method returns.
@@ -33822,7 +33828,7 @@ export namespace GData {
             progress_callback?: QueryProgressCallback | null,
             destroy_progress_user_data?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Feed | null> | void;
+        ): globalThis.Promise<Feed | null> | void;
         /**
          * Finishes an asynchronous comment query operation started with gdata_commentable_query_comments_async().
          * @param result a #GAsyncResult

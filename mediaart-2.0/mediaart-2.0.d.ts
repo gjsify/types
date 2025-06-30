@@ -218,7 +218,7 @@ export namespace MediaArt {
         io_priority: number,
         source_object?: GObject.Object | null,
         cancellable?: Gio.Cancellable | null,
-    ): Promise<boolean>;
+    ): globalThis.Promise<boolean>;
     /**
      * Removes media art for given album/artist provided. Precisely the
      * same operation as media_art_remove() is performing, but
@@ -292,7 +292,7 @@ export namespace MediaArt {
         source_object?: GObject.Object | null,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<string> | null,
-    ): Promise<boolean> | void;
+    ): globalThis.Promise<boolean> | void;
     /**
      * Finishes the asynchronous operation started with
      * media_art_remove_async().
@@ -461,7 +461,7 @@ export namespace MediaArt {
             title: string | null,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Processes media art. Precisely the same operation as
          * media_art_process_buffer() is performing, but asynchronously.
@@ -543,7 +543,7 @@ export namespace MediaArt {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the asynchronous operation started with
          * media_art_process_file_async().
@@ -629,7 +629,7 @@ export namespace MediaArt {
             title: string | null,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Processes media art. Precisely the same operation as
          * media_art_process_file() is performing, but asynchronously.
@@ -703,7 +703,7 @@ export namespace MediaArt {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the asynchronous operation started with
          * media_art_process_file_async().
@@ -765,7 +765,7 @@ export namespace MediaArt {
             title: string | null,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Processes media art. Precisely the same operation as
          * media_art_process_uri() is performing, but asynchronously.
@@ -839,7 +839,7 @@ export namespace MediaArt {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the asynchronous operation started with
          * media_art_process_file_async().

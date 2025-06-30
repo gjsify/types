@@ -68,7 +68,7 @@ export namespace GPasteGtk {
         (data: number): void;
     }
     interface ResetCallback {
-        (): void;
+        (user_data?: any | null): void;
     }
     interface TextCallback {
         (data: string): void;

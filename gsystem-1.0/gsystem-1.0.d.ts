@@ -713,7 +713,7 @@ export namespace GSystem {
          * Start an asynchronous wait for the subprocess `self` to exit.
          * @param cancellable a #GCancellable
          */
-        wait(cancellable?: Gio.Cancellable | null): Promise<number>;
+        wait(cancellable?: Gio.Cancellable | null): globalThis.Promise<number>;
         /**
          * Start an asynchronous wait for the subprocess `self` to exit.
          * @param cancellable a #GCancellable
@@ -728,7 +728,7 @@ export namespace GSystem {
         wait(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * The exit status of the process will be stored in `out_exit_status`.
          * See the documentation of g_spawn_check_exit_status() for more

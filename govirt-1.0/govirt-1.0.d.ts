@@ -152,17 +152,20 @@ export namespace GoVirt {
         // Methods
 
         fetch_ca_certificate(): boolean;
-        fetch_ca_certificate_async(cancellable: Gio.Cancellable): Promise<Uint8Array>;
+        fetch_ca_certificate_async(cancellable: Gio.Cancellable): globalThis.Promise<Uint8Array>;
         fetch_ca_certificate_async(cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
         fetch_ca_certificate_async(
             cancellable: Gio.Cancellable,
             callback?: Gio.AsyncReadyCallback<this>,
-        ): Promise<Uint8Array> | void;
+        ): globalThis.Promise<Uint8Array> | void;
         fetch_ca_certificate_finish(result: Gio.AsyncResult): Uint8Array;
         fetch_vms(): boolean;
-        fetch_vms_async(cancellable: Gio.Cancellable): Promise<Vm[]>;
+        fetch_vms_async(cancellable: Gio.Cancellable): globalThis.Promise<Vm[]>;
         fetch_vms_async(cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
-        fetch_vms_async(cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): Promise<Vm[]> | void;
+        fetch_vms_async(
+            cancellable: Gio.Cancellable,
+            callback?: Gio.AsyncReadyCallback<this>,
+        ): globalThis.Promise<Vm[]> | void;
         fetch_vms_finish(result: Gio.AsyncResult): Vm[];
         /**
          * Gets the list of remote VMs from the proxy object.
@@ -258,31 +261,31 @@ export namespace GoVirt {
         // Methods
 
         get_ticket(proxy: Proxy): boolean;
-        get_ticket_async(proxy: Proxy, cancellable: Gio.Cancellable): Promise<boolean>;
+        get_ticket_async(proxy: Proxy, cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
         get_ticket_async(proxy: Proxy, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
         get_ticket_async(
             proxy: Proxy,
             cancellable: Gio.Cancellable,
             callback?: Gio.AsyncReadyCallback<this>,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         get_ticket_finish(result: Gio.AsyncResult): boolean;
         start(proxy: Proxy): boolean;
-        start_async(proxy: Proxy, cancellable: Gio.Cancellable): Promise<boolean>;
+        start_async(proxy: Proxy, cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
         start_async(proxy: Proxy, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
         start_async(
             proxy: Proxy,
             cancellable: Gio.Cancellable,
             callback?: Gio.AsyncReadyCallback<this>,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         start_finish(result: Gio.AsyncResult): boolean;
         stop(proxy: Proxy): boolean;
-        stop_async(proxy: Proxy, cancellable: Gio.Cancellable): Promise<boolean>;
+        stop_async(proxy: Proxy, cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
         stop_async(proxy: Proxy, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
         stop_async(
             proxy: Proxy,
             cancellable: Gio.Cancellable,
             callback?: Gio.AsyncReadyCallback<this>,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         stop_finish(result: Gio.AsyncResult): boolean;
     }
 

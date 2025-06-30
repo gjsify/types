@@ -192,14 +192,14 @@ export namespace Granite {
     function date_time_is_same_day(day1: GLib.DateTime, day2: GLib.DateTime): boolean;
     function date_time_get_default_date_format(with_weekday: boolean, with_day: boolean, with_year: boolean): string;
     function date_time_seconds_to_time(seconds: number): string;
-    function services_application_set_badge(count: number): Promise<boolean>;
+    function services_application_set_badge(count: number): globalThis.Promise<boolean>;
     function services_application_set_badge(count: number, _callback_: Gio.AsyncReadyCallback<number> | null): void;
     function services_application_set_badge(
         count: number,
         _callback_?: Gio.AsyncReadyCallback<number> | null,
-    ): Promise<boolean> | void;
+    ): globalThis.Promise<boolean> | void;
     function services_application_set_badge_finish(_res_: Gio.AsyncResult): boolean;
-    function services_application_set_badge_visible(visible: boolean): Promise<boolean>;
+    function services_application_set_badge_visible(visible: boolean): globalThis.Promise<boolean>;
     function services_application_set_badge_visible(
         visible: boolean,
         _callback_: Gio.AsyncReadyCallback<boolean> | null,
@@ -207,9 +207,9 @@ export namespace Granite {
     function services_application_set_badge_visible(
         visible: boolean,
         _callback_?: Gio.AsyncReadyCallback<boolean> | null,
-    ): Promise<boolean> | void;
+    ): globalThis.Promise<boolean> | void;
     function services_application_set_badge_visible_finish(_res_: Gio.AsyncResult): boolean;
-    function services_application_set_progress(progress: number): Promise<boolean>;
+    function services_application_set_progress(progress: number): globalThis.Promise<boolean>;
     function services_application_set_progress(
         progress: number,
         _callback_: Gio.AsyncReadyCallback<number> | null,
@@ -217,9 +217,9 @@ export namespace Granite {
     function services_application_set_progress(
         progress: number,
         _callback_?: Gio.AsyncReadyCallback<number> | null,
-    ): Promise<boolean> | void;
+    ): globalThis.Promise<boolean> | void;
     function services_application_set_progress_finish(_res_: Gio.AsyncResult): boolean;
-    function services_application_set_progress_visible(visible: boolean): Promise<boolean>;
+    function services_application_set_progress_visible(visible: boolean): globalThis.Promise<boolean>;
     function services_application_set_progress_visible(
         visible: boolean,
         _callback_: Gio.AsyncReadyCallback<boolean> | null,
@@ -227,7 +227,7 @@ export namespace Granite {
     function services_application_set_progress_visible(
         visible: boolean,
         _callback_?: Gio.AsyncReadyCallback<boolean> | null,
-    ): Promise<boolean> | void;
+    ): globalThis.Promise<boolean> | void;
     function services_application_set_progress_visible_finish(_res_: Gio.AsyncResult): boolean;
     function widgets_utils_set_color_primary(
         window: Gtk.Widget,
@@ -5603,7 +5603,11 @@ export namespace Granite {
 
         get_gicon_async(): Gio.Icon | null;
         get_size_async(): number;
-        set_from_gicon_async(icon: Gio.Icon, size: number, cancellable?: Gio.Cancellable | null): Promise<void>;
+        set_from_gicon_async(
+            icon: Gio.Icon,
+            size: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<void>;
         set_from_gicon_async(
             icon: Gio.Icon,
             size: number,
@@ -5615,13 +5619,13 @@ export namespace Granite {
             size: number,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         set_from_gicon_finish(_res_: Gio.AsyncResult): void;
         set_from_icon_name_async(
             icon_name: string,
             icon_size: Gtk.IconSize | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<void>;
+        ): globalThis.Promise<void>;
         set_from_icon_name_async(
             icon_name: string,
             icon_size: Gtk.IconSize | null,
@@ -5633,7 +5637,7 @@ export namespace Granite {
             icon_size: Gtk.IconSize | null,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         set_from_icon_name_finish(_res_: Gio.AsyncResult): void;
         set_from_file_async(
             file: Gio.File,
@@ -5641,7 +5645,7 @@ export namespace Granite {
             height: number,
             preserve_aspect_ratio: boolean,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<void>;
+        ): globalThis.Promise<void>;
         set_from_file_async(
             file: Gio.File,
             width: number,
@@ -5657,7 +5661,7 @@ export namespace Granite {
             preserve_aspect_ratio: boolean,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         set_from_file_finish(_res_: Gio.AsyncResult): void;
     }
 

@@ -3583,7 +3583,7 @@ export namespace GtkSource {
             cancellable?: Gio.Cancellable | null,
             progress_callback?: Gio.FileProgressCallback | null,
             progress_callback_notify?: GLib.DestroyNotify | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Loads asynchronously the file or input stream contents into the
          * #GtkSourceBuffer. See the #GAsyncResult documentation to know how to use this
@@ -3617,7 +3617,7 @@ export namespace GtkSource {
             progress_callback?: Gio.FileProgressCallback | null,
             progress_callback_notify?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes a file loading started with gtk_source_file_loader_load_async().
          *
@@ -3786,7 +3786,7 @@ export namespace GtkSource {
             cancellable?: Gio.Cancellable | null,
             progress_callback?: Gio.FileProgressCallback | null,
             progress_callback_notify?: GLib.DestroyNotify | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Saves asynchronously the buffer into the file. See the #GAsyncResult
          * documentation to know how to use this function.
@@ -3818,7 +3818,7 @@ export namespace GtkSource {
             progress_callback?: Gio.FileProgressCallback | null,
             progress_callback_notify?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes a file saving started with gtk_source_file_saver_save_async().
          *
@@ -6123,7 +6123,7 @@ export namespace GtkSource {
         backward_async(
             iter: Gtk.TextIter,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]>;
+        ): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]>;
         /**
          * The asynchronous version of gtk_source_search_context_backward().
          *
@@ -6163,7 +6163,7 @@ export namespace GtkSource {
             iter: Gtk.TextIter,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]> | void;
+        ): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]> | void;
         /**
          * Finishes a backward search started with
          * gtk_source_search_context_backward_async().
@@ -6206,7 +6206,7 @@ export namespace GtkSource {
         forward_async(
             iter: Gtk.TextIter,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]>;
+        ): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]>;
         /**
          * The asynchronous version of gtk_source_search_context_forward().
          *
@@ -6246,7 +6246,7 @@ export namespace GtkSource {
             iter: Gtk.TextIter,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]> | void;
+        ): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]> | void;
         /**
          * Finishes a forward search started with
          * gtk_source_search_context_forward_async().

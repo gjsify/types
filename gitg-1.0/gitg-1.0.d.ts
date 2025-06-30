@@ -493,7 +493,11 @@ export namespace Gitg {
 
         // Methods
 
-        load(email: string, size: number, cancellable?: Gio.Cancellable | null): Promise<GdkPixbuf.Pixbuf | null>;
+        load(
+            email: string,
+            size: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<GdkPixbuf.Pixbuf | null>;
         load(
             email: string,
             size: number,
@@ -505,7 +509,7 @@ export namespace Gitg {
             size: number,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GdkPixbuf.Pixbuf | null> | void;
+        ): globalThis.Promise<GdkPixbuf.Pixbuf | null> | void;
         load_finish(_res_: Gio.AsyncResult): GdkPixbuf.Pixbuf | null;
     }
 
@@ -3896,9 +3900,12 @@ export namespace Gitg {
         add_argument(arg: string): void;
         exists_in(repository: Ggit.Repository): boolean;
         run_sync(repository: Ggit.Repository): number;
-        run(repository: Ggit.Repository): Promise<number>;
+        run(repository: Ggit.Repository): globalThis.Promise<number>;
         run(repository: Ggit.Repository, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        run(repository: Ggit.Repository, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<number> | void;
+        run(
+            repository: Ggit.Repository,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<number> | void;
         run_finish(_res_: Gio.AsyncResult): number;
         get_environment(): Gee.HashMap;
         set_environment(value: Gee.HashMap): void;
@@ -4641,7 +4648,7 @@ export namespace Gitg {
 
         // Methods
 
-        connect(direction: Ggit.Direction | null, callbacks?: Ggit.RemoteCallbacks | null): Promise<void>;
+        connect(direction: Ggit.Direction | null, callbacks?: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
         connect(
             direction: Ggit.Direction | null,
             callbacks: Ggit.RemoteCallbacks | null,
@@ -4651,26 +4658,26 @@ export namespace Gitg {
             direction: Ggit.Direction | null,
             callbacks?: Ggit.RemoteCallbacks | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         // Conflicted with Ggit.Remote.connect
         connect(...args: never[]): any;
         connect_finish(_res_: Gio.AsyncResult): void;
-        disconnect(): Promise<void>;
+        disconnect(): globalThis.Promise<void>;
         disconnect(_callback_: Gio.AsyncReadyCallback<this> | null): void;
-        disconnect(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        disconnect(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         // Conflicted with Ggit.Remote.disconnect
         disconnect(...args: never[]): any;
         disconnect_finish(_res_: Gio.AsyncResult): void;
-        download(callbacks?: Ggit.RemoteCallbacks | null): Promise<void>;
+        download(callbacks?: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
         download(callbacks: Ggit.RemoteCallbacks | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         download(
             callbacks?: Ggit.RemoteCallbacks | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         // Conflicted with Ggit.Remote.download
         download(...args: never[]): any;
         download_finish(_res_: Gio.AsyncResult): void;
-        push(branch: string, callbacks?: Ggit.RemoteCallbacks | null): Promise<void>;
+        push(branch: string, callbacks?: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
         push(
             branch: string,
             callbacks: Ggit.RemoteCallbacks | null,
@@ -4680,11 +4687,11 @@ export namespace Gitg {
             branch: string,
             callbacks?: Ggit.RemoteCallbacks | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         // Conflicted with Ggit.Remote.push
         push(...args: never[]): any;
         push_finish(_res_: Gio.AsyncResult): void;
-        fetch(message?: string | null, callbacks?: Ggit.RemoteCallbacks | null): Promise<void>;
+        fetch(message?: string | null, callbacks?: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
         fetch(
             message: string | null,
             callbacks: Ggit.RemoteCallbacks | null,
@@ -4694,7 +4701,7 @@ export namespace Gitg {
             message?: string | null,
             callbacks?: Ggit.RemoteCallbacks | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         fetch_finish(_res_: Gio.AsyncResult): void;
         get_transfer_progress(): number;
         get_state(): RemoteState;
@@ -7055,9 +7062,12 @@ export namespace Gitg {
         // Methods
 
         cancel(): void;
-        next_items(num: number): Promise<StageStatusItem[]>;
+        next_items(num: number): globalThis.Promise<StageStatusItem[]>;
         next_items(num: number, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        next_items(num: number, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<StageStatusItem[]> | void;
+        next_items(
+            num: number,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<StageStatusItem[]> | void;
         next_items_finish(_res_: Gio.AsyncResult): StageStatusItem[];
     }
 
@@ -7151,18 +7161,21 @@ export namespace Gitg {
 
         // Methods
 
-        refresh(): Promise<void>;
+        refresh(): globalThis.Promise<void>;
         refresh(_callback_: Gio.AsyncReadyCallback<this> | null): void;
-        refresh(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        refresh(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         refresh_finish(_res_: Gio.AsyncResult): void;
-        get_head_tree(): Promise<Ggit.Tree | null>;
+        get_head_tree(): globalThis.Promise<Ggit.Tree | null>;
         get_head_tree(_callback_: Gio.AsyncReadyCallback<this> | null): void;
-        get_head_tree(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<Ggit.Tree | null> | void;
+        get_head_tree(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Ggit.Tree | null> | void;
         get_head_tree_finish(_res_: Gio.AsyncResult): Ggit.Tree | null;
         file_status(options?: Ggit.StatusOptions | null): StageStatusEnumerator;
-        pre_commit_hook(author: Ggit.Signature): Promise<void>;
+        pre_commit_hook(author: Ggit.Signature): globalThis.Promise<void>;
         pre_commit_hook(author: Ggit.Signature, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        pre_commit_hook(author: Ggit.Signature, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        pre_commit_hook(
+            author: Ggit.Signature,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<void> | void;
         pre_commit_hook_finish(_res_: Gio.AsyncResult): void;
         commit_index(
             index: Ggit.Index,
@@ -7172,7 +7185,7 @@ export namespace Gitg {
             committer: Ggit.Signature,
             parents: Ggit.OId[] | null,
             options: StageCommitOptions | null,
-        ): Promise<Ggit.OId | null>;
+        ): globalThis.Promise<Ggit.OId | null>;
         commit_index(
             index: Ggit.Index,
             reference: Ggit.Ref,
@@ -7192,7 +7205,7 @@ export namespace Gitg {
             parents: Ggit.OId[] | null,
             options: StageCommitOptions | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Ggit.OId | null> | void;
+        ): globalThis.Promise<Ggit.OId | null> | void;
         commit_index_finish(_res_: Gio.AsyncResult): Ggit.OId | null;
         commit_tree(
             treeoid: Ggit.OId,
@@ -7202,7 +7215,7 @@ export namespace Gitg {
             committer: Ggit.Signature,
             parents: Ggit.OId[] | null,
             options: StageCommitOptions | null,
-        ): Promise<Ggit.OId | null>;
+        ): globalThis.Promise<Ggit.OId | null>;
         commit_tree(
             treeoid: Ggit.OId,
             reference: Ggit.Ref,
@@ -7222,14 +7235,14 @@ export namespace Gitg {
             parents: Ggit.OId[] | null,
             options: StageCommitOptions | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Ggit.OId | null> | void;
+        ): globalThis.Promise<Ggit.OId | null> | void;
         commit_tree_finish(_res_: Gio.AsyncResult): Ggit.OId | null;
         commit(
             message: string,
             author: Ggit.Signature,
             committer: Ggit.Signature,
             options: StageCommitOptions | null,
-        ): Promise<Ggit.OId | null>;
+        ): globalThis.Promise<Ggit.OId | null>;
         commit(
             message: string,
             author: Ggit.Signature,
@@ -7243,61 +7256,70 @@ export namespace Gitg {
             committer: Ggit.Signature,
             options: StageCommitOptions | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Ggit.OId | null> | void;
+        ): globalThis.Promise<Ggit.OId | null> | void;
         commit_finish(_res_: Gio.AsyncResult): Ggit.OId | null;
-        revert(file: Gio.File): Promise<void>;
+        revert(file: Gio.File): globalThis.Promise<void>;
         revert(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        revert(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        revert(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         revert_finish(_res_: Gio.AsyncResult): void;
-        revert_path(path: string): Promise<void>;
+        revert_path(path: string): globalThis.Promise<void>;
         revert_path(path: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        revert_path(path: string, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        revert_path(path: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         revert_path_finish(_res_: Gio.AsyncResult): void;
-        revert_patch(patch: PatchSet): Promise<void>;
+        revert_patch(patch: PatchSet): globalThis.Promise<void>;
         revert_patch(patch: PatchSet, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        revert_patch(patch: PatchSet, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        revert_patch(
+            patch: PatchSet,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<void> | void;
         revert_patch_finish(_res_: Gio.AsyncResult): void;
-        ['delete'](file: Gio.File): Promise<void>;
+        ['delete'](file: Gio.File): globalThis.Promise<void>;
         ['delete'](file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        ['delete'](file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        ['delete'](file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         delete_finish(_res_: Gio.AsyncResult): void;
-        delete_path(path: string): Promise<void>;
+        delete_path(path: string): globalThis.Promise<void>;
         delete_path(path: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        delete_path(path: string, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        delete_path(path: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         delete_path_finish(_res_: Gio.AsyncResult): void;
-        stage(file: Gio.File): Promise<void>;
+        stage(file: Gio.File): globalThis.Promise<void>;
         stage(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        stage(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        stage(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         stage_finish(_res_: Gio.AsyncResult): void;
-        stage_path(path: string): Promise<void>;
+        stage_path(path: string): globalThis.Promise<void>;
         stage_path(path: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        stage_path(path: string, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        stage_path(path: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         stage_path_finish(_res_: Gio.AsyncResult): void;
-        stage_commit(path: string, commit: Ggit.Commit): Promise<void>;
+        stage_commit(path: string, commit: Ggit.Commit): globalThis.Promise<void>;
         stage_commit(path: string, commit: Ggit.Commit, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         stage_commit(
             path: string,
             commit: Ggit.Commit,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         stage_commit_finish(_res_: Gio.AsyncResult): void;
-        stage_patch(patch: PatchSet): Promise<void>;
+        stage_patch(patch: PatchSet): globalThis.Promise<void>;
         stage_patch(patch: PatchSet, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        stage_patch(patch: PatchSet, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        stage_patch(patch: PatchSet, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         stage_patch_finish(_res_: Gio.AsyncResult): void;
-        unstage(file: Gio.File): Promise<void>;
+        unstage(file: Gio.File): globalThis.Promise<void>;
         unstage(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        unstage(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        unstage(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         unstage_finish(_res_: Gio.AsyncResult): void;
-        unstage_path(path: string): Promise<void>;
+        unstage_path(path: string): globalThis.Promise<void>;
         unstage_path(path: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        unstage_path(path: string, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        unstage_path(path: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         unstage_path_finish(_res_: Gio.AsyncResult): void;
-        unstage_patch(patch: PatchSet): Promise<void>;
+        unstage_patch(patch: PatchSet): globalThis.Promise<void>;
         unstage_patch(patch: PatchSet, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        unstage_patch(patch: PatchSet, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        unstage_patch(
+            patch: PatchSet,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<void> | void;
         unstage_patch_finish(_res_: Gio.AsyncResult): void;
-        diff_index_all(files?: StageStatusItem[] | null, defopts?: Ggit.DiffOptions | null): Promise<Ggit.Diff | null>;
+        diff_index_all(
+            files?: StageStatusItem[] | null,
+            defopts?: Ggit.DiffOptions | null,
+        ): globalThis.Promise<Ggit.Diff | null>;
         diff_index_all(
             files: StageStatusItem[] | null,
             defopts: Ggit.DiffOptions | null,
@@ -7307,9 +7329,9 @@ export namespace Gitg {
             files?: StageStatusItem[] | null,
             defopts?: Ggit.DiffOptions | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Ggit.Diff | null> | void;
+        ): globalThis.Promise<Ggit.Diff | null> | void;
         diff_index_all_finish(_res_: Gio.AsyncResult): Ggit.Diff | null;
-        diff_index(f: StageStatusItem, defopts?: Ggit.DiffOptions | null): Promise<Ggit.Diff | null>;
+        diff_index(f: StageStatusItem, defopts?: Ggit.DiffOptions | null): globalThis.Promise<Ggit.Diff | null>;
         diff_index(
             f: StageStatusItem,
             defopts: Ggit.DiffOptions | null,
@@ -7319,9 +7341,12 @@ export namespace Gitg {
             f: StageStatusItem,
             defopts?: Ggit.DiffOptions | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Ggit.Diff | null> | void;
+        ): globalThis.Promise<Ggit.Diff | null> | void;
         diff_index_finish(_res_: Gio.AsyncResult): Ggit.Diff | null;
-        diff_workdir_all(files: StageStatusItem[], defopts?: Ggit.DiffOptions | null): Promise<Ggit.Diff | null>;
+        diff_workdir_all(
+            files: StageStatusItem[],
+            defopts?: Ggit.DiffOptions | null,
+        ): globalThis.Promise<Ggit.Diff | null>;
         diff_workdir_all(
             files: StageStatusItem[],
             defopts: Ggit.DiffOptions | null,
@@ -7331,9 +7356,9 @@ export namespace Gitg {
             files: StageStatusItem[],
             defopts?: Ggit.DiffOptions | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Ggit.Diff | null> | void;
+        ): globalThis.Promise<Ggit.Diff | null> | void;
         diff_workdir_all_finish(_res_: Gio.AsyncResult): Ggit.Diff | null;
-        diff_workdir(f: StageStatusItem, defopts?: Ggit.DiffOptions | null): Promise<Ggit.Diff | null>;
+        diff_workdir(f: StageStatusItem, defopts?: Ggit.DiffOptions | null): globalThis.Promise<Ggit.Diff | null>;
         diff_workdir(
             f: StageStatusItem,
             defopts: Ggit.DiffOptions | null,
@@ -7343,7 +7368,7 @@ export namespace Gitg {
             f: StageStatusItem,
             defopts?: Ggit.DiffOptions | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Ggit.Diff | null> | void;
+        ): globalThis.Promise<Ggit.Diff | null> | void;
         diff_workdir_finish(_res_: Gio.AsyncResult): Ggit.Diff | null;
     }
 

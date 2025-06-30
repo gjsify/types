@@ -410,7 +410,7 @@ export namespace LightDM {
          * See lightdm_greeter_connect_to_daemon_sync() for the synchronous version.
          * @param cancellable A #GCancellable or %NULL.
          */
-        connect_to_daemon(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        connect_to_daemon(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously connects the greeter to the display manager.
          *
@@ -433,7 +433,7 @@ export namespace LightDM {
         connect_to_daemon(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an operation started with lightdm_greeter_connect_to_daemon().
          * @param result A #GAsyncResult.
@@ -459,7 +459,7 @@ export namespace LightDM {
          * @param username A username
          * @param cancellable A #GCancellable or %NULL.
          */
-        ensure_shared_data_dir(username: string, cancellable?: Gio.Cancellable | null): Promise<string>;
+        ensure_shared_data_dir(username: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Ensure that a shared data dir for the given user is available.  Both the
          * greeter user and `username` will have write access to that folder.  The
@@ -499,7 +499,7 @@ export namespace LightDM {
             username: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         /**
          * Function to call from lightdm_greeter_ensure_shared_data_dir callback.
          * @param result A #GAsyncResult.
@@ -639,7 +639,7 @@ export namespace LightDM {
          * @param session The session to log into or #NULL to use the default.
          * @param cancellable A #GCancellable or %NULL.
          */
-        start_session(session?: string | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        start_session(session?: string | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously start a session for the authenticated user.
          *
@@ -669,7 +669,7 @@ export namespace LightDM {
             session?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Start a session for the authenticated user.
          * @param result A #GAsyncResult.

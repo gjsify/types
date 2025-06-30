@@ -3039,7 +3039,10 @@ export namespace GtkSource {
          * @param context a #GtkSourceCompletionContext
          * @param cancellable a #GCancellable or %NULL
          */
-        populate_async(context: CompletionContext, cancellable?: Gio.Cancellable | null): Promise<Gio.ListModel>;
+        populate_async(
+            context: CompletionContext,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<Gio.ListModel>;
         /**
          * Asynchronously requests that the provider populates the completion
          * results for `context`.
@@ -3073,7 +3076,7 @@ export namespace GtkSource {
             context: CompletionContext,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gio.ListModel> | void;
+        ): globalThis.Promise<Gio.ListModel> | void;
         /**
          * Completes an asynchronous operation to populate a completion provider.
          * @param result a #GAsyncResult provided to callback
@@ -3854,7 +3857,10 @@ export namespace GtkSource {
          * @param context a #GtkSourceCompletionContext
          * @param cancellable a #GCancellable or %NULL
          */
-        populate_async(context: CompletionContext, cancellable?: Gio.Cancellable | null): Promise<Gio.ListModel>;
+        populate_async(
+            context: CompletionContext,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<Gio.ListModel>;
         /**
          * Asynchronously requests that the provider populates the completion
          * results for `context`.
@@ -3888,7 +3894,7 @@ export namespace GtkSource {
             context: CompletionContext,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gio.ListModel> | void;
+        ): globalThis.Promise<Gio.ListModel> | void;
         /**
          * Completes an asynchronous operation to populate a completion provider.
          * @param result a #GAsyncResult provided to callback
@@ -4775,7 +4781,7 @@ export namespace GtkSource {
             cancellable?: Gio.Cancellable | null,
             progress_callback?: Gio.FileProgressCallback | null,
             progress_callback_notify?: GLib.DestroyNotify | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Loads asynchronously the file or input stream contents into the [class`Buffer]`.
          *
@@ -4811,7 +4817,7 @@ export namespace GtkSource {
             progress_callback?: Gio.FileProgressCallback | null,
             progress_callback_notify?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes a file loading started with [method`FileLoader`.load_async].
          *
@@ -4987,7 +4993,7 @@ export namespace GtkSource {
             cancellable?: Gio.Cancellable | null,
             progress_callback?: Gio.FileProgressCallback | null,
             progress_callback_notify?: GLib.DestroyNotify | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Saves asynchronously the buffer into the file.
          *
@@ -5021,7 +5027,7 @@ export namespace GtkSource {
             progress_callback?: Gio.FileProgressCallback | null,
             progress_callback_notify?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes a file saving started with [method`FileSaver`.save_async].
          *
@@ -11843,7 +11849,7 @@ export namespace GtkSource {
         backward_async(
             iter: Gtk.TextIter,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]>;
+        ): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]>;
         /**
          * The asynchronous version of [method`SearchContext`.backward].
          *
@@ -11877,7 +11883,7 @@ export namespace GtkSource {
             iter: Gtk.TextIter,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]> | void;
+        ): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]> | void;
         /**
          * Finishes a backward search started with
          * [method`SearchContext`.backward_async].
@@ -11918,7 +11924,7 @@ export namespace GtkSource {
         forward_async(
             iter: Gtk.TextIter,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]>;
+        ): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]>;
         /**
          * The asynchronous version of [method`SearchContext`.forward].
          *
@@ -11952,7 +11958,7 @@ export namespace GtkSource {
             iter: Gtk.TextIter,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]> | void;
+        ): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]> | void;
         /**
          * Finishes a forward search started with [method`SearchContext`.forward_async].
          *
@@ -23012,7 +23018,10 @@ export namespace GtkSource {
          * @param context a #GtkSourceCompletionContext
          * @param cancellable a #GCancellable or %NULL
          */
-        populate_async(context: CompletionContext, cancellable?: Gio.Cancellable | null): Promise<Gio.ListModel>;
+        populate_async(
+            context: CompletionContext,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<Gio.ListModel>;
         /**
          * Asynchronously requests that the provider populates the completion
          * results for `context`.
@@ -23046,7 +23055,7 @@ export namespace GtkSource {
             context: CompletionContext,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Gio.ListModel> | void;
+        ): globalThis.Promise<Gio.ListModel> | void;
         /**
          * Completes an asynchronous operation to populate a completion provider.
          * @param result a #GAsyncResult provided to callback
@@ -23210,7 +23219,7 @@ export namespace GtkSource {
             context: HoverContext,
             display: HoverDisplay,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         populate_async(
             context: HoverContext,
             display: HoverDisplay,
@@ -23222,7 +23231,7 @@ export namespace GtkSource {
             display: HoverDisplay,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         populate_finish(result: Gio.AsyncResult): boolean;
 
         // Virtual methods

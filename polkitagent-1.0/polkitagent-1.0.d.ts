@@ -197,7 +197,7 @@ export namespace PolkitAgent {
             cookie: string,
             identities: Polkit.Identity[],
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Called on a registered authentication agent (see
          * polkit_agent_listener_register()) when the user owning the session
@@ -271,7 +271,7 @@ export namespace PolkitAgent {
             identities: Polkit.Identity[],
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an authentication request from the PolicyKit daemon, see
          * polkit_agent_listener_initiate_authentication() for details.

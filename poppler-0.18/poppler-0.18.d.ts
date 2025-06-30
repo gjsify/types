@@ -3220,7 +3220,7 @@ export namespace Poppler {
          * @param signing_data a #PopplerSigningData
          * @param cancellable a #GCancellable
          */
-        sign(signing_data: SigningData, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        sign(signing_data: SigningData, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Sign #document using #signing_data.
          * @param signing_data a #PopplerSigningData
@@ -3242,7 +3242,7 @@ export namespace Poppler {
             signing_data: SigningData,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finish poppler_sign_document and get return status or error.
          * @param result a #GAsyncResult
@@ -3523,7 +3523,7 @@ export namespace Poppler {
         signature_validate_async(
             flags: SignatureValidationFlags | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<SignatureInfo>;
+        ): globalThis.Promise<SignatureInfo>;
         /**
          * Asynchronously validates the cryptographic signature contained in `signature_field`.
          * @param flags #PopplerSignatureValidationFlags flags influencing process of validation of the field signature
@@ -3545,7 +3545,7 @@ export namespace Poppler {
             flags: SignatureValidationFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<SignatureInfo> | void;
+        ): globalThis.Promise<SignatureInfo> | void;
         /**
          * Finishes validation of the cryptographic signature contained in `signature_field`.
          * See poppler_form_field_signature_validate_async().

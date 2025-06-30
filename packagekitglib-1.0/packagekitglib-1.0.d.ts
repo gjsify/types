@@ -2754,7 +2754,7 @@ export namespace PackageKitGlib {
          * @param transaction_id a transaction ID such as "/21_ebcbdaae_data"
          * @param cancellable a #GCancellable or %NULL
          */
-        get_progress_async(transaction_id: string, cancellable?: Gio.Cancellable | null): Promise<Progress>;
+        get_progress_async(transaction_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Progress>;
         /**
          * Find the current state of a transaction.
          * @param transaction_id a transaction ID such as "/21_ebcbdaae_data"
@@ -2776,7 +2776,7 @@ export namespace PackageKitGlib {
             transaction_id: string,
             cancellable?: Gio.Cancellable | null,
             callback_ready?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Progress> | void;
+        ): globalThis.Promise<Progress> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -3774,7 +3774,7 @@ export namespace PackageKitGlib {
          * @param action_id The action ID, for instance "org.freedesktop.PackageKit.install-untrusted"
          * @param cancellable a #GCancellable or %NULL
          */
-        can_authorize_async(action_id: string, cancellable?: Gio.Cancellable | null): Promise<AuthorizeEnum>;
+        can_authorize_async(action_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<AuthorizeEnum>;
         /**
          * We may want to know before we run a method if we are going to be denied,
          * accepted or challenged for authentication.
@@ -3798,7 +3798,7 @@ export namespace PackageKitGlib {
             action_id: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<AuthorizeEnum> | void;
+        ): globalThis.Promise<AuthorizeEnum> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -3809,7 +3809,7 @@ export namespace PackageKitGlib {
          * Gets the debugging state from the daemon.
          * @param cancellable a #GCancellable or %NULL
          */
-        get_daemon_state_async(cancellable?: Gio.Cancellable | null): Promise<string>;
+        get_daemon_state_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Gets the debugging state from the daemon.
          * @param cancellable a #GCancellable or %NULL
@@ -3827,7 +3827,7 @@ export namespace PackageKitGlib {
         get_daemon_state_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -3846,7 +3846,7 @@ export namespace PackageKitGlib {
          * Gets global properties from the daemon.
          * @param cancellable a #GCancellable or %NULL
          */
-        get_properties_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        get_properties_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Gets global properties from the daemon.
          * @param cancellable a #GCancellable or %NULL
@@ -3861,7 +3861,7 @@ export namespace PackageKitGlib {
         get_properties_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -3872,7 +3872,7 @@ export namespace PackageKitGlib {
          * Gets a transacton ID from the daemon.
          * @param cancellable a #GCancellable or %NULL
          */
-        get_tid_async(cancellable?: Gio.Cancellable | null): Promise<string>;
+        get_tid_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Gets a transacton ID from the daemon.
          * @param cancellable a #GCancellable or %NULL
@@ -3887,7 +3887,7 @@ export namespace PackageKitGlib {
         get_tid_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -3900,7 +3900,10 @@ export namespace PackageKitGlib {
          * @param role the role enum, e.g. %PK_ROLE_ENUM_GET_UPDATES
          * @param cancellable a #GCancellable or %NULL
          */
-        get_time_since_action_async(role: RoleEnum | null, cancellable?: Gio.Cancellable | null): Promise<number>;
+        get_time_since_action_async(
+            role: RoleEnum | null,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<number>;
         /**
          * We may want to know how long it has been since we refreshed the cache or
          * retrieved the update list.
@@ -3924,7 +3927,7 @@ export namespace PackageKitGlib {
             role: RoleEnum | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -3943,7 +3946,7 @@ export namespace PackageKitGlib {
          * Gets the transactions currently running in the daemon.
          * @param cancellable a #GCancellable or %NULL
          */
-        get_transaction_list_async(cancellable?: Gio.Cancellable | null): Promise<string[]>;
+        get_transaction_list_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[]>;
         /**
          * Gets the transactions currently running in the daemon.
          * @param cancellable a #GCancellable or %NULL
@@ -3961,7 +3964,7 @@ export namespace PackageKitGlib {
         get_transaction_list_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<string[]> | void;
+        ): globalThis.Promise<string[]> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -4030,7 +4033,11 @@ export namespace PackageKitGlib {
          * @param proxy_ftp a FTP proxy string such as "server.lan:8080"
          * @param cancellable a #GCancellable or %NULL
          */
-        set_proxy_async(proxy_http: string, proxy_ftp: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        set_proxy_async(
+            proxy_http: string,
+            proxy_ftp: string,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Set a proxy on the PK daemon
          *
@@ -4062,7 +4069,7 @@ export namespace PackageKitGlib {
             proxy_ftp: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -4081,7 +4088,7 @@ export namespace PackageKitGlib {
          * Suggests to the daemon that it should quit as soon as possible.
          * @param cancellable a #GCancellable or %NULL
          */
-        suggest_daemon_quit_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        suggest_daemon_quit_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Suggests to the daemon that it should quit as soon as possible.
          * @param cancellable a #GCancellable or %NULL
@@ -4099,7 +4106,7 @@ export namespace PackageKitGlib {
         suggest_daemon_quit_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult

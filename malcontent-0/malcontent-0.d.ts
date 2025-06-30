@@ -311,7 +311,7 @@ export namespace Malcontent {
             user_id: number,
             flags: ManagerGetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<AppFilter>;
+        ): globalThis.Promise<AppFilter>;
         /**
          * Asynchronously get a snapshot of the app filter settings for the given
          * `user_id`.
@@ -345,7 +345,7 @@ export namespace Malcontent {
             flags: ManagerGetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<AppFilter> | void;
+        ): globalThis.Promise<AppFilter> | void;
         /**
          * Finish an asynchronous operation to get the app filter for a user, started
          * with mct_manager_get_app_filter_async().
@@ -379,7 +379,7 @@ export namespace Malcontent {
             user_id: number,
             flags: ManagerGetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<SessionLimits>;
+        ): globalThis.Promise<SessionLimits>;
         /**
          * Asynchronously get a snapshot of the session limit settings for the given
          * `user_id`.
@@ -413,7 +413,7 @@ export namespace Malcontent {
             flags: ManagerGetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<SessionLimits> | void;
+        ): globalThis.Promise<SessionLimits> | void;
         /**
          * Finish an asynchronous operation to get the session limits for a user,
          * started with mct_manager_get_session_limits_async().
@@ -451,7 +451,7 @@ export namespace Malcontent {
             app_filter: AppFilter,
             flags: ManagerSetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously set the app filter settings for the given `user_id` to the
          * given `app_filter` instance. This will set all fields of the app filter.
@@ -489,7 +489,7 @@ export namespace Malcontent {
             flags: ManagerSetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finish an asynchronous operation to set the app filter for a user, started
          * with mct_manager_set_app_filter_async().
@@ -528,7 +528,7 @@ export namespace Malcontent {
             session_limits: SessionLimits,
             flags: ManagerSetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Asynchronously set the session limits settings for the given `user_id` to the
          * given `session_limits` instance.
@@ -568,7 +568,7 @@ export namespace Malcontent {
             flags: ManagerSetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finish an asynchronous operation to set the session limits for a user,
          * started with mct_manager_set_session_limits_async().

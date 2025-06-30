@@ -432,7 +432,7 @@ export namespace CMenu {
             uris?: string[] | null,
             context?: Gio.AppLaunchContext | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Async version of [method`Gio`.AppInfo.launch_uris].
          *
@@ -468,7 +468,7 @@ export namespace CMenu {
             context?: Gio.AppLaunchContext | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes a [method`Gio`.AppInfo.launch_uris_async] operation.
          * @param result the async result

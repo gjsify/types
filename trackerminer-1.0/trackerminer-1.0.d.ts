@@ -329,7 +329,7 @@ export namespace TrackerMiner {
          * time it is called.
          * @param cancellable a #GCancellable.
          */
-        next(cancellable?: Gio.Cancellable | null): Promise<DecoratorInfo>;
+        next(cancellable?: Gio.Cancellable | null): globalThis.Promise<DecoratorInfo>;
         /**
          * Processes the next resource in the queue to have extended metadata
          * extracted. If the item in the queue has been completed already, it
@@ -354,7 +354,7 @@ export namespace TrackerMiner {
         next(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<DecoratorInfo> | void;
+        ): globalThis.Promise<DecoratorInfo> | void;
         /**
          * Should be called in the callback function provided to
          * tracker_decorator_next() to return the result of the task be it an
@@ -4041,7 +4041,7 @@ export namespace TrackerMiner {
             flags: DirectoryFlags | null,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Enumerator>;
+        ): globalThis.Promise<Enumerator>;
         /**
          * Precisely the same operation as tracker_data_provider_begin()
          * is performing, but asynchronously.
@@ -4113,7 +4113,7 @@ export namespace TrackerMiner {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Enumerator> | void;
+        ): globalThis.Promise<Enumerator> | void;
         /**
          * Finishes the asynchronous operation started with
          * tracker_data_provider_begin_async().
@@ -4165,7 +4165,11 @@ export namespace TrackerMiner {
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
-        end_async(enumerator: Enumerator, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        end_async(
+            enumerator: Enumerator,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Precisely the same operation as tracker_data_provider_end()
          * is performing, but asynchronously.
@@ -4229,7 +4233,7 @@ export namespace TrackerMiner {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the asynchronous operation started with
          * tracker_data_provider_end_async().
@@ -4410,7 +4414,7 @@ export namespace TrackerMiner {
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
-        next_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<any | null>;
+        next_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<any | null>;
         /**
          * Precisely the same operation as tracker_enumerator_next()
          * is performing, but asynchronously.
@@ -4464,7 +4468,7 @@ export namespace TrackerMiner {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<any | null> | void;
+        ): globalThis.Promise<any | null> | void;
         /**
          * Finishes the asynchronous operation started with
          * tracker_enumerator_next_async().

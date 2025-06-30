@@ -298,7 +298,7 @@ export namespace Secret {
      * @param flags flags for which service functionality to ensure is initialized
      * @param cancellable optional cancellation object
      */
-    function backend_get(flags: BackendFlags | null, cancellable?: Gio.Cancellable | null): Promise<Backend>;
+    function backend_get(flags: BackendFlags | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<Backend>;
     /**
      * Get a #SecretBackend instance.
      *
@@ -334,7 +334,7 @@ export namespace Secret {
         flags: BackendFlags | null,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<BackendFlags | null> | null,
-    ): Promise<Backend> | void;
+    ): globalThis.Promise<Backend> | void;
     /**
      * Complete an asynchronous operation to get a #SecretBackend.
      * @param result the asynchronous result passed to the callback
@@ -378,7 +378,7 @@ export namespace Secret {
         schema: Schema | null,
         attributes: { [key: string]: any } | GLib.HashTable<string, string>,
         cancellable?: Gio.Cancellable | null,
-    ): Promise<boolean>;
+    ): globalThis.Promise<boolean>;
     /**
      * Remove unlocked matching passwords from the secret service.
      *
@@ -416,7 +416,7 @@ export namespace Secret {
         attributes: { [key: string]: any } | GLib.HashTable<string, string>,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Schema | null> | null,
-    ): Promise<boolean> | void;
+    ): globalThis.Promise<boolean> | void;
     /**
      * Remove unlocked matching passwords from the secret service.
      *
@@ -458,7 +458,7 @@ export namespace Secret {
         schema: Schema | null,
         attributes: { [key: string]: any } | GLib.HashTable<string, string>,
         cancellable?: Gio.Cancellable | null,
-    ): Promise<string>;
+    ): globalThis.Promise<string>;
     /**
      * Lookup a password in the secret service.
      *
@@ -496,7 +496,7 @@ export namespace Secret {
         attributes: { [key: string]: any } | GLib.HashTable<string, string>,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Schema | null> | null,
-    ): Promise<string> | void;
+    ): globalThis.Promise<string> | void;
     /**
      * Lookup a password in the secret service.
      *
@@ -538,7 +538,7 @@ export namespace Secret {
         attributes: { [key: string]: any } | GLib.HashTable<string, string>,
         flags: SearchFlags | null,
         cancellable?: Gio.Cancellable | null,
-    ): Promise<Retrievable[]>;
+    ): globalThis.Promise<Retrievable[]>;
     /**
      * Search for items in the secret service.
      *
@@ -576,7 +576,7 @@ export namespace Secret {
         flags: SearchFlags | null,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Schema | null> | null,
-    ): Promise<Retrievable[]> | void;
+    ): globalThis.Promise<Retrievable[]> | void;
     /**
      * Search for items in the secret service.
      *
@@ -631,7 +631,7 @@ export namespace Secret {
         label: string,
         password: string,
         cancellable?: Gio.Cancellable | null,
-    ): Promise<boolean>;
+    ): globalThis.Promise<boolean>;
     /**
      * Store a password in the secret service.
      *
@@ -691,7 +691,7 @@ export namespace Secret {
         password: string,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Schema | null> | null,
-    ): Promise<boolean> | void;
+    ): globalThis.Promise<boolean> | void;
     /**
      * Store a password in the secret service.
      *
@@ -1184,7 +1184,7 @@ export namespace Secret {
          * any prompts that show up.
          * @param cancellable optional cancellation object
          */
-        ['delete'](cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        ['delete'](cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Delete this collection.
          *
@@ -1207,7 +1207,7 @@ export namespace Secret {
         ['delete'](
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Complete operation to delete this collection.
          * @param result asynchronous result passed to the callback
@@ -1286,7 +1286,7 @@ export namespace Secret {
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          */
-        load_items(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        load_items(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Ensure that the #SecretCollection proxy has loaded all the items present
          * in the Secret Service.
@@ -1317,7 +1317,7 @@ export namespace Secret {
         load_items(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Complete an asynchronous operation to ensure that the #SecretCollection proxy
          * has loaded all the items present in the Secret Service.
@@ -1373,7 +1373,7 @@ export namespace Secret {
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             flags: SearchFlags | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Item[]>;
+        ): globalThis.Promise<Item[]>;
         /**
          * Search for items matching the `attributes` in the `collection`.
          * The `attributes` should be a table of string keys and string values.
@@ -1431,7 +1431,7 @@ export namespace Secret {
             flags: SearchFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Item[]> | void;
+        ): globalThis.Promise<Item[]> | void;
         /**
          * Complete asynchronous operation to search for items in a collection.
          * @param result asynchronous result passed to callback
@@ -1474,7 +1474,7 @@ export namespace Secret {
          * @param label a new label
          * @param cancellable optional cancellation object
          */
-        set_label(label: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        set_label(label: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Set the label of this collection.
          *
@@ -1500,7 +1500,7 @@ export namespace Secret {
             label: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Complete asynchronous operation to set the label of this collection.
          * @param result asynchronous result passed to callback
@@ -1559,7 +1559,7 @@ export namespace Secret {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -1651,7 +1651,7 @@ export namespace Secret {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -2506,7 +2506,7 @@ export namespace Secret {
          * any prompts that show up.
          * @param cancellable optional cancellation object
          */
-        ['delete'](cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        ['delete'](cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Delete this item.
          *
@@ -2529,7 +2529,7 @@ export namespace Secret {
         ['delete'](
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Complete asynchronous operation to delete the secret item.
          * @param result asynchronous result passed to the callback
@@ -2630,7 +2630,7 @@ export namespace Secret {
          * This function returns immediately and completes asynchronously.
          * @param cancellable optional cancellation object
          */
-        load_secret(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        load_secret(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Load the secret value of this item.
          *
@@ -2659,7 +2659,7 @@ export namespace Secret {
         load_secret(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Complete asynchronous operation to load the secret value of this item.
          *
@@ -2707,7 +2707,7 @@ export namespace Secret {
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Set the attributes of this item.
          *
@@ -2745,7 +2745,7 @@ export namespace Secret {
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Complete operation to set the attributes of this item.
          * @param result asynchronous result passed to the callback
@@ -2778,7 +2778,7 @@ export namespace Secret {
          * @param label a new label
          * @param cancellable optional cancellation object
          */
-        set_label(label: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        set_label(label: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Set the label of this item.
          *
@@ -2804,7 +2804,7 @@ export namespace Secret {
             label: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Complete asynchronous operation to set the label of this collection.
          * @param result asynchronous result passed to callback
@@ -2831,7 +2831,7 @@ export namespace Secret {
          * @param value a new secret value
          * @param cancellable optional cancellation object
          */
-        set_secret(value: Value, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        set_secret(value: Value, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Set the secret value of this item.
          *
@@ -2863,7 +2863,7 @@ export namespace Secret {
             value: Value,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Complete asynchronous operation to set the secret value of this item.
          * @param result asynchronous result passed to callback
@@ -2952,7 +2952,7 @@ export namespace Secret {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -3044,7 +3044,7 @@ export namespace Secret {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -3241,7 +3241,7 @@ export namespace Secret {
          * This function returns immediately and completes asynchronously.
          * @param cancellable optional cancellation object
          */
-        retrieve_secret(cancellable?: Gio.Cancellable | null): Promise<Value | null>;
+        retrieve_secret(cancellable?: Gio.Cancellable | null): globalThis.Promise<Value | null>;
         /**
          * Retrieve the secret value of this object.
          *
@@ -3266,7 +3266,7 @@ export namespace Secret {
         retrieve_secret(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Value | null> | void;
+        ): globalThis.Promise<Value | null> | void;
         /**
          * Complete asynchronous operation to retrieve the secret value of this object.
          * @param result asynchronous result passed to callback
@@ -3842,7 +3842,7 @@ export namespace Secret {
             window_id: string | null,
             return_type: GLib.VariantType,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<GLib.Variant>;
+        ): globalThis.Promise<GLib.Variant>;
         /**
          * Runs a prompt and performs the prompting.
          *
@@ -3888,7 +3888,7 @@ export namespace Secret {
             return_type: GLib.VariantType,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.Variant> | void;
+        ): globalThis.Promise<GLib.Variant> | void;
         /**
          * Complete asynchronous operation to run a prompt and perform the prompting.
          *
@@ -3989,7 +3989,7 @@ export namespace Secret {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -4081,7 +4081,7 @@ export namespace Secret {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -4998,7 +4998,7 @@ export namespace Secret {
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Remove unlocked items which match the attributes from the secret service.
          *
@@ -5038,7 +5038,7 @@ export namespace Secret {
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finish asynchronous operation to remove items from the secret
          * service.
@@ -5137,7 +5137,7 @@ export namespace Secret {
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          */
-        ensure_session(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        ensure_session(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Ensure that the #SecretService proxy has established a session with the
          * Secret Service.
@@ -5172,7 +5172,7 @@ export namespace Secret {
         ensure_session(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finish an asynchronous operation to ensure that the #SecretService proxy
          * has established a session with the Secret Service.
@@ -5263,7 +5263,7 @@ export namespace Secret {
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          */
-        load_collections(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        load_collections(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Ensure that the #SecretService proxy has loaded all the collections present
          * in the Secret Service.
@@ -5296,7 +5296,7 @@ export namespace Secret {
         load_collections(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Complete an asynchronous operation to ensure that the #SecretService proxy
          * has loaded all the collections present in the Secret Service.
@@ -5335,7 +5335,10 @@ export namespace Secret {
          * @param objects the items or collections to lock
          * @param cancellable optional cancellation object
          */
-        lock(objects: Gio.DBusProxy[], cancellable?: Gio.Cancellable | null): Promise<[number, Gio.DBusProxy[] | null]>;
+        lock(
+            objects: Gio.DBusProxy[],
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<[number, Gio.DBusProxy[] | null]>;
         /**
          * Lock items or collections in the secret service.
          *
@@ -5377,7 +5380,7 @@ export namespace Secret {
             objects: Gio.DBusProxy[],
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[number, Gio.DBusProxy[] | null]> | void;
+        ): globalThis.Promise<[number, Gio.DBusProxy[] | null]> | void;
         /**
          * Complete asynchronous operation to lock items or collections in the secret
          * service.
@@ -5422,7 +5425,7 @@ export namespace Secret {
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Value>;
+        ): globalThis.Promise<Value>;
         /**
          * Lookup a secret value in the secret service.
          *
@@ -5462,7 +5465,7 @@ export namespace Secret {
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Value> | void;
+        ): globalThis.Promise<Value> | void;
         /**
          * Finish asynchronous operation to lookup a secret value in the secret service.
          *
@@ -5508,7 +5511,7 @@ export namespace Secret {
             prompt: Prompt,
             return_type?: GLib.VariantType | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<GLib.Variant>;
+        ): globalThis.Promise<GLib.Variant>;
         /**
          * Perform prompting for a [class`Prompt]`.
          *
@@ -5548,7 +5551,7 @@ export namespace Secret {
             return_type?: GLib.VariantType | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<GLib.Variant> | void;
+        ): globalThis.Promise<GLib.Variant> | void;
         /**
          * Complete asynchronous operation to perform prompting for a [class`Prompt]`.
          *
@@ -5610,7 +5613,7 @@ export namespace Secret {
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             flags: SearchFlags | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<Item[]>;
+        ): globalThis.Promise<Item[]>;
         /**
          * Search for items matching the `attributes`.
          *
@@ -5678,7 +5681,7 @@ export namespace Secret {
             flags: SearchFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Item[]> | void;
+        ): globalThis.Promise<Item[]> | void;
         /**
          * Complete asynchronous operation to search for items.
          * @param result asynchronous result passed to callback
@@ -5738,7 +5741,7 @@ export namespace Secret {
             alias: string,
             collection?: Collection | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Assign a collection to this alias.
          *
@@ -5778,7 +5781,7 @@ export namespace Secret {
             collection?: Collection | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finish an asynchronous operation to assign a collection to an alias.
          * @param result asynchronous result passed to callback
@@ -5829,7 +5832,7 @@ export namespace Secret {
             label: string,
             value: Value,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Store a secret value in the secret service.
          *
@@ -5895,7 +5898,7 @@ export namespace Secret {
             value: Value,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finish asynchronous operation to store a secret value in the secret service.
          * @param result the asynchronous result passed to the callback
@@ -5953,7 +5956,7 @@ export namespace Secret {
         unlock(
             objects: Gio.DBusProxy[],
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[number, Gio.DBusProxy[] | null]>;
+        ): globalThis.Promise<[number, Gio.DBusProxy[] | null]>;
         /**
          * Unlock items or collections in the secret service.
          *
@@ -5995,7 +5998,7 @@ export namespace Secret {
             objects: Gio.DBusProxy[],
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[number, Gio.DBusProxy[] | null]> | void;
+        ): globalThis.Promise<[number, Gio.DBusProxy[] | null]> | void;
         /**
          * Complete asynchronous operation to unlock items or collections in the secret
          * service.
@@ -6072,7 +6075,7 @@ export namespace Secret {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -6164,7 +6167,7 @@ export namespace Secret {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -7233,7 +7236,7 @@ export namespace Secret {
          * This function returns immediately and completes asynchronously.
          * @param cancellable optional cancellation object
          */
-        retrieve_secret(cancellable?: Gio.Cancellable | null): Promise<Value | null>;
+        retrieve_secret(cancellable?: Gio.Cancellable | null): globalThis.Promise<Value | null>;
         /**
          * Retrieve the secret value of this object.
          *
@@ -7258,7 +7261,7 @@ export namespace Secret {
         retrieve_secret(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<Value | null> | void;
+        ): globalThis.Promise<Value | null> | void;
         /**
          * Complete asynchronous operation to retrieve the secret value of this object.
          * @param result asynchronous result passed to callback
