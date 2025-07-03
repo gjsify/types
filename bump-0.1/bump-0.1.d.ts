@@ -2224,17 +2224,6 @@ export namespace Bump {
     type QueueIface = typeof Queue;
     type ThreadingIface = typeof Threading;
     namespace Queue {
-        /**
-         * Interface for implementing Queue.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_process(wait: GLib.TimeSpan): boolean;
-            vfunc_get_length(): number;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2246,7 +2235,7 @@ export namespace Bump {
         $gtype: GObject.GType<Queue>;
         prototype: Queue;
     }
-    interface Queue extends GObject.Object, Queue.Interface {
+    interface Queue extends GObject.Object {
         // Properties
 
         get length(): number;
@@ -2255,6 +2244,11 @@ export namespace Bump {
 
         process(wait: GLib.TimeSpan): boolean;
         get_length(): number;
+
+        // Virtual methods
+
+        vfunc_process(wait: GLib.TimeSpan): boolean;
+        vfunc_get_length(): number;
     }
 
     export const Queue: QueueNamespace & {
@@ -2262,16 +2256,6 @@ export namespace Bump {
     };
 
     namespace Threading {
-        /**
-         * Interface for implementing Threading.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_spawn(max_new_threads: number): number;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2281,7 +2265,7 @@ export namespace Bump {
         $gtype: GObject.GType<Threading>;
         prototype: Threading;
     }
-    interface Threading extends GObject.Object, Threading.Interface {
+    interface Threading extends GObject.Object {
         // Methods
 
         get_max_threads(): number;
@@ -2293,6 +2277,10 @@ export namespace Bump {
         increase_max_threads(new_max_threads: number): void;
         run_task(func: GLib.SourceFunc): boolean;
         spawn(max_new_threads: number): number;
+
+        // Virtual methods
+
+        vfunc_spawn(max_new_threads: number): number;
     }
 
     export const Threading: ThreadingNamespace & {

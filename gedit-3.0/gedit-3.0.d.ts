@@ -9038,23 +9038,6 @@ export namespace Gedit {
     }
 
     namespace AppActivatable {
-        /**
-         * Interface for implementing AppActivatable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Activates the extension on the application.
-             */
-            vfunc_activate(): void;
-            /**
-             * Deactivates the extension from the application.
-             */
-            vfunc_deactivate(): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9066,7 +9049,7 @@ export namespace Gedit {
         $gtype: GObject.GType<AppActivatable>;
         prototype: AppActivatable;
     }
-    interface AppActivatable extends GObject.Object, AppActivatable.Interface {
+    interface AppActivatable extends GObject.Object {
         // Properties
 
         /**
@@ -9093,6 +9076,17 @@ export namespace Gedit {
          * @returns a #GeditMenuExtension for the specific section or %NULL if not found.
          */
         extend_menu(extension_point: string): MenuExtension;
+
+        // Virtual methods
+
+        /**
+         * Activates the extension on the application.
+         */
+        vfunc_activate(): void;
+        /**
+         * Deactivates the extension from the application.
+         */
+        vfunc_deactivate(): void;
     }
 
     export const AppActivatable: AppActivatableNamespace & {
@@ -9100,23 +9094,6 @@ export namespace Gedit {
     };
 
     namespace ViewActivatable {
-        /**
-         * Interface for implementing ViewActivatable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Activates the extension on the window property.
-             */
-            vfunc_activate(): void;
-            /**
-             * Deactivates the extension on the window property.
-             */
-            vfunc_deactivate(): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9128,7 +9105,7 @@ export namespace Gedit {
         $gtype: GObject.GType<ViewActivatable>;
         prototype: ViewActivatable;
     }
-    interface ViewActivatable extends GObject.Object, ViewActivatable.Interface {
+    interface ViewActivatable extends GObject.Object {
         // Properties
 
         /**
@@ -9147,6 +9124,17 @@ export namespace Gedit {
          * Deactivates the extension on the window property.
          */
         deactivate(): void;
+
+        // Virtual methods
+
+        /**
+         * Activates the extension on the window property.
+         */
+        vfunc_activate(): void;
+        /**
+         * Deactivates the extension on the window property.
+         */
+        vfunc_deactivate(): void;
     }
 
     export const ViewActivatable: ViewActivatableNamespace & {
@@ -9154,28 +9142,6 @@ export namespace Gedit {
     };
 
     namespace WindowActivatable {
-        /**
-         * Interface for implementing WindowActivatable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Activates the extension on the window property.
-             */
-            vfunc_activate(): void;
-            /**
-             * Deactivates the extension on the window property.
-             */
-            vfunc_deactivate(): void;
-            /**
-             * Triggers an update of the extension internal state to take into account
-             * state changes in the window, due to some event or user action.
-             */
-            vfunc_update_state(): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9187,7 +9153,7 @@ export namespace Gedit {
         $gtype: GObject.GType<WindowActivatable>;
         prototype: WindowActivatable;
     }
-    interface WindowActivatable extends GObject.Object, WindowActivatable.Interface {
+    interface WindowActivatable extends GObject.Object {
         // Properties
 
         /**
@@ -9211,6 +9177,22 @@ export namespace Gedit {
          * state changes in the window, due to some event or user action.
          */
         update_state(): void;
+
+        // Virtual methods
+
+        /**
+         * Activates the extension on the window property.
+         */
+        vfunc_activate(): void;
+        /**
+         * Deactivates the extension on the window property.
+         */
+        vfunc_deactivate(): void;
+        /**
+         * Triggers an update of the extension internal state to take into account
+         * state changes in the window, due to some event or user action.
+         */
+        vfunc_update_state(): void;
     }
 
     export const WindowActivatable: WindowActivatableNamespace & {

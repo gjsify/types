@@ -20628,23 +20628,6 @@ export namespace WebKit2 {
     }
 
     namespace PermissionRequest {
-        /**
-         * Interface for implementing PermissionRequest.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Allow the action which triggered this request.
-             */
-            vfunc_allow(): void;
-            /**
-             * Deny the action which triggered this request.
-             */
-            vfunc_deny(): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -20654,7 +20637,7 @@ export namespace WebKit2 {
         $gtype: GObject.GType<PermissionRequest>;
         prototype: PermissionRequest;
     }
-    interface PermissionRequest extends GObject.Object, PermissionRequest.Interface {
+    interface PermissionRequest extends GObject.Object {
         // Methods
 
         /**
@@ -20665,6 +20648,17 @@ export namespace WebKit2 {
          * Deny the action which triggered this request.
          */
         deny(): void;
+
+        // Virtual methods
+
+        /**
+         * Allow the action which triggered this request.
+         */
+        vfunc_allow(): void;
+        /**
+         * Deny the action which triggered this request.
+         */
+        vfunc_deny(): void;
     }
 
     export const PermissionRequest: PermissionRequestNamespace & {

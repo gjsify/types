@@ -40688,20 +40688,6 @@ export namespace Gd {
     };
 
     namespace MainViewGeneric {
-        /**
-         * Interface for implementing MainViewGeneric.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_model(): Gtk.TreeModel;
-            vfunc_get_path_at_pos(x: number, y: number): Gtk.TreePath;
-            vfunc_scroll_to_path(path: Gtk.TreePath): void;
-            vfunc_set_model(model?: Gtk.TreeModel | null): void;
-            vfunc_set_selection_mode(selection_mode: boolean): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {}
@@ -40711,7 +40697,7 @@ export namespace Gd {
         $gtype: GObject.GType<MainViewGeneric>;
         prototype: MainViewGeneric;
     }
-    interface MainViewGeneric extends Gtk.Widget, MainViewGeneric.Interface {
+    interface MainViewGeneric extends Gtk.Widget {
         // Methods
 
         get_model(): Gtk.TreeModel;
@@ -40722,6 +40708,14 @@ export namespace Gd {
         set_rubberband_range(start: Gtk.TreePath, end: Gtk.TreePath): void;
         set_selection_mode(selection_mode: boolean): void;
         unselect_all(): void;
+
+        // Virtual methods
+
+        vfunc_get_model(): Gtk.TreeModel;
+        vfunc_get_path_at_pos(x: number, y: number): Gtk.TreePath;
+        vfunc_scroll_to_path(path: Gtk.TreePath): void;
+        vfunc_set_model(model?: Gtk.TreeModel | null): void;
+        vfunc_set_selection_mode(selection_mode: boolean): void;
     }
 
     export const MainViewGeneric: MainViewGenericNamespace & {

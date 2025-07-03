@@ -7060,52 +7060,6 @@ export namespace Secret {
     }
 
     namespace Backend {
-        /**
-         * Interface for implementing Backend.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends Gio.AsyncInitable.Interface {
-            // Virtual methods
-
-            vfunc_clear(
-                schema: Schema,
-                attributes: { [key: string]: any } | GLib.HashTable<any, any>,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            vfunc_clear_finish(result: Gio.AsyncResult): boolean;
-            vfunc_ensure_for_flags(
-                flags: BackendFlags,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            vfunc_ensure_for_flags_finish(result: Gio.AsyncResult): boolean;
-            vfunc_lookup(
-                schema: Schema,
-                attributes: { [key: string]: any } | GLib.HashTable<any, any>,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            vfunc_lookup_finish(result: Gio.AsyncResult): Value;
-            vfunc_search(
-                schema: Schema,
-                attributes: { [key: string]: any } | GLib.HashTable<any, any>,
-                flags: SearchFlags,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            vfunc_store(
-                schema: Schema,
-                attributes: { [key: string]: any } | GLib.HashTable<any, any>,
-                collection: string,
-                label: string,
-                value: Value,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            vfunc_store_finish(result: Gio.AsyncResult): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.AsyncInitable.ConstructorProps<Backend> {
@@ -7141,7 +7095,7 @@ export namespace Secret {
          */
         get_finish(result: Gio.AsyncResult): Backend;
     }
-    interface Backend extends Gio.AsyncInitable, Backend.Interface {
+    interface Backend extends Gio.AsyncInitable {
         // Properties
 
         /**
@@ -7149,6 +7103,46 @@ export namespace Secret {
          * been initialized.
          */
         get flags(): ServiceFlags;
+
+        // Virtual methods
+
+        vfunc_clear(
+            schema: Schema,
+            attributes: { [key: string]: any } | GLib.HashTable<any, any>,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        vfunc_clear_finish(result: Gio.AsyncResult): boolean;
+        vfunc_ensure_for_flags(
+            flags: BackendFlags,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        vfunc_ensure_for_flags_finish(result: Gio.AsyncResult): boolean;
+        vfunc_lookup(
+            schema: Schema,
+            attributes: { [key: string]: any } | GLib.HashTable<any, any>,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        vfunc_lookup_finish(result: Gio.AsyncResult): Value;
+        vfunc_search(
+            schema: Schema,
+            attributes: { [key: string]: any } | GLib.HashTable<any, any>,
+            flags: SearchFlags,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        vfunc_store(
+            schema: Schema,
+            attributes: { [key: string]: any } | GLib.HashTable<any, any>,
+            collection: string,
+            label: string,
+            value: Value,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        vfunc_store_finish(result: Gio.AsyncResult): boolean;
     }
 
     export const Backend: BackendNamespace & {
@@ -7156,34 +7150,6 @@ export namespace Secret {
     };
 
     namespace Retrievable {
-        /**
-         * Interface for implementing Retrievable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Retrieve the secret value of this object.
-             *
-             * Each retrievable object has a single secret which might be a
-             * password or some other secret binary value.
-             *
-             * This function returns immediately and completes asynchronously.
-             * @param cancellable optional cancellation object
-             * @param callback called when the operation completes
-             */
-            vfunc_retrieve_secret(
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Complete asynchronous operation to retrieve the secret value of this object.
-             * @param result asynchronous result passed to callback
-             */
-            vfunc_retrieve_secret_finish(result: Gio.AsyncResult): Value | null;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7198,7 +7164,7 @@ export namespace Secret {
         $gtype: GObject.GType<Retrievable>;
         prototype: Retrievable;
     }
-    interface Retrievable extends GObject.Object, Retrievable.Interface {
+    interface Retrievable extends GObject.Object {
         // Properties
 
         /**
@@ -7314,6 +7280,28 @@ export namespace Secret {
          * @returns the secret value which should be   released with [method@Value.unref], or %NULL
          */
         retrieve_secret_sync(cancellable?: Gio.Cancellable | null): Value | null;
+
+        // Virtual methods
+
+        /**
+         * Retrieve the secret value of this object.
+         *
+         * Each retrievable object has a single secret which might be a
+         * password or some other secret binary value.
+         *
+         * This function returns immediately and completes asynchronously.
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        vfunc_retrieve_secret(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Complete asynchronous operation to retrieve the secret value of this object.
+         * @param result asynchronous result passed to callback
+         */
+        vfunc_retrieve_secret_finish(result: Gio.AsyncResult): Value | null;
     }
 
     export const Retrievable: RetrievableNamespace & {

@@ -8431,52 +8431,6 @@ export namespace EBackend {
     }
 
     namespace OAuth2Support {
-        /**
-         * Interface for implementing OAuth2Support.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Asynchronously obtains the OAuth 2.0 access token for `source` along
-             * with its expiry in seconds from the current time (or 0 if unknown).
-             *
-             * When the operation is finished, `callback` will be called.  You can then
-             * call e_oauth2_support_get_access_token_finish() to get the result of the
-             * operation.
-             * @param source an #ESource
-             * @param cancellable optional #GCancellable object, or %NULL
-             * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-             */
-            vfunc_get_access_token(
-                source: EDataServer.Source,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes the operation started with e_oauth2_support_get_access_token().
-             *
-             * Free the returned access token with g_free() when finished with it.
-             * If an error occurred, the function will set `error` and return %FALSE.
-             * @param result a #GAsyncResult
-             */
-            vfunc_get_access_token_finish(result: Gio.AsyncResult): [boolean, string, number];
-            /**
-             * Obtains the OAuth 2.0 access token for `source` along with its expiry
-             * in seconds from the current time (or 0 if unknown).
-             *
-             * Free the returned access token with g_free() when finished with it.
-             * If an error occurs, the function will set `error` and return %FALSE.
-             * @param source an #ESource
-             * @param cancellable optional #GCancellable object, or %NULL
-             */
-            vfunc_get_access_token_sync(
-                source: EDataServer.Source,
-                cancellable: Gio.Cancellable | null,
-            ): [boolean, string, number];
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -8486,7 +8440,7 @@ export namespace EBackend {
         $gtype: GObject.GType<OAuth2Support>;
         prototype: OAuth2Support;
     }
-    interface OAuth2Support extends GObject.Object, OAuth2Support.Interface {
+    interface OAuth2Support extends GObject.Object {
         // Methods
 
         /**
@@ -8555,6 +8509,46 @@ export namespace EBackend {
          * @returns %TRUE on success, %FALSE on failure
          */
         get_access_token_sync(
+            source: EDataServer.Source,
+            cancellable: Gio.Cancellable | null,
+        ): [boolean, string, number];
+
+        // Virtual methods
+
+        /**
+         * Asynchronously obtains the OAuth 2.0 access token for `source` along
+         * with its expiry in seconds from the current time (or 0 if unknown).
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_oauth2_support_get_access_token_finish() to get the result of the
+         * operation.
+         * @param source an #ESource
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        vfunc_get_access_token(
+            source: EDataServer.Source,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes the operation started with e_oauth2_support_get_access_token().
+         *
+         * Free the returned access token with g_free() when finished with it.
+         * If an error occurred, the function will set `error` and return %FALSE.
+         * @param result a #GAsyncResult
+         */
+        vfunc_get_access_token_finish(result: Gio.AsyncResult): [boolean, string, number];
+        /**
+         * Obtains the OAuth 2.0 access token for `source` along with its expiry
+         * in seconds from the current time (or 0 if unknown).
+         *
+         * Free the returned access token with g_free() when finished with it.
+         * If an error occurs, the function will set `error` and return %FALSE.
+         * @param source an #ESource
+         * @param cancellable optional #GCancellable object, or %NULL
+         */
+        vfunc_get_access_token_sync(
             source: EDataServer.Source,
             cancellable: Gio.Cancellable | null,
         ): [boolean, string, number];

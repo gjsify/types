@@ -3016,20 +3016,6 @@ export namespace Granite {
     }
 
     namespace ServicesContract {
-        /**
-         * Interface for implementing ServicesContract.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_display_name(): string;
-            vfunc_get_description(): string;
-            vfunc_get_icon(): Gio.Icon;
-            vfunc_execute_with_file(file: Gio.File): void;
-            vfunc_execute_with_files(files: Gio.File[]): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3039,7 +3025,7 @@ export namespace Granite {
         $gtype: GObject.GType<ServicesContract>;
         prototype: ServicesContract;
     }
-    interface ServicesContract extends GObject.Object, ServicesContract.Interface {
+    interface ServicesContract extends GObject.Object {
         // Methods
 
         get_display_name(): string;
@@ -3047,6 +3033,14 @@ export namespace Granite {
         get_icon(): Gio.Icon;
         execute_with_file(file: Gio.File): void;
         execute_with_files(files: Gio.File[]): void;
+
+        // Virtual methods
+
+        vfunc_get_display_name(): string;
+        vfunc_get_description(): string;
+        vfunc_get_icon(): Gio.Icon;
+        vfunc_execute_with_file(file: Gio.File): void;
+        vfunc_execute_with_files(files: Gio.File[]): void;
     }
 
     export const ServicesContract: ServicesContractNamespace & {
@@ -3054,17 +3048,6 @@ export namespace Granite {
     };
 
     namespace ServicesSettingsSerializable {
-        /**
-         * Interface for implementing ServicesSettingsSerializable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_settings_serialize(): string;
-            vfunc_settings_deserialize(s: string): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3074,11 +3057,16 @@ export namespace Granite {
         $gtype: GObject.GType<ServicesSettingsSerializable>;
         prototype: ServicesSettingsSerializable;
     }
-    interface ServicesSettingsSerializable extends GObject.Object, ServicesSettingsSerializable.Interface {
+    interface ServicesSettingsSerializable extends GObject.Object {
         // Methods
 
         settings_serialize(): string;
         settings_deserialize(s: string): void;
+
+        // Virtual methods
+
+        vfunc_settings_serialize(): string;
+        vfunc_settings_deserialize(s: string): void;
     }
 
     export const ServicesSettingsSerializable: ServicesSettingsSerializableNamespace & {

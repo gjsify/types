@@ -40508,18 +40508,6 @@ export namespace GXml {
     type IXsdListTypeRestrictionEnumerationsIface = typeof IXsdListTypeRestrictionEnumerations;
     type IXsdListTypeRestrictionWhiteSpacesIface = typeof IXsdListTypeRestrictionWhiteSpaces;
     namespace Attribute {
-        /**
-         * Interface for implementing Attribute.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_namespace(): Namespace;
-            vfunc_set_namespace(value: Namespace): void;
-            vfunc_get_prefix(): string;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -40532,7 +40520,7 @@ export namespace GXml {
         $gtype: GObject.GType<Attribute>;
         prototype: Attribute;
     }
-    interface Attribute extends GObject.Object, Attribute.Interface {
+    interface Attribute extends GObject.Object {
         // Properties
 
         get namespace(): Namespace;
@@ -40544,6 +40532,12 @@ export namespace GXml {
         get_namespace(): Namespace;
         set_namespace(value: Namespace): void;
         get_prefix(): string;
+
+        // Virtual methods
+
+        vfunc_get_namespace(): Namespace;
+        vfunc_set_namespace(value: Namespace): void;
+        vfunc_get_prefix(): string;
     }
 
     export const Attribute: AttributeNamespace & {
@@ -40551,17 +40545,6 @@ export namespace GXml {
     };
 
     namespace Comment {
-        /**
-         * Interface for implementing Comment.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_str(): string;
-            vfunc_set_str(value: string): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -40573,7 +40556,7 @@ export namespace GXml {
         $gtype: GObject.GType<Comment>;
         prototype: Comment;
     }
-    interface Comment extends GObject.Object, Comment.Interface {
+    interface Comment extends GObject.Object {
         // Properties
 
         get str(): string;
@@ -40583,6 +40566,11 @@ export namespace GXml {
 
         get_str(): string;
         set_str(value: string): void;
+
+        // Virtual methods
+
+        vfunc_get_str(): string;
+        vfunc_set_str(value: string): void;
     }
 
     export const Comment: CommentNamespace & {
@@ -40590,16 +40578,6 @@ export namespace GXml {
     };
 
     namespace CDATA {
-        /**
-         * Interface for implementing CDATA.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_str(): string;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -40611,7 +40589,7 @@ export namespace GXml {
         $gtype: GObject.GType<CDATA>;
         prototype: CDATA;
     }
-    interface CDATA extends GObject.Object, CDATA.Interface {
+    interface CDATA extends GObject.Object {
         // Properties
 
         get str(): string;
@@ -40619,6 +40597,10 @@ export namespace GXml {
         // Methods
 
         get_str(): string;
+
+        // Virtual methods
+
+        vfunc_get_str(): string;
     }
 
     export const CDATA: CDATANamespace & {
@@ -40626,17 +40608,6 @@ export namespace GXml {
     };
 
     namespace Character {
-        /**
-         * Interface for implementing Character.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_str(): string;
-            vfunc_set_str(value: string): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -40648,7 +40619,7 @@ export namespace GXml {
         $gtype: GObject.GType<Character>;
         prototype: Character;
     }
-    interface Character extends GObject.Object, Character.Interface {
+    interface Character extends GObject.Object {
         // Properties
 
         get str(): string;
@@ -40658,6 +40629,11 @@ export namespace GXml {
 
         get_str(): string;
         set_str(value: string): void;
+
+        // Virtual methods
+
+        vfunc_get_str(): string;
+        vfunc_set_str(value: string): void;
     }
 
     export const Character: CharacterNamespace & {
@@ -40665,33 +40641,6 @@ export namespace GXml {
     };
 
     namespace Document {
-        /**
-         * Interface for implementing Document.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_create_element(name: string): Node;
-            vfunc_create_text(text: string): Node;
-            vfunc_create_comment(text: string): Node;
-            vfunc_create_cdata(text: string): Node;
-            vfunc_create_pi(target: string, data: string): Node;
-            vfunc_save(cancellable: Gio.Cancellable): boolean;
-            vfunc_save_as(f: Gio.File, cancellable: Gio.Cancellable): boolean;
-            vfunc_get_indent(): boolean;
-            vfunc_set_indent(value: boolean): void;
-            vfunc_get_ns_top(): boolean;
-            vfunc_set_ns_top(value: boolean): void;
-            vfunc_get_prefix_default_ns(): boolean;
-            vfunc_set_prefix_default_ns(value: boolean): void;
-            vfunc_get_backup(): boolean;
-            vfunc_set_backup(value: boolean): void;
-            vfunc_get_root(): Node;
-            vfunc_get_file(): Gio.File;
-            vfunc_set_file(value: Gio.File): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -40714,7 +40663,7 @@ export namespace GXml {
         new_default_for_path(path: string): Document;
         new_default_for_file(f: Gio.File): Document;
     }
-    interface Document extends GObject.Object, Document.Interface {
+    interface Document extends GObject.Object {
         // Properties
 
         get indent(): boolean;
@@ -40753,6 +40702,27 @@ export namespace GXml {
         get_root(): Node;
         get_file(): Gio.File;
         set_file(value: Gio.File): void;
+
+        // Virtual methods
+
+        vfunc_create_element(name: string): Node;
+        vfunc_create_text(text: string): Node;
+        vfunc_create_comment(text: string): Node;
+        vfunc_create_cdata(text: string): Node;
+        vfunc_create_pi(target: string, data: string): Node;
+        vfunc_save(cancellable: Gio.Cancellable): boolean;
+        vfunc_save_as(f: Gio.File, cancellable: Gio.Cancellable): boolean;
+        vfunc_get_indent(): boolean;
+        vfunc_set_indent(value: boolean): void;
+        vfunc_get_ns_top(): boolean;
+        vfunc_set_ns_top(value: boolean): void;
+        vfunc_get_prefix_default_ns(): boolean;
+        vfunc_set_prefix_default_ns(value: boolean): void;
+        vfunc_get_backup(): boolean;
+        vfunc_set_backup(value: boolean): void;
+        vfunc_get_root(): Node;
+        vfunc_get_file(): Gio.File;
+        vfunc_set_file(value: Gio.File): void;
     }
 
     export const Document: DocumentNamespace & {
@@ -40776,25 +40746,6 @@ export namespace GXml {
     };
 
     namespace Element {
-        /**
-         * Interface for implementing Element.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_normalize(): void;
-            vfunc_set_attr(name: string, value: string): void;
-            vfunc_get_attr(name: string): Node;
-            vfunc_remove_attr(name: string): void;
-            vfunc_remove_ns_attr(name: string, uri: string): void;
-            vfunc_set_ns_attr(ns: string, name: string, value: string): void;
-            vfunc_get_ns_attr(name: string, uri: string): Node;
-            vfunc_get_tag_name(): string;
-            vfunc_get_content(): string;
-            vfunc_set_content(value: string): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -40808,7 +40759,7 @@ export namespace GXml {
         $gtype: GObject.GType<Element>;
         prototype: Element;
     }
-    interface Element extends GObject.Object, Element.Interface {
+    interface Element extends GObject.Object {
         // Properties
 
         get tag_name(): string;
@@ -40828,6 +40779,19 @@ export namespace GXml {
         get_tag_name(): string;
         get_content(): string;
         set_content(value: string): void;
+
+        // Virtual methods
+
+        vfunc_normalize(): void;
+        vfunc_set_attr(name: string, value: string): void;
+        vfunc_get_attr(name: string): Node;
+        vfunc_remove_attr(name: string): void;
+        vfunc_remove_ns_attr(name: string, uri: string): void;
+        vfunc_set_ns_attr(ns: string, name: string, value: string): void;
+        vfunc_get_ns_attr(name: string, uri: string): Node;
+        vfunc_get_tag_name(): string;
+        vfunc_get_content(): string;
+        vfunc_set_content(value: string): void;
     }
 
     export const Element: ElementNamespace & {
@@ -40835,17 +40799,6 @@ export namespace GXml {
     };
 
     namespace Namespace {
-        /**
-         * Interface for implementing Namespace.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_uri(): string;
-            vfunc_get_prefix(): string;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -40858,7 +40811,7 @@ export namespace GXml {
         $gtype: GObject.GType<Namespace>;
         prototype: Namespace;
     }
-    interface Namespace extends GObject.Object, Namespace.Interface {
+    interface Namespace extends GObject.Object {
         // Properties
 
         get uri(): string;
@@ -40868,6 +40821,11 @@ export namespace GXml {
 
         get_uri(): string;
         get_prefix(): string;
+
+        // Virtual methods
+
+        vfunc_get_uri(): string;
+        vfunc_get_prefix(): string;
     }
 
     export const Namespace: NamespaceNamespace & {
@@ -40875,32 +40833,6 @@ export namespace GXml {
     };
 
     namespace Node {
-        /**
-         * Interface for implementing Node.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get(key: string): Node;
-            vfunc_get_elements_by_property_value(property: string, value: string): ElementList;
-            vfunc_get_elements_by_name(name: string): ElementList;
-            vfunc_get_elements_by_name_ns(name: string, ns: string): ElementList;
-            vfunc_to_string(): string;
-            vfunc_set_namespace(uri: string, prefix: string): boolean;
-            vfunc_ns_prefix(): string;
-            vfunc_ns_uri(): string;
-            vfunc_get_namespaces(): Gee.List;
-            vfunc_get_children_nodes(): Gee.BidirList;
-            vfunc_get_attrs(): Gee.Map;
-            vfunc_get_name(): string;
-            vfunc_get_value(): string;
-            vfunc_set_value(value: string): void;
-            vfunc_get_type_node(): NodeType;
-            vfunc_get_document(): Document;
-            vfunc_get_parent(): Node;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -40923,7 +40855,7 @@ export namespace GXml {
 
         copy(doc: Document, node: Node, source: Node, deep: boolean): boolean;
     }
-    interface Node extends GObject.Object, Node.Interface {
+    interface Node extends GObject.Object {
         // Properties
 
         get namespaces(): Gee.List;
@@ -40957,6 +40889,26 @@ export namespace GXml {
         get_type_node(): NodeType;
         get_document(): Document;
         get_parent(): Node;
+
+        // Virtual methods
+
+        vfunc_get(key: string): Node;
+        vfunc_get_elements_by_property_value(property: string, value: string): ElementList;
+        vfunc_get_elements_by_name(name: string): ElementList;
+        vfunc_get_elements_by_name_ns(name: string, ns: string): ElementList;
+        vfunc_to_string(): string;
+        vfunc_set_namespace(uri: string, prefix: string): boolean;
+        vfunc_ns_prefix(): string;
+        vfunc_ns_uri(): string;
+        vfunc_get_namespaces(): Gee.List;
+        vfunc_get_children_nodes(): Gee.BidirList;
+        vfunc_get_attrs(): Gee.Map;
+        vfunc_get_name(): string;
+        vfunc_get_value(): string;
+        vfunc_set_value(value: string): void;
+        vfunc_get_type_node(): NodeType;
+        vfunc_get_document(): Document;
+        vfunc_get_parent(): Node;
     }
 
     export const Node: NodeNamespace & {
@@ -40964,17 +40916,6 @@ export namespace GXml {
     };
 
     namespace Notation {
-        /**
-         * Interface for implementing Notation.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_public_id(): string;
-            vfunc_get_external_id(): string;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -40989,7 +40930,7 @@ export namespace GXml {
         $gtype: GObject.GType<Notation>;
         prototype: Notation;
     }
-    interface Notation extends GObject.Object, Notation.Interface {
+    interface Notation extends GObject.Object {
         // Properties
 
         get public_id(): string;
@@ -41001,6 +40942,11 @@ export namespace GXml {
 
         get_public_id(): string;
         get_external_id(): string;
+
+        // Virtual methods
+
+        vfunc_get_public_id(): string;
+        vfunc_get_external_id(): string;
     }
 
     export const Notation: NotationNamespace & {
@@ -41024,18 +40970,6 @@ export namespace GXml {
     };
 
     namespace ProcessingInstruction {
-        /**
-         * Interface for implementing ProcessingInstruction.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_target(): string;
-            vfunc_get_data(): string;
-            vfunc_set_data(value: string): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -41048,7 +40982,7 @@ export namespace GXml {
         $gtype: GObject.GType<ProcessingInstruction>;
         prototype: ProcessingInstruction;
     }
-    interface ProcessingInstruction extends GObject.Object, ProcessingInstruction.Interface {
+    interface ProcessingInstruction extends GObject.Object {
         // Properties
 
         get target(): string;
@@ -41062,6 +40996,12 @@ export namespace GXml {
         // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         set_data(value: string): void;
+
+        // Virtual methods
+
+        vfunc_get_target(): string;
+        vfunc_get_data(): string;
+        vfunc_set_data(value: string): void;
     }
 
     export const ProcessingInstruction: ProcessingInstructionNamespace & {
@@ -41069,17 +41009,6 @@ export namespace GXml {
     };
 
     namespace Text {
-        /**
-         * Interface for implementing Text.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_str(): string;
-            vfunc_set_str(value: string): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -41091,7 +41020,7 @@ export namespace GXml {
         $gtype: GObject.GType<Text>;
         prototype: Text;
     }
-    interface Text extends GObject.Object, Text.Interface {
+    interface Text extends GObject.Object {
         // Properties
 
         get str(): string;
@@ -41101,6 +41030,11 @@ export namespace GXml {
 
         get_str(): string;
         set_str(value: string): void;
+
+        // Virtual methods
+
+        vfunc_get_str(): string;
+        vfunc_set_str(value: string): void;
     }
 
     export const Text: TextNamespace & {
@@ -41108,32 +41042,6 @@ export namespace GXml {
     };
 
     namespace Serializable {
-        /**
-         * Interface for implementing Serializable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_enable_unknown_serializable_property(): boolean;
-            vfunc_set_default_namespace(node: Node): boolean;
-            vfunc_serialize_use_xml_node_value(): boolean;
-            vfunc_node_name(): string;
-            vfunc_property_use_nick(): boolean;
-            vfunc_serialize(node: Node): Node;
-            vfunc_serialize_property(element: Node, prop: GObject.ParamSpec): Node;
-            vfunc_deserialize(node: Node): boolean;
-            vfunc_deserialize_property(property_node: Node): boolean;
-            vfunc_find_property_spec(property_name: string): GObject.ParamSpec;
-            vfunc_default_find_property_spec(property_name: string): GObject.ParamSpec;
-            vfunc_list_serializable_properties(): GObject.ParamSpec[];
-            vfunc_default_list_serializable_properties(): GObject.ParamSpec[];
-            vfunc_get_unknown_serializable_properties(): Gee.Map;
-            vfunc_get_unknown_serializable_nodes(): Gee.Collection;
-            vfunc_get_serialized_xml_node_value(): string;
-            vfunc_set_serialized_xml_node_value(value: string): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -41153,7 +41061,7 @@ export namespace GXml {
         string_to_gvalue(str: string, dest: GObject.Value | any): [boolean, unknown];
         gvalue_to_string(val: GObject.Value | any): string;
     }
-    interface Serializable extends GObject.Object, Serializable.Interface {
+    interface Serializable extends GObject.Object {
         // Properties
 
         get unknown_serializable_properties(): Gee.Map;
@@ -41184,6 +41092,26 @@ export namespace GXml {
         get_unknown_serializable_nodes(): Gee.Collection;
         get_serialized_xml_node_value(): string;
         set_serialized_xml_node_value(value: string): void;
+
+        // Virtual methods
+
+        vfunc_get_enable_unknown_serializable_property(): boolean;
+        vfunc_set_default_namespace(node: Node): boolean;
+        vfunc_serialize_use_xml_node_value(): boolean;
+        vfunc_node_name(): string;
+        vfunc_property_use_nick(): boolean;
+        vfunc_serialize(node: Node): Node;
+        vfunc_serialize_property(element: Node, prop: GObject.ParamSpec): Node;
+        vfunc_deserialize(node: Node): boolean;
+        vfunc_deserialize_property(property_node: Node): boolean;
+        vfunc_find_property_spec(property_name: string): GObject.ParamSpec;
+        vfunc_default_find_property_spec(property_name: string): GObject.ParamSpec;
+        vfunc_list_serializable_properties(): GObject.ParamSpec[];
+        vfunc_default_list_serializable_properties(): GObject.ParamSpec[];
+        vfunc_get_unknown_serializable_properties(): Gee.Map;
+        vfunc_get_unknown_serializable_nodes(): Gee.Collection;
+        vfunc_get_serialized_xml_node_value(): string;
+        vfunc_set_serialized_xml_node_value(value: string): void;
     }
 
     export const Serializable: SerializableNamespace & {
@@ -41191,19 +41119,6 @@ export namespace GXml {
     };
 
     namespace SerializableProperty {
-        /**
-         * Interface for implementing SerializableProperty.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_serializable_property_value(): string;
-            vfunc_set_serializable_property_value(val: string): void;
-            vfunc_deserialize_property(property_node: Node, prop: GObject.ParamSpec, nick: boolean): boolean;
-            vfunc_serialize_property(property_node: Node, prop: GObject.ParamSpec, nick: boolean): Node;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -41213,7 +41128,7 @@ export namespace GXml {
         $gtype: GObject.GType<SerializableProperty>;
         prototype: SerializableProperty;
     }
-    interface SerializableProperty extends GObject.Object, SerializableProperty.Interface {
+    interface SerializableProperty extends GObject.Object {
         // Methods
 
         get_serializable_property_value(): string;
@@ -41226,6 +41141,13 @@ export namespace GXml {
             prop: GObject.ParamSpec,
             nick: boolean,
         ): boolean;
+
+        // Virtual methods
+
+        vfunc_get_serializable_property_value(): string;
+        vfunc_set_serializable_property_value(val: string): void;
+        vfunc_deserialize_property(property_node: Node, prop: GObject.ParamSpec, nick: boolean): boolean;
+        vfunc_serialize_property(property_node: Node, prop: GObject.ParamSpec, nick: boolean): Node;
     }
 
     export const SerializableProperty: SerializablePropertyNamespace & {
@@ -41233,16 +41155,6 @@ export namespace GXml {
     };
 
     namespace SerializableMapKey {
-        /**
-         * Interface for implementing SerializableMapKey.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_map_key(): any;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -41252,10 +41164,14 @@ export namespace GXml {
         $gtype: GObject.GType<SerializableMapKey>;
         prototype: SerializableMapKey;
     }
-    interface SerializableMapKey extends GObject.Object, SerializableMapKey.Interface {
+    interface SerializableMapKey extends GObject.Object {
         // Methods
 
         get_map_key(): any;
+
+        // Virtual methods
+
+        vfunc_get_map_key(): any;
     }
 
     export const SerializableMapKey: SerializableMapKeyNamespace & {
@@ -41263,17 +41179,6 @@ export namespace GXml {
     };
 
     namespace SerializableMapDualKey {
-        /**
-         * Interface for implementing SerializableMapDualKey.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_map_primary_key(): any;
-            vfunc_get_map_secondary_key(): any;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -41283,11 +41188,16 @@ export namespace GXml {
         $gtype: GObject.GType<SerializableMapDualKey>;
         prototype: SerializableMapDualKey;
     }
-    interface SerializableMapDualKey extends GObject.Object, SerializableMapDualKey.Interface {
+    interface SerializableMapDualKey extends GObject.Object {
         // Methods
 
         get_map_primary_key(): any;
         get_map_secondary_key(): any;
+
+        // Virtual methods
+
+        vfunc_get_map_primary_key(): any;
+        vfunc_get_map_secondary_key(): any;
     }
 
     export const SerializableMapDualKey: SerializableMapDualKeyNamespace & {
@@ -41295,20 +41205,6 @@ export namespace GXml {
     };
 
     namespace SerializableCollection {
-        /**
-         * Interface for implementing SerializableCollection.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_deserialize_proceed(): boolean;
-            vfunc_deserialized(): boolean;
-            vfunc_deserialize_node(node: Node): boolean;
-            vfunc_deserialize_children(): boolean;
-            vfunc_is_collection(): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -41318,7 +41214,7 @@ export namespace GXml {
         $gtype: GObject.GType<SerializableCollection>;
         prototype: SerializableCollection;
     }
-    interface SerializableCollection extends GObject.Object, SerializableCollection.Interface {
+    interface SerializableCollection extends GObject.Object {
         // Methods
 
         deserialize_proceed(): boolean;
@@ -41326,6 +41222,14 @@ export namespace GXml {
         deserialize_node(node: Node): boolean;
         deserialize_children(): boolean;
         is_collection(): boolean;
+
+        // Virtual methods
+
+        vfunc_deserialize_proceed(): boolean;
+        vfunc_deserialized(): boolean;
+        vfunc_deserialize_node(node: Node): boolean;
+        vfunc_deserialize_children(): boolean;
+        vfunc_is_collection(): boolean;
     }
 
     export const SerializableCollection: SerializableCollectionNamespace & {
@@ -41333,22 +41237,6 @@ export namespace GXml {
     };
 
     namespace DomAttr {
-        /**
-         * Interface for implementing DomAttr.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_namespace_uri(): string;
-            vfunc_get_prefix(): string;
-            vfunc_get_local_name(): string;
-            vfunc_get_name(): string;
-            vfunc_get_value(): string;
-            vfunc_set_value(value: string): void;
-            vfunc_get_specified(): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -41367,7 +41255,7 @@ export namespace GXml {
         $gtype: GObject.GType<DomAttr>;
         prototype: DomAttr;
     }
-    interface DomAttr extends GObject.Object, DomAttr.Interface {
+    interface DomAttr extends GObject.Object {
         // Properties
 
         get namespace_uri(): string;
@@ -41389,6 +41277,16 @@ export namespace GXml {
         get_value(): string;
         set_value(value: string): void;
         get_specified(): boolean;
+
+        // Virtual methods
+
+        vfunc_get_namespace_uri(): string;
+        vfunc_get_prefix(): string;
+        vfunc_get_local_name(): string;
+        vfunc_get_name(): string;
+        vfunc_get_value(): string;
+        vfunc_set_value(value: string): void;
+        vfunc_get_specified(): boolean;
     }
 
     export const DomAttr: DomAttrNamespace & {
@@ -41396,23 +41294,6 @@ export namespace GXml {
     };
 
     namespace DomCharacterData {
-        /**
-         * Interface for implementing DomCharacterData.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_substring_data(offset: number, count: number): string;
-            vfunc_append_data(data: string): void;
-            vfunc_insert_data(offset: number, data: string): void;
-            vfunc_delete_data(offset: number, count: number): void;
-            vfunc_replace_data(offset: number, count: number, data: string): void;
-            vfunc_get_data(): string;
-            vfunc_set_data(value: string): void;
-            vfunc_get_length(): number;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -41425,7 +41306,7 @@ export namespace GXml {
         $gtype: GObject.GType<DomCharacterData>;
         prototype: DomCharacterData;
     }
-    interface DomCharacterData extends GObject.Object, DomCharacterData.Interface {
+    interface DomCharacterData extends GObject.Object {
         // Properties
 
         get data(): string;
@@ -41444,6 +41325,17 @@ export namespace GXml {
         get_data(...args: never[]): any;
         set_data(value: string): void;
         get_length(): number;
+
+        // Virtual methods
+
+        vfunc_substring_data(offset: number, count: number): string;
+        vfunc_append_data(data: string): void;
+        vfunc_insert_data(offset: number, data: string): void;
+        vfunc_delete_data(offset: number, count: number): void;
+        vfunc_replace_data(offset: number, count: number, data: string): void;
+        vfunc_get_data(): string;
+        vfunc_set_data(value: string): void;
+        vfunc_get_length(): number;
     }
 
     export const DomCharacterData: DomCharacterDataNamespace & {
@@ -41451,17 +41343,6 @@ export namespace GXml {
     };
 
     namespace DomText {
-        /**
-         * Interface for implementing DomText.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends DomCharacterData.Interface {
-            // Virtual methods
-
-            vfunc_split_text(offset: number): DomText;
-            vfunc_get_whole_text(): string;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends DomCharacterData.ConstructorProps {
@@ -41474,7 +41355,7 @@ export namespace GXml {
         $gtype: GObject.GType<DomText>;
         prototype: DomText;
     }
-    interface DomText extends DomCharacterData, DomText.Interface {
+    interface DomText extends DomCharacterData {
         // Properties
 
         get whole_text(): string;
@@ -41484,6 +41365,11 @@ export namespace GXml {
 
         split_text(offset: number): DomText;
         get_whole_text(): string;
+
+        // Virtual methods
+
+        vfunc_split_text(offset: number): DomText;
+        vfunc_get_whole_text(): string;
     }
 
     export const DomText: DomTextNamespace & {
@@ -41491,16 +41377,6 @@ export namespace GXml {
     };
 
     namespace DomProcessingInstruction {
-        /**
-         * Interface for implementing DomProcessingInstruction.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends DomCharacterData.Interface {
-            // Virtual methods
-
-            vfunc_get_target(): string;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends DomCharacterData.ConstructorProps {
@@ -41512,7 +41388,7 @@ export namespace GXml {
         $gtype: GObject.GType<DomProcessingInstruction>;
         prototype: DomProcessingInstruction;
     }
-    interface DomProcessingInstruction extends DomCharacterData, DomProcessingInstruction.Interface {
+    interface DomProcessingInstruction extends DomCharacterData {
         // Properties
 
         get target(): string;
@@ -41520,6 +41396,10 @@ export namespace GXml {
         // Methods
 
         get_target(): string;
+
+        // Virtual methods
+
+        vfunc_get_target(): string;
     }
 
     export const DomProcessingInstruction: DomProcessingInstructionNamespace & {
@@ -41543,16 +41423,6 @@ export namespace GXml {
     };
 
     namespace DomNonElementParentNode {
-        /**
-         * Interface for implementing DomNonElementParentNode.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_element_by_id(element_id: string): DomElement;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -41562,10 +41432,14 @@ export namespace GXml {
         $gtype: GObject.GType<DomNonElementParentNode>;
         prototype: DomNonElementParentNode;
     }
-    interface DomNonElementParentNode extends GObject.Object, DomNonElementParentNode.Interface {
+    interface DomNonElementParentNode extends GObject.Object {
         // Methods
 
         get_element_by_id(element_id: string): DomElement;
+
+        // Virtual methods
+
+        vfunc_get_element_by_id(element_id: string): DomElement;
     }
 
     export const DomNonElementParentNode: DomNonElementParentNodeNamespace & {
@@ -41573,22 +41447,6 @@ export namespace GXml {
     };
 
     namespace DomParentNode {
-        /**
-         * Interface for implementing DomParentNode.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_query_selector(selectors: string): DomElement;
-            vfunc_query_selector_all(selectors: string): DomNodeList;
-            vfunc_get_elements_by_property_value(property: string, value: string): DomElementList;
-            vfunc_get_children(): DomHTMLCollection;
-            vfunc_get_first_element_child(): DomElement;
-            vfunc_get_last_element_child(): DomElement;
-            vfunc_get_child_element_count(): number;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -41606,7 +41464,7 @@ export namespace GXml {
         $gtype: GObject.GType<DomParentNode>;
         prototype: DomParentNode;
     }
-    interface DomParentNode extends GObject.Object, DomParentNode.Interface {
+    interface DomParentNode extends GObject.Object {
         // Properties
 
         get children(): DomHTMLCollection;
@@ -41626,6 +41484,16 @@ export namespace GXml {
         get_first_element_child(): DomElement;
         get_last_element_child(): DomElement;
         get_child_element_count(): number;
+
+        // Virtual methods
+
+        vfunc_query_selector(selectors: string): DomElement;
+        vfunc_query_selector_all(selectors: string): DomNodeList;
+        vfunc_get_elements_by_property_value(property: string, value: string): DomElementList;
+        vfunc_get_children(): DomHTMLCollection;
+        vfunc_get_first_element_child(): DomElement;
+        vfunc_get_last_element_child(): DomElement;
+        vfunc_get_child_element_count(): number;
     }
 
     export const DomParentNode: DomParentNodeNamespace & {
@@ -41633,17 +41501,6 @@ export namespace GXml {
     };
 
     namespace DomNonDocumentTypeChildNode {
-        /**
-         * Interface for implementing DomNonDocumentTypeChildNode.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_previous_element_sibling(): DomElement;
-            vfunc_get_next_element_sibling(): DomElement;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -41658,7 +41515,7 @@ export namespace GXml {
         $gtype: GObject.GType<DomNonDocumentTypeChildNode>;
         prototype: DomNonDocumentTypeChildNode;
     }
-    interface DomNonDocumentTypeChildNode extends GObject.Object, DomNonDocumentTypeChildNode.Interface {
+    interface DomNonDocumentTypeChildNode extends GObject.Object {
         // Properties
 
         get previous_element_sibling(): DomElement;
@@ -41670,6 +41527,11 @@ export namespace GXml {
 
         get_previous_element_sibling(): DomElement;
         get_next_element_sibling(): DomElement;
+
+        // Virtual methods
+
+        vfunc_get_previous_element_sibling(): DomElement;
+        vfunc_get_next_element_sibling(): DomElement;
     }
 
     export const DomNonDocumentTypeChildNode: DomNonDocumentTypeChildNodeNamespace & {
@@ -41677,16 +41539,6 @@ export namespace GXml {
     };
 
     namespace DomChildNode {
-        /**
-         * Interface for implementing DomChildNode.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_remove(): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -41696,10 +41548,14 @@ export namespace GXml {
         $gtype: GObject.GType<DomChildNode>;
         prototype: DomChildNode;
     }
-    interface DomChildNode extends GObject.Object, DomChildNode.Interface {
+    interface DomChildNode extends GObject.Object {
         // Methods
 
         remove(): void;
+
+        // Virtual methods
+
+        vfunc_remove(): void;
     }
 
     export const DomChildNode: DomChildNodeNamespace & {
@@ -41707,17 +41563,6 @@ export namespace GXml {
     };
 
     namespace DomNodeList {
-        /**
-         * Interface for implementing DomNodeList.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_item(index: number): DomNode;
-            vfunc_get_length(): number;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -41729,7 +41574,7 @@ export namespace GXml {
         $gtype: GObject.GType<DomNodeList>;
         prototype: DomNodeList;
     }
-    interface DomNodeList extends GObject.Object, DomNodeList.Interface {
+    interface DomNodeList extends GObject.Object {
         // Properties
 
         get length(): number;
@@ -41738,6 +41583,11 @@ export namespace GXml {
 
         item(index: number): DomNode;
         get_length(): number;
+
+        // Virtual methods
+
+        vfunc_item(index: number): DomNode;
+        vfunc_get_length(): number;
     }
 
     export const DomNodeList: DomNodeListNamespace & {
@@ -41745,20 +41595,6 @@ export namespace GXml {
     };
 
     namespace DomHTMLCollection {
-        /**
-         * Interface for implementing DomHTMLCollection.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_element(index: number): DomElement;
-            vfunc_to_array(): DomElement[];
-            vfunc_item(index: number): DomElement;
-            vfunc_named_item(name: string): DomElement;
-            vfunc_get_length(): number;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -41770,7 +41606,7 @@ export namespace GXml {
         $gtype: GObject.GType<DomHTMLCollection>;
         prototype: DomHTMLCollection;
     }
-    interface DomHTMLCollection extends GObject.Object, DomHTMLCollection.Interface {
+    interface DomHTMLCollection extends GObject.Object {
         // Properties
 
         get length(): number;
@@ -41782,6 +41618,14 @@ export namespace GXml {
         item(index: number): DomElement;
         named_item(name: string): DomElement;
         get_length(): number;
+
+        // Virtual methods
+
+        vfunc_get_element(index: number): DomElement;
+        vfunc_to_array(): DomElement[];
+        vfunc_item(index: number): DomElement;
+        vfunc_named_item(name: string): DomElement;
+        vfunc_get_length(): number;
     }
 
     export const DomHTMLCollection: DomHTMLCollectionNamespace & {
@@ -41789,23 +41633,6 @@ export namespace GXml {
     };
 
     namespace DomNodeIterator {
-        /**
-         * Interface for implementing DomNodeIterator.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_next_node(): DomNode;
-            vfunc_previous_node(): DomNode;
-            vfunc_detach(): void;
-            vfunc_get_root(): DomNode;
-            vfunc_get_reference_node(): DomNode;
-            vfunc_get_pointer_before_reference_node(): boolean;
-            vfunc_get_what_to_show(): number;
-            vfunc_get_filter(): DomNodeFilter;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -41824,7 +41651,7 @@ export namespace GXml {
         $gtype: GObject.GType<DomNodeIterator>;
         prototype: DomNodeIterator;
     }
-    interface DomNodeIterator extends GObject.Object, DomNodeIterator.Interface {
+    interface DomNodeIterator extends GObject.Object {
         // Properties
 
         get root(): DomNode;
@@ -41846,6 +41673,17 @@ export namespace GXml {
         get_pointer_before_reference_node(): boolean;
         get_what_to_show(): number;
         get_filter(): DomNodeFilter;
+
+        // Virtual methods
+
+        vfunc_next_node(): DomNode;
+        vfunc_previous_node(): DomNode;
+        vfunc_detach(): void;
+        vfunc_get_root(): DomNode;
+        vfunc_get_reference_node(): DomNode;
+        vfunc_get_pointer_before_reference_node(): boolean;
+        vfunc_get_what_to_show(): number;
+        vfunc_get_filter(): DomNodeFilter;
     }
 
     export const DomNodeIterator: DomNodeIteratorNamespace & {
@@ -41853,26 +41691,6 @@ export namespace GXml {
     };
 
     namespace DomTreeWalker {
-        /**
-         * Interface for implementing DomTreeWalker.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_parentNode(): DomNode;
-            vfunc_firstChild(): DomNode;
-            vfunc_lastChild(): DomNode;
-            vfunc_previousSibling(): DomNode;
-            vfunc_nextSibling(): DomNode;
-            vfunc_previousNode(): DomNode;
-            vfunc_nextNode(): DomNode;
-            vfunc_get_root(): DomNode;
-            vfunc_get_what_to_show(): number;
-            vfunc_get_filter(): DomNodeFilter;
-            vfunc_get_current_node(): DomNode;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -41889,7 +41707,7 @@ export namespace GXml {
         $gtype: GObject.GType<DomTreeWalker>;
         prototype: DomTreeWalker;
     }
-    interface DomTreeWalker extends GObject.Object, DomTreeWalker.Interface {
+    interface DomTreeWalker extends GObject.Object {
         // Properties
 
         get root(): DomNode;
@@ -41912,6 +41730,20 @@ export namespace GXml {
         get_what_to_show(): number;
         get_filter(): DomNodeFilter;
         get_current_node(): DomNode;
+
+        // Virtual methods
+
+        vfunc_parentNode(): DomNode;
+        vfunc_firstChild(): DomNode;
+        vfunc_lastChild(): DomNode;
+        vfunc_previousSibling(): DomNode;
+        vfunc_nextSibling(): DomNode;
+        vfunc_previousNode(): DomNode;
+        vfunc_nextNode(): DomNode;
+        vfunc_get_root(): DomNode;
+        vfunc_get_what_to_show(): number;
+        vfunc_get_filter(): DomNodeFilter;
+        vfunc_get_current_node(): DomNode;
     }
 
     export const DomTreeWalker: DomTreeWalkerNamespace & {
@@ -41919,23 +41751,6 @@ export namespace GXml {
     };
 
     namespace DomNamedNodeMap {
-        /**
-         * Interface for implementing DomNamedNodeMap.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_item(index: number): DomNode;
-            vfunc_get_named_item(name: string): DomNode;
-            vfunc_set_named_item(node: DomNode): DomNode;
-            vfunc_remove_named_item(name: string): DomNode;
-            vfunc_remove_named_item_ns(namespace_uri: string, localName: string): DomNode;
-            vfunc_get_named_item_ns(namespace_uri: string, local_name: string): DomNode;
-            vfunc_set_named_item_ns(node: DomNode): DomNode;
-            vfunc_get_length(): number;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -41947,7 +41762,7 @@ export namespace GXml {
         $gtype: GObject.GType<DomNamedNodeMap>;
         prototype: DomNamedNodeMap;
     }
-    interface DomNamedNodeMap extends GObject.Object, DomNamedNodeMap.Interface {
+    interface DomNamedNodeMap extends GObject.Object {
         // Properties
 
         get length(): number;
@@ -41962,6 +41777,17 @@ export namespace GXml {
         get_named_item_ns(namespace_uri: string, local_name: string): DomNode;
         set_named_item_ns(node: DomNode): DomNode;
         get_length(): number;
+
+        // Virtual methods
+
+        vfunc_item(index: number): DomNode;
+        vfunc_get_named_item(name: string): DomNode;
+        vfunc_set_named_item(node: DomNode): DomNode;
+        vfunc_remove_named_item(name: string): DomNode;
+        vfunc_remove_named_item_ns(namespace_uri: string, localName: string): DomNode;
+        vfunc_get_named_item_ns(namespace_uri: string, local_name: string): DomNode;
+        vfunc_set_named_item_ns(node: DomNode): DomNode;
+        vfunc_get_length(): number;
     }
 
     export const DomNamedNodeMap: DomNamedNodeMapNamespace & {
@@ -41969,22 +41795,6 @@ export namespace GXml {
     };
 
     namespace DomTokenList {
-        /**
-         * Interface for implementing DomTokenList.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_item(index: number): string;
-            vfunc_contains(token: string): boolean;
-            vfunc_add(tokens: string[]): void;
-            vfunc_remove(tokens: string[]): void;
-            vfunc_toggle(token: string, force: boolean, auto: boolean): boolean;
-            vfunc_to_string(): string;
-            vfunc_get_length(): number;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -41996,7 +41806,7 @@ export namespace GXml {
         $gtype: GObject.GType<DomTokenList>;
         prototype: DomTokenList;
     }
-    interface DomTokenList extends GObject.Object, DomTokenList.Interface {
+    interface DomTokenList extends GObject.Object {
         // Properties
 
         get length(): number;
@@ -42010,6 +41820,16 @@ export namespace GXml {
         toggle(token: string, force: boolean, auto: boolean): boolean;
         to_string(): string;
         get_length(): number;
+
+        // Virtual methods
+
+        vfunc_item(index: number): string;
+        vfunc_contains(token: string): boolean;
+        vfunc_add(tokens: string[]): void;
+        vfunc_remove(tokens: string[]): void;
+        vfunc_toggle(token: string, force: boolean, auto: boolean): boolean;
+        vfunc_to_string(): string;
+        vfunc_get_length(): number;
     }
 
     export const DomTokenList: DomTokenListNamespace & {
@@ -42017,17 +41837,6 @@ export namespace GXml {
     };
 
     namespace DomSettableTokenList {
-        /**
-         * Interface for implementing DomSettableTokenList.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends DomTokenList.Interface {
-            // Virtual methods
-
-            vfunc_get_value(): string;
-            vfunc_set_value(value: string): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends DomTokenList.ConstructorProps {
@@ -42039,7 +41848,7 @@ export namespace GXml {
         $gtype: GObject.GType<DomSettableTokenList>;
         prototype: DomSettableTokenList;
     }
-    interface DomSettableTokenList extends DomTokenList, DomSettableTokenList.Interface {
+    interface DomSettableTokenList extends DomTokenList {
         // Properties
 
         get value(): string;
@@ -42049,6 +41858,11 @@ export namespace GXml {
 
         get_value(): string;
         set_value(value: string): void;
+
+        // Virtual methods
+
+        vfunc_get_value(): string;
+        vfunc_set_value(value: string): void;
     }
 
     export const DomSettableTokenList: DomSettableTokenListNamespace & {
@@ -42056,39 +41870,6 @@ export namespace GXml {
     };
 
     namespace DomDocument {
-        /**
-         * Interface for implementing DomDocument.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_elements_by_tag_name(local_name: string): DomHTMLCollection;
-            vfunc_get_elements_by_tag_name_ns(namespace: string, local_name: string): DomHTMLCollection;
-            vfunc_get_elements_by_class_name(classNames: string): DomHTMLCollection;
-            vfunc_create_element(local_name: string): DomElement;
-            vfunc_create_element_ns(namespace: string, qualified_name: string): DomElement;
-            vfunc_create_document_fragment(): DomDocumentFragment;
-            vfunc_create_text_node(data: string): DomText;
-            vfunc_create_comment(data: string): DomComment;
-            vfunc_create_processing_instruction(target: string, data: string): DomProcessingInstruction;
-            vfunc_import_node(node: DomNode, deep: boolean): DomNode;
-            vfunc_adopt_node(node: DomNode): DomNode;
-            vfunc_create_event(_interface: string): DomEvent;
-            vfunc_create_range(): DomRange;
-            vfunc_create_node_iterator(root: DomNode, whatToShow: number, filter: DomNodeFilter): DomNodeIterator;
-            vfunc_create_tree_walker(root: DomNode, what_to_show: number, filter: DomNodeFilter): DomTreeWalker;
-            vfunc_get_implementation(): DomImplementation;
-            vfunc_get_url(): string;
-            vfunc_get_document_uri(): string;
-            vfunc_get_origin(): string;
-            vfunc_get_compat_mode(): string;
-            vfunc_get_character_set(): string;
-            vfunc_get_content_type(): string;
-            vfunc_get_doctype(): DomDocumentType;
-            vfunc_get_document_element(): DomElement;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -42113,7 +41894,7 @@ export namespace GXml {
         $gtype: GObject.GType<DomDocument>;
         prototype: DomDocument;
     }
-    interface DomDocument extends GObject.Object, DomDocument.Interface {
+    interface DomDocument extends GObject.Object {
         // Properties
 
         get implementation(): DomImplementation;
@@ -42157,6 +41938,33 @@ export namespace GXml {
         get_content_type(): string;
         get_doctype(): DomDocumentType;
         get_document_element(): DomElement;
+
+        // Virtual methods
+
+        vfunc_get_elements_by_tag_name(local_name: string): DomHTMLCollection;
+        vfunc_get_elements_by_tag_name_ns(namespace: string, local_name: string): DomHTMLCollection;
+        vfunc_get_elements_by_class_name(classNames: string): DomHTMLCollection;
+        vfunc_create_element(local_name: string): DomElement;
+        vfunc_create_element_ns(namespace: string, qualified_name: string): DomElement;
+        vfunc_create_document_fragment(): DomDocumentFragment;
+        vfunc_create_text_node(data: string): DomText;
+        vfunc_create_comment(data: string): DomComment;
+        vfunc_create_processing_instruction(target: string, data: string): DomProcessingInstruction;
+        vfunc_import_node(node: DomNode, deep: boolean): DomNode;
+        vfunc_adopt_node(node: DomNode): DomNode;
+        vfunc_create_event(_interface: string): DomEvent;
+        vfunc_create_range(): DomRange;
+        vfunc_create_node_iterator(root: DomNode, whatToShow: number, filter: DomNodeFilter): DomNodeIterator;
+        vfunc_create_tree_walker(root: DomNode, what_to_show: number, filter: DomNodeFilter): DomTreeWalker;
+        vfunc_get_implementation(): DomImplementation;
+        vfunc_get_url(): string;
+        vfunc_get_document_uri(): string;
+        vfunc_get_origin(): string;
+        vfunc_get_compat_mode(): string;
+        vfunc_get_character_set(): string;
+        vfunc_get_content_type(): string;
+        vfunc_get_doctype(): DomDocumentType;
+        vfunc_get_document_element(): DomElement;
     }
 
     export const DomDocument: DomDocumentNamespace & {
@@ -42180,19 +41988,6 @@ export namespace GXml {
     };
 
     namespace DomImplementation {
-        /**
-         * Interface for implementing DomImplementation.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_create_document_type(qualified_name: string, public_id: string, system_id: string): DomDocumentType;
-            vfunc_create_document(nspace: string, qualified_name: string, doctype: DomDocumentType): DomXMLDocument;
-            vfunc_create_html_document(title: string): Document;
-            vfunc_has_feature(): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -42202,13 +41997,20 @@ export namespace GXml {
         $gtype: GObject.GType<DomImplementation>;
         prototype: DomImplementation;
     }
-    interface DomImplementation extends GObject.Object, DomImplementation.Interface {
+    interface DomImplementation extends GObject.Object {
         // Methods
 
         create_document_type(qualified_name: string, public_id: string, system_id: string): DomDocumentType;
         create_document(nspace: string, qualified_name: string, doctype: DomDocumentType): DomXMLDocument;
         create_html_document(title: string): Document;
         has_feature(): boolean;
+
+        // Virtual methods
+
+        vfunc_create_document_type(qualified_name: string, public_id: string, system_id: string): DomDocumentType;
+        vfunc_create_document(nspace: string, qualified_name: string, doctype: DomDocumentType): DomXMLDocument;
+        vfunc_create_html_document(title: string): Document;
+        vfunc_has_feature(): boolean;
     }
 
     export const DomImplementation: DomImplementationNamespace & {
@@ -42232,18 +42034,6 @@ export namespace GXml {
     };
 
     namespace DomDocumentType {
-        /**
-         * Interface for implementing DomDocumentType.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_name(): string;
-            vfunc_get_public_id(): string;
-            vfunc_get_system_id(): string;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -42259,7 +42049,7 @@ export namespace GXml {
         $gtype: GObject.GType<DomDocumentType>;
         prototype: DomDocumentType;
     }
-    interface DomDocumentType extends GObject.Object, DomDocumentType.Interface {
+    interface DomDocumentType extends GObject.Object {
         // Properties
 
         get name(): string;
@@ -42273,6 +42063,12 @@ export namespace GXml {
         get_name(): string;
         get_public_id(): string;
         get_system_id(): string;
+
+        // Virtual methods
+
+        vfunc_get_name(): string;
+        vfunc_get_public_id(): string;
+        vfunc_get_system_id(): string;
     }
 
     export const DomDocumentType: DomDocumentTypeNamespace & {
@@ -42280,36 +42076,6 @@ export namespace GXml {
     };
 
     namespace DomElement {
-        /**
-         * Interface for implementing DomElement.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_attribute(name: string): string;
-            vfunc_get_attribute_ns(namespace: string, local_name: string): string;
-            vfunc_set_attribute(name: string, value: string): void;
-            vfunc_set_attribute_ns(namespace: string, name: string, value: string): void;
-            vfunc_remove_attribute(name: string): void;
-            vfunc_remove_attribute_ns(namespace: string, local_name: string): void;
-            vfunc_has_attribute(name: string): boolean;
-            vfunc_has_attribute_ns(namespace: string, local_name: string): boolean;
-            vfunc_get_elements_by_tag_name(local_name: string): DomHTMLCollection;
-            vfunc_get_elements_by_tag_name_ns(namespace: string, local_name: string): DomHTMLCollection;
-            vfunc_get_elements_by_class_name(class_names: string): DomHTMLCollection;
-            vfunc_get_namespace_uri(): string;
-            vfunc_get_prefix(): string;
-            vfunc_get_local_name(): string;
-            vfunc_get_tag_name(): string;
-            vfunc_get_id(): string;
-            vfunc_set_id(value: string): void;
-            vfunc_get_class_name(): string;
-            vfunc_set_class_name(value: string): void;
-            vfunc_get_class_list(): DomTokenList;
-            vfunc_get_attributes(): DomNamedNodeMap;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -42333,7 +42099,7 @@ export namespace GXml {
         $gtype: GObject.GType<DomElement>;
         prototype: DomElement;
     }
-    interface DomElement extends GObject.Object, DomElement.Interface {
+    interface DomElement extends GObject.Object {
         // Properties
 
         get namespace_uri(): string;
@@ -42376,6 +42142,30 @@ export namespace GXml {
         set_class_name(value: string): void;
         get_class_list(): DomTokenList;
         get_attributes(): DomNamedNodeMap;
+
+        // Virtual methods
+
+        vfunc_get_attribute(name: string): string;
+        vfunc_get_attribute_ns(namespace: string, local_name: string): string;
+        vfunc_set_attribute(name: string, value: string): void;
+        vfunc_set_attribute_ns(namespace: string, name: string, value: string): void;
+        vfunc_remove_attribute(name: string): void;
+        vfunc_remove_attribute_ns(namespace: string, local_name: string): void;
+        vfunc_has_attribute(name: string): boolean;
+        vfunc_has_attribute_ns(namespace: string, local_name: string): boolean;
+        vfunc_get_elements_by_tag_name(local_name: string): DomHTMLCollection;
+        vfunc_get_elements_by_tag_name_ns(namespace: string, local_name: string): DomHTMLCollection;
+        vfunc_get_elements_by_class_name(class_names: string): DomHTMLCollection;
+        vfunc_get_namespace_uri(): string;
+        vfunc_get_prefix(): string;
+        vfunc_get_local_name(): string;
+        vfunc_get_tag_name(): string;
+        vfunc_get_id(): string;
+        vfunc_set_id(value: string): void;
+        vfunc_get_class_name(): string;
+        vfunc_set_class_name(value: string): void;
+        vfunc_get_class_list(): DomTokenList;
+        vfunc_get_attributes(): DomNamedNodeMap;
     }
 
     export const DomElement: DomElementNamespace & {
@@ -42383,18 +42173,6 @@ export namespace GXml {
     };
 
     namespace DomEventTarget {
-        /**
-         * Interface for implementing DomEventTarget.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_add_event_listener(type: string, callback: DomEventListener, capture: boolean): void;
-            vfunc_remove_event_listener(type: string, callback: DomEventListener, capture: boolean): void;
-            vfunc_dispatch_event(event: DomEvent): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -42404,12 +42182,18 @@ export namespace GXml {
         $gtype: GObject.GType<DomEventTarget>;
         prototype: DomEventTarget;
     }
-    interface DomEventTarget extends GObject.Object, DomEventTarget.Interface {
+    interface DomEventTarget extends GObject.Object {
         // Methods
 
         add_event_listener(type: string, callback: DomEventListener, capture: boolean): void;
         remove_event_listener(type: string, callback: DomEventListener, capture: boolean): void;
         dispatch_event(event: DomEvent): boolean;
+
+        // Virtual methods
+
+        vfunc_add_event_listener(type: string, callback: DomEventListener, capture: boolean): void;
+        vfunc_remove_event_listener(type: string, callback: DomEventListener, capture: boolean): void;
+        vfunc_dispatch_event(event: DomEvent): boolean;
     }
 
     export const DomEventTarget: DomEventTargetNamespace & {
@@ -42417,16 +42201,6 @@ export namespace GXml {
     };
 
     namespace DomEventListener {
-        /**
-         * Interface for implementing DomEventListener.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_handle_event(event: DomEvent): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -42436,10 +42210,14 @@ export namespace GXml {
         $gtype: GObject.GType<DomEventListener>;
         prototype: DomEventListener;
     }
-    interface DomEventListener extends GObject.Object, DomEventListener.Interface {
+    interface DomEventListener extends GObject.Object {
         // Methods
 
         handle_event(event: DomEvent): void;
+
+        // Virtual methods
+
+        vfunc_handle_event(event: DomEvent): void;
     }
 
     export const DomEventListener: DomEventListenerNamespace & {
@@ -42447,28 +42225,6 @@ export namespace GXml {
     };
 
     namespace DomEvent {
-        /**
-         * Interface for implementing DomEvent.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_stop_propagation(): void;
-            vfunc_stop_immediate_propagation(): void;
-            vfunc_prevent_default(): void;
-            vfunc_init_event(type: string, bubbles: boolean, cancelable: boolean): void;
-            vfunc_get_etype(): string;
-            vfunc_get_event_target(): DomEventTarget;
-            vfunc_get_current_target(): DomEventTarget;
-            vfunc_get_bubbles(): boolean;
-            vfunc_get_cancelable(): boolean;
-            vfunc_get_is_trusted(): boolean;
-            vfunc_get_time_stamp(): DomTimeStamp;
-            vfunc_get_default_prevented(): boolean;
-            vfunc_get_event_phase(): DomEventPhase;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -42494,7 +42250,7 @@ export namespace GXml {
         $gtype: GObject.GType<DomEvent>;
         prototype: DomEvent;
     }
-    interface DomEvent extends GObject.Object, DomEvent.Interface {
+    interface DomEvent extends GObject.Object {
         // Properties
 
         get etype(): string;
@@ -42528,6 +42284,22 @@ export namespace GXml {
         get_time_stamp(): DomTimeStamp;
         get_default_prevented(): boolean;
         get_event_phase(): DomEventPhase;
+
+        // Virtual methods
+
+        vfunc_stop_propagation(): void;
+        vfunc_stop_immediate_propagation(): void;
+        vfunc_prevent_default(): void;
+        vfunc_init_event(type: string, bubbles: boolean, cancelable: boolean): void;
+        vfunc_get_etype(): string;
+        vfunc_get_event_target(): DomEventTarget;
+        vfunc_get_current_target(): DomEventTarget;
+        vfunc_get_bubbles(): boolean;
+        vfunc_get_cancelable(): boolean;
+        vfunc_get_is_trusted(): boolean;
+        vfunc_get_time_stamp(): DomTimeStamp;
+        vfunc_get_default_prevented(): boolean;
+        vfunc_get_event_phase(): DomEventPhase;
     }
 
     export const DomEvent: DomEventNamespace & {
@@ -42535,22 +42307,6 @@ export namespace GXml {
     };
 
     namespace DomCustomEvent {
-        /**
-         * Interface for implementing DomCustomEvent.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_init_custom_event(
-                type: string,
-                bubbles: boolean,
-                cancelable: boolean,
-                detail: GObject.Value | any,
-            ): void;
-            vfunc_get_detail(): unknown;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -42562,7 +42318,7 @@ export namespace GXml {
         $gtype: GObject.GType<DomCustomEvent>;
         prototype: DomCustomEvent;
     }
-    interface DomCustomEvent extends GObject.Object, DomCustomEvent.Interface {
+    interface DomCustomEvent extends GObject.Object {
         // Properties
 
         get detail(): GObject.Value;
@@ -42571,6 +42327,11 @@ export namespace GXml {
 
         init_custom_event(type: string, bubbles: boolean, cancelable: boolean, detail: GObject.Value | any): void;
         get_detail(): unknown;
+
+        // Virtual methods
+
+        vfunc_init_custom_event(type: string, bubbles: boolean, cancelable: boolean, detail: GObject.Value | any): void;
+        vfunc_get_detail(): unknown;
     }
 
     export const DomCustomEvent: DomCustomEventNamespace & {
@@ -42578,18 +42339,6 @@ export namespace GXml {
     };
 
     namespace DomMutationObserver {
-        /**
-         * Interface for implementing DomMutationObserver.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_observe(target: Node, options: DomMutationObserverInit): void;
-            vfunc_disconnect(): void;
-            vfunc_take_records(): Gee.List;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -42599,12 +42348,18 @@ export namespace GXml {
         $gtype: GObject.GType<DomMutationObserver>;
         prototype: DomMutationObserver;
     }
-    interface DomMutationObserver extends GObject.Object, DomMutationObserver.Interface {
+    interface DomMutationObserver extends GObject.Object {
         // Methods
 
         observe(target: Node, options: DomMutationObserverInit): void;
         disconnect(): void;
         take_records(): Gee.List;
+
+        // Virtual methods
+
+        vfunc_observe(target: Node, options: DomMutationObserverInit): void;
+        vfunc_disconnect(): void;
+        vfunc_take_records(): Gee.List;
     }
 
     export const DomMutationObserver: DomMutationObserverNamespace & {
@@ -42612,26 +42367,6 @@ export namespace GXml {
     };
 
     namespace DomMutationRecord {
-        /**
-         * Interface for implementing DomMutationRecord.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_mtype(): string;
-            vfunc_get_target(): DomNode;
-            vfunc_get_added_nodes(): DomNodeList;
-            vfunc_set_added_nodes(value: DomNodeList): void;
-            vfunc_get_removed_nodes(): DomNodeList;
-            vfunc_set_removed_nodes(value: DomNodeList): void;
-            vfunc_get_previous_sibling(): DomNode;
-            vfunc_get_next_sibling(): DomNode;
-            vfunc_get_attribute_name(): string;
-            vfunc_get_attribute_namespace(): string;
-            vfunc_get_old_value(): string;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -42658,7 +42393,7 @@ export namespace GXml {
         $gtype: GObject.GType<DomMutationRecord>;
         prototype: DomMutationRecord;
     }
-    interface DomMutationRecord extends GObject.Object, DomMutationRecord.Interface {
+    interface DomMutationRecord extends GObject.Object {
         // Properties
 
         get mtype(): string;
@@ -42695,6 +42430,20 @@ export namespace GXml {
         get_attribute_name(): string;
         get_attribute_namespace(): string;
         get_old_value(): string;
+
+        // Virtual methods
+
+        vfunc_get_mtype(): string;
+        vfunc_get_target(): DomNode;
+        vfunc_get_added_nodes(): DomNodeList;
+        vfunc_set_added_nodes(value: DomNodeList): void;
+        vfunc_get_removed_nodes(): DomNodeList;
+        vfunc_set_removed_nodes(value: DomNodeList): void;
+        vfunc_get_previous_sibling(): DomNode;
+        vfunc_get_next_sibling(): DomNode;
+        vfunc_get_attribute_name(): string;
+        vfunc_get_attribute_namespace(): string;
+        vfunc_get_old_value(): string;
     }
 
     export const DomMutationRecord: DomMutationRecordNamespace & {
@@ -42702,44 +42451,6 @@ export namespace GXml {
     };
 
     namespace DomNode {
-        /**
-         * Interface for implementing DomNode.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_has_child_nodes(): boolean;
-            vfunc_normalize(): void;
-            vfunc_is_equal_node(node: DomNode): boolean;
-            vfunc_compare_document_position(other: DomNode): DomNodeDocumentPosition;
-            vfunc_contains(other: DomNode): boolean;
-            vfunc_lookup_prefix(nspace: string): string;
-            vfunc_lookup_namespace_uri(prefix: string): string;
-            vfunc_is_default_namespace(nspace: string): boolean;
-            vfunc_insert_before(node: DomNode, child: DomNode): DomNode;
-            vfunc_append_child(node: DomNode): DomNode;
-            vfunc_replace_child(node: DomNode, child: DomNode): DomNode;
-            vfunc_remove_child(child: DomNode): DomNode;
-            vfunc_clone_node(deep: boolean): DomNode;
-            vfunc_get_node_type(): DomNodeNodeType;
-            vfunc_get_node_name(): string;
-            vfunc_get_base_uri(): string;
-            vfunc_get_owner_document(): DomDocument;
-            vfunc_set_owner_document(value: DomDocument): void;
-            vfunc_get_parent_node(): DomNode;
-            vfunc_get_parent_element(): DomElement;
-            vfunc_get_child_nodes(): DomNodeList;
-            vfunc_get_first_child(): DomNode;
-            vfunc_get_last_child(): DomNode;
-            vfunc_get_previous_sibling(): DomNode;
-            vfunc_get_next_sibling(): DomNode;
-            vfunc_get_node_value(): string;
-            vfunc_set_node_value(value: string): void;
-            vfunc_get_text_content(): string;
-            vfunc_set_text_content(value: string): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -42778,7 +42489,7 @@ export namespace GXml {
 
         copy(doc: DomDocument, node: DomNode, source: DomNode, deep: boolean): boolean;
     }
-    interface DomNode extends GObject.Object, DomNode.Interface {
+    interface DomNode extends GObject.Object {
         // Properties
 
         get node_type(): DomNodeNodeType;
@@ -42845,6 +42556,38 @@ export namespace GXml {
         set_node_value(value: string): void;
         get_text_content(): string;
         set_text_content(value: string): void;
+
+        // Virtual methods
+
+        vfunc_has_child_nodes(): boolean;
+        vfunc_normalize(): void;
+        vfunc_is_equal_node(node: DomNode): boolean;
+        vfunc_compare_document_position(other: DomNode): DomNodeDocumentPosition;
+        vfunc_contains(other: DomNode): boolean;
+        vfunc_lookup_prefix(nspace: string): string;
+        vfunc_lookup_namespace_uri(prefix: string): string;
+        vfunc_is_default_namespace(nspace: string): boolean;
+        vfunc_insert_before(node: DomNode, child: DomNode): DomNode;
+        vfunc_append_child(node: DomNode): DomNode;
+        vfunc_replace_child(node: DomNode, child: DomNode): DomNode;
+        vfunc_remove_child(child: DomNode): DomNode;
+        vfunc_clone_node(deep: boolean): DomNode;
+        vfunc_get_node_type(): DomNodeNodeType;
+        vfunc_get_node_name(): string;
+        vfunc_get_base_uri(): string;
+        vfunc_get_owner_document(): DomDocument;
+        vfunc_set_owner_document(value: DomDocument): void;
+        vfunc_get_parent_node(): DomNode;
+        vfunc_get_parent_element(): DomElement;
+        vfunc_get_child_nodes(): DomNodeList;
+        vfunc_get_first_child(): DomNode;
+        vfunc_get_last_child(): DomNode;
+        vfunc_get_previous_sibling(): DomNode;
+        vfunc_get_next_sibling(): DomNode;
+        vfunc_get_node_value(): string;
+        vfunc_set_node_value(value: string): void;
+        vfunc_get_text_content(): string;
+        vfunc_set_text_content(value: string): void;
     }
 
     export const DomNode: DomNodeNamespace & {
@@ -42852,42 +42595,6 @@ export namespace GXml {
     };
 
     namespace DomRange {
-        /**
-         * Interface for implementing DomRange.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_set_start(node: DomNode, offset: number): void;
-            vfunc_set_end(node: DomNode, offset: number): void;
-            vfunc_set_start_before(node: DomNode): void;
-            vfunc_set_start_after(node: DomNode): void;
-            vfunc_set_end_before(node: DomNode): void;
-            vfunc_set_end_after(node: DomNode): void;
-            vfunc_collapse(to_start: boolean): void;
-            vfunc_select_node(node: DomNode): void;
-            vfunc_select_node_contents(node: DomNode): void;
-            vfunc_compare_boundary_points(how: DomRangeBoundaryPoints, sourceRange: DomRange): number;
-            vfunc_delete_contents(): void;
-            vfunc_extract_contents(): DomDocumentFragment;
-            vfunc_clone_contents(): DomDocumentFragment;
-            vfunc_insert_node(node: DomNode): void;
-            vfunc_surround_contents(newParent: DomNode): void;
-            vfunc_clone_range(): DomRange;
-            vfunc_detach(): void;
-            vfunc_is_point_in_range(node: DomNode, offset: number): boolean;
-            vfunc_compare_point(node: DomNode, offset: number): number;
-            vfunc_intersects_node(node: DomNode): boolean;
-            vfunc_to_string(): string;
-            vfunc_get_start_container(): DomNode;
-            vfunc_get_start_offset(): number;
-            vfunc_get_end_container(): DomNode;
-            vfunc_get_end_offset(): number;
-            vfunc_get_collapsed(): boolean;
-            vfunc_get_common_ancestor_container(): DomNode;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -42909,7 +42616,7 @@ export namespace GXml {
         $gtype: GObject.GType<DomRange>;
         prototype: DomRange;
     }
-    interface DomRange extends GObject.Object, DomRange.Interface {
+    interface DomRange extends GObject.Object {
         // Properties
 
         get start_container(): DomNode;
@@ -42953,6 +42660,36 @@ export namespace GXml {
         get_end_offset(): number;
         get_collapsed(): boolean;
         get_common_ancestor_container(): DomNode;
+
+        // Virtual methods
+
+        vfunc_set_start(node: DomNode, offset: number): void;
+        vfunc_set_end(node: DomNode, offset: number): void;
+        vfunc_set_start_before(node: DomNode): void;
+        vfunc_set_start_after(node: DomNode): void;
+        vfunc_set_end_before(node: DomNode): void;
+        vfunc_set_end_after(node: DomNode): void;
+        vfunc_collapse(to_start: boolean): void;
+        vfunc_select_node(node: DomNode): void;
+        vfunc_select_node_contents(node: DomNode): void;
+        vfunc_compare_boundary_points(how: DomRangeBoundaryPoints, sourceRange: DomRange): number;
+        vfunc_delete_contents(): void;
+        vfunc_extract_contents(): DomDocumentFragment;
+        vfunc_clone_contents(): DomDocumentFragment;
+        vfunc_insert_node(node: DomNode): void;
+        vfunc_surround_contents(newParent: DomNode): void;
+        vfunc_clone_range(): DomRange;
+        vfunc_detach(): void;
+        vfunc_is_point_in_range(node: DomNode, offset: number): boolean;
+        vfunc_compare_point(node: DomNode, offset: number): number;
+        vfunc_intersects_node(node: DomNode): boolean;
+        vfunc_to_string(): string;
+        vfunc_get_start_container(): DomNode;
+        vfunc_get_start_offset(): number;
+        vfunc_get_end_container(): DomNode;
+        vfunc_get_end_offset(): number;
+        vfunc_get_collapsed(): boolean;
+        vfunc_get_common_ancestor_container(): DomNode;
     }
 
     export const DomRange: DomRangeNamespace & {
@@ -42960,16 +42697,6 @@ export namespace GXml {
     };
 
     namespace XPathContext {
-        /**
-         * Interface for implementing XPathContext.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_evaluate(expression: string, resolver: Gee.List): XPathObject;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -42979,10 +42706,14 @@ export namespace GXml {
         $gtype: GObject.GType<XPathContext>;
         prototype: XPathContext;
     }
-    interface XPathContext extends GObject.Object, XPathContext.Interface {
+    interface XPathContext extends GObject.Object {
         // Methods
 
         evaluate(expression: string, resolver: Gee.List): XPathObject;
+
+        // Virtual methods
+
+        vfunc_evaluate(expression: string, resolver: Gee.List): XPathObject;
     }
 
     export const XPathContext: XPathContextNamespace & {
@@ -42990,20 +42721,6 @@ export namespace GXml {
     };
 
     namespace XPathObject {
-        /**
-         * Interface for implementing XPathObject.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_object_type(): XPathObjectType;
-            vfunc_get_boolean_value(): boolean;
-            vfunc_get_string_value(): string;
-            vfunc_get_number_value(): number;
-            vfunc_get_nodeset(): DomHTMLCollection;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -43023,7 +42740,7 @@ export namespace GXml {
         $gtype: GObject.GType<XPathObject>;
         prototype: XPathObject;
     }
-    interface XPathObject extends GObject.Object, XPathObject.Interface {
+    interface XPathObject extends GObject.Object {
         // Properties
 
         get object_type(): XPathObjectType;
@@ -43043,6 +42760,14 @@ export namespace GXml {
         get_string_value(): string;
         get_number_value(): number;
         get_nodeset(): DomHTMLCollection;
+
+        // Virtual methods
+
+        vfunc_get_object_type(): XPathObjectType;
+        vfunc_get_boolean_value(): boolean;
+        vfunc_get_string_value(): string;
+        vfunc_get_number_value(): number;
+        vfunc_get_nodeset(): DomHTMLCollection;
     }
 
     export const XPathObject: XPathObjectNamespace & {
@@ -43050,27 +42775,6 @@ export namespace GXml {
     };
 
     namespace GomObject {
-        /**
-         * Interface for implementing GomObject.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_properties_list(): GObject.ParamSpec[];
-            vfunc_find_property_name(pname: string): GObject.ParamSpec;
-            vfunc_find_object_property_name(pname: string): GObject.ParamSpec;
-            vfunc_get_property_element_list(): GObject.ParamSpec[];
-            vfunc_get_property_string(prop: GObject.ParamSpec): string;
-            vfunc_get_attribute(name: string): string;
-            vfunc_set_attribute(name: string, val: string): boolean;
-            vfunc_get_child(name: string): DomElement;
-            vfunc_find_elements(name: string): DomElementList;
-            vfunc_remove_attribute(name: string): boolean;
-            vfunc_set_instance_property(name: string): boolean;
-            vfunc_clean_property_elements(name: string): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -43080,7 +42784,7 @@ export namespace GXml {
         $gtype: GObject.GType<GomObject>;
         prototype: GomObject;
     }
-    interface GomObject extends GObject.Object, GomObject.Interface {
+    interface GomObject extends GObject.Object {
         // Methods
 
         get_properties_list(): GObject.ParamSpec[];
@@ -43095,6 +42799,21 @@ export namespace GXml {
         remove_attribute(name: string): boolean;
         set_instance_property(name: string): boolean;
         clean_property_elements(name: string): void;
+
+        // Virtual methods
+
+        vfunc_get_properties_list(): GObject.ParamSpec[];
+        vfunc_find_property_name(pname: string): GObject.ParamSpec;
+        vfunc_find_object_property_name(pname: string): GObject.ParamSpec;
+        vfunc_get_property_element_list(): GObject.ParamSpec[];
+        vfunc_get_property_string(prop: GObject.ParamSpec): string;
+        vfunc_get_attribute(name: string): string;
+        vfunc_set_attribute(name: string, val: string): boolean;
+        vfunc_get_child(name: string): DomElement;
+        vfunc_find_elements(name: string): DomElementList;
+        vfunc_remove_attribute(name: string): boolean;
+        vfunc_set_instance_property(name: string): boolean;
+        vfunc_clean_property_elements(name: string): void;
     }
 
     export const GomObject: GomObjectNamespace & {
@@ -43102,28 +42821,6 @@ export namespace GXml {
     };
 
     namespace GomCollection {
-        /**
-         * Interface for implementing GomCollection.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_search(): void;
-            vfunc_get_item(index: number): DomElement;
-            vfunc_append(node: DomElement): void;
-            vfunc_initialize(t: GObject.GType): void;
-            vfunc_create_item(): GomElement;
-            vfunc_validate_append(index: number, element: DomElement): boolean;
-            vfunc_get_nodes_index(): GLib.Queue;
-            vfunc_get_element(): GomElement;
-            vfunc_set_element(value: GomElement): void;
-            vfunc_get_items_name(): string;
-            vfunc_get_items_type(): GObject.GType;
-            vfunc_set_items_type(value: GObject.GType): void;
-            vfunc_get_length(): number;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -43142,7 +42839,7 @@ export namespace GXml {
         $gtype: GObject.GType<GomCollection>;
         prototype: GomCollection;
     }
-    interface GomCollection extends GObject.Object, GomCollection.Interface {
+    interface GomCollection extends GObject.Object {
         // Properties
 
         get nodes_index(): GLib.Queue;
@@ -43172,6 +42869,22 @@ export namespace GXml {
         get_items_type(): GObject.GType;
         set_items_type(value: GObject.GType): void;
         get_length(): number;
+
+        // Virtual methods
+
+        vfunc_search(): void;
+        vfunc_get_item(index: number): DomElement;
+        vfunc_append(node: DomElement): void;
+        vfunc_initialize(t: GObject.GType): void;
+        vfunc_create_item(): GomElement;
+        vfunc_validate_append(index: number, element: DomElement): boolean;
+        vfunc_get_nodes_index(): GLib.Queue;
+        vfunc_get_element(): GomElement;
+        vfunc_set_element(value: GomElement): void;
+        vfunc_get_items_name(): string;
+        vfunc_get_items_type(): GObject.GType;
+        vfunc_set_items_type(value: GObject.GType): void;
+        vfunc_get_length(): number;
     }
 
     export const GomCollection: GomCollectionNamespace & {
@@ -43179,16 +42892,6 @@ export namespace GXml {
     };
 
     namespace MappeableElement {
-        /**
-         * Interface for implementing MappeableElement.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_map_key(): string;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -43198,10 +42901,14 @@ export namespace GXml {
         $gtype: GObject.GType<MappeableElement>;
         prototype: MappeableElement;
     }
-    interface MappeableElement extends GObject.Object, MappeableElement.Interface {
+    interface MappeableElement extends GObject.Object {
         // Methods
 
         get_map_key(): string;
+
+        // Virtual methods
+
+        vfunc_get_map_key(): string;
     }
 
     export const MappeableElement: MappeableElementNamespace & {
@@ -43209,17 +42916,6 @@ export namespace GXml {
     };
 
     namespace MappeableElementPairKey {
-        /**
-         * Interface for implementing MappeableElementPairKey.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_map_primary_key(): string;
-            vfunc_get_map_secondary_key(): string;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -43229,11 +42925,16 @@ export namespace GXml {
         $gtype: GObject.GType<MappeableElementPairKey>;
         prototype: MappeableElementPairKey;
     }
-    interface MappeableElementPairKey extends GObject.Object, MappeableElementPairKey.Interface {
+    interface MappeableElementPairKey extends GObject.Object {
         // Methods
 
         get_map_primary_key(): string;
         get_map_secondary_key(): string;
+
+        // Virtual methods
+
+        vfunc_get_map_primary_key(): string;
+        vfunc_get_map_secondary_key(): string;
     }
 
     export const MappeableElementPairKey: MappeableElementPairKeyNamespace & {
@@ -43241,18 +42942,6 @@ export namespace GXml {
     };
 
     namespace MappeableElementThreeKey {
-        /**
-         * Interface for implementing MappeableElementThreeKey.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_map_pkey(): string;
-            vfunc_get_map_skey(): string;
-            vfunc_get_map_tkey(): string;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -43262,12 +42951,18 @@ export namespace GXml {
         $gtype: GObject.GType<MappeableElementThreeKey>;
         prototype: MappeableElementThreeKey;
     }
-    interface MappeableElementThreeKey extends GObject.Object, MappeableElementThreeKey.Interface {
+    interface MappeableElementThreeKey extends GObject.Object {
         // Methods
 
         get_map_pkey(): string;
         get_map_skey(): string;
         get_map_tkey(): string;
+
+        // Virtual methods
+
+        vfunc_get_map_pkey(): string;
+        vfunc_get_map_skey(): string;
+        vfunc_get_map_tkey(): string;
     }
 
     export const MappeableElementThreeKey: MappeableElementThreeKeyNamespace & {
@@ -43275,18 +42970,6 @@ export namespace GXml {
     };
 
     namespace GomProperty {
-        /**
-         * Interface for implementing GomProperty.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_validate_value(val: string): boolean;
-            vfunc_get_value(): string;
-            vfunc_set_value(value: string): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -43298,7 +42981,7 @@ export namespace GXml {
         $gtype: GObject.GType<GomProperty>;
         prototype: GomProperty;
     }
-    interface GomProperty extends GObject.Object, GomProperty.Interface {
+    interface GomProperty extends GObject.Object {
         // Properties
 
         get value(): string;
@@ -43309,6 +42992,12 @@ export namespace GXml {
         validate_value(val: string): boolean;
         get_value(): string;
         set_value(value: string): void;
+
+        // Virtual methods
+
+        vfunc_validate_value(val: string): boolean;
+        vfunc_get_value(): string;
+        vfunc_set_value(value: string): void;
     }
 
     export const GomProperty: GomPropertyNamespace & {
@@ -43316,26 +43005,6 @@ export namespace GXml {
     };
 
     namespace Parser {
-        /**
-         * Interface for implementing Parser.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_write_file(file: Gio.File, cancellable: Gio.Cancellable): void;
-            vfunc_write_string(): string;
-            vfunc_write_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable): void;
-            vfunc_read_file(file: Gio.File, cancellable: Gio.Cancellable): void;
-            vfunc_read_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable): void;
-            vfunc_read_string(str: string, cancellable: Gio.Cancellable): void;
-            vfunc_get_backup(): boolean;
-            vfunc_set_backup(value: boolean): void;
-            vfunc_get_indent(): boolean;
-            vfunc_set_indent(value: boolean): void;
-            vfunc_get_node(): DomNode;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -43349,7 +43018,7 @@ export namespace GXml {
         $gtype: GObject.GType<Parser>;
         prototype: Parser;
     }
-    interface Parser extends GObject.Object, Parser.Interface {
+    interface Parser extends GObject.Object {
         // Properties
 
         get backup(): boolean;
@@ -43371,6 +43040,20 @@ export namespace GXml {
         get_indent(): boolean;
         set_indent(value: boolean): void;
         get_node(): DomNode;
+
+        // Virtual methods
+
+        vfunc_write_file(file: Gio.File, cancellable: Gio.Cancellable): void;
+        vfunc_write_string(): string;
+        vfunc_write_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable): void;
+        vfunc_read_file(file: Gio.File, cancellable: Gio.Cancellable): void;
+        vfunc_read_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable): void;
+        vfunc_read_string(str: string, cancellable: Gio.Cancellable): void;
+        vfunc_get_backup(): boolean;
+        vfunc_set_backup(value: boolean): void;
+        vfunc_get_indent(): boolean;
+        vfunc_set_indent(value: boolean): void;
+        vfunc_get_node(): DomNode;
     }
 
     export const Parser: ParserNamespace & {
@@ -43378,21 +43061,6 @@ export namespace GXml {
     };
 
     namespace IXsdSchema {
-        /**
-         * Interface for implementing IXsdSchema.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_element_definitions(): IXsdListElements;
-            vfunc_set_element_definitions(value: IXsdListElements): void;
-            vfunc_get_simple_type_definitions(): IXsdListSimpleTypes;
-            vfunc_set_simple_type_definitions(value: IXsdListSimpleTypes): void;
-            vfunc_get_complex_type_definitions(): IXsdListComplexTypes;
-            vfunc_set_complex_type_definitions(value: IXsdListComplexTypes): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -43409,7 +43077,7 @@ export namespace GXml {
         $gtype: GObject.GType<IXsdSchema>;
         prototype: IXsdSchema;
     }
-    interface IXsdSchema extends GObject.Object, IXsdSchema.Interface {
+    interface IXsdSchema extends GObject.Object {
         // Properties
 
         get element_definitions(): IXsdListElements;
@@ -43433,6 +43101,15 @@ export namespace GXml {
         set_simple_type_definitions(value: IXsdListSimpleTypes): void;
         get_complex_type_definitions(): IXsdListComplexTypes;
         set_complex_type_definitions(value: IXsdListComplexTypes): void;
+
+        // Virtual methods
+
+        vfunc_get_element_definitions(): IXsdListElements;
+        vfunc_set_element_definitions(value: IXsdListElements): void;
+        vfunc_get_simple_type_definitions(): IXsdListSimpleTypes;
+        vfunc_set_simple_type_definitions(value: IXsdListSimpleTypes): void;
+        vfunc_get_complex_type_definitions(): IXsdListComplexTypes;
+        vfunc_set_complex_type_definitions(value: IXsdListComplexTypes): void;
     }
 
     export const IXsdSchema: IXsdSchemaNamespace & {
@@ -43440,17 +43117,6 @@ export namespace GXml {
     };
 
     namespace IXsdBaseType {
-        /**
-         * Interface for implementing IXsdBaseType.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_anotation(): IXsdAnnotation;
-            vfunc_set_anotation(value: IXsdAnnotation): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -43462,7 +43128,7 @@ export namespace GXml {
         $gtype: GObject.GType<IXsdBaseType>;
         prototype: IXsdBaseType;
     }
-    interface IXsdBaseType extends GObject.Object, IXsdBaseType.Interface {
+    interface IXsdBaseType extends GObject.Object {
         // Properties
 
         get anotation(): IXsdAnnotation;
@@ -43472,6 +43138,11 @@ export namespace GXml {
 
         get_anotation(): IXsdAnnotation;
         set_anotation(value: IXsdAnnotation): void;
+
+        // Virtual methods
+
+        vfunc_get_anotation(): IXsdAnnotation;
+        vfunc_set_anotation(value: IXsdAnnotation): void;
     }
 
     export const IXsdBaseType: IXsdBaseTypeNamespace & {
@@ -43479,29 +43150,6 @@ export namespace GXml {
     };
 
     namespace IXsdSimpleType {
-        /**
-         * Interface for implementing IXsdSimpleType.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_final(): string;
-            vfunc_set_final(value: string): void;
-            vfunc_get_id(): string;
-            vfunc_set_id(value: string): void;
-            vfunc_get_name(): string;
-            vfunc_set_name(value: string): void;
-            vfunc_get_annotation(): IXsdAnnotation;
-            vfunc_set_annotation(value: IXsdAnnotation): void;
-            vfunc_get_list(): IXsdTypeList;
-            vfunc_set_list(value: IXsdTypeList): void;
-            vfunc_get_union(): IXsdTypeUnion;
-            vfunc_set_union(value: IXsdTypeUnion): void;
-            vfunc_get_restriction(): IXsdTypeRestriction;
-            vfunc_set_restriction(value: IXsdTypeRestriction): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -43519,7 +43167,7 @@ export namespace GXml {
         $gtype: GObject.GType<IXsdSimpleType>;
         prototype: IXsdSimpleType;
     }
-    interface IXsdSimpleType extends GObject.Object, IXsdSimpleType.Interface {
+    interface IXsdSimpleType extends GObject.Object {
         // Properties
 
         get 'final'(): string;
@@ -43553,6 +43201,23 @@ export namespace GXml {
         set_union(value: IXsdTypeUnion): void;
         get_restriction(): IXsdTypeRestriction;
         set_restriction(value: IXsdTypeRestriction): void;
+
+        // Virtual methods
+
+        vfunc_get_final(): string;
+        vfunc_set_final(value: string): void;
+        vfunc_get_id(): string;
+        vfunc_set_id(value: string): void;
+        vfunc_get_name(): string;
+        vfunc_set_name(value: string): void;
+        vfunc_get_annotation(): IXsdAnnotation;
+        vfunc_set_annotation(value: IXsdAnnotation): void;
+        vfunc_get_list(): IXsdTypeList;
+        vfunc_set_list(value: IXsdTypeList): void;
+        vfunc_get_union(): IXsdTypeUnion;
+        vfunc_set_union(value: IXsdTypeUnion): void;
+        vfunc_get_restriction(): IXsdTypeRestriction;
+        vfunc_set_restriction(value: IXsdTypeRestriction): void;
     }
 
     export const IXsdSimpleType: IXsdSimpleTypeNamespace & {
@@ -43576,25 +43241,6 @@ export namespace GXml {
     };
 
     namespace IXsdTypeRestriction {
-        /**
-         * Interface for implementing IXsdTypeRestriction.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_base(): string;
-            vfunc_set_base(value: string): void;
-            vfunc_get_id(): string;
-            vfunc_set_id(value: string): void;
-            vfunc_get_simple_type(): IXsdSimpleType;
-            vfunc_set_simple_type(value: IXsdSimpleType): void;
-            vfunc_get_enumerations(): IXsdListTypeRestrictionEnumerations;
-            vfunc_set_enumerations(value: IXsdListTypeRestrictionEnumerations): void;
-            vfunc_get_white_spaces(): IXsdListTypeRestrictionWhiteSpaces;
-            vfunc_set_white_spaces(value: IXsdListTypeRestrictionWhiteSpaces): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -43612,7 +43258,7 @@ export namespace GXml {
         $gtype: GObject.GType<IXsdTypeRestriction>;
         prototype: IXsdTypeRestriction;
     }
-    interface IXsdTypeRestriction extends GObject.Object, IXsdTypeRestriction.Interface {
+    interface IXsdTypeRestriction extends GObject.Object {
         // Properties
 
         get base(): string;
@@ -43642,6 +43288,19 @@ export namespace GXml {
         set_enumerations(value: IXsdListTypeRestrictionEnumerations): void;
         get_white_spaces(): IXsdListTypeRestrictionWhiteSpaces;
         set_white_spaces(value: IXsdListTypeRestrictionWhiteSpaces): void;
+
+        // Virtual methods
+
+        vfunc_get_base(): string;
+        vfunc_set_base(value: string): void;
+        vfunc_get_id(): string;
+        vfunc_set_id(value: string): void;
+        vfunc_get_simple_type(): IXsdSimpleType;
+        vfunc_set_simple_type(value: IXsdSimpleType): void;
+        vfunc_get_enumerations(): IXsdListTypeRestrictionEnumerations;
+        vfunc_set_enumerations(value: IXsdListTypeRestrictionEnumerations): void;
+        vfunc_get_white_spaces(): IXsdListTypeRestrictionWhiteSpaces;
+        vfunc_set_white_spaces(value: IXsdListTypeRestrictionWhiteSpaces): void;
     }
 
     export const IXsdTypeRestriction: IXsdTypeRestrictionNamespace & {
@@ -43681,17 +43340,6 @@ export namespace GXml {
     };
 
     namespace IXsdTypeRestrictionDef {
-        /**
-         * Interface for implementing IXsdTypeRestrictionDef.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_annotation(): IXsdAnnotation;
-            vfunc_set_annotation(value: IXsdAnnotation): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -43703,7 +43351,7 @@ export namespace GXml {
         $gtype: GObject.GType<IXsdTypeRestrictionDef>;
         prototype: IXsdTypeRestrictionDef;
     }
-    interface IXsdTypeRestrictionDef extends GObject.Object, IXsdTypeRestrictionDef.Interface {
+    interface IXsdTypeRestrictionDef extends GObject.Object {
         // Properties
 
         get annotation(): IXsdAnnotation;
@@ -43713,6 +43361,11 @@ export namespace GXml {
 
         get_annotation(): IXsdAnnotation;
         set_annotation(value: IXsdAnnotation): void;
+
+        // Virtual methods
+
+        vfunc_get_annotation(): IXsdAnnotation;
+        vfunc_set_annotation(value: IXsdAnnotation): void;
     }
 
     export const IXsdTypeRestrictionDef: IXsdTypeRestrictionDefNamespace & {
@@ -43864,19 +43517,6 @@ export namespace GXml {
     };
 
     namespace IXsdTypeRestrictionEnumeration {
-        /**
-         * Interface for implementing IXsdTypeRestrictionEnumeration.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_id(): string;
-            vfunc_set_id(value: string): void;
-            vfunc_get_value(): string;
-            vfunc_set_value(value: string): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -43889,7 +43529,7 @@ export namespace GXml {
         $gtype: GObject.GType<IXsdTypeRestrictionEnumeration>;
         prototype: IXsdTypeRestrictionEnumeration;
     }
-    interface IXsdTypeRestrictionEnumeration extends GObject.Object, IXsdTypeRestrictionEnumeration.Interface {
+    interface IXsdTypeRestrictionEnumeration extends GObject.Object {
         // Properties
 
         get id(): string;
@@ -43903,6 +43543,13 @@ export namespace GXml {
         set_id(value: string): void;
         get_value(): string;
         set_value(value: string): void;
+
+        // Virtual methods
+
+        vfunc_get_id(): string;
+        vfunc_set_id(value: string): void;
+        vfunc_get_value(): string;
+        vfunc_set_value(value: string): void;
     }
 
     export const IXsdTypeRestrictionEnumeration: IXsdTypeRestrictionEnumerationNamespace & {
@@ -43910,21 +43557,6 @@ export namespace GXml {
     };
 
     namespace IXsdTypeRestrictionWhiteSpace {
-        /**
-         * Interface for implementing IXsdTypeRestrictionWhiteSpace.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_fixed(): boolean;
-            vfunc_set_fixed(value: boolean): void;
-            vfunc_get_id(): string;
-            vfunc_set_id(value: string): void;
-            vfunc_get_value(): string;
-            vfunc_set_value(value: string): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -43938,7 +43570,7 @@ export namespace GXml {
         $gtype: GObject.GType<IXsdTypeRestrictionWhiteSpace>;
         prototype: IXsdTypeRestrictionWhiteSpace;
     }
-    interface IXsdTypeRestrictionWhiteSpace extends GObject.Object, IXsdTypeRestrictionWhiteSpace.Interface {
+    interface IXsdTypeRestrictionWhiteSpace extends GObject.Object {
         // Properties
 
         get fixed(): boolean;
@@ -43956,6 +43588,15 @@ export namespace GXml {
         set_id(value: string): void;
         get_value(): string;
         set_value(value: string): void;
+
+        // Virtual methods
+
+        vfunc_get_fixed(): boolean;
+        vfunc_set_fixed(value: boolean): void;
+        vfunc_get_id(): string;
+        vfunc_set_id(value: string): void;
+        vfunc_get_value(): string;
+        vfunc_set_value(value: string): void;
     }
 
     export const IXsdTypeRestrictionWhiteSpace: IXsdTypeRestrictionWhiteSpaceNamespace & {
@@ -44011,31 +43652,6 @@ export namespace GXml {
     };
 
     namespace IXsdComplexType {
-        /**
-         * Interface for implementing IXsdComplexType.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_abstract(): boolean;
-            vfunc_set_abstract(value: boolean): void;
-            vfunc_get_block(): string;
-            vfunc_set_block(value: string): void;
-            vfunc_get_final(): string;
-            vfunc_set_final(value: string): void;
-            vfunc_get_mixed(): boolean;
-            vfunc_set_mixed(value: boolean): void;
-            vfunc_get_name(): string;
-            vfunc_set_name(value: string): void;
-            vfunc_get_default_attributes_apply(): boolean;
-            vfunc_set_default_attributes_apply(value: boolean): void;
-            vfunc_get_content_type(): IXsdBaseContent;
-            vfunc_set_content_type(value: IXsdBaseContent): void;
-            vfunc_get_type_attributes(): IXsdListAttributes;
-            vfunc_get_group_attributes(): IXsdListAttributesGroup;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -44059,7 +43675,7 @@ export namespace GXml {
         $gtype: GObject.GType<IXsdComplexType>;
         prototype: IXsdComplexType;
     }
-    interface IXsdComplexType extends GObject.Object, IXsdComplexType.Interface {
+    interface IXsdComplexType extends GObject.Object {
         // Properties
 
         get 'abstract'(): boolean;
@@ -44103,6 +43719,25 @@ export namespace GXml {
         set_content_type(value: IXsdBaseContent): void;
         get_type_attributes(): IXsdListAttributes;
         get_group_attributes(): IXsdListAttributesGroup;
+
+        // Virtual methods
+
+        vfunc_get_abstract(): boolean;
+        vfunc_set_abstract(value: boolean): void;
+        vfunc_get_block(): string;
+        vfunc_set_block(value: string): void;
+        vfunc_get_final(): string;
+        vfunc_set_final(value: string): void;
+        vfunc_get_mixed(): boolean;
+        vfunc_set_mixed(value: boolean): void;
+        vfunc_get_name(): string;
+        vfunc_set_name(value: string): void;
+        vfunc_get_default_attributes_apply(): boolean;
+        vfunc_set_default_attributes_apply(value: boolean): void;
+        vfunc_get_content_type(): IXsdBaseContent;
+        vfunc_set_content_type(value: IXsdBaseContent): void;
+        vfunc_get_type_attributes(): IXsdListAttributes;
+        vfunc_get_group_attributes(): IXsdListAttributesGroup;
     }
 
     export const IXsdComplexType: IXsdComplexTypeNamespace & {
@@ -44110,17 +43745,6 @@ export namespace GXml {
     };
 
     namespace IXsdExtension {
-        /**
-         * Interface for implementing IXsdExtension.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_base(): string;
-            vfunc_set_base(value: string): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -44132,7 +43756,7 @@ export namespace GXml {
         $gtype: GObject.GType<IXsdExtension>;
         prototype: IXsdExtension;
     }
-    interface IXsdExtension extends GObject.Object, IXsdExtension.Interface {
+    interface IXsdExtension extends GObject.Object {
         // Properties
 
         get base(): string;
@@ -44142,6 +43766,11 @@ export namespace GXml {
 
         get_base(): string;
         set_base(value: string): void;
+
+        // Virtual methods
+
+        vfunc_get_base(): string;
+        vfunc_set_base(value: string): void;
     }
 
     export const IXsdExtension: IXsdExtensionNamespace & {
@@ -44149,51 +43778,6 @@ export namespace GXml {
     };
 
     namespace IXsdElement {
-        /**
-         * Interface for implementing IXsdElement.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_abstract(): boolean;
-            vfunc_set_abstract(value: boolean): void;
-            vfunc_get_block(): string;
-            vfunc_set_block(value: string): void;
-            vfunc_get_default(): string;
-            vfunc_set_default(value: string): void;
-            vfunc_get_final(): string;
-            vfunc_set_final(value: string): void;
-            vfunc_get_fixed(): string;
-            vfunc_set_fixed(value: string): void;
-            vfunc_get_form(): string;
-            vfunc_set_form(value: string): void;
-            vfunc_get_id(): string;
-            vfunc_set_id(value: string): void;
-            vfunc_get_maxOccurs(): string;
-            vfunc_set_maxOccurs(value: string): void;
-            vfunc_get_minOccurs(): string;
-            vfunc_set_minOccurs(value: string): void;
-            vfunc_get_name(): string;
-            vfunc_set_name(value: string): void;
-            vfunc_get_nillable(): boolean;
-            vfunc_set_nillable(value: boolean): void;
-            vfunc_get_ref(): string;
-            vfunc_set_ref(value: string): void;
-            vfunc_get_substitution_group(): DomTokenList;
-            vfunc_set_substitution_group(value: DomTokenList): void;
-            vfunc_get_target_namespace(): string;
-            vfunc_set_target_namespace(value: string): void;
-            vfunc_get_object_type(): string;
-            vfunc_set_object_type(value: string): void;
-            vfunc_get_anotation(): IXsdAnnotation;
-            vfunc_set_anotation(value: IXsdAnnotation): void;
-            vfunc_get_simple_type(): IXsdSimpleType;
-            vfunc_set_simple_type(value: IXsdSimpleType): void;
-            vfunc_get_complex_type(): IXsdComplexType;
-            vfunc_set_complex_type(value: IXsdComplexType): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -44227,7 +43811,7 @@ export namespace GXml {
         $gtype: GObject.GType<IXsdElement>;
         prototype: IXsdElement;
     }
-    interface IXsdElement extends GObject.Object, IXsdElement.Interface {
+    interface IXsdElement extends GObject.Object {
         // Properties
 
         get 'abstract'(): boolean;
@@ -44315,6 +43899,45 @@ export namespace GXml {
         set_simple_type(value: IXsdSimpleType): void;
         get_complex_type(): IXsdComplexType;
         set_complex_type(value: IXsdComplexType): void;
+
+        // Virtual methods
+
+        vfunc_get_abstract(): boolean;
+        vfunc_set_abstract(value: boolean): void;
+        vfunc_get_block(): string;
+        vfunc_set_block(value: string): void;
+        vfunc_get_default(): string;
+        vfunc_set_default(value: string): void;
+        vfunc_get_final(): string;
+        vfunc_set_final(value: string): void;
+        vfunc_get_fixed(): string;
+        vfunc_set_fixed(value: string): void;
+        vfunc_get_form(): string;
+        vfunc_set_form(value: string): void;
+        vfunc_get_id(): string;
+        vfunc_set_id(value: string): void;
+        vfunc_get_maxOccurs(): string;
+        vfunc_set_maxOccurs(value: string): void;
+        vfunc_get_minOccurs(): string;
+        vfunc_set_minOccurs(value: string): void;
+        vfunc_get_name(): string;
+        vfunc_set_name(value: string): void;
+        vfunc_get_nillable(): boolean;
+        vfunc_set_nillable(value: boolean): void;
+        vfunc_get_ref(): string;
+        vfunc_set_ref(value: string): void;
+        vfunc_get_substitution_group(): DomTokenList;
+        vfunc_set_substitution_group(value: DomTokenList): void;
+        vfunc_get_target_namespace(): string;
+        vfunc_set_target_namespace(value: string): void;
+        vfunc_get_object_type(): string;
+        vfunc_set_object_type(value: string): void;
+        vfunc_get_anotation(): IXsdAnnotation;
+        vfunc_set_anotation(value: IXsdAnnotation): void;
+        vfunc_get_simple_type(): IXsdSimpleType;
+        vfunc_set_simple_type(value: IXsdSimpleType): void;
+        vfunc_get_complex_type(): IXsdComplexType;
+        vfunc_set_complex_type(value: IXsdComplexType): void;
     }
 
     export const IXsdElement: IXsdElementNamespace & {
@@ -44338,17 +43961,6 @@ export namespace GXml {
     };
 
     namespace IXsdBaseContent {
-        /**
-         * Interface for implementing IXsdBaseContent.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_anotation(): IXsdAnnotation;
-            vfunc_set_anotation(value: IXsdAnnotation): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -44360,7 +43972,7 @@ export namespace GXml {
         $gtype: GObject.GType<IXsdBaseContent>;
         prototype: IXsdBaseContent;
     }
-    interface IXsdBaseContent extends GObject.Object, IXsdBaseContent.Interface {
+    interface IXsdBaseContent extends GObject.Object {
         // Properties
 
         get anotation(): IXsdAnnotation;
@@ -44370,6 +43982,11 @@ export namespace GXml {
 
         get_anotation(): IXsdAnnotation;
         set_anotation(value: IXsdAnnotation): void;
+
+        // Virtual methods
+
+        vfunc_get_anotation(): IXsdAnnotation;
+        vfunc_set_anotation(value: IXsdAnnotation): void;
     }
 
     export const IXsdBaseContent: IXsdBaseContentNamespace & {
@@ -44425,17 +44042,6 @@ export namespace GXml {
     };
 
     namespace IXsdBaseAttribute {
-        /**
-         * Interface for implementing IXsdBaseAttribute.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_anotation(): IXsdAnnotation;
-            vfunc_set_anotation(value: IXsdAnnotation): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -44447,7 +44053,7 @@ export namespace GXml {
         $gtype: GObject.GType<IXsdBaseAttribute>;
         prototype: IXsdBaseAttribute;
     }
-    interface IXsdBaseAttribute extends GObject.Object, IXsdBaseAttribute.Interface {
+    interface IXsdBaseAttribute extends GObject.Object {
         // Properties
 
         get anotation(): IXsdAnnotation;
@@ -44457,6 +44063,11 @@ export namespace GXml {
 
         get_anotation(): IXsdAnnotation;
         set_anotation(value: IXsdAnnotation): void;
+
+        // Virtual methods
+
+        vfunc_get_anotation(): IXsdAnnotation;
+        vfunc_set_anotation(value: IXsdAnnotation): void;
     }
 
     export const IXsdBaseAttribute: IXsdBaseAttributeNamespace & {
@@ -44496,26 +44107,6 @@ export namespace GXml {
     };
 
     namespace IXsdList {
-        /**
-         * Interface for implementing IXsdList.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_item(index: number): DomElement;
-            vfunc_append(element: DomElement): void;
-            vfunc_remove(index: number): void;
-            vfunc_index_of(element: DomElement): number;
-            vfunc_get_element(): DomElement;
-            vfunc_set_element(value: DomElement): void;
-            vfunc_get_items_type(): GObject.GType;
-            vfunc_set_items_type(value: GObject.GType): void;
-            vfunc_get_items_name(): GObject.GType;
-            vfunc_set_items_name(value: GObject.GType): void;
-            vfunc_get_length(): number;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -44532,7 +44123,7 @@ export namespace GXml {
         $gtype: GObject.GType<IXsdList>;
         prototype: IXsdList;
     }
-    interface IXsdList extends GObject.Object, IXsdList.Interface {
+    interface IXsdList extends GObject.Object {
         // Properties
 
         get element(): DomElement;
@@ -44560,6 +44151,20 @@ export namespace GXml {
         get_items_name(): GObject.GType;
         set_items_name(value: GObject.GType): void;
         get_length(): number;
+
+        // Virtual methods
+
+        vfunc_get_item(index: number): DomElement;
+        vfunc_append(element: DomElement): void;
+        vfunc_remove(index: number): void;
+        vfunc_index_of(element: DomElement): number;
+        vfunc_get_element(): DomElement;
+        vfunc_set_element(value: DomElement): void;
+        vfunc_get_items_type(): GObject.GType;
+        vfunc_set_items_type(value: GObject.GType): void;
+        vfunc_get_items_name(): GObject.GType;
+        vfunc_set_items_name(value: GObject.GType): void;
+        vfunc_get_length(): number;
     }
 
     export const IXsdList: IXsdListNamespace & {

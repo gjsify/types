@@ -7992,16 +7992,6 @@ export namespace Gitg {
     type SidebarItemIface = typeof SidebarItem;
     type StageStatusItemIface = typeof StageStatusItem;
     namespace Branch {
-        /**
-         * Interface for implementing Branch.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_upstream(): Ref;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Ggit.Branch.ConstructorProps {}
@@ -8011,12 +8001,16 @@ export namespace Gitg {
         $gtype: GObject.GType<Branch>;
         prototype: Branch;
     }
-    interface Branch extends Ggit.Branch, Branch.Interface {
+    interface Branch extends Ggit.Branch {
         // Methods
 
         get_upstream(): Ref;
         // Conflicted with Ggit.Branch.get_upstream
         get_upstream(...args: never[]): any;
+
+        // Virtual methods
+
+        vfunc_get_upstream(): Ref;
     }
 
     export const Branch: BranchNamespace & {
@@ -8024,24 +8018,6 @@ export namespace Gitg {
     };
 
     namespace Ref {
-        /**
-         * Interface for implementing Ref.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_owner(): Repository;
-            vfunc_get_d_parsed_name(): ParsedRefName;
-            vfunc_set_d_parsed_name(value: ParsedRefName): void;
-            vfunc_get_d_pushes(): Ref[] | null;
-            vfunc_set_d_pushes(value?: Ref[] | null): void;
-            vfunc_get_state(): RefState;
-            vfunc_set_state(value: RefState): void;
-            vfunc_get_working(): boolean;
-            vfunc_set_working(value: boolean): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Ggit.Ref.ConstructorProps {
@@ -8058,7 +8034,7 @@ export namespace Gitg {
         $gtype: GObject.GType<Ref>;
         prototype: Ref;
     }
-    interface Ref extends Ggit.Ref, Ref.Interface {
+    interface Ref extends Ggit.Ref {
         // Properties
 
         get d_parsed_name(): ParsedRefName;
@@ -8089,6 +8065,18 @@ export namespace Gitg {
         set_working(value: boolean): void;
         get_parsed_name(): ParsedRefName;
         get_pushes(): Ref[];
+
+        // Virtual methods
+
+        vfunc_get_owner(): Repository;
+        vfunc_get_d_parsed_name(): ParsedRefName;
+        vfunc_set_d_parsed_name(value: ParsedRefName): void;
+        vfunc_get_d_pushes(): Ref[] | null;
+        vfunc_set_d_pushes(value?: Ref[] | null): void;
+        vfunc_get_state(): RefState;
+        vfunc_set_state(value: RefState): void;
+        vfunc_get_working(): boolean;
+        vfunc_set_working(value: boolean): void;
     }
 
     export const Ref: RefNamespace & {
@@ -8096,20 +8084,6 @@ export namespace Gitg {
     };
 
     namespace CredentialsProvider {
-        /**
-         * Interface for implementing CredentialsProvider.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_credentials(
-                url: string,
-                username_from_url: string | null,
-                allowed_types: Ggit.Credtype,
-            ): Ggit.Cred | null;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -8119,13 +8093,21 @@ export namespace Gitg {
         $gtype: GObject.GType<CredentialsProvider>;
         prototype: CredentialsProvider;
     }
-    interface CredentialsProvider extends GObject.Object, CredentialsProvider.Interface {
+    interface CredentialsProvider extends GObject.Object {
         // Methods
 
         credentials(
             url: string,
             username_from_url: string | null,
             allowed_types: Ggit.Credtype | null,
+        ): Ggit.Cred | null;
+
+        // Virtual methods
+
+        vfunc_credentials(
+            url: string,
+            username_from_url: string | null,
+            allowed_types: Ggit.Credtype,
         ): Ggit.Cred | null;
     }
 
@@ -8134,18 +8116,6 @@ export namespace Gitg {
     };
 
     namespace SidebarItem {
-        /**
-         * Interface for implementing SidebarItem.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_activate(numclick: number): void;
-            vfunc_get_text(): string;
-            vfunc_get_icon_name(): string | null;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8159,7 +8129,7 @@ export namespace Gitg {
         $gtype: GObject.GType<SidebarItem>;
         prototype: SidebarItem;
     }
-    interface SidebarItem extends GObject.Object, SidebarItem.Interface {
+    interface SidebarItem extends GObject.Object {
         // Properties
 
         get text(): string;
@@ -8171,6 +8141,12 @@ export namespace Gitg {
         activate(numclick: number): void;
         get_text(): string;
         get_icon_name(): string | null;
+
+        // Virtual methods
+
+        vfunc_activate(numclick: number): void;
+        vfunc_get_text(): string;
+        vfunc_get_icon_name(): string | null;
     }
 
     export const SidebarItem: SidebarItemNamespace & {
@@ -8178,20 +8154,6 @@ export namespace Gitg {
     };
 
     namespace StageStatusItem {
-        /**
-         * Interface for implementing StageStatusItem.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_path(): string;
-            vfunc_get_is_staged(): boolean;
-            vfunc_get_is_unstaged(): boolean;
-            vfunc_get_is_untracked(): boolean;
-            vfunc_get_icon_name(): string | null;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8211,7 +8173,7 @@ export namespace Gitg {
         $gtype: GObject.GType<StageStatusItem>;
         prototype: StageStatusItem;
     }
-    interface StageStatusItem extends GObject.Object, StageStatusItem.Interface {
+    interface StageStatusItem extends GObject.Object {
         // Properties
 
         get path(): string;
@@ -8231,6 +8193,14 @@ export namespace Gitg {
         get_is_unstaged(): boolean;
         get_is_untracked(): boolean;
         get_icon_name(): string | null;
+
+        // Virtual methods
+
+        vfunc_get_path(): string;
+        vfunc_get_is_staged(): boolean;
+        vfunc_get_is_unstaged(): boolean;
+        vfunc_get_is_untracked(): boolean;
+        vfunc_get_icon_name(): string | null;
     }
 
     export const StageStatusItem: StageStatusItemNamespace & {

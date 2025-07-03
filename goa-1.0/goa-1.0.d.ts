@@ -35844,25 +35844,6 @@ export namespace Goa {
     }
 
     namespace Account {
-        /**
-         * Interface for implementing Account.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Handler for the #GoaAccount::handle-ensure-credentials signal.
-             * @param invocation
-             */
-            vfunc_handle_ensure_credentials(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #GoaAccount::handle-remove signal.
-             * @param invocation
-             */
-            vfunc_handle_remove(invocation: Gio.DBusMethodInvocation): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -35927,7 +35908,7 @@ export namespace Goa {
          */
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
-    interface Account extends GObject.Object, Account.Interface {
+    interface Account extends GObject.Object {
         // Properties
 
         /**
@@ -36337,6 +36318,19 @@ export namespace Goa {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_remove(invocation: Gio.DBusMethodInvocation): void;
+
+        // Virtual methods
+
+        /**
+         * Handler for the #GoaAccount::handle-ensure-credentials signal.
+         * @param invocation
+         */
+        vfunc_handle_ensure_credentials(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #GoaAccount::handle-remove signal.
+         * @param invocation
+         */
+        vfunc_handle_remove(invocation: Gio.DBusMethodInvocation): boolean;
     }
 
     export const Account: AccountNamespace & {
@@ -36936,41 +36930,6 @@ export namespace Goa {
     };
 
     namespace Manager {
-        /**
-         * Interface for implementing Manager.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Handler for the #GoaManager::handle-add-account signal.
-             * @param invocation
-             * @param arg_provider
-             * @param arg_identity
-             * @param arg_presentation_identity
-             * @param arg_credentials
-             * @param arg_details
-             */
-            vfunc_handle_add_account(
-                invocation: Gio.DBusMethodInvocation,
-                arg_provider: string,
-                arg_identity: string,
-                arg_presentation_identity: string,
-                arg_credentials: GLib.Variant,
-                arg_details: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #GoaManager::handle-is-supported-provider signal.
-             * @param invocation
-             * @param arg_provider_type
-             */
-            vfunc_handle_is_supported_provider(
-                invocation: Gio.DBusMethodInvocation,
-                arg_provider_type: string,
-            ): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36992,7 +36951,7 @@ export namespace Goa {
          */
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
-    interface Manager extends GObject.Object, Manager.Interface {
+    interface Manager extends GObject.Object {
         // Methods
 
         /**
@@ -37165,6 +37124,32 @@ export namespace Goa {
          * @param is_supported Parameter to return.
          */
         complete_is_supported_provider(invocation: Gio.DBusMethodInvocation, is_supported: boolean): void;
+
+        // Virtual methods
+
+        /**
+         * Handler for the #GoaManager::handle-add-account signal.
+         * @param invocation
+         * @param arg_provider
+         * @param arg_identity
+         * @param arg_presentation_identity
+         * @param arg_credentials
+         * @param arg_details
+         */
+        vfunc_handle_add_account(
+            invocation: Gio.DBusMethodInvocation,
+            arg_provider: string,
+            arg_identity: string,
+            arg_presentation_identity: string,
+            arg_credentials: GLib.Variant,
+            arg_details: GLib.Variant,
+        ): boolean;
+        /**
+         * Handler for the #GoaManager::handle-is-supported-provider signal.
+         * @param invocation
+         * @param arg_provider_type
+         */
+        vfunc_handle_is_supported_provider(invocation: Gio.DBusMethodInvocation, arg_provider_type: string): boolean;
     }
 
     export const Manager: ManagerNamespace & {
@@ -37284,20 +37269,6 @@ export namespace Goa {
     };
 
     namespace OAuth2Based {
-        /**
-         * Interface for implementing OAuth2Based.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Handler for the #GoaOAuth2Based::handle-get-access-token signal.
-             * @param invocation
-             */
-            vfunc_handle_get_access_token(invocation: Gio.DBusMethodInvocation): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -37324,7 +37295,7 @@ export namespace Goa {
          */
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
-    interface OAuth2Based extends GObject.Object, OAuth2Based.Interface {
+    interface OAuth2Based extends GObject.Object {
         // Properties
 
         /**
@@ -37413,6 +37384,14 @@ export namespace Goa {
          * @param expires_in Parameter to return.
          */
         complete_get_access_token(invocation: Gio.DBusMethodInvocation, access_token: string, expires_in: number): void;
+
+        // Virtual methods
+
+        /**
+         * Handler for the #GoaOAuth2Based::handle-get-access-token signal.
+         * @param invocation
+         */
+        vfunc_handle_get_access_token(invocation: Gio.DBusMethodInvocation): boolean;
     }
 
     export const OAuth2Based: OAuth2BasedNamespace & {
@@ -37420,20 +37399,6 @@ export namespace Goa {
     };
 
     namespace OAuthBased {
-        /**
-         * Interface for implementing OAuthBased.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Handler for the #GoaOAuthBased::handle-get-access-token signal.
-             * @param invocation
-             */
-            vfunc_handle_get_access_token(invocation: Gio.DBusMethodInvocation): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -37460,7 +37425,7 @@ export namespace Goa {
          */
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
-    interface OAuthBased extends GObject.Object, OAuthBased.Interface {
+    interface OAuthBased extends GObject.Object {
         // Properties
 
         /**
@@ -37555,6 +37520,14 @@ export namespace Goa {
             access_token_secret: string,
             expires_in: number,
         ): void;
+
+        // Virtual methods
+
+        /**
+         * Handler for the #GoaOAuthBased::handle-get-access-token signal.
+         * @param invocation
+         */
+        vfunc_handle_get_access_token(invocation: Gio.DBusMethodInvocation): boolean;
     }
 
     export const OAuthBased: OAuthBasedNamespace & {
@@ -37885,21 +37858,6 @@ export namespace Goa {
     };
 
     namespace PasswordBased {
-        /**
-         * Interface for implementing PasswordBased.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Handler for the #GoaPasswordBased::handle-get-password signal.
-             * @param invocation
-             * @param arg_id
-             */
-            vfunc_handle_get_password(invocation: Gio.DBusMethodInvocation, arg_id: string): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -37921,7 +37879,7 @@ export namespace Goa {
          */
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
-    interface PasswordBased extends GObject.Object, PasswordBased.Interface {
+    interface PasswordBased extends GObject.Object {
         // Methods
 
         /**
@@ -37987,6 +37945,15 @@ export namespace Goa {
          * @param password Parameter to return.
          */
         complete_get_password(invocation: Gio.DBusMethodInvocation, password: string): void;
+
+        // Virtual methods
+
+        /**
+         * Handler for the #GoaPasswordBased::handle-get-password signal.
+         * @param invocation
+         * @param arg_id
+         */
+        vfunc_handle_get_password(invocation: Gio.DBusMethodInvocation, arg_id: string): boolean;
     }
 
     export const PasswordBased: PasswordBasedNamespace & {
@@ -38078,20 +38045,6 @@ export namespace Goa {
     };
 
     namespace Ticketing {
-        /**
-         * Interface for implementing Ticketing.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Handler for the #GoaTicketing::handle-get-ticket signal.
-             * @param invocation
-             */
-            vfunc_handle_get_ticket(invocation: Gio.DBusMethodInvocation): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -38115,7 +38068,7 @@ export namespace Goa {
          */
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
-    interface Ticketing extends GObject.Object, Ticketing.Interface {
+    interface Ticketing extends GObject.Object {
         // Properties
 
         /**
@@ -38181,6 +38134,14 @@ export namespace Goa {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_get_ticket(invocation: Gio.DBusMethodInvocation): void;
+
+        // Virtual methods
+
+        /**
+         * Handler for the #GoaTicketing::handle-get-ticket signal.
+         * @param invocation
+         */
+        vfunc_handle_get_ticket(invocation: Gio.DBusMethodInvocation): boolean;
     }
 
     export const Ticketing: TicketingNamespace & {

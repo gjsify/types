@@ -47,55 +47,9 @@ export namespace GObject {
         Requires?: Object[];
     }
 
-    // Advanced Variants types - enhanced type system for better type inference
-    export type AdvGjsParameters<T extends (...args: any) => any> = T extends (...args: infer P) => any ? P : never;
+    export type Property<K extends ParamSpec> = K extends ParamSpec<infer T> ? T : any;
 
-    export type AdvGType<T = unknown> = {
-        __type__(arg: never): T;
-        name: string;
-    };
-
-    export interface AdvSignalDefinition {
-        flags?: SignalFlags;
-        accumulator: number;
-        return_type?: AdvGType;
-        param_types?: AdvGType[];
-    }
-
-    export interface AdvMetaInfo<Props, Interfaces, Sigs> {
-        GTypeName?: string;
-        GTypeFlags?: TypeFlags;
-        Properties?: Props;
-        Signals?: Sigs;
-        Implements?: Interfaces;
-        CssName?: string;
-        Template?: Uint8Array | GLib.Bytes | string;
-        Children?: string[];
-        InternalChildren?: string[];
-        Requires?: Object[];
-    }
-
-    export type AdvProperty<K extends ParamSpec> = K extends ParamSpec<infer T> ? T : any;
-
-    export type AdvProperties<Prototype extends {}, Properties extends { [key: string]: ParamSpec }> = Omit<
-        {
-            [key in keyof Properties | keyof Prototype]: key extends keyof Prototype
-                ? never
-                : key extends keyof Properties
-                  ? AdvProperty<Properties[key]>
-                  : never;
-        },
-        keyof Prototype
-    >;
-
-    export type AdvSignalSignatures = {
-        [signal: string]: (...args: any[]) => any;
-    };
-
-    export type AdvSignalCallback<Emitter, Fn> = Fn extends (...args: infer P) => infer R
-        ? (source: Emitter, ...args: P) => R
-        : never;
-
+    // Advanced type inference for GObject class registration
     // String conversion utilities for property names
     type SnakeToUnderscoreCase<S extends string> = S extends `${infer T}-${infer U}`
         ? `${T}_${SnakeToUnderscoreCase<U>}`
@@ -123,15 +77,26 @@ export namespace GObject {
     // Advanced utility types for class registration
     type UnionToIntersection<T> = (T extends any ? (x: T) => any : never) extends (x: infer R) => any ? R : never;
 
-    type IFaces<Interfaces extends { $gtype: AdvGType<any> }[]> = {
-        [key in keyof Interfaces]: Interfaces[key] extends { $gtype: AdvGType<infer I> } ? I : never;
+    type IFaces<Interfaces extends { $gtype: GType<any> }[]> = {
+        [key in keyof Interfaces]: Interfaces[key] extends { $gtype: GType<infer I> } ? I : never;
     };
+
+    export type Properties<Prototype extends {}, Properties extends { [key: string]: ParamSpec }> = Omit<
+        {
+            [key in keyof Properties | keyof Prototype]: key extends keyof Prototype
+                ? never
+                : key extends keyof Properties
+                  ? Property<Properties[key]>
+                  : never;
+        },
+        keyof Prototype
+    >;
 
     export type RegisteredPrototype<
         P extends {},
         Props extends { [key: string]: ParamSpec },
         Interfaces extends any[],
-    > = AdvProperties<P, SnakeToCamel<Props> & SnakeToUnderscore<Props>> & UnionToIntersection<Interfaces[number]> & P;
+    > = Properties<P, SnakeToCamel<Props> & SnakeToUnderscore<Props>> & UnionToIntersection<Interfaces[number]> & P;
 
     type Ctor = new (...a: any[]) => object;
     type Init = { _init(...args: any[]): void };
@@ -139,10 +104,10 @@ export namespace GObject {
     export type RegisteredClass<
         T extends Ctor,
         Props extends { [key: string]: ParamSpec },
-        Interfaces extends { $gtype: AdvGType<any> }[],
+        Interfaces extends { $gtype: GType<any> }[],
     > = T extends { prototype: infer P extends {} }
         ? {
-              $gtype: AdvGType<RegisteredClass<T, Props, IFaces<Interfaces>>>;
+              $gtype: GType<RegisteredClass<T, Props, IFaces<Interfaces>>>;
               new (
                   ...args: P extends Init ? Parameters<P['_init']> : [void]
               ): RegisteredPrototype<P, Props, IFaces<Interfaces>>;
@@ -150,8 +115,8 @@ export namespace GObject {
           }
         : never;
 
-    export type AdvSignalDefinitionType = {
-        param_types?: readonly AdvGType[];
+    export type SignalDefinitionType = {
+        param_types?: readonly GType[];
         [key: string]: any;
     };
 
@@ -164,11 +129,6 @@ export namespace GObject {
         _construct: (params: any, ...otherArgs: any[]) => any;
         _init: (params: any) => void;
         $gtype?: GType<T>;
-    }
-
-    export namespace Object {
-        // Interface for virtual method implementations
-        export interface Interface extends GObject.Interface {}
     }
 
     /**
@@ -345,8 +305,6 @@ export namespace GObject {
     export function signal_handlers_disconnect_by_func(instance: Object, func: (...args: any[]) => any): number;
     export function signal_handlers_disconnect_by_data(): void;
 
-    export type Property<K extends ParamSpec> = K extends ParamSpec<infer T> ? T : any;
-
     // Helper types for type-safe signal handling
     export interface SignalSignatures {
         /** Fallback for dynamic signals and type compatibility */
@@ -365,6 +323,9 @@ export namespace GObject {
 
     type ObjectConstructor = { new (...args: any[]): Object };
 
+    // Standard registerClass overloads
+    export function registerClass<T extends ObjectConstructor>(cls: T): T;
+
     export function registerClass<
         T extends ObjectConstructor,
         Props extends { [key: string]: ParamSpec },
@@ -377,9 +338,7 @@ export namespace GObject {
         },
     >(options: MetaInfo<Props, Interfaces, Sigs>, cls: T): T;
 
-    export function registerClass<T extends ObjectConstructor>(cls: T): T;
-
-    // Advanced Variants registerClass overloads with enhanced type inference
+    // Enhanced registerClass overloads with advanced type inference
 
     export function registerClass<P extends {}, T extends new (...args: any[]) => P>(
         klass: T,
@@ -388,10 +347,10 @@ export namespace GObject {
     export function registerClass<
         T extends Ctor,
         Props extends { [key: string]: ParamSpec },
-        Interfaces extends { $gtype: AdvGType }[],
+        Interfaces extends { $gtype: GType }[],
         Sigs extends {
             [key: string]: {
-                param_types?: readonly AdvGType[];
+                param_types?: readonly GType[];
                 [key: string]: any;
             };
         },

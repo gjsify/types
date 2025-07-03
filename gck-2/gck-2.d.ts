@@ -4501,23 +4501,6 @@ export namespace Gck {
     }
 
     namespace ObjectCache {
-        /**
-         * Interface for implementing ObjectCache.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Adds the attributes to the set cached on this object. If an attribute is
-             * already present in the cache it will be overridden by this value.
-             *
-             * This will be done in a thread-safe manner.
-             * @param attrs the attributes to cache
-             */
-            vfunc_fill(attrs: Attributes): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -4529,7 +4512,7 @@ export namespace Gck {
         $gtype: GObject.GType<ObjectCache>;
         prototype: ObjectCache;
     }
-    interface ObjectCache extends Object, ObjectCache.Interface {
+    interface ObjectCache extends Object {
         // Properties
 
         /**
@@ -4607,6 +4590,17 @@ export namespace Gck {
          * @returns whether the cache update was successful
          */
         update_finish(result: Gio.AsyncResult): boolean;
+
+        // Virtual methods
+
+        /**
+         * Adds the attributes to the set cached on this object. If an attribute is
+         * already present in the cache it will be overridden by this value.
+         *
+         * This will be done in a thread-safe manner.
+         * @param attrs the attributes to cache
+         */
+        vfunc_fill(attrs: Attributes): void;
     }
 
     export const ObjectCache: ObjectCacheNamespace & {

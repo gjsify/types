@@ -1855,39 +1855,6 @@ export namespace Liferea {
     }
 
     namespace AuthActivatable {
-        /**
-         * Interface for implementing AuthActivatable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Activates the extension.
-             */
-            vfunc_activate(): void;
-            /**
-             * Deactivates the extension.
-             */
-            vfunc_deactivate(): void;
-            /**
-             * Triggers a query for authentication infos for a given subscription.
-             * Expects triggered plugins to use liferea_auth_info_add() to provide
-             * any matches.
-             * @param authId a unique auth info id
-             */
-            vfunc_query(authId: string): void;
-            /**
-             * Triggers a query for authentication infos for a given subscription.
-             * Expects triggered plugins to use liferea_auth_info_add() to provide
-             * any matches.
-             * @param authId a unique auth info id
-             * @param username the username to store
-             * @param password the password to store
-             */
-            vfunc_store(authId: string, username: string, password: string): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1897,7 +1864,7 @@ export namespace Liferea {
         $gtype: GObject.GType<AuthActivatable>;
         prototype: AuthActivatable;
     }
-    interface AuthActivatable extends GObject.Object, AuthActivatable.Interface {
+    interface AuthActivatable extends GObject.Object {
         // Methods
 
         /**
@@ -1924,6 +1891,33 @@ export namespace Liferea {
          * @param password the password to store
          */
         store(authId: string, username: string, password: string): void;
+
+        // Virtual methods
+
+        /**
+         * Activates the extension.
+         */
+        vfunc_activate(): void;
+        /**
+         * Deactivates the extension.
+         */
+        vfunc_deactivate(): void;
+        /**
+         * Triggers a query for authentication infos for a given subscription.
+         * Expects triggered plugins to use liferea_auth_info_add() to provide
+         * any matches.
+         * @param authId a unique auth info id
+         */
+        vfunc_query(authId: string): void;
+        /**
+         * Triggers a query for authentication infos for a given subscription.
+         * Expects triggered plugins to use liferea_auth_info_add() to provide
+         * any matches.
+         * @param authId a unique auth info id
+         * @param username the username to store
+         * @param password the password to store
+         */
+        vfunc_store(authId: string, username: string, password: string): void;
     }
 
     export const AuthActivatable: AuthActivatableNamespace & {
@@ -1931,17 +1925,6 @@ export namespace Liferea {
     };
 
     namespace NodeSourceActivatable {
-        /**
-         * Interface for implementing NodeSourceActivatable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_activate(): void;
-            vfunc_deactivate(): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1951,11 +1934,16 @@ export namespace Liferea {
         $gtype: GObject.GType<NodeSourceActivatable>;
         prototype: NodeSourceActivatable;
     }
-    interface NodeSourceActivatable extends GObject.Object, NodeSourceActivatable.Interface {
+    interface NodeSourceActivatable extends GObject.Object {
         // Methods
 
         activate(): void;
         deactivate(): void;
+
+        // Virtual methods
+
+        vfunc_activate(): void;
+        vfunc_deactivate(): void;
     }
 
     export const NodeSourceActivatable: NodeSourceActivatableNamespace & {
@@ -1963,28 +1951,6 @@ export namespace Liferea {
     };
 
     namespace ShellActivatable {
-        /**
-         * Interface for implementing ShellActivatable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Activates the extension on the shell property.
-             */
-            vfunc_activate(): void;
-            /**
-             * Deactivates the extension on the shell property.
-             */
-            vfunc_deactivate(): void;
-            /**
-             * Triggers an update of the extension internal state to take into account
-             * state changes in the window, due to some event or user action.
-             */
-            vfunc_update_state(): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1996,7 +1962,7 @@ export namespace Liferea {
         $gtype: GObject.GType<ShellActivatable>;
         prototype: ShellActivatable;
     }
-    interface ShellActivatable extends GObject.Object, ShellActivatable.Interface {
+    interface ShellActivatable extends GObject.Object {
         // Properties
 
         get shell(): Shell;
@@ -2016,6 +1982,22 @@ export namespace Liferea {
          * state changes in the window, due to some event or user action.
          */
         update_state(): void;
+
+        // Virtual methods
+
+        /**
+         * Activates the extension on the shell property.
+         */
+        vfunc_activate(): void;
+        /**
+         * Deactivates the extension on the shell property.
+         */
+        vfunc_deactivate(): void;
+        /**
+         * Triggers an update of the extension internal state to take into account
+         * state changes in the window, due to some event or user action.
+         */
+        vfunc_update_state(): void;
     }
 
     export const ShellActivatable: ShellActivatableNamespace & {

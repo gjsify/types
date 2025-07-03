@@ -9343,53 +9343,6 @@ export namespace GstVideo {
     }
 
     namespace ColorBalance {
-        /**
-         * Interface for implementing ColorBalance.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Get the #GstColorBalanceType of this implementation.
-             */
-            vfunc_get_balance_type(): ColorBalanceType;
-            /**
-             * Retrieve the current value of the indicated channel, between min_value
-             * and max_value.
-             *
-             * See Also: The #GstColorBalanceChannel.min_value and
-             *         #GstColorBalanceChannel.max_value members of the
-             *         #GstColorBalanceChannel object.
-             * @param channel A #GstColorBalanceChannel instance
-             */
-            vfunc_get_value(channel: ColorBalanceChannel): number;
-            /**
-             * Retrieve a list of the available channels.
-             */
-            vfunc_list_channels(): ColorBalanceChannel[];
-            /**
-             * Sets the current value of the channel to the passed value, which must
-             * be between min_value and max_value.
-             *
-             * See Also: The #GstColorBalanceChannel.min_value and
-             *         #GstColorBalanceChannel.max_value members of the
-             *         #GstColorBalanceChannel object.
-             * @param channel A #GstColorBalanceChannel instance
-             * @param value The new value for the channel.
-             */
-            vfunc_set_value(channel: ColorBalanceChannel, value: number): void;
-            /**
-             * A helper function called by implementations of the GstColorBalance
-             * interface. It fires the #GstColorBalance::value-changed signal on the
-             * instance, and the #GstColorBalanceChannel::value-changed signal on the
-             * channel object.
-             * @param channel A #GstColorBalanceChannel whose value has changed
-             * @param value The new value of the channel
-             */
-            vfunc_value_changed(channel: ColorBalanceChannel, value: number): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9399,7 +9352,7 @@ export namespace GstVideo {
         $gtype: GObject.GType<ColorBalance>;
         prototype: ColorBalance;
     }
-    interface ColorBalance extends GObject.Object, ColorBalance.Interface {
+    interface ColorBalance extends GObject.Object {
         // Methods
 
         /**
@@ -9443,6 +9396,47 @@ export namespace GstVideo {
          * @param value The new value of the channel
          */
         value_changed(channel: ColorBalanceChannel, value: number): void;
+
+        // Virtual methods
+
+        /**
+         * Get the #GstColorBalanceType of this implementation.
+         */
+        vfunc_get_balance_type(): ColorBalanceType;
+        /**
+         * Retrieve the current value of the indicated channel, between min_value
+         * and max_value.
+         *
+         * See Also: The #GstColorBalanceChannel.min_value and
+         *         #GstColorBalanceChannel.max_value members of the
+         *         #GstColorBalanceChannel object.
+         * @param channel A #GstColorBalanceChannel instance
+         */
+        vfunc_get_value(channel: ColorBalanceChannel): number;
+        /**
+         * Retrieve a list of the available channels.
+         */
+        vfunc_list_channels(): ColorBalanceChannel[];
+        /**
+         * Sets the current value of the channel to the passed value, which must
+         * be between min_value and max_value.
+         *
+         * See Also: The #GstColorBalanceChannel.min_value and
+         *         #GstColorBalanceChannel.max_value members of the
+         *         #GstColorBalanceChannel object.
+         * @param channel A #GstColorBalanceChannel instance
+         * @param value The new value for the channel.
+         */
+        vfunc_set_value(channel: ColorBalanceChannel, value: number): void;
+        /**
+         * A helper function called by implementations of the GstColorBalance
+         * interface. It fires the #GstColorBalance::value-changed signal on the
+         * instance, and the #GstColorBalanceChannel::value-changed signal on the
+         * channel object.
+         * @param channel A #GstColorBalanceChannel whose value has changed
+         * @param value The new value of the channel
+         */
+        vfunc_value_changed(channel: ColorBalanceChannel, value: number): void;
     }
 
     export const ColorBalance: ColorBalanceNamespace & {
@@ -9450,25 +9444,6 @@ export namespace GstVideo {
     };
 
     namespace Navigation {
-        /**
-         * Interface for implementing Navigation.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * sending a navigation event.
-             * @param structure
-             */
-            vfunc_send_event(structure: Gst.Structure): void;
-            /**
-             * Sends an event to the navigation interface.
-             * @param event The event to send
-             */
-            vfunc_send_event_simple(event: Gst.Event): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9759,7 +9734,7 @@ export namespace GstVideo {
          */
         query_set_commandsv(query: Gst.Query, cmds: NavigationCommand[]): void;
     }
-    interface Navigation extends GObject.Object, Navigation.Interface {
+    interface Navigation extends GObject.Object {
         // Methods
 
         /**
@@ -9796,6 +9771,19 @@ export namespace GstVideo {
          * @param delta_y The delta_y coordinate of the mouse event.
          */
         send_mouse_scroll_event(x: number, y: number, delta_x: number, delta_y: number): void;
+
+        // Virtual methods
+
+        /**
+         * sending a navigation event.
+         * @param structure
+         */
+        vfunc_send_event(structure: Gst.Structure): void;
+        /**
+         * Sends an event to the navigation interface.
+         * @param event The event to send
+         */
+        vfunc_send_event_simple(event: Gst.Event): void;
     }
 
     export const Navigation: NavigationNamespace & {
@@ -9829,51 +9817,6 @@ export namespace GstVideo {
     };
 
     namespace VideoOrientation {
-        /**
-         * Interface for implementing VideoOrientation.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Get the horizontal centering offset from the given object.
-             */
-            vfunc_get_hcenter(): [boolean, number];
-            /**
-             * Get the horizontal flipping state (%TRUE for flipped) from the given object.
-             */
-            vfunc_get_hflip(): [boolean, boolean];
-            /**
-             * Get the vertical centering offset from the given object.
-             */
-            vfunc_get_vcenter(): [boolean, number];
-            /**
-             * Get the vertical flipping state (%TRUE for flipped) from the given object.
-             */
-            vfunc_get_vflip(): [boolean, boolean];
-            /**
-             * Set the horizontal centering offset for the given object.
-             * @param center centering offset
-             */
-            vfunc_set_hcenter(center: number): boolean;
-            /**
-             * Set the horizontal flipping state (%TRUE for flipped) for the given object.
-             * @param flip use flipping
-             */
-            vfunc_set_hflip(flip: boolean): boolean;
-            /**
-             * Set the vertical centering offset for the given object.
-             * @param center centering offset
-             */
-            vfunc_set_vcenter(center: number): boolean;
-            /**
-             * Set the vertical flipping state (%TRUE for flipped) for the given object.
-             * @param flip use flipping
-             */
-            vfunc_set_vflip(flip: boolean): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9890,7 +9833,7 @@ export namespace GstVideo {
          */
         from_tag(taglist: Gst.TagList): [boolean, VideoOrientationMethod];
     }
-    interface VideoOrientation extends GObject.Object, VideoOrientation.Interface {
+    interface VideoOrientation extends GObject.Object {
         // Methods
 
         /**
@@ -9937,6 +9880,45 @@ export namespace GstVideo {
          * @returns %TRUE in case the element supports flipping
          */
         set_vflip(flip: boolean): boolean;
+
+        // Virtual methods
+
+        /**
+         * Get the horizontal centering offset from the given object.
+         */
+        vfunc_get_hcenter(): [boolean, number];
+        /**
+         * Get the horizontal flipping state (%TRUE for flipped) from the given object.
+         */
+        vfunc_get_hflip(): [boolean, boolean];
+        /**
+         * Get the vertical centering offset from the given object.
+         */
+        vfunc_get_vcenter(): [boolean, number];
+        /**
+         * Get the vertical flipping state (%TRUE for flipped) from the given object.
+         */
+        vfunc_get_vflip(): [boolean, boolean];
+        /**
+         * Set the horizontal centering offset for the given object.
+         * @param center centering offset
+         */
+        vfunc_set_hcenter(center: number): boolean;
+        /**
+         * Set the horizontal flipping state (%TRUE for flipped) for the given object.
+         * @param flip use flipping
+         */
+        vfunc_set_hflip(flip: boolean): boolean;
+        /**
+         * Set the vertical centering offset for the given object.
+         * @param center centering offset
+         */
+        vfunc_set_vcenter(center: number): boolean;
+        /**
+         * Set the vertical flipping state (%TRUE for flipped) for the given object.
+         * @param flip use flipping
+         */
+        vfunc_set_vflip(flip: boolean): boolean;
     }
 
     export const VideoOrientation: VideoOrientationNamespace & {
@@ -9944,45 +9926,6 @@ export namespace GstVideo {
     };
 
     namespace VideoOverlay {
-        /**
-         * Interface for implementing VideoOverlay.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Tell an overlay that it has been exposed. This will redraw the current frame
-             * in the drawable even if the pipeline is PAUSED.
-             */
-            vfunc_expose(): void;
-            /**
-             * Tell an overlay that it should handle events from the window system. These
-             * events are forwarded upstream as navigation events. In some window system,
-             * events are not propagated in the window hierarchy if a client is listening
-             * for them. This method allows you to disable events handling completely
-             * from the #GstVideoOverlay.
-             * @param handle_events a #gboolean indicating if events should be handled or not.
-             */
-            vfunc_handle_events(handle_events: boolean): void;
-            /**
-             * virtual method to set the render rectangle
-             * @param x
-             * @param y
-             * @param width
-             * @param height
-             */
-            vfunc_set_render_rectangle(x: number, y: number, width: number, height: number): void;
-            /**
-             * This will call the video overlay's set_window_handle method. You
-             * should use this method to tell to an overlay to display video output to a
-             * specific window (e.g. an XWindow on X11). Passing 0 as the  `handle` will
-             * tell the overlay to stop using that window and create an internal one.
-             * @param handle a handle referencing the window.
-             */
-            vfunc_set_window_handle(handle: never): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -10019,7 +9962,7 @@ export namespace GstVideo {
             value: GObject.Value | any,
         ): boolean;
     }
-    interface VideoOverlay extends GObject.Object, VideoOverlay.Interface {
+    interface VideoOverlay extends GObject.Object {
         // Methods
 
         /**
@@ -10078,6 +10021,39 @@ export namespace GstVideo {
          * @param handle a handle referencing the window.
          */
         set_window_handle(handle: never): void;
+
+        // Virtual methods
+
+        /**
+         * Tell an overlay that it has been exposed. This will redraw the current frame
+         * in the drawable even if the pipeline is PAUSED.
+         */
+        vfunc_expose(): void;
+        /**
+         * Tell an overlay that it should handle events from the window system. These
+         * events are forwarded upstream as navigation events. In some window system,
+         * events are not propagated in the window hierarchy if a client is listening
+         * for them. This method allows you to disable events handling completely
+         * from the #GstVideoOverlay.
+         * @param handle_events a #gboolean indicating if events should be handled or not.
+         */
+        vfunc_handle_events(handle_events: boolean): void;
+        /**
+         * virtual method to set the render rectangle
+         * @param x
+         * @param y
+         * @param width
+         * @param height
+         */
+        vfunc_set_render_rectangle(x: number, y: number, width: number, height: number): void;
+        /**
+         * This will call the video overlay's set_window_handle method. You
+         * should use this method to tell to an overlay to display video output to a
+         * specific window (e.g. an XWindow on X11). Passing 0 as the  `handle` will
+         * tell the overlay to stop using that window and create an internal one.
+         * @param handle a handle referencing the window.
+         */
+        vfunc_set_window_handle(handle: never): void;
     }
 
     export const VideoOverlay: VideoOverlayNamespace & {

@@ -2139,25 +2139,6 @@ export namespace GstRtsp {
     }
 
     namespace RTSPExtension {
-        /**
-         * Interface for implementing RTSPExtension.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_after_send(req: RTSPMessage, resp: RTSPMessage): RTSPResult;
-            vfunc_before_send(req: RTSPMessage): RTSPResult;
-            vfunc_configure_stream(caps: Gst.Caps): boolean;
-            vfunc_detect_server(resp: RTSPMessage): boolean;
-            vfunc_get_transports(protocols: RTSPLowerTrans, transport: string): RTSPResult;
-            vfunc_parse_sdp(sdp: GstSdp.SDPMessage, s: Gst.Structure): RTSPResult;
-            vfunc_receive_request(req: RTSPMessage): RTSPResult;
-            vfunc_send(req: RTSPMessage, resp: RTSPMessage): RTSPResult;
-            vfunc_setup_media(media: GstSdp.SDPMedia): RTSPResult;
-            vfunc_stream_select(url: RTSPUrl): RTSPResult;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2167,7 +2148,7 @@ export namespace GstRtsp {
         $gtype: GObject.GType<RTSPExtension>;
         prototype: RTSPExtension;
     }
-    interface RTSPExtension extends GObject.Object, RTSPExtension.Interface {
+    interface RTSPExtension extends GObject.Object {
         // Methods
 
         after_send(req: RTSPMessage, resp: RTSPMessage): RTSPResult;
@@ -2180,6 +2161,19 @@ export namespace GstRtsp {
         send(req: RTSPMessage, resp: RTSPMessage): RTSPResult;
         setup_media(media: GstSdp.SDPMedia): RTSPResult;
         stream_select(url: RTSPUrl): RTSPResult;
+
+        // Virtual methods
+
+        vfunc_after_send(req: RTSPMessage, resp: RTSPMessage): RTSPResult;
+        vfunc_before_send(req: RTSPMessage): RTSPResult;
+        vfunc_configure_stream(caps: Gst.Caps): boolean;
+        vfunc_detect_server(resp: RTSPMessage): boolean;
+        vfunc_get_transports(protocols: RTSPLowerTrans, transport: string): RTSPResult;
+        vfunc_parse_sdp(sdp: GstSdp.SDPMessage, s: Gst.Structure): RTSPResult;
+        vfunc_receive_request(req: RTSPMessage): RTSPResult;
+        vfunc_send(req: RTSPMessage, resp: RTSPMessage): RTSPResult;
+        vfunc_setup_media(media: GstSdp.SDPMedia): RTSPResult;
+        vfunc_stream_select(url: RTSPUrl): RTSPResult;
     }
 
     export const RTSPExtension: RTSPExtensionNamespace & {

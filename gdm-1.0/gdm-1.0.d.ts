@@ -11164,17 +11164,6 @@ export namespace Gdm {
     }
 
     namespace Chooser {
-        /**
-         * Interface for implementing Chooser.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean;
-            vfunc_handle_select_hostname(invocation: Gio.DBusMethodInvocation, arg_hostname: string): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -11187,7 +11176,7 @@ export namespace Gdm {
         interface_info(): Gio.DBusInterfaceInfo;
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
-    interface Chooser extends GObject.Object, Chooser.Interface {
+    interface Chooser extends GObject.Object {
         // Methods
 
         call_disconnect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
@@ -11213,6 +11202,11 @@ export namespace Gdm {
         call_select_hostname_sync(arg_hostname: string, cancellable?: Gio.Cancellable | null): boolean;
         complete_disconnect(invocation: Gio.DBusMethodInvocation): void;
         complete_select_hostname(invocation: Gio.DBusMethodInvocation): void;
+
+        // Virtual methods
+
+        vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_select_hostname(invocation: Gio.DBusMethodInvocation, arg_hostname: string): boolean;
     }
 
     export const Chooser: ChooserNamespace & {
@@ -11220,30 +11214,6 @@ export namespace Gdm {
     };
 
     namespace Greeter {
-        /**
-         * Interface for implementing Greeter.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_default_language_name_changed(arg_language_name: string): void;
-            vfunc_default_session_name_changed(arg_session_name: string): void;
-            vfunc_handle_begin_auto_login(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
-            vfunc_handle_get_timed_login_details(invocation: Gio.DBusMethodInvocation): boolean;
-            vfunc_handle_select_session(invocation: Gio.DBusMethodInvocation, arg_session: string): boolean;
-            vfunc_handle_select_user(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
-            vfunc_handle_start_session_when_ready(
-                invocation: Gio.DBusMethodInvocation,
-                arg_service_name: string,
-                arg_should_start_session: boolean,
-            ): boolean;
-            vfunc_reauthenticated(arg_service_name: string): void;
-            vfunc_selected_user_changed(arg_username: string): void;
-            vfunc_session_opened(arg_service_name: string): void;
-            vfunc_timed_login_requested(arg_username: string, arg_delay: number): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -11256,7 +11226,7 @@ export namespace Gdm {
         interface_info(): Gio.DBusInterfaceInfo;
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
-    interface Greeter extends GObject.Object, Greeter.Interface {
+    interface Greeter extends GObject.Object {
         // Methods
 
         call_begin_auto_login(arg_username: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
@@ -11358,6 +11328,24 @@ export namespace Gdm {
         emit_selected_user_changed(arg_username: string): void;
         emit_session_opened(arg_service_name: string): void;
         emit_timed_login_requested(arg_username: string, arg_delay: number): void;
+
+        // Virtual methods
+
+        vfunc_default_language_name_changed(arg_language_name: string): void;
+        vfunc_default_session_name_changed(arg_session_name: string): void;
+        vfunc_handle_begin_auto_login(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
+        vfunc_handle_get_timed_login_details(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_select_session(invocation: Gio.DBusMethodInvocation, arg_session: string): boolean;
+        vfunc_handle_select_user(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
+        vfunc_handle_start_session_when_ready(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_should_start_session: boolean,
+        ): boolean;
+        vfunc_reauthenticated(arg_service_name: string): void;
+        vfunc_selected_user_changed(arg_username: string): void;
+        vfunc_session_opened(arg_service_name: string): void;
+        vfunc_timed_login_requested(arg_username: string, arg_delay: number): void;
     }
 
     export const Greeter: GreeterNamespace & {
@@ -11365,23 +11353,6 @@ export namespace Gdm {
     };
 
     namespace Manager {
-        /**
-         * Interface for implementing Manager.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_version(): string;
-            vfunc_handle_open_reauthentication_channel(
-                invocation: Gio.DBusMethodInvocation,
-                arg_username: string,
-            ): boolean;
-            vfunc_handle_open_session(invocation: Gio.DBusMethodInvocation): boolean;
-            vfunc_handle_register_display(invocation: Gio.DBusMethodInvocation, arg_details: GLib.Variant): boolean;
-            vfunc_handle_register_session(invocation: Gio.DBusMethodInvocation, arg_details: GLib.Variant): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11396,7 +11367,7 @@ export namespace Gdm {
         interface_info(): Gio.DBusInterfaceInfo;
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
-    interface Manager extends GObject.Object, Manager.Interface {
+    interface Manager extends GObject.Object {
         // Properties
 
         get version(): string;
@@ -11471,6 +11442,14 @@ export namespace Gdm {
         dup_version(): string;
         get_version(): string;
         set_version(value: string): void;
+
+        // Virtual methods
+
+        vfunc_get_version(): string;
+        vfunc_handle_open_reauthentication_channel(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
+        vfunc_handle_open_session(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_register_display(invocation: Gio.DBusMethodInvocation, arg_details: GLib.Variant): boolean;
+        vfunc_handle_register_session(invocation: Gio.DBusMethodInvocation, arg_details: GLib.Variant): boolean;
     }
 
     export const Manager: ManagerNamespace & {
@@ -11478,16 +11457,6 @@ export namespace Gdm {
     };
 
     namespace RemoteGreeter {
-        /**
-         * Interface for implementing RemoteGreeter.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -11500,7 +11469,7 @@ export namespace Gdm {
         interface_info(): Gio.DBusInterfaceInfo;
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
-    interface RemoteGreeter extends GObject.Object, RemoteGreeter.Interface {
+    interface RemoteGreeter extends GObject.Object {
         // Methods
 
         call_disconnect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
@@ -11512,6 +11481,10 @@ export namespace Gdm {
         call_disconnect_finish(res: Gio.AsyncResult): boolean;
         call_disconnect_sync(cancellable?: Gio.Cancellable | null): boolean;
         complete_disconnect(invocation: Gio.DBusMethodInvocation): void;
+
+        // Virtual methods
+
+        vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean;
     }
 
     export const RemoteGreeter: RemoteGreeterNamespace & {
@@ -11519,39 +11492,6 @@ export namespace Gdm {
     };
 
     namespace UserVerifier {
-        /**
-         * Interface for implementing UserVerifier.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_conversation_started(arg_service_name: string): void;
-            vfunc_conversation_stopped(arg_service_name: string): void;
-            vfunc_handle_answer_query(
-                invocation: Gio.DBusMethodInvocation,
-                arg_service_name: string,
-                arg_answer: string,
-            ): boolean;
-            vfunc_handle_begin_verification(invocation: Gio.DBusMethodInvocation, arg_service_name: string): boolean;
-            vfunc_handle_begin_verification_for_user(
-                invocation: Gio.DBusMethodInvocation,
-                arg_service_name: string,
-                arg_username: string,
-            ): boolean;
-            vfunc_handle_cancel(invocation: Gio.DBusMethodInvocation): boolean;
-            vfunc_handle_enable_extensions(invocation: Gio.DBusMethodInvocation, arg_extensions: string): boolean;
-            vfunc_info(arg_service_name: string, arg_info: string): void;
-            vfunc_info_query(arg_service_name: string, arg_query: string): void;
-            vfunc_problem(arg_service_name: string, arg_problem: string): void;
-            vfunc_reauthentication_started(arg_pid_of_caller: number): void;
-            vfunc_reset(): void;
-            vfunc_secret_info_query(arg_service_name: string, arg_query: string): void;
-            vfunc_service_unavailable(arg_service_name: string, arg_message: string): void;
-            vfunc_verification_complete(arg_service_name: string): void;
-            vfunc_verification_failed(arg_service_name: string): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -11564,7 +11504,7 @@ export namespace Gdm {
         interface_info(): Gio.DBusInterfaceInfo;
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
-    interface UserVerifier extends GObject.Object, UserVerifier.Interface {
+    interface UserVerifier extends GObject.Object {
         // Methods
 
         call_answer_query(
@@ -11669,6 +11609,33 @@ export namespace Gdm {
         emit_service_unavailable(arg_service_name: string, arg_message: string): void;
         emit_verification_complete(arg_service_name: string): void;
         emit_verification_failed(arg_service_name: string): void;
+
+        // Virtual methods
+
+        vfunc_conversation_started(arg_service_name: string): void;
+        vfunc_conversation_stopped(arg_service_name: string): void;
+        vfunc_handle_answer_query(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_answer: string,
+        ): boolean;
+        vfunc_handle_begin_verification(invocation: Gio.DBusMethodInvocation, arg_service_name: string): boolean;
+        vfunc_handle_begin_verification_for_user(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_username: string,
+        ): boolean;
+        vfunc_handle_cancel(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_enable_extensions(invocation: Gio.DBusMethodInvocation, arg_extensions: string): boolean;
+        vfunc_info(arg_service_name: string, arg_info: string): void;
+        vfunc_info_query(arg_service_name: string, arg_query: string): void;
+        vfunc_problem(arg_service_name: string, arg_problem: string): void;
+        vfunc_reauthentication_started(arg_pid_of_caller: number): void;
+        vfunc_reset(): void;
+        vfunc_secret_info_query(arg_service_name: string, arg_query: string): void;
+        vfunc_service_unavailable(arg_service_name: string, arg_message: string): void;
+        vfunc_verification_complete(arg_service_name: string): void;
+        vfunc_verification_failed(arg_service_name: string): void;
     }
 
     export const UserVerifier: UserVerifierNamespace & {
@@ -11676,21 +11643,6 @@ export namespace Gdm {
     };
 
     namespace UserVerifierChoiceList {
-        /**
-         * Interface for implementing UserVerifierChoiceList.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_choice_query(arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant): void;
-            vfunc_handle_select_choice(
-                invocation: Gio.DBusMethodInvocation,
-                arg_service_name: string,
-                arg_choice: string,
-            ): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -11703,7 +11655,7 @@ export namespace Gdm {
         interface_info(): Gio.DBusInterfaceInfo;
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
-    interface UserVerifierChoiceList extends GObject.Object, UserVerifierChoiceList.Interface {
+    interface UserVerifierChoiceList extends GObject.Object {
         // Methods
 
         call_select_choice(
@@ -11731,6 +11683,15 @@ export namespace Gdm {
         ): boolean;
         complete_select_choice(invocation: Gio.DBusMethodInvocation): void;
         emit_choice_query(arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant): void;
+
+        // Virtual methods
+
+        vfunc_choice_query(arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant): void;
+        vfunc_handle_select_choice(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_choice: string,
+        ): boolean;
     }
 
     export const UserVerifierChoiceList: UserVerifierChoiceListNamespace & {
@@ -11738,42 +11699,6 @@ export namespace Gdm {
     };
 
     namespace WorkerManager {
-        /**
-         * Interface for implementing WorkerManager.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_handle_choice_list_query(
-                invocation: Gio.DBusMethodInvocation,
-                arg_service_name: string,
-                arg_prompt_message: string,
-                arg_query: GLib.Variant,
-            ): boolean;
-            vfunc_handle_hello(invocation: Gio.DBusMethodInvocation): boolean;
-            vfunc_handle_info(
-                invocation: Gio.DBusMethodInvocation,
-                arg_service_name: string,
-                arg_info: string,
-            ): boolean;
-            vfunc_handle_info_query(
-                invocation: Gio.DBusMethodInvocation,
-                arg_service_name: string,
-                arg_query: string,
-            ): boolean;
-            vfunc_handle_problem(
-                invocation: Gio.DBusMethodInvocation,
-                arg_service_name: string,
-                arg_problem: string,
-            ): boolean;
-            vfunc_handle_secret_info_query(
-                invocation: Gio.DBusMethodInvocation,
-                arg_service_name: string,
-                arg_query: string,
-            ): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -11786,7 +11711,7 @@ export namespace Gdm {
         interface_info(): Gio.DBusInterfaceInfo;
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
-    interface WorkerManager extends GObject.Object, WorkerManager.Interface {
+    interface WorkerManager extends GObject.Object {
         // Methods
 
         call_choice_list_query(
@@ -11917,6 +11842,32 @@ export namespace Gdm {
         complete_info_query(invocation: Gio.DBusMethodInvocation, answer: string): void;
         complete_problem(invocation: Gio.DBusMethodInvocation): void;
         complete_secret_info_query(invocation: Gio.DBusMethodInvocation, answer: string): void;
+
+        // Virtual methods
+
+        vfunc_handle_choice_list_query(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_prompt_message: string,
+            arg_query: GLib.Variant,
+        ): boolean;
+        vfunc_handle_hello(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_info(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_info: string): boolean;
+        vfunc_handle_info_query(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_query: string,
+        ): boolean;
+        vfunc_handle_problem(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_problem: string,
+        ): boolean;
+        vfunc_handle_secret_info_query(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_query: string,
+        ): boolean;
     }
 
     export const WorkerManager: WorkerManagerNamespace & {

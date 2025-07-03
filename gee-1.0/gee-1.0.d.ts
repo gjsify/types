@@ -3119,18 +3119,6 @@ export namespace Gee {
     type SetIface = typeof Set;
     type SortedSetIface = typeof SortedSet;
     namespace BidirIterator {
-        /**
-         * Interface for implementing BidirIterator.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends Iterator.Interface {
-            // Virtual methods
-
-            vfunc_previous(): boolean;
-            vfunc_has_previous(): boolean;
-            vfunc_last(): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Iterator.ConstructorProps {}
@@ -3140,12 +3128,18 @@ export namespace Gee {
         $gtype: GObject.GType<BidirIterator>;
         prototype: BidirIterator;
     }
-    interface BidirIterator extends Iterator, BidirIterator.Interface {
+    interface BidirIterator extends Iterator {
         // Methods
 
         previous(): boolean;
         has_previous(): boolean;
         last(): boolean;
+
+        // Virtual methods
+
+        vfunc_previous(): boolean;
+        vfunc_has_previous(): boolean;
+        vfunc_last(): boolean;
     }
 
     export const BidirIterator: BidirIteratorNamespace & {
@@ -3153,24 +3147,6 @@ export namespace Gee {
     };
 
     namespace Collection {
-        /**
-         * Interface for implementing Collection.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends Iterable.Interface {
-            // Virtual methods
-
-            vfunc_contains(item: any): boolean;
-            vfunc_add(item: any): boolean;
-            vfunc_remove(item: any): boolean;
-            vfunc_clear(): void;
-            vfunc_add_all(collection: Collection): boolean;
-            vfunc_contains_all(collection: Collection): boolean;
-            vfunc_remove_all(collection: Collection): boolean;
-            vfunc_retain_all(collection: Collection): boolean;
-            vfunc_to_array(): any[];
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Iterable.ConstructorProps {
@@ -3188,7 +3164,7 @@ export namespace Gee {
 
         empty(): Collection;
     }
-    interface Collection extends Iterable, Collection.Interface {
+    interface Collection extends Iterable {
         // Properties
 
         get size(): number;
@@ -3208,6 +3184,18 @@ export namespace Gee {
         remove_all(collection: Collection): boolean;
         retain_all(collection: Collection): boolean;
         to_array(): any[];
+
+        // Virtual methods
+
+        vfunc_contains(item: any): boolean;
+        vfunc_add(item: any): boolean;
+        vfunc_remove(item: any): boolean;
+        vfunc_clear(): void;
+        vfunc_add_all(collection: Collection): boolean;
+        vfunc_contains_all(collection: Collection): boolean;
+        vfunc_remove_all(collection: Collection): boolean;
+        vfunc_retain_all(collection: Collection): boolean;
+        vfunc_to_array(): any[];
     }
 
     export const Collection: CollectionNamespace & {
@@ -3215,16 +3203,6 @@ export namespace Gee {
     };
 
     namespace Comparable {
-        /**
-         * Interface for implementing Comparable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_compare_to(object: any): number;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3234,10 +3212,14 @@ export namespace Gee {
         $gtype: GObject.GType<Comparable>;
         prototype: Comparable;
     }
-    interface Comparable extends GObject.Object, Comparable.Interface {
+    interface Comparable extends GObject.Object {
         // Methods
 
         compare_to(object: any): number;
+
+        // Virtual methods
+
+        vfunc_compare_to(object: any): number;
     }
 
     export const Comparable: ComparableNamespace & {
@@ -3245,23 +3227,6 @@ export namespace Gee {
     };
 
     namespace Deque {
-        /**
-         * Interface for implementing Deque.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends Queue.Interface {
-            // Virtual methods
-
-            vfunc_offer_head(element: any): boolean;
-            vfunc_peek_head(): any;
-            vfunc_poll_head(): any;
-            vfunc_drain_head(recipient: Collection, amount: number): number;
-            vfunc_offer_tail(element: any): boolean;
-            vfunc_peek_tail(): any;
-            vfunc_poll_tail(): any;
-            vfunc_drain_tail(recipient: Collection, amount: number): number;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Queue.ConstructorProps {}
@@ -3271,7 +3236,7 @@ export namespace Gee {
         $gtype: GObject.GType<Deque>;
         prototype: Deque;
     }
-    interface Deque extends Queue, Deque.Interface {
+    interface Deque extends Queue {
         // Methods
 
         offer_head(element: any): boolean;
@@ -3282,6 +3247,17 @@ export namespace Gee {
         peek_tail(): any;
         poll_tail(): any;
         drain_tail(recipient: Collection, amount: number): number;
+
+        // Virtual methods
+
+        vfunc_offer_head(element: any): boolean;
+        vfunc_peek_head(): any;
+        vfunc_poll_head(): any;
+        vfunc_drain_head(recipient: Collection, amount: number): number;
+        vfunc_offer_tail(element: any): boolean;
+        vfunc_peek_tail(): any;
+        vfunc_poll_tail(): any;
+        vfunc_drain_tail(recipient: Collection, amount: number): number;
     }
 
     export const Deque: DequeNamespace & {
@@ -3289,16 +3265,6 @@ export namespace Gee {
     };
 
     namespace Iterable {
-        /**
-         * Interface for implementing Iterable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_iterator(): Iterator;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3311,7 +3277,7 @@ export namespace Gee {
         $gtype: GObject.GType<Iterable>;
         prototype: Iterable;
     }
-    interface Iterable extends GObject.Object, Iterable.Interface {
+    interface Iterable extends GObject.Object {
         // Properties
 
         get element_type(): GObject.Type;
@@ -3320,6 +3286,10 @@ export namespace Gee {
         // Methods
 
         iterator(): Iterator;
+
+        // Virtual methods
+
+        vfunc_iterator(): Iterator;
     }
 
     export const Iterable: IterableNamespace & {
@@ -3327,20 +3297,6 @@ export namespace Gee {
     };
 
     namespace Iterator {
-        /**
-         * Interface for implementing Iterator.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_next(): boolean;
-            vfunc_has_next(): boolean;
-            vfunc_first(): boolean;
-            vfunc_get(): any;
-            vfunc_remove(): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3350,7 +3306,7 @@ export namespace Gee {
         $gtype: GObject.GType<Iterator>;
         prototype: Iterator;
     }
-    interface Iterator extends GObject.Object, Iterator.Interface {
+    interface Iterator extends GObject.Object {
         // Methods
 
         next(): boolean;
@@ -3358,6 +3314,14 @@ export namespace Gee {
         first(): boolean;
         get(): any;
         remove(): void;
+
+        // Virtual methods
+
+        vfunc_next(): boolean;
+        vfunc_has_next(): boolean;
+        vfunc_first(): boolean;
+        vfunc_get(): any;
+        vfunc_remove(): void;
     }
 
     export const Iterator: IteratorNamespace & {
@@ -3365,26 +3329,6 @@ export namespace Gee {
     };
 
     namespace List {
-        /**
-         * Interface for implementing List.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends Collection.Interface {
-            // Virtual methods
-
-            vfunc_list_iterator(): ListIterator;
-            vfunc_get(index: number): any;
-            vfunc_set(index: number, item: any): void;
-            vfunc_index_of(item: any): number;
-            vfunc_insert(index: number, item: any): void;
-            vfunc_remove_at(index: number): any;
-            vfunc_slice(start: number, stop: number): List;
-            vfunc_first(): any;
-            vfunc_last(): any;
-            vfunc_insert_all(index: number, collection: Collection): void;
-            vfunc_sort(compare_func: GLib.CompareFunc): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Collection.ConstructorProps {
@@ -3399,7 +3343,7 @@ export namespace Gee {
 
         empty(): List;
     }
-    interface List extends Collection, List.Interface {
+    interface List extends Collection {
         // Properties
 
         get read_only_view(): List;
@@ -3420,6 +3364,20 @@ export namespace Gee {
         last(): any;
         insert_all(index: number, collection: Collection): void;
         sort(compare_func: GLib.CompareFunc): void;
+
+        // Virtual methods
+
+        vfunc_list_iterator(): ListIterator;
+        vfunc_get(index: number): any;
+        vfunc_set(index: number, item: any): void;
+        vfunc_index_of(item: any): number;
+        vfunc_insert(index: number, item: any): void;
+        vfunc_remove_at(index: number): any;
+        vfunc_slice(start: number, stop: number): List;
+        vfunc_first(): any;
+        vfunc_last(): any;
+        vfunc_insert_all(index: number, collection: Collection): void;
+        vfunc_sort(compare_func: GLib.CompareFunc): void;
     }
 
     export const List: ListNamespace & {
@@ -3427,19 +3385,6 @@ export namespace Gee {
     };
 
     namespace ListIterator {
-        /**
-         * Interface for implementing ListIterator.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends BidirIterator.Interface {
-            // Virtual methods
-
-            vfunc_set(item: any): void;
-            vfunc_insert(item: any): void;
-            vfunc_add(item: any): void;
-            vfunc_index(): number;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends BidirIterator.ConstructorProps {}
@@ -3449,7 +3394,7 @@ export namespace Gee {
         $gtype: GObject.GType<ListIterator>;
         prototype: ListIterator;
     }
-    interface ListIterator extends BidirIterator, ListIterator.Interface {
+    interface ListIterator extends BidirIterator {
         // Methods
 
         set(item: any): void;
@@ -3458,6 +3403,13 @@ export namespace Gee {
         insert(item: any): void;
         add(item: any): void;
         index(): number;
+
+        // Virtual methods
+
+        vfunc_set(item: any): void;
+        vfunc_insert(item: any): void;
+        vfunc_add(item: any): void;
+        vfunc_index(): number;
     }
 
     export const ListIterator: ListIteratorNamespace & {
@@ -3465,29 +3417,6 @@ export namespace Gee {
     };
 
     namespace Map {
-        /**
-         * Interface for implementing Map.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_has_key(key: any): boolean;
-            vfunc_contains(key: any): boolean;
-            vfunc_has(key: any, value: any): boolean;
-            vfunc_get(key: any): any;
-            vfunc_set(key: any, value: any): void;
-            vfunc_unset(key: any): [boolean, any];
-            vfunc_remove(key: any): [boolean, any];
-            vfunc_clear(): void;
-            vfunc_map_iterator(): MapIterator;
-            vfunc_set_all(map: Map): void;
-            vfunc_unset_all(map: Map): boolean;
-            vfunc_remove_all(map: Map): boolean;
-            vfunc_has_all(map: Map): boolean;
-            vfunc_contains_all(map: Map): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3512,7 +3441,7 @@ export namespace Gee {
 
         empty(): Map;
     }
-    interface Map extends GObject.Object, Map.Interface {
+    interface Map extends GObject.Object {
         // Properties
 
         get size(): number;
@@ -3546,6 +3475,23 @@ export namespace Gee {
         remove_all(map: Map): boolean;
         has_all(map: Map): boolean;
         contains_all(map: Map): boolean;
+
+        // Virtual methods
+
+        vfunc_has_key(key: any): boolean;
+        vfunc_contains(key: any): boolean;
+        vfunc_has(key: any, value: any): boolean;
+        vfunc_get(key: any): any;
+        vfunc_set(key: any, value: any): void;
+        vfunc_unset(key: any): [boolean, any];
+        vfunc_remove(key: any): [boolean, any];
+        vfunc_clear(): void;
+        vfunc_map_iterator(): MapIterator;
+        vfunc_set_all(map: Map): void;
+        vfunc_unset_all(map: Map): boolean;
+        vfunc_remove_all(map: Map): boolean;
+        vfunc_has_all(map: Map): boolean;
+        vfunc_contains_all(map: Map): boolean;
     }
 
     export const Map: MapNamespace & {
@@ -3553,22 +3499,6 @@ export namespace Gee {
     };
 
     namespace MapIterator {
-        /**
-         * Interface for implementing MapIterator.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_next(): boolean;
-            vfunc_has_next(): boolean;
-            vfunc_first(): boolean;
-            vfunc_get_key(): any;
-            vfunc_get_value(): any;
-            vfunc_set_value(value: any): void;
-            vfunc_unset(): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3578,7 +3508,7 @@ export namespace Gee {
         $gtype: GObject.GType<MapIterator>;
         prototype: MapIterator;
     }
-    interface MapIterator extends GObject.Object, MapIterator.Interface {
+    interface MapIterator extends GObject.Object {
         // Methods
 
         next(): boolean;
@@ -3588,6 +3518,16 @@ export namespace Gee {
         get_value(): any;
         set_value(value: any): void;
         unset(): void;
+
+        // Virtual methods
+
+        vfunc_next(): boolean;
+        vfunc_has_next(): boolean;
+        vfunc_first(): boolean;
+        vfunc_get_key(): any;
+        vfunc_get_value(): any;
+        vfunc_set_value(value: any): void;
+        vfunc_unset(): void;
     }
 
     export const MapIterator: MapIteratorNamespace & {
@@ -3595,24 +3535,6 @@ export namespace Gee {
     };
 
     namespace MultiMap {
-        /**
-         * Interface for implementing MultiMap.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_keys(): Set;
-            vfunc_get_all_keys(): MultiSet;
-            vfunc_get_values(): Collection;
-            vfunc_contains(key: any): boolean;
-            vfunc_get(key: any): Collection;
-            vfunc_set(key: any, value: any): void;
-            vfunc_remove(key: any, value: any): boolean;
-            vfunc_remove_all(key: any): boolean;
-            vfunc_clear(): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3624,7 +3546,7 @@ export namespace Gee {
         $gtype: GObject.GType<MultiMap>;
         prototype: MultiMap;
     }
-    interface MultiMap extends GObject.Object, MultiMap.Interface {
+    interface MultiMap extends GObject.Object {
         // Properties
 
         get size(): number;
@@ -3642,6 +3564,18 @@ export namespace Gee {
         remove(key: any, value: any): boolean;
         remove_all(key: any): boolean;
         clear(): void;
+
+        // Virtual methods
+
+        vfunc_get_keys(): Set;
+        vfunc_get_all_keys(): MultiSet;
+        vfunc_get_values(): Collection;
+        vfunc_contains(key: any): boolean;
+        vfunc_get(key: any): Collection;
+        vfunc_set(key: any, value: any): void;
+        vfunc_remove(key: any, value: any): boolean;
+        vfunc_remove_all(key: any): boolean;
+        vfunc_clear(): void;
     }
 
     export const MultiMap: MultiMapNamespace & {
@@ -3649,16 +3583,6 @@ export namespace Gee {
     };
 
     namespace MultiSet {
-        /**
-         * Interface for implementing MultiSet.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends Collection.Interface {
-            // Virtual methods
-
-            vfunc_count(item: any): number;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Collection.ConstructorProps {}
@@ -3668,10 +3592,14 @@ export namespace Gee {
         $gtype: GObject.GType<MultiSet>;
         prototype: MultiSet;
     }
-    interface MultiSet extends Collection, MultiSet.Interface {
+    interface MultiSet extends Collection {
         // Methods
 
         count(item: any): number;
+
+        // Virtual methods
+
+        vfunc_count(item: any): number;
     }
 
     export const MultiSet: MultiSetNamespace & {
@@ -3679,19 +3607,6 @@ export namespace Gee {
     };
 
     namespace Queue {
-        /**
-         * Interface for implementing Queue.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends Collection.Interface {
-            // Virtual methods
-
-            vfunc_offer(element: any): boolean;
-            vfunc_peek(): any;
-            vfunc_poll(): any;
-            vfunc_drain(recipient: Collection, amount: number): number;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Collection.ConstructorProps {
@@ -3707,7 +3622,7 @@ export namespace Gee {
         $gtype: GObject.GType<Queue>;
         prototype: Queue;
     }
-    interface Queue extends Collection, Queue.Interface {
+    interface Queue extends Collection {
         // Properties
 
         get capacity(): number;
@@ -3722,6 +3637,13 @@ export namespace Gee {
         peek(): any;
         poll(): any;
         drain(recipient: Collection, amount: number): number;
+
+        // Virtual methods
+
+        vfunc_offer(element: any): boolean;
+        vfunc_peek(): any;
+        vfunc_poll(): any;
+        vfunc_drain(recipient: Collection, amount: number): number;
     }
 
     export const Queue: QueueNamespace & {
@@ -3755,26 +3677,6 @@ export namespace Gee {
     };
 
     namespace SortedSet {
-        /**
-         * Interface for implementing SortedSet.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_first(): any;
-            vfunc_last(): any;
-            vfunc_bidir_iterator(): BidirIterator;
-            vfunc_iterator_at(element: any): BidirIterator;
-            vfunc_lower(element: any): any;
-            vfunc_higher(element: any): any;
-            vfunc_floor(element: any): any;
-            vfunc_ceil(element: any): any;
-            vfunc_head_set(before: any): SortedSet;
-            vfunc_tail_set(after: any): SortedSet;
-            vfunc_sub_set(from: any, to: any): SortedSet;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Set.ConstructorProps {}
@@ -3784,7 +3686,7 @@ export namespace Gee {
         $gtype: GObject.GType<SortedSet>;
         prototype: SortedSet;
     }
-    interface SortedSet extends Set, SortedSet.Interface {
+    interface SortedSet extends Set {
         // Methods
 
         first(): any;
@@ -3798,6 +3700,20 @@ export namespace Gee {
         head_set(before: any): SortedSet;
         tail_set(after: any): SortedSet;
         sub_set(from: any, to: any): SortedSet;
+
+        // Virtual methods
+
+        vfunc_first(): any;
+        vfunc_last(): any;
+        vfunc_bidir_iterator(): BidirIterator;
+        vfunc_iterator_at(element: any): BidirIterator;
+        vfunc_lower(element: any): any;
+        vfunc_higher(element: any): any;
+        vfunc_floor(element: any): any;
+        vfunc_ceil(element: any): any;
+        vfunc_head_set(before: any): SortedSet;
+        vfunc_tail_set(after: any): SortedSet;
+        vfunc_sub_set(from: any, to: any): SortedSet;
     }
 
     export const SortedSet: SortedSetNamespace & {

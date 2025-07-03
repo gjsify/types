@@ -7169,31 +7169,6 @@ export namespace Polkit {
     type UnixSessionClass = typeof UnixSession;
     type UnixUserClass = typeof UnixUser;
     namespace Identity {
-        /**
-         * Interface for implementing Identity.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Checks if `a` and `b` are equal, ie. represent the same identity.
-             *
-             * This function can be used in e.g. g_hash_table_new().
-             * @param b A #PolkitIdentity.
-             */
-            vfunc_equal(b: Identity): boolean;
-            /**
-             * Gets a hash code for `identity` that can be used with e.g. g_hash_table_new().
-             */
-            vfunc_hash(): number;
-            /**
-             * Serializes `identity` to a string that can be used in
-             * polkit_identity_from_string().
-             */
-            vfunc_to_string(): string;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7210,7 +7185,7 @@ export namespace Polkit {
          */
         from_string(str: string): Identity | null;
     }
-    interface Identity extends GObject.Object, Identity.Interface {
+    interface Identity extends GObject.Object {
         // Methods
 
         /**
@@ -7232,6 +7207,25 @@ export namespace Polkit {
          * @returns A string representing @identity. Free with g_free().
          */
         to_string(): string;
+
+        // Virtual methods
+
+        /**
+         * Checks if `a` and `b` are equal, ie. represent the same identity.
+         *
+         * This function can be used in e.g. g_hash_table_new().
+         * @param b A #PolkitIdentity.
+         */
+        vfunc_equal(b: Identity): boolean;
+        /**
+         * Gets a hash code for `identity` that can be used with e.g. g_hash_table_new().
+         */
+        vfunc_hash(): number;
+        /**
+         * Serializes `identity` to a string that can be used in
+         * polkit_identity_from_string().
+         */
+        vfunc_to_string(): string;
     }
 
     export const Identity: IdentityNamespace & {
@@ -7239,59 +7233,6 @@ export namespace Polkit {
     };
 
     namespace Subject {
-        /**
-         * Interface for implementing Subject.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Checks if `a` and `b` are equal, ie. represent the same subject.
-             * However, avoid calling polkit_subject_equal() to compare two processes;
-             * for more information see the `PolkitUnixProcess` documentation.
-             *
-             * This function can be used in e.g. g_hash_table_new().
-             * @param b A #PolkitSubject.
-             */
-            vfunc_equal(b: Subject): boolean;
-            /**
-             * Asynchronously checks if `subject` exists.
-             *
-             * When the operation is finished, `callback` will be invoked in the
-             * <link linkend="g-main-context-push-thread-default">thread-default
-             * main loop</link> of the thread you are calling this method
-             * from. You can then call polkit_subject_exists_finish() to get the
-             * result of the operation.
-             * @param cancellable A #GCancellable or %NULL.
-             * @param callback A #GAsyncReadyCallback to call when the request is satisfied
-             */
-            vfunc_exists(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
-            /**
-             * Finishes checking whether a subject exists.
-             * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to polkit_subject_exists().
-             */
-            vfunc_exists_finish(res: Gio.AsyncResult): boolean;
-            /**
-             * Checks if `subject` exists.
-             *
-             * This is a synchronous blocking call - the calling thread is blocked
-             * until a reply is received. See polkit_subject_exists() for the
-             * asynchronous version.
-             * @param cancellable A #GCancellable or %NULL.
-             */
-            vfunc_exists_sync(cancellable?: Gio.Cancellable | null): boolean;
-            /**
-             * Gets a hash code for `subject` that can be used with e.g. g_hash_table_new().
-             */
-            vfunc_hash(): number;
-            /**
-             * Serializes `subject` to a string that can be used in
-             * polkit_subject_from_string().
-             */
-            vfunc_to_string(): string;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7308,7 +7249,7 @@ export namespace Polkit {
          */
         from_string(str: string): Subject;
     }
-    interface Subject extends GObject.Object, Subject.Interface {
+    interface Subject extends GObject.Object {
         // Methods
 
         /**
@@ -7386,6 +7327,53 @@ export namespace Polkit {
          * @returns A string representing @subject. Free with g_free().
          */
         to_string(): string;
+
+        // Virtual methods
+
+        /**
+         * Checks if `a` and `b` are equal, ie. represent the same subject.
+         * However, avoid calling polkit_subject_equal() to compare two processes;
+         * for more information see the `PolkitUnixProcess` documentation.
+         *
+         * This function can be used in e.g. g_hash_table_new().
+         * @param b A #PolkitSubject.
+         */
+        vfunc_equal(b: Subject): boolean;
+        /**
+         * Asynchronously checks if `subject` exists.
+         *
+         * When the operation is finished, `callback` will be invoked in the
+         * <link linkend="g-main-context-push-thread-default">thread-default
+         * main loop</link> of the thread you are calling this method
+         * from. You can then call polkit_subject_exists_finish() to get the
+         * result of the operation.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied
+         */
+        vfunc_exists(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Finishes checking whether a subject exists.
+         * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to polkit_subject_exists().
+         */
+        vfunc_exists_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Checks if `subject` exists.
+         *
+         * This is a synchronous blocking call - the calling thread is blocked
+         * until a reply is received. See polkit_subject_exists() for the
+         * asynchronous version.
+         * @param cancellable A #GCancellable or %NULL.
+         */
+        vfunc_exists_sync(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Gets a hash code for `subject` that can be used with e.g. g_hash_table_new().
+         */
+        vfunc_hash(): number;
+        /**
+         * Serializes `subject` to a string that can be used in
+         * polkit_subject_from_string().
+         */
+        vfunc_to_string(): string;
     }
 
     export const Subject: SubjectNamespace & {

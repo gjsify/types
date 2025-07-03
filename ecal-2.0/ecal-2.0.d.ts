@@ -6924,17 +6924,6 @@ export namespace ECal {
 
     type TimezoneCacheInterface = typeof TimezoneCache;
     namespace TimezoneCache {
-        /**
-         * Interface for implementing TimezoneCache.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_timezone_added(zone: ICalGLib.Timezone): void;
-            vfunc_tzcache_add_timezone(zone: ICalGLib.Timezone): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6944,7 +6933,7 @@ export namespace ECal {
         $gtype: GObject.GType<TimezoneCache>;
         prototype: TimezoneCache;
     }
-    interface TimezoneCache extends GObject.Object, TimezoneCache.Interface {
+    interface TimezoneCache extends GObject.Object {
         // Methods
 
         /**
@@ -6979,6 +6968,11 @@ export namespace ECal {
          * @returns a #GList of    #ICalTimezone instances
          */
         list_timezones(): ICalGLib.Timezone[];
+
+        // Virtual methods
+
+        vfunc_timezone_added(zone: ICalGLib.Timezone): void;
+        vfunc_tzcache_add_timezone(zone: ICalGLib.Timezone): void;
     }
 
     export const TimezoneCache: TimezoneCacheNamespace & {

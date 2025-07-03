@@ -1785,16 +1785,6 @@ export namespace Budgie {
     }
 
     namespace Plugin {
-        /**
-         * Interface for implementing Plugin.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_panel_widget(uuid: string): Applet;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1804,10 +1794,14 @@ export namespace Budgie {
         $gtype: GObject.GType<Plugin>;
         prototype: Plugin;
     }
-    interface Plugin extends GObject.Object, Plugin.Interface {
+    interface Plugin extends GObject.Object {
         // Methods
 
         get_panel_widget(uuid: string): Applet;
+
+        // Virtual methods
+
+        vfunc_get_panel_widget(uuid: string): Applet;
     }
 
     export const Plugin: PluginNamespace & {

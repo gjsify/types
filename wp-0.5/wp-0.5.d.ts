@@ -7953,24 +7953,6 @@ export namespace Wp {
     type StateClass = typeof State;
     type TransitionClass = typeof Transition;
     namespace ComponentLoader {
-        /**
-         * Interface for implementing ComponentLoader.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_load(
-                core: Core,
-                component: string,
-                type: string,
-                args: SpaJson,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            vfunc_supports_type(type: string): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7980,87 +7962,25 @@ export namespace Wp {
         $gtype: GObject.GType<ComponentLoader>;
         prototype: ComponentLoader;
     }
-    interface ComponentLoader extends GObject.Object, ComponentLoader.Interface {}
+    interface ComponentLoader extends GObject.Object {
+        // Virtual methods
+
+        vfunc_load(
+            core: Core,
+            component: string,
+            type: string,
+            args: SpaJson,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        vfunc_supports_type(type: string): boolean;
+    }
 
     export const ComponentLoader: ComponentLoaderNamespace & {
         new (): ComponentLoader; // This allows `obj instanceof ComponentLoader`
     };
 
     namespace PipewireObject {
-        /**
-         * Interface for implementing PipewireObject.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Enumerate object parameters.
-             *
-             *
-             * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
-             * @param id the parameter id to enumerate or NULL for all parameters
-             * @param filter a param filter or NULL
-             * @param cancellable a cancellable for the async operation
-             * @param callback a callback to call with the result
-             */
-            vfunc_enum_params(
-                id?: string | null,
-                filter?: SpaPod | null,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes an asynchronous parameter enumeration operation.
-             * @param res the async result
-             */
-            vfunc_enum_params_finish(res: Gio.AsyncResult): Iterator | null;
-            /**
-             * This method can be used to retrieve object parameters in a synchronous way (in contrast with wp_pipewire_object_enum_params(), which is async).
-             *
-             *
-             * The WP_PIPEWIRE_OBJECT_FEATURE_PARAM_<something> feature that corresponds to the specified `id` must have been activated earlier. These features enable monitoring and caching of params underneath, so that they are always available for retrieval with this method.
-             * Note, however, that cached params may be out-of-date if they have changed very recently on the remote object and the caching mechanism hasn't been able to update them yet, so if you really need up-to-date information you should only rely on wp_pipewire_object_enum_params() instead.
-             * @param id the parameter id to enumerate
-             * @param filter a param filter or NULL
-             */
-            vfunc_enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
-            /**
-             * Retrieves the native infor structure of this object (pw_node_info, pw_port_info, etc...)
-             *
-             *
-             * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
-             */
-            vfunc_get_native_info(): any | null;
-            /**
-             * Returns the available parameters of this pipewire object.
-             *
-             *
-             * The return value is a GVariant of type a{ss}, where the key of each map entry is a spa param type id (the same ids that you can pass in wp_pipewire_object_enum_params()) and the value is a string that can contain the following letters, each of them representing a flag:
-             *  - r: the param is readable (SPA_PARAM_INFO_READ)
-             *  - w: the param is writable (SPA_PARAM_INFO_WRITE)
-             *
-             * For params that are readable, you can query them with wp_pipewire_object_enum_params()
-             * Params that are writable can be set with wp_pipewire_object_set_param()
-             * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
-             */
-            vfunc_get_param_info(): GLib.Variant | null;
-            /**
-             * Retrieves the PipeWire properties of this object.
-             *
-             *
-             * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
-             */
-            vfunc_get_properties(): Properties;
-            /**
-             * Sets a parameter on the object.
-             * @param id the parameter id to set
-             * @param flags optional flags or 0
-             * @param param the parameter to set
-             */
-            vfunc_set_param(id: string, flags: number, param: SpaPod): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {
@@ -8076,7 +7996,7 @@ export namespace Wp {
         $gtype: GObject.GType<PipewireObject>;
         prototype: PipewireObject;
     }
-    interface PipewireObject extends Proxy, PipewireObject.Interface {
+    interface PipewireObject extends Proxy {
         // Properties
 
         get native_info(): any;
@@ -8209,6 +8129,74 @@ export namespace Wp {
          * @returns TRUE on success, FALSE if setting the param failed
          */
         set_param(id: string, flags: number, param: SpaPod): boolean;
+
+        // Virtual methods
+
+        /**
+         * Enumerate object parameters.
+         *
+         *
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
+         * @param callback a callback to call with the result
+         */
+        vfunc_enum_params(
+            id?: string | null,
+            filter?: SpaPod | null,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes an asynchronous parameter enumeration operation.
+         * @param res the async result
+         */
+        vfunc_enum_params_finish(res: Gio.AsyncResult): Iterator | null;
+        /**
+         * This method can be used to retrieve object parameters in a synchronous way (in contrast with wp_pipewire_object_enum_params(), which is async).
+         *
+         *
+         * The WP_PIPEWIRE_OBJECT_FEATURE_PARAM_<something> feature that corresponds to the specified `id` must have been activated earlier. These features enable monitoring and caching of params underneath, so that they are always available for retrieval with this method.
+         * Note, however, that cached params may be out-of-date if they have changed very recently on the remote object and the caching mechanism hasn't been able to update them yet, so if you really need up-to-date information you should only rely on wp_pipewire_object_enum_params() instead.
+         * @param id the parameter id to enumerate
+         * @param filter a param filter or NULL
+         */
+        vfunc_enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
+        /**
+         * Retrieves the native infor structure of this object (pw_node_info, pw_port_info, etc...)
+         *
+         *
+         * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
+         */
+        vfunc_get_native_info(): any | null;
+        /**
+         * Returns the available parameters of this pipewire object.
+         *
+         *
+         * The return value is a GVariant of type a{ss}, where the key of each map entry is a spa param type id (the same ids that you can pass in wp_pipewire_object_enum_params()) and the value is a string that can contain the following letters, each of them representing a flag:
+         *  - r: the param is readable (SPA_PARAM_INFO_READ)
+         *  - w: the param is writable (SPA_PARAM_INFO_WRITE)
+         *
+         * For params that are readable, you can query them with wp_pipewire_object_enum_params()
+         * Params that are writable can be set with wp_pipewire_object_set_param()
+         * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
+         */
+        vfunc_get_param_info(): GLib.Variant | null;
+        /**
+         * Retrieves the PipeWire properties of this object.
+         *
+         *
+         * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
+         */
+        vfunc_get_properties(): Properties;
+        /**
+         * Sets a parameter on the object.
+         * @param id the parameter id to set
+         * @param flags optional flags or 0
+         * @param param the parameter to set
+         */
+        vfunc_set_param(id: string, flags: number, param: SpaPod): boolean;
     }
 
     export const PipewireObject: PipewireObjectNamespace & {
@@ -8216,37 +8204,6 @@ export namespace Wp {
     };
 
     namespace SiAcquisition {
-        /**
-         * Interface for implementing SiAcquisition.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Acquires the `item` for linking by `acquisitor`.
-             *
-             *
-             * When a link is not allowed by policy, this operation should return an error.
-             * When a link needs to be delayed for a short amount of time (ex. to apply a fade out effect on another item), this operation should finish with a delay. It is safe to assume that after this operation completes, the item will be linked immediately.
-             * @param acquisitor the link that is trying to acquire a port info item
-             * @param item the item that is being acquired
-             * @param callback the callback to call when the operation is done
-             */
-            vfunc_acquire(acquisitor: SiLink, item: SiLinkable, callback?: Gio.AsyncReadyCallback<this> | null): void;
-            /**
-             * Finishes the operation started by wp_si_acquisition_acquire(). This is meant to be called in the callback that was passed to that method.
-             * @param res the async result
-             */
-            vfunc_acquire_finish(res: Gio.AsyncResult): boolean;
-            /**
-             * Releases the `item,` which means that it is being unlinked.
-             * @param acquisitor the link that had previously acquired the item
-             * @param item the port info that is being released
-             */
-            vfunc_release(acquisitor: SiLink, item: SiLinkable): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends SessionItem.ConstructorProps {}
@@ -8256,7 +8213,7 @@ export namespace Wp {
         $gtype: GObject.GType<SiAcquisition>;
         prototype: SiAcquisition;
     }
-    interface SiAcquisition extends SessionItem, SiAcquisition.Interface {
+    interface SiAcquisition extends SessionItem {
         // Methods
 
         /**
@@ -8307,6 +8264,31 @@ export namespace Wp {
          * @param item the port info that is being released
          */
         release(acquisitor: SiLink, item: SiLinkable): void;
+
+        // Virtual methods
+
+        /**
+         * Acquires the `item` for linking by `acquisitor`.
+         *
+         *
+         * When a link is not allowed by policy, this operation should return an error.
+         * When a link needs to be delayed for a short amount of time (ex. to apply a fade out effect on another item), this operation should finish with a delay. It is safe to assume that after this operation completes, the item will be linked immediately.
+         * @param acquisitor the link that is trying to acquire a port info item
+         * @param item the item that is being acquired
+         * @param callback the callback to call when the operation is done
+         */
+        vfunc_acquire(acquisitor: SiLink, item: SiLinkable, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Finishes the operation started by wp_si_acquisition_acquire(). This is meant to be called in the callback that was passed to that method.
+         * @param res the async result
+         */
+        vfunc_acquire_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Releases the `item,` which means that it is being unlinked.
+         * @param acquisitor the link that had previously acquired the item
+         * @param item the port info that is being released
+         */
+        vfunc_release(acquisitor: SiLink, item: SiLinkable): void;
     }
 
     export const SiAcquisition: SiAcquisitionNamespace & {
@@ -8314,42 +8296,6 @@ export namespace Wp {
     };
 
     namespace SiAdapter {
-        /**
-         * Interface for implementing SiAdapter.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Gets the format used to configure the adapter session item's ports.
-             */
-            vfunc_get_ports_format(): [SpaPod, string];
-            /**
-             * Gets the ports state.
-             */
-            vfunc_get_ports_state(): SiAdapterPortsState;
-            /**
-             * Sets the format and configures the adapter session item ports using the given format.
-             *
-             *
-             * The result of the operation can be checked using the wp_si_adapter_set_ports_format_finish() API. If format is NULL, the adapter will be configured with the default format. If mode is NULL, the adapter will use "dsp" mode.
-             * @param format the format to be set
-             * @param mode the mode
-             * @param callback the callback to call when the operation is done
-             */
-            vfunc_set_ports_format(
-                format?: SpaPod | null,
-                mode?: string | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes the operation started by wp_si_adapter_set_format(). This is meant to be called in the callback that was passed to that method.
-             * @param res the async result
-             */
-            vfunc_set_ports_format_finish(res: Gio.AsyncResult): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends SessionItem.ConstructorProps {}
@@ -8359,7 +8305,7 @@ export namespace Wp {
         $gtype: GObject.GType<SiAdapter>;
         prototype: SiAdapter;
     }
-    interface SiAdapter extends SessionItem, SiAdapter.Interface {
+    interface SiAdapter extends SessionItem {
         // Methods
 
         /**
@@ -8415,6 +8361,36 @@ export namespace Wp {
          * @returns TRUE on success, FALSE if there was an error
          */
         set_ports_format_finish(res: Gio.AsyncResult): boolean;
+
+        // Virtual methods
+
+        /**
+         * Gets the format used to configure the adapter session item's ports.
+         */
+        vfunc_get_ports_format(): [SpaPod, string];
+        /**
+         * Gets the ports state.
+         */
+        vfunc_get_ports_state(): SiAdapterPortsState;
+        /**
+         * Sets the format and configures the adapter session item ports using the given format.
+         *
+         *
+         * The result of the operation can be checked using the wp_si_adapter_set_ports_format_finish() API. If format is NULL, the adapter will be configured with the default format. If mode is NULL, the adapter will use "dsp" mode.
+         * @param format the format to be set
+         * @param mode the mode
+         * @param callback the callback to call when the operation is done
+         */
+        vfunc_set_ports_format(
+            format?: SpaPod | null,
+            mode?: string | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes the operation started by wp_si_adapter_set_format(). This is meant to be called in the callback that was passed to that method.
+         * @param res the async result
+         */
+        vfunc_set_ports_format_finish(res: Gio.AsyncResult): boolean;
     }
 
     export const SiAdapter: SiAdapterNamespace & {
@@ -8422,31 +8398,6 @@ export namespace Wp {
     };
 
     namespace SiLink {
-        /**
-         * Interface for implementing SiLink.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Gets the input item linked by the link.
-             */
-            vfunc_get_in_item(): SiLinkable;
-            /**
-             * Gets the output item linked by the link.
-             */
-            vfunc_get_out_item(): SiLinkable;
-            /**
-             * Gets the properties of the link.
-             */
-            vfunc_get_properties(): Properties | null;
-            /**
-             * This should return information that is used for registering the link, as a GVariant of type a{ss} that contains additional properties to be added to the list of global properties.
-             */
-            vfunc_get_registration_info(): GLib.Variant;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends SessionItem.ConstructorProps {}
@@ -8456,7 +8407,7 @@ export namespace Wp {
         $gtype: GObject.GType<SiLink>;
         prototype: SiLink;
     }
-    interface SiLink extends SessionItem, SiLink.Interface {
+    interface SiLink extends SessionItem {
         // Methods
 
         /**
@@ -8481,6 +8432,25 @@ export namespace Wp {
          * @returns registration info for the link
          */
         get_registration_info(): GLib.Variant;
+
+        // Virtual methods
+
+        /**
+         * Gets the input item linked by the link.
+         */
+        vfunc_get_in_item(): SiLinkable;
+        /**
+         * Gets the output item linked by the link.
+         */
+        vfunc_get_out_item(): SiLinkable;
+        /**
+         * Gets the properties of the link.
+         */
+        vfunc_get_properties(): Properties | null;
+        /**
+         * This should return information that is used for registering the link, as a GVariant of type a{ss} that contains additional properties to be added to the list of global properties.
+         */
+        vfunc_get_registration_info(): GLib.Variant;
     }
 
     export const SiLink: SiLinkNamespace & {
@@ -8488,39 +8458,6 @@ export namespace Wp {
     };
 
     namespace SiLinkable {
-        /**
-         * Interface for implementing SiLinkable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Gets the acquisition interface associated with the item.
-             */
-            vfunc_get_acquisition(): SiAcquisition | null;
-            /**
-             * This method returns a variant of type "a(uuu)", where each tuple in the array contains the following information:
-             *
-             *
-             *
-             *  - u: (guint32) node id
-             *  - u: (guint32) port id (the port must belong on the node specified above)
-             *  - u: (guint32) the audio channel (enum spa_audio_channel) that this port makes available, or 0 for non-audio content
-             *
-             * The order in which ports appear in this array is important when no channel information is available. The link implementation should link the ports in the order they appear. This is normally a good enough substitute for channel matching.
-             * The `context` argument can be used to get different sets of ports from the item. The following well-known contexts are defined:
-             *  - NULL: get the standard ports to be linked
-             *  - "monitor": get the monitor ports
-             *  - "control": get the control port
-             *  - "reverse": get the reverse direction ports, if this item controls a filter node, which would have ports on both directions
-             *
-             * Contexts other than NULL may only be used internally to ease the implementation of more complex item relationships. For example, a WpSessionItem that is in control of an input (sink) adapter node may implement WpSiLinkable where the NULL context will return the standard input ports and the "monitor" context will return the adapter's monitor ports. When linking this item to another item, the NULL context will always be used, but the item may internally spawn a secondary WpSessionItem that implements the "monitor" item. That secondary item may implement WpSiLinkable, chaining calls to the WpSiLinkable of the original item using the "monitor" context. This way, the monitor WpSessionItem does not need to share control of the underlying node; it only proxies calls to satisfy the API.
-             * @param context an optional context for the ports
-             */
-            vfunc_get_ports(context?: string | null): GLib.Variant;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends SessionItem.ConstructorProps {}
@@ -8530,7 +8467,7 @@ export namespace Wp {
         $gtype: GObject.GType<SiLinkable>;
         prototype: SiLinkable;
     }
-    interface SiLinkable extends SessionItem, SiLinkable.Interface {
+    interface SiLinkable extends SessionItem {
         // Methods
 
         /**
@@ -8559,6 +8496,33 @@ export namespace Wp {
          * @returns a GVariant containing information about the ports of this item
          */
         get_ports(context?: string | null): GLib.Variant;
+
+        // Virtual methods
+
+        /**
+         * Gets the acquisition interface associated with the item.
+         */
+        vfunc_get_acquisition(): SiAcquisition | null;
+        /**
+         * This method returns a variant of type "a(uuu)", where each tuple in the array contains the following information:
+         *
+         *
+         *
+         *  - u: (guint32) node id
+         *  - u: (guint32) port id (the port must belong on the node specified above)
+         *  - u: (guint32) the audio channel (enum spa_audio_channel) that this port makes available, or 0 for non-audio content
+         *
+         * The order in which ports appear in this array is important when no channel information is available. The link implementation should link the ports in the order they appear. This is normally a good enough substitute for channel matching.
+         * The `context` argument can be used to get different sets of ports from the item. The following well-known contexts are defined:
+         *  - NULL: get the standard ports to be linked
+         *  - "monitor": get the monitor ports
+         *  - "control": get the control port
+         *  - "reverse": get the reverse direction ports, if this item controls a filter node, which would have ports on both directions
+         *
+         * Contexts other than NULL may only be used internally to ease the implementation of more complex item relationships. For example, a WpSessionItem that is in control of an input (sink) adapter node may implement WpSiLinkable where the NULL context will return the standard input ports and the "monitor" context will return the adapter's monitor ports. When linking this item to another item, the NULL context will always be used, but the item may internally spawn a secondary WpSessionItem that implements the "monitor" item. That secondary item may implement WpSiLinkable, chaining calls to the WpSiLinkable of the original item using the "monitor" context. This way, the monitor WpSessionItem does not need to share control of the underlying node; it only proxies calls to satisfy the API.
+         * @param context an optional context for the ports
+         */
+        vfunc_get_ports(context?: string | null): GLib.Variant;
     }
 
     export const SiLinkable: SiLinkableNamespace & {

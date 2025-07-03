@@ -2937,76 +2937,6 @@ export namespace Json {
 
     type SerializableIface = typeof Serializable;
     namespace Serializable {
-        /**
-         * Interface for implementing Serializable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Asks a `JsonSerializable` implementation to deserialize the
-             * property contained inside `property_node` and place its value
-             * into `value`.
-             *
-             * The `value` can be:
-             *
-             * - an empty `GValue` initialized by `G_VALUE_INIT`, which will be automatically
-             *   initialized with the expected type of the property by using the given
-             *   property description (since JSON-GLib 1.6)
-             * - a `GValue` initialized with the expected type of the property
-             *
-             * This function will not be called for properties that are marked as
-             * as `G_PARAM_CONSTRUCT_ONLY`.
-             * @param property_name the name of the property to serialize
-             * @param pspec a property description
-             * @param property_node the JSON node containing the serialized property
-             */
-            vfunc_deserialize_property(
-                property_name: string,
-                pspec: GObject.ParamSpec,
-                property_node: Node,
-            ): [boolean, unknown];
-            /**
-             * Calls the [vfunc`Json`.Serializable.find_property] implementation on
-             * the `JsonSerializable` instance, which will return the property
-             * description for the given name.
-             * @param name the name of the property
-             */
-            vfunc_find_property(name: string): GObject.ParamSpec | null;
-            /**
-             * Calls the [vfunc`Json`.Serializable.get_property] implementation
-             * on the `JsonSerializable` instance, which will get the value of
-             * the given property.
-             * @param pspec a property description
-             */
-            vfunc_get_property(pspec: GObject.ParamSpec): unknown;
-            // Conflicted with GObject.Object.vfunc_get_property
-            vfunc_get_property(...args: never[]): any;
-            /**
-             * Asks a `JsonSerializable` implementation to serialize an object
-             * property into a JSON node.
-             * @param property_name the name of the property to serialize
-             * @param value the value of the property to serialize
-             * @param pspec a property description
-             */
-            vfunc_serialize_property(
-                property_name: string,
-                value: GObject.Value | any,
-                pspec: GObject.ParamSpec,
-            ): Node | null;
-            /**
-             * Calls the [vfunc`Json`.Serializable.set_property] implementation
-             * on the `JsonSerializable` instance, which will set the property
-             * with the given value.
-             * @param pspec a property description
-             * @param value the property value to set
-             */
-            vfunc_set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
-            // Conflicted with GObject.Object.vfunc_set_property
-            vfunc_set_property(...args: never[]): any;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3016,7 +2946,7 @@ export namespace Json {
         $gtype: GObject.GType<Serializable>;
         prototype: Serializable;
     }
-    interface Serializable extends GObject.Object, Serializable.Interface {
+    interface Serializable extends GObject.Object {
         // Methods
 
         /**
@@ -3142,6 +3072,70 @@ export namespace Json {
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
         // Conflicted with GObject.Object.set_property
         set_property(...args: never[]): any;
+
+        // Virtual methods
+
+        /**
+         * Asks a `JsonSerializable` implementation to deserialize the
+         * property contained inside `property_node` and place its value
+         * into `value`.
+         *
+         * The `value` can be:
+         *
+         * - an empty `GValue` initialized by `G_VALUE_INIT`, which will be automatically
+         *   initialized with the expected type of the property by using the given
+         *   property description (since JSON-GLib 1.6)
+         * - a `GValue` initialized with the expected type of the property
+         *
+         * This function will not be called for properties that are marked as
+         * as `G_PARAM_CONSTRUCT_ONLY`.
+         * @param property_name the name of the property to serialize
+         * @param pspec a property description
+         * @param property_node the JSON node containing the serialized property
+         */
+        vfunc_deserialize_property(
+            property_name: string,
+            pspec: GObject.ParamSpec,
+            property_node: Node,
+        ): [boolean, unknown];
+        /**
+         * Calls the [vfunc`Json`.Serializable.find_property] implementation on
+         * the `JsonSerializable` instance, which will return the property
+         * description for the given name.
+         * @param name the name of the property
+         */
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
+        /**
+         * Calls the [vfunc`Json`.Serializable.get_property] implementation
+         * on the `JsonSerializable` instance, which will get the value of
+         * the given property.
+         * @param pspec a property description
+         */
+        vfunc_get_property(pspec: GObject.ParamSpec): unknown;
+        // Conflicted with GObject.Object.vfunc_get_property
+        vfunc_get_property(...args: never[]): any;
+        /**
+         * Asks a `JsonSerializable` implementation to serialize an object
+         * property into a JSON node.
+         * @param property_name the name of the property to serialize
+         * @param value the value of the property to serialize
+         * @param pspec a property description
+         */
+        vfunc_serialize_property(
+            property_name: string,
+            value: GObject.Value | any,
+            pspec: GObject.ParamSpec,
+        ): Node | null;
+        /**
+         * Calls the [vfunc`Json`.Serializable.set_property] implementation
+         * on the `JsonSerializable` instance, which will set the property
+         * with the given value.
+         * @param pspec a property description
+         * @param value the property value to set
+         */
+        vfunc_set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
+        // Conflicted with GObject.Object.vfunc_set_property
+        vfunc_set_property(...args: never[]): any;
     }
 
     export const Serializable: SerializableNamespace & {

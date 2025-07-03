@@ -11771,28 +11771,6 @@ export namespace Meta {
     type WorkspaceManagerClass = typeof WorkspaceManager;
     type X11DisplayClass = typeof X11Display;
     namespace CloseDialog {
-        /**
-         * Interface for implementing CloseDialog.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Call whenever `dialog` should receive keyboard focus,
-             * usually when the window would.
-             */
-            vfunc_focus(): void;
-            /**
-             * Hides the close dialog.
-             */
-            vfunc_hide(): void;
-            /**
-             * Shows the close dialog.
-             */
-            vfunc_show(): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11804,7 +11782,7 @@ export namespace Meta {
         $gtype: GObject.GType<CloseDialog>;
         prototype: CloseDialog;
     }
-    interface CloseDialog extends GObject.Object, CloseDialog.Interface {
+    interface CloseDialog extends GObject.Object {
         // Properties
 
         get window(): Window;
@@ -11835,6 +11813,22 @@ export namespace Meta {
          * Shows the close dialog.
          */
         show(): void;
+
+        // Virtual methods
+
+        /**
+         * Call whenever `dialog` should receive keyboard focus,
+         * usually when the window would.
+         */
+        vfunc_focus(): void;
+        /**
+         * Hides the close dialog.
+         */
+        vfunc_hide(): void;
+        /**
+         * Shows the close dialog.
+         */
+        vfunc_show(): void;
     }
 
     export const CloseDialog: CloseDialogNamespace & {
@@ -11842,23 +11836,6 @@ export namespace Meta {
     };
 
     namespace InhibitShortcutsDialog {
-        /**
-         * Interface for implementing InhibitShortcutsDialog.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Hides the inhibit shortcuts dialog.
-             */
-            vfunc_hide(): void;
-            /**
-             * Shows the inhibit shortcuts dialog.
-             */
-            vfunc_show(): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11870,7 +11847,7 @@ export namespace Meta {
         $gtype: GObject.GType<InhibitShortcutsDialog>;
         prototype: InhibitShortcutsDialog;
     }
-    interface InhibitShortcutsDialog extends GObject.Object, InhibitShortcutsDialog.Interface {
+    interface InhibitShortcutsDialog extends GObject.Object {
         // Properties
 
         get window(): Window;
@@ -11891,6 +11868,17 @@ export namespace Meta {
          * Shows the inhibit shortcuts dialog.
          */
         show(): void;
+
+        // Virtual methods
+
+        /**
+         * Hides the inhibit shortcuts dialog.
+         */
+        vfunc_hide(): void;
+        /**
+         * Shows the inhibit shortcuts dialog.
+         */
+        vfunc_show(): void;
     }
 
     export const InhibitShortcutsDialog: InhibitShortcutsDialogNamespace & {

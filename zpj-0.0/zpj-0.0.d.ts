@@ -1821,49 +1821,6 @@ export namespace Zpj {
     }
 
     namespace Authorizer {
-        /**
-         * Interface for implementing Authorizer.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Whether the authorization tokens held by `iface` are valid for
-             * `domain`.
-             *
-             * This method is thread safe.
-             * @param domain A #ZpjAuthorizationDomain.
-             */
-            vfunc_is_authorized_for_domain(domain: AuthorizationDomain): boolean;
-            /**
-             * Adds the necessary authorization to `call`.
-             *
-             * This method modifies `call` in place and is thread safe.
-             * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
-             * @param call A #RestProxyCall.
-             */
-            vfunc_process_call(domain: AuthorizationDomain | null, call: Rest.ProxyCall): void;
-            /**
-             * Adds the necessary authorization to `message`. The type of `message`
-             * can be DELETE, GET and POST.
-             *
-             * This method modifies `message` in place and is thread safe.
-             * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
-             * @param message A #SoupMessage.
-             */
-            vfunc_process_message(domain: AuthorizationDomain | null, message: Soup.Message): void;
-            /**
-             * Synchronously forces `iface` to refresh any authorization tokens
-             * held by it. See zpj_authorizer_refresh_authorization_async() for the
-             * asynchronous version of this call.
-             *
-             * This method is thread safe.
-             * @param cancellable An optional #GCancellable object, or   %NULL.
-             */
-            vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1873,7 +1830,7 @@ export namespace Zpj {
         $gtype: GObject.GType<Authorizer>;
         prototype: Authorizer;
     }
-    interface Authorizer extends GObject.Object, Authorizer.Interface {
+    interface Authorizer extends GObject.Object {
         // Methods
 
         /**
@@ -1966,6 +1923,43 @@ export namespace Zpj {
          * @returns %TRUE if the authorizer now has a valid token.
          */
         refresh_authorization_finish(res: Gio.AsyncResult): boolean;
+
+        // Virtual methods
+
+        /**
+         * Whether the authorization tokens held by `iface` are valid for
+         * `domain`.
+         *
+         * This method is thread safe.
+         * @param domain A #ZpjAuthorizationDomain.
+         */
+        vfunc_is_authorized_for_domain(domain: AuthorizationDomain): boolean;
+        /**
+         * Adds the necessary authorization to `call`.
+         *
+         * This method modifies `call` in place and is thread safe.
+         * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
+         * @param call A #RestProxyCall.
+         */
+        vfunc_process_call(domain: AuthorizationDomain | null, call: Rest.ProxyCall): void;
+        /**
+         * Adds the necessary authorization to `message`. The type of `message`
+         * can be DELETE, GET and POST.
+         *
+         * This method modifies `message` in place and is thread safe.
+         * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
+         * @param message A #SoupMessage.
+         */
+        vfunc_process_message(domain: AuthorizationDomain | null, message: Soup.Message): void;
+        /**
+         * Synchronously forces `iface` to refresh any authorization tokens
+         * held by it. See zpj_authorizer_refresh_authorization_async() for the
+         * asynchronous version of this call.
+         *
+         * This method is thread safe.
+         * @param cancellable An optional #GCancellable object, or   %NULL.
+         */
+        vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
     }
 
     export const Authorizer: AuthorizerNamespace & {

@@ -2542,133 +2542,6 @@ export namespace Thunarx {
 
     type RenamerProviderIface = typeof RenamerProvider;
     namespace FileInfo {
-        /**
-         * Interface for implementing FileInfo.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Emits the ::changed signal on `file_info`. This method should not
-             * be invoked by Thunar plugins, instead the file manager itself
-             * will use this method to emit ::changed whenever it notices a
-             * change on `file_info`.
-             */
-            vfunc_changed(): void;
-            /**
-             * Returns the #GFileInfo associated with `file_info,`
-             * which includes additional information about the `file_info`
-             * as queried from GIO earlier. The caller is responsible to free the
-             * returned #GFileInfo object using g_object_unref() when
-             * no longer needed.
-             */
-            vfunc_get_file_info(): Gio.FileInfo;
-            /**
-             * Returns the #GFileInfo which includes additional information about
-             * the filesystem `file_info` resides on. The caller is responsible to
-             * free the returned #GFileInfo object using g_object_unref() when
-             * no longer needed.
-             */
-            vfunc_get_filesystem_info(): Gio.FileInfo;
-            /**
-             * Returns the #GFile `file_info` points to. The #GFile is a more
-             * powerful tool than just the URI or the path. The caller
-             * is responsible to release the returned #GFile using g_object_unref()
-             * when no longer needed.
-             */
-            vfunc_get_location(): Gio.File;
-            /**
-             * Returns the MIME-type of the file represented by
-             * `file_info` or %NULL if no MIME-type is known for
-             * `file_info`.
-             *
-             * The caller is responsible to free the returned
-             * string using g_free() when no longer needed.
-             */
-            vfunc_get_mime_type(): string;
-            /**
-             * Returns the real name of the file represented
-             * by `file_info` in the local file system encoding.
-             * You can use g_filename_display_name() or similar
-             * functions to generate an UTF-8 version of the
-             * name, which is suitable for use in the user
-             * interface.
-             *
-             * The caller is responsible to free the returned
-             * string using g_free() when no longer needed.
-             */
-            vfunc_get_name(): string;
-            /**
-             * Returns the URI to the parent file of
-             * `file_info` or %NULL if `file_info` has
-             * no parent. Note that the parent URI
-             * may be of a different type than the
-             * URI of `file_info`. For example, the
-             * parent of "file:///" is "computer:///".
-             *
-             * The caller is responsible to free the
-             * returned string using g_free() when no
-             * longer needed.
-             */
-            vfunc_get_parent_uri(): string;
-            /**
-             * Returns the escaped, fully qualified URI
-             * of the file object represented by `file_info`.
-             * You may use g_filename_from_uri() and similar
-             * functions to work with the returned URI.
-             *
-             * The caller is responsible to free the returned
-             * string using g_free() when no longer needed.
-             */
-            vfunc_get_uri(): string;
-            /**
-             * Returns the URI scheme of the file represented
-             * by `file_info`. E.g. if `file_info` refers to the
-             * file "file:///usr/home", the return value will
-             * be "file".
-             *
-             * The caller is responsible to free the returned
-             * string using g_free() when no longer needed.
-             */
-            vfunc_get_uri_scheme(): string;
-            /**
-             * Checks whether `file_info` is of the given `mime_type`
-             * or whether the MIME-type of `file_info` is a subclass
-             * of `mime_type`.
-             *
-             * This is the preferred way for most extensions to check
-             * whether they support a given file or not, and you should
-             * consider using this method rather than
-             * thunarx_file_info_get_mime_type(). A simple example would
-             * be a menu extension that performs a certain action on
-             * text files. In this case you want to check whether a given
-             * #ThunarxFileInfo refers to any kind of text file, not only
-             * to "text/plain" (e.g. this also includes "text/xml" and
-             * "application/x-desktop").
-             *
-             * But you should be aware that this method may take some
-             * time to test whether `mime_type` is valid for `file_info,`
-             * so don't call it too often.
-             * @param mime_type a MIME-type (e.g. "text/plain").
-             */
-            vfunc_has_mime_type(mime_type: string): boolean;
-            /**
-             * Checks whether `file_info` refers to a directory.
-             */
-            vfunc_is_directory(): boolean;
-            /**
-             * Emits the ::renamed signal on `file_info`. This method should
-             * not be invoked by Thunar plugins, instead the file manager
-             * will emit this signal whenever the user renamed the `file_info`.
-             *
-             * The plugins should instead connect to the ::renamed signal
-             * and update it's internal state and it's user interface
-             * after the file manager renamed a file.
-             */
-            vfunc_renamed(): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2678,7 +2551,7 @@ export namespace Thunarx {
         $gtype: GObject.GType<FileInfo>;
         prototype: FileInfo;
     }
-    interface FileInfo extends GObject.Object, FileInfo.Interface {
+    interface FileInfo extends GObject.Object {
         // Methods
 
         /**
@@ -2809,6 +2682,127 @@ export namespace Thunarx {
          * after the file manager renamed a file.
          */
         renamed(): void;
+
+        // Virtual methods
+
+        /**
+         * Emits the ::changed signal on `file_info`. This method should not
+         * be invoked by Thunar plugins, instead the file manager itself
+         * will use this method to emit ::changed whenever it notices a
+         * change on `file_info`.
+         */
+        vfunc_changed(): void;
+        /**
+         * Returns the #GFileInfo associated with `file_info,`
+         * which includes additional information about the `file_info`
+         * as queried from GIO earlier. The caller is responsible to free the
+         * returned #GFileInfo object using g_object_unref() when
+         * no longer needed.
+         */
+        vfunc_get_file_info(): Gio.FileInfo;
+        /**
+         * Returns the #GFileInfo which includes additional information about
+         * the filesystem `file_info` resides on. The caller is responsible to
+         * free the returned #GFileInfo object using g_object_unref() when
+         * no longer needed.
+         */
+        vfunc_get_filesystem_info(): Gio.FileInfo;
+        /**
+         * Returns the #GFile `file_info` points to. The #GFile is a more
+         * powerful tool than just the URI or the path. The caller
+         * is responsible to release the returned #GFile using g_object_unref()
+         * when no longer needed.
+         */
+        vfunc_get_location(): Gio.File;
+        /**
+         * Returns the MIME-type of the file represented by
+         * `file_info` or %NULL if no MIME-type is known for
+         * `file_info`.
+         *
+         * The caller is responsible to free the returned
+         * string using g_free() when no longer needed.
+         */
+        vfunc_get_mime_type(): string;
+        /**
+         * Returns the real name of the file represented
+         * by `file_info` in the local file system encoding.
+         * You can use g_filename_display_name() or similar
+         * functions to generate an UTF-8 version of the
+         * name, which is suitable for use in the user
+         * interface.
+         *
+         * The caller is responsible to free the returned
+         * string using g_free() when no longer needed.
+         */
+        vfunc_get_name(): string;
+        /**
+         * Returns the URI to the parent file of
+         * `file_info` or %NULL if `file_info` has
+         * no parent. Note that the parent URI
+         * may be of a different type than the
+         * URI of `file_info`. For example, the
+         * parent of "file:///" is "computer:///".
+         *
+         * The caller is responsible to free the
+         * returned string using g_free() when no
+         * longer needed.
+         */
+        vfunc_get_parent_uri(): string;
+        /**
+         * Returns the escaped, fully qualified URI
+         * of the file object represented by `file_info`.
+         * You may use g_filename_from_uri() and similar
+         * functions to work with the returned URI.
+         *
+         * The caller is responsible to free the returned
+         * string using g_free() when no longer needed.
+         */
+        vfunc_get_uri(): string;
+        /**
+         * Returns the URI scheme of the file represented
+         * by `file_info`. E.g. if `file_info` refers to the
+         * file "file:///usr/home", the return value will
+         * be "file".
+         *
+         * The caller is responsible to free the returned
+         * string using g_free() when no longer needed.
+         */
+        vfunc_get_uri_scheme(): string;
+        /**
+         * Checks whether `file_info` is of the given `mime_type`
+         * or whether the MIME-type of `file_info` is a subclass
+         * of `mime_type`.
+         *
+         * This is the preferred way for most extensions to check
+         * whether they support a given file or not, and you should
+         * consider using this method rather than
+         * thunarx_file_info_get_mime_type(). A simple example would
+         * be a menu extension that performs a certain action on
+         * text files. In this case you want to check whether a given
+         * #ThunarxFileInfo refers to any kind of text file, not only
+         * to "text/plain" (e.g. this also includes "text/xml" and
+         * "application/x-desktop").
+         *
+         * But you should be aware that this method may take some
+         * time to test whether `mime_type` is valid for `file_info,`
+         * so don't call it too often.
+         * @param mime_type a MIME-type (e.g. "text/plain").
+         */
+        vfunc_has_mime_type(mime_type: string): boolean;
+        /**
+         * Checks whether `file_info` refers to a directory.
+         */
+        vfunc_is_directory(): boolean;
+        /**
+         * Emits the ::renamed signal on `file_info`. This method should
+         * not be invoked by Thunar plugins, instead the file manager
+         * will emit this signal whenever the user renamed the `file_info`.
+         *
+         * The plugins should instead connect to the ::renamed signal
+         * and update it's internal state and it's user interface
+         * after the file manager renamed a file.
+         */
+        vfunc_renamed(): void;
     }
 
     export const FileInfo: FileInfoNamespace & {
@@ -2864,87 +2858,6 @@ export namespace Thunarx {
     };
 
     namespace ProviderPlugin {
-        /**
-         * Interface for implementing ProviderPlugin.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Registers an additional interface for a type, whose interface lives in the given type `plugin`.
-             * If the interface was already registered for the type in this `plugin,` nothing will be done.
-             *
-             * As long as any instances of the type exist, the type `plugin` will not be unloaded.
-             * @param instance_type type to which to add the interface.
-             * @param interface_type interface type to add.
-             * @param interface_info type information structure.
-             */
-            vfunc_add_interface(
-                instance_type: GObject.GType,
-                interface_type: GObject.GType,
-                interface_info: GObject.InterfaceInfo,
-            ): void;
-            /**
-             * Determines whether the application is allowed to unload `plugin`
-             * from memory when no longer needed and reload it on demand. If
-             * %FALSE is returned, then the application may unload `plugin,` else
-             * if %TRUE is returned the application will take care that `plugin`
-             * is never unloaded from memory during the lifetime of the application.
-             */
-            vfunc_get_resident(): boolean;
-            /**
-             * Looks up or registers an enumeration that is implemented with a particular type `plugin`. If a type
-             * with name `name` was previously registered, the #GType identifier for the type is returned,
-             * otherwise the type is newly registered, and the resulting #GType identifier returned.
-             *
-             * As long as any instances of the type exist, the type `plugin` will not be unloaded.
-             * @param name the name for the type.
-             * @param const_static_values an array of #GEnumValue structs for the possible enumeration values.                        The array is terminated by a struct with all members being %0.
-             */
-            vfunc_register_enum(name: string, const_static_values: GObject.EnumValue): GObject.GType;
-            /**
-             * Looks up or registers a flags type that is implemented with a particular type `plugin`. If a type with name
-             * qname was previously registered, the #GType identifier for the type is returned, otherwise the type is newly
-             * registered, and the resulting #GType identifier returned.
-             *
-             * As long as any instances of the type exist, the type `plugin` will not be unloaded.
-             * @param name name for the type.
-             * @param const_static_values an array of #GFlagsValue structs for the possible flags values.                        The array is terminated by a struct with all members being %0.
-             */
-            vfunc_register_flags(name: string, const_static_values: GObject.FlagsValue): GObject.GType;
-            /**
-             * Looks up or registers a type that is implemented with a particular type `plugin`. If a type with name `type_name`
-             * was previously registered, the #GType identifier for the type is returned, otherwise the type is newly registered,
-             * and the resulting #GType identifier returned.
-             *
-             * When reregistering a type (typically because a module is unloaded then reloaded, and reinitialized), module and
-             * `type_parent` must be the same as they were previously.
-             * @param type_parent the type for the parent class.
-             * @param type_name name for the type.
-             * @param type_info type information structure.
-             * @param type_flags flags field providing details about the type.
-             */
-            vfunc_register_type(
-                type_parent: GObject.GType,
-                type_name: string,
-                type_info: GObject.TypeInfo,
-                type_flags: GObject.TypeFlags,
-            ): GObject.GType;
-            /**
-             * This method is used to instruct the application that `plugin` must be
-             * kept in memory during the lifetime of the application. The default
-             * is to allow the application to unload `plugin` from the memory when
-             * no longer needed. If this method is invoked with a `resident` value
-             * of %TRUE then the application will never try to unload `plugin`.
-             *
-             * This method has no effect unless called from the
-             * %thunar_extension_initialize method of the `plugin`.
-             * @param resident %TRUE to make @plugin resident in memory.
-             */
-            vfunc_set_resident(resident: boolean): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2956,7 +2869,7 @@ export namespace Thunarx {
         $gtype: GObject.GType<ProviderPlugin>;
         prototype: ProviderPlugin;
     }
-    interface ProviderPlugin extends GObject.Object, ProviderPlugin.Interface {
+    interface ProviderPlugin extends GObject.Object {
         // Properties
 
         /**
@@ -3045,6 +2958,81 @@ export namespace Thunarx {
          * @param resident %TRUE to make @plugin resident in memory.
          */
         set_resident(resident: boolean): void;
+
+        // Virtual methods
+
+        /**
+         * Registers an additional interface for a type, whose interface lives in the given type `plugin`.
+         * If the interface was already registered for the type in this `plugin,` nothing will be done.
+         *
+         * As long as any instances of the type exist, the type `plugin` will not be unloaded.
+         * @param instance_type type to which to add the interface.
+         * @param interface_type interface type to add.
+         * @param interface_info type information structure.
+         */
+        vfunc_add_interface(
+            instance_type: GObject.GType,
+            interface_type: GObject.GType,
+            interface_info: GObject.InterfaceInfo,
+        ): void;
+        /**
+         * Determines whether the application is allowed to unload `plugin`
+         * from memory when no longer needed and reload it on demand. If
+         * %FALSE is returned, then the application may unload `plugin,` else
+         * if %TRUE is returned the application will take care that `plugin`
+         * is never unloaded from memory during the lifetime of the application.
+         */
+        vfunc_get_resident(): boolean;
+        /**
+         * Looks up or registers an enumeration that is implemented with a particular type `plugin`. If a type
+         * with name `name` was previously registered, the #GType identifier for the type is returned,
+         * otherwise the type is newly registered, and the resulting #GType identifier returned.
+         *
+         * As long as any instances of the type exist, the type `plugin` will not be unloaded.
+         * @param name the name for the type.
+         * @param const_static_values an array of #GEnumValue structs for the possible enumeration values.                        The array is terminated by a struct with all members being %0.
+         */
+        vfunc_register_enum(name: string, const_static_values: GObject.EnumValue): GObject.GType;
+        /**
+         * Looks up or registers a flags type that is implemented with a particular type `plugin`. If a type with name
+         * qname was previously registered, the #GType identifier for the type is returned, otherwise the type is newly
+         * registered, and the resulting #GType identifier returned.
+         *
+         * As long as any instances of the type exist, the type `plugin` will not be unloaded.
+         * @param name name for the type.
+         * @param const_static_values an array of #GFlagsValue structs for the possible flags values.                        The array is terminated by a struct with all members being %0.
+         */
+        vfunc_register_flags(name: string, const_static_values: GObject.FlagsValue): GObject.GType;
+        /**
+         * Looks up or registers a type that is implemented with a particular type `plugin`. If a type with name `type_name`
+         * was previously registered, the #GType identifier for the type is returned, otherwise the type is newly registered,
+         * and the resulting #GType identifier returned.
+         *
+         * When reregistering a type (typically because a module is unloaded then reloaded, and reinitialized), module and
+         * `type_parent` must be the same as they were previously.
+         * @param type_parent the type for the parent class.
+         * @param type_name name for the type.
+         * @param type_info type information structure.
+         * @param type_flags flags field providing details about the type.
+         */
+        vfunc_register_type(
+            type_parent: GObject.GType,
+            type_name: string,
+            type_info: GObject.TypeInfo,
+            type_flags: GObject.TypeFlags,
+        ): GObject.GType;
+        /**
+         * This method is used to instruct the application that `plugin` must be
+         * kept in memory during the lifetime of the application. The default
+         * is to allow the application to unload `plugin` from the memory when
+         * no longer needed. If this method is invoked with a `resident` value
+         * of %TRUE then the application will never try to unload `plugin`.
+         *
+         * This method has no effect unless called from the
+         * %thunar_extension_initialize method of the `plugin`.
+         * @param resident %TRUE to make @plugin resident in memory.
+         */
+        vfunc_set_resident(resident: boolean): void;
     }
 
     export const ProviderPlugin: ProviderPluginNamespace & {

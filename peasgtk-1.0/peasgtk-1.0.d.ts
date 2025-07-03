@@ -1355,29 +1355,6 @@ export namespace PeasGtk {
     }
 
     namespace Configurable {
-        /**
-         * Interface for implementing Configurable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Creates the configure widget for the plugin.
-             *
-             * The returned widget should allow configuring all the relevant aspects of the
-             * plugin, and should allow instant-apply, as promoted by the Gnome Human
-             * Interface Guidelines.
-             *
-             * [class`PluginManager]` will embed the returned widget into a dialog box,
-             * but you shouldn't take this behaviour for granted as other implementations
-             * of a plugin manager UI might do otherwise.
-             *
-             * This method should always return a valid [class`Gtk`.Widget] instance, never %NULL.
-             */
-            vfunc_create_configure_widget(): Gtk.Widget;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1387,7 +1364,7 @@ export namespace PeasGtk {
         $gtype: GObject.GType<Configurable>;
         prototype: Configurable;
     }
-    interface Configurable extends GObject.Object, Configurable.Interface {
+    interface Configurable extends GObject.Object {
         // Methods
 
         /**
@@ -1405,6 +1382,23 @@ export namespace PeasGtk {
          * @returns A #GtkWidget used for configuration.
          */
         create_configure_widget(): Gtk.Widget;
+
+        // Virtual methods
+
+        /**
+         * Creates the configure widget for the plugin.
+         *
+         * The returned widget should allow configuring all the relevant aspects of the
+         * plugin, and should allow instant-apply, as promoted by the Gnome Human
+         * Interface Guidelines.
+         *
+         * [class`PluginManager]` will embed the returned widget into a dialog box,
+         * but you shouldn't take this behaviour for granted as other implementations
+         * of a plugin manager UI might do otherwise.
+         *
+         * This method should always return a valid [class`Gtk`.Widget] instance, never %NULL.
+         */
+        vfunc_create_configure_widget(): Gtk.Widget;
     }
 
     export const Configurable: ConfigurableNamespace & {

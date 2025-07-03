@@ -9555,17 +9555,6 @@ export namespace Eom {
     }
 
     namespace ApplicationActivatable {
-        /**
-         * Interface for implementing ApplicationActivatable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_activate(): void;
-            vfunc_deactivate(): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9577,7 +9566,7 @@ export namespace Eom {
         $gtype: GObject.GType<ApplicationActivatable>;
         prototype: ApplicationActivatable;
     }
-    interface ApplicationActivatable extends GObject.Object, ApplicationActivatable.Interface {
+    interface ApplicationActivatable extends GObject.Object {
         // Properties
 
         /**
@@ -9590,6 +9579,11 @@ export namespace Eom {
 
         activate(): void;
         deactivate(): void;
+
+        // Virtual methods
+
+        vfunc_activate(): void;
+        vfunc_deactivate(): void;
     }
 
     export const ApplicationActivatable: ApplicationActivatableNamespace & {
@@ -9597,17 +9591,6 @@ export namespace Eom {
     };
 
     namespace WindowActivatable {
-        /**
-         * Interface for implementing WindowActivatable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_activate(): void;
-            vfunc_deactivate(): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9619,7 +9602,7 @@ export namespace Eom {
         $gtype: GObject.GType<WindowActivatable>;
         prototype: WindowActivatable;
     }
-    interface WindowActivatable extends GObject.Object, WindowActivatable.Interface {
+    interface WindowActivatable extends GObject.Object {
         // Properties
 
         /**
@@ -9632,6 +9615,11 @@ export namespace Eom {
 
         activate(): void;
         deactivate(): void;
+
+        // Virtual methods
+
+        vfunc_activate(): void;
+        vfunc_deactivate(): void;
     }
 
     export const WindowActivatable: WindowActivatableNamespace & {

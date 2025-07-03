@@ -4616,22 +4616,6 @@ export namespace Clapper {
     type TimelineClass = typeof Timeline;
     type VideoStreamClass = typeof VideoStream;
     namespace Extractable {
-        /**
-         * Interface for implementing Extractable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Extract data and fill harvest.
-             * @param uri a #GUri
-             * @param harvest
-             * @param cancellable a #GCancellable object
-             */
-            vfunc_extract(uri: GLib.Uri, harvest: Harvest, cancellable?: Gio.Cancellable | null): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4641,7 +4625,17 @@ export namespace Clapper {
         $gtype: GObject.GType<Extractable>;
         prototype: Extractable;
     }
-    interface Extractable extends GObject.Object, Extractable.Interface {}
+    interface Extractable extends GObject.Object {
+        // Virtual methods
+
+        /**
+         * Extract data and fill harvest.
+         * @param uri a #GUri
+         * @param harvest
+         * @param cancellable a #GCancellable object
+         */
+        vfunc_extract(uri: GLib.Uri, harvest: Harvest, cancellable?: Gio.Cancellable | null): boolean;
+    }
 
     export const Extractable: ExtractableNamespace & {
         new (): Extractable; // This allows `obj instanceof Extractable`

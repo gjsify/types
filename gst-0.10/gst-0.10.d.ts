@@ -6838,17 +6838,6 @@ export namespace Gst {
 
     type XMLClass = typeof XML;
     namespace ChildProxy {
-        /**
-         * Interface for implementing ChildProxy.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_child_by_index(index: number): Object;
-            vfunc_get_children_count(): number;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -6858,12 +6847,17 @@ export namespace Gst {
         $gtype: GObject.GType<ChildProxy>;
         prototype: ChildProxy;
     }
-    interface ChildProxy extends Object, ChildProxy.Interface {
+    interface ChildProxy extends Object {
         // Methods
 
         get_child_by_name(name: string): Object;
         get_child_by_index(index: number): Object;
         get_children_count(): number;
+
+        // Virtual methods
+
+        vfunc_get_child_by_index(index: number): Object;
+        vfunc_get_children_count(): number;
     }
 
     export const ChildProxy: ChildProxyNamespace & {
@@ -6871,16 +6865,6 @@ export namespace Gst {
     };
 
     namespace ImplementsInterface {
-        /**
-         * Interface for implementing ImplementsInterface.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_supported(iface_type: GObject.GType): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Element.ConstructorProps {}
@@ -6890,7 +6874,11 @@ export namespace Gst {
         $gtype: GObject.GType<ImplementsInterface>;
         prototype: ImplementsInterface;
     }
-    interface ImplementsInterface extends Element, ImplementsInterface.Interface {}
+    interface ImplementsInterface extends Element {
+        // Virtual methods
+
+        vfunc_supported(iface_type: GObject.GType): boolean;
+    }
 
     export const ImplementsInterface: ImplementsInterfaceNamespace & {
         new (): ImplementsInterface; // This allows `obj instanceof ImplementsInterface`
@@ -6922,17 +6910,6 @@ export namespace Gst {
     };
 
     namespace URIHandler {
-        /**
-         * Interface for implementing URIHandler.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_uri(): string;
-            vfunc_set_uri(uri: string): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6942,7 +6919,7 @@ export namespace Gst {
         $gtype: GObject.GType<URIHandler>;
         prototype: URIHandler;
     }
-    interface URIHandler extends GObject.Object, URIHandler.Interface {
+    interface URIHandler extends GObject.Object {
         // Methods
 
         get_uri_type(): number;
@@ -6950,6 +6927,11 @@ export namespace Gst {
         get_uri(): string;
         set_uri(uri: string): boolean;
         new_uri(uri: string): void;
+
+        // Virtual methods
+
+        vfunc_get_uri(): string;
+        vfunc_set_uri(uri: string): boolean;
     }
 
     export const URIHandler: URIHandlerNamespace & {

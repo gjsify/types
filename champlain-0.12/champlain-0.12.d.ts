@@ -16133,24 +16133,6 @@ export namespace Champlain {
     }
 
     namespace Exportable {
-        /**
-         * Interface for implementing Exportable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Gets the surface
-             */
-            vfunc_get_surface(): cairo.Surface;
-            /**
-             * Set a #cairo_surface_t to be associated with this tile.
-             * @param surface the #cairo_surface_t
-             */
-            vfunc_set_surface(surface: cairo.Surface): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -16162,7 +16144,7 @@ export namespace Champlain {
         $gtype: GObject.GType<Exportable>;
         prototype: Exportable;
     }
-    interface Exportable extends GObject.Object, Exportable.Interface {
+    interface Exportable extends GObject.Object {
         // Properties
 
         /**
@@ -16183,6 +16165,18 @@ export namespace Champlain {
          * @param surface the #cairo_surface_t
          */
         set_surface(surface: cairo.Surface): void;
+
+        // Virtual methods
+
+        /**
+         * Gets the surface
+         */
+        vfunc_get_surface(): cairo.Surface;
+        /**
+         * Set a #cairo_surface_t to be associated with this tile.
+         * @param surface the #cairo_surface_t
+         */
+        vfunc_set_surface(surface: cairo.Surface): void;
     }
 
     export const Exportable: ExportableNamespace & {
@@ -16190,29 +16184,6 @@ export namespace Champlain {
     };
 
     namespace Location {
-        /**
-         * Interface for implementing Location.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Gets the latitude coordinate.
-             */
-            vfunc_get_latitude(): number;
-            /**
-             * Gets the longitude coordinate.
-             */
-            vfunc_get_longitude(): number;
-            /**
-             * Sets the coordinates of the location
-             * @param latitude the latitude
-             * @param longitude the longitude
-             */
-            vfunc_set_location(latitude: number, longitude: number): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -16225,7 +16196,7 @@ export namespace Champlain {
         $gtype: GObject.GType<Location>;
         prototype: Location;
     }
-    interface Location extends GObject.Object, Location.Interface {
+    interface Location extends GObject.Object {
         // Properties
 
         /**
@@ -16257,6 +16228,23 @@ export namespace Champlain {
          * @param longitude the longitude
          */
         set_location(latitude: number, longitude: number): void;
+
+        // Virtual methods
+
+        /**
+         * Gets the latitude coordinate.
+         */
+        vfunc_get_latitude(): number;
+        /**
+         * Gets the longitude coordinate.
+         */
+        vfunc_get_longitude(): number;
+        /**
+         * Sets the coordinates of the location
+         * @param latitude the latitude
+         * @param longitude the longitude
+         */
+        vfunc_set_location(latitude: number, longitude: number): void;
     }
 
     export const Location: LocationNamespace & {

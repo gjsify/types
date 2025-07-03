@@ -2948,32 +2948,6 @@ export namespace Msg {
     }
 
     namespace Authorizer {
-        /**
-         * Interface for implementing Authorizer.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Adds the necessary authorization to `message`. The type of `message`
-             * can be DELETE, GET and POST.
-             *
-             * This method modifies `message` in place and is thread safe.
-             * @param message A #SoupMessage.
-             */
-            vfunc_process_request(message: Soup.Message): void;
-            /**
-             * Synchronously forces `iface` to refresh any authorization tokens
-             * held by it. See msg_authorizer_refresh_authorization_async() for the
-             * asynchronous version of this call.
-             *
-             * This method is thread safe.
-             * @param cancellable An optional #GCancellable object, or   %NULL.
-             */
-            vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2983,7 +2957,7 @@ export namespace Msg {
         $gtype: GObject.GType<Authorizer>;
         prototype: Authorizer;
     }
-    interface Authorizer extends GObject.Object, Authorizer.Interface {
+    interface Authorizer extends GObject.Object {
         // Methods
 
         /**
@@ -3004,6 +2978,26 @@ export namespace Msg {
          * @returns %TRUE if the authorizer now has a valid token.
          */
         refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
+
+        // Virtual methods
+
+        /**
+         * Adds the necessary authorization to `message`. The type of `message`
+         * can be DELETE, GET and POST.
+         *
+         * This method modifies `message` in place and is thread safe.
+         * @param message A #SoupMessage.
+         */
+        vfunc_process_request(message: Soup.Message): void;
+        /**
+         * Synchronously forces `iface` to refresh any authorization tokens
+         * held by it. See msg_authorizer_refresh_authorization_async() for the
+         * asynchronous version of this call.
+         *
+         * This method is thread safe.
+         * @param cancellable An optional #GCancellable object, or   %NULL.
+         */
+        vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
     }
 
     export const Authorizer: AuthorizerNamespace & {

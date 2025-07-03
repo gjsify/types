@@ -13611,39 +13611,6 @@ export namespace Gtd {
     type WindowClass = typeof Window;
     type WorkspaceInterface = typeof Workspace;
     namespace Activatable {
-        /**
-         * Interface for implementing Activatable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Activates the extension. This is the starting point where
-             * the implementation does everything it needs to do. Avoid
-             * doing it earlier than this call.
-             *
-             * This function is called after the extension is loaded and
-             * the signals are connected. If you want to do anything before
-             * that, the _init function should be used instead.
-             */
-            vfunc_activate(): void;
-            /**
-             * Deactivates the extension. Here, the extension should remove
-             * all providers and panels it set.
-             *
-             * This function is called before the extension is removed. At
-             * this point, the plugin manager already removed all providers
-             * and widgets this extension exported. If you want to do anything
-             * after the extension is removed, use GObject::finalize instead.
-             */
-            vfunc_deactivate(): void;
-            /**
-             * Retrieve the preferences panel of `activatable` if any.
-             */
-            vfunc_get_preferences_panel(): Gtk.Widget | null;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13656,7 +13623,7 @@ export namespace Gtd {
         $gtype: GObject.GType<Activatable>;
         prototype: Activatable;
     }
-    interface Activatable extends GObject.Object, Activatable.Interface {
+    interface Activatable extends GObject.Object {
         // Properties
 
         get preferences_panel(): Gtk.Widget;
@@ -13689,6 +13656,33 @@ export namespace Gtd {
          * @returns a #GtkWidget, or %NULL
          */
         get_preferences_panel(): Gtk.Widget | null;
+
+        // Virtual methods
+
+        /**
+         * Activates the extension. This is the starting point where
+         * the implementation does everything it needs to do. Avoid
+         * doing it earlier than this call.
+         *
+         * This function is called after the extension is loaded and
+         * the signals are connected. If you want to do anything before
+         * that, the _init function should be used instead.
+         */
+        vfunc_activate(): void;
+        /**
+         * Deactivates the extension. Here, the extension should remove
+         * all providers and panels it set.
+         *
+         * This function is called before the extension is removed. At
+         * this point, the plugin manager already removed all providers
+         * and widgets this extension exported. If you want to do anything
+         * after the extension is removed, use GObject::finalize instead.
+         */
+        vfunc_deactivate(): void;
+        /**
+         * Retrieve the preferences panel of `activatable` if any.
+         */
+        vfunc_get_preferences_panel(): Gtk.Widget | null;
     }
 
     export const Activatable: ActivatableNamespace & {
@@ -13696,28 +13690,6 @@ export namespace Gtd {
     };
 
     namespace OmniAreaAddin {
-        /**
-         * Interface for implementing OmniAreaAddin.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Requests that the #GtdOmniAreaAddin initialize, possibly modifying
-             * `omni_bar` as necessary.
-             * @param omni_area
-             */
-            vfunc_load(omni_area: OmniArea): void;
-            /**
-             * Requests that the #GtdOmniAreaAddin shutdown, possibly modifying
-             * `omni_bar` as necessary to return it to the original state before
-             * the addin was loaded.
-             * @param omni_area
-             */
-            vfunc_unload(omni_area: OmniArea): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -13727,7 +13699,7 @@ export namespace Gtd {
         $gtype: GObject.GType<OmniAreaAddin>;
         prototype: OmniAreaAddin;
     }
-    interface OmniAreaAddin extends GObject.Object, OmniAreaAddin.Interface {
+    interface OmniAreaAddin extends GObject.Object {
         // Methods
 
         /**
@@ -13743,6 +13715,22 @@ export namespace Gtd {
          * @param omni_bar an #GtdOmniArea
          */
         unload(omni_bar: OmniArea): void;
+
+        // Virtual methods
+
+        /**
+         * Requests that the #GtdOmniAreaAddin initialize, possibly modifying
+         * `omni_bar` as necessary.
+         * @param omni_area
+         */
+        vfunc_load(omni_area: OmniArea): void;
+        /**
+         * Requests that the #GtdOmniAreaAddin shutdown, possibly modifying
+         * `omni_bar` as necessary to return it to the original state before
+         * the addin was loaded.
+         * @param omni_area
+         */
+        vfunc_unload(omni_area: OmniArea): void;
     }
 
     export const OmniAreaAddin: OmniAreaAddinNamespace & {
@@ -13750,63 +13738,6 @@ export namespace Gtd {
     };
 
     namespace Panel {
-        /**
-         * Interface for implementing Panel.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Activates the panel with `parameters`. The passed parameters
-             * are in free form, to allow panels have any input they want.
-             *
-             * This is an optional vfunc.
-             * @param parameters parameters of the panel
-             */
-            vfunc_activate(parameters?: GLib.Variant | null): void;
-            /**
-             * Retrieves the list of widgets to be placed at headerbar. The
-             * position of the widget is determined by the #GtkWidget::halign
-             * property.
-             *
-             * Widgets with `GTK_ALIGN_START` halign will be packed into the
-             * start of the headerbar, and `GTK_ALIGN_END` at the end. Other
-             * values are silently ignored.
-             */
-            vfunc_get_header_widgets(): Gtk.Widget[];
-            /**
-             * Retrieves the icon of `self`.
-             */
-            vfunc_get_icon(): Gio.Icon | null;
-            /**
-             * Retrieves the gear menu of `panel`.
-             */
-            vfunc_get_menu(): Gio.Menu;
-            /**
-             * Retrieves the name of `panel`
-             */
-            vfunc_get_panel_name(): string;
-            /**
-             * Retrieves the title of `panel`
-             */
-            vfunc_get_panel_title(): string;
-            /**
-             * Retrieves the popover of `self`. It is used as the
-             * window menu when available.
-             */
-            vfunc_get_popover(): Gtk.Popover | null;
-            /**
-             * Retrieves the priority of `self`. This value is used to
-             * determine the position of the panel in the sidebar.
-             */
-            vfunc_get_priority(): number;
-            /**
-             * Retrieves the subtitle of `panel`
-             */
-            vfunc_get_subtitle(): string;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {
@@ -13823,7 +13754,7 @@ export namespace Gtd {
         $gtype: GObject.GType<Panel>;
         prototype: Panel;
     }
-    interface Panel extends Gtk.Widget, Panel.Interface {
+    interface Panel extends Gtk.Widget {
         // Properties
 
         get icon(): Gio.Icon;
@@ -13893,6 +13824,57 @@ export namespace Gtd {
          * @returns the subtitle of @panel
          */
         get_subtitle(): string;
+
+        // Virtual methods
+
+        /**
+         * Activates the panel with `parameters`. The passed parameters
+         * are in free form, to allow panels have any input they want.
+         *
+         * This is an optional vfunc.
+         * @param parameters parameters of the panel
+         */
+        vfunc_activate(parameters?: GLib.Variant | null): void;
+        /**
+         * Retrieves the list of widgets to be placed at headerbar. The
+         * position of the widget is determined by the #GtkWidget::halign
+         * property.
+         *
+         * Widgets with `GTK_ALIGN_START` halign will be packed into the
+         * start of the headerbar, and `GTK_ALIGN_END` at the end. Other
+         * values are silently ignored.
+         */
+        vfunc_get_header_widgets(): Gtk.Widget[];
+        /**
+         * Retrieves the icon of `self`.
+         */
+        vfunc_get_icon(): Gio.Icon | null;
+        /**
+         * Retrieves the gear menu of `panel`.
+         */
+        vfunc_get_menu(): Gio.Menu;
+        /**
+         * Retrieves the name of `panel`
+         */
+        vfunc_get_panel_name(): string;
+        /**
+         * Retrieves the title of `panel`
+         */
+        vfunc_get_panel_title(): string;
+        /**
+         * Retrieves the popover of `self`. It is used as the
+         * window menu when available.
+         */
+        vfunc_get_popover(): Gtk.Popover | null;
+        /**
+         * Retrieves the priority of `self`. This value is used to
+         * determine the position of the panel in the sidebar.
+         */
+        vfunc_get_priority(): number;
+        /**
+         * Retrieves the subtitle of `panel`
+         */
+        vfunc_get_subtitle(): string;
     }
 
     export const Panel: PanelNamespace & {
@@ -13900,159 +13882,6 @@ export namespace Gtd {
     };
 
     namespace Provider {
-        /**
-         * Interface for implementing Provider.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Creates the given task in `provider`.
-             * @param list
-             * @param title
-             * @param due_date a #GDateTime
-             * @param cancellable a #GCancellable
-             * @param callback a callback
-             */
-            vfunc_create_task(
-                list: TaskList,
-                title: string,
-                due_date?: GLib.DateTime | null,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes creating the task.
-             * @param result a #GAsyncResult
-             */
-            vfunc_create_task_finish(result: Gio.AsyncResult): Task | null;
-            /**
-             * Creates the given list in `provider`.
-             * @param name the name of the new task list
-             * @param cancellable a #GCancellable
-             * @param callback a callback
-             */
-            vfunc_create_task_list(
-                name?: string | null,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes updating the task list. The provider will emit the
-             * GtdProvider:list-updated signal after updating the task list.
-             * @param result a #GAsyncResult
-             */
-            vfunc_create_task_list_finish(result: Gio.AsyncResult): boolean;
-            /**
-             * Retrieves the description of `provider`.
-             */
-            vfunc_get_description(): string;
-            /**
-             * Retrieves whether `provider` is enabled or not. A disabled
-             * provider cannot be selected to be default nor be selected
-             * to add tasks to it.
-             */
-            vfunc_get_enabled(): boolean;
-            /**
-             * The icon of `provider`.
-             */
-            vfunc_get_icon(): Gio.Icon;
-            /**
-             * Retrieves the identifier of `provider`.
-             */
-            vfunc_get_id(): string;
-            /**
-             * Retrieves the inbox of `provider`.
-             */
-            vfunc_get_inbox(): TaskList | null;
-            /**
-             * Retrieves the user-visible name of `provider`.
-             */
-            vfunc_get_name(): string;
-            /**
-             * Retrieves the type of the `provider`. This should return the
-             * same value, regardless of the account name.
-             *
-             * For example: "todoist", "todo-txt" or "google"
-             */
-            vfunc_get_provider_type(): string;
-            /**
-             * Retrieves the tasklists that this provider contains.
-             */
-            vfunc_get_task_lists(): TaskList[];
-            /**
-             * Asks the provider to refresh. Online providers may want to
-             * synchronize tasks and tasklists, credentials, etc, when this
-             * is called.
-             *
-             * This is an optional feature. Providers that do not implement
-             * the "refresh" vfunc will be ignored.
-             */
-            vfunc_refresh(): void;
-            /**
-             * Removes the given task from `provider`.
-             * @param task a #GtdTask
-             * @param cancellable a #GCancellable
-             * @param callback a callback
-             */
-            vfunc_remove_task(
-                task: Task,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes removing the task.
-             * @param result a #GAsyncResult
-             */
-            vfunc_remove_task_finish(result: Gio.AsyncResult): boolean;
-            /**
-             * Removes the given list from `provider`.
-             * @param list a #GtdTaskList
-             * @param cancellable a #GCancellable
-             * @param callback a callback
-             */
-            vfunc_remove_task_list(
-                list: TaskList,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes removing the task list. The provider will emit the
-             * GtdProvider:list-removed signal after removing the task list.
-             * @param result a #GAsyncResult
-             */
-            vfunc_remove_task_list_finish(result: Gio.AsyncResult): boolean;
-            /**
-             * Updates the given task in `provider`.
-             * @param task a #GtdTask
-             * @param cancellable a #GCancellable
-             * @param callback a callback
-             */
-            vfunc_update_task(
-                task: Task,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes updating the task list.
-             * @param result a #GAsyncResult
-             */
-            vfunc_update_task_finish(result: Gio.AsyncResult): boolean;
-            /**
-             * Updates the given list in `provider`.
-             * @param list a #GtdTaskList
-             * @param cancellable a #GCancellable
-             * @param callback a callback
-             */
-            vfunc_update_task_list(
-                list: TaskList,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            vfunc_update_task_list_finish(result: Gio.AsyncResult): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -14070,7 +13899,7 @@ export namespace Gtd {
         $gtype: GObject.GType<Provider>;
         prototype: Provider;
     }
-    interface Provider extends Object, Provider.Interface {
+    interface Provider extends Object {
         // Properties
 
         get description(): string;
@@ -14360,6 +14189,153 @@ export namespace Gtd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         update_task_list_finish(result: Gio.AsyncResult): boolean;
+
+        // Virtual methods
+
+        /**
+         * Creates the given task in `provider`.
+         * @param list
+         * @param title
+         * @param due_date a #GDateTime
+         * @param cancellable a #GCancellable
+         * @param callback a callback
+         */
+        vfunc_create_task(
+            list: TaskList,
+            title: string,
+            due_date?: GLib.DateTime | null,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes creating the task.
+         * @param result a #GAsyncResult
+         */
+        vfunc_create_task_finish(result: Gio.AsyncResult): Task | null;
+        /**
+         * Creates the given list in `provider`.
+         * @param name the name of the new task list
+         * @param cancellable a #GCancellable
+         * @param callback a callback
+         */
+        vfunc_create_task_list(
+            name?: string | null,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes updating the task list. The provider will emit the
+         * GtdProvider:list-updated signal after updating the task list.
+         * @param result a #GAsyncResult
+         */
+        vfunc_create_task_list_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * Retrieves the description of `provider`.
+         */
+        vfunc_get_description(): string;
+        /**
+         * Retrieves whether `provider` is enabled or not. A disabled
+         * provider cannot be selected to be default nor be selected
+         * to add tasks to it.
+         */
+        vfunc_get_enabled(): boolean;
+        /**
+         * The icon of `provider`.
+         */
+        vfunc_get_icon(): Gio.Icon;
+        /**
+         * Retrieves the identifier of `provider`.
+         */
+        vfunc_get_id(): string;
+        /**
+         * Retrieves the inbox of `provider`.
+         */
+        vfunc_get_inbox(): TaskList | null;
+        /**
+         * Retrieves the user-visible name of `provider`.
+         */
+        vfunc_get_name(): string;
+        /**
+         * Retrieves the type of the `provider`. This should return the
+         * same value, regardless of the account name.
+         *
+         * For example: "todoist", "todo-txt" or "google"
+         */
+        vfunc_get_provider_type(): string;
+        /**
+         * Retrieves the tasklists that this provider contains.
+         */
+        vfunc_get_task_lists(): TaskList[];
+        /**
+         * Asks the provider to refresh. Online providers may want to
+         * synchronize tasks and tasklists, credentials, etc, when this
+         * is called.
+         *
+         * This is an optional feature. Providers that do not implement
+         * the "refresh" vfunc will be ignored.
+         */
+        vfunc_refresh(): void;
+        /**
+         * Removes the given task from `provider`.
+         * @param task a #GtdTask
+         * @param cancellable a #GCancellable
+         * @param callback a callback
+         */
+        vfunc_remove_task(
+            task: Task,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes removing the task.
+         * @param result a #GAsyncResult
+         */
+        vfunc_remove_task_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * Removes the given list from `provider`.
+         * @param list a #GtdTaskList
+         * @param cancellable a #GCancellable
+         * @param callback a callback
+         */
+        vfunc_remove_task_list(
+            list: TaskList,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes removing the task list. The provider will emit the
+         * GtdProvider:list-removed signal after removing the task list.
+         * @param result a #GAsyncResult
+         */
+        vfunc_remove_task_list_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * Updates the given task in `provider`.
+         * @param task a #GtdTask
+         * @param cancellable a #GCancellable
+         * @param callback a callback
+         */
+        vfunc_update_task(
+            task: Task,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes updating the task list.
+         * @param result a #GAsyncResult
+         */
+        vfunc_update_task_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * Updates the given list in `provider`.
+         * @param list a #GtdTaskList
+         * @param cancellable a #GCancellable
+         * @param callback a callback
+         */
+        vfunc_update_task_list(
+            list: TaskList,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        vfunc_update_task_list_finish(result: Gio.AsyncResult): boolean;
     }
 
     export const Provider: ProviderNamespace & {
@@ -14367,41 +14343,6 @@ export namespace Gtd {
     };
 
     namespace Workspace {
-        /**
-         * Interface for implementing Workspace.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Activates `self`. This happens when the workspace
-             * becomes the active workspace in the main window.
-             * @param parameters workspace-specific parameters
-             */
-            vfunc_activate(parameters?: GLib.Variant | null): void;
-            /**
-             * Deactivates `self`. This happens when the workspace
-             * is switched away in the main window.
-             */
-            vfunc_deactivate(): void;
-            /**
-             * Retrieves the id of `self`. It is mandatory to implement
-             * this.
-             */
-            vfunc_get_id(): string;
-            /**
-             * Retrieves the icon of `self`. It is mandatory to implement
-             * this.
-             */
-            vfunc_get_priority(): number;
-            /**
-             * Retrieves the title of `self`. It is mandatory to implement
-             * this.
-             */
-            vfunc_get_title(): string;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {
@@ -14414,7 +14355,7 @@ export namespace Gtd {
         $gtype: GObject.GType<Workspace>;
         prototype: Workspace;
     }
-    interface Workspace extends Gtk.Widget, Workspace.Interface {
+    interface Workspace extends Gtk.Widget {
         // Properties
 
         get icon(): Gio.Icon;
@@ -14453,6 +14394,35 @@ export namespace Gtd {
          * @returns the title of @self
          */
         get_title(): string;
+
+        // Virtual methods
+
+        /**
+         * Activates `self`. This happens when the workspace
+         * becomes the active workspace in the main window.
+         * @param parameters workspace-specific parameters
+         */
+        vfunc_activate(parameters?: GLib.Variant | null): void;
+        /**
+         * Deactivates `self`. This happens when the workspace
+         * is switched away in the main window.
+         */
+        vfunc_deactivate(): void;
+        /**
+         * Retrieves the id of `self`. It is mandatory to implement
+         * this.
+         */
+        vfunc_get_id(): string;
+        /**
+         * Retrieves the icon of `self`. It is mandatory to implement
+         * this.
+         */
+        vfunc_get_priority(): number;
+        /**
+         * Retrieves the title of `self`. It is mandatory to implement
+         * this.
+         */
+        vfunc_get_title(): string;
     }
 
     export const Workspace: WorkspaceNamespace & {

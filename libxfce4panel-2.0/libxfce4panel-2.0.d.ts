@@ -6644,32 +6644,6 @@ export namespace Libxfce4panel {
 
     type PanelPluginProviderInterface = typeof PanelPluginProvider;
     namespace PanelPluginProvider {
-        /**
-         * Interface for implementing PanelPluginProvider.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_ask_remove(): void;
-            vfunc_get_name(): string;
-            vfunc_get_show_about(): boolean;
-            vfunc_get_show_configure(): boolean;
-            vfunc_get_unique_id(): number;
-            vfunc_remote_event(name: string, value: GObject.Value | any, handle: number): boolean;
-            vfunc_removed(): void;
-            vfunc_save(): void;
-            vfunc_set_dark_mode(dark_mode: boolean): void;
-            vfunc_set_icon_size(icon_size: number): void;
-            vfunc_set_locked(locked: boolean): void;
-            vfunc_set_mode(mode: PanelPluginMode): void;
-            vfunc_set_nrows(rows: number): void;
-            vfunc_set_screen_position(screen_position: ScreenPosition): void;
-            vfunc_set_size(size: number): void;
-            vfunc_show_about(): void;
-            vfunc_show_configure(): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6679,7 +6653,7 @@ export namespace Libxfce4panel {
         $gtype: GObject.GType<PanelPluginProvider>;
         prototype: PanelPluginProvider;
     }
-    interface PanelPluginProvider extends GObject.Object, PanelPluginProvider.Interface {
+    interface PanelPluginProvider extends GObject.Object {
         // Methods
 
         ask_remove(): void;
@@ -6700,6 +6674,26 @@ export namespace Libxfce4panel {
         set_size(size: number): void;
         show_about(): void;
         show_configure(): void;
+
+        // Virtual methods
+
+        vfunc_ask_remove(): void;
+        vfunc_get_name(): string;
+        vfunc_get_show_about(): boolean;
+        vfunc_get_show_configure(): boolean;
+        vfunc_get_unique_id(): number;
+        vfunc_remote_event(name: string, value: GObject.Value | any, handle: number): boolean;
+        vfunc_removed(): void;
+        vfunc_save(): void;
+        vfunc_set_dark_mode(dark_mode: boolean): void;
+        vfunc_set_icon_size(icon_size: number): void;
+        vfunc_set_locked(locked: boolean): void;
+        vfunc_set_mode(mode: PanelPluginMode): void;
+        vfunc_set_nrows(rows: number): void;
+        vfunc_set_screen_position(screen_position: ScreenPosition): void;
+        vfunc_set_size(size: number): void;
+        vfunc_show_about(): void;
+        vfunc_show_configure(): void;
     }
 
     export const PanelPluginProvider: PanelPluginProviderNamespace & {

@@ -17567,22 +17567,6 @@ export namespace GcrUi {
     type ViewerIface = typeof Viewer;
     type ViewerWidgetClass = typeof ViewerWidget;
     namespace Renderer {
-        /**
-         * Interface for implementing Renderer.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_data_changed(): void;
-            vfunc_populate_popup(viewer: Viewer, menu: Gtk.Menu): void;
-            /**
-             * Render the contents of the renderer to the given viewer.
-             * @param viewer The viewer to render to.
-             */
-            vfunc_render_view(viewer: Viewer): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -17615,7 +17599,7 @@ export namespace GcrUi {
          */
         register_well_known(): void;
     }
-    interface Renderer extends GObject.Object, Renderer.Interface {
+    interface Renderer extends GObject.Object {
         // Properties
 
         /**
@@ -17658,6 +17642,16 @@ export namespace GcrUi {
          * @param attrs attributes to set
          */
         set_attributes(attrs?: Gck.Attributes | null): void;
+
+        // Virtual methods
+
+        vfunc_data_changed(): void;
+        vfunc_populate_popup(viewer: Viewer, menu: Gtk.Menu): void;
+        /**
+         * Render the contents of the renderer to the given viewer.
+         * @param viewer The viewer to render to.
+         */
+        vfunc_render_view(viewer: Viewer): void;
     }
 
     export const Renderer: RendererNamespace & {
@@ -17665,41 +17659,6 @@ export namespace GcrUi {
     };
 
     namespace Viewer {
-        /**
-         * Interface for implementing Viewer.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Add a renderer to this viewer.
-             * @param renderer The renderer to add
-             */
-            vfunc_add_renderer(renderer: Renderer): void;
-            /**
-             * Get the number of renderers present in the viewer.
-             */
-            vfunc_count_renderers(): number;
-            /**
-             * Get a pointer to the renderer at the given index. It is an error to request
-             * an index that is out of bounds.
-             * @param index_ The index of the renderer to get
-             */
-            vfunc_get_renderer(index_: number): Renderer;
-            /**
-             * Insert a renderer at a specific point in the viewer
-             * @param renderer the renderer to insert
-             * @param before the renderer to insert before
-             */
-            vfunc_insert_renderer(renderer: Renderer, before?: Renderer | null): void;
-            /**
-             * Remove a renderer from this viewer.
-             * @param renderer The renderer to remove
-             */
-            vfunc_remove_renderer(renderer: Renderer): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {}
@@ -17720,7 +17679,7 @@ export namespace GcrUi {
          */
         new_scrolled(): Viewer;
     }
-    interface Viewer extends Gtk.Widget, Viewer.Interface {
+    interface Viewer extends Gtk.Widget {
         // Methods
 
         /**
@@ -17751,6 +17710,35 @@ export namespace GcrUi {
          * @param renderer The renderer to remove
          */
         remove_renderer(renderer: Renderer): void;
+
+        // Virtual methods
+
+        /**
+         * Add a renderer to this viewer.
+         * @param renderer The renderer to add
+         */
+        vfunc_add_renderer(renderer: Renderer): void;
+        /**
+         * Get the number of renderers present in the viewer.
+         */
+        vfunc_count_renderers(): number;
+        /**
+         * Get a pointer to the renderer at the given index. It is an error to request
+         * an index that is out of bounds.
+         * @param index_ The index of the renderer to get
+         */
+        vfunc_get_renderer(index_: number): Renderer;
+        /**
+         * Insert a renderer at a specific point in the viewer
+         * @param renderer the renderer to insert
+         * @param before the renderer to insert before
+         */
+        vfunc_insert_renderer(renderer: Renderer, before?: Renderer | null): void;
+        /**
+         * Remove a renderer from this viewer.
+         * @param renderer The renderer to remove
+         */
+        vfunc_remove_renderer(renderer: Renderer): void;
     }
 
     export const Viewer: ViewerNamespace & {

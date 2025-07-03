@@ -6447,18 +6447,6 @@ export namespace Geoclue {
     }
 
     namespace Client {
-        /**
-         * Interface for implementing Client.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_handle_start(invocation: Gio.DBusMethodInvocation): boolean;
-            vfunc_handle_stop(invocation: Gio.DBusMethodInvocation): boolean;
-            vfunc_location_updated(arg_old: string, arg_new: string): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6491,7 +6479,7 @@ export namespace Geoclue {
          */
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
-    interface Client extends GObject.Object, Client.Interface {
+    interface Client extends GObject.Object {
         // Properties
 
         /**
@@ -6679,6 +6667,12 @@ export namespace Geoclue {
          * @param arg_new Argument to pass with the signal.
          */
         emit_location_updated(arg_old: string, arg_new: string): void;
+
+        // Virtual methods
+
+        vfunc_handle_start(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_stop(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_location_updated(arg_old: string, arg_new: string): void;
     }
 
     export const Client: ClientNamespace & {
@@ -6782,19 +6776,6 @@ export namespace Geoclue {
     };
 
     namespace Manager {
-        /**
-         * Interface for implementing Manager.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_handle_add_agent(invocation: Gio.DBusMethodInvocation, arg_id: string): boolean;
-            vfunc_handle_create_client(invocation: Gio.DBusMethodInvocation): boolean;
-            vfunc_handle_delete_client(invocation: Gio.DBusMethodInvocation, arg_client: string): boolean;
-            vfunc_handle_get_client(invocation: Gio.DBusMethodInvocation): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6821,7 +6802,7 @@ export namespace Geoclue {
          */
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
-    interface Manager extends GObject.Object, Manager.Interface {
+    interface Manager extends GObject.Object {
         // Properties
 
         /**
@@ -7087,6 +7068,13 @@ export namespace Geoclue {
          * @param client Parameter to return.
          */
         complete_get_client(invocation: Gio.DBusMethodInvocation, client: string): void;
+
+        // Virtual methods
+
+        vfunc_handle_add_agent(invocation: Gio.DBusMethodInvocation, arg_id: string): boolean;
+        vfunc_handle_create_client(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_delete_client(invocation: Gio.DBusMethodInvocation, arg_client: string): boolean;
+        vfunc_handle_get_client(invocation: Gio.DBusMethodInvocation): boolean;
     }
 
     export const Manager: ManagerNamespace & {

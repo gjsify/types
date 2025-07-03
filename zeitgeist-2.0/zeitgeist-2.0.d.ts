@@ -2455,43 +2455,6 @@ export namespace Zeitgeist {
     }
 
     namespace RemoteRegistry {
-        /**
-         * Interface for implementing RemoteRegistry.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_data_sources(
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            vfunc_get_data_sources_finish(_res_: Gio.AsyncResult): GLib.Variant;
-            vfunc_register_data_source(
-                unique_id: string,
-                name: string,
-                description: string,
-                event_templates: GLib.Variant,
-                cancellable?: Gio.Cancellable | null,
-                sender?: never | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            vfunc_register_data_source_finish(_res_: Gio.AsyncResult): boolean;
-            vfunc_set_data_source_enabled(
-                unique_id: string,
-                enabled: boolean,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            vfunc_set_data_source_enabled_finish(_res_: Gio.AsyncResult): void;
-            vfunc_get_data_source_from_id(
-                unique_id: string,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            vfunc_get_data_source_from_id_finish(_res_: Gio.AsyncResult): GLib.Variant;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2501,7 +2464,7 @@ export namespace Zeitgeist {
         $gtype: GObject.GType<RemoteRegistry>;
         prototype: RemoteRegistry;
     }
-    interface RemoteRegistry extends GObject.Object, RemoteRegistry.Interface {
+    interface RemoteRegistry extends GObject.Object {
         // Methods
 
         get_data_sources(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
@@ -2571,6 +2534,37 @@ export namespace Zeitgeist {
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
         get_data_source_from_id_finish(_res_: Gio.AsyncResult): GLib.Variant;
+
+        // Virtual methods
+
+        vfunc_get_data_sources(
+            cancellable?: Gio.Cancellable | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        vfunc_get_data_sources_finish(_res_: Gio.AsyncResult): GLib.Variant;
+        vfunc_register_data_source(
+            unique_id: string,
+            name: string,
+            description: string,
+            event_templates: GLib.Variant,
+            cancellable?: Gio.Cancellable | null,
+            sender?: never | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        vfunc_register_data_source_finish(_res_: Gio.AsyncResult): boolean;
+        vfunc_set_data_source_enabled(
+            unique_id: string,
+            enabled: boolean,
+            cancellable?: Gio.Cancellable | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        vfunc_set_data_source_enabled_finish(_res_: Gio.AsyncResult): void;
+        vfunc_get_data_source_from_id(
+            unique_id: string,
+            cancellable?: Gio.Cancellable | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        vfunc_get_data_source_from_id_finish(_res_: Gio.AsyncResult): GLib.Variant;
     }
 
     export const RemoteRegistry: RemoteRegistryNamespace & {
@@ -2578,89 +2572,6 @@ export namespace Zeitgeist {
     };
 
     namespace RemoteLog {
-        /**
-         * Interface for implementing RemoteLog.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_delete_events(
-                event_ids: number[],
-                cancellable?: Gio.Cancellable | null,
-                sender?: never | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            vfunc_delete_events_finish(_res_: Gio.AsyncResult): GLib.Variant;
-            vfunc_find_event_ids(
-                time_range: GLib.Variant,
-                event_templates: GLib.Variant,
-                storage_state: number,
-                num_events: number,
-                result_type: number,
-                cancellable?: Gio.Cancellable | null,
-                sender?: never | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            vfunc_find_event_ids_finish(_res_: Gio.AsyncResult): number[];
-            vfunc_find_events(
-                time_range: GLib.Variant,
-                event_templates: GLib.Variant,
-                storage_state: number,
-                num_events: number,
-                result_type: number,
-                cancellable?: Gio.Cancellable | null,
-                sender?: never | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            vfunc_find_events_finish(_res_: Gio.AsyncResult): GLib.Variant;
-            vfunc_find_related_uris(
-                time_range: GLib.Variant,
-                event_templates: GLib.Variant,
-                result_event_templates: GLib.Variant,
-                storage_state: number,
-                num_events: number,
-                result_type: number,
-                cancellable?: Gio.Cancellable | null,
-                sender?: never | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            vfunc_find_related_uris_finish(_res_: Gio.AsyncResult): string[];
-            vfunc_get_events(
-                event_ids: number[],
-                cancellable?: Gio.Cancellable | null,
-                sender?: never | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            vfunc_get_events_finish(_res_: Gio.AsyncResult): GLib.Variant;
-            vfunc_insert_events(
-                events: GLib.Variant,
-                cancellable?: Gio.Cancellable | null,
-                sender?: never | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            vfunc_insert_events_finish(_res_: Gio.AsyncResult): number[];
-            vfunc_install_monitor(
-                monitor_path: never,
-                time_range: GLib.Variant,
-                event_templates: GLib.Variant,
-                owner?: never | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            vfunc_install_monitor_finish(_res_: Gio.AsyncResult): void;
-            vfunc_remove_monitor(
-                monitor_path: never,
-                owner?: never | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            vfunc_remove_monitor_finish(_res_: Gio.AsyncResult): void;
-            vfunc_quit(cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
-            vfunc_quit_finish(_res_: Gio.AsyncResult): void;
-            vfunc_get_extensions(): string[];
-            vfunc_get_version(): VersionStruct;
-            vfunc_get_datapath(): string;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2670,7 +2581,7 @@ export namespace Zeitgeist {
         $gtype: GObject.GType<RemoteLog>;
         prototype: RemoteLog;
     }
-    interface RemoteLog extends GObject.Object, RemoteLog.Interface {
+    interface RemoteLog extends GObject.Object {
         // Methods
 
         delete_events(
@@ -2859,6 +2770,83 @@ export namespace Zeitgeist {
         get_extensions(): string[];
         get_version(): VersionStruct;
         get_datapath(): string;
+
+        // Virtual methods
+
+        vfunc_delete_events(
+            event_ids: number[],
+            cancellable?: Gio.Cancellable | null,
+            sender?: never | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        vfunc_delete_events_finish(_res_: Gio.AsyncResult): GLib.Variant;
+        vfunc_find_event_ids(
+            time_range: GLib.Variant,
+            event_templates: GLib.Variant,
+            storage_state: number,
+            num_events: number,
+            result_type: number,
+            cancellable?: Gio.Cancellable | null,
+            sender?: never | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        vfunc_find_event_ids_finish(_res_: Gio.AsyncResult): number[];
+        vfunc_find_events(
+            time_range: GLib.Variant,
+            event_templates: GLib.Variant,
+            storage_state: number,
+            num_events: number,
+            result_type: number,
+            cancellable?: Gio.Cancellable | null,
+            sender?: never | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        vfunc_find_events_finish(_res_: Gio.AsyncResult): GLib.Variant;
+        vfunc_find_related_uris(
+            time_range: GLib.Variant,
+            event_templates: GLib.Variant,
+            result_event_templates: GLib.Variant,
+            storage_state: number,
+            num_events: number,
+            result_type: number,
+            cancellable?: Gio.Cancellable | null,
+            sender?: never | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        vfunc_find_related_uris_finish(_res_: Gio.AsyncResult): string[];
+        vfunc_get_events(
+            event_ids: number[],
+            cancellable?: Gio.Cancellable | null,
+            sender?: never | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        vfunc_get_events_finish(_res_: Gio.AsyncResult): GLib.Variant;
+        vfunc_insert_events(
+            events: GLib.Variant,
+            cancellable?: Gio.Cancellable | null,
+            sender?: never | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        vfunc_insert_events_finish(_res_: Gio.AsyncResult): number[];
+        vfunc_install_monitor(
+            monitor_path: never,
+            time_range: GLib.Variant,
+            event_templates: GLib.Variant,
+            owner?: never | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        vfunc_install_monitor_finish(_res_: Gio.AsyncResult): void;
+        vfunc_remove_monitor(
+            monitor_path: never,
+            owner?: never | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        vfunc_remove_monitor_finish(_res_: Gio.AsyncResult): void;
+        vfunc_quit(cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_quit_finish(_res_: Gio.AsyncResult): void;
+        vfunc_get_extensions(): string[];
+        vfunc_get_version(): VersionStruct;
+        vfunc_get_datapath(): string;
     }
 
     export const RemoteLog: RemoteLogNamespace & {
@@ -2866,27 +2854,6 @@ export namespace Zeitgeist {
     };
 
     namespace RemoteMonitor {
-        /**
-         * Interface for implementing RemoteMonitor.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_notify_insert(
-                time_range: GLib.Variant,
-                events: GLib.Variant,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            vfunc_notify_insert_finish(_res_: Gio.AsyncResult): void;
-            vfunc_notify_delete(
-                time_range: GLib.Variant,
-                event_ids: number[],
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            vfunc_notify_delete_finish(_res_: Gio.AsyncResult): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2896,7 +2863,7 @@ export namespace Zeitgeist {
         $gtype: GObject.GType<RemoteMonitor>;
         prototype: RemoteMonitor;
     }
-    interface RemoteMonitor extends GObject.Object, RemoteMonitor.Interface {
+    interface RemoteMonitor extends GObject.Object {
         // Methods
 
         notify_insert(time_range: GLib.Variant, events: GLib.Variant): globalThis.Promise<void>;
@@ -2923,6 +2890,21 @@ export namespace Zeitgeist {
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         notify_delete_finish(_res_: Gio.AsyncResult): void;
+
+        // Virtual methods
+
+        vfunc_notify_insert(
+            time_range: GLib.Variant,
+            events: GLib.Variant,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        vfunc_notify_insert_finish(_res_: Gio.AsyncResult): void;
+        vfunc_notify_delete(
+            time_range: GLib.Variant,
+            event_ids: number[],
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        vfunc_notify_delete_finish(_res_: Gio.AsyncResult): void;
     }
 
     export const RemoteMonitor: RemoteMonitorNamespace & {
@@ -2930,38 +2912,6 @@ export namespace Zeitgeist {
     };
 
     namespace RemoteSimpleIndexer {
-        /**
-         * Interface for implementing RemoteSimpleIndexer.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_search(
-                query_string: string,
-                time_range: GLib.Variant,
-                filter_templates: GLib.Variant,
-                offset: number,
-                count: number,
-                result_type: number,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            vfunc_search_finish(_res_: Gio.AsyncResult): [GLib.Variant, number];
-            vfunc_search_with_relevancies(
-                query_string: string,
-                time_range: GLib.Variant,
-                filter_templates: GLib.Variant,
-                storage_state: number,
-                offset: number,
-                count: number,
-                result_type: number,
-                cancellable?: Gio.Cancellable | null,
-                _callback_?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            vfunc_search_with_relevancies_finish(_res_: Gio.AsyncResult): [GLib.Variant, number[], number];
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2971,7 +2921,7 @@ export namespace Zeitgeist {
         $gtype: GObject.GType<RemoteSimpleIndexer>;
         prototype: RemoteSimpleIndexer;
     }
-    interface RemoteSimpleIndexer extends GObject.Object, RemoteSimpleIndexer.Interface {
+    interface RemoteSimpleIndexer extends GObject.Object {
         // Methods
 
         search(
@@ -3037,6 +2987,32 @@ export namespace Zeitgeist {
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[void, GLib.Variant, number[], number]> | void;
         search_with_relevancies_finish(_res_: Gio.AsyncResult): [GLib.Variant, number[], number];
+
+        // Virtual methods
+
+        vfunc_search(
+            query_string: string,
+            time_range: GLib.Variant,
+            filter_templates: GLib.Variant,
+            offset: number,
+            count: number,
+            result_type: number,
+            cancellable?: Gio.Cancellable | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        vfunc_search_finish(_res_: Gio.AsyncResult): [GLib.Variant, number];
+        vfunc_search_with_relevancies(
+            query_string: string,
+            time_range: GLib.Variant,
+            filter_templates: GLib.Variant,
+            storage_state: number,
+            offset: number,
+            count: number,
+            result_type: number,
+            cancellable?: Gio.Cancellable | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        vfunc_search_with_relevancies_finish(_res_: Gio.AsyncResult): [GLib.Variant, number[], number];
     }
 
     export const RemoteSimpleIndexer: RemoteSimpleIndexerNamespace & {
@@ -3044,16 +3020,6 @@ export namespace Zeitgeist {
     };
 
     namespace NetworkManagerDBus {
-        /**
-         * Interface for implementing NetworkManagerDBus.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_state(): number;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3063,10 +3029,14 @@ export namespace Zeitgeist {
         $gtype: GObject.GType<NetworkManagerDBus>;
         prototype: NetworkManagerDBus;
     }
-    interface NetworkManagerDBus extends GObject.Object, NetworkManagerDBus.Interface {
+    interface NetworkManagerDBus extends GObject.Object {
         // Methods
 
         state(): number;
+
+        // Virtual methods
+
+        vfunc_state(): number;
     }
 
     export const NetworkManagerDBus: NetworkManagerDBusNamespace & {
@@ -3074,16 +3044,6 @@ export namespace Zeitgeist {
     };
 
     namespace ConnmanManagerDBus {
-        /**
-         * Interface for implementing ConnmanManagerDBus.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_state(): string;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3093,10 +3053,14 @@ export namespace Zeitgeist {
         $gtype: GObject.GType<ConnmanManagerDBus>;
         prototype: ConnmanManagerDBus;
     }
-    interface ConnmanManagerDBus extends GObject.Object, ConnmanManagerDBus.Interface {
+    interface ConnmanManagerDBus extends GObject.Object {
         // Methods
 
         get_state(): string;
+
+        // Virtual methods
+
+        vfunc_get_state(): string;
     }
 
     export const ConnmanManagerDBus: ConnmanManagerDBusNamespace & {
@@ -3104,21 +3068,6 @@ export namespace Zeitgeist {
     };
 
     namespace ResultSet {
-        /**
-         * Interface for implementing ResultSet.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_size(): number;
-            vfunc_estimated_matches(): number;
-            vfunc_next_value(): Event | null;
-            vfunc_has_next(): boolean;
-            vfunc_tell(): number;
-            vfunc_reset(): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3128,7 +3077,7 @@ export namespace Zeitgeist {
         $gtype: GObject.GType<ResultSet>;
         prototype: ResultSet;
     }
-    interface ResultSet extends GObject.Object, ResultSet.Interface {
+    interface ResultSet extends GObject.Object {
         // Methods
 
         size(): number;
@@ -3138,6 +3087,15 @@ export namespace Zeitgeist {
         tell(): number;
         reset(): void;
         iterator(): ResultSet;
+
+        // Virtual methods
+
+        vfunc_size(): number;
+        vfunc_estimated_matches(): number;
+        vfunc_next_value(): Event | null;
+        vfunc_has_next(): boolean;
+        vfunc_tell(): number;
+        vfunc_reset(): void;
     }
 
     export const ResultSet: ResultSetNamespace & {

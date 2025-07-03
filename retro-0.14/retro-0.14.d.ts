@@ -2198,42 +2198,6 @@ export namespace Retro {
     }
 
     namespace Controller {
-        /**
-         * Interface for implementing Controller.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Gets a flag representing the capabilities of `self`. Each bit index matches
-             * the #RetroControllerType of same number.
-             *
-             * For example, if `self` is an analog gamepad, the value would be: (1 <<
-             * RETRO_CONTROLLER_TYPE_JOYPAD) | (1 << RETRO_CONTROLLER_TYPE_ANALOG).
-             */
-            vfunc_get_capabilities(): number;
-            /**
-             * Gets the main type of the controller.
-             */
-            vfunc_get_controller_type(): ControllerType;
-            /**
-             * Gets the state of an input of `self`.
-             * @param input a #RetroInput to query @self
-             */
-            vfunc_get_input_state(input: Input): number;
-            /**
-             * Polls the pending input events for `self`.
-             */
-            vfunc_poll(): void;
-            /**
-             * Sets the rumble state of `self`.
-             * @param effect the rumble effect
-             * @param strength the rumble effect strength
-             */
-            vfunc_set_rumble_state(effect: RumbleEffect, strength: number): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2243,7 +2207,7 @@ export namespace Retro {
         $gtype: GObject.GType<Controller>;
         prototype: Controller;
     }
-    interface Controller extends GObject.Object, Controller.Interface {
+    interface Controller extends GObject.Object {
         // Methods
 
         /**
@@ -2283,6 +2247,36 @@ export namespace Retro {
          * @returns whether the rumble state has been successfully set.
          */
         set_rumble_state(effect: RumbleEffect | null, strength: number): boolean;
+
+        // Virtual methods
+
+        /**
+         * Gets a flag representing the capabilities of `self`. Each bit index matches
+         * the #RetroControllerType of same number.
+         *
+         * For example, if `self` is an analog gamepad, the value would be: (1 <<
+         * RETRO_CONTROLLER_TYPE_JOYPAD) | (1 << RETRO_CONTROLLER_TYPE_ANALOG).
+         */
+        vfunc_get_capabilities(): number;
+        /**
+         * Gets the main type of the controller.
+         */
+        vfunc_get_controller_type(): ControllerType;
+        /**
+         * Gets the state of an input of `self`.
+         * @param input a #RetroInput to query @self
+         */
+        vfunc_get_input_state(input: Input): number;
+        /**
+         * Polls the pending input events for `self`.
+         */
+        vfunc_poll(): void;
+        /**
+         * Sets the rumble state of `self`.
+         * @param effect the rumble effect
+         * @param strength the rumble effect strength
+         */
+        vfunc_set_rumble_state(effect: RumbleEffect, strength: number): boolean;
     }
 
     export const Controller: ControllerNamespace & {

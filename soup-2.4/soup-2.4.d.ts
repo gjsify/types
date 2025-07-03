@@ -21392,24 +21392,6 @@ export namespace Soup {
     }
 
     namespace PasswordManager {
-        /**
-         * Interface for implementing PasswordManager.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends SessionFeature.Interface {
-            // Virtual methods
-
-            vfunc_get_passwords_async(
-                msg: Message,
-                auth: Auth,
-                retrying: boolean,
-                async_context: GLib.MainContext,
-                cancellable: Gio.Cancellable | null,
-                callback: PasswordManagerCallback,
-            ): void;
-            vfunc_get_passwords_sync(msg: Message, auth: Auth, cancellable?: Gio.Cancellable | null): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends SessionFeature.ConstructorProps {}
@@ -21419,7 +21401,7 @@ export namespace Soup {
         $gtype: GObject.GType<PasswordManager>;
         prototype: PasswordManager;
     }
-    interface PasswordManager extends SessionFeature, PasswordManager.Interface {
+    interface PasswordManager extends SessionFeature {
         // Methods
 
         get_passwords_async(
@@ -21431,6 +21413,18 @@ export namespace Soup {
             callback: PasswordManagerCallback,
         ): void;
         get_passwords_sync(msg: Message, auth: Auth, cancellable?: Gio.Cancellable | null): void;
+
+        // Virtual methods
+
+        vfunc_get_passwords_async(
+            msg: Message,
+            auth: Auth,
+            retrying: boolean,
+            async_context: GLib.MainContext,
+            cancellable: Gio.Cancellable | null,
+            callback: PasswordManagerCallback,
+        ): void;
+        vfunc_get_passwords_sync(msg: Message, auth: Auth, cancellable?: Gio.Cancellable | null): void;
     }
 
     export const PasswordManager: PasswordManagerNamespace & {
@@ -21438,22 +21432,6 @@ export namespace Soup {
     };
 
     namespace ProxyResolver {
-        /**
-         * Interface for implementing ProxyResolver.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends SessionFeature.Interface {
-            // Virtual methods
-
-            vfunc_get_proxy_async(
-                msg: Message,
-                async_context: GLib.MainContext,
-                cancellable: Gio.Cancellable | null,
-                callback: ProxyResolverCallback,
-            ): void;
-            vfunc_get_proxy_sync(msg: Message, cancellable: Gio.Cancellable | null): [number, Address];
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends SessionFeature.ConstructorProps {}
@@ -21463,7 +21441,7 @@ export namespace Soup {
         $gtype: GObject.GType<ProxyResolver>;
         prototype: ProxyResolver;
     }
-    interface ProxyResolver extends SessionFeature, ProxyResolver.Interface {
+    interface ProxyResolver extends SessionFeature {
         // Methods
 
         get_proxy_async(
@@ -21473,6 +21451,16 @@ export namespace Soup {
             callback: ProxyResolverCallback,
         ): void;
         get_proxy_sync(msg: Message, cancellable: Gio.Cancellable | null): [number, Address];
+
+        // Virtual methods
+
+        vfunc_get_proxy_async(
+            msg: Message,
+            async_context: GLib.MainContext,
+            cancellable: Gio.Cancellable | null,
+            callback: ProxyResolverCallback,
+        ): void;
+        vfunc_get_proxy_sync(msg: Message, cancellable: Gio.Cancellable | null): [number, Address];
     }
 
     export const ProxyResolver: ProxyResolverNamespace & {
@@ -21480,37 +21468,6 @@ export namespace Soup {
     };
 
     namespace ProxyURIResolver {
-        /**
-         * Interface for implementing ProxyURIResolver.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends SessionFeature.Interface {
-            // Virtual methods
-
-            /**
-             * Asynchronously determines a proxy URI to use for `msg` and calls
-             * `callback`.
-             * @param uri the #SoupURI you want a proxy for
-             * @param async_context the #GMainContext to invoke @callback in
-             * @param cancellable a #GCancellable, or %NULL
-             * @param callback callback to invoke with the proxy address
-             */
-            vfunc_get_proxy_uri_async(
-                uri: URI,
-                async_context: GLib.MainContext | null,
-                cancellable: Gio.Cancellable | null,
-                callback: ProxyURIResolverCallback,
-            ): void;
-            /**
-             * Synchronously determines a proxy URI to use for `uri`. If `uri`
-             * should be sent via proxy, *`proxy_uri` will be set to the URI of the
-             * proxy, else it will be set to %NULL.
-             * @param uri the #SoupURI you want a proxy for
-             * @param cancellable a #GCancellable, or %NULL
-             */
-            vfunc_get_proxy_uri_sync(uri: URI, cancellable: Gio.Cancellable | null): [number, URI];
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends SessionFeature.ConstructorProps {}
@@ -21520,7 +21477,7 @@ export namespace Soup {
         $gtype: GObject.GType<ProxyURIResolver>;
         prototype: ProxyURIResolver;
     }
-    interface ProxyURIResolver extends SessionFeature, ProxyURIResolver.Interface {
+    interface ProxyURIResolver extends SessionFeature {
         // Methods
 
         /**
@@ -21546,6 +21503,31 @@ export namespace Soup {
          * @returns %SOUP_STATUS_OK if successful, or a transport-level error.
          */
         get_proxy_uri_sync(uri: URI, cancellable: Gio.Cancellable | null): [number, URI];
+
+        // Virtual methods
+
+        /**
+         * Asynchronously determines a proxy URI to use for `msg` and calls
+         * `callback`.
+         * @param uri the #SoupURI you want a proxy for
+         * @param async_context the #GMainContext to invoke @callback in
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to invoke with the proxy address
+         */
+        vfunc_get_proxy_uri_async(
+            uri: URI,
+            async_context: GLib.MainContext | null,
+            cancellable: Gio.Cancellable | null,
+            callback: ProxyURIResolverCallback,
+        ): void;
+        /**
+         * Synchronously determines a proxy URI to use for `uri`. If `uri`
+         * should be sent via proxy, *`proxy_uri` will be set to the URI of the
+         * proxy, else it will be set to %NULL.
+         * @param uri the #SoupURI you want a proxy for
+         * @param cancellable a #GCancellable, or %NULL
+         */
+        vfunc_get_proxy_uri_sync(uri: URI, cancellable: Gio.Cancellable | null): [number, URI];
     }
 
     export const ProxyURIResolver: ProxyURIResolverNamespace & {
@@ -21553,64 +21535,6 @@ export namespace Soup {
     };
 
     namespace SessionFeature {
-        /**
-         * Interface for implementing SessionFeature.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Adds a "sub-feature" of type `type` to the base feature `feature`.
-             * This is used for features that can be extended with multiple
-             * different types. Eg, the authentication manager can be extended
-             * with subtypes of #SoupAuth.
-             * @param type the #GType of a "sub-feature"
-             */
-            vfunc_add_feature(type: GObject.GType): boolean;
-            /**
-             * Perform setup when a feature is added to a session
-             * @param session
-             */
-            vfunc_attach(session: Session): void;
-            /**
-             * Perform cleanup when a feature is removed from a session
-             * @param session
-             */
-            vfunc_detach(session: Session): void;
-            /**
-             * Tests if `feature` has a "sub-feature" of type `type`. See
-             * soup_session_feature_add_feature().
-             * @param type the #GType of a "sub-feature"
-             */
-            vfunc_has_feature(type: GObject.GType): boolean;
-            /**
-             * Removes the "sub-feature" of type `type` from the base feature
-             * `feature`. See soup_session_feature_add_feature().
-             * @param type the #GType of a "sub-feature"
-             */
-            vfunc_remove_feature(type: GObject.GType): boolean;
-            /**
-             * Proxies the session's #SoupSession::request_queued signal
-             * @param session
-             * @param msg
-             */
-            vfunc_request_queued(session: Session, msg: Message): void;
-            /**
-             * Proxies the session's #SoupSession::request_started signal. Deprecated 2.50. Use #SoupMessage::starting instead.
-             * @param session
-             * @param msg
-             * @param socket
-             */
-            vfunc_request_started(session: Session, msg: Message, socket: Socket): void;
-            /**
-             * Proxies the session's #SoupSession::request_unqueued signal
-             * @param session
-             * @param msg
-             */
-            vfunc_request_unqueued(session: Session, msg: Message): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -21620,7 +21544,7 @@ export namespace Soup {
         $gtype: GObject.GType<SessionFeature>;
         prototype: SessionFeature;
     }
-    interface SessionFeature extends GObject.Object, SessionFeature.Interface {
+    interface SessionFeature extends GObject.Object {
         // Methods
 
         /**
@@ -21648,6 +21572,58 @@ export namespace Soup {
          * @returns %TRUE if @type was removed from @feature
          */
         remove_feature(type: GObject.GType): boolean;
+
+        // Virtual methods
+
+        /**
+         * Adds a "sub-feature" of type `type` to the base feature `feature`.
+         * This is used for features that can be extended with multiple
+         * different types. Eg, the authentication manager can be extended
+         * with subtypes of #SoupAuth.
+         * @param type the #GType of a "sub-feature"
+         */
+        vfunc_add_feature(type: GObject.GType): boolean;
+        /**
+         * Perform setup when a feature is added to a session
+         * @param session
+         */
+        vfunc_attach(session: Session): void;
+        /**
+         * Perform cleanup when a feature is removed from a session
+         * @param session
+         */
+        vfunc_detach(session: Session): void;
+        /**
+         * Tests if `feature` has a "sub-feature" of type `type`. See
+         * soup_session_feature_add_feature().
+         * @param type the #GType of a "sub-feature"
+         */
+        vfunc_has_feature(type: GObject.GType): boolean;
+        /**
+         * Removes the "sub-feature" of type `type` from the base feature
+         * `feature`. See soup_session_feature_add_feature().
+         * @param type the #GType of a "sub-feature"
+         */
+        vfunc_remove_feature(type: GObject.GType): boolean;
+        /**
+         * Proxies the session's #SoupSession::request_queued signal
+         * @param session
+         * @param msg
+         */
+        vfunc_request_queued(session: Session, msg: Message): void;
+        /**
+         * Proxies the session's #SoupSession::request_started signal. Deprecated 2.50. Use #SoupMessage::starting instead.
+         * @param session
+         * @param msg
+         * @param socket
+         */
+        vfunc_request_started(session: Session, msg: Message, socket: Socket): void;
+        /**
+         * Proxies the session's #SoupSession::request_unqueued signal
+         * @param session
+         * @param msg
+         */
+        vfunc_request_unqueued(session: Session, msg: Message): void;
     }
 
     export const SessionFeature: SessionFeatureNamespace & {

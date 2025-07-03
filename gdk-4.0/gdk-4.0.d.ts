@@ -17678,89 +17678,6 @@ export namespace Gdk {
     };
 
     namespace Paintable {
-        /**
-         * Interface for implementing Paintable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Gets an immutable paintable for the current contents displayed by `paintable`.
-             *
-             * This is useful when you want to retain the current state of an animation,
-             * for example to take a screenshot of a running animation.
-             *
-             * If the `paintable` is already immutable, it will return itself.
-             */
-            vfunc_get_current_image(): Paintable;
-            /**
-             * Get flags for the paintable.
-             *
-             * This is oftentimes useful for optimizations.
-             *
-             * See [flags`Gdk`.PaintableFlags] for the flags and what they mean.
-             */
-            vfunc_get_flags(): PaintableFlags;
-            /**
-             * Gets the preferred aspect ratio the `paintable` would like to be displayed at.
-             *
-             * The aspect ratio is the width divided by the height, so a value of 0.5
-             * means that the `paintable` prefers to be displayed twice as high as it
-             * is wide. Consumers of this interface can use this to preserve aspect
-             * ratio when displaying the paintable.
-             *
-             * This is a purely informational value and does not in any way limit the
-             * values that may be passed to [method`Gdk`.Paintable.snapshot].
-             *
-             * Usually when a `paintable` returns nonzero values from
-             * [method`Gdk`.Paintable.get_intrinsic_width] and
-             * [method`Gdk`.Paintable.get_intrinsic_height] the aspect ratio
-             * should conform to those values, though that is not required.
-             *
-             * If the `paintable` does not have a preferred aspect ratio,
-             * it returns 0. Negative values are never returned.
-             */
-            vfunc_get_intrinsic_aspect_ratio(): number;
-            /**
-             * Gets the preferred height the `paintable` would like to be displayed at.
-             *
-             * Consumers of this interface can use this to reserve enough space to draw
-             * the paintable.
-             *
-             * This is a purely informational value and does not in any way limit the
-             * values that may be passed to [method`Gdk`.Paintable.snapshot].
-             *
-             * If the `paintable` does not have a preferred height, it returns 0.
-             * Negative values are never returned.
-             */
-            vfunc_get_intrinsic_height(): number;
-            /**
-             * Gets the preferred width the `paintable` would like to be displayed at.
-             *
-             * Consumers of this interface can use this to reserve enough space to draw
-             * the paintable.
-             *
-             * This is a purely informational value and does not in any way limit the
-             * values that may be passed to [method`Gdk`.Paintable.snapshot].
-             *
-             * If the `paintable` does not have a preferred width, it returns 0.
-             * Negative values are never returned.
-             */
-            vfunc_get_intrinsic_width(): number;
-            /**
-             * Snapshots the given paintable with the given `width` and `height`.
-             *
-             * The paintable is drawn at the current (0,0) offset of the `snapshot`.
-             * If `width` and `height` are not larger than zero, this function will
-             * do nothing.
-             * @param snapshot a `GdkSnapshot` to snapshot to
-             * @param width width to snapshot in
-             * @param height height to snapshot in
-             */
-            vfunc_snapshot(snapshot: Snapshot, width: number, height: number): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -17783,7 +17700,7 @@ export namespace Gdk {
          */
         new_empty(intrinsic_width: number, intrinsic_height: number): Paintable;
     }
-    interface Paintable extends GObject.Object, Paintable.Interface {
+    interface Paintable extends GObject.Object {
         // Methods
 
         /**
@@ -17913,6 +17830,83 @@ export namespace Gdk {
          * @param height height to snapshot in
          */
         snapshot(snapshot: Snapshot, width: number, height: number): void;
+
+        // Virtual methods
+
+        /**
+         * Gets an immutable paintable for the current contents displayed by `paintable`.
+         *
+         * This is useful when you want to retain the current state of an animation,
+         * for example to take a screenshot of a running animation.
+         *
+         * If the `paintable` is already immutable, it will return itself.
+         */
+        vfunc_get_current_image(): Paintable;
+        /**
+         * Get flags for the paintable.
+         *
+         * This is oftentimes useful for optimizations.
+         *
+         * See [flags`Gdk`.PaintableFlags] for the flags and what they mean.
+         */
+        vfunc_get_flags(): PaintableFlags;
+        /**
+         * Gets the preferred aspect ratio the `paintable` would like to be displayed at.
+         *
+         * The aspect ratio is the width divided by the height, so a value of 0.5
+         * means that the `paintable` prefers to be displayed twice as high as it
+         * is wide. Consumers of this interface can use this to preserve aspect
+         * ratio when displaying the paintable.
+         *
+         * This is a purely informational value and does not in any way limit the
+         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         *
+         * Usually when a `paintable` returns nonzero values from
+         * [method`Gdk`.Paintable.get_intrinsic_width] and
+         * [method`Gdk`.Paintable.get_intrinsic_height] the aspect ratio
+         * should conform to those values, though that is not required.
+         *
+         * If the `paintable` does not have a preferred aspect ratio,
+         * it returns 0. Negative values are never returned.
+         */
+        vfunc_get_intrinsic_aspect_ratio(): number;
+        /**
+         * Gets the preferred height the `paintable` would like to be displayed at.
+         *
+         * Consumers of this interface can use this to reserve enough space to draw
+         * the paintable.
+         *
+         * This is a purely informational value and does not in any way limit the
+         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         *
+         * If the `paintable` does not have a preferred height, it returns 0.
+         * Negative values are never returned.
+         */
+        vfunc_get_intrinsic_height(): number;
+        /**
+         * Gets the preferred width the `paintable` would like to be displayed at.
+         *
+         * Consumers of this interface can use this to reserve enough space to draw
+         * the paintable.
+         *
+         * This is a purely informational value and does not in any way limit the
+         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         *
+         * If the `paintable` does not have a preferred width, it returns 0.
+         * Negative values are never returned.
+         */
+        vfunc_get_intrinsic_width(): number;
+        /**
+         * Snapshots the given paintable with the given `width` and `height`.
+         *
+         * The paintable is drawn at the current (0,0) offset of the `snapshot`.
+         * If `width` and `height` are not larger than zero, this function will
+         * do nothing.
+         * @param snapshot a `GdkSnapshot` to snapshot to
+         * @param width width to snapshot in
+         * @param height height to snapshot in
+         */
+        vfunc_snapshot(snapshot: Snapshot, width: number, height: number): void;
     }
 
     export const Paintable: PaintableNamespace & {

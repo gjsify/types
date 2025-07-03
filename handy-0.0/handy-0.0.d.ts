@@ -47074,19 +47074,6 @@ export namespace Handy {
     type ViewSwitcherBarClass = typeof ViewSwitcherBar;
     type ViewSwitcherClass = typeof ViewSwitcher;
     namespace Swipeable {
-        /**
-         * Interface for implementing Swipeable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_begin_swipe(direction: number, direct: boolean): void;
-            vfunc_end_swipe(duration: number, to: number): void;
-            vfunc_switch_child(index: number, duration: number): void;
-            vfunc_update_swipe(value: number): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {}
@@ -47096,7 +47083,14 @@ export namespace Handy {
         $gtype: GObject.GType<Swipeable>;
         prototype: Swipeable;
     }
-    interface Swipeable extends Gtk.Widget, Swipeable.Interface {}
+    interface Swipeable extends Gtk.Widget {
+        // Virtual methods
+
+        vfunc_begin_swipe(direction: number, direct: boolean): void;
+        vfunc_end_swipe(duration: number, to: number): void;
+        vfunc_switch_child(index: number, duration: number): void;
+        vfunc_update_swipe(value: number): void;
+    }
 
     export const Swipeable: SwipeableNamespace & {
         new (): Swipeable; // This allows `obj instanceof Swipeable`

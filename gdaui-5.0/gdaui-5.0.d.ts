@@ -84771,100 +84771,6 @@ export namespace Gdaui {
     }
 
     namespace DataEntry {
-        /**
-         * Interface for implementing DataEntry.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Used for the layout of #GdaDataEntry widgets in containers: queries if `de` requires
-             * horizontal or vertical expansion, depending on `horiz`
-             * @param horiz %TRUE to query horizontal expansion requirements, or %FALSE for vertical
-             */
-            vfunc_can_expand(horiz: boolean): boolean;
-            vfunc_contents_activated(): void;
-            vfunc_contents_modified(): void;
-            vfunc_contents_valid(): boolean;
-            vfunc_expand_changed(): void;
-            /**
-             * Retrieves the parameters of the GdauiDataEntry widget.
-             */
-            vfunc_get_attributes(): Gda.ValueAttribute;
-            /**
-             * Tells if `de` can be edited by the user
-             */
-            vfunc_get_editable(): boolean;
-            /**
-             * Fetch the GdaDataHandler the GdauiDataEntry is using
-             */
-            vfunc_get_handler(): Gda.DataHandler;
-            vfunc_get_ref_value(): unknown;
-            /**
-             * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
-             * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
-             * then the returned value is of type GDA_TYPE_NULL or is the default value if it
-             * has been provided to the widget (and is of the same type as the one provided by `de)`.
-             */
-            vfunc_get_value(): unknown;
-            /**
-             * Fetch the type of data the GdauiDataEntry handles
-             */
-            vfunc_get_value_type(): GObject.GType;
-            /**
-             * Makes `de` grab the focus for the window it's in
-             */
-            vfunc_grab_focus(): void;
-            /**
-             * Sets the parameters of the #GdauiDataEntry. Only the attributes corresponding to the
-             * mask are set, the other ones are ignored.
-             * @param attrs the attributes to set (OR'ed between them)
-             * @param mask the mask corresponding to the considered attributes
-             */
-            vfunc_set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
-            /**
-             * Set if `de` can be modified or not by the user
-             * @param editable set to %TRUE to have an editable data entry
-             */
-            vfunc_set_editable(editable: boolean): void;
-            vfunc_set_ref_value(value: GObject.Value | any): void;
-            /**
-             * Defines the color to be used when `de` displays an invalid value. Any value not
-             * between 0. and 1. will result in the default hard coded values to be used (grayish).
-             * @param red the red component of a color
-             * @param green the green component of a color
-             * @param blue the blue component of a color
-             * @param alpha the alpha component of a color
-             */
-            vfunc_set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
-            /**
-             * Push a value into the #GdauiDataEntry. The value parameter must either be:
-             * <itemizedlist>
-             *   <listitem><para>of type GDA_TYPE_NULL (may be created using gda_value_new_null()) to
-             *      represent a NULL value (SQL NULL), or</para></listitem>
-             *   <listitem><para>of type specified using gdaui_data_entry_set_value_type(), or</para></listitem>
-             *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
-             * </itemizedlist>
-             * @param value a #GValue, or %NULL
-             */
-            vfunc_set_value(value?: GObject.Value | null): void;
-            vfunc_set_value_default(value: GObject.Value | any): void;
-            /**
-             * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
-             * the widget can handle.
-             * @param type the #GType of the data to be displayed
-             */
-            vfunc_set_value_type(type: GObject.GType): void;
-            vfunc_status_changed(): void;
-            /**
-             * Tests the validity of `de'`s contents. This function must be overrided by implementators.
-             *
-             * Default implementation returns TRUE.
-             */
-            vfunc_validate(): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {}
@@ -84876,7 +84782,7 @@ export namespace Gdaui {
 
         error_quark(): GLib.Quark;
     }
-    interface DataEntry extends Gtk.Widget, DataEntry.Interface {
+    interface DataEntry extends Gtk.Widget {
         // Methods
 
         /**
@@ -84989,6 +84895,94 @@ export namespace Gdaui {
          * @returns TRUE if @de's contents is valid
          */
         validate(): boolean;
+
+        // Virtual methods
+
+        /**
+         * Used for the layout of #GdaDataEntry widgets in containers: queries if `de` requires
+         * horizontal or vertical expansion, depending on `horiz`
+         * @param horiz %TRUE to query horizontal expansion requirements, or %FALSE for vertical
+         */
+        vfunc_can_expand(horiz: boolean): boolean;
+        vfunc_contents_activated(): void;
+        vfunc_contents_modified(): void;
+        vfunc_contents_valid(): boolean;
+        vfunc_expand_changed(): void;
+        /**
+         * Retrieves the parameters of the GdauiDataEntry widget.
+         */
+        vfunc_get_attributes(): Gda.ValueAttribute;
+        /**
+         * Tells if `de` can be edited by the user
+         */
+        vfunc_get_editable(): boolean;
+        /**
+         * Fetch the GdaDataHandler the GdauiDataEntry is using
+         */
+        vfunc_get_handler(): Gda.DataHandler;
+        vfunc_get_ref_value(): unknown;
+        /**
+         * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
+         * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
+         * then the returned value is of type GDA_TYPE_NULL or is the default value if it
+         * has been provided to the widget (and is of the same type as the one provided by `de)`.
+         */
+        vfunc_get_value(): unknown;
+        /**
+         * Fetch the type of data the GdauiDataEntry handles
+         */
+        vfunc_get_value_type(): GObject.GType;
+        /**
+         * Makes `de` grab the focus for the window it's in
+         */
+        vfunc_grab_focus(): void;
+        /**
+         * Sets the parameters of the #GdauiDataEntry. Only the attributes corresponding to the
+         * mask are set, the other ones are ignored.
+         * @param attrs the attributes to set (OR'ed between them)
+         * @param mask the mask corresponding to the considered attributes
+         */
+        vfunc_set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
+        /**
+         * Set if `de` can be modified or not by the user
+         * @param editable set to %TRUE to have an editable data entry
+         */
+        vfunc_set_editable(editable: boolean): void;
+        vfunc_set_ref_value(value: GObject.Value | any): void;
+        /**
+         * Defines the color to be used when `de` displays an invalid value. Any value not
+         * between 0. and 1. will result in the default hard coded values to be used (grayish).
+         * @param red the red component of a color
+         * @param green the green component of a color
+         * @param blue the blue component of a color
+         * @param alpha the alpha component of a color
+         */
+        vfunc_set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
+        /**
+         * Push a value into the #GdauiDataEntry. The value parameter must either be:
+         * <itemizedlist>
+         *   <listitem><para>of type GDA_TYPE_NULL (may be created using gda_value_new_null()) to
+         *      represent a NULL value (SQL NULL), or</para></listitem>
+         *   <listitem><para>of type specified using gdaui_data_entry_set_value_type(), or</para></listitem>
+         *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
+         * </itemizedlist>
+         * @param value a #GValue, or %NULL
+         */
+        vfunc_set_value(value?: GObject.Value | null): void;
+        vfunc_set_value_default(value: GObject.Value | any): void;
+        /**
+         * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
+         * the widget can handle.
+         * @param type the #GType of the data to be displayed
+         */
+        vfunc_set_value_type(type: GObject.GType): void;
+        vfunc_status_changed(): void;
+        /**
+         * Tests the validity of `de'`s contents. This function must be overrided by implementators.
+         *
+         * Default implementation returns TRUE.
+         */
+        vfunc_validate(): boolean;
     }
 
     export const DataEntry: DataEntryNamespace & {
@@ -84996,49 +84990,6 @@ export namespace Gdaui {
     };
 
     namespace DataProxy {
-        /**
-         * Interface for implementing DataProxy.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Each widget imlplementing the #GdauiDataProxy interface provides actions. Actions can be triggered
-             * using the gdaui_data_proxy_perform_action() method, but using this method allows for the creation of
-             * toolbars, menus, etc calling these actions.
-             *
-             * The actions are among:
-             * <itemizedlist><listitem><para>Data edition actions: "ActionNew", "ActionCommit",
-             *    "ActionDelete", "ActionReset". Note that the "ActionDelete" action is actually a #GtkToggleAction
-             *    action which can be used to delete a row or undelete it.</para></listitem>
-             * <listitem><para>Record by record moving: "ActionFirstRecord", "ActionPrevRecord",
-             *    "ActionNextRecord", "ActionLastRecord".</para></listitem>
-             * <listitem><para>Chuncks of records moving: "ActionFirstChunck", "ActionPrevChunck",
-             *     "ActionNextChunck", "ActionLastChunck".</para></listitem>
-             * <listitem><para>Filtering: "ActionFilter".</para></listitem></itemizedlist>
-             */
-            vfunc_get_actions_group(): Gtk.ActionGroup;
-            /**
-             * Get a pointer to the #GdaDataProxy being used by `iface`
-             */
-            vfunc_get_proxy(): Gda.DataProxy;
-            /**
-             * Get the way the modifications stored in the #GdaDataProxy used internally by `iface` are written back to
-             * the #GdaDataModel which holds the data displayed in `iface`.
-             */
-            vfunc_get_write_mode(): DataProxyWriteMode;
-            vfunc_proxy_changed(proxy: Gda.DataProxy): void;
-            vfunc_set_column_editable(column: number, editable: boolean): void;
-            /**
-             * Specifies the way the modifications stored in the #GdaDataProxy used internally by `iface` are written back to
-             * the #GdaDataModel which holds the data displayed in `iface`.
-             * @param mode the requested #GdauiDataProxyWriteMode mode
-             */
-            vfunc_set_write_mode(mode: DataProxyWriteMode): boolean;
-            vfunc_show_column_actions(column: number, show_actions: boolean): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -85048,7 +84999,7 @@ export namespace Gdaui {
         $gtype: GObject.GType<DataProxy>;
         prototype: DataProxy;
     }
-    interface DataProxy extends GObject.Object, DataProxy.Interface {
+    interface DataProxy extends GObject.Object {
         // Methods
 
         /**
@@ -85108,6 +85059,43 @@ export namespace Gdaui {
          * @returns TRUE if the proposed mode has been taken into account
          */
         set_write_mode(mode: DataProxyWriteMode | null): boolean;
+
+        // Virtual methods
+
+        /**
+         * Each widget imlplementing the #GdauiDataProxy interface provides actions. Actions can be triggered
+         * using the gdaui_data_proxy_perform_action() method, but using this method allows for the creation of
+         * toolbars, menus, etc calling these actions.
+         *
+         * The actions are among:
+         * <itemizedlist><listitem><para>Data edition actions: "ActionNew", "ActionCommit",
+         *    "ActionDelete", "ActionReset". Note that the "ActionDelete" action is actually a #GtkToggleAction
+         *    action which can be used to delete a row or undelete it.</para></listitem>
+         * <listitem><para>Record by record moving: "ActionFirstRecord", "ActionPrevRecord",
+         *    "ActionNextRecord", "ActionLastRecord".</para></listitem>
+         * <listitem><para>Chuncks of records moving: "ActionFirstChunck", "ActionPrevChunck",
+         *     "ActionNextChunck", "ActionLastChunck".</para></listitem>
+         * <listitem><para>Filtering: "ActionFilter".</para></listitem></itemizedlist>
+         */
+        vfunc_get_actions_group(): Gtk.ActionGroup;
+        /**
+         * Get a pointer to the #GdaDataProxy being used by `iface`
+         */
+        vfunc_get_proxy(): Gda.DataProxy;
+        /**
+         * Get the way the modifications stored in the #GdaDataProxy used internally by `iface` are written back to
+         * the #GdaDataModel which holds the data displayed in `iface`.
+         */
+        vfunc_get_write_mode(): DataProxyWriteMode;
+        vfunc_proxy_changed(proxy: Gda.DataProxy): void;
+        vfunc_set_column_editable(column: number, editable: boolean): void;
+        /**
+         * Specifies the way the modifications stored in the #GdaDataProxy used internally by `iface` are written back to
+         * the #GdaDataModel which holds the data displayed in `iface`.
+         * @param mode the requested #GdauiDataProxyWriteMode mode
+         */
+        vfunc_set_write_mode(mode: DataProxyWriteMode): boolean;
+        vfunc_show_column_actions(column: number, show_actions: boolean): void;
     }
 
     export const DataProxy: DataProxyNamespace & {
@@ -85115,69 +85103,6 @@ export namespace Gdaui {
     };
 
     namespace DataSelector {
-        /**
-         * Interface for implementing DataSelector.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Get the #GdaDataModelIter object represented the current selected row in `iface`. This
-             * function may return either %NULL or an invalid iterator (see gda_data_model_iter_is_valid()) if
-             * the selection cannot be represented by a single selected row.
-             *
-             * Note that the returned #GdaDataModelIter is actually an iterator iterating on the #GdaDataModel
-             * returned by the gdaui_data_selector_get_model() method.
-             */
-            vfunc_get_data_set(): Gda.DataModelIter;
-            /**
-             * Queries the #GdaDataModel from which the data displayed by the widget implementing `iface`
-             * are. Beware that the returned data model may be different than the one used when the
-             * widget was created in case it internally uses a #GdaDataProxy.
-             */
-            vfunc_get_model(): Gda.DataModel;
-            /**
-             * Gat an array of selected rows. If no row is selected, the the returned value is %NULL.
-             *
-             * Please note that rows refers to the "visible" rows
-             * at the time it's being called, which may change if the widget implementing this interface
-             * uses a #GdaDataProxy (as is the case for example for the #GdauiRawForm, #GdauiForm, #GdauiRawGrid
-             * and #GdauiGrid).
-             */
-            vfunc_get_selected_rows(): number[];
-            /**
-             * Force the selection of a specific row.
-             *
-             * Please note that `row` refers to the "visible" row
-             * at the time it's being called, which may change if the widget implementing this interface
-             * uses a #GdaDataProxy (as is the case for example for the #GdauiRawForm, #GdauiForm, #GdauiRawGrid
-             * and #GdauiGrid).
-             * @param row the row to select
-             */
-            vfunc_select_row(row: number): boolean;
-            vfunc_selection_changed(): void;
-            /**
-             * Shows or hides the data at column `column`
-             * @param column a column number, starting at %0, or -1 tp apply to all the columns
-             * @param visible required visibility of the data in the @column column
-             */
-            vfunc_set_column_visible(column: number, visible: boolean): void;
-            /**
-             * Sets the data model from which the data being displayed are. Also see gdaui_data_selector_get_model()
-             * @param model a #GdaDataModel to use
-             */
-            vfunc_set_model(model: Gda.DataModel): void;
-            /**
-             * Please note that `row` refers to the "visible" row
-             * at the time it's being called, which may change if the widget implementing this interface
-             * uses a #GdaDataProxy (as is the case for example for the #GdauiRawForm, #GdauiForm, #GdauiRawGrid
-             * and #GdauiGrid).
-             * @param row the row to unselect
-             */
-            vfunc_unselect_row(row: number): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -85187,7 +85112,7 @@ export namespace Gdaui {
         $gtype: GObject.GType<DataSelector>;
         prototype: DataSelector;
     }
-    interface DataSelector extends GObject.Object, DataSelector.Interface {
+    interface DataSelector extends GObject.Object {
         // Methods
 
         /**
@@ -85247,6 +85172,63 @@ export namespace Gdaui {
          * @param row the row to unselect
          */
         unselect_row(row: number): void;
+
+        // Virtual methods
+
+        /**
+         * Get the #GdaDataModelIter object represented the current selected row in `iface`. This
+         * function may return either %NULL or an invalid iterator (see gda_data_model_iter_is_valid()) if
+         * the selection cannot be represented by a single selected row.
+         *
+         * Note that the returned #GdaDataModelIter is actually an iterator iterating on the #GdaDataModel
+         * returned by the gdaui_data_selector_get_model() method.
+         */
+        vfunc_get_data_set(): Gda.DataModelIter;
+        /**
+         * Queries the #GdaDataModel from which the data displayed by the widget implementing `iface`
+         * are. Beware that the returned data model may be different than the one used when the
+         * widget was created in case it internally uses a #GdaDataProxy.
+         */
+        vfunc_get_model(): Gda.DataModel;
+        /**
+         * Gat an array of selected rows. If no row is selected, the the returned value is %NULL.
+         *
+         * Please note that rows refers to the "visible" rows
+         * at the time it's being called, which may change if the widget implementing this interface
+         * uses a #GdaDataProxy (as is the case for example for the #GdauiRawForm, #GdauiForm, #GdauiRawGrid
+         * and #GdauiGrid).
+         */
+        vfunc_get_selected_rows(): number[];
+        /**
+         * Force the selection of a specific row.
+         *
+         * Please note that `row` refers to the "visible" row
+         * at the time it's being called, which may change if the widget implementing this interface
+         * uses a #GdaDataProxy (as is the case for example for the #GdauiRawForm, #GdauiForm, #GdauiRawGrid
+         * and #GdauiGrid).
+         * @param row the row to select
+         */
+        vfunc_select_row(row: number): boolean;
+        vfunc_selection_changed(): void;
+        /**
+         * Shows or hides the data at column `column`
+         * @param column a column number, starting at %0, or -1 tp apply to all the columns
+         * @param visible required visibility of the data in the @column column
+         */
+        vfunc_set_column_visible(column: number, visible: boolean): void;
+        /**
+         * Sets the data model from which the data being displayed are. Also see gdaui_data_selector_get_model()
+         * @param model a #GdaDataModel to use
+         */
+        vfunc_set_model(model: Gda.DataModel): void;
+        /**
+         * Please note that `row` refers to the "visible" row
+         * at the time it's being called, which may change if the widget implementing this interface
+         * uses a #GdaDataProxy (as is the case for example for the #GdauiRawForm, #GdauiForm, #GdauiRawGrid
+         * and #GdauiGrid).
+         * @param row the row to unselect
+         */
+        vfunc_unselect_row(row: number): void;
     }
 
     export const DataSelector: DataSelectorNamespace & {

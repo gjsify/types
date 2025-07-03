@@ -34301,170 +34301,6 @@ export namespace Anjuta {
     }
 
     namespace Shell {
-        /**
-         * Interface for implementing Shell.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Sets a value in the shell with the given name. Any previous value will
-             * be overridden. "value_added" signal will be emitted. Objects connecting
-             * to this signal can then update their data according to the new value.
-             * @param name Name of the value
-             * @param value Value to add
-             */
-            vfunc_add_value(name: string, value: GObject.Value | any): void;
-            /**
-             * Adds `widget` in the shell. The `placement` tells where the widget should
-             * appear, but generally it will be overridden by the container
-             * (dock, notebook, GtkContainer etc.) saved layout.
-             *
-             * Using this method you can pass a custom widget as label.
-             * @param widget Then widget to add
-             * @param name Name of the widget. None translated string used to identify it in the shell.
-             * @param title title of the widget (translated)
-             * @param stock_id Icon stock ID. Could be null.
-             * @param label Label widget to use
-             * @param placement Placement of the widget in shell.
-             */
-            vfunc_add_widget_custom(
-                widget: Gtk.Widget,
-                name: string,
-                title: string,
-                stock_id: string,
-                label: Gtk.Widget,
-                placement: ShellPlacement,
-            ): void;
-            /**
-             * Adds `widget` in the shell. The `placement` tells where the widget should
-             * appear, but generally it will be overridden by the container
-             * (dock, notebook, GtkContainer etc.) saved layout.
-             *
-             * Normally just use anjuta_shell_add_widget() because you do not
-             * use locking.
-             * @param widget Then widget to add
-             * @param name Name of the widget. None translated string used to identify it in the shell.
-             * @param title Translated string which is displayed along side the widget when required (eg. as window title or notebook tab label).
-             * @param stock_id Icon stock ID. Could be null.
-             * @param placement Placement of the widget in shell.
-             * @param locked Whether to lock that widget (do not use this, it's only 			useful to some stock plugins
-             */
-            vfunc_add_widget_full(
-                widget: Gtk.Widget,
-                name: string,
-                title: string,
-                stock_id: string,
-                placement: ShellPlacement,
-                locked: boolean,
-            ): void;
-            /**
-             * Searches the currently available plugins to find the one which
-             * implements the given interface as primary interface and returns it. If
-             * the plugin is not yet loaded, it will be loaded and activated.
-             * The returned object is garanteed to be an implementor of the
-             * interface (as exported by the plugin metafile). It only searches
-             * from the pool of plugin objects loaded in this shell and can only search
-             * by primary interface. If there are more objects implementing this primary
-             * interface, user might be prompted to select one from them (and might give
-             * the option to use it as default for future queries). A typical usage of this
-             * function is:
-             * <programlisting>
-             * GObject *docman =
-             *     anjuta_plugins_get_object (shell, "IAnjutaDocumentManager", error);
-             * </programlisting>
-             * Notice that this function takes the interface name string as string, unlike
-             * anjuta_plugins_get_interface() which takes the type directly.
-             * @param iface_name The interface implemented by the object to be found
-             */
-            vfunc_get_object<T = GObject.Object>(iface_name: string): T;
-            /**
-             * Retrieves the #AnjutaPluginManager object associated with the shell.
-             */
-            vfunc_get_plugin_manager(): PluginManager;
-            /**
-             * Retrieves the #AnjutaPreferences object associated with the shell.
-             */
-            vfunc_get_preferences(): Preferences;
-            /**
-             * Retrieves the #AnjutaProfileManager object associated with the shell.
-             */
-            vfunc_get_profile_manager(): ProfileManager;
-            /**
-             * Retrieves the #AnjutaStatus object associated with the shell.
-             */
-            vfunc_get_status(): Status;
-            /**
-             * Retrieves the #AnjutaUI object associated with the shell.
-             */
-            vfunc_get_ui(): UI;
-            /**
-             * Gets a value from the shell with the given name. The value will be set
-             * in the passed value pointer.
-             * @param name Name of the value to get
-             * @param value Value to get
-             */
-            vfunc_get_value(name: string, value: GObject.Value | any): void;
-            /**
-             * If the widget is dockable, it hides it.
-             * @param widget a #GtkWidget to hide.
-             */
-            vfunc_hide_dockable_widget(widget: Gtk.Widget): void;
-            /**
-             * If the widget is dockable, it iconifies it.
-             * @param widget a #GtkWidget to iconify.
-             */
-            vfunc_iconify_dockable_widget(widget: Gtk.Widget): void;
-            vfunc_load_session(phase: SessionPhase, session: Session): void;
-            /**
-             * Maximizes a widget so it will occupy all the possible space.
-             * @param widget_name Name of the widget to be maximized.
-             */
-            vfunc_maximize_widget(widget_name: string): void;
-            /**
-             * Make sure the widget is visible to user. If the widget is hidden, it will
-             * be shown. If it is not visible to user, it will be made visible.
-             * @param widget The widget to present
-             */
-            vfunc_present_widget(widget: Gtk.Widget): void;
-            /**
-             * Removes a value from the shell with the given name. "value_removed" signal
-             * will be emitted. Objects connecting to this signal can then update their
-             * data/internal-state accordingly.
-             * @param name Name of the value to remove
-             */
-            vfunc_remove_value(name: string): void;
-            /**
-             * Removes the widget from shell. The widget should have been added before
-             * with #anjuta_shell_add_widget.
-             * @param widget The widget to remove
-             */
-            vfunc_remove_widget(widget: Gtk.Widget): void;
-            vfunc_save_prompt(save_prompt: SavePrompt): void;
-            vfunc_save_session(phase: SessionPhase, session: Session): void;
-            /**
-             * Decrease the count of files that need to be saved
-             */
-            vfunc_saving_pop(): void;
-            /**
-             * Increase the count of files that need to be saved
-             */
-            vfunc_saving_push(): void;
-            /**
-             * If the widget was hidden or iconified, it will make it visible.
-             * @param widget a #GtkWidget to show.
-             */
-            vfunc_show_dockable_widget(widget: Gtk.Widget): void;
-            /**
-             * Unmaximizes the UI which was previously maximized by
-             * #anjuta_shell_maximize_widget
-             */
-            vfunc_unmaximize(): void;
-            vfunc_value_added(name: string, value: GObject.Value | any): void;
-            vfunc_value_removed(name: string): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -34474,7 +34310,7 @@ export namespace Anjuta {
         $gtype: GObject.GType<Shell>;
         prototype: Shell;
     }
-    interface Shell extends GObject.Object, Shell.Interface {
+    interface Shell extends GObject.Object {
         // Methods
 
         /**
@@ -34666,6 +34502,164 @@ export namespace Anjuta {
          * #anjuta_shell_maximize_widget
          */
         unmaximize(): void;
+
+        // Virtual methods
+
+        /**
+         * Sets a value in the shell with the given name. Any previous value will
+         * be overridden. "value_added" signal will be emitted. Objects connecting
+         * to this signal can then update their data according to the new value.
+         * @param name Name of the value
+         * @param value Value to add
+         */
+        vfunc_add_value(name: string, value: GObject.Value | any): void;
+        /**
+         * Adds `widget` in the shell. The `placement` tells where the widget should
+         * appear, but generally it will be overridden by the container
+         * (dock, notebook, GtkContainer etc.) saved layout.
+         *
+         * Using this method you can pass a custom widget as label.
+         * @param widget Then widget to add
+         * @param name Name of the widget. None translated string used to identify it in the shell.
+         * @param title title of the widget (translated)
+         * @param stock_id Icon stock ID. Could be null.
+         * @param label Label widget to use
+         * @param placement Placement of the widget in shell.
+         */
+        vfunc_add_widget_custom(
+            widget: Gtk.Widget,
+            name: string,
+            title: string,
+            stock_id: string,
+            label: Gtk.Widget,
+            placement: ShellPlacement,
+        ): void;
+        /**
+         * Adds `widget` in the shell. The `placement` tells where the widget should
+         * appear, but generally it will be overridden by the container
+         * (dock, notebook, GtkContainer etc.) saved layout.
+         *
+         * Normally just use anjuta_shell_add_widget() because you do not
+         * use locking.
+         * @param widget Then widget to add
+         * @param name Name of the widget. None translated string used to identify it in the shell.
+         * @param title Translated string which is displayed along side the widget when required (eg. as window title or notebook tab label).
+         * @param stock_id Icon stock ID. Could be null.
+         * @param placement Placement of the widget in shell.
+         * @param locked Whether to lock that widget (do not use this, it's only 			useful to some stock plugins
+         */
+        vfunc_add_widget_full(
+            widget: Gtk.Widget,
+            name: string,
+            title: string,
+            stock_id: string,
+            placement: ShellPlacement,
+            locked: boolean,
+        ): void;
+        /**
+         * Searches the currently available plugins to find the one which
+         * implements the given interface as primary interface and returns it. If
+         * the plugin is not yet loaded, it will be loaded and activated.
+         * The returned object is garanteed to be an implementor of the
+         * interface (as exported by the plugin metafile). It only searches
+         * from the pool of plugin objects loaded in this shell and can only search
+         * by primary interface. If there are more objects implementing this primary
+         * interface, user might be prompted to select one from them (and might give
+         * the option to use it as default for future queries). A typical usage of this
+         * function is:
+         * <programlisting>
+         * GObject *docman =
+         *     anjuta_plugins_get_object (shell, "IAnjutaDocumentManager", error);
+         * </programlisting>
+         * Notice that this function takes the interface name string as string, unlike
+         * anjuta_plugins_get_interface() which takes the type directly.
+         * @param iface_name The interface implemented by the object to be found
+         */
+        vfunc_get_object<T = GObject.Object>(iface_name: string): T;
+        /**
+         * Retrieves the #AnjutaPluginManager object associated with the shell.
+         */
+        vfunc_get_plugin_manager(): PluginManager;
+        /**
+         * Retrieves the #AnjutaPreferences object associated with the shell.
+         */
+        vfunc_get_preferences(): Preferences;
+        /**
+         * Retrieves the #AnjutaProfileManager object associated with the shell.
+         */
+        vfunc_get_profile_manager(): ProfileManager;
+        /**
+         * Retrieves the #AnjutaStatus object associated with the shell.
+         */
+        vfunc_get_status(): Status;
+        /**
+         * Retrieves the #AnjutaUI object associated with the shell.
+         */
+        vfunc_get_ui(): UI;
+        /**
+         * Gets a value from the shell with the given name. The value will be set
+         * in the passed value pointer.
+         * @param name Name of the value to get
+         * @param value Value to get
+         */
+        vfunc_get_value(name: string, value: GObject.Value | any): void;
+        /**
+         * If the widget is dockable, it hides it.
+         * @param widget a #GtkWidget to hide.
+         */
+        vfunc_hide_dockable_widget(widget: Gtk.Widget): void;
+        /**
+         * If the widget is dockable, it iconifies it.
+         * @param widget a #GtkWidget to iconify.
+         */
+        vfunc_iconify_dockable_widget(widget: Gtk.Widget): void;
+        vfunc_load_session(phase: SessionPhase, session: Session): void;
+        /**
+         * Maximizes a widget so it will occupy all the possible space.
+         * @param widget_name Name of the widget to be maximized.
+         */
+        vfunc_maximize_widget(widget_name: string): void;
+        /**
+         * Make sure the widget is visible to user. If the widget is hidden, it will
+         * be shown. If it is not visible to user, it will be made visible.
+         * @param widget The widget to present
+         */
+        vfunc_present_widget(widget: Gtk.Widget): void;
+        /**
+         * Removes a value from the shell with the given name. "value_removed" signal
+         * will be emitted. Objects connecting to this signal can then update their
+         * data/internal-state accordingly.
+         * @param name Name of the value to remove
+         */
+        vfunc_remove_value(name: string): void;
+        /**
+         * Removes the widget from shell. The widget should have been added before
+         * with #anjuta_shell_add_widget.
+         * @param widget The widget to remove
+         */
+        vfunc_remove_widget(widget: Gtk.Widget): void;
+        vfunc_save_prompt(save_prompt: SavePrompt): void;
+        vfunc_save_session(phase: SessionPhase, session: Session): void;
+        /**
+         * Decrease the count of files that need to be saved
+         */
+        vfunc_saving_pop(): void;
+        /**
+         * Increase the count of files that need to be saved
+         */
+        vfunc_saving_push(): void;
+        /**
+         * If the widget was hidden or iconified, it will make it visible.
+         * @param widget a #GtkWidget to show.
+         */
+        vfunc_show_dockable_widget(widget: Gtk.Widget): void;
+        /**
+         * Unmaximizes the UI which was previously maximized by
+         * #anjuta_shell_maximize_widget
+         */
+        vfunc_unmaximize(): void;
+        vfunc_value_added(name: string, value: GObject.Value | any): void;
+        vfunc_value_removed(name: string): void;
     }
 
     export const Shell: ShellNamespace & {

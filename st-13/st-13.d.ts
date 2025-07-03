@@ -16162,26 +16162,6 @@ export namespace St {
 
     type WidgetClass = typeof Widget;
     namespace Scrollable {
-        /**
-         * Interface for implementing Scrollable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
-            /**
-             * This method should be implemented by classes implementing the #StScrollable
-             * interface.
-             *
-             * JavaScript code should do this by overriding the `vfunc_set_adjustments()`
-             * method.
-             * @param hadjustment the horizontal #StAdjustment
-             * @param vadjustment the vertical #StAdjustment
-             */
-            vfunc_set_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -16194,7 +16174,7 @@ export namespace St {
         $gtype: GObject.GType<Scrollable>;
         prototype: Scrollable;
     }
-    interface Scrollable extends GObject.Object, Scrollable.Interface {
+    interface Scrollable extends GObject.Object {
         // Properties
 
         /**
@@ -16258,6 +16238,20 @@ export namespace St {
          * @param vadjustment the vertical #StAdjustment
          */
         set_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
+
+        // Virtual methods
+
+        vfunc_get_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
+        /**
+         * This method should be implemented by classes implementing the #StScrollable
+         * interface.
+         *
+         * JavaScript code should do this by overriding the `vfunc_set_adjustments()`
+         * method.
+         * @param hadjustment the horizontal #StAdjustment
+         * @param vadjustment the vertical #StAdjustment
+         */
+        vfunc_set_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
     }
 
     export const Scrollable: ScrollableNamespace & {

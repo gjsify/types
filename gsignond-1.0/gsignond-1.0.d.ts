@@ -2013,50 +2013,6 @@ export namespace GSignond {
     }
 
     namespace Plugin {
-        /**
-         * Interface for implementing Plugin.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * This method cancels an ongoing authentication session. The plugin implementations
-             * should issue a #GSignondPlugin::error signal with #GSIGNOND_ERROR_SESSION_CANCELED
-             * error, and prepare for a new authentication session.
-             */
-            vfunc_cancel(): void;
-            /**
-             * This method asks the plugin to refresh the UI. The plugin responds with
-             * #GSignondPlugin::refreshed signal.
-             * @param ui_data UI refresh parameters
-             */
-            vfunc_refresh(ui_data: SignonuiData): void;
-            /**
-             * This method provides the plugin with additional parameters for the session
-             * after the plugin has asked for it via #GSignondPlugin::response signal.
-             * @param session_data additional parameters for the session
-             */
-            vfunc_request(session_data: SessionData): void;
-            /**
-             * This method starts a new authentication session.
-             * @param session_data parameters for the session
-             * @param identity_method_cache data from persistent storage, saved previously via #GSignondPlugin::store signal
-             * @param mechanism mechanism to use for the authentication
-             */
-            vfunc_request_initial(
-                session_data: SessionData,
-                identity_method_cache: Dictionary,
-                mechanism: string,
-            ): void;
-            /**
-             * This method provides the plugin with the results of UI interaction
-             * after the plugin has asked for it via #GSignondPlugin::user-action-required signal.
-             * @param ui_data results of UI interaction
-             */
-            vfunc_user_action_finished(ui_data: SignonuiData): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2069,7 +2025,7 @@ export namespace GSignond {
         $gtype: GObject.GType<Plugin>;
         prototype: Plugin;
     }
-    interface Plugin extends GObject.Object, Plugin.Interface {
+    interface Plugin extends GObject.Object {
         // Properties
 
         /**
@@ -2160,6 +2116,40 @@ export namespace GSignond {
          * @param ui_data UI data
          */
         user_action_required(ui_data: SignonuiData): void;
+
+        // Virtual methods
+
+        /**
+         * This method cancels an ongoing authentication session. The plugin implementations
+         * should issue a #GSignondPlugin::error signal with #GSIGNOND_ERROR_SESSION_CANCELED
+         * error, and prepare for a new authentication session.
+         */
+        vfunc_cancel(): void;
+        /**
+         * This method asks the plugin to refresh the UI. The plugin responds with
+         * #GSignondPlugin::refreshed signal.
+         * @param ui_data UI refresh parameters
+         */
+        vfunc_refresh(ui_data: SignonuiData): void;
+        /**
+         * This method provides the plugin with additional parameters for the session
+         * after the plugin has asked for it via #GSignondPlugin::response signal.
+         * @param session_data additional parameters for the session
+         */
+        vfunc_request(session_data: SessionData): void;
+        /**
+         * This method starts a new authentication session.
+         * @param session_data parameters for the session
+         * @param identity_method_cache data from persistent storage, saved previously via #GSignondPlugin::store signal
+         * @param mechanism mechanism to use for the authentication
+         */
+        vfunc_request_initial(session_data: SessionData, identity_method_cache: Dictionary, mechanism: string): void;
+        /**
+         * This method provides the plugin with the results of UI interaction
+         * after the plugin has asked for it via #GSignondPlugin::user-action-required signal.
+         * @param ui_data results of UI interaction
+         */
+        vfunc_user_action_finished(ui_data: SignonuiData): void;
     }
 
     export const Plugin: PluginNamespace & {

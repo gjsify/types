@@ -24797,50 +24797,6 @@ export namespace Gimp {
 
     type VectorLoadProcedureClass = typeof VectorLoadProcedure;
     namespace ColorManaged {
-        /**
-         * Interface for implementing ColorManaged.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * This function always returns a #GimpColorProfile and falls back to
-             * gimp_color_profile_new_rgb_srgb() if the method is not implemented.
-             */
-            vfunc_get_color_profile(): ColorProfile;
-            vfunc_get_icc_profile(): Uint8Array;
-            /**
-             * This function always returns a gboolean representing whether
-             * Black Point Compensation is enabled
-             */
-            vfunc_get_simulation_bpc(): boolean;
-            /**
-             * This function always returns a #GimpColorRenderingIntent
-             */
-            vfunc_get_simulation_intent(): ColorRenderingIntent;
-            /**
-             * This function always returns a #GimpColorProfile
-             */
-            vfunc_get_simulation_profile(): ColorProfile;
-            /**
-             * Emits the "profile-changed" signal.
-             */
-            vfunc_profile_changed(): void;
-            /**
-             * Emits the "simulation-bpc-changed" signal.
-             */
-            vfunc_simulation_bpc_changed(): void;
-            /**
-             * Emits the "simulation-intent-changed" signal.
-             */
-            vfunc_simulation_intent_changed(): void;
-            /**
-             * Emits the "simulation-profile-changed" signal.
-             */
-            vfunc_simulation_profile_changed(): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -24850,7 +24806,7 @@ export namespace Gimp {
         $gtype: GObject.GType<ColorManaged>;
         prototype: ColorManaged;
     }
-    interface ColorManaged extends GObject.Object, ColorManaged.Interface {
+    interface ColorManaged extends GObject.Object {
         // Methods
 
         /**
@@ -24892,6 +24848,44 @@ export namespace Gimp {
          * Emits the "simulation-profile-changed" signal.
          */
         simulation_profile_changed(): void;
+
+        // Virtual methods
+
+        /**
+         * This function always returns a #GimpColorProfile and falls back to
+         * gimp_color_profile_new_rgb_srgb() if the method is not implemented.
+         */
+        vfunc_get_color_profile(): ColorProfile;
+        vfunc_get_icc_profile(): Uint8Array;
+        /**
+         * This function always returns a gboolean representing whether
+         * Black Point Compensation is enabled
+         */
+        vfunc_get_simulation_bpc(): boolean;
+        /**
+         * This function always returns a #GimpColorRenderingIntent
+         */
+        vfunc_get_simulation_intent(): ColorRenderingIntent;
+        /**
+         * This function always returns a #GimpColorProfile
+         */
+        vfunc_get_simulation_profile(): ColorProfile;
+        /**
+         * Emits the "profile-changed" signal.
+         */
+        vfunc_profile_changed(): void;
+        /**
+         * Emits the "simulation-bpc-changed" signal.
+         */
+        vfunc_simulation_bpc_changed(): void;
+        /**
+         * Emits the "simulation-intent-changed" signal.
+         */
+        vfunc_simulation_intent_changed(): void;
+        /**
+         * Emits the "simulation-profile-changed" signal.
+         */
+        vfunc_simulation_profile_changed(): void;
     }
 
     export const ColorManaged: ColorManagedNamespace & {

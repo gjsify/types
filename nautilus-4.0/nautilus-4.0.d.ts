@@ -498,20 +498,6 @@ export namespace Nautilus {
     type PropertiesModelClass = typeof PropertiesModel;
     type PropertiesModelProviderInterface = typeof PropertiesModelProvider;
     namespace ColumnProvider {
-        /**
-         * Interface for implementing ColumnProvider.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Returns a #GList of #NautilusColumn.
-             *               See nautilus_column_provider_get_columns() for details.
-             */
-            vfunc_get_columns(): Column[] | null;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -521,10 +507,18 @@ export namespace Nautilus {
         $gtype: GObject.GType<ColumnProvider>;
         prototype: ColumnProvider;
     }
-    interface ColumnProvider extends GObject.Object, ColumnProvider.Interface {
+    interface ColumnProvider extends GObject.Object {
         // Methods
 
         get_columns(): Column[] | null;
+
+        // Virtual methods
+
+        /**
+         * Returns a #GList of #NautilusColumn.
+         *               See nautilus_column_provider_get_columns() for details.
+         */
+        vfunc_get_columns(): Column[] | null;
     }
 
     export const ColumnProvider: ColumnProviderNamespace & {
@@ -532,115 +526,6 @@ export namespace Nautilus {
     };
 
     namespace FileInfo {
-        /**
-         * Interface for implementing FileInfo.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Adds an emblem to this file.
-             *              See nautilus_file_info_add_emblem() for details.
-             * @param emblem_name the name of an emblem
-             */
-            vfunc_add_emblem(emblem_name: string): void;
-            /**
-             * Sets the specified string file attribute value.
-             *                        See nautilus_file_info_add_string_attribute() for details.
-             * @param attribute_name the name of an attribute
-             * @param value the name of an attribute
-             */
-            vfunc_add_string_attribute(attribute_name: string, value: string): void;
-            /**
-             * Returns whether the file is writable.
-             *             See nautilus_file_info_can_write() for details.
-             */
-            vfunc_can_write(): boolean;
-            /**
-             * Returns the file activation URI as a string.
-             *                      See nautilus_file_info_get_activation_uri() for details.
-             */
-            vfunc_get_activation_uri(): string;
-            /**
-             * Returns the file type.
-             *                 See nautilus_file_info_get_file_type() for details.
-             */
-            vfunc_get_file_type(): Gio.FileType;
-            /**
-             * Returns the file location as a #GFile.
-             *                See nautilus_file_info_get_location() for details.
-             */
-            vfunc_get_location(): Gio.File;
-            /**
-             * Returns the file mime type as a string.
-             *                 See nautilus_file_info_get_mime_type() for details.
-             */
-            vfunc_get_mime_type(): string;
-            /**
-             * Returns the file mount as a #GMount.
-             *             See nautilus_file_info_get_mount() for details.
-             */
-            vfunc_get_mount(): Gio.Mount | null;
-            /**
-             * Returns the file name as a string.
-             *            See nautilus_file_info_get_name() for details.
-             */
-            vfunc_get_name(): string;
-            /**
-             * It's not safe to call this recursively multiple times, as it works
-             * only for files already cached by Nautilus.
-             */
-            vfunc_get_parent_info(): FileInfo | null;
-            /**
-             * Returns the file parent location as a #GFile.
-             *                       See nautilus_file_info_get_parent_location() for details.
-             */
-            vfunc_get_parent_location(): Gio.File | null;
-            /**
-             * Returns the file parent URI as a string.
-             *                  See nautilus_file_info_get_parent_uri() for details.
-             */
-            vfunc_get_parent_uri(): string;
-            /**
-             * Returns the specified file attribute as a string.
-             *                        See nautilus_file_info_get_string_attribute() for details.
-             * @param attribute_name the name of an attribute
-             */
-            vfunc_get_string_attribute(attribute_name: string): string | null;
-            /**
-             * Returns the file URI as a string.
-             *           See nautilus_file_info_get_uri() for details.
-             */
-            vfunc_get_uri(): string;
-            /**
-             * Returns the file URI scheme as a string.
-             *                  See nautilus_file_info_get_uri_scheme() for details.
-             */
-            vfunc_get_uri_scheme(): string;
-            /**
-             * Invalidates information of the file provided by extensions.
-             *                             See nautilus_file_info_invalidate_extension_info() for details.
-             */
-            vfunc_invalidate_extension_info(): void;
-            /**
-             * Returns whether the file is a directory.
-             *                See nautilus_file_info_is_directory() for details.
-             */
-            vfunc_is_directory(): boolean;
-            /**
-             * Returns whether the file info is gone.
-             *           See nautilus_file_info_is_gone() for details.
-             */
-            vfunc_is_gone(): boolean;
-            /**
-             * Returns whether the file is the given mime type.
-             *                See nautilus_file_info_is_mime_type() for details.
-             * @param mime_type a MIME type
-             */
-            vfunc_is_mime_type(mime_type: string): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -657,7 +542,7 @@ export namespace Nautilus {
         lookup(location: Gio.File): FileInfo | null;
         lookup_for_uri(uri: string): FileInfo | null;
     }
-    interface FileInfo extends GObject.Object, FileInfo.Interface {
+    interface FileInfo extends GObject.Object {
         // Methods
 
         add_emblem(emblem_name: string): void;
@@ -684,6 +569,109 @@ export namespace Nautilus {
         is_directory(): boolean;
         is_gone(): boolean;
         is_mime_type(mime_type: string): boolean;
+
+        // Virtual methods
+
+        /**
+         * Adds an emblem to this file.
+         *              See nautilus_file_info_add_emblem() for details.
+         * @param emblem_name the name of an emblem
+         */
+        vfunc_add_emblem(emblem_name: string): void;
+        /**
+         * Sets the specified string file attribute value.
+         *                        See nautilus_file_info_add_string_attribute() for details.
+         * @param attribute_name the name of an attribute
+         * @param value the name of an attribute
+         */
+        vfunc_add_string_attribute(attribute_name: string, value: string): void;
+        /**
+         * Returns whether the file is writable.
+         *             See nautilus_file_info_can_write() for details.
+         */
+        vfunc_can_write(): boolean;
+        /**
+         * Returns the file activation URI as a string.
+         *                      See nautilus_file_info_get_activation_uri() for details.
+         */
+        vfunc_get_activation_uri(): string;
+        /**
+         * Returns the file type.
+         *                 See nautilus_file_info_get_file_type() for details.
+         */
+        vfunc_get_file_type(): Gio.FileType;
+        /**
+         * Returns the file location as a #GFile.
+         *                See nautilus_file_info_get_location() for details.
+         */
+        vfunc_get_location(): Gio.File;
+        /**
+         * Returns the file mime type as a string.
+         *                 See nautilus_file_info_get_mime_type() for details.
+         */
+        vfunc_get_mime_type(): string;
+        /**
+         * Returns the file mount as a #GMount.
+         *             See nautilus_file_info_get_mount() for details.
+         */
+        vfunc_get_mount(): Gio.Mount | null;
+        /**
+         * Returns the file name as a string.
+         *            See nautilus_file_info_get_name() for details.
+         */
+        vfunc_get_name(): string;
+        /**
+         * It's not safe to call this recursively multiple times, as it works
+         * only for files already cached by Nautilus.
+         */
+        vfunc_get_parent_info(): FileInfo | null;
+        /**
+         * Returns the file parent location as a #GFile.
+         *                       See nautilus_file_info_get_parent_location() for details.
+         */
+        vfunc_get_parent_location(): Gio.File | null;
+        /**
+         * Returns the file parent URI as a string.
+         *                  See nautilus_file_info_get_parent_uri() for details.
+         */
+        vfunc_get_parent_uri(): string;
+        /**
+         * Returns the specified file attribute as a string.
+         *                        See nautilus_file_info_get_string_attribute() for details.
+         * @param attribute_name the name of an attribute
+         */
+        vfunc_get_string_attribute(attribute_name: string): string | null;
+        /**
+         * Returns the file URI as a string.
+         *           See nautilus_file_info_get_uri() for details.
+         */
+        vfunc_get_uri(): string;
+        /**
+         * Returns the file URI scheme as a string.
+         *                  See nautilus_file_info_get_uri_scheme() for details.
+         */
+        vfunc_get_uri_scheme(): string;
+        /**
+         * Invalidates information of the file provided by extensions.
+         *                             See nautilus_file_info_invalidate_extension_info() for details.
+         */
+        vfunc_invalidate_extension_info(): void;
+        /**
+         * Returns whether the file is a directory.
+         *                See nautilus_file_info_is_directory() for details.
+         */
+        vfunc_is_directory(): boolean;
+        /**
+         * Returns whether the file info is gone.
+         *           See nautilus_file_info_is_gone() for details.
+         */
+        vfunc_is_gone(): boolean;
+        /**
+         * Returns whether the file is the given mime type.
+         *                See nautilus_file_info_is_mime_type() for details.
+         * @param mime_type a MIME type
+         */
+        vfunc_is_mime_type(mime_type: string): boolean;
     }
 
     export const FileInfo: FileInfoNamespace & {
@@ -691,31 +679,6 @@ export namespace Nautilus {
     };
 
     namespace InfoProvider {
-        /**
-         * Interface for implementing InfoProvider.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Cancels a previous call to nautilus_info_provider_update_file_info().
-             *                 See nautilus_info_provider_cancel_update() for details.
-             * @param handle the opaque #NautilusOperationHandle returned from a previous call to          nautilus_info_provider_update_file_info().
-             */
-            vfunc_cancel_update(handle: OperationHandle): void;
-            /**
-             * Returns a #NautilusOperationResult.
-             *                    See nautilus_info_provider_update_file_info() for details.
-             * @param file a #NautilusFileInfo
-             * @param update_complete the closure to invoke at some later time when returning                   @NAUTILUS_OPERATION_IN_PROGRESS.
-             */
-            vfunc_update_file_info(
-                file: FileInfo,
-                update_complete: GObject.Closure,
-            ): [OperationResult, OperationHandle | null];
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -732,11 +695,30 @@ export namespace Nautilus {
             result: OperationResult,
         ): void;
     }
-    interface InfoProvider extends GObject.Object, InfoProvider.Interface {
+    interface InfoProvider extends GObject.Object {
         // Methods
 
         cancel_update(handle: OperationHandle): void;
         update_file_info(file: FileInfo, update_complete: GObject.Closure): [OperationResult, OperationHandle | null];
+
+        // Virtual methods
+
+        /**
+         * Cancels a previous call to nautilus_info_provider_update_file_info().
+         *                 See nautilus_info_provider_cancel_update() for details.
+         * @param handle the opaque #NautilusOperationHandle returned from a previous call to          nautilus_info_provider_update_file_info().
+         */
+        vfunc_cancel_update(handle: OperationHandle): void;
+        /**
+         * Returns a #NautilusOperationResult.
+         *                    See nautilus_info_provider_update_file_info() for details.
+         * @param file a #NautilusFileInfo
+         * @param update_complete the closure to invoke at some later time when returning                   @NAUTILUS_OPERATION_IN_PROGRESS.
+         */
+        vfunc_update_file_info(
+            file: FileInfo,
+            update_complete: GObject.Closure,
+        ): [OperationResult, OperationHandle | null];
     }
 
     export const InfoProvider: InfoProviderNamespace & {
@@ -744,27 +726,6 @@ export namespace Nautilus {
     };
 
     namespace MenuProvider {
-        /**
-         * Interface for implementing MenuProvider.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Returns a #GList of #NautilusMenuItem.
-             *                        See nautilus_menu_provider_get_background_items() for details.
-             * @param current_folder the folder for which background items are requested
-             */
-            vfunc_get_background_items(current_folder: FileInfo): MenuItem[] | null;
-            /**
-             * Returns a #GList of #NautilusMenuItem.
-             *                  See nautilus_menu_provider_get_file_items() for details.
-             * @param files a list of #NautilusFileInfo
-             */
-            vfunc_get_file_items(files: FileInfo[]): MenuItem[] | null;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -774,7 +735,7 @@ export namespace Nautilus {
         $gtype: GObject.GType<MenuProvider>;
         prototype: MenuProvider;
     }
-    interface MenuProvider extends GObject.Object, MenuProvider.Interface {
+    interface MenuProvider extends GObject.Object {
         // Methods
 
         /**
@@ -783,6 +744,21 @@ export namespace Nautilus {
         emit_items_updated_signal(): void;
         get_background_items(current_folder: FileInfo): MenuItem[] | null;
         get_file_items(files: FileInfo[]): MenuItem[] | null;
+
+        // Virtual methods
+
+        /**
+         * Returns a #GList of #NautilusMenuItem.
+         *                        See nautilus_menu_provider_get_background_items() for details.
+         * @param current_folder the folder for which background items are requested
+         */
+        vfunc_get_background_items(current_folder: FileInfo): MenuItem[] | null;
+        /**
+         * Returns a #GList of #NautilusMenuItem.
+         *                  See nautilus_menu_provider_get_file_items() for details.
+         * @param files a list of #NautilusFileInfo
+         */
+        vfunc_get_file_items(files: FileInfo[]): MenuItem[] | null;
     }
 
     export const MenuProvider: MenuProviderNamespace & {
@@ -790,25 +766,6 @@ export namespace Nautilus {
     };
 
     namespace PropertiesModelProvider {
-        /**
-         * Interface for implementing PropertiesModelProvider.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * This function is called by the application when it wants properties models
-             * from the extension.
-             *
-             * This function is called in the main thread before the Properties are shown,
-             * so it should return quickly. The models can be populated and updated
-             * asynchronously.
-             * @param files a #GList of #NautilusFileInfo
-             */
-            vfunc_get_models(files: FileInfo[]): PropertiesModel[] | null;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -818,7 +775,7 @@ export namespace Nautilus {
         $gtype: GObject.GType<PropertiesModelProvider>;
         prototype: PropertiesModelProvider;
     }
-    interface PropertiesModelProvider extends GObject.Object, PropertiesModelProvider.Interface {
+    interface PropertiesModelProvider extends GObject.Object {
         // Methods
 
         /**
@@ -832,6 +789,19 @@ export namespace Nautilus {
          * @returns A #GList of allocated #NautilusPropertiesModel models.
          */
         get_models(files: FileInfo[]): PropertiesModel[] | null;
+
+        // Virtual methods
+
+        /**
+         * This function is called by the application when it wants properties models
+         * from the extension.
+         *
+         * This function is called in the main thread before the Properties are shown,
+         * so it should return quickly. The models can be populated and updated
+         * asynchronously.
+         * @param files a #GList of #NautilusFileInfo
+         */
+        vfunc_get_models(files: FileInfo[]): PropertiesModel[] | null;
     }
 
     export const PropertiesModelProvider: PropertiesModelProviderNamespace & {

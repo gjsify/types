@@ -1817,88 +1817,6 @@ export namespace ClutterGst {
     }
 
     namespace Player {
-        /**
-         * Interface for implementing Player.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends Clutter.Media.Interface {
-            // Virtual methods
-
-            vfunc_download_buffering(start: number, stop: number): void;
-            /**
-             * Get the current audio stream. The number returned in the index of the
-             * audio stream playing in the list returned by
-             * clutter_gst_player_get_audio_streams().
-             */
-            vfunc_get_audio_stream(): number;
-            /**
-             * Get the list of audio streams of the current media.
-             */
-            vfunc_get_audio_streams(): string[];
-            vfunc_get_buffering_mode(): BufferingMode;
-            /**
-             * Get the idle state of the pipeline.
-             */
-            vfunc_get_idle(): boolean;
-            /**
-             * Whether the player is seeking.
-             */
-            vfunc_get_in_seek(): boolean;
-            /**
-             * Retrieves the #GstPipeline used by the `player,` for direct use with
-             * GStreamer API.
-             */
-            vfunc_get_pipeline(): Gst.Element;
-            /**
-             * Get the current value of the seek-flags property.
-             */
-            vfunc_get_seek_flags(): SeekFlags;
-            /**
-             * Get the current subtitles track. The number returned is the index of the
-             * subtiles track in the list returned by
-             * clutter_gst_player_get_subtitle_tracks().
-             */
-            vfunc_get_subtitle_track(): number;
-            /**
-             * Get the list of subtitles tracks of the current media.
-             */
-            vfunc_get_subtitle_tracks(): string[];
-            /**
-             * Retrieves the user agent used when streaming.
-             */
-            vfunc_get_user_agent(): string;
-            /**
-             * Set the audio stream to play. `index_` is the index of the stream
-             * in the list returned by clutter_gst_player_get_audio_streams().
-             * @param index_ the index of the audio stream
-             */
-            vfunc_set_audio_stream(index_: number): void;
-            vfunc_set_buffering_mode(mode: BufferingMode): void;
-            /**
-             * Seeking can be done with several trade-offs. Clutter-gst defaults
-             * to %CLUTTER_GST_SEEK_FLAG_NONE.
-             * @param flags a combination of #ClutterGstSeekFlags
-             */
-            vfunc_set_seek_flags(flags: SeekFlags): void;
-            /**
-             * Set the subtitles track to play. `index_` is the index of the stream
-             * in the list returned by clutter_gst_player_get_subtitle_tracks().
-             *
-             * If `index_` is -1, the subtitles are turned off.
-             * @param index_ the index of the subtitles track
-             */
-            vfunc_set_subtitle_track(index_: number): void;
-            /**
-             * Sets the user agent to use when streaming.
-             *
-             * When streaming content, you might want to set a custom user agent, eg. to
-             * promote your software, make it appear in statistics or because the server
-             * requires a special user agent you want to impersonate.
-             * @param user_agent the user agent
-             */
-            vfunc_set_user_agent(user_agent: string): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.Media.ConstructorProps {
@@ -1933,7 +1851,7 @@ export namespace ClutterGst {
          */
         class_init(object_class: typeof GObject.Object): void;
     }
-    interface Player extends Clutter.Media, Player.Interface {
+    interface Player extends Clutter.Media {
         // Properties
 
         /**
@@ -2093,6 +2011,82 @@ export namespace ClutterGst {
          * @param user_agent the user agent
          */
         set_user_agent(user_agent: string): void;
+
+        // Virtual methods
+
+        vfunc_download_buffering(start: number, stop: number): void;
+        /**
+         * Get the current audio stream. The number returned in the index of the
+         * audio stream playing in the list returned by
+         * clutter_gst_player_get_audio_streams().
+         */
+        vfunc_get_audio_stream(): number;
+        /**
+         * Get the list of audio streams of the current media.
+         */
+        vfunc_get_audio_streams(): string[];
+        vfunc_get_buffering_mode(): BufferingMode;
+        /**
+         * Get the idle state of the pipeline.
+         */
+        vfunc_get_idle(): boolean;
+        /**
+         * Whether the player is seeking.
+         */
+        vfunc_get_in_seek(): boolean;
+        /**
+         * Retrieves the #GstPipeline used by the `player,` for direct use with
+         * GStreamer API.
+         */
+        vfunc_get_pipeline(): Gst.Element;
+        /**
+         * Get the current value of the seek-flags property.
+         */
+        vfunc_get_seek_flags(): SeekFlags;
+        /**
+         * Get the current subtitles track. The number returned is the index of the
+         * subtiles track in the list returned by
+         * clutter_gst_player_get_subtitle_tracks().
+         */
+        vfunc_get_subtitle_track(): number;
+        /**
+         * Get the list of subtitles tracks of the current media.
+         */
+        vfunc_get_subtitle_tracks(): string[];
+        /**
+         * Retrieves the user agent used when streaming.
+         */
+        vfunc_get_user_agent(): string;
+        /**
+         * Set the audio stream to play. `index_` is the index of the stream
+         * in the list returned by clutter_gst_player_get_audio_streams().
+         * @param index_ the index of the audio stream
+         */
+        vfunc_set_audio_stream(index_: number): void;
+        vfunc_set_buffering_mode(mode: BufferingMode): void;
+        /**
+         * Seeking can be done with several trade-offs. Clutter-gst defaults
+         * to %CLUTTER_GST_SEEK_FLAG_NONE.
+         * @param flags a combination of #ClutterGstSeekFlags
+         */
+        vfunc_set_seek_flags(flags: SeekFlags): void;
+        /**
+         * Set the subtitles track to play. `index_` is the index of the stream
+         * in the list returned by clutter_gst_player_get_subtitle_tracks().
+         *
+         * If `index_` is -1, the subtitles are turned off.
+         * @param index_ the index of the subtitles track
+         */
+        vfunc_set_subtitle_track(index_: number): void;
+        /**
+         * Sets the user agent to use when streaming.
+         *
+         * When streaming content, you might want to set a custom user agent, eg. to
+         * promote your software, make it appear in statistics or because the server
+         * requires a special user agent you want to impersonate.
+         * @param user_agent the user agent
+         */
+        vfunc_set_user_agent(user_agent: string): void;
     }
 
     export const Player: PlayerNamespace & {

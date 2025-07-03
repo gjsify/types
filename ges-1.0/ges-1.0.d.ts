@@ -38996,41 +38996,6 @@ export namespace GES {
     }
 
     namespace Extractable {
-        /**
-         * Interface for implementing Extractable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Gets the #GESAsset:id of some associated asset. It may be the case
-             * that the object has no set asset, or even that such an asset does not
-             * yet exist in the GES cache. Instead, this will return the asset
-             * #GESAsset:id that is _compatible_ with the current state of the object,
-             * as determined by the #GESExtractable implementer. If it was indeed
-             * extracted from an asset, this should return the same as its
-             * corresponding asset #GESAsset:id.
-             */
-            vfunc_get_id(): string;
-            /**
-             * This method is called after the #GESAsset of an object is
-             * set. If your class supports the asset of an object changing, then you
-             * can use this method to change the parameters of the object to match the
-             * new asset #GESAsset:id. If setting the asset should be able to fail,
-             * you should implement `set_asset_full` instead.
-             * @param asset
-             */
-            vfunc_set_asset(asset: Asset): void;
-            /**
-             * Like `set_asset,` but also allows you to return %FALSE
-             * to indicate a failure to change the object in response to a change in
-             * its asset.
-             * @param asset
-             */
-            vfunc_set_asset_full(asset: Asset): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
@@ -39040,7 +39005,7 @@ export namespace GES {
         $gtype: GObject.GType<Extractable>;
         prototype: Extractable;
     }
-    interface Extractable extends GObject.InitiallyUnowned, Extractable.Interface {
+    interface Extractable extends GObject.InitiallyUnowned {
         // Methods
 
         /**
@@ -39075,6 +39040,35 @@ export namespace GES {
          * @returns %TRUE if @asset could be successfully set on @self.
          */
         set_asset(asset: Asset): boolean;
+
+        // Virtual methods
+
+        /**
+         * Gets the #GESAsset:id of some associated asset. It may be the case
+         * that the object has no set asset, or even that such an asset does not
+         * yet exist in the GES cache. Instead, this will return the asset
+         * #GESAsset:id that is _compatible_ with the current state of the object,
+         * as determined by the #GESExtractable implementer. If it was indeed
+         * extracted from an asset, this should return the same as its
+         * corresponding asset #GESAsset:id.
+         */
+        vfunc_get_id(): string;
+        /**
+         * This method is called after the #GESAsset of an object is
+         * set. If your class supports the asset of an object changing, then you
+         * can use this method to change the parameters of the object to match the
+         * new asset #GESAsset:id. If setting the asset should be able to fail,
+         * you should implement `set_asset_full` instead.
+         * @param asset
+         */
+        vfunc_set_asset(asset: Asset): void;
+        /**
+         * Like `set_asset,` but also allows you to return %FALSE
+         * to indicate a failure to change the object in response to a change in
+         * its asset.
+         * @param asset
+         */
+        vfunc_set_asset_full(asset: Asset): boolean;
     }
 
     export const Extractable: ExtractableNamespace & {

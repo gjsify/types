@@ -2339,42 +2339,6 @@ export namespace Lfb {
     }
 
     namespace GdbusFeedback {
-        /**
-         * Interface for implementing GdbusFeedback.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Handler for the #LfbGdbusFeedback::feedback-ended signal.
-             * @param arg_id
-             * @param arg_reason
-             */
-            vfunc_feedback_ended(arg_id: number, arg_reason: number): void;
-            /**
-             * Handler for the #LfbGdbusFeedback::handle-end-feedback signal.
-             * @param invocation
-             * @param arg_id
-             */
-            vfunc_handle_end_feedback(invocation: Gio.DBusMethodInvocation, arg_id: number): boolean;
-            /**
-             * Handler for the #LfbGdbusFeedback::handle-trigger-feedback signal.
-             * @param invocation
-             * @param arg_app_id
-             * @param arg_event
-             * @param arg_hints
-             * @param arg_timeout
-             */
-            vfunc_handle_trigger_feedback(
-                invocation: Gio.DBusMethodInvocation,
-                arg_app_id: string,
-                arg_event: string,
-                arg_hints: GLib.Variant,
-                arg_timeout: number,
-            ): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2398,7 +2362,7 @@ export namespace Lfb {
          */
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
-    interface GdbusFeedback extends GObject.Object, GdbusFeedback.Interface {
+    interface GdbusFeedback extends GObject.Object {
         // Properties
 
         /**
@@ -2572,6 +2536,36 @@ export namespace Lfb {
          * @param arg_reason Argument to pass with the signal.
          */
         emit_feedback_ended(arg_id: number, arg_reason: number): void;
+
+        // Virtual methods
+
+        /**
+         * Handler for the #LfbGdbusFeedback::feedback-ended signal.
+         * @param arg_id
+         * @param arg_reason
+         */
+        vfunc_feedback_ended(arg_id: number, arg_reason: number): void;
+        /**
+         * Handler for the #LfbGdbusFeedback::handle-end-feedback signal.
+         * @param invocation
+         * @param arg_id
+         */
+        vfunc_handle_end_feedback(invocation: Gio.DBusMethodInvocation, arg_id: number): boolean;
+        /**
+         * Handler for the #LfbGdbusFeedback::handle-trigger-feedback signal.
+         * @param invocation
+         * @param arg_app_id
+         * @param arg_event
+         * @param arg_hints
+         * @param arg_timeout
+         */
+        vfunc_handle_trigger_feedback(
+            invocation: Gio.DBusMethodInvocation,
+            arg_app_id: string,
+            arg_event: string,
+            arg_hints: GLib.Variant,
+            arg_timeout: number,
+        ): boolean;
     }
 
     export const GdbusFeedback: GdbusFeedbackNamespace & {

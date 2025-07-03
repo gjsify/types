@@ -199,42 +199,6 @@ export namespace RygelRenderer {
     type MediaPlayerIface = typeof MediaPlayer;
     type PlayerControllerIface = typeof PlayerController;
     namespace MediaPlayer {
-        /**
-         * Interface for implementing MediaPlayer.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_seek(time: number): boolean;
-            vfunc_seek_bytes(bytes: number): boolean;
-            vfunc_get_protocols(): string[];
-            vfunc_get_mime_types(): string[];
-            vfunc_get_playback_state(): string;
-            vfunc_set_playback_state(value: string): void;
-            vfunc_get_allowed_playback_speeds(): string[];
-            vfunc_get_playback_speed(): string;
-            vfunc_set_playback_speed(value: string): void;
-            vfunc_get_uri(): string | null;
-            vfunc_set_uri(value?: string | null): void;
-            vfunc_get_volume(): number;
-            vfunc_set_volume(value: number): void;
-            vfunc_get_duration(): number;
-            vfunc_get_size(): number;
-            vfunc_get_metadata(): string | null;
-            vfunc_set_metadata(value?: string | null): void;
-            vfunc_get_mime_type(): string | null;
-            vfunc_set_mime_type(value?: string | null): void;
-            vfunc_get_can_seek(): boolean;
-            vfunc_get_can_seek_bytes(): boolean;
-            vfunc_get_content_features(): string | null;
-            vfunc_set_content_features(value?: string | null): void;
-            vfunc_get_position(): number;
-            vfunc_get_byte_position(): number;
-            vfunc_get_user_agent(): string | null;
-            vfunc_set_user_agent(value?: string | null): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -269,7 +233,7 @@ export namespace RygelRenderer {
         $gtype: GObject.GType<MediaPlayer>;
         prototype: MediaPlayer;
     }
-    interface MediaPlayer extends GObject.Object, MediaPlayer.Interface {
+    interface MediaPlayer extends GObject.Object {
         // Properties
 
         get playback_state(): string;
@@ -343,6 +307,36 @@ export namespace RygelRenderer {
         get_user_agent(): string | null;
         set_user_agent(value?: string | null): void;
         get_protocol_info(): string;
+
+        // Virtual methods
+
+        vfunc_seek(time: number): boolean;
+        vfunc_seek_bytes(bytes: number): boolean;
+        vfunc_get_protocols(): string[];
+        vfunc_get_mime_types(): string[];
+        vfunc_get_playback_state(): string;
+        vfunc_set_playback_state(value: string): void;
+        vfunc_get_allowed_playback_speeds(): string[];
+        vfunc_get_playback_speed(): string;
+        vfunc_set_playback_speed(value: string): void;
+        vfunc_get_uri(): string | null;
+        vfunc_set_uri(value?: string | null): void;
+        vfunc_get_volume(): number;
+        vfunc_set_volume(value: number): void;
+        vfunc_get_duration(): number;
+        vfunc_get_size(): number;
+        vfunc_get_metadata(): string | null;
+        vfunc_set_metadata(value?: string | null): void;
+        vfunc_get_mime_type(): string | null;
+        vfunc_set_mime_type(value?: string | null): void;
+        vfunc_get_can_seek(): boolean;
+        vfunc_get_can_seek_bytes(): boolean;
+        vfunc_get_content_features(): string | null;
+        vfunc_set_content_features(value?: string | null): void;
+        vfunc_get_position(): number;
+        vfunc_get_byte_position(): number;
+        vfunc_get_user_agent(): string | null;
+        vfunc_set_user_agent(value?: string | null): void;
     }
 
     export const MediaPlayer: MediaPlayerNamespace & {
@@ -350,54 +344,6 @@ export namespace RygelRenderer {
     };
 
     namespace PlayerController {
-        /**
-         * Interface for implementing PlayerController.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_next(): boolean;
-            vfunc_previous(): boolean;
-            vfunc_set_single_play_uri(
-                uri: string,
-                metadata: string,
-                mime?: string | null,
-                features?: string | null,
-            ): void;
-            vfunc_set_playlist_uri(uri: string, metadata: string, collection: GUPnPAV.MediaCollection): void;
-            vfunc_set_next_single_play_uri(
-                uri: string,
-                metadata: string,
-                mime?: string | null,
-                features?: string | null,
-            ): void;
-            vfunc_set_next_playlist_uri(uri: string, metadata: string, collection: GUPnPAV.MediaCollection): void;
-            vfunc_is_play_mode_valid(play_mode: string): boolean;
-            vfunc_get_playback_state(): string;
-            vfunc_set_playback_state(value: string): void;
-            vfunc_get_n_tracks(): number;
-            vfunc_set_n_tracks(value: number): void;
-            vfunc_get_track(): number;
-            vfunc_set_track(value: number): void;
-            vfunc_get_uri(): string;
-            vfunc_set_uri(value: string): void;
-            vfunc_get_metadata(): string;
-            vfunc_set_metadata(value: string): void;
-            vfunc_get_track_uri(): string;
-            vfunc_set_track_uri(value: string): void;
-            vfunc_get_track_metadata(): string;
-            vfunc_set_track_metadata(value: string): void;
-            vfunc_get_next_uri(): string;
-            vfunc_set_next_uri(value: string): void;
-            vfunc_get_next_metadata(): string;
-            vfunc_set_next_metadata(value: string): void;
-            vfunc_get_current_transport_actions(): string;
-            vfunc_get_play_mode(): string;
-            vfunc_set_play_mode(value: string): void;
-            vfunc_get_can_pause(): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -429,7 +375,7 @@ export namespace RygelRenderer {
         $gtype: GObject.GType<PlayerController>;
         prototype: PlayerController;
     }
-    interface PlayerController extends GObject.Object, PlayerController.Interface {
+    interface PlayerController extends GObject.Object {
         // Properties
 
         get playback_state(): string;
@@ -503,6 +449,43 @@ export namespace RygelRenderer {
         get_play_mode(): string;
         set_play_mode(value: string): void;
         get_can_pause(): boolean;
+
+        // Virtual methods
+
+        vfunc_next(): boolean;
+        vfunc_previous(): boolean;
+        vfunc_set_single_play_uri(uri: string, metadata: string, mime?: string | null, features?: string | null): void;
+        vfunc_set_playlist_uri(uri: string, metadata: string, collection: GUPnPAV.MediaCollection): void;
+        vfunc_set_next_single_play_uri(
+            uri: string,
+            metadata: string,
+            mime?: string | null,
+            features?: string | null,
+        ): void;
+        vfunc_set_next_playlist_uri(uri: string, metadata: string, collection: GUPnPAV.MediaCollection): void;
+        vfunc_is_play_mode_valid(play_mode: string): boolean;
+        vfunc_get_playback_state(): string;
+        vfunc_set_playback_state(value: string): void;
+        vfunc_get_n_tracks(): number;
+        vfunc_set_n_tracks(value: number): void;
+        vfunc_get_track(): number;
+        vfunc_set_track(value: number): void;
+        vfunc_get_uri(): string;
+        vfunc_set_uri(value: string): void;
+        vfunc_get_metadata(): string;
+        vfunc_set_metadata(value: string): void;
+        vfunc_get_track_uri(): string;
+        vfunc_set_track_uri(value: string): void;
+        vfunc_get_track_metadata(): string;
+        vfunc_set_track_metadata(value: string): void;
+        vfunc_get_next_uri(): string;
+        vfunc_set_next_uri(value: string): void;
+        vfunc_get_next_metadata(): string;
+        vfunc_set_next_metadata(value: string): void;
+        vfunc_get_current_transport_actions(): string;
+        vfunc_get_play_mode(): string;
+        vfunc_set_play_mode(value: string): void;
+        vfunc_get_can_pause(): boolean;
     }
 
     export const PlayerController: PlayerControllerNamespace & {

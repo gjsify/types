@@ -2157,16 +2157,6 @@ export namespace GstClapper {
     }
 
     namespace ClapperSignalDispatcher {
-        /**
-         * Interface for implementing ClapperSignalDispatcher.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_dispatch(clapper: Clapper, emitter: ClapperSignalDispatcherFunc): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2176,7 +2166,11 @@ export namespace GstClapper {
         $gtype: GObject.GType<ClapperSignalDispatcher>;
         prototype: ClapperSignalDispatcher;
     }
-    interface ClapperSignalDispatcher extends GObject.Object, ClapperSignalDispatcher.Interface {}
+    interface ClapperSignalDispatcher extends GObject.Object {
+        // Virtual methods
+
+        vfunc_dispatch(clapper: Clapper, emitter: ClapperSignalDispatcherFunc): void;
+    }
 
     export const ClapperSignalDispatcher: ClapperSignalDispatcherNamespace & {
         new (): ClapperSignalDispatcher; // This allows `obj instanceof ClapperSignalDispatcher`

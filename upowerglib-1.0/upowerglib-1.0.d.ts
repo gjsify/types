@@ -7437,20 +7437,6 @@ export namespace UPowerGlib {
     }
 
     namespace ClientGlue {
-        /**
-         * Interface for implementing ClientGlue.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_device_added(arg_device: string): void;
-            vfunc_device_removed(arg_device: string): void;
-            vfunc_handle_enumerate_devices(invocation: Gio.DBusMethodInvocation): boolean;
-            vfunc_handle_get_critical_action(invocation: Gio.DBusMethodInvocation): boolean;
-            vfunc_handle_get_display_device(invocation: Gio.DBusMethodInvocation): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7481,7 +7467,7 @@ export namespace UPowerGlib {
          */
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
-    interface ClientGlue extends GObject.Object, ClientGlue.Interface {
+    interface ClientGlue extends GObject.Object {
         // Properties
 
         /**
@@ -7724,6 +7710,14 @@ export namespace UPowerGlib {
          * @param arg_device Argument to pass with the signal.
          */
         emit_device_removed(arg_device: string): void;
+
+        // Virtual methods
+
+        vfunc_device_added(arg_device: string): void;
+        vfunc_device_removed(arg_device: string): void;
+        vfunc_handle_enumerate_devices(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_get_critical_action(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_get_display_device(invocation: Gio.DBusMethodInvocation): boolean;
     }
 
     export const ClientGlue: ClientGlueNamespace & {
@@ -7731,23 +7725,6 @@ export namespace UPowerGlib {
     };
 
     namespace DeviceGlue {
-        /**
-         * Interface for implementing DeviceGlue.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_handle_get_history(
-                invocation: Gio.DBusMethodInvocation,
-                arg_type: string,
-                arg_timespan: number,
-                arg_resolution: number,
-            ): boolean;
-            vfunc_handle_get_statistics(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
-            vfunc_handle_refresh(invocation: Gio.DBusMethodInvocation): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7813,7 +7790,7 @@ export namespace UPowerGlib {
          */
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
-    interface DeviceGlue extends GObject.Object, DeviceGlue.Interface {
+    interface DeviceGlue extends GObject.Object {
         // Properties
 
         /**
@@ -8321,6 +8298,17 @@ export namespace UPowerGlib {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_refresh(invocation: Gio.DBusMethodInvocation): void;
+
+        // Virtual methods
+
+        vfunc_handle_get_history(
+            invocation: Gio.DBusMethodInvocation,
+            arg_type: string,
+            arg_timespan: number,
+            arg_resolution: number,
+        ): boolean;
+        vfunc_handle_get_statistics(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
+        vfunc_handle_refresh(invocation: Gio.DBusMethodInvocation): boolean;
     }
 
     export const DeviceGlue: DeviceGlueNamespace & {
@@ -8328,19 +8316,6 @@ export namespace UPowerGlib {
     };
 
     namespace WakeupsGlue {
-        /**
-         * Interface for implementing WakeupsGlue.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_data_changed(): void;
-            vfunc_handle_get_data(invocation: Gio.DBusMethodInvocation): boolean;
-            vfunc_handle_get_total(invocation: Gio.DBusMethodInvocation): boolean;
-            vfunc_total_changed(arg_value: number): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8365,7 +8340,7 @@ export namespace UPowerGlib {
          */
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
-    interface WakeupsGlue extends GObject.Object, WakeupsGlue.Interface {
+    interface WakeupsGlue extends GObject.Object {
         // Properties
 
         /**
@@ -8502,6 +8477,13 @@ export namespace UPowerGlib {
          * @param arg_value Argument to pass with the signal.
          */
         emit_total_changed(arg_value: number): void;
+
+        // Virtual methods
+
+        vfunc_data_changed(): void;
+        vfunc_handle_get_data(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_get_total(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_total_changed(arg_value: number): void;
     }
 
     export const WakeupsGlue: WakeupsGlueNamespace & {

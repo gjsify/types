@@ -6551,18 +6551,6 @@ export namespace GstValidate {
     }
 
     namespace Reporter {
-        /**
-         * Interface for implementing Reporter.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_pipeline(): Gst.Pipeline | null;
-            vfunc_get_reporting_level(): ReportingDetails;
-            vfunc_intercept_report(report: Report): InterceptionReturn;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6575,7 +6563,7 @@ export namespace GstValidate {
         $gtype: GObject.GType<Reporter>;
         prototype: Reporter;
     }
-    interface Reporter extends GObject.Object, Reporter.Interface {
+    interface Reporter extends GObject.Object {
         // Properties
 
         get validate_runner(): Runner;
@@ -6625,6 +6613,12 @@ export namespace GstValidate {
          */
         set_name(name?: string | null): void;
         set_runner(runner: Runner): void;
+
+        // Virtual methods
+
+        vfunc_get_pipeline(): Gst.Pipeline | null;
+        vfunc_get_reporting_level(): ReportingDetails;
+        vfunc_intercept_report(report: Report): InterceptionReturn;
     }
 
     export const Reporter: ReporterNamespace & {

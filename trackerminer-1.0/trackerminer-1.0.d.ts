@@ -3970,138 +3970,6 @@ export namespace TrackerMiner {
     }
 
     namespace DataProvider {
-        /**
-         * Interface for implementing DataProvider.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Creates a #TrackerEnumerator to enumerate children at the URI
-             * provided by `url`.
-             *
-             * The attributes value is a string that specifies the file attributes
-             * that should be gathered. It is not an error if it's not possible to
-             * read a particular requested attribute from a file - it just won't
-             * be set. attributes should be a comma-separated list of attributes
-             * or attribute wildcards. The wildcard "*" means all attributes, and
-             * a wildcard like "standard::*" means all attributes in the standard
-             * namespace. An example attribute query be "standard::*,owner::user".
-             * The standard attributes are available as defines, like
-             * G_FILE_ATTRIBUTE_STANDARD_NAME. See g_file_enumerate_children() for
-             * more details.
-             * @param url a #GFile to enumerate
-             * @param attributes an attribute query string
-             * @param flags a set of #TrackerDirectoryFlags
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             */
-            vfunc_begin(
-                url: Gio.File,
-                attributes: string,
-                flags: DirectoryFlags,
-                cancellable?: Gio.Cancellable | null,
-            ): Enumerator;
-            /**
-             * Precisely the same operation as tracker_data_provider_begin()
-             * is performing, but asynchronously.
-             *
-             * When all i/o for the operation is finished the `callback` will be
-             * called with the requested information.
-             *
-             * See the documentation of #TrackerDataProvider for information about the
-             * order of returned files.
-             *
-             * In case of a partial error the callback will be called with any
-             * succeeding items and no error, and on the next request the error
-             * will be reported. If a request is cancelled the callback will be
-             * called with %G_IO_ERROR_CANCELLED.
-             *
-             * During an async request no other sync and async calls are allowed,
-             * and will result in %G_IO_ERROR_PENDING errors.
-             *
-             * Any outstanding i/o request with higher priority (lower numerical
-             * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             * @param url a #GFile to enumerate
-             * @param attributes an attribute query string
-             * @param flags a set of #TrackerDirectoryFlags
-             * @param io_priority the [I/O priority][io-priority] of the request
-             * @param cancellable optional #GCancellable object, %NULL to ignore
-             * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-             */
-            vfunc_begin_async(
-                url: Gio.File,
-                attributes: string,
-                flags: DirectoryFlags,
-                io_priority: number,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes the asynchronous operation started with
-             * tracker_data_provider_begin_async().
-             * @param result a #GAsyncResult.
-             */
-            vfunc_begin_finish(result: Gio.AsyncResult): Enumerator;
-            /**
-             * Closes any caches or operations related to creating the
-             * #TrackerEnumerator to enumerate data at `url`.
-             *
-             * The attributes value is a string that specifies the file attributes
-             * that should be gathered. It is not an error if it's not possible to
-             * read a particular requested attribute from a file - it just won't
-             * be set. attributes should be a comma-separated list of attributes
-             * or attribute wildcards. The wildcard "*" means all attributes, and
-             * a wildcard like "standard::*" means all attributes in the standard
-             * namespace. An example attribute query be "standard::*,owner::user".
-             * The standard attributes are available as defines, like
-             * G_FILE_ATTRIBUTE_STANDARD_NAME. See g_file_enumerate_children() for
-             * more details.
-             * @param enumerator a #TrackerEnumerator originally created by tracker_data_provider_begin().
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             */
-            vfunc_end(enumerator: Enumerator, cancellable?: Gio.Cancellable | null): boolean;
-            /**
-             * Precisely the same operation as tracker_data_provider_end()
-             * is performing, but asynchronously.
-             *
-             * When all i/o for the operation is finished the `callback` will be
-             * called with the requested information.
-             *
-             * See the documentation of #TrackerDataProvider for information about the
-             * order of returned files.
-             *
-             * In case of a partial error the callback will be called with any
-             * succeeding items and no error, and on the next request the error
-             * will be reported. If a request is cancelled the callback will be
-             * called with %G_IO_ERROR_CANCELLED.
-             *
-             * During an async request no other sync and async calls are allowed,
-             * and will result in %G_IO_ERROR_PENDING errors.
-             *
-             * Any outstanding i/o request with higher priority (lower numerical
-             * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             * @param enumerator a #TrackerEnumerator originally created by tracker_data_provider_begin().
-             * @param io_priority the [I/O priority][io-priority] of the request
-             * @param cancellable optional #GCancellable object, %NULL to ignore
-             * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-             */
-            vfunc_end_async(
-                enumerator: Enumerator,
-                io_priority: number,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes the asynchronous operation started with
-             * tracker_data_provider_end_async().
-             * @param result a #GAsyncResult.
-             */
-            vfunc_end_finish(result: Gio.AsyncResult): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4111,7 +3979,7 @@ export namespace TrackerMiner {
         $gtype: GObject.GType<DataProvider>;
         prototype: DataProvider;
     }
-    interface DataProvider extends GObject.Object, DataProvider.Interface {
+    interface DataProvider extends GObject.Object {
         // Methods
 
         /**
@@ -4373,6 +4241,132 @@ export namespace TrackerMiner {
          * @returns %TRUE on success, otherwise %FALSE and @error is set.
          */
         end_finish(result: Gio.AsyncResult): boolean;
+
+        // Virtual methods
+
+        /**
+         * Creates a #TrackerEnumerator to enumerate children at the URI
+         * provided by `url`.
+         *
+         * The attributes value is a string that specifies the file attributes
+         * that should be gathered. It is not an error if it's not possible to
+         * read a particular requested attribute from a file - it just won't
+         * be set. attributes should be a comma-separated list of attributes
+         * or attribute wildcards. The wildcard "*" means all attributes, and
+         * a wildcard like "standard::*" means all attributes in the standard
+         * namespace. An example attribute query be "standard::*,owner::user".
+         * The standard attributes are available as defines, like
+         * G_FILE_ATTRIBUTE_STANDARD_NAME. See g_file_enumerate_children() for
+         * more details.
+         * @param url a #GFile to enumerate
+         * @param attributes an attribute query string
+         * @param flags a set of #TrackerDirectoryFlags
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        vfunc_begin(
+            url: Gio.File,
+            attributes: string,
+            flags: DirectoryFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Enumerator;
+        /**
+         * Precisely the same operation as tracker_data_provider_begin()
+         * is performing, but asynchronously.
+         *
+         * When all i/o for the operation is finished the `callback` will be
+         * called with the requested information.
+         *
+         * See the documentation of #TrackerDataProvider for information about the
+         * order of returned files.
+         *
+         * In case of a partial error the callback will be called with any
+         * succeeding items and no error, and on the next request the error
+         * will be reported. If a request is cancelled the callback will be
+         * called with %G_IO_ERROR_CANCELLED.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param url a #GFile to enumerate
+         * @param attributes an attribute query string
+         * @param flags a set of #TrackerDirectoryFlags
+         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        vfunc_begin_async(
+            url: Gio.File,
+            attributes: string,
+            flags: DirectoryFlags,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes the asynchronous operation started with
+         * tracker_data_provider_begin_async().
+         * @param result a #GAsyncResult.
+         */
+        vfunc_begin_finish(result: Gio.AsyncResult): Enumerator;
+        /**
+         * Closes any caches or operations related to creating the
+         * #TrackerEnumerator to enumerate data at `url`.
+         *
+         * The attributes value is a string that specifies the file attributes
+         * that should be gathered. It is not an error if it's not possible to
+         * read a particular requested attribute from a file - it just won't
+         * be set. attributes should be a comma-separated list of attributes
+         * or attribute wildcards. The wildcard "*" means all attributes, and
+         * a wildcard like "standard::*" means all attributes in the standard
+         * namespace. An example attribute query be "standard::*,owner::user".
+         * The standard attributes are available as defines, like
+         * G_FILE_ATTRIBUTE_STANDARD_NAME. See g_file_enumerate_children() for
+         * more details.
+         * @param enumerator a #TrackerEnumerator originally created by tracker_data_provider_begin().
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        vfunc_end(enumerator: Enumerator, cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Precisely the same operation as tracker_data_provider_end()
+         * is performing, but asynchronously.
+         *
+         * When all i/o for the operation is finished the `callback` will be
+         * called with the requested information.
+         *
+         * See the documentation of #TrackerDataProvider for information about the
+         * order of returned files.
+         *
+         * In case of a partial error the callback will be called with any
+         * succeeding items and no error, and on the next request the error
+         * will be reported. If a request is cancelled the callback will be
+         * called with %G_IO_ERROR_CANCELLED.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param enumerator a #TrackerEnumerator originally created by tracker_data_provider_begin().
+         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        vfunc_end_async(
+            enumerator: Enumerator,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes the asynchronous operation started with
+         * tracker_data_provider_end_async().
+         * @param result a #GAsyncResult.
+         */
+        vfunc_end_finish(result: Gio.AsyncResult): boolean;
     }
 
     export const DataProvider: DataProviderNamespace & {
@@ -4380,54 +4374,6 @@ export namespace TrackerMiner {
     };
 
     namespace Enumerator {
-        /**
-         * Interface for implementing Enumerator.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            /**
-             * Enumerates to the next piece of data according to the `enumerator`
-             * implementation.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             */
-            vfunc_next(cancellable?: Gio.Cancellable | null): any | null;
-            /**
-             * Precisely the same operation as tracker_enumerator_next()
-             * is performing, but asynchronously.
-             *
-             * When all i/o for the operation is finished the `callback` will be
-             * called with the requested information.
-             *
-             * In case of a partial error the callback will be called with any
-             * succeeding items and no error, and on the next request the error
-             * will be reported. If a request is cancelled the callback will be
-             * called with %G_IO_ERROR_CANCELLED.
-             *
-             * During an async request no other sync and async calls are allowed,
-             * and will result in %G_IO_ERROR_PENDING errors.
-             *
-             * Any outstanding i/o request with higher priority (lower numerical
-             * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             * @param io_priority the [I/O priority][io-priority] of the request
-             * @param cancellable optional #GCancellable object, %NULL to ignore
-             * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-             */
-            vfunc_next_async(
-                io_priority: number,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes the asynchronous operation started with
-             * tracker_enumerator_next_async().
-             * @param result a #GAsyncResult.
-             */
-            vfunc_next_finish(result: Gio.AsyncResult): any | null;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4437,7 +4383,7 @@ export namespace TrackerMiner {
         $gtype: GObject.GType<Enumerator>;
         prototype: Enumerator;
     }
-    interface Enumerator extends GObject.Object, Enumerator.Interface {
+    interface Enumerator extends GObject.Object {
         // Methods
 
         /**
@@ -4530,6 +4476,48 @@ export namespace TrackerMiner {
          * @returns Returns a #gpointer with the next item from the @enumerator, or %NULL when @error is set or the operation was cancelled in @cancellable. The data must be freed. The function to free depends on the data returned by the enumerator and the #TrackerDataProvider that created the @enumerator.
          */
         next_finish(result: Gio.AsyncResult): any | null;
+
+        // Virtual methods
+
+        /**
+         * Enumerates to the next piece of data according to the `enumerator`
+         * implementation.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        vfunc_next(cancellable?: Gio.Cancellable | null): any | null;
+        /**
+         * Precisely the same operation as tracker_enumerator_next()
+         * is performing, but asynchronously.
+         *
+         * When all i/o for the operation is finished the `callback` will be
+         * called with the requested information.
+         *
+         * In case of a partial error the callback will be called with any
+         * succeeding items and no error, and on the next request the error
+         * will be reported. If a request is cancelled the callback will be
+         * called with %G_IO_ERROR_CANCELLED.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        vfunc_next_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes the asynchronous operation started with
+         * tracker_enumerator_next_async().
+         * @param result a #GAsyncResult.
+         */
+        vfunc_next_finish(result: Gio.AsyncResult): any | null;
     }
 
     export const Enumerator: EnumeratorNamespace & {

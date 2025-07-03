@@ -9803,21 +9803,6 @@ export namespace Tepl {
 
     type ViewClass = typeof View;
     namespace LanguageChooser {
-        /**
-         * Interface for implementing LanguageChooser.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_language_activated(language: GtkSource.Language): void;
-            /**
-             * Selects `language` in the list of available languages.
-             * @param language a #GtkSourceLanguage, or %NULL for "Plain Text".
-             */
-            vfunc_select_language(language?: GtkSource.Language | null): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9827,7 +9812,7 @@ export namespace Tepl {
         $gtype: GObject.GType<LanguageChooser>;
         prototype: LanguageChooser;
     }
-    interface LanguageChooser extends GObject.Object, LanguageChooser.Interface {
+    interface LanguageChooser extends GObject.Object {
         // Methods
 
         /**
@@ -9835,6 +9820,15 @@ export namespace Tepl {
          * @param language a #GtkSourceLanguage, or %NULL for "Plain Text".
          */
         select_language(language?: GtkSource.Language | null): void;
+
+        // Virtual methods
+
+        vfunc_language_activated(language: GtkSource.Language): void;
+        /**
+         * Selects `language` in the list of available languages.
+         * @param language a #GtkSourceLanguage, or %NULL for "Plain Text".
+         */
+        vfunc_select_language(language?: GtkSource.Language | null): void;
     }
 
     export const LanguageChooser: LanguageChooserNamespace & {
@@ -9842,31 +9836,6 @@ export namespace Tepl {
     };
 
     namespace TabGroup {
-        /**
-         * Interface for implementing TabGroup.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_append_tab_vfunc(tab: Tab): void;
-            vfunc_get_active_tab(): Tab | null;
-            /**
-             * Gets the list of #TeplTab's contained in `tab_group`.
-             *
-             * If `tab_group` contains non-#TeplTab children, those will not be present in the
-             * returned list. In other words, it is <emphasis>not</emphasis> guaranteed that
-             * the index of a #TeplTab in the returned #GList has the same child index in
-             * the `tab_group` container.
-             */
-            vfunc_get_tabs(): Tab[];
-            /**
-             * Sets the #TeplTabGroup:active-tab. `tab` must be part of `tab_group`.
-             * @param tab a #TeplTab part of @tab_group.
-             */
-            vfunc_set_active_tab(tab: Tab): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9883,7 +9852,7 @@ export namespace Tepl {
         $gtype: GObject.GType<TabGroup>;
         prototype: TabGroup;
     }
-    interface TabGroup extends GObject.Object, TabGroup.Interface {
+    interface TabGroup extends GObject.Object {
         // Properties
 
         /**
@@ -9957,6 +9926,25 @@ export namespace Tepl {
          * @param tab a #TeplTab part of @tab_group.
          */
         set_active_tab(tab: Tab): void;
+
+        // Virtual methods
+
+        vfunc_append_tab_vfunc(tab: Tab): void;
+        vfunc_get_active_tab(): Tab | null;
+        /**
+         * Gets the list of #TeplTab's contained in `tab_group`.
+         *
+         * If `tab_group` contains non-#TeplTab children, those will not be present in the
+         * returned list. In other words, it is <emphasis>not</emphasis> guaranteed that
+         * the index of a #TeplTab in the returned #GList has the same child index in
+         * the `tab_group` container.
+         */
+        vfunc_get_tabs(): Tab[];
+        /**
+         * Sets the #TeplTabGroup:active-tab. `tab` must be part of `tab_group`.
+         * @param tab a #TeplTab part of @tab_group.
+         */
+        vfunc_set_active_tab(tab: Tab): void;
     }
 
     export const TabGroup: TabGroupNamespace & {

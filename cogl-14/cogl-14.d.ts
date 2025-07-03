@@ -8162,17 +8162,6 @@ export namespace Cogl {
     }
 
     namespace ScanoutBuffer {
-        /**
-         * Interface for implementing ScanoutBuffer.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_height(): number;
-            vfunc_get_width(): number;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -8182,11 +8171,16 @@ export namespace Cogl {
         $gtype: GObject.GType<ScanoutBuffer>;
         prototype: ScanoutBuffer;
     }
-    interface ScanoutBuffer extends GObject.Object, ScanoutBuffer.Interface {
+    interface ScanoutBuffer extends GObject.Object {
         // Methods
 
         get_height(): number;
         get_width(): number;
+
+        // Virtual methods
+
+        vfunc_get_height(): number;
+        vfunc_get_width(): number;
     }
 
     export const ScanoutBuffer: ScanoutBufferNamespace & {

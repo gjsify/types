@@ -7392,20 +7392,6 @@ export namespace Gpseq {
     };
 
     namespace ChannelBase {
-        /**
-         * Interface for implementing ChannelBase.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_capacity(): Optional;
-            vfunc_get_length(): number;
-            vfunc_get_is_full(): boolean;
-            vfunc_get_is_empty(): boolean;
-            vfunc_close(): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7418,7 +7404,7 @@ export namespace Gpseq {
         $gtype: GObject.GType<ChannelBase>;
         prototype: ChannelBase;
     }
-    interface ChannelBase extends GObject.Object, ChannelBase.Interface {
+    interface ChannelBase extends GObject.Object {
         // Properties
 
         get capacity(): Optional;
@@ -7431,6 +7417,14 @@ export namespace Gpseq {
         get_is_full(): boolean;
         get_is_empty(): boolean;
         close(): void;
+
+        // Virtual methods
+
+        vfunc_get_capacity(): Optional;
+        vfunc_get_length(): number;
+        vfunc_get_is_full(): boolean;
+        vfunc_get_is_empty(): boolean;
+        vfunc_close(): void;
     }
 
     export const ChannelBase: ChannelBaseNamespace & {
@@ -7438,20 +7432,6 @@ export namespace Gpseq {
     };
 
     namespace Collector {
-        /**
-         * Interface for implementing Collector.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_features(): CollectorFeatures;
-            vfunc_create_accumulator(): any;
-            vfunc_accumulate(g: any, a: any): void;
-            vfunc_combine(a: any, b: any): any;
-            vfunc_finish(a: any): any;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7463,7 +7443,7 @@ export namespace Gpseq {
         $gtype: GObject.GType<Collector>;
         prototype: Collector;
     }
-    interface Collector extends GObject.Object, Collector.Interface {
+    interface Collector extends GObject.Object {
         // Properties
 
         get features(): CollectorFeatures;
@@ -7475,6 +7455,14 @@ export namespace Gpseq {
         accumulate(g: any, a: any): void;
         combine(a: any, b: any): any;
         finish(a: any): any;
+
+        // Virtual methods
+
+        vfunc_get_features(): CollectorFeatures;
+        vfunc_create_accumulator(): any;
+        vfunc_accumulate(g: any, a: any): void;
+        vfunc_combine(a: any, b: any): any;
+        vfunc_finish(a: any): any;
     }
 
     export const Collector: CollectorNamespace & {
@@ -7482,17 +7470,6 @@ export namespace Gpseq {
     };
 
     namespace Executor {
-        /**
-         * Interface for implementing Executor.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_submit(task: Task): void;
-            vfunc_get_parallels(): number;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7504,7 +7481,7 @@ export namespace Gpseq {
         $gtype: GObject.GType<Executor>;
         prototype: Executor;
     }
-    interface Executor extends GObject.Object, Executor.Interface {
+    interface Executor extends GObject.Object {
         // Properties
 
         get parallels(): number;
@@ -7513,6 +7490,11 @@ export namespace Gpseq {
 
         submit(task: Task): void;
         get_parallels(): number;
+
+        // Virtual methods
+
+        vfunc_submit(task: Task): void;
+        vfunc_get_parallels(): number;
     }
 
     export const Executor: ExecutorNamespace & {
@@ -7520,18 +7502,6 @@ export namespace Gpseq {
     };
 
     namespace Receiver {
-        /**
-         * Interface for implementing Receiver.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends ChannelBase.Interface {
-            // Virtual methods
-
-            vfunc_recv(): Result;
-            vfunc_recv_until(end_time: number): Result;
-            vfunc_try_recv(): Result;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends ChannelBase.ConstructorProps {}
@@ -7541,12 +7511,18 @@ export namespace Gpseq {
         $gtype: GObject.GType<Receiver>;
         prototype: Receiver;
     }
-    interface Receiver extends ChannelBase, Receiver.Interface {
+    interface Receiver extends ChannelBase {
         // Methods
 
         recv(): Result;
         recv_until(end_time: number): Result;
         try_recv(): Result;
+
+        // Virtual methods
+
+        vfunc_recv(): Result;
+        vfunc_recv_until(end_time: number): Result;
+        vfunc_try_recv(): Result;
     }
 
     export const Receiver: ReceiverNamespace & {
@@ -7554,35 +7530,6 @@ export namespace Gpseq {
     };
 
     namespace Result {
-        /**
-         * Interface for implementing Result.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends Gee.Hashable.Interface {
-            // Virtual methods
-
-            vfunc_future(): Future;
-            vfunc_get(): any;
-            vfunc_transform(
-                a_type: GObject.GType,
-                a_dup_func: GObject.BoxedCopyFunc,
-                func: Result.TransformFunc,
-            ): Result;
-            vfunc_flat_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, func: FlatMapFunc): Result;
-            vfunc_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, func: MapFunc): Result;
-            vfunc_map_err(func: Result.MapErrorFunc): Result;
-            vfunc_zip(
-                a_type: GObject.GType,
-                a_dup_func: GObject.BoxedCopyFunc,
-                b_type: GObject.GType,
-                b_dup_func: GObject.BoxedCopyFunc,
-                zip_func: Result.ZipFunc,
-                second: Result,
-            ): Result;
-            vfunc_then(func: GLib.Func): Result;
-            vfunc_and_then(func: Func): Result;
-        }
-
         interface TransformFunc {
             (
                 a_type: GObject.GType,
@@ -7647,7 +7594,7 @@ export namespace Gpseq {
         of(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, value: any): Result;
         err(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, exception: GLib.Error): Result;
     }
-    interface Result extends Gee.Hashable, Result.Interface {
+    interface Result extends Gee.Hashable {
         // Methods
 
         get_value_type(): GObject.GType;
@@ -7672,6 +7619,25 @@ export namespace Gpseq {
         ): Result;
         then(func: GLib.Func): Result;
         and_then(func: Func): Result;
+
+        // Virtual methods
+
+        vfunc_future(): Future;
+        vfunc_get(): any;
+        vfunc_transform(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, func: Result.TransformFunc): Result;
+        vfunc_flat_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, func: FlatMapFunc): Result;
+        vfunc_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, func: MapFunc): Result;
+        vfunc_map_err(func: Result.MapErrorFunc): Result;
+        vfunc_zip(
+            a_type: GObject.GType,
+            a_dup_func: GObject.BoxedCopyFunc,
+            b_type: GObject.GType,
+            b_dup_func: GObject.BoxedCopyFunc,
+            zip_func: Result.ZipFunc,
+            second: Result,
+        ): Result;
+        vfunc_then(func: GLib.Func): Result;
+        vfunc_and_then(func: Func): Result;
     }
 
     export const Result: ResultNamespace & {
@@ -7679,18 +7645,6 @@ export namespace Gpseq {
     };
 
     namespace Sender {
-        /**
-         * Interface for implementing Sender.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface extends ChannelBase.Interface {
-            // Virtual methods
-
-            vfunc_send(data: any): Result;
-            vfunc_send_until(data: any, end_time: number): Result;
-            vfunc_try_send(data: any): Result;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends ChannelBase.ConstructorProps {}
@@ -7700,12 +7654,18 @@ export namespace Gpseq {
         $gtype: GObject.GType<Sender>;
         prototype: Sender;
     }
-    interface Sender extends ChannelBase, Sender.Interface {
+    interface Sender extends ChannelBase {
         // Methods
 
         send(data: any): Result;
         send_until(data: any, end_time: number): Result;
         try_send(data: any): Result;
+
+        // Virtual methods
+
+        vfunc_send(data: any): Result;
+        vfunc_send_until(data: any, end_time: number): Result;
+        vfunc_try_send(data: any): Result;
     }
 
     export const Sender: SenderNamespace & {
@@ -7713,21 +7673,6 @@ export namespace Gpseq {
     };
 
     namespace Spliterator {
-        /**
-         * Interface for implementing Spliterator.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_try_split(): Spliterator;
-            vfunc_try_advance(consumer: Func): boolean;
-            vfunc_get_estimated_size(): number;
-            vfunc_get_is_size_known(): boolean;
-            vfunc_each(f: Func): void;
-            vfunc_each_chunk(f: EachChunkFunc): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7744,7 +7689,7 @@ export namespace Gpseq {
 
         empty(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): Spliterator;
     }
-    interface Spliterator extends GObject.Object, Spliterator.Interface {
+    interface Spliterator extends GObject.Object {
         // Properties
 
         get estimated_size(): number;
@@ -7761,6 +7706,15 @@ export namespace Gpseq {
         get_is_size_known(): boolean;
         each(f: Func): void;
         each_chunk(f: EachChunkFunc): boolean;
+
+        // Virtual methods
+
+        vfunc_try_split(): Spliterator;
+        vfunc_try_advance(consumer: Func): boolean;
+        vfunc_get_estimated_size(): number;
+        vfunc_get_is_size_known(): boolean;
+        vfunc_each(f: Func): void;
+        vfunc_each_chunk(f: EachChunkFunc): boolean;
     }
 
     export const Spliterator: SpliteratorNamespace & {
@@ -7768,16 +7722,6 @@ export namespace Gpseq {
     };
 
     namespace Supplier {
-        /**
-         * Interface for implementing Supplier.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_supply(): any;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7789,10 +7733,14 @@ export namespace Gpseq {
 
         from_func(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: SupplyFunc): Supplier;
     }
-    interface Supplier extends GObject.Object, Supplier.Interface {
+    interface Supplier extends GObject.Object {
         // Methods
 
         supply(): any;
+
+        // Virtual methods
+
+        vfunc_supply(): any;
     }
 
     export const Supplier: SupplierNamespace & {
@@ -7800,17 +7748,6 @@ export namespace Gpseq {
     };
 
     namespace Task {
-        /**
-         * Interface for implementing Task.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_future(): Future;
-            vfunc_compute(): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7822,7 +7759,7 @@ export namespace Gpseq {
         $gtype: GObject.GType<Task>;
         prototype: Task;
     }
-    interface Task extends GObject.Object, Task.Interface {
+    interface Task extends GObject.Object {
         // Properties
 
         get future(): Future;
@@ -7832,6 +7769,11 @@ export namespace Gpseq {
         get_future(): Future;
         compute(): void;
         invoke(): void;
+
+        // Virtual methods
+
+        vfunc_get_future(): Future;
+        vfunc_compute(): void;
     }
 
     export const Task: TaskNamespace & {
@@ -7839,16 +7781,6 @@ export namespace Gpseq {
     };
 
     namespace ThreadFactory {
-        /**
-         * Interface for implementing ThreadFactory.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_create_thread(pool: WorkerPool): WorkerThread;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7858,10 +7790,14 @@ export namespace Gpseq {
         $gtype: GObject.GType<ThreadFactory>;
         prototype: ThreadFactory;
     }
-    interface ThreadFactory extends GObject.Object, ThreadFactory.Interface {
+    interface ThreadFactory extends GObject.Object {
         // Methods
 
         create_thread(pool: WorkerPool): WorkerThread;
+
+        // Virtual methods
+
+        vfunc_create_thread(pool: WorkerPool): WorkerThread;
     }
 
     export const ThreadFactory: ThreadFactoryNamespace & {

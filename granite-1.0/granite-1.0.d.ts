@@ -7448,20 +7448,6 @@ export namespace Granite {
     }
 
     namespace ServicesContract {
-        /**
-         * Interface for implementing ServicesContract.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_display_name(): string;
-            vfunc_get_description(): string;
-            vfunc_get_icon(): Gio.Icon;
-            vfunc_execute_with_file(file: Gio.File): void;
-            vfunc_execute_with_files(files: Gio.File[]): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7471,7 +7457,7 @@ export namespace Granite {
         $gtype: GObject.GType<ServicesContract>;
         prototype: ServicesContract;
     }
-    interface ServicesContract extends GObject.Object, ServicesContract.Interface {
+    interface ServicesContract extends GObject.Object {
         // Methods
 
         get_display_name(): string;
@@ -7479,6 +7465,14 @@ export namespace Granite {
         get_icon(): Gio.Icon;
         execute_with_file(file: Gio.File): void;
         execute_with_files(files: Gio.File[]): void;
+
+        // Virtual methods
+
+        vfunc_get_display_name(): string;
+        vfunc_get_description(): string;
+        vfunc_get_icon(): Gio.Icon;
+        vfunc_execute_with_file(file: Gio.File): void;
+        vfunc_execute_with_files(files: Gio.File[]): void;
     }
 
     export const ServicesContract: ServicesContractNamespace & {
@@ -7486,17 +7480,6 @@ export namespace Granite {
     };
 
     namespace ServicesSettingsSerializable {
-        /**
-         * Interface for implementing ServicesSettingsSerializable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_settings_serialize(): string;
-            vfunc_settings_deserialize(s: string): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7506,11 +7489,16 @@ export namespace Granite {
         $gtype: GObject.GType<ServicesSettingsSerializable>;
         prototype: ServicesSettingsSerializable;
     }
-    interface ServicesSettingsSerializable extends GObject.Object, ServicesSettingsSerializable.Interface {
+    interface ServicesSettingsSerializable extends GObject.Object {
         // Methods
 
         settings_serialize(): string;
         settings_deserialize(s: string): void;
+
+        // Virtual methods
+
+        vfunc_settings_serialize(): string;
+        vfunc_settings_deserialize(s: string): void;
     }
 
     export const ServicesSettingsSerializable: ServicesSettingsSerializableNamespace & {
@@ -7518,17 +7506,6 @@ export namespace Granite {
     };
 
     namespace WidgetsSourceListSortable {
-        /**
-         * Interface for implementing WidgetsSourceListSortable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_allow_dnd_sorting(): boolean;
-            vfunc_compare(a: WidgetsSourceListItem, b: WidgetsSourceListItem): number;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends WidgetsSourceListExpandableItem.ConstructorProps {}
@@ -7538,11 +7515,16 @@ export namespace Granite {
         $gtype: GObject.GType<WidgetsSourceListSortable>;
         prototype: WidgetsSourceListSortable;
     }
-    interface WidgetsSourceListSortable extends WidgetsSourceListExpandableItem, WidgetsSourceListSortable.Interface {
+    interface WidgetsSourceListSortable extends WidgetsSourceListExpandableItem {
         // Methods
 
         allow_dnd_sorting(): boolean;
         compare(a: WidgetsSourceListItem, b: WidgetsSourceListItem): number;
+
+        // Virtual methods
+
+        vfunc_allow_dnd_sorting(): boolean;
+        vfunc_compare(a: WidgetsSourceListItem, b: WidgetsSourceListItem): number;
     }
 
     export const WidgetsSourceListSortable: WidgetsSourceListSortableNamespace & {
@@ -7550,17 +7532,6 @@ export namespace Granite {
     };
 
     namespace WidgetsSourceListDragSource {
-        /**
-         * Interface for implementing WidgetsSourceListDragSource.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_draggable(): boolean;
-            vfunc_prepare_selection_data(selection_data: Gtk.SelectionData): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends WidgetsSourceListItem.ConstructorProps {}
@@ -7570,11 +7541,16 @@ export namespace Granite {
         $gtype: GObject.GType<WidgetsSourceListDragSource>;
         prototype: WidgetsSourceListDragSource;
     }
-    interface WidgetsSourceListDragSource extends WidgetsSourceListItem, WidgetsSourceListDragSource.Interface {
+    interface WidgetsSourceListDragSource extends WidgetsSourceListItem {
         // Methods
 
         draggable(): boolean;
         prepare_selection_data(selection_data: Gtk.SelectionData): void;
+
+        // Virtual methods
+
+        vfunc_draggable(): boolean;
+        vfunc_prepare_selection_data(selection_data: Gtk.SelectionData): void;
     }
 
     export const WidgetsSourceListDragSource: WidgetsSourceListDragSourceNamespace & {
@@ -7582,17 +7558,6 @@ export namespace Granite {
     };
 
     namespace WidgetsSourceListDragDest {
-        /**
-         * Interface for implementing WidgetsSourceListDragDest.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_data_drop_possible(context: Gdk.DragContext, data: Gtk.SelectionData): boolean;
-            vfunc_data_received(context: Gdk.DragContext, data: Gtk.SelectionData): Gdk.DragAction;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends WidgetsSourceListItem.ConstructorProps {}
@@ -7602,11 +7567,16 @@ export namespace Granite {
         $gtype: GObject.GType<WidgetsSourceListDragDest>;
         prototype: WidgetsSourceListDragDest;
     }
-    interface WidgetsSourceListDragDest extends WidgetsSourceListItem, WidgetsSourceListDragDest.Interface {
+    interface WidgetsSourceListDragDest extends WidgetsSourceListItem {
         // Methods
 
         data_drop_possible(context: Gdk.DragContext, data: Gtk.SelectionData): boolean;
         data_received(context: Gdk.DragContext, data: Gtk.SelectionData): Gdk.DragAction;
+
+        // Virtual methods
+
+        vfunc_data_drop_possible(context: Gdk.DragContext, data: Gtk.SelectionData): boolean;
+        vfunc_data_received(context: Gdk.DragContext, data: Gtk.SelectionData): Gdk.DragAction;
     }
 
     export const WidgetsSourceListDragDest: WidgetsSourceListDragDestNamespace & {

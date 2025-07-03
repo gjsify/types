@@ -5383,18 +5383,6 @@ export namespace Midori {
     type PreferencesActivatableIface = typeof PreferencesActivatable;
     type TabActivatableIface = typeof TabActivatable;
     namespace AppActivatable {
-        /**
-         * Interface for implementing AppActivatable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_activate(): void;
-            vfunc_get_app(): App;
-            vfunc_set_app(value: App): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Peas.ExtensionBase.ConstructorProps {
@@ -5406,7 +5394,7 @@ export namespace Midori {
         $gtype: GObject.GType<AppActivatable>;
         prototype: AppActivatable;
     }
-    interface AppActivatable extends Peas.ExtensionBase, AppActivatable.Interface {
+    interface AppActivatable extends Peas.ExtensionBase {
         // Properties
 
         get app(): App;
@@ -5417,6 +5405,12 @@ export namespace Midori {
         activate(): void;
         get_app(): App;
         set_app(value: App): void;
+
+        // Virtual methods
+
+        vfunc_activate(): void;
+        vfunc_get_app(): App;
+        vfunc_set_app(value: App): void;
     }
 
     export const AppActivatable: AppActivatableNamespace & {
@@ -5424,18 +5418,6 @@ export namespace Midori {
     };
 
     namespace BrowserActivatable {
-        /**
-         * Interface for implementing BrowserActivatable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_activate(): void;
-            vfunc_get_browser(): Browser;
-            vfunc_set_browser(value: Browser): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5447,7 +5429,7 @@ export namespace Midori {
         $gtype: GObject.GType<BrowserActivatable>;
         prototype: BrowserActivatable;
     }
-    interface BrowserActivatable extends GObject.Object, BrowserActivatable.Interface {
+    interface BrowserActivatable extends GObject.Object {
         // Properties
 
         get browser(): Browser;
@@ -5458,6 +5440,12 @@ export namespace Midori {
         activate(): void;
         get_browser(): Browser;
         set_browser(value: Browser): void;
+
+        // Virtual methods
+
+        vfunc_activate(): void;
+        vfunc_get_browser(): Browser;
+        vfunc_set_browser(value: Browser): void;
     }
 
     export const BrowserActivatable: BrowserActivatableNamespace & {
@@ -5465,20 +5453,6 @@ export namespace Midori {
     };
 
     namespace ClearPrivateDataActivatable {
-        /**
-         * Interface for implementing ClearPrivateDataActivatable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_activate(): void;
-            vfunc_clear(timespan: GLib.TimeSpan, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
-            vfunc_clear_finish(_res_: Gio.AsyncResult): void;
-            vfunc_get_box(): Gtk.Box;
-            vfunc_set_box(value: Gtk.Box): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5490,7 +5464,7 @@ export namespace Midori {
         $gtype: GObject.GType<ClearPrivateDataActivatable>;
         prototype: ClearPrivateDataActivatable;
     }
-    interface ClearPrivateDataActivatable extends GObject.Object, ClearPrivateDataActivatable.Interface {
+    interface ClearPrivateDataActivatable extends GObject.Object {
         // Properties
 
         get box(): Gtk.Box;
@@ -5508,6 +5482,14 @@ export namespace Midori {
         clear_finish(_res_: Gio.AsyncResult): void;
         get_box(): Gtk.Box;
         set_box(value: Gtk.Box): void;
+
+        // Virtual methods
+
+        vfunc_activate(): void;
+        vfunc_clear(timespan: GLib.TimeSpan, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_clear_finish(_res_: Gio.AsyncResult): void;
+        vfunc_get_box(): Gtk.Box;
+        vfunc_set_box(value: Gtk.Box): void;
     }
 
     export const ClearPrivateDataActivatable: ClearPrivateDataActivatableNamespace & {
@@ -5515,18 +5497,6 @@ export namespace Midori {
     };
 
     namespace CompletionActivatable {
-        /**
-         * Interface for implementing CompletionActivatable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_activate(): void;
-            vfunc_get_completion(): Completion;
-            vfunc_set_completion(value: Completion): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Peas.ExtensionBase.ConstructorProps {
@@ -5538,7 +5508,7 @@ export namespace Midori {
         $gtype: GObject.GType<CompletionActivatable>;
         prototype: CompletionActivatable;
     }
-    interface CompletionActivatable extends Peas.ExtensionBase, CompletionActivatable.Interface {
+    interface CompletionActivatable extends Peas.ExtensionBase {
         // Properties
 
         get completion(): Completion;
@@ -5549,6 +5519,12 @@ export namespace Midori {
         activate(): void;
         get_completion(): Completion;
         set_completion(value: Completion): void;
+
+        // Virtual methods
+
+        vfunc_activate(): void;
+        vfunc_get_completion(): Completion;
+        vfunc_set_completion(value: Completion): void;
     }
 
     export const CompletionActivatable: CompletionActivatableNamespace & {
@@ -5577,18 +5553,6 @@ export namespace Midori {
     };
 
     namespace PreferencesActivatable {
-        /**
-         * Interface for implementing PreferencesActivatable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_activate(): void;
-            vfunc_get_preferences(): Preferences;
-            vfunc_set_preferences(value: Preferences): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5600,7 +5564,7 @@ export namespace Midori {
         $gtype: GObject.GType<PreferencesActivatable>;
         prototype: PreferencesActivatable;
     }
-    interface PreferencesActivatable extends GObject.Object, PreferencesActivatable.Interface {
+    interface PreferencesActivatable extends GObject.Object {
         // Properties
 
         get preferences(): Preferences;
@@ -5611,6 +5575,12 @@ export namespace Midori {
         activate(): void;
         get_preferences(): Preferences;
         set_preferences(value: Preferences): void;
+
+        // Virtual methods
+
+        vfunc_activate(): void;
+        vfunc_get_preferences(): Preferences;
+        vfunc_set_preferences(value: Preferences): void;
     }
 
     export const PreferencesActivatable: PreferencesActivatableNamespace & {
@@ -5618,18 +5588,6 @@ export namespace Midori {
     };
 
     namespace TabActivatable {
-        /**
-         * Interface for implementing TabActivatable.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_activate(): void;
-            vfunc_get_tab(): Tab;
-            vfunc_set_tab(value: Tab): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends Peas.ExtensionBase.ConstructorProps {
@@ -5641,7 +5599,7 @@ export namespace Midori {
         $gtype: GObject.GType<TabActivatable>;
         prototype: TabActivatable;
     }
-    interface TabActivatable extends Peas.ExtensionBase, TabActivatable.Interface {
+    interface TabActivatable extends Peas.ExtensionBase {
         // Properties
 
         get tab(): Tab;
@@ -5652,6 +5610,12 @@ export namespace Midori {
         activate(): void;
         get_tab(): Tab;
         set_tab(value: Tab): void;
+
+        // Virtual methods
+
+        vfunc_activate(): void;
+        vfunc_get_tab(): Tab;
+        vfunc_set_tab(value: Tab): void;
     }
 
     export const TabActivatable: TabActivatableNamespace & {

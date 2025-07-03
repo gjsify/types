@@ -3382,17 +3382,6 @@ export namespace EvinceDocument {
     };
 
     namespace AsyncRenderer {
-        /**
-         * Interface for implementing AsyncRenderer.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_render_finished(pixbuf: GdkPixbuf.Pixbuf): void;
-            vfunc_render_pixbuf(page: number, scale: number, rotation: number): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3402,10 +3391,15 @@ export namespace EvinceDocument {
         $gtype: GObject.GType<AsyncRenderer>;
         prototype: AsyncRenderer;
     }
-    interface AsyncRenderer extends GObject.Object, AsyncRenderer.Interface {
+    interface AsyncRenderer extends GObject.Object {
         // Methods
 
         render_pixbuf(page: number, scale: number, rotation: number): void;
+
+        // Virtual methods
+
+        vfunc_render_finished(pixbuf: GdkPixbuf.Pixbuf): void;
+        vfunc_render_pixbuf(page: number, scale: number, rotation: number): void;
     }
 
     export const AsyncRenderer: AsyncRendererNamespace & {
@@ -3413,21 +3407,6 @@ export namespace EvinceDocument {
     };
 
     namespace DocumentAnnotations {
-        /**
-         * Interface for implementing DocumentAnnotations.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_add_annotation(annot: Annotation, rect: Rectangle): void;
-            vfunc_document_is_modified(): boolean;
-            vfunc_get_annotations(page: Page): MappingList;
-            vfunc_over_markup(annot: Annotation, x: number, y: number): AnnotationsOverMarkup;
-            vfunc_remove_annotation(annot: Annotation): void;
-            vfunc_save_annotation(annot: Annotation, mask: AnnotationsSaveMask): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3437,7 +3416,7 @@ export namespace EvinceDocument {
         $gtype: GObject.GType<DocumentAnnotations>;
         prototype: DocumentAnnotations;
     }
-    interface DocumentAnnotations extends GObject.Object, DocumentAnnotations.Interface {
+    interface DocumentAnnotations extends GObject.Object {
         // Methods
 
         add_annotation(annot: Annotation, rect: Rectangle): void;
@@ -3448,6 +3427,15 @@ export namespace EvinceDocument {
         over_markup(annot: Annotation, x: number, y: number): AnnotationsOverMarkup;
         remove_annotation(annot: Annotation): void;
         save_annotation(annot: Annotation, mask: AnnotationsSaveMask | null): void;
+
+        // Virtual methods
+
+        vfunc_add_annotation(annot: Annotation, rect: Rectangle): void;
+        vfunc_document_is_modified(): boolean;
+        vfunc_get_annotations(page: Page): MappingList;
+        vfunc_over_markup(annot: Annotation, x: number, y: number): AnnotationsOverMarkup;
+        vfunc_remove_annotation(annot: Annotation): void;
+        vfunc_save_annotation(annot: Annotation, mask: AnnotationsSaveMask): void;
     }
 
     export const DocumentAnnotations: DocumentAnnotationsNamespace & {
@@ -3455,17 +3443,6 @@ export namespace EvinceDocument {
     };
 
     namespace DocumentAttachments {
-        /**
-         * Interface for implementing DocumentAttachments.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_attachments(): Attachment[];
-            vfunc_has_attachments(): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3475,11 +3452,16 @@ export namespace EvinceDocument {
         $gtype: GObject.GType<DocumentAttachments>;
         prototype: DocumentAttachments;
     }
-    interface DocumentAttachments extends GObject.Object, DocumentAttachments.Interface {
+    interface DocumentAttachments extends GObject.Object {
         // Methods
 
         get_attachments(): Attachment[];
         has_attachments(): boolean;
+
+        // Virtual methods
+
+        vfunc_get_attachments(): Attachment[];
+        vfunc_has_attachments(): boolean;
     }
 
     export const DocumentAttachments: DocumentAttachmentsNamespace & {
@@ -3487,19 +3469,6 @@ export namespace EvinceDocument {
     };
 
     namespace DocumentFind {
-        /**
-         * Interface for implementing DocumentFind.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_find_text(page: Page, text: string, case_sensitive: boolean): Rectangle[];
-            vfunc_find_text_extended(page: Page, text: string, options: FindOptions): FindRectangle[];
-            vfunc_find_text_with_options(page: Page, text: string, options: FindOptions): Rectangle[];
-            vfunc_get_supported_options(): FindOptions;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3509,13 +3478,20 @@ export namespace EvinceDocument {
         $gtype: GObject.GType<DocumentFind>;
         prototype: DocumentFind;
     }
-    interface DocumentFind extends GObject.Object, DocumentFind.Interface {
+    interface DocumentFind extends GObject.Object {
         // Methods
 
         find_text(page: Page, text: string, case_sensitive: boolean): Rectangle[];
         find_text_extended(page: Page, text: string, options: FindOptions | null): FindRectangle[];
         find_text_with_options(page: Page, text: string, options: FindOptions | null): Rectangle[];
         get_supported_options(): FindOptions;
+
+        // Virtual methods
+
+        vfunc_find_text(page: Page, text: string, case_sensitive: boolean): Rectangle[];
+        vfunc_find_text_extended(page: Page, text: string, options: FindOptions): FindRectangle[];
+        vfunc_find_text_with_options(page: Page, text: string, options: FindOptions): Rectangle[];
+        vfunc_get_supported_options(): FindOptions;
     }
 
     export const DocumentFind: DocumentFindNamespace & {
@@ -3523,19 +3499,6 @@ export namespace EvinceDocument {
     };
 
     namespace DocumentFonts {
-        /**
-         * Interface for implementing DocumentFonts.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_fill_model(model: Gtk.TreeModel): void;
-            vfunc_get_fonts_summary(): string;
-            vfunc_get_progress(): number;
-            vfunc_scan(n_pages: number): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3545,13 +3508,20 @@ export namespace EvinceDocument {
         $gtype: GObject.GType<DocumentFonts>;
         prototype: DocumentFonts;
     }
-    interface DocumentFonts extends GObject.Object, DocumentFonts.Interface {
+    interface DocumentFonts extends GObject.Object {
         // Methods
 
         fill_model(model: Gtk.TreeModel): void;
         get_fonts_summary(): string;
         get_progress(): number;
         scan(n_pages: number): boolean;
+
+        // Virtual methods
+
+        vfunc_fill_model(model: Gtk.TreeModel): void;
+        vfunc_get_fonts_summary(): string;
+        vfunc_get_progress(): number;
+        vfunc_scan(n_pages: number): boolean;
     }
 
     export const DocumentFonts: DocumentFontsNamespace & {
@@ -3559,30 +3529,6 @@ export namespace EvinceDocument {
     };
 
     namespace DocumentForms {
-        /**
-         * Interface for implementing DocumentForms.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_document_is_modified(): boolean;
-            vfunc_form_field_button_get_state(field: FormField): boolean;
-            vfunc_form_field_button_set_state(field: FormField, state: boolean): void;
-            vfunc_form_field_choice_get_item(field: FormField, index: number): string;
-            vfunc_form_field_choice_get_n_items(field: FormField): number;
-            vfunc_form_field_choice_get_text(field: FormField): string;
-            vfunc_form_field_choice_is_item_selected(field: FormField, index: number): boolean;
-            vfunc_form_field_choice_select_item(field: FormField, index: number): void;
-            vfunc_form_field_choice_set_text(field: FormField, text: string): void;
-            vfunc_form_field_choice_toggle_item(field: FormField, index: number): void;
-            vfunc_form_field_choice_unselect_all(field: FormField): void;
-            vfunc_form_field_text_get_text(field: FormField): string;
-            vfunc_form_field_text_set_text(field: FormField, text: string): void;
-            vfunc_get_form_fields(page: Page): MappingList;
-            vfunc_reset_form(action: LinkAction): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3592,7 +3538,7 @@ export namespace EvinceDocument {
         $gtype: GObject.GType<DocumentForms>;
         prototype: DocumentForms;
     }
-    interface DocumentForms extends GObject.Object, DocumentForms.Interface {
+    interface DocumentForms extends GObject.Object {
         // Methods
 
         document_is_modified(): boolean;
@@ -3610,6 +3556,24 @@ export namespace EvinceDocument {
         form_field_text_set_text(field: FormField, text: string): void;
         get_form_fields(page: Page): MappingList;
         reset_form(action: LinkAction): void;
+
+        // Virtual methods
+
+        vfunc_document_is_modified(): boolean;
+        vfunc_form_field_button_get_state(field: FormField): boolean;
+        vfunc_form_field_button_set_state(field: FormField, state: boolean): void;
+        vfunc_form_field_choice_get_item(field: FormField, index: number): string;
+        vfunc_form_field_choice_get_n_items(field: FormField): number;
+        vfunc_form_field_choice_get_text(field: FormField): string;
+        vfunc_form_field_choice_is_item_selected(field: FormField, index: number): boolean;
+        vfunc_form_field_choice_select_item(field: FormField, index: number): void;
+        vfunc_form_field_choice_set_text(field: FormField, text: string): void;
+        vfunc_form_field_choice_toggle_item(field: FormField, index: number): void;
+        vfunc_form_field_choice_unselect_all(field: FormField): void;
+        vfunc_form_field_text_get_text(field: FormField): string;
+        vfunc_form_field_text_set_text(field: FormField, text: string): void;
+        vfunc_get_form_fields(page: Page): MappingList;
+        vfunc_reset_form(action: LinkAction): void;
     }
 
     export const DocumentForms: DocumentFormsNamespace & {
@@ -3617,17 +3581,6 @@ export namespace EvinceDocument {
     };
 
     namespace DocumentImages {
-        /**
-         * Interface for implementing DocumentImages.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_image(image: Image): GdkPixbuf.Pixbuf;
-            vfunc_get_image_mapping(page: Page): MappingList;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3637,11 +3590,16 @@ export namespace EvinceDocument {
         $gtype: GObject.GType<DocumentImages>;
         prototype: DocumentImages;
     }
-    interface DocumentImages extends GObject.Object, DocumentImages.Interface {
+    interface DocumentImages extends GObject.Object {
         // Methods
 
         get_image(image: Image): GdkPixbuf.Pixbuf;
         get_image_mapping(page: Page): MappingList;
+
+        // Virtual methods
+
+        vfunc_get_image(image: Image): GdkPixbuf.Pixbuf;
+        vfunc_get_image_mapping(page: Page): MappingList;
     }
 
     export const DocumentImages: DocumentImagesNamespace & {
@@ -3649,20 +3607,6 @@ export namespace EvinceDocument {
     };
 
     namespace DocumentLayers {
-        /**
-         * Interface for implementing DocumentLayers.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_layers(): Gtk.TreeModel;
-            vfunc_has_layers(): boolean;
-            vfunc_hide_layer(layer: Layer): void;
-            vfunc_layer_is_visible(layer: Layer): boolean;
-            vfunc_show_layer(layer: Layer): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3672,7 +3616,7 @@ export namespace EvinceDocument {
         $gtype: GObject.GType<DocumentLayers>;
         prototype: DocumentLayers;
     }
-    interface DocumentLayers extends GObject.Object, DocumentLayers.Interface {
+    interface DocumentLayers extends GObject.Object {
         // Methods
 
         get_layers(): Gtk.TreeModel;
@@ -3680,6 +3624,14 @@ export namespace EvinceDocument {
         hide_layer(layer: Layer): void;
         layer_is_visible(layer: Layer): boolean;
         show_layer(layer: Layer): void;
+
+        // Virtual methods
+
+        vfunc_get_layers(): Gtk.TreeModel;
+        vfunc_has_layers(): boolean;
+        vfunc_hide_layer(layer: Layer): void;
+        vfunc_layer_is_visible(layer: Layer): boolean;
+        vfunc_show_layer(layer: Layer): void;
     }
 
     export const DocumentLayers: DocumentLayersNamespace & {
@@ -3687,20 +3639,6 @@ export namespace EvinceDocument {
     };
 
     namespace DocumentLinks {
-        /**
-         * Interface for implementing DocumentLinks.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_find_link_dest(link_name: string): LinkDest;
-            vfunc_find_link_page(link_name: string): number;
-            vfunc_get_links(page: Page): MappingList;
-            vfunc_get_links_model(): Gtk.TreeModel;
-            vfunc_has_document_links(): boolean;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3710,7 +3648,7 @@ export namespace EvinceDocument {
         $gtype: GObject.GType<DocumentLinks>;
         prototype: DocumentLinks;
     }
-    interface DocumentLinks extends GObject.Object, DocumentLinks.Interface {
+    interface DocumentLinks extends GObject.Object {
         // Methods
 
         find_link_dest(link_name: string): LinkDest;
@@ -3722,6 +3660,14 @@ export namespace EvinceDocument {
         get_links(page: Page): MappingList;
         get_links_model(): Gtk.TreeModel;
         has_document_links(): boolean;
+
+        // Virtual methods
+
+        vfunc_find_link_dest(link_name: string): LinkDest;
+        vfunc_find_link_page(link_name: string): number;
+        vfunc_get_links(page: Page): MappingList;
+        vfunc_get_links_model(): Gtk.TreeModel;
+        vfunc_has_document_links(): boolean;
     }
 
     export const DocumentLinks: DocumentLinksNamespace & {
@@ -3729,16 +3675,6 @@ export namespace EvinceDocument {
     };
 
     namespace DocumentMedia {
-        /**
-         * Interface for implementing DocumentMedia.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_media_mapping(page: Page): MappingList;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3748,10 +3684,14 @@ export namespace EvinceDocument {
         $gtype: GObject.GType<DocumentMedia>;
         prototype: DocumentMedia;
     }
-    interface DocumentMedia extends GObject.Object, DocumentMedia.Interface {
+    interface DocumentMedia extends GObject.Object {
         // Methods
 
         get_media_mapping(page: Page): MappingList;
+
+        // Virtual methods
+
+        vfunc_get_media_mapping(page: Page): MappingList;
     }
 
     export const DocumentMedia: DocumentMediaNamespace & {
@@ -3759,16 +3699,6 @@ export namespace EvinceDocument {
     };
 
     namespace DocumentPrint {
-        /**
-         * Interface for implementing DocumentPrint.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_print_page(page: Page, cr: cairo.Context): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3778,10 +3708,14 @@ export namespace EvinceDocument {
         $gtype: GObject.GType<DocumentPrint>;
         prototype: DocumentPrint;
     }
-    interface DocumentPrint extends GObject.Object, DocumentPrint.Interface {
+    interface DocumentPrint extends GObject.Object {
         // Methods
 
         print_page(page: Page, cr: cairo.Context): void;
+
+        // Virtual methods
+
+        vfunc_print_page(page: Page, cr: cairo.Context): void;
     }
 
     export const DocumentPrint: DocumentPrintNamespace & {
@@ -3789,17 +3723,6 @@ export namespace EvinceDocument {
     };
 
     namespace DocumentSecurity {
-        /**
-         * Interface for implementing DocumentSecurity.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_has_document_security(): boolean;
-            vfunc_set_password(password: string): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3809,11 +3732,16 @@ export namespace EvinceDocument {
         $gtype: GObject.GType<DocumentSecurity>;
         prototype: DocumentSecurity;
     }
-    interface DocumentSecurity extends GObject.Object, DocumentSecurity.Interface {
+    interface DocumentSecurity extends GObject.Object {
         // Methods
 
         has_document_security(): boolean;
         set_password(password: string): void;
+
+        // Virtual methods
+
+        vfunc_has_document_security(): boolean;
+        vfunc_set_password(password: string): void;
     }
 
     export const DocumentSecurity: DocumentSecurityNamespace & {
@@ -3821,23 +3749,6 @@ export namespace EvinceDocument {
     };
 
     namespace DocumentText {
-        /**
-         * Interface for implementing DocumentText.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_text(page: Page): string;
-            /**
-             * FIXME
-             * @param page a #EvPage
-             */
-            vfunc_get_text_attrs(page: Page): Pango.AttrList;
-            vfunc_get_text_layout(page: Page, areas: Rectangle, n_areas: number): boolean;
-            vfunc_get_text_mapping(page: Page): cairo.Region;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3847,7 +3758,7 @@ export namespace EvinceDocument {
         $gtype: GObject.GType<DocumentText>;
         prototype: DocumentText;
     }
-    interface DocumentText extends GObject.Object, DocumentText.Interface {
+    interface DocumentText extends GObject.Object {
         // Methods
 
         get_text(page: Page): string;
@@ -3859,6 +3770,17 @@ export namespace EvinceDocument {
         get_text_attrs(page: Page): Pango.AttrList;
         get_text_layout(page: Page, areas: Rectangle, n_areas: number): boolean;
         get_text_mapping(page: Page): cairo.Region;
+
+        // Virtual methods
+
+        vfunc_get_text(page: Page): string;
+        /**
+         * FIXME
+         * @param page a #EvPage
+         */
+        vfunc_get_text_attrs(page: Page): Pango.AttrList;
+        vfunc_get_text_layout(page: Page, areas: Rectangle, n_areas: number): boolean;
+        vfunc_get_text_mapping(page: Page): cairo.Region;
     }
 
     export const DocumentText: DocumentTextNamespace & {
@@ -3866,17 +3788,6 @@ export namespace EvinceDocument {
     };
 
     namespace DocumentTransition {
-        /**
-         * Interface for implementing DocumentTransition.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_effect(page: number): TransitionEffect;
-            vfunc_get_page_duration(page: number): number;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3886,11 +3797,16 @@ export namespace EvinceDocument {
         $gtype: GObject.GType<DocumentTransition>;
         prototype: DocumentTransition;
     }
-    interface DocumentTransition extends GObject.Object, DocumentTransition.Interface {
+    interface DocumentTransition extends GObject.Object {
         // Methods
 
         get_effect(page: number): TransitionEffect;
         get_page_duration(page: number): number;
+
+        // Virtual methods
+
+        vfunc_get_effect(page: number): TransitionEffect;
+        vfunc_get_page_duration(page: number): number;
     }
 
     export const DocumentTransition: DocumentTransitionNamespace & {
@@ -3898,21 +3814,6 @@ export namespace EvinceDocument {
     };
 
     namespace FileExporter {
-        /**
-         * Interface for implementing FileExporter.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_begin(fc: FileExporterContext): void;
-            vfunc_begin_page(): void;
-            vfunc_do_page(rc: RenderContext): void;
-            vfunc_end(): void;
-            vfunc_end_page(): void;
-            vfunc_get_capabilities(): FileExporterCapabilities;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3922,7 +3823,7 @@ export namespace EvinceDocument {
         $gtype: GObject.GType<FileExporter>;
         prototype: FileExporter;
     }
-    interface FileExporter extends GObject.Object, FileExporter.Interface {
+    interface FileExporter extends GObject.Object {
         // Methods
 
         begin(fc: FileExporterContext): void;
@@ -3931,6 +3832,15 @@ export namespace EvinceDocument {
         end(): void;
         end_page(): void;
         get_capabilities(): FileExporterCapabilities;
+
+        // Virtual methods
+
+        vfunc_begin(fc: FileExporterContext): void;
+        vfunc_begin_page(): void;
+        vfunc_do_page(rc: RenderContext): void;
+        vfunc_end(): void;
+        vfunc_end_page(): void;
+        vfunc_get_capabilities(): FileExporterCapabilities;
     }
 
     export const FileExporter: FileExporterNamespace & {
@@ -3938,26 +3848,6 @@ export namespace EvinceDocument {
     };
 
     namespace Selection {
-        /**
-         * Interface for implementing Selection.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-            // Virtual methods
-
-            vfunc_get_selected_text(page: Page, style: SelectionStyle, points: Rectangle): string;
-            vfunc_get_selection_region(rc: RenderContext, style: SelectionStyle, points: Rectangle): cairo.Region;
-            vfunc_render_selection(
-                rc: RenderContext,
-                surface: cairo.Surface,
-                points: Rectangle,
-                old_points: Rectangle,
-                style: SelectionStyle,
-                text: Gdk.Color,
-                base: Gdk.Color,
-            ): void;
-        }
-
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3967,7 +3857,7 @@ export namespace EvinceDocument {
         $gtype: GObject.GType<Selection>;
         prototype: Selection;
     }
-    interface Selection extends GObject.Object, Selection.Interface {
+    interface Selection extends GObject.Object {
         // Methods
 
         get_selected_text(page: Page, style: SelectionStyle | null, points: Rectangle): string;
@@ -3978,6 +3868,20 @@ export namespace EvinceDocument {
             points: Rectangle,
             old_points: Rectangle,
             style: SelectionStyle | null,
+            text: Gdk.Color,
+            base: Gdk.Color,
+        ): void;
+
+        // Virtual methods
+
+        vfunc_get_selected_text(page: Page, style: SelectionStyle, points: Rectangle): string;
+        vfunc_get_selection_region(rc: RenderContext, style: SelectionStyle, points: Rectangle): cairo.Region;
+        vfunc_render_selection(
+            rc: RenderContext,
+            surface: cairo.Surface,
+            points: Rectangle,
+            old_points: Rectangle,
+            style: SelectionStyle,
             text: Gdk.Color,
             base: Gdk.Color,
         ): void;
