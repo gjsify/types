@@ -14552,6 +14552,62 @@ export namespace XApp {
     };
 
     namespace StatusIconInterface {
+        /**
+         * Interface for implementing StatusIconInterface.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Handler for the #XAppStatusIconInterface::handle-button-press signal.
+             * @param invocation
+             * @param arg_x
+             * @param arg_y
+             * @param arg_button
+             * @param arg_time
+             * @param arg_panel_position
+             */
+            vfunc_handle_button_press(
+                invocation: Gio.DBusMethodInvocation,
+                arg_x: number,
+                arg_y: number,
+                arg_button: number,
+                arg_time: number,
+                arg_panel_position: number,
+            ): boolean;
+            /**
+             * Handler for the #XAppStatusIconInterface::handle-button-release signal.
+             * @param invocation
+             * @param arg_x
+             * @param arg_y
+             * @param arg_button
+             * @param arg_time
+             * @param arg_panel_position
+             */
+            vfunc_handle_button_release(
+                invocation: Gio.DBusMethodInvocation,
+                arg_x: number,
+                arg_y: number,
+                arg_button: number,
+                arg_time: number,
+                arg_panel_position: number,
+            ): boolean;
+            /**
+             * Handler for the #XAppStatusIconInterface::handle-scroll signal.
+             * @param invocation
+             * @param arg_delta
+             * @param arg_orientation
+             * @param arg_time
+             */
+            vfunc_handle_scroll(
+                invocation: Gio.DBusMethodInvocation,
+                arg_delta: number,
+                arg_orientation: number,
+                arg_time: number,
+            ): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -14588,7 +14644,7 @@ export namespace XApp {
          */
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
-    interface StatusIconInterface extends GObject.Object {
+    interface StatusIconInterface extends GObject.Object, StatusIconInterface.Interface {
         // Properties
 
         /**
@@ -14976,56 +15032,6 @@ export namespace XApp {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_scroll(invocation: Gio.DBusMethodInvocation): void;
-
-        // Virtual methods
-
-        /**
-         * Handler for the #XAppStatusIconInterface::handle-button-press signal.
-         * @param invocation
-         * @param arg_x
-         * @param arg_y
-         * @param arg_button
-         * @param arg_time
-         * @param arg_panel_position
-         */
-        vfunc_handle_button_press(
-            invocation: Gio.DBusMethodInvocation,
-            arg_x: number,
-            arg_y: number,
-            arg_button: number,
-            arg_time: number,
-            arg_panel_position: number,
-        ): boolean;
-        /**
-         * Handler for the #XAppStatusIconInterface::handle-button-release signal.
-         * @param invocation
-         * @param arg_x
-         * @param arg_y
-         * @param arg_button
-         * @param arg_time
-         * @param arg_panel_position
-         */
-        vfunc_handle_button_release(
-            invocation: Gio.DBusMethodInvocation,
-            arg_x: number,
-            arg_y: number,
-            arg_button: number,
-            arg_time: number,
-            arg_panel_position: number,
-        ): boolean;
-        /**
-         * Handler for the #XAppStatusIconInterface::handle-scroll signal.
-         * @param invocation
-         * @param arg_delta
-         * @param arg_orientation
-         * @param arg_time
-         */
-        vfunc_handle_scroll(
-            invocation: Gio.DBusMethodInvocation,
-            arg_delta: number,
-            arg_orientation: number,
-            arg_time: number,
-        ): boolean;
     }
 
     export const StatusIconInterface: StatusIconInterfaceNamespace & {

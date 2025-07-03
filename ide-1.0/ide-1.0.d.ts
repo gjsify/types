@@ -62690,6 +62690,32 @@ export namespace Ide {
     type WorkbenchMessageClass = typeof WorkbenchMessage;
     type WorkerInterface = typeof Worker;
     namespace ApplicationAddin {
+        /**
+         * Interface for implementing ApplicationAddin.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * This interface method is called when the application is started or
+             * the plugin has just been activated.
+             *
+             * Use this to setup code in your plugin that needs to be loaded once
+             * per application process.
+             * @param application An #IdeApplication.
+             */
+            vfunc_load(application: Application): void;
+            /**
+             * This inteface method is called when the application is shutting down
+             * or the plugin has been unloaded.
+             *
+             * Use this function to cleanup after anything setup in ide_application_addin_load().
+             * @param application An #IdeApplication.
+             */
+            vfunc_unload(application: Application): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -62699,7 +62725,7 @@ export namespace Ide {
         $gtype: GObject.GType<ApplicationAddin>;
         prototype: ApplicationAddin;
     }
-    interface ApplicationAddin extends GObject.Object {
+    interface ApplicationAddin extends GObject.Object, ApplicationAddin.Interface {
         // Methods
 
         /**
@@ -62719,26 +62745,6 @@ export namespace Ide {
          * @param application An #IdeApplication.
          */
         unload(application: Application): void;
-
-        // Virtual methods
-
-        /**
-         * This interface method is called when the application is started or
-         * the plugin has just been activated.
-         *
-         * Use this to setup code in your plugin that needs to be loaded once
-         * per application process.
-         * @param application An #IdeApplication.
-         */
-        vfunc_load(application: Application): void;
-        /**
-         * This inteface method is called when the application is shutting down
-         * or the plugin has been unloaded.
-         *
-         * Use this function to cleanup after anything setup in ide_application_addin_load().
-         * @param application An #IdeApplication.
-         */
-        vfunc_unload(application: Application): void;
     }
 
     export const ApplicationAddin: ApplicationAddinNamespace & {
@@ -62746,6 +62752,28 @@ export namespace Ide {
     };
 
     namespace ApplicationTool {
+        /**
+         * Interface for implementing ApplicationTool.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Asynchronously runs an application tool. This is typically done on the
+             * command line using the `ide` command.
+             * @param _arguments argv for the command
+             * @param cancellable A #GCancellable or %NULL
+             * @param callback A callback to execute upon completion
+             */
+            vfunc_run_async(
+                _arguments: string[],
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_run_finish(result: Gio.AsyncResult): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -62755,7 +62783,7 @@ export namespace Ide {
         $gtype: GObject.GType<ApplicationTool>;
         prototype: ApplicationTool;
     }
-    interface ApplicationTool extends GObject.Object {
+    interface ApplicationTool extends GObject.Object, ApplicationTool.Interface {
         // Methods
 
         /**
@@ -62790,22 +62818,6 @@ export namespace Ide {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         run_finish(result: Gio.AsyncResult): number;
-
-        // Virtual methods
-
-        /**
-         * Asynchronously runs an application tool. This is typically done on the
-         * command line using the `ide` command.
-         * @param _arguments argv for the command
-         * @param cancellable A #GCancellable or %NULL
-         * @param callback A callback to execute upon completion
-         */
-        vfunc_run_async(
-            _arguments: string[],
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_run_finish(result: Gio.AsyncResult): number;
     }
 
     export const ApplicationTool: ApplicationToolNamespace & {
@@ -62813,6 +62825,17 @@ export namespace Ide {
     };
 
     namespace BuildPipelineAddin {
+        /**
+         * Interface for implementing BuildPipelineAddin.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_load(pipeline: BuildPipeline): void;
+            vfunc_unload(pipeline: BuildPipeline): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -62822,7 +62845,7 @@ export namespace Ide {
         $gtype: GObject.GType<BuildPipelineAddin>;
         prototype: BuildPipelineAddin;
     }
-    interface BuildPipelineAddin extends Object {
+    interface BuildPipelineAddin extends Object, BuildPipelineAddin.Interface {
         // Methods
 
         load(pipeline: BuildPipeline): void;
@@ -62840,11 +62863,6 @@ export namespace Ide {
          */
         track(stage_id: number): void;
         unload(pipeline: BuildPipeline): void;
-
-        // Virtual methods
-
-        vfunc_load(pipeline: BuildPipeline): void;
-        vfunc_unload(pipeline: BuildPipeline): void;
     }
 
     export const BuildPipelineAddin: BuildPipelineAddinNamespace & {
@@ -62852,6 +62870,30 @@ export namespace Ide {
     };
 
     namespace BuildSystem {
+        /**
+         * Interface for implementing BuildSystem.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_build_flags_async(
+                file: File,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_get_build_flags_finish(result: Gio.AsyncResult): string[];
+            vfunc_get_build_targets_async(
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_get_build_targets_finish(result: Gio.AsyncResult): BuildTarget[];
+            vfunc_get_builddir(configuration: Configuration): string;
+            vfunc_get_display_name(): string;
+            vfunc_get_id(): string;
+            vfunc_get_priority(): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -62892,7 +62934,7 @@ export namespace Ide {
         new_finish(result: Gio.AsyncResult): BuildSystem;
         new_finish(...args: never[]): any;
     }
-    interface BuildSystem extends Object {
+    interface BuildSystem extends Object, BuildSystem.Interface {
         // Properties
 
         get context(): Context;
@@ -62927,24 +62969,6 @@ export namespace Ide {
         get_display_name(): string;
         get_id(): string;
         get_priority(): number;
-
-        // Virtual methods
-
-        vfunc_get_build_flags_async(
-            file: File,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_get_build_flags_finish(result: Gio.AsyncResult): string[];
-        vfunc_get_build_targets_async(
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_get_build_targets_finish(result: Gio.AsyncResult): BuildTarget[];
-        vfunc_get_builddir(configuration: Configuration): string;
-        vfunc_get_display_name(): string;
-        vfunc_get_id(): string;
-        vfunc_get_priority(): number;
     }
 
     export const BuildSystem: BuildSystemNamespace & {
@@ -62952,6 +62976,24 @@ export namespace Ide {
     };
 
     namespace BuildSystemDiscovery {
+        /**
+         * Interface for implementing BuildSystemDiscovery.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * This virtual method can be used to try to discover the build system to use for
+             * a particular project. This might be used in cases like Flatpak where the build
+             * system can be determined from the .json manifest rather than auto-discovery
+             * by locating project files.
+             * @param project_file A #GFile containing the project file (a directory)
+             * @param cancellable A #GCancellable or %NULL
+             */
+            vfunc_discover(project_file: Gio.File, cancellable: Gio.Cancellable | null): [string, number];
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -62961,7 +63003,7 @@ export namespace Ide {
         $gtype: GObject.GType<BuildSystemDiscovery>;
         prototype: BuildSystemDiscovery;
     }
-    interface BuildSystemDiscovery extends GObject.Object {
+    interface BuildSystemDiscovery extends GObject.Object, BuildSystemDiscovery.Interface {
         // Methods
 
         /**
@@ -62974,18 +63016,6 @@ export namespace Ide {
          * @returns The hint for the build system, which should match what   the build system returns from ide_build_system_get_id().
          */
         discover(project_file: Gio.File, cancellable: Gio.Cancellable | null): [string, number];
-
-        // Virtual methods
-
-        /**
-         * This virtual method can be used to try to discover the build system to use for
-         * a particular project. This might be used in cases like Flatpak where the build
-         * system can be determined from the .json manifest rather than auto-discovery
-         * by locating project files.
-         * @param project_file A #GFile containing the project file (a directory)
-         * @param cancellable A #GCancellable or %NULL
-         */
-        vfunc_discover(project_file: Gio.File, cancellable: Gio.Cancellable | null): [string, number];
     }
 
     export const BuildSystemDiscovery: BuildSystemDiscoveryNamespace & {
@@ -62993,6 +63023,17 @@ export namespace Ide {
     };
 
     namespace BuildTarget {
+        /**
+         * Interface for implementing BuildTarget.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_install_directory(): Gio.File | null;
+            vfunc_get_name(): string | null;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -63002,16 +63043,11 @@ export namespace Ide {
         $gtype: GObject.GType<BuildTarget>;
         prototype: BuildTarget;
     }
-    interface BuildTarget extends Object {
+    interface BuildTarget extends Object, BuildTarget.Interface {
         // Methods
 
         get_install_directory(): Gio.File | null;
         get_name(): string | null;
-
-        // Virtual methods
-
-        vfunc_get_install_directory(): Gio.File | null;
-        vfunc_get_name(): string | null;
     }
 
     export const BuildTarget: BuildTargetNamespace & {
@@ -63019,6 +63055,16 @@ export namespace Ide {
     };
 
     namespace CompletionProvider {
+        /**
+         * Interface for implementing CompletionProvider.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface extends GtkSource.CompletionProvider.Interface {
+            // Virtual methods
+
+            vfunc_load(context: Context): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GtkSource.CompletionProvider.ConstructorProps {}
@@ -63032,14 +63078,10 @@ export namespace Ide {
         context_in_comment(context: GtkSource.CompletionContext): boolean;
         context_in_comment_or_string(context: GtkSource.CompletionContext): boolean;
     }
-    interface CompletionProvider extends GtkSource.CompletionProvider {
+    interface CompletionProvider extends GtkSource.CompletionProvider, CompletionProvider.Interface {
         // Methods
 
         load(context: Context): void;
-
-        // Virtual methods
-
-        vfunc_load(context: Context): void;
     }
 
     export const CompletionProvider: CompletionProviderNamespace & {
@@ -63047,6 +63089,27 @@ export namespace Ide {
     };
 
     namespace ConfigurationProvider {
+        /**
+         * Interface for implementing ConfigurationProvider.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_load_async(
+                manager: ConfigurationManager,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_load_finish(result: Gio.AsyncResult): boolean;
+            vfunc_save_async(
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_save_finish(result: Gio.AsyncResult): boolean;
+            vfunc_unload(manager: ConfigurationManager): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -63056,7 +63119,7 @@ export namespace Ide {
         $gtype: GObject.GType<ConfigurationProvider>;
         prototype: ConfigurationProvider;
     }
-    interface ConfigurationProvider extends GObject.Object {
+    interface ConfigurationProvider extends GObject.Object, ConfigurationProvider.Interface {
         // Methods
 
         load_async(manager: ConfigurationManager, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
@@ -63079,18 +63142,6 @@ export namespace Ide {
         ): globalThis.Promise<boolean> | void;
         save_finish(result: Gio.AsyncResult): boolean;
         unload(manager: ConfigurationManager): void;
-
-        // Virtual methods
-
-        vfunc_load_async(
-            manager: ConfigurationManager,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_load_finish(result: Gio.AsyncResult): boolean;
-        vfunc_save_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
-        vfunc_save_finish(result: Gio.AsyncResult): boolean;
-        vfunc_unload(manager: ConfigurationManager): void;
     }
 
     export const ConfigurationProvider: ConfigurationProviderNamespace & {
@@ -63098,6 +63149,20 @@ export namespace Ide {
     };
 
     namespace DeviceProvider {
+        /**
+         * Interface for implementing DeviceProvider.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Retrieves a list of devices currently managed by `provider`.
+             */
+            vfunc_get_devices(): Device[];
+            vfunc_get_settled(): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -63110,7 +63175,7 @@ export namespace Ide {
         $gtype: GObject.GType<DeviceProvider>;
         prototype: DeviceProvider;
     }
-    interface DeviceProvider extends Object {
+    interface DeviceProvider extends Object, DeviceProvider.Interface {
         // Properties
 
         set context(val: Context);
@@ -63126,14 +63191,6 @@ export namespace Ide {
          */
         get_devices(): Device[];
         get_settled(): boolean;
-
-        // Virtual methods
-
-        /**
-         * Retrieves a list of devices currently managed by `provider`.
-         */
-        vfunc_get_devices(): Device[];
-        vfunc_get_settled(): boolean;
     }
 
     export const DeviceProvider: DeviceProviderNamespace & {
@@ -63141,6 +63198,27 @@ export namespace Ide {
     };
 
     namespace DiagnosticProvider {
+        /**
+         * Interface for implementing DiagnosticProvider.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_diagnose_async(
+                file: File,
+                buffer: Buffer,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Completes an asynchronous call to ide_diagnostic_provider_diagnose_async().
+             * @param result
+             */
+            vfunc_diagnose_finish(result: Gio.AsyncResult): Diagnostics | null;
+            vfunc_load(): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -63150,7 +63228,7 @@ export namespace Ide {
         $gtype: GObject.GType<DiagnosticProvider>;
         prototype: DiagnosticProvider;
     }
-    interface DiagnosticProvider extends Object {
+    interface DiagnosticProvider extends Object, DiagnosticProvider.Interface {
         // Methods
 
         diagnose_async(
@@ -63178,21 +63256,6 @@ export namespace Ide {
         diagnose_finish(result: Gio.AsyncResult): Diagnostics | null;
         emit_invalidated(): void;
         load(): void;
-
-        // Virtual methods
-
-        vfunc_diagnose_async(
-            file: File,
-            buffer: Buffer,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Completes an asynchronous call to ide_diagnostic_provider_diagnose_async().
-         * @param result
-         */
-        vfunc_diagnose_finish(result: Gio.AsyncResult): Diagnostics | null;
-        vfunc_load(): void;
     }
 
     export const DiagnosticProvider: DiagnosticProviderNamespace & {
@@ -63200,6 +63263,20 @@ export namespace Ide {
     };
 
     namespace EditorViewAddin {
+        /**
+         * Interface for implementing EditorViewAddin.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_language_changed(language_id: string): void;
+            vfunc_load(view: EditorView): void;
+            vfunc_load_source_view(source_view: SourceView): void;
+            vfunc_unload(view: EditorView): void;
+            vfunc_unload_source_view(source_view: SourceView): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -63209,21 +63286,39 @@ export namespace Ide {
         $gtype: GObject.GType<EditorViewAddin>;
         prototype: EditorViewAddin;
     }
-    interface EditorViewAddin extends GObject.Object {
-        // Virtual methods
-
-        vfunc_language_changed(language_id: string): void;
-        vfunc_load(view: EditorView): void;
-        vfunc_load_source_view(source_view: SourceView): void;
-        vfunc_unload(view: EditorView): void;
-        vfunc_unload_source_view(source_view: SourceView): void;
-    }
+    interface EditorViewAddin extends GObject.Object, EditorViewAddin.Interface {}
 
     export const EditorViewAddin: EditorViewAddinNamespace & {
         new (): EditorViewAddin; // This allows `obj instanceof EditorViewAddin`
     };
 
     namespace Formatter {
+        /**
+         * Interface for implementing Formatter.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_format_async(
+                buffer: Buffer,
+                options: FormatterOptions,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_format_finish(result: Gio.AsyncResult): boolean;
+            vfunc_format_range_async(
+                buffer: Buffer,
+                options: FormatterOptions,
+                begin: Gtk.TextIter,
+                end: Gtk.TextIter,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_format_range_finish(result: Gio.AsyncResult): boolean;
+            vfunc_load(): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -63233,7 +63328,7 @@ export namespace Ide {
         $gtype: GObject.GType<Formatter>;
         prototype: Formatter;
     }
-    interface Formatter extends GObject.Object {
+    interface Formatter extends GObject.Object, Formatter.Interface {
         // Methods
 
         format_async(
@@ -63279,26 +63374,6 @@ export namespace Ide {
         ): globalThis.Promise<boolean> | void;
         format_range_finish(result: Gio.AsyncResult): boolean;
         load(): void;
-
-        // Virtual methods
-
-        vfunc_format_async(
-            buffer: Buffer,
-            options: FormatterOptions,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_format_finish(result: Gio.AsyncResult): boolean;
-        vfunc_format_range_async(
-            buffer: Buffer,
-            options: FormatterOptions,
-            begin: Gtk.TextIter,
-            end: Gtk.TextIter,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_format_range_finish(result: Gio.AsyncResult): boolean;
-        vfunc_load(): void;
     }
 
     export const Formatter: FormatterNamespace & {
@@ -63306,6 +63381,23 @@ export namespace Ide {
     };
 
     namespace GenesisAddin {
+        /**
+         * Interface for implementing GenesisAddin.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_icon_name(): string;
+            vfunc_get_label(): string;
+            vfunc_get_next_label(): string;
+            vfunc_get_priority(): number;
+            vfunc_get_title(): string;
+            vfunc_get_widget(): Gtk.Widget;
+            vfunc_run_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_run_finish(result: Gio.AsyncResult): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -63318,7 +63410,7 @@ export namespace Ide {
         $gtype: GObject.GType<GenesisAddin>;
         prototype: GenesisAddin;
     }
-    interface GenesisAddin extends GObject.Object {
+    interface GenesisAddin extends GObject.Object, GenesisAddin.Interface {
         // Properties
 
         get is_ready(): boolean;
@@ -63339,17 +63431,6 @@ export namespace Ide {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         run_finish(result: Gio.AsyncResult): boolean;
-
-        // Virtual methods
-
-        vfunc_get_icon_name(): string;
-        vfunc_get_label(): string;
-        vfunc_get_next_label(): string;
-        vfunc_get_priority(): number;
-        vfunc_get_title(): string;
-        vfunc_get_widget(): Gtk.Widget;
-        vfunc_run_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
-        vfunc_run_finish(result: Gio.AsyncResult): boolean;
     }
 
     export const GenesisAddin: GenesisAddinNamespace & {
@@ -63357,6 +63438,29 @@ export namespace Ide {
     };
 
     namespace Highlighter {
+        /**
+         * Interface for implementing Highlighter.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_load(): void;
+            vfunc_set_engine(engine: HighlightEngine): void;
+            /**
+             * Incrementally processes more of the buffer for highlighting.  If `callback`
+             * returns %IDE_HIGHLIGHT_STOP, then this vfunc should stop processing and
+             * return, having set `location` to the current position of processing.
+             *
+             * If processing the entire range was successful, then `location` should be set
+             * to `range_end`.
+             * @param callback A callback to apply a given style.
+             * @param range_begin The beginning of the range to update.
+             * @param range_end The end of the range to update.
+             */
+            vfunc_update(callback: HighlightCallback, range_begin: Gtk.TextIter, range_end: Gtk.TextIter): Gtk.TextIter;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -63368,7 +63472,7 @@ export namespace Ide {
         $gtype: GObject.GType<Highlighter>;
         prototype: Highlighter;
     }
-    interface Highlighter extends Object {
+    interface Highlighter extends Object, Highlighter.Interface {
         // Properties
 
         set context(val: Context);
@@ -63388,23 +63492,6 @@ export namespace Ide {
          * @param range_end The end of the range to update.
          */
         update(callback: HighlightCallback, range_begin: Gtk.TextIter, range_end: Gtk.TextIter): Gtk.TextIter;
-
-        // Virtual methods
-
-        vfunc_load(): void;
-        vfunc_set_engine(engine: HighlightEngine): void;
-        /**
-         * Incrementally processes more of the buffer for highlighting.  If `callback`
-         * returns %IDE_HIGHLIGHT_STOP, then this vfunc should stop processing and
-         * return, having set `location` to the current position of processing.
-         *
-         * If processing the entire range was successful, then `location` should be set
-         * to `range_end`.
-         * @param callback A callback to apply a given style.
-         * @param range_begin The beginning of the range to update.
-         * @param range_end The end of the range to update.
-         */
-        vfunc_update(callback: HighlightCallback, range_begin: Gtk.TextIter, range_end: Gtk.TextIter): Gtk.TextIter;
     }
 
     export const Highlighter: HighlighterNamespace & {
@@ -63412,6 +63499,40 @@ export namespace Ide {
     };
 
     namespace Indenter {
+        /**
+         * Interface for implementing Indenter.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * This function performs an indentation for the key press activated by `event`.
+             * The implementation is free to move the `begin` and `end` iters to swallow
+             * adjacent content. The result, a string, is the contents that will replace
+             * the content inbetween `begin` and `end`.
+             *
+             * `cursor_offset` may be set to jump the cursor starting from `end`. Negative
+             * values are allowed.
+             * @param text_view A #GtkTextView
+             * @param begin A #GtkTextIter for the beginning region of text to replace.
+             * @param end A #GtkTextIter for the end region of text to replace.
+             * @param event The #GdkEventKey that triggered the event.
+             */
+            vfunc_format(
+                text_view: Gtk.TextView,
+                begin: Gtk.TextIter,
+                end: Gtk.TextIter,
+                event: Gdk.EventKey,
+            ): [string | null, number];
+            /**
+             * Determines if `event` should trigger an indentation request. If %TRUE is
+             * returned then ide_indenter_format() will be called.
+             * @param event a #GdkEventKey
+             */
+            vfunc_is_trigger(event: Gdk.EventKey): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -63421,7 +63542,7 @@ export namespace Ide {
         $gtype: GObject.GType<Indenter>;
         prototype: Indenter;
     }
-    interface Indenter extends Object {
+    interface Indenter extends Object, Indenter.Interface {
         // Methods
 
         /**
@@ -63451,34 +63572,6 @@ export namespace Ide {
          * @returns %TRUE if @event should trigger an indentation request.
          */
         is_trigger(event: Gdk.EventKey): boolean;
-
-        // Virtual methods
-
-        /**
-         * This function performs an indentation for the key press activated by `event`.
-         * The implementation is free to move the `begin` and `end` iters to swallow
-         * adjacent content. The result, a string, is the contents that will replace
-         * the content inbetween `begin` and `end`.
-         *
-         * `cursor_offset` may be set to jump the cursor starting from `end`. Negative
-         * values are allowed.
-         * @param text_view A #GtkTextView
-         * @param begin A #GtkTextIter for the beginning region of text to replace.
-         * @param end A #GtkTextIter for the end region of text to replace.
-         * @param event The #GdkEventKey that triggered the event.
-         */
-        vfunc_format(
-            text_view: Gtk.TextView,
-            begin: Gtk.TextIter,
-            end: Gtk.TextIter,
-            event: Gdk.EventKey,
-        ): [string | null, number];
-        /**
-         * Determines if `event` should trigger an indentation request. If %TRUE is
-         * returned then ide_indenter_format() will be called.
-         * @param event a #GdkEventKey
-         */
-        vfunc_is_trigger(event: Gdk.EventKey): boolean;
     }
 
     export const Indenter: IndenterNamespace & {
@@ -63486,6 +63579,41 @@ export namespace Ide {
     };
 
     namespace LayoutStackAddin {
+        /**
+         * Interface for implementing LayoutStackAddin.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * This function should be implemented by #IdeLayoutStackAddin plugins
+             * in #IdeLayoutStackAddinInterface.
+             *
+             * This virtual method is called when the plugin should load itself.
+             * A new instance of the plugin is created for every #IdeLayoutStack
+             * that is created in Builder.
+             * @param stack An #IdeLayoutStack
+             */
+            vfunc_load(stack: LayoutStack): void;
+            /**
+             * This virtual method is called whenever the active view changes
+             * in the #IdeLayoutView. Plugins may want to alter what controls
+             * are displayed on the stack based on the current view.
+             * @param view An #IdeLayoutView or %NULL.
+             */
+            vfunc_set_view(view?: LayoutView | null): void;
+            /**
+             * This function should be implemented by #IdeLayoutStackAddin plugins
+             * in #IdeLayoutStackAddinInterface.
+             *
+             * This virtual method is called when the plugin should unload itself.
+             * It should revert anything performed via ide_layout_stack_addin_load().
+             * @param stack An #IdeLayoutStack
+             */
+            vfunc_unload(stack: LayoutStack): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -63495,7 +63623,7 @@ export namespace Ide {
         $gtype: GObject.GType<LayoutStackAddin>;
         prototype: LayoutStackAddin;
     }
-    interface LayoutStackAddin extends GObject.Object {
+    interface LayoutStackAddin extends GObject.Object, LayoutStackAddin.Interface {
         // Methods
 
         /**
@@ -63524,35 +63652,6 @@ export namespace Ide {
          * @param stack An #IdeLayoutStack
          */
         unload(stack: LayoutStack): void;
-
-        // Virtual methods
-
-        /**
-         * This function should be implemented by #IdeLayoutStackAddin plugins
-         * in #IdeLayoutStackAddinInterface.
-         *
-         * This virtual method is called when the plugin should load itself.
-         * A new instance of the plugin is created for every #IdeLayoutStack
-         * that is created in Builder.
-         * @param stack An #IdeLayoutStack
-         */
-        vfunc_load(stack: LayoutStack): void;
-        /**
-         * This virtual method is called whenever the active view changes
-         * in the #IdeLayoutView. Plugins may want to alter what controls
-         * are displayed on the stack based on the current view.
-         * @param view An #IdeLayoutView or %NULL.
-         */
-        vfunc_set_view(view?: LayoutView | null): void;
-        /**
-         * This function should be implemented by #IdeLayoutStackAddin plugins
-         * in #IdeLayoutStackAddinInterface.
-         *
-         * This virtual method is called when the plugin should unload itself.
-         * It should revert anything performed via ide_layout_stack_addin_load().
-         * @param stack An #IdeLayoutStack
-         */
-        vfunc_unload(stack: LayoutStack): void;
     }
 
     export const LayoutStackAddin: LayoutStackAddinNamespace & {
@@ -63560,6 +63659,91 @@ export namespace Ide {
     };
 
     namespace Perspective {
+        /**
+         * Interface for implementing Perspective.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * This interface method is called when the workbench would like to shutdown.
+             * If the perspective needs to focus and ask the user a question, this is the place
+             * to do so. You may run a #GtkDialog using gtk_dialog_run() or simply focus your
+             * perspective and return %FALSE.
+             */
+            vfunc_agree_to_shutdown(): boolean;
+            /**
+             * Gets the accelerator to use to jump to the perspective. The workbench will
+             * register this accelerator on behalf of the perspective.
+             */
+            vfunc_get_accelerator(): string | null;
+            /**
+             * This interface method should retrieve a #GActionGroup associated with the
+             * perspective, if necessary. The #GActionGroup will automatically be
+             * registered with the "perspective" action prefix while the perspective is
+             * active. A perspective is "active" when it is currently displayed in the
+             * workbench.
+             */
+            vfunc_get_actions(): Gio.ActionGroup | null;
+            /**
+             * This interface methods retrieves the icon name to use when displaying the
+             * perspective selection sidebar.
+             *
+             * If you implement an "icon-name" property, the icon may change at runtime.
+             */
+            vfunc_get_icon_name(): string | null;
+            /**
+             * This interface method is used to identify the perspective. It should be a short
+             * internal name, such as "editor" which should not be translated. Internally, the
+             * default implementation of this method will return the name of the instances #GType.
+             *
+             * The identifier must be alpha-numeric only (a-z A-Z 0-9).
+             *
+             * This value should be unique per workspace.
+             */
+            vfunc_get_id(): string | null;
+            /**
+             * This interface method returns %TRUE if the interface needs attention.
+             *
+             * One such use of this would be to indicate that contents within a perspective have
+             * changed since the user last focused the perspective. This should also be implemented
+             * with a boolean property named "needs-attention". If you call g_object_notify() (or one
+             * of its variants), the notifcation visual will be rendered with your icon.
+             */
+            vfunc_get_needs_attention(): boolean;
+            vfunc_get_priority(): number;
+            /**
+             * This interface method gets the title of the perspective. This is used for tooltips
+             * in the perspective selector and potentially other UI components.
+             */
+            vfunc_get_title(): string;
+            /**
+             * This interface method should return a #GtkWidget suitable for being embedded as the
+             * titlebar for the application. If you return %NULL from this method, a suitable titlebar
+             * will be created for you.
+             *
+             * You may use #IdeHeaderBar for a base implementation to save you the trouble of
+             * creating a titlebar similar to other perspectives in Builder.
+             */
+            vfunc_get_titlebar(): Gtk.Widget | null;
+            /**
+             * If %TRUE, the perspective can be used before loading a project.
+             */
+            vfunc_is_early(): boolean;
+            /**
+             * This interface method is used to notify the perspective that it is going into
+             * fullscreen mode. The #IdeWorkbench will notify the perspective before it is displayed.
+             * @param fullscreen If fullscreen mode should be activated.
+             */
+            vfunc_set_fullscreen(fullscreen: boolean): void;
+            /**
+             * This interface method is used to iterate all #IdeLayoutView's that are descendents of `self`.
+             * @param callback A #GtkCallback.
+             */
+            vfunc_views_foreach(callback: Gtk.Callback): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -63569,7 +63753,7 @@ export namespace Ide {
         $gtype: GObject.GType<Perspective>;
         prototype: Perspective;
     }
-    interface Perspective extends GObject.Object {
+    interface Perspective extends GObject.Object, Perspective.Interface {
         // Methods
 
         /**
@@ -63656,85 +63840,6 @@ export namespace Ide {
          * @param callback A #GtkCallback.
          */
         views_foreach(callback: Gtk.Callback): void;
-
-        // Virtual methods
-
-        /**
-         * This interface method is called when the workbench would like to shutdown.
-         * If the perspective needs to focus and ask the user a question, this is the place
-         * to do so. You may run a #GtkDialog using gtk_dialog_run() or simply focus your
-         * perspective and return %FALSE.
-         */
-        vfunc_agree_to_shutdown(): boolean;
-        /**
-         * Gets the accelerator to use to jump to the perspective. The workbench will
-         * register this accelerator on behalf of the perspective.
-         */
-        vfunc_get_accelerator(): string | null;
-        /**
-         * This interface method should retrieve a #GActionGroup associated with the
-         * perspective, if necessary. The #GActionGroup will automatically be
-         * registered with the "perspective" action prefix while the perspective is
-         * active. A perspective is "active" when it is currently displayed in the
-         * workbench.
-         */
-        vfunc_get_actions(): Gio.ActionGroup | null;
-        /**
-         * This interface methods retrieves the icon name to use when displaying the
-         * perspective selection sidebar.
-         *
-         * If you implement an "icon-name" property, the icon may change at runtime.
-         */
-        vfunc_get_icon_name(): string | null;
-        /**
-         * This interface method is used to identify the perspective. It should be a short
-         * internal name, such as "editor" which should not be translated. Internally, the
-         * default implementation of this method will return the name of the instances #GType.
-         *
-         * The identifier must be alpha-numeric only (a-z A-Z 0-9).
-         *
-         * This value should be unique per workspace.
-         */
-        vfunc_get_id(): string | null;
-        /**
-         * This interface method returns %TRUE if the interface needs attention.
-         *
-         * One such use of this would be to indicate that contents within a perspective have
-         * changed since the user last focused the perspective. This should also be implemented
-         * with a boolean property named "needs-attention". If you call g_object_notify() (or one
-         * of its variants), the notifcation visual will be rendered with your icon.
-         */
-        vfunc_get_needs_attention(): boolean;
-        vfunc_get_priority(): number;
-        /**
-         * This interface method gets the title of the perspective. This is used for tooltips
-         * in the perspective selector and potentially other UI components.
-         */
-        vfunc_get_title(): string;
-        /**
-         * This interface method should return a #GtkWidget suitable for being embedded as the
-         * titlebar for the application. If you return %NULL from this method, a suitable titlebar
-         * will be created for you.
-         *
-         * You may use #IdeHeaderBar for a base implementation to save you the trouble of
-         * creating a titlebar similar to other perspectives in Builder.
-         */
-        vfunc_get_titlebar(): Gtk.Widget | null;
-        /**
-         * If %TRUE, the perspective can be used before loading a project.
-         */
-        vfunc_is_early(): boolean;
-        /**
-         * This interface method is used to notify the perspective that it is going into
-         * fullscreen mode. The #IdeWorkbench will notify the perspective before it is displayed.
-         * @param fullscreen If fullscreen mode should be activated.
-         */
-        vfunc_set_fullscreen(fullscreen: boolean): void;
-        /**
-         * This interface method is used to iterate all #IdeLayoutView's that are descendents of `self`.
-         * @param callback A #GtkCallback.
-         */
-        vfunc_views_foreach(callback: Gtk.Callback): void;
     }
 
     export const Perspective: PerspectiveNamespace & {
@@ -63742,6 +63847,32 @@ export namespace Ide {
     };
 
     namespace PreferencesAddin {
+        /**
+         * Interface for implementing PreferencesAddin.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * This interface method is called when a preferences addin is initialized. It could be
+             * initialized from multiple preferences implementations, so consumers should use the
+             * #DzlPreferences interface to add their preferences controls to the container.
+             *
+             * Such implementations might include a preferences dialog window, or a preferences
+             * widget which could be rendered as a perspective.
+             * @param preferences The preferences container implementation.
+             */
+            vfunc_load(preferences: Dazzle.Preferences): void;
+            /**
+             * This interface method is called when the preferences addin should remove all controls
+             * added to `preferences`. This could happen during desctruction of `preferences,` or when
+             * the plugin is unloaded.
+             * @param preferences The preferences container implementation.
+             */
+            vfunc_unload(preferences: Dazzle.Preferences): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -63751,7 +63882,7 @@ export namespace Ide {
         $gtype: GObject.GType<PreferencesAddin>;
         prototype: PreferencesAddin;
     }
-    interface PreferencesAddin extends GObject.Object {
+    interface PreferencesAddin extends GObject.Object, PreferencesAddin.Interface {
         // Methods
 
         /**
@@ -63771,26 +63902,6 @@ export namespace Ide {
          * @param preferences The preferences container implementation.
          */
         unload(preferences: Dazzle.Preferences): void;
-
-        // Virtual methods
-
-        /**
-         * This interface method is called when a preferences addin is initialized. It could be
-         * initialized from multiple preferences implementations, so consumers should use the
-         * #DzlPreferences interface to add their preferences controls to the container.
-         *
-         * Such implementations might include a preferences dialog window, or a preferences
-         * widget which could be rendered as a perspective.
-         * @param preferences The preferences container implementation.
-         */
-        vfunc_load(preferences: Dazzle.Preferences): void;
-        /**
-         * This interface method is called when the preferences addin should remove all controls
-         * added to `preferences`. This could happen during desctruction of `preferences,` or when
-         * the plugin is unloaded.
-         * @param preferences The preferences container implementation.
-         */
-        vfunc_unload(preferences: Dazzle.Preferences): void;
     }
 
     export const PreferencesAddin: PreferencesAddinNamespace & {
@@ -63798,6 +63909,21 @@ export namespace Ide {
     };
 
     namespace ProjectMiner {
+        /**
+         * Interface for implementing ProjectMiner.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_discovered(project_info: ProjectInfo): void;
+            vfunc_mine_async(
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_mine_finish(result: Gio.AsyncResult): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -63807,7 +63933,7 @@ export namespace Ide {
         $gtype: GObject.GType<ProjectMiner>;
         prototype: ProjectMiner;
     }
-    interface ProjectMiner extends GObject.Object {
+    interface ProjectMiner extends GObject.Object, ProjectMiner.Interface {
         // Methods
 
         emit_discovered(project_info: ProjectInfo): void;
@@ -63818,12 +63944,6 @@ export namespace Ide {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         mine_finish(result: Gio.AsyncResult): boolean;
-
-        // Virtual methods
-
-        vfunc_discovered(project_info: ProjectInfo): void;
-        vfunc_mine_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
-        vfunc_mine_finish(result: Gio.AsyncResult): boolean;
     }
 
     export const ProjectMiner: ProjectMinerNamespace & {
@@ -63831,6 +63951,45 @@ export namespace Ide {
     };
 
     namespace ProjectTemplate {
+        /**
+         * Interface for implementing ProjectTemplate.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Asynchronously requests expansion of the template.
+             *
+             * This may involve creating files and directories on disk as well as
+             * expanding files based on the contents of `params`.
+             *
+             * It is expected that this method is only called once on an #IdeProjectTemplate.
+             * @param params A hashtable of template parameters.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback the callback for the asynchronous operation.
+             */
+            vfunc_expand_async(
+                params: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_expand_finish(result: Gio.AsyncResult): boolean;
+            vfunc_get_description(): string;
+            vfunc_get_icon_name(): string;
+            vfunc_get_id(): string;
+            /**
+             * Gets the list of languages that this template can support when generating
+             * the project.
+             */
+            vfunc_get_languages(): string[];
+            vfunc_get_name(): string;
+            /**
+             * Get's the configuration widget for the template if there is one.
+             */
+            vfunc_get_widget(): Gtk.Widget;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -63840,7 +63999,7 @@ export namespace Ide {
         $gtype: GObject.GType<ProjectTemplate>;
         prototype: ProjectTemplate;
     }
-    interface ProjectTemplate extends GObject.Object {
+    interface ProjectTemplate extends GObject.Object, ProjectTemplate.Interface {
         // Methods
 
         /**
@@ -63905,39 +64064,6 @@ export namespace Ide {
          * @returns A #GtkWidget.
          */
         get_widget(): Gtk.Widget;
-
-        // Virtual methods
-
-        /**
-         * Asynchronously requests expansion of the template.
-         *
-         * This may involve creating files and directories on disk as well as
-         * expanding files based on the contents of `params`.
-         *
-         * It is expected that this method is only called once on an #IdeProjectTemplate.
-         * @param params A hashtable of template parameters.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback the callback for the asynchronous operation.
-         */
-        vfunc_expand_async(
-            params: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_expand_finish(result: Gio.AsyncResult): boolean;
-        vfunc_get_description(): string;
-        vfunc_get_icon_name(): string;
-        vfunc_get_id(): string;
-        /**
-         * Gets the list of languages that this template can support when generating
-         * the project.
-         */
-        vfunc_get_languages(): string[];
-        vfunc_get_name(): string;
-        /**
-         * Get's the configuration widget for the template if there is one.
-         */
-        vfunc_get_widget(): Gtk.Widget;
     }
 
     export const ProjectTemplate: ProjectTemplateNamespace & {
@@ -63945,6 +64071,40 @@ export namespace Ide {
     };
 
     namespace RenameProvider {
+        /**
+         * Interface for implementing RenameProvider.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_load(): void;
+            /**
+             * This requests the provider to determine the edits that must be made to the
+             * project to perform the renaming of a symbol found at `location`.
+             *
+             * Use ide_rename_provider_rename_finish() to get the results.
+             * @param location An #IdeSourceLocation
+             * @param new_name The replacement name for the symbol
+             * @param cancellable A #GCancellable or %NULL
+             * @param callback a callback to complete the request
+             */
+            vfunc_rename_async(
+                location: SourceLocation,
+                new_name: string,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Completes a request to ide_rename_provider_rename_async().
+             *
+             * You can use the resulting #GPtrArray of #IdeProjectEdit instances to edit the project
+             * to complete the symbol rename.
+             * @param result A #GAsyncResult
+             */
+            vfunc_rename_finish(result: Gio.AsyncResult): [boolean, ProjectEdit[] | null];
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -63956,7 +64116,7 @@ export namespace Ide {
         $gtype: GObject.GType<RenameProvider>;
         prototype: RenameProvider;
     }
-    interface RenameProvider extends Object {
+    interface RenameProvider extends Object, RenameProvider.Interface {
         // Properties
 
         set buffer(val: Buffer);
@@ -64019,34 +64179,6 @@ export namespace Ide {
          * @returns %TRUE if successful and @edits is set. Otherwise %FALSE and @error is set.
          */
         rename_finish(result: Gio.AsyncResult): [boolean, ProjectEdit[] | null];
-
-        // Virtual methods
-
-        vfunc_load(): void;
-        /**
-         * This requests the provider to determine the edits that must be made to the
-         * project to perform the renaming of a symbol found at `location`.
-         *
-         * Use ide_rename_provider_rename_finish() to get the results.
-         * @param location An #IdeSourceLocation
-         * @param new_name The replacement name for the symbol
-         * @param cancellable A #GCancellable or %NULL
-         * @param callback a callback to complete the request
-         */
-        vfunc_rename_async(
-            location: SourceLocation,
-            new_name: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Completes a request to ide_rename_provider_rename_async().
-         *
-         * You can use the resulting #GPtrArray of #IdeProjectEdit instances to edit the project
-         * to complete the symbol rename.
-         * @param result A #GAsyncResult
-         */
-        vfunc_rename_finish(result: Gio.AsyncResult): [boolean, ProjectEdit[] | null];
     }
 
     export const RenameProvider: RenameProviderNamespace & {
@@ -64054,6 +64186,27 @@ export namespace Ide {
     };
 
     namespace RunnerAddin {
+        /**
+         * Interface for implementing RunnerAddin.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_load(runner: Runner): void;
+            vfunc_posthook_async(
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_posthook_finish(result: Gio.AsyncResult): boolean;
+            vfunc_prehook_async(
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_prehook_finish(result: Gio.AsyncResult): boolean;
+            vfunc_unload(runner: Runner): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -64063,7 +64216,7 @@ export namespace Ide {
         $gtype: GObject.GType<RunnerAddin>;
         prototype: RunnerAddin;
     }
-    interface RunnerAddin extends GObject.Object {
+    interface RunnerAddin extends GObject.Object, RunnerAddin.Interface {
         // Methods
 
         load(runner: Runner): void;
@@ -64082,18 +64235,6 @@ export namespace Ide {
         ): globalThis.Promise<boolean> | void;
         prehook_finish(result: Gio.AsyncResult): boolean;
         unload(runner: Runner): void;
-
-        // Virtual methods
-
-        vfunc_load(runner: Runner): void;
-        vfunc_posthook_async(
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_posthook_finish(result: Gio.AsyncResult): boolean;
-        vfunc_prehook_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
-        vfunc_prehook_finish(result: Gio.AsyncResult): boolean;
-        vfunc_unload(runner: Runner): void;
     }
 
     export const RunnerAddin: RunnerAddinNamespace & {
@@ -64101,6 +64242,24 @@ export namespace Ide {
     };
 
     namespace RuntimeProvider {
+        /**
+         * Interface for implementing RuntimeProvider.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_can_install(runtime_id: string): boolean;
+            vfunc_install_async(
+                runtime_id: string,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_install_finish(result: Gio.AsyncResult): boolean;
+            vfunc_load(manager: RuntimeManager): void;
+            vfunc_unload(manager: RuntimeManager): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -64110,7 +64269,7 @@ export namespace Ide {
         $gtype: GObject.GType<RuntimeProvider>;
         prototype: RuntimeProvider;
     }
-    interface RuntimeProvider extends GObject.Object {
+    interface RuntimeProvider extends GObject.Object, RuntimeProvider.Interface {
         // Methods
 
         can_install(runtime_id: string): boolean;
@@ -64128,18 +64287,6 @@ export namespace Ide {
         install_finish(result: Gio.AsyncResult): boolean;
         load(manager: RuntimeManager): void;
         unload(manager: RuntimeManager): void;
-
-        // Virtual methods
-
-        vfunc_can_install(runtime_id: string): boolean;
-        vfunc_install_async(
-            runtime_id: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_install_finish(result: Gio.AsyncResult): boolean;
-        vfunc_load(manager: RuntimeManager): void;
-        vfunc_unload(manager: RuntimeManager): void;
     }
 
     export const RuntimeProvider: RuntimeProviderNamespace & {
@@ -64147,6 +64294,30 @@ export namespace Ide {
     };
 
     namespace SearchProvider {
+        /**
+         * Interface for implementing SearchProvider.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_activate(row: Gtk.Widget, result: SearchResult): void;
+            /**
+             * Create a row to display the search result.
+             * @param result A #IdeSearchResult.
+             */
+            vfunc_create_row(result: SearchResult): Gtk.Widget;
+            vfunc_get_prefix(): string;
+            vfunc_get_priority(): number;
+            vfunc_get_verb(): string;
+            vfunc_populate(
+                context: SearchContext,
+                search_terms: string,
+                max_results: number,
+                cancellable?: Gio.Cancellable | null,
+            ): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -64156,7 +64327,7 @@ export namespace Ide {
         $gtype: GObject.GType<SearchProvider>;
         prototype: SearchProvider;
     }
-    interface SearchProvider extends Object {
+    interface SearchProvider extends Object, SearchProvider.Interface {
         // Methods
 
         activate(row: Gtk.Widget, result: SearchResult): void;
@@ -64175,24 +64346,6 @@ export namespace Ide {
             max_results: number,
             cancellable?: Gio.Cancellable | null,
         ): void;
-
-        // Virtual methods
-
-        vfunc_activate(row: Gtk.Widget, result: SearchResult): void;
-        /**
-         * Create a row to display the search result.
-         * @param result A #IdeSearchResult.
-         */
-        vfunc_create_row(result: SearchResult): Gtk.Widget;
-        vfunc_get_prefix(): string;
-        vfunc_get_priority(): number;
-        vfunc_get_verb(): string;
-        vfunc_populate(
-            context: SearchContext,
-            search_terms: string,
-            max_results: number,
-            cancellable?: Gio.Cancellable | null,
-        ): void;
     }
 
     export const SearchProvider: SearchProviderNamespace & {
@@ -64200,6 +64353,19 @@ export namespace Ide {
     };
 
     namespace Service {
+        /**
+         * Interface for implementing Service.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_context_loaded(): void;
+            vfunc_get_name(): string;
+            vfunc_start(): void;
+            vfunc_stop(): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -64209,19 +64375,12 @@ export namespace Ide {
         $gtype: GObject.GType<Service>;
         prototype: Service;
     }
-    interface Service extends Object {
+    interface Service extends Object, Service.Interface {
         // Methods
 
         get_name(): string;
         start(): void;
         stop(): void;
-
-        // Virtual methods
-
-        vfunc_context_loaded(): void;
-        vfunc_get_name(): string;
-        vfunc_start(): void;
-        vfunc_stop(): void;
     }
 
     export const Service: ServiceNamespace & {
@@ -64229,6 +64388,77 @@ export namespace Ide {
     };
 
     namespace Subprocess {
+        /**
+         * Interface for implementing Subprocess.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_communicate(
+                stdin_buf: GLib.Bytes | Uint8Array,
+                cancellable: Gio.Cancellable | null,
+                stdout_buf: GLib.Bytes | Uint8Array,
+                stderr_buf: GLib.Bytes | Uint8Array,
+            ): boolean;
+            /**
+             * Asynchronously communicates with the the child process.
+             *
+             * There is no need to call ide_subprocess_wait() on the process if using
+             * this asynchronous operation as it will internally wait for the child
+             * to exit or be signaled.
+             *
+             * Ensure you've set the proper flags to ensure that you can write to stdin
+             * or read from stderr/stdout as necessary.
+             * @param stdin_buf A #GBytes to send to stdin or %NULL
+             * @param cancellable A #GCancellable or %NULL
+             * @param callback A callback to complete the request
+             */
+            vfunc_communicate_async(
+                stdin_buf?: GLib.Bytes | null,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Finishes a request to ide_subprocess_communicate_async().
+             * @param result A #GAsyncResult
+             */
+            vfunc_communicate_finish(result: Gio.AsyncResult): [boolean, GLib.Bytes | null, GLib.Bytes | null];
+            /**
+             * This process acts identical to g_subprocess_communicate_utf8().
+             * @param stdin_buf input to deliver to the subprocesses stdin stream
+             * @param cancellable an optional #GCancellable
+             */
+            vfunc_communicate_utf8(
+                stdin_buf: string | null,
+                cancellable: Gio.Cancellable | null,
+            ): [boolean, string, string];
+            vfunc_communicate_utf8_async(
+                stdin_buf?: string | null,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_communicate_utf8_finish(result: Gio.AsyncResult): [boolean, string, string];
+            vfunc_force_exit(): void;
+            vfunc_get_exit_status(): number;
+            vfunc_get_identifier(): string;
+            vfunc_get_if_exited(): boolean;
+            vfunc_get_if_signaled(): boolean;
+            vfunc_get_status(): number;
+            vfunc_get_stderr_pipe(): Gio.InputStream;
+            vfunc_get_stdin_pipe(): Gio.OutputStream;
+            vfunc_get_stdout_pipe(): Gio.InputStream;
+            vfunc_get_successful(): boolean;
+            vfunc_get_term_sig(): number;
+            vfunc_send_signal(signal_num: number): void;
+            vfunc_wait(cancellable?: Gio.Cancellable | null): boolean;
+            vfunc_wait_async(
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_wait_finish(result: Gio.AsyncResult): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -64238,7 +64468,7 @@ export namespace Ide {
         $gtype: GObject.GType<Subprocess>;
         prototype: Subprocess;
     }
-    interface Subprocess extends GObject.Object {
+    interface Subprocess extends GObject.Object, Subprocess.Interface {
         // Methods
 
         check_exit_status(): boolean;
@@ -64356,68 +64586,6 @@ export namespace Ide {
         ): globalThis.Promise<boolean> | void;
         wait_check_finish(result: Gio.AsyncResult): boolean;
         wait_finish(result: Gio.AsyncResult): boolean;
-
-        // Virtual methods
-
-        vfunc_communicate(
-            stdin_buf: GLib.Bytes | Uint8Array,
-            cancellable: Gio.Cancellable | null,
-            stdout_buf: GLib.Bytes | Uint8Array,
-            stderr_buf: GLib.Bytes | Uint8Array,
-        ): boolean;
-        /**
-         * Asynchronously communicates with the the child process.
-         *
-         * There is no need to call ide_subprocess_wait() on the process if using
-         * this asynchronous operation as it will internally wait for the child
-         * to exit or be signaled.
-         *
-         * Ensure you've set the proper flags to ensure that you can write to stdin
-         * or read from stderr/stdout as necessary.
-         * @param stdin_buf A #GBytes to send to stdin or %NULL
-         * @param cancellable A #GCancellable or %NULL
-         * @param callback A callback to complete the request
-         */
-        vfunc_communicate_async(
-            stdin_buf?: GLib.Bytes | null,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Finishes a request to ide_subprocess_communicate_async().
-         * @param result A #GAsyncResult
-         */
-        vfunc_communicate_finish(result: Gio.AsyncResult): [boolean, GLib.Bytes | null, GLib.Bytes | null];
-        /**
-         * This process acts identical to g_subprocess_communicate_utf8().
-         * @param stdin_buf input to deliver to the subprocesses stdin stream
-         * @param cancellable an optional #GCancellable
-         */
-        vfunc_communicate_utf8(
-            stdin_buf: string | null,
-            cancellable: Gio.Cancellable | null,
-        ): [boolean, string, string];
-        vfunc_communicate_utf8_async(
-            stdin_buf?: string | null,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_communicate_utf8_finish(result: Gio.AsyncResult): [boolean, string, string];
-        vfunc_force_exit(): void;
-        vfunc_get_exit_status(): number;
-        vfunc_get_identifier(): string;
-        vfunc_get_if_exited(): boolean;
-        vfunc_get_if_signaled(): boolean;
-        vfunc_get_status(): number;
-        vfunc_get_stderr_pipe(): Gio.InputStream;
-        vfunc_get_stdin_pipe(): Gio.OutputStream;
-        vfunc_get_stdout_pipe(): Gio.InputStream;
-        vfunc_get_successful(): boolean;
-        vfunc_get_term_sig(): number;
-        vfunc_send_signal(signal_num: number): void;
-        vfunc_wait(cancellable?: Gio.Cancellable | null): boolean;
-        vfunc_wait_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
-        vfunc_wait_finish(result: Gio.AsyncResult): boolean;
     }
 
     export const Subprocess: SubprocessNamespace & {
@@ -64425,6 +64593,63 @@ export namespace Ide {
     };
 
     namespace SymbolResolver {
+        /**
+         * Interface for implementing SymbolResolver.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_find_references_async(
+                location: SourceLocation,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Completes an asynchronous request to ide_symbol_resolver_find_references_async().
+             * @param result a #GAsyncResult
+             */
+            vfunc_find_references_finish(result: Gio.AsyncResult): SourceRange[];
+            /**
+             * Asynchronously fetch an up to date symbol tree for `file`.
+             * @param file A #GFile
+             * @param buffer A #IdeBuffer or %NULL
+             * @param cancellable a #GCancellable or %NULL.
+             * @param callback a callback to execute upon completion
+             */
+            vfunc_get_symbol_tree_async(
+                file: Gio.File,
+                buffer: Buffer,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Completes an asynchronous request to get the symbol tree for the requested file.
+             * @param result
+             */
+            vfunc_get_symbol_tree_finish(result: Gio.AsyncResult): SymbolTree | null;
+            vfunc_load(): void;
+            /**
+             * Asynchronously requests that `self` determine the symbol existing at the source location
+             * denoted by `self`. `callback` should call ide_symbol_resolver_lookup_symbol_finish() to
+             * retrieve the result.
+             * @param location An #IdeSourceLocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A callback to execute upon completion.
+             */
+            vfunc_lookup_symbol_async(
+                location: SourceLocation,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Completes an asynchronous call to lookup a symbol using
+             * ide_symbol_resolver_lookup_symbol_async().
+             * @param result A #GAsyncResult provided to the callback.
+             */
+            vfunc_lookup_symbol_finish(result: Gio.AsyncResult): Symbol | null;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -64434,7 +64659,7 @@ export namespace Ide {
         $gtype: GObject.GType<SymbolResolver>;
         prototype: SymbolResolver;
     }
-    interface SymbolResolver extends Object {
+    interface SymbolResolver extends Object, SymbolResolver.Interface {
         // Methods
 
         find_references_async(
@@ -64545,57 +64770,6 @@ export namespace Ide {
          * @returns An #IdeSymbol if successful; otherwise %NULL.
          */
         lookup_symbol_finish(result: Gio.AsyncResult): Symbol | null;
-
-        // Virtual methods
-
-        vfunc_find_references_async(
-            location: SourceLocation,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Completes an asynchronous request to ide_symbol_resolver_find_references_async().
-         * @param result a #GAsyncResult
-         */
-        vfunc_find_references_finish(result: Gio.AsyncResult): SourceRange[];
-        /**
-         * Asynchronously fetch an up to date symbol tree for `file`.
-         * @param file A #GFile
-         * @param buffer A #IdeBuffer or %NULL
-         * @param cancellable a #GCancellable or %NULL.
-         * @param callback a callback to execute upon completion
-         */
-        vfunc_get_symbol_tree_async(
-            file: Gio.File,
-            buffer: Buffer,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Completes an asynchronous request to get the symbol tree for the requested file.
-         * @param result
-         */
-        vfunc_get_symbol_tree_finish(result: Gio.AsyncResult): SymbolTree | null;
-        vfunc_load(): void;
-        /**
-         * Asynchronously requests that `self` determine the symbol existing at the source location
-         * denoted by `self`. `callback` should call ide_symbol_resolver_lookup_symbol_finish() to
-         * retrieve the result.
-         * @param location An #IdeSourceLocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A callback to execute upon completion.
-         */
-        vfunc_lookup_symbol_async(
-            location: SourceLocation,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Completes an asynchronous call to lookup a symbol using
-         * ide_symbol_resolver_lookup_symbol_async().
-         * @param result A #GAsyncResult provided to the callback.
-         */
-        vfunc_lookup_symbol_finish(result: Gio.AsyncResult): Symbol | null;
     }
 
     export const SymbolResolver: SymbolResolverNamespace & {
@@ -64603,6 +64777,27 @@ export namespace Ide {
     };
 
     namespace SymbolTree {
+        /**
+         * Interface for implementing SymbolTree.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Get the number of children of `node`. If `node` is NULL, the root node
+             * is assumed.
+             * @param node An #IdeSymbolNode or %NULL.
+             */
+            vfunc_get_n_children(node?: SymbolNode | null): number;
+            /**
+             * Gets the `nth` child node of `node`.
+             * @param node an #IdeSymboNode
+             * @param nth the nth child to retrieve.
+             */
+            vfunc_get_nth_child(node: SymbolNode | null, nth: number): SymbolNode | null;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -64612,7 +64807,7 @@ export namespace Ide {
         $gtype: GObject.GType<SymbolTree>;
         prototype: SymbolTree;
     }
-    interface SymbolTree extends GObject.Object {
+    interface SymbolTree extends GObject.Object, SymbolTree.Interface {
         // Methods
 
         /**
@@ -64629,21 +64824,6 @@ export namespace Ide {
          * @returns A #IdeSymbolNode or %NULL.
          */
         get_nth_child(node: SymbolNode | null, nth: number): SymbolNode | null;
-
-        // Virtual methods
-
-        /**
-         * Get the number of children of `node`. If `node` is NULL, the root node
-         * is assumed.
-         * @param node An #IdeSymbolNode or %NULL.
-         */
-        vfunc_get_n_children(node?: SymbolNode | null): number;
-        /**
-         * Gets the `nth` child node of `node`.
-         * @param node an #IdeSymboNode
-         * @param nth the nth child to retrieve.
-         */
-        vfunc_get_nth_child(node: SymbolNode | null, nth: number): SymbolNode | null;
     }
 
     export const SymbolTree: SymbolTreeNamespace & {
@@ -64651,6 +64831,22 @@ export namespace Ide {
     };
 
     namespace TagsBuilder {
+        /**
+         * Interface for implementing TagsBuilder.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_build_async(
+                directory_or_file: Gio.File,
+                recursive: boolean,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_build_finish(result: Gio.AsyncResult): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -64660,7 +64856,7 @@ export namespace Ide {
         $gtype: GObject.GType<TagsBuilder>;
         prototype: TagsBuilder;
     }
-    interface TagsBuilder extends GObject.Object {
+    interface TagsBuilder extends GObject.Object, TagsBuilder.Interface {
         // Methods
 
         build_async(
@@ -64681,16 +64877,6 @@ export namespace Ide {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         build_finish(result: Gio.AsyncResult): boolean;
-
-        // Virtual methods
-
-        vfunc_build_async(
-            directory_or_file: Gio.File,
-            recursive: boolean,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_build_finish(result: Gio.AsyncResult): boolean;
     }
 
     export const TagsBuilder: TagsBuilderNamespace & {
@@ -64698,6 +64884,22 @@ export namespace Ide {
     };
 
     namespace TemplateProvider {
+        /**
+         * Interface for implementing TemplateProvider.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Gets a list of templates for this provider.
+             *
+             * Plugins should implement this interface to feed #IdeProjectTemplate's into
+             * the project creation workflow.
+             */
+            vfunc_get_project_templates(): ProjectTemplate[];
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -64707,7 +64909,7 @@ export namespace Ide {
         $gtype: GObject.GType<TemplateProvider>;
         prototype: TemplateProvider;
     }
-    interface TemplateProvider extends GObject.Object {
+    interface TemplateProvider extends GObject.Object, TemplateProvider.Interface {
         // Methods
 
         /**
@@ -64718,16 +64920,6 @@ export namespace Ide {
          * @returns A #GList of   #IdeProjectTemplate instances.
          */
         get_project_templates(): ProjectTemplate[];
-
-        // Virtual methods
-
-        /**
-         * Gets a list of templates for this provider.
-         *
-         * Plugins should implement this interface to feed #IdeProjectTemplate's into
-         * the project creation workflow.
-         */
-        vfunc_get_project_templates(): ProjectTemplate[];
     }
 
     export const TemplateProvider: TemplateProviderNamespace & {
@@ -64735,6 +64927,38 @@ export namespace Ide {
     };
 
     namespace Vcs {
+        /**
+         * Interface for implementing Vcs.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_changed(): void;
+            /**
+             * Retrieves the name of the branch in the current working directory.
+             */
+            vfunc_get_branch_name(): string;
+            /**
+             * Gets an #IdeBufferChangeMonitor for the buffer provided. If the #IdeVcs implementation does not
+             * support change monitoring, or cannot for the current file, then %NULL is returned.
+             * @param buffer
+             */
+            vfunc_get_buffer_change_monitor(buffer: Buffer): BufferChangeMonitor | null;
+            /**
+             * Retrieves an #IdeVcsConfig for the #IdeVcs provided. If the #IdeVcs implementation does not
+             * support access to configuration, then %NULL is returned.
+             */
+            vfunc_get_config(): VcsConfig | null;
+            vfunc_get_priority(): number;
+            /**
+             * Retrieves the working directory for the context. This is the root of where
+             * the project files exist.
+             */
+            vfunc_get_working_directory(): Gio.File;
+            vfunc_is_ignored(file: Gio.File): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -64764,7 +64988,7 @@ export namespace Ide {
         new_finish(...args: never[]): any;
         register_ignored(pattern: string): void;
     }
-    interface Vcs extends Object {
+    interface Vcs extends Object, Vcs.Interface {
         // Properties
 
         get branch_name(): string;
@@ -64802,32 +65026,6 @@ export namespace Ide {
          */
         get_working_directory(): Gio.File;
         is_ignored(file: Gio.File): boolean;
-
-        // Virtual methods
-
-        vfunc_changed(): void;
-        /**
-         * Retrieves the name of the branch in the current working directory.
-         */
-        vfunc_get_branch_name(): string;
-        /**
-         * Gets an #IdeBufferChangeMonitor for the buffer provided. If the #IdeVcs implementation does not
-         * support change monitoring, or cannot for the current file, then %NULL is returned.
-         * @param buffer
-         */
-        vfunc_get_buffer_change_monitor(buffer: Buffer): BufferChangeMonitor | null;
-        /**
-         * Retrieves an #IdeVcsConfig for the #IdeVcs provided. If the #IdeVcs implementation does not
-         * support access to configuration, then %NULL is returned.
-         */
-        vfunc_get_config(): VcsConfig | null;
-        vfunc_get_priority(): number;
-        /**
-         * Retrieves the working directory for the context. This is the root of where
-         * the project files exist.
-         */
-        vfunc_get_working_directory(): Gio.File;
-        vfunc_is_ignored(file: Gio.File): boolean;
     }
 
     export const Vcs: VcsNamespace & {
@@ -64835,6 +65033,17 @@ export namespace Ide {
     };
 
     namespace VcsConfig {
+        /**
+         * Interface for implementing VcsConfig.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_config(type: VcsConfigType, value: GObject.Value | any): void;
+            vfunc_set_config(type: VcsConfigType, value: GObject.Value | any): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -64844,16 +65053,11 @@ export namespace Ide {
         $gtype: GObject.GType<VcsConfig>;
         prototype: VcsConfig;
     }
-    interface VcsConfig extends GObject.Object {
+    interface VcsConfig extends GObject.Object, VcsConfig.Interface {
         // Methods
 
         get_config(type: VcsConfigType | null, value: GObject.Value | any): void;
         set_config(type: VcsConfigType | null, value: GObject.Value | any): void;
-
-        // Virtual methods
-
-        vfunc_get_config(type: VcsConfigType, value: GObject.Value | any): void;
-        vfunc_set_config(type: VcsConfigType, value: GObject.Value | any): void;
     }
 
     export const VcsConfig: VcsConfigNamespace & {
@@ -64861,6 +65065,22 @@ export namespace Ide {
     };
 
     namespace VcsInitializer {
+        /**
+         * Interface for implementing VcsInitializer.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_title(): string;
+            vfunc_initialize_async(
+                file: Gio.File,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_initialize_finish(result: Gio.AsyncResult): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -64870,7 +65090,7 @@ export namespace Ide {
         $gtype: GObject.GType<VcsInitializer>;
         prototype: VcsInitializer;
     }
-    interface VcsInitializer extends GObject.Object {
+    interface VcsInitializer extends GObject.Object, VcsInitializer.Interface {
         // Methods
 
         get_title(): string;
@@ -64886,16 +65106,6 @@ export namespace Ide {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         initialize_finish(result: Gio.AsyncResult): boolean;
-
-        // Virtual methods
-
-        vfunc_get_title(): string;
-        vfunc_initialize_async(
-            file: Gio.File,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_initialize_finish(result: Gio.AsyncResult): boolean;
     }
 
     export const VcsInitializer: VcsInitializerNamespace & {
@@ -64903,6 +65113,67 @@ export namespace Ide {
     };
 
     namespace WorkbenchAddin {
+        /**
+         * Interface for implementing WorkbenchAddin.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * This interface method indicates if the workbench addin can load the content
+             * found at `uri`. If so, `priority` should be set to an integer priority
+             * indicating how important it is for this addin to load `uri`.
+             *
+             * The lowest integer value wins. However, a load fails, the next addin which
+             * returned %TRUE from this method will be consulted.
+             * @param uri An #IdeUri.
+             * @param content_type A content-type or %NULL.
+             */
+            vfunc_can_open(uri: Uri, content_type: string | null): [boolean, number];
+            /**
+             * Gets the identifier for this workbench addin. By default this is the
+             * name of the classes GType (such as "MyObject").
+             *
+             * This can be used as the hint to various open operations in IdeWorkbench
+             * to prefer a given loader.
+             */
+            vfunc_get_id(): string;
+            /**
+             * This interface method is called to load `self`. Addin implementations should add any
+             * required UI or actions to `workbench` here. You should remove anything you've added
+             * in ide_workbench_addin_unload(), as that will be called when your plugin is deactivated
+             * or the workbench is in the destruction process.
+             * @param workbench An #IdeWorkbench
+             */
+            vfunc_load(workbench: Workbench): void;
+            vfunc_open_async(
+                uri: Uri,
+                content_type: string,
+                flags: WorkbenchOpenFlags,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_open_finish(result: Gio.AsyncResult): boolean;
+            /**
+             * This function is called when the workbench changes the perspective.
+             *
+             * Addins that wish to add buttons to the header bar may want to show or
+             * hide the widgets in this vfunc.
+             * @param perspective An #IdePerspective
+             */
+            vfunc_perspective_set(perspective: Perspective): void;
+            /**
+             * This interface method should cleanup after anything added to `workbench` in
+             * ide_workbench_addin_load().
+             *
+             * This might be called when a plugin is deactivated, or the workbench is in the
+             * destruction process.
+             * @param workbench An #IdeWorkbench
+             */
+            vfunc_unload(workbench: Workbench): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -64912,7 +65183,7 @@ export namespace Ide {
         $gtype: GObject.GType<WorkbenchAddin>;
         prototype: WorkbenchAddin;
     }
-    interface WorkbenchAddin extends GObject.Object {
+    interface WorkbenchAddin extends GObject.Object, WorkbenchAddin.Interface {
         // Methods
 
         /**
@@ -64982,61 +65253,6 @@ export namespace Ide {
          * @param workbench An #IdeWorkbench
          */
         unload(workbench: Workbench): void;
-
-        // Virtual methods
-
-        /**
-         * This interface method indicates if the workbench addin can load the content
-         * found at `uri`. If so, `priority` should be set to an integer priority
-         * indicating how important it is for this addin to load `uri`.
-         *
-         * The lowest integer value wins. However, a load fails, the next addin which
-         * returned %TRUE from this method will be consulted.
-         * @param uri An #IdeUri.
-         * @param content_type A content-type or %NULL.
-         */
-        vfunc_can_open(uri: Uri, content_type: string | null): [boolean, number];
-        /**
-         * Gets the identifier for this workbench addin. By default this is the
-         * name of the classes GType (such as "MyObject").
-         *
-         * This can be used as the hint to various open operations in IdeWorkbench
-         * to prefer a given loader.
-         */
-        vfunc_get_id(): string;
-        /**
-         * This interface method is called to load `self`. Addin implementations should add any
-         * required UI or actions to `workbench` here. You should remove anything you've added
-         * in ide_workbench_addin_unload(), as that will be called when your plugin is deactivated
-         * or the workbench is in the destruction process.
-         * @param workbench An #IdeWorkbench
-         */
-        vfunc_load(workbench: Workbench): void;
-        vfunc_open_async(
-            uri: Uri,
-            content_type: string,
-            flags: WorkbenchOpenFlags,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_open_finish(result: Gio.AsyncResult): boolean;
-        /**
-         * This function is called when the workbench changes the perspective.
-         *
-         * Addins that wish to add buttons to the header bar may want to show or
-         * hide the widgets in this vfunc.
-         * @param perspective An #IdePerspective
-         */
-        vfunc_perspective_set(perspective: Perspective): void;
-        /**
-         * This interface method should cleanup after anything added to `workbench` in
-         * ide_workbench_addin_load().
-         *
-         * This might be called when a plugin is deactivated, or the workbench is in the
-         * destruction process.
-         * @param workbench An #IdeWorkbench
-         */
-        vfunc_unload(workbench: Workbench): void;
     }
 
     export const WorkbenchAddin: WorkbenchAddinNamespace & {
@@ -65044,6 +65260,22 @@ export namespace Ide {
     };
 
     namespace Worker {
+        /**
+         * Interface for implementing Worker.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Creates a new proxy to be connected to the subprocess peer on the other
+             * end of `connection`.
+             * @param connection A #GDBusConnection connected to the worker process.
+             */
+            vfunc_create_proxy(connection: Gio.DBusConnection): Gio.DBusProxy;
+            vfunc_register_service(connection: Gio.DBusConnection): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -65053,7 +65285,7 @@ export namespace Ide {
         $gtype: GObject.GType<Worker>;
         prototype: Worker;
     }
-    interface Worker extends GObject.Object {
+    interface Worker extends GObject.Object, Worker.Interface {
         // Methods
 
         /**
@@ -65064,16 +65296,6 @@ export namespace Ide {
          */
         create_proxy(connection: Gio.DBusConnection): Gio.DBusProxy;
         register_service(connection: Gio.DBusConnection): void;
-
-        // Virtual methods
-
-        /**
-         * Creates a new proxy to be connected to the subprocess peer on the other
-         * end of `connection`.
-         * @param connection A #GDBusConnection connected to the worker process.
-         */
-        vfunc_create_proxy(connection: Gio.DBusConnection): Gio.DBusProxy;
-        vfunc_register_service(connection: Gio.DBusConnection): void;
     }
 
     export const Worker: WorkerNamespace & {

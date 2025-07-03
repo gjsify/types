@@ -1984,6 +1984,16 @@ export namespace GstPlayer {
     }
 
     namespace PlayerSignalDispatcher {
+        /**
+         * Interface for implementing PlayerSignalDispatcher.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_dispatch(player: Player, emitter: PlayerSignalDispatcherFunc): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1993,11 +2003,7 @@ export namespace GstPlayer {
         $gtype: GObject.GType<PlayerSignalDispatcher>;
         prototype: PlayerSignalDispatcher;
     }
-    interface PlayerSignalDispatcher extends GObject.Object {
-        // Virtual methods
-
-        vfunc_dispatch(player: Player, emitter: PlayerSignalDispatcherFunc): void;
-    }
+    interface PlayerSignalDispatcher extends GObject.Object, PlayerSignalDispatcher.Interface {}
 
     export const PlayerSignalDispatcher: PlayerSignalDispatcherNamespace & {
         new (): PlayerSignalDispatcher; // This allows `obj instanceof PlayerSignalDispatcher`

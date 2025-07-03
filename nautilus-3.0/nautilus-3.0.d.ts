@@ -470,6 +470,38 @@ export namespace Nautilus {
     };
 
     namespace FileInfo {
+        /**
+         * Interface for implementing FileInfo.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_add_emblem(emblem_name: string): void;
+            vfunc_add_string_attribute(attribute_name: string, value: string): void;
+            vfunc_can_write(): boolean;
+            vfunc_get_activation_uri(): string;
+            vfunc_get_file_type(): Gio.FileType;
+            vfunc_get_location(): Gio.File;
+            vfunc_get_mime_type(): string;
+            vfunc_get_mount(): Gio.Mount | null;
+            vfunc_get_name(): string;
+            /**
+             * It's not safe to call this recursively multiple times, as it works
+             * only for files already cached by Nautilus.
+             */
+            vfunc_get_parent_info(): FileInfo | null;
+            vfunc_get_parent_location(): Gio.File | null;
+            vfunc_get_parent_uri(): string;
+            vfunc_get_string_attribute(attribute_name: string): string;
+            vfunc_get_uri(): string;
+            vfunc_get_uri_scheme(): string;
+            vfunc_invalidate_extension_info(): void;
+            vfunc_is_directory(): boolean;
+            vfunc_is_gone(): boolean;
+            vfunc_is_mime_type(mime_type: string): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -486,7 +518,7 @@ export namespace Nautilus {
         lookup(location: Gio.File): FileInfo | null;
         lookup_for_uri(uri: string): FileInfo | null;
     }
-    interface FileInfo extends GObject.Object {
+    interface FileInfo extends GObject.Object, FileInfo.Interface {
         // Methods
 
         add_emblem(emblem_name: string): void;
@@ -513,32 +545,6 @@ export namespace Nautilus {
         is_directory(): boolean;
         is_gone(): boolean;
         is_mime_type(mime_type: string): boolean;
-
-        // Virtual methods
-
-        vfunc_add_emblem(emblem_name: string): void;
-        vfunc_add_string_attribute(attribute_name: string, value: string): void;
-        vfunc_can_write(): boolean;
-        vfunc_get_activation_uri(): string;
-        vfunc_get_file_type(): Gio.FileType;
-        vfunc_get_location(): Gio.File;
-        vfunc_get_mime_type(): string;
-        vfunc_get_mount(): Gio.Mount | null;
-        vfunc_get_name(): string;
-        /**
-         * It's not safe to call this recursively multiple times, as it works
-         * only for files already cached by Nautilus.
-         */
-        vfunc_get_parent_info(): FileInfo | null;
-        vfunc_get_parent_location(): Gio.File | null;
-        vfunc_get_parent_uri(): string;
-        vfunc_get_string_attribute(attribute_name: string): string;
-        vfunc_get_uri(): string;
-        vfunc_get_uri_scheme(): string;
-        vfunc_invalidate_extension_info(): void;
-        vfunc_is_directory(): boolean;
-        vfunc_is_gone(): boolean;
-        vfunc_is_mime_type(mime_type: string): boolean;
     }
 
     export const FileInfo: FileInfoNamespace & {

@@ -48172,6 +48172,71 @@ export namespace Clutter {
     }
 
     namespace Animatable {
+        /**
+         * Interface for implementing Animatable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Calls the animate_property() virtual function for `animatable`.
+             *
+             * The `initial_value` and `final_value` #GValue<!-- -->s must contain
+             * the same type; `value` must have been initialized to the same
+             * type of `initial_value` and `final_value`.
+             *
+             * All implementation of the #ClutterAnimatable interface must
+             * implement this function.
+             * @param animation a #ClutterAnimation
+             * @param property_name the name of the animated property
+             * @param initial_value the initial value of the animation interval
+             * @param final_value the final value of the animation interval
+             * @param progress the progress factor
+             * @param value return location for the animation value
+             */
+            vfunc_animate_property(
+                animation: Animation,
+                property_name: string,
+                initial_value: GObject.Value | any,
+                final_value: GObject.Value | any,
+                progress: number,
+                value: GObject.Value | any,
+            ): boolean;
+            /**
+             * Finds the #GParamSpec for `property_name`
+             * @param property_name the name of the animatable property to find
+             */
+            vfunc_find_property(property_name: string): GObject.ParamSpec;
+            /**
+             * Retrieves the current state of `property_name` and sets `value` with it
+             * @param property_name the name of the animatable property to retrieve
+             * @param value a #GValue initialized to the type of the property to retrieve
+             */
+            vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
+            /**
+             * Asks a #ClutterAnimatable implementation to interpolate a
+             * a named property between the initial and final values of
+             * a #ClutterInterval, using `progress` as the interpolation
+             * value, and store the result inside `value`.
+             *
+             * This function should be used for every property animation
+             * involving #ClutterAnimatable<!-- -->s.
+             *
+             * This function replaces clutter_animatable_animate_property().
+             * @param property_name the name of the property to interpolate
+             * @param interval a #ClutterInterval with the animation range
+             * @param progress the progress to use to interpolate between the   initial and final values of the @interval
+             */
+            vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
+            /**
+             * Sets the current state of `property_name` to `value`
+             * @param property_name the name of the animatable property to set
+             * @param value the value of the animatable property to set
+             */
+            vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -48181,7 +48246,7 @@ export namespace Clutter {
         $gtype: GObject.GType<Animatable>;
         prototype: Animatable;
     }
-    interface Animatable extends GObject.Object {
+    interface Animatable extends GObject.Object, Animatable.Interface {
         // Methods
 
         /**
@@ -48243,65 +48308,6 @@ export namespace Clutter {
          * @param value the value of the animatable property to set
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
-
-        // Virtual methods
-
-        /**
-         * Calls the animate_property() virtual function for `animatable`.
-         *
-         * The `initial_value` and `final_value` #GValue<!-- -->s must contain
-         * the same type; `value` must have been initialized to the same
-         * type of `initial_value` and `final_value`.
-         *
-         * All implementation of the #ClutterAnimatable interface must
-         * implement this function.
-         * @param animation a #ClutterAnimation
-         * @param property_name the name of the animated property
-         * @param initial_value the initial value of the animation interval
-         * @param final_value the final value of the animation interval
-         * @param progress the progress factor
-         * @param value return location for the animation value
-         */
-        vfunc_animate_property(
-            animation: Animation,
-            property_name: string,
-            initial_value: GObject.Value | any,
-            final_value: GObject.Value | any,
-            progress: number,
-            value: GObject.Value | any,
-        ): boolean;
-        /**
-         * Finds the #GParamSpec for `property_name`
-         * @param property_name the name of the animatable property to find
-         */
-        vfunc_find_property(property_name: string): GObject.ParamSpec;
-        /**
-         * Retrieves the current state of `property_name` and sets `value` with it
-         * @param property_name the name of the animatable property to retrieve
-         * @param value a #GValue initialized to the type of the property to retrieve
-         */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Asks a #ClutterAnimatable implementation to interpolate a
-         * a named property between the initial and final values of
-         * a #ClutterInterval, using `progress` as the interpolation
-         * value, and store the result inside `value`.
-         *
-         * This function should be used for every property animation
-         * involving #ClutterAnimatable<!-- -->s.
-         *
-         * This function replaces clutter_animatable_animate_property().
-         * @param property_name the name of the property to interpolate
-         * @param interval a #ClutterInterval with the animation range
-         * @param progress the progress to use to interpolate between the   initial and final values of the @interval
-         */
-        vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
-        /**
-         * Sets the current state of `property_name` to `value`
-         * @param property_name the name of the animatable property to set
-         * @param value the value of the animatable property to set
-         */
-        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
     }
 
     export const Animatable: AnimatableNamespace & {
@@ -48309,6 +48315,126 @@ export namespace Clutter {
     };
 
     namespace Container {
+        /**
+         * Interface for implementing Container.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_actor_added(actor: Actor): void;
+            vfunc_actor_removed(actor: Actor): void;
+            /**
+             * Adds a #ClutterActor to `container`. This function will emit the
+             * "actor-added" signal. The actor should be parented to
+             * `container`. You cannot add a #ClutterActor to more than one
+             * #ClutterContainer.
+             *
+             * This function will call #ClutterContainerIface.add(), which is a
+             * deprecated virtual function. The default implementation will
+             * call clutter_actor_add_child().
+             * @param actor the first #ClutterActor to add
+             */
+            vfunc_add(actor: Actor): void;
+            /**
+             * Calls the #ClutterContainerIface.child_notify() virtual function
+             * of #ClutterContainer. The default implementation will emit the
+             * #ClutterContainer::child-notify signal.
+             * @param child a #ClutterActor
+             * @param pspec a #GParamSpec
+             */
+            vfunc_child_notify(child: Actor, pspec: GObject.ParamSpec): void;
+            /**
+             * Creates the #ClutterChildMeta wrapping `actor` inside the
+             * `container,` if the #ClutterContainerIface::child_meta_type
+             * class member is not set to %G_TYPE_INVALID.
+             *
+             * This function is only useful when adding a #ClutterActor to
+             * a #ClutterContainer implementation outside of the
+             * #ClutterContainer::add() virtual function implementation.
+             *
+             * Applications should not call this function.
+             * @param actor a #ClutterActor
+             */
+            vfunc_create_child_meta(actor: Actor): void;
+            /**
+             * Destroys the #ClutterChildMeta wrapping `actor` inside the
+             * `container,` if any.
+             *
+             * This function is only useful when removing a #ClutterActor to
+             * a #ClutterContainer implementation outside of the
+             * #ClutterContainer::add() virtual function implementation.
+             *
+             * Applications should not call this function.
+             * @param actor a #ClutterActor
+             */
+            vfunc_destroy_child_meta(actor: Actor): void;
+            /**
+             * Calls `callback` for each child of `container` that was added
+             * by the application (with clutter_container_add_actor()). Does
+             * not iterate over "internal" children that are part of the
+             * container's own implementation, if any.
+             *
+             * This function calls the #ClutterContainerIface.foreach()
+             * virtual function, which has been deprecated.
+             * @param callback a function to be called for each child
+             */
+            vfunc_foreach(callback: Callback): void;
+            /**
+             * Calls `callback` for each child of `container,` including "internal"
+             * children built in to the container itself that were never added
+             * by the application.
+             *
+             * This function calls the #ClutterContainerIface.foreach_with_internals()
+             * virtual function, which has been deprecated.
+             * @param callback a function to be called for each child
+             */
+            vfunc_foreach_with_internals(callback: Callback): void;
+            /**
+             * Retrieves the #ClutterChildMeta which contains the data about the
+             * `container` specific state for `actor`.
+             * @param actor a #ClutterActor that is a child of @container.
+             */
+            vfunc_get_child_meta(actor: Actor): ChildMeta;
+            /**
+             * Lowers `actor` to `sibling` level, in the depth ordering.
+             *
+             * This function calls the #ClutterContainerIface.lower() virtual function,
+             * which has been deprecated. The default implementation will call
+             * clutter_actor_set_child_below_sibling().
+             * @param actor the actor to raise
+             * @param sibling the sibling to lower to, or %NULL to lower   to the bottom
+             */
+            vfunc_lower(actor: Actor, sibling?: Actor | null): void;
+            /**
+             * Raises `actor` to `sibling` level, in the depth ordering.
+             *
+             * This function calls the #ClutterContainerIface.raise() virtual function,
+             * which has been deprecated. The default implementation will call
+             * clutter_actor_set_child_above_sibling().
+             * @param actor the actor to raise
+             * @param sibling the sibling to raise to, or %NULL to raise   to the top
+             */
+            vfunc_raise(actor: Actor, sibling?: Actor | null): void;
+            /**
+             * Removes `actor` from `container`. The actor should be unparented, so
+             * if you want to keep it around you must hold a reference to it
+             * yourself, using g_object_ref(). When the actor has been removed,
+             * the "actor-removed" signal is emitted by `container`.
+             *
+             * This function will call #ClutterContainerIface.remove(), which is a
+             * deprecated virtual function. The default implementation will call
+             * clutter_actor_remove_child().
+             * @param actor a #ClutterActor
+             */
+            vfunc_remove(actor: Actor): void;
+            /**
+             * Sorts a container's children using their depth. This function should not
+             * be normally used by applications.
+             */
+            vfunc_sort_depth_order(): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -48330,7 +48456,7 @@ export namespace Clutter {
          */
         class_list_child_properties(klass: typeof GObject.Object): GObject.ParamSpec[];
     }
-    interface Container extends GObject.Object {
+    interface Container extends GObject.Object, Container.Interface {
         // Methods
 
         /**
@@ -48475,120 +48601,6 @@ export namespace Clutter {
          * be normally used by applications.
          */
         sort_depth_order(): void;
-
-        // Virtual methods
-
-        vfunc_actor_added(actor: Actor): void;
-        vfunc_actor_removed(actor: Actor): void;
-        /**
-         * Adds a #ClutterActor to `container`. This function will emit the
-         * "actor-added" signal. The actor should be parented to
-         * `container`. You cannot add a #ClutterActor to more than one
-         * #ClutterContainer.
-         *
-         * This function will call #ClutterContainerIface.add(), which is a
-         * deprecated virtual function. The default implementation will
-         * call clutter_actor_add_child().
-         * @param actor the first #ClutterActor to add
-         */
-        vfunc_add(actor: Actor): void;
-        /**
-         * Calls the #ClutterContainerIface.child_notify() virtual function
-         * of #ClutterContainer. The default implementation will emit the
-         * #ClutterContainer::child-notify signal.
-         * @param child a #ClutterActor
-         * @param pspec a #GParamSpec
-         */
-        vfunc_child_notify(child: Actor, pspec: GObject.ParamSpec): void;
-        /**
-         * Creates the #ClutterChildMeta wrapping `actor` inside the
-         * `container,` if the #ClutterContainerIface::child_meta_type
-         * class member is not set to %G_TYPE_INVALID.
-         *
-         * This function is only useful when adding a #ClutterActor to
-         * a #ClutterContainer implementation outside of the
-         * #ClutterContainer::add() virtual function implementation.
-         *
-         * Applications should not call this function.
-         * @param actor a #ClutterActor
-         */
-        vfunc_create_child_meta(actor: Actor): void;
-        /**
-         * Destroys the #ClutterChildMeta wrapping `actor` inside the
-         * `container,` if any.
-         *
-         * This function is only useful when removing a #ClutterActor to
-         * a #ClutterContainer implementation outside of the
-         * #ClutterContainer::add() virtual function implementation.
-         *
-         * Applications should not call this function.
-         * @param actor a #ClutterActor
-         */
-        vfunc_destroy_child_meta(actor: Actor): void;
-        /**
-         * Calls `callback` for each child of `container` that was added
-         * by the application (with clutter_container_add_actor()). Does
-         * not iterate over "internal" children that are part of the
-         * container's own implementation, if any.
-         *
-         * This function calls the #ClutterContainerIface.foreach()
-         * virtual function, which has been deprecated.
-         * @param callback a function to be called for each child
-         */
-        vfunc_foreach(callback: Callback): void;
-        /**
-         * Calls `callback` for each child of `container,` including "internal"
-         * children built in to the container itself that were never added
-         * by the application.
-         *
-         * This function calls the #ClutterContainerIface.foreach_with_internals()
-         * virtual function, which has been deprecated.
-         * @param callback a function to be called for each child
-         */
-        vfunc_foreach_with_internals(callback: Callback): void;
-        /**
-         * Retrieves the #ClutterChildMeta which contains the data about the
-         * `container` specific state for `actor`.
-         * @param actor a #ClutterActor that is a child of @container.
-         */
-        vfunc_get_child_meta(actor: Actor): ChildMeta;
-        /**
-         * Lowers `actor` to `sibling` level, in the depth ordering.
-         *
-         * This function calls the #ClutterContainerIface.lower() virtual function,
-         * which has been deprecated. The default implementation will call
-         * clutter_actor_set_child_below_sibling().
-         * @param actor the actor to raise
-         * @param sibling the sibling to lower to, or %NULL to lower   to the bottom
-         */
-        vfunc_lower(actor: Actor, sibling?: Actor | null): void;
-        /**
-         * Raises `actor` to `sibling` level, in the depth ordering.
-         *
-         * This function calls the #ClutterContainerIface.raise() virtual function,
-         * which has been deprecated. The default implementation will call
-         * clutter_actor_set_child_above_sibling().
-         * @param actor the actor to raise
-         * @param sibling the sibling to raise to, or %NULL to raise   to the top
-         */
-        vfunc_raise(actor: Actor, sibling?: Actor | null): void;
-        /**
-         * Removes `actor` from `container`. The actor should be unparented, so
-         * if you want to keep it around you must hold a reference to it
-         * yourself, using g_object_ref(). When the actor has been removed,
-         * the "actor-removed" signal is emitted by `container`.
-         *
-         * This function will call #ClutterContainerIface.remove(), which is a
-         * deprecated virtual function. The default implementation will call
-         * clutter_actor_remove_child().
-         * @param actor a #ClutterActor
-         */
-        vfunc_remove(actor: Actor): void;
-        /**
-         * Sorts a container's children using their depth. This function should not
-         * be normally used by applications.
-         */
-        vfunc_sort_depth_order(): void;
     }
 
     export const Container: ContainerNamespace & {
@@ -48596,6 +48608,34 @@ export namespace Clutter {
     };
 
     namespace Content {
+        /**
+         * Interface for implementing Content.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_attached(actor: Actor): void;
+            vfunc_detached(actor: Actor): void;
+            /**
+             * Retrieves the natural size of the `content,` if any.
+             *
+             * The natural size of a #ClutterContent is defined as the size the content
+             * would have regardless of the allocation of the actor that is painting it,
+             * for instance the size of an image data.
+             */
+            vfunc_get_preferred_size(): [boolean, number, number];
+            /**
+             * Invalidates a #ClutterContent.
+             *
+             * This function should be called by #ClutterContent implementations when
+             * they change the way a the content should be painted regardless of the
+             * actor state.
+             */
+            vfunc_invalidate(): void;
+            vfunc_paint_content(actor: Actor, node: PaintNode): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -48605,7 +48645,7 @@ export namespace Clutter {
         $gtype: GObject.GType<Content>;
         prototype: Content;
     }
-    interface Content extends GObject.Object {
+    interface Content extends GObject.Object, Content.Interface {
         // Methods
 
         /**
@@ -48625,28 +48665,6 @@ export namespace Clutter {
          * actor state.
          */
         invalidate(): void;
-
-        // Virtual methods
-
-        vfunc_attached(actor: Actor): void;
-        vfunc_detached(actor: Actor): void;
-        /**
-         * Retrieves the natural size of the `content,` if any.
-         *
-         * The natural size of a #ClutterContent is defined as the size the content
-         * would have regardless of the allocation of the actor that is painting it,
-         * for instance the size of an image data.
-         */
-        vfunc_get_preferred_size(): [boolean, number, number];
-        /**
-         * Invalidates a #ClutterContent.
-         *
-         * This function should be called by #ClutterContent implementations when
-         * they change the way a the content should be painted regardless of the
-         * actor state.
-         */
-        vfunc_invalidate(): void;
-        vfunc_paint_content(actor: Actor, node: PaintNode): void;
     }
 
     export const Content: ContentNamespace & {
@@ -48654,6 +48672,17 @@ export namespace Clutter {
     };
 
     namespace Media {
+        /**
+         * Interface for implementing Media.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_eos(): void;
+            vfunc_error(error: GLib.Error): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -48678,7 +48707,7 @@ export namespace Clutter {
         $gtype: GObject.GType<Media>;
         prototype: Media;
     }
-    interface Media extends GObject.Object {
+    interface Media extends GObject.Object, Media.Interface {
         // Properties
 
         /**
@@ -48854,11 +48883,6 @@ export namespace Clutter {
          * @param uri the URI of the media stream
          */
         set_uri(uri: string): void;
-
-        // Virtual methods
-
-        vfunc_eos(): void;
-        vfunc_error(error: GLib.Error): void;
     }
 
     export const Media: MediaNamespace & {
@@ -48866,6 +48890,46 @@ export namespace Clutter {
     };
 
     namespace Scriptable {
+        /**
+         * Interface for implementing Scriptable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Retrieves the id of `scriptable` set using clutter_scriptable_set_id().
+             */
+            vfunc_get_id(): string;
+            /**
+             * Parses the passed JSON node. The implementation must set the type
+             * of the passed #GValue pointer using g_value_init().
+             * @param script the #ClutterScript creating the scriptable instance
+             * @param value the generic value to be set
+             * @param name the name of the node
+             * @param node the JSON node to be parsed
+             */
+            vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+            /**
+             * Overrides the common properties setting. The underlying virtual
+             * function should be used when implementing custom properties.
+             * @param script the #ClutterScript creating the scriptable instance
+             * @param name the name of the property
+             * @param value the value of the property
+             */
+            vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+            /**
+             * Sets `id_` as the unique Clutter script it for this instance of
+             * #ClutterScriptableIface.
+             *
+             * This name can be used by user interface designer applications to
+             * define a unique name for an object constructable using the UI
+             * definition language parsed by #ClutterScript.
+             * @param id_ the #ClutterScript id of the object
+             */
+            vfunc_set_id(id_: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -48875,7 +48939,7 @@ export namespace Clutter {
         $gtype: GObject.GType<Scriptable>;
         prototype: Scriptable;
     }
-    interface Scriptable extends GObject.Object {
+    interface Scriptable extends GObject.Object, Scriptable.Interface {
         // Methods
 
         /**
@@ -48911,40 +48975,6 @@ export namespace Clutter {
          * @param id_ the #ClutterScript id of the object
          */
         set_id(id_: string): void;
-
-        // Virtual methods
-
-        /**
-         * Retrieves the id of `scriptable` set using clutter_scriptable_set_id().
-         */
-        vfunc_get_id(): string;
-        /**
-         * Parses the passed JSON node. The implementation must set the type
-         * of the passed #GValue pointer using g_value_init().
-         * @param script the #ClutterScript creating the scriptable instance
-         * @param value the generic value to be set
-         * @param name the name of the node
-         * @param node the JSON node to be parsed
-         */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
-        /**
-         * Overrides the common properties setting. The underlying virtual
-         * function should be used when implementing custom properties.
-         * @param script the #ClutterScript creating the scriptable instance
-         * @param name the name of the property
-         * @param value the value of the property
-         */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
-        /**
-         * Sets `id_` as the unique Clutter script it for this instance of
-         * #ClutterScriptableIface.
-         *
-         * This name can be used by user interface designer applications to
-         * define a unique name for an object constructable using the UI
-         * definition language parsed by #ClutterScript.
-         * @param id_ the #ClutterScript id of the object
-         */
-        vfunc_set_id(id_: string): void;
     }
 
     export const Scriptable: ScriptableNamespace & {

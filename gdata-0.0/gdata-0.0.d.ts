@@ -33248,6 +33248,35 @@ export namespace GData {
     }
 
     namespace AccessHandler {
+        /**
+         * Interface for implementing AccessHandler.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Retrieves a #GDataFeed containing all the access rules which apply to the given #GDataAccessHandler. Only the owner of a #GDataAccessHandler may
+             * view its rule feed.
+             *
+             * If `cancellable` is not %NULL, then the operation can be cancelled by triggering the `cancellable` object from another thread.
+             * If the operation was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+             *
+             * A %GDATA_SERVICE_ERROR_PROTOCOL_ERROR will be returned if the server indicates there is a problem with the query.
+             *
+             * For each rule in the response feed, `progress_callback` will be called in the main thread. If there was an error parsing the XML response,
+             * a #GDataParserError will be returned.
+             * @param service a #GDataService
+             * @param cancellable optional #GCancellable object, or %NULL
+             * @param progress_callback a #GDataQueryProgressCallback to call when a rule is loaded, or %NULL
+             */
+            vfunc_get_rules(
+                service: Service,
+                cancellable?: Gio.Cancellable | null,
+                progress_callback?: QueryProgressCallback | null,
+            ): Feed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps {}
@@ -33257,7 +33286,7 @@ export namespace GData {
         $gtype: GObject.GType<AccessHandler>;
         prototype: AccessHandler;
     }
-    interface AccessHandler extends Entry {
+    interface AccessHandler extends Entry, AccessHandler.Interface {
         // Methods
 
         /**
@@ -33303,29 +33332,6 @@ export namespace GData {
             destroy_progress_user_data?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
-
-        // Virtual methods
-
-        /**
-         * Retrieves a #GDataFeed containing all the access rules which apply to the given #GDataAccessHandler. Only the owner of a #GDataAccessHandler may
-         * view its rule feed.
-         *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by triggering the `cancellable` object from another thread.
-         * If the operation was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-         *
-         * A %GDATA_SERVICE_ERROR_PROTOCOL_ERROR will be returned if the server indicates there is a problem with the query.
-         *
-         * For each rule in the response feed, `progress_callback` will be called in the main thread. If there was an error parsing the XML response,
-         * a #GDataParserError will be returned.
-         * @param service a #GDataService
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param progress_callback a #GDataQueryProgressCallback to call when a rule is loaded, or %NULL
-         */
-        vfunc_get_rules(
-            service: Service,
-            cancellable?: Gio.Cancellable | null,
-            progress_callback?: QueryProgressCallback | null,
-        ): Feed;
     }
 
     export const AccessHandler: AccessHandlerNamespace & {
@@ -33333,6 +33339,99 @@ export namespace GData {
     };
 
     namespace Authorizer {
+        /**
+         * Interface for implementing Authorizer.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Returns whether the #GDataAuthorizer instance believes it's currently authorized to access the given `domain`. Note that this will not perform any
+             * network requests, and will just look up the result in the #GDataAuthorizer's local cache of authorizations. This means that the result may be out
+             * of date, as the server may have since invalidated the authorization. If the #GDataAuthorizer class supports timeouts and TTLs on authorizations,
+             * they will not be taken into account; this method effectively returns whether the last successful authorization operation performed on the
+             * #GDataAuthorizer included `domain` in the list of requested authorization domains.
+             *
+             * Note that %NULL may be passed as the #GDataAuthorizer, in which case %FALSE will always be returned, regardless of the `domain`. This is for
+             * convenience of checking whether a domain is authorized by the #GDataAuthorizer returned by gdata_service_get_authorizer(), which may be %NULL.
+             * For example:
+             *
+             * ```
+             * if (gdata_authorizer_is_authorized_for_domain (gdata_service_get_authorizer (my_service), my_domain) == TRUE) {
+             * 	/<!-- -->* Code to execute only if we're authorized for the given domain *<!-- -->/
+             * }
+             * ```
+             *
+             *
+             * This method is thread safe.
+             * @param domain the #GDataAuthorizationDomain to check against
+             */
+            vfunc_is_authorized_for_domain(domain: AuthorizationDomain): boolean;
+            /**
+             * Processes `message,` adding all the necessary extra headers and parameters to ensure that it's correctly authenticated and authorized under the
+             * given `domain` for the online service. Basically, if a query is not processed by calling this method on it, it will be sent to the online service as
+             * if it's a query from a non-logged-in user. Similarly, if the #GDataAuthorizer isn't authenticated or authorized (for `domain)`, no changes will
+             * be made to the `message`.
+             *
+             * `domain` may be %NULL if the request doesn't require authorization.
+             *
+             * This modifies `message` in place.
+             *
+             * This method is thread safe.
+             * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
+             * @param message the query to process
+             */
+            vfunc_process_request(domain: AuthorizationDomain | null, message: Soup.Message): void;
+            /**
+             * Forces the #GDataAuthorizer to refresh any authorization tokens it holds with the online service. This should typically be called when a
+             * #GDataService query returns %GDATA_SERVICE_ERROR_AUTHENTICATION_REQUIRED, and is already called transparently by methods such as
+             * gdata_service_query() and gdata_service_insert_entry() (see their documentation for more details).
+             *
+             * If re-authorization is successful, it's guaranteed that by the time this method returns, the properties containing the relevant authorization
+             * tokens on the #GDataAuthorizer instance will have been updated.
+             *
+             * If %FALSE is returned, `error` will be set if (and only if) it's due to a refresh being attempted and failing. If a refresh is not attempted, %FALSE
+             * will be returned but `error` will not be set.
+             *
+             * If the #GDataAuthorizer has not been previously authenticated or authorized (using the class' specific methods), no authorization will be
+             * attempted, %FALSE will be returned immediately and `error` will not be set.
+             *
+             * Some #GDataAuthorizer implementations may not support refreshing authorization tokens at all; for example if doing so requires user interaction.
+             * %FALSE will be returned immediately in that case and `error` will not be set.
+             *
+             * This method is thread safe.
+             * @param cancellable optional #GCancellable object, or %NULL
+             */
+            vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
+            /**
+             * Forces the #GDataAuthorizer to refresh any authorization tokens it holds with the online service. `self` and `cancellable` are reffed when this
+             * method is called, so can safely be freed after this method returns.
+             *
+             * For more details, see gdata_authorizer_refresh_authorization(), which is the synchronous version of this method. If the #GDataAuthorizer class
+             * doesn't implement #GDataAuthorizerInterface.refresh_authorization_async but does implement #GDataAuthorizerInterface.refresh_authorization, the
+             * latter will be called from a new thread to make it asynchronous.
+             *
+             * When the authorization refresh operation is finished, `callback` will be called. You can then call gdata_authorizer_refresh_authorization_finish()
+             * to get the results of the operation.
+             *
+             * This method is thread safe.
+             * @param cancellable optional #GCancellable object, or %NULL
+             * @param callback a #GAsyncReadyCallback to call when the authorization refresh operation is finished, or %NULL
+             */
+            vfunc_refresh_authorization_async(
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Finishes an asynchronous authorization refresh operation for the #GDataAuthorizer, as started with gdata_authorizer_refresh_authorization_async().
+             *
+             * This method is thread safe.
+             * @param async_result a #GAsyncResult
+             */
+            vfunc_refresh_authorization_finish(async_result: Gio.AsyncResult): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -33342,7 +33441,7 @@ export namespace GData {
         $gtype: GObject.GType<Authorizer>;
         prototype: Authorizer;
     }
-    interface Authorizer extends GObject.Object {
+    interface Authorizer extends GObject.Object, Authorizer.Interface {
         // Methods
 
         /**
@@ -33466,93 +33565,6 @@ export namespace GData {
          * @returns %TRUE if an authorization refresh was attempted and was successful, %FALSE if a refresh wasn't attempted or was unsuccessful
          */
         refresh_authorization_finish(async_result: Gio.AsyncResult): boolean;
-
-        // Virtual methods
-
-        /**
-         * Returns whether the #GDataAuthorizer instance believes it's currently authorized to access the given `domain`. Note that this will not perform any
-         * network requests, and will just look up the result in the #GDataAuthorizer's local cache of authorizations. This means that the result may be out
-         * of date, as the server may have since invalidated the authorization. If the #GDataAuthorizer class supports timeouts and TTLs on authorizations,
-         * they will not be taken into account; this method effectively returns whether the last successful authorization operation performed on the
-         * #GDataAuthorizer included `domain` in the list of requested authorization domains.
-         *
-         * Note that %NULL may be passed as the #GDataAuthorizer, in which case %FALSE will always be returned, regardless of the `domain`. This is for
-         * convenience of checking whether a domain is authorized by the #GDataAuthorizer returned by gdata_service_get_authorizer(), which may be %NULL.
-         * For example:
-         *
-         * ```
-         * if (gdata_authorizer_is_authorized_for_domain (gdata_service_get_authorizer (my_service), my_domain) == TRUE) {
-         * 	/<!-- -->* Code to execute only if we're authorized for the given domain *<!-- -->/
-         * }
-         * ```
-         *
-         *
-         * This method is thread safe.
-         * @param domain the #GDataAuthorizationDomain to check against
-         */
-        vfunc_is_authorized_for_domain(domain: AuthorizationDomain): boolean;
-        /**
-         * Processes `message,` adding all the necessary extra headers and parameters to ensure that it's correctly authenticated and authorized under the
-         * given `domain` for the online service. Basically, if a query is not processed by calling this method on it, it will be sent to the online service as
-         * if it's a query from a non-logged-in user. Similarly, if the #GDataAuthorizer isn't authenticated or authorized (for `domain)`, no changes will
-         * be made to the `message`.
-         *
-         * `domain` may be %NULL if the request doesn't require authorization.
-         *
-         * This modifies `message` in place.
-         *
-         * This method is thread safe.
-         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
-         * @param message the query to process
-         */
-        vfunc_process_request(domain: AuthorizationDomain | null, message: Soup.Message): void;
-        /**
-         * Forces the #GDataAuthorizer to refresh any authorization tokens it holds with the online service. This should typically be called when a
-         * #GDataService query returns %GDATA_SERVICE_ERROR_AUTHENTICATION_REQUIRED, and is already called transparently by methods such as
-         * gdata_service_query() and gdata_service_insert_entry() (see their documentation for more details).
-         *
-         * If re-authorization is successful, it's guaranteed that by the time this method returns, the properties containing the relevant authorization
-         * tokens on the #GDataAuthorizer instance will have been updated.
-         *
-         * If %FALSE is returned, `error` will be set if (and only if) it's due to a refresh being attempted and failing. If a refresh is not attempted, %FALSE
-         * will be returned but `error` will not be set.
-         *
-         * If the #GDataAuthorizer has not been previously authenticated or authorized (using the class' specific methods), no authorization will be
-         * attempted, %FALSE will be returned immediately and `error` will not be set.
-         *
-         * Some #GDataAuthorizer implementations may not support refreshing authorization tokens at all; for example if doing so requires user interaction.
-         * %FALSE will be returned immediately in that case and `error` will not be set.
-         *
-         * This method is thread safe.
-         * @param cancellable optional #GCancellable object, or %NULL
-         */
-        vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Forces the #GDataAuthorizer to refresh any authorization tokens it holds with the online service. `self` and `cancellable` are reffed when this
-         * method is called, so can safely be freed after this method returns.
-         *
-         * For more details, see gdata_authorizer_refresh_authorization(), which is the synchronous version of this method. If the #GDataAuthorizer class
-         * doesn't implement #GDataAuthorizerInterface.refresh_authorization_async but does implement #GDataAuthorizerInterface.refresh_authorization, the
-         * latter will be called from a new thread to make it asynchronous.
-         *
-         * When the authorization refresh operation is finished, `callback` will be called. You can then call gdata_authorizer_refresh_authorization_finish()
-         * to get the results of the operation.
-         *
-         * This method is thread safe.
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when the authorization refresh operation is finished, or %NULL
-         */
-        vfunc_refresh_authorization_async(
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Finishes an asynchronous authorization refresh operation for the #GDataAuthorizer, as started with gdata_authorizer_refresh_authorization_async().
-         *
-         * This method is thread safe.
-         * @param async_result a #GAsyncResult
-         */
-        vfunc_refresh_authorization_finish(async_result: Gio.AsyncResult): boolean;
     }
 
     export const Authorizer: AuthorizerNamespace & {
@@ -33589,6 +33601,18 @@ export namespace GData {
     };
 
     namespace Commentable {
+        /**
+         * Interface for implementing Commentable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_insert_comment_uri(comment: Comment): string;
+            vfunc_get_query_comments_uri(): string;
+            vfunc_is_comment_deletable(comment: Comment): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps {}
@@ -33598,7 +33622,7 @@ export namespace GData {
         $gtype: GObject.GType<Commentable>;
         prototype: Commentable;
     }
-    interface Commentable extends Entry {
+    interface Commentable extends Entry, Commentable.Interface {
         // Methods
 
         /**
@@ -33835,12 +33859,6 @@ export namespace GData {
          * @returns a #GDataFeed of #GDataComments, or %NULL; unref with g_object_unref()
          */
         query_comments_finish(result: Gio.AsyncResult): Feed | null;
-
-        // Virtual methods
-
-        vfunc_get_insert_comment_uri(comment: Comment): string;
-        vfunc_get_query_comments_uri(): string;
-        vfunc_is_comment_deletable(comment: Comment): boolean;
     }
 
     export const Commentable: CommentableNamespace & {
@@ -33848,6 +33866,16 @@ export namespace GData {
     };
 
     namespace Comparable {
+        /**
+         * Interface for implementing Comparable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_compare_with(other: Comparable): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -33857,7 +33885,7 @@ export namespace GData {
         $gtype: GObject.GType<Comparable>;
         prototype: Comparable;
     }
-    interface Comparable extends GObject.Object {
+    interface Comparable extends GObject.Object, Comparable.Interface {
         // Methods
 
         /**
@@ -33872,10 +33900,6 @@ export namespace GData {
          * @returns %TRUE on success, %FALSE otherwise
          */
         compare(other?: Comparable | null): number;
-
-        // Virtual methods
-
-        vfunc_compare_with(other: Comparable): number;
     }
 
     export const Comparable: ComparableNamespace & {

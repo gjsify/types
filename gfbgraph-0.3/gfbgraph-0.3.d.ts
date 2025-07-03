@@ -2703,6 +2703,38 @@ export namespace GFBGraph {
     }
 
     namespace Authorizer {
+        /**
+         * Interface for implementing Authorizer.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Adds the necessary authorization to `call`.
+             *
+             * This method modifies `call` in place and is thread safe.
+             * @param call A #RestProxyCall.
+             */
+            vfunc_process_call(call: Rest.ProxyCall): void;
+            /**
+             * Adds the necessary authorization to `message`. The type of `message`
+             * can be DELETE, GET and POST.
+             *
+             * This method modifies `message` in place and is thread safe.
+             * @param message A #SoupMessage.
+             */
+            vfunc_process_message(message: Soup.Message): void;
+            /**
+             * Synchronously forces `iface` to refresh any authorization tokens
+             * held by it.
+             *
+             * This method is thread safe.
+             * @param cancellable An optional #GCancellable object, or %NULL.
+             */
+            vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2712,7 +2744,7 @@ export namespace GFBGraph {
         $gtype: GObject.GType<Authorizer>;
         prototype: Authorizer;
     }
-    interface Authorizer extends GObject.Object {
+    interface Authorizer extends GObject.Object, Authorizer.Interface {
         // Methods
 
         /**
@@ -2739,32 +2771,6 @@ export namespace GFBGraph {
          * @returns %TRUE if the authorizer now has a valid token.
          */
         refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
-
-        // Virtual methods
-
-        /**
-         * Adds the necessary authorization to `call`.
-         *
-         * This method modifies `call` in place and is thread safe.
-         * @param call A #RestProxyCall.
-         */
-        vfunc_process_call(call: Rest.ProxyCall): void;
-        /**
-         * Adds the necessary authorization to `message`. The type of `message`
-         * can be DELETE, GET and POST.
-         *
-         * This method modifies `message` in place and is thread safe.
-         * @param message A #SoupMessage.
-         */
-        vfunc_process_message(message: Soup.Message): void;
-        /**
-         * Synchronously forces `iface` to refresh any authorization tokens
-         * held by it.
-         *
-         * This method is thread safe.
-         * @param cancellable An optional #GCancellable object, or %NULL.
-         */
-        vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
     }
 
     export const Authorizer: AuthorizerNamespace & {
@@ -2772,6 +2778,27 @@ export namespace GFBGraph {
     };
 
     namespace Connectable {
+        /**
+         * Interface for implementing Connectable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Get the params to be inserted in a request to the Facebook Graph API
+             * in order to append the node `self` to a node of type `node_type`.
+             * @param node_type a #GType, required a #GFBGRAPH_TYPE_NODE or children.
+             */
+            vfunc_get_connection_post_params(node_type: GObject.GType): GLib.HashTable<any, any>;
+            /**
+             * Parse the response contained in `payload` when a gfbgraph_node_get_connection_nodes() was
+             * executed.
+             * @param payload a const #gchar with the response string from the Facebook Graph API.
+             */
+            vfunc_parse_connected_data(payload: string): Node[];
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Node.ConstructorProps {}
@@ -2781,7 +2808,7 @@ export namespace GFBGraph {
         $gtype: GObject.GType<Connectable>;
         prototype: Connectable;
     }
-    interface Connectable extends Node {
+    interface Connectable extends Node, Connectable.Interface {
         // Methods
 
         /**
@@ -2823,21 +2850,6 @@ export namespace GFBGraph {
          * @returns a newly-allocated #GList of #GFBGraphNode created from the @payload or %NULL.
          */
         parse_connected_data(payload: string): Node[];
-
-        // Virtual methods
-
-        /**
-         * Get the params to be inserted in a request to the Facebook Graph API
-         * in order to append the node `self` to a node of type `node_type`.
-         * @param node_type a #GType, required a #GFBGRAPH_TYPE_NODE or children.
-         */
-        vfunc_get_connection_post_params(node_type: GObject.GType): GLib.HashTable<any, any>;
-        /**
-         * Parse the response contained in `payload` when a gfbgraph_node_get_connection_nodes() was
-         * executed.
-         * @param payload a const #gchar with the response string from the Facebook Graph API.
-         */
-        vfunc_parse_connected_data(payload: string): Node[];
     }
 
     export const Connectable: ConnectableNamespace & {

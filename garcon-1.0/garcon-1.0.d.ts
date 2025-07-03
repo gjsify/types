@@ -3546,6 +3546,22 @@ export namespace Garcon {
     }
 
     namespace MenuElement {
+        /**
+         * Interface for implementing MenuElement.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_equal(other: MenuElement): boolean;
+            vfunc_get_comment(): string;
+            vfunc_get_icon_name(): string;
+            vfunc_get_name(): string;
+            vfunc_get_no_display(): boolean;
+            vfunc_get_show_in_environment(): boolean;
+            vfunc_get_visible(): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3555,7 +3571,7 @@ export namespace Garcon {
         $gtype: GObject.GType<MenuElement>;
         prototype: MenuElement;
     }
-    interface MenuElement extends GObject.Object {
+    interface MenuElement extends GObject.Object, MenuElement.Interface {
         // Methods
 
         equal(b: MenuElement): boolean;
@@ -3565,16 +3581,6 @@ export namespace Garcon {
         get_no_display(): boolean;
         get_show_in_environment(): boolean;
         get_visible(): boolean;
-
-        // Virtual methods
-
-        vfunc_equal(other: MenuElement): boolean;
-        vfunc_get_comment(): string;
-        vfunc_get_icon_name(): string;
-        vfunc_get_name(): string;
-        vfunc_get_no_display(): boolean;
-        vfunc_get_show_in_environment(): boolean;
-        vfunc_get_visible(): boolean;
     }
 
     export const MenuElement: MenuElementNamespace & {
@@ -3582,6 +3588,16 @@ export namespace Garcon {
     };
 
     namespace MenuTreeProvider {
+        /**
+         * Interface for implementing MenuTreeProvider.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_file(): Gio.File;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3591,14 +3607,10 @@ export namespace Garcon {
         $gtype: GObject.GType<MenuTreeProvider>;
         prototype: MenuTreeProvider;
     }
-    interface MenuTreeProvider extends GObject.Object {
+    interface MenuTreeProvider extends GObject.Object, MenuTreeProvider.Interface {
         // Methods
 
         get_file(): Gio.File;
-
-        // Virtual methods
-
-        vfunc_get_file(): Gio.File;
     }
 
     export const MenuTreeProvider: MenuTreeProviderNamespace & {

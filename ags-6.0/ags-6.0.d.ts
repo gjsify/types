@@ -17851,6 +17851,28 @@ export namespace Ags {
     type XmlCertificateClass = typeof XmlCertificate;
     type XmlPasswordStoreClass = typeof XmlPasswordStore;
     namespace Applicable {
+        /**
+         * Interface for implementing Applicable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Apply all changes done so far.
+             */
+            vfunc_apply(): void;
+            /**
+             * Reset all changes within the user interface.
+             */
+            vfunc_reset(): void;
+            /**
+             * Update behaviour.
+             * @param update if %TRUE do ::reset after ::apply
+             */
+            vfunc_set_update(update: boolean): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -17860,7 +17882,7 @@ export namespace Ags {
         $gtype: GObject.GType<Applicable>;
         prototype: Applicable;
     }
-    interface Applicable extends GObject.Object {
+    interface Applicable extends GObject.Object, Applicable.Interface {
         // Methods
 
         /**
@@ -17876,22 +17898,6 @@ export namespace Ags {
          * @param update if %TRUE do ::reset after ::apply
          */
         set_update(update: boolean): void;
-
-        // Virtual methods
-
-        /**
-         * Apply all changes done so far.
-         */
-        vfunc_apply(): void;
-        /**
-         * Reset all changes within the user interface.
-         */
-        vfunc_reset(): void;
-        /**
-         * Update behaviour.
-         * @param update if %TRUE do ::reset after ::apply
-         */
-        vfunc_set_update(update: boolean): void;
     }
 
     export const Applicable: ApplicableNamespace & {
@@ -17899,6 +17905,54 @@ export namespace Ags {
     };
 
     namespace Authentication {
+        /**
+         * Interface for implementing Authentication.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Generate token.
+             */
+            vfunc_generate_token(): string;
+            /**
+             * Available authentication modules.
+             */
+            vfunc_get_authentication_module(): string[];
+            /**
+             * Get digest of `login`.
+             * @param realm the realm
+             * @param login the login
+             * @param security_token the security token
+             */
+            vfunc_get_digest(realm: string, login: string, security_token: string): string;
+            /**
+             * Check session.
+             * @param security_context the #AgsSecurityContext
+             * @param user_uuid the user's UUID
+             * @param security_token the security token
+             */
+            vfunc_is_session_active(
+                security_context: GObject.Object,
+                user_uuid: string,
+                security_token: string,
+            ): boolean;
+            /**
+             * Login.
+             * @param login the login
+             * @param password the password
+             */
+            vfunc_login(login: string, password: string): [boolean, string, string];
+            /**
+             * Logout.
+             * @param security_context the #AgsSecurityContext
+             * @param login the login
+             * @param security_token the security token
+             */
+            vfunc_logout(security_context: GObject.Object, login: string, security_token: string): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -17908,7 +17962,7 @@ export namespace Ags {
         $gtype: GObject.GType<Authentication>;
         prototype: Authentication;
     }
-    interface Authentication extends GObject.Object {
+    interface Authentication extends GObject.Object, Authentication.Interface {
         // Methods
 
         /**
@@ -17952,44 +18006,6 @@ export namespace Ags {
          * @returns %TRUE on success, otherwise %FALSE
          */
         logout(security_context: GObject.Object, login: string, security_token: string): boolean;
-
-        // Virtual methods
-
-        /**
-         * Generate token.
-         */
-        vfunc_generate_token(): string;
-        /**
-         * Available authentication modules.
-         */
-        vfunc_get_authentication_module(): string[];
-        /**
-         * Get digest of `login`.
-         * @param realm the realm
-         * @param login the login
-         * @param security_token the security token
-         */
-        vfunc_get_digest(realm: string, login: string, security_token: string): string;
-        /**
-         * Check session.
-         * @param security_context the #AgsSecurityContext
-         * @param user_uuid the user's UUID
-         * @param security_token the security token
-         */
-        vfunc_is_session_active(security_context: GObject.Object, user_uuid: string, security_token: string): boolean;
-        /**
-         * Login.
-         * @param login the login
-         * @param password the password
-         */
-        vfunc_login(login: string, password: string): [boolean, string, string];
-        /**
-         * Logout.
-         * @param security_context the #AgsSecurityContext
-         * @param login the login
-         * @param security_token the security token
-         */
-        vfunc_logout(security_context: GObject.Object, login: string, security_token: string): boolean;
     }
 
     export const Authentication: AuthenticationNamespace & {
@@ -17997,6 +18013,78 @@ export namespace Ags {
     };
 
     namespace BusinessGroup {
+        /**
+         * Interface for implementing BusinessGroup.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Get business group name.
+             * @param security_context the #AgsSecurityContext
+             * @param user_uuid the user's UUID
+             * @param security_token the security token
+             * @param group_uuid the group's UUID
+             */
+            vfunc_get_group_name(
+                security_context: GObject.Object,
+                user_uuid: string,
+                security_token: string,
+                group_uuid: string,
+            ): string;
+            /**
+             * Get group UUID as string vector.
+             * @param security_context the #AgsSecurityContext
+             * @param user_uuid the users unique identifier
+             * @param security_token the security token
+             */
+            vfunc_get_group_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
+            /**
+             * Get business group name as %NULL terminated string array.
+             * @param security_context the #AgsSecurityContext
+             * @param user_uuid the user's UUID
+             * @param security_token the security token
+             * @param group_uuid the business group's UUID
+             */
+            vfunc_get_user(
+                security_context: GObject.Object,
+                user_uuid: string,
+                security_token: string,
+                group_uuid: string,
+            ): string[];
+            /**
+             * Set business group name.
+             * @param security_context the #AgsSecurityContext
+             * @param user_uuid the user's UUID
+             * @param security_token the security token
+             * @param group_uuid the group's UUID
+             * @param group_name the business group's name to set
+             */
+            vfunc_set_group_name(
+                security_context: GObject.Object,
+                user_uuid: string,
+                security_token: string,
+                group_uuid: string,
+                group_name: string,
+            ): void;
+            /**
+             * Set business group of user names as %NULL terminated string array.
+             * @param security_context the #AgsSecurityContext
+             * @param user_uuid the user's UUID
+             * @param security_token the security token
+             * @param group_uuid the business group's UUID
+             * @param user the string array containing user names
+             */
+            vfunc_set_user(
+                security_context: GObject.Object,
+                user_uuid: string,
+                security_token: string,
+                group_uuid: string,
+                user: string[],
+            ): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -18006,7 +18094,7 @@ export namespace Ags {
         $gtype: GObject.GType<BusinessGroup>;
         prototype: BusinessGroup;
     }
-    interface BusinessGroup extends GObject.Object {
+    interface BusinessGroup extends GObject.Object, BusinessGroup.Interface {
         // Methods
 
         /**
@@ -18075,72 +18163,6 @@ export namespace Ags {
             group_uuid: string,
             user: string[],
         ): void;
-
-        // Virtual methods
-
-        /**
-         * Get business group name.
-         * @param security_context the #AgsSecurityContext
-         * @param user_uuid the user's UUID
-         * @param security_token the security token
-         * @param group_uuid the group's UUID
-         */
-        vfunc_get_group_name(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            group_uuid: string,
-        ): string;
-        /**
-         * Get group UUID as string vector.
-         * @param security_context the #AgsSecurityContext
-         * @param user_uuid the users unique identifier
-         * @param security_token the security token
-         */
-        vfunc_get_group_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
-        /**
-         * Get business group name as %NULL terminated string array.
-         * @param security_context the #AgsSecurityContext
-         * @param user_uuid the user's UUID
-         * @param security_token the security token
-         * @param group_uuid the business group's UUID
-         */
-        vfunc_get_user(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            group_uuid: string,
-        ): string[];
-        /**
-         * Set business group name.
-         * @param security_context the #AgsSecurityContext
-         * @param user_uuid the user's UUID
-         * @param security_token the security token
-         * @param group_uuid the group's UUID
-         * @param group_name the business group's name to set
-         */
-        vfunc_set_group_name(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            group_uuid: string,
-            group_name: string,
-        ): void;
-        /**
-         * Set business group of user names as %NULL terminated string array.
-         * @param security_context the #AgsSecurityContext
-         * @param user_uuid the user's UUID
-         * @param security_token the security token
-         * @param group_uuid the business group's UUID
-         * @param user the string array containing user names
-         */
-        vfunc_set_user(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            group_uuid: string,
-            user: string[],
-        ): void;
     }
 
     export const BusinessGroup: BusinessGroupNamespace & {
@@ -18148,6 +18170,134 @@ export namespace Ags {
     };
 
     namespace Certificate {
+        /**
+         * Interface for implementing Certificate.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Get cert UUID as string vector.
+             * @param security_context the #AgsSecurityContext
+             * @param user_uuid the users unique identifier
+             * @param security_token the security token
+             */
+            vfunc_get_cert_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
+            /**
+             * Get domain.
+             * @param security_context the #AgsSecurityContext
+             * @param user_uuid the users unique identifier
+             * @param security_token the security token
+             * @param cert_uuid the cert's UUID
+             */
+            vfunc_get_domain(
+                security_context: GObject.Object,
+                user_uuid: string,
+                security_token: string,
+                cert_uuid: string,
+            ): string;
+            /**
+             * Get key type.
+             * @param security_context the #AgsSecurityContext
+             * @param user_uuid the users unique identifier
+             * @param security_token the security token
+             * @param cert_uuid the cert's UUID
+             */
+            vfunc_get_key_type(
+                security_context: GObject.Object,
+                user_uuid: string,
+                security_token: string,
+                cert_uuid: string,
+            ): string;
+            /**
+             * Get private key file.
+             * @param security_context the #AgsSecurityContext
+             * @param user_uuid the users unique identifier
+             * @param security_token the security token
+             * @param cert_uuid the cert's UUID
+             */
+            vfunc_get_private_key_file(
+                security_context: GObject.Object,
+                user_uuid: string,
+                security_token: string,
+                cert_uuid: string,
+            ): string;
+            /**
+             * Get public key file.
+             * @param security_context the #AgsSecurityContext
+             * @param user_uuid the users unique identifier
+             * @param security_token the security token
+             * @param cert_uuid the cert's UUID
+             */
+            vfunc_get_public_key_file(
+                security_context: GObject.Object,
+                user_uuid: string,
+                security_token: string,
+                cert_uuid: string,
+            ): string;
+            /**
+             * Set domain.
+             * @param security_context the #AgsSecurityContext
+             * @param user_uuid the users unique identifier
+             * @param security_token the security token
+             * @param cert_uuid the cert's UUID
+             * @param domain the domain
+             */
+            vfunc_set_domain(
+                security_context: GObject.Object,
+                user_uuid: string,
+                security_token: string,
+                cert_uuid: string,
+                domain: string,
+            ): void;
+            /**
+             * Set key type.
+             * @param security_context the #AgsSecurityContext
+             * @param user_uuid the users unique identifier
+             * @param security_token the security token
+             * @param cert_uuid the cert's UUID
+             * @param key_type the key type
+             */
+            vfunc_set_key_type(
+                security_context: GObject.Object,
+                user_uuid: string,
+                security_token: string,
+                cert_uuid: string,
+                key_type: string,
+            ): void;
+            /**
+             * Set private key file.
+             * @param security_context the #AgsSecurityContext
+             * @param user_uuid the users unique identifier
+             * @param security_token the security token
+             * @param cert_uuid the cert's UUID
+             * @param private_key_file the private key file
+             */
+            vfunc_set_private_key_file(
+                security_context: GObject.Object,
+                user_uuid: string,
+                security_token: string,
+                cert_uuid: string,
+                private_key_file: string,
+            ): void;
+            /**
+             * Set public key file.
+             * @param security_context the #AgsSecurityContext
+             * @param user_uuid the users unique identifier
+             * @param security_token the security token
+             * @param cert_uuid the cert's UUID
+             * @param public_key_file the public key file
+             */
+            vfunc_set_public_key_file(
+                security_context: GObject.Object,
+                user_uuid: string,
+                security_token: string,
+                cert_uuid: string,
+                public_key_file: string,
+            ): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -18157,7 +18307,7 @@ export namespace Ags {
         $gtype: GObject.GType<Certificate>;
         prototype: Certificate;
     }
-    interface Certificate extends GObject.Object {
+    interface Certificate extends GObject.Object, Certificate.Interface {
         // Methods
 
         /**
@@ -18284,128 +18434,6 @@ export namespace Ags {
             cert_uuid: string,
             public_key_file: string,
         ): void;
-
-        // Virtual methods
-
-        /**
-         * Get cert UUID as string vector.
-         * @param security_context the #AgsSecurityContext
-         * @param user_uuid the users unique identifier
-         * @param security_token the security token
-         */
-        vfunc_get_cert_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
-        /**
-         * Get domain.
-         * @param security_context the #AgsSecurityContext
-         * @param user_uuid the users unique identifier
-         * @param security_token the security token
-         * @param cert_uuid the cert's UUID
-         */
-        vfunc_get_domain(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-        ): string;
-        /**
-         * Get key type.
-         * @param security_context the #AgsSecurityContext
-         * @param user_uuid the users unique identifier
-         * @param security_token the security token
-         * @param cert_uuid the cert's UUID
-         */
-        vfunc_get_key_type(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-        ): string;
-        /**
-         * Get private key file.
-         * @param security_context the #AgsSecurityContext
-         * @param user_uuid the users unique identifier
-         * @param security_token the security token
-         * @param cert_uuid the cert's UUID
-         */
-        vfunc_get_private_key_file(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-        ): string;
-        /**
-         * Get public key file.
-         * @param security_context the #AgsSecurityContext
-         * @param user_uuid the users unique identifier
-         * @param security_token the security token
-         * @param cert_uuid the cert's UUID
-         */
-        vfunc_get_public_key_file(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-        ): string;
-        /**
-         * Set domain.
-         * @param security_context the #AgsSecurityContext
-         * @param user_uuid the users unique identifier
-         * @param security_token the security token
-         * @param cert_uuid the cert's UUID
-         * @param domain the domain
-         */
-        vfunc_set_domain(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-            domain: string,
-        ): void;
-        /**
-         * Set key type.
-         * @param security_context the #AgsSecurityContext
-         * @param user_uuid the users unique identifier
-         * @param security_token the security token
-         * @param cert_uuid the cert's UUID
-         * @param key_type the key type
-         */
-        vfunc_set_key_type(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-            key_type: string,
-        ): void;
-        /**
-         * Set private key file.
-         * @param security_context the #AgsSecurityContext
-         * @param user_uuid the users unique identifier
-         * @param security_token the security token
-         * @param cert_uuid the cert's UUID
-         * @param private_key_file the private key file
-         */
-        vfunc_set_private_key_file(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-            private_key_file: string,
-        ): void;
-        /**
-         * Set public key file.
-         * @param security_context the #AgsSecurityContext
-         * @param user_uuid the users unique identifier
-         * @param security_token the security token
-         * @param cert_uuid the cert's UUID
-         * @param public_key_file the public key file
-         */
-        vfunc_set_public_key_file(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-            public_key_file: string,
-        ): void;
     }
 
     export const Certificate: CertificateNamespace & {
@@ -18413,6 +18441,51 @@ export namespace Ags {
     };
 
     namespace ConcurrencyProvider {
+        /**
+         * Interface for implementing ConcurrencyProvider.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Get main loop of application context.
+             */
+            vfunc_get_main_loop(): Thread;
+            /**
+             * Get task launcher of application context.
+             */
+            vfunc_get_task_launcher(): TaskLauncher;
+            /**
+             * Get thread pool of application context.
+             */
+            vfunc_get_thread_pool(): ThreadPool;
+            /**
+             * Get workers of application context.
+             */
+            vfunc_get_worker(): WorkerThread[];
+            /**
+             * Set main loop of application context.
+             * @param main_loop the #AgsThread implementing #AgsMainLoop
+             */
+            vfunc_set_main_loop(main_loop: Thread): void;
+            /**
+             * Set task launcher of application context.
+             * @param task_launcher the #AgsTaskLauncher
+             */
+            vfunc_set_task_launcher(task_launcher: TaskLauncher): void;
+            /**
+             * Set thread pool of application context.
+             * @param thread_pool the #AgsThreadPool
+             */
+            vfunc_set_thread_pool(thread_pool: ThreadPool): void;
+            /**
+             * Set workers of application context.
+             * @param worker the #GList-struct containing workers
+             */
+            vfunc_set_worker(worker: WorkerThread[]): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -18422,7 +18495,7 @@ export namespace Ags {
         $gtype: GObject.GType<ConcurrencyProvider>;
         prototype: ConcurrencyProvider;
     }
-    interface ConcurrencyProvider extends GObject.Object {
+    interface ConcurrencyProvider extends GObject.Object, ConcurrencyProvider.Interface {
         // Methods
 
         /**
@@ -18465,45 +18538,6 @@ export namespace Ags {
          * @param worker the #GList-struct containing workers
          */
         set_worker(worker: WorkerThread[]): void;
-
-        // Virtual methods
-
-        /**
-         * Get main loop of application context.
-         */
-        vfunc_get_main_loop(): Thread;
-        /**
-         * Get task launcher of application context.
-         */
-        vfunc_get_task_launcher(): TaskLauncher;
-        /**
-         * Get thread pool of application context.
-         */
-        vfunc_get_thread_pool(): ThreadPool;
-        /**
-         * Get workers of application context.
-         */
-        vfunc_get_worker(): WorkerThread[];
-        /**
-         * Set main loop of application context.
-         * @param main_loop the #AgsThread implementing #AgsMainLoop
-         */
-        vfunc_set_main_loop(main_loop: Thread): void;
-        /**
-         * Set task launcher of application context.
-         * @param task_launcher the #AgsTaskLauncher
-         */
-        vfunc_set_task_launcher(task_launcher: TaskLauncher): void;
-        /**
-         * Set thread pool of application context.
-         * @param thread_pool the #AgsThreadPool
-         */
-        vfunc_set_thread_pool(thread_pool: ThreadPool): void;
-        /**
-         * Set workers of application context.
-         * @param worker the #GList-struct containing workers
-         */
-        vfunc_set_worker(worker: WorkerThread[]): void;
     }
 
     export const ConcurrencyProvider: ConcurrencyProviderNamespace & {
@@ -18511,6 +18545,70 @@ export namespace Ags {
     };
 
     namespace Connectable {
+        /**
+         * Interface for implementing Connectable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Add connectable to registry.
+             */
+            vfunc_add_to_registry(): void;
+            /**
+             * Connect the connectable.
+             */
+            vfunc_connect(): void;
+            /**
+             * Disconnect the connectable.
+             * @param connection the connection
+             */
+            vfunc_connect_connection(connection: GObject.Object): void;
+            /**
+             * Disconnect the connectable.
+             */
+            vfunc_disconnect(): void;
+            /**
+             * Disconnect the connectable.
+             * @param connection the connection
+             */
+            vfunc_disconnect_connection(connection: GObject.Object): void;
+            /**
+             * Get UUID of `connectable`.
+             */
+            vfunc_get_uuid(): UUID;
+            /**
+             * Check the connectable to have resources.
+             */
+            vfunc_has_resource(): boolean;
+            /**
+             * Check if the `connectable` was connected.
+             */
+            vfunc_is_connected(): boolean;
+            /**
+             * Connect the connectable.
+             */
+            vfunc_is_ready(): boolean;
+            /**
+             * List resources as an XML element and return it.
+             */
+            vfunc_list_resource(): libxml2.Node;
+            /**
+             * Remove connectable from registry.
+             */
+            vfunc_remove_from_registry(): void;
+            /**
+             * Compose an XML element and return it.
+             */
+            vfunc_xml_compose(): libxml2.Node;
+            /**
+             * Parse `node` as XML element and apply it.
+             * @param node the #xmlNode-struct
+             */
+            vfunc_xml_parse(node: libxml2.Node): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -18520,7 +18618,7 @@ export namespace Ags {
         $gtype: GObject.GType<Connectable>;
         prototype: Connectable;
     }
-    interface Connectable extends GObject.Object {
+    interface Connectable extends GObject.Object, Connectable.Interface {
         // Methods
 
         /**
@@ -18585,64 +18683,6 @@ export namespace Ags {
          * @param node the #xmlNode-struct
          */
         xml_parse(node: libxml2.Node): void;
-
-        // Virtual methods
-
-        /**
-         * Add connectable to registry.
-         */
-        vfunc_add_to_registry(): void;
-        /**
-         * Connect the connectable.
-         */
-        vfunc_connect(): void;
-        /**
-         * Disconnect the connectable.
-         * @param connection the connection
-         */
-        vfunc_connect_connection(connection: GObject.Object): void;
-        /**
-         * Disconnect the connectable.
-         */
-        vfunc_disconnect(): void;
-        /**
-         * Disconnect the connectable.
-         * @param connection the connection
-         */
-        vfunc_disconnect_connection(connection: GObject.Object): void;
-        /**
-         * Get UUID of `connectable`.
-         */
-        vfunc_get_uuid(): UUID;
-        /**
-         * Check the connectable to have resources.
-         */
-        vfunc_has_resource(): boolean;
-        /**
-         * Check if the `connectable` was connected.
-         */
-        vfunc_is_connected(): boolean;
-        /**
-         * Connect the connectable.
-         */
-        vfunc_is_ready(): boolean;
-        /**
-         * List resources as an XML element and return it.
-         */
-        vfunc_list_resource(): libxml2.Node;
-        /**
-         * Remove connectable from registry.
-         */
-        vfunc_remove_from_registry(): void;
-        /**
-         * Compose an XML element and return it.
-         */
-        vfunc_xml_compose(): libxml2.Node;
-        /**
-         * Parse `node` as XML element and apply it.
-         * @param node the #xmlNode-struct
-         */
-        vfunc_xml_parse(node: libxml2.Node): void;
     }
 
     export const Connectable: ConnectableNamespace & {
@@ -18650,6 +18690,31 @@ export namespace Ags {
     };
 
     namespace Countable {
+        /**
+         * Interface for implementing Countable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Retrieve current position of MIDI.
+             */
+            vfunc_get_midi_counter(): number;
+            /**
+             * Retrieve current position of notation.
+             */
+            vfunc_get_notation_counter(): number;
+            /**
+             * Retrieve current position of sequencer.
+             */
+            vfunc_get_sequencer_counter(): number;
+            /**
+             * Retrieve current position of wave.
+             */
+            vfunc_get_wave_counter(): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -18659,7 +18724,7 @@ export namespace Ags {
         $gtype: GObject.GType<Countable>;
         prototype: Countable;
     }
-    interface Countable extends GObject.Object {
+    interface Countable extends GObject.Object, Countable.Interface {
         // Methods
 
         /**
@@ -18682,25 +18747,6 @@ export namespace Ags {
          * @returns the current position
          */
         get_wave_counter(): number;
-
-        // Virtual methods
-
-        /**
-         * Retrieve current position of MIDI.
-         */
-        vfunc_get_midi_counter(): number;
-        /**
-         * Retrieve current position of notation.
-         */
-        vfunc_get_notation_counter(): number;
-        /**
-         * Retrieve current position of sequencer.
-         */
-        vfunc_get_sequencer_counter(): number;
-        /**
-         * Retrieve current position of wave.
-         */
-        vfunc_get_wave_counter(): number;
     }
 
     export const Countable: CountableNamespace & {
@@ -18708,6 +18754,63 @@ export namespace Ags {
     };
 
     namespace Cursor {
+        /**
+         * Interface for implementing Cursor.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Get BPM.
+             */
+            vfunc_get_bpm(): number;
+            /**
+             * Get current.
+             */
+            vfunc_get_current(): GObject.Object[];
+            /**
+             * Get current as copy.
+             */
+            vfunc_get_current_copy(): GObject.Object[];
+            /**
+             * Get the default offset.
+             */
+            vfunc_get_default_offset(): number;
+            /**
+             * Get delay.
+             */
+            vfunc_get_delay(): number;
+            /**
+             * Get delay counter.
+             */
+            vfunc_get_delay_counter(): number;
+            /**
+             * Get duration.
+             */
+            vfunc_get_duration(): number;
+            /**
+             * Get next.
+             */
+            vfunc_get_next(): GObject.Object[];
+            /**
+             * Get offset.
+             */
+            vfunc_get_offset(): number;
+            /**
+             * Get prev.
+             */
+            vfunc_get_prev(): GObject.Object[];
+            /**
+             * Get offset counter rate.
+             */
+            vfunc_get_rate(): number;
+            /**
+             * Get the tact.
+             */
+            vfunc_get_tact(): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -18717,7 +18820,7 @@ export namespace Ags {
         $gtype: GObject.GType<Cursor>;
         prototype: Cursor;
     }
-    interface Cursor extends GObject.Object {
+    interface Cursor extends GObject.Object, Cursor.Interface {
         // Methods
 
         /**
@@ -18779,57 +18882,6 @@ export namespace Ags {
          * @returns the tact
          */
         get_tact(): number;
-
-        // Virtual methods
-
-        /**
-         * Get BPM.
-         */
-        vfunc_get_bpm(): number;
-        /**
-         * Get current.
-         */
-        vfunc_get_current(): GObject.Object[];
-        /**
-         * Get current as copy.
-         */
-        vfunc_get_current_copy(): GObject.Object[];
-        /**
-         * Get the default offset.
-         */
-        vfunc_get_default_offset(): number;
-        /**
-         * Get delay.
-         */
-        vfunc_get_delay(): number;
-        /**
-         * Get delay counter.
-         */
-        vfunc_get_delay_counter(): number;
-        /**
-         * Get duration.
-         */
-        vfunc_get_duration(): number;
-        /**
-         * Get next.
-         */
-        vfunc_get_next(): GObject.Object[];
-        /**
-         * Get offset.
-         */
-        vfunc_get_offset(): number;
-        /**
-         * Get prev.
-         */
-        vfunc_get_prev(): GObject.Object[];
-        /**
-         * Get offset counter rate.
-         */
-        vfunc_get_rate(): number;
-        /**
-         * Get the tact.
-         */
-        vfunc_get_tact(): number;
     }
 
     export const Cursor: CursorNamespace & {
@@ -18837,6 +18889,54 @@ export namespace Ags {
     };
 
     namespace MainLoop {
+        /**
+         * Interface for implementing MainLoop.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Change frequency.
+             * @param frequency the new frequency
+             */
+            vfunc_change_frequency(frequency: number): void;
+            /**
+             * Decrement thread needs access to main loop's critical region field.
+             */
+            vfunc_dec_queued_critical_region(): void;
+            /**
+             * Retrieve the tree mutex.
+             */
+            vfunc_get_tree_lock(): GLib.RecMutex;
+            /**
+             * Increment thread needs access to main loop's critical region field.
+             */
+            vfunc_inc_queued_critical_region(): void;
+            /**
+             * Check if main loop is in critical region.
+             */
+            vfunc_is_critical_region(): boolean;
+            /**
+             * Check if thread tree is syncing.
+             */
+            vfunc_is_syncing(): boolean;
+            /**
+             * Set main loop is in critical region.
+             * @param is_critical_region set %TRUE if critical region
+             */
+            vfunc_set_critical_region(is_critical_region: boolean): void;
+            /**
+             * Set thread tree is syncing.
+             * @param is_syncing set %TRUE if syncing
+             */
+            vfunc_set_syncing(is_syncing: boolean): void;
+            /**
+             * Test main loop may enter critical region.
+             */
+            vfunc_test_queued_critical_region(): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -18846,7 +18946,7 @@ export namespace Ags {
         $gtype: GObject.GType<MainLoop>;
         prototype: MainLoop;
     }
-    interface MainLoop extends GObject.Object {
+    interface MainLoop extends GObject.Object, MainLoop.Interface {
         // Methods
 
         /**
@@ -18892,48 +18992,6 @@ export namespace Ags {
          * @returns 0 if main loop may enter critical region, otherwise not
          */
         test_queued_critical_region(): number;
-
-        // Virtual methods
-
-        /**
-         * Change frequency.
-         * @param frequency the new frequency
-         */
-        vfunc_change_frequency(frequency: number): void;
-        /**
-         * Decrement thread needs access to main loop's critical region field.
-         */
-        vfunc_dec_queued_critical_region(): void;
-        /**
-         * Retrieve the tree mutex.
-         */
-        vfunc_get_tree_lock(): GLib.RecMutex;
-        /**
-         * Increment thread needs access to main loop's critical region field.
-         */
-        vfunc_inc_queued_critical_region(): void;
-        /**
-         * Check if main loop is in critical region.
-         */
-        vfunc_is_critical_region(): boolean;
-        /**
-         * Check if thread tree is syncing.
-         */
-        vfunc_is_syncing(): boolean;
-        /**
-         * Set main loop is in critical region.
-         * @param is_critical_region set %TRUE if critical region
-         */
-        vfunc_set_critical_region(is_critical_region: boolean): void;
-        /**
-         * Set thread tree is syncing.
-         * @param is_syncing set %TRUE if syncing
-         */
-        vfunc_set_syncing(is_syncing: boolean): void;
-        /**
-         * Test main loop may enter critical region.
-         */
-        vfunc_test_queued_critical_region(): number;
     }
 
     export const MainLoop: MainLoopNamespace & {
@@ -18941,6 +18999,20 @@ export namespace Ags {
     };
 
     namespace Mutable {
+        /**
+         * Interface for implementing Mutable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Mute a class instance.
+             * @param muted if %TRUE then muted, else playing
+             */
+            vfunc_set_muted(muted: boolean): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -18950,7 +19022,7 @@ export namespace Ags {
         $gtype: GObject.GType<Mutable>;
         prototype: Mutable;
     }
-    interface Mutable extends GObject.Object {
+    interface Mutable extends GObject.Object, Mutable.Interface {
         // Methods
 
         /**
@@ -18958,14 +19030,6 @@ export namespace Ags {
          * @param muted if %TRUE then muted, else playing
          */
         set_muted(muted: boolean): void;
-
-        // Virtual methods
-
-        /**
-         * Mute a class instance.
-         * @param muted if %TRUE then muted, else playing
-         */
-        vfunc_set_muted(muted: boolean): void;
     }
 
     export const Mutable: MutableNamespace & {
@@ -18973,6 +19037,61 @@ export namespace Ags {
     };
 
     namespace PasswordStore {
+        /**
+         * Interface for implementing PasswordStore.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Encrypt password.
+             * @param password the password
+             * @param salt your salt
+             */
+            vfunc_encrypt_password(password: string, salt: string): string;
+            /**
+             * Get login name.
+             * @param security_context the #AgsSecurityContext
+             * @param user_uuid the users unique identifier
+             * @param security_token the security token
+             */
+            vfunc_get_login_name(security_context: GObject.Object, user_uuid: string, security_token: string): string;
+            /**
+             * Get password.
+             * @param security_context the #AgsSecurityContext
+             * @param user_uuid the user UUID
+             * @param security_token the security token
+             */
+            vfunc_get_password(security_context: GObject.Object, user_uuid: string, security_token: string): string;
+            /**
+             * Set login name.
+             * @param security_context the #AgsSecurityContext
+             * @param user_uuid the users unique identifier
+             * @param security_token the security token
+             * @param login_name the login name
+             */
+            vfunc_set_login_name(
+                security_context: GObject.Object,
+                user_uuid: string,
+                security_token: string,
+                login_name: string,
+            ): void;
+            /**
+             * Set password.
+             * @param security_context the #AgsSecurityContext
+             * @param user_uuid the user UUID
+             * @param security_token the security token
+             * @param password the password
+             */
+            vfunc_set_password(
+                security_context: GObject.Object,
+                user_uuid: string,
+                security_token: string,
+                password: string,
+            ): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -18982,7 +19101,7 @@ export namespace Ags {
         $gtype: GObject.GType<PasswordStore>;
         prototype: PasswordStore;
     }
-    interface PasswordStore extends GObject.Object {
+    interface PasswordStore extends GObject.Object, PasswordStore.Interface {
         // Methods
 
         /**
@@ -19034,55 +19153,6 @@ export namespace Ags {
             security_token: string,
             password: string,
         ): void;
-
-        // Virtual methods
-
-        /**
-         * Encrypt password.
-         * @param password the password
-         * @param salt your salt
-         */
-        vfunc_encrypt_password(password: string, salt: string): string;
-        /**
-         * Get login name.
-         * @param security_context the #AgsSecurityContext
-         * @param user_uuid the users unique identifier
-         * @param security_token the security token
-         */
-        vfunc_get_login_name(security_context: GObject.Object, user_uuid: string, security_token: string): string;
-        /**
-         * Get password.
-         * @param security_context the #AgsSecurityContext
-         * @param user_uuid the user UUID
-         * @param security_token the security token
-         */
-        vfunc_get_password(security_context: GObject.Object, user_uuid: string, security_token: string): string;
-        /**
-         * Set login name.
-         * @param security_context the #AgsSecurityContext
-         * @param user_uuid the users unique identifier
-         * @param security_token the security token
-         * @param login_name the login name
-         */
-        vfunc_set_login_name(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            login_name: string,
-        ): void;
-        /**
-         * Set password.
-         * @param security_context the #AgsSecurityContext
-         * @param user_uuid the user UUID
-         * @param security_token the security token
-         * @param password the password
-         */
-        vfunc_set_password(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            password: string,
-        ): void;
     }
 
     export const PasswordStore: PasswordStoreNamespace & {
@@ -19090,6 +19160,60 @@ export namespace Ags {
     };
 
     namespace Plugin {
+        /**
+         * Interface for implementing Plugin.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Retrieve the build id of the plugin.
+             */
+            vfunc_get_build_id(): string;
+            /**
+             * Retrieve the name of the plugin.
+             */
+            vfunc_get_name(): string;
+            /**
+             * Retrieve the ports of the plugin.
+             */
+            vfunc_get_ports(): GObject.Object[];
+            /**
+             * Retrieve the version of the plugin.
+             */
+            vfunc_get_version(): string;
+            /**
+             * Retrieve the xml type of the plugin.
+             */
+            vfunc_get_xml_type(): string;
+            /**
+             * Set the build id of the plugin.
+             * @param build_id the build id of plugin
+             */
+            vfunc_set_build_id(build_id: string): void;
+            /**
+             * Set the name of the plugin.
+             * @param name the name of plugin
+             */
+            vfunc_set_name(name: string): void;
+            /**
+             * Set the build id of the plugin.
+             * @param ports the build id of plugin
+             */
+            vfunc_set_ports(ports: GObject.Object[]): void;
+            /**
+             * Set the version of the plugin.
+             * @param version the version of plugin
+             */
+            vfunc_set_version(version: string): void;
+            /**
+             * Set the build id of the plugin.
+             * @param xml_type the build id of plugin
+             */
+            vfunc_set_xml_type(xml_type: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -19114,7 +19238,7 @@ export namespace Ags {
          */
         write(file: GObject.Object, parent: libxml2.Node, plugin: Plugin): libxml2.Node;
     }
-    interface Plugin extends GObject.Object {
+    interface Plugin extends GObject.Object, Plugin.Interface {
         // Methods
 
         /**
@@ -19167,54 +19291,6 @@ export namespace Ags {
          * @param xml_type the build id of plugin
          */
         set_xml_type(xml_type: string): void;
-
-        // Virtual methods
-
-        /**
-         * Retrieve the build id of the plugin.
-         */
-        vfunc_get_build_id(): string;
-        /**
-         * Retrieve the name of the plugin.
-         */
-        vfunc_get_name(): string;
-        /**
-         * Retrieve the ports of the plugin.
-         */
-        vfunc_get_ports(): GObject.Object[];
-        /**
-         * Retrieve the version of the plugin.
-         */
-        vfunc_get_version(): string;
-        /**
-         * Retrieve the xml type of the plugin.
-         */
-        vfunc_get_xml_type(): string;
-        /**
-         * Set the build id of the plugin.
-         * @param build_id the build id of plugin
-         */
-        vfunc_set_build_id(build_id: string): void;
-        /**
-         * Set the name of the plugin.
-         * @param name the name of plugin
-         */
-        vfunc_set_name(name: string): void;
-        /**
-         * Set the build id of the plugin.
-         * @param ports the build id of plugin
-         */
-        vfunc_set_ports(ports: GObject.Object[]): void;
-        /**
-         * Set the version of the plugin.
-         * @param version the version of plugin
-         */
-        vfunc_set_version(version: string): void;
-        /**
-         * Set the build id of the plugin.
-         * @param xml_type the build id of plugin
-         */
-        vfunc_set_xml_type(xml_type: string): void;
     }
 
     export const Plugin: PluginNamespace & {
@@ -19222,6 +19298,32 @@ export namespace Ags {
     };
 
     namespace PluginController {
+        /**
+         * Interface for implementing PluginController.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Do request.
+             * @param msg the #SoupServerMessage
+             * @param query the #GHashTable
+             * @param security_context the #AgsSecurityContext
+             * @param path the context path to access
+             * @param login the login
+             * @param security_token the security token
+             */
+            vfunc_do_request(
+                msg: Soup.ServerMessage,
+                query: { [key: string]: any } | GLib.HashTable<any, any>,
+                security_context: GObject.Object,
+                path: string,
+                login: string,
+                security_token: string,
+            ): any | null;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -19231,7 +19333,7 @@ export namespace Ags {
         $gtype: GObject.GType<PluginController>;
         prototype: PluginController;
     }
-    interface PluginController extends GObject.Object {
+    interface PluginController extends GObject.Object, PluginController.Interface {
         // Methods
 
         /**
@@ -19252,26 +19354,6 @@ export namespace Ags {
             login: string,
             security_token: string,
         ): any | null;
-
-        // Virtual methods
-
-        /**
-         * Do request.
-         * @param msg the #SoupServerMessage
-         * @param query the #GHashTable
-         * @param security_context the #AgsSecurityContext
-         * @param path the context path to access
-         * @param login the login
-         * @param security_token the security token
-         */
-        vfunc_do_request(
-            msg: Soup.ServerMessage,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
-            security_context: GObject.Object,
-            path: string,
-            login: string,
-            security_token: string,
-        ): any | null;
     }
 
     export const PluginController: PluginControllerNamespace & {
@@ -19279,6 +19361,40 @@ export namespace Ags {
     };
 
     namespace Portlet {
+        /**
+         * Interface for implementing Portlet.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Get port.
+             */
+            vfunc_get_port<T = GObject.Object>(): T;
+            /**
+             * Retrieve thread-safe properties.
+             */
+            vfunc_list_safe_properties(): string[];
+            /**
+             * Get property thread safe.
+             * @param property_name propertie's name
+             * @param value the #GValue
+             */
+            vfunc_safe_get_property(property_name: string, value: GObject.Value | any): void;
+            /**
+             * Set property thread safe.
+             * @param property_name propertie's name
+             * @param value the #GValue
+             */
+            vfunc_safe_set_property(property_name: string, value: GObject.Value | any): void;
+            /**
+             * Set port.
+             * @param port the #GObject
+             */
+            vfunc_set_port(port: GObject.Object): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -19288,7 +19404,7 @@ export namespace Ags {
         $gtype: GObject.GType<Portlet>;
         prototype: Portlet;
     }
-    interface Portlet extends GObject.Object {
+    interface Portlet extends GObject.Object, Portlet.Interface {
         // Methods
 
         /**
@@ -19318,34 +19434,6 @@ export namespace Ags {
          * @param port the #GObject
          */
         set_port(port: GObject.Object): void;
-
-        // Virtual methods
-
-        /**
-         * Get port.
-         */
-        vfunc_get_port<T = GObject.Object>(): T;
-        /**
-         * Retrieve thread-safe properties.
-         */
-        vfunc_list_safe_properties(): string[];
-        /**
-         * Get property thread safe.
-         * @param property_name propertie's name
-         * @param value the #GValue
-         */
-        vfunc_safe_get_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Set property thread safe.
-         * @param property_name propertie's name
-         * @param value the #GValue
-         */
-        vfunc_safe_set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Set port.
-         * @param port the #GObject
-         */
-        vfunc_set_port(port: GObject.Object): void;
     }
 
     export const Portlet: PortletNamespace & {
@@ -19353,6 +19441,21 @@ export namespace Ags {
     };
 
     namespace Seekable {
+        /**
+         * Interface for implementing Seekable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Seek.
+             * @param offset the offset
+             * @param whence the direction, see #AgsSeekType-enum
+             */
+            vfunc_seek(offset: number, whence: number): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -19362,7 +19465,7 @@ export namespace Ags {
         $gtype: GObject.GType<Seekable>;
         prototype: Seekable;
     }
-    interface Seekable extends GObject.Object {
+    interface Seekable extends GObject.Object, Seekable.Interface {
         // Methods
 
         /**
@@ -19371,15 +19474,6 @@ export namespace Ags {
          * @param whence the direction, see #AgsSeekType-enum
          */
         seek(offset: number, whence: number): void;
-
-        // Virtual methods
-
-        /**
-         * Seek.
-         * @param offset the offset
-         * @param whence the direction, see #AgsSeekType-enum
-         */
-        vfunc_seek(offset: number, whence: number): void;
     }
 
     export const Seekable: SeekableNamespace & {
@@ -19387,6 +19481,125 @@ export namespace Ags {
     };
 
     namespace Sequencer {
+        /**
+         * Interface for implementing Sequencer.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Get current playback bpm.
+             */
+            vfunc_get_bpm(): number;
+            /**
+             * Get current playback buffer.
+             * @param buffer_length the buffer's length
+             */
+            vfunc_get_buffer(buffer_length: number): any | null;
+            /**
+             * Get current playback delay factor.
+             */
+            vfunc_get_delay_factor(): number;
+            /**
+             * Get device.
+             */
+            vfunc_get_device(): string;
+            /**
+             * Get future playback buffer.
+             * @param buffer_length the buffer's length
+             */
+            vfunc_get_next_buffer(buffer_length: number): any | null;
+            /**
+             * Get current playback note offset.
+             */
+            vfunc_get_note_offset(): number;
+            /**
+             * Get start playback note offset.
+             */
+            vfunc_get_start_note_offset(): number;
+            /**
+             * Get playing.
+             */
+            vfunc_is_playing(): boolean;
+            /**
+             * Get recording.
+             */
+            vfunc_is_recording(): boolean;
+            /**
+             * Get starting.
+             */
+            vfunc_is_starting(): boolean;
+            /**
+             * Retrieve `card_id` and `card_name` as a list of strings.
+             */
+            vfunc_list_cards(): [string[], string[]];
+            /**
+             * Lock `buffer`.
+             * @param buffer the buffer to lock
+             */
+            vfunc_lock_buffer(buffer?: any | null): void;
+            /**
+             * Callback when counter expires minor note offset.
+             * @param note_offset the note offset
+             */
+            vfunc_offset_changed(note_offset: number): void;
+            /**
+             * Plays the current buffer of sequencer.
+             */
+            vfunc_play(): void;
+            /**
+             * Initializes the sequencer for playback.
+             */
+            vfunc_play_init(): void;
+            /**
+             * Records the current buffer of sequencer.
+             */
+            vfunc_record(): void;
+            /**
+             * Initializes the sequencer for recording.
+             */
+            vfunc_record_init(): void;
+            /**
+             * Set current playback bpm.
+             * @param bpm the bpm to set
+             */
+            vfunc_set_bpm(bpm: number): void;
+            /**
+             * Set current playback delay factor.
+             * @param delay_factor the delay factor to set
+             */
+            vfunc_set_delay_factor(delay_factor: number): void;
+            /**
+             * Set device.
+             * @param card_id the device to set
+             */
+            vfunc_set_device(card_id: string): void;
+            /**
+             * Set current playback note offset.
+             * @param note_offset the note offset to set
+             */
+            vfunc_set_note_offset(note_offset: number): void;
+            /**
+             * Set start playback note offset.
+             * @param start_note_offset the start note offset to set
+             */
+            vfunc_set_start_note_offset(start_note_offset: number): void;
+            /**
+             * Stops the sequencer from playing to it.
+             */
+            vfunc_stop(): void;
+            /**
+             * Every call to play may generate a tic.
+             */
+            vfunc_tic(): void;
+            /**
+             * Unlock `buffer`.
+             * @param buffer the buffer to unlock
+             */
+            vfunc_unlock_buffer(buffer?: any | null): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -19396,7 +19609,7 @@ export namespace Ags {
         $gtype: GObject.GType<Sequencer>;
         prototype: Sequencer;
     }
-    interface Sequencer extends GObject.Object {
+    interface Sequencer extends GObject.Object, Sequencer.Interface {
         // Methods
 
         /**
@@ -19519,119 +19732,6 @@ export namespace Ags {
          * @param buffer the buffer to unlock
          */
         unlock_buffer(buffer?: any | null): void;
-
-        // Virtual methods
-
-        /**
-         * Get current playback bpm.
-         */
-        vfunc_get_bpm(): number;
-        /**
-         * Get current playback buffer.
-         * @param buffer_length the buffer's length
-         */
-        vfunc_get_buffer(buffer_length: number): any | null;
-        /**
-         * Get current playback delay factor.
-         */
-        vfunc_get_delay_factor(): number;
-        /**
-         * Get device.
-         */
-        vfunc_get_device(): string;
-        /**
-         * Get future playback buffer.
-         * @param buffer_length the buffer's length
-         */
-        vfunc_get_next_buffer(buffer_length: number): any | null;
-        /**
-         * Get current playback note offset.
-         */
-        vfunc_get_note_offset(): number;
-        /**
-         * Get start playback note offset.
-         */
-        vfunc_get_start_note_offset(): number;
-        /**
-         * Get playing.
-         */
-        vfunc_is_playing(): boolean;
-        /**
-         * Get recording.
-         */
-        vfunc_is_recording(): boolean;
-        /**
-         * Get starting.
-         */
-        vfunc_is_starting(): boolean;
-        /**
-         * Retrieve `card_id` and `card_name` as a list of strings.
-         */
-        vfunc_list_cards(): [string[], string[]];
-        /**
-         * Lock `buffer`.
-         * @param buffer the buffer to lock
-         */
-        vfunc_lock_buffer(buffer?: any | null): void;
-        /**
-         * Callback when counter expires minor note offset.
-         * @param note_offset the note offset
-         */
-        vfunc_offset_changed(note_offset: number): void;
-        /**
-         * Plays the current buffer of sequencer.
-         */
-        vfunc_play(): void;
-        /**
-         * Initializes the sequencer for playback.
-         */
-        vfunc_play_init(): void;
-        /**
-         * Records the current buffer of sequencer.
-         */
-        vfunc_record(): void;
-        /**
-         * Initializes the sequencer for recording.
-         */
-        vfunc_record_init(): void;
-        /**
-         * Set current playback bpm.
-         * @param bpm the bpm to set
-         */
-        vfunc_set_bpm(bpm: number): void;
-        /**
-         * Set current playback delay factor.
-         * @param delay_factor the delay factor to set
-         */
-        vfunc_set_delay_factor(delay_factor: number): void;
-        /**
-         * Set device.
-         * @param card_id the device to set
-         */
-        vfunc_set_device(card_id: string): void;
-        /**
-         * Set current playback note offset.
-         * @param note_offset the note offset to set
-         */
-        vfunc_set_note_offset(note_offset: number): void;
-        /**
-         * Set start playback note offset.
-         * @param start_note_offset the start note offset to set
-         */
-        vfunc_set_start_note_offset(start_note_offset: number): void;
-        /**
-         * Stops the sequencer from playing to it.
-         */
-        vfunc_stop(): void;
-        /**
-         * Every call to play may generate a tic.
-         */
-        vfunc_tic(): void;
-        /**
-         * Unlock `buffer`.
-         * @param buffer the buffer to unlock
-         */
-        vfunc_unlock_buffer(buffer?: any | null): void;
     }
 
     export const Sequencer: SequencerNamespace & {
@@ -19639,6 +19739,33 @@ export namespace Ags {
     };
 
     namespace ServiceProvider {
+        /**
+         * Interface for implementing ServiceProvider.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Get server.
+             */
+            vfunc_get_server(): Server[];
+            /**
+             * Check if is operating.
+             */
+            vfunc_is_operating(): boolean;
+            /**
+             * Set registry.
+             * @param registry the #AgsRegistry
+             */
+            vfunc_set_registry(registry: Registry): void;
+            /**
+             * Set server.
+             * @param server the #GList-struct containing #AgsServer
+             */
+            vfunc_set_server(server: Server[]): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -19648,7 +19775,7 @@ export namespace Ags {
         $gtype: GObject.GType<ServiceProvider>;
         prototype: ServiceProvider;
     }
-    interface ServiceProvider extends GObject.Object {
+    interface ServiceProvider extends GObject.Object, ServiceProvider.Interface {
         // Methods
 
         /**
@@ -19671,27 +19798,6 @@ export namespace Ags {
          * @param server the #GList-struct containing #AgsServer
          */
         set_server(server: Server[]): void;
-
-        // Virtual methods
-
-        /**
-         * Get server.
-         */
-        vfunc_get_server(): Server[];
-        /**
-         * Check if is operating.
-         */
-        vfunc_is_operating(): boolean;
-        /**
-         * Set registry.
-         * @param registry the #AgsRegistry
-         */
-        vfunc_set_registry(registry: Registry): void;
-        /**
-         * Set server.
-         * @param server the #GList-struct containing #AgsServer
-         */
-        vfunc_set_server(server: Server[]): void;
     }
 
     export const ServiceProvider: ServiceProviderNamespace & {
@@ -19699,6 +19805,72 @@ export namespace Ags {
     };
 
     namespace SoundServer {
+        /**
+         * Interface for implementing SoundServer.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Gets the ports of `sound_server`.
+             * @param port_count the number of ports returned
+             */
+            vfunc_get_ports(port_count: number): number;
+            /**
+             * Gets the sequencer of `sound_server` associated with `client_uuid`.
+             * @param client_uuid the client uuid
+             */
+            vfunc_get_sequencer(client_uuid: string): GObject.Object[];
+            /**
+             * Gets the soundcard of `sound_server` associated with `client_uuid`.
+             * @param client_uuid the client uuid
+             */
+            vfunc_get_soundcard(client_uuid: string): GObject.Object[];
+            /**
+             * Gets the URL of `sound_server`.
+             */
+            vfunc_get_url(): string;
+            /**
+             * Fetches `sequencer` of `sound_server`.
+             * @param is_output if %TRUE the used as sink, else as source
+             */
+            vfunc_register_sequencer<T = GObject.Object>(is_output: boolean): T;
+            /**
+             * Fetches `soundcard` of `sound_server`.
+             * @param is_output if %TRUE the used as sink, else as source
+             */
+            vfunc_register_soundcard<T = GObject.Object>(is_output: boolean): T;
+            vfunc_set_ports(ports: number, port_count: number): void;
+            /**
+             * Sets the sequencer at `client_uuid`.
+             * @param client_uuid the location to fetch from
+             * @param sequencer the sequencer to set
+             */
+            vfunc_set_sequencer(client_uuid: string, sequencer: GObject.Object[]): void;
+            /**
+             * Sets the soundcard at `client_uuid`.
+             * @param client_uuid the location to fetch from
+             * @param soundcard the soundcard to set
+             */
+            vfunc_set_soundcard(client_uuid: string, soundcard: GObject.Object[]): void;
+            /**
+             * Sets the url of `sound_server`.
+             * @param url the url to set
+             */
+            vfunc_set_url(url: string): void;
+            /**
+             * Releases `sequencer` in `sound_server`.
+             * @param sequencer the #AgsSequencer
+             */
+            vfunc_unregister_sequencer(sequencer: GObject.Object): void;
+            /**
+             * Releases `soundcard` in `sound_server`.
+             * @param soundcard the #AgsSoundcard
+             */
+            vfunc_unregister_soundcard(soundcard: GObject.Object): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -19708,7 +19880,7 @@ export namespace Ags {
         $gtype: GObject.GType<SoundServer>;
         prototype: SoundServer;
     }
-    interface SoundServer extends GObject.Object {
+    interface SoundServer extends GObject.Object, SoundServer.Interface {
         // Methods
 
         /**
@@ -19774,66 +19946,6 @@ export namespace Ags {
          * @param soundcard the #AgsSoundcard
          */
         unregister_soundcard(soundcard: GObject.Object): void;
-
-        // Virtual methods
-
-        /**
-         * Gets the ports of `sound_server`.
-         * @param port_count the number of ports returned
-         */
-        vfunc_get_ports(port_count: number): number;
-        /**
-         * Gets the sequencer of `sound_server` associated with `client_uuid`.
-         * @param client_uuid the client uuid
-         */
-        vfunc_get_sequencer(client_uuid: string): GObject.Object[];
-        /**
-         * Gets the soundcard of `sound_server` associated with `client_uuid`.
-         * @param client_uuid the client uuid
-         */
-        vfunc_get_soundcard(client_uuid: string): GObject.Object[];
-        /**
-         * Gets the URL of `sound_server`.
-         */
-        vfunc_get_url(): string;
-        /**
-         * Fetches `sequencer` of `sound_server`.
-         * @param is_output if %TRUE the used as sink, else as source
-         */
-        vfunc_register_sequencer<T = GObject.Object>(is_output: boolean): T;
-        /**
-         * Fetches `soundcard` of `sound_server`.
-         * @param is_output if %TRUE the used as sink, else as source
-         */
-        vfunc_register_soundcard<T = GObject.Object>(is_output: boolean): T;
-        vfunc_set_ports(ports: number, port_count: number): void;
-        /**
-         * Sets the sequencer at `client_uuid`.
-         * @param client_uuid the location to fetch from
-         * @param sequencer the sequencer to set
-         */
-        vfunc_set_sequencer(client_uuid: string, sequencer: GObject.Object[]): void;
-        /**
-         * Sets the soundcard at `client_uuid`.
-         * @param client_uuid the location to fetch from
-         * @param soundcard the soundcard to set
-         */
-        vfunc_set_soundcard(client_uuid: string, soundcard: GObject.Object[]): void;
-        /**
-         * Sets the url of `sound_server`.
-         * @param url the url to set
-         */
-        vfunc_set_url(url: string): void;
-        /**
-         * Releases `sequencer` in `sound_server`.
-         * @param sequencer the #AgsSequencer
-         */
-        vfunc_unregister_sequencer(sequencer: GObject.Object): void;
-        /**
-         * Releases `soundcard` in `sound_server`.
-         * @param soundcard the #AgsSoundcard
-         */
-        vfunc_unregister_soundcard(soundcard: GObject.Object): void;
     }
 
     export const SoundServer: SoundServerNamespace & {
@@ -19841,6 +19953,246 @@ export namespace Ags {
     };
 
     namespace Soundcard {
+        /**
+         * Interface for implementing Soundcard.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Get current playback delay.
+             */
+            vfunc_get_absolute_delay(): number;
+            /**
+             * Get current playback attack.
+             */
+            vfunc_get_attack(): number;
+            /**
+             * Get current playback bpm.
+             */
+            vfunc_get_bpm(): number;
+            /**
+             * Get current playback buffer.
+             */
+            vfunc_get_buffer(): any | null;
+            /**
+             * Retrieve #AgsSoundcardCapability-enum information.
+             */
+            vfunc_get_capability(): SoundcardCapability;
+            /**
+             * Get current playback delay.
+             */
+            vfunc_get_delay(): number;
+            /**
+             * Get current playback note offset.
+             */
+            vfunc_get_delay_counter(): number;
+            /**
+             * Get current playback delay factor.
+             */
+            vfunc_get_delay_factor(): number;
+            /**
+             * Get device.
+             */
+            vfunc_get_device(): string;
+            /**
+             * Get loop parameters of `soundcard`.
+             */
+            vfunc_get_loop(): [number, number, boolean];
+            /**
+             * Get current playback loop offset.
+             */
+            vfunc_get_loop_offset(): number;
+            /**
+             * Get future playback buffer.
+             */
+            vfunc_get_next_buffer(): any | null;
+            /**
+             * Get current playback note 256th attack.
+             * @param note_256th_attack_lower the return location of attack lower range
+             * @param note_256th_attack_upper the return location of attack upper range
+             */
+            vfunc_get_note_256th_attack(note_256th_attack_lower: number, note_256th_attack_upper: number): void;
+            /**
+             * Get current playback note 256th attack position within 16 times %AGS_SOUNDCARD_DEFAULT_PERIOD.
+             * @param note_256th_attack_position the note 256th attack position
+             */
+            vfunc_get_note_256th_attack_at_position(note_256th_attack_position: number): number;
+            /**
+             * Get note 256th attack of current 16th pulse.
+             */
+            vfunc_get_note_256th_attack_of_16th_pulse(): number;
+            /**
+             * Get note 256th attack position of current 16th pulse.
+             */
+            vfunc_get_note_256th_attack_of_16th_pulse_position(): number;
+            /**
+             * Get current playback note 256th attack position within 16 times %AGS_SOUNDCARD_DEFAULT_PERIOD.
+             * @param note_256th_attack_position_lower the return location of attack position lower range
+             * @param note_256th_attack_position_upper the return location of attack position upper range
+             */
+            vfunc_get_note_256th_attack_position(
+                note_256th_attack_position_lower: number,
+                note_256th_attack_position_upper: number,
+            ): void;
+            /**
+             * Get current playback note 256th offset.
+             * @param note_256th_offset_lower the return location of offset lower range
+             * @param note_256th_offset_upper the return location of offset upper range
+             */
+            vfunc_get_note_256th_offset(note_256th_offset_lower: number, note_256th_offset_upper: number): void;
+            /**
+             * Get current playback note offset.
+             */
+            vfunc_get_note_offset(): number;
+            /**
+             * Get current playback note offset.
+             */
+            vfunc_get_note_offset_absolute(): number;
+            /**
+             * Get presets.
+             */
+            vfunc_get_presets(): [number, number, number, SoundcardFormat];
+            /**
+             * Get future playback buffer.
+             */
+            vfunc_get_prev_buffer(): any | null;
+            /**
+             * Get start playback note offset.
+             */
+            vfunc_get_start_note_offset(): number;
+            /**
+             * Get sub block count.
+             */
+            vfunc_get_sub_block_count(): number;
+            /**
+             * Get playback time as string.
+             */
+            vfunc_get_uptime(): string;
+            /**
+             * Get available.
+             */
+            vfunc_is_available(): boolean;
+            /**
+             * Get playing.
+             */
+            vfunc_is_playing(): boolean;
+            /**
+             * Get recording.
+             */
+            vfunc_is_recording(): boolean;
+            /**
+             * Get starting.
+             */
+            vfunc_is_starting(): boolean;
+            /**
+             * Retrieve `card_id` and `card_name` as a list of strings.
+             */
+            vfunc_list_cards(): [string[], string[]];
+            /**
+             * Lock `buffer`.
+             * @param buffer the buffer to lock
+             */
+            vfunc_lock_buffer(buffer?: any | null): void;
+            /**
+             * Callback when counter expires minor note offset.
+             * @param note_offset the current note offset
+             */
+            vfunc_offset_changed(note_offset: number): void;
+            /**
+             * Retrieve detailed information of `card_id` soundcard.
+             * @param card_id the selected soundcard by its string identifier
+             */
+            vfunc_pcm_info(card_id: string): [number, number, number, number, number, number];
+            /**
+             * Plays the current buffer of soundcard.
+             */
+            vfunc_play(): void;
+            /**
+             * Initializes the soundcard for playback.
+             */
+            vfunc_play_init(): void;
+            /**
+             * Records the current buffer of soundcard.
+             */
+            vfunc_record(): void;
+            /**
+             * Initializes the soundcard for recordback.
+             */
+            vfunc_record_init(): void;
+            /**
+             * Set current playback bpm.
+             * @param bpm the bpm to set
+             */
+            vfunc_set_bpm(bpm: number): void;
+            /**
+             * Set current playback delay factor.
+             * @param delay_factor the delay factor to set
+             */
+            vfunc_set_delay_factor(delay_factor: number): void;
+            /**
+             * Set device.
+             * @param card_id the device to set
+             */
+            vfunc_set_device(card_id: string): void;
+            /**
+             * Set loop parameters of `soundcard`.
+             * @param loop_left loop position of region
+             * @param loop_right loop position of region
+             * @param do_loop if %TRUE do loop, else don't loop
+             */
+            vfunc_set_loop(loop_left: number, loop_right: number, do_loop: boolean): void;
+            /**
+             * Set current playback note offset.
+             * @param note_offset the note offset to set
+             */
+            vfunc_set_note_offset(note_offset: number): void;
+            /**
+             * Set current playback note offset.
+             * @param note_offset the note offset to set
+             */
+            vfunc_set_note_offset_absolute(note_offset: number): void;
+            /**
+             * Set presets.
+             * @param channels the audio channels
+             * @param rate the samplerate
+             * @param buffer_size the buffer size
+             * @param format the format
+             */
+            vfunc_set_presets(channels: number, rate: number, buffer_size: number, format: SoundcardFormat): void;
+            /**
+             * Set start playback note offset.
+             * @param start_note_offset the start note offset to set
+             */
+            vfunc_set_start_note_offset(start_note_offset: number): void;
+            /**
+             * Stops the soundcard from playing to it.
+             */
+            vfunc_stop(): void;
+            /**
+             * Every call to play may generate a tic.
+             */
+            vfunc_tic(): void;
+            /**
+             * Trylock sub block.
+             * @param buffer the buffer to lock
+             * @param sub_block and its sub block
+             */
+            vfunc_trylock_sub_block(buffer: any | null, sub_block: number): boolean;
+            /**
+             * Unlock `buffer`.
+             * @param buffer the buffer to unlock
+             */
+            vfunc_unlock_buffer(buffer?: any | null): void;
+            /**
+             * Unlock sub block.
+             * @param buffer the buffer to lock
+             * @param sub_block and its sub block
+             */
+            vfunc_unlock_sub_block(buffer: any | null, sub_block: number): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -19886,7 +20238,7 @@ export namespace Ags {
          */
         helper_config_get_use_cache(config: Config): boolean;
     }
-    interface Soundcard extends GObject.Object {
+    interface Soundcard extends GObject.Object, Soundcard.Interface {
         // Methods
 
         /**
@@ -20144,240 +20496,6 @@ export namespace Ags {
          * @param sub_block and its sub block
          */
         unlock_sub_block(buffer: any | null, sub_block: number): void;
-
-        // Virtual methods
-
-        /**
-         * Get current playback delay.
-         */
-        vfunc_get_absolute_delay(): number;
-        /**
-         * Get current playback attack.
-         */
-        vfunc_get_attack(): number;
-        /**
-         * Get current playback bpm.
-         */
-        vfunc_get_bpm(): number;
-        /**
-         * Get current playback buffer.
-         */
-        vfunc_get_buffer(): any | null;
-        /**
-         * Retrieve #AgsSoundcardCapability-enum information.
-         */
-        vfunc_get_capability(): SoundcardCapability;
-        /**
-         * Get current playback delay.
-         */
-        vfunc_get_delay(): number;
-        /**
-         * Get current playback note offset.
-         */
-        vfunc_get_delay_counter(): number;
-        /**
-         * Get current playback delay factor.
-         */
-        vfunc_get_delay_factor(): number;
-        /**
-         * Get device.
-         */
-        vfunc_get_device(): string;
-        /**
-         * Get loop parameters of `soundcard`.
-         */
-        vfunc_get_loop(): [number, number, boolean];
-        /**
-         * Get current playback loop offset.
-         */
-        vfunc_get_loop_offset(): number;
-        /**
-         * Get future playback buffer.
-         */
-        vfunc_get_next_buffer(): any | null;
-        /**
-         * Get current playback note 256th attack.
-         * @param note_256th_attack_lower the return location of attack lower range
-         * @param note_256th_attack_upper the return location of attack upper range
-         */
-        vfunc_get_note_256th_attack(note_256th_attack_lower: number, note_256th_attack_upper: number): void;
-        /**
-         * Get current playback note 256th attack position within 16 times %AGS_SOUNDCARD_DEFAULT_PERIOD.
-         * @param note_256th_attack_position the note 256th attack position
-         */
-        vfunc_get_note_256th_attack_at_position(note_256th_attack_position: number): number;
-        /**
-         * Get note 256th attack of current 16th pulse.
-         */
-        vfunc_get_note_256th_attack_of_16th_pulse(): number;
-        /**
-         * Get note 256th attack position of current 16th pulse.
-         */
-        vfunc_get_note_256th_attack_of_16th_pulse_position(): number;
-        /**
-         * Get current playback note 256th attack position within 16 times %AGS_SOUNDCARD_DEFAULT_PERIOD.
-         * @param note_256th_attack_position_lower the return location of attack position lower range
-         * @param note_256th_attack_position_upper the return location of attack position upper range
-         */
-        vfunc_get_note_256th_attack_position(
-            note_256th_attack_position_lower: number,
-            note_256th_attack_position_upper: number,
-        ): void;
-        /**
-         * Get current playback note 256th offset.
-         * @param note_256th_offset_lower the return location of offset lower range
-         * @param note_256th_offset_upper the return location of offset upper range
-         */
-        vfunc_get_note_256th_offset(note_256th_offset_lower: number, note_256th_offset_upper: number): void;
-        /**
-         * Get current playback note offset.
-         */
-        vfunc_get_note_offset(): number;
-        /**
-         * Get current playback note offset.
-         */
-        vfunc_get_note_offset_absolute(): number;
-        /**
-         * Get presets.
-         */
-        vfunc_get_presets(): [number, number, number, SoundcardFormat];
-        /**
-         * Get future playback buffer.
-         */
-        vfunc_get_prev_buffer(): any | null;
-        /**
-         * Get start playback note offset.
-         */
-        vfunc_get_start_note_offset(): number;
-        /**
-         * Get sub block count.
-         */
-        vfunc_get_sub_block_count(): number;
-        /**
-         * Get playback time as string.
-         */
-        vfunc_get_uptime(): string;
-        /**
-         * Get available.
-         */
-        vfunc_is_available(): boolean;
-        /**
-         * Get playing.
-         */
-        vfunc_is_playing(): boolean;
-        /**
-         * Get recording.
-         */
-        vfunc_is_recording(): boolean;
-        /**
-         * Get starting.
-         */
-        vfunc_is_starting(): boolean;
-        /**
-         * Retrieve `card_id` and `card_name` as a list of strings.
-         */
-        vfunc_list_cards(): [string[], string[]];
-        /**
-         * Lock `buffer`.
-         * @param buffer the buffer to lock
-         */
-        vfunc_lock_buffer(buffer?: any | null): void;
-        /**
-         * Callback when counter expires minor note offset.
-         * @param note_offset the current note offset
-         */
-        vfunc_offset_changed(note_offset: number): void;
-        /**
-         * Retrieve detailed information of `card_id` soundcard.
-         * @param card_id the selected soundcard by its string identifier
-         */
-        vfunc_pcm_info(card_id: string): [number, number, number, number, number, number];
-        /**
-         * Plays the current buffer of soundcard.
-         */
-        vfunc_play(): void;
-        /**
-         * Initializes the soundcard for playback.
-         */
-        vfunc_play_init(): void;
-        /**
-         * Records the current buffer of soundcard.
-         */
-        vfunc_record(): void;
-        /**
-         * Initializes the soundcard for recordback.
-         */
-        vfunc_record_init(): void;
-        /**
-         * Set current playback bpm.
-         * @param bpm the bpm to set
-         */
-        vfunc_set_bpm(bpm: number): void;
-        /**
-         * Set current playback delay factor.
-         * @param delay_factor the delay factor to set
-         */
-        vfunc_set_delay_factor(delay_factor: number): void;
-        /**
-         * Set device.
-         * @param card_id the device to set
-         */
-        vfunc_set_device(card_id: string): void;
-        /**
-         * Set loop parameters of `soundcard`.
-         * @param loop_left loop position of region
-         * @param loop_right loop position of region
-         * @param do_loop if %TRUE do loop, else don't loop
-         */
-        vfunc_set_loop(loop_left: number, loop_right: number, do_loop: boolean): void;
-        /**
-         * Set current playback note offset.
-         * @param note_offset the note offset to set
-         */
-        vfunc_set_note_offset(note_offset: number): void;
-        /**
-         * Set current playback note offset.
-         * @param note_offset the note offset to set
-         */
-        vfunc_set_note_offset_absolute(note_offset: number): void;
-        /**
-         * Set presets.
-         * @param channels the audio channels
-         * @param rate the samplerate
-         * @param buffer_size the buffer size
-         * @param format the format
-         */
-        vfunc_set_presets(channels: number, rate: number, buffer_size: number, format: SoundcardFormat): void;
-        /**
-         * Set start playback note offset.
-         * @param start_note_offset the start note offset to set
-         */
-        vfunc_set_start_note_offset(start_note_offset: number): void;
-        /**
-         * Stops the soundcard from playing to it.
-         */
-        vfunc_stop(): void;
-        /**
-         * Every call to play may generate a tic.
-         */
-        vfunc_tic(): void;
-        /**
-         * Trylock sub block.
-         * @param buffer the buffer to lock
-         * @param sub_block and its sub block
-         */
-        vfunc_trylock_sub_block(buffer: any | null, sub_block: number): boolean;
-        /**
-         * Unlock `buffer`.
-         * @param buffer the buffer to unlock
-         */
-        vfunc_unlock_buffer(buffer?: any | null): void;
-        /**
-         * Unlock sub block.
-         * @param buffer the buffer to lock
-         * @param sub_block and its sub block
-         */
-        vfunc_unlock_sub_block(buffer: any | null, sub_block: number): void;
     }
 
     export const Soundcard: SoundcardNamespace & {
@@ -20385,6 +20503,71 @@ export namespace Ags {
     };
 
     namespace Tactable {
+        /**
+         * Interface for implementing Tactable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Change bpm.
+             * @param new_bpm the new bpm
+             * @param old_bpm the old bpm
+             */
+            vfunc_change_bpm(new_bpm: number, old_bpm: number): void;
+            /**
+             * Change midi duration.
+             * @param midi_duration the duration
+             */
+            vfunc_change_midi_duration(midi_duration: number): void;
+            /**
+             * Change notation duration.
+             * @param notation_duration the duration
+             */
+            vfunc_change_notation_duration(notation_duration: number): void;
+            /**
+             * Change sequencer duration.
+             * @param sequencer_duration the duration
+             */
+            vfunc_change_sequencer_duration(sequencer_duration: number): void;
+            /**
+             * Change tact.
+             * @param new_tact the new tact
+             * @param old_tact the old tact
+             */
+            vfunc_change_tact(new_tact: number, old_tact: number): void;
+            /**
+             * Change wave duration.
+             * @param wave_duration the duration
+             */
+            vfunc_change_wave_duration(wave_duration: number): void;
+            /**
+             * Get bpm.
+             */
+            vfunc_get_bpm(): number;
+            /**
+             * Get midi duration.
+             */
+            vfunc_get_midi_duration(): number;
+            /**
+             * Get notation duration.
+             */
+            vfunc_get_notation_duration(): number;
+            /**
+             * Get sequencer duration.
+             */
+            vfunc_get_sequencer_duration(): number;
+            /**
+             * Get tact.
+             */
+            vfunc_get_tact(): number;
+            /**
+             * Get wave duration.
+             */
+            vfunc_get_wave_duration(): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -20394,7 +20577,7 @@ export namespace Ags {
         $gtype: GObject.GType<Tactable>;
         prototype: Tactable;
     }
-    interface Tactable extends GObject.Object {
+    interface Tactable extends GObject.Object, Tactable.Interface {
         // Methods
 
         /**
@@ -20459,65 +20642,6 @@ export namespace Ags {
          * @returns the wave duration
          */
         get_wave_duration(): number;
-
-        // Virtual methods
-
-        /**
-         * Change bpm.
-         * @param new_bpm the new bpm
-         * @param old_bpm the old bpm
-         */
-        vfunc_change_bpm(new_bpm: number, old_bpm: number): void;
-        /**
-         * Change midi duration.
-         * @param midi_duration the duration
-         */
-        vfunc_change_midi_duration(midi_duration: number): void;
-        /**
-         * Change notation duration.
-         * @param notation_duration the duration
-         */
-        vfunc_change_notation_duration(notation_duration: number): void;
-        /**
-         * Change sequencer duration.
-         * @param sequencer_duration the duration
-         */
-        vfunc_change_sequencer_duration(sequencer_duration: number): void;
-        /**
-         * Change tact.
-         * @param new_tact the new tact
-         * @param old_tact the old tact
-         */
-        vfunc_change_tact(new_tact: number, old_tact: number): void;
-        /**
-         * Change wave duration.
-         * @param wave_duration the duration
-         */
-        vfunc_change_wave_duration(wave_duration: number): void;
-        /**
-         * Get bpm.
-         */
-        vfunc_get_bpm(): number;
-        /**
-         * Get midi duration.
-         */
-        vfunc_get_midi_duration(): number;
-        /**
-         * Get notation duration.
-         */
-        vfunc_get_notation_duration(): number;
-        /**
-         * Get sequencer duration.
-         */
-        vfunc_get_sequencer_duration(): number;
-        /**
-         * Get tact.
-         */
-        vfunc_get_tact(): number;
-        /**
-         * Get wave duration.
-         */
-        vfunc_get_wave_duration(): number;
     }
 
     export const Tactable: TactableNamespace & {

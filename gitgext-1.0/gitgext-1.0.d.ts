@@ -613,6 +613,18 @@ export namespace GitgExt {
     type SelectableIface = typeof Selectable;
     type UIElementIface = typeof UIElement;
     namespace Action {
+        /**
+         * Interface for implementing Action.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface extends UIElement.Interface {
+            // Virtual methods
+
+            vfunc_populate_menu(menu: Gtk.Menu): void;
+            vfunc_fetch(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_fetch_finish(_res_: Gio.AsyncResult): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends UIElement.ConstructorProps {}
@@ -622,7 +634,7 @@ export namespace GitgExt {
         $gtype: GObject.GType<Action>;
         prototype: Action;
     }
-    interface Action extends UIElement {
+    interface Action extends UIElement, Action.Interface {
         // Methods
 
         populate_menu(menu: Gtk.Menu): void;
@@ -630,12 +642,6 @@ export namespace GitgExt {
         fetch(_callback_: Gio.AsyncReadyCallback<this> | null): void;
         fetch(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
         fetch_finish(_res_: Gio.AsyncResult): boolean;
-
-        // Virtual methods
-
-        vfunc_populate_menu(menu: Gtk.Menu): void;
-        vfunc_fetch(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
-        vfunc_fetch_finish(_res_: Gio.AsyncResult): boolean;
     }
 
     export const Action: ActionNamespace & {
@@ -643,6 +649,17 @@ export namespace GitgExt {
     };
 
     namespace Activity {
+        /**
+         * Interface for implementing Activity.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_is_default_for(action: string): boolean;
+            vfunc_on_key_pressed(event: Gdk.EventKey): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -652,16 +669,11 @@ export namespace GitgExt {
         $gtype: GObject.GType<Activity>;
         prototype: Activity;
     }
-    interface Activity extends GObject.Object {
+    interface Activity extends GObject.Object, Activity.Interface {
         // Methods
 
         is_default_for(action: string): boolean;
         on_key_pressed(event: Gdk.EventKey): boolean;
-
-        // Virtual methods
-
-        vfunc_is_default_for(action: string): boolean;
-        vfunc_on_key_pressed(event: Gdk.EventKey): boolean;
     }
 
     export const Activity: ActivityNamespace & {
@@ -669,6 +681,33 @@ export namespace GitgExt {
     };
 
     namespace Application {
+        /**
+         * Interface for implementing Application.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_verified_committer(): Ggit.Signature | null;
+            vfunc_get_activity_by_id(id: string): Activity | null;
+            vfunc_set_activity_by_id(id: string): Activity | null;
+            vfunc_user_query(query: UserQuery): void;
+            vfunc_user_query_async(query: UserQuery, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_user_query_finish(_res_: Gio.AsyncResult): Gtk.ResponseType;
+            vfunc_show_infobar(primary_msg: string, secondary_msg: string, type: Gtk.MessageType): void;
+            vfunc_open_new(repository: Ggit.Repository, hint?: string | null): Application;
+            vfunc_open_repository(path: Gio.File): void;
+            vfunc_get_repository(): Gitg.Repository | null;
+            vfunc_set_repository(value?: Gitg.Repository | null): void;
+            vfunc_get_message_bus(): MessageBus;
+            vfunc_get_current_activity(): Activity | null;
+            vfunc_get_environment(): Gee.Map;
+            vfunc_get_notifications(): Notifications;
+            vfunc_get_busy(): boolean;
+            vfunc_set_busy(value: boolean): void;
+            vfunc_get_remote_lookup(): RemoteLookup;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -689,7 +728,7 @@ export namespace GitgExt {
         $gtype: GObject.GType<Application>;
         prototype: Application;
     }
-    interface Application extends GObject.Object {
+    interface Application extends GObject.Object, Application.Interface {
         // Properties
 
         get repository(): Gitg.Repository;
@@ -730,27 +769,6 @@ export namespace GitgExt {
         get_busy(): boolean;
         set_busy(value: boolean): void;
         get_remote_lookup(): RemoteLookup;
-
-        // Virtual methods
-
-        vfunc_get_verified_committer(): Ggit.Signature | null;
-        vfunc_get_activity_by_id(id: string): Activity | null;
-        vfunc_set_activity_by_id(id: string): Activity | null;
-        vfunc_user_query(query: UserQuery): void;
-        vfunc_user_query_async(query: UserQuery, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
-        vfunc_user_query_finish(_res_: Gio.AsyncResult): Gtk.ResponseType;
-        vfunc_show_infobar(primary_msg: string, secondary_msg: string, type: Gtk.MessageType): void;
-        vfunc_open_new(repository: Ggit.Repository, hint?: string | null): Application;
-        vfunc_open_repository(path: Gio.File): void;
-        vfunc_get_repository(): Gitg.Repository | null;
-        vfunc_set_repository(value?: Gitg.Repository | null): void;
-        vfunc_get_message_bus(): MessageBus;
-        vfunc_get_current_activity(): Activity | null;
-        vfunc_get_environment(): Gee.Map;
-        vfunc_get_notifications(): Notifications;
-        vfunc_get_busy(): boolean;
-        vfunc_set_busy(value: boolean): void;
-        vfunc_get_remote_lookup(): RemoteLookup;
     }
 
     export const Application: ApplicationNamespace & {
@@ -758,6 +776,18 @@ export namespace GitgExt {
     };
 
     namespace CommandLine {
+        /**
+         * Interface for implementing CommandLine.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_option_group(): GLib.OptionGroup;
+            vfunc_parse_finished(): void;
+            vfunc_apply(application: Application): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -767,18 +797,12 @@ export namespace GitgExt {
         $gtype: GObject.GType<CommandLine>;
         prototype: CommandLine;
     }
-    interface CommandLine extends GObject.Object {
+    interface CommandLine extends GObject.Object, CommandLine.Interface {
         // Methods
 
         get_option_group(): GLib.OptionGroup;
         parse_finished(): void;
         apply(application: Application): void;
-
-        // Virtual methods
-
-        vfunc_get_option_group(): GLib.OptionGroup;
-        vfunc_parse_finished(): void;
-        vfunc_apply(application: Application): void;
     }
 
     export const CommandLine: CommandLineNamespace & {
@@ -786,6 +810,19 @@ export namespace GitgExt {
     };
 
     namespace CommitAction {
+        /**
+         * Interface for implementing CommitAction.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface extends Action.Interface {
+            // Virtual methods
+
+            vfunc_get_action_interface(): RefActionInterface;
+            vfunc_set_action_interface(value: RefActionInterface): void;
+            vfunc_get_commit(): Gitg.Commit;
+            vfunc_set_commit(value: Gitg.Commit): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Action.ConstructorProps {
@@ -799,7 +836,7 @@ export namespace GitgExt {
         $gtype: GObject.GType<CommitAction>;
         prototype: CommitAction;
     }
-    interface CommitAction extends Action {
+    interface CommitAction extends Action, CommitAction.Interface {
         // Properties
 
         get action_interface(): RefActionInterface;
@@ -815,13 +852,6 @@ export namespace GitgExt {
         set_action_interface(value: RefActionInterface): void;
         get_commit(): Gitg.Commit;
         set_commit(value: Gitg.Commit): void;
-
-        // Virtual methods
-
-        vfunc_get_action_interface(): RefActionInterface;
-        vfunc_set_action_interface(value: RefActionInterface): void;
-        vfunc_get_commit(): Gitg.Commit;
-        vfunc_set_commit(value: Gitg.Commit): void;
     }
 
     export const CommitAction: CommitActionNamespace & {
@@ -829,6 +859,17 @@ export namespace GitgExt {
     };
 
     namespace HistoryPanel {
+        /**
+         * Interface for implementing HistoryPanel.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_history(): History | null;
+            vfunc_set_history(value?: History | null): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -840,7 +881,7 @@ export namespace GitgExt {
         $gtype: GObject.GType<HistoryPanel>;
         prototype: HistoryPanel;
     }
-    interface HistoryPanel extends GObject.Object {
+    interface HistoryPanel extends GObject.Object, HistoryPanel.Interface {
         // Properties
 
         get history(): History;
@@ -850,11 +891,6 @@ export namespace GitgExt {
 
         get_history(): History | null;
         set_history(value?: History | null): void;
-
-        // Virtual methods
-
-        vfunc_get_history(): History | null;
-        vfunc_set_history(value?: History | null): void;
     }
 
     export const HistoryPanel: HistoryPanelNamespace & {
@@ -862,6 +898,17 @@ export namespace GitgExt {
     };
 
     namespace History {
+        /**
+         * Interface for implementing History.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_foreach_selected(func: ForeachCommitSelectionFunc): void;
+            vfunc_select(commit: Gitg.Commit): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -871,16 +918,11 @@ export namespace GitgExt {
         $gtype: GObject.GType<History>;
         prototype: History;
     }
-    interface History extends GObject.Object {
+    interface History extends GObject.Object, History.Interface {
         // Methods
 
         foreach_selected(func: ForeachCommitSelectionFunc): void;
         select(commit: Gitg.Commit): void;
-
-        // Virtual methods
-
-        vfunc_foreach_selected(func: ForeachCommitSelectionFunc): void;
-        vfunc_select(commit: Gitg.Commit): void;
     }
 
     export const History: HistoryNamespace & {
@@ -888,6 +930,16 @@ export namespace GitgExt {
     };
 
     namespace Notification {
+        /**
+         * Interface for implementing Notification.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_widget(): Gtk.Widget | null;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -899,7 +951,7 @@ export namespace GitgExt {
         $gtype: GObject.GType<Notification>;
         prototype: Notification;
     }
-    interface Notification extends GObject.Object {
+    interface Notification extends GObject.Object, Notification.Interface {
         // Properties
 
         get widget(): Gtk.Widget;
@@ -907,10 +959,6 @@ export namespace GitgExt {
         // Methods
 
         get_widget(): Gtk.Widget | null;
-
-        // Virtual methods
-
-        vfunc_get_widget(): Gtk.Widget | null;
     }
 
     export const Notification: NotificationNamespace & {
@@ -918,6 +966,17 @@ export namespace GitgExt {
     };
 
     namespace Notifications {
+        /**
+         * Interface for implementing Notifications.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_add(notification: Notification): void;
+            vfunc_remove(notification: Notification, delay: number): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -927,16 +986,11 @@ export namespace GitgExt {
         $gtype: GObject.GType<Notifications>;
         prototype: Notifications;
     }
-    interface Notifications extends GObject.Object {
+    interface Notifications extends GObject.Object, Notifications.Interface {
         // Methods
 
         add(notification: Notification): void;
         remove(notification: Notification, delay: number): void;
-
-        // Virtual methods
-
-        vfunc_add(notification: Notification): void;
-        vfunc_remove(notification: Notification, delay: number): void;
     }
 
     export const Notifications: NotificationsNamespace & {
@@ -944,6 +998,18 @@ export namespace GitgExt {
     };
 
     namespace Preferences {
+        /**
+         * Interface for implementing Preferences.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_id(): string;
+            vfunc_get_display_name(): string;
+            vfunc_get_widget(): Gtk.Widget;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -958,7 +1024,7 @@ export namespace GitgExt {
         $gtype: GObject.GType<Preferences>;
         prototype: Preferences;
     }
-    interface Preferences extends GObject.Object {
+    interface Preferences extends GObject.Object, Preferences.Interface {
         // Properties
 
         get id(): string;
@@ -971,12 +1037,6 @@ export namespace GitgExt {
         get_id(): string;
         get_display_name(): string;
         get_widget(): Gtk.Widget;
-
-        // Virtual methods
-
-        vfunc_get_id(): string;
-        vfunc_get_display_name(): string;
-        vfunc_get_widget(): Gtk.Widget;
     }
 
     export const Preferences: PreferencesNamespace & {
@@ -984,6 +1044,24 @@ export namespace GitgExt {
     };
 
     namespace RefActionInterface {
+        /**
+         * Interface for implementing RefActionInterface.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_add_ref(reference: Gitg.Ref): void;
+            vfunc_remove_ref(reference: Gitg.Ref): void;
+            vfunc_replace_ref(old_ref: Gitg.Ref, new_ref: Gitg.Ref): void;
+            vfunc_set_busy(reference: Gitg.Ref, busy: boolean): void;
+            vfunc_edit_ref_name(reference: Gitg.Ref, callback: RefNameEditingDone): void;
+            vfunc_refresh(): void;
+            vfunc_get_application(): Application;
+            vfunc_set_application(value: Application): void;
+            vfunc_get_references(): Gee.List;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -996,7 +1074,7 @@ export namespace GitgExt {
         $gtype: GObject.GType<RefActionInterface>;
         prototype: RefActionInterface;
     }
-    interface RefActionInterface extends GObject.Object {
+    interface RefActionInterface extends GObject.Object, RefActionInterface.Interface {
         // Properties
 
         get application(): Application;
@@ -1014,18 +1092,6 @@ export namespace GitgExt {
         get_application(): Application;
         set_application(value: Application): void;
         get_references(): Gee.List;
-
-        // Virtual methods
-
-        vfunc_add_ref(reference: Gitg.Ref): void;
-        vfunc_remove_ref(reference: Gitg.Ref): void;
-        vfunc_replace_ref(old_ref: Gitg.Ref, new_ref: Gitg.Ref): void;
-        vfunc_set_busy(reference: Gitg.Ref, busy: boolean): void;
-        vfunc_edit_ref_name(reference: Gitg.Ref, callback: RefNameEditingDone): void;
-        vfunc_refresh(): void;
-        vfunc_get_application(): Application;
-        vfunc_set_application(value: Application): void;
-        vfunc_get_references(): Gee.List;
     }
 
     export const RefActionInterface: RefActionInterfaceNamespace & {
@@ -1033,6 +1099,19 @@ export namespace GitgExt {
     };
 
     namespace RefAction {
+        /**
+         * Interface for implementing RefAction.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface extends Action.Interface {
+            // Virtual methods
+
+            vfunc_get_action_interface(): RefActionInterface;
+            vfunc_set_action_interface(value: RefActionInterface): void;
+            vfunc_get_reference(): Gitg.Ref;
+            vfunc_set_reference(value: Gitg.Ref): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Action.ConstructorProps {
@@ -1046,7 +1125,7 @@ export namespace GitgExt {
         $gtype: GObject.GType<RefAction>;
         prototype: RefAction;
     }
-    interface RefAction extends Action {
+    interface RefAction extends Action, RefAction.Interface {
         // Properties
 
         get action_interface(): RefActionInterface;
@@ -1062,13 +1141,6 @@ export namespace GitgExt {
         set_action_interface(value: RefActionInterface): void;
         get_reference(): Gitg.Ref;
         set_reference(value: Gitg.Ref): void;
-
-        // Virtual methods
-
-        vfunc_get_action_interface(): RefActionInterface;
-        vfunc_set_action_interface(value: RefActionInterface): void;
-        vfunc_get_reference(): Gitg.Ref;
-        vfunc_set_reference(value: Gitg.Ref): void;
     }
 
     export const RefAction: RefActionNamespace & {
@@ -1076,6 +1148,16 @@ export namespace GitgExt {
     };
 
     namespace RemoteLookup {
+        /**
+         * Interface for implementing RemoteLookup.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_lookup(name: string): Gitg.Remote | null;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1085,14 +1167,10 @@ export namespace GitgExt {
         $gtype: GObject.GType<RemoteLookup>;
         prototype: RemoteLookup;
     }
-    interface RemoteLookup extends GObject.Object {
+    interface RemoteLookup extends GObject.Object, RemoteLookup.Interface {
         // Methods
 
         lookup(name: string): Gitg.Remote | null;
-
-        // Virtual methods
-
-        vfunc_lookup(name: string): Gitg.Remote | null;
     }
 
     export const RemoteLookup: RemoteLookupNamespace & {
@@ -1100,6 +1178,21 @@ export namespace GitgExt {
     };
 
     namespace Searchable {
+        /**
+         * Interface for implementing Searchable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_search_text(): string;
+            vfunc_set_search_text(value: string): void;
+            vfunc_get_search_visible(): boolean;
+            vfunc_set_search_visible(value: boolean): void;
+            vfunc_get_search_available(): boolean;
+            vfunc_set_search_entry(value?: Gtk.Entry | null): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1118,7 +1211,7 @@ export namespace GitgExt {
         $gtype: GObject.GType<Searchable>;
         prototype: Searchable;
     }
-    interface Searchable extends GObject.Object {
+    interface Searchable extends GObject.Object, Searchable.Interface {
         // Properties
 
         get search_text(): string;
@@ -1142,15 +1235,6 @@ export namespace GitgExt {
         set_search_visible(value: boolean): void;
         get_search_available(): boolean;
         set_search_entry(value?: Gtk.Entry | null): void;
-
-        // Virtual methods
-
-        vfunc_get_search_text(): string;
-        vfunc_set_search_text(value: string): void;
-        vfunc_get_search_visible(): boolean;
-        vfunc_set_search_visible(value: boolean): void;
-        vfunc_get_search_available(): boolean;
-        vfunc_set_search_entry(value?: Gtk.Entry | null): void;
     }
 
     export const Searchable: SearchableNamespace & {
@@ -1158,6 +1242,20 @@ export namespace GitgExt {
     };
 
     namespace Selectable {
+        /**
+         * Interface for implementing Selectable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_selectable_mode(): SelectionMode;
+            vfunc_set_selectable_mode(value: SelectionMode): void;
+            vfunc_get_selectable_available(): boolean;
+            vfunc_get_selectable_mode_tooltip(): string;
+            vfunc_get_action_widget(): Gtk.Widget | null;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1176,7 +1274,7 @@ export namespace GitgExt {
         $gtype: GObject.GType<Selectable>;
         prototype: Selectable;
     }
-    interface Selectable extends GObject.Object {
+    interface Selectable extends GObject.Object, Selectable.Interface {
         // Properties
 
         get selectable_mode(): SelectionMode;
@@ -1197,14 +1295,6 @@ export namespace GitgExt {
         get_selectable_available(): boolean;
         get_selectable_mode_tooltip(): string;
         get_action_widget(): Gtk.Widget | null;
-
-        // Virtual methods
-
-        vfunc_get_selectable_mode(): SelectionMode;
-        vfunc_set_selectable_mode(value: SelectionMode): void;
-        vfunc_get_selectable_available(): boolean;
-        vfunc_get_selectable_mode_tooltip(): string;
-        vfunc_get_action_widget(): Gtk.Widget | null;
     }
 
     export const Selectable: SelectableNamespace & {
@@ -1212,6 +1302,27 @@ export namespace GitgExt {
     };
 
     namespace UIElement {
+        /**
+         * Interface for implementing UIElement.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_negotiate_order(other: UIElement): number;
+            vfunc_get_application(): Application | null;
+            vfunc_set_application(value?: Application | null): void;
+            vfunc_get_id(): string;
+            vfunc_get_display_name(): string;
+            vfunc_get_description(): string;
+            vfunc_get_icon(): string | null;
+            vfunc_get_widget(): Gtk.Widget | null;
+            vfunc_get_shortcut(): number | null;
+            vfunc_get_available(): boolean;
+            vfunc_get_enabled(): boolean;
+            vfunc_activate(): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1227,7 +1338,7 @@ export namespace GitgExt {
         $gtype: GObject.GType<UIElement>;
         prototype: UIElement;
     }
-    interface UIElement extends GObject.Object {
+    interface UIElement extends GObject.Object, UIElement.Interface {
         // Properties
 
         get application(): Application;
@@ -1250,21 +1361,6 @@ export namespace GitgExt {
         get_shortcut(): number | null;
         get_available(): boolean;
         get_enabled(): boolean;
-
-        // Virtual methods
-
-        vfunc_negotiate_order(other: UIElement): number;
-        vfunc_get_application(): Application | null;
-        vfunc_set_application(value?: Application | null): void;
-        vfunc_get_id(): string;
-        vfunc_get_display_name(): string;
-        vfunc_get_description(): string;
-        vfunc_get_icon(): string | null;
-        vfunc_get_widget(): Gtk.Widget | null;
-        vfunc_get_shortcut(): number | null;
-        vfunc_get_available(): boolean;
-        vfunc_get_enabled(): boolean;
-        vfunc_activate(): void;
     }
 
     export const UIElement: UIElementNamespace & {

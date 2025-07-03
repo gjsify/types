@@ -53052,6 +53052,17 @@ export namespace Vda {
     type TableModelIface = typeof TableModel;
     type TableModelSequentialIface = typeof TableModelSequential;
     namespace MetaObject {
+        /**
+         * Interface for implementing MetaObject.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_connection(): Connection;
+            vfunc_set_connection(value: Connection): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -53063,7 +53074,7 @@ export namespace Vda {
         $gtype: GObject.GType<MetaObject>;
         prototype: MetaObject;
     }
-    interface MetaObject extends GObject.Object {
+    interface MetaObject extends GObject.Object, MetaObject.Interface {
         // Properties
 
         get connection(): Connection;
@@ -53073,11 +53084,6 @@ export namespace Vda {
 
         get_connection(): Connection;
         set_connection(value: Connection): void;
-
-        // Virtual methods
-
-        vfunc_get_connection(): Connection;
-        vfunc_set_connection(value: Connection): void;
     }
 
     export const MetaObject: MetaObjectNamespace & {
@@ -53085,6 +53091,17 @@ export namespace Vda {
     };
 
     namespace MetaNamedObject {
+        /**
+         * Interface for implementing MetaNamedObject.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_name(): string;
+            vfunc_set_name(value: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -53096,7 +53113,7 @@ export namespace Vda {
         $gtype: GObject.GType<MetaNamedObject>;
         prototype: MetaNamedObject;
     }
-    interface MetaNamedObject extends GObject.Object {
+    interface MetaNamedObject extends GObject.Object, MetaNamedObject.Interface {
         // Properties
 
         get name(): string;
@@ -53106,11 +53123,6 @@ export namespace Vda {
 
         get_name(): string;
         set_name(value: string): void;
-
-        // Virtual methods
-
-        vfunc_get_name(): string;
-        vfunc_set_name(value: string): void;
     }
 
     export const MetaNamedObject: MetaNamedObjectNamespace & {
@@ -53118,6 +53130,17 @@ export namespace Vda {
     };
 
     namespace ColumnModel {
+        /**
+         * Interface for implementing ColumnModel.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_name(): string;
+            vfunc_get_data_type(): GObject.GType;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -53131,7 +53154,7 @@ export namespace Vda {
         $gtype: GObject.GType<ColumnModel>;
         prototype: ColumnModel;
     }
-    interface ColumnModel extends GObject.Object {
+    interface ColumnModel extends GObject.Object, ColumnModel.Interface {
         // Properties
 
         get name(): string;
@@ -53142,11 +53165,6 @@ export namespace Vda {
 
         get_name(): string;
         get_data_type(): GObject.GType;
-
-        // Virtual methods
-
-        vfunc_get_name(): string;
-        vfunc_get_data_type(): GObject.GType;
     }
 
     export const ColumnModel: ColumnModelNamespace & {
@@ -53154,6 +53172,32 @@ export namespace Vda {
     };
 
     namespace Connection {
+        /**
+         * Interface for implementing Connection.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_close(_callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_close_finish(_res_: Gio.AsyncResult): void;
+            vfunc_open(_callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_open_finish(_res_: Gio.AsyncResult): ConnectionStatus;
+            vfunc_open_from_string(cnc_string: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_open_from_string_finish(_res_: Gio.AsyncResult): ConnectionStatus;
+            vfunc_parse_string(sql: string): Query;
+            vfunc_parse_string_prepared(name: string, sql: string): PreparedQuery;
+            vfunc_get_prepared_query(name: string): PreparedQuery;
+            vfunc_query_from_command(cmd: SqlCommand, name: string): PreparedQuery;
+            vfunc_value_to_quoted_string(v: SqlValue): string;
+            vfunc_locale(category: string): string;
+            vfunc_get_status(): ConnectionStatus;
+            vfunc_get_parameters(): ConnectionParameters;
+            vfunc_set_parameters(value: ConnectionParameters): void;
+            vfunc_get_is_opened(): boolean;
+            vfunc_get_connection_string(): string;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -53170,7 +53214,7 @@ export namespace Vda {
         $gtype: GObject.GType<Connection>;
         prototype: Connection;
     }
-    interface Connection extends GObject.Object {
+    interface Connection extends GObject.Object, Connection.Interface {
         // Properties
 
         get status(): ConnectionStatus;
@@ -53209,26 +53253,6 @@ export namespace Vda {
         set_parameters(value: ConnectionParameters): void;
         get_is_opened(): boolean;
         get_connection_string(): string;
-
-        // Virtual methods
-
-        vfunc_close(_callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_close_finish(_res_: Gio.AsyncResult): void;
-        vfunc_open(_callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_open_finish(_res_: Gio.AsyncResult): ConnectionStatus;
-        vfunc_open_from_string(cnc_string: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_open_from_string_finish(_res_: Gio.AsyncResult): ConnectionStatus;
-        vfunc_parse_string(sql: string): Query;
-        vfunc_parse_string_prepared(name: string, sql: string): PreparedQuery;
-        vfunc_get_prepared_query(name: string): PreparedQuery;
-        vfunc_query_from_command(cmd: SqlCommand, name: string): PreparedQuery;
-        vfunc_value_to_quoted_string(v: SqlValue): string;
-        vfunc_locale(category: string): string;
-        vfunc_get_status(): ConnectionStatus;
-        vfunc_get_parameters(): ConnectionParameters;
-        vfunc_set_parameters(value: ConnectionParameters): void;
-        vfunc_get_is_opened(): boolean;
-        vfunc_get_connection_string(): string;
     }
 
     export const Connection: ConnectionNamespace & {
@@ -53236,6 +53260,17 @@ export namespace Vda {
     };
 
     namespace ConnectionBlob {
+        /**
+         * Interface for implementing ConnectionBlob.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_create(stream: Gio.InputStream): SqlValueBlob;
+            vfunc_delete(val: SqlValueBlob): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -53245,16 +53280,11 @@ export namespace Vda {
         $gtype: GObject.GType<ConnectionBlob>;
         prototype: ConnectionBlob;
     }
-    interface ConnectionBlob extends GObject.Object {
+    interface ConnectionBlob extends GObject.Object, ConnectionBlob.Interface {
         // Methods
 
         create(stream: Gio.InputStream): SqlValueBlob;
         ['delete'](val: SqlValueBlob): void;
-
-        // Virtual methods
-
-        vfunc_create(stream: Gio.InputStream): SqlValueBlob;
-        vfunc_delete(val: SqlValueBlob): void;
     }
 
     export const ConnectionBlob: ConnectionBlobNamespace & {
@@ -53262,6 +53292,17 @@ export namespace Vda {
     };
 
     namespace ConnectionRolebased {
+        /**
+         * Interface for implementing ConnectionRolebased.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_current_role(): Role;
+            vfunc_create_role(name: string, params: Parameters): Role;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -53271,16 +53312,11 @@ export namespace Vda {
         $gtype: GObject.GType<ConnectionRolebased>;
         prototype: ConnectionRolebased;
     }
-    interface ConnectionRolebased extends GObject.Object {
+    interface ConnectionRolebased extends GObject.Object, ConnectionRolebased.Interface {
         // Methods
 
         current_role(): Role;
         create_role(name: string, params: Parameters): Role;
-
-        // Virtual methods
-
-        vfunc_current_role(): Role;
-        vfunc_create_role(name: string, params: Parameters): Role;
     }
 
     export const ConnectionRolebased: ConnectionRolebasedNamespace & {
@@ -53288,6 +53324,21 @@ export namespace Vda {
     };
 
     namespace ConnectionTransactional {
+        /**
+         * Interface for implementing ConnectionTransactional.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_add_savepoint(name: string): boolean;
+            vfunc_delete_savepoint(name: string): boolean;
+            vfunc_rollback_savepoint(name: string): boolean;
+            vfunc_begin_transaction(name: string): boolean;
+            vfunc_commit_transaction(name: string): boolean;
+            vfunc_rollback_transaction(name: string): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -53297,7 +53348,7 @@ export namespace Vda {
         $gtype: GObject.GType<ConnectionTransactional>;
         prototype: ConnectionTransactional;
     }
-    interface ConnectionTransactional extends GObject.Object {
+    interface ConnectionTransactional extends GObject.Object, ConnectionTransactional.Interface {
         // Methods
 
         add_savepoint(name: string): boolean;
@@ -53306,15 +53357,6 @@ export namespace Vda {
         begin_transaction(name: string): boolean;
         commit_transaction(name: string): boolean;
         rollback_transaction(name: string): boolean;
-
-        // Virtual methods
-
-        vfunc_add_savepoint(name: string): boolean;
-        vfunc_delete_savepoint(name: string): boolean;
-        vfunc_rollback_savepoint(name: string): boolean;
-        vfunc_begin_transaction(name: string): boolean;
-        vfunc_commit_transaction(name: string): boolean;
-        vfunc_rollback_transaction(name: string): boolean;
     }
 
     export const ConnectionTransactional: ConnectionTransactionalNamespace & {
@@ -53322,6 +53364,42 @@ export namespace Vda {
     };
 
     namespace DataObject {
+        /**
+         * Interface for implementing DataObject.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_update_data_from_db(_callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_update_data_from_db_finish(_res_: Gio.AsyncResult): void;
+            vfunc_update_data_from_db_pkey(_callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_update_data_from_db_pkey_finish(_res_: Gio.AsyncResult): void;
+            vfunc_update_data_from_db_full(use_pkey: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_update_data_from_db_full_finish(_res_: Gio.AsyncResult): void;
+            vfunc_insert_data_into_db(_callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_insert_data_into_db_finish(_res_: Gio.AsyncResult): void;
+            vfunc_delete_data_from_db(_callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_delete_data_from_db_finish(_res_: Gio.AsyncResult): void;
+            vfunc_delete_data_from_db_pkey(_callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_delete_data_from_db_pkey_finish(_res_: Gio.AsyncResult): void;
+            vfunc_delete_data_from_db_full(use_pkey: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_delete_data_from_db_full_finish(_res_: Gio.AsyncResult): void;
+            vfunc_update_data_into_db(_callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_update_data_into_db_finish(_res_: Gio.AsyncResult): void;
+            vfunc_update_data_into_db_pkey(_callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_update_data_into_db_pkey_finish(_res_: Gio.AsyncResult): void;
+            vfunc_update_data_into_db_full(use_pkey: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_update_data_into_db_full_finish(_res_: Gio.AsyncResult): void;
+            vfunc_update_from_row(table: TableModel, nrow: number): void;
+            vfunc_get_database_connection(): Connection;
+            vfunc_set_database_connection(value: Connection): void;
+            vfunc_get_database_table_name(): string;
+            vfunc_set_database_table_name(value: string): void;
+            vfunc_get_cancellable(): Gio.Cancellable;
+            vfunc_set_cancellable(value: Gio.Cancellable): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -53343,7 +53421,7 @@ export namespace Vda {
         create_delete_query(obj: DataObject, use_pkey: boolean): SqlCommandDelete;
         create_update_query(obj: DataObject, use_pkey: boolean): SqlCommandUpdate;
     }
-    interface DataObject extends GObject.Object {
+    interface DataObject extends GObject.Object, DataObject.Interface {
         // Properties
 
         get database_connection(): Connection;
@@ -53415,36 +53493,6 @@ export namespace Vda {
         set_database_table_name(value: string): void;
         get_cancellable(): Gio.Cancellable;
         set_cancellable(value: Gio.Cancellable): void;
-
-        // Virtual methods
-
-        vfunc_update_data_from_db(_callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_update_data_from_db_finish(_res_: Gio.AsyncResult): void;
-        vfunc_update_data_from_db_pkey(_callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_update_data_from_db_pkey_finish(_res_: Gio.AsyncResult): void;
-        vfunc_update_data_from_db_full(use_pkey: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_update_data_from_db_full_finish(_res_: Gio.AsyncResult): void;
-        vfunc_insert_data_into_db(_callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_insert_data_into_db_finish(_res_: Gio.AsyncResult): void;
-        vfunc_delete_data_from_db(_callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_delete_data_from_db_finish(_res_: Gio.AsyncResult): void;
-        vfunc_delete_data_from_db_pkey(_callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_delete_data_from_db_pkey_finish(_res_: Gio.AsyncResult): void;
-        vfunc_delete_data_from_db_full(use_pkey: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_delete_data_from_db_full_finish(_res_: Gio.AsyncResult): void;
-        vfunc_update_data_into_db(_callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_update_data_into_db_finish(_res_: Gio.AsyncResult): void;
-        vfunc_update_data_into_db_pkey(_callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_update_data_into_db_pkey_finish(_res_: Gio.AsyncResult): void;
-        vfunc_update_data_into_db_full(use_pkey: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_update_data_into_db_full_finish(_res_: Gio.AsyncResult): void;
-        vfunc_update_from_row(table: TableModel, nrow: number): void;
-        vfunc_get_database_connection(): Connection;
-        vfunc_set_database_connection(value: Connection): void;
-        vfunc_get_database_table_name(): string;
-        vfunc_set_database_table_name(value: string): void;
-        vfunc_get_cancellable(): Gio.Cancellable;
-        vfunc_set_cancellable(value: Gio.Cancellable): void;
     }
 
     export const DataObject: DataObjectNamespace & {
@@ -53452,6 +53500,25 @@ export namespace Vda {
     };
 
     namespace DataCollection {
+        /**
+         * Interface for implementing DataCollection.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_objects(_callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_get_objects_finish(_res_: Gio.AsyncResult): TableModel;
+            vfunc_get_database_connection(): Connection;
+            vfunc_set_database_connection(value: Connection): void;
+            vfunc_get_parent_property(): string;
+            vfunc_get_parent(): DataObject;
+            vfunc_get_object_type(): GObject.GType;
+            vfunc_get_ref_field(): string;
+            vfunc_get_cancellable(): Gio.Cancellable;
+            vfunc_set_cancellable(value: Gio.Cancellable): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -53472,7 +53539,7 @@ export namespace Vda {
         $gtype: GObject.GType<DataCollection>;
         prototype: DataCollection;
     }
-    interface DataCollection extends GObject.Object {
+    interface DataCollection extends GObject.Object, DataCollection.Interface {
         // Properties
 
         get database_connection(): Connection;
@@ -53503,19 +53570,6 @@ export namespace Vda {
         get_ref_field(): string;
         get_cancellable(): Gio.Cancellable;
         set_cancellable(value: Gio.Cancellable): void;
-
-        // Virtual methods
-
-        vfunc_get_objects(_callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_get_objects_finish(_res_: Gio.AsyncResult): TableModel;
-        vfunc_get_database_connection(): Connection;
-        vfunc_set_database_connection(value: Connection): void;
-        vfunc_get_parent_property(): string;
-        vfunc_get_parent(): DataObject;
-        vfunc_get_object_type(): GObject.GType;
-        vfunc_get_ref_field(): string;
-        vfunc_get_cancellable(): Gio.Cancellable;
-        vfunc_set_cancellable(value: Gio.Cancellable): void;
     }
 
     export const DataCollection: DataCollectionNamespace & {
@@ -53523,6 +53577,18 @@ export namespace Vda {
     };
 
     namespace HashModel {
+        /**
+         * Interface for implementing HashModel.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_add(object: GObject.Object): void;
+            vfunc_find<T = GObject.Object>(key: GObject.Object): T;
+            vfunc_remove(object: GObject.Object): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -53532,18 +53598,12 @@ export namespace Vda {
         $gtype: GObject.GType<HashModel>;
         prototype: HashModel;
     }
-    interface HashModel extends GObject.Object {
+    interface HashModel extends GObject.Object, HashModel.Interface {
         // Methods
 
         add(object: GObject.Object): void;
         find<T = GObject.Object>(key: GObject.Object): T;
         remove(object: GObject.Object): void;
-
-        // Virtual methods
-
-        vfunc_add(object: GObject.Object): void;
-        vfunc_find<T = GObject.Object>(key: GObject.Object): T;
-        vfunc_remove(object: GObject.Object): void;
     }
 
     export const HashModel: HashModelNamespace & {
@@ -53551,6 +53611,17 @@ export namespace Vda {
     };
 
     namespace Inserted {
+        /**
+         * Interface for implementing Inserted.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_number(): number;
+            vfunc_get_last_inserted(): RowModel;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -53564,7 +53635,7 @@ export namespace Vda {
         $gtype: GObject.GType<Inserted>;
         prototype: Inserted;
     }
-    interface Inserted extends GObject.Object {
+    interface Inserted extends GObject.Object, Inserted.Interface {
         // Properties
 
         get number(): number;
@@ -53575,11 +53646,6 @@ export namespace Vda {
 
         get_number(): number;
         get_last_inserted(): RowModel;
-
-        // Virtual methods
-
-        vfunc_get_number(): number;
-        vfunc_get_last_inserted(): RowModel;
     }
 
     export const Inserted: InsertedNamespace & {
@@ -53587,6 +53653,16 @@ export namespace Vda {
     };
 
     namespace ParsedQuery {
+        /**
+         * Interface for implementing ParsedQuery.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_command(): SqlCommand;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -53598,7 +53674,7 @@ export namespace Vda {
         $gtype: GObject.GType<ParsedQuery>;
         prototype: ParsedQuery;
     }
-    interface ParsedQuery extends GObject.Object {
+    interface ParsedQuery extends GObject.Object, ParsedQuery.Interface {
         // Properties
 
         get command(): SqlCommand;
@@ -53606,10 +53682,6 @@ export namespace Vda {
         // Methods
 
         get_command(): SqlCommand;
-
-        // Virtual methods
-
-        vfunc_get_command(): SqlCommand;
     }
 
     export const ParsedQuery: ParsedQueryNamespace & {
@@ -53617,6 +53689,17 @@ export namespace Vda {
     };
 
     namespace PreparedQuery {
+        /**
+         * Interface for implementing PreparedQuery.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_name(): string;
+            vfunc_get_parameters(): SqlParameters;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -53629,7 +53712,7 @@ export namespace Vda {
         $gtype: GObject.GType<PreparedQuery>;
         prototype: PreparedQuery;
     }
-    interface PreparedQuery extends GObject.Object {
+    interface PreparedQuery extends GObject.Object, PreparedQuery.Interface {
         // Properties
 
         get name(): string;
@@ -53639,11 +53722,6 @@ export namespace Vda {
 
         get_name(): string;
         get_parameters(): SqlParameters;
-
-        // Virtual methods
-
-        vfunc_get_name(): string;
-        vfunc_get_parameters(): SqlParameters;
     }
 
     export const PreparedQuery: PreparedQueryNamespace & {
@@ -53651,6 +53729,22 @@ export namespace Vda {
     };
 
     namespace Query {
+        /**
+         * Interface for implementing Query.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_execute(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_execute_finish(_res_: Gio.AsyncResult): Result;
+            vfunc_cancel(_callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_cancel_finish(_res_: Gio.AsyncResult): void;
+            vfunc_render_sql(): string;
+            vfunc_get_sql(): string;
+            vfunc_get_connection(): Connection;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -53663,7 +53757,7 @@ export namespace Vda {
         $gtype: GObject.GType<Query>;
         prototype: Query;
     }
-    interface Query extends GObject.Object {
+    interface Query extends GObject.Object, Query.Interface {
         // Properties
 
         get sql(): string;
@@ -53685,16 +53779,6 @@ export namespace Vda {
         render_sql(): string;
         get_sql(): string;
         get_connection(): Connection;
-
-        // Virtual methods
-
-        vfunc_execute(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_execute_finish(_res_: Gio.AsyncResult): Result;
-        vfunc_cancel(_callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_cancel_finish(_res_: Gio.AsyncResult): void;
-        vfunc_render_sql(): string;
-        vfunc_get_sql(): string;
-        vfunc_get_connection(): Connection;
     }
 
     export const Query: QueryNamespace & {
@@ -53718,6 +53802,28 @@ export namespace Vda {
     };
 
     namespace Role {
+        /**
+         * Interface for implementing Role.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_name(_callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_name_finish(_res_: Gio.AsyncResult): string;
+            vfunc_membership(_callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_membership_finish(_res_: Gio.AsyncResult): HashModel;
+            vfunc_privilages(object: MetaObject, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_privilages_finish(_res_: Gio.AsyncResult): RoleGrant;
+            vfunc_change_privilages(
+                object: MetaObject,
+                grant: RoleGrant,
+                _callback_: Gio.AsyncReadyCallback<this>,
+            ): void;
+            vfunc_change_privilages_finish(_res_: Gio.AsyncResult): void;
+            vfunc_get_connection(): Connection;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -53729,7 +53835,7 @@ export namespace Vda {
         $gtype: GObject.GType<Role>;
         prototype: Role;
     }
-    interface Role extends GObject.Object {
+    interface Role extends GObject.Object, Role.Interface {
         // Properties
 
         get connection(): Connection;
@@ -53757,18 +53863,6 @@ export namespace Vda {
         ): globalThis.Promise<void> | void;
         change_privilages_finish(_res_: Gio.AsyncResult): void;
         get_connection(): Connection;
-
-        // Virtual methods
-
-        vfunc_name(_callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_name_finish(_res_: Gio.AsyncResult): string;
-        vfunc_membership(_callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_membership_finish(_res_: Gio.AsyncResult): HashModel;
-        vfunc_privilages(object: MetaObject, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_privilages_finish(_res_: Gio.AsyncResult): RoleGrant;
-        vfunc_change_privilages(object: MetaObject, grant: RoleGrant, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_privilages_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_connection(): Connection;
     }
 
     export const Role: RoleNamespace & {
@@ -53776,6 +53870,22 @@ export namespace Vda {
     };
 
     namespace RowModel {
+        /**
+         * Interface for implementing RowModel.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_column(name: string): ColumnModel;
+            vfunc_get_column_at(col: number): ColumnModel;
+            vfunc_get_value(name: string): SqlValue;
+            vfunc_get_value_at(col: number): SqlValue;
+            vfunc_get_string(name: string): string;
+            vfunc_get_string_at(col: number): string;
+            vfunc_get_n_columns(): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -53788,7 +53898,7 @@ export namespace Vda {
         $gtype: GObject.GType<RowModel>;
         prototype: RowModel;
     }
-    interface RowModel extends GObject.Object {
+    interface RowModel extends GObject.Object, RowModel.Interface {
         // Properties
 
         get n_columns(): number;
@@ -53803,16 +53913,6 @@ export namespace Vda {
         get_string(name: string): string;
         get_string_at(col: number): string;
         get_n_columns(): number;
-
-        // Virtual methods
-
-        vfunc_get_column(name: string): ColumnModel;
-        vfunc_get_column_at(col: number): ColumnModel;
-        vfunc_get_value(name: string): SqlValue;
-        vfunc_get_value_at(col: number): SqlValue;
-        vfunc_get_string(name: string): string;
-        vfunc_get_string_at(col: number): string;
-        vfunc_get_n_columns(): number;
     }
 
     export const RowModel: RowModelNamespace & {
@@ -53820,6 +53920,16 @@ export namespace Vda {
     };
 
     namespace SqlAffectedRows {
+        /**
+         * Interface for implementing SqlAffectedRows.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_number(): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -53831,7 +53941,7 @@ export namespace Vda {
         $gtype: GObject.GType<SqlAffectedRows>;
         prototype: SqlAffectedRows;
     }
-    interface SqlAffectedRows extends GObject.Object {
+    interface SqlAffectedRows extends GObject.Object, SqlAffectedRows.Interface {
         // Properties
 
         get number(): number;
@@ -53839,10 +53949,6 @@ export namespace Vda {
         // Methods
 
         get_number(): number;
-
-        // Virtual methods
-
-        vfunc_get_number(): number;
     }
 
     export const SqlAffectedRows: SqlAffectedRowsNamespace & {
@@ -53850,6 +53956,16 @@ export namespace Vda {
     };
 
     namespace SqlCommand {
+        /**
+         * Interface for implementing SqlCommand.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_connection(): Connection;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -53861,7 +53977,7 @@ export namespace Vda {
         $gtype: GObject.GType<SqlCommand>;
         prototype: SqlCommand;
     }
-    interface SqlCommand extends GObject.Object {
+    interface SqlCommand extends GObject.Object, SqlCommand.Interface {
         // Properties
 
         get connection(): Connection;
@@ -53869,10 +53985,6 @@ export namespace Vda {
         // Methods
 
         get_connection(): Connection;
-
-        // Virtual methods
-
-        vfunc_get_connection(): Connection;
     }
 
     export const SqlCommand: SqlCommandNamespace & {
@@ -53880,6 +53992,16 @@ export namespace Vda {
     };
 
     namespace SqlCommandConditional {
+        /**
+         * Interface for implementing SqlCommandConditional.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_condition(): SqlExpression;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -53891,7 +54013,7 @@ export namespace Vda {
         $gtype: GObject.GType<SqlCommandConditional>;
         prototype: SqlCommandConditional;
     }
-    interface SqlCommandConditional extends GObject.Object {
+    interface SqlCommandConditional extends GObject.Object, SqlCommandConditional.Interface {
         // Properties
 
         get condition(): SqlExpression;
@@ -53899,10 +54021,6 @@ export namespace Vda {
         // Methods
 
         get_condition(): SqlExpression;
-
-        // Virtual methods
-
-        vfunc_get_condition(): SqlExpression;
     }
 
     export const SqlCommandConditional: SqlCommandConditionalNamespace & {
@@ -53910,6 +54028,18 @@ export namespace Vda {
     };
 
     namespace SqlCommandDelete {
+        /**
+         * Interface for implementing SqlCommandDelete.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_stringify(): string;
+            vfunc_to_query(name: string): Query;
+            vfunc_parse(sql: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -53919,18 +54049,12 @@ export namespace Vda {
         $gtype: GObject.GType<SqlCommandDelete>;
         prototype: SqlCommandDelete;
     }
-    interface SqlCommandDelete extends GObject.Object {
+    interface SqlCommandDelete extends GObject.Object, SqlCommandDelete.Interface {
         // Methods
 
         stringify(): string;
         to_query(name: string): Query;
         parse(sql: string): void;
-
-        // Virtual methods
-
-        vfunc_stringify(): string;
-        vfunc_to_query(name: string): Query;
-        vfunc_parse(sql: string): void;
     }
 
     export const SqlCommandDelete: SqlCommandDeleteNamespace & {
@@ -53938,6 +54062,18 @@ export namespace Vda {
     };
 
     namespace SqlCommandInsert {
+        /**
+         * Interface for implementing SqlCommandInsert.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_stringify(): string;
+            vfunc_to_query(name: string): Query;
+            vfunc_parse(sql: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -53947,18 +54083,12 @@ export namespace Vda {
         $gtype: GObject.GType<SqlCommandInsert>;
         prototype: SqlCommandInsert;
     }
-    interface SqlCommandInsert extends GObject.Object {
+    interface SqlCommandInsert extends GObject.Object, SqlCommandInsert.Interface {
         // Methods
 
         stringify(): string;
         to_query(name: string): Query;
         parse(sql: string): void;
-
-        // Virtual methods
-
-        vfunc_stringify(): string;
-        vfunc_to_query(name: string): Query;
-        vfunc_parse(sql: string): void;
     }
 
     export const SqlCommandInsert: SqlCommandInsertNamespace & {
@@ -53966,6 +54096,22 @@ export namespace Vda {
     };
 
     namespace SqlCommandModification {
+        /**
+         * Interface for implementing SqlCommandModification.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_add_field_value(name: string, val: GObject.Value | any): void;
+            vfunc_add_field(name: string): void;
+            vfunc_add_value(val: GObject.Value | any): void;
+            vfunc_add_field_parameter_value(field: string, par: string, gtype: GObject.GType): void;
+            vfunc_add_parameter(par: string, gtype: GObject.GType): void;
+            vfunc_get_fields(): HashModel;
+            vfunc_get_values(): HashModel;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -53978,7 +54124,7 @@ export namespace Vda {
         $gtype: GObject.GType<SqlCommandModification>;
         prototype: SqlCommandModification;
     }
-    interface SqlCommandModification extends GObject.Object {
+    interface SqlCommandModification extends GObject.Object, SqlCommandModification.Interface {
         // Properties
 
         get fields(): HashModel;
@@ -53993,16 +54139,6 @@ export namespace Vda {
         add_parameter(par: string, gtype: GObject.GType): void;
         get_fields(): HashModel;
         get_values(): HashModel;
-
-        // Virtual methods
-
-        vfunc_add_field_value(name: string, val: GObject.Value | any): void;
-        vfunc_add_field(name: string): void;
-        vfunc_add_value(val: GObject.Value | any): void;
-        vfunc_add_field_parameter_value(field: string, par: string, gtype: GObject.GType): void;
-        vfunc_add_parameter(par: string, gtype: GObject.GType): void;
-        vfunc_get_fields(): HashModel;
-        vfunc_get_values(): HashModel;
     }
 
     export const SqlCommandModification: SqlCommandModificationNamespace & {
@@ -54010,6 +54146,16 @@ export namespace Vda {
     };
 
     namespace SqlCommandParametrized {
+        /**
+         * Interface for implementing SqlCommandParametrized.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_parameters(): SqlParameters;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -54021,7 +54167,7 @@ export namespace Vda {
         $gtype: GObject.GType<SqlCommandParametrized>;
         prototype: SqlCommandParametrized;
     }
-    interface SqlCommandParametrized extends GObject.Object {
+    interface SqlCommandParametrized extends GObject.Object, SqlCommandParametrized.Interface {
         // Properties
 
         get parameters(): SqlParameters;
@@ -54029,10 +54175,6 @@ export namespace Vda {
         // Methods
 
         get_parameters(): SqlParameters;
-
-        // Virtual methods
-
-        vfunc_get_parameters(): SqlParameters;
     }
 
     export const SqlCommandParametrized: SqlCommandParametrizedNamespace & {
@@ -54040,6 +54182,24 @@ export namespace Vda {
     };
 
     namespace SqlCommandSelect {
+        /**
+         * Interface for implementing SqlCommandSelect.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_add_field(field: string, table_ref: string, alias: string): void;
+            vfunc_add_table(name: string, allias: string): void;
+            vfunc_add_value_field(val: GObject.Value | any, allias: string): void;
+            vfunc_add_math_exp_field(exp: string, allias: string): void;
+            vfunc_stringify(): string;
+            vfunc_to_query(name: string): PreparedQuery;
+            vfunc_parse(sql: string): void;
+            vfunc_get_fields(): HashModel;
+            vfunc_get_tables(): HashModel;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -54052,7 +54212,7 @@ export namespace Vda {
         $gtype: GObject.GType<SqlCommandSelect>;
         prototype: SqlCommandSelect;
     }
-    interface SqlCommandSelect extends GObject.Object {
+    interface SqlCommandSelect extends GObject.Object, SqlCommandSelect.Interface {
         // Properties
 
         get fields(): HashModel;
@@ -54069,18 +54229,6 @@ export namespace Vda {
         parse(sql: string): void;
         get_fields(): HashModel;
         get_tables(): HashModel;
-
-        // Virtual methods
-
-        vfunc_add_field(field: string, table_ref: string, alias: string): void;
-        vfunc_add_table(name: string, allias: string): void;
-        vfunc_add_value_field(val: GObject.Value | any, allias: string): void;
-        vfunc_add_math_exp_field(exp: string, allias: string): void;
-        vfunc_stringify(): string;
-        vfunc_to_query(name: string): PreparedQuery;
-        vfunc_parse(sql: string): void;
-        vfunc_get_fields(): HashModel;
-        vfunc_get_tables(): HashModel;
     }
 
     export const SqlCommandSelect: SqlCommandSelectNamespace & {
@@ -54088,6 +54236,19 @@ export namespace Vda {
     };
 
     namespace SqlCommandTableRelated {
+        /**
+         * Interface for implementing SqlCommandTableRelated.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_table(): string;
+            vfunc_set_table(value: string): void;
+            vfunc_get_allias(): string;
+            vfunc_set_allias(value: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -54100,7 +54261,7 @@ export namespace Vda {
         $gtype: GObject.GType<SqlCommandTableRelated>;
         prototype: SqlCommandTableRelated;
     }
-    interface SqlCommandTableRelated extends GObject.Object {
+    interface SqlCommandTableRelated extends GObject.Object, SqlCommandTableRelated.Interface {
         // Properties
 
         get table(): string;
@@ -54114,13 +54275,6 @@ export namespace Vda {
         set_table(value: string): void;
         get_allias(): string;
         set_allias(value: string): void;
-
-        // Virtual methods
-
-        vfunc_get_table(): string;
-        vfunc_set_table(value: string): void;
-        vfunc_get_allias(): string;
-        vfunc_set_allias(value: string): void;
     }
 
     export const SqlCommandTableRelated: SqlCommandTableRelatedNamespace & {
@@ -54128,6 +54282,18 @@ export namespace Vda {
     };
 
     namespace SqlCommandUpdate {
+        /**
+         * Interface for implementing SqlCommandUpdate.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_stringify(): string;
+            vfunc_to_query(name: string): Query;
+            vfunc_parse(sql: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -54137,18 +54303,12 @@ export namespace Vda {
         $gtype: GObject.GType<SqlCommandUpdate>;
         prototype: SqlCommandUpdate;
     }
-    interface SqlCommandUpdate extends GObject.Object {
+    interface SqlCommandUpdate extends GObject.Object, SqlCommandUpdate.Interface {
         // Methods
 
         stringify(): string;
         to_query(name: string): Query;
         parse(sql: string): void;
-
-        // Virtual methods
-
-        vfunc_stringify(): string;
-        vfunc_to_query(name: string): Query;
-        vfunc_parse(sql: string): void;
     }
 
     export const SqlCommandUpdate: SqlCommandUpdateNamespace & {
@@ -54156,6 +54316,19 @@ export namespace Vda {
     };
 
     namespace SqlExpression {
+        /**
+         * Interface for implementing SqlExpression.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_add_expression(exp: SqlExpression): void;
+            vfunc_remove_expression(exp: SqlExpression): void;
+            vfunc_to_string(): string;
+            vfunc_add_math_expression(str: string, cnc: Connection, params: SqlParameters): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -54167,20 +54340,13 @@ export namespace Vda {
 
         parse(str: string, cnc: Connection, params: SqlParameters): SqlExpression;
     }
-    interface SqlExpression extends GObject.Object {
+    interface SqlExpression extends GObject.Object, SqlExpression.Interface {
         // Methods
 
         add_expression(exp: SqlExpression): void;
         remove_expression(exp: SqlExpression): void;
         to_string(): string;
         add_math_expression(str: string, cnc: Connection, params: SqlParameters): void;
-
-        // Virtual methods
-
-        vfunc_add_expression(exp: SqlExpression): void;
-        vfunc_remove_expression(exp: SqlExpression): void;
-        vfunc_to_string(): string;
-        vfunc_add_math_expression(str: string, cnc: Connection, params: SqlParameters): void;
     }
 
     export const SqlExpression: SqlExpressionNamespace & {
@@ -54188,6 +54354,21 @@ export namespace Vda {
     };
 
     namespace SqlExpressionField {
+        /**
+         * Interface for implementing SqlExpressionField.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_table_ref(): string;
+            vfunc_set_table_ref(value: string): void;
+            vfunc_get_name(): string;
+            vfunc_set_name(value: string): void;
+            vfunc_get_allias(): string;
+            vfunc_set_allias(value: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -54202,7 +54383,7 @@ export namespace Vda {
         $gtype: GObject.GType<SqlExpressionField>;
         prototype: SqlExpressionField;
     }
-    interface SqlExpressionField extends GObject.Object {
+    interface SqlExpressionField extends GObject.Object, SqlExpressionField.Interface {
         // Properties
 
         get table_ref(): string;
@@ -54222,15 +54403,6 @@ export namespace Vda {
         set_name(value: string): void;
         get_allias(): string;
         set_allias(value: string): void;
-
-        // Virtual methods
-
-        vfunc_get_table_ref(): string;
-        vfunc_set_table_ref(value: string): void;
-        vfunc_get_name(): string;
-        vfunc_set_name(value: string): void;
-        vfunc_get_allias(): string;
-        vfunc_set_allias(value: string): void;
     }
 
     export const SqlExpressionField: SqlExpressionFieldNamespace & {
@@ -54238,6 +54410,67 @@ export namespace Vda {
     };
 
     namespace SqlExpressionOperator {
+        /**
+         * Interface for implementing SqlExpressionOperator.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_create_field_expression(name: string): SqlExpressionField;
+            vfunc_create_value_expression(val: GObject.Value | any, cnc: Connection): SqlExpressionValue;
+            vfunc_create_parameter_expression(name: string, gtype: GObject.GType): SqlExpressionValueParameter;
+            vfunc_add_and_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+            vfunc_add_or_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+            vfunc_add_eq_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+            vfunc_add_diff_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+            vfunc_add_like_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+            vfunc_add_gt_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+            vfunc_add_geq_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+            vfunc_add_leq_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+            vfunc_add_similar_to_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+            vfunc_add_is_null_operator(exp1: SqlExpression): SqlExpressionOperator;
+            vfunc_add_is_not_null_operator(exp1: SqlExpression): SqlExpressionOperator;
+            vfunc_add_not_operator(exp: SqlExpression): SqlExpressionOperator;
+            vfunc_add_is_true_operator(exp1: SqlExpression): SqlExpressionOperator;
+            vfunc_add_is_not_true_operator(exp1: SqlExpression): SqlExpressionOperator;
+            vfunc_add_is_false_operator(exp1: SqlExpression): SqlExpressionOperator;
+            vfunc_add_is_not_false_operator(exp1: SqlExpression): SqlExpressionOperator;
+            vfunc_add_is_unknown_operator(exp1: SqlExpression): SqlExpressionOperator;
+            vfunc_add_is_not_unknown_operator(exp1: SqlExpression): SqlExpressionOperator;
+            vfunc_add_in_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+            vfunc_add_not_in_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+            vfunc_add_concatenate_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+            vfunc_add_plus_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+            vfunc_add_minus_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+            vfunc_add_star_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+            vfunc_add_div_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+            vfunc_add_regexp_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+            vfunc_add_between_operator(
+                exp1: SqlExpression,
+                exp2: SqlExpression,
+                exp3: SqlExpression,
+            ): SqlExpressionOperator;
+            vfunc_add_not_between_operator(
+                exp1: SqlExpression,
+                exp2: SqlExpression,
+                exp3: SqlExpression,
+            ): SqlExpressionOperator;
+            vfunc_add_between_symmetric_operator(
+                exp1: SqlExpression,
+                exp2: SqlExpression,
+                exp3: SqlExpression,
+            ): SqlExpressionOperator;
+            vfunc_add_not_between_symmetric_operator(
+                exp1: SqlExpression,
+                exp2: SqlExpression,
+                exp3: SqlExpression,
+            ): SqlExpressionOperator;
+            vfunc_add_is_distinct_from_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+            vfunc_add_is_not_distinct_from_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+            vfunc_get_operator_type(): SqlExpressionOperatorType;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -54250,7 +54483,7 @@ export namespace Vda {
         $gtype: GObject.GType<SqlExpressionOperator>;
         prototype: SqlExpressionOperator;
     }
-    interface SqlExpressionOperator extends GObject.Object {
+    interface SqlExpressionOperator extends GObject.Object, SqlExpressionOperator.Interface {
         // Properties
 
         get operator_type(): SqlExpressionOperatorType;
@@ -54302,61 +54535,6 @@ export namespace Vda {
         add_is_distinct_from_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
         add_is_not_distinct_from_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
         get_operator_type(): SqlExpressionOperatorType;
-
-        // Virtual methods
-
-        vfunc_create_field_expression(name: string): SqlExpressionField;
-        vfunc_create_value_expression(val: GObject.Value | any, cnc: Connection): SqlExpressionValue;
-        vfunc_create_parameter_expression(name: string, gtype: GObject.GType): SqlExpressionValueParameter;
-        vfunc_add_and_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
-        vfunc_add_or_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
-        vfunc_add_eq_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
-        vfunc_add_diff_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
-        vfunc_add_like_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
-        vfunc_add_gt_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
-        vfunc_add_geq_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
-        vfunc_add_leq_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
-        vfunc_add_similar_to_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
-        vfunc_add_is_null_operator(exp1: SqlExpression): SqlExpressionOperator;
-        vfunc_add_is_not_null_operator(exp1: SqlExpression): SqlExpressionOperator;
-        vfunc_add_not_operator(exp: SqlExpression): SqlExpressionOperator;
-        vfunc_add_is_true_operator(exp1: SqlExpression): SqlExpressionOperator;
-        vfunc_add_is_not_true_operator(exp1: SqlExpression): SqlExpressionOperator;
-        vfunc_add_is_false_operator(exp1: SqlExpression): SqlExpressionOperator;
-        vfunc_add_is_not_false_operator(exp1: SqlExpression): SqlExpressionOperator;
-        vfunc_add_is_unknown_operator(exp1: SqlExpression): SqlExpressionOperator;
-        vfunc_add_is_not_unknown_operator(exp1: SqlExpression): SqlExpressionOperator;
-        vfunc_add_in_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
-        vfunc_add_not_in_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
-        vfunc_add_concatenate_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
-        vfunc_add_plus_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
-        vfunc_add_minus_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
-        vfunc_add_star_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
-        vfunc_add_div_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
-        vfunc_add_regexp_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
-        vfunc_add_between_operator(
-            exp1: SqlExpression,
-            exp2: SqlExpression,
-            exp3: SqlExpression,
-        ): SqlExpressionOperator;
-        vfunc_add_not_between_operator(
-            exp1: SqlExpression,
-            exp2: SqlExpression,
-            exp3: SqlExpression,
-        ): SqlExpressionOperator;
-        vfunc_add_between_symmetric_operator(
-            exp1: SqlExpression,
-            exp2: SqlExpression,
-            exp3: SqlExpression,
-        ): SqlExpressionOperator;
-        vfunc_add_not_between_symmetric_operator(
-            exp1: SqlExpression,
-            exp2: SqlExpression,
-            exp3: SqlExpression,
-        ): SqlExpressionOperator;
-        vfunc_add_is_distinct_from_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
-        vfunc_add_is_not_distinct_from_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
-        vfunc_get_operator_type(): SqlExpressionOperatorType;
     }
 
     export const SqlExpressionOperator: SqlExpressionOperatorNamespace & {
@@ -55196,6 +55374,20 @@ export namespace Vda {
     };
 
     namespace SqlExpressionValue {
+        /**
+         * Interface for implementing SqlExpressionValue.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_set_math_expression_value(str: string, params: SqlParameters): void;
+            vfunc_get_connection(): Connection;
+            vfunc_set_connection(value: Connection): void;
+            vfunc_get_value(): SqlValue;
+            vfunc_set_value(value: SqlValue): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -55208,7 +55400,7 @@ export namespace Vda {
         $gtype: GObject.GType<SqlExpressionValue>;
         prototype: SqlExpressionValue;
     }
-    interface SqlExpressionValue extends GObject.Object {
+    interface SqlExpressionValue extends GObject.Object, SqlExpressionValue.Interface {
         // Properties
 
         get connection(): Connection;
@@ -55223,14 +55415,6 @@ export namespace Vda {
         set_connection(value: Connection): void;
         get_value(): SqlValue;
         set_value(value: SqlValue): void;
-
-        // Virtual methods
-
-        vfunc_set_math_expression_value(str: string, params: SqlParameters): void;
-        vfunc_get_connection(): Connection;
-        vfunc_set_connection(value: Connection): void;
-        vfunc_get_value(): SqlValue;
-        vfunc_set_value(value: SqlValue): void;
     }
 
     export const SqlExpressionValue: SqlExpressionValueNamespace & {
@@ -55238,6 +55422,22 @@ export namespace Vda {
     };
 
     namespace SqlExpressionValueParameter {
+        /**
+         * Interface for implementing SqlExpressionValueParameter.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_parse(str: string): void;
+            vfunc_get_parameters(): SqlParameters;
+            vfunc_set_parameters(value: SqlParameters): void;
+            vfunc_get_name(): string;
+            vfunc_set_name(value: string): void;
+            vfunc_get_gtype(): GObject.GType;
+            vfunc_set_gtype(value: GObject.GType): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -55253,7 +55453,7 @@ export namespace Vda {
 
         gtype_from_string(str: string): GObject.GType;
     }
-    interface SqlExpressionValueParameter extends GObject.Object {
+    interface SqlExpressionValueParameter extends GObject.Object, SqlExpressionValueParameter.Interface {
         // Properties
 
         get parameters(): SqlParameters;
@@ -55272,16 +55472,6 @@ export namespace Vda {
         set_name(value: string): void;
         get_gtype(): GObject.GType;
         set_gtype(value: GObject.GType): void;
-
-        // Virtual methods
-
-        vfunc_parse(str: string): void;
-        vfunc_get_parameters(): SqlParameters;
-        vfunc_set_parameters(value: SqlParameters): void;
-        vfunc_get_name(): string;
-        vfunc_set_name(value: string): void;
-        vfunc_get_gtype(): GObject.GType;
-        vfunc_set_gtype(value: GObject.GType): void;
     }
 
     export const SqlExpressionValueParameter: SqlExpressionValueParameterNamespace & {
@@ -55289,6 +55479,20 @@ export namespace Vda {
     };
 
     namespace SqlParameters {
+        /**
+         * Interface for implementing SqlParameters.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_set_value(name: string, val: GObject.Value | any): void;
+            vfunc_get_value(name: string): unknown;
+            vfunc_set_sql_value(name: string, val: SqlValue): void;
+            vfunc_get_sql_value(name: string): SqlValue;
+            vfunc_has_param(name: string): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -55298,7 +55502,7 @@ export namespace Vda {
         $gtype: GObject.GType<SqlParameters>;
         prototype: SqlParameters;
     }
-    interface SqlParameters extends GObject.Object {
+    interface SqlParameters extends GObject.Object, SqlParameters.Interface {
         // Methods
 
         set_value(name: string, val: GObject.Value | any): void;
@@ -55306,14 +55510,6 @@ export namespace Vda {
         set_sql_value(name: string, val: SqlValue): void;
         get_sql_value(name: string): SqlValue;
         has_param(name: string): boolean;
-
-        // Virtual methods
-
-        vfunc_set_value(name: string, val: GObject.Value | any): void;
-        vfunc_get_value(name: string): unknown;
-        vfunc_set_sql_value(name: string, val: SqlValue): void;
-        vfunc_get_sql_value(name: string): SqlValue;
-        vfunc_has_param(name: string): boolean;
     }
 
     export const SqlParameters: SqlParametersNamespace & {
@@ -55321,6 +55517,16 @@ export namespace Vda {
     };
 
     namespace SqlParser {
+        /**
+         * Interface for implementing SqlParser.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_parse(str: string, cnc: Connection): SqlCommandParametrized;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -55330,14 +55536,10 @@ export namespace Vda {
         $gtype: GObject.GType<SqlParser>;
         prototype: SqlParser;
     }
-    interface SqlParser extends GObject.Object {
+    interface SqlParser extends GObject.Object, SqlParser.Interface {
         // Methods
 
         parse(str: string, cnc: Connection): SqlCommandParametrized;
-
-        // Virtual methods
-
-        vfunc_parse(str: string, cnc: Connection): SqlCommandParametrized;
     }
 
     export const SqlParser: SqlParserNamespace & {
@@ -55345,6 +55547,19 @@ export namespace Vda {
     };
 
     namespace SqlTableReference {
+        /**
+         * Interface for implementing SqlTableReference.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_name(): string;
+            vfunc_set_name(value: string): void;
+            vfunc_get_allias(): string;
+            vfunc_set_allias(value: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -55357,7 +55572,7 @@ export namespace Vda {
         $gtype: GObject.GType<SqlTableReference>;
         prototype: SqlTableReference;
     }
-    interface SqlTableReference extends GObject.Object {
+    interface SqlTableReference extends GObject.Object, SqlTableReference.Interface {
         // Properties
 
         get name(): string;
@@ -55371,13 +55586,6 @@ export namespace Vda {
         set_name(value: string): void;
         get_allias(): string;
         set_allias(value: string): void;
-
-        // Virtual methods
-
-        vfunc_get_name(): string;
-        vfunc_set_name(value: string): void;
-        vfunc_get_allias(): string;
-        vfunc_set_allias(value: string): void;
     }
 
     export const SqlTableReference: SqlTableReferenceNamespace & {
@@ -55385,6 +55593,16 @@ export namespace Vda {
     };
 
     namespace Stringifiable {
+        /**
+         * Interface for implementing Stringifiable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_to_string(): string;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -55394,14 +55612,10 @@ export namespace Vda {
         $gtype: GObject.GType<Stringifiable>;
         prototype: Stringifiable;
     }
-    interface Stringifiable extends GObject.Object {
+    interface Stringifiable extends GObject.Object, Stringifiable.Interface {
         // Methods
 
         to_string(): string;
-
-        // Virtual methods
-
-        vfunc_to_string(): string;
     }
 
     export const Stringifiable: StringifiableNamespace & {
@@ -55409,6 +55623,23 @@ export namespace Vda {
     };
 
     namespace SqlValue {
+        /**
+         * Interface for implementing SqlValue.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_parse(str: string): boolean;
+            vfunc_from_value(val: GObject.Value | any): boolean;
+            vfunc_cast(type: GObject.GType): SqlValue;
+            vfunc_is_compatible(type: GObject.GType): boolean;
+            vfunc_to_gvalue(): unknown;
+            vfunc_to_string_quoted(): string;
+            vfunc_to_sql_expression(): string;
+            vfunc_get_name(): string;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -55423,7 +55654,7 @@ export namespace Vda {
         new_from_gvalue(val: GObject.Value | any): SqlValue;
         new_from_gtype(type: GObject.GType): SqlValue;
     }
-    interface SqlValue extends GObject.Object {
+    interface SqlValue extends GObject.Object, SqlValue.Interface {
         // Properties
 
         get name(): string;
@@ -55438,17 +55669,6 @@ export namespace Vda {
         to_string_quoted(): string;
         to_sql_expression(): string;
         get_name(): string;
-
-        // Virtual methods
-
-        vfunc_parse(str: string): boolean;
-        vfunc_from_value(val: GObject.Value | any): boolean;
-        vfunc_cast(type: GObject.GType): SqlValue;
-        vfunc_is_compatible(type: GObject.GType): boolean;
-        vfunc_to_gvalue(): unknown;
-        vfunc_to_string_quoted(): string;
-        vfunc_to_sql_expression(): string;
-        vfunc_get_name(): string;
     }
 
     export const SqlValue: SqlValueNamespace & {
@@ -55520,6 +55740,16 @@ export namespace Vda {
     };
 
     namespace SqlValueXml {
+        /**
+         * Interface for implementing SqlValueXml.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_document(): GXml.DomDocument;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -55531,7 +55761,7 @@ export namespace Vda {
         $gtype: GObject.GType<SqlValueXml>;
         prototype: SqlValueXml;
     }
-    interface SqlValueXml extends GObject.Object {
+    interface SqlValueXml extends GObject.Object, SqlValueXml.Interface {
         // Properties
 
         get document(): GXml.DomDocument;
@@ -55539,10 +55769,6 @@ export namespace Vda {
         // Methods
 
         get_document(): GXml.DomDocument;
-
-        // Virtual methods
-
-        vfunc_get_document(): GXml.DomDocument;
     }
 
     export const SqlValueXml: SqlValueXmlNamespace & {
@@ -55550,6 +55776,16 @@ export namespace Vda {
     };
 
     namespace SqlValueJson {
+        /**
+         * Interface for implementing SqlValueJson.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_document(): Json.Node;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -55561,7 +55797,7 @@ export namespace Vda {
         $gtype: GObject.GType<SqlValueJson>;
         prototype: SqlValueJson;
     }
-    interface SqlValueJson extends GObject.Object {
+    interface SqlValueJson extends GObject.Object, SqlValueJson.Interface {
         // Properties
 
         get document(): Json.Node;
@@ -55569,10 +55805,6 @@ export namespace Vda {
         // Methods
 
         get_document(): Json.Node;
-
-        // Virtual methods
-
-        vfunc_get_document(): Json.Node;
     }
 
     export const SqlValueJson: SqlValueJsonNamespace & {
@@ -55788,6 +56020,24 @@ export namespace Vda {
     };
 
     namespace SqlValueNumeric {
+        /**
+         * Interface for implementing SqlValueNumeric.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_set_precision(p: number): void;
+            vfunc_get_precision(): number;
+            vfunc_format(str: string): string;
+            vfunc_get_double(): number;
+            vfunc_set_double(v: number): void;
+            vfunc_get_real(): number;
+            vfunc_set_real(r: number): void;
+            vfunc_get_imaginary(): number;
+            vfunc_set_imaginary(img: number): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -55797,7 +56047,7 @@ export namespace Vda {
         $gtype: GObject.GType<SqlValueNumeric>;
         prototype: SqlValueNumeric;
     }
-    interface SqlValueNumeric extends GObject.Object {
+    interface SqlValueNumeric extends GObject.Object, SqlValueNumeric.Interface {
         // Methods
 
         set_precision(p: number): void;
@@ -55809,18 +56059,6 @@ export namespace Vda {
         set_real(r: number): void;
         get_imaginary(): number;
         set_imaginary(img: number): void;
-
-        // Virtual methods
-
-        vfunc_set_precision(p: number): void;
-        vfunc_get_precision(): number;
-        vfunc_format(str: string): string;
-        vfunc_get_double(): number;
-        vfunc_set_double(v: number): void;
-        vfunc_get_real(): number;
-        vfunc_set_real(r: number): void;
-        vfunc_get_imaginary(): number;
-        vfunc_set_imaginary(img: number): void;
     }
 
     export const SqlValueNumeric: SqlValueNumericNamespace & {
@@ -55828,6 +56066,16 @@ export namespace Vda {
     };
 
     namespace SqlValueFloat {
+        /**
+         * Interface for implementing SqlValueFloat.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_float(): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -55837,14 +56085,10 @@ export namespace Vda {
         $gtype: GObject.GType<SqlValueFloat>;
         prototype: SqlValueFloat;
     }
-    interface SqlValueFloat extends GObject.Object {
+    interface SqlValueFloat extends GObject.Object, SqlValueFloat.Interface {
         // Methods
 
         get_float(): number;
-
-        // Virtual methods
-
-        vfunc_get_float(): number;
     }
 
     export const SqlValueFloat: SqlValueFloatNamespace & {
@@ -55868,6 +56112,19 @@ export namespace Vda {
     };
 
     namespace SqlValueMoney {
+        /**
+         * Interface for implementing SqlValueMoney.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_locale(): string;
+            vfunc_int_locale(): string;
+            vfunc_get_int_precision(): number;
+            vfunc_set_int_precision(p: number): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -55877,20 +56134,13 @@ export namespace Vda {
         $gtype: GObject.GType<SqlValueMoney>;
         prototype: SqlValueMoney;
     }
-    interface SqlValueMoney extends GObject.Object {
+    interface SqlValueMoney extends GObject.Object, SqlValueMoney.Interface {
         // Methods
 
         locale(): string;
         int_locale(): string;
         get_int_precision(): number;
         set_int_precision(p: number): void;
-
-        // Virtual methods
-
-        vfunc_locale(): string;
-        vfunc_int_locale(): string;
-        vfunc_get_int_precision(): number;
-        vfunc_set_int_precision(p: number): void;
     }
 
     export const SqlValueMoney: SqlValueMoneyNamespace & {
@@ -55898,6 +56148,17 @@ export namespace Vda {
     };
 
     namespace SqlValueDate {
+        /**
+         * Interface for implementing SqlValueDate.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_date(): GLib.Date;
+            vfunc_set_date(ts: GLib.Date): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -55907,16 +56168,11 @@ export namespace Vda {
         $gtype: GObject.GType<SqlValueDate>;
         prototype: SqlValueDate;
     }
-    interface SqlValueDate extends GObject.Object {
+    interface SqlValueDate extends GObject.Object, SqlValueDate.Interface {
         // Methods
 
         get_date(): GLib.Date;
         set_date(ts: GLib.Date): void;
-
-        // Virtual methods
-
-        vfunc_get_date(): GLib.Date;
-        vfunc_set_date(ts: GLib.Date): void;
     }
 
     export const SqlValueDate: SqlValueDateNamespace & {
@@ -55924,6 +56180,25 @@ export namespace Vda {
     };
 
     namespace SqlValueTimestamp {
+        /**
+         * Interface for implementing SqlValueTimestamp.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_format_local(): string;
+            vfunc_format_utc(): string;
+            vfunc_format_locale(): string;
+            vfunc_format_date(): string;
+            vfunc_format_date_locale(): string;
+            vfunc_format_time(): string;
+            vfunc_format_time_local(): string;
+            vfunc_format_time_local_ntz(): string;
+            vfunc_get_timestamp(): GLib.DateTime;
+            vfunc_set_timestamp(ts: GLib.DateTime): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -55933,7 +56208,7 @@ export namespace Vda {
         $gtype: GObject.GType<SqlValueTimestamp>;
         prototype: SqlValueTimestamp;
     }
-    interface SqlValueTimestamp extends GObject.Object {
+    interface SqlValueTimestamp extends GObject.Object, SqlValueTimestamp.Interface {
         // Methods
 
         format_local(): string;
@@ -55946,19 +56221,6 @@ export namespace Vda {
         format_time_local_ntz(): string;
         get_timestamp(): GLib.DateTime;
         set_timestamp(ts: GLib.DateTime): void;
-
-        // Virtual methods
-
-        vfunc_format_local(): string;
-        vfunc_format_utc(): string;
-        vfunc_format_locale(): string;
-        vfunc_format_date(): string;
-        vfunc_format_date_locale(): string;
-        vfunc_format_time(): string;
-        vfunc_format_time_local(): string;
-        vfunc_format_time_local_ntz(): string;
-        vfunc_get_timestamp(): GLib.DateTime;
-        vfunc_set_timestamp(ts: GLib.DateTime): void;
     }
 
     export const SqlValueTimestamp: SqlValueTimestampNamespace & {
@@ -56014,6 +56276,19 @@ export namespace Vda {
     };
 
     namespace SqlValueBinary {
+        /**
+         * Interface for implementing SqlValueBinary.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_bytes(): GLib.Bytes;
+            vfunc_get_out_stream(): Gio.OutputStream;
+            vfunc_get_input_stream(): Gio.InputStream;
+            vfunc_get_size(): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -56025,7 +56300,7 @@ export namespace Vda {
         $gtype: GObject.GType<SqlValueBinary>;
         prototype: SqlValueBinary;
     }
-    interface SqlValueBinary extends GObject.Object {
+    interface SqlValueBinary extends GObject.Object, SqlValueBinary.Interface {
         // Properties
 
         get size(): number;
@@ -56036,13 +56311,6 @@ export namespace Vda {
         get_out_stream(): Gio.OutputStream;
         get_input_stream(): Gio.InputStream;
         get_size(): number;
-
-        // Virtual methods
-
-        vfunc_get_bytes(): GLib.Bytes;
-        vfunc_get_out_stream(): Gio.OutputStream;
-        vfunc_get_input_stream(): Gio.InputStream;
-        vfunc_get_size(): number;
     }
 
     export const SqlValueBinary: SqlValueBinaryNamespace & {
@@ -56050,6 +56318,20 @@ export namespace Vda {
     };
 
     namespace SqlValueBlob {
+        /**
+         * Interface for implementing SqlValueBlob.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_create(stream: Gio.InputStream): void;
+            vfunc_delete(): void;
+            vfunc_write(file: Gio.File): void;
+            vfunc_read(file: Gio.File): void;
+            vfunc_get_connection(): Connection;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -56061,7 +56343,7 @@ export namespace Vda {
         $gtype: GObject.GType<SqlValueBlob>;
         prototype: SqlValueBlob;
     }
-    interface SqlValueBlob extends GObject.Object {
+    interface SqlValueBlob extends GObject.Object, SqlValueBlob.Interface {
         // Properties
 
         get connection(): Connection;
@@ -56073,14 +56355,6 @@ export namespace Vda {
         write(file: Gio.File): void;
         read(file: Gio.File): void;
         get_connection(): Connection;
-
-        // Virtual methods
-
-        vfunc_create(stream: Gio.InputStream): void;
-        vfunc_delete(): void;
-        vfunc_write(file: Gio.File): void;
-        vfunc_read(file: Gio.File): void;
-        vfunc_get_connection(): Connection;
     }
 
     export const SqlValueBlob: SqlValueBlobNamespace & {
@@ -56088,6 +56362,16 @@ export namespace Vda {
     };
 
     namespace SqlValueBlobOid {
+        /**
+         * Interface for implementing SqlValueBlobOid.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_identification(): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -56099,7 +56383,7 @@ export namespace Vda {
         $gtype: GObject.GType<SqlValueBlobOid>;
         prototype: SqlValueBlobOid;
     }
-    interface SqlValueBlobOid extends GObject.Object {
+    interface SqlValueBlobOid extends GObject.Object, SqlValueBlobOid.Interface {
         // Properties
 
         get identification(): number;
@@ -56107,10 +56391,6 @@ export namespace Vda {
         // Methods
 
         get_identification(): number;
-
-        // Virtual methods
-
-        vfunc_get_identification(): number;
     }
 
     export const SqlValueBlobOid: SqlValueBlobOidNamespace & {
@@ -56118,6 +56398,19 @@ export namespace Vda {
     };
 
     namespace SqlValueGeometricPoint {
+        /**
+         * Interface for implementing SqlValueGeometricPoint.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_x(): number;
+            vfunc_set_x(value: number): void;
+            vfunc_get_y(): number;
+            vfunc_set_y(value: number): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -56130,7 +56423,7 @@ export namespace Vda {
         $gtype: GObject.GType<SqlValueGeometricPoint>;
         prototype: SqlValueGeometricPoint;
     }
-    interface SqlValueGeometricPoint extends GObject.Object {
+    interface SqlValueGeometricPoint extends GObject.Object, SqlValueGeometricPoint.Interface {
         // Properties
 
         get x(): number;
@@ -56144,13 +56437,6 @@ export namespace Vda {
         set_x(value: number): void;
         get_y(): number;
         set_y(value: number): void;
-
-        // Virtual methods
-
-        vfunc_get_x(): number;
-        vfunc_set_x(value: number): void;
-        vfunc_get_y(): number;
-        vfunc_set_y(value: number): void;
     }
 
     export const SqlValueGeometricPoint: SqlValueGeometricPointNamespace & {
@@ -56158,6 +56444,17 @@ export namespace Vda {
     };
 
     namespace SqlValueMathExp {
+        /**
+         * Interface for implementing SqlValueMathExp.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_math(): GCalc.MathEquationManager;
+            vfunc_set_math(value: GCalc.MathEquationManager): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -56169,7 +56466,7 @@ export namespace Vda {
         $gtype: GObject.GType<SqlValueMathExp>;
         prototype: SqlValueMathExp;
     }
-    interface SqlValueMathExp extends GObject.Object {
+    interface SqlValueMathExp extends GObject.Object, SqlValueMathExp.Interface {
         // Properties
 
         get math(): GCalc.MathEquationManager;
@@ -56179,11 +56476,6 @@ export namespace Vda {
 
         get_math(): GCalc.MathEquationManager;
         set_math(value: GCalc.MathEquationManager): void;
-
-        // Virtual methods
-
-        vfunc_get_math(): GCalc.MathEquationManager;
-        vfunc_set_math(value: GCalc.MathEquationManager): void;
     }
 
     export const SqlValueMathExp: SqlValueMathExpNamespace & {
@@ -56207,6 +56499,20 @@ export namespace Vda {
     };
 
     namespace TableModelSequential {
+        /**
+         * Interface for implementing TableModelSequential.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_current(): RowModel;
+            vfunc_next(): boolean;
+            vfunc_back(): boolean;
+            vfunc_move(direction: MoveDirection, relative: number): boolean;
+            vfunc_copy_current(): RowModel;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -56216,7 +56522,7 @@ export namespace Vda {
         $gtype: GObject.GType<TableModelSequential>;
         prototype: TableModelSequential;
     }
-    interface TableModelSequential extends GObject.Object {
+    interface TableModelSequential extends GObject.Object, TableModelSequential.Interface {
         // Methods
 
         current(): RowModel;
@@ -56224,14 +56530,6 @@ export namespace Vda {
         back(): boolean;
         move(direction: MoveDirection | null, relative: number): boolean;
         copy_current(): RowModel;
-
-        // Virtual methods
-
-        vfunc_current(): RowModel;
-        vfunc_next(): boolean;
-        vfunc_back(): boolean;
-        vfunc_move(direction: MoveDirection, relative: number): boolean;
-        vfunc_copy_current(): RowModel;
     }
 
     export const TableModelSequential: TableModelSequentialNamespace & {

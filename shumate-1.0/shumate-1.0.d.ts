@@ -15060,6 +15060,29 @@ export namespace Shumate {
     type VectorSpriteSheetClass = typeof VectorSpriteSheet;
     type ViewportClass = typeof Viewport;
     namespace Location {
+        /**
+         * Interface for implementing Location.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Gets the latitude coordinate in degrees.
+             */
+            vfunc_get_latitude(): number;
+            /**
+             * Gets the longitude coordinate in degrees.
+             */
+            vfunc_get_longitude(): number;
+            /**
+             * Sets the coordinates of the location
+             * @param latitude the latitude in degrees
+             * @param longitude the longitude in degrees
+             */
+            vfunc_set_location(latitude: number, longitude: number): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -15072,7 +15095,7 @@ export namespace Shumate {
         $gtype: GObject.GType<Location>;
         prototype: Location;
     }
-    interface Location extends GObject.Object {
+    interface Location extends GObject.Object, Location.Interface {
         // Properties
 
         /**
@@ -15114,23 +15137,6 @@ export namespace Shumate {
          * @param longitude the longitude in degrees
          */
         set_location(latitude: number, longitude: number): void;
-
-        // Virtual methods
-
-        /**
-         * Gets the latitude coordinate in degrees.
-         */
-        vfunc_get_latitude(): number;
-        /**
-         * Gets the longitude coordinate in degrees.
-         */
-        vfunc_get_longitude(): number;
-        /**
-         * Sets the coordinates of the location
-         * @param latitude the latitude in degrees
-         * @param longitude the longitude in degrees
-         */
-        vfunc_set_location(latitude: number, longitude: number): void;
     }
 
     export const Location: LocationNamespace & {

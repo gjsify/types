@@ -11338,6 +11338,16 @@ export namespace GCalc {
     type MathTermIface = typeof MathTerm;
     type MathVariableIface = typeof MathVariable;
     namespace Hashable {
+        /**
+         * Interface for implementing Hashable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_hash(): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -11347,14 +11357,10 @@ export namespace GCalc {
         $gtype: GObject.GType<Hashable>;
         prototype: Hashable;
     }
-    interface Hashable extends GObject.Object {
+    interface Hashable extends GObject.Object, Hashable.Interface {
         // Methods
 
         hash(): number;
-
-        // Virtual methods
-
-        vfunc_hash(): number;
     }
 
     export const Hashable: HashableNamespace & {
@@ -11398,6 +11404,21 @@ export namespace GCalc {
     };
 
     namespace MathConstant {
+        /**
+         * Interface for implementing MathConstant.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_add(c: MathConstant): MathConstant;
+            vfunc_subtract(c: MathConstant): MathConstant;
+            vfunc_multiply(c: MathConstant): MathConstant;
+            vfunc_divide(c: MathConstant): MathConstant;
+            vfunc_neg(): MathConstant;
+            vfunc_pow(c: MathConstant): MathConstant;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -11407,7 +11428,7 @@ export namespace GCalc {
         $gtype: GObject.GType<MathConstant>;
         prototype: MathConstant;
     }
-    interface MathConstant extends GObject.Object {
+    interface MathConstant extends GObject.Object, MathConstant.Interface {
         // Methods
 
         add(c: MathConstant): MathConstant;
@@ -11416,15 +11437,6 @@ export namespace GCalc {
         divide(c: MathConstant): MathConstant;
         neg(): MathConstant;
         pow(c: MathConstant): MathConstant;
-
-        // Virtual methods
-
-        vfunc_add(c: MathConstant): MathConstant;
-        vfunc_subtract(c: MathConstant): MathConstant;
-        vfunc_multiply(c: MathConstant): MathConstant;
-        vfunc_divide(c: MathConstant): MathConstant;
-        vfunc_neg(): MathConstant;
-        vfunc_pow(c: MathConstant): MathConstant;
     }
 
     export const MathConstant: MathConstantNamespace & {
@@ -11432,6 +11444,18 @@ export namespace GCalc {
     };
 
     namespace MathConstantComplex {
+        /**
+         * Interface for implementing MathConstantComplex.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_real(): number;
+            vfunc_imag(): number;
+            vfunc_zero(): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -11441,18 +11465,12 @@ export namespace GCalc {
         $gtype: GObject.GType<MathConstantComplex>;
         prototype: MathConstantComplex;
     }
-    interface MathConstantComplex extends GObject.Object {
+    interface MathConstantComplex extends GObject.Object, MathConstantComplex.Interface {
         // Methods
 
         real(): number;
         imag(): number;
         zero(): void;
-
-        // Virtual methods
-
-        vfunc_real(): number;
-        vfunc_imag(): number;
-        vfunc_zero(): void;
     }
 
     export const MathConstantComplex: MathConstantComplexNamespace & {
@@ -11460,6 +11478,16 @@ export namespace GCalc {
     };
 
     namespace MathConstantNumber {
+        /**
+         * Interface for implementing MathConstantNumber.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_value(): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -11469,14 +11497,10 @@ export namespace GCalc {
         $gtype: GObject.GType<MathConstantNumber>;
         prototype: MathConstantNumber;
     }
-    interface MathConstantNumber extends GObject.Object {
+    interface MathConstantNumber extends GObject.Object, MathConstantNumber.Interface {
         // Methods
 
         value(): number;
-
-        // Virtual methods
-
-        vfunc_value(): number;
     }
 
     export const MathConstantNumber: MathConstantNumberNamespace & {
@@ -11484,6 +11508,19 @@ export namespace GCalc {
     };
 
     namespace MathConstantVector {
+        /**
+         * Interface for implementing MathConstantVector.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_mag(): MathConstant;
+            vfunc_ang(): MathConstant;
+            vfunc_x(): MathConstant;
+            vfunc_y(): MathConstant;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -11493,20 +11530,13 @@ export namespace GCalc {
         $gtype: GObject.GType<MathConstantVector>;
         prototype: MathConstantVector;
     }
-    interface MathConstantVector extends GObject.Object {
+    interface MathConstantVector extends GObject.Object, MathConstantVector.Interface {
         // Methods
 
         mag(): MathConstant;
         ang(): MathConstant;
         x(): MathConstant;
         y(): MathConstant;
-
-        // Virtual methods
-
-        vfunc_mag(): MathConstant;
-        vfunc_ang(): MathConstant;
-        vfunc_x(): MathConstant;
-        vfunc_y(): MathConstant;
     }
 
     export const MathConstantVector: MathConstantVectorNamespace & {
@@ -11530,6 +11560,16 @@ export namespace GCalc {
     };
 
     namespace MathEquation {
+        /**
+         * Interface for implementing MathEquation.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_variables(): ExpressionHashMap;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11541,7 +11581,7 @@ export namespace GCalc {
         $gtype: GObject.GType<MathEquation>;
         prototype: MathEquation;
     }
-    interface MathEquation extends GObject.Object {
+    interface MathEquation extends GObject.Object, MathEquation.Interface {
         // Properties
 
         get variables(): ExpressionHashMap;
@@ -11549,10 +11589,6 @@ export namespace GCalc {
         // Methods
 
         get_variables(): ExpressionHashMap;
-
-        // Virtual methods
-
-        vfunc_get_variables(): ExpressionHashMap;
     }
 
     export const MathEquation: MathEquationNamespace & {
@@ -11560,6 +11596,18 @@ export namespace GCalc {
     };
 
     namespace MathEquationManager {
+        /**
+         * Interface for implementing MathEquationManager.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_find_variable(name: string): MathVariable;
+            vfunc_get_equations(): ExpressionContainer;
+            vfunc_get_functions(): ExpressionContainer;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11572,7 +11620,7 @@ export namespace GCalc {
         $gtype: GObject.GType<MathEquationManager>;
         prototype: MathEquationManager;
     }
-    interface MathEquationManager extends GObject.Object {
+    interface MathEquationManager extends GObject.Object, MathEquationManager.Interface {
         // Properties
 
         get equations(): ExpressionContainer;
@@ -11583,12 +11631,6 @@ export namespace GCalc {
         find_variable(name: string): MathVariable;
         get_equations(): ExpressionContainer;
         get_functions(): ExpressionContainer;
-
-        // Virtual methods
-
-        vfunc_find_variable(name: string): MathVariable;
-        vfunc_get_equations(): ExpressionContainer;
-        vfunc_get_functions(): ExpressionContainer;
     }
 
     export const MathEquationManager: MathEquationManagerNamespace & {
@@ -11596,6 +11638,16 @@ export namespace GCalc {
     };
 
     namespace MathErrorResult {
+        /**
+         * Interface for implementing MathErrorResult.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_message(): string;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11607,7 +11659,7 @@ export namespace GCalc {
         $gtype: GObject.GType<MathErrorResult>;
         prototype: MathErrorResult;
     }
-    interface MathErrorResult extends GObject.Object {
+    interface MathErrorResult extends GObject.Object, MathErrorResult.Interface {
         // Properties
 
         get message(): string;
@@ -11615,10 +11667,6 @@ export namespace GCalc {
         // Methods
 
         get_message(): string;
-
-        // Virtual methods
-
-        vfunc_get_message(): string;
     }
 
     export const MathErrorResult: MathErrorResultNamespace & {
@@ -11626,6 +11674,20 @@ export namespace GCalc {
     };
 
     namespace MathExpression {
+        /**
+         * Interface for implementing MathExpression.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_to_string(): string;
+            vfunc_solve(): MathResult;
+            vfunc_get_parent(): MathExpression;
+            vfunc_set_parent(value: MathExpression): void;
+            vfunc_get_expressions(): ExpressionContainer;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11638,7 +11700,7 @@ export namespace GCalc {
         $gtype: GObject.GType<MathExpression>;
         prototype: MathExpression;
     }
-    interface MathExpression extends GObject.Object {
+    interface MathExpression extends GObject.Object, MathExpression.Interface {
         // Properties
 
         get parent(): MathExpression;
@@ -11652,14 +11714,6 @@ export namespace GCalc {
         get_parent(): MathExpression;
         set_parent(value: MathExpression): void;
         get_expressions(): ExpressionContainer;
-
-        // Virtual methods
-
-        vfunc_to_string(): string;
-        vfunc_solve(): MathResult;
-        vfunc_get_parent(): MathExpression;
-        vfunc_set_parent(value: MathExpression): void;
-        vfunc_get_expressions(): ExpressionContainer;
     }
 
     export const MathExpression: MathExpressionNamespace & {
@@ -11667,6 +11721,24 @@ export namespace GCalc {
     };
 
     namespace MathFunction {
+        /**
+         * Interface for implementing MathFunction.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_evaluate(): MathExpression;
+            vfunc_verify_params(): boolean;
+            vfunc_get_param_types(): ExpressionContainer;
+            vfunc_get_name(): string;
+            vfunc_set_name(value: string): void;
+            vfunc_get_n_params(): number;
+            vfunc_set_n_params(value: number): void;
+            vfunc_get_closed(): boolean;
+            vfunc_set_closed(value: boolean): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11683,7 +11755,7 @@ export namespace GCalc {
         $gtype: GObject.GType<MathFunction>;
         prototype: MathFunction;
     }
-    interface MathFunction extends GObject.Object {
+    interface MathFunction extends GObject.Object, MathFunction.Interface {
         // Properties
 
         get param_types(): ExpressionContainer;
@@ -11708,18 +11780,6 @@ export namespace GCalc {
         set_n_params(value: number): void;
         get_closed(): boolean;
         set_closed(value: boolean): void;
-
-        // Virtual methods
-
-        vfunc_evaluate(): MathExpression;
-        vfunc_verify_params(): boolean;
-        vfunc_get_param_types(): ExpressionContainer;
-        vfunc_get_name(): string;
-        vfunc_set_name(value: string): void;
-        vfunc_get_n_params(): number;
-        vfunc_set_n_params(value: number): void;
-        vfunc_get_closed(): boolean;
-        vfunc_set_closed(value: boolean): void;
     }
 
     export const MathFunction: MathFunctionNamespace & {
@@ -11727,6 +11787,20 @@ export namespace GCalc {
     };
 
     namespace MathGroup {
+        /**
+         * Interface for implementing MathGroup.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_evaluate(): MathExpression;
+            vfunc_get_level(): MathGroupLevel;
+            vfunc_set_level(value: MathGroupLevel): void;
+            vfunc_get_closed(): boolean;
+            vfunc_set_closed(value: boolean): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11739,7 +11813,7 @@ export namespace GCalc {
         $gtype: GObject.GType<MathGroup>;
         prototype: MathGroup;
     }
-    interface MathGroup extends GObject.Object {
+    interface MathGroup extends GObject.Object, MathGroup.Interface {
         // Properties
 
         get level(): MathGroupLevel;
@@ -11754,14 +11828,6 @@ export namespace GCalc {
         set_level(value: MathGroupLevel | null): void;
         get_closed(): boolean;
         set_closed(value: boolean): void;
-
-        // Virtual methods
-
-        vfunc_evaluate(): MathExpression;
-        vfunc_get_level(): MathGroupLevel;
-        vfunc_set_level(value: MathGroupLevel): void;
-        vfunc_get_closed(): boolean;
-        vfunc_set_closed(value: boolean): void;
     }
 
     export const MathGroup: MathGroupNamespace & {
@@ -11817,6 +11883,17 @@ export namespace GCalc {
     };
 
     namespace MathParameter {
+        /**
+         * Interface for implementing MathParameter.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_set_value(val?: GObject.Value | null): void;
+            vfunc_get_value(): GObject.Value | null;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -11826,16 +11903,11 @@ export namespace GCalc {
         $gtype: GObject.GType<MathParameter>;
         prototype: MathParameter;
     }
-    interface MathParameter extends GObject.Object {
+    interface MathParameter extends GObject.Object, MathParameter.Interface {
         // Methods
 
         set_value(val?: GObject.Value | null): void;
         get_value(): GObject.Value | null;
-
-        // Virtual methods
-
-        vfunc_set_value(val?: GObject.Value | null): void;
-        vfunc_get_value(): GObject.Value | null;
     }
 
     export const MathParameter: MathParameterNamespace & {
@@ -11859,6 +11931,16 @@ export namespace GCalc {
     };
 
     namespace MathPolynomial {
+        /**
+         * Interface for implementing MathPolynomial.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_evaluate(): MathExpression;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -11868,14 +11950,10 @@ export namespace GCalc {
         $gtype: GObject.GType<MathPolynomial>;
         prototype: MathPolynomial;
     }
-    interface MathPolynomial extends GObject.Object {
+    interface MathPolynomial extends GObject.Object, MathPolynomial.Interface {
         // Methods
 
         evaluate(): MathExpression;
-
-        // Virtual methods
-
-        vfunc_evaluate(): MathExpression;
     }
 
     export const MathPolynomial: MathPolynomialNamespace & {
@@ -11899,6 +11977,17 @@ export namespace GCalc {
     };
 
     namespace MathResult {
+        /**
+         * Interface for implementing MathResult.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_to_string(): string;
+            vfunc_get_expression(): MathExpression;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11910,7 +11999,7 @@ export namespace GCalc {
         $gtype: GObject.GType<MathResult>;
         prototype: MathResult;
     }
-    interface MathResult extends GObject.Object {
+    interface MathResult extends GObject.Object, MathResult.Interface {
         // Properties
 
         get expression(): MathExpression;
@@ -11919,11 +12008,6 @@ export namespace GCalc {
 
         to_string(): string;
         get_expression(): MathExpression;
-
-        // Virtual methods
-
-        vfunc_to_string(): string;
-        vfunc_get_expression(): MathExpression;
     }
 
     export const MathResult: MathResultNamespace & {
@@ -11931,6 +12015,17 @@ export namespace GCalc {
     };
 
     namespace MathTerm {
+        /**
+         * Interface for implementing MathTerm.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_add(t: MathTerm): MathExpression;
+            vfunc_evaluate(): MathExpression;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -11942,16 +12037,11 @@ export namespace GCalc {
 
         evaluate_constants(c1: MathConstant, c2: MathConstant, op: MathOperator): MathExpression;
     }
-    interface MathTerm extends GObject.Object {
+    interface MathTerm extends GObject.Object, MathTerm.Interface {
         // Methods
 
         add(t: MathTerm): MathExpression;
         evaluate(): MathExpression;
-
-        // Virtual methods
-
-        vfunc_add(t: MathTerm): MathExpression;
-        vfunc_evaluate(): MathExpression;
     }
 
     export const MathTerm: MathTermNamespace & {
@@ -11959,6 +12049,23 @@ export namespace GCalc {
     };
 
     namespace MathVariable {
+        /**
+         * Interface for implementing MathVariable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_evaluate(): MathExpression;
+            vfunc_get_name(): string;
+            vfunc_set_name(value: string): void;
+            vfunc_get_value(): MathConstant;
+            vfunc_set_value(value: MathConstant): void;
+            vfunc_get_bind(): MathVariable;
+            vfunc_set_bind(value: MathVariable): void;
+            vfunc_get_binded(): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11972,7 +12079,7 @@ export namespace GCalc {
         $gtype: GObject.GType<MathVariable>;
         prototype: MathVariable;
     }
-    interface MathVariable extends GObject.Object {
+    interface MathVariable extends GObject.Object, MathVariable.Interface {
         // Properties
 
         get name(): string;
@@ -11992,17 +12099,6 @@ export namespace GCalc {
         get_bind(): MathVariable;
         set_bind(value: MathVariable): void;
         get_binded(): boolean;
-
-        // Virtual methods
-
-        vfunc_evaluate(): MathExpression;
-        vfunc_get_name(): string;
-        vfunc_set_name(value: string): void;
-        vfunc_get_value(): MathConstant;
-        vfunc_set_value(value: MathConstant): void;
-        vfunc_get_bind(): MathVariable;
-        vfunc_set_bind(value: MathVariable): void;
-        vfunc_get_binded(): boolean;
     }
 
     export const MathVariable: MathVariableNamespace & {

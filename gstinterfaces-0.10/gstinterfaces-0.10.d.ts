@@ -1038,6 +1038,16 @@ export namespace GstInterfaces {
     };
 
     namespace Navigation {
+        /**
+         * Interface for implementing Navigation.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_send_event(structure: Gst.Structure): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1047,7 +1057,7 @@ export namespace GstInterfaces {
         $gtype: GObject.GType<Navigation>;
         prototype: Navigation;
     }
-    interface Navigation extends GObject.Object {
+    interface Navigation extends GObject.Object, Navigation.Interface {
         // Methods
 
         /**
@@ -1068,10 +1078,6 @@ export namespace GstInterfaces {
          * @param y The y coordinate of the mouse event.
          */
         send_mouse_event(event: string, button: number, x: number, y: number): void;
-
-        // Virtual methods
-
-        vfunc_send_event(structure: Gst.Structure): void;
     }
 
     export const Navigation: NavigationNamespace & {
@@ -1079,6 +1085,23 @@ export namespace GstInterfaces {
     };
 
     namespace PropertyProbe {
+        /**
+         * Interface for implementing PropertyProbe.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Get a list of properties for which probing is supported.
+             * by this element.
+             */
+            vfunc_get_properties(): any[];
+            vfunc_get_values(prop_id: number, pspec: GObject.ParamSpec): GObject.ValueArray;
+            vfunc_needs_probe(prop_id: number, pspec: GObject.ParamSpec): boolean;
+            vfunc_probe_property(prop_id: number, pspec: GObject.ParamSpec): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1088,7 +1111,7 @@ export namespace GstInterfaces {
         $gtype: GObject.GType<PropertyProbe>;
         prototype: PropertyProbe;
     }
-    interface PropertyProbe extends GObject.Object {
+    interface PropertyProbe extends GObject.Object, PropertyProbe.Interface {
         // Methods
 
         /**
@@ -1158,17 +1181,6 @@ export namespace GstInterfaces {
          * @param name name of the property.
          */
         probe_property_name(name: string): void;
-
-        // Virtual methods
-
-        /**
-         * Get a list of properties for which probing is supported.
-         * by this element.
-         */
-        vfunc_get_properties(): any[];
-        vfunc_get_values(prop_id: number, pspec: GObject.ParamSpec): GObject.ValueArray;
-        vfunc_needs_probe(prop_id: number, pspec: GObject.ParamSpec): boolean;
-        vfunc_probe_property(prop_id: number, pspec: GObject.ParamSpec): void;
     }
 
     export const PropertyProbe: PropertyProbeNamespace & {
@@ -1318,6 +1330,55 @@ export namespace GstInterfaces {
     };
 
     namespace VideoOrientation {
+        /**
+         * Interface for implementing VideoOrientation.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Get the horizontal centering offset from the given object.
+             * @param center return location for the result
+             */
+            vfunc_get_hcenter(center: number): boolean;
+            /**
+             * Get the horizontal flipping state (%TRUE for flipped) from the given object.
+             * @param flip return location for the result
+             */
+            vfunc_get_hflip(flip: boolean): boolean;
+            /**
+             * Get the vertical centering offset from the given object.
+             * @param center return location for the result
+             */
+            vfunc_get_vcenter(center: number): boolean;
+            /**
+             * Get the vertical flipping state (%TRUE for flipped) from the given object.
+             * @param flip return location for the result
+             */
+            vfunc_get_vflip(flip: boolean): boolean;
+            /**
+             * Set the horizontal centering offset for the given object.
+             * @param center centering offset
+             */
+            vfunc_set_hcenter(center: number): boolean;
+            /**
+             * Set the horizontal flipping state (%TRUE for flipped) for the given object.
+             * @param flip use flipping
+             */
+            vfunc_set_hflip(flip: boolean): boolean;
+            /**
+             * Set the vertical centering offset for the given object.
+             * @param center centering offset
+             */
+            vfunc_set_vcenter(center: number): boolean;
+            /**
+             * Set the vertical flipping state (%TRUE for flipped) for the given object.
+             * @param flip use flipping
+             */
+            vfunc_set_vflip(flip: boolean): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {}
@@ -1327,7 +1388,7 @@ export namespace GstInterfaces {
         $gtype: GObject.GType<VideoOrientation>;
         prototype: VideoOrientation;
     }
-    interface VideoOrientation extends Gst.Element {
+    interface VideoOrientation extends Gst.Element, VideoOrientation.Interface {
         // Methods
 
         /**
@@ -1378,49 +1439,6 @@ export namespace GstInterfaces {
          * @returns %TRUE in case the element supports flipping
          */
         set_vflip(flip: boolean): boolean;
-
-        // Virtual methods
-
-        /**
-         * Get the horizontal centering offset from the given object.
-         * @param center return location for the result
-         */
-        vfunc_get_hcenter(center: number): boolean;
-        /**
-         * Get the horizontal flipping state (%TRUE for flipped) from the given object.
-         * @param flip return location for the result
-         */
-        vfunc_get_hflip(flip: boolean): boolean;
-        /**
-         * Get the vertical centering offset from the given object.
-         * @param center return location for the result
-         */
-        vfunc_get_vcenter(center: number): boolean;
-        /**
-         * Get the vertical flipping state (%TRUE for flipped) from the given object.
-         * @param flip return location for the result
-         */
-        vfunc_get_vflip(flip: boolean): boolean;
-        /**
-         * Set the horizontal centering offset for the given object.
-         * @param center centering offset
-         */
-        vfunc_set_hcenter(center: number): boolean;
-        /**
-         * Set the horizontal flipping state (%TRUE for flipped) for the given object.
-         * @param flip use flipping
-         */
-        vfunc_set_hflip(flip: boolean): boolean;
-        /**
-         * Set the vertical centering offset for the given object.
-         * @param center centering offset
-         */
-        vfunc_set_vcenter(center: number): boolean;
-        /**
-         * Set the vertical flipping state (%TRUE for flipped) for the given object.
-         * @param flip use flipping
-         */
-        vfunc_set_vflip(flip: boolean): boolean;
     }
 
     export const VideoOrientation: VideoOrientationNamespace & {

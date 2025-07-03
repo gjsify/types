@@ -5706,6 +5706,47 @@ export namespace Nemo {
     };
 
     namespace FileInfo {
+        /**
+         * Interface for implementing FileInfo.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_add_emblem(emblem_name: string): void;
+            vfunc_add_string_attribute(attribute_name: string, value: string): void;
+            vfunc_can_write(): boolean;
+            vfunc_get_activation_uri(): string;
+            vfunc_get_file_type(): Gio.FileType;
+            vfunc_get_location(): Gio.File;
+            vfunc_get_mime_type(): string;
+            vfunc_get_mount(): Gio.Mount | null;
+            vfunc_get_name(): string;
+            vfunc_get_parent_info(): FileInfo | null;
+            vfunc_get_parent_location(): Gio.File | null;
+            vfunc_get_parent_uri(): string;
+            vfunc_get_string_attribute(attribute_name: string): string;
+            vfunc_get_uri(): string;
+            vfunc_get_uri_scheme(): string;
+            /**
+             * Notifies nemo to re-run info provider extensions on the given file.
+             *
+             * This is useful if you have an extension that listens or responds to some external
+             * interface for changes to local file metadata (such as a cloud drive changing file emblems.)
+             *
+             * When a change such as this occurs, call this on the file in question, and nemo will
+             * schedule a call to extension->update_file_info to update its own internal metadata.
+             *
+             * NOTE: This does *not* need to be called on the tail end of a update_full/update_complete
+             * asynchronous extension.  Prior to Nemo 3.6 this was indeed the case, however, due to a
+             * recursion issue in nemo-directory-async.c (see nemo 9e67417f8f09.)
+             */
+            vfunc_invalidate_extension_info(): void;
+            vfunc_is_directory(): boolean;
+            vfunc_is_gone(): boolean;
+            vfunc_is_mime_type(mime_Type: string): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5722,7 +5763,7 @@ export namespace Nemo {
         lookup(location: Gio.File): FileInfo;
         lookup_for_uri(uri: string): FileInfo;
     }
-    interface FileInfo extends GObject.Object {
+    interface FileInfo extends GObject.Object, FileInfo.Interface {
         // Methods
 
         add_emblem(emblem_name: string): void;
@@ -5757,41 +5798,6 @@ export namespace Nemo {
         is_directory(): boolean;
         is_gone(): boolean;
         is_mime_type(mime_type: string): boolean;
-
-        // Virtual methods
-
-        vfunc_add_emblem(emblem_name: string): void;
-        vfunc_add_string_attribute(attribute_name: string, value: string): void;
-        vfunc_can_write(): boolean;
-        vfunc_get_activation_uri(): string;
-        vfunc_get_file_type(): Gio.FileType;
-        vfunc_get_location(): Gio.File;
-        vfunc_get_mime_type(): string;
-        vfunc_get_mount(): Gio.Mount | null;
-        vfunc_get_name(): string;
-        vfunc_get_parent_info(): FileInfo | null;
-        vfunc_get_parent_location(): Gio.File | null;
-        vfunc_get_parent_uri(): string;
-        vfunc_get_string_attribute(attribute_name: string): string;
-        vfunc_get_uri(): string;
-        vfunc_get_uri_scheme(): string;
-        /**
-         * Notifies nemo to re-run info provider extensions on the given file.
-         *
-         * This is useful if you have an extension that listens or responds to some external
-         * interface for changes to local file metadata (such as a cloud drive changing file emblems.)
-         *
-         * When a change such as this occurs, call this on the file in question, and nemo will
-         * schedule a call to extension->update_file_info to update its own internal metadata.
-         *
-         * NOTE: This does *not* need to be called on the tail end of a update_full/update_complete
-         * asynchronous extension.  Prior to Nemo 3.6 this was indeed the case, however, due to a
-         * recursion issue in nemo-directory-async.c (see nemo 9e67417f8f09.)
-         */
-        vfunc_invalidate_extension_info(): void;
-        vfunc_is_directory(): boolean;
-        vfunc_is_gone(): boolean;
-        vfunc_is_mime_type(mime_Type: string): boolean;
     }
 
     export const FileInfo: FileInfoNamespace & {

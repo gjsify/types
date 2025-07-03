@@ -8678,6 +8678,302 @@ export namespace Dee {
     }
 
     namespace Model {
+        /**
+         * Interface for implementing Model.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Like dee_model_append() but intended for language bindings or
+             * situations where you work with models on a meta level and may not have
+             * a prior knowledge of the column schemas of the models. See also
+             * dee_model_build_row().
+             * @param row_members An array of  #GVariants with type               signature matching those of the column schemas of @self.               If any of the variants have floating references they will be               consumed
+             */
+            vfunc_append_row(row_members: GLib.Variant[]): ModelIter;
+            /**
+             * Notify listeners that the model is about to be changed, which means that
+             * multiple row additions / changes / removals will follow.
+             * The default implementation of this method will emit
+             * the ::changeset-started signal.
+             *
+             * It is not stricly necessary to enclose every change to a model
+             * in a dee_model_begin_changeset() and dee_model_end_changeset() calls, but
+             * doing so is highly recommended and allows implementing various optimizations.
+             *
+             * The usual way to perform multiple changes to a model is as follows:
+             *
+             * <programlisting>
+             * void update_model (DeeModel *model)
+             * {
+             *   GVariant **added_row_data1 = ...;
+             *   GVariant **added_row_data2 = ...;
+             *
+             *   dee_model_begin_changeset (model);
+             *
+             *   dee_model_remove (model, dee_model_get_first_iter (model));
+             *   dee_model_append_row (model, added_row_data1);
+             *   dee_model_append_row (model, added_row_data2);
+             *
+             *   dee_model_end_changeset (model);
+             * }
+             * </programlisting>
+             */
+            vfunc_begin_changeset(): void;
+            vfunc_changeset_finished(): void;
+            vfunc_changeset_started(): void;
+            /**
+             * Removes all rows in the model. Signals are emitted for each row in the model
+             */
+            vfunc_clear(): void;
+            /**
+             * Notify listeners that all changes have been committed to the model.
+             * The default implementation of this method will emit
+             * the ::changeset-finished signal.
+             *
+             * See also dee_model_begin_changeset().
+             */
+            vfunc_end_changeset(): void;
+            /**
+             * Finds a row in `self` according to the sorting specified by `cmp_func`.
+             * This method will assume that `self` is already sorted by `cmp_func`.
+             *
+             * If you use this method for searching you should only use
+             * dee_model_insert_row_sorted() to insert rows in the model.
+             * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of @self. No references will be taken on the variants.
+             * @param cmp_func Callback used for comparison or rows
+             */
+            vfunc_find_row_sorted(row_spec: GLib.Variant[], cmp_func: CompareRowFunc): [ModelIter, boolean];
+            vfunc_get_bool(iter: ModelIter, column: number): boolean;
+            /**
+             * Get the column index of a column.
+             * @param column_name the column name to retrieve the index of
+             */
+            vfunc_get_column_index(column_name: string): number;
+            /**
+             * Get a %NULL-terminated array of column names for the columns of `self`.
+             * These names can be used in calls to dee_model_build_named_row().
+             */
+            vfunc_get_column_names(): string[];
+            /**
+             * Get the #GVariant signature of a column
+             * @param column the column to get retrieve the #GVariant type string of
+             */
+            vfunc_get_column_schema(column: number): string;
+            vfunc_get_double(iter: ModelIter, column: number): number;
+            /**
+             * Get the #GVariant signature of field previously registered with
+             * dee_model_register_vardict_schema().
+             * @param field_name name of vardict field to get schema of
+             */
+            vfunc_get_field_schema(field_name: string): [string, number];
+            /**
+             * Retrieves a #DeeModelIter representing the first row in `self`.
+             */
+            vfunc_get_first_iter(): ModelIter;
+            vfunc_get_int32(iter: ModelIter, column: number): number;
+            vfunc_get_int64(iter: ModelIter, column: number): number;
+            /**
+             * Retrieves a #DeeModelIter representing the row at the given index.
+             *
+             * Note that this method does not have any performance guarantees. In particular
+             * it is not guaranteed to be <emphasis>O(1)</emphasis>.
+             * @param row position of the row to retrieve
+             */
+            vfunc_get_iter_at_row(row: number): ModelIter;
+            /**
+             * Retrieves a #DeeModelIter pointing right <emphasis>after</emphasis> the
+             * last row in `self`. This is refered to also the the
+             * <emphasis>end iter</emphasis>.
+             *
+             * As with other iters the end iter, in particular, is stable over inserts,
+             * changes, or removals.
+             */
+            vfunc_get_last_iter(): ModelIter;
+            /**
+             * Gets the number of columns in `self`
+             */
+            vfunc_get_n_columns(): number;
+            /**
+             * Gets the number of rows in `self`
+             */
+            vfunc_get_n_rows(): number;
+            /**
+             * Get the numeric offset of `iter` into `self`. Note that this method is
+             * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
+             * @param iter The iter to get the position of
+             */
+            vfunc_get_position(iter: ModelIter): number;
+            vfunc_get_row(iter: ModelIter, out_row_members: GLib.Variant): GLib.Variant;
+            /**
+             * Get a %NULL-terminated array of #GVariant type strings that defines the
+             * required formats for the columns of `self`.
+             */
+            vfunc_get_schema(): string[];
+            vfunc_get_string(iter: ModelIter, column: number): string;
+            /**
+             * Look up a tag value for a given row in a model. This method is guaranteed
+             * to be O(1).
+             * @param iter A #DeeModelIter pointing to the row to get the tag from
+             * @param tag The tag handle to retrieve the tag value for
+             */
+            vfunc_get_tag(iter: ModelIter, tag: ModelTag): any | null;
+            vfunc_get_uchar(iter: ModelIter, column: number): number;
+            vfunc_get_uint32(iter: ModelIter, column: number): number;
+            vfunc_get_uint64(iter: ModelIter, column: number): number;
+            vfunc_get_value(iter: ModelIter, column: number): GLib.Variant;
+            vfunc_get_value_by_name(iter: ModelIter, column_name: string): GLib.Variant;
+            /**
+             * Get a schema for variant dictionary column previously registered using
+             * dee_model_register_vardict_schema().
+             * @param num_column
+             */
+            vfunc_get_vardict_schema(num_column: number): GLib.HashTable<string, string>;
+            /**
+             * As dee_model_insert(), but intended for language bindings or
+             * situations where you work with models on a meta level and may not have
+             * a priori knowledge of the column schemas of the models. See also
+             * dee_model_build_row().
+             * @param pos The index to insert the row on. The existing row will be pushed down.
+             * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of @self. If any of the variants have               floating references they will be consumed.
+             */
+            vfunc_insert_row(pos: number, row_members: GLib.Variant[]): ModelIter;
+            /**
+             * As dee_model_insert_before(), but intended for language bindings or
+             * situations where you work with models on a meta level and may not have
+             * a priori knowledge of the column schemas of the models. See also
+             * dee_model_build_row().
+             * @param iter An iter pointing to the row before which to insert the new one
+             * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of @self. If any of the variants have floating       references they will be consumed.
+             */
+            vfunc_insert_row_before(iter: ModelIter, row_members: GLib.Variant[]): ModelIter;
+            /**
+             * Inserts a row in `self` according to the sorting specified by `cmp_func`.
+             * If you use this method for insertion you should not use other methods as this
+             * method assumes the model to be already sorted by `cmp_func`.
+             * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of @self. If any of the variants have floating       references they will be consumed.
+             * @param cmp_func Callback used for comparison or rows
+             */
+            vfunc_insert_row_sorted(row_members: GLib.Variant[], cmp_func: CompareRowFunc): ModelIter;
+            /**
+             * Checks if `iter` is the very first iter `self`.
+             * @param iter a #DeeModelIter
+             */
+            vfunc_is_first(iter: ModelIter): boolean;
+            /**
+             * Whether `iter` is the end iter of `self`. Note that the end iter points
+             * right <emphasis>after</emphasis> the last valid row in `self`.
+             * @param iter a #DeeModelIter
+             */
+            vfunc_is_last(iter: ModelIter): boolean;
+            /**
+             * Returns a #DeeModelIter that points to the next position in the model.
+             * @param iter a #DeeModelIter
+             */
+            vfunc_next(iter: ModelIter): ModelIter;
+            /**
+             * Like dee_model_prepend() but intended for language bindings or
+             * situations where you work with models on a meta level and may not have
+             * a priori knowledge of the column schemas of the models. See also
+             * dee_model_build_row().
+             * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of @self. If any of the variants have               floating references they will be consumed.
+             */
+            vfunc_prepend_row(row_members: GLib.Variant[]): ModelIter;
+            /**
+             * Returns a #DeeModelIter that points to the previous position in the model.
+             * @param iter a #DeeModelIter
+             */
+            vfunc_prev(iter: ModelIter): ModelIter;
+            /**
+             * Register a new tag on a #DeeModel. A <emphasis>tag</emphasis> is an extra
+             * value attached to a given row on a model. The tags are invisible to all
+             * that doesn't have the tag handle returned by this method. #DeeModel
+             * implementations must ensure that dee_model_get_tag() is an O(1) operation.
+             *
+             * Tags can be very useful in associating some extra data to a row in a model
+             * and have that automatically synced when the model changes. If you're
+             * writing a tiled view for a model you might want to tag each row with the
+             * tile widget for that row. That way you have very convenient access to the
+             * tile widget given any row in the model.
+             *
+             * The private nature of tags and the fact that you can store arbitrary pointers
+             * and binary data in them also means that they are not serialized if you
+             * utilize a model implementation that exposes the #DeeSerializable interface.
+             */
+            vfunc_register_tag(): ModelTag;
+            /**
+             * Register schema for fields in a model containing column with variant
+             * dictionary schema ('a{sv}').
+             * The keys registered with this function can be later used
+             * with dee_model_build_named_row() function, as well as
+             * dee_model_get_value_by_name(). Note that it is possible to register
+             * the same field name for multiple columns, in which case you need to use
+             * fully-qualified "column_name::field" name in the calls to
+             * dee_model_build_named_row() and dee_model_get_field_schema().
+             * @param num_column
+             * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
+             */
+            vfunc_register_vardict_schema(
+                num_column: number,
+                schemas: { [key: string]: any } | GLib.HashTable<string, string>,
+            ): void;
+            /**
+             * Removes the row at the given position from the model.
+             * @param iter a #DeeModelIter pointing to the row to remove
+             */
+            vfunc_remove(iter: ModelIter): void;
+            vfunc_row_added(iter: ModelIter): void;
+            vfunc_row_changed(iter: ModelIter): void;
+            vfunc_row_removed(iter: ModelIter): void;
+            /**
+             * Set column names used by `self`.
+             * This method must be called exactly once, but only after setting
+             * a schema of the model. Note that some constructors will do this for you.
+             * @param column_names A list of column names terminated by a %NULL
+             */
+            vfunc_set_column_names_full(column_names: string[]): void;
+            /**
+             * Sets all columns in the row `iter` points to, to those found in
+             * `row_members`. The variants in `row_members` must match the types defined in
+             * the model's schema.
+             * @param iter a #DeeModelIter
+             * @param row_members And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
+             */
+            vfunc_set_row(iter: ModelIter, row_members: GLib.Variant[]): void;
+            /**
+             * Set the #GVariant types and the number of columns used by `self`.
+             * This method must be called exactly once before using `self`. Note that
+             * some constructors will do this for you.
+             * @param column_schemas A list of #GVariant type strings terminated by a %NULL
+             */
+            vfunc_set_schema_full(column_schemas: string[]): void;
+            /**
+             * Set a tag on a row in a model. This function is guaranteed to be O(1).
+             * See also dee_model_register_tag().
+             *
+             * If `tag` is already set on this row the existing tag value will be destroyed
+             * with the #GDestroyNotify passed to the dee_model_register_tag().
+             * @param iter The row to set the tag on
+             * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
+             * @param value The value to set for @tag. Note that %NULL represents an unset tag
+             */
+            vfunc_set_tag(iter: ModelIter, tag: ModelTag, value?: any | null): void;
+            /**
+             * Sets the data in `column` for the row `iter` points to, to `value`. The type
+             * of `value` must be convertible to the type of the column.
+             *
+             * When this method call completes the model will emit ::row-changed. You can
+             * edit the model in place without triggering the change signals by calling
+             * dee_model_set_value_silently().
+             * @param iter a #DeeModelIter
+             * @param column column number to set the value
+             * @param value New value for cell. If @value is a floating reference the model         will assume ownership of the variant
+             */
+            vfunc_set_value(iter: ModelIter, column: number, value: GLib.Variant): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -8687,7 +8983,7 @@ export namespace Dee {
         $gtype: GObject.GType<Model>;
         prototype: Model;
     }
-    interface Model extends GObject.Object {
+    interface Model extends GObject.Object, Model.Interface {
         // Methods
 
         /**
@@ -9025,296 +9321,6 @@ export namespace Dee {
          * @param value New value for cell. If @value is a floating reference the model         will assume ownership of the variant
          */
         set_value(iter: ModelIter, column: number, value: GLib.Variant): void;
-
-        // Virtual methods
-
-        /**
-         * Like dee_model_append() but intended for language bindings or
-         * situations where you work with models on a meta level and may not have
-         * a prior knowledge of the column schemas of the models. See also
-         * dee_model_build_row().
-         * @param row_members An array of  #GVariants with type               signature matching those of the column schemas of @self.               If any of the variants have floating references they will be               consumed
-         */
-        vfunc_append_row(row_members: GLib.Variant[]): ModelIter;
-        /**
-         * Notify listeners that the model is about to be changed, which means that
-         * multiple row additions / changes / removals will follow.
-         * The default implementation of this method will emit
-         * the ::changeset-started signal.
-         *
-         * It is not stricly necessary to enclose every change to a model
-         * in a dee_model_begin_changeset() and dee_model_end_changeset() calls, but
-         * doing so is highly recommended and allows implementing various optimizations.
-         *
-         * The usual way to perform multiple changes to a model is as follows:
-         *
-         * <programlisting>
-         * void update_model (DeeModel *model)
-         * {
-         *   GVariant **added_row_data1 = ...;
-         *   GVariant **added_row_data2 = ...;
-         *
-         *   dee_model_begin_changeset (model);
-         *
-         *   dee_model_remove (model, dee_model_get_first_iter (model));
-         *   dee_model_append_row (model, added_row_data1);
-         *   dee_model_append_row (model, added_row_data2);
-         *
-         *   dee_model_end_changeset (model);
-         * }
-         * </programlisting>
-         */
-        vfunc_begin_changeset(): void;
-        vfunc_changeset_finished(): void;
-        vfunc_changeset_started(): void;
-        /**
-         * Removes all rows in the model. Signals are emitted for each row in the model
-         */
-        vfunc_clear(): void;
-        /**
-         * Notify listeners that all changes have been committed to the model.
-         * The default implementation of this method will emit
-         * the ::changeset-finished signal.
-         *
-         * See also dee_model_begin_changeset().
-         */
-        vfunc_end_changeset(): void;
-        /**
-         * Finds a row in `self` according to the sorting specified by `cmp_func`.
-         * This method will assume that `self` is already sorted by `cmp_func`.
-         *
-         * If you use this method for searching you should only use
-         * dee_model_insert_row_sorted() to insert rows in the model.
-         * @param row_spec An array of       #GVariants with type signature matching those of the       column schemas of @self. No references will be taken on the variants.
-         * @param cmp_func Callback used for comparison or rows
-         */
-        vfunc_find_row_sorted(row_spec: GLib.Variant[], cmp_func: CompareRowFunc): [ModelIter, boolean];
-        vfunc_get_bool(iter: ModelIter, column: number): boolean;
-        /**
-         * Get the column index of a column.
-         * @param column_name the column name to retrieve the index of
-         */
-        vfunc_get_column_index(column_name: string): number;
-        /**
-         * Get a %NULL-terminated array of column names for the columns of `self`.
-         * These names can be used in calls to dee_model_build_named_row().
-         */
-        vfunc_get_column_names(): string[];
-        /**
-         * Get the #GVariant signature of a column
-         * @param column the column to get retrieve the #GVariant type string of
-         */
-        vfunc_get_column_schema(column: number): string;
-        vfunc_get_double(iter: ModelIter, column: number): number;
-        /**
-         * Get the #GVariant signature of field previously registered with
-         * dee_model_register_vardict_schema().
-         * @param field_name name of vardict field to get schema of
-         */
-        vfunc_get_field_schema(field_name: string): [string, number];
-        /**
-         * Retrieves a #DeeModelIter representing the first row in `self`.
-         */
-        vfunc_get_first_iter(): ModelIter;
-        vfunc_get_int32(iter: ModelIter, column: number): number;
-        vfunc_get_int64(iter: ModelIter, column: number): number;
-        /**
-         * Retrieves a #DeeModelIter representing the row at the given index.
-         *
-         * Note that this method does not have any performance guarantees. In particular
-         * it is not guaranteed to be <emphasis>O(1)</emphasis>.
-         * @param row position of the row to retrieve
-         */
-        vfunc_get_iter_at_row(row: number): ModelIter;
-        /**
-         * Retrieves a #DeeModelIter pointing right <emphasis>after</emphasis> the
-         * last row in `self`. This is refered to also the the
-         * <emphasis>end iter</emphasis>.
-         *
-         * As with other iters the end iter, in particular, is stable over inserts,
-         * changes, or removals.
-         */
-        vfunc_get_last_iter(): ModelIter;
-        /**
-         * Gets the number of columns in `self`
-         */
-        vfunc_get_n_columns(): number;
-        /**
-         * Gets the number of rows in `self`
-         */
-        vfunc_get_n_rows(): number;
-        /**
-         * Get the numeric offset of `iter` into `self`. Note that this method is
-         * <emphasis>not</emphasis>  guaranteed to be <emphasis>O(1)</emphasis>.
-         * @param iter The iter to get the position of
-         */
-        vfunc_get_position(iter: ModelIter): number;
-        vfunc_get_row(iter: ModelIter, out_row_members: GLib.Variant): GLib.Variant;
-        /**
-         * Get a %NULL-terminated array of #GVariant type strings that defines the
-         * required formats for the columns of `self`.
-         */
-        vfunc_get_schema(): string[];
-        vfunc_get_string(iter: ModelIter, column: number): string;
-        /**
-         * Look up a tag value for a given row in a model. This method is guaranteed
-         * to be O(1).
-         * @param iter A #DeeModelIter pointing to the row to get the tag from
-         * @param tag The tag handle to retrieve the tag value for
-         */
-        vfunc_get_tag(iter: ModelIter, tag: ModelTag): any | null;
-        vfunc_get_uchar(iter: ModelIter, column: number): number;
-        vfunc_get_uint32(iter: ModelIter, column: number): number;
-        vfunc_get_uint64(iter: ModelIter, column: number): number;
-        vfunc_get_value(iter: ModelIter, column: number): GLib.Variant;
-        vfunc_get_value_by_name(iter: ModelIter, column_name: string): GLib.Variant;
-        /**
-         * Get a schema for variant dictionary column previously registered using
-         * dee_model_register_vardict_schema().
-         * @param num_column
-         */
-        vfunc_get_vardict_schema(num_column: number): GLib.HashTable<string, string>;
-        /**
-         * As dee_model_insert(), but intended for language bindings or
-         * situations where you work with models on a meta level and may not have
-         * a priori knowledge of the column schemas of the models. See also
-         * dee_model_build_row().
-         * @param pos The index to insert the row on. The existing row will be pushed down.
-         * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of @self. If any of the variants have               floating references they will be consumed.
-         */
-        vfunc_insert_row(pos: number, row_members: GLib.Variant[]): ModelIter;
-        /**
-         * As dee_model_insert_before(), but intended for language bindings or
-         * situations where you work with models on a meta level and may not have
-         * a priori knowledge of the column schemas of the models. See also
-         * dee_model_build_row().
-         * @param iter An iter pointing to the row before which to insert the new one
-         * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of @self. If any of the variants have floating       references they will be consumed.
-         */
-        vfunc_insert_row_before(iter: ModelIter, row_members: GLib.Variant[]): ModelIter;
-        /**
-         * Inserts a row in `self` according to the sorting specified by `cmp_func`.
-         * If you use this method for insertion you should not use other methods as this
-         * method assumes the model to be already sorted by `cmp_func`.
-         * @param row_members An array of       #GVariants with type signature matching those of the       column schemas of @self. If any of the variants have floating       references they will be consumed.
-         * @param cmp_func Callback used for comparison or rows
-         */
-        vfunc_insert_row_sorted(row_members: GLib.Variant[], cmp_func: CompareRowFunc): ModelIter;
-        /**
-         * Checks if `iter` is the very first iter `self`.
-         * @param iter a #DeeModelIter
-         */
-        vfunc_is_first(iter: ModelIter): boolean;
-        /**
-         * Whether `iter` is the end iter of `self`. Note that the end iter points
-         * right <emphasis>after</emphasis> the last valid row in `self`.
-         * @param iter a #DeeModelIter
-         */
-        vfunc_is_last(iter: ModelIter): boolean;
-        /**
-         * Returns a #DeeModelIter that points to the next position in the model.
-         * @param iter a #DeeModelIter
-         */
-        vfunc_next(iter: ModelIter): ModelIter;
-        /**
-         * Like dee_model_prepend() but intended for language bindings or
-         * situations where you work with models on a meta level and may not have
-         * a priori knowledge of the column schemas of the models. See also
-         * dee_model_build_row().
-         * @param row_members An array of               #GVariants with type signature matching those of               the column schemas of @self. If any of the variants have               floating references they will be consumed.
-         */
-        vfunc_prepend_row(row_members: GLib.Variant[]): ModelIter;
-        /**
-         * Returns a #DeeModelIter that points to the previous position in the model.
-         * @param iter a #DeeModelIter
-         */
-        vfunc_prev(iter: ModelIter): ModelIter;
-        /**
-         * Register a new tag on a #DeeModel. A <emphasis>tag</emphasis> is an extra
-         * value attached to a given row on a model. The tags are invisible to all
-         * that doesn't have the tag handle returned by this method. #DeeModel
-         * implementations must ensure that dee_model_get_tag() is an O(1) operation.
-         *
-         * Tags can be very useful in associating some extra data to a row in a model
-         * and have that automatically synced when the model changes. If you're
-         * writing a tiled view for a model you might want to tag each row with the
-         * tile widget for that row. That way you have very convenient access to the
-         * tile widget given any row in the model.
-         *
-         * The private nature of tags and the fact that you can store arbitrary pointers
-         * and binary data in them also means that they are not serialized if you
-         * utilize a model implementation that exposes the #DeeSerializable interface.
-         */
-        vfunc_register_tag(): ModelTag;
-        /**
-         * Register schema for fields in a model containing column with variant
-         * dictionary schema ('a{sv}').
-         * The keys registered with this function can be later used
-         * with dee_model_build_named_row() function, as well as
-         * dee_model_get_value_by_name(). Note that it is possible to register
-         * the same field name for multiple columns, in which case you need to use
-         * fully-qualified "column_name::field" name in the calls to
-         * dee_model_build_named_row() and dee_model_get_field_schema().
-         * @param num_column
-         * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
-         */
-        vfunc_register_vardict_schema(
-            num_column: number,
-            schemas: { [key: string]: any } | GLib.HashTable<string, string>,
-        ): void;
-        /**
-         * Removes the row at the given position from the model.
-         * @param iter a #DeeModelIter pointing to the row to remove
-         */
-        vfunc_remove(iter: ModelIter): void;
-        vfunc_row_added(iter: ModelIter): void;
-        vfunc_row_changed(iter: ModelIter): void;
-        vfunc_row_removed(iter: ModelIter): void;
-        /**
-         * Set column names used by `self`.
-         * This method must be called exactly once, but only after setting
-         * a schema of the model. Note that some constructors will do this for you.
-         * @param column_names A list of column names terminated by a %NULL
-         */
-        vfunc_set_column_names_full(column_names: string[]): void;
-        /**
-         * Sets all columns in the row `iter` points to, to those found in
-         * `row_members`. The variants in `row_members` must match the types defined in
-         * the model's schema.
-         * @param iter a #DeeModelIter
-         * @param row_members And array of               #GVariant<!-- -->s with type signature matching               those from the model schema. If any of the variants have               floating references these will be consumed
-         */
-        vfunc_set_row(iter: ModelIter, row_members: GLib.Variant[]): void;
-        /**
-         * Set the #GVariant types and the number of columns used by `self`.
-         * This method must be called exactly once before using `self`. Note that
-         * some constructors will do this for you.
-         * @param column_schemas A list of #GVariant type strings terminated by a %NULL
-         */
-        vfunc_set_schema_full(column_schemas: string[]): void;
-        /**
-         * Set a tag on a row in a model. This function is guaranteed to be O(1).
-         * See also dee_model_register_tag().
-         *
-         * If `tag` is already set on this row the existing tag value will be destroyed
-         * with the #GDestroyNotify passed to the dee_model_register_tag().
-         * @param iter The row to set the tag on
-         * @param tag The tag handle for the tag as obtained from dee_model_register_tag()
-         * @param value The value to set for @tag. Note that %NULL represents an unset tag
-         */
-        vfunc_set_tag(iter: ModelIter, tag: ModelTag, value?: any | null): void;
-        /**
-         * Sets the data in `column` for the row `iter` points to, to `value`. The type
-         * of `value` must be convertible to the type of the column.
-         *
-         * When this method call completes the model will emit ::row-changed. You can
-         * edit the model in place without triggering the change signals by calling
-         * dee_model_set_value_silently().
-         * @param iter a #DeeModelIter
-         * @param column column number to set the value
-         * @param value New value for cell. If @value is a floating reference the model         will assume ownership of the variant
-         */
-        vfunc_set_value(iter: ModelIter, column: number, value: GLib.Variant): void;
     }
 
     export const Model: ModelNamespace & {
@@ -9322,6 +9328,43 @@ export namespace Dee {
     };
 
     namespace ResourceManager {
+        /**
+         * Interface for implementing ResourceManager.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Load a resource from persistent storage. The loaded resource will be of the
+             * same GType as when it was stored (provided that the same serialization and
+             * parse functions are registered).
+             *
+             * In case of an error the error will be in the #GFileError domain. Specifically
+             * if there is no resource with the name `resource_name` the error code will
+             * be #G_FILE_ERROR_NOENT.
+             *
+             * Important note: This call may do blocking IO. The resource manager must
+             * guarantee that this call is reasonably fast, like writing the externalized
+             * resource to a file, but not blocking IO over a network socket.
+             * @param resource_name The name of the resource to retrieve
+             */
+            vfunc_load<T = GObject.Object>(resource_name: string): T;
+            /**
+             * Store a resource under a given name. The resource manager must guarantee
+             * that the stored data survives system reboots and that you can recreate a
+             * copy of `resource` by calling dee_resource_manager_load() using the
+             * same `resource_name`.
+             *
+             * Important note: This call may do blocking IO. The resource manager must
+             * guarantee that this call is reasonably fast, like writing the externalized
+             * resource to a file, but not blocking IO over a network socket.
+             * @param resource A #DeeSerializable to store under @resource_name
+             * @param resource_name The name to store the resource under. Will overwrite any                 existing resource with the same name
+             */
+            vfunc_store(resource: Serializable, resource_name: string): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9336,7 +9379,7 @@ export namespace Dee {
          */
         get_default(): ResourceManager;
     }
-    interface ResourceManager extends GObject.Object {
+    interface ResourceManager extends GObject.Object, ResourceManager.Interface {
         // Methods
 
         /**
@@ -9369,37 +9412,6 @@ export namespace Dee {
          * @returns %TRUE on success and %FALSE otherwise. In case of a runtime               error the @error pointer will point to a #GError in the               #DeeResourceError domain.
          */
         store(resource: Serializable, resource_name: string): boolean;
-
-        // Virtual methods
-
-        /**
-         * Load a resource from persistent storage. The loaded resource will be of the
-         * same GType as when it was stored (provided that the same serialization and
-         * parse functions are registered).
-         *
-         * In case of an error the error will be in the #GFileError domain. Specifically
-         * if there is no resource with the name `resource_name` the error code will
-         * be #G_FILE_ERROR_NOENT.
-         *
-         * Important note: This call may do blocking IO. The resource manager must
-         * guarantee that this call is reasonably fast, like writing the externalized
-         * resource to a file, but not blocking IO over a network socket.
-         * @param resource_name The name of the resource to retrieve
-         */
-        vfunc_load<T = GObject.Object>(resource_name: string): T;
-        /**
-         * Store a resource under a given name. The resource manager must guarantee
-         * that the stored data survives system reboots and that you can recreate a
-         * copy of `resource` by calling dee_resource_manager_load() using the
-         * same `resource_name`.
-         *
-         * Important note: This call may do blocking IO. The resource manager must
-         * guarantee that this call is reasonably fast, like writing the externalized
-         * resource to a file, but not blocking IO over a network socket.
-         * @param resource A #DeeSerializable to store under @resource_name
-         * @param resource_name The name to store the resource under. Will overwrite any                 existing resource with the same name
-         */
-        vfunc_store(resource: Serializable, resource_name: string): boolean;
     }
 
     export const ResourceManager: ResourceManagerNamespace & {
@@ -9407,6 +9419,53 @@ export namespace Dee {
     };
 
     namespace ResultSet {
+        /**
+         * Interface for implementing ResultSet.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Get the model associated with a result set
+             */
+            vfunc_get_model(): Model;
+            /**
+             * Get the number of #DeeModelIter<!-- -->s held in a #DeeResultSet.
+             */
+            vfunc_get_n_rows(): number;
+            /**
+             * Check if a call to dee_result_set_next() will succeed.
+             */
+            vfunc_has_next(): boolean;
+            /**
+             * Get the current row from the result set and advance the cursor.
+             * To ensure that calls to this method will succeed you can call
+             * dee_result_set_has_next().
+             *
+             * To retrieve the current row without advancing the cursor call
+             * dee_result_set_peek() in stead of this method.
+             */
+            vfunc_next(): ModelIter;
+            /**
+             * Get the row at the current cursor position.
+             *
+             * To retrieve the current row and advance the cursor position call
+             * dee_result_set_next() in stead of this method.
+             */
+            vfunc_peek(): ModelIter;
+            /**
+             * Set the cursor position. Following calls to dee_result_set_peek()
+             * or dee_result_set_next() will read the row at position `pos`.
+             * @param pos The position to seek to
+             */
+            vfunc_seek(pos: number): void;
+            /**
+             * Get the current position of the cursor.
+             */
+            vfunc_tell(): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9416,7 +9475,7 @@ export namespace Dee {
         $gtype: GObject.GType<ResultSet>;
         prototype: ResultSet;
     }
-    interface ResultSet extends GObject.Object {
+    interface ResultSet extends GObject.Object, ResultSet.Interface {
         // Methods
 
         /**
@@ -9463,47 +9522,6 @@ export namespace Dee {
          * @returns The current position of the cursor
          */
         tell(): number;
-
-        // Virtual methods
-
-        /**
-         * Get the model associated with a result set
-         */
-        vfunc_get_model(): Model;
-        /**
-         * Get the number of #DeeModelIter<!-- -->s held in a #DeeResultSet.
-         */
-        vfunc_get_n_rows(): number;
-        /**
-         * Check if a call to dee_result_set_next() will succeed.
-         */
-        vfunc_has_next(): boolean;
-        /**
-         * Get the current row from the result set and advance the cursor.
-         * To ensure that calls to this method will succeed you can call
-         * dee_result_set_has_next().
-         *
-         * To retrieve the current row without advancing the cursor call
-         * dee_result_set_peek() in stead of this method.
-         */
-        vfunc_next(): ModelIter;
-        /**
-         * Get the row at the current cursor position.
-         *
-         * To retrieve the current row and advance the cursor position call
-         * dee_result_set_next() in stead of this method.
-         */
-        vfunc_peek(): ModelIter;
-        /**
-         * Set the cursor position. Following calls to dee_result_set_peek()
-         * or dee_result_set_next() will read the row at position `pos`.
-         * @param pos The position to seek to
-         */
-        vfunc_seek(pos: number): void;
-        /**
-         * Get the current position of the cursor.
-         */
-        vfunc_tell(): number;
     }
 
     export const ResultSet: ResultSetNamespace & {
@@ -9511,6 +9529,22 @@ export namespace Dee {
     };
 
     namespace Serializable {
+        /**
+         * Interface for implementing Serializable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Build a clean serialized representation of `self`. The signature of the
+             * returned variant is entirely determined by the underlying implementation.
+             * You can recreate a serialized instance by calling dee_serializable_parse()
+             * provided that you know the correct #GType for the serialized instance.
+             */
+            vfunc_serialize(): GLib.Variant;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9552,7 +9586,7 @@ export namespace Dee {
          */
         parse_external<T = GObject.Object>(data: GLib.Variant): T;
     }
-    interface Serializable extends GObject.Object {
+    interface Serializable extends GObject.Object, Serializable.Interface {
         // Methods
 
         /**
@@ -9575,16 +9609,6 @@ export namespace Dee {
          * @returns A reference to a #GVariant with               the serialized data. The variants type signature is entirely               dependent of the underlying implementation. Free using               g_variant_unref().
          */
         serialize(): GLib.Variant;
-
-        // Virtual methods
-
-        /**
-         * Build a clean serialized representation of `self`. The signature of the
-         * returned variant is entirely determined by the underlying implementation.
-         * You can recreate a serialized instance by calling dee_serializable_parse()
-         * provided that you know the correct #GType for the serialized instance.
-         */
-        vfunc_serialize(): GLib.Variant;
     }
 
     export const Serializable: SerializableNamespace & {

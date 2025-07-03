@@ -45898,6 +45898,18 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMEventTarget {
+        /**
+         * Interface for implementing DOMEventTarget.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_add_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
+            vfunc_dispatch_event(event: DOMEvent): boolean;
+            vfunc_remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -45907,7 +45919,7 @@ export namespace WebKit2WebExtension {
         $gtype: GObject.GType<DOMEventTarget>;
         prototype: DOMEventTarget;
     }
-    interface DOMEventTarget extends GObject.Object {
+    interface DOMEventTarget extends GObject.Object, DOMEventTarget.Interface {
         // Methods
 
         add_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
@@ -45931,12 +45943,6 @@ export namespace WebKit2WebExtension {
          * @returns a #gboolean
          */
         remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
-
-        // Virtual methods
-
-        vfunc_add_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
-        vfunc_dispatch_event(event: DOMEvent): boolean;
-        vfunc_remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
     }
 
     export const DOMEventTarget: DOMEventTargetNamespace & {
@@ -45944,6 +45950,16 @@ export namespace WebKit2WebExtension {
     };
 
     namespace DOMNodeFilter {
+        /**
+         * Interface for implementing DOMNodeFilter.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_accept_node(node: DOMNode): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -45953,14 +45969,10 @@ export namespace WebKit2WebExtension {
         $gtype: GObject.GType<DOMNodeFilter>;
         prototype: DOMNodeFilter;
     }
-    interface DOMNodeFilter extends GObject.Object {
+    interface DOMNodeFilter extends GObject.Object, DOMNodeFilter.Interface {
         // Methods
 
         accept_node(node: DOMNode): number;
-
-        // Virtual methods
-
-        vfunc_accept_node(node: DOMNode): number;
     }
 
     export const DOMNodeFilter: DOMNodeFilterNamespace & {
@@ -45968,6 +45980,16 @@ export namespace WebKit2WebExtension {
     };
 
     namespace DOMXPathNSResolver {
+        /**
+         * Interface for implementing DOMXPathNSResolver.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_lookup_namespace_uri(prefix: string): string;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -45977,14 +45999,10 @@ export namespace WebKit2WebExtension {
         $gtype: GObject.GType<DOMXPathNSResolver>;
         prototype: DOMXPathNSResolver;
     }
-    interface DOMXPathNSResolver extends GObject.Object {
+    interface DOMXPathNSResolver extends GObject.Object, DOMXPathNSResolver.Interface {
         // Methods
 
         lookup_namespace_uri(prefix: string): string;
-
-        // Virtual methods
-
-        vfunc_lookup_namespace_uri(prefix: string): string;
     }
 
     export const DOMXPathNSResolver: DOMXPathNSResolverNamespace & {

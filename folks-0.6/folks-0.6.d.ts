@@ -3826,6 +3826,19 @@ export namespace Folks {
     type UrlDetailsIface = typeof UrlDetails;
     type WebServiceDetailsIface = typeof WebServiceDetails;
     namespace AliasDetails {
+        /**
+         * Interface for implementing AliasDetails.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_change_alias(alias: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_change_alias_finish(_res_: Gio.AsyncResult): void;
+            vfunc_get_alias(): string;
+            vfunc_set_alias(value: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3837,7 +3850,7 @@ export namespace Folks {
         $gtype: GObject.GType<AliasDetails>;
         prototype: AliasDetails;
     }
-    interface AliasDetails extends GObject.Object {
+    interface AliasDetails extends GObject.Object, AliasDetails.Interface {
         // Properties
 
         get alias(): string;
@@ -3851,13 +3864,6 @@ export namespace Folks {
         change_alias_finish(_res_: Gio.AsyncResult): void;
         get_alias(): string;
         set_alias(value: string): void;
-
-        // Virtual methods
-
-        vfunc_change_alias(alias: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_alias_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_alias(): string;
-        vfunc_set_alias(value: string): void;
     }
 
     export const AliasDetails: AliasDetailsNamespace & {
@@ -3865,6 +3871,19 @@ export namespace Folks {
     };
 
     namespace AntiLinkable {
+        /**
+         * Interface for implementing AntiLinkable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_change_anti_links(anti_links: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_change_anti_links_finish(_res_: Gio.AsyncResult): void;
+            vfunc_get_anti_links(): Gee.Set;
+            vfunc_set_anti_links(value: Gee.Set): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Persona.ConstructorProps {
@@ -3877,7 +3896,7 @@ export namespace Folks {
         $gtype: GObject.GType<AntiLinkable>;
         prototype: AntiLinkable;
     }
-    interface AntiLinkable extends Persona {
+    interface AntiLinkable extends Persona, AntiLinkable.Interface {
         // Properties
 
         get anti_links(): Gee.Set;
@@ -3920,13 +3939,6 @@ export namespace Folks {
         has_global_anti_link(): boolean;
         get_anti_links(): Gee.Set;
         set_anti_links(value: Gee.Set): void;
-
-        // Virtual methods
-
-        vfunc_change_anti_links(anti_links: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_anti_links_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_anti_links(): Gee.Set;
-        vfunc_set_anti_links(value: Gee.Set): void;
     }
 
     export const AntiLinkable: AntiLinkableNamespace & {
@@ -3934,6 +3946,19 @@ export namespace Folks {
     };
 
     namespace AvatarDetails {
+        /**
+         * Interface for implementing AvatarDetails.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_change_avatar(avatar: Gio.LoadableIcon, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_change_avatar_finish(_res_: Gio.AsyncResult): void;
+            vfunc_get_avatar(): Gio.LoadableIcon;
+            vfunc_set_avatar(value: Gio.LoadableIcon): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3945,7 +3970,7 @@ export namespace Folks {
         $gtype: GObject.GType<AvatarDetails>;
         prototype: AvatarDetails;
     }
-    interface AvatarDetails extends GObject.Object {
+    interface AvatarDetails extends GObject.Object, AvatarDetails.Interface {
         // Properties
 
         get avatar(): Gio.LoadableIcon;
@@ -3962,13 +3987,6 @@ export namespace Folks {
         change_avatar_finish(_res_: Gio.AsyncResult): void;
         get_avatar(): Gio.LoadableIcon;
         set_avatar(value: Gio.LoadableIcon): void;
-
-        // Virtual methods
-
-        vfunc_change_avatar(avatar: Gio.LoadableIcon, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_avatar_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_avatar(): Gio.LoadableIcon;
-        vfunc_set_avatar(value: Gio.LoadableIcon): void;
     }
 
     export const AvatarDetails: AvatarDetailsNamespace & {
@@ -3976,6 +3994,23 @@ export namespace Folks {
     };
 
     namespace BirthdayDetails {
+        /**
+         * Interface for implementing BirthdayDetails.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_change_birthday(birthday: GLib.DateTime, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_change_birthday_finish(_res_: Gio.AsyncResult): void;
+            vfunc_change_calendar_event_id(event_id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_change_calendar_event_id_finish(_res_: Gio.AsyncResult): void;
+            vfunc_get_birthday(): GLib.DateTime;
+            vfunc_set_birthday(value: GLib.DateTime): void;
+            vfunc_get_calendar_event_id(): string;
+            vfunc_set_calendar_event_id(value: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3989,7 +4024,7 @@ export namespace Folks {
         $gtype: GObject.GType<BirthdayDetails>;
         prototype: BirthdayDetails;
     }
-    interface BirthdayDetails extends GObject.Object {
+    interface BirthdayDetails extends GObject.Object, BirthdayDetails.Interface {
         // Properties
 
         get birthday(): GLib.DateTime;
@@ -4019,17 +4054,6 @@ export namespace Folks {
         set_birthday(value: GLib.DateTime): void;
         get_calendar_event_id(): string;
         set_calendar_event_id(value: string): void;
-
-        // Virtual methods
-
-        vfunc_change_birthday(birthday: GLib.DateTime, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_birthday_finish(_res_: Gio.AsyncResult): void;
-        vfunc_change_calendar_event_id(event_id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_calendar_event_id_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_birthday(): GLib.DateTime;
-        vfunc_set_birthday(value: GLib.DateTime): void;
-        vfunc_get_calendar_event_id(): string;
-        vfunc_set_calendar_event_id(value: string): void;
     }
 
     export const BirthdayDetails: BirthdayDetailsNamespace & {
@@ -4037,6 +4061,19 @@ export namespace Folks {
     };
 
     namespace EmailDetails {
+        /**
+         * Interface for implementing EmailDetails.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_change_email_addresses(email_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_change_email_addresses_finish(_res_: Gio.AsyncResult): void;
+            vfunc_get_email_addresses(): Gee.Set;
+            vfunc_set_email_addresses(value: Gee.Set): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4049,7 +4086,7 @@ export namespace Folks {
         $gtype: GObject.GType<EmailDetails>;
         prototype: EmailDetails;
     }
-    interface EmailDetails extends GObject.Object {
+    interface EmailDetails extends GObject.Object, EmailDetails.Interface {
         // Properties
 
         get email_addresses(): Gee.Set;
@@ -4068,13 +4105,6 @@ export namespace Folks {
         change_email_addresses_finish(_res_: Gio.AsyncResult): void;
         get_email_addresses(): Gee.Set;
         set_email_addresses(value: Gee.Set): void;
-
-        // Virtual methods
-
-        vfunc_change_email_addresses(email_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_email_addresses_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_email_addresses(): Gee.Set;
-        vfunc_set_email_addresses(value: Gee.Set): void;
     }
 
     export const EmailDetails: EmailDetailsNamespace & {
@@ -4082,6 +4112,24 @@ export namespace Folks {
     };
 
     namespace ExtendedInfo {
+        /**
+         * Interface for implementing ExtendedInfo.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_extended_field(name: string): ExtendedFieldDetails;
+            vfunc_change_extended_field(
+                name: string,
+                value: ExtendedFieldDetails,
+                _callback_: Gio.AsyncReadyCallback<this>,
+            ): void;
+            vfunc_change_extended_field_finish(_res_: Gio.AsyncResult): void;
+            vfunc_remove_extended_field(name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_remove_extended_field_finish(_res_: Gio.AsyncResult): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4091,7 +4139,7 @@ export namespace Folks {
         $gtype: GObject.GType<ExtendedInfo>;
         prototype: ExtendedInfo;
     }
-    interface ExtendedInfo extends GObject.Object {
+    interface ExtendedInfo extends GObject.Object, ExtendedInfo.Interface {
         // Methods
 
         get_extended_field(name: string): ExtendedFieldDetails;
@@ -4111,18 +4159,6 @@ export namespace Folks {
         remove_extended_field(name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
         remove_extended_field(name: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
         remove_extended_field_finish(_res_: Gio.AsyncResult): void;
-
-        // Virtual methods
-
-        vfunc_get_extended_field(name: string): ExtendedFieldDetails;
-        vfunc_change_extended_field(
-            name: string,
-            value: ExtendedFieldDetails,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
-        vfunc_change_extended_field_finish(_res_: Gio.AsyncResult): void;
-        vfunc_remove_extended_field(name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_remove_extended_field_finish(_res_: Gio.AsyncResult): void;
     }
 
     export const ExtendedInfo: ExtendedInfoNamespace & {
@@ -4130,6 +4166,19 @@ export namespace Folks {
     };
 
     namespace FavouriteDetails {
+        /**
+         * Interface for implementing FavouriteDetails.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_change_is_favourite(is_favourite: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_change_is_favourite_finish(_res_: Gio.AsyncResult): void;
+            vfunc_get_is_favourite(): boolean;
+            vfunc_set_is_favourite(value: boolean): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4142,7 +4191,7 @@ export namespace Folks {
         $gtype: GObject.GType<FavouriteDetails>;
         prototype: FavouriteDetails;
     }
-    interface FavouriteDetails extends GObject.Object {
+    interface FavouriteDetails extends GObject.Object, FavouriteDetails.Interface {
         // Properties
 
         get is_favourite(): boolean;
@@ -4161,13 +4210,6 @@ export namespace Folks {
         change_is_favourite_finish(_res_: Gio.AsyncResult): void;
         get_is_favourite(): boolean;
         set_is_favourite(value: boolean): void;
-
-        // Virtual methods
-
-        vfunc_change_is_favourite(is_favourite: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_is_favourite_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_is_favourite(): boolean;
-        vfunc_set_is_favourite(value: boolean): void;
     }
 
     export const FavouriteDetails: FavouriteDetailsNamespace & {
@@ -4175,6 +4217,19 @@ export namespace Folks {
     };
 
     namespace GenderDetails {
+        /**
+         * Interface for implementing GenderDetails.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_change_gender(gender: Gender, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_change_gender_finish(_res_: Gio.AsyncResult): void;
+            vfunc_get_gender(): Gender;
+            vfunc_set_gender(value: Gender): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4186,7 +4241,7 @@ export namespace Folks {
         $gtype: GObject.GType<GenderDetails>;
         prototype: GenderDetails;
     }
-    interface GenderDetails extends GObject.Object {
+    interface GenderDetails extends GObject.Object, GenderDetails.Interface {
         // Properties
 
         get gender(): Gender;
@@ -4203,13 +4258,6 @@ export namespace Folks {
         change_gender_finish(_res_: Gio.AsyncResult): void;
         get_gender(): Gender;
         set_gender(value: Gender | null): void;
-
-        // Virtual methods
-
-        vfunc_change_gender(gender: Gender, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_gender_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_gender(): Gender;
-        vfunc_set_gender(value: Gender): void;
     }
 
     export const GenderDetails: GenderDetailsNamespace & {
@@ -4217,6 +4265,21 @@ export namespace Folks {
     };
 
     namespace GroupDetails {
+        /**
+         * Interface for implementing GroupDetails.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_change_group(group: string, is_member: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_change_group_finish(_res_: Gio.AsyncResult): void;
+            vfunc_change_groups(groups: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_change_groups_finish(_res_: Gio.AsyncResult): void;
+            vfunc_get_groups(): Gee.Set;
+            vfunc_set_groups(value: Gee.Set): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4228,7 +4291,7 @@ export namespace Folks {
         $gtype: GObject.GType<GroupDetails>;
         prototype: GroupDetails;
     }
-    interface GroupDetails extends GObject.Object {
+    interface GroupDetails extends GObject.Object, GroupDetails.Interface {
         // Properties
 
         get groups(): Gee.Set;
@@ -4250,15 +4313,6 @@ export namespace Folks {
         change_groups_finish(_res_: Gio.AsyncResult): void;
         get_groups(): Gee.Set;
         set_groups(value: Gee.Set): void;
-
-        // Virtual methods
-
-        vfunc_change_group(group: string, is_member: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_group_finish(_res_: Gio.AsyncResult): void;
-        vfunc_change_groups(groups: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_groups_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_groups(): Gee.Set;
-        vfunc_set_groups(value: Gee.Set): void;
     }
 
     export const GroupDetails: GroupDetailsNamespace & {
@@ -4266,6 +4320,19 @@ export namespace Folks {
     };
 
     namespace ImDetails {
+        /**
+         * Interface for implementing ImDetails.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_change_im_addresses(im_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_change_im_addresses_finish(_res_: Gio.AsyncResult): void;
+            vfunc_get_im_addresses(): Gee.MultiMap;
+            vfunc_set_im_addresses(value: Gee.MultiMap): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4280,7 +4347,7 @@ export namespace Folks {
 
         normalise_im_address(im_address: string, protocol: string): string;
     }
-    interface ImDetails extends GObject.Object {
+    interface ImDetails extends GObject.Object, ImDetails.Interface {
         // Properties
 
         get im_addresses(): Gee.MultiMap;
@@ -4299,13 +4366,6 @@ export namespace Folks {
         change_im_addresses_finish(_res_: Gio.AsyncResult): void;
         get_im_addresses(): Gee.MultiMap;
         set_im_addresses(value: Gee.MultiMap): void;
-
-        // Virtual methods
-
-        vfunc_change_im_addresses(im_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_im_addresses_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_im_addresses(): Gee.MultiMap;
-        vfunc_set_im_addresses(value: Gee.MultiMap): void;
     }
 
     export const ImDetails: ImDetailsNamespace & {
@@ -4313,6 +4373,19 @@ export namespace Folks {
     };
 
     namespace InteractionDetails {
+        /**
+         * Interface for implementing InteractionDetails.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_im_interaction_count(): number;
+            vfunc_get_last_im_interaction_datetime(): GLib.DateTime;
+            vfunc_get_call_interaction_count(): number;
+            vfunc_get_last_call_interaction_datetime(): GLib.DateTime;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4331,7 +4404,7 @@ export namespace Folks {
         $gtype: GObject.GType<InteractionDetails>;
         prototype: InteractionDetails;
     }
-    interface InteractionDetails extends GObject.Object {
+    interface InteractionDetails extends GObject.Object, InteractionDetails.Interface {
         // Properties
 
         get im_interaction_count(): number;
@@ -4349,13 +4422,6 @@ export namespace Folks {
         get_last_im_interaction_datetime(): GLib.DateTime;
         get_call_interaction_count(): number;
         get_last_call_interaction_datetime(): GLib.DateTime;
-
-        // Virtual methods
-
-        vfunc_get_im_interaction_count(): number;
-        vfunc_get_last_im_interaction_datetime(): GLib.DateTime;
-        vfunc_get_call_interaction_count(): number;
-        vfunc_get_last_call_interaction_datetime(): GLib.DateTime;
     }
 
     export const InteractionDetails: InteractionDetailsNamespace & {
@@ -4363,6 +4429,19 @@ export namespace Folks {
     };
 
     namespace LocalIdDetails {
+        /**
+         * Interface for implementing LocalIdDetails.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_change_local_ids(local_ids: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_change_local_ids_finish(_res_: Gio.AsyncResult): void;
+            vfunc_get_local_ids(): Gee.Set;
+            vfunc_set_local_ids(value: Gee.Set): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4375,7 +4454,7 @@ export namespace Folks {
         $gtype: GObject.GType<LocalIdDetails>;
         prototype: LocalIdDetails;
     }
-    interface LocalIdDetails extends GObject.Object {
+    interface LocalIdDetails extends GObject.Object, LocalIdDetails.Interface {
         // Properties
 
         get local_ids(): Gee.Set;
@@ -4394,13 +4473,6 @@ export namespace Folks {
         change_local_ids_finish(_res_: Gio.AsyncResult): void;
         get_local_ids(): Gee.Set;
         set_local_ids(value: Gee.Set): void;
-
-        // Virtual methods
-
-        vfunc_change_local_ids(local_ids: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_local_ids_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_local_ids(): Gee.Set;
-        vfunc_set_local_ids(value: Gee.Set): void;
     }
 
     export const LocalIdDetails: LocalIdDetailsNamespace & {
@@ -4408,6 +4480,19 @@ export namespace Folks {
     };
 
     namespace LocationDetails {
+        /**
+         * Interface for implementing LocationDetails.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_change_location(location: Location, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_change_location_finish(_res_: Gio.AsyncResult): void;
+            vfunc_get_location(): Location;
+            vfunc_set_location(value: Location): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4419,7 +4504,7 @@ export namespace Folks {
         $gtype: GObject.GType<LocationDetails>;
         prototype: LocationDetails;
     }
-    interface LocationDetails extends GObject.Object {
+    interface LocationDetails extends GObject.Object, LocationDetails.Interface {
         // Properties
 
         get location(): Location;
@@ -4433,13 +4518,6 @@ export namespace Folks {
         change_location_finish(_res_: Gio.AsyncResult): void;
         get_location(): Location;
         set_location(value: Location): void;
-
-        // Virtual methods
-
-        vfunc_change_location(location: Location, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_location_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_location(): Location;
-        vfunc_set_location(value: Location): void;
     }
 
     export const LocationDetails: LocationDetailsNamespace & {
@@ -4447,6 +4525,27 @@ export namespace Folks {
     };
 
     namespace NameDetails {
+        /**
+         * Interface for implementing NameDetails.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_change_structured_name(name: StructuredName, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_change_structured_name_finish(_res_: Gio.AsyncResult): void;
+            vfunc_change_full_name(full_name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_change_full_name_finish(_res_: Gio.AsyncResult): void;
+            vfunc_change_nickname(nickname: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_change_nickname_finish(_res_: Gio.AsyncResult): void;
+            vfunc_get_structured_name(): StructuredName;
+            vfunc_set_structured_name(value: StructuredName): void;
+            vfunc_get_full_name(): string;
+            vfunc_set_full_name(value: string): void;
+            vfunc_get_nickname(): string;
+            vfunc_set_nickname(value: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4462,7 +4561,7 @@ export namespace Folks {
         $gtype: GObject.GType<NameDetails>;
         prototype: NameDetails;
     }
-    interface NameDetails extends GObject.Object {
+    interface NameDetails extends GObject.Object, NameDetails.Interface {
         // Properties
 
         get structured_name(): StructuredName;
@@ -4499,21 +4598,6 @@ export namespace Folks {
         set_full_name(value: string): void;
         get_nickname(): string;
         set_nickname(value: string): void;
-
-        // Virtual methods
-
-        vfunc_change_structured_name(name: StructuredName, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_structured_name_finish(_res_: Gio.AsyncResult): void;
-        vfunc_change_full_name(full_name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_full_name_finish(_res_: Gio.AsyncResult): void;
-        vfunc_change_nickname(nickname: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_nickname_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_structured_name(): StructuredName;
-        vfunc_set_structured_name(value: StructuredName): void;
-        vfunc_get_full_name(): string;
-        vfunc_set_full_name(value: string): void;
-        vfunc_get_nickname(): string;
-        vfunc_set_nickname(value: string): void;
     }
 
     export const NameDetails: NameDetailsNamespace & {
@@ -4521,6 +4605,19 @@ export namespace Folks {
     };
 
     namespace NoteDetails {
+        /**
+         * Interface for implementing NoteDetails.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_change_notes(notes: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_change_notes_finish(_res_: Gio.AsyncResult): void;
+            vfunc_get_notes(): Gee.Set;
+            vfunc_set_notes(value: Gee.Set): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4532,7 +4629,7 @@ export namespace Folks {
         $gtype: GObject.GType<NoteDetails>;
         prototype: NoteDetails;
     }
-    interface NoteDetails extends GObject.Object {
+    interface NoteDetails extends GObject.Object, NoteDetails.Interface {
         // Properties
 
         get notes(): Gee.Set;
@@ -4546,13 +4643,6 @@ export namespace Folks {
         change_notes_finish(_res_: Gio.AsyncResult): void;
         get_notes(): Gee.Set;
         set_notes(value: Gee.Set): void;
-
-        // Virtual methods
-
-        vfunc_change_notes(notes: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_notes_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_notes(): Gee.Set;
-        vfunc_set_notes(value: Gee.Set): void;
     }
 
     export const NoteDetails: NoteDetailsNamespace & {
@@ -4560,6 +4650,19 @@ export namespace Folks {
     };
 
     namespace PhoneDetails {
+        /**
+         * Interface for implementing PhoneDetails.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_change_phone_numbers(phone_numbers: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_change_phone_numbers_finish(_res_: Gio.AsyncResult): void;
+            vfunc_get_phone_numbers(): Gee.Set;
+            vfunc_set_phone_numbers(value: Gee.Set): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4572,7 +4675,7 @@ export namespace Folks {
         $gtype: GObject.GType<PhoneDetails>;
         prototype: PhoneDetails;
     }
-    interface PhoneDetails extends GObject.Object {
+    interface PhoneDetails extends GObject.Object, PhoneDetails.Interface {
         // Properties
 
         get phone_numbers(): Gee.Set;
@@ -4591,13 +4694,6 @@ export namespace Folks {
         change_phone_numbers_finish(_res_: Gio.AsyncResult): void;
         get_phone_numbers(): Gee.Set;
         set_phone_numbers(value: Gee.Set): void;
-
-        // Virtual methods
-
-        vfunc_change_phone_numbers(phone_numbers: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_phone_numbers_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_phone_numbers(): Gee.Set;
-        vfunc_set_phone_numbers(value: Gee.Set): void;
     }
 
     export const PhoneDetails: PhoneDetailsNamespace & {
@@ -4605,6 +4701,19 @@ export namespace Folks {
     };
 
     namespace PostalAddressDetails {
+        /**
+         * Interface for implementing PostalAddressDetails.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_change_postal_addresses(postal_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_change_postal_addresses_finish(_res_: Gio.AsyncResult): void;
+            vfunc_get_postal_addresses(): Gee.Set;
+            vfunc_set_postal_addresses(value: Gee.Set): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4617,7 +4726,7 @@ export namespace Folks {
         $gtype: GObject.GType<PostalAddressDetails>;
         prototype: PostalAddressDetails;
     }
-    interface PostalAddressDetails extends GObject.Object {
+    interface PostalAddressDetails extends GObject.Object, PostalAddressDetails.Interface {
         // Properties
 
         get postal_addresses(): Gee.Set;
@@ -4636,13 +4745,6 @@ export namespace Folks {
         change_postal_addresses_finish(_res_: Gio.AsyncResult): void;
         get_postal_addresses(): Gee.Set;
         set_postal_addresses(value: Gee.Set): void;
-
-        // Virtual methods
-
-        vfunc_change_postal_addresses(postal_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_postal_addresses_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_postal_addresses(): Gee.Set;
-        vfunc_set_postal_addresses(value: Gee.Set): void;
     }
 
     export const PostalAddressDetails: PostalAddressDetailsNamespace & {
@@ -4650,6 +4752,23 @@ export namespace Folks {
     };
 
     namespace PresenceDetails {
+        /**
+         * Interface for implementing PresenceDetails.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_presence_type(): PresenceType;
+            vfunc_set_presence_type(value: PresenceType): void;
+            vfunc_get_presence_message(): string;
+            vfunc_set_presence_message(value: string): void;
+            vfunc_get_client_types(): string[];
+            vfunc_set_client_types(value: string[]): void;
+            vfunc_get_presence_status(): string;
+            vfunc_set_presence_status(value: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4671,7 +4790,7 @@ export namespace Folks {
         get_default_message_from_type(type: PresenceType): string;
         typecmp(type_a: PresenceType, type_b: PresenceType): number;
     }
-    interface PresenceDetails extends GObject.Object {
+    interface PresenceDetails extends GObject.Object, PresenceDetails.Interface {
         // Properties
 
         get presence_type(): PresenceType;
@@ -4702,17 +4821,6 @@ export namespace Folks {
         set_client_types(value: string[]): void;
         get_presence_status(): string;
         set_presence_status(value: string): void;
-
-        // Virtual methods
-
-        vfunc_get_presence_type(): PresenceType;
-        vfunc_set_presence_type(value: PresenceType): void;
-        vfunc_get_presence_message(): string;
-        vfunc_set_presence_message(value: string): void;
-        vfunc_get_client_types(): string[];
-        vfunc_set_client_types(value: string[]): void;
-        vfunc_get_presence_status(): string;
-        vfunc_set_presence_status(value: string): void;
     }
 
     export const PresenceDetails: PresenceDetailsNamespace & {
@@ -4720,6 +4828,19 @@ export namespace Folks {
     };
 
     namespace RoleDetails {
+        /**
+         * Interface for implementing RoleDetails.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_change_roles(roles: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_change_roles_finish(_res_: Gio.AsyncResult): void;
+            vfunc_get_roles(): Gee.Set;
+            vfunc_set_roles(value: Gee.Set): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4731,7 +4852,7 @@ export namespace Folks {
         $gtype: GObject.GType<RoleDetails>;
         prototype: RoleDetails;
     }
-    interface RoleDetails extends GObject.Object {
+    interface RoleDetails extends GObject.Object, RoleDetails.Interface {
         // Properties
 
         get roles(): Gee.Set;
@@ -4745,13 +4866,6 @@ export namespace Folks {
         change_roles_finish(_res_: Gio.AsyncResult): void;
         get_roles(): Gee.Set;
         set_roles(value: Gee.Set): void;
-
-        // Virtual methods
-
-        vfunc_change_roles(roles: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_roles_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_roles(): Gee.Set;
-        vfunc_set_roles(value: Gee.Set): void;
     }
 
     export const RoleDetails: RoleDetailsNamespace & {
@@ -4759,6 +4873,19 @@ export namespace Folks {
     };
 
     namespace UrlDetails {
+        /**
+         * Interface for implementing UrlDetails.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+            vfunc_change_urls_finish(_res_: Gio.AsyncResult): void;
+            vfunc_get_urls(): Gee.Set;
+            vfunc_set_urls(value: Gee.Set): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4770,7 +4897,7 @@ export namespace Folks {
         $gtype: GObject.GType<UrlDetails>;
         prototype: UrlDetails;
     }
-    interface UrlDetails extends GObject.Object {
+    interface UrlDetails extends GObject.Object, UrlDetails.Interface {
         // Properties
 
         get urls(): Gee.Set;
@@ -4784,13 +4911,6 @@ export namespace Folks {
         change_urls_finish(_res_: Gio.AsyncResult): void;
         get_urls(): Gee.Set;
         set_urls(value: Gee.Set): void;
-
-        // Virtual methods
-
-        vfunc_change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_urls_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_urls(): Gee.Set;
-        vfunc_set_urls(value: Gee.Set): void;
     }
 
     export const UrlDetails: UrlDetailsNamespace & {
@@ -4798,6 +4918,22 @@ export namespace Folks {
     };
 
     namespace WebServiceDetails {
+        /**
+         * Interface for implementing WebServiceDetails.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_change_web_service_addresses(
+                web_service_addresses: Gee.MultiMap,
+                _callback_: Gio.AsyncReadyCallback<this>,
+            ): void;
+            vfunc_change_web_service_addresses_finish(_res_: Gio.AsyncResult): void;
+            vfunc_get_web_service_addresses(): Gee.MultiMap;
+            vfunc_set_web_service_addresses(value: Gee.MultiMap): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4810,7 +4946,7 @@ export namespace Folks {
         $gtype: GObject.GType<WebServiceDetails>;
         prototype: WebServiceDetails;
     }
-    interface WebServiceDetails extends GObject.Object {
+    interface WebServiceDetails extends GObject.Object, WebServiceDetails.Interface {
         // Properties
 
         get web_service_addresses(): Gee.MultiMap;
@@ -4832,16 +4968,6 @@ export namespace Folks {
         change_web_service_addresses_finish(_res_: Gio.AsyncResult): void;
         get_web_service_addresses(): Gee.MultiMap;
         set_web_service_addresses(value: Gee.MultiMap): void;
-
-        // Virtual methods
-
-        vfunc_change_web_service_addresses(
-            web_service_addresses: Gee.MultiMap,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
-        vfunc_change_web_service_addresses_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_web_service_addresses(): Gee.MultiMap;
-        vfunc_set_web_service_addresses(value: Gee.MultiMap): void;
     }
 
     export const WebServiceDetails: WebServiceDetailsNamespace & {

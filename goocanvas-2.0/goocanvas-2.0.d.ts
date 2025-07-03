@@ -24918,6 +24918,272 @@ export namespace GooCanvas {
     }
 
     namespace CanvasItem {
+        /**
+         * Interface for implementing CanvasItem.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Adds a child item to a container item at the given stack position.
+             * @param child the item to add.
+             * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
+             */
+            vfunc_add_child(child: CanvasItem, position: number): void;
+            /**
+             * This function is only intended to be used when implementing new canvas
+             * items, specifically layout items such as #GooCanvasTable.
+             *
+             * It allocates an area to a child #GooCanvasItem.
+             *
+             * Note that the parent layout item will use a transform to move each of its
+             * children for the layout, so there is no need for the child item to
+             * reposition itself. It only needs to recalculate its device bounds.
+             *
+             * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
+             * of the child item's allocated position from its requested position are
+             * provided. Simple items can just add these to their bounds.
+             * @param cr a cairo context.
+             * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
+             * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
+             * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
+             * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
+             */
+            vfunc_allocate_area(
+                cr: cairo.Context,
+                requested_area: CanvasBounds,
+                allocated_area: CanvasBounds,
+                x_offset: number,
+                y_offset: number,
+            ): void;
+            vfunc_animation_finished(stopped: boolean): void;
+            vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+            vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+            vfunc_child_notify(pspec: GObject.ParamSpec): void;
+            vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+            vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+            vfunc_focus_out_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+            /**
+             * Gets the bounds of the item.
+             *
+             * Note that the bounds includes the entire fill and stroke extents of the
+             * item, whether they are painted or not.
+             */
+            vfunc_get_bounds(): CanvasBounds;
+            /**
+             * Returns the #GooCanvas containing the given #GooCanvasItem.
+             */
+            vfunc_get_canvas(): Canvas;
+            /**
+             * Gets the child item at the given stack position.
+             * @param child_num the position of a child in the container's stack.
+             */
+            vfunc_get_child(child_num: number): CanvasItem;
+            vfunc_get_child_property(
+                child: CanvasItem,
+                property_id: number,
+                value: GObject.Value | any,
+                pspec: GObject.ParamSpec,
+            ): void;
+            /**
+             * Returns %TRUE if the item is static. Static items do not move or change
+             * size when the canvas is scrolled or the scale changes.
+             */
+            vfunc_get_is_static(): boolean;
+            /**
+             * This function is only intended to be used when implementing new canvas
+             * items, specifically container items such as #GooCanvasGroup.
+             *
+             * It gets the items at the given point.
+             * @param x the x coordinate of the point.
+             * @param y the y coordinate of the point.
+             * @param cr a cairo contect.
+             * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
+             * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
+             * @param found_items the list of items found  so far.
+             */
+            vfunc_get_items_at(
+                x: number,
+                y: number,
+                cr: cairo.Context,
+                is_pointer_event: boolean,
+                parent_is_visible: boolean,
+                found_items: CanvasItem[],
+            ): CanvasItem[];
+            /**
+             * Gets the model of the given canvas item.
+             */
+            vfunc_get_model(): CanvasItemModel;
+            /**
+             * Gets the number of children of the container.
+             */
+            vfunc_get_n_children(): number;
+            /**
+             * Gets the parent of the given item.
+             */
+            vfunc_get_parent(): CanvasItem;
+            /**
+             * This function is only intended to be used when implementing new canvas
+             * items, specifically layout items such as #GooCanvasTable.
+             *
+             * It gets the requested area of a child item.
+             * @param cr a cairo context.
+             * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
+             */
+            vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
+            /**
+             * This function is only intended to be used when implementing new canvas
+             * items, specifically layout items such as #GooCanvasTable.
+             *
+             * It gets the requested area of a child item, assuming it is allocated the
+             * given width. This is useful for text items whose requested height may change
+             * depending on the allocated width.
+             * @param cr a cairo context.
+             * @param width the allocated width.
+             * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
+             */
+            vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
+            /**
+             * This function is only intended to be used when implementing new canvas
+             * items, specifically layout items such as #GooCanvasTable.
+             *
+             * It gets the requested height of a child item, assuming it is allocated the
+             * given width. This is useful for text items whose requested height may change
+             * depending on the allocated width.
+             * @param cr a cairo context.
+             * @param width the width that the item may be allocated.
+             */
+            vfunc_get_requested_height(cr: cairo.Context, width: number): number;
+            /**
+             * Gets the item's style. If the item doesn't have its own style it will return
+             * its parent's style.
+             */
+            vfunc_get_style(): CanvasStyle;
+            /**
+             * Gets the transformation matrix of an item.
+             */
+            vfunc_get_transform(): [boolean, cairo.Matrix];
+            /**
+             * Gets the transformation matrix of an item combined with any special
+             * transform needed for the given child. These special transforms are used
+             * by layout items such as #GooCanvasTable.
+             * @param child a child of @item.
+             */
+            vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
+            vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean;
+            /**
+             * Checks if the item is visible.
+             *
+             * This entails checking the item's own visibility setting, as well as those
+             * of its ancestors.
+             *
+             * Note that the item may be scrolled off the screen and so may not
+             * be actually visible to the user.
+             */
+            vfunc_is_visible(): boolean;
+            vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+            vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+            vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+            vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean;
+            /**
+             * Moves a child item to a new stack position within the container.
+             * @param old_position the current position of the child item.
+             * @param new_position the new position of the child item.
+             */
+            vfunc_move_child(old_position: number, new_position: number): void;
+            /**
+             * This function is only intended to be used when implementing new canvas
+             * items, specifically container items such as #GooCanvasGroup.
+             *
+             * It paints the item and all children if they intersect the given bounds.
+             *
+             * Note that the `scale` argument may be different to the current scale in the
+             * #GooCanvasItem, e.g. when the canvas is being printed.
+             * @param cr a cairo context.
+             * @param bounds the bounds that need to be repainted, in device space.
+             * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
+             */
+            vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
+            vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
+            /**
+             * Removes the child item at the given position.
+             * @param child_num the position of the child item to remove.
+             */
+            vfunc_remove_child(child_num: number): void;
+            /**
+             * This function is only intended to be used when implementing new canvas
+             * items.
+             *
+             * It requests that an update of the item is scheduled. It will be performed
+             * as soon as the application is idle, and before the canvas is redrawn.
+             */
+            vfunc_request_update(): void;
+            vfunc_scroll_event(target: CanvasItem, event: Gdk.EventScroll): boolean;
+            /**
+             * This function is only intended to be used when implementing new canvas
+             * items, specifically container items such as #GooCanvasGroup.
+             *
+             * It sets the canvas of the item.
+             * @param canvas a #GooCanvas
+             */
+            vfunc_set_canvas(canvas: Canvas): void;
+            vfunc_set_child_property(
+                child: CanvasItem,
+                property_id: number,
+                value: GObject.Value | any,
+                pspec: GObject.ParamSpec,
+            ): void;
+            /**
+             * Notifies the item that it is static. Static items do not move or change
+             * size when the canvas is scrolled or the scale changes.
+             *
+             * Container items such as #GooCanvasGroup should call this function when
+             * children are added, to notify children whether they are static or not.
+             * Containers should also pass on any changes in their own status to children.
+             * @param is_static if the item is static.
+             */
+            vfunc_set_is_static(is_static: boolean): void;
+            /**
+             * Sets the model of the given canvas item.
+             * @param model a #GooCanvasItemModel.
+             */
+            vfunc_set_model(model: CanvasItemModel): void;
+            /**
+             * This function is only intended to be used when implementing new canvas
+             * items (specifically container items such as #GooCanvasGroup).
+             * It sets the parent of the child item.
+             *
+             * <note><para>
+             * This function cannot be used to add an item to a group
+             * or to change the parent of an item.
+             * To do that use the #GooCanvasItem:parent property.
+             * </para></note>
+             * @param parent the new parent item.
+             */
+            vfunc_set_parent(parent: CanvasItem): void;
+            /**
+             * Sets the item's style, by copying the properties from the given style.
+             * @param style a style.
+             */
+            vfunc_set_style(style: CanvasStyle): void;
+            /**
+             * Sets the transformation matrix of an item.
+             * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
+             */
+            vfunc_set_transform(transform?: cairo.Matrix | null): void;
+            /**
+             * This function is only intended to be used when implementing new canvas
+             * items, specifically container items such as #GooCanvasGroup.
+             *
+             * Updates the item, if needed, and any children.
+             * @param entire_tree if the entire subtree should be updated.
+             * @param cr a cairo context.
+             * @param bounds a #GooCanvasBounds to return the new bounds in.
+             */
+            vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -24972,7 +25238,7 @@ export namespace GooCanvas {
          */
         class_list_child_properties(iclass: typeof GObject.Object): GObject.ParamSpec[];
     }
-    interface CanvasItem extends GObject.Object {
+    interface CanvasItem extends GObject.Object, CanvasItem.Interface {
         // Properties
 
         get can_focus(): boolean;
@@ -25384,266 +25650,6 @@ export namespace GooCanvas {
          * @param bounds a #GooCanvasBounds to return the new bounds in.
          */
         update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
-
-        // Virtual methods
-
-        /**
-         * Adds a child item to a container item at the given stack position.
-         * @param child the item to add.
-         * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
-         */
-        vfunc_add_child(child: CanvasItem, position: number): void;
-        /**
-         * This function is only intended to be used when implementing new canvas
-         * items, specifically layout items such as #GooCanvasTable.
-         *
-         * It allocates an area to a child #GooCanvasItem.
-         *
-         * Note that the parent layout item will use a transform to move each of its
-         * children for the layout, so there is no need for the child item to
-         * reposition itself. It only needs to recalculate its device bounds.
-         *
-         * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
-         * of the child item's allocated position from its requested position are
-         * provided. Simple items can just add these to their bounds.
-         * @param cr a cairo context.
-         * @param requested_area the area that the item originally requested, in the  parent's coordinate space.
-         * @param allocated_area the area that the item has been allocated, in the parent's  coordinate space.
-         * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
-         * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
-         */
-        vfunc_allocate_area(
-            cr: cairo.Context,
-            requested_area: CanvasBounds,
-            allocated_area: CanvasBounds,
-            x_offset: number,
-            y_offset: number,
-        ): void;
-        vfunc_animation_finished(stopped: boolean): void;
-        vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
-        vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
-        vfunc_child_notify(pspec: GObject.ParamSpec): void;
-        vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
-        vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
-        vfunc_focus_out_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
-        /**
-         * Gets the bounds of the item.
-         *
-         * Note that the bounds includes the entire fill and stroke extents of the
-         * item, whether they are painted or not.
-         */
-        vfunc_get_bounds(): CanvasBounds;
-        /**
-         * Returns the #GooCanvas containing the given #GooCanvasItem.
-         */
-        vfunc_get_canvas(): Canvas;
-        /**
-         * Gets the child item at the given stack position.
-         * @param child_num the position of a child in the container's stack.
-         */
-        vfunc_get_child(child_num: number): CanvasItem;
-        vfunc_get_child_property(
-            child: CanvasItem,
-            property_id: number,
-            value: GObject.Value | any,
-            pspec: GObject.ParamSpec,
-        ): void;
-        /**
-         * Returns %TRUE if the item is static. Static items do not move or change
-         * size when the canvas is scrolled or the scale changes.
-         */
-        vfunc_get_is_static(): boolean;
-        /**
-         * This function is only intended to be used when implementing new canvas
-         * items, specifically container items such as #GooCanvasGroup.
-         *
-         * It gets the items at the given point.
-         * @param x the x coordinate of the point.
-         * @param y the y coordinate of the point.
-         * @param cr a cairo contect.
-         * @param is_pointer_event %TRUE if the "pointer-events" properties of items should  be used to determine which parts of the item are tested.
-         * @param parent_is_visible %TRUE if the parent item is visible (which  implies that all ancestors are also visible).
-         * @param found_items the list of items found  so far.
-         */
-        vfunc_get_items_at(
-            x: number,
-            y: number,
-            cr: cairo.Context,
-            is_pointer_event: boolean,
-            parent_is_visible: boolean,
-            found_items: CanvasItem[],
-        ): CanvasItem[];
-        /**
-         * Gets the model of the given canvas item.
-         */
-        vfunc_get_model(): CanvasItemModel;
-        /**
-         * Gets the number of children of the container.
-         */
-        vfunc_get_n_children(): number;
-        /**
-         * Gets the parent of the given item.
-         */
-        vfunc_get_parent(): CanvasItem;
-        /**
-         * This function is only intended to be used when implementing new canvas
-         * items, specifically layout items such as #GooCanvasTable.
-         *
-         * It gets the requested area of a child item.
-         * @param cr a cairo context.
-         * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space.
-         */
-        vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
-        /**
-         * This function is only intended to be used when implementing new canvas
-         * items, specifically layout items such as #GooCanvasTable.
-         *
-         * It gets the requested area of a child item, assuming it is allocated the
-         * given width. This is useful for text items whose requested height may change
-         * depending on the allocated width.
-         * @param cr a cairo context.
-         * @param width the allocated width.
-         * @param requested_area a #GooCanvasBounds to return the requested area in, in the  parent's coordinate space. If %FALSE is returned, this is undefined.
-         */
-        vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
-        /**
-         * This function is only intended to be used when implementing new canvas
-         * items, specifically layout items such as #GooCanvasTable.
-         *
-         * It gets the requested height of a child item, assuming it is allocated the
-         * given width. This is useful for text items whose requested height may change
-         * depending on the allocated width.
-         * @param cr a cairo context.
-         * @param width the width that the item may be allocated.
-         */
-        vfunc_get_requested_height(cr: cairo.Context, width: number): number;
-        /**
-         * Gets the item's style. If the item doesn't have its own style it will return
-         * its parent's style.
-         */
-        vfunc_get_style(): CanvasStyle;
-        /**
-         * Gets the transformation matrix of an item.
-         */
-        vfunc_get_transform(): [boolean, cairo.Matrix];
-        /**
-         * Gets the transformation matrix of an item combined with any special
-         * transform needed for the given child. These special transforms are used
-         * by layout items such as #GooCanvasTable.
-         * @param child a child of @item.
-         */
-        vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
-        vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean;
-        /**
-         * Checks if the item is visible.
-         *
-         * This entails checking the item's own visibility setting, as well as those
-         * of its ancestors.
-         *
-         * Note that the item may be scrolled off the screen and so may not
-         * be actually visible to the user.
-         */
-        vfunc_is_visible(): boolean;
-        vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
-        vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
-        vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
-        vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean;
-        /**
-         * Moves a child item to a new stack position within the container.
-         * @param old_position the current position of the child item.
-         * @param new_position the new position of the child item.
-         */
-        vfunc_move_child(old_position: number, new_position: number): void;
-        /**
-         * This function is only intended to be used when implementing new canvas
-         * items, specifically container items such as #GooCanvasGroup.
-         *
-         * It paints the item and all children if they intersect the given bounds.
-         *
-         * Note that the `scale` argument may be different to the current scale in the
-         * #GooCanvasItem, e.g. when the canvas is being printed.
-         * @param cr a cairo context.
-         * @param bounds the bounds that need to be repainted, in device space.
-         * @param scale the scale to use to determine whether an item should be painted.  See #GooCanvasItem:visibility-threshold.
-         */
-        vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
-        vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
-        /**
-         * Removes the child item at the given position.
-         * @param child_num the position of the child item to remove.
-         */
-        vfunc_remove_child(child_num: number): void;
-        /**
-         * This function is only intended to be used when implementing new canvas
-         * items.
-         *
-         * It requests that an update of the item is scheduled. It will be performed
-         * as soon as the application is idle, and before the canvas is redrawn.
-         */
-        vfunc_request_update(): void;
-        vfunc_scroll_event(target: CanvasItem, event: Gdk.EventScroll): boolean;
-        /**
-         * This function is only intended to be used when implementing new canvas
-         * items, specifically container items such as #GooCanvasGroup.
-         *
-         * It sets the canvas of the item.
-         * @param canvas a #GooCanvas
-         */
-        vfunc_set_canvas(canvas: Canvas): void;
-        vfunc_set_child_property(
-            child: CanvasItem,
-            property_id: number,
-            value: GObject.Value | any,
-            pspec: GObject.ParamSpec,
-        ): void;
-        /**
-         * Notifies the item that it is static. Static items do not move or change
-         * size when the canvas is scrolled or the scale changes.
-         *
-         * Container items such as #GooCanvasGroup should call this function when
-         * children are added, to notify children whether they are static or not.
-         * Containers should also pass on any changes in their own status to children.
-         * @param is_static if the item is static.
-         */
-        vfunc_set_is_static(is_static: boolean): void;
-        /**
-         * Sets the model of the given canvas item.
-         * @param model a #GooCanvasItemModel.
-         */
-        vfunc_set_model(model: CanvasItemModel): void;
-        /**
-         * This function is only intended to be used when implementing new canvas
-         * items (specifically container items such as #GooCanvasGroup).
-         * It sets the parent of the child item.
-         *
-         * <note><para>
-         * This function cannot be used to add an item to a group
-         * or to change the parent of an item.
-         * To do that use the #GooCanvasItem:parent property.
-         * </para></note>
-         * @param parent the new parent item.
-         */
-        vfunc_set_parent(parent: CanvasItem): void;
-        /**
-         * Sets the item's style, by copying the properties from the given style.
-         * @param style a style.
-         */
-        vfunc_set_style(style: CanvasStyle): void;
-        /**
-         * Sets the transformation matrix of an item.
-         * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
-         */
-        vfunc_set_transform(transform?: cairo.Matrix | null): void;
-        /**
-         * This function is only intended to be used when implementing new canvas
-         * items, specifically container items such as #GooCanvasGroup.
-         *
-         * Updates the item, if needed, and any children.
-         * @param entire_tree if the entire subtree should be updated.
-         * @param cr a cairo context.
-         * @param bounds a #GooCanvasBounds to return the new bounds in.
-         */
-        vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
     }
 
     export const CanvasItem: CanvasItemNamespace & {
@@ -25651,6 +25657,96 @@ export namespace GooCanvas {
     };
 
     namespace CanvasItemModel {
+        /**
+         * Interface for implementing CanvasItemModel.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Adds a child at the given stack position.
+             * @param child the child to add.
+             * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
+             */
+            vfunc_add_child(child: CanvasItemModel, position: number): void;
+            vfunc_animation_finished(stopped: boolean): void;
+            vfunc_changed(recompute_bounds: boolean): void;
+            vfunc_child_added(child_num: number): void;
+            vfunc_child_moved(old_child_num: number, new_child_num: number): void;
+            vfunc_child_notify(pspec: GObject.ParamSpec): void;
+            vfunc_child_removed(child_num: number): void;
+            /**
+             * Gets the child at the given stack position.
+             * @param child_num the position of a child in the container's stack.
+             */
+            vfunc_get_child(child_num: number): CanvasItemModel;
+            vfunc_get_child_property(
+                child: CanvasItemModel,
+                property_id: number,
+                value: GObject.Value | any,
+                pspec: GObject.ParamSpec,
+            ): void;
+            /**
+             * Gets the number of children of the container.
+             */
+            vfunc_get_n_children(): number;
+            /**
+             * Gets the parent of the given model.
+             */
+            vfunc_get_parent(): CanvasItemModel;
+            /**
+             * Gets the model's style. If the model doesn't have its own style it will
+             * return its parent's style.
+             */
+            vfunc_get_style(): CanvasStyle;
+            /**
+             * Gets the transformation matrix of an item model.
+             * @param transform the place to store the transform.
+             */
+            vfunc_get_transform(transform: cairo.Matrix): boolean;
+            /**
+             * Moves a child to a new stack position.
+             * @param old_position the current position of the child.
+             * @param new_position the new position of the child.
+             */
+            vfunc_move_child(old_position: number, new_position: number): void;
+            /**
+             * Removes the child at the given position.
+             * @param child_num the position of the child to remove.
+             */
+            vfunc_remove_child(child_num: number): void;
+            vfunc_set_child_property(
+                child: CanvasItemModel,
+                property_id: number,
+                value: GObject.Value | any,
+                pspec: GObject.ParamSpec,
+            ): void;
+            /**
+             * This function is only intended to be used when implementing new canvas
+             * item models (specifically container models such as #GooCanvasGroupModel).
+             * It sets the parent of the child model.
+             *
+             * <note><para>
+             * This function cannot be used to add a model to a group
+             * or to change the parent of a model.
+             * To do that use the #GooCanvasItemModel:parent property.
+             * </para></note>
+             * @param parent the new parent item model.
+             */
+            vfunc_set_parent(parent: CanvasItemModel): void;
+            /**
+             * Sets the model's style, by copying the properties from the given style.
+             * @param style a style.
+             */
+            vfunc_set_style(style: CanvasStyle): void;
+            /**
+             * Sets the transformation matrix of an item model.
+             * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
+             */
+            vfunc_set_transform(transform?: cairo.Matrix | null): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -25708,7 +25804,7 @@ export namespace GooCanvas {
          */
         class_list_child_properties(mclass: typeof GObject.Object): GObject.ParamSpec[];
     }
-    interface CanvasItemModel extends GObject.Object {
+    interface CanvasItemModel extends GObject.Object, CanvasItemModel.Interface {
         // Properties
 
         get can_focus(): boolean;
@@ -25932,90 +26028,6 @@ export namespace GooCanvas {
          * @param ty the amount to move the origin in the vertical direction.
          */
         translate(tx: number, ty: number): void;
-
-        // Virtual methods
-
-        /**
-         * Adds a child at the given stack position.
-         * @param child the child to add.
-         * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
-         */
-        vfunc_add_child(child: CanvasItemModel, position: number): void;
-        vfunc_animation_finished(stopped: boolean): void;
-        vfunc_changed(recompute_bounds: boolean): void;
-        vfunc_child_added(child_num: number): void;
-        vfunc_child_moved(old_child_num: number, new_child_num: number): void;
-        vfunc_child_notify(pspec: GObject.ParamSpec): void;
-        vfunc_child_removed(child_num: number): void;
-        /**
-         * Gets the child at the given stack position.
-         * @param child_num the position of a child in the container's stack.
-         */
-        vfunc_get_child(child_num: number): CanvasItemModel;
-        vfunc_get_child_property(
-            child: CanvasItemModel,
-            property_id: number,
-            value: GObject.Value | any,
-            pspec: GObject.ParamSpec,
-        ): void;
-        /**
-         * Gets the number of children of the container.
-         */
-        vfunc_get_n_children(): number;
-        /**
-         * Gets the parent of the given model.
-         */
-        vfunc_get_parent(): CanvasItemModel;
-        /**
-         * Gets the model's style. If the model doesn't have its own style it will
-         * return its parent's style.
-         */
-        vfunc_get_style(): CanvasStyle;
-        /**
-         * Gets the transformation matrix of an item model.
-         * @param transform the place to store the transform.
-         */
-        vfunc_get_transform(transform: cairo.Matrix): boolean;
-        /**
-         * Moves a child to a new stack position.
-         * @param old_position the current position of the child.
-         * @param new_position the new position of the child.
-         */
-        vfunc_move_child(old_position: number, new_position: number): void;
-        /**
-         * Removes the child at the given position.
-         * @param child_num the position of the child to remove.
-         */
-        vfunc_remove_child(child_num: number): void;
-        vfunc_set_child_property(
-            child: CanvasItemModel,
-            property_id: number,
-            value: GObject.Value | any,
-            pspec: GObject.ParamSpec,
-        ): void;
-        /**
-         * This function is only intended to be used when implementing new canvas
-         * item models (specifically container models such as #GooCanvasGroupModel).
-         * It sets the parent of the child model.
-         *
-         * <note><para>
-         * This function cannot be used to add a model to a group
-         * or to change the parent of a model.
-         * To do that use the #GooCanvasItemModel:parent property.
-         * </para></note>
-         * @param parent the new parent item model.
-         */
-        vfunc_set_parent(parent: CanvasItemModel): void;
-        /**
-         * Sets the model's style, by copying the properties from the given style.
-         * @param style a style.
-         */
-        vfunc_set_style(style: CanvasStyle): void;
-        /**
-         * Sets the transformation matrix of an item model.
-         * @param transform the new transformation matrix, or %NULL to reset the  transformation to the identity matrix.
-         */
-        vfunc_set_transform(transform?: cairo.Matrix | null): void;
     }
 
     export const CanvasItemModel: CanvasItemModelNamespace & {

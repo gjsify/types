@@ -24,6 +24,16 @@ export namespace GstBadAllocators {
     function phys_memory_get_phys_addr(mem: Gst.Memory): never;
     type PhysMemoryAllocatorInterface = typeof PhysMemoryAllocator;
     namespace PhysMemoryAllocator {
+        /**
+         * Interface for implementing PhysMemoryAllocator.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_phys_addr(mem: Gst.Memory): never;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
@@ -33,11 +43,7 @@ export namespace GstBadAllocators {
         $gtype: GObject.GType<PhysMemoryAllocator>;
         prototype: PhysMemoryAllocator;
     }
-    interface PhysMemoryAllocator extends Gst.Allocator {
-        // Virtual methods
-
-        vfunc_get_phys_addr(mem: Gst.Memory): never;
-    }
+    interface PhysMemoryAllocator extends Gst.Allocator, PhysMemoryAllocator.Interface {}
 
     export const PhysMemoryAllocator: PhysMemoryAllocatorNamespace & {
         new (): PhysMemoryAllocator; // This allows `obj instanceof PhysMemoryAllocator`

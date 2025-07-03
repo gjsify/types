@@ -1554,6 +1554,21 @@ export namespace DMAP {
     }
 
     namespace ContainerDb {
+        /**
+         * Interface for implementing ContainerDb.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Add a record to the database.
+             * @param record A record.
+             */
+            vfunc_add(record: ContainerRecord): void;
+            vfunc_count(): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1563,7 +1578,7 @@ export namespace DMAP {
         $gtype: GObject.GType<ContainerDb>;
         prototype: ContainerDb;
     }
-    interface ContainerDb extends GObject.Object {
+    interface ContainerDb extends GObject.Object, ContainerDb.Interface {
         // Methods
 
         /**
@@ -1572,15 +1587,6 @@ export namespace DMAP {
          */
         add(record: ContainerRecord): void;
         count(): number;
-
-        // Virtual methods
-
-        /**
-         * Add a record to the database.
-         * @param record A record.
-         */
-        vfunc_add(record: ContainerRecord): void;
-        vfunc_count(): number;
     }
 
     export const ContainerDb: ContainerDbNamespace & {
@@ -1588,6 +1594,24 @@ export namespace DMAP {
     };
 
     namespace ContainerRecord {
+        /**
+         * Interface for implementing ContainerRecord.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Add a record to the database. It is assumed that the record is placed
+             * directly into the database (not copied) and not freed.
+             * @param record A DMAPRecord.
+             * @param id The record's ID.
+             */
+            vfunc_add_entry(record: Record, id: number): void;
+            vfunc_get_entry_count(): number;
+            vfunc_get_id(): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1599,7 +1623,7 @@ export namespace DMAP {
         $gtype: GObject.GType<ContainerRecord>;
         prototype: ContainerRecord;
     }
-    interface ContainerRecord extends GObject.Object {
+    interface ContainerRecord extends GObject.Object, ContainerRecord.Interface {
         // Properties
 
         get name(): string;
@@ -1616,18 +1640,6 @@ export namespace DMAP {
         add_entry(record: Record, id: number): void;
         get_entry_count(): number;
         get_id(): number;
-
-        // Virtual methods
-
-        /**
-         * Add a record to the database. It is assumed that the record is placed
-         * directly into the database (not copied) and not freed.
-         * @param record A DMAPRecord.
-         * @param id The record's ID.
-         */
-        vfunc_add_entry(record: Record, id: number): void;
-        vfunc_get_entry_count(): number;
-        vfunc_get_id(): number;
     }
 
     export const ContainerRecord: ContainerRecordNamespace & {
@@ -1635,6 +1647,33 @@ export namespace DMAP {
     };
 
     namespace Db {
+        /**
+         * Interface for implementing Db.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Add a record to the database.
+             * @param record A database record.
+             */
+            vfunc_add(record: Record): number;
+            /**
+             * Create a record and add it to the database.
+             * @param path A path to an appropriate media file.
+             */
+            vfunc_add_path(path: string): number;
+            /**
+             * Add a record to the database and assign it the given ID.
+             * @param record A database record.
+             * @param id A database record ID.
+             */
+            vfunc_add_with_id(record: Record, id: number): number;
+            vfunc_count(): number;
+            vfunc_lookup_id_by_location(location: string): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1644,7 +1683,7 @@ export namespace DMAP {
         $gtype: GObject.GType<Db>;
         prototype: Db;
     }
-    interface Db extends GObject.Object {
+    interface Db extends GObject.Object, Db.Interface {
         // Methods
 
         /**
@@ -1668,27 +1707,6 @@ export namespace DMAP {
         add_with_id(record: Record, id: number): number;
         count(): number;
         lookup_id_by_location(location: string): number;
-
-        // Virtual methods
-
-        /**
-         * Add a record to the database.
-         * @param record A database record.
-         */
-        vfunc_add(record: Record): number;
-        /**
-         * Create a record and add it to the database.
-         * @param path A path to an appropriate media file.
-         */
-        vfunc_add_path(path: string): number;
-        /**
-         * Add a record to the database and assign it the given ID.
-         * @param record A database record.
-         * @param id A database record ID.
-         */
-        vfunc_add_with_id(record: Record, id: number): number;
-        vfunc_count(): number;
-        vfunc_lookup_id_by_location(location: string): number;
     }
 
     export const Db: DbNamespace & {
@@ -1696,6 +1714,16 @@ export namespace DMAP {
     };
 
     namespace Record {
+        /**
+         * Interface for implementing Record.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_set_from_blob(blob: Uint8Array | string): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1705,14 +1733,10 @@ export namespace DMAP {
         $gtype: GObject.GType<Record>;
         prototype: Record;
     }
-    interface Record extends GObject.Object {
+    interface Record extends GObject.Object, Record.Interface {
         // Methods
 
         set_from_blob(blob: Uint8Array | string): boolean;
-
-        // Virtual methods
-
-        vfunc_set_from_blob(blob: Uint8Array | string): boolean;
     }
 
     export const Record: RecordNamespace & {

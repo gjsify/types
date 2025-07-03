@@ -2870,6 +2870,17 @@ export namespace XreaderDocument {
     };
 
     namespace AsyncRenderer {
+        /**
+         * Interface for implementing AsyncRenderer.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_render_finished(pixbuf: GdkPixbuf.Pixbuf): void;
+            vfunc_render_pixbuf(page: number, scale: number, rotation: number): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2879,15 +2890,10 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<AsyncRenderer>;
         prototype: AsyncRenderer;
     }
-    interface AsyncRenderer extends GObject.Object {
+    interface AsyncRenderer extends GObject.Object, AsyncRenderer.Interface {
         // Methods
 
         render_pixbuf(page: number, scale: number, rotation: number): void;
-
-        // Virtual methods
-
-        vfunc_render_finished(pixbuf: GdkPixbuf.Pixbuf): void;
-        vfunc_render_pixbuf(page: number, scale: number, rotation: number): void;
     }
 
     export const AsyncRenderer: AsyncRendererNamespace & {
@@ -2895,6 +2901,19 @@ export namespace XreaderDocument {
     };
 
     namespace DocumentAnnotations {
+        /**
+         * Interface for implementing DocumentAnnotations.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_add_annotation(annot: Annotation, rect: Rectangle): void;
+            vfunc_document_is_modified(): boolean;
+            vfunc_remove_annotation(annot: Annotation): void;
+            vfunc_save_annotation(annot: Annotation, mask: AnnotationsSaveMask): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2904,7 +2923,7 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentAnnotations>;
         prototype: DocumentAnnotations;
     }
-    interface DocumentAnnotations extends GObject.Object {
+    interface DocumentAnnotations extends GObject.Object, DocumentAnnotations.Interface {
         // Methods
 
         add_annotation(annot: Annotation, rect: Rectangle): void;
@@ -2913,13 +2932,6 @@ export namespace XreaderDocument {
         document_is_modified(): boolean;
         remove_annotation(annot: Annotation): void;
         save_annotation(annot: Annotation, mask: AnnotationsSaveMask | null): void;
-
-        // Virtual methods
-
-        vfunc_add_annotation(annot: Annotation, rect: Rectangle): void;
-        vfunc_document_is_modified(): boolean;
-        vfunc_remove_annotation(annot: Annotation): void;
-        vfunc_save_annotation(annot: Annotation, mask: AnnotationsSaveMask): void;
     }
 
     export const DocumentAnnotations: DocumentAnnotationsNamespace & {
@@ -2927,6 +2939,16 @@ export namespace XreaderDocument {
     };
 
     namespace DocumentAttachments {
+        /**
+         * Interface for implementing DocumentAttachments.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_has_attachments(): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2936,14 +2958,10 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentAttachments>;
         prototype: DocumentAttachments;
     }
-    interface DocumentAttachments extends GObject.Object {
+    interface DocumentAttachments extends GObject.Object, DocumentAttachments.Interface {
         // Methods
 
         has_attachments(): boolean;
-
-        // Virtual methods
-
-        vfunc_has_attachments(): boolean;
     }
 
     export const DocumentAttachments: DocumentAttachmentsNamespace & {
@@ -2951,6 +2969,16 @@ export namespace XreaderDocument {
     };
 
     namespace DocumentFind {
+        /**
+         * Interface for implementing DocumentFind.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_check_for_hits(page: Page, text: string, case_sensitive: boolean): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2960,14 +2988,10 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentFind>;
         prototype: DocumentFind;
     }
-    interface DocumentFind extends GObject.Object {
+    interface DocumentFind extends GObject.Object, DocumentFind.Interface {
         // Methods
 
         check_for_hits(page: Page, text: string, case_sensitive: boolean): number;
-
-        // Virtual methods
-
-        vfunc_check_for_hits(page: Page, text: string, case_sensitive: boolean): number;
     }
 
     export const DocumentFind: DocumentFindNamespace & {
@@ -2975,6 +2999,18 @@ export namespace XreaderDocument {
     };
 
     namespace DocumentFonts {
+        /**
+         * Interface for implementing DocumentFonts.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_fill_model(model: Gtk.TreeModel): void;
+            vfunc_get_progress(): number;
+            vfunc_scan(n_pages: number): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2984,18 +3020,12 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentFonts>;
         prototype: DocumentFonts;
     }
-    interface DocumentFonts extends GObject.Object {
+    interface DocumentFonts extends GObject.Object, DocumentFonts.Interface {
         // Methods
 
         fill_model(model: Gtk.TreeModel): void;
         get_progress(): number;
         scan(n_pages: number): boolean;
-
-        // Virtual methods
-
-        vfunc_fill_model(model: Gtk.TreeModel): void;
-        vfunc_get_progress(): number;
-        vfunc_scan(n_pages: number): boolean;
     }
 
     export const DocumentFonts: DocumentFontsNamespace & {
@@ -3003,6 +3033,28 @@ export namespace XreaderDocument {
     };
 
     namespace DocumentForms {
+        /**
+         * Interface for implementing DocumentForms.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_document_is_modified(): boolean;
+            vfunc_form_field_button_get_state(field: FormField): boolean;
+            vfunc_form_field_button_set_state(field: FormField, state: boolean): void;
+            vfunc_form_field_choice_get_item(field: FormField, index: number): string;
+            vfunc_form_field_choice_get_n_items(field: FormField): number;
+            vfunc_form_field_choice_get_text(field: FormField): string;
+            vfunc_form_field_choice_is_item_selected(field: FormField, index: number): boolean;
+            vfunc_form_field_choice_select_item(field: FormField, index: number): void;
+            vfunc_form_field_choice_set_text(field: FormField, text: string): void;
+            vfunc_form_field_choice_toggle_item(field: FormField, index: number): void;
+            vfunc_form_field_choice_unselect_all(field: FormField): void;
+            vfunc_form_field_text_get_text(field: FormField): string;
+            vfunc_form_field_text_set_text(field: FormField, text: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3012,7 +3064,7 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentForms>;
         prototype: DocumentForms;
     }
-    interface DocumentForms extends GObject.Object {
+    interface DocumentForms extends GObject.Object, DocumentForms.Interface {
         // Methods
 
         document_is_modified(): boolean;
@@ -3028,22 +3080,6 @@ export namespace XreaderDocument {
         form_field_choice_unselect_all(field: FormField): void;
         form_field_text_get_text(field: FormField): string;
         form_field_text_set_text(field: FormField, text: string): void;
-
-        // Virtual methods
-
-        vfunc_document_is_modified(): boolean;
-        vfunc_form_field_button_get_state(field: FormField): boolean;
-        vfunc_form_field_button_set_state(field: FormField, state: boolean): void;
-        vfunc_form_field_choice_get_item(field: FormField, index: number): string;
-        vfunc_form_field_choice_get_n_items(field: FormField): number;
-        vfunc_form_field_choice_get_text(field: FormField): string;
-        vfunc_form_field_choice_is_item_selected(field: FormField, index: number): boolean;
-        vfunc_form_field_choice_select_item(field: FormField, index: number): void;
-        vfunc_form_field_choice_set_text(field: FormField, text: string): void;
-        vfunc_form_field_choice_toggle_item(field: FormField, index: number): void;
-        vfunc_form_field_choice_unselect_all(field: FormField): void;
-        vfunc_form_field_text_get_text(field: FormField): string;
-        vfunc_form_field_text_set_text(field: FormField, text: string): void;
     }
 
     export const DocumentForms: DocumentFormsNamespace & {
@@ -3067,6 +3103,19 @@ export namespace XreaderDocument {
     };
 
     namespace DocumentLayers {
+        /**
+         * Interface for implementing DocumentLayers.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_has_layers(): boolean;
+            vfunc_hide_layer(layer: Layer): void;
+            vfunc_layer_is_visible(layer: Layer): boolean;
+            vfunc_show_layer(layer: Layer): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3076,20 +3125,13 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentLayers>;
         prototype: DocumentLayers;
     }
-    interface DocumentLayers extends GObject.Object {
+    interface DocumentLayers extends GObject.Object, DocumentLayers.Interface {
         // Methods
 
         has_layers(): boolean;
         hide_layer(layer: Layer): void;
         layer_is_visible(layer: Layer): boolean;
         show_layer(layer: Layer): void;
-
-        // Virtual methods
-
-        vfunc_has_layers(): boolean;
-        vfunc_hide_layer(layer: Layer): void;
-        vfunc_layer_is_visible(layer: Layer): boolean;
-        vfunc_show_layer(layer: Layer): void;
     }
 
     export const DocumentLayers: DocumentLayersNamespace & {
@@ -3097,6 +3139,17 @@ export namespace XreaderDocument {
     };
 
     namespace DocumentLinks {
+        /**
+         * Interface for implementing DocumentLinks.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_find_link_page(link_name: string): number;
+            vfunc_has_document_links(): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3106,7 +3159,7 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentLinks>;
         prototype: DocumentLinks;
     }
-    interface DocumentLinks extends GObject.Object {
+    interface DocumentLinks extends GObject.Object, DocumentLinks.Interface {
         // Methods
 
         find_link_page(link_name: string): number;
@@ -3115,11 +3168,6 @@ export namespace XreaderDocument {
         get_link_page(link: Link): number;
         get_link_page_label(link: Link): string;
         has_document_links(): boolean;
-
-        // Virtual methods
-
-        vfunc_find_link_page(link_name: string): number;
-        vfunc_has_document_links(): boolean;
     }
 
     export const DocumentLinks: DocumentLinksNamespace & {
@@ -3127,6 +3175,16 @@ export namespace XreaderDocument {
     };
 
     namespace DocumentPrint {
+        /**
+         * Interface for implementing DocumentPrint.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_print_page(page: Page, cr: cairo.Context): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3136,14 +3194,10 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentPrint>;
         prototype: DocumentPrint;
     }
-    interface DocumentPrint extends GObject.Object {
+    interface DocumentPrint extends GObject.Object, DocumentPrint.Interface {
         // Methods
 
         print_page(page: Page, cr: cairo.Context): void;
-
-        // Virtual methods
-
-        vfunc_print_page(page: Page, cr: cairo.Context): void;
     }
 
     export const DocumentPrint: DocumentPrintNamespace & {
@@ -3151,6 +3205,17 @@ export namespace XreaderDocument {
     };
 
     namespace DocumentSecurity {
+        /**
+         * Interface for implementing DocumentSecurity.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_has_document_security(): boolean;
+            vfunc_set_password(password: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3160,16 +3225,11 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentSecurity>;
         prototype: DocumentSecurity;
     }
-    interface DocumentSecurity extends GObject.Object {
+    interface DocumentSecurity extends GObject.Object, DocumentSecurity.Interface {
         // Methods
 
         has_document_security(): boolean;
         set_password(password: string): void;
-
-        // Virtual methods
-
-        vfunc_has_document_security(): boolean;
-        vfunc_set_password(password: string): void;
     }
 
     export const DocumentSecurity: DocumentSecurityNamespace & {
@@ -3177,6 +3237,18 @@ export namespace XreaderDocument {
     };
 
     namespace DocumentText {
+        /**
+         * Interface for implementing DocumentText.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_text(page: Page): string;
+            vfunc_get_text_layout(page: Page, areas: Rectangle, n_areas: number): boolean;
+            vfunc_get_text_mapping(page: Page): cairo.Region;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3186,18 +3258,12 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentText>;
         prototype: DocumentText;
     }
-    interface DocumentText extends GObject.Object {
+    interface DocumentText extends GObject.Object, DocumentText.Interface {
         // Methods
 
         get_text(page: Page): string;
         get_text_layout(page: Page, areas: Rectangle, n_areas: number): boolean;
         get_text_mapping(page: Page): cairo.Region;
-
-        // Virtual methods
-
-        vfunc_get_text(page: Page): string;
-        vfunc_get_text_layout(page: Page, areas: Rectangle, n_areas: number): boolean;
-        vfunc_get_text_mapping(page: Page): cairo.Region;
     }
 
     export const DocumentText: DocumentTextNamespace & {
@@ -3205,6 +3271,16 @@ export namespace XreaderDocument {
     };
 
     namespace DocumentThumbnails {
+        /**
+         * Interface for implementing DocumentThumbnails.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_dimensions(rc: RenderContext, width: number, height: number): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3214,14 +3290,10 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentThumbnails>;
         prototype: DocumentThumbnails;
     }
-    interface DocumentThumbnails extends GObject.Object {
+    interface DocumentThumbnails extends GObject.Object, DocumentThumbnails.Interface {
         // Methods
 
         get_dimensions(rc: RenderContext, width: number, height: number): void;
-
-        // Virtual methods
-
-        vfunc_get_dimensions(rc: RenderContext, width: number, height: number): void;
     }
 
     export const DocumentThumbnails: DocumentThumbnailsNamespace & {
@@ -3229,6 +3301,16 @@ export namespace XreaderDocument {
     };
 
     namespace DocumentTransition {
+        /**
+         * Interface for implementing DocumentTransition.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_page_duration(page: number): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3238,14 +3320,10 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentTransition>;
         prototype: DocumentTransition;
     }
-    interface DocumentTransition extends GObject.Object {
+    interface DocumentTransition extends GObject.Object, DocumentTransition.Interface {
         // Methods
 
         get_page_duration(page: number): number;
-
-        // Virtual methods
-
-        vfunc_get_page_duration(page: number): number;
     }
 
     export const DocumentTransition: DocumentTransitionNamespace & {
@@ -3253,6 +3331,21 @@ export namespace XreaderDocument {
     };
 
     namespace FileExporter {
+        /**
+         * Interface for implementing FileExporter.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_begin(fc: FileExporterContext): void;
+            vfunc_begin_page(): void;
+            vfunc_do_page(rc: RenderContext): void;
+            vfunc_end(): void;
+            vfunc_end_page(): void;
+            vfunc_get_capabilities(): FileExporterCapabilities;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3262,7 +3355,7 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<FileExporter>;
         prototype: FileExporter;
     }
-    interface FileExporter extends GObject.Object {
+    interface FileExporter extends GObject.Object, FileExporter.Interface {
         // Methods
 
         begin(fc: FileExporterContext): void;
@@ -3271,15 +3364,6 @@ export namespace XreaderDocument {
         end(): void;
         end_page(): void;
         get_capabilities(): FileExporterCapabilities;
-
-        // Virtual methods
-
-        vfunc_begin(fc: FileExporterContext): void;
-        vfunc_begin_page(): void;
-        vfunc_do_page(rc: RenderContext): void;
-        vfunc_end(): void;
-        vfunc_end_page(): void;
-        vfunc_get_capabilities(): FileExporterCapabilities;
     }
 
     export const FileExporter: FileExporterNamespace & {
@@ -3287,6 +3371,26 @@ export namespace XreaderDocument {
     };
 
     namespace Selection {
+        /**
+         * Interface for implementing Selection.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_selected_text(page: Page, style: SelectionStyle, points: Rectangle): string;
+            vfunc_get_selection_region(rc: RenderContext, style: SelectionStyle, points: Rectangle): cairo.Region;
+            vfunc_render_selection(
+                rc: RenderContext,
+                surface: cairo.Surface,
+                points: Rectangle,
+                old_points: Rectangle,
+                style: SelectionStyle,
+                text: Gdk.Color,
+                base: Gdk.Color,
+            ): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3296,7 +3400,7 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<Selection>;
         prototype: Selection;
     }
-    interface Selection extends GObject.Object {
+    interface Selection extends GObject.Object, Selection.Interface {
         // Methods
 
         get_selected_text(page: Page, style: SelectionStyle | null, points: Rectangle): string;
@@ -3307,20 +3411,6 @@ export namespace XreaderDocument {
             points: Rectangle,
             old_points: Rectangle,
             style: SelectionStyle | null,
-            text: Gdk.Color,
-            base: Gdk.Color,
-        ): void;
-
-        // Virtual methods
-
-        vfunc_get_selected_text(page: Page, style: SelectionStyle, points: Rectangle): string;
-        vfunc_get_selection_region(rc: RenderContext, style: SelectionStyle, points: Rectangle): cairo.Region;
-        vfunc_render_selection(
-            rc: RenderContext,
-            surface: cairo.Surface,
-            points: Rectangle,
-            old_points: Rectangle,
-            style: SelectionStyle,
             text: Gdk.Color,
             base: Gdk.Color,
         ): void;

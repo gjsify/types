@@ -166,6 +166,11 @@ export namespace GObject {
         $gtype?: GType<T>;
     }
 
+    export namespace Object {
+        // Interface for virtual method implementations
+        export interface Interface extends GObject.Interface {}
+    }
+
     /**
      * Use this to signify a function that must be overridden in an
      * implementation of the interface.
@@ -4184,12 +4189,12 @@ export namespace GObject {
         /**
          * Creates a new GParamSpecChar instance specifying a G_TYPE_CHAR property.
          * @param name The name of the property
-         * @param nick A human readable name for the property
-         * @param blurb A longer description of the property
+         * @param nick A human readable name for the property (can be null)
+         * @param blurb A longer description of the property (can be null)
          * @param flags The flags for this property (e.g. READABLE, WRITABLE)
          * @param minimum The minimum value for this property
          * @param maximum The maximum value for this property
-         * @param defaultValue The default value for this property
+         * @param defaultValue The default value for this property (optional)
          */
         static ['char'](
             name: string,
@@ -4198,17 +4203,17 @@ export namespace GObject {
             flags: ParamFlags | number,
             minimum: number,
             maximum: number,
-            defaultValue: number,
+            defaultValue?: number,
         ): ParamSpec<number>;
         /**
          * Creates a new GParamSpecUChar instance specifying a G_TYPE_UCHAR property.
          * @param name The name of the property
-         * @param nick A human readable name for the property
-         * @param blurb A longer description of the property
+         * @param nick A human readable name for the property (can be null)
+         * @param blurb A longer description of the property (can be null)
          * @param flags The flags for this property (e.g. READABLE, WRITABLE)
          * @param minimum The minimum value for this property
          * @param maximum The maximum value for this property
-         * @param defaultValue The default value for this property
+         * @param defaultValue The default value for this property (optional)
          */
         static uchar(
             name: string,
@@ -4217,17 +4222,17 @@ export namespace GObject {
             flags: ParamFlags | number,
             minimum: number,
             maximum: number,
-            defaultValue: number,
+            defaultValue?: number,
         ): ParamSpec<number>;
         /**
          * Creates a new GParamSpecInt instance specifying a G_TYPE_INT property.
          * @param name The name of the property
-         * @param nick A human readable name for the property
-         * @param blurb A longer description of the property
+         * @param nick A human readable name for the property (can be null)
+         * @param blurb A longer description of the property (can be null)
          * @param flags The flags for this property (e.g. READABLE, WRITABLE)
          * @param minimum The minimum value for this property
          * @param maximum The maximum value for this property
-         * @param defaultValue The default value for this property
+         * @param defaultValue The default value for this property (optional)
          */
         static int(
             name: string,
@@ -4236,17 +4241,17 @@ export namespace GObject {
             flags: ParamFlags | number,
             minimum: number,
             maximum: number,
-            defaultValue: number,
+            defaultValue?: number,
         ): ParamSpec<number>;
         /**
          * Creates a new GParamSpecUInt instance specifying a G_TYPE_UINT property.
          * @param name The name of the property
-         * @param nick A human readable name for the property
-         * @param blurb A longer description of the property
+         * @param nick A human readable name for the property (can be null)
+         * @param blurb A longer description of the property (can be null)
          * @param flags The flags for this property (e.g. READABLE, WRITABLE)
          * @param minimum The minimum value for this property
          * @param maximum The maximum value for this property
-         * @param defaultValue The default value for this property
+         * @param defaultValue The default value for this property (optional)
          */
         static uint(
             name: string,
@@ -4255,17 +4260,17 @@ export namespace GObject {
             flags: ParamFlags | number,
             minimum: number,
             maximum: number,
-            defaultValue: number,
+            defaultValue?: number,
         ): ParamSpec<number>;
         /**
          * Creates a new GParamSpecLong instance specifying a G_TYPE_LONG property.
          * @param name The name of the property
-         * @param nick A human readable name for the property
-         * @param blurb A longer description of the property
+         * @param nick A human readable name for the property (can be null)
+         * @param blurb A longer description of the property (can be null)
          * @param flags The flags for this property (e.g. READABLE, WRITABLE)
          * @param minimum The minimum value for this property
          * @param maximum The maximum value for this property
-         * @param defaultValue The default value for this property
+         * @param defaultValue The default value for this property (optional)
          */
         static long(
             name: string,
@@ -4274,17 +4279,17 @@ export namespace GObject {
             flags: ParamFlags | number,
             minimum: number,
             maximum: number,
-            defaultValue: number,
+            defaultValue?: number,
         ): ParamSpec<number>;
         /**
          * Creates a new GParamSpecULong instance specifying a G_TYPE_ULONG property.
          * @param name The name of the property
-         * @param nick A human readable name for the property
-         * @param blurb A longer description of the property
+         * @param nick A human readable name for the property (can be null)
+         * @param blurb A longer description of the property (can be null)
          * @param flags The flags for this property (e.g. READABLE, WRITABLE)
          * @param minimum The minimum value for this property
          * @param maximum The maximum value for this property
-         * @param defaultValue The default value for this property
+         * @param defaultValue The default value for this property (optional)
          */
         static ulong(
             name: string,
@@ -4293,17 +4298,17 @@ export namespace GObject {
             flags: ParamFlags | number,
             minimum: number,
             maximum: number,
-            defaultValue: number,
+            defaultValue?: number,
         ): ParamSpec<number>;
         /**
          * Creates a new GParamSpecInt64 instance specifying a G_TYPE_INT64 property.
          * @param name The name of the property
-         * @param nick A human readable name for the property
-         * @param blurb A longer description of the property
+         * @param nick A human readable name for the property (can be null)
+         * @param blurb A longer description of the property (can be null)
          * @param flags The flags for this property (e.g. READABLE, WRITABLE)
          * @param minimum The minimum value for this property
          * @param maximum The maximum value for this property
-         * @param defaultValue The default value for this property
+         * @param defaultValue The default value for this property (optional)
          */
         static int64(
             name: string,
@@ -4312,17 +4317,17 @@ export namespace GObject {
             flags: ParamFlags | number,
             minimum: number,
             maximum: number,
-            defaultValue: number,
+            defaultValue?: number,
         ): ParamSpec<number>;
         /**
          * Creates a new GParamSpecUInt64 instance specifying a G_TYPE_UINT64 property.
          * @param name The name of the property
-         * @param nick A human readable name for the property
-         * @param blurb A longer description of the property
+         * @param nick A human readable name for the property (can be null)
+         * @param blurb A longer description of the property (can be null)
          * @param flags The flags for this property (e.g. READABLE, WRITABLE)
          * @param minimum The minimum value for this property
          * @param maximum The maximum value for this property
-         * @param defaultValue The default value for this property
+         * @param defaultValue The default value for this property (optional)
          */
         static uint64(
             name: string,
@@ -4331,17 +4336,17 @@ export namespace GObject {
             flags: ParamFlags | number,
             minimum: number,
             maximum: number,
-            defaultValue: number,
+            defaultValue?: number,
         ): ParamSpec<number>;
         /**
          * Creates a new GParamSpecFloat instance specifying a G_TYPE_FLOAT property.
          * @param name The name of the property
-         * @param nick A human readable name for the property
-         * @param blurb A longer description of the property
+         * @param nick A human readable name for the property (can be null)
+         * @param blurb A longer description of the property (can be null)
          * @param flags The flags for this property (e.g. READABLE, WRITABLE)
          * @param minimum The minimum value for this property
          * @param maximum The maximum value for this property
-         * @param defaultValue The default value for this property
+         * @param defaultValue The default value for this property (optional)
          */
         static float(
             name: string,
@@ -4350,31 +4355,31 @@ export namespace GObject {
             flags: ParamFlags | number,
             minimum: number,
             maximum: number,
-            defaultValue: number,
+            defaultValue?: number,
         ): ParamSpec<number>;
         /**
          * Creates a new GParamSpecBoolean instance specifying a G_TYPE_BOOLEAN property. In many cases, it may be more appropriate to use an enum with g_param_spec_enum(), both to improve code clarity by using explicitly named values, and to allow for more values to be added in future without breaking API.
          * @param name The name of the property
-         * @param nick A human readable name for the property
-         * @param blurb A longer description of the property
+         * @param nick A human readable name for the property (can be null)
+         * @param blurb A longer description of the property (can be null)
          * @param flags The flags for this property (e.g. READABLE, WRITABLE)
-         * @param defaultValue The default value for this property
+         * @param defaultValue The default value for this property (optional)
          */
         static ['boolean'](
             name: string,
             nick: string | null,
             blurb: string | null,
             flags: ParamFlags | number,
-            defaultValue: boolean,
+            defaultValue?: boolean,
         ): ParamSpec<boolean>;
         /**
          * Creates a new GParamSpecEnum instance specifying a G_TYPE_ENUM property.
          * @param name The name of the property
-         * @param nick A human readable name for the property
-         * @param blurb A longer description of the property
+         * @param nick A human readable name for the property (can be null)
+         * @param blurb A longer description of the property (can be null)
          * @param flags The flags for this property (e.g. READABLE, WRITABLE)
-         * @param enumType
-         * @param defaultValue The default value for this property
+         * @param enumType The GType for this property
+         * @param defaultValue The default value for this property (optional)
          */
         static ['enum']<T>(
             name: string,
@@ -4382,17 +4387,17 @@ export namespace GObject {
             blurb: string | null,
             flags: ParamFlags | number,
             enumType: GType<T> | { $gtype: GType<T> },
-            defaultValue: any,
+            defaultValue?: any,
         ): ParamSpec<T>;
         /**
          * Creates a new GParamSpecDouble instance specifying a G_TYPE_DOUBLE property.
          * @param name The name of the property
-         * @param nick A human readable name for the property
-         * @param blurb A longer description of the property
+         * @param nick A human readable name for the property (can be null)
+         * @param blurb A longer description of the property (can be null)
          * @param flags The flags for this property (e.g. READABLE, WRITABLE)
          * @param minimum The minimum value for this property
          * @param maximum The maximum value for this property
-         * @param defaultValue The default value for this property
+         * @param defaultValue The default value for this property (optional)
          */
         static double(
             name: string,
@@ -4401,30 +4406,30 @@ export namespace GObject {
             flags: ParamFlags | number,
             minimum: number,
             maximum: number,
-            defaultValue: number,
+            defaultValue?: number,
         ): ParamSpec<number>;
         /**
          * Creates a new GParamSpecString instance specifying a G_TYPE_STRING property.
          * @param name The name of the property
-         * @param nick A human readable name for the property
-         * @param blurb A longer description of the property
+         * @param nick A human readable name for the property (can be null)
+         * @param blurb A longer description of the property (can be null)
          * @param flags The flags for this property (e.g. READABLE, WRITABLE)
-         * @param defaultValue The default value for this property
+         * @param defaultValue The default value for this property (optional, defaults to null if not provided)
          */
         static string(
             name: string,
             nick: string | null,
             blurb: string | null,
             flags: ParamFlags | number,
-            defaultValue: string,
+            defaultValue?: string | null,
         ): ParamSpec<string>;
         /**
          * Creates a new GParamSpecBoxed instance specifying a G_TYPE_BOXED derived property.
          * @param name The name of the property
-         * @param nick A human readable name for the property
-         * @param blurb A longer description of the property
+         * @param nick A human readable name for the property (can be null)
+         * @param blurb A longer description of the property (can be null)
          * @param flags The flags for this property (e.g. READABLE, WRITABLE)
-         * @param boxedType
+         * @param boxedType The GType for this property
          */
         static boxed<T>(
             name: string,
@@ -4439,22 +4444,22 @@ export namespace GObject {
          * @param nick A human readable name for the property (can be null)
          * @param blurb A longer description of the property (can be null)
          * @param flags The flags for this property (e.g. READABLE, WRITABLE)
-         * @param objectType The GType of the object
+         * @param objectType The GType of the object (optional)
          */
         static object<T>(
             name: string,
             nick: string | null,
             blurb: string | null,
             flags: ParamFlags | number,
-            objectType: GType<T> | { $gtype: GType<T> },
+            objectType?: GType<T> | { $gtype: GType<T> },
         ): ParamSpec<T>;
         /**
          * Creates a new GParamSpecParam instance specifying a G_TYPE_PARAM property.
          * @param name The name of the property
-         * @param nick A human readable name for the property
-         * @param blurb A longer description of the property
+         * @param nick A human readable name for the property (can be null)
+         * @param blurb A longer description of the property (can be null)
          * @param flags The flags for this property (e.g. READABLE, WRITABLE)
-         * @param paramType
+         * @param paramType The GType for this property
          */
         static param(
             name: string,

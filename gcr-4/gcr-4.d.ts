@@ -10743,6 +10743,19 @@ export namespace Gcr {
     }
 
     namespace Certificate {
+        /**
+         * Interface for implementing Certificate.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Gets the raw DER data for an X.509 certificate.
+             */
+            vfunc_get_der_data(): Uint8Array;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10761,7 +10774,7 @@ export namespace Gcr {
         $gtype: GObject.GType<Certificate>;
         prototype: Certificate;
     }
-    interface Certificate extends GObject.Object {
+    interface Certificate extends GObject.Object, Certificate.Interface {
         // Properties
 
         /**
@@ -10983,13 +10996,6 @@ export namespace Gcr {
          * properties.
          */
         mixin_emit_notify(): void;
-
-        // Virtual methods
-
-        /**
-         * Gets the raw DER data for an X.509 certificate.
-         */
-        vfunc_get_der_data(): Uint8Array;
     }
 
     export const Certificate: CertificateNamespace & {
@@ -10997,6 +11003,60 @@ export namespace Gcr {
     };
 
     namespace ImportInteraction {
+        /**
+         * Interface for implementing ImportInteraction.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Supplement attributes before import. This means prompting the user for
+             * things like labels and the like. The needed attributes will have been passed
+             * to gcr_import_interaction_supplement_prep().
+             *
+             * This method prompts the user and fills in the attributes. If the user or
+             * cancellable cancels the operation the error should be set with %G_IO_ERROR_CANCELLED.
+             * @param builder supplemented attributes
+             * @param cancellable optional cancellable object
+             */
+            vfunc_supplement(builder: Gck.Builder, cancellable?: Gio.Cancellable | null): Gio.TlsInteractionResult;
+            /**
+             * Asynchronously supplement attributes before import. This means prompting the
+             * user for things like labels and the like. The needed attributes will have
+             * been passed to gcr_import_interaction_supplement_prep().
+             *
+             * This method prompts the user and fills in the attributes.
+             * @param builder supplemented attributes
+             * @param cancellable optional cancellable object
+             * @param callback called when the operation completes
+             */
+            vfunc_supplement_async(
+                builder: Gck.Builder,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Complete operation to asynchronously supplement attributes before import.
+             *
+             * If the user or cancellable cancels the operation the error should be set
+             * with %G_IO_ERROR_CANCELLED.
+             * @param result the asynchronous result
+             */
+            vfunc_supplement_finish(result: Gio.AsyncResult): Gio.TlsInteractionResult;
+            /**
+             * Prepare for supplementing the given attributes before import. This means
+             * prompting the user for things like labels and the like. The attributes
+             * will contain attributes for values that the importer needs, either empty
+             * or prefilled with suggested values.
+             *
+             * This method does not prompt the user, but rather just prepares the
+             * interaction that these are the attributes that are needed.
+             * @param builder attributes to supplement
+             */
+            vfunc_supplement_prep(builder: Gck.Builder): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.TlsInteraction.ConstructorProps {}
@@ -11006,7 +11066,7 @@ export namespace Gcr {
         $gtype: GObject.GType<ImportInteraction>;
         prototype: ImportInteraction;
     }
-    interface ImportInteraction extends Gio.TlsInteraction {
+    interface ImportInteraction extends Gio.TlsInteraction, ImportInteraction.Interface {
         // Methods
 
         /**
@@ -11084,54 +11144,6 @@ export namespace Gcr {
          * @param builder attributes to supplement
          */
         supplement_prep(builder: Gck.Builder): void;
-
-        // Virtual methods
-
-        /**
-         * Supplement attributes before import. This means prompting the user for
-         * things like labels and the like. The needed attributes will have been passed
-         * to gcr_import_interaction_supplement_prep().
-         *
-         * This method prompts the user and fills in the attributes. If the user or
-         * cancellable cancels the operation the error should be set with %G_IO_ERROR_CANCELLED.
-         * @param builder supplemented attributes
-         * @param cancellable optional cancellable object
-         */
-        vfunc_supplement(builder: Gck.Builder, cancellable?: Gio.Cancellable | null): Gio.TlsInteractionResult;
-        /**
-         * Asynchronously supplement attributes before import. This means prompting the
-         * user for things like labels and the like. The needed attributes will have
-         * been passed to gcr_import_interaction_supplement_prep().
-         *
-         * This method prompts the user and fills in the attributes.
-         * @param builder supplemented attributes
-         * @param cancellable optional cancellable object
-         * @param callback called when the operation completes
-         */
-        vfunc_supplement_async(
-            builder: Gck.Builder,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Complete operation to asynchronously supplement attributes before import.
-         *
-         * If the user or cancellable cancels the operation the error should be set
-         * with %G_IO_ERROR_CANCELLED.
-         * @param result the asynchronous result
-         */
-        vfunc_supplement_finish(result: Gio.AsyncResult): Gio.TlsInteractionResult;
-        /**
-         * Prepare for supplementing the given attributes before import. This means
-         * prompting the user for things like labels and the like. The attributes
-         * will contain attributes for values that the importer needs, either empty
-         * or prefilled with suggested values.
-         *
-         * This method does not prompt the user, but rather just prepares the
-         * interaction that these are the attributes that are needed.
-         * @param builder attributes to supplement
-         */
-        vfunc_supplement_prep(builder: Gck.Builder): void;
     }
 
     export const ImportInteraction: ImportInteractionNamespace & {
@@ -11139,6 +11151,39 @@ export namespace Gcr {
     };
 
     namespace Importer {
+        /**
+         * Interface for implementing Importer.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Import the queued items in the importer. This function returns immediately
+             * and completes asynchronously.
+             * @param cancellable a #GCancellable, or %NULL
+             * @param callback called when the operation completes
+             */
+            vfunc_import_async(
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Complete an asynchronous operation to import queued items.
+             * @param result an asynchronous result
+             */
+            vfunc_import_finish(result: Gio.AsyncResult): boolean;
+            /**
+             * Queues an additional item to be imported. The parsed item is represented
+             * by the state of the [class`Parser]` at the time of calling this method.
+             *
+             * If the parsed item is incompatible with the importer, then this will
+             * fail and the item will not be queued.
+             * @param parsed a parsed item to import
+             */
+            vfunc_queue_for_parsed(parsed: Parsed): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11182,7 +11227,7 @@ export namespace Gcr {
          */
         register_well_known(): void;
     }
-    interface Importer extends GObject.Object {
+    interface Importer extends GObject.Object, Importer.Interface {
         // Properties
 
         /**
@@ -11252,30 +11297,6 @@ export namespace Gcr {
          * @param interaction the interaction used by the importer
          */
         set_interaction(interaction: Gio.TlsInteraction): void;
-
-        // Virtual methods
-
-        /**
-         * Import the queued items in the importer. This function returns immediately
-         * and completes asynchronously.
-         * @param cancellable a #GCancellable, or %NULL
-         * @param callback called when the operation completes
-         */
-        vfunc_import_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
-        /**
-         * Complete an asynchronous operation to import queued items.
-         * @param result an asynchronous result
-         */
-        vfunc_import_finish(result: Gio.AsyncResult): boolean;
-        /**
-         * Queues an additional item to be imported. The parsed item is represented
-         * by the state of the [class`Parser]` at the time of calling this method.
-         *
-         * If the parsed item is incompatible with the importer, then this will
-         * fail and the item will not be queued.
-         * @param parsed a parsed item to import
-         */
-        vfunc_queue_for_parsed(parsed: Parsed): boolean;
     }
 
     export const Importer: ImporterNamespace & {
@@ -11283,6 +11304,65 @@ export namespace Gcr {
     };
 
     namespace Prompt {
+        /**
+         * Interface for implementing Prompt.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * close a prompt
+             */
+            vfunc_prompt_close(): void;
+            /**
+             * Prompts for confirmation asking a cancel/continue style question.
+             * Set the various properties on the prompt before calling this method to
+             * represent the question correctly.
+             *
+             * This method will return immediately and complete asynchronously.
+             * @param cancellable optional cancellation object
+             * @param callback called when the operation completes
+             */
+            vfunc_prompt_confirm_async(
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Complete an operation to prompt for confirmation.
+             *
+             * %GCR_PROMPT_REPLY_CONTINUE will be returned if the user confirms the prompt. The
+             * return value will also be %GCR_PROMPT_REPLY_CANCEL if the user cancels or if
+             * an error occurs. Check the `error` argument to tell the difference.
+             * @param result asynchronous result passed to callback
+             */
+            vfunc_prompt_confirm_finish(result: Gio.AsyncResult): PromptReply;
+            /**
+             * Prompts for password. Set the various properties on the prompt before calling
+             * this method to explain which password should be entered.
+             *
+             * This method will return immediately and complete asynchronously.
+             * @param cancellable optional cancellation object
+             * @param callback called when the operation completes
+             */
+            vfunc_prompt_password_async(
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Complete an operation to prompt for a password.
+             *
+             * A password will be returned if the user enters a password successfully.
+             * The returned password is valid until the next time a method is called
+             * to display another prompt.
+             *
+             * %NULL will be returned if the user cancels or if an error occurs. Check the
+             * `error` argument to tell the difference.
+             * @param result asynchronous result passed to callback
+             */
+            vfunc_prompt_password_finish(result: Gio.AsyncResult): string;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11311,7 +11391,7 @@ export namespace Gcr {
         $gtype: GObject.GType<Prompt>;
         prototype: Prompt;
     }
-    interface Prompt extends GObject.Object {
+    interface Prompt extends GObject.Object, Prompt.Interface {
         // Properties
 
         /**
@@ -11809,59 +11889,6 @@ export namespace Gcr {
          * @param warning the warning or %NULL
          */
         set_warning(warning?: string | null): void;
-
-        // Virtual methods
-
-        /**
-         * close a prompt
-         */
-        vfunc_prompt_close(): void;
-        /**
-         * Prompts for confirmation asking a cancel/continue style question.
-         * Set the various properties on the prompt before calling this method to
-         * represent the question correctly.
-         *
-         * This method will return immediately and complete asynchronously.
-         * @param cancellable optional cancellation object
-         * @param callback called when the operation completes
-         */
-        vfunc_prompt_confirm_async(
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Complete an operation to prompt for confirmation.
-         *
-         * %GCR_PROMPT_REPLY_CONTINUE will be returned if the user confirms the prompt. The
-         * return value will also be %GCR_PROMPT_REPLY_CANCEL if the user cancels or if
-         * an error occurs. Check the `error` argument to tell the difference.
-         * @param result asynchronous result passed to callback
-         */
-        vfunc_prompt_confirm_finish(result: Gio.AsyncResult): PromptReply;
-        /**
-         * Prompts for password. Set the various properties on the prompt before calling
-         * this method to explain which password should be entered.
-         *
-         * This method will return immediately and complete asynchronously.
-         * @param cancellable optional cancellation object
-         * @param callback called when the operation completes
-         */
-        vfunc_prompt_password_async(
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Complete an operation to prompt for a password.
-         *
-         * A password will be returned if the user enters a password successfully.
-         * The returned password is valid until the next time a method is called
-         * to display another prompt.
-         *
-         * %NULL will be returned if the user cancels or if an error occurs. Check the
-         * `error` argument to tell the difference.
-         * @param result asynchronous result passed to callback
-         */
-        vfunc_prompt_password_finish(result: Gio.AsyncResult): string;
     }
 
     export const Prompt: PromptNamespace & {

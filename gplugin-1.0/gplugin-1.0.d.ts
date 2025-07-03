@@ -1551,6 +1551,22 @@ export namespace GPlugin {
     type PluginInterface = typeof Plugin;
     type SourceInterface = typeof Source;
     namespace Plugin {
+        /**
+         * Interface for implementing Plugin.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * The class closure for the #GPluginPlugin::state-changed
+             *                 signal.
+             * @param oldstate
+             * @param newstate
+             */
+            vfunc_state_changed(oldstate: PluginState, newstate: PluginState): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1568,7 +1584,7 @@ export namespace GPlugin {
         $gtype: GObject.GType<Plugin>;
         prototype: Plugin;
     }
-    interface Plugin extends GObject.Object {
+    interface Plugin extends GObject.Object, Plugin.Interface {
         // Properties
 
         /**
@@ -1667,16 +1683,6 @@ export namespace GPlugin {
          * @param state The new state for @plugin.
          */
         set_state(state: PluginState | null): void;
-
-        // Virtual methods
-
-        /**
-         * The class closure for the #GPluginPlugin::state-changed
-         *                 signal.
-         * @param oldstate
-         * @param newstate
-         */
-        vfunc_state_changed(oldstate: PluginState, newstate: PluginState): void;
     }
 
     export const Plugin: PluginNamespace & {
@@ -1684,6 +1690,24 @@ export namespace GPlugin {
     };
 
     namespace Source {
+        /**
+         * Interface for implementing Source.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * This method is called when [method`GPlugin`.Manager.refresh] is running. The
+             * source should scan its available sources for plugins. For the filesystem
+             * source, this is paths that have been registered with the manager.
+             *
+             * The implementation should return TRUE if it found a new unqueried plugin,
+             * which will tell the manager to continue scanning.
+             */
+            vfunc_scan(): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1693,7 +1717,7 @@ export namespace GPlugin {
         $gtype: GObject.GType<Source>;
         prototype: Source;
     }
-    interface Source extends GObject.Object {
+    interface Source extends GObject.Object, Source.Interface {
         // Methods
 
         /**
@@ -1706,18 +1730,6 @@ export namespace GPlugin {
          * @returns %TRUE if an unqueried plugin was found, %FALSE otherwise.
          */
         scan(): boolean;
-
-        // Virtual methods
-
-        /**
-         * This method is called when [method`GPlugin`.Manager.refresh] is running. The
-         * source should scan its available sources for plugins. For the filesystem
-         * source, this is paths that have been registered with the manager.
-         *
-         * The implementation should return TRUE if it found a new unqueried plugin,
-         * which will tell the manager to continue scanning.
-         */
-        vfunc_scan(): boolean;
     }
 
     export const Source: SourceNamespace & {
