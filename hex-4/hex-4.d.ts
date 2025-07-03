@@ -1827,6 +1827,100 @@ export namespace Hex {
     type WidgetClass = typeof Widget;
     type WidgetMarkClass = typeof WidgetMark;
     namespace Buffer {
+        /**
+         * Interface for implementing Buffer.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Get a single byte at a particular offset within the buffer.
+             * @param offset offset position of the data being requested within the payload
+             */
+            vfunc_get_byte(offset: number): number;
+            /**
+             * Get data of a particular size at a particular offset within the buffer.
+             * @param offset offset position of the data being requested within the payload
+             * @param len size in bytes of the requested data
+             */
+            vfunc_get_data(offset: number, len: number): string;
+            /**
+             * Get the size of the payload of the buffer, in bytes.
+             */
+            vfunc_get_payload_size(): number;
+            /**
+             * Read the #GFile, previously set, into the buffer. This method will block
+             * until the operation is complete. For a non-blocking version, use
+             * [method`Hex`.Buffer.read_async].
+             */
+            vfunc_read(): boolean;
+            /**
+             * Read the #GFile, previously set, into the buffer. This is the non-blocking
+             * version of [method`Hex`.Buffer.read].
+             * @param cancellable a #GCancellable
+             * @param callback function to be called when the operation is   complete
+             */
+            vfunc_read_async(
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Obtain the result of a completed file read operation.
+             *
+             * This method is typically called from the #GAsyncReadyCallback function
+             * passed to [method`Hex`.Buffer.read_async] to obtain the result of the
+             * operation.
+             * @param result result of the task
+             */
+            vfunc_read_finish(result: Gio.AsyncResult): boolean;
+            /**
+             * Set data at of the buffer at a particular offset, replacing some, all or
+             * none of the existing data in the buffer as desired.
+             *
+             * As `data` will be copied to the recipient, it should be freed with
+             * g_free() after being passed to this method, to avoid a memory leak.
+             * @param offset offset position of the data being requested within the payload
+             * @param rep_len amount of bytes to replace/overwrite (if any)
+             * @param data a pointer to   the data being provided
+             */
+            vfunc_set_data(offset: number, rep_len: number, data: Uint8Array | string): boolean;
+            /**
+             * Set the #GFile to be utilized by the buffer. Once it has been set,
+             * you can read it into the buffer with [method`Hex`.Buffer.read] or
+             * [method`Hex`.Buffer.read_async].
+             * @param file the file to be utilized by the buffer
+             */
+            vfunc_set_file(file: Gio.File): boolean;
+            /**
+             * Write the buffer to the #GFile specified. This operation will block. For a
+             * non-blocking version, use [method`Hex`.Buffer.write_to_file_async].
+             * @param file #GFile to write to
+             */
+            vfunc_write_to_file(file: Gio.File): boolean;
+            /**
+             * Write the buffer to the #GFile specified. This is the non-blocking
+             * version of [method`Hex`.Buffer.write_to_file].
+             * @param file #GFile to write to
+             * @param cancellable a #GCancellable
+             * @param callback function to be called when the operation is   complete
+             */
+            vfunc_write_to_file_async(
+                file: Gio.File,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Obtain the result of a completed write-to-file operation.
+             *
+             * This method is typically called from the #GAsyncReadyCallback function
+             * passed to [method`Hex`.Buffer.write_to_file_async] to obtain the result of
+             * the operation.
+             * @param result result of the task
+             */
+            vfunc_write_to_file_finish(result: Gio.AsyncResult): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1868,7 +1962,7 @@ export namespace Hex {
          */
         util_new(plugin?: string | null, file?: Gio.File | null): Buffer;
     }
-    interface Buffer extends GObject.Object {
+    interface Buffer extends GObject.Object, Buffer.Interface {
         // Properties
 
         /**
@@ -2009,91 +2103,6 @@ export namespace Hex {
          * @returns %TRUE if the operation was successful; %FALSE otherwise.
          */
         write_to_file_finish(result: Gio.AsyncResult): boolean;
-
-        // Virtual methods
-
-        /**
-         * Get a single byte at a particular offset within the buffer.
-         * @param offset offset position of the data being requested within the payload
-         */
-        vfunc_get_byte(offset: number): number;
-        /**
-         * Get data of a particular size at a particular offset within the buffer.
-         * @param offset offset position of the data being requested within the payload
-         * @param len size in bytes of the requested data
-         */
-        vfunc_get_data(offset: number, len: number): string;
-        /**
-         * Get the size of the payload of the buffer, in bytes.
-         */
-        vfunc_get_payload_size(): number;
-        /**
-         * Read the #GFile, previously set, into the buffer. This method will block
-         * until the operation is complete. For a non-blocking version, use
-         * [method`Hex`.Buffer.read_async].
-         */
-        vfunc_read(): boolean;
-        /**
-         * Read the #GFile, previously set, into the buffer. This is the non-blocking
-         * version of [method`Hex`.Buffer.read].
-         * @param cancellable a #GCancellable
-         * @param callback function to be called when the operation is   complete
-         */
-        vfunc_read_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
-        /**
-         * Obtain the result of a completed file read operation.
-         *
-         * This method is typically called from the #GAsyncReadyCallback function
-         * passed to [method`Hex`.Buffer.read_async] to obtain the result of the
-         * operation.
-         * @param result result of the task
-         */
-        vfunc_read_finish(result: Gio.AsyncResult): boolean;
-        /**
-         * Set data at of the buffer at a particular offset, replacing some, all or
-         * none of the existing data in the buffer as desired.
-         *
-         * As `data` will be copied to the recipient, it should be freed with
-         * g_free() after being passed to this method, to avoid a memory leak.
-         * @param offset offset position of the data being requested within the payload
-         * @param rep_len amount of bytes to replace/overwrite (if any)
-         * @param data a pointer to   the data being provided
-         */
-        vfunc_set_data(offset: number, rep_len: number, data: Uint8Array | string): boolean;
-        /**
-         * Set the #GFile to be utilized by the buffer. Once it has been set,
-         * you can read it into the buffer with [method`Hex`.Buffer.read] or
-         * [method`Hex`.Buffer.read_async].
-         * @param file the file to be utilized by the buffer
-         */
-        vfunc_set_file(file: Gio.File): boolean;
-        /**
-         * Write the buffer to the #GFile specified. This operation will block. For a
-         * non-blocking version, use [method`Hex`.Buffer.write_to_file_async].
-         * @param file #GFile to write to
-         */
-        vfunc_write_to_file(file: Gio.File): boolean;
-        /**
-         * Write the buffer to the #GFile specified. This is the non-blocking
-         * version of [method`Hex`.Buffer.write_to_file].
-         * @param file #GFile to write to
-         * @param cancellable a #GCancellable
-         * @param callback function to be called when the operation is   complete
-         */
-        vfunc_write_to_file_async(
-            file: Gio.File,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Obtain the result of a completed write-to-file operation.
-         *
-         * This method is typically called from the #GAsyncReadyCallback function
-         * passed to [method`Hex`.Buffer.write_to_file_async] to obtain the result of
-         * the operation.
-         * @param result result of the task
-         */
-        vfunc_write_to_file_finish(result: Gio.AsyncResult): boolean;
     }
 
     export const Buffer: BufferNamespace & {

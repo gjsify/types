@@ -36436,6 +36436,39 @@ export namespace Panel {
     type WorkbenchClass = typeof Workbench;
     type WorkspaceClass = typeof Workspace;
     namespace FrameHeader {
+        /**
+         * Interface for implementing FrameHeader.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Add a widget into a the prefix area with a priority. The highest
+             * the priority the closest to the start.
+             * @param priority the priority
+             * @param child a #GtkWidget
+             */
+            vfunc_add_prefix(priority: number, child: Gtk.Widget): void;
+            /**
+             * Add a widget into a the suffix area with a priority. The highest
+             * the priority the closest to the start.
+             * @param priority the priority
+             * @param child a #GtkWidget
+             */
+            vfunc_add_suffix(priority: number, child: Gtk.Widget): void;
+            /**
+             * Tells if the panel widget can be drop onto the panel frame.
+             * @param widget a #PanelWidget
+             */
+            vfunc_can_drop(widget: Widget): boolean;
+            /**
+             * Notifies the header that the visible page has changed.
+             * @param widget a #PanelWidget or %NULL if no page is visible
+             */
+            vfunc_page_changed(widget?: Widget | null): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {
@@ -36447,7 +36480,7 @@ export namespace Panel {
         $gtype: GObject.GType<FrameHeader>;
         prototype: FrameHeader;
     }
-    interface FrameHeader extends Gtk.Widget {
+    interface FrameHeader extends Gtk.Widget, FrameHeader.Interface {
         // Properties
 
         /**
@@ -36493,33 +36526,6 @@ export namespace Panel {
          * @param frame a #PanelFrame or %NULL
          */
         set_frame(frame?: Frame | null): void;
-
-        // Virtual methods
-
-        /**
-         * Add a widget into a the prefix area with a priority. The highest
-         * the priority the closest to the start.
-         * @param priority the priority
-         * @param child a #GtkWidget
-         */
-        vfunc_add_prefix(priority: number, child: Gtk.Widget): void;
-        /**
-         * Add a widget into a the suffix area with a priority. The highest
-         * the priority the closest to the start.
-         * @param priority the priority
-         * @param child a #GtkWidget
-         */
-        vfunc_add_suffix(priority: number, child: Gtk.Widget): void;
-        /**
-         * Tells if the panel widget can be drop onto the panel frame.
-         * @param widget a #PanelWidget
-         */
-        vfunc_can_drop(widget: Widget): boolean;
-        /**
-         * Notifies the header that the visible page has changed.
-         * @param widget a #PanelWidget or %NULL if no page is visible
-         */
-        vfunc_page_changed(widget?: Widget | null): void;
     }
 
     export const FrameHeader: FrameHeaderNamespace & {

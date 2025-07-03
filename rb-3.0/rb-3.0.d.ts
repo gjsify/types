@@ -26979,6 +26979,20 @@ export namespace RB {
     }
 
     namespace DeviceSource {
+        /**
+         * Interface for implementing DeviceSource.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_can_eject(): boolean;
+            /**
+             * Ejects the device that the source represents.
+             */
+            vfunc_eject(): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -27004,7 +27018,7 @@ export namespace RB {
          */
         want_uri(source: Source, uri: string): number;
     }
-    interface DeviceSource extends GObject.Object {
+    interface DeviceSource extends GObject.Object, DeviceSource.Interface {
         // Methods
 
         can_eject(): boolean;
@@ -27024,14 +27038,6 @@ export namespace RB {
          * be called in the source's constructed method.
          */
         set_display_details(): void;
-
-        // Virtual methods
-
-        vfunc_can_eject(): boolean;
-        /**
-         * Ejects the device that the source represents.
-         */
-        vfunc_eject(): void;
     }
 
     export const DeviceSource: DeviceSourceNamespace & {
@@ -27039,6 +27045,45 @@ export namespace RB {
     };
 
     namespace Encoder {
+        /**
+         * Interface for implementing Encoder.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Attempts to cancel any in progress encoding.  The encoder should
+             * delete the destination file, if it created one, and emit the
+             * 'completed' signal.
+             */
+            vfunc_cancel(): void;
+            vfunc_completed(dest_size: number, mediatype: string, error: GLib.Error): void;
+            /**
+             * Initiates encoding, transcoding to the specified profile if specified.
+             *
+             * Encoding and error reporting takes place asynchronously.  The caller should wait
+             * for the 'completed' signal which indicates it has either completed or failed.
+             * @param entry the #RhythmDBEntry to transcode
+             * @param dest destination file URI
+             * @param overwrite if %TRUE, overwrite @dest if it already exists
+             * @param profile encoding profile to use, or NULL to just copy
+             */
+            vfunc_encode(
+                entry: RhythmDBEntry,
+                dest: string,
+                overwrite: boolean,
+                profile: GstPbutils.EncodingProfile,
+            ): void;
+            /**
+             * Retrieves the plugin installer detail strings and descriptions
+             * for any missing plugins required to use the specified encoding profile.
+             * @param profile an encoding profile
+             */
+            vfunc_get_missing_plugins(profile: GstPbutils.EncodingProfile): [boolean, string, string];
+            vfunc_progress(fraction: number): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -27053,7 +27098,7 @@ export namespace RB {
          */
         ['new'](): Encoder;
     }
-    interface Encoder extends GObject.Object {
+    interface Encoder extends GObject.Object, Encoder.Interface {
         // Methods
 
         /**
@@ -27080,34 +27125,6 @@ export namespace RB {
          * @returns %TRUE if some detail strings are returned, %FALSE otherwise
          */
         get_missing_plugins(profile: GstPbutils.EncodingProfile): [boolean, string, string];
-
-        // Virtual methods
-
-        /**
-         * Attempts to cancel any in progress encoding.  The encoder should
-         * delete the destination file, if it created one, and emit the
-         * 'completed' signal.
-         */
-        vfunc_cancel(): void;
-        vfunc_completed(dest_size: number, mediatype: string, error: GLib.Error): void;
-        /**
-         * Initiates encoding, transcoding to the specified profile if specified.
-         *
-         * Encoding and error reporting takes place asynchronously.  The caller should wait
-         * for the 'completed' signal which indicates it has either completed or failed.
-         * @param entry the #RhythmDBEntry to transcode
-         * @param dest destination file URI
-         * @param overwrite if %TRUE, overwrite @dest if it already exists
-         * @param profile encoding profile to use, or NULL to just copy
-         */
-        vfunc_encode(entry: RhythmDBEntry, dest: string, overwrite: boolean, profile: GstPbutils.EncodingProfile): void;
-        /**
-         * Retrieves the plugin installer detail strings and descriptions
-         * for any missing plugins required to use the specified encoding profile.
-         * @param profile an encoding profile
-         */
-        vfunc_get_missing_plugins(profile: GstPbutils.EncodingProfile): [boolean, string, string];
-        vfunc_progress(fraction: number): void;
     }
 
     export const Encoder: EncoderNamespace & {
@@ -27115,6 +27132,113 @@ export namespace RB {
     };
 
     namespace Player {
+        /**
+         * Interface for implementing Player.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_buffering(stream_data: any | null, progress: number): void;
+            /**
+             * If a URI is specified, this will close the stream corresponding
+             * to that URI and free any resources related resources.  If `uri`
+             * is NULL, this will close all streams.
+             *
+             * If no streams remain open after this call, the audio device will
+             * be released.
+             * @param uri optionally, the URI of the stream to close
+             */
+            vfunc_close(uri: string): boolean;
+            vfunc_eos(stream_data: any | null, early: boolean): void;
+            vfunc_error(stream_data: any | null, error: GLib.Error): void;
+            vfunc_event(stream_data?: any | null, data?: any | null): void;
+            /**
+             * Returns the current playback for the current stream in nanoseconds.
+             */
+            vfunc_get_time(): number;
+            /**
+             * Returns the current volume level, between 0.0 and 1.0.
+             */
+            vfunc_get_volume(): number;
+            vfunc_image(stream_data: any | null, image: GdkPixbuf.Pixbuf): void;
+            vfunc_info(stream_data: any | null, field: MetaDataField, value: GObject.Value | any): void;
+            /**
+             * Determines whether the player supports multiple open streams.
+             */
+            vfunc_multiple_open(): boolean;
+            /**
+             * Prepares a stream for playback.  Depending on the player
+             * implementation, this may stop any existing stream being
+             * played.  The stream preparation process may continue
+             * asynchronously, in which case errors may be reported from
+             * #rb_player_play or using the 'error' signal.
+             * @param uri URI to open
+             * @param stream_data arbitrary data to associate with the stream
+             */
+            vfunc_open(uri: string, stream_data?: any | null): boolean;
+            /**
+             * Determines whether a stream has been prepared for playback.
+             */
+            vfunc_opened(): boolean;
+            /**
+             * Pauses playback of the most recently started stream.  Any
+             * streams being faded out may continue until the fade is
+             * complete.
+             */
+            vfunc_pause(): void;
+            /**
+             * Starts playback of the most recently opened stream.
+             * if `play_type` is #RB_PLAYER_PLAY_CROSSFADE, the player
+             * may attempt to crossfade the new stream with any existing
+             * streams.  If it does this, the it will use `crossfade` as the
+             * duration of the fade.
+             *
+             * If `play_type` is #RB_PLAYER_PLAY_AFTER_EOS, the player may
+             * attempt to start the stream immediately after the current
+             * playing stream reaches EOS.  This may or may not result in
+             * the phenomemon known as 'gapless playback'.
+             *
+             * If `play_type` is #RB_PLAYER_PLAY_REPLACE, the player will stop any
+             * existing stream before starting the new stream. It may do
+             * this anyway, regardless of the value of `play_type`.
+             *
+             * The 'playing-stream' signal will be emitted when the new stream
+             * is actually playing. This may be before or after control returns
+             * to the caller.
+             * @param play_type requested playback start type
+             * @param crossfade requested crossfade duration (nanoseconds)
+             */
+            vfunc_play(play_type: PlayerPlayType, crossfade: number): boolean;
+            /**
+             * Determines whether the player is currently playing a stream.
+             * A stream is playing if it's not paused or being faded out.
+             */
+            vfunc_playing(): boolean;
+            vfunc_playing_stream(stream_data?: any | null): void;
+            vfunc_redirect(stream_data: any | null, uri: string): void;
+            /**
+             * Determines whether seeking is supported for the current stream.
+             */
+            vfunc_seekable(): boolean;
+            /**
+             * Attempts to seek in the current stream.  The player
+             * may ignore this if the stream is not seekable.
+             * The seek may take place asynchronously.
+             * @param newtime seek target position in seconds
+             */
+            vfunc_set_time(newtime: number): void;
+            /**
+             * Adjusts the output volume level.  This affects all streams.
+             * The player may use a hardware volume control to implement
+             * this volume adjustment.
+             * @param volume new output volume level
+             */
+            vfunc_set_volume(volume: number): void;
+            vfunc_tick(stream_data: any | null, elapsed: number, duration: number): void;
+            vfunc_volume_changed(volume: number): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -27142,7 +27266,7 @@ export namespace RB {
          */
         ['new'](want_crossfade: boolean): Player;
     }
-    interface Player extends GObject.Object {
+    interface Player extends GObject.Object, Player.Interface {
         // Methods
 
         /**
@@ -27242,107 +27366,6 @@ export namespace RB {
          * @param volume new output volume level
          */
         set_volume(volume: number): void;
-
-        // Virtual methods
-
-        vfunc_buffering(stream_data: any | null, progress: number): void;
-        /**
-         * If a URI is specified, this will close the stream corresponding
-         * to that URI and free any resources related resources.  If `uri`
-         * is NULL, this will close all streams.
-         *
-         * If no streams remain open after this call, the audio device will
-         * be released.
-         * @param uri optionally, the URI of the stream to close
-         */
-        vfunc_close(uri: string): boolean;
-        vfunc_eos(stream_data: any | null, early: boolean): void;
-        vfunc_error(stream_data: any | null, error: GLib.Error): void;
-        vfunc_event(stream_data?: any | null, data?: any | null): void;
-        /**
-         * Returns the current playback for the current stream in nanoseconds.
-         */
-        vfunc_get_time(): number;
-        /**
-         * Returns the current volume level, between 0.0 and 1.0.
-         */
-        vfunc_get_volume(): number;
-        vfunc_image(stream_data: any | null, image: GdkPixbuf.Pixbuf): void;
-        vfunc_info(stream_data: any | null, field: MetaDataField, value: GObject.Value | any): void;
-        /**
-         * Determines whether the player supports multiple open streams.
-         */
-        vfunc_multiple_open(): boolean;
-        /**
-         * Prepares a stream for playback.  Depending on the player
-         * implementation, this may stop any existing stream being
-         * played.  The stream preparation process may continue
-         * asynchronously, in which case errors may be reported from
-         * #rb_player_play or using the 'error' signal.
-         * @param uri URI to open
-         * @param stream_data arbitrary data to associate with the stream
-         */
-        vfunc_open(uri: string, stream_data?: any | null): boolean;
-        /**
-         * Determines whether a stream has been prepared for playback.
-         */
-        vfunc_opened(): boolean;
-        /**
-         * Pauses playback of the most recently started stream.  Any
-         * streams being faded out may continue until the fade is
-         * complete.
-         */
-        vfunc_pause(): void;
-        /**
-         * Starts playback of the most recently opened stream.
-         * if `play_type` is #RB_PLAYER_PLAY_CROSSFADE, the player
-         * may attempt to crossfade the new stream with any existing
-         * streams.  If it does this, the it will use `crossfade` as the
-         * duration of the fade.
-         *
-         * If `play_type` is #RB_PLAYER_PLAY_AFTER_EOS, the player may
-         * attempt to start the stream immediately after the current
-         * playing stream reaches EOS.  This may or may not result in
-         * the phenomemon known as 'gapless playback'.
-         *
-         * If `play_type` is #RB_PLAYER_PLAY_REPLACE, the player will stop any
-         * existing stream before starting the new stream. It may do
-         * this anyway, regardless of the value of `play_type`.
-         *
-         * The 'playing-stream' signal will be emitted when the new stream
-         * is actually playing. This may be before or after control returns
-         * to the caller.
-         * @param play_type requested playback start type
-         * @param crossfade requested crossfade duration (nanoseconds)
-         */
-        vfunc_play(play_type: PlayerPlayType, crossfade: number): boolean;
-        /**
-         * Determines whether the player is currently playing a stream.
-         * A stream is playing if it's not paused or being faded out.
-         */
-        vfunc_playing(): boolean;
-        vfunc_playing_stream(stream_data?: any | null): void;
-        vfunc_redirect(stream_data: any | null, uri: string): void;
-        /**
-         * Determines whether seeking is supported for the current stream.
-         */
-        vfunc_seekable(): boolean;
-        /**
-         * Attempts to seek in the current stream.  The player
-         * may ignore this if the stream is not seekable.
-         * The seek may take place asynchronously.
-         * @param newtime seek target position in seconds
-         */
-        vfunc_set_time(newtime: number): void;
-        /**
-         * Adjusts the output volume level.  This affects all streams.
-         * The player may use a hardware volume control to implement
-         * this volume adjustment.
-         * @param volume new output volume level
-         */
-        vfunc_set_volume(volume: number): void;
-        vfunc_tick(stream_data: any | null, elapsed: number, duration: number): void;
-        vfunc_volume_changed(volume: number): void;
     }
 
     export const Player: PlayerNamespace & {
@@ -27350,6 +27373,31 @@ export namespace RB {
     };
 
     namespace PlayerGstFilter {
+        /**
+         * Interface for implementing PlayerGstFilter.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Adds a new filter to the playback pipeline.  The filter may not be
+             * inserted immediately.  The 'filter-inserted' signal will be emitted
+             * when this actually happens.
+             * @param element new filter element (or bin) to add
+             */
+            vfunc_add_filter(element: Gst.Element): boolean;
+            vfunc_filter_inserted(filter: Gst.Element): void;
+            vfunc_filter_pre_remove(filter: Gst.Element): void;
+            /**
+             * Removes a filter from the playback pipeline.  The filter may not be
+             * removed immediately.  The 'filter-pre-remove' signal will be emitted
+             * immediately before this actually happens.
+             * @param element the filter element (or bin) to remove
+             */
+            vfunc_remove_filter(element: Gst.Element): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -27359,7 +27407,7 @@ export namespace RB {
         $gtype: GObject.GType<PlayerGstFilter>;
         prototype: PlayerGstFilter;
     }
-    interface PlayerGstFilter extends GObject.Object {
+    interface PlayerGstFilter extends GObject.Object, PlayerGstFilter.Interface {
         // Methods
 
         /**
@@ -27378,25 +27426,6 @@ export namespace RB {
          * @returns TRUE if the filter was found and will be removed
          */
         remove_filter(element: Gst.Element): boolean;
-
-        // Virtual methods
-
-        /**
-         * Adds a new filter to the playback pipeline.  The filter may not be
-         * inserted immediately.  The 'filter-inserted' signal will be emitted
-         * when this actually happens.
-         * @param element new filter element (or bin) to add
-         */
-        vfunc_add_filter(element: Gst.Element): boolean;
-        vfunc_filter_inserted(filter: Gst.Element): void;
-        vfunc_filter_pre_remove(filter: Gst.Element): void;
-        /**
-         * Removes a filter from the playback pipeline.  The filter may not be
-         * removed immediately.  The 'filter-pre-remove' signal will be emitted
-         * immediately before this actually happens.
-         * @param element the filter element (or bin) to remove
-         */
-        vfunc_remove_filter(element: Gst.Element): boolean;
     }
 
     export const PlayerGstFilter: PlayerGstFilterNamespace & {
@@ -27404,6 +27433,31 @@ export namespace RB {
     };
 
     namespace PlayerGstTee {
+        /**
+         * Interface for implementing PlayerGstTee.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Adds a new sink to the playback pipeline.  The sink may not be
+             * inserted immediately.  The 'tee-inserted' signal will be emitted
+             * when this actually happens.
+             * @param element new sink element (or bin) to add
+             */
+            vfunc_add_tee(element: Gst.Element): boolean;
+            /**
+             * Removes a sink from the playback pipeline.  The sink may not be
+             * removed immediately.  The 'tee-pre-remove' signal will be emitted
+             * immediately before this actually happens.
+             * @param element the sink element (or bin) to remove
+             */
+            vfunc_remove_tee(element: Gst.Element): boolean;
+            vfunc_tee_inserted(tee: Gst.Element): void;
+            vfunc_tee_pre_remove(tee: Gst.Element): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -27413,7 +27467,7 @@ export namespace RB {
         $gtype: GObject.GType<PlayerGstTee>;
         prototype: PlayerGstTee;
     }
-    interface PlayerGstTee extends GObject.Object {
+    interface PlayerGstTee extends GObject.Object, PlayerGstTee.Interface {
         // Methods
 
         /**
@@ -27432,25 +27486,6 @@ export namespace RB {
          * @returns TRUE if the sink was found and will be removed
          */
         remove_tee(element: Gst.Element): boolean;
-
-        // Virtual methods
-
-        /**
-         * Adds a new sink to the playback pipeline.  The sink may not be
-         * inserted immediately.  The 'tee-inserted' signal will be emitted
-         * when this actually happens.
-         * @param element new sink element (or bin) to add
-         */
-        vfunc_add_tee(element: Gst.Element): boolean;
-        /**
-         * Removes a sink from the playback pipeline.  The sink may not be
-         * removed immediately.  The 'tee-pre-remove' signal will be emitted
-         * immediately before this actually happens.
-         * @param element the sink element (or bin) to remove
-         */
-        vfunc_remove_tee(element: Gst.Element): boolean;
-        vfunc_tee_inserted(tee: Gst.Element): void;
-        vfunc_tee_pre_remove(tee: Gst.Element): void;
     }
 
     export const PlayerGstTee: PlayerGstTeeNamespace & {
@@ -27458,6 +27493,29 @@ export namespace RB {
     };
 
     namespace RhythmDBQueryResults {
+        /**
+         * Interface for implementing RhythmDBQueryResults.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Provides a new set of query results.  References must be taken on the
+             * entries.
+             * @param entries #GPtrArray containing #RhythmDBEntry results
+             */
+            vfunc_add_results(entries: RhythmDBEntry[]): void;
+            /**
+             * Called when the query is complete and all entries that match the query
+             * have been supplied to rhythmdb_query_results_add_results.  If the object
+             * implementing this interface needs to identify newly added or changed entries
+             * that match the query, it needs to use the entry-added, entry-deleted and
+             * entry-changed signals from #RhythmDB.
+             */
+            vfunc_query_complete(): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -27467,7 +27525,7 @@ export namespace RB {
         $gtype: GObject.GType<RhythmDBQueryResults>;
         prototype: RhythmDBQueryResults;
     }
-    interface RhythmDBQueryResults extends GObject.Object {
+    interface RhythmDBQueryResults extends GObject.Object, RhythmDBQueryResults.Interface {
         // Methods
 
         /**
@@ -27484,23 +27542,6 @@ export namespace RB {
          * entry-changed signals from #RhythmDB.
          */
         query_complete(): void;
-
-        // Virtual methods
-
-        /**
-         * Provides a new set of query results.  References must be taken on the
-         * entries.
-         * @param entries #GPtrArray containing #RhythmDBEntry results
-         */
-        vfunc_add_results(entries: RhythmDBEntry[]): void;
-        /**
-         * Called when the query is complete and all entries that match the query
-         * have been supplied to rhythmdb_query_results_add_results.  If the object
-         * implementing this interface needs to identify newly added or changed entries
-         * that match the query, it needs to use the entry-added, entry-deleted and
-         * entry-changed signals from #RhythmDB.
-         */
-        vfunc_query_complete(): void;
     }
 
     export const RhythmDBQueryResults: RhythmDBQueryResultsNamespace & {
@@ -27508,6 +27549,16 @@ export namespace RB {
     };
 
     namespace TaskProgress {
+        /**
+         * Interface for implementing TaskProgress.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_cancel(): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -27530,7 +27581,7 @@ export namespace RB {
         $gtype: GObject.GType<TaskProgress>;
         prototype: TaskProgress;
     }
-    interface TaskProgress extends GObject.Object {
+    interface TaskProgress extends GObject.Object, TaskProgress.Interface {
         // Properties
 
         get task_cancellable(): boolean;
@@ -27561,10 +27612,6 @@ export namespace RB {
         // Methods
 
         cancel(): void;
-
-        // Virtual methods
-
-        vfunc_cancel(): void;
     }
 
     export const TaskProgress: TaskProgressNamespace & {
@@ -27572,6 +27619,57 @@ export namespace RB {
     };
 
     namespace TransferTarget {
+        /**
+         * Interface for implementing TransferTarget.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Constructs a URI to use as the destination for a transfer or transcoding
+             * operation.  The URI may be on the device itself, if the device is mounted
+             * into the normal filesystem or through gvfs, or it may be a temporary
+             * location used to store the file before uploading it to the device.
+             *
+             * The destination URI should conform to the device's normal URI format,
+             * and should use the provided extension instead of the extension from
+             * the source entry.
+             * @param entry a #RhythmDBEntry being transferred
+             * @param media_type destination media type
+             * @param extension extension associated with destination media type
+             */
+            vfunc_build_dest_uri(entry: RhythmDBEntry, media_type: string, extension: string): string;
+            /**
+             * Checks whether `entry` should be transferred to the target.
+             * The target can check whether a matching entry already exists on the device,
+             * for instance.  `rb_transfer_target_check_duplicate` may form part of
+             * an implementation.  If this method returns %FALSE, the entry
+             * will be skipped.
+             * @param entry a #RhythmDBEntry to consider transferring
+             */
+            vfunc_should_transfer(entry: RhythmDBEntry): boolean;
+            vfunc_track_add_error(entry: RhythmDBEntry, uri: string, error: GLib.Error): boolean;
+            vfunc_track_added(entry: RhythmDBEntry, uri: string, dest_size: number, media_type: string): boolean;
+            /**
+             * Performs any preparation necessary before starting the transfer.
+             * This is called on a task thread, so no UI interaction is possible.
+             * @param entry the source #RhythmDBEntry for the transfer
+             * @param uri the destination URI
+             */
+            vfunc_track_prepare(entry: RhythmDBEntry, uri: string): void;
+            /**
+             * This is called after a transfer to a temporary file has finished,
+             * allowing the transfer target to upload the file to a device or a
+             * remote service.
+             * @param entry the source #RhythmDBEntry for the transfer
+             * @param uri the destination URI
+             * @param dest_size the size of the destination file
+             * @param media_type the media type of the destination file
+             */
+            vfunc_track_upload(entry: RhythmDBEntry, uri: string, dest_size: number, media_type: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -27584,7 +27682,7 @@ export namespace RB {
         $gtype: GObject.GType<TransferTarget>;
         prototype: TransferTarget;
     }
-    interface TransferTarget extends GObject.Object {
+    interface TransferTarget extends GObject.Object, TransferTarget.Interface {
         // Properties
 
         get encoding_target(): GstPbutils.EncodingTarget;
@@ -27694,51 +27792,6 @@ export namespace RB {
          * @returns an #RBTrackTransferBatch, or NULL
          */
         transfer(settings: Gio.Settings, entries: RhythmDBEntry[], defer: boolean): TrackTransferBatch;
-
-        // Virtual methods
-
-        /**
-         * Constructs a URI to use as the destination for a transfer or transcoding
-         * operation.  The URI may be on the device itself, if the device is mounted
-         * into the normal filesystem or through gvfs, or it may be a temporary
-         * location used to store the file before uploading it to the device.
-         *
-         * The destination URI should conform to the device's normal URI format,
-         * and should use the provided extension instead of the extension from
-         * the source entry.
-         * @param entry a #RhythmDBEntry being transferred
-         * @param media_type destination media type
-         * @param extension extension associated with destination media type
-         */
-        vfunc_build_dest_uri(entry: RhythmDBEntry, media_type: string, extension: string): string;
-        /**
-         * Checks whether `entry` should be transferred to the target.
-         * The target can check whether a matching entry already exists on the device,
-         * for instance.  `rb_transfer_target_check_duplicate` may form part of
-         * an implementation.  If this method returns %FALSE, the entry
-         * will be skipped.
-         * @param entry a #RhythmDBEntry to consider transferring
-         */
-        vfunc_should_transfer(entry: RhythmDBEntry): boolean;
-        vfunc_track_add_error(entry: RhythmDBEntry, uri: string, error: GLib.Error): boolean;
-        vfunc_track_added(entry: RhythmDBEntry, uri: string, dest_size: number, media_type: string): boolean;
-        /**
-         * Performs any preparation necessary before starting the transfer.
-         * This is called on a task thread, so no UI interaction is possible.
-         * @param entry the source #RhythmDBEntry for the transfer
-         * @param uri the destination URI
-         */
-        vfunc_track_prepare(entry: RhythmDBEntry, uri: string): void;
-        /**
-         * This is called after a transfer to a temporary file has finished,
-         * allowing the transfer target to upload the file to a device or a
-         * remote service.
-         * @param entry the source #RhythmDBEntry for the transfer
-         * @param uri the destination URI
-         * @param dest_size the size of the destination file
-         * @param media_type the media type of the destination file
-         */
-        vfunc_track_upload(entry: RhythmDBEntry, uri: string, dest_size: number, media_type: string): void;
     }
 
     export const TransferTarget: TransferTargetNamespace & {

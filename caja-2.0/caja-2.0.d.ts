@@ -432,6 +432,20 @@ export namespace Caja {
     type PropertyPageProviderIface = typeof PropertyPageProvider;
     type WidgetViewProviderIface = typeof WidgetViewProvider;
     namespace ColumnProvider {
+        /**
+         * Interface for implementing ColumnProvider.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Returns a #GList of #CajaColumn.
+             *   See caja_column_provider_get_columns() for details.
+             */
+            vfunc_get_columns(): Column[];
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -441,18 +455,10 @@ export namespace Caja {
         $gtype: GObject.GType<ColumnProvider>;
         prototype: ColumnProvider;
     }
-    interface ColumnProvider extends GObject.Object {
+    interface ColumnProvider extends GObject.Object, ColumnProvider.Interface {
         // Methods
 
         get_columns(): Column[];
-
-        // Virtual methods
-
-        /**
-         * Returns a #GList of #CajaColumn.
-         *   See caja_column_provider_get_columns() for details.
-         */
-        vfunc_get_columns(): Column[];
     }
 
     export const ColumnProvider: ColumnProviderNamespace & {
@@ -460,6 +466,16 @@ export namespace Caja {
     };
 
     namespace Configurable {
+        /**
+         * Interface for implementing Configurable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_run_config(): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -469,14 +485,10 @@ export namespace Caja {
         $gtype: GObject.GType<Configurable>;
         prototype: Configurable;
     }
-    interface Configurable extends GObject.Object {
+    interface Configurable extends GObject.Object, Configurable.Interface {
         // Methods
 
         run_config(): void;
-
-        // Virtual methods
-
-        vfunc_run_config(): void;
     }
 
     export const Configurable: ConfigurableNamespace & {
@@ -484,6 +496,115 @@ export namespace Caja {
     };
 
     namespace FileInfo {
+        /**
+         * Interface for implementing FileInfo.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Adds an emblem to this file.
+             *   See caja_file_info_add_emblem() for details.
+             * @param emblem_name
+             */
+            vfunc_add_emblem(emblem_name: string): void;
+            /**
+             * Sets the specified string file attribute value.
+             *   See caja_file_info_add_string_attribute() for details.
+             * @param attribute_name
+             * @param value
+             */
+            vfunc_add_string_attribute(attribute_name: string, value: string): void;
+            /**
+             * Returns whether the file is writable.
+             *   See caja_file_info_can_write() for details.
+             */
+            vfunc_can_write(): boolean;
+            /**
+             * Returns the file activation URI as a string.
+             *   See caja_file_info_get_activation_uri() for details.
+             */
+            vfunc_get_activation_uri(): string;
+            /**
+             * Returns the file type.
+             *   See caja_file_info_get_file_type() for details.
+             */
+            vfunc_get_file_type(): Gio.FileType;
+            /**
+             * Returns the file location as a #GFile.
+             *   See caja_file_info_get_location() for details.
+             */
+            vfunc_get_location(): Gio.File;
+            /**
+             * Returns the file mime type as a string.
+             *   See caja_file_info_get_mime_type() for details.
+             */
+            vfunc_get_mime_type(): string;
+            /**
+             * Returns the file mount as a #GMount.
+             *   See caja_file_info_get_mount() for details.
+             */
+            vfunc_get_mount(): Gio.Mount | null;
+            /**
+             * Returns the file name as a string.
+             *   See caja_file_info_get_name() for details.
+             */
+            vfunc_get_name(): string;
+            /**
+             * Returns the file parent #CajaFileInfo.
+             *   See caja_file_info_get_parent_info() for details.
+             */
+            vfunc_get_parent_info(): FileInfo | null;
+            /**
+             * Returns the file parent location as a #GFile.
+             *   See caja_file_info_get_parent_location() for details.
+             */
+            vfunc_get_parent_location(): Gio.File | null;
+            /**
+             * Returns the file parent URI as a string.
+             *   See caja_file_info_get_parent_uri() for details.
+             */
+            vfunc_get_parent_uri(): string;
+            /**
+             * Returns the specified file attribute as a string.
+             *   See caja_file_info_get_string_attribute() for details.
+             * @param attribute_name
+             */
+            vfunc_get_string_attribute(attribute_name: string): string;
+            /**
+             * Returns the file URI as a string.
+             *   See caja_file_info_get_uri() for details.
+             */
+            vfunc_get_uri(): string;
+            /**
+             * Returns the file URI scheme as a string.
+             *   See caja_file_info_get_uri_scheme() for details.
+             */
+            vfunc_get_uri_scheme(): string;
+            /**
+             * Invalidates information of the file provided by extensions.
+             *   See caja_file_info_invalidate_extension_info() for details.
+             */
+            vfunc_invalidate_extension_info(): void;
+            /**
+             * Returns whether the file is a directory.
+             *   See caja_file_info_is_directory() for details.
+             */
+            vfunc_is_directory(): boolean;
+            /**
+             * Returns whether the file info is gone.
+             *   See caja_file_info_is_gone() for details.
+             */
+            vfunc_is_gone(): boolean;
+            /**
+             * Returns whether the file is the given mime type.
+             *   See caja_file_info_is_mime_type() for details.
+             * @param mime_Type
+             */
+            vfunc_is_mime_type(mime_Type: string): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -500,7 +621,7 @@ export namespace Caja {
         lookup(location: Gio.File): FileInfo;
         lookup_for_uri(uri: string): FileInfo;
     }
-    interface FileInfo extends GObject.Object {
+    interface FileInfo extends GObject.Object, FileInfo.Interface {
         // Methods
 
         add_emblem(emblem_name: string): void;
@@ -522,109 +643,6 @@ export namespace Caja {
         is_directory(): boolean;
         is_gone(): boolean;
         is_mime_type(mime_type: string): boolean;
-
-        // Virtual methods
-
-        /**
-         * Adds an emblem to this file.
-         *   See caja_file_info_add_emblem() for details.
-         * @param emblem_name
-         */
-        vfunc_add_emblem(emblem_name: string): void;
-        /**
-         * Sets the specified string file attribute value.
-         *   See caja_file_info_add_string_attribute() for details.
-         * @param attribute_name
-         * @param value
-         */
-        vfunc_add_string_attribute(attribute_name: string, value: string): void;
-        /**
-         * Returns whether the file is writable.
-         *   See caja_file_info_can_write() for details.
-         */
-        vfunc_can_write(): boolean;
-        /**
-         * Returns the file activation URI as a string.
-         *   See caja_file_info_get_activation_uri() for details.
-         */
-        vfunc_get_activation_uri(): string;
-        /**
-         * Returns the file type.
-         *   See caja_file_info_get_file_type() for details.
-         */
-        vfunc_get_file_type(): Gio.FileType;
-        /**
-         * Returns the file location as a #GFile.
-         *   See caja_file_info_get_location() for details.
-         */
-        vfunc_get_location(): Gio.File;
-        /**
-         * Returns the file mime type as a string.
-         *   See caja_file_info_get_mime_type() for details.
-         */
-        vfunc_get_mime_type(): string;
-        /**
-         * Returns the file mount as a #GMount.
-         *   See caja_file_info_get_mount() for details.
-         */
-        vfunc_get_mount(): Gio.Mount | null;
-        /**
-         * Returns the file name as a string.
-         *   See caja_file_info_get_name() for details.
-         */
-        vfunc_get_name(): string;
-        /**
-         * Returns the file parent #CajaFileInfo.
-         *   See caja_file_info_get_parent_info() for details.
-         */
-        vfunc_get_parent_info(): FileInfo | null;
-        /**
-         * Returns the file parent location as a #GFile.
-         *   See caja_file_info_get_parent_location() for details.
-         */
-        vfunc_get_parent_location(): Gio.File | null;
-        /**
-         * Returns the file parent URI as a string.
-         *   See caja_file_info_get_parent_uri() for details.
-         */
-        vfunc_get_parent_uri(): string;
-        /**
-         * Returns the specified file attribute as a string.
-         *   See caja_file_info_get_string_attribute() for details.
-         * @param attribute_name
-         */
-        vfunc_get_string_attribute(attribute_name: string): string;
-        /**
-         * Returns the file URI as a string.
-         *   See caja_file_info_get_uri() for details.
-         */
-        vfunc_get_uri(): string;
-        /**
-         * Returns the file URI scheme as a string.
-         *   See caja_file_info_get_uri_scheme() for details.
-         */
-        vfunc_get_uri_scheme(): string;
-        /**
-         * Invalidates information of the file provided by extensions.
-         *   See caja_file_info_invalidate_extension_info() for details.
-         */
-        vfunc_invalidate_extension_info(): void;
-        /**
-         * Returns whether the file is a directory.
-         *   See caja_file_info_is_directory() for details.
-         */
-        vfunc_is_directory(): boolean;
-        /**
-         * Returns whether the file info is gone.
-         *   See caja_file_info_is_gone() for details.
-         */
-        vfunc_is_gone(): boolean;
-        /**
-         * Returns whether the file is the given mime type.
-         *   See caja_file_info_is_mime_type() for details.
-         * @param mime_Type
-         */
-        vfunc_is_mime_type(mime_Type: string): boolean;
     }
 
     export const FileInfo: FileInfoNamespace & {
@@ -632,6 +650,33 @@ export namespace Caja {
     };
 
     namespace InfoProvider {
+        /**
+         * Interface for implementing InfoProvider.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Cancels a previous call to caja_info_provider_update_file_info().
+             *   See caja_info_provider_cancel_update() for details.
+             * @param handle
+             */
+            vfunc_cancel_update(handle: OperationHandle): void;
+            /**
+             * Returns a #CajaOperationResult.
+             *   See caja_info_provider_update_file_info() for details.
+             * @param file
+             * @param update_complete
+             * @param handle
+             */
+            vfunc_update_file_info(
+                file: FileInfo,
+                update_complete: GObject.Closure,
+                handle: OperationHandle,
+            ): OperationResult;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -648,32 +693,11 @@ export namespace Caja {
             result: OperationResult,
         ): void;
     }
-    interface InfoProvider extends GObject.Object {
+    interface InfoProvider extends GObject.Object, InfoProvider.Interface {
         // Methods
 
         cancel_update(handle: OperationHandle): void;
         update_file_info(file: FileInfo, update_complete: GObject.Closure, handle: OperationHandle): OperationResult;
-
-        // Virtual methods
-
-        /**
-         * Cancels a previous call to caja_info_provider_update_file_info().
-         *   See caja_info_provider_cancel_update() for details.
-         * @param handle
-         */
-        vfunc_cancel_update(handle: OperationHandle): void;
-        /**
-         * Returns a #CajaOperationResult.
-         *   See caja_info_provider_update_file_info() for details.
-         * @param file
-         * @param update_complete
-         * @param handle
-         */
-        vfunc_update_file_info(
-            file: FileInfo,
-            update_complete: GObject.Closure,
-            handle: OperationHandle,
-        ): OperationResult;
     }
 
     export const InfoProvider: InfoProviderNamespace & {
@@ -681,6 +705,22 @@ export namespace Caja {
     };
 
     namespace LocationWidgetProvider {
+        /**
+         * Interface for implementing LocationWidgetProvider.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Returns a #GtkWidget.
+             *   See caja_location_widget_provider_get_widget() for details.
+             * @param uri the URI of the location
+             * @param window parent #GtkWindow
+             */
+            vfunc_get_widget(uri: string, window: Gtk.Widget): Gtk.Widget;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -690,20 +730,10 @@ export namespace Caja {
         $gtype: GObject.GType<LocationWidgetProvider>;
         prototype: LocationWidgetProvider;
     }
-    interface LocationWidgetProvider extends GObject.Object {
+    interface LocationWidgetProvider extends GObject.Object, LocationWidgetProvider.Interface {
         // Methods
 
         get_widget(uri: string, window: Gtk.Widget): Gtk.Widget;
-
-        // Virtual methods
-
-        /**
-         * Returns a #GtkWidget.
-         *   See caja_location_widget_provider_get_widget() for details.
-         * @param uri the URI of the location
-         * @param window parent #GtkWindow
-         */
-        vfunc_get_widget(uri: string, window: Gtk.Widget): Gtk.Widget;
     }
 
     export const LocationWidgetProvider: LocationWidgetProviderNamespace & {
@@ -711,6 +741,36 @@ export namespace Caja {
     };
 
     namespace MenuProvider {
+        /**
+         * Interface for implementing MenuProvider.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Returns a #GList of #CajaMenuItem.
+             *   See caja_menu_provider_get_background_items() for details.
+             * @param window the parent #GtkWidget window
+             * @param current_folder the folder for which background items are requested
+             */
+            vfunc_get_background_items(window: Gtk.Widget, current_folder: FileInfo): MenuItem[];
+            /**
+             * Returns a #GList of #CajaMenuItem.
+             *   See caja_menu_provider_get_file_items() for details.
+             * @param window the parent #GtkWidget window
+             * @param files a list of #CajaFileInfo
+             */
+            vfunc_get_file_items(window: Gtk.Widget, files: FileInfo[]): MenuItem[];
+            /**
+             * Returns a #GList of #CajaMenuItem.
+             *   See caja_menu_provider_get_toolbar_items() for details.
+             * @param window the parent #GtkWidget window
+             * @param current_folder the folder for which toolbar items are requested
+             */
+            vfunc_get_toolbar_items(window: Gtk.Widget, current_folder: FileInfo): MenuItem[];
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -720,37 +780,13 @@ export namespace Caja {
         $gtype: GObject.GType<MenuProvider>;
         prototype: MenuProvider;
     }
-    interface MenuProvider extends GObject.Object {
+    interface MenuProvider extends GObject.Object, MenuProvider.Interface {
         // Methods
 
         emit_items_updated_signal(): void;
         get_background_items(window: Gtk.Widget, current_folder: FileInfo): MenuItem[];
         get_file_items(window: Gtk.Widget, files: FileInfo[]): MenuItem[];
         get_toolbar_items(window: Gtk.Widget, current_folder: FileInfo): MenuItem[];
-
-        // Virtual methods
-
-        /**
-         * Returns a #GList of #CajaMenuItem.
-         *   See caja_menu_provider_get_background_items() for details.
-         * @param window the parent #GtkWidget window
-         * @param current_folder the folder for which background items are requested
-         */
-        vfunc_get_background_items(window: Gtk.Widget, current_folder: FileInfo): MenuItem[];
-        /**
-         * Returns a #GList of #CajaMenuItem.
-         *   See caja_menu_provider_get_file_items() for details.
-         * @param window the parent #GtkWidget window
-         * @param files a list of #CajaFileInfo
-         */
-        vfunc_get_file_items(window: Gtk.Widget, files: FileInfo[]): MenuItem[];
-        /**
-         * Returns a #GList of #CajaMenuItem.
-         *   See caja_menu_provider_get_toolbar_items() for details.
-         * @param window the parent #GtkWidget window
-         * @param current_folder the folder for which toolbar items are requested
-         */
-        vfunc_get_toolbar_items(window: Gtk.Widget, current_folder: FileInfo): MenuItem[];
     }
 
     export const MenuProvider: MenuProviderNamespace & {
@@ -758,6 +794,24 @@ export namespace Caja {
     };
 
     namespace PropertyPageProvider {
+        /**
+         * Interface for implementing PropertyPageProvider.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * This function is called by Caja when it wants property page
+             * items from the extension.
+             *
+             * This function is called in the main thread before a property page
+             * is shown, so it should return quickly.
+             * @param files a #GList of #CajaFileInfo
+             */
+            vfunc_get_pages(files: FileInfo[]): PropertyPage[];
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -767,7 +821,7 @@ export namespace Caja {
         $gtype: GObject.GType<PropertyPageProvider>;
         prototype: PropertyPageProvider;
     }
-    interface PropertyPageProvider extends GObject.Object {
+    interface PropertyPageProvider extends GObject.Object, PropertyPageProvider.Interface {
         // Methods
 
         /**
@@ -780,18 +834,6 @@ export namespace Caja {
          * @returns A #GList of allocated #CajaPropertyPage items.
          */
         get_pages(files: FileInfo[]): PropertyPage[];
-
-        // Virtual methods
-
-        /**
-         * This function is called by Caja when it wants property page
-         * items from the extension.
-         *
-         * This function is called in the main thread before a property page
-         * is shown, so it should return quickly.
-         * @param files a #GList of #CajaFileInfo
-         */
-        vfunc_get_pages(files: FileInfo[]): PropertyPage[];
     }
 
     export const PropertyPageProvider: PropertyPageProviderNamespace & {
@@ -799,6 +841,51 @@ export namespace Caja {
     };
 
     namespace WidgetViewProvider {
+        /**
+         * Interface for implementing WidgetViewProvider.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Add a file of this location into the widget view.
+             * @param file add a #CajaFile into the widget view.
+             * @param directory the directory of the file.
+             */
+            vfunc_add_file(file: File, directory: File): void;
+            /**
+             * Clear the content of this widget view.
+             */
+            vfunc_clear(): void;
+            /**
+             * Return the first visible file. When use start visit the location, the caja's status is waiting, until
+             * get the first visible file.
+             */
+            vfunc_get_first_visible_file(): string;
+            /**
+             * Return the item count of this widget view.
+             */
+            vfunc_get_item_count(): number;
+            /**
+             * Set the location of this #CajaWidgetViewProvider.
+             * @param location
+             */
+            vfunc_set_location(location: string): void;
+            /**
+             * Set parent #GtkWindow of this #CajaWidgetViewProvider.
+             * @param window parent #GtkWindow
+             */
+            vfunc_set_window(window: Gtk.Window): void;
+            /**
+             * Whether this widget view works for the uri.
+             * @param uri the location to visit.
+             * @param file_type The #GFileType for the uri
+             * @param mime_type The mimetype for the uri
+             */
+            vfunc_supports_uri(uri: string, file_type: Gio.FileType, mime_type: string): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -808,7 +895,7 @@ export namespace Caja {
         $gtype: GObject.GType<WidgetViewProvider>;
         prototype: WidgetViewProvider;
     }
-    interface WidgetViewProvider extends GObject.Object {
+    interface WidgetViewProvider extends GObject.Object, WidgetViewProvider.Interface {
         // Methods
 
         /**
@@ -846,45 +933,6 @@ export namespace Caja {
          * @returns True to use custom widget view, False to ignore, and caja use normal view.
          */
         supports_uri(uri: string, file_type: Gio.FileType | null, mime_type: string): boolean;
-
-        // Virtual methods
-
-        /**
-         * Add a file of this location into the widget view.
-         * @param file add a #CajaFile into the widget view.
-         * @param directory the directory of the file.
-         */
-        vfunc_add_file(file: File, directory: File): void;
-        /**
-         * Clear the content of this widget view.
-         */
-        vfunc_clear(): void;
-        /**
-         * Return the first visible file. When use start visit the location, the caja's status is waiting, until
-         * get the first visible file.
-         */
-        vfunc_get_first_visible_file(): string;
-        /**
-         * Return the item count of this widget view.
-         */
-        vfunc_get_item_count(): number;
-        /**
-         * Set the location of this #CajaWidgetViewProvider.
-         * @param location
-         */
-        vfunc_set_location(location: string): void;
-        /**
-         * Set parent #GtkWindow of this #CajaWidgetViewProvider.
-         * @param window parent #GtkWindow
-         */
-        vfunc_set_window(window: Gtk.Window): void;
-        /**
-         * Whether this widget view works for the uri.
-         * @param uri the location to visit.
-         * @param file_type The #GFileType for the uri
-         * @param mime_type The mimetype for the uri
-         */
-        vfunc_supports_uri(uri: string, file_type: Gio.FileType, mime_type: string): boolean;
     }
 
     export const WidgetViewProvider: WidgetViewProviderNamespace & {

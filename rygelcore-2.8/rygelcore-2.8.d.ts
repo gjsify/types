@@ -5339,6 +5339,16 @@ export namespace RygelCore {
     type ConfigurationIface = typeof Configuration;
     type StateMachineIface = typeof StateMachine;
     namespace DBusInterface {
+        /**
+         * Interface for implementing DBusInterface.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_shutdown(): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5348,14 +5358,10 @@ export namespace RygelCore {
         $gtype: GObject.GType<DBusInterface>;
         prototype: DBusInterface;
     }
-    interface DBusInterface extends GObject.Object {
+    interface DBusInterface extends GObject.Object, DBusInterface.Interface {
         // Methods
 
         shutdown(): void;
-
-        // Virtual methods
-
-        vfunc_shutdown(): void;
     }
 
     export const DBusInterface: DBusInterfaceNamespace & {
@@ -5363,6 +5369,24 @@ export namespace RygelCore {
     };
 
     namespace DBusAclProvider {
+        /**
+         * Interface for implementing DBusAclProvider.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_is_allowed(
+                device: { [key: string]: any } | GLib.HashTable<string, string>,
+                service: { [key: string]: any } | GLib.HashTable<string, string>,
+                path: string,
+                address: string,
+                agent?: string | null,
+                _callback_?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_is_allowed_finish(_res_: Gio.AsyncResult): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5372,7 +5396,7 @@ export namespace RygelCore {
         $gtype: GObject.GType<DBusAclProvider>;
         prototype: DBusAclProvider;
     }
-    interface DBusAclProvider extends GObject.Object {
+    interface DBusAclProvider extends GObject.Object, DBusAclProvider.Interface {
         // Methods
 
         is_allowed(
@@ -5399,18 +5423,6 @@ export namespace RygelCore {
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         is_allowed_finish(_res_: Gio.AsyncResult): boolean;
-
-        // Virtual methods
-
-        vfunc_is_allowed(
-            device: { [key: string]: any } | GLib.HashTable<string, string>,
-            service: { [key: string]: any } | GLib.HashTable<string, string>,
-            path: string,
-            address: string,
-            agent?: string | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_is_allowed_finish(_res_: Gio.AsyncResult): boolean;
     }
 
     export const DBusAclProvider: DBusAclProviderNamespace & {
@@ -5418,6 +5430,35 @@ export namespace RygelCore {
     };
 
     namespace Configuration {
+        /**
+         * Interface for implementing Configuration.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_interface(): string;
+            vfunc_get_interfaces(): string[];
+            vfunc_get_port(): number;
+            vfunc_get_transcoding(): boolean;
+            vfunc_get_allow_upload(): boolean;
+            vfunc_get_allow_deletion(): boolean;
+            vfunc_get_log_levels(): string;
+            vfunc_get_plugin_path(): string;
+            vfunc_get_engine_path(): string;
+            vfunc_get_media_engine(): string;
+            vfunc_get_video_upload_folder(): string | null;
+            vfunc_get_music_upload_folder(): string | null;
+            vfunc_get_picture_upload_folder(): string | null;
+            vfunc_get_enabled(section: string): boolean;
+            vfunc_get_title(section: string): string;
+            vfunc_get_string(section: string, key: string): string;
+            vfunc_get_string_list(section: string, key: string): Gee.ArrayList;
+            vfunc_get_int(section: string, key: string, min: number, max: number): number;
+            vfunc_get_int_list(section: string, key: string): Gee.ArrayList;
+            vfunc_get_bool(section: string, key: string): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5427,7 +5468,7 @@ export namespace RygelCore {
         $gtype: GObject.GType<Configuration>;
         prototype: Configuration;
     }
-    interface Configuration extends GObject.Object {
+    interface Configuration extends GObject.Object, Configuration.Interface {
         // Methods
 
         get_interface(): string;
@@ -5451,29 +5492,6 @@ export namespace RygelCore {
         get_int(section: string, key: string, min: number, max: number): number;
         get_int_list(section: string, key: string): Gee.ArrayList;
         get_bool(section: string, key: string): boolean;
-
-        // Virtual methods
-
-        vfunc_get_interface(): string;
-        vfunc_get_interfaces(): string[];
-        vfunc_get_port(): number;
-        vfunc_get_transcoding(): boolean;
-        vfunc_get_allow_upload(): boolean;
-        vfunc_get_allow_deletion(): boolean;
-        vfunc_get_log_levels(): string;
-        vfunc_get_plugin_path(): string;
-        vfunc_get_engine_path(): string;
-        vfunc_get_media_engine(): string;
-        vfunc_get_video_upload_folder(): string | null;
-        vfunc_get_music_upload_folder(): string | null;
-        vfunc_get_picture_upload_folder(): string | null;
-        vfunc_get_enabled(section: string): boolean;
-        vfunc_get_title(section: string): string;
-        vfunc_get_string(section: string, key: string): string;
-        vfunc_get_string_list(section: string, key: string): Gee.ArrayList;
-        vfunc_get_int(section: string, key: string, min: number, max: number): number;
-        vfunc_get_int_list(section: string, key: string): Gee.ArrayList;
-        vfunc_get_bool(section: string, key: string): boolean;
     }
 
     export const Configuration: ConfigurationNamespace & {
@@ -5481,6 +5499,19 @@ export namespace RygelCore {
     };
 
     namespace StateMachine {
+        /**
+         * Interface for implementing StateMachine.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_run(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_run_finish(_res_: Gio.AsyncResult): void;
+            vfunc_get_cancellable(): Gio.Cancellable;
+            vfunc_set_cancellable(value: Gio.Cancellable): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5492,7 +5523,7 @@ export namespace RygelCore {
         $gtype: GObject.GType<StateMachine>;
         prototype: StateMachine;
     }
-    interface StateMachine extends GObject.Object {
+    interface StateMachine extends GObject.Object, StateMachine.Interface {
         // Properties
 
         get cancellable(): Gio.Cancellable;
@@ -5506,13 +5537,6 @@ export namespace RygelCore {
         run_finish(_res_: Gio.AsyncResult): void;
         get_cancellable(): Gio.Cancellable;
         set_cancellable(value: Gio.Cancellable): void;
-
-        // Virtual methods
-
-        vfunc_run(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
-        vfunc_run_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_cancellable(): Gio.Cancellable;
-        vfunc_set_cancellable(value: Gio.Cancellable): void;
     }
 
     export const StateMachine: StateMachineNamespace & {

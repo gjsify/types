@@ -571,6 +571,16 @@ export namespace Libinsane {
     }
 
     namespace Logger {
+        /**
+         * Interface for implementing Logger.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_log(lvl: LogLevel, msg: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -580,14 +590,10 @@ export namespace Libinsane {
         $gtype: GObject.GType<Logger>;
         prototype: Logger;
     }
-    interface Logger extends GObject.Object {
+    interface Logger extends GObject.Object, Logger.Interface {
         // Methods
 
         log(lvl: LogLevel | null, msg: string): void;
-
-        // Virtual methods
-
-        vfunc_log(lvl: LogLevel, msg: string): void;
     }
 
     export const Logger: LoggerNamespace & {

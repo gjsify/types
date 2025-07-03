@@ -4738,6 +4738,61 @@ export namespace ClutterGst {
     }
 
     namespace Player {
+        /**
+         * Interface for implementing Player.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_eos(): void;
+            vfunc_error(error: GLib.Error): void;
+            /**
+             * Retrieves the playback volume of `self`.
+             */
+            vfunc_get_audio_volume(): number;
+            /**
+             * Retrieves the #ClutterGstFrame of the last frame produced by `self`.
+             */
+            vfunc_get_frame(): Frame;
+            /**
+             * Get the idle state of the pipeline.
+             */
+            vfunc_get_idle(): boolean;
+            /**
+             * Retrieves the #GstPipeline used by the `self,` for direct use with
+             * GStreamer API.
+             */
+            vfunc_get_pipeline(): Gst.Element;
+            /**
+             * Retrieves the playing status of `self`.
+             */
+            vfunc_get_playing(): boolean;
+            /**
+             * Retrieves the #ClutterGstVideoSink used by the `self`.
+             */
+            vfunc_get_video_sink(): VideoSink;
+            vfunc_new_frame(frame: Frame): void;
+            vfunc_ready(): void;
+            /**
+             * Sets the playback volume of `self` to `volume`.
+             * @param volume the volume as a double between 0.0 and 1.0
+             */
+            vfunc_set_audio_volume(volume: number): void;
+            /**
+             * Starts or stops playing of `self`.
+             *
+             * The implementation might be asynchronous, so the way to know whether
+             * the actual playing state of the `self` is to use the #GObject::notify
+             * signal on the #ClutterGstPlayer:playing property and then retrieve the
+             * current state with clutter_gst_player_get_playing(). ClutterGstVideoActor
+             * in clutter-gst is an example of such an asynchronous implementation.
+             * @param playing %TRUE to start playing
+             */
+            vfunc_set_playing(playing: boolean): void;
+            vfunc_size_change(width: number, height: number): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4752,7 +4807,7 @@ export namespace ClutterGst {
         $gtype: GObject.GType<Player>;
         prototype: Player;
     }
-    interface Player extends GObject.Object {
+    interface Player extends GObject.Object, Player.Interface {
         // Properties
 
         /**
@@ -4826,55 +4881,6 @@ export namespace ClutterGst {
          * @param playing %TRUE to start playing
          */
         set_playing(playing: boolean): void;
-
-        // Virtual methods
-
-        vfunc_eos(): void;
-        vfunc_error(error: GLib.Error): void;
-        /**
-         * Retrieves the playback volume of `self`.
-         */
-        vfunc_get_audio_volume(): number;
-        /**
-         * Retrieves the #ClutterGstFrame of the last frame produced by `self`.
-         */
-        vfunc_get_frame(): Frame;
-        /**
-         * Get the idle state of the pipeline.
-         */
-        vfunc_get_idle(): boolean;
-        /**
-         * Retrieves the #GstPipeline used by the `self,` for direct use with
-         * GStreamer API.
-         */
-        vfunc_get_pipeline(): Gst.Element;
-        /**
-         * Retrieves the playing status of `self`.
-         */
-        vfunc_get_playing(): boolean;
-        /**
-         * Retrieves the #ClutterGstVideoSink used by the `self`.
-         */
-        vfunc_get_video_sink(): VideoSink;
-        vfunc_new_frame(frame: Frame): void;
-        vfunc_ready(): void;
-        /**
-         * Sets the playback volume of `self` to `volume`.
-         * @param volume the volume as a double between 0.0 and 1.0
-         */
-        vfunc_set_audio_volume(volume: number): void;
-        /**
-         * Starts or stops playing of `self`.
-         *
-         * The implementation might be asynchronous, so the way to know whether
-         * the actual playing state of the `self` is to use the #GObject::notify
-         * signal on the #ClutterGstPlayer:playing property and then retrieve the
-         * current state with clutter_gst_player_get_playing(). ClutterGstVideoActor
-         * in clutter-gst is an example of such an asynchronous implementation.
-         * @param playing %TRUE to start playing
-         */
-        vfunc_set_playing(playing: boolean): void;
-        vfunc_size_change(width: number, height: number): void;
     }
 
     export const Player: PlayerNamespace & {

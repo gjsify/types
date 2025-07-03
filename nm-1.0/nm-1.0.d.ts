@@ -36442,6 +36442,28 @@ export namespace NM {
     }
 
     namespace Connection {
+        /**
+         * Interface for implementing Connection.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * emitted when any change to the connection's settings occurs
+             */
+            vfunc_changed(): void;
+            /**
+             * emitted when the connection's secrets are cleared
+             */
+            vfunc_secrets_cleared(): void;
+            /**
+             * emitted when the connection's secrets are updated
+             * @param setting
+             */
+            vfunc_secrets_updated(setting: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36451,7 +36473,7 @@ export namespace NM {
         $gtype: GObject.GType<Connection>;
         prototype: Connection;
     }
-    interface Connection extends GObject.Object {
+    interface Connection extends GObject.Object, Connection.Interface {
         // Methods
 
         /**
@@ -36855,22 +36877,6 @@ export namespace NM {
          * @returns %TRUE if the secrets are valid, %FALSE if they are not
          */
         verify_secrets(): boolean;
-
-        // Virtual methods
-
-        /**
-         * emitted when any change to the connection's settings occurs
-         */
-        vfunc_changed(): void;
-        /**
-         * emitted when the connection's secrets are cleared
-         */
-        vfunc_secrets_cleared(): void;
-        /**
-         * emitted when the connection's secrets are updated
-         * @param setting
-         */
-        vfunc_secrets_updated(setting: string): void;
     }
 
     export const Connection: ConnectionNamespace & {
@@ -36878,6 +36884,34 @@ export namespace NM {
     };
 
     namespace VpnEditor {
+        /**
+         * Interface for implementing VpnEditor.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * emitted when the value of a UI widget changes.  May trigger a
+             *   validity check via `update_connection` to write values to the connection.
+             */
+            vfunc_changed(): void;
+            /**
+             * return the #GtkWidget for the VPN editor's UI
+             */
+            vfunc_get_widget<T = GObject.Object>(): T;
+            /**
+             * called to save the user-entered options to the connection
+             *   object.  Should return %FALSE and set `error` if the current options are
+             *   invalid.  `error` should contain enough information for the plugin to
+             *   determine which UI widget is invalid at a later point in time.  For
+             *   example, creating unique error codes for what error occurred and populating
+             *   the message field of `error` with the name of the invalid property.
+             * @param connection
+             */
+            vfunc_update_connection(connection: Connection): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36887,33 +36921,11 @@ export namespace NM {
         $gtype: GObject.GType<VpnEditor>;
         prototype: VpnEditor;
     }
-    interface VpnEditor extends GObject.Object {
+    interface VpnEditor extends GObject.Object, VpnEditor.Interface {
         // Methods
 
         get_widget<T = GObject.Object>(): T;
         update_connection(connection: Connection): boolean;
-
-        // Virtual methods
-
-        /**
-         * emitted when the value of a UI widget changes.  May trigger a
-         *   validity check via `update_connection` to write values to the connection.
-         */
-        vfunc_changed(): void;
-        /**
-         * return the #GtkWidget for the VPN editor's UI
-         */
-        vfunc_get_widget<T = GObject.Object>(): T;
-        /**
-         * called to save the user-entered options to the connection
-         *   object.  Should return %FALSE and set `error` if the current options are
-         *   invalid.  `error` should contain enough information for the plugin to
-         *   determine which UI widget is invalid at a later point in time.  For
-         *   example, creating unique error codes for what error occurred and populating
-         *   the message field of `error` with the name of the invalid property.
-         * @param connection
-         */
-        vfunc_update_connection(connection: Connection): boolean;
     }
 
     export const VpnEditor: VpnEditorNamespace & {
@@ -36921,6 +36933,52 @@ export namespace NM {
     };
 
     namespace VpnEditorPlugin {
+        /**
+         * Interface for implementing VpnEditorPlugin.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Export the given connection to the specified path.  Return
+             *   %TRUE on success.  On error, return %FALSE and set `error` with additional
+             *   error information.  Note that `error` can be %NULL, in which case no
+             *   additional error information should be provided.
+             * @param path
+             * @param connection
+             */
+            vfunc_export_to_file(path: string, connection: Connection): boolean;
+            /**
+             * returns a bitmask of capabilities.
+             */
+            vfunc_get_capabilities(): VpnEditorPluginCapability;
+            /**
+             * returns an #NMVpnEditor, pre-filled with values from `connection`
+             *   if non-%NULL.
+             * @param connection the #NMConnection to be edited
+             */
+            vfunc_get_editor(connection: Connection): VpnEditor;
+            /**
+             * For a given connection, return a suggested file
+             *   name.  Returned value will be %NULL or a suggested file name to be freed by
+             *   the caller.
+             * @param connection
+             */
+            vfunc_get_suggested_filename(connection: Connection): string;
+            /**
+             * return a virtual function table to implement further functions in
+             *   the plugin, without requiring to update libnm. Used by nm_vpn_editor_plugin_get_vt().
+             * @param out_vt_size
+             */
+            vfunc_get_vt(out_vt_size: number): VpnEditorPluginVT;
+            /**
+             * A callback to be called when the plugin info is set.
+             * @param plugin_info
+             */
+            vfunc_notify_plugin_info_set(plugin_info: VpnPluginInfo): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -36969,7 +37027,7 @@ export namespace NM {
             check_file: UtilsCheckFilePredicate,
         ): VpnEditorPlugin;
     }
-    interface VpnEditorPlugin extends GObject.Object {
+    interface VpnEditorPlugin extends GObject.Object, VpnEditorPlugin.Interface {
         // Properties
 
         /**
@@ -37010,46 +37068,6 @@ export namespace NM {
          * @param plugin_info a #NMVpnPluginInfo instance or %NULL
          */
         set_plugin_info(plugin_info?: VpnPluginInfo | null): void;
-
-        // Virtual methods
-
-        /**
-         * Export the given connection to the specified path.  Return
-         *   %TRUE on success.  On error, return %FALSE and set `error` with additional
-         *   error information.  Note that `error` can be %NULL, in which case no
-         *   additional error information should be provided.
-         * @param path
-         * @param connection
-         */
-        vfunc_export_to_file(path: string, connection: Connection): boolean;
-        /**
-         * returns a bitmask of capabilities.
-         */
-        vfunc_get_capabilities(): VpnEditorPluginCapability;
-        /**
-         * returns an #NMVpnEditor, pre-filled with values from `connection`
-         *   if non-%NULL.
-         * @param connection the #NMConnection to be edited
-         */
-        vfunc_get_editor(connection: Connection): VpnEditor;
-        /**
-         * For a given connection, return a suggested file
-         *   name.  Returned value will be %NULL or a suggested file name to be freed by
-         *   the caller.
-         * @param connection
-         */
-        vfunc_get_suggested_filename(connection: Connection): string;
-        /**
-         * return a virtual function table to implement further functions in
-         *   the plugin, without requiring to update libnm. Used by nm_vpn_editor_plugin_get_vt().
-         * @param out_vt_size
-         */
-        vfunc_get_vt(out_vt_size: number): VpnEditorPluginVT;
-        /**
-         * A callback to be called when the plugin info is set.
-         * @param plugin_info
-         */
-        vfunc_notify_plugin_info_set(plugin_info: VpnPluginInfo): void;
     }
 
     export const VpnEditorPlugin: VpnEditorPluginNamespace & {

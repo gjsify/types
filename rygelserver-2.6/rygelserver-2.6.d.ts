@@ -5844,6 +5844,26 @@ export namespace RygelServer {
     type DataSourceIface = typeof DataSource;
     type UpdatableObjectIface = typeof UpdatableObject;
     namespace SearchableContainer {
+        /**
+         * Interface for implementing SearchableContainer.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_search(
+                expression: SearchExpression | null,
+                offset: number,
+                max_count: number,
+                sort_criteria: string,
+                cancellable?: Gio.Cancellable | null,
+                _callback_?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_search_finish(_res_: Gio.AsyncResult): [MediaObjects | null, number];
+            vfunc_get_search_classes(): Gee.ArrayList;
+            vfunc_set_search_classes(value: Gee.ArrayList): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends MediaContainer.ConstructorProps {
@@ -5856,7 +5876,7 @@ export namespace RygelServer {
         $gtype: GObject.GType<SearchableContainer>;
         prototype: SearchableContainer;
     }
-    interface SearchableContainer extends MediaContainer {
+    interface SearchableContainer extends MediaContainer, SearchableContainer.Interface {
         // Properties
 
         get search_classes(): Gee.ArrayList;
@@ -5928,20 +5948,6 @@ export namespace RygelServer {
         find_object_finish(_res_: Gio.AsyncResult): MediaObject | null;
         get_search_classes(): Gee.ArrayList;
         set_search_classes(value: Gee.ArrayList): void;
-
-        // Virtual methods
-
-        vfunc_search(
-            expression: SearchExpression | null,
-            offset: number,
-            max_count: number,
-            sort_criteria: string,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_search_finish(_res_: Gio.AsyncResult): [MediaObjects | null, number];
-        vfunc_get_search_classes(): Gee.ArrayList;
-        vfunc_set_search_classes(value: Gee.ArrayList): void;
     }
 
     export const SearchableContainer: SearchableContainerNamespace & {
@@ -5949,6 +5955,22 @@ export namespace RygelServer {
     };
 
     namespace TrackableContainer {
+        /**
+         * Interface for implementing TrackableContainer.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_add_child(object: MediaObject, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_add_child_finish(_res_: Gio.AsyncResult): void;
+            vfunc_remove_child(object: MediaObject, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_remove_child_finish(_res_: Gio.AsyncResult): void;
+            vfunc_get_service_reset_token(): string;
+            vfunc_set_service_reset_token(token: string): void;
+            vfunc_get_system_update_id(): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends MediaContainer.ConstructorProps {}
@@ -5958,7 +5980,7 @@ export namespace RygelServer {
         $gtype: GObject.GType<TrackableContainer>;
         prototype: TrackableContainer;
     }
-    interface TrackableContainer extends MediaContainer {
+    interface TrackableContainer extends MediaContainer, TrackableContainer.Interface {
         // Methods
 
         clear(): globalThis.Promise<void>;
@@ -5996,16 +6018,6 @@ export namespace RygelServer {
         get_service_reset_token(): string;
         set_service_reset_token(token: string): void;
         get_system_update_id(): number;
-
-        // Virtual methods
-
-        vfunc_add_child(object: MediaObject, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
-        vfunc_add_child_finish(_res_: Gio.AsyncResult): void;
-        vfunc_remove_child(object: MediaObject, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
-        vfunc_remove_child_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_service_reset_token(): string;
-        vfunc_set_service_reset_token(token: string): void;
-        vfunc_get_system_update_id(): number;
     }
 
     export const TrackableContainer: TrackableContainerNamespace & {
@@ -6033,6 +6045,23 @@ export namespace RygelServer {
     };
 
     namespace VisualItem {
+        /**
+         * Interface for implementing VisualItem.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_width(): number;
+            vfunc_set_width(value: number): void;
+            vfunc_get_height(): number;
+            vfunc_set_height(value: number): void;
+            vfunc_get_color_depth(): number;
+            vfunc_set_color_depth(value: number): void;
+            vfunc_get_thumbnails(): Gee.ArrayList;
+            vfunc_set_thumbnails(value: Gee.ArrayList): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends MediaFileItem.ConstructorProps {
@@ -6048,7 +6077,7 @@ export namespace RygelServer {
         $gtype: GObject.GType<VisualItem>;
         prototype: VisualItem;
     }
-    interface VisualItem extends MediaFileItem {
+    interface VisualItem extends MediaFileItem, VisualItem.Interface {
         // Properties
 
         get width(): number;
@@ -6072,17 +6101,6 @@ export namespace RygelServer {
         set_color_depth(value: number): void;
         get_thumbnails(): Gee.ArrayList;
         set_thumbnails(value: Gee.ArrayList): void;
-
-        // Virtual methods
-
-        vfunc_get_width(): number;
-        vfunc_set_width(value: number): void;
-        vfunc_get_height(): number;
-        vfunc_set_height(value: number): void;
-        vfunc_get_color_depth(): number;
-        vfunc_set_color_depth(value: number): void;
-        vfunc_get_thumbnails(): Gee.ArrayList;
-        vfunc_set_thumbnails(value: Gee.ArrayList): void;
     }
 
     export const VisualItem: VisualItemNamespace & {
@@ -6090,6 +6108,47 @@ export namespace RygelServer {
     };
 
     namespace WritableContainer {
+        /**
+         * Interface for implementing WritableContainer.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_add_item(
+                item: MediaFileItem,
+                cancellable?: Gio.Cancellable | null,
+                _callback_?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_add_item_finish(_res_: Gio.AsyncResult): void;
+            vfunc_add_container(
+                container: MediaContainer,
+                cancellable?: Gio.Cancellable | null,
+                _callback_?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_add_container_finish(_res_: Gio.AsyncResult): void;
+            vfunc_add_reference(
+                object: MediaObject,
+                cancellable?: Gio.Cancellable | null,
+                _callback_?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_add_reference_finish(_res_: Gio.AsyncResult): string;
+            vfunc_remove_item(
+                id: string,
+                cancellable?: Gio.Cancellable | null,
+                _callback_?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_remove_item_finish(_res_: Gio.AsyncResult): void;
+            vfunc_remove_container(
+                id: string,
+                cancellable?: Gio.Cancellable | null,
+                _callback_?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_remove_container_finish(_res_: Gio.AsyncResult): void;
+            vfunc_get_create_classes(): Gee.ArrayList;
+            vfunc_set_create_classes(value: Gee.ArrayList): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends MediaContainer.ConstructorProps {
@@ -6102,7 +6161,7 @@ export namespace RygelServer {
         $gtype: GObject.GType<WritableContainer>;
         prototype: WritableContainer;
     }
-    interface WritableContainer extends MediaContainer {
+    interface WritableContainer extends MediaContainer, WritableContainer.Interface {
         // Properties
 
         get create_classes(): Gee.ArrayList;
@@ -6175,41 +6234,6 @@ export namespace RygelServer {
         remove_container_finish(_res_: Gio.AsyncResult): void;
         get_create_classes(): Gee.ArrayList;
         set_create_classes(value: Gee.ArrayList): void;
-
-        // Virtual methods
-
-        vfunc_add_item(
-            item: MediaFileItem,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_add_item_finish(_res_: Gio.AsyncResult): void;
-        vfunc_add_container(
-            container: MediaContainer,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_add_container_finish(_res_: Gio.AsyncResult): void;
-        vfunc_add_reference(
-            object: MediaObject,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_add_reference_finish(_res_: Gio.AsyncResult): string;
-        vfunc_remove_item(
-            id: string,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_remove_item_finish(_res_: Gio.AsyncResult): void;
-        vfunc_remove_container(
-            id: string,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_remove_container_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_create_classes(): Gee.ArrayList;
-        vfunc_set_create_classes(value: Gee.ArrayList): void;
     }
 
     export const WritableContainer: WritableContainerNamespace & {
@@ -6217,6 +6241,20 @@ export namespace RygelServer {
     };
 
     namespace DataSource {
+        /**
+         * Interface for implementing DataSource.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_preroll(seek?: HTTPSeekRequest | null, playspeed?: PlaySpeedRequest | null): Gee.List | null;
+            vfunc_start(): void;
+            vfunc_freeze(): void;
+            vfunc_thaw(): void;
+            vfunc_stop(): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6226,7 +6264,7 @@ export namespace RygelServer {
         $gtype: GObject.GType<DataSource>;
         prototype: DataSource;
     }
-    interface DataSource extends GObject.Object {
+    interface DataSource extends GObject.Object, DataSource.Interface {
         // Methods
 
         preroll(seek?: HTTPSeekRequest | null, playspeed?: PlaySpeedRequest | null): Gee.List | null;
@@ -6234,14 +6272,6 @@ export namespace RygelServer {
         freeze(): void;
         thaw(): void;
         stop(): void;
-
-        // Virtual methods
-
-        vfunc_preroll(seek?: HTTPSeekRequest | null, playspeed?: PlaySpeedRequest | null): Gee.List | null;
-        vfunc_start(): void;
-        vfunc_freeze(): void;
-        vfunc_thaw(): void;
-        vfunc_stop(): void;
     }
 
     export const DataSource: DataSourceNamespace & {
@@ -6249,6 +6279,17 @@ export namespace RygelServer {
     };
 
     namespace UpdatableObject {
+        /**
+         * Interface for implementing UpdatableObject.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_commit(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_commit_finish(_res_: Gio.AsyncResult): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends MediaObject.ConstructorProps {}
@@ -6258,18 +6299,13 @@ export namespace RygelServer {
         $gtype: GObject.GType<UpdatableObject>;
         prototype: UpdatableObject;
     }
-    interface UpdatableObject extends MediaObject {
+    interface UpdatableObject extends MediaObject, UpdatableObject.Interface {
         // Methods
 
         commit(): globalThis.Promise<void>;
         commit(_callback_: Gio.AsyncReadyCallback<this> | null): void;
         commit(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         commit_finish(_res_: Gio.AsyncResult): void;
-
-        // Virtual methods
-
-        vfunc_commit(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
-        vfunc_commit_finish(_res_: Gio.AsyncResult): void;
     }
 
     export const UpdatableObject: UpdatableObjectNamespace & {

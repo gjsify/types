@@ -22869,6 +22869,22 @@ export namespace GtkSource {
     type ViewClass = typeof View;
     type VimIMContextClass = typeof VimIMContext;
     namespace CompletionProposal {
+        /**
+         * Interface for implementing CompletionProposal.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Gets the typed-text for the proposal, if supported by the implementation.
+             *
+             * Implementing this virtual-function is optional, but can be useful to allow
+             * external tooling to compare results.
+             */
+            vfunc_get_typed_text(): string | null;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -22878,7 +22894,7 @@ export namespace GtkSource {
         $gtype: GObject.GType<CompletionProposal>;
         prototype: CompletionProposal;
     }
-    interface CompletionProposal extends GObject.Object {
+    interface CompletionProposal extends GObject.Object, CompletionProposal.Interface {
         // Methods
 
         /**
@@ -22889,16 +22905,6 @@ export namespace GtkSource {
          * @returns a newly allocated string, or %NULL
          */
         get_typed_text(): string | null;
-
-        // Virtual methods
-
-        /**
-         * Gets the typed-text for the proposal, if supported by the implementation.
-         *
-         * Implementing this virtual-function is optional, but can be useful to allow
-         * external tooling to compare results.
-         */
-        vfunc_get_typed_text(): string | null;
     }
 
     export const CompletionProposal: CompletionProposalNamespace & {
@@ -22906,6 +22912,138 @@ export namespace GtkSource {
     };
 
     namespace CompletionProvider {
+        /**
+         * Interface for implementing CompletionProvider.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * This function requests `proposal` to be activated by the
+             * #GtkSourceCompletionProvider.
+             *
+             * What the provider does to activate the proposal is specific to that
+             * provider. Many providers may choose to insert a #GtkSourceSnippet with
+             * edit points the user may cycle through.
+             *
+             * See also: [class`Snippet]`, [class`SnippetChunk]`, [method`View`.push_snippet]
+             * @param context a #GtkSourceCompletionContext
+             * @param proposal a #GtkSourceCompletionProposal
+             */
+            vfunc_activate(context: CompletionContext, proposal: CompletionProposal): void;
+            /**
+             * This function requests that the #GtkSourceCompletionProvider prepares
+             * `cell` to display the contents of `proposal`.
+             *
+             * Based on `cells` column type, you may want to display different information.
+             *
+             * This allows for columns of information among completion proposals
+             * resulting in better alignment of similar content (icons, return types,
+             * method names, and parameter lists).
+             * @param context a #GtkSourceCompletionContext
+             * @param proposal a #GtkSourceCompletionProposal
+             * @param cell a #GtkSourceCompletionCell
+             */
+            vfunc_display(context: CompletionContext, proposal: CompletionProposal, cell: CompletionCell): void;
+            /**
+             * This function should return the priority of `self` in `context`.
+             *
+             * The priority is used to sort groups of completion proposals by
+             * provider so that higher priority providers results are shown
+             * above lower priority providers.
+             *
+             * Higher value indicates higher priority.
+             * @param context a #GtkSourceCompletionContext
+             */
+            vfunc_get_priority(context: CompletionContext): number;
+            /**
+             * Gets the title of the completion provider, if any.
+             *
+             * Currently, titles are not displayed in the completion results, but may be
+             * at some point in the future when non-%NULL.
+             */
+            vfunc_get_title(): string | null;
+            /**
+             * This function is used to determine if a character inserted into the text
+             * editor should cause a new completion request to be triggered.
+             *
+             * An example would be period '.' which might indicate that the user wants
+             * to complete method or field names of an object.
+             *
+             * This method will only trigger when text is inserted into the #GtkTextBuffer
+             * while the completion list is visible and a proposal is selected. Incremental
+             * key-presses (like shift, control, or alt) are not triggerable.
+             * @param iter a #GtkTextIter
+             * @param ch a #gunichar of the character inserted
+             */
+            vfunc_is_trigger(iter: Gtk.TextIter, ch: string): boolean;
+            /**
+             * This function is used to determine if a key typed by the user should
+             * activate `proposal` (resulting in committing the text to the editor).
+             *
+             * This is useful when using languages where convention may lead to less
+             * typing by the user. One example may be the use of "." or "-" to expand
+             * a field access in the C programming language.
+             * @param context a #GtkSourceCompletionContext
+             * @param proposal a #GtkSourceCompletionProposal
+             * @param keyval a keyval such as [const@Gdk.KEY_period]
+             * @param state a #GdkModifierType or 0
+             */
+            vfunc_key_activates(
+                context: CompletionContext,
+                proposal: CompletionProposal,
+                keyval: number,
+                state: Gdk.ModifierType,
+            ): boolean;
+            /**
+             * Providers should return a list of alternates to `proposal` or %NULL if
+             * there are no alternates available.
+             *
+             * This can be used by the completion view to allow the user to move laterally
+             * through similar proposals, such as overrides of methods by the same name.
+             * @param context a #GtkSourceCompletionContext
+             * @param proposal a #GtkSourceCompletionProposal
+             */
+            vfunc_list_alternates(
+                context: CompletionContext,
+                proposal: CompletionProposal,
+            ): CompletionProposal[] | null;
+            /**
+             * Asynchronously requests that the provider populates the completion
+             * results for `context`.
+             *
+             * For providers that would like to populate a [iface`Gio`.ListModel] while those
+             * results are displayed to the user,
+             * [method`CompletionContext`.set_proposals_for_provider] may be used
+             * to reduce latency until the user sees results.
+             * @param context a #GtkSourceCompletionContext
+             * @param cancellable a #GCancellable or %NULL
+             * @param callback a callback to execute upon completion
+             */
+            vfunc_populate_async(
+                context: CompletionContext,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Completes an asynchronous operation to populate a completion provider.
+             * @param result a #GAsyncResult provided to callback
+             */
+            vfunc_populate_finish(result: Gio.AsyncResult): Gio.ListModel;
+            /**
+             * This function can be used to filter results previously provided to
+             * the [class`CompletionContext]` by the #GtkSourceCompletionProvider.
+             *
+             * This can happen as the user types additional text onto the word so
+             * that previously matched items may be removed from the list instead of
+             * generating new [iface`Gio`.ListModel] of results.
+             * @param context a #GtkSourceCompletionContext
+             * @param model a #GListModel
+             */
+            vfunc_refilter(context: CompletionContext, model: Gio.ListModel): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -22915,7 +23053,7 @@ export namespace GtkSource {
         $gtype: GObject.GType<CompletionProvider>;
         prototype: CompletionProvider;
     }
-    interface CompletionProvider extends GObject.Object {
+    interface CompletionProvider extends GObject.Object, CompletionProvider.Interface {
         // Methods
 
         /**
@@ -23073,129 +23211,6 @@ export namespace GtkSource {
          * @param model a #GListModel
          */
         refilter(context: CompletionContext, model: Gio.ListModel): void;
-
-        // Virtual methods
-
-        /**
-         * This function requests `proposal` to be activated by the
-         * #GtkSourceCompletionProvider.
-         *
-         * What the provider does to activate the proposal is specific to that
-         * provider. Many providers may choose to insert a #GtkSourceSnippet with
-         * edit points the user may cycle through.
-         *
-         * See also: [class`Snippet]`, [class`SnippetChunk]`, [method`View`.push_snippet]
-         * @param context a #GtkSourceCompletionContext
-         * @param proposal a #GtkSourceCompletionProposal
-         */
-        vfunc_activate(context: CompletionContext, proposal: CompletionProposal): void;
-        /**
-         * This function requests that the #GtkSourceCompletionProvider prepares
-         * `cell` to display the contents of `proposal`.
-         *
-         * Based on `cells` column type, you may want to display different information.
-         *
-         * This allows for columns of information among completion proposals
-         * resulting in better alignment of similar content (icons, return types,
-         * method names, and parameter lists).
-         * @param context a #GtkSourceCompletionContext
-         * @param proposal a #GtkSourceCompletionProposal
-         * @param cell a #GtkSourceCompletionCell
-         */
-        vfunc_display(context: CompletionContext, proposal: CompletionProposal, cell: CompletionCell): void;
-        /**
-         * This function should return the priority of `self` in `context`.
-         *
-         * The priority is used to sort groups of completion proposals by
-         * provider so that higher priority providers results are shown
-         * above lower priority providers.
-         *
-         * Higher value indicates higher priority.
-         * @param context a #GtkSourceCompletionContext
-         */
-        vfunc_get_priority(context: CompletionContext): number;
-        /**
-         * Gets the title of the completion provider, if any.
-         *
-         * Currently, titles are not displayed in the completion results, but may be
-         * at some point in the future when non-%NULL.
-         */
-        vfunc_get_title(): string | null;
-        /**
-         * This function is used to determine if a character inserted into the text
-         * editor should cause a new completion request to be triggered.
-         *
-         * An example would be period '.' which might indicate that the user wants
-         * to complete method or field names of an object.
-         *
-         * This method will only trigger when text is inserted into the #GtkTextBuffer
-         * while the completion list is visible and a proposal is selected. Incremental
-         * key-presses (like shift, control, or alt) are not triggerable.
-         * @param iter a #GtkTextIter
-         * @param ch a #gunichar of the character inserted
-         */
-        vfunc_is_trigger(iter: Gtk.TextIter, ch: string): boolean;
-        /**
-         * This function is used to determine if a key typed by the user should
-         * activate `proposal` (resulting in committing the text to the editor).
-         *
-         * This is useful when using languages where convention may lead to less
-         * typing by the user. One example may be the use of "." or "-" to expand
-         * a field access in the C programming language.
-         * @param context a #GtkSourceCompletionContext
-         * @param proposal a #GtkSourceCompletionProposal
-         * @param keyval a keyval such as [const@Gdk.KEY_period]
-         * @param state a #GdkModifierType or 0
-         */
-        vfunc_key_activates(
-            context: CompletionContext,
-            proposal: CompletionProposal,
-            keyval: number,
-            state: Gdk.ModifierType,
-        ): boolean;
-        /**
-         * Providers should return a list of alternates to `proposal` or %NULL if
-         * there are no alternates available.
-         *
-         * This can be used by the completion view to allow the user to move laterally
-         * through similar proposals, such as overrides of methods by the same name.
-         * @param context a #GtkSourceCompletionContext
-         * @param proposal a #GtkSourceCompletionProposal
-         */
-        vfunc_list_alternates(context: CompletionContext, proposal: CompletionProposal): CompletionProposal[] | null;
-        /**
-         * Asynchronously requests that the provider populates the completion
-         * results for `context`.
-         *
-         * For providers that would like to populate a [iface`Gio`.ListModel] while those
-         * results are displayed to the user,
-         * [method`CompletionContext`.set_proposals_for_provider] may be used
-         * to reduce latency until the user sees results.
-         * @param context a #GtkSourceCompletionContext
-         * @param cancellable a #GCancellable or %NULL
-         * @param callback a callback to execute upon completion
-         */
-        vfunc_populate_async(
-            context: CompletionContext,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Completes an asynchronous operation to populate a completion provider.
-         * @param result a #GAsyncResult provided to callback
-         */
-        vfunc_populate_finish(result: Gio.AsyncResult): Gio.ListModel;
-        /**
-         * This function can be used to filter results previously provided to
-         * the [class`CompletionContext]` by the #GtkSourceCompletionProvider.
-         *
-         * This can happen as the user types additional text onto the word so
-         * that previously matched items may be removed from the list instead of
-         * generating new [iface`Gio`.ListModel] of results.
-         * @param context a #GtkSourceCompletionContext
-         * @param model a #GListModel
-         */
-        vfunc_refilter(context: CompletionContext, model: Gio.ListModel): void;
     }
 
     export const CompletionProvider: CompletionProviderNamespace & {
@@ -23203,6 +23218,23 @@ export namespace GtkSource {
     };
 
     namespace HoverProvider {
+        /**
+         * Interface for implementing HoverProvider.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_populate(context: HoverContext, display: HoverDisplay): boolean;
+            vfunc_populate_async(
+                context: HoverContext,
+                display: HoverDisplay,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_populate_finish(result: Gio.AsyncResult): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -23212,7 +23244,7 @@ export namespace GtkSource {
         $gtype: GObject.GType<HoverProvider>;
         prototype: HoverProvider;
     }
-    interface HoverProvider extends GObject.Object {
+    interface HoverProvider extends GObject.Object, HoverProvider.Interface {
         // Methods
 
         populate_async(
@@ -23233,17 +23265,6 @@ export namespace GtkSource {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         populate_finish(result: Gio.AsyncResult): boolean;
-
-        // Virtual methods
-
-        vfunc_populate(context: HoverContext, display: HoverDisplay): boolean;
-        vfunc_populate_async(
-            context: HoverContext,
-            display: HoverDisplay,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_populate_finish(result: Gio.AsyncResult): boolean;
     }
 
     export const HoverProvider: HoverProviderNamespace & {
@@ -23251,6 +23272,53 @@ export namespace GtkSource {
     };
 
     namespace Indenter {
+        /**
+         * Interface for implementing Indenter.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * This function should be implemented to alter the indentation of text
+             * within the view.
+             *
+             * `view` is provided so that the indenter may retrieve settings such as indentation and tab widths.
+             *
+             * `iter` is the location where the indentation was requested. This typically
+             * is after having just inserted a newline (\n) character but can be other
+             * situations such as a manually requested indentation or reformatting.
+             *
+             * See [vfunc`GtkSource`.Indenter.is_trigger] for how to trigger indentation on
+             * various characters inserted into the buffer.
+             *
+             * The implementor of this function is expected to keep `iter` valid across
+             * calls to the function and should contain the location of the insert mark
+             * after calling this function.
+             *
+             * The default implementation for this virtual function will copy the
+             * indentation of the previous line.
+             * @param view a #GtkSourceView
+             * @param iter the location of the indentation request
+             */
+            vfunc_indent(view: View, iter: Gtk.TextIter): Gtk.TextIter;
+            /**
+             * This function is used to determine if a key pressed should cause the
+             * indenter to automatically indent.
+             *
+             * The default implementation of this virtual method will check to see
+             * if `keyval` is [const`Gdk`.KEY_Return] or [const`Gdk`.KEY_KP_Enter] and `state` does
+             * not have %GDK_SHIFT_MASK set. This is to allow the user to avoid
+             * indentation when Shift+Return is pressed. Other indenters may want
+             * to copy this behavior to provide a consistent experience to users.
+             * @param view a #GtkSourceView
+             * @param location the location where @ch is to be inserted
+             * @param state modifier state for the insertion
+             * @param keyval the keyval pressed such as [const@Gdk.KEY_Return]
+             */
+            vfunc_is_trigger(view: View, location: Gtk.TextIter, state: Gdk.ModifierType, keyval: number): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -23260,7 +23328,7 @@ export namespace GtkSource {
         $gtype: GObject.GType<Indenter>;
         prototype: Indenter;
     }
-    interface Indenter extends GObject.Object {
+    interface Indenter extends GObject.Object, Indenter.Interface {
         // Methods
 
         /**
@@ -23302,47 +23370,6 @@ export namespace GtkSource {
          * @returns %TRUE if indentation should be automatically triggered;   otherwise %FALSE and no indentation will be performed.
          */
         is_trigger(view: View, location: Gtk.TextIter, state: Gdk.ModifierType | null, keyval: number): boolean;
-
-        // Virtual methods
-
-        /**
-         * This function should be implemented to alter the indentation of text
-         * within the view.
-         *
-         * `view` is provided so that the indenter may retrieve settings such as indentation and tab widths.
-         *
-         * `iter` is the location where the indentation was requested. This typically
-         * is after having just inserted a newline (\n) character but can be other
-         * situations such as a manually requested indentation or reformatting.
-         *
-         * See [vfunc`GtkSource`.Indenter.is_trigger] for how to trigger indentation on
-         * various characters inserted into the buffer.
-         *
-         * The implementor of this function is expected to keep `iter` valid across
-         * calls to the function and should contain the location of the insert mark
-         * after calling this function.
-         *
-         * The default implementation for this virtual function will copy the
-         * indentation of the previous line.
-         * @param view a #GtkSourceView
-         * @param iter the location of the indentation request
-         */
-        vfunc_indent(view: View, iter: Gtk.TextIter): Gtk.TextIter;
-        /**
-         * This function is used to determine if a key pressed should cause the
-         * indenter to automatically indent.
-         *
-         * The default implementation of this virtual method will check to see
-         * if `keyval` is [const`Gdk`.KEY_Return] or [const`Gdk`.KEY_KP_Enter] and `state` does
-         * not have %GDK_SHIFT_MASK set. This is to allow the user to avoid
-         * indentation when Shift+Return is pressed. Other indenters may want
-         * to copy this behavior to provide a consistent experience to users.
-         * @param view a #GtkSourceView
-         * @param location the location where @ch is to be inserted
-         * @param state modifier state for the insertion
-         * @param keyval the keyval pressed such as [const@Gdk.KEY_Return]
-         */
-        vfunc_is_trigger(view: View, location: Gtk.TextIter, state: Gdk.ModifierType, keyval: number): boolean;
     }
 
     export const Indenter: IndenterNamespace & {
@@ -23350,6 +23377,24 @@ export namespace GtkSource {
     };
 
     namespace StyleSchemeChooser {
+        /**
+         * Interface for implementing StyleSchemeChooser.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Gets the currently-selected scheme.
+             */
+            vfunc_get_style_scheme(): StyleScheme;
+            /**
+             * Sets the scheme.
+             * @param scheme a #GtkSourceStyleScheme
+             */
+            vfunc_set_style_scheme(scheme: StyleScheme): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -23362,7 +23407,7 @@ export namespace GtkSource {
         $gtype: GObject.GType<StyleSchemeChooser>;
         prototype: StyleSchemeChooser;
     }
-    interface StyleSchemeChooser extends GObject.Object {
+    interface StyleSchemeChooser extends GObject.Object, StyleSchemeChooser.Interface {
         // Properties
 
         /**
@@ -23392,18 +23437,6 @@ export namespace GtkSource {
          * @param scheme a #GtkSourceStyleScheme
          */
         set_style_scheme(scheme: StyleScheme): void;
-
-        // Virtual methods
-
-        /**
-         * Gets the currently-selected scheme.
-         */
-        vfunc_get_style_scheme(): StyleScheme;
-        /**
-         * Sets the scheme.
-         * @param scheme a #GtkSourceStyleScheme
-         */
-        vfunc_set_style_scheme(scheme: StyleScheme): void;
     }
 
     export const StyleSchemeChooser: StyleSchemeChooserNamespace & {

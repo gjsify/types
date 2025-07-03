@@ -82679,6 +82679,30 @@ export namespace Gladeui {
     }
 
     namespace Editable {
+        /**
+         * Interface for implementing Editable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Loads `widget` property values into `editable`
+             * (the editable will watch the widgets properties
+             * until its loaded with another widget or %NULL)
+             * @param widget the #GladeWidget to load
+             */
+            vfunc_load(widget: Widget): void;
+            /**
+             * This only applies for the general page in the property
+             * editor, editables that embed the #GladeEditorTable implementation
+             * for the general page should use this to forward the message
+             * to its embedded editable.
+             * @param show_name Whether or not to show the name entry
+             */
+            vfunc_set_show_name(show_name: boolean): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {}
@@ -82688,7 +82712,7 @@ export namespace Gladeui {
         $gtype: GObject.GType<Editable>;
         prototype: Editable;
     }
-    interface Editable extends Gtk.Widget {
+    interface Editable extends Gtk.Widget, Editable.Interface {
         // Methods
 
         block(): void;
@@ -82710,24 +82734,6 @@ export namespace Gladeui {
          */
         set_show_name(show_name: boolean): void;
         unblock(): void;
-
-        // Virtual methods
-
-        /**
-         * Loads `widget` property values into `editable`
-         * (the editable will watch the widgets properties
-         * until its loaded with another widget or %NULL)
-         * @param widget the #GladeWidget to load
-         */
-        vfunc_load(widget: Widget): void;
-        /**
-         * This only applies for the general page in the property
-         * editor, editables that embed the #GladeEditorTable implementation
-         * for the general page should use this to forward the message
-         * to its embedded editable.
-         * @param show_name Whether or not to show the name entry
-         */
-        vfunc_set_show_name(show_name: boolean): void;
     }
 
     export const Editable: EditableNamespace & {

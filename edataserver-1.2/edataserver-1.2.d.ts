@@ -21490,6 +21490,203 @@ export namespace EDataServer {
     };
 
     namespace OAuth2Service {
+        /**
+         * Interface for implementing OAuth2Service.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Checks whether the `service` can be used with the given `source`.
+             *
+             * The default implementation checks whether the `source` has an #ESourceAuthentication
+             * extension and when its method matches e_oauth2_service_get_name(), then it automatically
+             * returns %TRUE. Contrary, when the `source` contains GNOME Online Accounts or Ubuntu
+             * Online Accounts extension, then it returns %FALSE.
+             *
+             * The default implementation is tried always as the first and when it fails, then
+             * the descendant's implementation is called.
+             * @param source an #ESource
+             */
+            vfunc_can_process(source: Source): boolean;
+            /**
+             * Tries to extract an authorization code from a web page provided by the server.
+             * The function can be called multiple times, whenever the page load is finished.
+             * The default implementation uses e_oauth2_service_util_extract_from_uri() to get
+             * the code from the given `page_uri`.
+             *
+             * There can happen three states: 1) either the `service` cannot determine
+             * the authentication code from the page information, then the %FALSE is
+             * returned and the `out_authorization_code` is left untouched; or 2) the server
+             * reported a failure, in which case the function returns %TRUE and lefts
+             * the `out_authorization_code` untouched; or 3) the `service` could extract
+             * the authentication code from the given arguments, then the function
+             * returns %TRUE and sets the received authorization code to `out_authorization_code`.
+             *
+             * The `page_content` is %NULL, unless flags returned by e_oauth2_service_get_flags()
+             * contain also %E_OAUTH2_SERVICE_FLAG_EXTRACT_REQUIRES_PAGE_CONTENT.
+             *
+             * This method is always called after e_oauth2_service_get_authentication_policy().
+             * @param source an associated #ESource
+             * @param page_title a web page title
+             * @param page_uri a web page URI
+             * @param page_content a web page content
+             */
+            vfunc_extract_authorization_code(
+                source: Source,
+                page_title: string,
+                page_uri: string,
+                page_content: string | null,
+            ): [boolean, string];
+            /**
+             * Tries to extract error message from the server response, return %TRUE,
+             * when an error message could be found, in which case also sets
+             * the `out_error_message` with it. The default implementation uses
+             * e_oauth2_service_util_extract_from_uri(), returning either the error
+             * description or the error code, when the description is not found.
+             *
+             * The `out_error_message` is expected to be plain text.
+             * @param source an associated #ESource
+             * @param page_title a web page title
+             * @param page_uri a web page URI
+             * @param page_content a web page content
+             */
+            vfunc_extract_error_message(
+                source: Source,
+                page_title: string,
+                page_uri: string,
+                page_content: string | null,
+            ): [boolean, string];
+            /**
+             * Used to decide what to do when the server redirects to the next page.
+             * The default implementation always returns %E_OAUTH2_SERVICE_NAVIGATION_POLICY_ALLOW.
+             *
+             * This method is called before e_oauth2_service_extract_authorization_code() and
+             * can be used to block certain resources or to abort the authentication when
+             * the server redirects to an unexpected page (like when user denies authorization
+             * in the page).
+             * @param source an associated #ESource
+             * @param uri a URI of the navigation resource
+             */
+            vfunc_get_authentication_policy(source: Source, uri: string): OAuth2ServiceNavigationPolicy;
+            vfunc_get_authentication_uri(source: Source): string;
+            vfunc_get_client_id(source: Source): string;
+            vfunc_get_client_secret(source: Source): string | null;
+            /**
+             * Returns a human readable name of the service. This is similar to
+             * e_oauth2_service_get_name(), except this string should be localized,
+             * because it will be used in user-visible strings.
+             */
+            vfunc_get_display_name(): string;
+            vfunc_get_flags(): number;
+            /**
+             * Returns a unique name of the service. It can be named for example
+             * by the server or the company from which it receives the OAuth2
+             * token and where it refreshes it, like "Company" for login.company.com.
+             */
+            vfunc_get_name(): string;
+            /**
+             * Returns a value for the "redirect_uri" keys in the authenticate and get_token
+             * operations. The default implementation returns "urn:ietf:wg:oauth:2.0:oob".
+             * @param source an associated #ESource
+             */
+            vfunc_get_redirect_uri(source: Source): string | null;
+            vfunc_get_refresh_uri(source: Source): string;
+            /**
+             * Checks whether the `service` can be used with the given `protocol` and/or `hostname`.
+             * Any of `protocol` and `hostname` can be %NULL, but not both. It's up to each implementer
+             * to decide, which of the arguments are important and whether all or only any of them
+             * can be required.
+             *
+             * The function is meant to check whether the `service` can be offered
+             * for example when configuring a new account. The real usage is
+             * determined by e_oauth2_service_can_process().
+             *
+             * The default implementation consults org.gnome.evolution-data-server.oauth2-services-hint
+             * GSettings key against given hostname. See its description for more information.
+             *
+             * The default implementation is tried always as the first and when it fails, then
+             * the descendant's implementation is called.
+             * @param protocol a protocol to search the service for, like "imap", or %NULL
+             * @param hostname a host name to search the service for, like "server.example.com", or %NULL
+             */
+            vfunc_guess_can_process(protocol?: string | null, hostname?: string | null): boolean;
+            /**
+             * The `service` can change what arguments are passed in the authentication URI
+             * in this method. The default implementation sets some values too, namely
+             * "response_type", "client_id", "redirect_uri" and "login_hint", if available
+             * in the `source`. These parameters are always provided, even when the interface
+             * implementer overrides this method.
+             *
+             * The `uri_query` hash table expects both key and value to be newly allocated
+             * strings, which will be freed together with the hash table or when the key
+             * is replaced.
+             * @param source an associated #ESource
+             * @param uri_query query for the URI to use
+             */
+            vfunc_prepare_authentication_uri_query(
+                source: Source,
+                uri_query: { [key: string]: any } | GLib.HashTable<string, string>,
+            ): void;
+            /**
+             * Sets additional form parameters to be used in the POST request when requesting
+             * access token after successfully obtained authorization code.
+             * The default implementation sets some values too, namely
+             * "code", "client_id", "client_secret", "redirect_uri" and "grant_type".
+             * These parameters are always provided, even when the interface implementer overrides this method.
+             *
+             * The `form` hash table expects both key and value to be newly allocated
+             * strings, which will be freed together with the hash table or when the key
+             * is replaced.
+             * @param source an associated #ESource
+             * @param authorization_code authorization code, as returned from e_oauth2_service_extract_authorization_code()
+             * @param form form parameters to be used in the POST request
+             */
+            vfunc_prepare_get_token_form(
+                source: Source,
+                authorization_code: string,
+                form: { [key: string]: any } | GLib.HashTable<string, string>,
+            ): void;
+            /**
+             * The `service` can change the `message` before it's sent to
+             * the e_oauth2_service_get_authentication_uri(), with POST data
+             * being provided by e_oauth2_service_prepare_get_token_form().
+             * The default implementation does nothing with the `message`.
+             * @param source an associated #ESource
+             * @param message a #SoupMessage
+             */
+            vfunc_prepare_get_token_message(source: Source, message: Soup.Message): void;
+            /**
+             * Sets additional form parameters to be used in the POST request when requesting
+             * to refresh an access token.
+             * The default implementation sets some values too, namely
+             * "refresh_token", "client_id", "client_secret" and "grant_type".
+             * These parameters are always provided, even when the interface implementer overrides this method.
+             *
+             * The `form` hash table expects both key and value to be newly allocated
+             * strings, which will be freed together with the hash table or when the key
+             * is replaced.
+             * @param source an associated #ESource
+             * @param refresh_token a refresh token to be used
+             * @param form form parameters to be used in the POST request
+             */
+            vfunc_prepare_refresh_token_form(
+                source: Source,
+                refresh_token: string,
+                form: { [key: string]: any } | GLib.HashTable<string, string>,
+            ): void;
+            /**
+             * The `service` can change the `message` before it's sent to
+             * the e_oauth2_service_get_refresh_uri(), with POST data
+             * being provided by e_oauth2_service_prepare_refresh_token_form().
+             * The default implementation does nothing with the `message`.
+             * @param source an associated #ESource
+             * @param message a #SoupMessage
+             */
+            vfunc_prepare_refresh_token_message(source: Source, message: Soup.Message): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -21554,7 +21751,7 @@ export namespace EDataServer {
             value?: string | null,
         ): void;
     }
-    interface OAuth2Service extends GObject.Object {
+    interface OAuth2Service extends GObject.Object, OAuth2Service.Interface {
         // Methods
 
         /**
@@ -21807,197 +22004,6 @@ export namespace EDataServer {
             ref_source: OAuth2ServiceRefSourceFunc,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
-
-        // Virtual methods
-
-        /**
-         * Checks whether the `service` can be used with the given `source`.
-         *
-         * The default implementation checks whether the `source` has an #ESourceAuthentication
-         * extension and when its method matches e_oauth2_service_get_name(), then it automatically
-         * returns %TRUE. Contrary, when the `source` contains GNOME Online Accounts or Ubuntu
-         * Online Accounts extension, then it returns %FALSE.
-         *
-         * The default implementation is tried always as the first and when it fails, then
-         * the descendant's implementation is called.
-         * @param source an #ESource
-         */
-        vfunc_can_process(source: Source): boolean;
-        /**
-         * Tries to extract an authorization code from a web page provided by the server.
-         * The function can be called multiple times, whenever the page load is finished.
-         * The default implementation uses e_oauth2_service_util_extract_from_uri() to get
-         * the code from the given `page_uri`.
-         *
-         * There can happen three states: 1) either the `service` cannot determine
-         * the authentication code from the page information, then the %FALSE is
-         * returned and the `out_authorization_code` is left untouched; or 2) the server
-         * reported a failure, in which case the function returns %TRUE and lefts
-         * the `out_authorization_code` untouched; or 3) the `service` could extract
-         * the authentication code from the given arguments, then the function
-         * returns %TRUE and sets the received authorization code to `out_authorization_code`.
-         *
-         * The `page_content` is %NULL, unless flags returned by e_oauth2_service_get_flags()
-         * contain also %E_OAUTH2_SERVICE_FLAG_EXTRACT_REQUIRES_PAGE_CONTENT.
-         *
-         * This method is always called after e_oauth2_service_get_authentication_policy().
-         * @param source an associated #ESource
-         * @param page_title a web page title
-         * @param page_uri a web page URI
-         * @param page_content a web page content
-         */
-        vfunc_extract_authorization_code(
-            source: Source,
-            page_title: string,
-            page_uri: string,
-            page_content: string | null,
-        ): [boolean, string];
-        /**
-         * Tries to extract error message from the server response, return %TRUE,
-         * when an error message could be found, in which case also sets
-         * the `out_error_message` with it. The default implementation uses
-         * e_oauth2_service_util_extract_from_uri(), returning either the error
-         * description or the error code, when the description is not found.
-         *
-         * The `out_error_message` is expected to be plain text.
-         * @param source an associated #ESource
-         * @param page_title a web page title
-         * @param page_uri a web page URI
-         * @param page_content a web page content
-         */
-        vfunc_extract_error_message(
-            source: Source,
-            page_title: string,
-            page_uri: string,
-            page_content: string | null,
-        ): [boolean, string];
-        /**
-         * Used to decide what to do when the server redirects to the next page.
-         * The default implementation always returns %E_OAUTH2_SERVICE_NAVIGATION_POLICY_ALLOW.
-         *
-         * This method is called before e_oauth2_service_extract_authorization_code() and
-         * can be used to block certain resources or to abort the authentication when
-         * the server redirects to an unexpected page (like when user denies authorization
-         * in the page).
-         * @param source an associated #ESource
-         * @param uri a URI of the navigation resource
-         */
-        vfunc_get_authentication_policy(source: Source, uri: string): OAuth2ServiceNavigationPolicy;
-        vfunc_get_authentication_uri(source: Source): string;
-        vfunc_get_client_id(source: Source): string;
-        vfunc_get_client_secret(source: Source): string | null;
-        /**
-         * Returns a human readable name of the service. This is similar to
-         * e_oauth2_service_get_name(), except this string should be localized,
-         * because it will be used in user-visible strings.
-         */
-        vfunc_get_display_name(): string;
-        vfunc_get_flags(): number;
-        /**
-         * Returns a unique name of the service. It can be named for example
-         * by the server or the company from which it receives the OAuth2
-         * token and where it refreshes it, like "Company" for login.company.com.
-         */
-        vfunc_get_name(): string;
-        /**
-         * Returns a value for the "redirect_uri" keys in the authenticate and get_token
-         * operations. The default implementation returns "urn:ietf:wg:oauth:2.0:oob".
-         * @param source an associated #ESource
-         */
-        vfunc_get_redirect_uri(source: Source): string | null;
-        vfunc_get_refresh_uri(source: Source): string;
-        /**
-         * Checks whether the `service` can be used with the given `protocol` and/or `hostname`.
-         * Any of `protocol` and `hostname` can be %NULL, but not both. It's up to each implementer
-         * to decide, which of the arguments are important and whether all or only any of them
-         * can be required.
-         *
-         * The function is meant to check whether the `service` can be offered
-         * for example when configuring a new account. The real usage is
-         * determined by e_oauth2_service_can_process().
-         *
-         * The default implementation consults org.gnome.evolution-data-server.oauth2-services-hint
-         * GSettings key against given hostname. See its description for more information.
-         *
-         * The default implementation is tried always as the first and when it fails, then
-         * the descendant's implementation is called.
-         * @param protocol a protocol to search the service for, like "imap", or %NULL
-         * @param hostname a host name to search the service for, like "server.example.com", or %NULL
-         */
-        vfunc_guess_can_process(protocol?: string | null, hostname?: string | null): boolean;
-        /**
-         * The `service` can change what arguments are passed in the authentication URI
-         * in this method. The default implementation sets some values too, namely
-         * "response_type", "client_id", "redirect_uri" and "login_hint", if available
-         * in the `source`. These parameters are always provided, even when the interface
-         * implementer overrides this method.
-         *
-         * The `uri_query` hash table expects both key and value to be newly allocated
-         * strings, which will be freed together with the hash table or when the key
-         * is replaced.
-         * @param source an associated #ESource
-         * @param uri_query query for the URI to use
-         */
-        vfunc_prepare_authentication_uri_query(
-            source: Source,
-            uri_query: { [key: string]: any } | GLib.HashTable<string, string>,
-        ): void;
-        /**
-         * Sets additional form parameters to be used in the POST request when requesting
-         * access token after successfully obtained authorization code.
-         * The default implementation sets some values too, namely
-         * "code", "client_id", "client_secret", "redirect_uri" and "grant_type".
-         * These parameters are always provided, even when the interface implementer overrides this method.
-         *
-         * The `form` hash table expects both key and value to be newly allocated
-         * strings, which will be freed together with the hash table or when the key
-         * is replaced.
-         * @param source an associated #ESource
-         * @param authorization_code authorization code, as returned from e_oauth2_service_extract_authorization_code()
-         * @param form form parameters to be used in the POST request
-         */
-        vfunc_prepare_get_token_form(
-            source: Source,
-            authorization_code: string,
-            form: { [key: string]: any } | GLib.HashTable<string, string>,
-        ): void;
-        /**
-         * The `service` can change the `message` before it's sent to
-         * the e_oauth2_service_get_authentication_uri(), with POST data
-         * being provided by e_oauth2_service_prepare_get_token_form().
-         * The default implementation does nothing with the `message`.
-         * @param source an associated #ESource
-         * @param message a #SoupMessage
-         */
-        vfunc_prepare_get_token_message(source: Source, message: Soup.Message): void;
-        /**
-         * Sets additional form parameters to be used in the POST request when requesting
-         * to refresh an access token.
-         * The default implementation sets some values too, namely
-         * "refresh_token", "client_id", "client_secret" and "grant_type".
-         * These parameters are always provided, even when the interface implementer overrides this method.
-         *
-         * The `form` hash table expects both key and value to be newly allocated
-         * strings, which will be freed together with the hash table or when the key
-         * is replaced.
-         * @param source an associated #ESource
-         * @param refresh_token a refresh token to be used
-         * @param form form parameters to be used in the POST request
-         */
-        vfunc_prepare_refresh_token_form(
-            source: Source,
-            refresh_token: string,
-            form: { [key: string]: any } | GLib.HashTable<string, string>,
-        ): void;
-        /**
-         * The `service` can change the `message` before it's sent to
-         * the e_oauth2_service_get_refresh_uri(), with POST data
-         * being provided by e_oauth2_service_prepare_refresh_token_form().
-         * The default implementation does nothing with the `message`.
-         * @param source an associated #ESource
-         * @param message a #SoupMessage
-         */
-        vfunc_prepare_refresh_token_message(source: Source, message: Soup.Message): void;
     }
 
     export const OAuth2Service: OAuth2ServiceNamespace & {

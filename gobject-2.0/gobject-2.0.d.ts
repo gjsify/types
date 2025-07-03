@@ -131,6 +131,11 @@ export namespace GObject {
         $gtype?: GType<T>;
     }
 
+    export namespace Object {
+        // Interface for virtual method implementations
+        export interface Interface extends GObject.Interface {}
+    }
+
     /**
      * Use this to signify a function that must be overridden in an
      * implementation of the interface.

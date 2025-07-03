@@ -29040,6 +29040,16 @@ export namespace Gda {
     }
 
     namespace AfectedRows {
+        /**
+         * Interface for implementing AfectedRows.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_number(): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Result.ConstructorProps {
@@ -29051,7 +29061,7 @@ export namespace Gda {
         $gtype: GObject.GType<AfectedRows>;
         prototype: AfectedRows;
     }
-    interface AfectedRows extends Result {
+    interface AfectedRows extends Result, AfectedRows.Interface {
         // Properties
 
         get number(): number;
@@ -29059,10 +29069,6 @@ export namespace Gda {
         // Methods
 
         get_number(): number;
-
-        // Virtual methods
-
-        vfunc_get_number(): number;
     }
 
     export const AfectedRows: AfectedRowsNamespace & {
@@ -29070,6 +29076,23 @@ export namespace Gda {
     };
 
     namespace ColumnModel {
+        /**
+         * Interface for implementing ColumnModel.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_attributes(): ColumnAttributes;
+            vfunc_get_data_type(): GObject.GType;
+            vfunc_get_index(): number;
+            vfunc_get_name(): string;
+            vfunc_get_value(): unknown;
+            vfunc_set_attributes(value: ColumnAttributes): void;
+            vfunc_set_foreign_key(value: ForeignKey): void;
+            vfunc_set_value(value: GObject.Value | any): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -29088,7 +29111,7 @@ export namespace Gda {
         $gtype: GObject.GType<ColumnModel>;
         prototype: ColumnModel;
     }
-    interface ColumnModel extends GObject.Object {
+    interface ColumnModel extends GObject.Object, ColumnModel.Interface {
         // Properties
 
         get attributes(): ColumnAttributes;
@@ -29114,17 +29137,6 @@ export namespace Gda {
         set_attributes(value: ColumnAttributes | null): void;
         set_foreign_key(value: ForeignKey): void;
         set_value(value: GObject.Value | any): void;
-
-        // Virtual methods
-
-        vfunc_get_attributes(): ColumnAttributes;
-        vfunc_get_data_type(): GObject.GType;
-        vfunc_get_index(): number;
-        vfunc_get_name(): string;
-        vfunc_get_value(): unknown;
-        vfunc_set_attributes(value: ColumnAttributes): void;
-        vfunc_set_foreign_key(value: ForeignKey): void;
-        vfunc_set_value(value: GObject.Value | any): void;
     }
 
     export const ColumnModel: ColumnModelNamespace & {
@@ -29132,6 +29144,20 @@ export namespace Gda {
     };
 
     namespace ConnectionModel {
+        /**
+         * Interface for implementing ConnectionModel.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_close(): void;
+            vfunc_close_no_warning(): void;
+            vfunc_get_is_opened(): boolean;
+            vfunc_open(): boolean;
+            vfunc_set_cnc_params(value: ConnectionModelParams): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -29146,7 +29172,7 @@ export namespace Gda {
         $gtype: GObject.GType<ConnectionModel>;
         prototype: ConnectionModel;
     }
-    interface ConnectionModel extends GObject.Object {
+    interface ConnectionModel extends GObject.Object, ConnectionModel.Interface {
         // Properties
 
         get cnc_params(): ConnectionModelParams;
@@ -29163,14 +29189,6 @@ export namespace Gda {
         get_is_opened(): boolean;
         open(): boolean;
         set_cnc_params(value: ConnectionModelParams): void;
-
-        // Virtual methods
-
-        vfunc_close(): void;
-        vfunc_close_no_warning(): void;
-        vfunc_get_is_opened(): boolean;
-        vfunc_open(): boolean;
-        vfunc_set_cnc_params(value: ConnectionModelParams): void;
     }
 
     export const ConnectionModel: ConnectionModelNamespace & {
@@ -29178,6 +29196,17 @@ export namespace Gda {
     };
 
     namespace CreateDatabaseBuilder {
+        /**
+         * Interface for implementing CreateDatabaseBuilder.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface extends QueryBuilder.Interface {
+            // Virtual methods
+
+            vfunc_get_database_name(): string;
+            vfunc_set_database_name(value: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends QueryBuilder.ConstructorProps {
@@ -29190,7 +29219,7 @@ export namespace Gda {
         $gtype: GObject.GType<CreateDatabaseBuilder>;
         prototype: CreateDatabaseBuilder;
     }
-    interface CreateDatabaseBuilder extends QueryBuilder {
+    interface CreateDatabaseBuilder extends QueryBuilder, CreateDatabaseBuilder.Interface {
         // Properties
 
         get database_name(): string;
@@ -29202,11 +29231,6 @@ export namespace Gda {
 
         get_database_name(): string;
         set_database_name(value: string): void;
-
-        // Virtual methods
-
-        vfunc_get_database_name(): string;
-        vfunc_set_database_name(value: string): void;
     }
 
     export const CreateDatabaseBuilder: CreateDatabaseBuilderNamespace & {
@@ -29214,6 +29238,19 @@ export namespace Gda {
     };
 
     namespace CreateTableBuilder {
+        /**
+         * Interface for implementing CreateTableBuilder.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface extends QueryBuilder.Interface {
+            // Virtual methods
+
+            vfunc_get_table_name(): string;
+            vfunc_set_columns(value: Gio.ListModel): void;
+            vfunc_set_contraints(value: Gio.ListModel): void;
+            vfunc_set_table_name(value: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends QueryBuilder.ConstructorProps {
@@ -29228,7 +29265,7 @@ export namespace Gda {
         $gtype: GObject.GType<CreateTableBuilder>;
         prototype: CreateTableBuilder;
     }
-    interface CreateTableBuilder extends QueryBuilder {
+    interface CreateTableBuilder extends QueryBuilder, CreateTableBuilder.Interface {
         // Properties
 
         get columns(): Gio.ListModel;
@@ -29246,13 +29283,6 @@ export namespace Gda {
         set_columns(value: Gio.ListModel): void;
         set_contraints(value: Gio.ListModel): void;
         set_table_name(value: string): void;
-
-        // Virtual methods
-
-        vfunc_get_table_name(): string;
-        vfunc_set_columns(value: Gio.ListModel): void;
-        vfunc_set_contraints(value: Gio.ListModel): void;
-        vfunc_set_table_name(value: string): void;
     }
 
     export const CreateTableBuilder: CreateTableBuilderNamespace & {
@@ -29260,6 +29290,77 @@ export namespace Gda {
     };
 
     namespace DataHandler {
+        /**
+         * Interface for implementing DataHandler.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
+             * @param type a #GType
+             */
+            vfunc_accepts_g_type(type: GObject.GType): boolean;
+            /**
+             * Get a short description of the GdaDataHandler
+             */
+            vfunc_get_descr(): string;
+            /**
+             * Creates a new GValue which holds a sane initial value to be used if no value is specifically
+             * provided. For example for a simple string, this would return a new value containing the "" string.
+             * @param type a #GType
+             */
+            vfunc_get_sane_init_value(type: GObject.GType): GObject.Value | null;
+            /**
+             * Creates a new string which is an SQL representation of the given value, the returned string
+             * can be used directly in an SQL statement. For example if `value` is a G_TYPE_STRING, then
+             * the returned string will be correctly quoted. Note however that it is a better practice
+             * to use variables in statements instead of value literals, see
+             * the <link linkend="GdaSqlParser.description">GdaSqlParser</link> for more information.
+             *
+             * If the value is NULL or is of type GDA_TYPE_NULL,
+             * or is a G_TYPE_STRING and g_value_get_string() returns %NULL, the returned string is "NULL".
+             * @param value the value to be converted to a string, or %NULL
+             */
+            vfunc_get_sql_from_value(value?: GObject.Value | null): string;
+            /**
+             * Creates a new string which is a "user friendly" representation of the given value
+             * (in the user's locale, specially for the dates). If the value is
+             * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
+             *
+             * Note: the returned value will be in the current locale representation.
+             * @param value the value to be converted to a string, or %NULL
+             */
+            vfunc_get_str_from_value(value?: GObject.Value | null): string;
+            /**
+             * Creates a new GValue which represents the SQL value given as argument. This is
+             * the opposite of the function gda_data_handler_get_sql_from_value(). The type argument
+             * is used to determine the real data type requested for the returned value.
+             *
+             * If the `sql` string is %NULL, then the returned GValue is of type GDA_TYPE_NULL;
+             * if the `sql` string does not correspond to a valid SQL string for the requested type, then
+             * the %NULL is returned.
+             * @param sql an SQL string, or %NULL
+             * @param type a GType
+             */
+            vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
+            /**
+             * Creates a new GValue which represents the `str` value given as argument. This is
+             * the opposite of the function gda_data_handler_get_str_from_value(). The type argument
+             * is used to determine the real data type requested for the returned value.
+             *
+             * If the `str` string is %NULL, then the returned GValue is of type GDA_TYPE_NULL;
+             * if the `str` string does not correspond to a valid string for the requested type, then
+             * %NULL is returned.
+             *
+             * Note: the `str` string must be in the current locale representation
+             * @param str a string or %NULL
+             * @param type a GType
+             */
+            vfunc_get_value_from_str(str: string | null, type: GObject.GType): unknown;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -29279,7 +29380,7 @@ export namespace Gda {
          */
         get_default(for_type: GObject.GType): DataHandler;
     }
-    interface DataHandler extends GObject.Object {
+    interface DataHandler extends GObject.Object, DataHandler.Interface {
         // Methods
 
         /**
@@ -29351,71 +29452,6 @@ export namespace Gda {
          * @returns the new #GValue or %NULL on error
          */
         get_value_from_str(str: string | null, type: GObject.GType): unknown;
-
-        // Virtual methods
-
-        /**
-         * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
-         * @param type a #GType
-         */
-        vfunc_accepts_g_type(type: GObject.GType): boolean;
-        /**
-         * Get a short description of the GdaDataHandler
-         */
-        vfunc_get_descr(): string;
-        /**
-         * Creates a new GValue which holds a sane initial value to be used if no value is specifically
-         * provided. For example for a simple string, this would return a new value containing the "" string.
-         * @param type a #GType
-         */
-        vfunc_get_sane_init_value(type: GObject.GType): GObject.Value | null;
-        /**
-         * Creates a new string which is an SQL representation of the given value, the returned string
-         * can be used directly in an SQL statement. For example if `value` is a G_TYPE_STRING, then
-         * the returned string will be correctly quoted. Note however that it is a better practice
-         * to use variables in statements instead of value literals, see
-         * the <link linkend="GdaSqlParser.description">GdaSqlParser</link> for more information.
-         *
-         * If the value is NULL or is of type GDA_TYPE_NULL,
-         * or is a G_TYPE_STRING and g_value_get_string() returns %NULL, the returned string is "NULL".
-         * @param value the value to be converted to a string, or %NULL
-         */
-        vfunc_get_sql_from_value(value?: GObject.Value | null): string;
-        /**
-         * Creates a new string which is a "user friendly" representation of the given value
-         * (in the user's locale, specially for the dates). If the value is
-         * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
-         *
-         * Note: the returned value will be in the current locale representation.
-         * @param value the value to be converted to a string, or %NULL
-         */
-        vfunc_get_str_from_value(value?: GObject.Value | null): string;
-        /**
-         * Creates a new GValue which represents the SQL value given as argument. This is
-         * the opposite of the function gda_data_handler_get_sql_from_value(). The type argument
-         * is used to determine the real data type requested for the returned value.
-         *
-         * If the `sql` string is %NULL, then the returned GValue is of type GDA_TYPE_NULL;
-         * if the `sql` string does not correspond to a valid SQL string for the requested type, then
-         * the %NULL is returned.
-         * @param sql an SQL string, or %NULL
-         * @param type a GType
-         */
-        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
-        /**
-         * Creates a new GValue which represents the `str` value given as argument. This is
-         * the opposite of the function gda_data_handler_get_str_from_value(). The type argument
-         * is used to determine the real data type requested for the returned value.
-         *
-         * If the `str` string is %NULL, then the returned GValue is of type GDA_TYPE_NULL;
-         * if the `str` string does not correspond to a valid string for the requested type, then
-         * %NULL is returned.
-         *
-         * Note: the `str` string must be in the current locale representation
-         * @param str a string or %NULL
-         * @param type a GType
-         */
-        vfunc_get_value_from_str(str: string | null, type: GObject.GType): unknown;
     }
 
     export const DataHandler: DataHandlerNamespace & {
@@ -29888,6 +29924,25 @@ export namespace Gda {
     };
 
     namespace DbBuildable {
+        /**
+         * Interface for implementing DbBuildable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * This method parse XML node and populate `self` object.
+             * @param node a node to parse
+             */
+            vfunc_parse_node(node: libxml2.NodePtr): boolean;
+            /**
+             * Write content from the `self` to the `node`
+             * @param node a node to write data in
+             */
+            vfunc_write_node(node: libxml2.NodePtr): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -29897,7 +29952,7 @@ export namespace Gda {
         $gtype: GObject.GType<DbBuildable>;
         prototype: DbBuildable;
     }
-    interface DbBuildable extends GObject.Object {
+    interface DbBuildable extends GObject.Object, DbBuildable.Interface {
         // Methods
 
         /**
@@ -29912,19 +29967,6 @@ export namespace Gda {
          * @returns %TRUE on success, %FALSE if an error occurred
          */
         write_node(node: libxml2.NodePtr): boolean;
-
-        // Virtual methods
-
-        /**
-         * This method parse XML node and populate `self` object.
-         * @param node a node to parse
-         */
-        vfunc_parse_node(node: libxml2.NodePtr): boolean;
-        /**
-         * Write content from the `self` to the `node`
-         * @param node a node to write data in
-         */
-        vfunc_write_node(node: libxml2.NodePtr): boolean;
     }
 
     export const DbBuildable: DbBuildableNamespace & {
@@ -29932,6 +29974,33 @@ export namespace Gda {
     };
 
     namespace DdlModifiable {
+        /**
+         * Interface for implementing DdlModifiable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * This method executes CREATE operation. That is, #GdaDbTable, #GdaDbIndex, and #GdaDbView
+             * implement corresponding CREATE TABLE | CREATE INDEX | CREATE VIEW operations. #GdaDbColumn
+             * implements ADD COLUMN operation as part of ALTER TABLE operation.
+             * @param cnc Opened connection
+             */
+            vfunc_create(cnc: Connection): boolean;
+            /**
+             * Execute corresponding DROP operation
+             * @param cnc Opened connection
+             */
+            vfunc_drop(cnc: Connection): boolean;
+            /**
+             * Execute corresponding RENAME operation. A lot of RENAME operations are not implemented by
+             * SQLite3 provider. In this case, the SQL object must be deleted and a new one should be created.
+             * @param cnc Opened connection
+             */
+            vfunc_rename(cnc: Connection): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -29943,7 +30012,7 @@ export namespace Gda {
 
         error_quark(): GLib.Quark;
     }
-    interface DdlModifiable extends GObject.Object {
+    interface DdlModifiable extends GObject.Object, DdlModifiable.Interface {
         // Methods
 
         /**
@@ -29967,27 +30036,6 @@ export namespace Gda {
          * @param user_data Additional information provided by the user
          */
         rename(cnc: Connection, user_data?: any | null): boolean;
-
-        // Virtual methods
-
-        /**
-         * This method executes CREATE operation. That is, #GdaDbTable, #GdaDbIndex, and #GdaDbView
-         * implement corresponding CREATE TABLE | CREATE INDEX | CREATE VIEW operations. #GdaDbColumn
-         * implements ADD COLUMN operation as part of ALTER TABLE operation.
-         * @param cnc Opened connection
-         */
-        vfunc_create(cnc: Connection): boolean;
-        /**
-         * Execute corresponding DROP operation
-         * @param cnc Opened connection
-         */
-        vfunc_drop(cnc: Connection): boolean;
-        /**
-         * Execute corresponding RENAME operation. A lot of RENAME operations are not implemented by
-         * SQLite3 provider. In this case, the SQL object must be deleted and a new one should be created.
-         * @param cnc Opened connection
-         */
-        vfunc_rename(cnc: Connection): boolean;
     }
 
     export const DdlModifiable: DdlModifiableNamespace & {
@@ -29995,6 +30043,17 @@ export namespace Gda {
     };
 
     namespace DropDatabaseBuilder {
+        /**
+         * Interface for implementing DropDatabaseBuilder.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface extends QueryBuilder.Interface {
+            // Virtual methods
+
+            vfunc_get_database_name(): string;
+            vfunc_set_database_name(value: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends QueryBuilder.ConstructorProps {
@@ -30007,7 +30066,7 @@ export namespace Gda {
         $gtype: GObject.GType<DropDatabaseBuilder>;
         prototype: DropDatabaseBuilder;
     }
-    interface DropDatabaseBuilder extends QueryBuilder {
+    interface DropDatabaseBuilder extends QueryBuilder, DropDatabaseBuilder.Interface {
         // Properties
 
         get database_name(): string;
@@ -30019,11 +30078,6 @@ export namespace Gda {
 
         get_database_name(): string;
         set_database_name(value: string): void;
-
-        // Virtual methods
-
-        vfunc_get_database_name(): string;
-        vfunc_set_database_name(value: string): void;
     }
 
     export const DropDatabaseBuilder: DropDatabaseBuilderNamespace & {
@@ -30031,6 +30085,19 @@ export namespace Gda {
     };
 
     namespace DropTableBuilder {
+        /**
+         * Interface for implementing DropTableBuilder.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface extends QueryBuilder.Interface {
+            // Virtual methods
+
+            vfunc_get_cascade(): boolean;
+            vfunc_get_table_name(): string;
+            vfunc_set_cascade(value: boolean): void;
+            vfunc_set_table_name(value: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends QueryBuilder.ConstructorProps {
@@ -30044,7 +30111,7 @@ export namespace Gda {
         $gtype: GObject.GType<DropTableBuilder>;
         prototype: DropTableBuilder;
     }
-    interface DropTableBuilder extends QueryBuilder {
+    interface DropTableBuilder extends QueryBuilder, DropTableBuilder.Interface {
         // Properties
 
         get cascade(): boolean;
@@ -30060,13 +30127,6 @@ export namespace Gda {
         get_table_name(): string;
         set_cascade(value: boolean): void;
         set_table_name(value: string): void;
-
-        // Virtual methods
-
-        vfunc_get_cascade(): boolean;
-        vfunc_get_table_name(): string;
-        vfunc_set_cascade(value: boolean): void;
-        vfunc_set_table_name(value: string): void;
     }
 
     export const DropTableBuilder: DropTableBuilderNamespace & {
@@ -30074,6 +30134,27 @@ export namespace Gda {
     };
 
     namespace ForeignKey {
+        /**
+         * Interface for implementing ForeignKey.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_delete_rule(): ForeignKeyRule;
+            vfunc_get_match(): ForeignKeyMatch;
+            vfunc_get_name(): string;
+            vfunc_get_refname(): string;
+            vfunc_get_update_rule(): ForeignKeyRule;
+            vfunc_set_delete_rule(value: ForeignKeyRule): void;
+            vfunc_set_match(value: ForeignKeyMatch): void;
+            vfunc_set_name(value: string): void;
+            vfunc_set_refcol(value: Gio.ListModel): void;
+            vfunc_set_refname(value: string): void;
+            vfunc_set_reftable(value: TableModel): void;
+            vfunc_set_update_rule(value: ForeignKeyRule): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -30093,7 +30174,7 @@ export namespace Gda {
         $gtype: GObject.GType<ForeignKey>;
         prototype: ForeignKey;
     }
-    interface ForeignKey extends GObject.Object {
+    interface ForeignKey extends GObject.Object, ForeignKey.Interface {
         // Properties
 
         get delete_rule(): ForeignKeyRule;
@@ -30131,21 +30212,6 @@ export namespace Gda {
         set_reftable(value: TableModel): void;
         set_update_rule(value: ForeignKeyRule | null): void;
         to_string(): string;
-
-        // Virtual methods
-
-        vfunc_get_delete_rule(): ForeignKeyRule;
-        vfunc_get_match(): ForeignKeyMatch;
-        vfunc_get_name(): string;
-        vfunc_get_refname(): string;
-        vfunc_get_update_rule(): ForeignKeyRule;
-        vfunc_set_delete_rule(value: ForeignKeyRule): void;
-        vfunc_set_match(value: ForeignKeyMatch): void;
-        vfunc_set_name(value: string): void;
-        vfunc_set_refcol(value: Gio.ListModel): void;
-        vfunc_set_refname(value: string): void;
-        vfunc_set_reftable(value: TableModel): void;
-        vfunc_set_update_rule(value: ForeignKeyRule): void;
     }
 
     export const ForeignKey: ForeignKeyNamespace & {
@@ -30153,6 +30219,16 @@ export namespace Gda {
     };
 
     namespace Inserted {
+        /**
+         * Interface for implementing Inserted.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_number(): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Result.ConstructorProps {
@@ -30166,7 +30242,7 @@ export namespace Gda {
         $gtype: GObject.GType<Inserted>;
         prototype: Inserted;
     }
-    interface Inserted extends Result {
+    interface Inserted extends Result, Inserted.Interface {
         // Properties
 
         get last_insertd(): RowModel;
@@ -30176,10 +30252,6 @@ export namespace Gda {
         // Methods
 
         get_number(): number;
-
-        // Virtual methods
-
-        vfunc_get_number(): number;
     }
 
     export const Inserted: InsertedNamespace & {
@@ -30187,6 +30259,36 @@ export namespace Gda {
     };
 
     namespace Lockable {
+        /**
+         * Interface for implementing Lockable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Locks `lockable`. If it is already locked by another thread, the current thread will block until it is unlocked
+             * by the other thread.
+             *
+             * Note: unlike g_mutex_lock(), this method recursive, which means a thread can lock `lockable` several times
+             * (and has to unlock it as many times to actually unlock it).
+             */
+            vfunc_lock(): void;
+            /**
+             * Tries to lock `lockable`. If it is already locked by another thread, then it immediately returns FALSE, otherwise
+             * it locks `lockable`.
+             *
+             * Note: unlike g_mutex_lock(), this method recursive, which means a thread can lock `lockable` several times
+             * (and has to unlock it as many times to actually unlock it).
+             */
+            vfunc_trylock(): boolean;
+            /**
+             * Unlocks `lockable`. This method should not be called if the current does not already holds a lock on `lockable` (having
+             * used gda_lockable_lock() or gda_lockable_trylock()).
+             */
+            vfunc_unlock(): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -30196,7 +30298,7 @@ export namespace Gda {
         $gtype: GObject.GType<Lockable>;
         prototype: Lockable;
     }
-    interface Lockable extends GObject.Object {
+    interface Lockable extends GObject.Object, Lockable.Interface {
         // Methods
 
         /**
@@ -30221,30 +30323,6 @@ export namespace Gda {
          * used gda_lockable_lock() or gda_lockable_trylock()).
          */
         unlock(): void;
-
-        // Virtual methods
-
-        /**
-         * Locks `lockable`. If it is already locked by another thread, the current thread will block until it is unlocked
-         * by the other thread.
-         *
-         * Note: unlike g_mutex_lock(), this method recursive, which means a thread can lock `lockable` several times
-         * (and has to unlock it as many times to actually unlock it).
-         */
-        vfunc_lock(): void;
-        /**
-         * Tries to lock `lockable`. If it is already locked by another thread, then it immediately returns FALSE, otherwise
-         * it locks `lockable`.
-         *
-         * Note: unlike g_mutex_lock(), this method recursive, which means a thread can lock `lockable` several times
-         * (and has to unlock it as many times to actually unlock it).
-         */
-        vfunc_trylock(): boolean;
-        /**
-         * Unlocks `lockable`. This method should not be called if the current does not already holds a lock on `lockable` (having
-         * used gda_lockable_lock() or gda_lockable_trylock()).
-         */
-        vfunc_unlock(): void;
     }
 
     export const Lockable: LockableNamespace & {
@@ -30252,6 +30330,16 @@ export namespace Gda {
     };
 
     namespace MetaCatalog {
+        /**
+         * Interface for implementing MetaCatalog.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_set_connection(value: ConnectionModel): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -30263,7 +30351,7 @@ export namespace Gda {
         $gtype: GObject.GType<MetaCatalog>;
         prototype: MetaCatalog;
     }
-    interface MetaCatalog extends GObject.Object {
+    interface MetaCatalog extends GObject.Object, MetaCatalog.Interface {
         // Properties
 
         get connection(): ConnectionModel;
@@ -30272,10 +30360,6 @@ export namespace Gda {
         // Methods
 
         set_connection(value: ConnectionModel): void;
-
-        // Virtual methods
-
-        vfunc_set_connection(value: ConnectionModel): void;
     }
 
     export const MetaCatalog: MetaCatalogNamespace & {
@@ -30283,6 +30367,19 @@ export namespace Gda {
     };
 
     namespace MetaColumn {
+        /**
+         * Interface for implementing MetaColumn.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_column_type(): GObject.GType;
+            vfunc_get_column_type_name(): string;
+            vfunc_get_name(): string;
+            vfunc_set_name(value: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -30298,7 +30395,7 @@ export namespace Gda {
         $gtype: GObject.GType<MetaColumn>;
         prototype: MetaColumn;
     }
-    interface MetaColumn extends GObject.Object {
+    interface MetaColumn extends GObject.Object, MetaColumn.Interface {
         // Properties
 
         get column_type(): GObject.GType;
@@ -30314,13 +30411,6 @@ export namespace Gda {
         get_column_type_name(): string;
         get_name(): string;
         set_name(value: string): void;
-
-        // Virtual methods
-
-        vfunc_get_column_type(): GObject.GType;
-        vfunc_get_column_type_name(): string;
-        vfunc_get_name(): string;
-        vfunc_set_name(value: string): void;
     }
 
     export const MetaColumn: MetaColumnNamespace & {
@@ -30328,6 +30418,21 @@ export namespace Gda {
     };
 
     namespace MetaTable {
+        /**
+         * Interface for implementing MetaTable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_catalog(): string;
+            vfunc_get_name(): string;
+            vfunc_get_schema(): string;
+            vfunc_set_catalog(value: string): void;
+            vfunc_set_name(value: string): void;
+            vfunc_set_schema(value: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -30342,7 +30447,7 @@ export namespace Gda {
         $gtype: GObject.GType<MetaTable>;
         prototype: MetaTable;
     }
-    interface MetaTable extends GObject.Object {
+    interface MetaTable extends GObject.Object, MetaTable.Interface {
         // Properties
 
         get catalog(): string;
@@ -30361,15 +30466,6 @@ export namespace Gda {
         set_catalog(value: string): void;
         set_name(value: string): void;
         set_schema(value: string): void;
-
-        // Virtual methods
-
-        vfunc_get_catalog(): string;
-        vfunc_get_name(): string;
-        vfunc_get_schema(): string;
-        vfunc_set_catalog(value: string): void;
-        vfunc_set_name(value: string): void;
-        vfunc_set_schema(value: string): void;
     }
 
     export const MetaTable: MetaTableNamespace & {
@@ -30377,6 +30473,17 @@ export namespace Gda {
     };
 
     namespace Parameters {
+        /**
+         * Interface for implementing Parameters.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface<A extends GObject.Object = GObject.Object> extends Gio.ListModel.Interface {
+            // Virtual methods
+
+            vfunc_get_value(name: string): unknown;
+            vfunc_set_value(name: string, val: GObject.Value | any): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -30387,16 +30494,11 @@ export namespace Gda {
         $gtype: GObject.GType<Parameters>;
         prototype: Parameters;
     }
-    interface Parameters<A extends GObject.Object = GObject.Object> extends Gio.ListModel {
+    interface Parameters<A extends GObject.Object = GObject.Object> extends Gio.ListModel, Parameters.Interface<A> {
         // Methods
 
         get_value(name: string): unknown;
         set_value(name: string, val: GObject.Value | any): void;
-
-        // Virtual methods
-
-        vfunc_get_value(name: string): unknown;
-        vfunc_set_value(name: string, val: GObject.Value | any): void;
     }
 
     export const Parameters: ParametersNamespace & {
@@ -30404,6 +30506,16 @@ export namespace Gda {
     };
 
     namespace PreparedQuery {
+        /**
+         * Interface for implementing PreparedQuery.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface extends Query.Interface {
+            // Virtual methods
+
+            vfunc_get_name(): string;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Query.ConstructorProps {
@@ -30416,7 +30528,7 @@ export namespace Gda {
         $gtype: GObject.GType<PreparedQuery>;
         prototype: PreparedQuery;
     }
-    interface PreparedQuery extends Query {
+    interface PreparedQuery extends Query, PreparedQuery.Interface {
         // Properties
 
         get name(): string;
@@ -30425,10 +30537,6 @@ export namespace Gda {
         // Methods
 
         get_name(): string;
-
-        // Virtual methods
-
-        vfunc_get_name(): string;
     }
 
     export const PreparedQuery: PreparedQueryNamespace & {
@@ -30436,6 +30544,65 @@ export namespace Gda {
     };
 
     namespace Provider {
+        /**
+         * Interface for implementing Provider.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_add_savepoint(cnc: Connection, name: string): boolean;
+            vfunc_begin_transaction(cnc: Connection, name: string, level: TransactionIsolation): boolean;
+            vfunc_close_connection(cnc: Connection): boolean;
+            vfunc_commit_transaction(cnc: Connection, name: string): boolean;
+            vfunc_create_connection(): Connection;
+            vfunc_create_operation(cnc: Connection, type: ServerOperationType, options: Set): ServerOperation;
+            vfunc_create_parser(cnc: Connection): SqlParser;
+            vfunc_delete_savepoint(cnc: Connection, name: string): boolean;
+            vfunc_escape_string(cnc: Connection, str: string): string;
+            vfunc_get_data_handler(cnc: Connection, g_type: GObject.GType, dbms_type: string): DataHandler;
+            vfunc_get_def_dbms_type(cnc: Connection, g_type: GObject.GType): string;
+            /**
+             * This command should be called inmediately called after a INSERT SQL command
+             * @param cnc a #GdaConnection to get last inserted from
+             */
+            vfunc_get_last_inserted(cnc: Connection): Set;
+            vfunc_get_name(): string;
+            vfunc_get_server_version(cnc: Connection): string;
+            vfunc_get_version(): string;
+            vfunc_identifier_quote(
+                cnc: Connection | null,
+                id: string,
+                for_meta_store: boolean,
+                force_quotes: boolean,
+            ): string;
+            vfunc_open_connection(cnc: Connection, params: QuarkList, auth: QuarkList): boolean;
+            vfunc_perform_operation(cnc: Connection, op: ServerOperation): boolean;
+            vfunc_prepare_connection(cnc: Connection, params: QuarkList, auth: QuarkList): boolean;
+            vfunc_render_operation(cnc: Connection, op: ServerOperation): string;
+            vfunc_rollback_savepoint(cnc: Connection, name: string): boolean;
+            vfunc_rollback_transaction(cnc: Connection, name: string): boolean;
+            vfunc_statement_execute<T = GObject.Object>(
+                cnc: Connection,
+                stmt: Statement,
+                params: Set,
+                model_usage: StatementModelUsage,
+                col_types: GObject.GType,
+                last_inserted_row: Set,
+            ): T;
+            vfunc_statement_prepare(cnc: Connection, stmt: Statement): boolean;
+            vfunc_statement_rewrite(cnc: Connection, stmt: Statement, params: Set): SqlStatement;
+            vfunc_statement_to_sql(
+                cnc: Connection,
+                stmt: Statement,
+                params: Set | null,
+                flags: StatementSqlFlag,
+            ): [string, Holder[] | null];
+            vfunc_supports_feature(cnc: Connection, feature: ConnectionFeature): boolean;
+            vfunc_supports_operation(cnc: Connection, type: ServerOperationType, options: Set): boolean;
+            vfunc_unescape_string(cnc: Connection, str: string): string;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -30445,7 +30612,7 @@ export namespace Gda {
         $gtype: GObject.GType<Provider>;
         prototype: Provider;
     }
-    interface Provider extends GObject.Object {
+    interface Provider extends GObject.Object, Provider.Interface {
         // Methods
 
         add_savepoint(cnc: Connection, name: string): boolean;
@@ -30494,59 +30661,6 @@ export namespace Gda {
         supports_feature(cnc: Connection, feature: ConnectionFeature | null): boolean;
         supports_operation(cnc: Connection, type: ServerOperationType | null, options: Set): boolean;
         unescape_string(cnc: Connection, str: string): string;
-
-        // Virtual methods
-
-        vfunc_add_savepoint(cnc: Connection, name: string): boolean;
-        vfunc_begin_transaction(cnc: Connection, name: string, level: TransactionIsolation): boolean;
-        vfunc_close_connection(cnc: Connection): boolean;
-        vfunc_commit_transaction(cnc: Connection, name: string): boolean;
-        vfunc_create_connection(): Connection;
-        vfunc_create_operation(cnc: Connection, type: ServerOperationType, options: Set): ServerOperation;
-        vfunc_create_parser(cnc: Connection): SqlParser;
-        vfunc_delete_savepoint(cnc: Connection, name: string): boolean;
-        vfunc_escape_string(cnc: Connection, str: string): string;
-        vfunc_get_data_handler(cnc: Connection, g_type: GObject.GType, dbms_type: string): DataHandler;
-        vfunc_get_def_dbms_type(cnc: Connection, g_type: GObject.GType): string;
-        /**
-         * This command should be called inmediately called after a INSERT SQL command
-         * @param cnc a #GdaConnection to get last inserted from
-         */
-        vfunc_get_last_inserted(cnc: Connection): Set;
-        vfunc_get_name(): string;
-        vfunc_get_server_version(cnc: Connection): string;
-        vfunc_get_version(): string;
-        vfunc_identifier_quote(
-            cnc: Connection | null,
-            id: string,
-            for_meta_store: boolean,
-            force_quotes: boolean,
-        ): string;
-        vfunc_open_connection(cnc: Connection, params: QuarkList, auth: QuarkList): boolean;
-        vfunc_perform_operation(cnc: Connection, op: ServerOperation): boolean;
-        vfunc_prepare_connection(cnc: Connection, params: QuarkList, auth: QuarkList): boolean;
-        vfunc_render_operation(cnc: Connection, op: ServerOperation): string;
-        vfunc_rollback_savepoint(cnc: Connection, name: string): boolean;
-        vfunc_rollback_transaction(cnc: Connection, name: string): boolean;
-        vfunc_statement_execute<T = GObject.Object>(
-            cnc: Connection,
-            stmt: Statement,
-            params: Set,
-            model_usage: StatementModelUsage,
-            col_types: GObject.GType,
-            last_inserted_row: Set,
-        ): T;
-        vfunc_statement_prepare(cnc: Connection, stmt: Statement): boolean;
-        vfunc_statement_rewrite(cnc: Connection, stmt: Statement, params: Set): SqlStatement;
-        vfunc_statement_to_sql(
-            cnc: Connection,
-            stmt: Statement,
-            params: Set | null,
-            flags: StatementSqlFlag,
-        ): [string, Holder[] | null];
-        vfunc_supports_feature(cnc: Connection, feature: ConnectionFeature): boolean;
-        vfunc_supports_operation(cnc: Connection, type: ServerOperationType, options: Set): boolean;
-        vfunc_unescape_string(cnc: Connection, str: string): string;
     }
 
     export const Provider: ProviderNamespace & {
@@ -30554,6 +30668,104 @@ export namespace Gda {
     };
 
     namespace ProviderMeta {
+        /**
+         * Interface for implementing ProviderMeta.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_btypes(): DataModel;
+            vfunc_character_set(chset_catalog: string, chset_schema: string, chset_name_n: string): Row;
+            vfunc_character_sets(): DataModel;
+            vfunc_check_column(
+                table_catalog: string,
+                table_schema: string,
+                table_name: string,
+                constraint_name: string,
+            ): Row;
+            vfunc_check_columns(): DataModel;
+            vfunc_collation(collation_catalog: string, collation_schema: string, collation_name_n: string): Row;
+            vfunc_collations(): DataModel;
+            vfunc_columns(): DataModel;
+            vfunc_constraint_ref(
+                table_catalog: string,
+                table_schema: string,
+                table_name: string,
+                constraint_name: string,
+            ): Row;
+            vfunc_constraint_table(
+                table_catalog: string,
+                table_schema: string,
+                table_name: string,
+                constraint_name_n: string,
+            ): Row;
+            vfunc_constraints_ref(): DataModel;
+            vfunc_constraints_ref_table(table_catalog: string, table_schema: string, table_name: string): DataModel;
+            vfunc_constraints_table(table_catalog: string, table_schema: string, table_name: string): DataModel;
+            vfunc_constraints_tables(): DataModel;
+            vfunc_domain(domain_catalog: string, domain_schema: string): Row;
+            vfunc_domain_constraint(
+                domain_catalog: string,
+                domain_schema: string,
+                domain_name: string,
+                constraint_name: string,
+            ): Row;
+            vfunc_domain_constraints(domain_catalog: string, domain_schema: string, domain_name: string): DataModel;
+            vfunc_domains(): DataModel;
+            vfunc_domains_constraints(): DataModel;
+            vfunc_element_type(specific_name: string): Row;
+            vfunc_element_types(): DataModel;
+            vfunc_enum_type(udt_catalog: string, udt_schema: string, udt_name: string): Row;
+            vfunc_enums_type(): DataModel;
+            vfunc_index_col(table_catalog: string, table_schema: string, table_name: string, index_name: string): Row;
+            vfunc_index_cols(): DataModel;
+            vfunc_index_table(
+                table_catalog: string,
+                table_schema: string,
+                table_name: string,
+                index_name_n: string,
+            ): Row;
+            vfunc_indexes_table(table_catalog: string, table_schema: string, table_name: string): DataModel;
+            vfunc_indexes_tables(): DataModel;
+            vfunc_key_column(
+                table_catalog: string,
+                table_schema: string,
+                table_name: string,
+                constraint_name: string,
+            ): Row;
+            vfunc_key_columns(): DataModel;
+            vfunc_routine(routine_catalog: string, routine_schema: string, routine_name_n: string): Row;
+            vfunc_routine_col(rout_catalog: string, rout_schema: string, rout_name: string): Row;
+            vfunc_routine_pars(rout_catalog: string, rout_schema: string, rout_name: string): Row;
+            vfunc_routines(): DataModel;
+            vfunc_routines_col(): DataModel;
+            vfunc_routines_pars(): DataModel;
+            vfunc_schemata(catalog_name: string, schema_name_n: string): Row;
+            vfunc_schematas(): DataModel;
+            vfunc_table(table_catalog: string, table_schema: string, table_name_n: string): Row;
+            vfunc_table_column(
+                table_catalog: string,
+                table_schema: string,
+                table_name: string,
+                column_name: string,
+            ): Row;
+            vfunc_table_columns(table_catalog: string, table_schema: string, table_name: string): DataModel;
+            vfunc_tables(): DataModel;
+            vfunc_tables_columns(): DataModel;
+            vfunc_trigger(table_catalog: string, table_schema: string, table_name: string): Row;
+            vfunc_triggers(): DataModel;
+            vfunc_udt(udt_catalog: string, udt_schema: string): Row;
+            vfunc_udt_col(udt_catalog: string, udt_schema: string, udt_name: string): Row;
+            vfunc_udt_cols(): DataModel;
+            vfunc_udts(): DataModel;
+            vfunc_view(view_catalog: string, view_schema: string, view_name_n: string): Row;
+            vfunc_view_column(view_catalog: string, view_schema: string, view_name: string, column_name: string): Row;
+            vfunc_view_columns(view_catalog: string, view_schema: string, view_name: string): DataModel;
+            vfunc_views(): DataModel;
+            vfunc_views_columns(): DataModel;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -30567,7 +30779,7 @@ export namespace Gda {
 
         error_quark(): GLib.Quark;
     }
-    interface ProviderMeta extends GObject.Object {
+    interface ProviderMeta extends GObject.Object, ProviderMeta.Interface {
         // Properties
 
         get connection(): Connection;
@@ -30653,83 +30865,6 @@ export namespace Gda {
         view_columns(view_catalog: string, view_schema: string, view_name: string): DataModel;
         views(): DataModel;
         views_columns(): DataModel;
-
-        // Virtual methods
-
-        vfunc_btypes(): DataModel;
-        vfunc_character_set(chset_catalog: string, chset_schema: string, chset_name_n: string): Row;
-        vfunc_character_sets(): DataModel;
-        vfunc_check_column(
-            table_catalog: string,
-            table_schema: string,
-            table_name: string,
-            constraint_name: string,
-        ): Row;
-        vfunc_check_columns(): DataModel;
-        vfunc_collation(collation_catalog: string, collation_schema: string, collation_name_n: string): Row;
-        vfunc_collations(): DataModel;
-        vfunc_columns(): DataModel;
-        vfunc_constraint_ref(
-            table_catalog: string,
-            table_schema: string,
-            table_name: string,
-            constraint_name: string,
-        ): Row;
-        vfunc_constraint_table(
-            table_catalog: string,
-            table_schema: string,
-            table_name: string,
-            constraint_name_n: string,
-        ): Row;
-        vfunc_constraints_ref(): DataModel;
-        vfunc_constraints_ref_table(table_catalog: string, table_schema: string, table_name: string): DataModel;
-        vfunc_constraints_table(table_catalog: string, table_schema: string, table_name: string): DataModel;
-        vfunc_constraints_tables(): DataModel;
-        vfunc_domain(domain_catalog: string, domain_schema: string): Row;
-        vfunc_domain_constraint(
-            domain_catalog: string,
-            domain_schema: string,
-            domain_name: string,
-            constraint_name: string,
-        ): Row;
-        vfunc_domain_constraints(domain_catalog: string, domain_schema: string, domain_name: string): DataModel;
-        vfunc_domains(): DataModel;
-        vfunc_domains_constraints(): DataModel;
-        vfunc_element_type(specific_name: string): Row;
-        vfunc_element_types(): DataModel;
-        vfunc_enum_type(udt_catalog: string, udt_schema: string, udt_name: string): Row;
-        vfunc_enums_type(): DataModel;
-        vfunc_index_col(table_catalog: string, table_schema: string, table_name: string, index_name: string): Row;
-        vfunc_index_cols(): DataModel;
-        vfunc_index_table(table_catalog: string, table_schema: string, table_name: string, index_name_n: string): Row;
-        vfunc_indexes_table(table_catalog: string, table_schema: string, table_name: string): DataModel;
-        vfunc_indexes_tables(): DataModel;
-        vfunc_key_column(table_catalog: string, table_schema: string, table_name: string, constraint_name: string): Row;
-        vfunc_key_columns(): DataModel;
-        vfunc_routine(routine_catalog: string, routine_schema: string, routine_name_n: string): Row;
-        vfunc_routine_col(rout_catalog: string, rout_schema: string, rout_name: string): Row;
-        vfunc_routine_pars(rout_catalog: string, rout_schema: string, rout_name: string): Row;
-        vfunc_routines(): DataModel;
-        vfunc_routines_col(): DataModel;
-        vfunc_routines_pars(): DataModel;
-        vfunc_schemata(catalog_name: string, schema_name_n: string): Row;
-        vfunc_schematas(): DataModel;
-        vfunc_table(table_catalog: string, table_schema: string, table_name_n: string): Row;
-        vfunc_table_column(table_catalog: string, table_schema: string, table_name: string, column_name: string): Row;
-        vfunc_table_columns(table_catalog: string, table_schema: string, table_name: string): DataModel;
-        vfunc_tables(): DataModel;
-        vfunc_tables_columns(): DataModel;
-        vfunc_trigger(table_catalog: string, table_schema: string, table_name: string): Row;
-        vfunc_triggers(): DataModel;
-        vfunc_udt(udt_catalog: string, udt_schema: string): Row;
-        vfunc_udt_col(udt_catalog: string, udt_schema: string, udt_name: string): Row;
-        vfunc_udt_cols(): DataModel;
-        vfunc_udts(): DataModel;
-        vfunc_view(view_catalog: string, view_schema: string, view_name_n: string): Row;
-        vfunc_view_column(view_catalog: string, view_schema: string, view_name: string, column_name: string): Row;
-        vfunc_view_columns(view_catalog: string, view_schema: string, view_name: string): DataModel;
-        vfunc_views(): DataModel;
-        vfunc_views_columns(): DataModel;
     }
 
     export const ProviderMeta: ProviderMetaNamespace & {
@@ -30737,6 +30872,20 @@ export namespace Gda {
     };
 
     namespace Query {
+        /**
+         * Interface for implementing Query.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_cancel(_callback_?: Gio.AsyncReadyCallback | null, _user_data_?: any | null): void;
+            vfunc_cancel_finish(_res_: Gio.AsyncResult): void;
+            vfunc_execute(_callback_?: Gio.AsyncReadyCallback | null, _user_data_?: any | null): void;
+            vfunc_get_name(): string;
+            vfunc_get_sql(): string;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -30750,7 +30899,7 @@ export namespace Gda {
         $gtype: GObject.GType<Query>;
         prototype: Query;
     }
-    interface Query extends GObject.Object {
+    interface Query extends GObject.Object, Query.Interface {
         // Properties
 
         get connection(): ConnectionModel;
@@ -30764,14 +30913,6 @@ export namespace Gda {
         execute(_callback_?: Gio.AsyncReadyCallback | null, _user_data_?: any | null): void;
         get_name(): string;
         get_sql(): string;
-
-        // Virtual methods
-
-        vfunc_cancel(_callback_?: Gio.AsyncReadyCallback | null, _user_data_?: any | null): void;
-        vfunc_cancel_finish(_res_: Gio.AsyncResult): void;
-        vfunc_execute(_callback_?: Gio.AsyncReadyCallback | null, _user_data_?: any | null): void;
-        vfunc_get_name(): string;
-        vfunc_get_sql(): string;
     }
 
     export const Query: QueryNamespace & {
@@ -30779,6 +30920,25 @@ export namespace Gda {
     };
 
     namespace QueryBuilder {
+        /**
+         * Interface for implementing QueryBuilder.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_add_savepoint(name: string): boolean;
+            vfunc_begin_transaction(name: string): boolean;
+            vfunc_commit_transaction(name: string): boolean;
+            vfunc_delete_savepoint(name: string): boolean;
+            vfunc_get_name(): string;
+            vfunc_get_sql(): string;
+            vfunc_rollback_savepoint(name: string): boolean;
+            vfunc_rollback_transaction(name: string): boolean;
+            vfunc_set_name(value: string): void;
+            vfunc_set_sql(value: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -30792,7 +30952,7 @@ export namespace Gda {
         $gtype: GObject.GType<QueryBuilder>;
         prototype: QueryBuilder;
     }
-    interface QueryBuilder extends GObject.Object {
+    interface QueryBuilder extends GObject.Object, QueryBuilder.Interface {
         // Properties
 
         get name(): string;
@@ -30813,19 +30973,6 @@ export namespace Gda {
         rollback_transaction(name: string): boolean;
         set_name(value: string): void;
         set_sql(value: string): void;
-
-        // Virtual methods
-
-        vfunc_add_savepoint(name: string): boolean;
-        vfunc_begin_transaction(name: string): boolean;
-        vfunc_commit_transaction(name: string): boolean;
-        vfunc_delete_savepoint(name: string): boolean;
-        vfunc_get_name(): string;
-        vfunc_get_sql(): string;
-        vfunc_rollback_savepoint(name: string): boolean;
-        vfunc_rollback_transaction(name: string): boolean;
-        vfunc_set_name(value: string): void;
-        vfunc_set_sql(value: string): void;
     }
 
     export const QueryBuilder: QueryBuilderNamespace & {
@@ -30833,6 +30980,17 @@ export namespace Gda {
     };
 
     namespace ReadonlyTableModel {
+        /**
+         * Interface for implementing ReadonlyTableModel.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface extends MetaTable.Interface {
+            // Virtual methods
+
+            vfunc_get_value(row: number, column: string, result: GObject.Value | any): void;
+            vfunc_get_value_at(row: number, column: number, result: GObject.Value | any): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends MetaTable.ConstructorProps {
@@ -30844,7 +31002,7 @@ export namespace Gda {
         $gtype: GObject.GType<ReadonlyTableModel>;
         prototype: ReadonlyTableModel;
     }
-    interface ReadonlyTableModel extends MetaTable {
+    interface ReadonlyTableModel extends MetaTable, ReadonlyTableModel.Interface {
         // Properties
 
         get rows(): Gio.ListModel;
@@ -30853,11 +31011,6 @@ export namespace Gda {
 
         get_value(row: number, column: string, result: GObject.Value | any): void;
         get_value_at(row: number, column: number, result: GObject.Value | any): void;
-
-        // Virtual methods
-
-        vfunc_get_value(row: number, column: string, result: GObject.Value | any): void;
-        vfunc_get_value_at(row: number, column: number, result: GObject.Value | any): void;
     }
 
     export const ReadonlyTableModel: ReadonlyTableModelNamespace & {
@@ -30865,6 +31018,17 @@ export namespace Gda {
     };
 
     namespace ReferencedColumn {
+        /**
+         * Interface for implementing ReferencedColumn.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_name(): string;
+            vfunc_set_table_name(value: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -30878,7 +31042,7 @@ export namespace Gda {
         $gtype: GObject.GType<ReferencedColumn>;
         prototype: ReferencedColumn;
     }
-    interface ReferencedColumn extends GObject.Object {
+    interface ReferencedColumn extends GObject.Object, ReferencedColumn.Interface {
         // Properties
 
         get name(): string;
@@ -30889,11 +31053,6 @@ export namespace Gda {
 
         get_name(): string;
         set_table_name(value: string): void;
-
-        // Virtual methods
-
-        vfunc_get_name(): string;
-        vfunc_set_table_name(value: string): void;
     }
 
     export const ReferencedColumn: ReferencedColumnNamespace & {
@@ -30933,6 +31092,16 @@ export namespace Gda {
     };
 
     namespace RowModel {
+        /**
+         * Interface for implementing RowModel.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface<A extends GObject.Object = GObject.Object> extends Gio.ListModel.Interface {
+            // Virtual methods
+
+            vfunc_get_n_columns(): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -30946,7 +31115,7 @@ export namespace Gda {
         $gtype: GObject.GType<RowModel>;
         prototype: RowModel;
     }
-    interface RowModel<A extends GObject.Object = GObject.Object> extends Gio.ListModel {
+    interface RowModel<A extends GObject.Object = GObject.Object> extends Gio.ListModel, RowModel.Interface<A> {
         // Properties
 
         get n_columns(): number;
@@ -30955,10 +31124,6 @@ export namespace Gda {
         // Methods
 
         get_n_columns(): number;
-
-        // Virtual methods
-
-        vfunc_get_n_columns(): number;
     }
 
     export const RowModel: RowModelNamespace & {
@@ -30966,6 +31131,17 @@ export namespace Gda {
     };
 
     namespace TableConstraint {
+        /**
+         * Interface for implementing TableConstraint.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_definition(): string;
+            vfunc_set_definition(value: string): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -30975,16 +31151,11 @@ export namespace Gda {
         $gtype: GObject.GType<TableConstraint>;
         prototype: TableConstraint;
     }
-    interface TableConstraint extends GObject.Object {
+    interface TableConstraint extends GObject.Object, TableConstraint.Interface {
         // Methods
 
         get_definition(): string;
         set_definition(value: string): void;
-
-        // Virtual methods
-
-        vfunc_get_definition(): string;
-        vfunc_set_definition(value: string): void;
     }
 
     export const TableConstraint: TableConstraintNamespace & {
@@ -31008,6 +31179,18 @@ export namespace Gda {
     };
 
     namespace WritableTableModel {
+        /**
+         * Interface for implementing WritableTableModel.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface extends MetaTable.Interface {
+            // Virtual methods
+
+            vfunc_insert_row(new_row: RowModel): void;
+            vfunc_set_value(row: number, column: string, value: GObject.Value | any): void;
+            vfunc_set_value_at(row: number, column: number, value: GObject.Value | any): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends MetaTable.ConstructorProps {}
@@ -31017,18 +31200,12 @@ export namespace Gda {
         $gtype: GObject.GType<WritableTableModel>;
         prototype: WritableTableModel;
     }
-    interface WritableTableModel extends MetaTable {
+    interface WritableTableModel extends MetaTable, WritableTableModel.Interface {
         // Methods
 
         insert_row(new_row: RowModel): void;
         set_value(row: number, column: string, value: GObject.Value | any): void;
         set_value_at(row: number, column: number, value: GObject.Value | any): void;
-
-        // Virtual methods
-
-        vfunc_insert_row(new_row: RowModel): void;
-        vfunc_set_value(row: number, column: string, value: GObject.Value | any): void;
-        vfunc_set_value_at(row: number, column: number, value: GObject.Value | any): void;
     }
 
     export const WritableTableModel: WritableTableModelNamespace & {

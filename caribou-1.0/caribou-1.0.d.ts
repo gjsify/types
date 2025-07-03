@@ -4264,6 +4264,19 @@ export namespace Caribou {
     type IScannableGroupIface = typeof IScannableGroup;
     type IKeyboardObjectIface = typeof IKeyboardObject;
     namespace IScannableItem {
+        /**
+         * Interface for implementing IScannableItem.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_scan_stepping(): boolean;
+            vfunc_set_scan_stepping(value: boolean): void;
+            vfunc_get_scan_selected(): boolean;
+            vfunc_set_scan_selected(value: boolean): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4278,7 +4291,7 @@ export namespace Caribou {
         $gtype: GObject.GType<IScannableItem>;
         prototype: IScannableItem;
     }
-    interface IScannableItem extends GObject.Object {
+    interface IScannableItem extends GObject.Object, IScannableItem.Interface {
         // Properties
 
         get scan_stepping(): boolean;
@@ -4296,13 +4309,6 @@ export namespace Caribou {
         set_scan_stepping(value: boolean): void;
         get_scan_selected(): boolean;
         set_scan_selected(value: boolean): void;
-
-        // Virtual methods
-
-        vfunc_get_scan_stepping(): boolean;
-        vfunc_set_scan_stepping(value: boolean): void;
-        vfunc_get_scan_selected(): boolean;
-        vfunc_set_scan_selected(value: boolean): void;
     }
 
     export const IScannableItem: IScannableItemNamespace & {
@@ -4310,6 +4316,23 @@ export namespace Caribou {
     };
 
     namespace IScannableGroup {
+        /**
+         * Interface for implementing IScannableGroup.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_child_select(): IScannableItem;
+            vfunc_scan_reset(): void;
+            vfunc_get_scan_children(): IScannableItem[];
+            vfunc_child_step(cycles: number): IScannableItem;
+            vfunc_get_step_path(): IScannableItem[];
+            vfunc_get_selected_path(): IScannableItem[];
+            vfunc_get_scan_grouping(): ScanGrouping;
+            vfunc_set_scan_grouping(value: ScanGrouping): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4322,7 +4345,7 @@ export namespace Caribou {
         $gtype: GObject.GType<IScannableGroup>;
         prototype: IScannableGroup;
     }
-    interface IScannableGroup extends GObject.Object {
+    interface IScannableGroup extends GObject.Object, IScannableGroup.Interface {
         // Properties
 
         get scan_grouping(): ScanGrouping;
@@ -4340,17 +4363,6 @@ export namespace Caribou {
         get_selected_path(): IScannableItem[];
         get_scan_grouping(): ScanGrouping;
         set_scan_grouping(value: ScanGrouping | null): void;
-
-        // Virtual methods
-
-        vfunc_child_select(): IScannableItem;
-        vfunc_scan_reset(): void;
-        vfunc_get_scan_children(): IScannableItem[];
-        vfunc_child_step(cycles: number): IScannableItem;
-        vfunc_get_step_path(): IScannableItem[];
-        vfunc_get_selected_path(): IScannableItem[];
-        vfunc_get_scan_grouping(): ScanGrouping;
-        vfunc_set_scan_grouping(value: ScanGrouping): void;
     }
 
     export const IScannableGroup: IScannableGroupNamespace & {
@@ -4358,6 +4370,17 @@ export namespace Caribou {
     };
 
     namespace IKeyboardObject {
+        /**
+         * Interface for implementing IKeyboardObject.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_children(): IKeyboardObject[];
+            vfunc_get_keys(): KeyModel[];
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4367,16 +4390,11 @@ export namespace Caribou {
         $gtype: GObject.GType<IKeyboardObject>;
         prototype: IKeyboardObject;
     }
-    interface IKeyboardObject extends GObject.Object {
+    interface IKeyboardObject extends GObject.Object, IKeyboardObject.Interface {
         // Methods
 
         get_children(): IKeyboardObject[];
         get_keys(): KeyModel[];
-
-        // Virtual methods
-
-        vfunc_get_children(): IKeyboardObject[];
-        vfunc_get_keys(): KeyModel[];
     }
 
     export const IKeyboardObject: IKeyboardObjectNamespace & {

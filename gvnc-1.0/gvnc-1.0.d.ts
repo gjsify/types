@@ -2161,6 +2161,18 @@ export namespace GVnc {
     }
 
     namespace Audio {
+        /**
+         * Interface for implementing Audio.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_playback_data(sample: AudioSample): boolean;
+            vfunc_playback_start(format: AudioFormat): boolean;
+            vfunc_playback_stop(): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2170,7 +2182,7 @@ export namespace GVnc {
         $gtype: GObject.GType<Audio>;
         prototype: Audio;
     }
-    interface Audio extends GObject.Object {
+    interface Audio extends GObject.Object, Audio.Interface {
         // Methods
 
         /**
@@ -2189,12 +2201,6 @@ export namespace GVnc {
          * audio playback
          */
         playback_stop(): void;
-
-        // Virtual methods
-
-        vfunc_playback_data(sample: AudioSample): boolean;
-        vfunc_playback_start(format: AudioFormat): boolean;
-        vfunc_playback_stop(): boolean;
     }
 
     export const Audio: AudioNamespace & {
@@ -2202,6 +2208,96 @@ export namespace GVnc {
     };
 
     namespace Framebuffer {
+        /**
+         * Interface for implementing Framebuffer.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_blt(src: number, rowstride: number, x: number, y: number, width: number, height: number): void;
+            /**
+             * Copies data from the range (`srcx,` `srcy)` to
+             * (`srcx+``width,` `srcy+``height)` over to the
+             * range starting at (`dstx,` `dsty)`.
+             * @param srcx the horizontal starting pixel
+             * @param srcy the vertical starting pixel
+             * @param dstx the horizontal target pixel
+             * @param dsty the vertical target pixel
+             * @param width the width of the region
+             * @param height the height of the region
+             */
+            vfunc_copyrect(srcx: number, srcy: number, dstx: number, dsty: number, width: number, height: number): void;
+            /**
+             * Fill all the pixels in the range (`x,` `y)` to
+             * (`x` + `width,` `y` + `height)` to the value in
+             * `src`. The number of bytes in `src` is
+             * determined by the remote pixel format
+             * @param src the new pixel data
+             * @param x the horizontal pixel to start filling
+             * @param y the vertical pixel to start filling
+             * @param width the number of pixels to fill horizontally
+             * @param height the number of pixels to fill vertically
+             */
+            vfunc_fill(src: Uint8Array | string, x: number, y: number, width: number, height: number): void;
+            vfunc_get_buffer(): number;
+            /**
+             * Query the height of the remote framebuffer
+             */
+            vfunc_get_height(): number;
+            /**
+             * Get the pixel format used to store the framebuffer locally
+             */
+            vfunc_get_local_format(): PixelFormat;
+            vfunc_get_remote_format(): PixelFormat;
+            /**
+             * Get the number of bytes per line of the framebuffer
+             */
+            vfunc_get_rowstride(): number;
+            /**
+             * Query the width of the remote framebuffer
+             */
+            vfunc_get_width(): number;
+            /**
+             * Determine if the local and remote pixel formats match
+             */
+            vfunc_perfect_format_match(): boolean;
+            /**
+             * Fill all the pixels in the range (`x,` `y)` to
+             * (`x` + `width,` `y` + `height)` to the value in
+             * `src`. The number of bytes in `src` is always
+             * 3 as it must be in plain RGB24 format.
+             * @param src the new pixel data
+             * @param rowstride the number of bytes per row
+             * @param x the horizontal pixel to start filling
+             * @param y the vertical pixel to start filling
+             * @param width the number of pixels to fill horizontally
+             * @param height the number of pixels to fill vertically
+             */
+            vfunc_rgb24_blt(
+                src: Uint8Array | string,
+                rowstride: number,
+                x: number,
+                y: number,
+                width: number,
+                height: number,
+            ): void;
+            /**
+             * Set the color map to use for the framebuffer
+             * @param map the new color map
+             */
+            vfunc_set_color_map(map: ColorMap): void;
+            /**
+             * Sets a pixel in the framebuffer at (`x,` `y)` to the
+             * value in `src`. The number of bytes in `src` is
+             * determined by the remote pixel format
+             * @param src the new pixel data
+             * @param x the horizontal pixel to set
+             * @param y the vertical pixel to set
+             */
+            vfunc_set_pixel_at(src: Uint8Array | string, x: number, y: number): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2211,7 +2307,7 @@ export namespace GVnc {
         $gtype: GObject.GType<Framebuffer>;
         prototype: Framebuffer;
     }
-    interface Framebuffer extends GObject.Object {
+    interface Framebuffer extends GObject.Object, Framebuffer.Interface {
         // Methods
 
         blt(src: number, rowstride: number, x: number, y: number, width: number, height: number): void;
@@ -2304,90 +2400,6 @@ export namespace GVnc {
          * @param y the vertical pixel to set
          */
         set_pixel_at(src: Uint8Array | string, x: number, y: number): void;
-
-        // Virtual methods
-
-        vfunc_blt(src: number, rowstride: number, x: number, y: number, width: number, height: number): void;
-        /**
-         * Copies data from the range (`srcx,` `srcy)` to
-         * (`srcx+``width,` `srcy+``height)` over to the
-         * range starting at (`dstx,` `dsty)`.
-         * @param srcx the horizontal starting pixel
-         * @param srcy the vertical starting pixel
-         * @param dstx the horizontal target pixel
-         * @param dsty the vertical target pixel
-         * @param width the width of the region
-         * @param height the height of the region
-         */
-        vfunc_copyrect(srcx: number, srcy: number, dstx: number, dsty: number, width: number, height: number): void;
-        /**
-         * Fill all the pixels in the range (`x,` `y)` to
-         * (`x` + `width,` `y` + `height)` to the value in
-         * `src`. The number of bytes in `src` is
-         * determined by the remote pixel format
-         * @param src the new pixel data
-         * @param x the horizontal pixel to start filling
-         * @param y the vertical pixel to start filling
-         * @param width the number of pixels to fill horizontally
-         * @param height the number of pixels to fill vertically
-         */
-        vfunc_fill(src: Uint8Array | string, x: number, y: number, width: number, height: number): void;
-        vfunc_get_buffer(): number;
-        /**
-         * Query the height of the remote framebuffer
-         */
-        vfunc_get_height(): number;
-        /**
-         * Get the pixel format used to store the framebuffer locally
-         */
-        vfunc_get_local_format(): PixelFormat;
-        vfunc_get_remote_format(): PixelFormat;
-        /**
-         * Get the number of bytes per line of the framebuffer
-         */
-        vfunc_get_rowstride(): number;
-        /**
-         * Query the width of the remote framebuffer
-         */
-        vfunc_get_width(): number;
-        /**
-         * Determine if the local and remote pixel formats match
-         */
-        vfunc_perfect_format_match(): boolean;
-        /**
-         * Fill all the pixels in the range (`x,` `y)` to
-         * (`x` + `width,` `y` + `height)` to the value in
-         * `src`. The number of bytes in `src` is always
-         * 3 as it must be in plain RGB24 format.
-         * @param src the new pixel data
-         * @param rowstride the number of bytes per row
-         * @param x the horizontal pixel to start filling
-         * @param y the vertical pixel to start filling
-         * @param width the number of pixels to fill horizontally
-         * @param height the number of pixels to fill vertically
-         */
-        vfunc_rgb24_blt(
-            src: Uint8Array | string,
-            rowstride: number,
-            x: number,
-            y: number,
-            width: number,
-            height: number,
-        ): void;
-        /**
-         * Set the color map to use for the framebuffer
-         * @param map the new color map
-         */
-        vfunc_set_color_map(map: ColorMap): void;
-        /**
-         * Sets a pixel in the framebuffer at (`x,` `y)` to the
-         * value in `src`. The number of bytes in `src` is
-         * determined by the remote pixel format
-         * @param src the new pixel data
-         * @param x the horizontal pixel to set
-         * @param y the vertical pixel to set
-         */
-        vfunc_set_pixel_at(src: Uint8Array | string, x: number, y: number): void;
     }
 
     export const Framebuffer: FramebufferNamespace & {

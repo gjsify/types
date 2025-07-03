@@ -24875,6 +24875,77 @@ export namespace Gda {
     }
 
     namespace DataHandler {
+        /**
+         * Interface for implementing DataHandler.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
+             * @param type a #GType
+             */
+            vfunc_accepts_g_type(type: GObject.GType): boolean;
+            /**
+             * Get a short description of the GdaDataHandler
+             */
+            vfunc_get_descr(): string;
+            /**
+             * Creates a new GValue which holds a sane initial value to be used if no value is specifically
+             * provided. For example for a simple string, this would return a new value containing the "" string.
+             * @param type a #GType
+             */
+            vfunc_get_sane_init_value(type: GObject.GType): GObject.Value | null;
+            /**
+             * Creates a new string which is an SQL representation of the given value, the returned string
+             * can be used directly in an SQL statement. For example if `value` is a G_TYPE_STRING, then
+             * the returned string will be correctly quoted. Note however that it is a better practice
+             * to use variables in statements instead of value literals, see
+             * the <link linkend="GdaSqlParser.description">GdaSqlParser</link> for more information.
+             *
+             * If the value is NULL or is of type GDA_TYPE_NULL,
+             * or is a G_TYPE_STRING and g_value_get_string() returns %NULL, the returned string is "NULL".
+             * @param value the value to be converted to a string, or %NULL
+             */
+            vfunc_get_sql_from_value(value?: GObject.Value | null): string;
+            /**
+             * Creates a new string which is a "user friendly" representation of the given value
+             * (in the user's locale, specially for the dates). If the value is
+             * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
+             *
+             * Note: the returned value will be in the current locale representation.
+             * @param value the value to be converted to a string, or %NULL
+             */
+            vfunc_get_str_from_value(value?: GObject.Value | null): string;
+            /**
+             * Creates a new GValue which represents the SQL value given as argument. This is
+             * the opposite of the function gda_data_handler_get_sql_from_value(). The type argument
+             * is used to determine the real data type requested for the returned value.
+             *
+             * If the `sql` string is %NULL, then the returned GValue is of type GDA_TYPE_NULL;
+             * if the `sql` string does not correspond to a valid SQL string for the requested type, then
+             * the %NULL is returned.
+             * @param sql an SQL string, or %NULL
+             * @param type a GType
+             */
+            vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
+            /**
+             * Creates a new GValue which represents the `str` value given as argument. This is
+             * the opposite of the function gda_data_handler_get_str_from_value(). The type argument
+             * is used to determine the real data type requested for the returned value.
+             *
+             * If the `str` string is %NULL, then the returned GValue is of type GDA_TYPE_NULL;
+             * if the `str` string does not correspond to a valid string for the requested type, then
+             * %NULL is returned.
+             *
+             * Note: the `str` string must be in the current locale representation
+             * @param str a string or %NULL
+             * @param type a GType
+             */
+            vfunc_get_value_from_str(str: string | null, type: GObject.GType): unknown;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -24894,7 +24965,7 @@ export namespace Gda {
          */
         get_default(for_type: GObject.GType): DataHandler;
     }
-    interface DataHandler extends GObject.Object {
+    interface DataHandler extends GObject.Object, DataHandler.Interface {
         // Methods
 
         /**
@@ -24966,71 +25037,6 @@ export namespace Gda {
          * @returns the new #GValue or %NULL on error
          */
         get_value_from_str(str: string | null, type: GObject.GType): unknown;
-
-        // Virtual methods
-
-        /**
-         * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
-         * @param type a #GType
-         */
-        vfunc_accepts_g_type(type: GObject.GType): boolean;
-        /**
-         * Get a short description of the GdaDataHandler
-         */
-        vfunc_get_descr(): string;
-        /**
-         * Creates a new GValue which holds a sane initial value to be used if no value is specifically
-         * provided. For example for a simple string, this would return a new value containing the "" string.
-         * @param type a #GType
-         */
-        vfunc_get_sane_init_value(type: GObject.GType): GObject.Value | null;
-        /**
-         * Creates a new string which is an SQL representation of the given value, the returned string
-         * can be used directly in an SQL statement. For example if `value` is a G_TYPE_STRING, then
-         * the returned string will be correctly quoted. Note however that it is a better practice
-         * to use variables in statements instead of value literals, see
-         * the <link linkend="GdaSqlParser.description">GdaSqlParser</link> for more information.
-         *
-         * If the value is NULL or is of type GDA_TYPE_NULL,
-         * or is a G_TYPE_STRING and g_value_get_string() returns %NULL, the returned string is "NULL".
-         * @param value the value to be converted to a string, or %NULL
-         */
-        vfunc_get_sql_from_value(value?: GObject.Value | null): string;
-        /**
-         * Creates a new string which is a "user friendly" representation of the given value
-         * (in the user's locale, specially for the dates). If the value is
-         * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
-         *
-         * Note: the returned value will be in the current locale representation.
-         * @param value the value to be converted to a string, or %NULL
-         */
-        vfunc_get_str_from_value(value?: GObject.Value | null): string;
-        /**
-         * Creates a new GValue which represents the SQL value given as argument. This is
-         * the opposite of the function gda_data_handler_get_sql_from_value(). The type argument
-         * is used to determine the real data type requested for the returned value.
-         *
-         * If the `sql` string is %NULL, then the returned GValue is of type GDA_TYPE_NULL;
-         * if the `sql` string does not correspond to a valid SQL string for the requested type, then
-         * the %NULL is returned.
-         * @param sql an SQL string, or %NULL
-         * @param type a GType
-         */
-        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
-        /**
-         * Creates a new GValue which represents the `str` value given as argument. This is
-         * the opposite of the function gda_data_handler_get_str_from_value(). The type argument
-         * is used to determine the real data type requested for the returned value.
-         *
-         * If the `str` string is %NULL, then the returned GValue is of type GDA_TYPE_NULL;
-         * if the `str` string does not correspond to a valid string for the requested type, then
-         * %NULL is returned.
-         *
-         * Note: the `str` string must be in the current locale representation
-         * @param str a string or %NULL
-         * @param type a GType
-         */
-        vfunc_get_value_from_str(str: string | null, type: GObject.GType): unknown;
     }
 
     export const DataHandler: DataHandlerNamespace & {
@@ -25038,6 +25044,228 @@ export namespace Gda {
     };
 
     namespace DataModel {
+        /**
+         * Interface for implementing DataModel.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_access_changed(): void;
+            vfunc_changed(): void;
+            /**
+             * Appends a row to the data model (the new row will possibly have NULL values for all columns,
+             * or some other values depending on the data model implementation)
+             *
+             * Upon errors -1 will be returned and `error` will be assigned a
+             * #GError from the #GDA_DATA_MODEL_ERROR domain.
+             */
+            vfunc_i_append_row(): number;
+            /**
+             * Appends a row to the given data model. If any value in `values` is actually %NULL, then
+             * it is considered as a default value. If `values` is %NULL then all values are set to their default value.
+             *
+             * Upon errors -1 will be returned and `error` will be assigned a
+             * #GError from the #GDA_DATA_MODEL_ERROR domain.
+             * @param values #GList of #GValue* representing the row to add.  The          length must match model's column count.  These #GValue     are value-copied (the user is still responsible for freeing them).
+             */
+            vfunc_i_append_values(values?: GObject.Value[] | null): number;
+            /**
+             * Creates a new iterator object #GdaDataModelIter object which can be used to iterate through
+             * rows in `model`. The new #GdaDataModelIter does not hold any reference to `model` (ie. if `model`
+             * is destroyed at some point, the new iterator will become useless but in any case it will not prevent
+             * the data model from being destroyed).
+             *
+             * Depending on the data model's implementation, a new #GdaDataModelIter object may be created,
+             * or a reference to an already existing #GdaDataModelIter may be returned. For example if `model` only
+             * supports being accessed using a forward moving cursor (say a the result of a SELECT executed by SQLite
+             * with a cursor access mode specified), then this method will always return the same iterator.
+             *
+             * If a new #GdaDataModelIter is created, then the row it represents is undefined.
+             *
+             * For models which can be accessed
+             * randomly, any row can be set using gda_data_model_iter_move_to_row(),
+             * and for models which are accessible sequentially only then use
+             * gda_data_model_iter_move_next() (and gda_data_model_iter_move_prev() if
+             * supported).
+             *
+             * Note: for the #GdaDataProxy data model (which proxies any #GdaDataModel for modifications and
+             * has twice the number of columns of the proxied data model), this method will create an iterator
+             * in which only the columns of the proxied data model appear. If you need to have a #GdaDataModelIter
+             * in which all the proxy's columns appear, create it using:
+             * <programlisting><![CDATA[iter = g_object_new (GDA_TYPE_DATA_MODEL_ITER, "data-model", proxy, NULL);]]></programlisting>
+             */
+            vfunc_i_create_iter(): DataModelIter;
+            /**
+             * Queries the underlying data model implementation for a description
+             * of a given column. That description is returned in the form of
+             * a #GdaColumn structure, which contains all the information
+             * about the given column in the data model.
+             *
+             * WARNING: the returned #GdaColumn object belongs to the `model` model and
+             * and should not be destroyed; any modification will affect the whole data model.
+             * @param col column number.
+             */
+            vfunc_i_describe_column(col: number): Column | null;
+            /**
+             * Returns the first row where all the values in `values` at the columns identified at
+             * `cols_index` match. If the row can't be identified, then returns -1;
+             *
+             * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
+             * @param values a list of #GValue values (no %NULL is allowed)
+             * @param cols_index an array of #gint containing the column number to match each value of @values
+             */
+            vfunc_i_find_row(values: (GObject.Value | any)[], cols_index: number[]): number;
+            /**
+             * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
+             */
+            vfunc_i_get_access_flags(): DataModelAccessFlags;
+            /**
+             * Get the attributes of the value stored at (row, col) in `model,` which
+             * is an ORed value of #GdaValueAttribute flags. As a special case, if
+             * `row` is -1, then the attributes returned correspond to a "would be" value
+             * if a row was added to `model`.
+             * @param col a valid column number
+             * @param row a valid row number, or -1
+             */
+            vfunc_i_get_attributes_at(col: number, row: number): ValueAttribute;
+            /**
+             * Get the global data model exception(s) that occurred when using `model`.
+             * This is useful for example for the LDAP related
+             * data models where some rows may be missing because the LDAP search has reached a limit
+             * imposed by the LDAP server.
+             */
+            vfunc_i_get_exceptions(): GLib.Error[];
+            vfunc_i_get_n_columns(): number;
+            vfunc_i_get_n_rows(): number;
+            /**
+             * Returns the status of notifications changes on the given data model.
+             */
+            vfunc_i_get_notify(): boolean;
+            /**
+             * Retrieves the data stored in the given position (identified by
+             * the `col` and `row` parameters) on a data model.
+             *
+             * Upon errors %NULL will be returned and `error` will be assigned a
+             * #GError from the #GDA_DATA_MODEL_ERROR domain.
+             *
+             * This is the main function for accessing data in a model which allows random access to its data.
+             * To access data in a data model using a cursor, use a #GdaDataModelIter object, obtained using
+             * gda_data_model_create_iter().
+             *
+             * Note1: the returned #GValue must not be modified directly (unexpected behaviours may
+             * occur if you do so).
+             *
+             * Note2: the returned value may become invalid as soon as any Libgda part is executed again,
+             * which means if you want to keep the value, a copy must be made, however it will remain valid
+             * as long as the only Libgda usage is calling gda_data_model_get_value_at() for different values
+             * of the same row.
+             *
+             * If you want to modify a value stored in a #GdaDataModel, use the gda_data_model_set_value_at() or
+             * gda_data_model_set_values() methods.
+             *
+             * Upon errors %NULL will be returned and `error` will be assigned a
+             * #GError from the #GDA_DATA_MODEL_ERROR domain.
+             * @param col a valid column number.
+             * @param row a valid row number.
+             */
+            vfunc_i_get_value_at(col: number, row: number): GObject.Value | null;
+            /**
+             * Moves `iter` to the row number given by `row`.
+             * @param iter a #GdaDataModelIter object.
+             * @param row a row to point to with @iter
+             */
+            vfunc_i_iter_at_row(iter: DataModelIter, row: number): boolean;
+            /**
+             * Moves `iter` to the next row in `model`.
+             * @param iter a #GdaDataModelIter object.
+             */
+            vfunc_i_iter_next(iter: DataModelIter): boolean;
+            /**
+             * Moves `iter` to the next row in `model`.
+             * @param iter a #GdaDataModelIter object.
+             */
+            vfunc_i_iter_prev(iter: DataModelIter): boolean;
+            /**
+             * Set `value` to the given `column` and row pointed by `iter` in the given `model`.
+             * @param iter a #GdaDataModelIter object.
+             * @param col the number of column to set value to
+             * @param value the to use to set on
+             */
+            vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
+            /**
+             * Removes a row from the data model.
+             *
+             * Upon errors FALSE will be returned and `error` will be assigned a
+             * #GError from the #GDA_DATA_MODEL_ERROR domain.
+             * @param row the row number to be removed.
+             */
+            vfunc_i_remove_row(row: number): boolean;
+            /**
+             * Sends a hint to the data model. The hint may or may not be handled by the data
+             * model, depending on its implementation
+             * @param hint a hint to send to the model
+             * @param hint_value an optional value to specify the hint, or %NULL
+             */
+            vfunc_i_send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+            /**
+             * Enable or disable notifications changes on the given data model.
+             * @param do_notify_changes Set to TRUE if you require notifications.
+             */
+            vfunc_i_set_notify(do_notify_changes: boolean): void;
+            /**
+             * Modifies a value in `model,` at (`col,` `row)`.
+             *
+             * Upon errors FALSE will be returned and `error` will be assigned a
+             * #GError from the #GDA_DATA_MODEL_ERROR domain.
+             * @param col column number.
+             * @param row row number.
+             * @param value a #GValue (not %NULL)
+             */
+            vfunc_i_set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
+            /**
+             * In a similar way to gda_data_model_set_value_at(), this method modifies a data model's contents
+             * by setting several values at once.
+             *
+             * If any value in `values` is actually %NULL, then the value in the corresponding column is left
+             * unchanged.
+             *
+             * Upon errors FALSE will be returned and `error` will be assigned a
+             * #GError from the #GDA_DATA_MODEL_ERROR domain.
+             * @param row row number.
+             * @param values a list of #GValue (or %NULL), one for at most the number of columns of @model
+             */
+            vfunc_i_set_values(row: number, values?: GObject.Value[] | null): boolean;
+            /**
+             * Emits the 'reset' and 'changed' signal on `model`.
+             */
+            vfunc_reset(): void;
+            /**
+             * Emits the 'row_inserted' and 'changed' signals on `model`.
+             *
+             * This method should only be used by #GdaDataModel implementations to
+             * signal that a row has been inserted.
+             * @param row row number.
+             */
+            vfunc_row_inserted(row: number): void;
+            /**
+             * Emits the 'row_removed' and 'changed' signal on `model`.
+             *
+             * This method should only be used by #GdaDataModel implementations to
+             * signal that a row has been removed
+             * @param row row number.
+             */
+            vfunc_row_removed(row: number): void;
+            /**
+             * Emits the 'row_updated' and 'changed' signals on `model`.
+             *
+             * This method should only be used by #GdaDataModel implementations to
+             * signal that a row has been updated.
+             * @param row row number.
+             */
+            vfunc_row_updated(row: number): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -25049,7 +25277,7 @@ export namespace Gda {
 
         error_quark(): GLib.Quark;
     }
-    interface DataModel extends GObject.Object {
+    interface DataModel extends GObject.Object, DataModel.Interface {
         // Methods
 
         /**
@@ -25505,222 +25733,6 @@ export namespace Gda {
          * Re-enables notifications of changes on the given data model.
          */
         thaw(): void;
-
-        // Virtual methods
-
-        vfunc_access_changed(): void;
-        vfunc_changed(): void;
-        /**
-         * Appends a row to the data model (the new row will possibly have NULL values for all columns,
-         * or some other values depending on the data model implementation)
-         *
-         * Upon errors -1 will be returned and `error` will be assigned a
-         * #GError from the #GDA_DATA_MODEL_ERROR domain.
-         */
-        vfunc_i_append_row(): number;
-        /**
-         * Appends a row to the given data model. If any value in `values` is actually %NULL, then
-         * it is considered as a default value. If `values` is %NULL then all values are set to their default value.
-         *
-         * Upon errors -1 will be returned and `error` will be assigned a
-         * #GError from the #GDA_DATA_MODEL_ERROR domain.
-         * @param values #GList of #GValue* representing the row to add.  The          length must match model's column count.  These #GValue     are value-copied (the user is still responsible for freeing them).
-         */
-        vfunc_i_append_values(values?: GObject.Value[] | null): number;
-        /**
-         * Creates a new iterator object #GdaDataModelIter object which can be used to iterate through
-         * rows in `model`. The new #GdaDataModelIter does not hold any reference to `model` (ie. if `model`
-         * is destroyed at some point, the new iterator will become useless but in any case it will not prevent
-         * the data model from being destroyed).
-         *
-         * Depending on the data model's implementation, a new #GdaDataModelIter object may be created,
-         * or a reference to an already existing #GdaDataModelIter may be returned. For example if `model` only
-         * supports being accessed using a forward moving cursor (say a the result of a SELECT executed by SQLite
-         * with a cursor access mode specified), then this method will always return the same iterator.
-         *
-         * If a new #GdaDataModelIter is created, then the row it represents is undefined.
-         *
-         * For models which can be accessed
-         * randomly, any row can be set using gda_data_model_iter_move_to_row(),
-         * and for models which are accessible sequentially only then use
-         * gda_data_model_iter_move_next() (and gda_data_model_iter_move_prev() if
-         * supported).
-         *
-         * Note: for the #GdaDataProxy data model (which proxies any #GdaDataModel for modifications and
-         * has twice the number of columns of the proxied data model), this method will create an iterator
-         * in which only the columns of the proxied data model appear. If you need to have a #GdaDataModelIter
-         * in which all the proxy's columns appear, create it using:
-         * <programlisting><![CDATA[iter = g_object_new (GDA_TYPE_DATA_MODEL_ITER, "data-model", proxy, NULL);]]></programlisting>
-         */
-        vfunc_i_create_iter(): DataModelIter;
-        /**
-         * Queries the underlying data model implementation for a description
-         * of a given column. That description is returned in the form of
-         * a #GdaColumn structure, which contains all the information
-         * about the given column in the data model.
-         *
-         * WARNING: the returned #GdaColumn object belongs to the `model` model and
-         * and should not be destroyed; any modification will affect the whole data model.
-         * @param col column number.
-         */
-        vfunc_i_describe_column(col: number): Column | null;
-        /**
-         * Returns the first row where all the values in `values` at the columns identified at
-         * `cols_index` match. If the row can't be identified, then returns -1;
-         *
-         * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
-         * @param values a list of #GValue values (no %NULL is allowed)
-         * @param cols_index an array of #gint containing the column number to match each value of @values
-         */
-        vfunc_i_find_row(values: (GObject.Value | any)[], cols_index: number[]): number;
-        /**
-         * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
-         */
-        vfunc_i_get_access_flags(): DataModelAccessFlags;
-        /**
-         * Get the attributes of the value stored at (row, col) in `model,` which
-         * is an ORed value of #GdaValueAttribute flags. As a special case, if
-         * `row` is -1, then the attributes returned correspond to a "would be" value
-         * if a row was added to `model`.
-         * @param col a valid column number
-         * @param row a valid row number, or -1
-         */
-        vfunc_i_get_attributes_at(col: number, row: number): ValueAttribute;
-        /**
-         * Get the global data model exception(s) that occurred when using `model`.
-         * This is useful for example for the LDAP related
-         * data models where some rows may be missing because the LDAP search has reached a limit
-         * imposed by the LDAP server.
-         */
-        vfunc_i_get_exceptions(): GLib.Error[];
-        vfunc_i_get_n_columns(): number;
-        vfunc_i_get_n_rows(): number;
-        /**
-         * Returns the status of notifications changes on the given data model.
-         */
-        vfunc_i_get_notify(): boolean;
-        /**
-         * Retrieves the data stored in the given position (identified by
-         * the `col` and `row` parameters) on a data model.
-         *
-         * Upon errors %NULL will be returned and `error` will be assigned a
-         * #GError from the #GDA_DATA_MODEL_ERROR domain.
-         *
-         * This is the main function for accessing data in a model which allows random access to its data.
-         * To access data in a data model using a cursor, use a #GdaDataModelIter object, obtained using
-         * gda_data_model_create_iter().
-         *
-         * Note1: the returned #GValue must not be modified directly (unexpected behaviours may
-         * occur if you do so).
-         *
-         * Note2: the returned value may become invalid as soon as any Libgda part is executed again,
-         * which means if you want to keep the value, a copy must be made, however it will remain valid
-         * as long as the only Libgda usage is calling gda_data_model_get_value_at() for different values
-         * of the same row.
-         *
-         * If you want to modify a value stored in a #GdaDataModel, use the gda_data_model_set_value_at() or
-         * gda_data_model_set_values() methods.
-         *
-         * Upon errors %NULL will be returned and `error` will be assigned a
-         * #GError from the #GDA_DATA_MODEL_ERROR domain.
-         * @param col a valid column number.
-         * @param row a valid row number.
-         */
-        vfunc_i_get_value_at(col: number, row: number): GObject.Value | null;
-        /**
-         * Moves `iter` to the row number given by `row`.
-         * @param iter a #GdaDataModelIter object.
-         * @param row a row to point to with @iter
-         */
-        vfunc_i_iter_at_row(iter: DataModelIter, row: number): boolean;
-        /**
-         * Moves `iter` to the next row in `model`.
-         * @param iter a #GdaDataModelIter object.
-         */
-        vfunc_i_iter_next(iter: DataModelIter): boolean;
-        /**
-         * Moves `iter` to the next row in `model`.
-         * @param iter a #GdaDataModelIter object.
-         */
-        vfunc_i_iter_prev(iter: DataModelIter): boolean;
-        /**
-         * Set `value` to the given `column` and row pointed by `iter` in the given `model`.
-         * @param iter a #GdaDataModelIter object.
-         * @param col the number of column to set value to
-         * @param value the to use to set on
-         */
-        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
-        /**
-         * Removes a row from the data model.
-         *
-         * Upon errors FALSE will be returned and `error` will be assigned a
-         * #GError from the #GDA_DATA_MODEL_ERROR domain.
-         * @param row the row number to be removed.
-         */
-        vfunc_i_remove_row(row: number): boolean;
-        /**
-         * Sends a hint to the data model. The hint may or may not be handled by the data
-         * model, depending on its implementation
-         * @param hint a hint to send to the model
-         * @param hint_value an optional value to specify the hint, or %NULL
-         */
-        vfunc_i_send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
-        /**
-         * Enable or disable notifications changes on the given data model.
-         * @param do_notify_changes Set to TRUE if you require notifications.
-         */
-        vfunc_i_set_notify(do_notify_changes: boolean): void;
-        /**
-         * Modifies a value in `model,` at (`col,` `row)`.
-         *
-         * Upon errors FALSE will be returned and `error` will be assigned a
-         * #GError from the #GDA_DATA_MODEL_ERROR domain.
-         * @param col column number.
-         * @param row row number.
-         * @param value a #GValue (not %NULL)
-         */
-        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
-        /**
-         * In a similar way to gda_data_model_set_value_at(), this method modifies a data model's contents
-         * by setting several values at once.
-         *
-         * If any value in `values` is actually %NULL, then the value in the corresponding column is left
-         * unchanged.
-         *
-         * Upon errors FALSE will be returned and `error` will be assigned a
-         * #GError from the #GDA_DATA_MODEL_ERROR domain.
-         * @param row row number.
-         * @param values a list of #GValue (or %NULL), one for at most the number of columns of @model
-         */
-        vfunc_i_set_values(row: number, values?: GObject.Value[] | null): boolean;
-        /**
-         * Emits the 'reset' and 'changed' signal on `model`.
-         */
-        vfunc_reset(): void;
-        /**
-         * Emits the 'row_inserted' and 'changed' signals on `model`.
-         *
-         * This method should only be used by #GdaDataModel implementations to
-         * signal that a row has been inserted.
-         * @param row row number.
-         */
-        vfunc_row_inserted(row: number): void;
-        /**
-         * Emits the 'row_removed' and 'changed' signal on `model`.
-         *
-         * This method should only be used by #GdaDataModel implementations to
-         * signal that a row has been removed
-         * @param row row number.
-         */
-        vfunc_row_removed(row: number): void;
-        /**
-         * Emits the 'row_updated' and 'changed' signals on `model`.
-         *
-         * This method should only be used by #GdaDataModel implementations to
-         * signal that a row has been updated.
-         * @param row row number.
-         */
-        vfunc_row_updated(row: number): void;
     }
 
     export const DataModel: DataModelNamespace & {
@@ -25728,6 +25740,18 @@ export namespace Gda {
     };
 
     namespace Lockable {
+        /**
+         * Interface for implementing Lockable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_i_lock(): void;
+            vfunc_i_trylock(): boolean;
+            vfunc_i_unlock(): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -25737,7 +25761,7 @@ export namespace Gda {
         $gtype: GObject.GType<Lockable>;
         prototype: Lockable;
     }
-    interface Lockable extends GObject.Object {
+    interface Lockable extends GObject.Object, Lockable.Interface {
         // Methods
 
         /**
@@ -25768,12 +25792,6 @@ export namespace Gda {
          * This function can be used even if g_thread_init() has not yet been called, and, in that case, will do nothing.
          */
         unlock(): void;
-
-        // Virtual methods
-
-        vfunc_i_lock(): void;
-        vfunc_i_trylock(): boolean;
-        vfunc_i_unlock(): void;
     }
 
     export const Lockable: LockableNamespace & {

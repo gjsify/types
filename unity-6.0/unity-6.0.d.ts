@@ -4585,6 +4585,21 @@ export namespace Unity {
     }
 
     namespace MergeStrategy {
+        /**
+         * Interface for implementing MergeStrategy.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * <para>Virtual method to merge row from source model into target model.</para>
+             * @param target The target model to merge a row into
+             * @param row An array of variants with the row data for the result
+             */
+            vfunc_merge_result(target: Dee.Model, row: GLib.Variant[]): Dee.ModelIter;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4594,7 +4609,7 @@ export namespace Unity {
         $gtype: GObject.GType<MergeStrategy>;
         prototype: MergeStrategy;
     }
-    interface MergeStrategy extends GObject.Object {
+    interface MergeStrategy extends GObject.Object, MergeStrategy.Interface {
         // Methods
 
         /**
@@ -4604,15 +4619,6 @@ export namespace Unity {
          * @returns A model iter pointing to the row in the target model where &commat;row was added. Or null if the result was discarded
          */
         merge_result(target: Dee.Model, row: GLib.Variant[]): Dee.ModelIter;
-
-        // Virtual methods
-
-        /**
-         * <para>Virtual method to merge row from source model into target model.</para>
-         * @param target The target model to merge a row into
-         * @param row An array of variants with the row data for the result
-         */
-        vfunc_merge_result(target: Dee.Model, row: GLib.Variant[]): Dee.ModelIter;
     }
 
     export const MergeStrategy: MergeStrategyNamespace & {

@@ -24841,6 +24841,49 @@ export namespace Clutter {
     }
 
     namespace Animatable {
+        /**
+         * Interface for implementing Animatable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Finds the [class`GObject`.ParamSpec] for `property_name`
+             * @param property_name the name of the animatable property to find
+             */
+            vfunc_find_property(property_name: string): GObject.ParamSpec;
+            /**
+             * Get animated actor.
+             */
+            vfunc_get_actor(): Actor;
+            /**
+             * Retrieves the current state of `property_name` and sets `value` with it
+             * @param property_name the name of the animatable property to retrieve
+             * @param value a #GValue initialized to the type of the property to retrieve
+             */
+            vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
+            /**
+             * Asks a #ClutterAnimatable implementation to interpolate a
+             * a named property between the initial and final values of
+             * a #ClutterInterval, using `progress` as the interpolation
+             * value, and store the result inside `value`.
+             *
+             * This function should be used for every property animation
+             * involving `ClutterAnimatable`s.
+             * @param property_name the name of the property to interpolate
+             * @param interval a #ClutterInterval with the animation range
+             * @param progress the progress to use to interpolate between the   initial and final values of the @interval
+             */
+            vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
+            /**
+             * Sets the current state of `property_name` to `value`
+             * @param property_name the name of the animatable property to set
+             * @param value the value of the animatable property to set
+             */
+            vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -24850,7 +24893,7 @@ export namespace Clutter {
         $gtype: GObject.GType<Animatable>;
         prototype: Animatable;
     }
-    interface Animatable extends GObject.Object {
+    interface Animatable extends GObject.Object, Animatable.Interface {
         // Methods
 
         /**
@@ -24890,43 +24933,6 @@ export namespace Clutter {
          * @param value the value of the animatable property to set
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
-
-        // Virtual methods
-
-        /**
-         * Finds the [class`GObject`.ParamSpec] for `property_name`
-         * @param property_name the name of the animatable property to find
-         */
-        vfunc_find_property(property_name: string): GObject.ParamSpec;
-        /**
-         * Get animated actor.
-         */
-        vfunc_get_actor(): Actor;
-        /**
-         * Retrieves the current state of `property_name` and sets `value` with it
-         * @param property_name the name of the animatable property to retrieve
-         * @param value a #GValue initialized to the type of the property to retrieve
-         */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Asks a #ClutterAnimatable implementation to interpolate a
-         * a named property between the initial and final values of
-         * a #ClutterInterval, using `progress` as the interpolation
-         * value, and store the result inside `value`.
-         *
-         * This function should be used for every property animation
-         * involving `ClutterAnimatable`s.
-         * @param property_name the name of the property to interpolate
-         * @param interval a #ClutterInterval with the animation range
-         * @param progress the progress to use to interpolate between the   initial and final values of the @interval
-         */
-        vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
-        /**
-         * Sets the current state of `property_name` to `value`
-         * @param property_name the name of the animatable property to set
-         * @param value the value of the animatable property to set
-         */
-        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
     }
 
     export const Animatable: AnimatableNamespace & {
@@ -24934,6 +24940,59 @@ export namespace Clutter {
     };
 
     namespace Content {
+        /**
+         * Interface for implementing Content.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * virtual function; called each time a #ClutterContent is attached
+             *   to a #ClutterActor.
+             * @param actor
+             */
+            vfunc_attached(actor: Actor): void;
+            /**
+             * virtual function; called each time a #ClutterContent is detached
+             *   from a #ClutterActor.
+             * @param actor
+             */
+            vfunc_detached(actor: Actor): void;
+            /**
+             * Retrieves the natural size of the `content,` if any.
+             *
+             * The natural size of a #ClutterContent is defined as the size the content
+             * would have regardless of the allocation of the actor that is painting it,
+             * for instance the size of an image data.
+             */
+            vfunc_get_preferred_size(): [boolean, number, number];
+            /**
+             * Invalidates a #ClutterContent.
+             *
+             * This function should be called by #ClutterContent implementations when
+             * they change the way a the content should be painted regardless of the
+             * actor state.
+             */
+            vfunc_invalidate(): void;
+            /**
+             * Signals that `content'`s size changed. Attached actors with request mode
+             * set to %CLUTTER_REQUEST_CONTENT_SIZE will have a relayout queued.
+             *
+             * Attached actors with other request modes are not redrawn. To redraw them
+             * too, use [method`Clutter`.Content.invalidate].
+             */
+            vfunc_invalidate_size(): void;
+            /**
+             * virtual function; called each time the content needs to
+             *   paint itself
+             * @param actor
+             * @param node
+             * @param paint_context
+             */
+            vfunc_paint_content(actor: Actor, node: PaintNode, paint_context: PaintContext): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -24943,7 +25002,7 @@ export namespace Clutter {
         $gtype: GObject.GType<Content>;
         prototype: Content;
     }
-    interface Content extends GObject.Object {
+    interface Content extends GObject.Object, Content.Interface {
         // Methods
 
         /**
@@ -24971,53 +25030,6 @@ export namespace Clutter {
          * too, use [method`Clutter`.Content.invalidate].
          */
         invalidate_size(): void;
-
-        // Virtual methods
-
-        /**
-         * virtual function; called each time a #ClutterContent is attached
-         *   to a #ClutterActor.
-         * @param actor
-         */
-        vfunc_attached(actor: Actor): void;
-        /**
-         * virtual function; called each time a #ClutterContent is detached
-         *   from a #ClutterActor.
-         * @param actor
-         */
-        vfunc_detached(actor: Actor): void;
-        /**
-         * Retrieves the natural size of the `content,` if any.
-         *
-         * The natural size of a #ClutterContent is defined as the size the content
-         * would have regardless of the allocation of the actor that is painting it,
-         * for instance the size of an image data.
-         */
-        vfunc_get_preferred_size(): [boolean, number, number];
-        /**
-         * Invalidates a #ClutterContent.
-         *
-         * This function should be called by #ClutterContent implementations when
-         * they change the way a the content should be painted regardless of the
-         * actor state.
-         */
-        vfunc_invalidate(): void;
-        /**
-         * Signals that `content'`s size changed. Attached actors with request mode
-         * set to %CLUTTER_REQUEST_CONTENT_SIZE will have a relayout queued.
-         *
-         * Attached actors with other request modes are not redrawn. To redraw them
-         * too, use [method`Clutter`.Content.invalidate].
-         */
-        vfunc_invalidate_size(): void;
-        /**
-         * virtual function; called each time the content needs to
-         *   paint itself
-         * @param actor
-         * @param node
-         * @param paint_context
-         */
-        vfunc_paint_content(actor: Actor, node: PaintNode, paint_context: PaintContext): void;
     }
 
     export const Content: ContentNamespace & {

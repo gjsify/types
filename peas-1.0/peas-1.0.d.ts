@@ -1932,6 +1932,35 @@ export namespace Peas {
     }
 
     namespace Activatable {
+        /**
+         * Interface for implementing Activatable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Activates the extension on the targetted object.
+             *
+             * On activation, the extension should hook itself to the object
+             * where it makes sense.
+             */
+            vfunc_activate(): void;
+            /**
+             * Deactivates the extension on the targetted object.
+             *
+             * On deactivation, an extension should remove itself from all the hooks it
+             * used and should perform any cleanup required, so it can be unreffed safely
+             * and without any more effect on the host application.
+             */
+            vfunc_deactivate(): void;
+            /**
+             * Triggers an update of the extension internal state to take into account
+             * state changes in the targetted object, due to some event or user action.
+             */
+            vfunc_update_state(): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1943,7 +1972,7 @@ export namespace Peas {
         $gtype: GObject.GType<Activatable>;
         prototype: Activatable;
     }
-    interface Activatable extends GObject.Object {
+    interface Activatable extends GObject.Object, Activatable.Interface {
         // Properties
 
         /**
@@ -1977,29 +2006,6 @@ export namespace Peas {
          * state changes in the targetted object, due to some event or user action.
          */
         update_state(): void;
-
-        // Virtual methods
-
-        /**
-         * Activates the extension on the targetted object.
-         *
-         * On activation, the extension should hook itself to the object
-         * where it makes sense.
-         */
-        vfunc_activate(): void;
-        /**
-         * Deactivates the extension on the targetted object.
-         *
-         * On deactivation, an extension should remove itself from all the hooks it
-         * used and should perform any cleanup required, so it can be unreffed safely
-         * and without any more effect on the host application.
-         */
-        vfunc_deactivate(): void;
-        /**
-         * Triggers an update of the extension internal state to take into account
-         * state changes in the targetted object, due to some event or user action.
-         */
-        vfunc_update_state(): void;
     }
 
     export const Activatable: ActivatableNamespace & {

@@ -9263,6 +9263,17 @@ export namespace Kkc {
     }
 
     namespace UnigramLanguageModel {
+        /**
+         * Interface for implementing UnigramLanguageModel.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_unigram_cost(entry: LanguageModelEntry): number;
+            vfunc_unigram_backoff(entry: LanguageModelEntry): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends LanguageModel.ConstructorProps {}
@@ -9272,16 +9283,11 @@ export namespace Kkc {
         $gtype: GObject.GType<UnigramLanguageModel>;
         prototype: UnigramLanguageModel;
     }
-    interface UnigramLanguageModel extends LanguageModel {
+    interface UnigramLanguageModel extends LanguageModel, UnigramLanguageModel.Interface {
         // Methods
 
         unigram_cost(entry: LanguageModelEntry): number;
         unigram_backoff(entry: LanguageModelEntry): number;
-
-        // Virtual methods
-
-        vfunc_unigram_cost(entry: LanguageModelEntry): number;
-        vfunc_unigram_backoff(entry: LanguageModelEntry): number;
     }
 
     export const UnigramLanguageModel: UnigramLanguageModelNamespace & {
@@ -9289,6 +9295,18 @@ export namespace Kkc {
     };
 
     namespace BigramLanguageModel {
+        /**
+         * Interface for implementing BigramLanguageModel.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface extends UnigramLanguageModel.Interface {
+            // Virtual methods
+
+            vfunc_has_bigram(pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
+            vfunc_bigram_cost(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+            vfunc_bigram_backoff(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends UnigramLanguageModel.ConstructorProps {}
@@ -9298,19 +9316,13 @@ export namespace Kkc {
         $gtype: GObject.GType<BigramLanguageModel>;
         prototype: BigramLanguageModel;
     }
-    interface BigramLanguageModel extends UnigramLanguageModel {
+    interface BigramLanguageModel extends UnigramLanguageModel, BigramLanguageModel.Interface {
         // Methods
 
         has_bigram(pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
         bigram_cost(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
         bigram_backoff(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
         bigram_backoff_cost(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
-
-        // Virtual methods
-
-        vfunc_has_bigram(pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
-        vfunc_bigram_cost(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
-        vfunc_bigram_backoff(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
     }
 
     export const BigramLanguageModel: BigramLanguageModelNamespace & {
@@ -9318,6 +9330,25 @@ export namespace Kkc {
     };
 
     namespace TrigramLanguageModel {
+        /**
+         * Interface for implementing TrigramLanguageModel.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface extends BigramLanguageModel.Interface {
+            // Virtual methods
+
+            vfunc_has_trigram(
+                ppentry: LanguageModelEntry,
+                pentry: LanguageModelEntry,
+                entry: LanguageModelEntry,
+            ): boolean;
+            vfunc_trigram_cost(
+                ppentry: LanguageModelEntry,
+                pentry: LanguageModelEntry,
+                entry: LanguageModelEntry,
+            ): number;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends BigramLanguageModel.ConstructorProps {}
@@ -9327,7 +9358,7 @@ export namespace Kkc {
         $gtype: GObject.GType<TrigramLanguageModel>;
         prototype: TrigramLanguageModel;
     }
-    interface TrigramLanguageModel extends BigramLanguageModel {
+    interface TrigramLanguageModel extends BigramLanguageModel, TrigramLanguageModel.Interface {
         // Methods
 
         has_trigram(ppentry: LanguageModelEntry, pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
@@ -9337,11 +9368,6 @@ export namespace Kkc {
             pentry: LanguageModelEntry,
             entry: LanguageModelEntry,
         ): number;
-
-        // Virtual methods
-
-        vfunc_has_trigram(ppentry: LanguageModelEntry, pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
-        vfunc_trigram_cost(ppentry: LanguageModelEntry, pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
     }
 
     export const TrigramLanguageModel: TrigramLanguageModelNamespace & {
@@ -9349,6 +9375,17 @@ export namespace Kkc {
     };
 
     namespace Dictionary {
+        /**
+         * Interface for implementing Dictionary.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_reload(): void;
+            vfunc_save(): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9358,16 +9395,11 @@ export namespace Kkc {
         $gtype: GObject.GType<Dictionary>;
         prototype: Dictionary;
     }
-    interface Dictionary extends GObject.Object {
+    interface Dictionary extends GObject.Object, Dictionary.Interface {
         // Methods
 
         reload(): void;
         save(): void;
-
-        // Virtual methods
-
-        vfunc_reload(): void;
-        vfunc_save(): void;
     }
 
     export const Dictionary: DictionaryNamespace & {
@@ -9375,6 +9407,19 @@ export namespace Kkc {
     };
 
     namespace SegmentDictionary {
+        /**
+         * Interface for implementing SegmentDictionary.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_lookup_candidates(midasi: string, okuri: boolean): [boolean, Candidate[]];
+            vfunc_complete(midasi: string): string[];
+            vfunc_select_candidate(candidate: Candidate): boolean;
+            vfunc_purge_candidate(candidate: Candidate): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9384,20 +9429,13 @@ export namespace Kkc {
         $gtype: GObject.GType<SegmentDictionary>;
         prototype: SegmentDictionary;
     }
-    interface SegmentDictionary extends GObject.Object {
+    interface SegmentDictionary extends GObject.Object, SegmentDictionary.Interface {
         // Methods
 
         lookup_candidates(midasi: string, okuri: boolean): [boolean, Candidate[]];
         complete(midasi: string): string[];
         select_candidate(candidate: Candidate): boolean;
         purge_candidate(candidate: Candidate): boolean;
-
-        // Virtual methods
-
-        vfunc_lookup_candidates(midasi: string, okuri: boolean): [boolean, Candidate[]];
-        vfunc_complete(midasi: string): string[];
-        vfunc_select_candidate(candidate: Candidate): boolean;
-        vfunc_purge_candidate(candidate: Candidate): boolean;
     }
 
     export const SegmentDictionary: SegmentDictionaryNamespace & {
@@ -9405,6 +9443,18 @@ export namespace Kkc {
     };
 
     namespace SentenceDictionary {
+        /**
+         * Interface for implementing SentenceDictionary.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_lookup_constraint(input: string): [boolean, number[]];
+            vfunc_lookup_phrase(input: string[]): [boolean, string[]];
+            vfunc_select_segments(input: Segment[]): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9414,18 +9464,12 @@ export namespace Kkc {
         $gtype: GObject.GType<SentenceDictionary>;
         prototype: SentenceDictionary;
     }
-    interface SentenceDictionary extends GObject.Object {
+    interface SentenceDictionary extends GObject.Object, SentenceDictionary.Interface {
         // Methods
 
         lookup_constraint(input: string): [boolean, number[]];
         lookup_phrase(input: string[]): [boolean, string[]];
         select_segments(input: Segment[]): boolean;
-
-        // Virtual methods
-
-        vfunc_lookup_constraint(input: string): [boolean, number[]];
-        vfunc_lookup_phrase(input: string[]): [boolean, string[]];
-        vfunc_select_segments(input: Segment[]): boolean;
     }
 
     export const SentenceDictionary: SentenceDictionaryNamespace & {

@@ -595,6 +595,17 @@ export namespace BudgieRaven {
     }
 
     namespace RavenPlugin {
+        /**
+         * Interface for implementing RavenPlugin.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_new_widget_instance(uuid: string, settings?: Gio.Settings | null): RavenWidget;
+            vfunc_supports_settings(): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -604,16 +615,11 @@ export namespace BudgieRaven {
         $gtype: GObject.GType<RavenPlugin>;
         prototype: RavenPlugin;
     }
-    interface RavenPlugin extends GObject.Object {
+    interface RavenPlugin extends GObject.Object, RavenPlugin.Interface {
         // Methods
 
         new_widget_instance(uuid: string, settings?: Gio.Settings | null): RavenWidget;
         supports_settings(): boolean;
-
-        // Virtual methods
-
-        vfunc_new_widget_instance(uuid: string, settings?: Gio.Settings | null): RavenWidget;
-        vfunc_supports_settings(): boolean;
     }
 
     export const RavenPlugin: RavenPluginNamespace & {

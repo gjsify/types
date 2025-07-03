@@ -2078,6 +2078,19 @@ export namespace OsmGpsMap {
     }
 
     namespace MapLayer {
+        /**
+         * Interface for implementing MapLayer.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_busy(): boolean;
+            vfunc_button_press(map: Map, event: Gdk.EventButton): boolean;
+            vfunc_draw(map: Map, cr: cairo.Context): void;
+            vfunc_render(map: Map): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2087,20 +2100,13 @@ export namespace OsmGpsMap {
         $gtype: GObject.GType<MapLayer>;
         prototype: MapLayer;
     }
-    interface MapLayer extends GObject.Object {
+    interface MapLayer extends GObject.Object, MapLayer.Interface {
         // Methods
 
         busy(): boolean;
         button_press(map: Map, event: Gdk.EventButton): boolean;
         draw(map: Map, cr: cairo.Context): void;
         render(map: Map): void;
-
-        // Virtual methods
-
-        vfunc_busy(): boolean;
-        vfunc_button_press(map: Map, event: Gdk.EventButton): boolean;
-        vfunc_draw(map: Map, cr: cairo.Context): void;
-        vfunc_render(map: Map): void;
     }
 
     export const MapLayer: MapLayerNamespace & {

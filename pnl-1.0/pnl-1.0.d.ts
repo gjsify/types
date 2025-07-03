@@ -43344,6 +43344,29 @@ export namespace Pnl {
     };
 
     namespace DockItem {
+        /**
+         * Interface for implementing DockItem.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_get_child_visible(child: DockItem): boolean;
+            /**
+             * Gets the dock manager for this dock item.
+             */
+            vfunc_get_manager(): DockManager | null;
+            vfunc_manager_set(old_manager: DockManager): void;
+            vfunc_present_child(child: DockItem): void;
+            vfunc_set_child_visible(child: DockItem, child_visible: boolean): void;
+            /**
+             * Sets the dock manager for this #PnlDockItem.
+             * @param manager A #PnlDockManager
+             */
+            vfunc_set_manager(manager?: DockManager | null): void;
+            vfunc_update_visibility(): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {}
@@ -43353,7 +43376,7 @@ export namespace Pnl {
         $gtype: GObject.GType<DockItem>;
         prototype: DockItem;
     }
-    interface DockItem extends Gtk.Widget {
+    interface DockItem extends Gtk.Widget, DockItem.Interface {
         // Methods
 
         adopt(child: DockItem): boolean;
@@ -43386,23 +43409,6 @@ export namespace Pnl {
          */
         set_manager(manager?: DockManager | null): void;
         update_visibility(): void;
-
-        // Virtual methods
-
-        vfunc_get_child_visible(child: DockItem): boolean;
-        /**
-         * Gets the dock manager for this dock item.
-         */
-        vfunc_get_manager(): DockManager | null;
-        vfunc_manager_set(old_manager: DockManager): void;
-        vfunc_present_child(child: DockItem): void;
-        vfunc_set_child_visible(child: DockItem, child_visible: boolean): void;
-        /**
-         * Sets the dock manager for this #PnlDockItem.
-         * @param manager A #PnlDockManager
-         */
-        vfunc_set_manager(manager?: DockManager | null): void;
-        vfunc_update_visibility(): void;
     }
 
     export const DockItem: DockItemNamespace & {

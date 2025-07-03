@@ -3742,6 +3742,60 @@ export namespace GUPnP {
 
     type XMLDocClass = typeof XMLDoc;
     namespace Acl {
+        /**
+         * Interface for implementing Acl.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Check whether gupnp_acl_is_allowed_async() is supported.
+             */
+            vfunc_can_sync(): boolean;
+            /**
+             * Check whether an IP address is allowed to access this resource.
+             * @param device The #GUPnPDevice associated with @path or %NULL if unknown.
+             * @param service The #GUPnPService associated with @path or %NULL if unknown.
+             * @param path The path being served.
+             * @param address IP address of the peer.
+             * @param agent The User-Agent header of the peer or %NULL if not unknown. @returns %TRUE if the peer is allowed, %FALSE otherwise
+             */
+            vfunc_is_allowed(
+                device: any | null,
+                service: any | null,
+                path: string,
+                address: string,
+                agent?: string | null,
+            ): boolean;
+            /**
+             * Optional. Check asynchronously whether an IP address is allowed to access
+             * this resource. Use this function if the process of verifying the access right
+             * is expected to take some time, for example when using D-Bus etc.
+             *
+             * If this function is supported, gupnp_acl_can_sync() should return %TRUE.
+             *
+             * Use gupnp_acl_is_allowed_finish() to retrieve the result.
+             * @param device The #GUPnPDevice associated with @path or %NULL if unknown.
+             * @param service The #GUPnPService associated with @path or %NULL if unknown.
+             * @param path The path being served.
+             * @param address IP address of the peer
+             * @param agent The User-Agent header of the peer or %NULL if not unknown.
+             * @param cancellable A #GCancellable which can be used to cancel the operation.
+             * @param callback Callback to call after the function is done.
+             */
+            vfunc_is_allowed_async(
+                device: any | null,
+                service: any | null,
+                path: string,
+                address: string,
+                agent?: string | null,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_is_allowed_finish(res: Gio.AsyncResult): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3751,7 +3805,7 @@ export namespace GUPnP {
         $gtype: GObject.GType<Acl>;
         prototype: Acl;
     }
-    interface Acl extends GObject.Object {
+    interface Acl extends GObject.Object, Acl.Interface {
         // Methods
 
         /**
@@ -3847,54 +3901,6 @@ export namespace GUPnP {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         is_allowed_finish(res: Gio.AsyncResult): boolean;
-
-        // Virtual methods
-
-        /**
-         * Check whether gupnp_acl_is_allowed_async() is supported.
-         */
-        vfunc_can_sync(): boolean;
-        /**
-         * Check whether an IP address is allowed to access this resource.
-         * @param device The #GUPnPDevice associated with @path or %NULL if unknown.
-         * @param service The #GUPnPService associated with @path or %NULL if unknown.
-         * @param path The path being served.
-         * @param address IP address of the peer.
-         * @param agent The User-Agent header of the peer or %NULL if not unknown. @returns %TRUE if the peer is allowed, %FALSE otherwise
-         */
-        vfunc_is_allowed(
-            device: any | null,
-            service: any | null,
-            path: string,
-            address: string,
-            agent?: string | null,
-        ): boolean;
-        /**
-         * Optional. Check asynchronously whether an IP address is allowed to access
-         * this resource. Use this function if the process of verifying the access right
-         * is expected to take some time, for example when using D-Bus etc.
-         *
-         * If this function is supported, gupnp_acl_can_sync() should return %TRUE.
-         *
-         * Use gupnp_acl_is_allowed_finish() to retrieve the result.
-         * @param device The #GUPnPDevice associated with @path or %NULL if unknown.
-         * @param service The #GUPnPService associated with @path or %NULL if unknown.
-         * @param path The path being served.
-         * @param address IP address of the peer
-         * @param agent The User-Agent header of the peer or %NULL if not unknown.
-         * @param cancellable A #GCancellable which can be used to cancel the operation.
-         * @param callback Callback to call after the function is done.
-         */
-        vfunc_is_allowed_async(
-            device: any | null,
-            service: any | null,
-            path: string,
-            address: string,
-            agent?: string | null,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_is_allowed_finish(res: Gio.AsyncResult): boolean;
     }
 
     export const Acl: AclNamespace & {

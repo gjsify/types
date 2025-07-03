@@ -26718,6 +26718,53 @@ export namespace Camel {
     }
 
     namespace JunkFilter {
+        /**
+         * Interface for implementing JunkFilter.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Classifies `message` as junk, not junk or inconclusive.
+             *
+             * If an error occurs, the function sets `error` and returns
+             * %CAMEL_JUNK_STATUS_ERROR.
+             * @param message a #CamelMimeMessage
+             * @param cancellable optional #GCancellable object, or %NULL
+             */
+            vfunc_classify(message: MimeMessage, cancellable?: Gio.Cancellable | null): JunkStatus;
+            /**
+             * Instructs `junk_filter` to classify `message` as junk.  If using an
+             * adaptive junk filtering algorithm, explicitly marking `message` as
+             * junk will influence the classification of future messages.
+             *
+             * If an error occurs, the function sets `error` and returns %FALSE.
+             * @param message a #CamelMimeMessage
+             * @param cancellable optional #GCancellable object, or %NULL
+             */
+            vfunc_learn_junk(message: MimeMessage, cancellable?: Gio.Cancellable | null): boolean;
+            /**
+             * Instructs `junk_filter` to classify `message` as not junk.  If using an
+             * adaptive junk filtering algorithm, explicitly marking `message` as not
+             * junk will influence the classification of future messages.
+             *
+             * If an error occurs, the function sets `error` and returns %FALSE.
+             * @param message a #CamelMimeMessage
+             * @param cancellable optional #GCancellable object, or %NULL
+             */
+            vfunc_learn_not_junk(message: MimeMessage, cancellable?: Gio.Cancellable | null): boolean;
+            /**
+             * Instructs `junk_filter` to flush any in-memory caches to disk, if
+             * applicable.  When filtering many messages, delaying this step until
+             * all messages have been classified can improve performance.
+             *
+             * If an error occurs, the function sets `error` and returns %FALSE.
+             * @param cancellable optional #GCancellable object, or %NULL
+             */
+            vfunc_synchronize(cancellable?: Gio.Cancellable | null): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -26727,7 +26774,7 @@ export namespace Camel {
         $gtype: GObject.GType<JunkFilter>;
         prototype: JunkFilter;
     }
-    interface JunkFilter extends GObject.Object {
+    interface JunkFilter extends GObject.Object, JunkFilter.Interface {
         // Methods
 
         /**
@@ -26772,47 +26819,6 @@ export namespace Camel {
          * @returns %TRUE if @junk_filter was successfully synchronized
          */
         synchronize(cancellable?: Gio.Cancellable | null): boolean;
-
-        // Virtual methods
-
-        /**
-         * Classifies `message` as junk, not junk or inconclusive.
-         *
-         * If an error occurs, the function sets `error` and returns
-         * %CAMEL_JUNK_STATUS_ERROR.
-         * @param message a #CamelMimeMessage
-         * @param cancellable optional #GCancellable object, or %NULL
-         */
-        vfunc_classify(message: MimeMessage, cancellable?: Gio.Cancellable | null): JunkStatus;
-        /**
-         * Instructs `junk_filter` to classify `message` as junk.  If using an
-         * adaptive junk filtering algorithm, explicitly marking `message` as
-         * junk will influence the classification of future messages.
-         *
-         * If an error occurs, the function sets `error` and returns %FALSE.
-         * @param message a #CamelMimeMessage
-         * @param cancellable optional #GCancellable object, or %NULL
-         */
-        vfunc_learn_junk(message: MimeMessage, cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Instructs `junk_filter` to classify `message` as not junk.  If using an
-         * adaptive junk filtering algorithm, explicitly marking `message` as not
-         * junk will influence the classification of future messages.
-         *
-         * If an error occurs, the function sets `error` and returns %FALSE.
-         * @param message a #CamelMimeMessage
-         * @param cancellable optional #GCancellable object, or %NULL
-         */
-        vfunc_learn_not_junk(message: MimeMessage, cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Instructs `junk_filter` to flush any in-memory caches to disk, if
-         * applicable.  When filtering many messages, delaying this step until
-         * all messages have been classified can improve performance.
-         *
-         * If an error occurs, the function sets `error` and returns %FALSE.
-         * @param cancellable optional #GCancellable object, or %NULL
-         */
-        vfunc_synchronize(cancellable?: Gio.Cancellable | null): boolean;
     }
 
     export const JunkFilter: JunkFilterNamespace & {
@@ -26820,6 +26826,42 @@ export namespace Camel {
     };
 
     namespace NetworkService {
+        /**
+         * Interface for implementing NetworkService.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Attempts to establish a network connection to the server described by
+             * `service,` using the preferred #CamelNetworkSettings:security-method to
+             * secure the connection.  If a connection cannot be established, or the
+             * connection attempt is cancelled, the function sets `error` and returns
+             * %NULL.
+             * @param cancellable optional #GCancellable object, or %NULL
+             */
+            vfunc_connect_sync(cancellable?: Gio.Cancellable | null): Gio.IOStream;
+            // Conflicted with Camel.Service.vfunc_connect_sync
+            vfunc_connect_sync(...args: never[]): any;
+            /**
+             * Returns the default network port number for `service` and the security
+             * method `method,` as defined in /etc/services.  For example, the default
+             * port for unencrypted IMAP or encrypted IMAP using STARTTLS is 143, but
+             * the default port for IMAP over SSL is 993.
+             * @param method a #CamelNetworkSecurityMethod
+             */
+            vfunc_get_default_port(method: NetworkSecurityMethod): number;
+            /**
+             * Returns the standard network service name for `service` and the security
+             * method `method,` as defined in /etc/services.  For example, the service
+             * name for unencrypted IMAP or encrypted IMAP using STARTTLS is "imap",
+             * but the service name for IMAP over SSL is "imaps".
+             * @param method a #CamelNetworkSecurityMethod
+             */
+            vfunc_get_service_name(method: NetworkSecurityMethod): string | null;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {
@@ -26833,7 +26875,7 @@ export namespace Camel {
         $gtype: GObject.GType<NetworkService>;
         prototype: NetworkService;
     }
-    interface NetworkService extends Service {
+    interface NetworkService extends Service, NetworkService.Interface {
         // Properties
 
         get connectable(): Gio.SocketConnectable;
@@ -26972,36 +27014,6 @@ export namespace Camel {
          * @returns the new #GTlsClientConnection, or %NULL on error
          */
         starttls(base_stream: Gio.IOStream): Gio.IOStream | null;
-
-        // Virtual methods
-
-        /**
-         * Attempts to establish a network connection to the server described by
-         * `service,` using the preferred #CamelNetworkSettings:security-method to
-         * secure the connection.  If a connection cannot be established, or the
-         * connection attempt is cancelled, the function sets `error` and returns
-         * %NULL.
-         * @param cancellable optional #GCancellable object, or %NULL
-         */
-        vfunc_connect_sync(cancellable?: Gio.Cancellable | null): Gio.IOStream;
-        // Conflicted with Camel.Service.vfunc_connect_sync
-        vfunc_connect_sync(...args: never[]): any;
-        /**
-         * Returns the default network port number for `service` and the security
-         * method `method,` as defined in /etc/services.  For example, the default
-         * port for unencrypted IMAP or encrypted IMAP using STARTTLS is 143, but
-         * the default port for IMAP over SSL is 993.
-         * @param method a #CamelNetworkSecurityMethod
-         */
-        vfunc_get_default_port(method: NetworkSecurityMethod): number;
-        /**
-         * Returns the standard network service name for `service` and the security
-         * method `method,` as defined in /etc/services.  For example, the service
-         * name for unencrypted IMAP or encrypted IMAP using STARTTLS is "imap",
-         * but the service name for IMAP over SSL is "imaps".
-         * @param method a #CamelNetworkSecurityMethod
-         */
-        vfunc_get_service_name(method: NetworkSecurityMethod): string | null;
     }
 
     export const NetworkService: NetworkServiceNamespace & {
@@ -27145,6 +27157,48 @@ export namespace Camel {
     };
 
     namespace Subscribable {
+        /**
+         * Interface for implementing Subscribable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Find out if a folder has been subscribed to.
+             * @param folder_name full path of the folder
+             */
+            vfunc_folder_is_subscribed(folder_name: string): boolean;
+            /**
+             * Emits the #CamelSubscribable::folder-subscribed signal from an idle source
+             * on the main loop.  The idle source's priority is #G_PRIORITY_HIGH_IDLE.
+             *
+             * This function is only intended for Camel providers.
+             * @param folder_info information about the subscribed folder
+             */
+            vfunc_folder_subscribed(folder_info: FolderInfo): void;
+            /**
+             * Emits the #CamelSubscribable::folder-unsubscribed signal from an idle source
+             * on the main loop.  The idle source's priority is #G_PRIORITY_HIGH_IDLE.
+             *
+             * This function is only intended for Camel providers.
+             * @param folder_info information about the unsubscribed folder
+             */
+            vfunc_folder_unsubscribed(folder_info: FolderInfo): void;
+            /**
+             * Subscribes to the folder described by `folder_name`.
+             * @param folder_name full path of the folder
+             * @param cancellable optional #GCancellable object, or %NULL
+             */
+            vfunc_subscribe_folder_sync(folder_name: string, cancellable?: Gio.Cancellable | null): boolean;
+            /**
+             * Unsubscribes from the folder described by `folder_name`.
+             * @param folder_name full path of the folder
+             * @param cancellable optional #GCancellable object, or %NULL
+             */
+            vfunc_unsubscribe_folder_sync(folder_name: string, cancellable?: Gio.Cancellable | null): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Store.ConstructorProps {}
@@ -27154,7 +27208,7 @@ export namespace Camel {
         $gtype: GObject.GType<Subscribable>;
         prototype: Subscribable;
     }
-    interface Subscribable extends Store {
+    interface Subscribable extends Store, Subscribable.Interface {
         // Methods
 
         /**
@@ -27303,42 +27357,6 @@ export namespace Camel {
          * @returns %TRUE on success, %FALSE on error
          */
         unsubscribe_folder_sync(folder_name: string, cancellable?: Gio.Cancellable | null): boolean;
-
-        // Virtual methods
-
-        /**
-         * Find out if a folder has been subscribed to.
-         * @param folder_name full path of the folder
-         */
-        vfunc_folder_is_subscribed(folder_name: string): boolean;
-        /**
-         * Emits the #CamelSubscribable::folder-subscribed signal from an idle source
-         * on the main loop.  The idle source's priority is #G_PRIORITY_HIGH_IDLE.
-         *
-         * This function is only intended for Camel providers.
-         * @param folder_info information about the subscribed folder
-         */
-        vfunc_folder_subscribed(folder_info: FolderInfo): void;
-        /**
-         * Emits the #CamelSubscribable::folder-unsubscribed signal from an idle source
-         * on the main loop.  The idle source's priority is #G_PRIORITY_HIGH_IDLE.
-         *
-         * This function is only intended for Camel providers.
-         * @param folder_info information about the unsubscribed folder
-         */
-        vfunc_folder_unsubscribed(folder_info: FolderInfo): void;
-        /**
-         * Subscribes to the folder described by `folder_name`.
-         * @param folder_name full path of the folder
-         * @param cancellable optional #GCancellable object, or %NULL
-         */
-        vfunc_subscribe_folder_sync(folder_name: string, cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Unsubscribes from the folder described by `folder_name`.
-         * @param folder_name full path of the folder
-         * @param cancellable optional #GCancellable object, or %NULL
-         */
-        vfunc_unsubscribe_folder_sync(folder_name: string, cancellable?: Gio.Cancellable | null): boolean;
     }
 
     export const Subscribable: SubscribableNamespace & {

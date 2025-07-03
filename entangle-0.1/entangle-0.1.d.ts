@@ -12044,6 +12044,18 @@ export namespace Entangle {
     type ThumbnailLoaderClass = typeof ThumbnailLoader;
     type VideoClass = typeof Video;
     namespace Progress {
+        /**
+         * Interface for implementing Progress.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_start(target: number, msg: string): void;
+            vfunc_stop(): void;
+            vfunc_update(current: number): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -12053,18 +12065,12 @@ export namespace Entangle {
         $gtype: GObject.GType<Progress>;
         prototype: Progress;
     }
-    interface Progress extends GObject.Object {
+    interface Progress extends GObject.Object, Progress.Interface {
         // Methods
 
         start(target: number, msg: string): void;
         stop(): void;
         update(current: number): void;
-
-        // Virtual methods
-
-        vfunc_start(target: number, msg: string): void;
-        vfunc_stop(): void;
-        vfunc_update(current: number): void;
     }
 
     export const Progress: ProgressNamespace & {

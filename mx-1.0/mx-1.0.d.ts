@@ -32790,6 +32790,25 @@ export namespace Mx {
     }
 
     namespace Draggable {
+        /**
+         * Interface for implementing Draggable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_disable(): void;
+            vfunc_drag_begin(
+                event_x: number,
+                event_y: number,
+                event_button: number,
+                modifiers: Clutter.ModifierType,
+            ): void;
+            vfunc_drag_end(event_x: number, event_y: number): void;
+            vfunc_drag_motion(delta_x: number, delta_y: number): void;
+            vfunc_enable(): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.Actor.ConstructorProps {
@@ -32807,7 +32826,7 @@ export namespace Mx {
         $gtype: GObject.GType<Draggable>;
         prototype: Draggable;
     }
-    interface Draggable extends Clutter.Actor {
+    interface Draggable extends Clutter.Actor, Draggable.Interface {
         // Properties
 
         get axis(): DragAxis;
@@ -32840,14 +32859,6 @@ export namespace Mx {
         set_axis(axis: DragAxis | null): void;
         set_drag_actor(actor: Clutter.Actor): void;
         set_drag_threshold(threshold: number): void;
-
-        // Virtual methods
-
-        vfunc_disable(): void;
-        vfunc_drag_begin(event_x: number, event_y: number, event_button: number, modifiers: Clutter.ModifierType): void;
-        vfunc_drag_end(event_x: number, event_y: number): void;
-        vfunc_drag_motion(delta_x: number, delta_y: number): void;
-        vfunc_enable(): void;
     }
 
     export const Draggable: DraggableNamespace & {
@@ -32855,6 +32866,27 @@ export namespace Mx {
     };
 
     namespace Droppable {
+        /**
+         * Interface for implementing Droppable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_accept_drop(draggable: Draggable): boolean;
+            vfunc_disable(): void;
+            vfunc_drop(
+                draggable: Draggable,
+                event_x: number,
+                event_y: number,
+                button: number,
+                modifiers: Clutter.ModifierType,
+            ): void;
+            vfunc_enable(): void;
+            vfunc_over_in(draggable: Draggable): void;
+            vfunc_over_out(draggable: Draggable): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.Actor.ConstructorProps {
@@ -32867,7 +32899,7 @@ export namespace Mx {
         $gtype: GObject.GType<Droppable>;
         prototype: Droppable;
     }
-    interface Droppable extends Clutter.Actor {
+    interface Droppable extends Clutter.Actor, Droppable.Interface {
         // Properties
 
         get drop_enabled(): boolean;
@@ -32881,21 +32913,6 @@ export namespace Mx {
         disable(): void;
         enable(): void;
         is_enabled(): boolean;
-
-        // Virtual methods
-
-        vfunc_accept_drop(draggable: Draggable): boolean;
-        vfunc_disable(): void;
-        vfunc_drop(
-            draggable: Draggable,
-            event_x: number,
-            event_y: number,
-            button: number,
-            modifiers: Clutter.ModifierType,
-        ): void;
-        vfunc_enable(): void;
-        vfunc_over_in(draggable: Draggable): void;
-        vfunc_over_out(draggable: Draggable): void;
     }
 
     export const Droppable: DroppableNamespace & {
@@ -32903,6 +32920,26 @@ export namespace Mx {
     };
 
     namespace Focusable {
+        /**
+         * Interface for implementing Focusable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Accept the focus
+             * @param hint A #MxFocusHint
+             */
+            vfunc_accept_focus(hint: FocusHint): Focusable;
+            /**
+             * Move the focus
+             * @param direction A #MxFocusDirection
+             * @param from focusable to move the focus from
+             */
+            vfunc_move_focus(direction: FocusDirection, from: Focusable): Focusable;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -32912,7 +32949,7 @@ export namespace Mx {
         $gtype: GObject.GType<Focusable>;
         prototype: Focusable;
     }
-    interface Focusable extends GObject.Object {
+    interface Focusable extends GObject.Object, Focusable.Interface {
         // Methods
 
         /**
@@ -32928,20 +32965,6 @@ export namespace Mx {
          * @returns the newly focused focusable
          */
         move_focus(direction: FocusDirection | null, from: Focusable): Focusable;
-
-        // Virtual methods
-
-        /**
-         * Accept the focus
-         * @param hint A #MxFocusHint
-         */
-        vfunc_accept_focus(hint: FocusHint): Focusable;
-        /**
-         * Move the focus
-         * @param direction A #MxFocusDirection
-         * @param from focusable to move the focus from
-         */
-        vfunc_move_focus(direction: FocusDirection, from: Focusable): Focusable;
     }
 
     export const Focusable: FocusableNamespace & {
@@ -32949,6 +32972,19 @@ export namespace Mx {
     };
 
     namespace ItemFactory {
+        /**
+         * Interface for implementing ItemFactory.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Create an item
+             */
+            vfunc_create(): Clutter.Actor;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -32958,7 +32994,7 @@ export namespace Mx {
         $gtype: GObject.GType<ItemFactory>;
         prototype: ItemFactory;
     }
-    interface ItemFactory extends GObject.Object {
+    interface ItemFactory extends GObject.Object, ItemFactory.Interface {
         // Methods
 
         /**
@@ -32966,13 +33002,6 @@ export namespace Mx {
          * @returns the new item
          */
         create(): Clutter.Actor;
-
-        // Virtual methods
-
-        /**
-         * Create an item
-         */
-        vfunc_create(): Clutter.Actor;
     }
 
     export const ItemFactory: ItemFactoryNamespace & {
@@ -32980,6 +33009,21 @@ export namespace Mx {
     };
 
     namespace Scrollable {
+        /**
+         * Interface for implementing Scrollable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Gets the adjustment objects that store the offsets of the scrollable widget
+             * into its possible scrolling area.
+             */
+            vfunc_get_adjustments(): [Adjustment | null, Adjustment | null];
+            vfunc_set_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -32994,7 +33038,7 @@ export namespace Mx {
         $gtype: GObject.GType<Scrollable>;
         prototype: Scrollable;
     }
-    interface Scrollable extends GObject.Object {
+    interface Scrollable extends GObject.Object, Scrollable.Interface {
         // Properties
 
         get horizontal_adjustment(): Adjustment;
@@ -33014,15 +33058,6 @@ export namespace Mx {
          */
         get_adjustments(): [Adjustment | null, Adjustment | null];
         set_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
-
-        // Virtual methods
-
-        /**
-         * Gets the adjustment objects that store the offsets of the scrollable widget
-         * into its possible scrolling area.
-         */
-        vfunc_get_adjustments(): [Adjustment | null, Adjustment | null];
-        vfunc_set_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
     }
 
     export const Scrollable: ScrollableNamespace & {
@@ -33030,6 +33065,60 @@ export namespace Mx {
     };
 
     namespace Stylable {
+        /**
+         * Interface for implementing Stylable.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            /**
+             * Retrieves the #MxStyle used by `stylable`. This function does not
+             * alter the reference count of the returned object.
+             */
+            vfunc_get_style(): Style;
+            /**
+             * Get the current style class name
+             */
+            vfunc_get_style_class(): string;
+            /**
+             * Get the current style pseudo class. This can contain multiple pseudo class
+             * names, separated by ':'.
+             */
+            vfunc_get_style_pseudo_class(): string;
+            /**
+             * Sets `style` as the new #MxStyle to be used by `stylable`.
+             *
+             * The #MxStylable will take ownership of the passed #MxStyle.
+             *
+             * After the #MxStyle has been set, the MxStylable::style-set signal
+             * will be emitted.
+             * @param style a #MxStyle
+             */
+            vfunc_set_style(style: Style): void;
+            /**
+             * Set the style class name
+             * @param style_class a new style class string
+             */
+            vfunc_set_style_class(style_class: string): void;
+            /**
+             * Set the style pseudo class. The string can contain multiple pseudo class
+             * names, separated by ':'.
+             * @param pseudo_class a new pseudo class string
+             */
+            vfunc_set_style_pseudo_class(pseudo_class: string): void;
+            /**
+             * Emit the "style-changed" signal on `stylable` to notify it that one or more
+             * of the style properties has changed.
+             *
+             * If `stylable` is a #ClutterContainer then the "style-changed" notification is
+             * propagated to it's children, since their style may depend on one or more
+             * properties of the parent.
+             * @param flags flags that control the style changing
+             */
+            vfunc_style_changed(flags: StyleChangedFlags): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33045,7 +33134,7 @@ export namespace Mx {
         $gtype: GObject.GType<Stylable>;
         prototype: Stylable;
     }
-    interface Stylable extends GObject.Object {
+    interface Stylable extends GObject.Object, Stylable.Interface {
         // Properties
 
         get style(): Style;
@@ -33157,54 +33246,6 @@ export namespace Mx {
          * @param remove_class A pseudo class name to remove
          */
         style_pseudo_class_remove(remove_class: string): void;
-
-        // Virtual methods
-
-        /**
-         * Retrieves the #MxStyle used by `stylable`. This function does not
-         * alter the reference count of the returned object.
-         */
-        vfunc_get_style(): Style;
-        /**
-         * Get the current style class name
-         */
-        vfunc_get_style_class(): string;
-        /**
-         * Get the current style pseudo class. This can contain multiple pseudo class
-         * names, separated by ':'.
-         */
-        vfunc_get_style_pseudo_class(): string;
-        /**
-         * Sets `style` as the new #MxStyle to be used by `stylable`.
-         *
-         * The #MxStylable will take ownership of the passed #MxStyle.
-         *
-         * After the #MxStyle has been set, the MxStylable::style-set signal
-         * will be emitted.
-         * @param style a #MxStyle
-         */
-        vfunc_set_style(style: Style): void;
-        /**
-         * Set the style class name
-         * @param style_class a new style class string
-         */
-        vfunc_set_style_class(style_class: string): void;
-        /**
-         * Set the style pseudo class. The string can contain multiple pseudo class
-         * names, separated by ':'.
-         * @param pseudo_class a new pseudo class string
-         */
-        vfunc_set_style_pseudo_class(pseudo_class: string): void;
-        /**
-         * Emit the "style-changed" signal on `stylable` to notify it that one or more
-         * of the style properties has changed.
-         *
-         * If `stylable` is a #ClutterContainer then the "style-changed" notification is
-         * propagated to it's children, since their style may depend on one or more
-         * properties of the parent.
-         * @param flags flags that control the style changing
-         */
-        vfunc_style_changed(flags: StyleChangedFlags): void;
     }
 
     export const Stylable: StylableNamespace & {

@@ -5253,6 +5253,17 @@ export namespace Builder {
     type ViewStackClass = typeof ViewStack;
     type WorkbenchClass = typeof Workbench;
     namespace ApplicationAddin {
+        /**
+         * Interface for implementing ApplicationAddin.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_load(application: Application): void;
+            vfunc_unload(application: Application): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5262,16 +5273,11 @@ export namespace Builder {
         $gtype: GObject.GType<ApplicationAddin>;
         prototype: ApplicationAddin;
     }
-    interface ApplicationAddin extends GObject.Object {
+    interface ApplicationAddin extends GObject.Object, ApplicationAddin.Interface {
         // Methods
 
         load(application: Application): void;
         unload(application: Application): void;
-
-        // Virtual methods
-
-        vfunc_load(application: Application): void;
-        vfunc_unload(application: Application): void;
     }
 
     export const ApplicationAddin: ApplicationAddinNamespace & {
@@ -5279,6 +5285,33 @@ export namespace Builder {
     };
 
     namespace Document {
+        /**
+         * Interface for implementing Document.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_create_view(): Gtk.Widget;
+            vfunc_get_modified(): boolean;
+            vfunc_get_mtime(mtime: GLib.TimeVal): boolean;
+            vfunc_get_read_only(): boolean;
+            vfunc_get_title(): string;
+            vfunc_is_untitled(): boolean;
+            vfunc_save_as_async(
+                toplevel: Gtk.Widget,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_save_as_finish(result: Gio.AsyncResult): boolean;
+            vfunc_save_async(
+                toplevel: Gtk.Widget,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            vfunc_save_finish(result: Gio.AsyncResult): boolean;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5293,7 +5326,7 @@ export namespace Builder {
         $gtype: GObject.GType<Document>;
         prototype: Document;
     }
-    interface Document extends GObject.Object {
+    interface Document extends GObject.Object, Document.Interface {
         // Properties
 
         get modified(): boolean;
@@ -5333,27 +5366,6 @@ export namespace Builder {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         save_finish(result: Gio.AsyncResult): boolean;
-
-        // Virtual methods
-
-        vfunc_create_view(): Gtk.Widget;
-        vfunc_get_modified(): boolean;
-        vfunc_get_mtime(mtime: GLib.TimeVal): boolean;
-        vfunc_get_read_only(): boolean;
-        vfunc_get_title(): string;
-        vfunc_is_untitled(): boolean;
-        vfunc_save_as_async(
-            toplevel: Gtk.Widget,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_save_as_finish(result: Gio.AsyncResult): boolean;
-        vfunc_save_async(
-            toplevel: Gtk.Widget,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_save_finish(result: Gio.AsyncResult): boolean;
     }
 
     export const Document: DocumentNamespace & {
@@ -5361,6 +5373,18 @@ export namespace Builder {
     };
 
     namespace EditorViewAddin {
+        /**
+         * Interface for implementing EditorViewAddin.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+            // Virtual methods
+
+            vfunc_language_changed(language_id: string): void;
+            vfunc_load(view: EditorView): void;
+            vfunc_unload(view: EditorView): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5370,13 +5394,7 @@ export namespace Builder {
         $gtype: GObject.GType<EditorViewAddin>;
         prototype: EditorViewAddin;
     }
-    interface EditorViewAddin extends GObject.Object {
-        // Virtual methods
-
-        vfunc_language_changed(language_id: string): void;
-        vfunc_load(view: EditorView): void;
-        vfunc_unload(view: EditorView): void;
-    }
+    interface EditorViewAddin extends GObject.Object, EditorViewAddin.Interface {}
 
     export const EditorViewAddin: EditorViewAddinNamespace & {
         new (): EditorViewAddin; // This allows `obj instanceof EditorViewAddin`
