@@ -31,12 +31,12 @@
         "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-        "@girs/babl-0.1": "0.1.108-4.0.0-beta.37",
-        "@girs/gegl-0.4": "0.4.48-4.0.0-beta.37",
-        "@girs/gjs": "4.0.0-beta.37",
-        "@girs/glib-2.0": "2.86.0-4.0.0-beta.37",
-        "@girs/gobject-2.0": "2.86.0-4.0.0-beta.37",
-        "@girs/mypaint-1.6": "1.6.0-4.0.0-beta.37"
+        "@girs/babl-0.1": "workspace:^",
+        "@girs/gegl-0.4": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/mypaint-1.6": "workspace:^"
     },
     "devDependencies": {
         "typescript": "*"

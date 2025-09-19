@@ -31,8 +31,8 @@
         "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-        "@girs/gjs": "4.0.0-beta.37",
-        "@girs/gobject-2.0": "2.86.0-4.0.0-beta.37"
+        "@girs/gjs": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
     },
     "devDependencies": {
         "typescript": "*"

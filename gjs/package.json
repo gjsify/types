@@ -51,10 +51,10 @@
         "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-        "@girs/cairo-1.0": "1.0.0-4.0.0-beta.37",
-        "@girs/gio-2.0": "2.86.0-4.0.0-beta.37",
-        "@girs/glib-2.0": "2.86.0-4.0.0-beta.37",
-        "@girs/gobject-2.0": "2.86.0-4.0.0-beta.37"
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
     },
     "devDependencies": {
         "typescript": "*"
