@@ -97,26 +97,6 @@ export namespace GstNet {
      */
     function ptp_init(clock_id: number, interfaces?: string[] | null): boolean;
     /**
-     * Initialize the GStreamer PTP subsystem and create a PTP ordinary clock in
-     * slave-only mode according to the `config`.
-     *
-     * `config` is a #GstStructure with the following optional fields:
-     * * #guint64 `clock-id`: The clock ID to use for the local clock. If the
-     *     clock-id is not provided or %GST_PTP_CLOCK_ID_NONE is provided, a clock
-     *     id is automatically generated from the MAC address of the first network
-     *     interface.
-     * * #GStrv `interfaces`: The interface names to listen on for PTP packets. If
-     *     none are provided then all compatible interfaces will be used.
-     * * #guint `ttl`: The TTL to use for multicast packets sent out by GStreamer.
-     *     This defaults to 1, i.e. packets will not leave the local network.
-     *
-     * This function is automatically called by gst_ptp_clock_new() with default
-     * parameters if it wasn't called before.
-     * @param config Configuration for initializing the GStreamer PTP subsystem
-     * @returns %TRUE if the GStreamer PTP clock subsystem could be initialized.
-     */
-    function ptp_init_full(config: Gst.Structure): boolean;
-    /**
      * Check if the GStreamer PTP clock subsystem is initialized.
      * @returns %TRUE if the GStreamer PTP clock subsystem is initialized.
      */
@@ -1047,7 +1027,7 @@ export namespace GstNet {
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string | null, domain: number): PtpClock;
+        static ['new'](name: string, domain: number): PtpClock;
 
         // Signals
 

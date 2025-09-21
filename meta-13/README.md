@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/meta-13)
 
 
-GJS TypeScript type definitions for Meta-13, generated from library version 13.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.37.
+GJS TypeScript type definitions for Meta-13, generated from library version 13.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.38.
 
 ## Install
 

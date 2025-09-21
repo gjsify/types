@@ -2155,13 +2155,21 @@ export namespace LibvirtSandbox {
 
         // Virtual methods
 
-        vfunc_attach(localStdin: never, localStdout: never, localStderr: never): boolean;
+        vfunc_attach(
+            localStdin: Gio.UnixInputStream,
+            localStdout: Gio.UnixOutputStream,
+            localStderr: Gio.UnixOutputStream,
+        ): boolean;
         vfunc_closed(err: boolean): void;
         vfunc_detach(): boolean;
 
         // Methods
 
-        attach(localStdin: never, localStdout: never, localStderr: never): boolean;
+        attach(
+            localStdin: Gio.UnixInputStream,
+            localStdout: Gio.UnixOutputStream,
+            localStderr: Gio.UnixOutputStream,
+        ): boolean;
         attach_stderr(): boolean;
         attach_stdio(): boolean;
         detach(): boolean;

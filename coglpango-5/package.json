@@ -1,0 +1,68 @@
+{
+    "name": "@girs/coglpango-5",
+    "version": "5.0.0-4.0.0-beta.38",
+    "description": "GJS TypeScript type definitions for CoglPango-5, generated from library version 5.0.0",
+    "type": "module",
+    "module": "coglpango-5.js",
+    "main": "coglpango-5.js",
+    "exports": {
+        "./ambient": {
+            "types": "./coglpango-5-ambient.d.ts",
+            "import": "./coglpango-5-ambient.js",
+            "default": "./coglpango-5-ambient.js"
+        },
+        "./import": {
+            "types": "./coglpango-5-import.d.ts",
+            "import": "./coglpango-5-import.js",
+            "default": "./coglpango-5-import.js"
+        },
+        "./coglpango-5": {
+            "types": "./coglpango-5.d.ts",
+            "import": "./coglpango-5.js",
+            "default": "./coglpango-5.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
+    },
+    "scripts": {
+        "test": "tsc --project tsconfig.json"
+    },
+    "dependencies": {
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/cogl-5": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/gl-1.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/pangocairo-1.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "CoglPango-5"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/coglpango-5#readme"
+}

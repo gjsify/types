@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gm-0)
 
 
-GJS TypeScript type definitions for Gm-0, generated from library version 0.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.37.
+GJS TypeScript type definitions for Gm-0, generated from library version 0.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.38.
 
 ## Install
 

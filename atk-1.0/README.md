@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/atk-1.0)
 
 
-GJS TypeScript type definitions for Atk-1.0, generated from library version 2.58.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.37.
+GJS TypeScript type definitions for Atk-1.0, generated from library version 2.58.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.38.
 
 ## Install
 

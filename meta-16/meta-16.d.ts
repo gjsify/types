@@ -1908,7 +1908,9 @@ export namespace Meta {
             'keymap-layout-group-changed': (arg0: number) => void;
             'last-device-changed': (arg0: Clutter.InputDevice) => void;
             'lid-is-closed-changed': (arg0: boolean) => void;
+            pause: () => void;
             'prepare-shutdown': () => void;
+            resume: () => void;
             'notify::capabilities': (pspec: GObject.ParamSpec) => void;
             'notify::context': (pspec: GObject.ParamSpec) => void;
         }
@@ -5643,6 +5645,7 @@ export namespace Meta {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'cursor-changed': () => void;
+            'cursor-prefs-changed': () => void;
             'position-invalidated': () => void;
             'visibility-changed': () => void;
             'notify::backend': (pspec: GObject.ParamSpec) => void;

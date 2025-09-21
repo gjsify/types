@@ -18673,13 +18673,6 @@ export namespace GES {
          * @param handle_events a #gboolean indicating if events should be handled or not.
          */
         vfunc_handle_events(handle_events: boolean): void;
-        /**
-         * virtual method to set the render rectangle
-         * @param x
-         * @param y
-         * @param width
-         * @param height
-         */
         vfunc_set_render_rectangle(x: number, y: number, width: number, height: number): void;
         /**
          * This will call the video overlay's set_window_handle method. You

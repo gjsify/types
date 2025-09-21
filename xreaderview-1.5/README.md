@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/xreaderview-1.5)
 
 
-GJS TypeScript type definitions for XreaderView-1.5, generated from library version 1.5.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.37.
+GJS TypeScript type definitions for XreaderView-1.5, generated from library version 1.5.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.38.
 
 ## Install
 

@@ -79,13 +79,6 @@ export namespace Dex {
      */
     function aio_write(aio_context: AioContext, fd: number, buffer: Uint8Array | string, offset: number): Future;
     /**
-     * A helper for g_async_initable_init_async()
-     * @param initable a [iface@Gio.AsyncInitable]
-     * @param priority the priority for the initialization, typically 0
-     * @returns a [class@Dex.Future] that resolves   to the @initable instance or rejects with error.
-     */
-    function async_initable_init(initable: Gio.AsyncInitable, priority: number): Future;
-    /**
      * Wrapper for g_bus_get().
      * @param bus_type
      * @returns a #DexFuture that resolves to a #GDBusConnection   or rejects with error.
@@ -142,12 +135,6 @@ export namespace Dex {
         fd_list?: Gio.UnixFDList | null,
     ): Future;
     /**
-     * Asynchronously closes a connection.
-     * @param connection a [class@Gio.DBusConnection]
-     * @returns a [class@Dex.Future] that resolves   to `true` or rejects with error.
-     */
-    function dbus_connection_close(connection: Gio.DBusConnection): Future;
-    /**
      * Wrapper for g_dbus_connection_send_message_with_reply().
      * @param connection a #GDBusConnection
      * @param message a #GDBusMessage
@@ -191,15 +178,6 @@ export namespace Dex {
         flags: Gio.FileQueryInfoFlags | null,
         io_priority: number,
     ): Future;
-    /**
-     * Wraps [method`Gio`.FileEnumerator.next_files_async].
-     *
-     * Use [method`Dex`.Future.await_boxed] to await for the result of this function.
-     * @param file_enumerator
-     * @param num_files
-     * @param io_priority
-     * @returns a [class@Dex.Future] that resolves to   a [struct@GLib.List] of [class@Gio.FileInfo]
-     */
     function file_enumerator_next_files(
         file_enumerator: Gio.FileEnumerator,
         num_files: number,
@@ -215,28 +193,11 @@ export namespace Dex {
      */
     function file_make_directory(file: Gio.File, io_priority: number): Future;
     /**
-     * Creates a directory at `file`.
-     *
-     * If `file` already exists and is a directory, then the future
-     * will resolve to %TRUE.
-     * @param file a [iface@Gio.File]
-     * @returns a [class@Dex.Future] that resolves to   a boolean or rejects with error.
-     */
-    function file_make_directory_with_parents(file: Gio.File): Future;
-    function file_move(
-        source: Gio.File,
-        destination: Gio.File,
-        flags: Gio.FileCopyFlags | null,
-        io_priority: number,
-        progress_callback: Gio.FileProgressCallback,
-    ): Future;
-    /**
      * Queries to see if `file` exists asynchronously.
      * @param file a #GFile
      * @returns a #DexFuture that will resolve with %TRUE   if the file exists, otherwise reject with error.
      */
     function file_query_exists(file: Gio.File): Future;
-    function file_query_file_type(file: Gio.File, flags: Gio.FileQueryInfoFlags | null, io_priority: number): Future;
     function file_query_info(
         file: Gio.File,
         attributes: string,
@@ -273,12 +234,6 @@ export namespace Dex {
         make_backup: boolean,
         flags: Gio.FileCreateFlags | null,
     ): Future;
-    function file_set_attributes(
-        file: Gio.File,
-        file_info: Gio.FileInfo,
-        flags: Gio.FileQueryInfoFlags | null,
-        io_priority: number,
-    ): Future;
     function get_min_stack_size(): number;
     function get_page_size(): number;
     function init(): void;
@@ -311,37 +266,6 @@ export namespace Dex {
      */
     function subprocess_wait_check(subprocess: Gio.Subprocess): Future;
     /**
-     * Spawns a new thread named `thread_name` running `thread_func` with
-     * `user_data` passed to it.
-     *
-     * `thread_func` must return a [class`Dex`.Future].
-     *
-     * If this function is called from a thread that is not running a
-     * [class`Dex`.Scheduler] then the default scheduler will be used
-     * to call `user_data_destroy`.
-     *
-     * If the resulting [class`Dex`.Future] has not resolved or rejected,
-     * then the same scheduler used to call `user_data_destroy` will be
-     * used to propagate the result to the caller.
-     * @param thread_name the name for the thread
-     * @param thread_func the function to call on a thread
-     * @returns a [class@Dex.Future] that resolves or rejects   the value or error returned from @thread_func as a [class@Dex.Future].
-     */
-    function thread_spawn(thread_name: string | null, thread_func: ThreadFunc): Future;
-    /**
-     * Use this when running on a thread spawned with `dex_thread_spawn()` and
-     * you need to block the thread until `future` has resolved or rejected.
-     * @param future a [class@Dex.Future]
-     * @returns %TRUE if @future resolved, otherwise %FALSE and @error is   set to the rejection.
-     */
-    function thread_wait_for(future: Future): boolean;
-    /**
-     * Retrieves the `DexObject` stored inside the given `value`.
-     * @param value a `GValue` initialized with type `DEX_TYPE_OBJECT`
-     * @returns a `DexObject`
-     */
-    function value_dup_object(value: GObject.Value | any): Object | null;
-    /**
      * Retrieves the `DexObject` stored inside the given `value`.
      * @param value a `GValue` initialized with type `DEX_TYPE_OBJECT`
      * @returns a `DexObject`
@@ -371,9 +295,6 @@ export namespace Dex {
     }
     interface SchedulerFunc {
         (user_data?: any | null): void;
-    }
-    interface ThreadFunc {
-        (user_data?: any | null): Future;
     }
     type FileInfoList = object | null;
     type InetAddressList = object | null;
@@ -1127,13 +1048,6 @@ export namespace Dex {
 
         // Methods
 
-        /**
-         * Rejects `cancellable`.
-         *
-         * Any future that is dependent on this cancellable will be notified
-         * of the rejection. For some futures, that may cause them to also
-         * reject or resolve.
-         */
         cancel(): void;
     }
 
@@ -1265,9 +1179,6 @@ export namespace Dex {
          * @returns a #DexFuture or %NULL
          */
         dup_future(): Future | null;
-        /**
-         * Completes `delayed` using the value provided at construction.
-         */
         release(): void;
     }
 
@@ -1787,16 +1698,8 @@ export namespace Dex {
          * @param value a #GValue containing the resolved value
          */
         resolve(value: GObject.Value | any): void;
-        /**
-         * Resolve promise to `value`.
-         * @param value
-         */
         resolve_boolean(value: boolean): void;
         resolve_boxed(boxed_type: GObject.GType, instance?: any | null): void;
-        /**
-         * Resolve promise to `value`.
-         * @param value
-         */
         resolve_double(value: number): void;
         /**
          * Resolves the promise to `fd`.
@@ -1808,42 +1711,14 @@ export namespace Dex {
          * @param fd a file-descriptor for the resolve to resolve to
          */
         resolve_fd(fd: number): void;
-        /**
-         * Resolve promise to `value`.
-         * @param value
-         */
         resolve_float(value: number): void;
-        /**
-         * Resolve promise to `value`.
-         * @param value
-         */
         resolve_int(value: number): void;
-        /**
-         * Resolve promise to `value`.
-         * @param value
-         */
         resolve_int64(value: number): void;
-        /**
-         * Resolve promise to `value`.
-         * @param value
-         */
         resolve_long(value: number): void;
         resolve_object(object?: GObject.Object | null): void;
         resolve_string(value: string): void;
-        /**
-         * Resolve promise to `value`.
-         * @param value
-         */
         resolve_uint(value: number): void;
-        /**
-         * Resolve promise to `value`.
-         * @param value
-         */
         resolve_uint64(value: number): void;
-        /**
-         * Resolve promise to `value`.
-         * @param value
-         */
         resolve_ulong(value: number): void;
         /**
          * If `variant` is floating, its reference is consumed.
@@ -2057,7 +1932,7 @@ export namespace Dex {
     }
 
     /**
-     * #DexTimeout is a #DexFuture that will reject after the configured
+     * #DexTimeout is a #DexFuture that will resolve after the configured
      * period of time.
      */
     class Timeout extends Future {
@@ -2095,12 +1970,6 @@ export namespace Dex {
 
         // Methods
 
-        /**
-         * Postpoone `timeout` to complete at `deadline` in the monotonic
-         * clock. See `g_get_monotonic_clock()` for getting the
-         * monotonic clock in microseconds.
-         * @param deadline a deadline in monotonic clock
-         */
         postpone_until(deadline: number): void;
     }
 
@@ -2147,9 +2016,6 @@ export namespace Dex {
 
         // Methods
 
-        /**
-         * Get the signal number that the future represents.
-         */
         get_signum(): number;
     }
 

@@ -446,22 +446,11 @@ export namespace PolkitAgent {
 
     namespace TextListener {
         // Signal signatures
-        interface SignalSignatures extends Listener.SignalSignatures {
-            'tty-attrs-changed': (arg0: boolean) => void;
-            'notify::delay': (pspec: GObject.ParamSpec) => void;
-            'notify::use-alternate-buffer': (pspec: GObject.ParamSpec) => void;
-            'notify::use-color': (pspec: GObject.ParamSpec) => void;
-        }
+        interface SignalSignatures extends Listener.SignalSignatures {}
 
         // Constructor properties interface
 
-        interface ConstructorProps extends Listener.ConstructorProps, Gio.Initable.ConstructorProps {
-            delay: number;
-            use_alternate_buffer: boolean;
-            useAlternateBuffer: boolean;
-            use_color: boolean;
-            useColor: boolean;
-        }
+        interface ConstructorProps extends Listener.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -470,14 +459,6 @@ export namespace PolkitAgent {
      */
     class TextListener extends Listener implements Gio.Initable {
         static $gtype: GObject.GType<TextListener>;
-
-        // Properties
-
-        get delay(): number;
-        get use_alternate_buffer(): boolean;
-        get useAlternateBuffer(): boolean;
-        get use_color(): boolean;
-        get useColor(): boolean;
 
         /**
          * Compile-time signal type information.

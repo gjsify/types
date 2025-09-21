@@ -22,31 +22,6 @@ export namespace GstVideo {
      */
 
     /**
-     * Location of a `GstAncillaryMeta`.
-     */
-
-    /**
-     * Location of a `GstAncillaryMeta`.
-     */
-    export namespace AncillaryMetaField {
-        export const $gtype: GObject.GType<AncillaryMetaField>;
-    }
-
-    enum AncillaryMetaField {
-        /**
-         * Progressive or no field specified (default)
-         */
-        PROGRESSIVE,
-        /**
-         * Interlaced first field
-         */
-        INTERLACED_FIRST,
-        /**
-         * Interlaced second field
-         */
-        INTERLACED_SECOND,
-    }
-    /**
      * An enumeration indicating whether an element implements color balancing
      * operations in software or in dedicated hardware. In general, dedicated
      * hardware implementations (such as those provided by xvimagesink) are
@@ -271,12 +246,6 @@ export namespace GstVideo {
          * An event cancelling all currently active touch points.
          */
         TOUCH_CANCEL,
-        /**
-         * A mouse button double click event.
-         * Use gst_navigation_event_parse_mouse_button_event() to extract the details
-         * from the event.
-         */
-        MOUSE_DOUBLE_CLICK,
     }
     /**
      * A set of notifications that may be received on the bus when navigation
@@ -1397,111 +1366,6 @@ export namespace GstVideo {
          *  per tile row). This format is produced by Verisilicon/Hantro decoders.
          */
         NV12_10LE40_4L4,
-        /**
-         * `GST_VIDEO_FORMAT_DMA_DRM` represent the DMA DRM special format. It's
-         * only used with memory:DMABuf #GstCapsFeatures, where an extra
-         * parameter (drm-format) is required to define the image format and
-         * its memory layout.
-         */
-        DMA_DRM,
-        /**
-         * Mediatek 10bit NV12 little endian with 16x32 tiles in linear order, tile 2
-         * bits.
-         */
-        MT2110T,
-        /**
-         * Mediatek 10bit NV12 little endian with 16x32 tiles in linear order, raster
-         * 2 bits.
-         */
-        MT2110R,
-        /**
-         * planar 4:4:2:2 YUV, 8 bits per channel
-         */
-        A422,
-        /**
-         * planar 4:4:4:4 YUV, 8 bits per channel
-         */
-        A444,
-        /**
-         * planar 4:4:4:4 YUV, 12 bits per channel
-         */
-        A444_12LE,
-        /**
-         * planar 4:4:4:4 YUV, 12 bits per channel
-         */
-        A444_12BE,
-        /**
-         * planar 4:4:2:2 YUV, 12 bits per channel
-         */
-        A422_12LE,
-        /**
-         * planar 4:4:2:2 YUV, 12 bits per channel
-         */
-        A422_12BE,
-        /**
-         * planar 4:4:2:0 YUV, 12 bits per channel
-         */
-        A420_12LE,
-        /**
-         * planar 4:4:2:0 YUV, 12 bits per channel
-         */
-        A420_12BE,
-        /**
-         * planar 4:4:4:4 YUV, 16 bits per channel
-         */
-        A444_16LE,
-        /**
-         * planar 4:4:4:4 YUV, 16 bits per channel
-         */
-        A444_16BE,
-        /**
-         * planar 4:4:2:2 YUV, 16 bits per channel
-         */
-        A422_16LE,
-        /**
-         * planar 4:4:2:2 YUV, 16 bits per channel
-         */
-        A422_16BE,
-        /**
-         * planar 4:4:2:0 YUV, 16 bits per channel
-         */
-        A420_16LE,
-        /**
-         * planar 4:4:2:0 YUV, 16 bits per channel
-         */
-        A420_16BE,
-        /**
-         * planar 4:4:4 RGB, 16 bits per channel
-         */
-        GBR_16LE,
-        /**
-         * planar 4:4:4 RGB, 16 bits per channel
-         */
-        GBR_16BE,
-        /**
-         * packed RGB with alpha, 8 bits per channel
-         */
-        RBGA,
-        /**
-         * packed 4:2:2 YUV, 16 bits per channel (Y-U-Y-V)
-         */
-        Y216_LE,
-        /**
-         * packed 4:2:2 YUV, 16 bits per channel (Y-U-Y-V)
-         */
-        Y216_BE,
-        /**
-         * packed 4:4:4:4 YUV, 16 bits per channel(U-Y-V-A)
-         */
-        Y416_LE,
-        /**
-         * packed 4:4:4:4 YUV, 16 bits per channel(U-Y-V-A)
-         */
-        Y416_BE,
-        /**
-         * 10-bit grayscale, packed into 16bit words (6 bits left padding)
-         */
-        GRAY10_LE16,
     }
     /**
      * The orientation of the GL texture.
@@ -1871,11 +1735,11 @@ export namespace GstVideo {
          */
         static VERT: number;
         /**
-         * Rotate counter-clockwise 90 degrees and flip vertically
+         * Flip across upper left/lower right diagonal
          */
         static UL_LR: number;
         /**
-         * Rotate clockwise 90 degrees and flip vertically
+         * Flip across upper right/lower left diagonal
          */
         static UR_LL: number;
         /**
@@ -2328,12 +2192,6 @@ export namespace GstVideo {
      */
     const VIDEO_DECODER_SRC_NAME: string;
     /**
-     * Generic caps string for video wit DMABuf(GST_CAPS_FEATURE_MEMORY_DMABUF)
-     * feature, for use in pad templates. As drm-format is supposed to be defined
-     * at run-time it's not predefined here.
-     */
-    const VIDEO_DMA_DRM_CAPS_MAKE: string;
-    /**
      * The name of the templates for the sink pad.
      */
     const VIDEO_ENCODER_SINK_NAME: string;
@@ -2359,40 +2217,6 @@ export namespace GstVideo {
      *   - format name
      */
     const VIDEO_FORMATS_ALL: string;
-    /**
-     * Declare all video formats as a string.
-     *
-     * Formats are sorted by decreasing "quality", using these criteria by priority:
-     *   - number of components
-     *   - depth
-     *   - subsampling factor of the width
-     *   - subsampling factor of the height
-     *   - number of planes
-     *   - native endianness preferred
-     *   - pixel stride
-     *   - poffset
-     *   - prefer non-complex formats
-     *   - prefer YUV formats over RGB ones
-     *   - prefer I420 over YV12
-     *   - format name
-     */
-    const VIDEO_FORMATS_ALL_STR: string;
-    /**
-     * This is similar to %GST_VIDEO_FORMATS_ALL but includes formats like DMA_DRM
-     * that do not have a software converter. This should be used for passthrough
-     * template caps.
-     */
-    const VIDEO_FORMATS_ANY: string;
-    /**
-     * This is similar to %GST_VIDEO_FORMATS_ALL_STR but includes formats like
-     * DMA_DRM for which no software converter exists. This should be used for
-     * passthrough template caps.
-     */
-    const VIDEO_FORMATS_ANY_STR: string;
-    /**
-     * Number of video formats in #GstVideoFormat.
-     */
-    const VIDEO_FORMAT_LAST: number;
     const VIDEO_FPS_RANGE: string;
     const VIDEO_MAX_COMPONENTS: number;
     const VIDEO_MAX_PLANES: number;
@@ -2455,15 +2279,6 @@ export namespace GstVideo {
     const VIDEO_TILE_TYPE_SHIFT: number;
     const VIDEO_TILE_X_TILES_MASK: number;
     const VIDEO_TILE_Y_TILES_SHIFT: number;
-    function ancillary_meta_api_get_type(): GObject.GType;
-    function ancillary_meta_get_info(): Gst.MetaInfo;
-    /**
-     * Adds a new #GstAncillaryMeta to the `buffer`. The caller is responsible for setting the appropriate
-     * fields.
-     * @param buffer A #GstBuffer
-     * @returns A new #GstAncillaryMeta, or %NULL if an error happened.
-     */
-    function buffer_add_ancillary_meta(buffer: Gst.Buffer): AncillaryMeta;
     /**
      * Attaches #GstVideoAFDMeta metadata to `buffer` with the given
      * parameters.
@@ -2649,7 +2464,7 @@ export namespace GstVideo {
     function buffer_add_video_sei_user_data_unregistered_meta(
         buffer: Gst.Buffer,
         uuid: number,
-        data: number | null,
+        data: number,
         size: number,
     ): VideoSEIUserDataUnregisteredMeta;
     /**
@@ -2796,20 +2611,6 @@ export namespace GstVideo {
      * @returns a new #GstEvent
      */
     function navigation_event_new_mouse_button_release(
-        button: number,
-        x: number,
-        y: number,
-        state: NavigationModifierType | null,
-    ): Gst.Event;
-    /**
-     * Create a new navigation event for the given key mouse double click.
-     * @param button The number of the pressed mouse button.
-     * @param x The x coordinate of the mouse cursor.
-     * @param y The y coordinate of the mouse cursor.
-     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
-     * @returns a new #GstEvent
-     */
-    function navigation_event_new_mouse_double_click(
         button: number,
         x: number,
         y: number,
@@ -3334,23 +3135,6 @@ export namespace GstVideo {
     function video_crop_meta_api_get_type(): GObject.GType;
     function video_crop_meta_get_info(): Gst.MetaInfo;
     /**
-     * Converting the video format into dma drm fourcc/modifier pair.
-     * If no matching fourcc found, then DRM_FORMAT_INVALID is returned
-     * and `modifier` will be set to DRM_FORMAT_MOD_INVALID.
-     * @param format a #GstVideoFormat
-     * @param modifier return location for the modifier
-     * @returns the DRM_FORMAT_* corresponding to @format.
-     */
-    function video_dma_drm_format_from_gst_format(format: VideoFormat | null, modifier?: number | null): number;
-    /**
-     * Converting a dma drm fourcc and modifier pair into a #GstVideoFormat. If
-     * no matching video format is found, then GST_VIDEO_FORMAT_UNKNOWN is returned.
-     * @param fourcc the dma drm fourcc value.
-     * @param modifier the dma drm modifier.
-     * @returns the GST_VIDEO_FORMAT_* corresponding to the @fourcc and @modifier          pair.
-     */
-    function video_dma_drm_format_to_gst_format(fourcc: number, modifier: number): VideoFormat;
-    /**
      * Converting the video format into dma drm fourcc. If no
      * matching fourcc found, then DRM_FORMAT_INVALID is returned.
      * @param format a #GstVideoFormat
@@ -3546,22 +3330,12 @@ export namespace GstVideo {
      */
     function video_format_to_fourcc(format: VideoFormat | null): number;
     /**
-     * Returns a string containing a descriptive name for the #GstVideoFormat.
-     *
-     * Since 1.26 this can also be used with %GST_VIDEO_FORMAT_UNKNOWN, previous
-     * versions were printing a critical warning and returned %NULL.
+     * Returns a string containing a descriptive name for
+     * the #GstVideoFormat if there is one, or NULL otherwise.
      * @param format a #GstVideoFormat video format
      * @returns the name corresponding to @format
      */
     function video_format_to_string(format: VideoFormat | null): string;
-    /**
-     * Return all the raw video formats supported by GStreamer including
-     * special opaque formats such as %GST_VIDEO_FORMAT_DMA_DRM for which
-     * no software conversion exists. This should be use for passthrough
-     * template cpas.
-     * @returns an array of #GstVideoFormat
-     */
-    function video_formats_any(): VideoFormat[];
     /**
      * Return all the raw video formats supported by GStreamer.
      * @returns an array of #GstVideoFormat
@@ -4180,7 +3954,7 @@ export namespace GstVideo {
          */
         V_COSITED,
         /**
-         * chroma samples are sited on alternate lines
+         * choma samples are sited on alternate lines
          */
         ALT_LINE,
         /**
@@ -4707,10 +4481,6 @@ export namespace GstVideo {
 
         // Virtual methods
 
-        /**
-         * default handler for value changed notification
-         * @param value
-         */
         vfunc_value_changed(value: number): void;
     }
 
@@ -4805,30 +4575,9 @@ export namespace GstVideo {
 
         // Virtual methods
 
-        /**
-         * Lets subclasses aggregate frames that are ready. Subclasses
-         *                            should iterate the GstElement.sinkpads and use the already
-         *                            mapped #GstVideoFrame from gst_video_aggregator_pad_get_prepared_frame()
-         *                            or directly use the #GstBuffer from gst_video_aggregator_pad_get_current_buffer()
-         *                            if it needs to map the buffer in a special way. The result of the
-         *                            aggregation should land in `outbuffer`.
-         * @param outbuffer
-         */
         vfunc_aggregate_frames(outbuffer: Gst.Buffer): Gst.FlowReturn;
-        /**
-         * Optional.
-         *                            Lets subclasses provide a #GstBuffer to be used as `outbuffer` of
-         *                            the #aggregate_frames vmethod.
-         * @param outbuffer
-         */
         vfunc_create_output_buffer(outbuffer: Gst.Buffer): Gst.FlowReturn;
         vfunc_find_best_format(downstream_caps: Gst.Caps, best_info: VideoInfo): boolean;
-        /**
-         * Optional.
-         *                            Lets subclasses update the #GstCaps representing
-         *                            the src pad caps before usage.  Return %NULL to indicate failure.
-         * @param caps
-         */
         vfunc_update_caps(caps: Gst.Caps): Gst.Caps;
 
         // Methods
@@ -5008,20 +4757,7 @@ export namespace GstVideo {
 
         // Virtual methods
 
-        /**
-         * clean the frame previously prepared in prepare_frame
-         * @param videoaggregator
-         * @param prepared_frame
-         */
         vfunc_clean_frame(videoaggregator: VideoAggregator, prepared_frame: VideoFrame): void;
-        /**
-         * Prepare the frame from the pad buffer and sets it to prepared_frame.
-         *      Implementations should always return TRUE.  Returning FALSE will cease
-         *      iteration over subsequent pads.
-         * @param videoaggregator
-         * @param buffer
-         * @param prepared_frame
-         */
         vfunc_prepare_frame(videoaggregator: VideoAggregator, buffer: Gst.Buffer, prepared_frame: VideoFrame): boolean;
         /**
          * Finish preparing `prepared_frame`.
@@ -5044,10 +4780,6 @@ export namespace GstVideo {
             buffer: Gst.Buffer,
             prepared_frame: VideoFrame,
         ): void;
-        /**
-         * Called when either the input or output formats
-         *                          have changed.
-         */
         vfunc_update_conversion_info(): void;
 
         // Methods
@@ -5484,50 +5216,11 @@ export namespace GstVideo {
 
         // Virtual methods
 
-        /**
-         * Optional.
-         *                  Called when the element changes to GST_STATE_NULL.
-         *                  Allows closing external resources.
-         */
         vfunc_close(): boolean;
-        /**
-         * Optional.
-         *                     Setup the allocation parameters for allocating output
-         *                     buffers. The passed in query contains the result of the
-         *                     downstream allocation query.
-         *                     Subclasses should chain up to the parent implementation to
-         *                     invoke the default handler.
-         * @param query
-         */
         vfunc_decide_allocation(query: Gst.Query): boolean;
-        /**
-         * Optional.
-         *                  Called to request subclass to decode any data it can at this
-         *                  point, but that more data may arrive after. (e.g. at segment end).
-         *                  Sub-classes should be prepared to handle new data afterward,
-         *                  or seamless segment processing will break. Since: 1.6
-         */
         vfunc_drain(): Gst.FlowReturn;
-        /**
-         * Optional.
-         *                  Called to request subclass to dispatch any pending remaining
-         *                  data at EOS. Sub-classes can refuse to decode new data after.
-         */
         vfunc_finish(): Gst.FlowReturn;
-        /**
-         * Optional.
-         *                      Flush all remaining data from the decoder without
-         *                      pushing it downstream. Since: 1.2
-         */
         vfunc_flush(): boolean;
-        /**
-         * Optional.
-         *                  Allows for a custom sink getcaps implementation.
-         *                  If not implemented, default returns
-         *                  gst_video_decoder_proxy_getcaps
-         *                  applied to sink template caps.
-         * @param filter
-         */
         vfunc_getcaps(filter: Gst.Caps): Gst.Caps;
         vfunc_handle_frame(frame: VideoCodecFrame): Gst.FlowReturn;
         vfunc_handle_missing_data(timestamp: Gst.ClockTime, duration: Gst.ClockTime): boolean;
@@ -5537,100 +5230,17 @@ export namespace GstVideo {
          * negotiate fails.
          */
         vfunc_negotiate(): boolean;
-        /**
-         * Optional.
-         *                  Called when the element changes to GST_STATE_READY.
-         *                  Allows opening external resources.
-         */
         vfunc_open(): boolean;
-        /**
-         * Required for non-packetized input.
-         *                  Allows chopping incoming data into manageable units (frames)
-         *                  for subsequent decoding.
-         * @param frame
-         * @param adapter
-         * @param at_eos
-         */
         vfunc_parse(frame: VideoCodecFrame, adapter: GstBase.Adapter, at_eos: boolean): Gst.FlowReturn;
-        /**
-         * Optional.
-         *                      Propose buffer allocation parameters for upstream elements.
-         *                      Subclasses should chain up to the parent implementation to
-         *                      invoke the default handler.
-         * @param query
-         */
         vfunc_propose_allocation(query: Gst.Query): boolean;
-        /**
-         * Optional.
-         *                  Allows subclass (decoder) to perform post-seek semantics reset.
-         *                  Deprecated.
-         * @param hard
-         */
         vfunc_reset(hard: boolean): boolean;
-        /**
-         * Notifies subclass of incoming data format (caps).
-         * @param state
-         */
         vfunc_set_format(state: VideoCodecState): boolean;
-        /**
-         * Optional.
-         *                  Event handler on the sink pad. This function should return
-         *                  TRUE if the event was handled and should be discarded
-         *                  (i.e. not unref'ed).
-         *                  Subclasses should chain up to the parent implementation to
-         *                  invoke the default handler.
-         * @param event
-         */
         vfunc_sink_event(event: Gst.Event): boolean;
-        /**
-         * Optional.
-         *                  Query handler on the sink pad. This function should
-         *                  return TRUE if the query could be performed. Subclasses
-         *                  should chain up to the parent implementation to invoke the
-         *                  default handler. Since: 1.4
-         * @param query
-         */
         vfunc_sink_query(query: Gst.Query): boolean;
-        /**
-         * Optional.
-         *                  Event handler on the source pad. This function should return
-         *                  TRUE if the event was handled and should be discarded
-         *                  (i.e. not unref'ed).
-         *                  Subclasses should chain up to the parent implementation to
-         *                  invoke the default handler.
-         * @param event
-         */
         vfunc_src_event(event: Gst.Event): boolean;
-        /**
-         * Optional.
-         *                  Query handler on the source pad. This function should
-         *                  return TRUE if the query could be performed. Subclasses
-         *                  should chain up to the parent implementation to invoke the
-         *                  default handler. Since: 1.4
-         * @param query
-         */
         vfunc_src_query(query: Gst.Query): boolean;
-        /**
-         * Optional.
-         *                  Called when the element starts processing.
-         *                  Allows opening external resources.
-         */
         vfunc_start(): boolean;
-        /**
-         * Optional.
-         *                  Called when the element stops processing.
-         *                  Allows closing external resources.
-         */
         vfunc_stop(): boolean;
-        /**
-         * Optional. Transform the metadata on the input buffer to the
-         *                  output buffer. By default this method is copies all meta without
-         *                  tags and meta with only the "video" tag. subclasses can
-         *                  implement this method and return %TRUE if the metadata is to be
-         *                  copied. Since: 1.6
-         * @param frame
-         * @param meta
-         */
         vfunc_transform_meta(frame: VideoCodecFrame, meta: Gst.Meta): boolean;
 
         // Methods
@@ -6134,47 +5744,11 @@ export namespace GstVideo {
 
         // Virtual methods
 
-        /**
-         * Optional.
-         *                  Called when the element changes to GST_STATE_NULL.
-         *                  Allows closing external resources.
-         */
         vfunc_close(): boolean;
-        /**
-         * Optional.
-         *                     Setup the allocation parameters for allocating output
-         *                     buffers. The passed in query contains the result of the
-         *                     downstream allocation query.
-         *                     Subclasses should chain up to the parent implementation to
-         *                     invoke the default handler.
-         * @param query
-         */
         vfunc_decide_allocation(query: Gst.Query): boolean;
-        /**
-         * Optional.
-         *                  Called to request subclass to dispatch any pending remaining
-         *                  data (e.g. at EOS).
-         */
         vfunc_finish(): Gst.FlowReturn;
-        /**
-         * Optional.
-         *                      Flush all remaining data from the encoder without
-         *                      pushing it downstream. Since: 1.2
-         */
         vfunc_flush(): boolean;
-        /**
-         * Optional.
-         *                  Allows for a custom sink getcaps implementation (e.g.
-         *                  for multichannel input specification).  If not implemented,
-         *                  default returns gst_video_encoder_proxy_getcaps
-         *                  applied to sink template caps.
-         * @param filter
-         */
         vfunc_getcaps(filter: Gst.Caps): Gst.Caps;
-        /**
-         * Provides input frame to subclass.
-         * @param frame
-         */
         vfunc_handle_frame(frame: VideoCodecFrame): Gst.FlowReturn;
         /**
          * Negotiate with downstream elements to currently configured #GstVideoCodecState.
@@ -6182,102 +5756,17 @@ export namespace GstVideo {
          * negotiate fails.
          */
         vfunc_negotiate(): boolean;
-        /**
-         * Optional.
-         *                  Called when the element changes to GST_STATE_READY.
-         *                  Allows opening external resources.
-         */
         vfunc_open(): boolean;
-        /**
-         * Optional.
-         *                  Allows subclass to push frame downstream in whatever
-         *                  shape or form it deems appropriate.  If not provided,
-         *                  provided encoded frame data is simply pushed downstream.
-         * @param frame
-         */
         vfunc_pre_push(frame: VideoCodecFrame): Gst.FlowReturn;
-        /**
-         * Optional.
-         *                      Propose buffer allocation parameters for upstream elements.
-         *                      Subclasses should chain up to the parent implementation to
-         *                      invoke the default handler.
-         * @param query
-         */
         vfunc_propose_allocation(query: Gst.Query): boolean;
-        /**
-         * Optional.
-         *                  Allows subclass (encoder) to perform post-seek semantics reset.
-         *                  Deprecated.
-         * @param hard
-         */
         vfunc_reset(hard: boolean): boolean;
-        /**
-         * Optional.
-         *                  Notifies subclass of incoming data format.
-         *                  GstVideoCodecState fields have already been
-         *                  set according to provided caps.
-         * @param state
-         */
         vfunc_set_format(state: VideoCodecState): boolean;
-        /**
-         * Optional.
-         *                  Event handler on the sink pad. This function should return
-         *                  TRUE if the event was handled and should be discarded
-         *                  (i.e. not unref'ed).
-         *                  Subclasses should chain up to the parent implementation to
-         *                  invoke the default handler.
-         * @param event
-         */
         vfunc_sink_event(event: Gst.Event): boolean;
-        /**
-         * Optional.
-         *                  Query handler on the sink pad. This function should
-         *                  return TRUE if the query could be performed. Subclasses
-         *                  should chain up to the parent implementation to invoke the
-         *                  default handler. Since: 1.4
-         * @param query
-         */
         vfunc_sink_query(query: Gst.Query): boolean;
-        /**
-         * Optional.
-         *                  Event handler on the source pad. This function should return
-         *                  TRUE if the event was handled and should be discarded
-         *                  (i.e. not unref'ed).
-         *                  Subclasses should chain up to the parent implementation to
-         *                  invoke the default handler.
-         * @param event
-         */
         vfunc_src_event(event: Gst.Event): boolean;
-        /**
-         * Optional.
-         *                  Query handler on the source pad. This function should
-         *                  return TRUE if the query could be performed. Subclasses
-         *                  should chain up to the parent implementation to invoke the
-         *                  default handler. Since: 1.4
-         * @param query
-         */
         vfunc_src_query(query: Gst.Query): boolean;
-        /**
-         * Optional.
-         *                  Called when the element starts processing.
-         *                  Allows opening external resources.
-         */
         vfunc_start(): boolean;
-        /**
-         * Optional.
-         *                  Called when the element stops processing.
-         *                  Allows closing external resources.
-         */
         vfunc_stop(): boolean;
-        /**
-         * Optional. Transform the metadata on the input buffer to the
-         *                  output buffer. By default this method is copies all meta without
-         *                  tags and meta with only the "video" tag. subclasses can
-         *                  implement this method and return %TRUE if the metadata is to be
-         *                  copied. Since: 1.6
-         * @param frame
-         * @param meta
-         */
         vfunc_transform_meta(frame: VideoCodecFrame, meta: Gst.Meta): boolean;
 
         // Methods
@@ -6302,25 +5791,11 @@ export namespace GstVideo {
          */
         allocate_output_frame(frame: VideoCodecFrame, size: number): Gst.FlowReturn;
         /**
-         * Removes `frame` from the list of pending frames, releases it
-         * and posts a QoS message with the frame's details on the bus.
-         * Similar to calling gst_video_encoder_finish_frame() without a buffer
-         * attached to `frame,` but this function additionally stores events
-         * from `frame` as pending, to be pushed out alongside the next frame
-         * submitted via gst_video_encoder_finish_frame().
-         * @param frame a #GstVideoCodecFrame
-         */
-        drop_frame(frame: VideoCodecFrame): void;
-        /**
          * `frame` must have a valid encoded data buffer, whose metadata fields
          * are then appropriately set according to frame data or no buffer at
          * all if the frame should be dropped.
          * It is subsequently pushed downstream or provided to `pre_push`.
          * In any case, the frame is considered finished and released.
-         *
-         * If `frame` does not have a buffer attached, it will be dropped, and
-         * a QoS message will be posted on the bus. Events from `frame` will be
-         * pushed out immediately.
          *
          * After calling this function the output buffer of the frame is to be
          * considered read-only. This function will also change the metadata
@@ -6429,14 +5904,6 @@ export namespace GstVideo {
          * @returns a #GstCaps owned by caller
          */
         proxy_getcaps(caps?: Gst.Caps | null, filter?: Gst.Caps | null): Gst.Caps;
-        /**
-         * Removes `frame` from list of pending frames and releases it, similar
-         * to calling gst_video_encoder_finish_frame() without a buffer attached
-         * to the frame, but does not post a QoS message or do any additional
-         * processing. Events from `frame` are moved to the pending events list.
-         * @param frame a #GstVideoCodecFrame
-         */
-        release_frame(frame: VideoCodecFrame): void;
         /**
          * Set the codec headers to be sent downstream whenever requested.
          * @param headers a list of #GstBuffer containing the codec header
@@ -7108,24 +6575,8 @@ export namespace GstVideo {
 
         // Virtual methods
 
-        /**
-         * function to be called with the negotiated caps and video infos
-         * @param incaps
-         * @param in_info
-         * @param outcaps
-         * @param out_info
-         */
         vfunc_set_info(incaps: Gst.Caps, in_info: VideoInfo, outcaps: Gst.Caps, out_info: VideoInfo): boolean;
-        /**
-         * transform a video frame
-         * @param inframe
-         * @param outframe
-         */
         vfunc_transform_frame(inframe: VideoFrame, outframe: VideoFrame): Gst.FlowReturn;
-        /**
-         * transform a video frame in place
-         * @param frame
-         */
         vfunc_transform_frame_ip(frame: VideoFrame): Gst.FlowReturn;
     }
 
@@ -7270,42 +6721,7 @@ export namespace GstVideo {
          * @param info A #GstVideoInfo corresponding to @caps.
          */
         vfunc_set_info(caps: Gst.Caps, info: VideoInfo): boolean;
-        /**
-         * render a video frame. Maps to #GstBaseSinkClass.render() and
-         *     #GstBaseSinkClass.preroll() vfuncs. Rendering during preroll will be
-         *     suppressed if the #GstVideoSink:show-preroll-frame property is set to
-         *     %FALSE.
-         * @param buf
-         */
         vfunc_show_frame(buf: Gst.Buffer): Gst.FlowReturn;
-    }
-
-    /**
-     * #GstMeta for carrying SMPTE-291M Ancillary data. Note that all the ADF fields
-     *    (`DID` to `checksum)` are 10bit values with parity/non-parity high-bits set.
-     */
-    class AncillaryMeta {
-        static $gtype: GObject.GType<AncillaryMeta>;
-
-        // Fields
-
-        field: AncillaryMetaField;
-        c_not_y_channel: boolean;
-        line: number;
-        offset: number;
-        DID: number;
-        SDID_block_number: number;
-        data_count: number;
-        data: number;
-        checksum: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-
-        // Static methods
-
-        static get_info(): Gst.MetaInfo;
     }
 
     type ColorBalanceChannelClass = typeof ColorBalanceChannel;
@@ -8342,21 +7758,12 @@ export namespace GstVideo {
         free(): void;
         /**
          * Convert the values of `drm_info` into a #GstCaps. Please note that the
-         * `caps` returned will be a dma drm caps which sets format field to DMA_DRM,
-         * and contains a new drm-format field. The value of drm-format field is
+         * `caps` returned will be a dma drm caps which does not contain format field,
+         * but contains a drm-format field instead. The value of drm-format field is
          * composed of a drm fourcc and a modifier, such as NV12:0x0100000000000002.
          * @returns a new #GstCaps containing the info in @drm_info.
          */
         to_caps(): Gst.Caps | null;
-        /**
-         * Convert the #GstVideoInfoDmaDrm into a traditional #GstVideoInfo with
-         * recognized video format. For DMA kind memory, the non linear DMA format
-         * should be recognized as #GST_VIDEO_FORMAT_DMA_DRM. This helper function
-         * sets `info'`s video format into the default value according to `drm_info'`s
-         * drm_fourcc field.
-         * @returns %TRUE if @info is converted correctly.
-         */
-        to_video_info(): [boolean, VideoInfo];
     }
 
     /**
@@ -8462,15 +7869,8 @@ export namespace GstVideo {
      * - padding-bottom (uint): extra pixels on the bottom
      * - padding-left (uint): extra pixels on the left side
      * - padding-right (uint): extra pixels on the right side
-     * - stride-align0 (uint): stride align requirements for plane 0
-     * - stride-align1 (uint): stride align requirements for plane 1
-     * - stride-align2 (uint): stride align requirements for plane 2
-     * - stride-align3 (uint): stride align requirements for plane 3
-     * The padding and stride-align fields have the same semantic as #GstVideoMeta.alignment
-     * and so represent the paddings and stride-align requested on produced video buffers.
-     *
-     * Since 1.24 it can be serialized using gst_meta_serialize() and
-     * gst_meta_deserialize().
+     * The padding fields have the same semantic as #GstVideoMeta.alignment
+     * and so represent the paddings requested on produced video buffers.
      */
     class VideoMeta {
         static $gtype: GObject.GType<VideoMeta>;
@@ -9612,14 +9012,6 @@ export namespace GstVideo {
          */
         event_new_mouse_button_release(button: number, x: number, y: number, state: NavigationModifierType): Gst.Event;
         /**
-         * Create a new navigation event for the given key mouse double click.
-         * @param button The number of the pressed mouse button.
-         * @param x The x coordinate of the mouse cursor.
-         * @param y The y coordinate of the mouse cursor.
-         * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
-         */
-        event_new_mouse_double_click(button: number, x: number, y: number, state: NavigationModifierType): Gst.Event;
-        /**
          * Create a new navigation event for the new mouse location.
          * @param x The x coordinate of the mouse cursor.
          * @param y The y coordinate of the mouse cursor.
@@ -9876,7 +9268,7 @@ export namespace GstVideo {
          * are sent relative to the display space of the related output area. This is
          * usually the size in pixels of the window associated with the element
          * implementing the #GstNavigation interface.
-         * @param event The type of mouse event, as a text string. Recognised values are "mouse-button-press", "mouse-button-release", "mouse-move" and "mouse-double-click".
+         * @param event The type of mouse event, as a text string. Recognised values are "mouse-button-press", "mouse-button-release" and "mouse-move".
          * @param button The button number of the button being pressed or released. Pass 0 for mouse-move events.
          * @param x The x coordinate of the mouse event.
          * @param y The y coordinate of the mouse event.
@@ -10062,13 +9454,6 @@ export namespace GstVideo {
              * @param handle_events a #gboolean indicating if events should be handled or not.
              */
             vfunc_handle_events(handle_events: boolean): void;
-            /**
-             * virtual method to set the render rectangle
-             * @param x
-             * @param y
-             * @param width
-             * @param height
-             */
             vfunc_set_render_rectangle(x: number, y: number, width: number, height: number): void;
             /**
              * This will call the video overlay's set_window_handle method. You

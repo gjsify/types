@@ -441,8 +441,8 @@ export namespace Shell {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             action_group: Gio.ActionGroup;
             actionGroup: Gio.ActionGroup;
-            app_info: never;
-            appInfo: never;
+            app_info: Gio.DesktopAppInfo;
+            appInfo: Gio.DesktopAppInfo;
             busy: boolean;
             icon: Gio.Icon;
             id: string;
@@ -468,11 +468,11 @@ export namespace Shell {
         /**
          * The #GDesktopAppInfo associated with this ShellApp, if any.
          */
-        get app_info(): never;
+        get app_info(): Gio.DesktopAppInfo;
         /**
          * The #GDesktopAppInfo associated with this ShellApp, if any.
          */
-        get appInfo(): never;
+        get appInfo(): Gio.DesktopAppInfo;
         /**
          * Whether the application has marked itself as busy.
          */
@@ -648,7 +648,7 @@ export namespace Shell {
          * @returns A floating #ClutterActor
          */
         create_icon_texture(size: number): Clutter.Actor;
-        get_app_info(): never;
+        get_app_info(): Gio.DesktopAppInfo;
         get_busy(): boolean;
         get_description(): string;
         /**

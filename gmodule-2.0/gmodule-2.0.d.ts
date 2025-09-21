@@ -117,10 +117,6 @@ export namespace GModule {
      * The #GModule struct is an opaque data structure to represent a
      * [dynamically-loaded module](modules.html#dynamic-loading-of-modules).
      * It should only be accessed via the following functions.
-     *
-     * To ensure correct lock ordering, these functions must not be called from
-     * global constructors (for example, those using GCC’s
-     * `__attribute__((constructor))` attribute).
      */
     abstract class Module {
         static $gtype: GObject.GType<Module>;

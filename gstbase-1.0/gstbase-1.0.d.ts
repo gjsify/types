@@ -577,19 +577,12 @@ export namespace GstBase {
          * Gets the maximum amount of bytes available, that is it returns the maximum
          * value that can be supplied to gst_adapter_map() without that function
          * returning %NULL.
-         *
-         * Calling gst_adapter_map() with the amount of bytes returned by this function
-         * may require expensive operations (like copying the data into a temporary
-         * buffer) in some cases.
          * @returns number of bytes available in @adapter
          */
         available(): number;
         /**
-         * Gets the maximum number of bytes that can be retrieved in a single map
-         * operation without merging buffers.
-         *
-         * Calling gst_adapter_map() with the amount of bytes returned by this function
-         * will never require any expensive operations (like copying the data into a
+         * Gets the maximum number of bytes that are immediately available without
+         * requiring any expensive operations (like copying the data into a
          * temporary buffer).
          * @returns number of bytes that are available in @adapter without expensive operations
          */
@@ -748,7 +741,7 @@ export namespace GstBase {
          *
          * The dts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when
          * the adapter is first created or when it is cleared. This also means that before
-         * the first byte with a dts is added to the adapter, the dts
+         * the first byte with a dts is removed from the adapter, the dts
          * and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
          * @returns The previously seen dts.
          */
@@ -760,7 +753,7 @@ export namespace GstBase {
          *
          * The dts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when
          * the adapter is first created or when it is cleared. This also means that before
-         * the first byte with a dts is added to the adapter, the dts
+         * the first byte with a dts is removed from the adapter, the dts
          * and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
          * @param offset the offset in the adapter at which to get timestamp
          * @returns The previously seen dts at given offset.
@@ -773,7 +766,7 @@ export namespace GstBase {
          *
          * The offset is reset to GST_BUFFER_OFFSET_NONE and the distance is set to 0
          * when the adapter is first created or when it is cleared. This also means that
-         * before the first byte with an offset is added to the adapter, the offset
+         * before the first byte with an offset is removed from the adapter, the offset
          * and distance returned are GST_BUFFER_OFFSET_NONE and 0 respectively.
          * @returns The previous seen offset.
          */
@@ -785,7 +778,7 @@ export namespace GstBase {
          *
          * The pts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when
          * the adapter is first created or when it is cleared. This also means that before
-         * the first byte with a pts is added to the adapter, the pts
+         * the first byte with a pts is removed from the adapter, the pts
          * and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
          * @returns The previously seen pts.
          */
@@ -797,7 +790,7 @@ export namespace GstBase {
          *
          * The pts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when
          * the adapter is first created or when it is cleared. This also means that before
-         * the first byte with a pts is added to the adapter, the pts
+         * the first byte with a pts is removed from the adapter, the pts
          * and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
          * @param offset the offset in the adapter at which to get timestamp
          * @returns The previously seen pts at given offset.
@@ -1087,38 +1080,8 @@ export namespace GstBase {
 
         // Virtual methods
 
-        /**
-         * Mandatory.
-         *                  Called when buffers are queued on all sinkpads. Classes
-         *                  should iterate the GstElement->sinkpads and peek or steal
-         *                  buffers from the #GstAggregatorPads. If the subclass returns
-         *                  GST_FLOW_EOS, sending of the eos event will be taken care
-         *                  of. Once / if a buffer has been constructed from the
-         *                  aggregated buffers, the subclass should call _finish_buffer.
-         * @param timeout
-         */
         vfunc_aggregate(timeout: boolean): Gst.FlowReturn;
-        /**
-         * Optional.
-         *                  Called when a buffer is received on a sink pad, the task of
-         *                  clipping it and translating it to the current segment falls
-         *                  on the subclass. The function should use the segment of data
-         *                  and the negotiated media type on the pad to perform
-         *                  clipping of input buffer. This function takes ownership of
-         *                  buf and should output a buffer or return NULL in
-         *                  if the buffer should be dropped.
-         * @param aggregator_pad
-         * @param buf
-         */
         vfunc_clip(aggregator_pad: AggregatorPad, buf: Gst.Buffer): Gst.Buffer;
-        /**
-         * Optional.
-         *                     Allows the subclass to influence the allocation choices.
-         *                     Setup the allocation parameters for allocating output
-         *                     buffers. The passed in query contains the result of the
-         *                     downstream allocation query.
-         * @param query
-         */
         vfunc_decide_allocation(query: Gst.Query): boolean;
         /**
          * This method will push the provided output buffer downstream. If needed,
@@ -1134,29 +1097,8 @@ export namespace GstBase {
          * @param bufferlist the #GstBufferList to push.
          */
         vfunc_finish_buffer_list(bufferlist: Gst.BufferList): Gst.FlowReturn;
-        /**
-         * Optional.
-         *                   Fixate and return the src pad caps provided.  The function takes
-         *                   ownership of `caps` and returns a fixated version of
-         *                   `caps`. `caps` is not guaranteed to be writable.
-         * @param caps
-         */
         vfunc_fixate_src_caps(caps: Gst.Caps): Gst.Caps;
-        /**
-         * Optional.
-         *                  Called after a successful flushing seek, once all the flush
-         *                  stops have been received. Flush pad-specific data in
-         *                  #GstAggregatorPad->flush.
-         */
         vfunc_flush(): Gst.FlowReturn;
-        /**
-         * Optional.
-         *                  Called when the element needs to know the running time of the next
-         *                  rendered buffer for live pipelines. This causes deadline
-         *                  based aggregation to occur. Defaults to returning
-         *                  GST_CLOCK_TIME_NONE causing the element to wait for buffers
-         *                  on all sink pads before aggregating.
-         */
         vfunc_get_next_time(): Gst.ClockTime;
         /**
          * Negotiates src pad caps with downstream elements.
@@ -1164,11 +1106,6 @@ export namespace GstBase {
          * if #GstAggregatorClass::negotiate fails.
          */
         vfunc_negotiate(): boolean;
-        /**
-         * Optional.
-         *                       Notifies subclasses what caps format has been negotiated
-         * @param caps
-         */
         vfunc_negotiated_src_caps(caps: Gst.Caps): boolean;
         /**
          * Use this function to determine what input buffers will be aggregated
@@ -1178,80 +1115,15 @@ export namespace GstBase {
          * @param aggregator_pad
          */
         vfunc_peek_next_sample(aggregator_pad: AggregatorPad): Gst.Sample | null;
-        /**
-         * Optional.
-         *                     Allows the subclass to handle the allocation query from upstream.
-         * @param pad
-         * @param decide_query
-         * @param query
-         */
         vfunc_propose_allocation(pad: AggregatorPad, decide_query: Gst.Query, query: Gst.Query): boolean;
-        /**
-         * Optional.
-         *                  Called when an event is received on a sink pad, the subclass
-         *                  should always chain up.
-         * @param aggregator_pad
-         * @param event
-         */
         vfunc_sink_event(aggregator_pad: AggregatorPad, event: Gst.Event): boolean;
-        /**
-         * Optional.
-         *                        Called when an event is received on a sink pad before queueing up
-         *                        serialized events. The subclass should always chain up (Since: 1.18).
-         * @param aggregator_pad
-         * @param event
-         */
         vfunc_sink_event_pre_queue(aggregator_pad: AggregatorPad, event: Gst.Event): Gst.FlowReturn;
-        /**
-         * Optional.
-         *                  Called when a query is received on a sink pad, the subclass
-         *                  should always chain up.
-         * @param aggregator_pad
-         * @param query
-         */
         vfunc_sink_query(aggregator_pad: AggregatorPad, query: Gst.Query): boolean;
-        /**
-         * Optional.
-         *                        Called when a query is received on a sink pad before queueing up
-         *                        serialized queries. The subclass should always chain up (Since: 1.18).
-         * @param aggregator_pad
-         * @param query
-         */
         vfunc_sink_query_pre_queue(aggregator_pad: AggregatorPad, query: Gst.Query): boolean;
-        /**
-         * Optional.
-         *                  Called when the src pad is activated, it will start/stop its
-         *                  pad task right after that call.
-         * @param mode
-         * @param active
-         */
         vfunc_src_activate(mode: Gst.PadMode, active: boolean): boolean;
-        /**
-         * Optional.
-         *                  Called when an event is received on the src pad, the subclass
-         *                  should always chain up.
-         * @param event
-         */
         vfunc_src_event(event: Gst.Event): boolean;
-        /**
-         * Optional.
-         *                  Called when a query is received on the src pad, the subclass
-         *                  should always chain up.
-         * @param query
-         */
         vfunc_src_query(query: Gst.Query): boolean;
-        /**
-         * Optional.
-         *                  Called when the element goes from READY to PAUSED.
-         *                  The subclass should get ready to process
-         *                  aggregated buffers.
-         */
         vfunc_start(): boolean;
-        /**
-         * Optional.
-         *                  Called when the element goes from PAUSED to READY.
-         *                  The subclass should free all resources and reset its state.
-         */
         vfunc_stop(): boolean;
         vfunc_update_src_caps(caps: Gst.Caps): [Gst.FlowReturn, Gst.Caps | null];
 
@@ -1311,16 +1183,6 @@ export namespace GstBase {
          * @returns The sample that is about to be aggregated. It may hold a #GstBuffer   or a #GstBufferList. The contents of its info structure is subclass-dependent,   and documented on a subclass basis. The buffers held by the sample are   not writable.
          */
         peek_next_sample(pad: AggregatorPad): Gst.Sample | null;
-        /**
-         * This method will push the provided event downstream. If needed, mandatory
-         * events such as stream-start, caps, and segment events will be sent before
-         * pushing the event.
-         *
-         * This API does not allow pushing stream-start, caps, segment and EOS events.
-         * Specific API like gst_aggregator_set_src_caps() should be used for these.
-         * @param event the #GstEvent to push.
-         */
-        push_src_event(event: Gst.Event): boolean;
         /**
          * Subclasses should call this when they have prepared the
          * buffers they will aggregate for each of their sink pads, but
@@ -1472,21 +1334,7 @@ export namespace GstBase {
 
         // Virtual methods
 
-        /**
-         * Optional
-         *               Called when the pad has received a flush stop, this is the place
-         *               to flush any information specific to the pad, it allows for individual
-         *               pads to be flushed while others might not be.
-         * @param aggregator
-         */
         vfunc_flush(aggregator: Aggregator): Gst.FlowReturn;
-        /**
-         * Optional
-         *               Called before input buffers are queued in the pad, return %TRUE
-         *               if the buffer should be skipped.
-         * @param aggregator
-         * @param buffer
-         */
         vfunc_skip_buffer(aggregator: Aggregator, buffer: Gst.Buffer): boolean;
 
         // Methods
@@ -1738,28 +1586,8 @@ export namespace GstBase {
 
         // Virtual methods
 
-        /**
-         * Optional.
-         *                  Convert between formats.
-         * @param src_format
-         * @param src_value
-         * @param dest_format
-         * @param dest_value
-         */
         vfunc_convert(src_format: Gst.Format, src_value: number, dest_format: Gst.Format, dest_value: number): boolean;
-        /**
-         * Optional.
-         *                   Called until it doesn't return GST_FLOW_OK anymore for
-         *                   the first buffers. Can be used by the subclass to detect
-         *                   the stream format.
-         * @param buffer
-         */
         vfunc_detect(buffer: Gst.Buffer): Gst.FlowReturn;
-        /**
-         * Optional.
-         *                  Allows the subclass to do its own sink get caps if needed.
-         * @param filter
-         */
         vfunc_get_sink_caps(filter: Gst.Caps): Gst.Caps;
         /**
          * Parses the input data into valid frames as defined by subclass
@@ -1775,63 +1603,13 @@ export namespace GstBase {
          * @param frame
          */
         vfunc_handle_frame(frame: BaseParseFrame): [Gst.FlowReturn, number];
-        /**
-         * Optional.
-         *                   Called just prior to pushing a frame (after any pending
-         *                   events have been sent) to give subclass a chance to perform
-         *                   additional actions at this time (e.g. tag sending) or to
-         *                   decide whether this buffer should be dropped or not
-         *                   (e.g. custom segment clipping).
-         * @param frame
-         */
         vfunc_pre_push_frame(frame: BaseParseFrame): Gst.FlowReturn;
-        /**
-         * Optional.
-         *                  Allows the subclass to be notified of the actual caps set.
-         * @param caps
-         */
         vfunc_set_sink_caps(caps: Gst.Caps): boolean;
-        /**
-         * Optional.
-         *                  Event handler on the sink pad. This function should chain
-         *                  up to the parent implementation to let the default handler
-         *                  run.
-         * @param event
-         */
         vfunc_sink_event(event: Gst.Event): boolean;
-        /**
-         * Optional.
-         *                   Query handler on the sink pad. This function should chain
-         *                   up to the parent implementation to let the default handler
-         *                   run (Since: 1.2)
-         * @param query
-         */
         vfunc_sink_query(query: Gst.Query): boolean;
-        /**
-         * Optional.
-         *                  Event handler on the source pad. Should chain up to the
-         *                  parent to let the default handler run.
-         * @param event
-         */
         vfunc_src_event(event: Gst.Event): boolean;
-        /**
-         * Optional.
-         *                   Query handler on the source pad. Should chain up to the
-         *                   parent to let the default handler run (Since: 1.2)
-         * @param query
-         */
         vfunc_src_query(query: Gst.Query): boolean;
-        /**
-         * Optional.
-         *                  Called when the element starts processing.
-         *                  Allows opening external resources.
-         */
         vfunc_start(): boolean;
-        /**
-         * Optional.
-         *                  Called when the element stops processing.
-         *                  Allows closing external resources.
-         */
         vfunc_stop(): boolean;
 
         // Methods
@@ -1867,13 +1645,10 @@ export namespace GstBase {
          */
         drain(): void;
         /**
-         * Collects parsed data and pushes it downstream.
+         * Collects parsed data and pushes this downstream.
          * Source pad caps must be set when this is called.
          *
-         * If `frame'`s out_buffer is set, that will be used as subsequent frame data,
-         * and `size` amount will be flushed from the input data. The output_buffer size
-         * can differ from the consumed size indicated by `size`.
-         *
+         * If `frame'`s out_buffer is set, that will be used as subsequent frame data.
          * Otherwise, `size` samples will be taken from the input and used for output,
          * and the output's metadata (timestamps etc) will be taken as (optionally)
          * set by the subclass on `frame'`s (input) buffer (which is otherwise
@@ -2361,25 +2136,8 @@ export namespace GstBase {
 
         // Virtual methods
 
-        /**
-         * Subclasses should override this when they can provide an
-         *     alternate method of spawning a thread to drive the pipeline in pull mode.
-         *     Should start or stop the pulling thread, depending on the value of the
-         *     "active" argument. Called after actually activating the sink pad in pull
-         *     mode. The default implementation starts a task on the sink pad.
-         * @param active
-         */
         vfunc_activate_pull(active: boolean): boolean;
-        /**
-         * Override this to handle events arriving on the sink pad
-         * @param event
-         */
         vfunc_event(event: Gst.Event): boolean;
-        /**
-         * Only useful in pull mode. Implement if you have
-         *     ideas about what should be the default values for the caps you support.
-         * @param caps
-         */
         vfunc_fixate(caps: Gst.Caps): Gst.Caps;
         /**
          * Called to get sink pad caps from the subclass.
@@ -2391,77 +2149,18 @@ export namespace GstBase {
          * @param buffer
          */
         vfunc_get_times(buffer: Gst.Buffer): [Gst.ClockTime, Gst.ClockTime];
-        /**
-         * Called to prepare the buffer for `render` and `preroll`. This
-         *     function is called before synchronisation is performed.
-         * @param buffer
-         */
         vfunc_prepare(buffer: Gst.Buffer): Gst.FlowReturn;
-        /**
-         * Called to prepare the buffer list for `render_list`. This
-         *     function is called before synchronisation is performed.
-         * @param buffer_list
-         */
         vfunc_prepare_list(buffer_list: Gst.BufferList): Gst.FlowReturn;
-        /**
-         * Called to present the preroll buffer if desired.
-         * @param buffer
-         */
         vfunc_preroll(buffer: Gst.Buffer): Gst.FlowReturn;
-        /**
-         * configure the allocation query
-         * @param query
-         */
         vfunc_propose_allocation(query: Gst.Query): boolean;
-        /**
-         * perform a #GstQuery on the element.
-         * @param query
-         */
         vfunc_query(query: Gst.Query): boolean;
-        /**
-         * Called when a buffer should be presented or output, at the
-         *     correct moment if the #GstBaseSink has been set to sync to the clock.
-         * @param buffer
-         */
         vfunc_render(buffer: Gst.Buffer): Gst.FlowReturn;
-        /**
-         * Same as `render` but used with buffer lists instead of
-         *     buffers.
-         * @param buffer_list
-         */
         vfunc_render_list(buffer_list: Gst.BufferList): Gst.FlowReturn;
-        /**
-         * Notify subclass of changed caps
-         * @param caps
-         */
         vfunc_set_caps(caps: Gst.Caps): boolean;
-        /**
-         * Start processing. Ideal for opening resources in the subclass
-         */
         vfunc_start(): boolean;
-        /**
-         * Stop processing. Subclasses should use this to close resources.
-         */
         vfunc_stop(): boolean;
-        /**
-         * Unlock any pending access to the resource. Subclasses should
-         *     unblock any blocked function ASAP and call gst_base_sink_wait_preroll()
-         */
         vfunc_unlock(): boolean;
-        /**
-         * Clear the previous unlock request. Subclasses should clear
-         *     any state they set during #GstBaseSinkClass::unlock, and be ready to
-         *     continue where they left off after gst_base_sink_wait_preroll(),
-         *     gst_base_sink_wait() or gst_wait_sink_wait_clock() return or
-         *     #GstBaseSinkClass::render is called again.
-         */
         vfunc_unlock_stop(): boolean;
-        /**
-         * Override this to implement custom logic to wait for the event
-         *     time (for events like EOS and GAP). Subclasses should always first
-         *     chain up to the default implementation.
-         * @param event
-         */
         vfunc_wait_event(event: Gst.Event): Gst.FlowReturn;
 
         // Methods
@@ -2739,7 +2438,6 @@ export namespace GstBase {
     namespace BaseSrc {
         // Signal signatures
         interface SignalSignatures extends Gst.Element.SignalSignatures {
-            'notify::automatic-eos': (pspec: GObject.ParamSpec) => void;
             'notify::blocksize': (pspec: GObject.ParamSpec) => void;
             'notify::do-timestamp': (pspec: GObject.ParamSpec) => void;
             'notify::num-buffers': (pspec: GObject.ParamSpec) => void;
@@ -2751,8 +2449,6 @@ export namespace GstBase {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {
-            automatic_eos: boolean;
-            automaticEos: boolean;
             blocksize: number;
             do_timestamp: boolean;
             doTimestamp: boolean;
@@ -2883,16 +2579,6 @@ export namespace GstBase {
 
         // Properties
 
-        /**
-         * See gst_base_src_set_automatic_eos()
-         */
-        get automatic_eos(): boolean;
-        set automatic_eos(val: boolean);
-        /**
-         * See gst_base_src_set_automatic_eos()
-         */
-        get automaticEos(): boolean;
-        set automaticEos(val: boolean);
         get blocksize(): number;
         set blocksize(val: number);
         get do_timestamp(): boolean;
@@ -2968,28 +2654,9 @@ export namespace GstBase {
          * @param buf
          */
         vfunc_create(offset: number, size: number, buf?: Gst.Buffer | null): [Gst.FlowReturn, Gst.Buffer | null];
-        /**
-         * configure the allocation query
-         * @param query
-         */
         vfunc_decide_allocation(query: Gst.Query): boolean;
-        /**
-         * Perform seeking on the resource to the indicated segment.
-         * @param segment
-         */
         vfunc_do_seek(segment: Gst.Segment): boolean;
-        /**
-         * Override this to implement custom event handling.
-         * @param event
-         */
         vfunc_event(event: Gst.Event): boolean;
-        /**
-         * Ask the subclass to fill the buffer with data for offset and size. The
-         *   passed buffer is guaranteed to hold the requested amount of bytes.
-         * @param offset
-         * @param size
-         * @param buf
-         */
         vfunc_fill(offset: number, size: number, buf: Gst.Buffer): Gst.FlowReturn;
         /**
          * Called if, in negotiation, caps need fixating.
@@ -3012,9 +2679,6 @@ export namespace GstBase {
          * @param buffer
          */
         vfunc_get_times(buffer: Gst.Buffer): [Gst.ClockTime, Gst.ClockTime];
-        /**
-         * Check if the source can seek
-         */
         vfunc_is_seekable(): boolean;
         /**
          * Negotiates src pad caps with downstream elements.
@@ -3026,52 +2690,16 @@ export namespace GstBase {
          * buffer is allocated.
          */
         vfunc_negotiate(): boolean;
-        /**
-         * Prepare the #GstSegment that will be passed to the
-         *   #GstBaseSrcClass::do_seek vmethod for executing a seek
-         *   request. Sub-classes should override this if they support seeking in
-         *   formats other than the configured native format. By default, it tries to
-         *   convert the seek arguments to the configured native format and prepare a
-         *   segment in that format.
-         * @param seek
-         * @param segment
-         */
         vfunc_prepare_seek_segment(seek: Gst.Event, segment: Gst.Segment): boolean;
-        /**
-         * Handle a requested query.
-         * @param query
-         */
         vfunc_query(query: Gst.Query): boolean;
         /**
          * Set new caps on the basesrc source pad.
          * @param caps a #GstCaps
          */
         vfunc_set_caps(caps: Gst.Caps): boolean;
-        /**
-         * Start processing. Subclasses should open resources and prepare
-         *    to produce data. Implementation should call gst_base_src_start_complete()
-         *    when the operation completes, either from the current thread or any other
-         *    thread that finishes the start operation asynchronously.
-         */
         vfunc_start(): boolean;
-        /**
-         * Stop processing. Subclasses should use this to close resources.
-         */
         vfunc_stop(): boolean;
-        /**
-         * Unlock any pending access to the resource. Subclasses should unblock
-         *    any blocked function ASAP. In particular, any `create()` function in
-         *    progress should be unblocked and should return GST_FLOW_FLUSHING. Any
-         *    future #GstBaseSrcClass::create function call should also return
-         *    GST_FLOW_FLUSHING until the #GstBaseSrcClass::unlock_stop function has
-         *    been called.
-         */
         vfunc_unlock(): boolean;
-        /**
-         * Clear the previous unlock request. Subclasses should clear any
-         *    state they set during #GstBaseSrcClass::unlock, such as clearing command
-         *    queues.
-         */
         vfunc_unlock_stop(): boolean;
 
         // Methods
@@ -3460,146 +3088,28 @@ export namespace GstBase {
 
         // Virtual methods
 
-        /**
-         * Optional.
-         *                  Subclasses can override this method to check if `caps` can be
-         *                  handled by the element. The default implementation might not be
-         *                  the most optimal way to check this in all cases.
-         * @param direction
-         * @param caps
-         */
         vfunc_accept_caps(direction: Gst.PadDirection, caps: Gst.Caps): boolean;
-        /**
-         * Optional.
-         *                    This method is called right before the base class will
-         *                    start processing. Dynamic properties or other delayed
-         *                    configuration could be performed in this method.
-         * @param buffer
-         */
         vfunc_before_transform(buffer: Gst.Buffer): void;
-        /**
-         * Optional.
-         *                 Copy the metadata from the input buffer to the output buffer.
-         *                 The default implementation will copy the flags, timestamps and
-         *                 offsets of the buffer.
-         * @param input
-         * @param outbuf
-         */
         vfunc_copy_metadata(input: Gst.Buffer, outbuf: Gst.Buffer): boolean;
-        /**
-         * Setup the allocation parameters for allocating output
-         *                    buffers. The passed in query contains the result of the
-         *                    downstream allocation query. This function is only called
-         *                    when not operating in passthrough mode. The default
-         *                    implementation will remove all memory dependent metadata.
-         *                    If there is a `filter_meta` method implementation, it will
-         *                    be called for all metadata API in the downstream query,
-         *                    otherwise the metadata API is removed.
-         * @param query
-         */
         vfunc_decide_allocation(query: Gst.Query): boolean;
-        /**
-         * Return %TRUE if the metadata API should be proposed in the
-         *               upstream allocation query. The default implementation is %NULL
-         *               and will cause all metadata to be removed.
-         * @param query
-         * @param api
-         * @param params
-         */
         vfunc_filter_meta(query: Gst.Query, api: GObject.GType, params: Gst.Structure): boolean;
         vfunc_fixate_caps(direction: Gst.PadDirection, caps: Gst.Caps, othercaps: Gst.Caps): Gst.Caps;
         vfunc_generate_output(): [Gst.FlowReturn, Gst.Buffer];
         vfunc_get_unit_size(caps: Gst.Caps): [boolean, number];
         vfunc_prepare_output_buffer(input: Gst.Buffer): [Gst.FlowReturn, Gst.Buffer];
-        /**
-         * Propose buffer allocation parameters for upstream elements.
-         *                      This function must be implemented if the element reads or
-         *                      writes the buffer content. The query that was passed to
-         *                      the decide_allocation is passed in this method (or %NULL
-         *                      when the element is in passthrough mode). The default
-         *                      implementation will pass the query downstream when in
-         *                      passthrough mode and will copy all the filtered metadata
-         *                      API in non-passthrough mode.
-         * @param decide_query
-         * @param query
-         */
         vfunc_propose_allocation(decide_query: Gst.Query, query: Gst.Query): boolean;
-        /**
-         * Optional.
-         *                  Handle a requested query. Subclasses that implement this
-         *                  must chain up to the parent if they didn't handle the
-         *                  query
-         * @param direction
-         * @param query
-         */
         vfunc_query(direction: Gst.PadDirection, query: Gst.Query): boolean;
         // Conflicted with Gst.Element.vfunc_query
         vfunc_query(...args: never[]): any;
-        /**
-         * Allows the subclass to be notified of the actual caps set.
-         * @param incaps
-         * @param outcaps
-         */
         vfunc_set_caps(incaps: Gst.Caps, outcaps: Gst.Caps): boolean;
         vfunc_sink_event(event: Gst.Event): boolean;
         vfunc_src_event(event: Gst.Event): boolean;
-        /**
-         * Optional.
-         *                  Called when the element starts processing.
-         *                  Allows opening external resources.
-         */
         vfunc_start(): boolean;
-        /**
-         * Optional.
-         *                  Called when the element stops processing.
-         *                  Allows closing external resources.
-         */
         vfunc_stop(): boolean;
-        /**
-         * Function which accepts a new input buffer and pre-processes it.
-         *                  The default implementation performs caps (re)negotiation, then
-         *                  QoS if needed, and places the input buffer into the `queued_buf`
-         *                  member variable. If the buffer is dropped due to QoS, it returns
-         *                  GST_BASE_TRANSFORM_FLOW_DROPPED. If this input buffer is not
-         *                  contiguous with any previous input buffer, then `is_discont`
-         *                  is set to %TRUE. (Since: 1.6)
-         * @param is_discont
-         * @param input
-         */
         vfunc_submit_input_buffer(is_discont: boolean, input: Gst.Buffer): Gst.FlowReturn;
-        /**
-         * Required if the element does not operate in-place.
-         *                  Transforms one incoming buffer to one outgoing buffer.
-         *                  The function is allowed to change size/timestamp/duration
-         *                  of the outgoing buffer.
-         * @param inbuf
-         * @param outbuf
-         */
         vfunc_transform(inbuf: Gst.Buffer, outbuf: Gst.Buffer): Gst.FlowReturn;
-        /**
-         * Optional.  Given the pad in this direction and the given
-         *                  caps, what caps are allowed on the other pad in this
-         *                  element ?
-         * @param direction
-         * @param caps
-         * @param filter
-         */
         vfunc_transform_caps(direction: Gst.PadDirection, caps: Gst.Caps, filter: Gst.Caps): Gst.Caps;
-        /**
-         * Required if the element operates in-place.
-         *                  Transform the incoming buffer in-place.
-         * @param buf
-         */
         vfunc_transform_ip(buf: Gst.Buffer): Gst.FlowReturn;
-        /**
-         * Optional. Transform the metadata on the input buffer to the
-         *                  output buffer. By default this method copies all meta without
-         *                  tags. Subclasses can implement this method and return %TRUE if
-         *                  the metadata is to be copied.
-         * @param outbuf
-         * @param meta
-         * @param inbuf
-         */
         vfunc_transform_meta(outbuf: Gst.Buffer, meta: Gst.Meta, inbuf: Gst.Buffer): boolean;
         vfunc_transform_size(
             direction: Gst.PadDirection,
@@ -4190,7 +3700,6 @@ export namespace GstBase {
     namespace PushSrc {
         // Signal signatures
         interface SignalSignatures extends BaseSrc.SignalSignatures {
-            'notify::automatic-eos': (pspec: GObject.ParamSpec) => void;
             'notify::blocksize': (pspec: GObject.ParamSpec) => void;
             'notify::do-timestamp': (pspec: GObject.ParamSpec) => void;
             'notify::num-buffers': (pspec: GObject.ParamSpec) => void;
@@ -4275,10 +3784,6 @@ export namespace GstBase {
         vfunc_create(buf?: Gst.Buffer | null): [Gst.FlowReturn, Gst.Buffer | null];
         // Conflicted with GstBase.BaseSrc.vfunc_create
         vfunc_create(...args: never[]): any;
-        /**
-         * Ask the subclass to fill the buffer with data.
-         * @param buf
-         */
         vfunc_fill(buf: Gst.Buffer): Gst.FlowReturn;
         // Conflicted with GstBase.BaseSrc.vfunc_fill
         vfunc_fill(...args: never[]): any;

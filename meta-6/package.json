@@ -1,0 +1,79 @@
+{
+    "name": "@girs/meta-6",
+    "version": "3.36.6-4.0.0-beta.38",
+    "description": "GJS TypeScript type definitions for Meta-6, generated from library version 3.36.6",
+    "type": "module",
+    "module": "meta-6.js",
+    "main": "meta-6.js",
+    "exports": {
+        "./ambient": {
+            "types": "./meta-6-ambient.d.ts",
+            "import": "./meta-6-ambient.js",
+            "default": "./meta-6-ambient.js"
+        },
+        "./import": {
+            "types": "./meta-6-import.d.ts",
+            "import": "./meta-6-import.js",
+            "default": "./meta-6-import.js"
+        },
+        "./meta-6": {
+            "types": "./meta-6.d.ts",
+            "import": "./meta-6.js",
+            "default": "./meta-6.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
+    },
+    "scripts": {
+        "test": "tsc --project tsconfig.json"
+    },
+    "dependencies": {
+        "@girs/atk-1.0": "workspace:^",
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/clutter-6": "workspace:^",
+        "@girs/cogl-6": "workspace:^",
+        "@girs/coglpango-6": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gdesktopenums-3.0": "workspace:^",
+        "@girs/gdk-3.0": "workspace:^",
+        "@girs/gdkpixbuf-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/gl-1.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/graphene-1.0": "workspace:^",
+        "@girs/gtk-3.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/json-1.0": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/pangocairo-1.0": "workspace:^",
+        "@girs/xfixes-4.0": "workspace:^",
+        "@girs/xlib-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Meta-6"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/meta-6#readme"
+}

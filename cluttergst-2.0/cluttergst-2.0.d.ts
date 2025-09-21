@@ -259,7 +259,7 @@ export namespace ClutterGst {
          * are sent relative to the display space of the related output area. This is
          * usually the size in pixels of the window associated with the element
          * implementing the #GstNavigation interface.
-         * @param event The type of mouse event, as a text string. Recognised values are "mouse-button-press", "mouse-button-release", "mouse-move" and "mouse-double-click".
+         * @param event The type of mouse event, as a text string. Recognised values are "mouse-button-press", "mouse-button-release" and "mouse-move".
          * @param button The button number of the button being pressed or released. Pass 0 for mouse-move events.
          * @param x The x coordinate of the mouse event.
          * @param y The y coordinate of the mouse event.

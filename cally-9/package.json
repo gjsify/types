@@ -1,0 +1,73 @@
+{
+    "name": "@girs/cally-9",
+    "version": "9.0.0-4.0.0-beta.38",
+    "description": "GJS TypeScript type definitions for Cally-9, generated from library version 9.0.0",
+    "type": "module",
+    "module": "cally-9.js",
+    "main": "cally-9.js",
+    "exports": {
+        "./ambient": {
+            "types": "./cally-9-ambient.d.ts",
+            "import": "./cally-9-ambient.js",
+            "default": "./cally-9-ambient.js"
+        },
+        "./import": {
+            "types": "./cally-9-import.d.ts",
+            "import": "./cally-9-import.js",
+            "default": "./cally-9-import.js"
+        },
+        "./cally-9": {
+            "types": "./cally-9.d.ts",
+            "import": "./cally-9.js",
+            "default": "./cally-9.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
+    },
+    "scripts": {
+        "test": "tsc --project tsconfig.json"
+    },
+    "dependencies": {
+        "@girs/atk-1.0": "workspace:^",
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/clutter-9": "workspace:^",
+        "@girs/cogl-9": "workspace:^",
+        "@girs/coglpango-9": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/gl-1.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/graphene-1.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/json-1.0": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/pangocairo-1.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Cally-9"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/cally-9#readme"
+}

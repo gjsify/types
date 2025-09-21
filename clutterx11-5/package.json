@@ -1,0 +1,73 @@
+{
+    "name": "@girs/clutterx11-5",
+    "version": "5.0.0-4.0.0-beta.38",
+    "description": "GJS TypeScript type definitions for ClutterX11-5, generated from library version 5.0.0",
+    "type": "module",
+    "module": "clutterx11-5.js",
+    "main": "clutterx11-5.js",
+    "exports": {
+        "./ambient": {
+            "types": "./clutterx11-5-ambient.d.ts",
+            "import": "./clutterx11-5-ambient.js",
+            "default": "./clutterx11-5-ambient.js"
+        },
+        "./import": {
+            "types": "./clutterx11-5-import.d.ts",
+            "import": "./clutterx11-5-import.js",
+            "default": "./clutterx11-5-import.js"
+        },
+        "./clutterx11-5": {
+            "types": "./clutterx11-5.d.ts",
+            "import": "./clutterx11-5.js",
+            "default": "./clutterx11-5.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
+    },
+    "scripts": {
+        "test": "tsc --project tsconfig.json"
+    },
+    "dependencies": {
+        "@girs/atk-1.0": "workspace:^",
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/clutter-5": "workspace:^",
+        "@girs/cogl-5": "workspace:^",
+        "@girs/coglpango-5": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/gl-1.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/json-1.0": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/pangocairo-1.0": "workspace:^",
+        "@girs/xlib-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "ClutterX11-5"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/clutterx11-5#readme"
+}

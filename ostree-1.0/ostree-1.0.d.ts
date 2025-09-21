@@ -5168,52 +5168,39 @@ export namespace OSTree {
         query_filesystem_info_finish(res: Gio.AsyncResult): Gio.FileInfo;
         /**
          * Gets the requested information about specified `file`.
-         *
-         * The result is a [class`Gio`.FileInfo] object that contains key-value
+         * The result is a #GFileInfo object that contains key-value
          * attributes (such as the type or size of the file).
          *
          * The `attributes` value is a string that specifies the file
          * attributes that should be gathered. It is not an error if
-         * it’s not possible to read a particular requested attribute
-         * from a file — it just won't be set. In particular this means that if a file
-         * is inaccessible (due to being in a folder with restrictive permissions), for
-         * example, you can expect the returned [class`Gio`.FileInfo] to have very few
-         * attributes set. You should check whether an attribute is set using
-         * [method`Gio`.FileInfo.has_attribute] before trying to retrieve its value.
-         *
-         * It is guaranteed that if any of the following attributes are listed in
-         * `attributes,` they will always be set in the returned [class`Gio`.FileInfo],
-         * even if the user doesn’t have permissions to access the file:
-         *
-         *  - [const`Gio`.FILE_ATTRIBUTE_STANDARD_NAME]
-         *  - [const`Gio`.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME]
-         *
-         * `attributes` should be a comma-separated list of attributes or attribute
-         * wildcards. The wildcard `"*"` means all attributes, and a wildcard like
-         * `"standard::*"` means all attributes in the standard namespace.
-         * An example attribute query might be `"standard::*,owner::user"`.
+         * it's not possible to read a particular requested attribute
+         * from a file - it just won't be set. `attributes` should be a
+         * comma-separated list of attributes or attribute wildcards.
+         * The wildcard "*" means all attributes, and a wildcard like
+         * "standard::*" means all attributes in the standard namespace.
+         * An example attribute query be "standard::*,owner::user".
          * The standard attributes are available as defines, like
-         * [const`Gio`.FILE_ATTRIBUTE_STANDARD_NAME].
+         * %G_FILE_ATTRIBUTE_STANDARD_NAME.
          *
-         * If `cancellable` is not `NULL`, then the operation can be cancelled
+         * If `cancellable` is not %NULL, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
-         * operation was cancelled, the error [error`Gio`.IOErrorEnum.CANCELLED] will be
+         * operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
          * returned.
          *
          * For symlinks, normally the information about the target of the
          * symlink is returned, rather than information about the symlink
-         * itself. However if you pass [flags`Gio`.FileQueryInfoFlags.NOFOLLOW_SYMLINKS]
+         * itself. However if you pass %G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS
          * in `flags` the information about the symlink itself will be returned.
          * Also, for symlinks that point to non-existing files the information
          * about the symlink itself will be returned.
          *
-         * If the file does not exist, the [error`Gio`.IOErrorEnum.NOT_FOUND] error will be
+         * If the file does not exist, the %G_IO_ERROR_NOT_FOUND error will be
          * returned. Other errors are possible too, and depend on what kind of
-         * file system the file is on.
+         * filesystem the file is on.
          * @param attributes an attribute query string
-         * @param flags flags to affect the query operation
-         * @param cancellable optional cancellable object
-         * @returns a [class@Gio.FileInfo] for the given @file
+         * @param flags a set of #GFileQueryInfoFlags
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @returns a #GFileInfo for the given @file, or %NULL   on error. Free the returned object with g_object_unref().
          */
         query_info(
             attributes: string,
@@ -7497,51 +7484,38 @@ export namespace OSTree {
         vfunc_query_filesystem_info_finish(res: Gio.AsyncResult): Gio.FileInfo;
         /**
          * Gets the requested information about specified `file`.
-         *
-         * The result is a [class`Gio`.FileInfo] object that contains key-value
+         * The result is a #GFileInfo object that contains key-value
          * attributes (such as the type or size of the file).
          *
          * The `attributes` value is a string that specifies the file
          * attributes that should be gathered. It is not an error if
-         * it’s not possible to read a particular requested attribute
-         * from a file — it just won't be set. In particular this means that if a file
-         * is inaccessible (due to being in a folder with restrictive permissions), for
-         * example, you can expect the returned [class`Gio`.FileInfo] to have very few
-         * attributes set. You should check whether an attribute is set using
-         * [method`Gio`.FileInfo.has_attribute] before trying to retrieve its value.
-         *
-         * It is guaranteed that if any of the following attributes are listed in
-         * `attributes,` they will always be set in the returned [class`Gio`.FileInfo],
-         * even if the user doesn’t have permissions to access the file:
-         *
-         *  - [const`Gio`.FILE_ATTRIBUTE_STANDARD_NAME]
-         *  - [const`Gio`.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME]
-         *
-         * `attributes` should be a comma-separated list of attributes or attribute
-         * wildcards. The wildcard `"*"` means all attributes, and a wildcard like
-         * `"standard::*"` means all attributes in the standard namespace.
-         * An example attribute query might be `"standard::*,owner::user"`.
+         * it's not possible to read a particular requested attribute
+         * from a file - it just won't be set. `attributes` should be a
+         * comma-separated list of attributes or attribute wildcards.
+         * The wildcard "*" means all attributes, and a wildcard like
+         * "standard::*" means all attributes in the standard namespace.
+         * An example attribute query be "standard::*,owner::user".
          * The standard attributes are available as defines, like
-         * [const`Gio`.FILE_ATTRIBUTE_STANDARD_NAME].
+         * %G_FILE_ATTRIBUTE_STANDARD_NAME.
          *
-         * If `cancellable` is not `NULL`, then the operation can be cancelled
+         * If `cancellable` is not %NULL, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
-         * operation was cancelled, the error [error`Gio`.IOErrorEnum.CANCELLED] will be
+         * operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
          * returned.
          *
          * For symlinks, normally the information about the target of the
          * symlink is returned, rather than information about the symlink
-         * itself. However if you pass [flags`Gio`.FileQueryInfoFlags.NOFOLLOW_SYMLINKS]
+         * itself. However if you pass %G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS
          * in `flags` the information about the symlink itself will be returned.
          * Also, for symlinks that point to non-existing files the information
          * about the symlink itself will be returned.
          *
-         * If the file does not exist, the [error`Gio`.IOErrorEnum.NOT_FOUND] error will be
+         * If the file does not exist, the %G_IO_ERROR_NOT_FOUND error will be
          * returned. Other errors are possible too, and depend on what kind of
-         * file system the file is on.
+         * filesystem the file is on.
          * @param attributes an attribute query string
-         * @param flags flags to affect the query operation
-         * @param cancellable optional cancellable object
+         * @param flags a set of #GFileQueryInfoFlags
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         vfunc_query_info(
             attributes: string,

@@ -10,33 +10,33 @@
 import '@girs/gjs';
 
 // Module dependencies
-import type Clutter from '@girs/clutter-17';
-import type Pango from '@girs/pango-1.0';
-import type cairo from 'cairo';
-import type GObject from '@girs/gobject-2.0';
-import type GLib from '@girs/glib-2.0';
-import type HarfBuzz from '@girs/harfbuzz-0.0';
-import type freetype2 from '@girs/freetype2-2.0';
-import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
-import type Mtk from '@girs/mtk-17';
-import type Graphene from '@girs/graphene-1.0';
-import type GL from '@girs/gl-1.0';
-import type Cogl from '@girs/cogl-17';
-import type Atk from '@girs/atk-1.0';
-import type Gcr from '@girs/gcr-4';
-import type Gck from '@girs/gck-2';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
-import type GioUnix from '@girs/giounix-2.0';
-import type Gvc from '@girs/gvc-1.0';
+import type St from '@girs/st-17';
 import type Meta from '@girs/meta-17';
 import type xlib from '@girs/xlib-2.0';
 import type xfixes from '@girs/xfixes-4.0';
+import type Mtk from '@girs/mtk-17';
+import type Graphene from '@girs/graphene-1.0';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
+import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type GDesktopEnums from '@girs/gdesktopenums-3.0';
-import type NM from '@girs/nm-1.0';
+import type Cogl from '@girs/cogl-17';
+import type GL from '@girs/gl-1.0';
+import type Clutter from '@girs/clutter-17';
+import type Pango from '@girs/pango-1.0';
+import type cairo from 'cairo';
+import type HarfBuzz from '@girs/harfbuzz-0.0';
+import type freetype2 from '@girs/freetype2-2.0';
+import type Atk from '@girs/atk-1.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type PolkitAgent from '@girs/polkitagent-1.0';
 import type Polkit from '@girs/polkit-1.0';
-import type St from '@girs/st-17';
+import type NM from '@girs/nm-1.0';
+import type Gvc from '@girs/gvc-1.0';
+import type GioUnix from '@girs/giounix-2.0';
+import type Gcr from '@girs/gcr-4';
+import type Gck from '@girs/gck-2';
 
 export namespace Shell {
     /**
@@ -62,13 +62,25 @@ export namespace Shell {
         STARTING,
         RUNNING,
     }
+    /**
+     * The mode of blurring of the effect.
+     */
 
+    /**
+     * The mode of blurring of the effect.
+     */
     export namespace BlurMode {
         export const $gtype: GObject.GType<BlurMode>;
     }
 
     enum BlurMode {
+        /**
+         * blur the actor contents, and its children
+         */
         ACTOR,
+        /**
+         * blur what's beneath the actor
+         */
         BACKGROUND,
     }
 
@@ -84,9 +96,47 @@ export namespace Shell {
     const KEYRING_SK_TAG: string;
     const KEYRING_SN_TAG: string;
     const KEYRING_UUID_TAG: string;
+    /**
+     * Synchronously load the contents of a file as a NUL terminated
+     * string, validating it as UTF-8.  Embedded NUL characters count as
+     * invalid content.
+     * @param path UTF-8 encoded filename path
+     * @returns File contents
+     */
     function get_file_contents_utf8_sync(path: string): string;
+    /**
+     * Creates a #GSource which is dispatched every time the system realtime clock
+     * changes relative to the monotonic clock.
+     *
+     * This typically happens after NTP synchronisation.
+     *
+     * On error, a #GFileError will be returned. This happens if a timerfd cannot be
+     * created.
+     *
+     * Any callback attached to the returned #GSource must have type
+     * #GSourceFunc.
+     * @returns the newly created #GSource, or %NULL on error
+     */
     function time_change_source_new(): GLib.Source;
+    /**
+     * Walk over all open file descriptors. Check them for the FD_CLOEXEC flag.
+     * If this flag is not set, log the offending file descriptor number.
+     *
+     * It is important that gnome-shell's file descriptors are all marked CLOEXEC,
+     * so that the shell's open file descriptors are not passed to child processes
+     * that we launch.
+     */
     function util_check_cloexec_fds(): void;
+    /**
+     * Workaround for non-introspectability of gdk_pixbuf_from_data().
+     * @param data
+     * @param colorspace
+     * @param has_alpha
+     * @param bits_per_sample
+     * @param width
+     * @param height
+     * @param rowstride
+     */
     function util_create_pixbuf_from_data(
         data: Uint8Array | string,
         colorspace: GdkPixbuf.Colorspace | null,
@@ -96,127 +146,273 @@ export namespace Shell {
         height: number,
         rowstride: number,
     ): GdkPixbuf.Pixbuf;
-    function util_get_translated_folder_name(name: string): string;
+    /**
+     * Attempts to translate the folder `name` using translations provided
+     * by .directory files.
+     * @param name the untranslated folder name
+     * @returns a translated string or %NULL
+     */
+    function util_get_translated_folder_name(name: string): string | null;
+    /**
+     * A wrapper around getuid() so that it can be used from JavaScript. This
+     * function will always succeed.
+     * @returns the real user ID of the calling process
+     */
     function util_get_uid(): number;
+    /**
+     * Gets the first week day for the current locale, expressed as a
+     * number in the range 0..6, representing week days from Sunday to
+     * Saturday.
+     * @returns A number representing the first week day for the current          locale
+     */
     function util_get_week_start(): number;
+    /**
+     * If the corresponding X11 display provides the passed extension, return %TRUE,
+     * otherwise %FALSE. If there is no X11 display, %FALSE is passed.
+     * @param display A #MetaDisplay
+     * @param extension An X11 extension
+     */
     function util_has_x11_display_extension(display: Meta.Display, extension: string): boolean;
+    /**
+     * A wrapper around g_regex_escape_string() that takes its argument as
+     * \0-terminated string rather than a byte-array that confuses gjs.
+     * @param str a UTF-8 string to escape
+     * @returns @str with all regex-special characters escaped
+     */
     function util_regex_escape(str: string): string;
     function util_sd_notify(): void;
+    /**
+     * If `hidden` is %TRUE, hide `actor` from pick even with a mode of
+     * %CLUTTER_PICK_ALL; if `hidden` is %FALSE, unhide `actor`.
+     * @param actor A #ClutterActor
+     * @param hidden Whether @actor should be hidden from pick
+     */
     function util_set_hidden_from_pick(actor: Clutter.Actor, hidden: boolean): void;
+    /**
+     * A wrapper around g_spawn_async() with async-signal-safe implementation of
+     * #GSpawnChildSetupFunc to launch a child program asynchronously resetting the
+     * rlimit nofile on child setup.
+     * @param working_directory child's current working     directory, or %NULL to inherit parent's
+     * @param argv child's argument vector
+     * @param envp child's environment, or %NULL to inherit parent's
+     * @param flags flags from #GSpawnFlags
+     * @returns the PID of the child on success, 0 if error is set
+     */
     function util_spawn_async(
-        working_directory: string,
+        working_directory: string | null,
         argv: string[],
-        envp: string[],
+        envp: string[] | null,
         flags: GLib.SpawnFlags | null,
-    ): number;
+    ): GLib.Pid;
+    /**
+     * A wrapper around g_spawn_async_with_fds() with async-signal-safe
+     * implementation of #GSpawnChildSetupFunc to launch a child program
+     * asynchronously resetting the rlimit nofile on child setup.
+     * @param working_directory child's current working     directory, or %NULL to inherit parent's
+     * @param argv child's argument vector
+     * @param envp child's environment, or %NULL to inherit parent's
+     * @param flags flags from #GSpawnFlags
+     * @param stdin_fd file descriptor to use for child's stdin, or `-1`
+     * @param stdout_fd file descriptor to use for child's stdout, or `-1`
+     * @param stderr_fd file descriptor to use for child's stderr, or `-1`
+     * @returns the PID of the child on success, 0 if error is set
+     */
     function util_spawn_async_with_fds(
-        working_directory: string,
+        working_directory: string | null,
         argv: string[],
-        envp: string[],
+        envp: string[] | null,
         flags: GLib.SpawnFlags | null,
         stdin_fd: number,
         stdout_fd: number,
         stderr_fd: number,
-    ): number;
+    ): GLib.Pid;
+    /**
+     * A wrapper around g_spawn_async_with_pipes() with async-signal-safe
+     * implementation of #GSpawnChildSetupFunc to launch a child program
+     * asynchronously resetting the rlimit nofile on child setup.
+     * @param working_directory child's current working     directory, or %NULL to inherit parent's
+     * @param argv child's argument vector
+     * @param envp child's environment, or %NULL to inherit parent's
+     * @param flags flags from #GSpawnFlags
+     * @returns the PID of the child on success, 0 if error is set
+     */
     function util_spawn_async_with_pipes(
-        working_directory: string,
+        working_directory: string | null,
         argv: string[],
-        envp: string[],
+        envp: string[] | null,
         flags: GLib.SpawnFlags | null,
-    ): [number, number, number, number];
+    ): [GLib.Pid, number, number, number];
+    /**
+     * A wrapper around g_spawn_async_with_pipes_and_fds() with async-signal-safe
+     * implementation of #GSpawnChildSetupFunc to launch a child program
+     * asynchronously resetting the rlimit nofile on child setup.
+     * @param working_directory child's current working     directory, or %NULL to inherit parent's, in the GLib file name encoding
+     * @param argv child's argument     vector, in the GLib file name encoding; it must be non-empty and %NULL-terminated
+     * @param envp child's environment, or %NULL to inherit parent's, in the GLib file     name encoding
+     * @param flags flags from #GSpawnFlags
+     * @param stdin_fd file descriptor to use for child's stdin, or `-1`
+     * @param stdout_fd file descriptor to use for child's stdout, or `-1`
+     * @param stderr_fd file descriptor to use for child's stderr, or `-1`
+     * @param source_fds array of FDs from the parent    process to make available in the child process
+     * @param target_fds array of FDs to remap    @source_fds to in the child process
+     * @returns the PID of the child on success, 0 if error is set
+     */
     function util_spawn_async_with_pipes_and_fds(
-        working_directory: string,
+        working_directory: string | null,
         argv: string[],
-        envp: string[],
+        envp: string[] | null,
         flags: GLib.SpawnFlags | null,
         stdin_fd: number,
         stdout_fd: number,
         stderr_fd: number,
-        source_fds: number[],
-        target_fds: number[],
-    ): [number, number, number, number];
+        source_fds: number[] | null,
+        target_fds: number[] | null,
+    ): [GLib.Pid, number, number, number];
     function util_start_systemd_unit(
         unit: string,
         mode: string,
-        cancellable: Gio.Cancellable,
+        cancellable?: Gio.Cancellable | null,
     ): globalThis.Promise<boolean>;
     function util_start_systemd_unit(
         unit: string,
         mode: string,
-        cancellable: Gio.Cancellable,
-        callback: Gio.AsyncReadyCallback<string>,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<string> | null,
     ): void;
     function util_start_systemd_unit(
         unit: string,
         mode: string,
-        cancellable: Gio.Cancellable,
-        callback: Gio.AsyncReadyCallback<string>,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<string> | null,
     ): globalThis.Promise<boolean> | void;
     function util_start_systemd_unit_finish(res: Gio.AsyncResult): boolean;
     function util_stop_systemd_unit(
         unit: string,
         mode: string,
-        cancellable: Gio.Cancellable,
+        cancellable?: Gio.Cancellable | null,
     ): globalThis.Promise<boolean>;
     function util_stop_systemd_unit(
         unit: string,
         mode: string,
-        cancellable: Gio.Cancellable,
-        callback: Gio.AsyncReadyCallback<string>,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<string> | null,
     ): void;
     function util_stop_systemd_unit(
         unit: string,
         mode: string,
-        cancellable: Gio.Cancellable,
-        callback: Gio.AsyncReadyCallback<string>,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<string> | null,
     ): globalThis.Promise<boolean> | void;
     function util_stop_systemd_unit_finish(res: Gio.AsyncResult): boolean;
-    function util_systemd_unit_exists(unit: string, cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
+    function util_systemd_unit_exists(unit: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
     function util_systemd_unit_exists(
         unit: string,
-        cancellable: Gio.Cancellable,
-        callback: Gio.AsyncReadyCallback<string>,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<string> | null,
     ): void;
     function util_systemd_unit_exists(
         unit: string,
-        cancellable: Gio.Cancellable,
-        callback: Gio.AsyncReadyCallback<string>,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<string> | null,
     ): globalThis.Promise<boolean> | void;
     function util_systemd_unit_exists_finish(res: Gio.AsyncResult): boolean;
     function util_touch_file_async(file: Gio.File): globalThis.Promise<boolean>;
-    function util_touch_file_async(file: Gio.File, callback: Gio.AsyncReadyCallback<Gio.File>): void;
+    function util_touch_file_async(file: Gio.File, callback: Gio.AsyncReadyCallback<Gio.File> | null): void;
     function util_touch_file_async(
         file: Gio.File,
-        callback: Gio.AsyncReadyCallback<Gio.File>,
+        callback?: Gio.AsyncReadyCallback<Gio.File> | null,
     ): globalThis.Promise<boolean> | void;
     function util_touch_file_finish(file: Gio.File, res: Gio.AsyncResult): boolean;
+    /**
+     * Translate `str` according to the locale defined by LC_TIME; unlike
+     * dcgettext(), the translations is still taken from the LC_MESSAGES
+     * catalogue and not the LC_TIME one.
+     * @param str String to translate
+     * @returns the translated string
+     */
     function util_translate_time_string(str: string): string;
+    /**
+     * Implements libc standard WIFEXITED, that cannot be used JS
+     * code.
+     * @param status the status returned by wait() or waitpid()
+     * @returns TRUE if the process exited normally, FALSE otherwise
+     */
     function util_wifexited(status: number): [boolean, number];
+    /**
+     * Write a string to a GOutputStream as UTF-8. This is a workaround
+     * for not having binary buffers in GJS.
+     * @param stream a #GOutputStream
+     * @param str a UTF-8 string to write to @stream
+     * @returns %TRUE if write succeeded
+     */
     function write_string_to_stream(stream: Gio.OutputStream, str: string): boolean;
     interface LeisureFunction {
-        (data: any): void;
+        (data?: any | null): void;
     }
     interface PerfReplayFunction {
         (time: number, name: string, signature: string, arg: GObject.Value | any): void;
     }
     interface PerfStatisticsCallback {
-        (perf_log: PerfLog, data: any): void;
+        (perf_log: PerfLog, data?: any | null): void;
     }
+    /**
+     * Controls in which GNOME Shell states an action (like keybindings and gestures)
+     * should be handled.
+     */
 
+    /**
+     * Controls in which GNOME Shell states an action (like keybindings and gestures)
+     * should be handled.
+     */
     export namespace ActionMode {
         export const $gtype: GObject.GType<ActionMode>;
     }
 
     enum ActionMode {
+        /**
+         * block action
+         */
         NONE,
+        /**
+         * allow action when in window mode,
+         *     e.g. when the focus is in an application window
+         */
         NORMAL,
+        /**
+         * allow action while the overview
+         *     is active
+         */
         OVERVIEW,
+        /**
+         * allow action when the screen
+         *     is locked, e.g. when the screen shield is shown
+         */
         LOCK_SCREEN,
+        /**
+         * allow action in the unlock
+         *     dialog
+         */
         UNLOCK_SCREEN,
+        /**
+         * allow action in the login screen
+         */
         LOGIN_SCREEN,
+        /**
+         * allow action when a system modal
+         *     dialog (e.g. authentication or session dialogs) is open
+         */
         SYSTEM_MODAL,
+        /**
+         * allow action in looking glass
+         */
         LOOKING_GLASS,
+        /**
+         * allow action while a shell menu is open
+         */
         POPUP,
+        /**
+         * always allow action
+         */
         ALL,
     }
     namespace App {
@@ -236,8 +432,8 @@ export namespace Shell {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             action_group: Gio.ActionGroup;
             actionGroup: Gio.ActionGroup;
-            app_info: GioUnix.DesktopAppInfo;
-            appInfo: GioUnix.DesktopAppInfo;
+            app_info: Gio.DesktopAppInfo;
+            appInfo: Gio.DesktopAppInfo;
             busy: boolean;
             icon: Gio.Icon;
             id: string;
@@ -245,18 +441,52 @@ export namespace Shell {
         }
     }
 
+    /**
+     * Object representing an application
+     *
+     * This object wraps a #GDesktopAppInfo, providing methods and signals
+     * primarily useful for running applications.
+     */
     class App extends GObject.Object {
         static $gtype: GObject.GType<App>;
 
         // Properties
 
+        /**
+         * The #GDBusActionGroup associated with this ShellApp, if any. See the
+         * documentation of #GApplication and #GActionGroup for details.
+         */
         get action_group(): Gio.ActionGroup;
+        /**
+         * The #GDBusActionGroup associated with this ShellApp, if any. See the
+         * documentation of #GApplication and #GActionGroup for details.
+         */
         get actionGroup(): Gio.ActionGroup;
-        get app_info(): GioUnix.DesktopAppInfo;
-        get appInfo(): GioUnix.DesktopAppInfo;
+        /**
+         * The #GDesktopAppInfo associated with this ShellApp, if any.
+         */
+        get app_info(): Gio.DesktopAppInfo;
+        /**
+         * The #GDesktopAppInfo associated with this ShellApp, if any.
+         */
+        get appInfo(): Gio.DesktopAppInfo;
+        /**
+         * Whether the application has marked itself as busy.
+         */
         get busy(): boolean;
+        /**
+         * The #GIcon representing this ShellApp
+         */
         get icon(): Gio.Icon;
+        /**
+         * The id of this application (a desktop filename, or a special string
+         * like window:0xabcd1234)
+         */
         get id(): string;
+        /**
+         * The high-level state of the application, effectively whether it's
+         * running or not, or transitioning between those states.
+         */
         get state(): AppState;
 
         /**
@@ -294,53 +524,171 @@ export namespace Shell {
 
         // Methods
 
+        /**
+         * Like shell_app_activate_full(), but using the default workspace and
+         * event timestamp.
+         */
         activate(): void;
+        /**
+         * This activates an action using 'org.freedesktop.Application' DBus interface.
+         *
+         * This function will fail if this #ShellApp doesn't have a valid #GDesktopAppInfo
+         * with a valid id.
+         * @param action_name the name of an action to activate
+         * @param parameter the parameter to the activation
+         * @param timestamp Event timestamp, or 0 for current event timestamp
+         * @param workspace Start on this workspace, or -1 for default
+         * @param cancellable a #GCancellable or %NULL
+         */
         activate_action(
             action_name: string,
-            parameter: GLib.Variant,
+            parameter: GLib.Variant | null,
             timestamp: number,
             workspace: number,
-            cancellable: Gio.Cancellable,
+            cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
+        /**
+         * This activates an action using 'org.freedesktop.Application' DBus interface.
+         *
+         * This function will fail if this #ShellApp doesn't have a valid #GDesktopAppInfo
+         * with a valid id.
+         * @param action_name the name of an action to activate
+         * @param parameter the parameter to the activation
+         * @param timestamp Event timestamp, or 0 for current event timestamp
+         * @param workspace Start on this workspace, or -1 for default
+         * @param cancellable a #GCancellable or %NULL
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
+         */
         activate_action(
             action_name: string,
-            parameter: GLib.Variant,
+            parameter: GLib.Variant | null,
             timestamp: number,
             workspace: number,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<this>,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * This activates an action using 'org.freedesktop.Application' DBus interface.
+         *
+         * This function will fail if this #ShellApp doesn't have a valid #GDesktopAppInfo
+         * with a valid id.
+         * @param action_name the name of an action to activate
+         * @param parameter the parameter to the activation
+         * @param timestamp Event timestamp, or 0 for current event timestamp
+         * @param workspace Start on this workspace, or -1 for default
+         * @param cancellable a #GCancellable or %NULL
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
+         */
         activate_action(
             action_name: string,
-            parameter: GLib.Variant,
+            parameter: GLib.Variant | null,
             timestamp: number,
             workspace: number,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
+        /**
+         * Finish the asynchronous operation started by shell_app_activate_action()
+         * and obtain its result.
+         * @param result
+         * @returns whether the operation was successful
+         */
         activate_action_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * Perform an appropriate default action for operating on this application,
+         * dependent on its current state.  For example, if the application is not
+         * currently running, launch it.  If it is running, activate the most
+         * recently used NORMAL window (or if that window has a transient, the most
+         * recently used transient for that window).
+         * @param workspace launch on this workspace, or -1 for default. Ignored if   activating an existing window
+         * @param timestamp Event timestamp
+         */
         activate_full(workspace: number, timestamp: number): void;
-        activate_window(window: Meta.Window, timestamp: number): void;
+        /**
+         * Bring all windows for the given app to the foreground,
+         * but ensure that `window` is on top.  If `window` is %NULL,
+         * the window with the most recent user time for the app
+         * will be used.
+         *
+         * This function has no effect if `app` is not currently running.
+         * @param window Window to be focused
+         * @param timestamp Event timestamp
+         */
+        activate_window(window: Meta.Window | null, timestamp: number): void;
+        /**
+         * Returns %TRUE if the app supports opening a new window through
+         * shell_app_open_new_window() (ie, if calling that function will
+         * result in actually opening a new window and not something else,
+         * like presenting the most recently active one)
+         */
         can_open_new_window(): boolean;
+        /**
+         * Compare one #ShellApp instance to another, in the following way:
+         *   - Running applications sort before not-running applications.
+         *   - If one of them has non-minimized windows and the other does not,
+         *     the one with visible windows is first.
+         *   - Finally, the application which the user interacted with most recently
+         *     compares earlier.
+         * @param other A #ShellApp
+         */
         compare(other: App): number;
+        /**
+         * Order two applications by name.
+         * @param other The other app
+         * @returns -1, 0, or 1; suitable for use as a comparison function for e.g. g_slist_sort()
+         */
         compare_by_name(other: App): number;
+        /**
+         * Look up the icon for this application, and create a #ClutterActor
+         * for it at the given size.
+         * @param size
+         * @returns A floating #ClutterActor
+         */
         create_icon_texture(size: number): Clutter.Actor;
-        get_action_group(): Gio.ActionGroup;
-        get_app_info(): GioUnix.DesktopAppInfo;
+        get_action_group(): Gio.ActionGroup | null;
+        get_app_info(): Gio.DesktopAppInfo;
         get_busy(): boolean;
         get_description(): string;
+        /**
+         * Look up the icon for this application
+         * @returns A #GIcon
+         */
         get_icon(): Gio.Icon;
         get_id(): string;
         get_n_windows(): number;
         get_name(): string;
         get_pids(): number[];
         get_state(): AppState;
+        /**
+         * Get the windows which are associated with this application. The
+         * returned list will be sorted first by whether they're on the
+         * active workspace, then by whether they're visible, and finally
+         * by the time the user last interacted with them.
+         * @returns List of windows
+         */
         get_windows(): Meta.Window[];
         is_on_workspace(workspace: Meta.Workspace): boolean;
+        /**
+         * A window backed application is one which represents just an open
+         * window, i.e. there's no .desktop file association, so we don't know
+         * how to launch it again.
+         */
         is_window_backed(): boolean;
         launch(timestamp: number, workspace: number, gpu_pref: AppLaunchGpu | null): boolean;
         launch_action(action_name: string, timestamp: number, workspace: number): void;
+        /**
+         * Request that the application create a new window.
+         * @param workspace open on this workspace, or -1 for default
+         */
         open_new_window(workspace: number): void;
+        /**
+         * Initiate an asynchronous request to quit this application.
+         * The application may interact with the user, and the user
+         * might cancel the quit request from the application UI.
+         *
+         * This operation may not be supported for all applications.
+         * @returns %TRUE if a quit request is supported for this application
+         */
         request_quit(): boolean;
         update_app_actions(window: Meta.Window): void;
         update_window_actions(window: Meta.Window): void;
@@ -397,16 +745,54 @@ export namespace Shell {
         // Static methods
 
         static get_default(): AppSystem;
+        /**
+         * Wrapper around g_desktop_app_info_search() that replaces results that
+         * don't validate as UTF-8 with the empty string.
+         * @param search_string the search string to use
+         */
         static search(search_string: string): string[][];
 
         // Methods
 
+        /**
+         * Returns all installed apps, as a list of #GAppInfo
+         * @returns a list of #GAppInfo   describing all known applications. This memory is owned by the   #ShellAppSystem and should not be freed.
+         */
         get_installed(): Gio.AppInfo[];
+        /**
+         * Returns the set of applications which currently have at least one
+         * open window.  The returned list will be sorted by shell_app_compare().
+         * @returns Active applications
+         */
         get_running(): App[];
+        /**
+         * Find a #ShellApp corresponding to an id.
+         * @param id
+         * @returns The #ShellApp for id, or %NULL if none
+         */
         lookup_app(id: string): App;
-        lookup_desktop_wmclass(wmclass: string): App;
+        /**
+         * Find a valid application whose .desktop file, without the extension
+         * and properly canonicalized, matches `wmclass`.
+         * @param wmclass A WM_CLASS value
+         * @returns A #ShellApp for @wmclass
+         */
+        lookup_desktop_wmclass(wmclass?: string | null): App;
+        /**
+         * Find a valid application corresponding to a given
+         * heuristically determined application identifier
+         * string, or %NULL if none.
+         * @param id Probable application identifier
+         * @returns A #ShellApp for @name
+         */
         lookup_heuristic_basename(id: string): App;
-        lookup_startup_wmclass(wmclass: string): App;
+        /**
+         * Find a valid application whose .desktop file contains a
+         * StartupWMClass entry matching `wmclass`.
+         * @param wmclass A WM_CLASS value
+         * @returns A #ShellApp for @wmclass
+         */
+        lookup_startup_wmclass(wmclass?: string | null): App;
     }
 
     namespace AppUsage {
@@ -418,6 +804,17 @@ export namespace Shell {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * Track application usage/state data
+     *
+     * This class maintains some usage and state statistics for
+     * applications by keeping track of the approximate time an application's
+     * windows are focused, as well as the last workspace it was seen on.
+     * This time tracking is implemented by watching for focus notifications,
+     * and computing a time delta between them.  Also we watch the
+     * GNOME Session "StatusChanged" signal which by default is emitted after 5
+     * minutes to signify idle.
+     */
     class AppUsage extends GObject.Object {
         static $gtype: GObject.GType<AppUsage>;
 
@@ -460,6 +857,12 @@ export namespace Shell {
 
         // Methods
 
+        /**
+         * Compare `id_a` and `id_b` based on frequency of use.
+         * @param id_a ID of first app
+         * @param id_b ID of second app
+         * @returns -1 if @id_a ranks higher than @id_b, 1 if @id_b ranks higher          than @id_a, and 0 if both rank equally.
+         */
         compare(id_a: string, id_b: string): number;
         get_most_used(): App[];
     }
@@ -484,6 +887,22 @@ export namespace Shell {
         }
     }
 
+    /**
+     * Blur effect for actors
+     *
+     * #ShellBlurEffect is a blur implementation based on Clutter. It also has
+     * an optional brightness property.
+     *
+     * # Modes
+     *
+     * #ShellBlurEffect can work in `SHELL_BLUR_MODE_BACKGROUND` and `SHELL_BLUR_MODE_ACTOR`
+     * modes. The actor mode blurs the actor itself, and all of its children. The
+     * background mode blurs the pixels beneath the actor, but not the actor itself.
+     *
+     * `SHELL_BLUR_MODE_BACKGROUND` can be computationally expensive, since the contents
+     * beneath the actor cannot be cached, so beware of the performance implications
+     * of using this blur mode.
+     */
     class BlurEffect extends Clutter.Effect {
         static $gtype: GObject.GType<BlurEffect>;
 
@@ -624,6 +1043,9 @@ export namespace Shell {
 
         // Properties
 
+        /**
+         * Edge that the gesture may start at. Defaults to the top edge.
+         */
         get side(): Clutter.GestureState;
         set side(val: Clutter.GestureState);
 
@@ -662,7 +1084,15 @@ export namespace Shell {
 
         // Methods
 
+        /**
+         * Gets the edge of the monitor that the edge drag may start at.
+         * @returns the side that the edge drag may start at
+         */
         get_side(): St.Side;
+        /**
+         * Sets the edge of the monitor that the edge drag may start at.
+         * @param side the side
+         */
         set_side(side: St.Side | null): void;
     }
 
@@ -679,6 +1109,13 @@ export namespace Shell {
         interface ConstructorProps extends Clutter.OffscreenEffect.ConstructorProps {}
     }
 
+    /**
+     * An offscreen effect using GLSL
+     *
+     * A #ShellGLSLEffect is a #ClutterOffscreenEffect that allows
+     * running custom GLSL to the vertex and fragment stages of the
+     * graphic pipeline.
+     */
     class GLSLEffect extends Clutter.OffscreenEffect {
         static $gtype: GObject.GType<GLSLEffect>;
 
@@ -721,6 +1158,17 @@ export namespace Shell {
 
         // Methods
 
+        /**
+         * Adds a GLSL snippet to the pipeline used for drawing the effect texture.
+         * See #CoglSnippet for details.
+         *
+         * This is only valid inside the a call to the build_pipeline() virtual
+         * function.
+         * @param hook where to insert the code
+         * @param declarations GLSL declarations
+         * @param code GLSL code
+         * @param is_replace whether Cogl code should be replaced by the custom shader
+         */
         add_glsl_snippet(
             hook: (never | Cogl.SnippetHook) | null,
             declarations: string,
@@ -882,14 +1330,44 @@ export namespace Shell {
 
         // Static methods
 
+        /**
+         * Gets the singleton global object that represents the desktop.
+         */
         static get(): Global;
 
         // Methods
 
+        /**
+         * Marks that we are currently doing work. This is used to to track
+         * whether we are busy for the purposes of shell_global_run_at_leisure().
+         * A count is kept and shell_global_end_work() must be called exactly
+         * as many times as shell_global_begin_work().
+         */
         begin_work(): void;
+        /**
+         * Create a #GAppLaunchContext set up with the correct timestamp, and
+         * targeted to activate on `workspace`.
+         * @param timestamp the timestamp for the launch (or 0 for current time)
+         * @param workspace a workspace index, or -1 to indicate no specific one
+         * @returns A new #GAppLaunchContext
+         */
         create_app_launch_context(timestamp: number, workspace: number): Gio.AppLaunchContext;
+        /**
+         * Marks the end of work that we started with shell_global_begin_work().
+         * If no other work is ongoing and functions have been added with
+         * shell_global_run_at_leisure(), they will be run at the next
+         * opportunity.
+         */
         end_work(): void;
+        /**
+         * Gets app system.
+         * @returns the app system
+         */
         get_app_system(): AppSystem;
+        /**
+         * Gets app usage.
+         * @returns the app usage
+         */
         get_app_usage(): AppUsage;
         get_automation_script(): Gio.File;
         get_backend(): Meta.Backend;
@@ -902,30 +1380,105 @@ export namespace Shell {
         get_force_animations(): boolean;
         get_frame_finish_timestamp(): boolean;
         get_frame_timestamps(): boolean;
+        /**
+         * The shell maintains "persistent" state which will persist after
+         * logout or reboot.
+         * @param property_type Expected data type
+         * @param property_name Name of the property
+         * @returns The value of a serialized property, or %NULL if none stored
+         */
         get_persistent_state(property_type: string, property_name: string): GLib.Variant;
+        /**
+         * Gets the pointer coordinates and current modifier key state.
+         */
         get_pointer(): [number, number, Clutter.ModifierType];
+        /**
+         * The shell maintains "runtime" state which does not persist across
+         * logout or reboot.
+         * @param property_type Expected data type
+         * @param property_name Name of the property
+         * @returns The value of a serialized property, or %NULL if none stored
+         */
         get_runtime_state(property_type: string, property_name: string): GLib.Variant;
         get_screen_height(): number;
         get_screen_width(): number;
         get_session_mode(): string;
+        /**
+         * Get the global GSettings instance.
+         * @returns The GSettings object
+         */
         get_settings(): Gio.Settings;
         get_stage(): Clutter.Stage;
+        /**
+         * Get the global #GDBusProxy instance for the switcheroo-control
+         * daemon.
+         * @returns the #GDBusProxy for the daemon,   or %NULL on error.
+         */
         get_switcheroo_control(): Gio.DBusProxy;
         get_top_window_group(): Clutter.Actor;
         get_userdatadir(): string;
+        /**
+         * Gets the list of #MetaWindowActor for the plugin's screen
+         * @returns the list of windows
+         */
         get_window_actors(): Meta.WindowActor[];
         get_window_group(): Clutter.Actor;
         get_window_manager(): WM;
+        /**
+         * Gets window tracker.
+         * @returns the window tracker
+         */
         get_window_tracker(): WindowTracker;
         get_workspace_manager(): Meta.WorkspaceManager;
+        /**
+         * Show a system error notification.  Use this function
+         * when a user-initiated action results in a non-fatal problem
+         * from causes that may not be under system control.  For
+         * example, an application crash.
+         * @param msg Error message
+         * @param details Error details
+         */
         notify_error(msg: string, details: string): void;
+        /**
+         * Restart the current process.  Only intended for development purposes.
+         */
         reexec_self(): void;
+        /**
+         * Schedules a function to be called the next time the shell is idle.
+         * Idle means here no animations, no redrawing, and no ongoing background
+         * work. Since there is currently no way to hook into the Clutter master
+         * clock and know when is running, the implementation here is somewhat
+         * approximation. Animations may be detected as terminating early if they
+         * can be drawn fast enough so that the event loop goes idle between frames.
+         *
+         * The intent of this function is for performance measurement runs
+         * where a number of actions should be run serially and each action is
+         * timed individually. Using this function for other purposes will
+         * interfere with the ability to use it for performance measurement so
+         * should be avoided.
+         * @param func function to call at leisure
+         */
         run_at_leisure(func: LeisureFunction): void;
         set_force_animations(force: boolean): void;
         set_frame_finish_timestamp(enable: boolean): void;
         set_frame_timestamps(enable: boolean): void;
-        set_persistent_state(property_name: string, variant: GLib.Variant): void;
-        set_runtime_state(property_name: string, variant: GLib.Variant): void;
+        /**
+         * Change the value of serialized persistent state.
+         * @param property_name Name of the property
+         * @param variant A #GVariant, or %NULL to unset
+         */
+        set_persistent_state(property_name: string, variant?: GLib.Variant | null): void;
+        /**
+         * Change the value of serialized runtime state.
+         * @param property_name Name of the property
+         * @param variant A #GVariant, or %NULL to unset
+         */
+        set_runtime_state(property_name: string, variant?: GLib.Variant | null): void;
+        /**
+         * Sets the area of the stage that is responsive to mouse clicks when
+         * we don't have a modal or grab.
+         * @param rectangles a list of #MtkRectangle describing the input region.
+         */
         set_stage_input_region(rectangles: Mtk.Rectangle[]): void;
     }
 
@@ -942,6 +1495,15 @@ export namespace Shell {
         interface ConstructorProps extends Clutter.OffscreenEffect.ConstructorProps {}
     }
 
+    /**
+     * A colorization effect where lightness is inverted but
+     * color is not.
+     *
+     * #ShellInvertLightnessEffect is a sub-class of #ClutterEffect that enhances
+     * the appearance of a clutter actor.  Specifically it inverts the lightness
+     * of a #ClutterActor (e.g., darker colors become lighter, white becomes black,
+     * and white, black).
+     */
     class InvertLightnessEffect extends Clutter.OffscreenEffect {
         static $gtype: GObject.GType<InvertLightnessEffect>;
 
@@ -1030,21 +1592,57 @@ export namespace Shell {
 
         // Properties
 
+        /**
+         * Whether the choice check box is visible or not.
+         */
         get choice_visible(): boolean;
+        /**
+         * Whether the choice check box is visible or not.
+         */
         get choiceVisible(): boolean;
+        /**
+         * Text field for confirmation password
+         */
         get confirm_actor(): Clutter.Text;
         set confirm_actor(val: Clutter.Text);
+        /**
+         * Text field for confirmation password
+         */
         get confirmActor(): Clutter.Text;
         set confirmActor(val: Clutter.Text);
+        /**
+         * Whether the password confirm entry is visible or not.
+         */
         get confirm_visible(): boolean;
+        /**
+         * Whether the password confirm entry is visible or not.
+         */
         get confirmVisible(): boolean;
+        /**
+         * Text field for password
+         */
         get password_actor(): Clutter.Text;
         set password_actor(val: Clutter.Text);
+        /**
+         * Text field for password
+         */
         get passwordActor(): Clutter.Text;
         set passwordActor(val: Clutter.Text);
+        /**
+         * Whether the password entry is visible or not.
+         */
         get password_visible(): boolean;
+        /**
+         * Whether the password entry is visible or not.
+         */
         get passwordVisible(): boolean;
+        /**
+         * Whether the warning label is visible or not.
+         */
         get warning_visible(): boolean;
+        /**
+         * Whether the warning label is visible or not.
+         */
         get warningVisible(): boolean;
 
         /**
@@ -1084,16 +1682,40 @@ export namespace Shell {
 
         // Methods
 
+        /**
+         * Called by implementation when the prompt is cancelled.
+         */
         cancel(): void;
+        /**
+         * Called by the implementation when the prompt completes. There are various
+         * checks done. %TRUE is returned if the prompt actually should complete.
+         * @returns whether the prompt completed
+         */
         complete(): boolean;
         get_choice_visible(): boolean;
-        get_confirm_actor(): Clutter.Text;
+        /**
+         * Get the prompt password text actor
+         * @returns the password actor
+         */
+        get_confirm_actor(): Clutter.Text | null;
         get_confirm_visible(): boolean;
-        get_password_actor(): Clutter.Text;
+        /**
+         * Get the prompt password text actor
+         * @returns the password actor
+         */
+        get_password_actor(): Clutter.Text | null;
         get_password_visible(): boolean;
         get_warning_visible(): boolean;
-        set_confirm_actor(confirm_actor: Clutter.Text): void;
-        set_password_actor(password_actor: Clutter.Text): void;
+        /**
+         * Set the prompt password confirmation text actor
+         * @param confirm_actor the confirm password actor
+         */
+        set_confirm_actor(confirm_actor?: Clutter.Text | null): void;
+        /**
+         * Set the prompt password text actor
+         * @param password_actor the password actor
+         */
+        set_password_actor(password_actor?: Clutter.Text | null): void;
 
         // Inherited properties
         /**
@@ -2143,7 +2765,7 @@ export namespace Shell {
 
         get_show_processes_choices(): string[];
         get_show_processes_message(): string;
-        get_show_processes_pids(): number[];
+        get_show_processes_pids(): GLib.Pid[];
     }
 
     namespace NetworkAgent {
@@ -2215,13 +2837,13 @@ export namespace Shell {
 
         add_vpn_secret(request_id: string, setting_key: string, setting_value: string): void;
         respond(request_id: string, response: NetworkAgentResponse | null): void;
-        search_vpn_plugin(service: string): globalThis.Promise<NM.VpnPluginInfo>;
-        search_vpn_plugin(service: string, callback: Gio.AsyncReadyCallback<this>): void;
+        search_vpn_plugin(service: string): globalThis.Promise<NM.VpnPluginInfo | null>;
+        search_vpn_plugin(service: string, callback: Gio.AsyncReadyCallback<this> | null): void;
         search_vpn_plugin(
             service: string,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<NM.VpnPluginInfo> | void;
-        search_vpn_plugin_finish(result: Gio.AsyncResult): NM.VpnPluginInfo;
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<NM.VpnPluginInfo | null> | void;
+        search_vpn_plugin_finish(result: Gio.AsyncResult): NM.VpnPluginInfo | null;
         set_password(request_id: string, setting_key: string, setting_value: string): void;
 
         // Inherited methods
@@ -2959,6 +3581,25 @@ export namespace Shell {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * Event recorder for performance measurement
+     *
+     * ShellPerfLog provides a way for different parts of the code to
+     * record information for subsequent analysis and interactive
+     * exploration. Events exist of a timestamp, an event ID, and
+     * arguments to the event.
+     *
+     * Emphasis is placed on storing recorded events in a compact
+     * fashion so log recording disturbs the execution of the program
+     * as little as possible, however events should not be recorded
+     * at too fine a granularity - an event that is recorded once
+     * per frame or once per user action is appropriate, an event that
+     * occurs many times per frame is not.
+     *
+     * Arguments are identified by a D-Bus style signature; at the moment
+     * only a limited number of event signatures are supported to
+     * simplify the code.
+     */
     class PerfLog extends GObject.Object {
         static $gtype: GObject.GType<PerfLog>;
 
@@ -2997,23 +3638,119 @@ export namespace Shell {
 
         // Static methods
 
+        /**
+         * Gets the global singleton performance log. This is initially disabled
+         * and must be explicitly enabled with shell_perf_log_set_enabled().
+         */
         static get_default(): PerfLog;
 
         // Methods
 
+        /**
+         * Adds a function that will be called before statistics are recorded.
+         * The function would typically compute one or more statistics values
+         * and call a function such as shell_perf_log_update_statistic_i()
+         * to update the value that will be recorded.
+         * @param callback function to call before recording statistics
+         */
         add_statistics_callback(callback: PerfStatisticsCallback): void;
+        /**
+         * Calls all the update functions added with
+         * shell_perf_log_add_statistics_callback() and then records events
+         * for all statistics, followed by a perf.statisticsCollected event.
+         */
         collect_statistics(): void;
+        /**
+         * Defines a performance event for later recording.
+         * @param name name of the event. This should of the form   '<namespace>.<specific eventf'>, for example   'clutter.stagePaintDone'.
+         * @param description human readable description of the event.
+         * @param signature signature defining the arguments that event takes.   This is a string of type characters, using the same characters   as D-Bus or GVariant. Only a very limited number of signatures   are supported: , '', 's', 'i', and 'x'. This mean respectively:   no arguments, one string, one 32-bit integer, and one 64-bit   integer.
+         */
         define_event(name: string, description: string, signature: string): void;
+        /**
+         * Defines a statistic. A statistic is a numeric value that is stored
+         * by the performance log and recorded periodically or when
+         * shell_perf_log_collect_statistics() is called explicitly.
+         *
+         * Code that defines a statistic should update it by calling
+         * the update function for the particular data type of the statistic,
+         * such as shell_perf_log_update_statistic_i(). This can be done
+         * at any time, but would normally done inside a function registered
+         * with shell_perf_log_add_statistics_callback(). These functions
+         * are called immediately before statistics are recorded.
+         * @param name name of the statistic and of the corresponding event.  This should follow the same guidelines as for shell_perf_log_define_event()
+         * @param description human readable description of the statistic.
+         * @param signature The type of the data stored for statistic. Must  currently be 'i' or 'x'.
+         */
         define_statistic(name: string, description: string, signature: string): void;
+        /**
+         * Dump the definition of currently defined events and statistics, formatted
+         * as JSON, to the specified output stream. The JSON output is an array,
+         * with each element being a dictionary of the form:
+         *
+         * { name: <name of event>,
+         *   description: <description of string,
+         *   statistic: true } (only for statistics)
+         * @param out output stream into which to write the event definitions
+         * @returns %TRUE if the dump succeeded. %FALSE if an IO error occurred
+         */
         dump_events(out: Gio.OutputStream): boolean;
+        /**
+         * Writes the performance event log, formatted as JSON, to the specified
+         * output stream. For performance reasons, the output stream passed
+         * in should generally be a buffered (or memory) output stream, since
+         * it will be written to in small pieces. The JSON output is an array
+         * with the elements of the array also being arrays, of the form
+         * '[' <time>, <event name> [, <event_arg>... ] ']'.
+         * @param out output stream into which to write the event log
+         * @returns %TRUE if the dump succeeded. %FALSE if an IO error occurred
+         */
         dump_log(out: Gio.OutputStream): boolean;
+        /**
+         * Records a performance event with no arguments.
+         * @param name name of the event
+         */
         event(name: string): void;
+        /**
+         * Records a performance event with one 32-bit integer argument.
+         * @param name name of the event
+         * @param arg the argument
+         */
         event_i(name: string, arg: number): void;
+        /**
+         * Records a performance event with one string argument.
+         * @param name name of the event
+         * @param arg the argument
+         */
         event_s(name: string, arg: string): void;
+        /**
+         * Records a performance event with one 64-bit integer argument.
+         * @param name name of the event
+         * @param arg the argument
+         */
         event_x(name: string, arg: number): void;
+        /**
+         * Replays the log by calling the given function for each event
+         * in the log.
+         * @param replay_function function to call for each event in the log
+         */
         replay(replay_function: PerfReplayFunction): void;
+        /**
+         * Sets whether events are currently being recorded.
+         * @param enabled whether to record events
+         */
         set_enabled(enabled: boolean): void;
+        /**
+         * Updates the current value of an 32-bit integer statistic.
+         * @param name name of the statistic
+         * @param value new value for the statistic
+         */
         update_statistic_i(name: string, value: number): void;
+        /**
+         * Updates the current value of an 64-bit integer statistic.
+         * @param name name of the statistic
+         * @param value new value for the statistic
+         */
         update_statistic_x(name: string, value: number): void;
     }
 
@@ -3089,6 +3826,12 @@ export namespace Shell {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * Grabs screenshots of areas and/or windows
+     *
+     * The #ShellScreenshot object is used to take screenshots of screen
+     * areas or windows and write them out as png files.
+     */
     class Screenshot extends GObject.Object {
         static $gtype: GObject.GType<Screenshot>;
 
@@ -3129,6 +3872,22 @@ export namespace Shell {
 
         // Static methods
 
+        /**
+         * Composite a rectangle defined by x, y, width, height from the texture to a
+         * pixbuf and write it as a PNG image into the stream.
+         * @param texture the source texture
+         * @param x x coordinate of the rectangle
+         * @param y y coordinate of the rectangle
+         * @param width width of the rectangle, or -1 to use the full texture
+         * @param height height of the rectangle, or -1 to use the full texture
+         * @param scale scale of the source texture
+         * @param cursor the cursor texture
+         * @param cursor_x x coordinate to put the cursor texture at, relative to the full source texture
+         * @param cursor_y y coordinate to put the cursor texture at, relative to the full source texture
+         * @param cursor_scale scale of the cursor texture
+         * @param stream the stream to write the PNG image into
+         * @param callback function to call returning success or failure
+         */
         static composite_to_stream(
             texture: Cogl.Texture,
             x: number,
@@ -3136,32 +3895,93 @@ export namespace Shell {
             width: number,
             height: number,
             scale: number,
-            cursor: Cogl.Texture,
+            cursor: Cogl.Texture | null,
             cursor_x: number,
             cursor_y: number,
             cursor_scale: number,
             stream: Gio.OutputStream,
-            callback: Gio.AsyncReadyCallback<Screenshot>,
+            callback?: Gio.AsyncReadyCallback<Screenshot> | null,
         ): void;
-        static composite_to_stream_finish(result: Gio.AsyncResult): GdkPixbuf.Pixbuf;
+        /**
+         * Finish the asynchronous operation started by
+         * shell_screenshot_composite_to_stream () and obtain its result.
+         * @param result the #GAsyncResult that was provided to the callback
+         */
+        static composite_to_stream_finish(result: Gio.AsyncResult): GdkPixbuf.Pixbuf | null;
 
         // Methods
 
+        /**
+         * Picks the pixel at `x,` `y` and returns its color as #CoglColor.
+         * @param x The X coordinate to pick
+         * @param y The Y coordinate to pick
+         */
         pick_color(x: number, y: number): globalThis.Promise<Cogl.Color>;
-        pick_color(x: number, y: number, callback: Gio.AsyncReadyCallback<this>): void;
+        /**
+         * Picks the pixel at `x,` `y` and returns its color as #CoglColor.
+         * @param x The X coordinate to pick
+         * @param y The Y coordinate to pick
+         * @param callback function to call returning success or failure of the async grabbing
+         */
+        pick_color(x: number, y: number, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Picks the pixel at `x,` `y` and returns its color as #CoglColor.
+         * @param x The X coordinate to pick
+         * @param y The Y coordinate to pick
+         * @param callback function to call returning success or failure of the async grabbing
+         */
         pick_color(
             x: number,
             y: number,
-            callback?: Gio.AsyncReadyCallback<this>,
+            callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Cogl.Color> | void;
+        /**
+         * Finish the asynchronous operation started by shell_screenshot_pick_color()
+         * and obtain its result.
+         * @param result the #GAsyncResult that was provided to the callback
+         * @returns whether the operation was successful
+         */
         pick_color_finish(result: Gio.AsyncResult): [boolean, Cogl.Color];
+        /**
+         * Takes a screenshot of the whole screen
+         * in `stream` as png image.
+         * @param include_cursor Whether to include the cursor or not
+         * @param stream The stream for the screenshot
+         */
         screenshot(include_cursor: boolean, stream: Gio.OutputStream): globalThis.Promise<Mtk.Rectangle>;
-        screenshot(include_cursor: boolean, stream: Gio.OutputStream, callback: Gio.AsyncReadyCallback<this>): void;
+        /**
+         * Takes a screenshot of the whole screen
+         * in `stream` as png image.
+         * @param include_cursor Whether to include the cursor or not
+         * @param stream The stream for the screenshot
+         * @param callback function to call returning success or failure of the async grabbing
+         */
         screenshot(
             include_cursor: boolean,
             stream: Gio.OutputStream,
-            callback?: Gio.AsyncReadyCallback<this>,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Takes a screenshot of the whole screen
+         * in `stream` as png image.
+         * @param include_cursor Whether to include the cursor or not
+         * @param stream The stream for the screenshot
+         * @param callback function to call returning success or failure of the async grabbing
+         */
+        screenshot(
+            include_cursor: boolean,
+            stream: Gio.OutputStream,
+            callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Mtk.Rectangle> | void;
+        /**
+         * Takes a screenshot of the passed in area and saves it
+         * in `stream` as png image.
+         * @param x The X coordinate of the area
+         * @param y The Y coordinate of the area
+         * @param width The width of the area
+         * @param height The height of the area
+         * @param stream The stream for the screenshot
+         */
         screenshot_area(
             x: number,
             y: number,
@@ -3169,51 +3989,129 @@ export namespace Shell {
             height: number,
             stream: Gio.OutputStream,
         ): globalThis.Promise<Mtk.Rectangle>;
+        /**
+         * Takes a screenshot of the passed in area and saves it
+         * in `stream` as png image.
+         * @param x The X coordinate of the area
+         * @param y The Y coordinate of the area
+         * @param width The width of the area
+         * @param height The height of the area
+         * @param stream The stream for the screenshot
+         * @param callback function to call returning success or failure of the async grabbing
+         */
         screenshot_area(
             x: number,
             y: number,
             width: number,
             height: number,
             stream: Gio.OutputStream,
-            callback: Gio.AsyncReadyCallback<this>,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * Takes a screenshot of the passed in area and saves it
+         * in `stream` as png image.
+         * @param x The X coordinate of the area
+         * @param y The Y coordinate of the area
+         * @param width The width of the area
+         * @param height The height of the area
+         * @param stream The stream for the screenshot
+         * @param callback function to call returning success or failure of the async grabbing
+         */
         screenshot_area(
             x: number,
             y: number,
             width: number,
             height: number,
             stream: Gio.OutputStream,
-            callback?: Gio.AsyncReadyCallback<this>,
+            callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Mtk.Rectangle> | void;
+        /**
+         * Finish the asynchronous operation started by shell_screenshot_screenshot_area()
+         * and obtain its result.
+         * @param result the #GAsyncResult that was provided to the callback
+         * @returns whether the operation was successful
+         */
         screenshot_area_finish(result: Gio.AsyncResult): [boolean, Mtk.Rectangle];
+        /**
+         * Finish the asynchronous operation started by shell_screenshot_screenshot()
+         * and obtain its result.
+         * @param result the #GAsyncResult that was provided to the callback
+         * @returns whether the operation was successful
+         */
         screenshot_finish(result: Gio.AsyncResult): [boolean, Mtk.Rectangle];
+        /**
+         * Takes a screenshot of the whole screen as #ClutterContent.
+         */
         screenshot_stage_to_content(): globalThis.Promise<
-            [Clutter.Content, number, Clutter.Content, Graphene.Point, number]
+            [Clutter.Content, number, Clutter.Content | null, Graphene.Point | null, number]
         >;
-        screenshot_stage_to_content(callback: Gio.AsyncReadyCallback<this>): void;
+        /**
+         * Takes a screenshot of the whole screen as #ClutterContent.
+         * @param callback function to call returning success or failure of the async grabbing
+         */
+        screenshot_stage_to_content(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Takes a screenshot of the whole screen as #ClutterContent.
+         * @param callback function to call returning success or failure of the async grabbing
+         */
         screenshot_stage_to_content(
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<[Clutter.Content, number, Clutter.Content, Graphene.Point, number]> | void;
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<[Clutter.Content, number, Clutter.Content | null, Graphene.Point | null, number]> | void;
+        /**
+         * Finish the asynchronous operation started by
+         * shell_screenshot_screenshot_stage_to_content() and obtain its result.
+         * @param result the #GAsyncResult that was provided to the callback
+         * @returns the #ClutterContent, or NULL
+         */
         screenshot_stage_to_content_finish(
             result: Gio.AsyncResult,
-        ): [Clutter.Content, number, Clutter.Content, Graphene.Point, number];
+        ): [Clutter.Content, number, Clutter.Content | null, Graphene.Point | null, number];
+        /**
+         * Takes a screenshot of the focused window (optionally omitting the frame)
+         * in `stream` as png image.
+         * @param include_frame Whether to include the frame or not
+         * @param include_cursor Whether to include the cursor or not
+         * @param stream The stream for the screenshot
+         */
         screenshot_window(
             include_frame: boolean,
             include_cursor: boolean,
             stream: Gio.OutputStream,
         ): globalThis.Promise<Mtk.Rectangle>;
+        /**
+         * Takes a screenshot of the focused window (optionally omitting the frame)
+         * in `stream` as png image.
+         * @param include_frame Whether to include the frame or not
+         * @param include_cursor Whether to include the cursor or not
+         * @param stream The stream for the screenshot
+         * @param callback function to call returning success or failure of the async grabbing
+         */
         screenshot_window(
             include_frame: boolean,
             include_cursor: boolean,
             stream: Gio.OutputStream,
-            callback: Gio.AsyncReadyCallback<this>,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * Takes a screenshot of the focused window (optionally omitting the frame)
+         * in `stream` as png image.
+         * @param include_frame Whether to include the frame or not
+         * @param include_cursor Whether to include the cursor or not
+         * @param stream The stream for the screenshot
+         * @param callback function to call returning success or failure of the async grabbing
+         */
         screenshot_window(
             include_frame: boolean,
             include_cursor: boolean,
             stream: Gio.OutputStream,
-            callback?: Gio.AsyncReadyCallback<this>,
+            callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Mtk.Rectangle> | void;
+        /**
+         * Finish the asynchronous operation started by shell_screenshot_screenshot_window()
+         * and obtain its result.
+         * @param result the #GAsyncResult that was provided to the callback
+         * @returns whether the operation was successful
+         */
         screenshot_window_finish(result: Gio.AsyncResult): [boolean, Mtk.Rectangle];
     }
 
@@ -3939,6 +4837,16 @@ export namespace Shell {
                 Clutter.Animatable.ConstructorProps {}
     }
 
+    /**
+     * Pure "Z-axis" container class
+     *
+     * A #ShellStack draws its children on top of each other,
+     * aligned to the top left.  It will be sized in width/height
+     * according to the largest such dimension of its children, and
+     * all children will be allocated that size.  This differs
+     * from #ClutterGroup which allocates its children their natural
+     * size, even if that would overflow the size allocated to the stack.
+     */
     class Stack extends St.Widget implements Atk.ImplementorIface, Clutter.Animatable {
         static $gtype: GObject.GType<Stack>;
 
@@ -4561,8 +5469,16 @@ export namespace Shell {
 
         // Methods
 
+        /**
+         * Fakes a press and release on `icon`. `event` must be a
+         * %CLUTTER_BUTTON_RELEASE, %CLUTTER_KEY_PRESS or %CLUTTER_KEY_RELEASE event.
+         * Its relevant details will be passed on to the icon, but its
+         * coordinates will be ignored; the click is
+         * always made on the center of `icon`.
+         * @param event the #ClutterEvent triggering the fake click
+         */
         click(event: Clutter.Event): void;
-        get_pid(): number;
+        get_pid(): never;
         get_title(): string;
         get_wm_class(): string;
 
@@ -5145,12 +6061,36 @@ export namespace Shell {
 
         // Methods
 
+        /**
+         * The plugin must call this after the user responded to the confirmation dialog.
+         * @param ok if the new configuration was OK
+         */
         complete_display_change(ok: boolean): void;
+        /**
+         * The plugin must call this when it has completed a window destroy effect.
+         * @param actor the MetaWindowActor actor
+         */
         completed_destroy(actor: Meta.WindowActor): void;
+        /**
+         * The plugin must call this when it has completed a window map effect.
+         * @param actor the MetaWindowActor actor
+         */
         completed_map(actor: Meta.WindowActor): void;
+        /**
+         * The plugin must call this when it has completed a window minimize effect.
+         * @param actor the MetaWindowActor actor
+         */
         completed_minimize(actor: Meta.WindowActor): void;
         completed_size_change(actor: Meta.WindowActor): void;
+        /**
+         * The plugin must call this when it has finished switching the
+         * workspace.
+         */
         completed_switch_workspace(): void;
+        /**
+         * The plugin must call this when it has completed a window unminimize effect.
+         * @param actor the MetaWindowActor actor
+         */
         completed_unminimize(actor: Meta.WindowActor): void;
     }
 
@@ -5798,9 +6738,28 @@ export namespace Shell {
 
         // Methods
 
-        add_window(window: Meta.Window): Clutter.Actor;
+        /**
+         * Creates a ClutterActor drawing the texture of `window` and adds it
+         * to the container. If `window` is already part of the preview, this
+         * function will do nothing.
+         * @param window the #MetaWindow
+         * @returns The newly created actor drawing @window
+         */
+        add_window(window: Meta.Window): Clutter.Actor | null;
         get_bounding_box(): Clutter.ActorBox;
+        /**
+         * Gets an array of all MetaWindows that were added to the layout
+         * using shell_window_preview_layout_add_window(), ordered by the
+         * insertion order.
+         * @returns The list of windows
+         */
         get_windows(): Meta.Window[];
+        /**
+         * Removes a MetaWindow `window` from the preview which has been added
+         * previously using shell_window_preview_layout_add_window().
+         * If `window` is not part of preview, this function will do nothing.
+         * @param window the #MetaWindow
+         */
         remove_window(window: Meta.Window): void;
     }
 
@@ -5820,6 +6779,14 @@ export namespace Shell {
         }
     }
 
+    /**
+     * Associate windows with applications
+     *
+     * Maintains a mapping from windows to applications (.desktop file ids).
+     * It currently implements this with some heuristics on the WM_CLASS X11
+     * property (and some static override regexps); in the future, we want to
+     * have it also track through startup-notification.
+     */
     class WindowTracker extends GObject.Object {
         static $gtype: GObject.GType<WindowTracker>;
 
@@ -5867,8 +6834,13 @@ export namespace Shell {
 
         // Methods
 
+        /**
+         * Look up the application corresponding to a process.
+         * @param pid A Unix process identifier
+         * @returns A #ShellApp, or %NULL if none
+         */
         get_app_from_pid(pid: number): App;
-        get_focus_app(): App;
+        get_focus_app(): App | null;
         get_startup_sequences(): Meta.StartupSequence[];
         get_window_app(metawin: Meta.Window): App;
     }
@@ -6469,90 +7441,16 @@ export namespace Shell {
         stop_emission_by_name(detailedName: string): void;
     }
 
-    class AppClass {
-        static $gtype: GObject.GType<AppClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    class AppSystemClass {
-        static $gtype: GObject.GType<AppSystemClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    class AppUsageClass {
-        static $gtype: GObject.GType<AppUsageClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    class BlurEffectClass {
-        static $gtype: GObject.GType<BlurEffectClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    class CameraMonitorClass {
-        static $gtype: GObject.GType<CameraMonitorClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    class EdgeDragGestureClass {
-        static $gtype: GObject.GType<EdgeDragGestureClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    class GLSLEffectClass {
-        static $gtype: GObject.GType<GLSLEffectClass>;
-
-        // Fields
-
-        base_pipeline: Cogl.Pipeline;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    class GlobalClass {
-        static $gtype: GObject.GType<GlobalClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    class InvertLightnessEffectClass {
-        static $gtype: GObject.GType<InvertLightnessEffectClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    class KeyringPromptClass {
-        static $gtype: GObject.GType<KeyringPromptClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
+    type AppClass = typeof App;
+    type AppSystemClass = typeof AppSystem;
+    type AppUsageClass = typeof AppUsage;
+    type BlurEffectClass = typeof BlurEffect;
+    type CameraMonitorClass = typeof CameraMonitor;
+    type EdgeDragGestureClass = typeof EdgeDragGesture;
+    type GLSLEffectClass = typeof GLSLEffect;
+    type GlobalClass = typeof Global;
+    type InvertLightnessEffectClass = typeof InvertLightnessEffect;
+    type KeyringPromptClass = typeof KeyringPrompt;
     class MemoryInfo {
         static $gtype: GObject.GType<MemoryInfo>;
 
@@ -6582,111 +7480,20 @@ export namespace Shell {
         _init(...args: any[]): void;
     }
 
-    class MountOperationClass {
-        static $gtype: GObject.GType<MountOperationClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    class NetworkAgentClass {
-        static $gtype: GObject.GType<NetworkAgentClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    class PerfLogClass {
-        static $gtype: GObject.GType<PerfLogClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    class PolkitAuthenticationAgentClass {
-        static $gtype: GObject.GType<PolkitAuthenticationAgentClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    class ScreenshotClass {
-        static $gtype: GObject.GType<ScreenshotClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    class SecureTextBufferClass {
-        static $gtype: GObject.GType<SecureTextBufferClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    class SquareBinClass {
-        static $gtype: GObject.GType<SquareBinClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    class StackClass {
-        static $gtype: GObject.GType<StackClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    class TrayIconClass {
-        static $gtype: GObject.GType<TrayIconClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    class TrayManagerClass {
-        static $gtype: GObject.GType<TrayManagerClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    class WMClass {
-        static $gtype: GObject.GType<WMClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    class WindowPreviewClass {
-        static $gtype: GObject.GType<WindowPreviewClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    class WindowPreviewLayoutClass {
-        static $gtype: GObject.GType<WindowPreviewLayoutClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    class WindowPreviewLayoutPrivate {
+    type MountOperationClass = typeof MountOperation;
+    type NetworkAgentClass = typeof NetworkAgent;
+    type PerfLogClass = typeof PerfLog;
+    type PolkitAuthenticationAgentClass = typeof PolkitAuthenticationAgent;
+    type ScreenshotClass = typeof Screenshot;
+    type SecureTextBufferClass = typeof SecureTextBuffer;
+    type SquareBinClass = typeof SquareBin;
+    type StackClass = typeof Stack;
+    type TrayIconClass = typeof TrayIcon;
+    type TrayManagerClass = typeof TrayManager;
+    type WMClass = typeof WM;
+    type WindowPreviewClass = typeof WindowPreview;
+    type WindowPreviewLayoutClass = typeof WindowPreviewLayout;
+    abstract class WindowPreviewLayoutPrivate {
         static $gtype: GObject.GType<WindowPreviewLayoutPrivate>;
 
         // Constructors
@@ -6694,22 +7501,8 @@ export namespace Shell {
         _init(...args: any[]): void;
     }
 
-    class WindowTrackerClass {
-        static $gtype: GObject.GType<WindowTrackerClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    class WorkspaceBackgroundClass {
-        static $gtype: GObject.GType<WorkspaceBackgroundClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
+    type WindowTrackerClass = typeof WindowTracker;
+    type WorkspaceBackgroundClass = typeof WorkspaceBackground;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

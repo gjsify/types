@@ -9,7 +9,5 @@
 
 import './clutterx11-1.0-ambient.d.ts';
 
-import './clutterx11-1.0-import.d.ts';
-
 import ClutterX11 from './clutterx11-1.0.js';
 export default ClutterX11;

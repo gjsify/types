@@ -2040,7 +2040,7 @@ export namespace Accounts {
          * Get the #GDesktopAppInfo of the application.
          * @returns the #GDesktopAppInfo for @self, or %NULL if failed.
          */
-        get_desktop_app_info(): never;
+        get_desktop_app_info(): Gio.DesktopAppInfo;
         /**
          * Get the translation domain of the #AgApplication.
          * @returns the translation domain.

@@ -203,8 +203,6 @@ export namespace GConf {
          * engine you want. If someone else is already using the default
          * #GConfClient, this function returns the same one they're using, but
          * with the reference count incremented. So you have to unref either way.
-         *
-         * It's important to call g_type_init() before using this GObject, to initialize the type system.
          */
         static get_default(): Client;
 

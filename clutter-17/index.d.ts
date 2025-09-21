@@ -9,7 +9,5 @@
 
 import './clutter-17-ambient.d.ts';
 
-import './clutter-17-import.d.ts';
-
 import Clutter from './clutter-17.js';
 export default Clutter;

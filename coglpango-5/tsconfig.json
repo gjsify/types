@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    // General settings for code interpretation
+    "target": "ESNext",
+    "module": "NodeNext",
+    "lib": ["ESNext"],
+    "types": [],
+    "experimentalDecorators": true,
+    "moduleResolution": "NodeNext",
+    "noEmit": true,
+    "noEmitOnError": false,
+    "baseUrl": "./",
+    "rootDir": ".",
+    // General settings for code generation
+    "removeComments": false,
+    "inlineSourceMap": false,
+    "inlineSources": false,
+    "newLine": "LF",
+    // Show diagnostics
+    "diagnostics": true
+  },
+  "include": ["./coglpango-5.d.ts"]
+}
+
+

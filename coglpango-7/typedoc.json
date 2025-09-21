@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./coglpango-7.d.ts"],
+    "readme": "./README.md",
+    "name": "CoglPango-7",
+    "tsconfig": "./tsconfig.json"
+}
+

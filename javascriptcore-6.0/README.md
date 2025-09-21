@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/javascriptcore-6.0)
 
 
-GJS TypeScript type definitions for JavaScriptCore-6.0, generated from library version 2.49.4 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.37.
+GJS TypeScript type definitions for JavaScriptCore-6.0, generated from library version 2.50.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.38.
 
 ## Install
 

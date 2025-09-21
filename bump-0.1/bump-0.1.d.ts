@@ -117,8 +117,6 @@ export namespace Bump {
         poll_timed(wait: GLib.TimeSpan): any;
         peek_timed(wait: GLib.TimeSpan): any;
         offer(element: any): boolean;
-        // Conflicted with Gee.PriorityQueue.offer
-        offer(...args: never[]): any;
         get_waiting_threads(): number;
     }
 

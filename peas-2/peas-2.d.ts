@@ -252,11 +252,9 @@ export namespace Peas {
          * Enable a loader, enables a loader for plugins.
          *
          * The C plugin loader is always enabled. The other plugin
-         * loaders are: "gjs", "lua5.1", and "python".
+         * loaders are: gjs, lua5.1, python and python3.
          *
-         * Note that the "python" loader is Python 3 only.
-         *
-         * For instance, the following code will enable Python 3 plugins
+         * For instance, the following code will enable Python 2 plugins
          * to be loaded:
          *
          * ```c
@@ -2298,7 +2296,7 @@ export namespace Peas {
      * Authors=Steve Frécinaux &lt;code`istique`.net&gt;
      * Copyright=Copyright © 2009-10 Steve Frécinaux
      * Website=https://wiki.gnome.org/Projects/Libpeas
-     * Help=https://gitlab.gnome.org/GNOME/libpeas
+     * Help=http://library.gnome.org/devel/libpeas/stable/
      * Hidden=false
      * ```
      */

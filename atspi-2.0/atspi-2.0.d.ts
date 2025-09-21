@@ -2023,7 +2023,6 @@ export namespace Atspi {
      */
     const LOCALE_TYPE_COUNT: number;
     const MATCHTYPES_COUNT: number;
-    const MAX_CHILDREN: number;
     /**
      * One higher than the highest valid value of #AtspiModifierType.
      */
@@ -2877,7 +2876,7 @@ export namespace Atspi {
          * @param rule An #AtspiMatchRule describing the match criteria.
          * @param sortby An #AtspiCollectionSortOrder specifying the way the results are to          be sorted.
          * @param count The maximum number of results to return, or 0 for no limit.
-         * @param traverse Whether to traverse the accessible subtree (in case         of #TRUE) or only the direct children (on case of #FALSE).
+         * @param traverse Not supported.
          * @returns All          #AtspiAccessible objects matching the given match rule.
          */
         get_matches(
@@ -2894,7 +2893,7 @@ export namespace Atspi {
          * @param sortby An #AtspiCollectionSortOrder specifying the way the results are to          be sorted.
          * @param tree An #AtspiCollectionTreeTraversalType specifying restrictions on          the objects to be traversed.
          * @param count The maximum number of results to return, or 0 for no limit.
-         * @param traverse Whether to traverse the accessible subtree (in case         of #TRUE) or only the direct children (on case of #FALSE).
+         * @param traverse Not supported.
          * @returns All          #AtspiAccessible objects matching the given match rule that preceed          @current_object.
          */
         get_matches_from(
@@ -2914,7 +2913,7 @@ export namespace Atspi {
          * @param tree An #AtspiCollectionTreeTraversalType specifying restrictions on          the objects to be traversed.
          * @param limit_scope If #TRUE, only descendants of @current_object's parent          will be returned. Otherwise (if #FALSE), any accessible may be          returned if it would preceed @current_object in a flattened          hierarchy.
          * @param count The maximum number of results to return, or 0 for no limit.
-         * @param traverse Whether to traverse the accessible subtree (in case         of #TRUE) or only the direct children (on case of #FALSE).
+         * @param traverse Not supported.
          * @returns All          #AtspiAccessible objects matching the given match rule after          @current_object.
          */
         get_matches_to(
@@ -4410,7 +4409,6 @@ export namespace Atspi {
          * @param callback the   function to call when the given key is pressed.
          */
         add_key_watcher(callback: KeyCallback): void;
-        clear_key_grabs(): void;
         /**
          * Synthesizes a mouse event at a specific screen coordinate.
          * Most AT clients should use the #AccessibleAction interface when
@@ -5749,7 +5747,7 @@ export namespace Atspi {
          * @param rule An #AtspiMatchRule describing the match criteria.
          * @param sortby An #AtspiCollectionSortOrder specifying the way the results are to          be sorted.
          * @param count The maximum number of results to return, or 0 for no limit.
-         * @param traverse Whether to traverse the accessible subtree (in case         of #TRUE) or only the direct children (on case of #FALSE).
+         * @param traverse Not supported.
          * @returns All          #AtspiAccessible objects matching the given match rule.
          */
         get_matches(
@@ -5766,7 +5764,7 @@ export namespace Atspi {
          * @param sortby An #AtspiCollectionSortOrder specifying the way the results are to          be sorted.
          * @param tree An #AtspiCollectionTreeTraversalType specifying restrictions on          the objects to be traversed.
          * @param count The maximum number of results to return, or 0 for no limit.
-         * @param traverse Whether to traverse the accessible subtree (in case         of #TRUE) or only the direct children (on case of #FALSE).
+         * @param traverse Not supported.
          * @returns All          #AtspiAccessible objects matching the given match rule that preceed          @current_object.
          */
         get_matches_from(
@@ -5786,7 +5784,7 @@ export namespace Atspi {
          * @param tree An #AtspiCollectionTreeTraversalType specifying restrictions on          the objects to be traversed.
          * @param limit_scope If #TRUE, only descendants of @current_object's parent          will be returned. Otherwise (if #FALSE), any accessible may be          returned if it would preceed @current_object in a flattened          hierarchy.
          * @param count The maximum number of results to return, or 0 for no limit.
-         * @param traverse Whether to traverse the accessible subtree (in case         of #TRUE) or only the direct children (on case of #FALSE).
+         * @param traverse Not supported.
          * @returns All          #AtspiAccessible objects matching the given match rule after          @current_object.
          */
         get_matches_to(

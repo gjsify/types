@@ -2083,9 +2083,9 @@ export namespace Gpseq {
 
         // Inherited methods
         hash(): number;
-        equal_to(object?: any | null): boolean;
+        equal_to(object: any): boolean;
         vfunc_hash(): number;
-        vfunc_equal_to(object?: any | null): boolean;
+        vfunc_equal_to(object: any): boolean;
         get_value_type(): GObject.GType;
         get_value(): any;
         get_exception(): GLib.Error;
@@ -4778,14 +4778,9 @@ export namespace Gpseq {
         // Inherited methods
         foreach(f: Gee.ForallFunc): boolean;
         stream(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.StreamFunc): Gee.Iterator;
-        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed?: any | null): any | null;
+        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: any): any;
         map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.MapFunc): Gee.Iterator;
-        scan(
-            a_type: GObject.GType,
-            a_dup_func: GObject.BoxedCopyFunc,
-            f: Gee.FoldFunc,
-            seed?: any | null,
-        ): Gee.Iterator;
+        scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: any): Gee.Iterator;
         filter(pred: Gee.Predicate): Gee.Iterator;
         chop(offset: number, length: number): Gee.Iterator;
         flat_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FlatMapFunc): Gee.Iterator;
@@ -4793,25 +4788,15 @@ export namespace Gpseq {
         first_match(pred: Gee.Predicate): any | null;
         any_match(pred: Gee.Predicate): boolean;
         all_match(pred: Gee.Predicate): boolean;
-        max(compare: GLib.CompareDataFunc): any | null;
-        min(compare: GLib.CompareDataFunc): any | null;
+        max(compare: GLib.CompareDataFunc): any;
+        min(compare: GLib.CompareDataFunc): any;
         order_by(compare?: GLib.CompareDataFunc | null): Gee.Iterator;
         get_element_type(): GObject.GType;
         vfunc_foreach(f: Gee.ForallFunc): boolean;
         vfunc_stream(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.StreamFunc): Gee.Iterator;
-        vfunc_fold(
-            a_type: GObject.GType,
-            a_dup_func: GObject.BoxedCopyFunc,
-            f: Gee.FoldFunc,
-            seed?: any | null,
-        ): any | null;
+        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: any): any;
         vfunc_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.MapFunc): Gee.Iterator;
-        vfunc_scan(
-            a_type: GObject.GType,
-            a_dup_func: GObject.BoxedCopyFunc,
-            f: Gee.FoldFunc,
-            seed?: any | null,
-        ): Gee.Iterator;
+        vfunc_scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: any): Gee.Iterator;
         vfunc_filter(pred: Gee.Predicate): Gee.Iterator;
         vfunc_chop(offset: number, length: number): Gee.Iterator;
         vfunc_flat_map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FlatMapFunc): Gee.Iterator;
@@ -4819,8 +4804,8 @@ export namespace Gpseq {
         vfunc_first_match(pred: Gee.Predicate): any | null;
         vfunc_any_match(pred: Gee.Predicate): boolean;
         vfunc_all_match(pred: Gee.Predicate): boolean;
-        vfunc_max(compare: GLib.CompareDataFunc): any | null;
-        vfunc_min(compare: GLib.CompareDataFunc): any | null;
+        vfunc_max(compare: GLib.CompareDataFunc): any;
+        vfunc_min(compare: GLib.CompareDataFunc): any;
         vfunc_order_by(compare?: GLib.CompareDataFunc | null): Gee.Iterator;
         vfunc_get_element_type(): GObject.GType;
         iterator(): Gee.Iterator;

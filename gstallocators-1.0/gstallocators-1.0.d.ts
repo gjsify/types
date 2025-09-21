@@ -23,11 +23,6 @@ export namespace GstAllocators {
     const ALLOCATOR_DMABUF: string;
     const ALLOCATOR_FD: string;
     /**
-     * Name of this allocator, to be used for example with gst_allocator_find() and
-     * gst_memory_is_type().
-     */
-    const ALLOCATOR_SHM: string;
-    /**
      * Constant that defines the caps feature name for DMA buffer sharing.
      *
      * It has to be used for non-mappable dma-buf only, i.e. when the underlying
@@ -360,84 +355,10 @@ export namespace GstAllocators {
         static alloc(allocator: Gst.Allocator, fd: number, size: number, flags: FdMemoryFlags): Gst.Memory | null;
     }
 
-    namespace ShmAllocator {
-        // Signal signatures
-        interface SignalSignatures extends FdAllocator.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends FdAllocator.ConstructorProps {}
-    }
-
-    /**
-     * This is a subclass of #GstFdAllocator that implements the
-     * gst_allocator_alloc() method using `memfd_create()` when available, POSIX
-     * `shm_open()` otherwise. Platforms not supporting any of those (Windows) will
-     * always return %NULL.
-     *
-     * Note that allocating new shared memories has a significant performance cost,
-     * it is thus recommended to keep a pool of pre-allocated #GstMemory, using
-     * #GstBufferPool. For that reason, this allocator has the
-     * %GST_ALLOCATOR_FLAG_NO_COPY flag set.
-     */
-    class ShmAllocator extends FdAllocator {
-        static $gtype: GObject.GType<ShmAllocator>;
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: ShmAllocator.SignalSignatures;
-
-        // Constructors
-
-        constructor(properties?: Partial<ShmAllocator.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        // Signals
-
-        connect<K extends keyof ShmAllocator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ShmAllocator.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof ShmAllocator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ShmAllocator.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        emit<K extends keyof ShmAllocator.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ShmAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Static methods
-
-        /**
-         * Get the #GstShmAllocator singleton previously registered with
-         * gst_shm_allocator_init_once().
-         */
-        static get(): Gst.Allocator | null;
-        /**
-         * Register a #GstShmAllocator using gst_allocator_register() with the name
-         * %GST_ALLOCATOR_SHM. This is no-op after the first call.
-         */
-        static init_once(): void;
-    }
-
     type DRMDumbAllocatorClass = typeof DRMDumbAllocator;
     type DmaBufAllocatorClass = typeof DmaBufAllocator;
     type FdAllocatorClass = typeof FdAllocator;
     type PhysMemoryAllocatorInterface = typeof PhysMemoryAllocator;
-    type ShmAllocatorClass = typeof ShmAllocator;
     namespace PhysMemoryAllocator {
         /**
          * Interface for implementing PhysMemoryAllocator.
@@ -446,11 +367,6 @@ export namespace GstAllocators {
         interface Interface {
             // Virtual methods
 
-            /**
-             * Implementations shall return the physicall memory address
-             *    that is backing the provided memory, or 0 if none.
-             * @param mem
-             */
             vfunc_get_phys_addr(mem: Gst.Memory): never;
         }
 

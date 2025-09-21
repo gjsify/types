@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/xmlb-2.0)
 
 
-GJS TypeScript type definitions for Xmlb-2.0, generated from library version 0.3.24 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.37.
+GJS TypeScript type definitions for Xmlb-2.0, generated from library version 0.3.24 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.38.
 
 ## Install
 

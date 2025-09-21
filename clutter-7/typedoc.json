@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./clutter-7.d.ts"],
+    "readme": "./README.md",
+    "name": "Clutter-7",
+    "tsconfig": "./tsconfig.json"
+}
+

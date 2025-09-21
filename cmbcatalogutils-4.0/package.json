@@ -1,6 +1,6 @@
 {
     "name": "@girs/cmbcatalogutils-4.0",
-    "version": "4.0.0-4.0.0-beta.37",
+    "version": "4.0.0-4.0.0-beta.38",
     "description": "GJS TypeScript type definitions for CmbCatalogUtils-4.0, generated from library version 4.0.0",
     "type": "module",
     "module": "cmbcatalogutils-4.0.js",

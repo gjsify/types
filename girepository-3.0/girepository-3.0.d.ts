@@ -413,17 +413,13 @@ export namespace GIRepository {
 
     enum FieldInfoFlags {
         /**
-         * no flags set (since: 2.86)
-         */
-        INFO_FLAGS_NONE,
-        /**
          * field is readable.
          */
-        IS_READABLE,
+        READABLE,
         /**
          * field is writable.
          */
-        IS_WRITABLE,
+        WRITABLE,
     }
     /**
      * Flags for a [class`GIRepository`.FunctionInfo] struct.
@@ -437,10 +433,6 @@ export namespace GIRepository {
     }
 
     enum FunctionInfoFlags {
-        /**
-         * no flags set (since: 2.86)
-         */
-        INFO_FLAGS_NONE,
         /**
          * is a method.
          */
@@ -461,7 +453,6 @@ export namespace GIRepository {
          * represents a virtual function.
          */
         WRAPS_VFUNC,
-        IS_ASYNC,
     }
     /**
      * Flags that control how a typelib is loaded.
@@ -497,21 +488,17 @@ export namespace GIRepository {
 
     enum VFuncInfoFlags {
         /**
-         * no flags set (since: 2.86)
-         */
-        INFO_FLAGS_NONE,
-        /**
          * chains up to the parent type
          */
-        MUST_CHAIN_UP,
+        CHAIN_UP,
         /**
          * overrides
          */
-        MUST_OVERRIDE,
+        OVERRIDE,
         /**
          * does not override
          */
-        MUST_NOT_OVERRIDE,
+        NOT_OVERRIDE,
     }
     namespace ArgInfo {
         // Signal signatures
@@ -865,22 +852,12 @@ export namespace GIRepository {
          */
         get_arg(n: number): ArgInfo;
         /**
-         * Gets the callable info for the callable's asynchronous version
-         * @returns a [class@GIRepository.CallableInfo] for the   async function or `NULL` if not defined.
-         */
-        get_async_function(): CallableInfo | null;
-        /**
          * See whether the caller owns the return value of this callable.
          *
          * [type`GIRepository`.Transfer] contains a list of possible transfer values.
          * @returns the transfer mode for the return value of the callable
          */
         get_caller_owns(): Transfer;
-        /**
-         * Gets the info for an async function's corresponding finish function
-         * @returns a [class@GIRepository.CallableInfo] for the   finish function or `NULL` if not defined.
-         */
-        get_finish_function(): CallableInfo | null;
         /**
          * Obtains the ownership transfer for the instance argument.
          *
@@ -908,11 +885,6 @@ export namespace GIRepository {
          */
         get_return_type(): TypeInfo;
         /**
-         * Gets the callable info for the callable's synchronous version
-         * @returns a [class@GIRepository.CallableInfo] for the   sync function or `NULL` if not defined.
-         */
-        get_sync_function(): CallableInfo | null;
-        /**
          * Invoke the given `GICallableInfo` by calling the given `function` pointer.
          *
          * The set of arguments passed to `function` will be constructed according to the
@@ -925,20 +897,11 @@ export namespace GIRepository {
          */
         invoke(_function: any | null, in_args: Argument[], out_args: Argument[]): [boolean, Argument];
         /**
-         * Gets whether a callable is ‘async’. Async callables have a
-         * [type`Gio`.AsyncReadyCallback] parameter and user data.
-         * @returns true if the callable is async
-         */
-        is_async(): boolean;
-        /**
          * Determines if the callable info is a method.
          *
-         * For [class`GIRepository`.SignalInfo]s, this is always true, and for
-         * [class`GIRepository`.CallbackInfo]s always false.
-         * For [class`GIRepository`.FunctionInfo]s this looks at the
-         * `GI_FUNCTION_IS_METHOD` flag on the [class`GIRepository`.FunctionInfo].
-         * For [class`GIRepository`.VFuncInfo]s this is true when the virtual function
-         * has an instance parameter.
+         * For [class`GIRepository`.VFuncInfo]s, [class`GIRepository`.CallbackInfo]s, and
+         * [class`GIRepository`.SignalInfo]s, this is always true. Otherwise, this looks
+         * at the `GI_FUNCTION_IS_METHOD` flag on the [class`GIRepository`.FunctionInfo].
          *
          * Concretely, this function returns whether
          * [method`GIRepository`.CallableInfo.get_n_args] matches the number of arguments
@@ -1962,23 +1925,6 @@ export namespace GIRepository {
      * modify the search paths by using the `GI_TYPELIB_PATH` environment variable.
      * The environment variable takes precedence over the default search path
      * and the [method`GIRepository`.Repository.prepend_search_path] calls.
-     *
-     * ### Namespace ordering
-     *
-     * In situations where namespaces may be searched in order, or returned in a
-     * list, the namespaces will be returned in alphabetical order, with all fully
-     * loaded namespaces being returned before any lazily loaded ones (those loaded
-     * with `GI_REPOSITORY_LOAD_FLAG_LAZY`). This allows for deterministic and
-     * reproducible results.
-     *
-     * Similarly, if a symbol (such as a `GType` or error domain) is being searched
-     * for in the set of loaded namespaces, the namespaces will be searched in that
-     * order. In particular, this means that a symbol which exists in two namespaces
-     * will always be returned from the alphabetically-higher namespace. This should
-     * only happen in the case of `Gio` and `GioUnix`/`GioWin32`, which all refer to
-     * the same `.so` file and expose overlapping sets of symbols. Symbols should
-     * always end up being resolved to `GioUnix` or `GioWin32` if they are platform
-     * dependent, rather than `Gio` itself.
      */
     class Repository extends GObject.Object {
         static $gtype: GObject.GType<Repository>;
@@ -2035,16 +1981,6 @@ export namespace GIRepository {
          * @param output_filename Output filename (for example `output.xml`)
          */
         static dump(input_filename: string, output_filename: string): boolean;
-        /**
-         * Gets the singleton process-global default `GIRepository`.
-         *
-         * The singleton is needed for situations where you must coordinate between
-         * bindings and libraries which also need to interact with introspection which
-         * could affect the bindings. For example, a Python application using a
-         * GObject-based library through `GIRepository` to load plugins also written in
-         * Python.
-         */
-        static dup_default(): Repository;
         static error_quark(): GLib.Quark;
         /**
          * Obtain the option group for girepository.

@@ -9,7 +9,5 @@
 
 import './cogl-2.0-ambient.d.ts';
 
-import './cogl-2.0-import.d.ts';
-
 import Cogl from './cogl-2.0.js';
 export default Cogl;

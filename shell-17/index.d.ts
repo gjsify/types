@@ -9,7 +9,5 @@
 
 import './shell-17-ambient.d.ts';
 
-import './shell-17-import.d.ts';
-
 import Shell from './shell-17.js';
 export default Shell;

@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/libxfce4panel-2.0)
 
 
-GJS TypeScript type definitions for Libxfce4panel-2.0, generated from library version 4.18.6 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.37.
+GJS TypeScript type definitions for Libxfce4panel-2.0, generated from library version 4.18.6 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.38.
 
 ## Install
 

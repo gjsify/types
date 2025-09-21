@@ -454,10 +454,6 @@ export namespace Gdk {
          */
         TOUCHPAD_HOLD,
         /**
-         * A tablet pad axis event from a "dial".
-         */
-        PAD_DIAL,
-        /**
          * marks the end of the GdkEventType enumeration.
          */
         EVENT_LAST,
@@ -828,518 +824,6 @@ export namespace Gdk {
          */
         X8B8G8R8,
         /**
-         * Multiplane format with 2 planes.
-         *
-         * The first plane contains the first channel, usually containing
-         * luma values.
-         * The second plane with interleaved chroma values, Cb followed by Cr.
-         * Subsampled in both the X and Y direction.
-         *
-         * Commonly known by the fourcc "NV12".
-         */
-        G8_B8R8_420,
-        /**
-         * Multiplane format with 2 planes.
-         *
-         * The first plane contains the first channel, usually containing
-         * luma values.
-         * The second plane with interleaved chroma values, Cr followed by Cb.
-         * Subsampled in both the X and Y direction.
-         *
-         * Commonly known by the fourcc "NV21".
-         */
-        G8_R8B8_420,
-        /**
-         * Multiplane format with 2 planes.
-         *
-         * The first plane contains the first channel, usually containing
-         * luma values.
-         * The second plane with interleaved chroma values, Cb followed by Cr.
-         * Subsampled in the X direction.
-         *
-         * Commonly known by the fourcc "NV16".
-         */
-        G8_B8R8_422,
-        /**
-         * Multiplane format with 2 planes.
-         *
-         * The first plane contains the first channel, usually containing
-         * luma values.
-         * The second plane with interleaved chroma values, Cr followed by Cb.
-         * Subsampled in the X direction.
-         *
-         * Commonly known by the fourcc "NV61".
-         */
-        G8_R8B8_422,
-        /**
-         * Multiplane format with 2 planes.
-         *
-         * The first plane contains the first channel, usually containing
-         * luma values.
-         * The second plane with interleaved chroma values, Cb followed by Cr.
-         * This format is not subsampled.
-         *
-         * Commonly known by the fourcc "NV24".
-         */
-        G8_B8R8_444,
-        /**
-         * Multiplane format with 2 planes.
-         *
-         * The first plane contains the first channel, usually containing
-         * luma values.
-         * The second plane with interleaved chroma values, Cr followed by Cb.
-         * This format is not subsampled.
-         *
-         * Commonly known by the fourcc "NV42".
-         */
-        G8_R8B8_444,
-        /**
-         * Multiplane format with 2 planes.
-         *
-         * Each channel is a 16 bit integer, but only the highest 10 bits are used.
-         *
-         * The first plane contains the first channel, usually containing
-         * luma values.
-         * The second plane with interleaved chroma values, Cr followed by Cb.
-         * This format is not subsampled.
-         *
-         * Commonly known by the fourcc "P010".
-         */
-        G10X6_B10X6R10X6_420,
-        /**
-         * Multiplane format with 2 planes.
-         *
-         * Each channel is a 16 bit integer, but only the highest 10 bits are used.
-         *
-         * The first plane contains the first channel, usually containing
-         * luma values.
-         * The second plane with interleaved chroma values, Cr followed by Cb.
-         * This format is not subsampled.
-         *
-         * Commonly known by the fourcc "P012".
-         */
-        G12X4_B12X4R12X4_420,
-        /**
-         * Multiplane format with 2 planes.
-         *
-         * Each channel is a 16 bit integer.
-         *
-         * The first plane contains the first channel, usually containing
-         * luma values.
-         * The second plane with interleaved chroma values, Cr followed by Cb.
-         * This format is not subsampled.
-         *
-         * Commonly known by the fourcc "P016".
-         */
-        G16_B16R16_420,
-        /**
-         * Multiplane format with 3 planes.
-         *
-         * Each channel is a 8 bit integer.
-         *
-         * The first plane usually contains the luma channel. It is mapped
-         * into the 2nd channel.
-         *
-         * The second plane usually contains the first chroma chanel.
-         * Subsampled in both the X and Y direction with 4:1 ratio. It is
-         * mapped into the 3rd channel.
-         *
-         * The third plane usually contains the second chroma channel.
-         * Subsampled in both the X and Y direction with 4:1 ratio. It is
-         * mapped into the 1st channel.
-         *
-         * Commonly known by the fourcc "YUV410".
-         */
-        G8_B8_R8_410,
-        /**
-         * Multiplane format with 3 planes.
-         *
-         * Each channel is a 8 bit integer.
-         *
-         * The first plane usually contains the luma channel. It is mapped
-         * into the 2nd channel.
-         *
-         * The second plane usually contains the second chroma chanel.
-         * Subsampled in both the X and Y direction with 4:1 ratio. It is
-         * mapped into the 1st channel.
-         *
-         * The third plane usually contains the first chroma channel.
-         * Subsampled in both the X and Y direction with 4:1 ratio. It is
-         * mapped into the 3rd channel.
-         *
-         * Commonly known by the fourcc "YVU410".
-         */
-        G8_R8_B8_410,
-        /**
-         * Multiplane format with 3 planes.
-         *
-         * Each channel is a 8 bit integer.
-         *
-         * The first plane usually contains the luma channel. It is mapped
-         * into the 2nd channel.
-         *
-         * The second plane usually contains the first chroma chanel.
-         * Subsampled in the X direction with 4:1 ratio. It is
-         * mapped into the 3rd channel.
-         *
-         * The third plane usually contains the second chroma channel.
-         * Subsampled in the X direction with 4:1 ratio. It is
-         * mapped into the 1st channel.
-         *
-         * Commonly known by the fourcc "YUV411".
-         */
-        G8_B8_R8_411,
-        /**
-         * Multiplane format with 3 planes.
-         *
-         * Each channel is a 8 bit integer.
-         *
-         * The first plane usually contains the luma channel. It is mapped
-         * into the 2nd channel.
-         *
-         * The second plane usually contains the second chroma chanel.
-         * Subsampled in the X direction with 4:1 ratio. It is
-         * mapped into the 1st channel.
-         *
-         * The third plane usually contains the first chroma channel.
-         * Subsampled in the X direction with 4:1 ratio. It is
-         * mapped into the 3rd channel.
-         *
-         * Commonly known by the fourcc "YVU411".
-         */
-        G8_R8_B8_411,
-        /**
-         * Multiplane format with 3 planes.
-         *
-         * Each channel is a 8 bit integer.
-         *
-         * The first plane usually contains the luma channel. It is mapped
-         * into the 2nd channel.
-         *
-         * The second plane usually contains the first chroma chanel.
-         * Subsampled in both the X and Y direction. It is mapped into the
-         * 3rd channel.
-         *
-         * The third plane usually contains the second chroma channel.
-         * Subsampled in both the X and Y direction. It is mapped into the
-         * 1st channel.
-         *
-         * Commonly known by the fourcc "YUV420".
-         */
-        G8_B8_R8_420,
-        /**
-         * Multiplane format with 3 planes.
-         *
-         * Each channel is a 8 bit integer.
-         *
-         * The first plane usually contains the luma channel. It is mapped
-         * into the 2nd channel.
-         *
-         * The second plane usually contains the second chroma chanel.
-         * Subsampled in both the X and Y direction. It is mapped into the
-         * 1st channel.
-         *
-         * The third plane usually contains the first chroma channel.
-         * Subsampled in both the X and Y direction. It is mapped into the
-         * 3rd channel.
-         *
-         * Commonly known by the fourcc "YVU420".
-         */
-        G8_R8_B8_420,
-        /**
-         * Multiplane format with 3 planes.
-         *
-         * Each channel is a 8 bit integer.
-         *
-         * The first plane usually contains the luma channel. It is mapped
-         * into the 2nd channel.
-         *
-         * The second plane usually contains the first chroma chanel.
-         * Subsampled in the X direction. It is mapped into the 3rd channel.
-         *
-         * The third plane usually contains the second chroma channel.
-         * Subsampled in the X direction. It is mapped into the 1st channel.
-         *
-         * Commonly known by the fourcc "YUV422".
-         */
-        G8_B8_R8_422,
-        /**
-         * Multiplane format with 3 planes.
-         *
-         * Each channel is a 8 bit integer.
-         *
-         * The first plane usually contains the luma channel. It is mapped
-         * into the 2nd channel.
-         *
-         * The second plane usually contains the second chroma chanel.
-         * Subsampled in the X direction. It is mapped into the 1st channel.
-         *
-         * The third plane usually contains the first chroma channel.
-         * Subsampled in the X direction. It is mapped into the 3rd channel.
-         *
-         * Commonly known by the fourcc "YVU422".
-         */
-        G8_R8_B8_422,
-        /**
-         * Multiplane format with 3 planes.
-         *
-         * Each channel is a 8 bit integer.
-         *
-         * The first plane usually contains the luma channel. It is mapped
-         * into the 2nd channel.
-         *
-         * The second plane usually contains the first chroma chanel. It is
-         * mapped into the 3rd channel.
-         *
-         * The third plane usually contains the second chroma channel. It is
-         * mapped into the 1st channel.
-         *
-         * Commonly known by the fourcc "YUV444".
-         */
-        G8_B8_R8_444,
-        /**
-         * Multiplane format with 3 planes.
-         *
-         * Each channel is a 8 bit integer.
-         *
-         * The first plane usually contains the luma channel. It is mapped
-         * into the 2nd channel.
-         *
-         * The second plane usually contains the second chroma chanel.
-         * Subsampled in the X direction. It is mapped into the 1st channel.
-         *
-         * The third plane usually contains the first chroma channel.
-         * Subsampled in the X direction. It is mapped into the 3rd channel.
-         *
-         * Commonly known by the fourcc "YVU444".
-         */
-        G8_R8_B8_444,
-        /**
-         * Packed format with subsampled channels.
-         *
-         * Each channel is a 8 bit integer. The red and blue/chroma channels
-         * are subsampled and interleaved with the green/luma channel.
-         *
-         * Each block contains 2 pixels, so the width must be a multiple of
-         * 2.
-         *
-         * Commonly known by the fourcc "YUYV".
-         */
-        G8B8G8R8_422,
-        /**
-         * Packed format with subsampled channels.
-         *
-         * Each channel is a 8 bit integer. The red and blue/chroma channels
-         * are subsampled and interleaved with the green/luma channel.
-         *
-         * Each block contains 2 pixels, so the width must be a multiple of
-         * 2.
-         *
-         * Commonly known by the fourcc "YVYU".
-         */
-        G8R8G8B8_422,
-        /**
-         * Packed format with subsampled channels.
-         *
-         * Each channel is a 8 bit integer. The red and blue/chroma channels
-         * are subsampled and interleaved with the green/luma channel.
-         *
-         * Each block contains 2 pixels, so the width must be a multiple of
-         * 2.
-         *
-         * Commonly known by the fourcc "VYUY".
-         */
-        R8G8B8G8_422,
-        /**
-         * Packed format with subsampled channels.
-         *
-         * Each channel is a 8 bit integer. The red and blue/chroma channels
-         * are subsampled and interleaved with the green/luma channel.
-         *
-         * Each block contains 2 pixels, so the width must be a multiple of
-         * 2.
-         *
-         * Commonly known by the fourcc "UYVY".
-         */
-        B8G8R8G8_422,
-        /**
-         * Multiplane format with 3 planes.
-         *
-         * Each channel is a 16 bit integer.
-         *
-         * Only the 10 lower bits are used. The remaining ones must be set to 0 by the
-         * producer.
-         *
-         * The first plane usually contains the luma channel. It is mapped
-         * into the 2nd channel.
-         *
-         * The second plane usually contains the first chroma chanel.
-         * Subsampled in both the X and Y direction. It is mapped into the
-         * 3rd channel.
-         *
-         * The third plane usually contains the second chroma channel.
-         * Subsampled in both the X and Y direction. It is mapped into the
-         * 1st channel.
-         *
-         * Commonly known by the fourcc "S010".
-         */
-        X6G10_X6B10_X6R10_420,
-        /**
-         * Multiplane format with 3 planes.
-         *
-         * Each channel is a 16 bit integer.
-         *
-         * Only the 10 lower bits are used. The remaining ones must be set to 0 by the
-         * producer.
-         *
-         * The first plane usually contains the luma channel. It is mapped
-         * into the 2nd channel.
-         *
-         * The second plane usually contains the first chroma chanel.
-         * Subsampled in the X direction. It is mapped into the 3rd channel.
-         *
-         * The third plane usually contains the second chroma channel.
-         * Subsampled in the X direction. It is mapped into the 1st channel.
-         *
-         * Commonly known by the fourcc "S210".
-         */
-        X6G10_X6B10_X6R10_422,
-        /**
-         * Multiplane format with 3 planes.
-         *
-         * Each channel is a 16 bit integer.
-         *
-         * Only the 10 lower bits are used. The remaining ones must be set to 0 by the
-         * producer.
-         *
-         * The first plane usually contains the luma channel. It is mapped
-         * into the 2nd channel.
-         *
-         * The second plane usually contains the first chroma chanel. It is
-         * mapped into the 3rd channel.
-         *
-         * The third plane usually contains the second chroma channel. It is
-         * mapped into the 1st channel.
-         *
-         * Commonly known by the fourcc "S410".
-         */
-        X6G10_X6B10_X6R10_444,
-        /**
-         * Multiplane format with 3 planes.
-         *
-         * Each channel is a 16 bit integer.
-         *
-         * Only the 12 lower bits are used. The remaining ones must be set to 0 by the
-         * producer.
-         *
-         * The first plane usually contains the luma channel. It is mapped
-         * into the 2nd channel.
-         *
-         * The second plane usually contains the first chroma chanel.
-         * Subsampled in both the X and Y direction. It is mapped into the
-         * 3rd channel.
-         *
-         * The third plane usually contains the second chroma channel.
-         * Subsampled in both the X and Y direction. It is mapped into the
-         * 1st channel.
-         *
-         * Commonly known by the fourcc "S012".
-         */
-        X4G12_X4B12_X4R12_420,
-        /**
-         * Multiplane format with 3 planes.
-         *
-         * Each channel is a 16 bit integer.
-         *
-         * Only the 12 lower bits are used. The remaining ones must be set to 0 by the
-         * producer.
-         *
-         * The first plane usually contains the luma channel. It is mapped
-         * into the 2nd channel.
-         *
-         * The second plane usually contains the first chroma chanel.
-         * Subsampled in the X direction. It is mapped into the 3rd channel.
-         *
-         * The third plane usually contains the second chroma channel.
-         * Subsampled in the X direction. It is mapped into the 1st channel.
-         *
-         * Commonly known by the fourcc "S212".
-         */
-        X4G12_X4B12_X4R12_422,
-        /**
-         * Multiplane format with 3 planes.
-         *
-         * Each channel is a 16 bit integer.
-         *
-         * Only the 12 lower bits are used. The remaining ones must be set to 0 by the
-         * producer.
-         *
-         * The first plane usually contains the luma channel. It is mapped
-         * into the 2nd channel.
-         *
-         * The second plane usually contains the first chroma chanel. It is
-         * mapped into the 3rd channel.
-         *
-         * The third plane usually contains the second chroma channel. It is
-         * mapped into the 1st channel.
-         *
-         * Commonly known by the fourcc "S412".
-         */
-        X4G12_X4B12_X4R12_444,
-        /**
-         * Multiplane format with 3 planes.
-         *
-         * Each channel is a 16 bit integer.
-         *
-         * The first plane usually contains the luma channel. It is mapped
-         * into the 2nd channel.
-         *
-         * The second plane usually contains the first chroma chanel.
-         * Subsampled in both the X and Y direction. It is mapped into the
-         * 3rd channel.
-         *
-         * The third plane usually contains the second chroma channel.
-         * Subsampled in both the X and Y direction. It is mapped into the
-         * 1st channel.
-         *
-         * Commonly known by the fourcc "S016".
-         */
-        G16_B16_R16_420,
-        /**
-         * Multiplane format with 3 planes.
-         *
-         * Each channel is a 16 bit integer.
-         *
-         * The first plane usually contains the luma channel. It is mapped
-         * into the 2nd channel.
-         *
-         * The second plane usually contains the first chroma chanel.
-         * Subsampled in the X direction. It is mapped into the 3rd channel.
-         *
-         * The third plane usually contains the second chroma channel.
-         * Subsampled in the X direction. It is mapped into the 1st channel.
-         *
-         * Commonly known by the fourcc "S216".
-         */
-        G16_B16_R16_422,
-        /**
-         * Multiplane format with 3 planes.
-         *
-         * Each channel is a 16 bit integer.
-         *
-         * The first plane usually contains the luma channel. It is mapped
-         * into the 2nd channel.
-         *
-         * The second plane usually contains the first chroma chanel. It is
-         * mapped into the 3rd channel.
-         *
-         * The third plane usually contains the second chroma channel. It is
-         * mapped into the 1st channel.
-         *
-         * Commonly known by the fourcc "S416".
-         */
-        G16_B16_R16_444,
-        /**
          * The number of formats. This value will change as
          *   more formats get added, so do not rely on its concrete integer.
          */
@@ -1428,33 +912,6 @@ export namespace Gdk {
          *   in scroll events. See gdk_scroll_event_get_deltas()
          */
         SMOOTH,
-    }
-    /**
-     * Used in scroll events, to announce the direction relative
-     * to physical motion.
-     */
-
-    /**
-     * Used in scroll events, to announce the direction relative
-     * to physical motion.
-     */
-    export namespace ScrollRelativeDirection {
-        export const $gtype: GObject.GType<ScrollRelativeDirection>;
-    }
-
-    enum ScrollRelativeDirection {
-        /**
-         * Physical motion and event motion are the same
-         */
-        IDENTICAL,
-        /**
-         * Physical motion is inverted relative to event motion
-         */
-        INVERTED,
-        /**
-         * Relative motion is unknown on this device or backend
-         */
-        UNKNOWN,
     }
     /**
      * Specifies the unit of scroll deltas.
@@ -4477,10 +3934,6 @@ export namespace Gdk {
     function content_formats_parse(string: string): ContentFormats | null;
     /**
      * Registers a function to deserialize object of a given type.
-     *
-     * Since 4.20, when looking up a deserializer to use, GTK will
-     * use the last registered deserializer for a given mime type,
-     * so applications can override the built-in deserializers.
      * @param mime_type the mime type which the function can deserialize from
      * @param type the type of objects that the function creates
      * @param deserialize the callback
@@ -4492,10 +3945,6 @@ export namespace Gdk {
     ): void;
     /**
      * Registers a function to serialize objects of a given type.
-     *
-     * Since 4.20, when looking up a serializer to use, GTK will
-     * use the last registered serializer for a given mime type,
-     * so applications can override the built-in serializers.
      * @param type the type of objects that the function can serialize
      * @param mime_type the mime type to serialize to
      * @param serialize the callback
@@ -4574,7 +4023,7 @@ export namespace Gdk {
      * Checks if `action` represents a single action or includes
      * multiple actions.
      *
-     * When `action` is `GDK_ACTION_NONE` - ie no action was given, `TRUE`
+     * When `action` is 0 - ie no action was given, %TRUE
      * is returned.
      * @param action a `GdkDragAction`
      * @returns %TRUE if exactly one action was given
@@ -4946,10 +4395,6 @@ export namespace Gdk {
 
     enum DragAction {
         /**
-         * No action.
-         */
-        NONE,
-        /**
          * Copy the data.
          */
         COPY,
@@ -5196,56 +4641,6 @@ export namespace Gdk {
          * The union of all capabilities
          */
         ALL,
-    }
-    /**
-     * Reflects what features a `GdkToplevel` supports.
-     */
-
-    /**
-     * Reflects what features a `GdkToplevel` supports.
-     */
-    export namespace ToplevelCapabilities {
-        export const $gtype: GObject.GType<ToplevelCapabilities>;
-    }
-
-    enum ToplevelCapabilities {
-        /**
-         * Whether tiled window states are supported.
-         */
-        EDGE_CONSTRAINTS,
-        /**
-         * Whether inhibiting system shortcuts is supported.
-         * See [method`Gdk`.Toplevel.inhibit_system_shortcuts].
-         */
-        INHIBIT_SHORTCUTS,
-        /**
-         * Whether titlebar gestures are supported.
-         * See [method`Gdk`.Toplevel.titlebar_gesture].
-         */
-        TITLEBAR_GESTURES,
-        /**
-         * Whether showing the window menu is supported.
-         * See [method`Gdk`.Toplevel.show_window_menu].
-         */
-        WINDOW_MENU,
-        /**
-         * Whether the toplevel can be maximized.
-         */
-        MAXIMIZE,
-        /**
-         * Whether the toplevel can be made fullscreen.
-         */
-        FULLSCREEN,
-        /**
-         * Whether the toplevel can be minimized.
-         * See [method`Gdk`.Toplevel.minimize].
-         */
-        MINIMIZE,
-        /**
-         * Whether the toplevel can be lowered.
-         * See [method`Gdk`.Toplevel.lower].
-         */
-        LOWER,
     }
     /**
      * Specifies the state of a toplevel surface.
@@ -5677,10 +5072,7 @@ export namespace Gdk {
          * Supported values:
          *
          * - 0: RGB
-         * - 1: BT.709
          * - 2: unspecified
-         * - 5,6: BT.601
-         * - 9: BT.2020
          */
         get matrix_coefficients(): number;
         set matrix_coefficients(val: number);
@@ -5690,10 +5082,7 @@ export namespace Gdk {
          * Supported values:
          *
          * - 0: RGB
-         * - 1: BT.709
          * - 2: unspecified
-         * - 5,6: BT.601
-         * - 9: BT.2020
          */
         get matrixCoefficients(): number;
         set matrixCoefficients(val: number);
@@ -8792,8 +8181,6 @@ export namespace Gdk {
          * buffer formats with producers such as v4l, pipewire or GStreamer.
          *
          * To learn more about dma-bufs, see [class`Gdk`.DmabufTextureBuilder].
-         *
-         * This function is threadsafe. It can be called from any thread.
          * @returns a `GdkDmabufFormats` object
          */
         get_dmabuf_formats(): DmabufFormats;
@@ -10811,8 +10198,8 @@ export namespace Gdk {
      * Represents the target of an ongoing DND operation.
      *
      * Possible drop sites get informed about the status of the ongoing drag
-     * operation with events of type `GDK_DRAG_ENTER`, `GDK_DRAG_LEAVE`,
-     * `GDK_DRAG_MOTION` and `GDK_DROP_START`. The `GdkDrop` object can be obtained
+     * operation with events of type %GDK_DRAG_ENTER, %GDK_DRAG_LEAVE,
+     * %GDK_DRAG_MOTION and %GDK_DROP_START. The `GdkDrop` object can be obtained
      * from these [class`Gdk`.Event] types using [method`Gdk`.DNDEvent.get_drop].
      *
      * The actual data transfer is initiated from the target side via an async
@@ -10893,18 +10280,18 @@ export namespace Gdk {
          *
          * The `action` must be a single action selected from the actions
          * available via [method`Gdk`.Drop.get_actions].
-         * @param action the action performed by the destination or `GDK_ACTION_NONE` if the   drop failed
+         * @param action the action performed by the destination or 0 if the drop failed
          */
         finish(action: DragAction | null): void;
         /**
          * Returns the possible actions for this `GdkDrop`.
          *
          * If this value contains multiple actions - i.e.
-         * [func`Gdk`.DragAction.is_unique] returns false for the result -
+         * [func`Gdk`.DragAction.is_unique] returns %FALSE for the result -
          * [method`Gdk`.Drop.finish] must choose the action to use when
          * accepting the drop. This will only happen if you passed
-         * `GDK_ACTION_ASK` as one of the possible actions in
-         * [method`Gdk`.Drop.status]. `GDK_ACTION_ASK` itself will not
+         * %GDK_ACTION_ASK as one of the possible actions in
+         * [method`Gdk`.Drop.status]. %GDK_ACTION_ASK itself will not
          * be included in the actions returned by this function.
          *
          * This value may change over the lifetime of the [class`Gdk`.Drop]
@@ -10928,7 +10315,7 @@ export namespace Gdk {
          * If this is an in-app drag-and-drop operation, returns the `GdkDrag`
          * that corresponds to this drop.
          *
-         * If it is not, `NULL` is returned.
+         * If it is not, %NULL is returned.
          * @returns the corresponding `GdkDrag`
          */
         get_drag(): Drag | null;
@@ -11067,10 +10454,10 @@ export namespace Gdk {
          * action to use when multiple actions are possible.
          *
          * This function should be called by drag destinations in response to
-         * `GDK_DRAG_ENTER` or `GDK_DRAG_MOTION` events. If the destination does
+         * %GDK_DRAG_ENTER or %GDK_DRAG_MOTION events. If the destination does
          * not yet know the exact actions it supports, it should set any possible
          * actions first and then later call this function again.
-         * @param actions Supported actions of the destination, or `GDK_ACTION_NONE` to    indicate that a drop will not be accepted
+         * @param actions Supported actions of the destination, or 0 to indicate    that a drop will not be accepted
          * @param preferred A unique action that's a member of @actions indicating the    preferred action
          */
         status(actions: DragAction | null, preferred: DragAction | null): void;
@@ -14185,22 +13572,10 @@ export namespace Gdk {
          */
         get_height(): number;
         /**
-         * Gets the offset previously set via gdk_memory_texture_builder_set_offset().
-         * @param plane a plane
-         * @returns The offset associated to a @plane
-         */
-        get_offset(plane: number): number;
-        /**
          * Gets the stride previously set via gdk_memory_texture_builder_set_stride().
          * @returns the stride
          */
         get_stride(): number;
-        /**
-         * Gets the stride previously set via gdk_memory_texture_builder_set_stride_for_plane().
-         * @param plane a plane
-         * @returns The stride associated to a @plane
-         */
-        get_stride_for_plane(plane: number): number;
         /**
          * Gets the region previously set via gdk_memory_texture_builder_set_update_region()
          * or %NULL if none was set.
@@ -14233,7 +13608,7 @@ export namespace Gdk {
          * what colorstates are, this is probably the right thing.
          * @param color_state The colorstate describing the data
          */
-        set_color_state(color_state: ColorState): void;
+        set_color_state(color_state?: ColorState | null): void;
         /**
          * Sets the format of the bytes.
          *
@@ -14244,17 +13619,10 @@ export namespace Gdk {
         /**
          * Sets the height of the texture.
          *
-         * The height must be set before calling [method`Gdk`.MemoryTextureBuilder.build]
-         * and conform to size requirements of the provided format.
+         * The height must be set before calling [method`Gdk`.MemoryTextureBuilder.build].
          * @param height The texture's height or 0 to unset
          */
         set_height(height: number): void;
-        /**
-         * Sets the offset of the texture for `plane`.
-         * @param plane a plane
-         * @param offset the texture's offset for @plane
-         */
-        set_offset(plane: number, offset: number): void;
         /**
          * Sets the rowstride of the bytes used.
          *
@@ -14262,12 +13630,6 @@ export namespace Gdk {
          * @param stride the stride or 0 to unset
          */
         set_stride(stride: number): void;
-        /**
-         * Sets the stride of the texture for `plane`.
-         * @param plane a plane
-         * @param stride the texture's stride for @plane
-         */
-        set_stride_for_plane(plane: number, stride: number): void;
         /**
          * Sets the region to be updated by this texture.
          *
@@ -14293,8 +13655,7 @@ export namespace Gdk {
         /**
          * Sets the width of the texture.
          *
-         * The width must be set before calling [method`Gdk`.MemoryTextureBuilder.build]
-         * and conform to size requirements of the provided format.
+         * The width must be set before calling [method`Gdk`.MemoryTextureBuilder.build].
          * @param width The texture's width or 0 to unset
          */
         set_width(width: number): void;
@@ -14724,10 +14085,6 @@ export namespace Gdk {
             ...args: GObject.GjsParameters<ScrollEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Static methods
-
-        static get_relative_direction(event: Event): ScrollRelativeDirection;
 
         // Methods
 
@@ -15494,9 +14851,9 @@ export namespace Gdk {
          *
          * This is a utility function intended for debugging and testing.
          * If you want more control over formats, proper error handling or
-         * want to store to a [iface`Gio`.File] or other location, you might
-         * want to use [method`Gdk`.Texture.save_to_png_bytes] or look into
-         * the libglycin library.
+         * want to store to a [iface`Gio`.File] or other location, you might want to
+         * use [method`Gdk`.Texture.save_to_png_bytes] or look into the
+         * gdk-pixbuf library.
          * @param filename the filename to store to
          * @returns %TRUE if saving succeeded, %FALSE on failure.
          */
@@ -15511,7 +14868,7 @@ export namespace Gdk {
          *
          * If you need more control over the generated image, such as
          * attaching metadata, you should look into an image handling
-         * library such as the libglycin library.
+         * library such as the gdk-pixbuf library.
          *
          * If you are dealing with high dynamic range float data, you
          * might also want to consider [method`Gdk`.Texture.save_to_tiff_bytes]
@@ -16440,7 +15797,7 @@ export namespace Gdk {
 
         // Constructor properties interface
 
-        interface ConstructorProps extends DrawContext.ConstructorProps {}
+        interface ConstructorProps extends DrawContext.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -16453,7 +15810,7 @@ export namespace Gdk {
      * Support for `GdkVulkanContext` is platform-specific and context creation
      * can fail, returning %NULL context.
      */
-    abstract class VulkanContext extends DrawContext {
+    abstract class VulkanContext extends DrawContext implements Gio.Initable {
         static $gtype: GObject.GType<VulkanContext>;
 
         /**
@@ -16488,6 +15845,532 @@ export namespace Gdk {
             ...args: GObject.GjsParameters<VulkanContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
+
+        // Inherited methods
+        /**
+         * Initializes the object implementing the interface.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_initable_new() should typically be used instead.
+         *
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or g_async_initable_init_async().
+         *
+         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * the object doesn't support cancellable initialization the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except g_object_ref() and
+         * g_object_unref() are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         *
+         * Callers should not assume that a class which implements #GInitable can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of init() can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all #GInitable implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         *
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         *
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * #GObjectClass.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call g_initable_init()
+         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         */
+        init(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Initializes the object implementing the interface.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_initable_new() should typically be used instead.
+         *
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or g_async_initable_init_async().
+         *
+         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * the object doesn't support cancellable initialization the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except g_object_ref() and
+         * g_object_unref() are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         *
+         * Callers should not assume that a class which implements #GInitable can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of init() can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all #GInitable implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         *
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         *
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * #GObjectClass.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call g_initable_init()
+         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget #GObject instance to be
+         * updated with the same value of the "active" property of the action #GObject
+         * instance.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call g_object_unref() on the returned
+         * #GBinding instance.
+         *
+         * Removing the binding by calling g_object_unref() on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use g_binding_unbind() instead to be on the safe side.
+         *
+         * A #GObject can have multiple bindings.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags | null,
+        ): GObject.Binding;
+        /**
+         * Complete version of g_object_bind_property().
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target,` allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the #GBinding instance; if you want to hold on to the
+         * #GBinding instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call g_binding_unbind().
+         *
+         * A #GObject can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * g_object_bind_property_with_closures() instead.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags | null,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for #GObject implementations to re-enforce
+         * a [floating][floating-ref] object reference. Doing this is seldom
+         * required: all #GInitiallyUnowneds are created with a floating reference
+         * which usually just needs to be sunken by calling g_object_ref_sink().
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * #GObject::notify signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * @param key name of the key for that association
+         * @returns the data if found,          or %NULL if no such data exists.
+         */
+        get_data(key: string): any | null;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: (GObject.Value | any)[]): void;
+        /**
+         * Checks whether `object` has a [floating][floating-ref] reference.
+         * @returns %TRUE if @object has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param property_name the name of a property installed on the class of @object.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * g_object_notify().
+         *
+         * One way to avoid using g_object_notify() from within the
+         * class that registered the properties, and using g_object_notify_by_pspec()
+         * instead, is to store the GParamSpec used with
+         * g_object_class_install_property() inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC typeof()
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same @object
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object,` and possibly remove the
+         * [floating][floating-ref] reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for g_object_ref().
+         * @returns @object
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or %NULL          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata() and removes the `data` from object
+         * without invoking its destroy() function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using g_object_get_qdata() in the above example, instead of
+         * g_object_steal_qdata() would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * g_object_set_qdata_full().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * #GObject::notify signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to %NULL rather than retain a dangling pointer to a potentially
+         * invalid #GObject instance. Use g_clear_object() for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+         * added as marshal guards to the `closure,` to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure #GClosure to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
+        vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
+        vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
+        vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param pspec
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
+        disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
+        set(properties: { [key: string]: any }): void;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     type CicpParamsClass = typeof CicpParams;
@@ -16593,15 +16476,6 @@ export namespace Gdk {
          * @returns %TRUE if the two color states compare equal
          */
         equal(other: ColorState): boolean;
-        /**
-         * Compares two `GdkColorStates` for equivalence.
-         *
-         * Two objects that represent the same color state should be equivalent,
-         * even though they may not be equal in the sense of [method`Gdk`.ColorState.equal].
-         * @param other another `GdkColorStatee`
-         * @returns %TRUE if the two color states are equivalent
-         */
-        equivalent(other: ColorState): boolean;
         /**
          * Increase the reference count of `self`.
          * @returns the object that was passed in
@@ -17177,13 +17051,13 @@ export namespace Gdk {
         copy(): PopupLayout;
         /**
          * Check whether `layout` and `other` has identical layout properties.
-         * @param other another popup layout
-         * @returns true if @layout and @other have identical layout properties,   otherwise false.
+         * @param other another `GdkPopupLayout`
+         * @returns %TRUE if @layout and @other have identical layout properties,   otherwise %FALSE.
          */
         equal(other: PopupLayout): boolean;
         /**
-         * Get the anchor hints.
-         * @returns the anchor hints
+         * Get the `GdkAnchorHints`.
+         * @returns the `GdkAnchorHints`
          */
         get_anchor_hints(): AnchorHints;
         /**
@@ -17219,10 +17093,10 @@ export namespace Gdk {
          *
          * The set `anchor_hints` determines how `surface` will be moved
          * if the anchor points cause it to move off-screen. For example,
-         * `GDK_ANCHOR_FLIP_X` will replace `GDK_GRAVITY_NORTH_WEST` with
-         * `GDK_GRAVITY_NORTH_EAST` and vice versa if `surface` extends
+         * %GDK_ANCHOR_FLIP_X will replace %GDK_GRAVITY_NORTH_WEST with
+         * %GDK_GRAVITY_NORTH_EAST and vice versa if `surface` extends
          * beyond the left or right edges of the monitor.
-         * @param anchor_hints the new anchor hints
+         * @param anchor_hints the new `GdkAnchorHints`
          */
         set_anchor_hints(anchor_hints: AnchorHints | null): void;
         /**
@@ -17501,25 +17375,11 @@ export namespace Gdk {
          * fails to allocate memory. If you think that may happen, you should handle
          * memory allocation yourself and use [method`Gdk`.TextureDownloader.download_into]
          * once allocation succeeded.
-         *
-         * This function cannot be used with a multiplanar format. Use
-         * [method`Gdk`.TextureDownloader.download_bytes_with_planes] for that purpose.
          * @returns The downloaded pixels
          */
         download_bytes(): [GLib.Bytes, number];
         /**
-         * Downloads the given texture pixels into a `GBytes`. The offsets and
-         * strides of the resulting buffer will be stored in the respective values.
-         *
-         * If the format does have less than 4 planes, the remaining offsets and strides will be
-         * set to `0`.
-         * @returns The downloaded pixels
-         */
-        download_bytes_with_planes(): [GLib.Bytes, number[], number[]];
-        /**
          * Downloads the `texture` into local memory.
-         *
-         * This function cannot be used with a multiplanar format.
          * @param data pointer to enough memory to be filled with the   downloaded data of the texture
          * @param stride rowstride in bytes
          */
@@ -17618,14 +17478,14 @@ export namespace Gdk {
         copy(): ToplevelLayout;
         /**
          * Check whether `layout` and `other` has identical layout properties.
-         * @param other another toplevel layout
-         * @returns true if @layout and @other have identical layout properties,   otherwise false.
+         * @param other another `GdkToplevelLayout`
+         * @returns %TRUE if @layout and @other have identical layout properties,   otherwise %FALSE.
          */
         equal(other: ToplevelLayout): boolean;
         /**
          * If the layout specifies whether to the toplevel should go fullscreen,
-         * the value pointed to by `fullscreen` is set to true if it should go
-         * fullscreen, or false, if it should go unfullscreen.
+         * the value pointed to by `fullscreen` is set to %TRUE if it should go
+         * fullscreen, or %FALSE, if it should go unfullscreen.
          * @returns whether the @layout specifies the fullscreen state for the toplevel
          */
         get_fullscreen(): [boolean, boolean];
@@ -17637,15 +17497,15 @@ export namespace Gdk {
         get_fullscreen_monitor(): Monitor | null;
         /**
          * If the layout specifies whether to the toplevel should go maximized,
-         * the value pointed to by `maximized` is set to true if it should go
-         * maximized, or false, if it should go unmaximized.
+         * the value pointed to by `maximized` is set to %TRUE if it should go
+         * fullscreen, or %FALSE, if it should go unmaximized.
          * @returns whether the @layout specifies the maximized state for the toplevel
          */
         get_maximized(): [boolean, boolean];
         /**
          * Returns whether the layout should allow the user
          * to resize the surface.
-         * @returns true if the layout is resizable
+         * @returns %TRUE if the layout is resizable
          */
         get_resizable(): boolean;
         /**
@@ -17656,20 +17516,20 @@ export namespace Gdk {
         /**
          * Sets whether the layout should cause the surface
          * to be fullscreen when presented.
-         * @param fullscreen true to fullscreen the surface
+         * @param fullscreen %TRUE to fullscreen the surface
          * @param monitor the monitor to fullscreen on
          */
         set_fullscreen(fullscreen: boolean, monitor?: Monitor | null): void;
         /**
          * Sets whether the layout should cause the surface
          * to be maximized when presented.
-         * @param maximized true to maximize
+         * @param maximized %TRUE to maximize
          */
         set_maximized(maximized: boolean): void;
         /**
          * Sets whether the layout should allow the user
          * to resize the surface after it has been presented.
-         * @param resizable true to allow resizing
+         * @param resizable %TRUE to allow resizing
          */
         set_resizable(resizable: boolean): void;
         /**
@@ -18154,12 +18014,10 @@ export namespace Gdk {
         // Constructor properties interface
 
         interface ConstructorProps extends Surface.ConstructorProps {
-            capabilities: ToplevelCapabilities;
             decorated: boolean;
             deletable: boolean;
             fullscreen_mode: FullscreenMode;
             fullscreenMode: FullscreenMode;
-            gravity: Gravity;
             icon_list: any;
             iconList: any;
             modal: boolean;
@@ -18182,10 +18040,6 @@ export namespace Gdk {
         // Properties
 
         /**
-         * The capabilities that are available for this toplevel.
-         */
-        get capabilities(): ToplevelCapabilities;
-        /**
          * Whether the window manager should add decorations.
          */
         get decorated(): boolean;
@@ -18205,20 +18059,6 @@ export namespace Gdk {
          */
         get fullscreenMode(): FullscreenMode;
         set fullscreenMode(val: FullscreenMode);
-        /**
-         * The gravity to use when resizing a surface programmatically.
-         *
-         * Gravity describes which point of the surface we want to keep
-         * fixed (meaning that the surface will grow in the opposite direction).
-         * For example, a gravity of `GDK_GRAVITY_NORTH_EAST` means that we
-         * want to fix top right corner of the surface.
-         *
-         * This property is just a hint that may affect the result when negotiating
-         * toplevel sizes with the windowing system. It does not affect interactive
-         * resizes started with [method`Gdk`.Toplevel.begin_resize].
-         */
-        get gravity(): Gravity;
-        set gravity(val: Gravity);
         /**
          * A list of textures to use as icon.
          */
@@ -18320,16 +18160,6 @@ export namespace Gdk {
          */
         focus(timestamp: number): void;
         /**
-         * The capabilities that are available for this toplevel.
-         */
-        get_capabilities(): ToplevelCapabilities;
-        /**
-         * Returns the gravity that is used when changing the toplevel
-         * size programmatically.
-         * @returns the gravity
-         */
-        get_gravity(): Gravity;
-        /**
          * Gets the bitwise or of the currently active surface state flags,
          * from the `GdkToplevelState` enumeration.
          * @returns surface state bitfield
@@ -18413,12 +18243,6 @@ export namespace Gdk {
          * @param deletable %TRUE to request a delete button
          */
         set_deletable(deletable: boolean): void;
-        /**
-         * Sets the gravity that is used when changing the toplevel
-         * size programmatically.
-         * @param gravity the new gravity
-         */
-        set_gravity(gravity: Gravity | null): void;
         /**
          * Sets a list of icons for the surface.
          *
