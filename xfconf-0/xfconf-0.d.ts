@@ -72,7 +72,6 @@ export namespace Xfconf {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 

@@ -253,7 +253,8 @@ export namespace NemoPreview {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.DrawingArea.ConstructorProps,
+            extends
+                Gtk.DrawingArea.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             uri: string;
@@ -947,55 +948,31 @@ export namespace NemoPreview {
     type CoverArtFetcherClass = typeof CoverArtFetcher;
     abstract class CoverArtFetcherPrivate {
         static $gtype: GObject.GType<CoverArtFetcherPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FileLoaderClass = typeof FileLoader;
     abstract class FileLoaderPrivate {
         static $gtype: GObject.GType<FileLoaderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FontWidgetClass = typeof FontWidget;
     abstract class FontWidgetPrivate {
         static $gtype: GObject.GType<FontWidgetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PdfLoaderClass = typeof PdfLoader;
     abstract class PdfLoaderPrivate {
         static $gtype: GObject.GType<PdfLoaderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SoundPlayerClass = typeof SoundPlayer;
     abstract class SoundPlayerPrivate {
         static $gtype: GObject.GType<SoundPlayerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TextLoaderClass = typeof TextLoader;
     abstract class TextLoaderPrivate {
         static $gtype: GObject.GType<TextLoaderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

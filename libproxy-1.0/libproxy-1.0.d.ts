@@ -34,7 +34,6 @@ export namespace Libproxy {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ProxyFactory;
 

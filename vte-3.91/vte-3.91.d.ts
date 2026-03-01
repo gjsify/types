@@ -350,7 +350,6 @@ export namespace Vte {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -384,7 +383,6 @@ export namespace Vte {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1794,7 +1792,8 @@ export namespace Vte {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.AccessibleText.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -4693,7 +4692,6 @@ export namespace Vte {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4701,10 +4699,6 @@ export namespace Vte {
      */
     abstract class EventContext {
         static $gtype: GObject.GType<EventContext>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4718,7 +4712,6 @@ export namespace Vte {
         // Constructors
 
         constructor(pattern: string, pattern_length: number, flags: number);
-        _init(...args: any[]): void;
 
         static new_for_match(pattern: string, pattern_length: number, flags: number): Regex;
 
@@ -4760,10 +4753,6 @@ export namespace Vte {
     type TerminalClass = typeof Terminal;
     abstract class TerminalClassPrivate {
         static $gtype: GObject.GType<TerminalClassPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4775,7 +4764,6 @@ export namespace Vte {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static new_from_string(str: string, len: number, fmt: UuidFormat): Uuid;
 

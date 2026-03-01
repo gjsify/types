@@ -316,16 +316,11 @@ export namespace GstVideo {
                 h: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type SinkClass = typeof Sink;
     class SinkPrivate {
         static $gtype: GObject.GType<SinkPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

@@ -159,7 +159,6 @@ export namespace Gc {
         // Constructors
 
         constructor(category: Category);
-        _init(...args: any[]): void;
 
         static new_category(category: Category): SearchCriteria;
 

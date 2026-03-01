@@ -4293,10 +4293,6 @@ export namespace GstRtspServer {
         n_ports: number;
         ttl: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -4314,28 +4310,16 @@ export namespace GstRtspServer {
     type RTSPAddressPoolClass = typeof RTSPAddressPool;
     abstract class RTSPAddressPoolPrivate {
         static $gtype: GObject.GType<RTSPAddressPoolPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RTSPAuthClass = typeof RTSPAuth;
     abstract class RTSPAuthPrivate {
         static $gtype: GObject.GType<RTSPAuthPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RTSPClientClass = typeof RTSPClient;
     abstract class RTSPClientPrivate {
         static $gtype: GObject.GType<RTSPClientPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4356,10 +4340,6 @@ export namespace GstRtspServer {
         media: RTSPMedia;
         stream: RTSPStream;
         trans: RTSPStreamTransport;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4384,36 +4364,20 @@ export namespace GstRtspServer {
     type RTSPMediaFactoryClass = typeof RTSPMediaFactory;
     abstract class RTSPMediaFactoryPrivate {
         static $gtype: GObject.GType<RTSPMediaFactoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RTSPMediaFactoryURIClass = typeof RTSPMediaFactoryURI;
     abstract class RTSPMediaFactoryURIPrivate {
         static $gtype: GObject.GType<RTSPMediaFactoryURIPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class RTSPMediaPrivate {
         static $gtype: GObject.GType<RTSPMediaPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RTSPMountPointsClass = typeof RTSPMountPoints;
     abstract class RTSPMountPointsPrivate {
         static $gtype: GObject.GType<RTSPMountPointsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RTSPOnvifClientClass = typeof RTSPOnvifClient;
@@ -4421,18 +4385,10 @@ export namespace GstRtspServer {
     type RTSPOnvifMediaFactoryClass = typeof RTSPOnvifMediaFactory;
     abstract class RTSPOnvifMediaFactoryPrivate {
         static $gtype: GObject.GType<RTSPOnvifMediaFactoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class RTSPOnvifMediaPrivate {
         static $gtype: GObject.GType<RTSPOnvifMediaPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RTSPOnvifServerClass = typeof RTSPOnvifServer;
@@ -4450,7 +4406,6 @@ export namespace GstRtspServer {
                 mini_object: Gst.MiniObject;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): RTSPPermissions;
 
@@ -4503,55 +4458,31 @@ export namespace GstRtspServer {
     type RTSPServerClass = typeof RTSPServer;
     abstract class RTSPServerPrivate {
         static $gtype: GObject.GType<RTSPServerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RTSPSessionClass = typeof RTSPSession;
     type RTSPSessionMediaClass = typeof RTSPSessionMedia;
     abstract class RTSPSessionMediaPrivate {
         static $gtype: GObject.GType<RTSPSessionMediaPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RTSPSessionPoolClass = typeof RTSPSessionPool;
     abstract class RTSPSessionPoolPrivate {
         static $gtype: GObject.GType<RTSPSessionPoolPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class RTSPSessionPrivate {
         static $gtype: GObject.GType<RTSPSessionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RTSPStreamClass = typeof RTSPStream;
     abstract class RTSPStreamPrivate {
         static $gtype: GObject.GType<RTSPStreamPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RTSPStreamTransportClass = typeof RTSPStreamTransport;
     abstract class RTSPStreamTransportPrivate {
         static $gtype: GObject.GType<RTSPStreamTransportPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4567,7 +4498,6 @@ export namespace GstRtspServer {
         // Constructors
 
         constructor(type: RTSPThreadType);
-        _init(...args: any[]): void;
 
         static ['new'](type: RTSPThreadType): RTSPThread;
 
@@ -4588,10 +4518,6 @@ export namespace GstRtspServer {
     type RTSPThreadPoolClass = typeof RTSPThreadPool;
     abstract class RTSPThreadPoolPrivate {
         static $gtype: GObject.GType<RTSPThreadPoolPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4608,7 +4534,6 @@ export namespace GstRtspServer {
                 mini_object: Gst.MiniObject;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): RTSPToken;
 
@@ -4666,7 +4591,6 @@ export namespace GstRtspServer {
                 server_ip: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**

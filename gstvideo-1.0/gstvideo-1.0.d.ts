@@ -1750,10 +1750,6 @@ export namespace GstVideo {
          * Current status depends on plugin internal setup
          */
         static CUSTOM: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6752,10 +6748,6 @@ export namespace GstVideo {
         spec: VideoAFDSpec;
         afd: VideoAFDValue;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         static get_info(): Gst.MetaInfo;
@@ -6780,10 +6772,6 @@ export namespace GstVideo {
 
         matrix: number[];
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         static get_info(): Gst.MetaInfo;
@@ -6802,28 +6790,16 @@ export namespace GstVideo {
     type VideoAggregatorConvertPadClass = typeof VideoAggregatorConvertPad;
     abstract class VideoAggregatorConvertPadPrivate {
         static $gtype: GObject.GType<VideoAggregatorConvertPadPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type VideoAggregatorPadClass = typeof VideoAggregatorPad;
     abstract class VideoAggregatorPadPrivate {
         static $gtype: GObject.GType<VideoAggregatorPadPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type VideoAggregatorParallelConvertPadClass = typeof VideoAggregatorParallelConvertPad;
     abstract class VideoAggregatorPrivate {
         static $gtype: GObject.GType<VideoAggregatorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6853,7 +6829,6 @@ export namespace GstVideo {
                 stride_align: number[];
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -6889,7 +6864,6 @@ export namespace GstVideo {
                 data: Uint8Array;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6916,10 +6890,6 @@ export namespace GstVideo {
         bar_data1: number;
         bar_data2: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         static get_info(): Gst.MetaInfo;
@@ -6928,10 +6898,6 @@ export namespace GstVideo {
     type VideoBufferPoolClass = typeof VideoBufferPool;
     abstract class VideoBufferPoolPrivate {
         static $gtype: GObject.GType<VideoBufferPoolPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6946,10 +6912,6 @@ export namespace GstVideo {
         data: Uint8Array;
         size: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         static get_info(): Gst.MetaInfo;
@@ -6957,10 +6919,6 @@ export namespace GstVideo {
 
     abstract class VideoChromaResample {
         static $gtype: GObject.GType<VideoChromaResample>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -6986,10 +6944,6 @@ export namespace GstVideo {
     class VideoCodecAlphaMeta {
         static $gtype: GObject.GType<VideoCodecAlphaMeta>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         static get_info(): Gst.MetaInfo;
@@ -7010,10 +6964,6 @@ export namespace GstVideo {
         duration: Gst.ClockTime;
         distance_from_sync: number;
         deadline: Gst.ClockTime;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -7063,10 +7013,6 @@ export namespace GstVideo {
         mastering_display_info: VideoMasteringDisplayInfo;
         content_light_level: VideoContentLightLevel;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -7100,10 +7046,6 @@ export namespace GstVideo {
         Gy: number;
         Bx: number;
         By: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -7118,10 +7060,6 @@ export namespace GstVideo {
         matrix: VideoColorMatrix;
         transfer: VideoTransferFunction;
         primaries: VideoColorPrimaries;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -7179,7 +7117,6 @@ export namespace GstVideo {
                 max_frame_average_light_level: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -7221,10 +7158,6 @@ export namespace GstVideo {
 
     abstract class VideoConverter {
         static $gtype: GObject.GType<VideoConverter>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -7290,10 +7223,6 @@ export namespace GstVideo {
         width: number;
         height: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         static get_info(): Gst.MetaInfo;
@@ -7302,10 +7231,6 @@ export namespace GstVideo {
     type VideoDecoderClass = typeof VideoDecoder;
     abstract class VideoDecoderPrivate {
         static $gtype: GObject.GType<VideoDecoderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type VideoDirectionInterface = typeof VideoDirection;
@@ -7315,10 +7240,6 @@ export namespace GstVideo {
      */
     abstract class VideoDither {
         static $gtype: GObject.GType<VideoDither>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -7341,10 +7262,6 @@ export namespace GstVideo {
     type VideoEncoderClass = typeof VideoEncoder;
     abstract class VideoEncoderPrivate {
         static $gtype: GObject.GType<VideoEncoderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type VideoFilterClass = typeof VideoFilter;
@@ -7379,10 +7296,6 @@ export namespace GstVideo {
         tile_hs: number;
         tile_info: VideoTileInfo[];
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -7414,10 +7327,6 @@ export namespace GstVideo {
         meta: any;
         id: number;
         data: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -7530,10 +7439,6 @@ export namespace GstVideo {
         n_textures: number;
         texture_type: VideoGLTextureType[];
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         static get_info(): Gst.MetaInfo;
@@ -7595,7 +7500,6 @@ export namespace GstVideo {
                 stride: number[];
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): VideoInfo;
 
@@ -7722,7 +7626,6 @@ export namespace GstVideo {
                 drm_modifier: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): VideoInfoDmaDrm;
 
@@ -7790,7 +7693,6 @@ export namespace GstVideo {
                 min_display_mastering_luminance: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -7851,7 +7753,6 @@ export namespace GstVideo {
                 y: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -7886,10 +7787,6 @@ export namespace GstVideo {
         offset: number[];
         stride: number[];
         alignment: VideoAlignment;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -7945,10 +7842,6 @@ export namespace GstVideo {
     class VideoMetaTransform {
         static $gtype: GObject.GType<VideoMetaTransform>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -7988,7 +7881,6 @@ export namespace GstVideo {
         // Constructors
 
         constructor(rectangle?: VideoOverlayRectangle | null);
-        _init(...args: any[]): void;
 
         static ['new'](rectangle?: VideoOverlayRectangle | null): VideoOverlayComposition;
 
@@ -8055,10 +7947,6 @@ export namespace GstVideo {
     class VideoOverlayCompositionMeta {
         static $gtype: GObject.GType<VideoOverlayCompositionMeta>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         static get_info(): Gst.MetaInfo;
@@ -8082,7 +7970,6 @@ export namespace GstVideo {
             render_height: number,
             flags: VideoOverlayFormatFlags,
         );
-        _init(...args: any[]): void;
 
         static new_raw(
             pixels: Gst.Buffer,
@@ -8224,7 +8111,6 @@ export namespace GstVideo {
                 h: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -8243,10 +8129,6 @@ export namespace GstVideo {
         w: number;
         h: number;
         params: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -8308,7 +8190,6 @@ export namespace GstVideo {
                 taps: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -8340,10 +8221,6 @@ export namespace GstVideo {
         data: number;
         size: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         static get_info(): Gst.MetaInfo;
@@ -8355,10 +8232,6 @@ export namespace GstVideo {
      */
     abstract class VideoScaler {
         static $gtype: GObject.GType<VideoScaler>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -8451,10 +8324,6 @@ export namespace GstVideo {
     type VideoSinkClass = typeof VideoSink;
     abstract class VideoSinkPrivate {
         static $gtype: GObject.GType<VideoSinkPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -8481,7 +8350,6 @@ export namespace GstVideo {
                 size: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -8517,7 +8385,6 @@ export namespace GstVideo {
                 field_count: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             fps_n: number,
@@ -8682,10 +8549,6 @@ export namespace GstVideo {
         fps_n: number;
         fps_d: number;
         flags: VideoTimeCodeFlags;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -8712,7 +8575,6 @@ export namespace GstVideo {
                 frames: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](hours: number, minutes: number, seconds: number, frames: number): VideoTimeCodeInterval;
 
@@ -8752,10 +8614,6 @@ export namespace GstVideo {
 
         tc: VideoTimeCode;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         static get_info(): Gst.MetaInfo;
@@ -8771,7 +8629,6 @@ export namespace GstVideo {
         // Constructors
 
         constructor(format: VideoFormat, pixel_width: number);
-        _init(...args: any[]): void;
 
         static ['new'](format: VideoFormat, pixel_width: number): VideoVBIEncoder;
 
@@ -8807,7 +8664,6 @@ export namespace GstVideo {
         // Constructors
 
         constructor(format: VideoFormat, pixel_width: number);
-        _init(...args: any[]): void;
 
         static ['new'](format: VideoFormat, pixel_width: number): VideoVBIParser;
 

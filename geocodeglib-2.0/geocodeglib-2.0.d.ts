@@ -54,7 +54,6 @@ export namespace GeocodeGlib {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -3059,28 +3058,16 @@ export namespace GeocodeGlib {
     type BoundingBoxClass = typeof BoundingBox;
     abstract class BoundingBoxPrivate {
         static $gtype: GObject.GType<BoundingBoxPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ForwardClass = typeof Forward;
     abstract class ForwardPrivate {
         static $gtype: GObject.GType<ForwardPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LocationClass = typeof Location;
     abstract class LocationPrivate {
         static $gtype: GObject.GType<LocationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MockBackendClass = typeof MockBackend;
@@ -3101,29 +3088,17 @@ export namespace GeocodeGlib {
         is_forward: boolean;
         results: Place[];
         error: GLib.Error;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type NominatimClass = typeof Nominatim;
     type PlaceClass = typeof Place;
     abstract class PlacePrivate {
         static $gtype: GObject.GType<PlacePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ReverseClass = typeof Reverse;
     abstract class ReversePrivate {
         static $gtype: GObject.GType<ReversePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Backend {

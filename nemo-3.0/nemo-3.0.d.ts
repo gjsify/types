@@ -229,9 +229,7 @@ export namespace Nemo {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {}
+            extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     class DesktopPreferences extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
@@ -1023,7 +1021,8 @@ export namespace Nemo {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Button.ConstructorProps,
+            extends
+                Gtk.Button.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Activatable.ConstructorProps,
@@ -5607,54 +5606,30 @@ export namespace Nemo {
     type ColumnClass = typeof Column;
     class ColumnProviderInterface {
         static $gtype: GObject.GType<ColumnProviderInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DesktopPreferencesClass = typeof DesktopPreferences;
     abstract class File {
         static $gtype: GObject.GType<File>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FileInfoInterface = typeof FileInfo;
     class InfoProviderInterface {
         static $gtype: GObject.GType<InfoProviderInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class LocationWidgetProviderInterface {
         static $gtype: GObject.GType<LocationWidgetProviderInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MenuClass = typeof Menu;
     type MenuItemClass = typeof MenuItem;
     class MenuProviderInterface {
         static $gtype: GObject.GType<MenuProviderInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class NameAndDescProviderInterface {
         static $gtype: GObject.GType<NameAndDescProviderInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5669,19 +5644,11 @@ export namespace Nemo {
      */
     abstract class OperationHandle {
         static $gtype: GObject.GType<OperationHandle>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PropertyPageClass = typeof PropertyPage;
     class PropertyPageProviderInterface {
         static $gtype: GObject.GType<PropertyPageProviderInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SimpleButtonClass = typeof SimpleButton;

@@ -80,7 +80,6 @@ export namespace GnomeDesktop {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     const DESKTOP_PLATFORM_VERSION: number;
@@ -1740,9 +1739,7 @@ export namespace GnomeDesktop {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             dpms_mode: RRDpmsModeType;
             dpmsMode: RRDpmsModeType;
             gdk_screen: Gdk.Screen;
@@ -2814,46 +2811,26 @@ export namespace GnomeDesktop {
     type BGCrossfadeClass = typeof BGCrossfade;
     abstract class BGCrossfadePrivate {
         static $gtype: GObject.GType<BGCrossfadePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BGSlideShowClass = typeof BGSlideShow;
     abstract class BGSlideShowPrivate {
         static $gtype: GObject.GType<BGSlideShowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DesktopThumbnailFactoryClass = typeof DesktopThumbnailFactory;
     abstract class DesktopThumbnailFactoryPrivate {
         static $gtype: GObject.GType<DesktopThumbnailFactoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IdleMonitorClass = typeof IdleMonitor;
     abstract class IdleMonitorPrivate {
         static $gtype: GObject.GType<IdleMonitorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PnpIdsClass = typeof PnpIds;
     abstract class PnpIdsPrivate {
         static $gtype: GObject.GType<PnpIdsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class RRCTM {
@@ -2870,24 +2847,15 @@ export namespace GnomeDesktop {
                 matrix: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type RRConfigClass = typeof RRConfig;
     abstract class RRConfigPrivate {
         static $gtype: GObject.GType<RRConfigPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class RRCrtc {
         static $gtype: GObject.GType<RRCrtc>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2904,10 +2872,6 @@ export namespace GnomeDesktop {
 
     abstract class RRMode {
         static $gtype: GObject.GType<RRMode>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2926,10 +2890,6 @@ export namespace GnomeDesktop {
 
     abstract class RROutput {
         static $gtype: GObject.GType<RROutput>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2961,37 +2921,21 @@ export namespace GnomeDesktop {
     type RROutputInfoClass = typeof RROutputInfo;
     abstract class RROutputInfoPrivate {
         static $gtype: GObject.GType<RROutputInfoPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RRScreenClass = typeof RRScreen;
     abstract class RRScreenPrivate {
         static $gtype: GObject.GType<RRScreenPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WallClockClass = typeof WallClock;
     abstract class WallClockPrivate {
         static $gtype: GObject.GType<WallClockPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type XkbInfoClass = typeof XkbInfo;
     abstract class XkbInfoPrivate {
         static $gtype: GObject.GType<XkbInfoPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

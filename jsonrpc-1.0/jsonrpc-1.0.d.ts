@@ -1811,7 +1811,6 @@ export namespace Jsonrpc {
                 magic: MessageMagic;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class MessageGetBoolean {
@@ -1830,7 +1829,6 @@ export namespace Jsonrpc {
                 valptr: boolean;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class MessageGetDict {
@@ -1839,10 +1837,6 @@ export namespace Jsonrpc {
         // Fields
 
         magic: MessageMagic;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MessageGetDouble {
@@ -1861,7 +1855,6 @@ export namespace Jsonrpc {
                 valptr: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class MessageGetInt32 {
@@ -1880,7 +1873,6 @@ export namespace Jsonrpc {
                 valptr: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class MessageGetInt64 {
@@ -1899,7 +1891,6 @@ export namespace Jsonrpc {
                 valptr: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class MessageGetIter {
@@ -1908,10 +1899,6 @@ export namespace Jsonrpc {
         // Fields
 
         magic: MessageMagic;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MessageGetString {
@@ -1930,7 +1917,6 @@ export namespace Jsonrpc {
                 valptr: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class MessageGetStrv {
@@ -1949,7 +1935,6 @@ export namespace Jsonrpc {
                 valptr: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class MessageGetVariant {
@@ -1958,10 +1943,6 @@ export namespace Jsonrpc {
         // Fields
 
         magic: MessageMagic;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MessageMagic {
@@ -1978,7 +1959,6 @@ export namespace Jsonrpc {
                 bytes: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class MessagePutBoolean {
@@ -1997,7 +1977,6 @@ export namespace Jsonrpc {
                 val: boolean;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class MessagePutDouble {
@@ -2016,7 +1995,6 @@ export namespace Jsonrpc {
                 val: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class MessagePutInt32 {
@@ -2035,7 +2013,6 @@ export namespace Jsonrpc {
                 val: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class MessagePutInt64 {
@@ -2054,7 +2031,6 @@ export namespace Jsonrpc {
                 val: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class MessagePutString {
@@ -2073,7 +2049,6 @@ export namespace Jsonrpc {
                 val: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class MessagePutStrv {
@@ -2092,7 +2067,6 @@ export namespace Jsonrpc {
                 val: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class MessagePutVariant {
@@ -2101,10 +2075,6 @@ export namespace Jsonrpc {
         // Fields
 
         magic: MessageMagic;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OutputStreamClass = typeof OutputStream;

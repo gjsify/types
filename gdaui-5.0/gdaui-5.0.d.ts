@@ -70,7 +70,6 @@ export namespace Gdaui {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -251,7 +250,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -979,7 +979,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 DataSelector.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -1727,7 +1728,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ComboBox.ConstructorProps,
+            extends
+                Gtk.ComboBox.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 DataSelector.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -7075,7 +7077,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -7651,7 +7654,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -9246,7 +9250,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Entry.ConstructorProps,
+            extends
+                Gtk.Entry.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.CellEditable.ConstructorProps,
@@ -13970,7 +13975,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EntryWrapper.ConstructorProps,
+            extends
+                EntryWrapper.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 DataEntry.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -18522,7 +18528,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EntryWrapper.ConstructorProps,
+            extends
+                EntryWrapper.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 DataEntry.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -23074,7 +23081,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EntryShell.ConstructorProps,
+            extends
+                EntryShell.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 DataEntry.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -27687,7 +27695,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EntryWrapper.ConstructorProps,
+            extends
+                EntryWrapper.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 DataEntry.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -32297,7 +32306,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EntryCommonTime.ConstructorProps,
+            extends
+                EntryCommonTime.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 DataEntry.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -36738,7 +36748,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EntryWrapper.ConstructorProps,
+            extends
+                EntryWrapper.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 DataEntry.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -41292,7 +41303,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EntryWrapper.ConstructorProps,
+            extends
+                EntryWrapper.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 DataEntry.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -45911,7 +45923,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Viewport.ConstructorProps,
+            extends
+                Gtk.Viewport.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {
@@ -46599,7 +46612,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EntryWrapper.ConstructorProps,
+            extends
+                EntryWrapper.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 DataEntry.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -51216,7 +51230,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EntryCommonTime.ConstructorProps,
+            extends
+                EntryCommonTime.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 DataEntry.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -55659,7 +55674,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EntryCommonTime.ConstructorProps,
+            extends
+                EntryCommonTime.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 DataEntry.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -60100,7 +60116,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EntryShell.ConstructorProps,
+            extends
+                EntryShell.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 DataEntry.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -64667,7 +64684,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 DataProxy.ConstructorProps,
                 DataSelector.ConstructorProps,
@@ -65495,7 +65513,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Entry.ConstructorProps,
+            extends
+                Entry.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.CellEditable.ConstructorProps,
@@ -69904,7 +69923,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 DataProxy.ConstructorProps,
                 DataSelector.ConstructorProps,
@@ -70697,7 +70717,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -71358,7 +71379,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Entry.ConstructorProps,
+            extends
+                Entry.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.CellEditable.ConstructorProps,
@@ -75780,7 +75802,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Combo.ConstructorProps,
+            extends
+                Combo.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 DataSelector.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -80301,7 +80324,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends BasicForm.ConstructorProps,
+            extends
+                BasicForm.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 DataProxy.ConstructorProps,
                 DataSelector.ConstructorProps,
@@ -81085,7 +81109,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.TreeView.ConstructorProps,
+            extends
+                Gtk.TreeView.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 DataProxy.ConstructorProps,
                 DataSelector.ConstructorProps,
@@ -82007,7 +82032,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -82646,7 +82672,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -83263,7 +83290,8 @@ export namespace Gdaui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 Gtk.TreeDragDest.ConstructorProps,
                 Gtk.TreeDragSource.ConstructorProps,
                 Gtk.TreeModel.ConstructorProps {
@@ -84296,265 +84324,149 @@ export namespace Gdaui {
     type BasicFormClass = typeof BasicForm;
     abstract class BasicFormPriv {
         static $gtype: GObject.GType<BasicFormPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CloudClass = typeof Cloud;
     abstract class CloudPriv {
         static $gtype: GObject.GType<CloudPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ComboClass = typeof Combo;
     abstract class ComboPrivate {
         static $gtype: GObject.GType<ComboPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataCellRendererBinClass = typeof DataCellRendererBin;
     abstract class DataCellRendererBinPrivate {
         static $gtype: GObject.GType<DataCellRendererBinPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataCellRendererBooleanClass = typeof DataCellRendererBoolean;
     abstract class DataCellRendererBooleanPrivate {
         static $gtype: GObject.GType<DataCellRendererBooleanPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataCellRendererComboClass = typeof DataCellRendererCombo;
     abstract class DataCellRendererComboPrivate {
         static $gtype: GObject.GType<DataCellRendererComboPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataCellRendererInfoClass = typeof DataCellRendererInfo;
     abstract class DataCellRendererInfoPriv {
         static $gtype: GObject.GType<DataCellRendererInfoPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataCellRendererTextualClass = typeof DataCellRendererTextual;
     abstract class DataCellRendererTextualPrivate {
         static $gtype: GObject.GType<DataCellRendererTextualPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataEntryIface = typeof DataEntry;
     type DataFilterClass = typeof DataFilter;
     abstract class DataFilterPriv {
         static $gtype: GObject.GType<DataFilterPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataProxyIface = typeof DataProxy;
     type DataProxyInfoClass = typeof DataProxyInfo;
     abstract class DataProxyInfoPriv {
         static $gtype: GObject.GType<DataProxyInfoPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataSelectorIface = typeof DataSelector;
     type DataStoreClass = typeof DataStore;
     abstract class DataStorePriv {
         static $gtype: GObject.GType<DataStorePriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EntryBinClass = typeof EntryBin;
     abstract class EntryBinPrivate {
         static $gtype: GObject.GType<EntryBinPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EntryBooleanClass = typeof EntryBoolean;
     abstract class EntryBooleanPrivate {
         static $gtype: GObject.GType<EntryBooleanPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EntryClass = typeof Entry;
     type EntryComboClass = typeof EntryCombo;
     abstract class EntryComboPriv {
         static $gtype: GObject.GType<EntryComboPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EntryCommonTimeClass = typeof EntryCommonTime;
     abstract class EntryCommonTimePrivate {
         static $gtype: GObject.GType<EntryCommonTimePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EntryDateClass = typeof EntryDate;
     abstract class EntryDatePrivate {
         static $gtype: GObject.GType<EntryDatePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EntryNoneClass = typeof EntryNone;
     abstract class EntryNonePrivate {
         static $gtype: GObject.GType<EntryNonePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EntryNumberClass = typeof EntryNumber;
     abstract class EntryNumberPrivate {
         static $gtype: GObject.GType<EntryNumberPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class EntryPrivate {
         static $gtype: GObject.GType<EntryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EntryShellClass = typeof EntryShell;
     abstract class EntryShellPriv {
         static $gtype: GObject.GType<EntryShellPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EntryStringClass = typeof EntryString;
     abstract class EntryStringPrivate {
         static $gtype: GObject.GType<EntryStringPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EntryTimeClass = typeof EntryTime;
     abstract class EntryTimePrivate {
         static $gtype: GObject.GType<EntryTimePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EntryTimestampClass = typeof EntryTimestamp;
     abstract class EntryTimestampPrivate {
         static $gtype: GObject.GType<EntryTimestampPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EntryWrapperClass = typeof EntryWrapper;
     abstract class EntryWrapperPriv {
         static $gtype: GObject.GType<EntryWrapperPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FormClass = typeof Form;
     abstract class FormPriv {
         static $gtype: GObject.GType<FormPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FormattedEntryClass = typeof FormattedEntry;
     abstract class FormattedEntryPrivate {
         static $gtype: GObject.GType<FormattedEntryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GridClass = typeof Grid;
     abstract class GridPriv {
         static $gtype: GObject.GType<GridPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LoginClass = typeof Login;
     abstract class LoginPrivate {
         static $gtype: GObject.GType<LoginPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type NumericEntryClass = typeof NumericEntry;
     abstract class NumericEntryPrivate {
         static $gtype: GObject.GType<NumericEntryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -84574,10 +84486,6 @@ export namespace Gdaui {
         valid_g_types: GObject.GType;
         options_xml_spec: string;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -84593,46 +84501,26 @@ export namespace Gdaui {
     type ProviderSelectorClass = typeof ProviderSelector;
     abstract class ProviderSelectorPrivate {
         static $gtype: GObject.GType<ProviderSelectorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RawFormClass = typeof RawForm;
     abstract class RawFormPriv {
         static $gtype: GObject.GType<RawFormPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RawGridClass = typeof RawGrid;
     abstract class RawGridPriv {
         static $gtype: GObject.GType<RawGridPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RtEditorClass = typeof RtEditor;
     abstract class RtEditorPriv {
         static $gtype: GObject.GType<RtEditorPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ServerOperationClass = typeof ServerOperation;
     abstract class ServerOperationPriv {
         static $gtype: GObject.GType<ServerOperationPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SetClass = typeof Set;
@@ -84652,7 +84540,6 @@ export namespace Gdaui {
         // Constructors
 
         constructor(group: Gda.SetGroup);
-        _init(...args: any[]): void;
 
         static ['new'](group: Gda.SetGroup): SetGroup;
 
@@ -84691,10 +84578,6 @@ export namespace Gdaui {
 
     abstract class SetPriv {
         static $gtype: GObject.GType<SetPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -84720,7 +84603,6 @@ export namespace Gdaui {
         // Constructors
 
         constructor(source: Gda.SetSource);
-        _init(...args: any[]): void;
 
         static ['new'](source: Gda.SetSource): SetSource;
 
@@ -84764,10 +84646,6 @@ export namespace Gdaui {
     type TreeStoreClass = typeof TreeStore;
     abstract class TreeStorePriv {
         static $gtype: GObject.GType<TreeStorePriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace DataEntry {

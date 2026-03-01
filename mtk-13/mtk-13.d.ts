@@ -51,7 +51,6 @@ export namespace Mtk {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](x: number, y: number, width: number, height: number): Rectangle;
 

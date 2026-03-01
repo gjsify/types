@@ -379,15 +379,10 @@ export namespace GtkosxApplication {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
     }
 
     abstract class ApplicationPrivate {
         static $gtype: GObject.GType<ApplicationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

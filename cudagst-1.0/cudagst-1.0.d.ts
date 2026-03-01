@@ -235,10 +235,6 @@ export namespace CudaGst {
         dstPitch: number;
         WidthInBytes: number;
         Height: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class DA_RESOURCE_DESC {
@@ -248,10 +244,6 @@ export namespace CudaGst {
 
         resType: resourcetype;
         flags: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class DA_RESOURCE_VIEW_DESC {
@@ -268,10 +260,6 @@ export namespace CudaGst {
         firstLayer: number;
         lastLayer: number;
         reserved: number[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class DA_TEXTURE_DESC {
@@ -289,10 +277,6 @@ export namespace CudaGst {
         maxMipmapLevelClamp: number;
         borderColor: number[];
         reserved: number[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ipcEventHandle {
@@ -309,7 +293,6 @@ export namespace CudaGst {
                 reserved: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class ipcMemHandle {
@@ -326,7 +309,6 @@ export namespace CudaGst {
                 reserved: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class memAccessDesc {
@@ -335,10 +317,6 @@ export namespace CudaGst {
         // Fields
 
         flags: memAccess_flags;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class memAllocationProp {
@@ -350,10 +328,6 @@ export namespace CudaGst {
         requestedHandleTypes: memAllocationHandleType;
         win32HandleMetaData: any;
         allocFlags: memAllocationPropAllocFlags;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class memAllocationPropAllocFlags {
@@ -376,7 +350,6 @@ export namespace CudaGst {
                 reserved: Uint8Array;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class memLocation {
@@ -386,10 +359,6 @@ export namespace CudaGst {
 
         type: memLocationType;
         id: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type array = any;

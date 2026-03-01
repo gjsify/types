@@ -689,7 +689,6 @@ export namespace GnomeKeyring {
         // Constructors
 
         constructor(application: ApplicationRef, types_allowed: AccessType);
-        _init(...args: any[]): void;
 
         static ['new'](application: ApplicationRef, types_allowed: AccessType): AccessControl;
 
@@ -712,7 +711,6 @@ export namespace GnomeKeyring {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ApplicationRef;
 
@@ -741,10 +739,6 @@ export namespace GnomeKeyring {
 
         name: string;
         type: AttributeType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -828,7 +822,6 @@ export namespace GnomeKeyring {
                 secret: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -856,10 +849,6 @@ export namespace GnomeKeyring {
 
     class Info {
         static $gtype: GObject.GType<Info>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -924,7 +913,6 @@ export namespace GnomeKeyring {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ItemInfo;
 
@@ -1018,7 +1006,6 @@ export namespace GnomeKeyring {
                 password: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1046,10 +1033,6 @@ export namespace GnomeKeyring {
         // Fields
 
         item_type: ItemType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1062,10 +1045,6 @@ export namespace GnomeKeyring {
 
         name: string;
         type: AttributeType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AttributeList = GLib.Array;

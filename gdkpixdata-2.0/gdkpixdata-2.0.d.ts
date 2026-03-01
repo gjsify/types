@@ -196,7 +196,6 @@ export namespace GdkPixdata {
                 pixel_data: Uint8Array;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 

@@ -33,72 +33,6 @@ export namespace WebKitWebProcessExtension {
      */
 
     /**
-     * Enum values used to denote the various levels of console messages.
-     */
-
-    /**
-     * Enum values used to denote the various levels of console messages.
-     */
-    export namespace ConsoleMessageLevel {
-        export const $gtype: GObject.GType<ConsoleMessageLevel>;
-    }
-
-    enum ConsoleMessageLevel {
-        /**
-         * Information message.
-         */
-        INFO,
-        /**
-         * Log message.
-         */
-        LOG,
-        /**
-         * Warning message.
-         */
-        WARNING,
-        /**
-         * Error message.
-         */
-        ERROR,
-        /**
-         * Debug message.
-         */
-        DEBUG,
-    }
-    /**
-     * Enum values used to denote the various sources of console messages.
-     */
-
-    /**
-     * Enum values used to denote the various sources of console messages.
-     */
-    export namespace ConsoleMessageSource {
-        export const $gtype: GObject.GType<ConsoleMessageSource>;
-    }
-
-    enum ConsoleMessageSource {
-        /**
-         * Message produced by JavaScript.
-         */
-        JAVASCRIPT,
-        /**
-         * Network messages.
-         */
-        NETWORK,
-        /**
-         * Messages produced by console API.
-         */
-        CONSOLE_API,
-        /**
-         * Security messages.
-         */
-        SECURITY,
-        /**
-         * Other messages.
-         */
-        OTHER,
-    }
-    /**
      * Enum values used to denote the stock actions for
      * #WebKitContextMenuItem<!-- -->s
      */
@@ -1667,7 +1601,6 @@ export namespace WebKitWebProcessExtension {
     namespace WebPage {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'console-message-sent': (arg0: ConsoleMessage) => void;
             'context-menu': (arg0: ContextMenu, arg1: WebHitTestResult) => boolean | void;
             'document-loaded': () => void;
             'send-request': (arg0: URIRequest, arg1: URIResponse) => boolean | void;
@@ -1990,51 +1923,6 @@ export namespace WebKitWebProcessExtension {
          * @returns a #WebKitUserMessage with the reply or %NULL in case of error.
          */
         send_message_to_context_finish(result: Gio.AsyncResult): UserMessage;
-    }
-
-    abstract class ConsoleMessage {
-        static $gtype: GObject.GType<ConsoleMessage>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-
-        // Methods
-
-        /**
-         * Make a copy of `console_message`.
-         * @returns A copy of passed in #WebKitConsoleMessage
-         */
-        copy(): ConsoleMessage;
-        /**
-         * Free the #WebKitConsoleMessage
-         */
-        free(): void;
-        /**
-         * Gets the log level of a #WebKitConsoleMessage
-         * @returns a #WebKitConsoleMessageLevel indicating the log level of @console_message
-         */
-        get_level(): ConsoleMessageLevel;
-        /**
-         * Gets the line number of a #WebKitConsoleMessage
-         * @returns the line number of @console_message
-         */
-        get_line(): number;
-        /**
-         * Gets the source of a #WebKitConsoleMessage
-         * @returns a #WebKitConsoleMessageSource indicating the source of @console_message
-         */
-        get_source(): ConsoleMessageSource;
-        /**
-         * Gets the source identifier of a #WebKitConsoleMessage
-         * @returns the source identifier of @console_message
-         */
-        get_source_id(): string;
-        /**
-         * Gets the text message of a #WebKitConsoleMessage
-         * @returns the text message of @console_message
-         */
-        get_text(): string;
     }
 
     type ContextMenuClass = typeof ContextMenu;

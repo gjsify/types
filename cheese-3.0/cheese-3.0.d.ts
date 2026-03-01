@@ -971,7 +971,8 @@ export namespace Cheese {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.Initable.ConstructorProps {}
     }
@@ -1990,18 +1991,10 @@ export namespace Cheese {
     type CameraDeviceMonitorClass = typeof CameraDeviceMonitor;
     abstract class CameraDeviceMonitorPrivate {
         static $gtype: GObject.GType<CameraDeviceMonitorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class CameraPrivate {
         static $gtype: GObject.GType<CameraPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EffectClass = typeof Effect;
@@ -2026,7 +2019,6 @@ export namespace Cheese {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**

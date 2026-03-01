@@ -97,7 +97,6 @@ export namespace GXml {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class DocumentError extends GLib.Error {
@@ -111,7 +110,6 @@ export namespace GXml {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class DomError extends GLib.Error {
@@ -148,7 +146,6 @@ export namespace GXml {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class EnumerationError extends GLib.Error {
@@ -162,7 +159,6 @@ export namespace GXml {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class Error extends GLib.Error {
@@ -177,7 +173,6 @@ export namespace GXml {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class ParserError extends GLib.Error {
@@ -192,7 +187,6 @@ export namespace GXml {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class IXsdSchemaError extends GLib.Error {
@@ -205,7 +199,6 @@ export namespace GXml {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class SerializableError extends GLib.Error {
@@ -219,7 +212,6 @@ export namespace GXml {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class SerializableEnumError extends GLib.Error {
@@ -233,7 +225,6 @@ export namespace GXml {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class XPathError extends GLib.Error {
@@ -268,7 +259,6 @@ export namespace GXml {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace TDocumentReadType {
@@ -3015,7 +3005,8 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 Gee.Traversable.ConstructorProps,
                 Gee.Iterable.ConstructorProps,
                 Collection.ConstructorProps {}
@@ -5704,7 +5695,8 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GomNode.ConstructorProps,
+            extends
+                GomNode.ConstructorProps,
                 DomParentNode.ConstructorProps,
                 DomNonElementParentNode.ConstructorProps,
                 DomDocument.ConstructorProps,
@@ -6835,9 +6827,7 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GomNode.ConstructorProps,
-                DomChildNode.ConstructorProps,
-                DomDocumentType.ConstructorProps {}
+            extends GomNode.ConstructorProps, DomChildNode.ConstructorProps, DomDocumentType.ConstructorProps {}
     }
 
     class GomDocumentType extends GomNode implements DomChildNode, DomDocumentType {
@@ -7354,7 +7344,8 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GomNode.ConstructorProps,
+            extends
+                GomNode.ConstructorProps,
                 DomParentNode.ConstructorProps,
                 DomNonElementParentNode.ConstructorProps,
                 DomDocumentFragment.ConstructorProps {}
@@ -7894,7 +7885,8 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GomNode.ConstructorProps,
+            extends
+                GomNode.ConstructorProps,
                 DomChildNode.ConstructorProps,
                 DomNonDocumentTypeChildNode.ConstructorProps,
                 DomParentNode.ConstructorProps,
@@ -9139,9 +9131,7 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                DomEventTarget.ConstructorProps,
-                DomNode.ConstructorProps {}
+            extends GObject.Object.ConstructorProps, DomEventTarget.ConstructorProps, DomNode.ConstructorProps {}
     }
 
     class GomNode extends GObject.Object implements DomEventTarget, DomNode {
@@ -13926,7 +13916,8 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GomNode.ConstructorProps,
+            extends
+                GomNode.ConstructorProps,
                 DomNonDocumentTypeChildNode.ConstructorProps,
                 DomChildNode.ConstructorProps,
                 DomCharacterData.ConstructorProps {}
@@ -14521,8 +14512,7 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GomCharacterData.ConstructorProps,
-                DomProcessingInstruction.ConstructorProps {}
+            extends GomCharacterData.ConstructorProps, DomProcessingInstruction.ConstructorProps {}
     }
 
     class GomProcessingInstruction extends GomCharacterData implements DomProcessingInstruction {
@@ -14697,9 +14687,7 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GNode.ConstructorProps,
-                Attribute.ConstructorProps,
-                DomAttr.ConstructorProps {}
+            extends GNode.ConstructorProps, Attribute.ConstructorProps, DomAttr.ConstructorProps {}
     }
 
     class GAttribute extends GNode implements Attribute, DomAttr {
@@ -15740,7 +15728,8 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GNonDocumentChildNode.ConstructorProps,
+            extends
+                GNonDocumentChildNode.ConstructorProps,
                 Character.ConstructorProps,
                 DomCharacterData.ConstructorProps {}
     }
@@ -17264,9 +17253,7 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GCharacterData.ConstructorProps,
-                Comment.ConstructorProps,
-                DomComment.ConstructorProps {}
+            extends GCharacterData.ConstructorProps, Comment.ConstructorProps, DomComment.ConstructorProps {}
     }
 
     class GComment extends GCharacterData implements Comment, DomComment {
@@ -17795,7 +17782,8 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GNode.ConstructorProps,
+            extends
+                GNode.ConstructorProps,
                 Document.ConstructorProps,
                 DomParentNode.ConstructorProps,
                 DomNonElementParentNode.ConstructorProps,
@@ -18973,7 +18961,8 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GChildNode.ConstructorProps,
+            extends
+                GChildNode.ConstructorProps,
                 DomNode.ConstructorProps,
                 DomChildNode.ConstructorProps,
                 DomDocumentType.ConstructorProps {}
@@ -23369,7 +23358,8 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GNonDocumentChildNode.ConstructorProps,
+            extends
+                GNonDocumentChildNode.ConstructorProps,
                 DomParentNode.ConstructorProps,
                 DomElement.ConstructorProps,
                 Element.ConstructorProps,
@@ -25086,7 +25076,8 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gee.AbstractBidirList.ConstructorProps,
+            extends
+                Gee.AbstractBidirList.ConstructorProps,
                 DomNodeList.ConstructorProps,
                 DomHTMLCollection.ConstructorProps {}
     }
@@ -25604,7 +25595,8 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 Gee.Traversable.ConstructorProps,
                 Gee.Iterator.ConstructorProps,
                 Gee.BidirIterator.ConstructorProps,
@@ -26224,7 +26216,8 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 Gee.Traversable.ConstructorProps,
                 Gee.Iterator.ConstructorProps,
                 Gee.ListIterator.ConstructorProps {}
@@ -27297,7 +27290,8 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 DomEventTarget.ConstructorProps,
                 DomNode.ConstructorProps,
                 Node.ConstructorProps {
@@ -27968,7 +27962,8 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GCharacterData.ConstructorProps,
+            extends
+                GCharacterData.ConstructorProps,
                 ProcessingInstruction.ConstructorProps,
                 DomProcessingInstruction.ConstructorProps {}
     }
@@ -28483,9 +28478,7 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GCharacterData.ConstructorProps,
-                Text.ConstructorProps,
-                DomText.ConstructorProps {}
+            extends GCharacterData.ConstructorProps, Text.ConstructorProps, DomText.ConstructorProps {}
     }
 
     class GText extends GCharacterData implements Text, DomText {
@@ -31229,7 +31222,8 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gee.ArrayList.ConstructorProps,
+            extends
+                Gee.ArrayList.ConstructorProps,
                 Serializable.ConstructorProps,
                 SerializableCollection.ConstructorProps {
             ignored_serializable_properties: GLib.HashTable<string, GObject.ParamSpec>;
@@ -31813,7 +31807,8 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 Gee.Traversable.ConstructorProps,
                 Serializable.ConstructorProps,
                 SerializableCollection.ConstructorProps {
@@ -32467,7 +32462,8 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gee.HashMap.ConstructorProps,
+            extends
+                Gee.HashMap.ConstructorProps,
                 Serializable.ConstructorProps,
                 SerializableCollection.ConstructorProps {
             ignored_serializable_properties: GLib.HashTable<string, GObject.ParamSpec>;
@@ -33060,7 +33056,8 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gee.TreeMap.ConstructorProps,
+            extends
+                Gee.TreeMap.ConstructorProps,
                 Serializable.ConstructorProps,
                 SerializableCollection.ConstructorProps {
             ignored_serializable_properties: GLib.HashTable<string, GObject.ParamSpec>;
@@ -40227,91 +40224,51 @@ export namespace GXml {
     type CssSelectorDataClass = typeof CssSelectorData;
     abstract class CssSelectorDataPrivate {
         static $gtype: GObject.GType<CssSelectorDataPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CssSelectorParserClass = typeof CssSelectorParser;
     abstract class CssSelectorParserPrivate {
         static $gtype: GObject.GType<CssSelectorParserPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomNodeFilterClass = typeof DomNodeFilter;
     abstract class DomNodeFilterPrivate {
         static $gtype: GObject.GType<DomNodeFilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomElementListClass = typeof DomElementList;
     abstract class DomElementListPrivate {
         static $gtype: GObject.GType<DomElementListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomEventInitClass = typeof DomEventInit;
     abstract class DomEventInitPrivate {
         static $gtype: GObject.GType<DomEventInitPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomCustomEventInitClass = typeof DomCustomEventInit;
     abstract class DomCustomEventInitPrivate {
         static $gtype: GObject.GType<DomCustomEventInitPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomTimeStampClass = typeof DomTimeStamp;
     abstract class DomTimeStampPrivate {
         static $gtype: GObject.GType<DomTimeStampPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomMutationObserverInitClass = typeof DomMutationObserverInit;
     abstract class DomMutationObserverInitPrivate {
         static $gtype: GObject.GType<DomMutationObserverInitPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomErrorNameClass = typeof DomErrorName;
     abstract class DomErrorNamePrivate {
         static $gtype: GObject.GType<DomErrorNamePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ElementListClass = typeof ElementList;
     abstract class ElementListPrivate {
         static $gtype: GObject.GType<ElementListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Enumeration {
@@ -40320,7 +40277,6 @@ export namespace GXml {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Enumeration;
 
@@ -40338,1126 +40294,626 @@ export namespace GXml {
     type GHtmlDocumentClass = typeof GHtmlDocument;
     abstract class GHtmlDocumentPrivate {
         static $gtype: GObject.GType<GHtmlDocumentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomAttrClass = typeof GomAttr;
     abstract class GomAttrPrivate {
         static $gtype: GObject.GType<GomAttrPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BaseCollectionClass = typeof BaseCollection;
     abstract class BaseCollectionPrivate {
         static $gtype: GObject.GType<BaseCollectionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomArrayListClass = typeof GomArrayList;
     abstract class GomArrayListPrivate {
         static $gtype: GObject.GType<GomArrayListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomHashMapClass = typeof GomHashMap;
     abstract class GomHashMapPrivate {
         static $gtype: GObject.GType<GomHashMapPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomHashPairedMapClass = typeof GomHashPairedMap;
     abstract class GomHashPairedMapPrivate {
         static $gtype: GObject.GType<GomHashPairedMapPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomHashThreeMapClass = typeof GomHashThreeMap;
     abstract class GomHashThreeMapPrivate {
         static $gtype: GObject.GType<GomHashThreeMapPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomDocumentClass = typeof GomDocument;
     abstract class GomDocumentPrivate {
         static $gtype: GObject.GType<GomDocumentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomImplementationClass = typeof GomImplementation;
     abstract class GomImplementationPrivate {
         static $gtype: GObject.GType<GomImplementationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomDocumentTypeClass = typeof GomDocumentType;
     abstract class GomDocumentTypePrivate {
         static $gtype: GObject.GType<GomDocumentTypePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomDocumentFragmentClass = typeof GomDocumentFragment;
     abstract class GomDocumentFragmentPrivate {
         static $gtype: GObject.GType<GomDocumentFragmentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomElementClass = typeof GomElement;
     abstract class GomElementPrivate {
         static $gtype: GObject.GType<GomElementPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomElementAttributesClass = typeof GomElementAttributes;
     abstract class GomElementAttributesPrivate {
         static $gtype: GObject.GType<GomElementAttributesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomNodeClass = typeof GomNode;
     abstract class GomNodePrivate {
         static $gtype: GObject.GType<GomNodePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomNodeListClass = typeof GomNodeList;
     abstract class GomNodeListPrivate {
         static $gtype: GObject.GType<GomNodeListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomBasePropertyClass = typeof GomBaseProperty;
     abstract class GomBasePropertyPrivate {
         static $gtype: GObject.GType<GomBasePropertyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomStringClass = typeof GomString;
     abstract class GomStringPrivate {
         static $gtype: GObject.GType<GomStringPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomArrayStringClass = typeof GomArrayString;
     abstract class GomArrayStringPrivate {
         static $gtype: GObject.GType<GomArrayStringPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdArrayStringClass = typeof GomXsdArrayString;
     abstract class GomXsdArrayStringPrivate {
         static $gtype: GObject.GType<GomXsdArrayStringPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomDoubleClass = typeof GomDouble;
     abstract class GomDoublePrivate {
         static $gtype: GObject.GType<GomDoublePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomFloatClass = typeof GomFloat;
     abstract class GomFloatPrivate {
         static $gtype: GObject.GType<GomFloatPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomIntClass = typeof GomInt;
     abstract class GomIntPrivate {
         static $gtype: GObject.GType<GomIntPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomBooleanClass = typeof GomBoolean;
     abstract class GomBooleanPrivate {
         static $gtype: GObject.GType<GomBooleanPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomEnumClass = typeof GomEnum;
     abstract class GomEnumPrivate {
         static $gtype: GObject.GType<GomEnumPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomDateClass = typeof GomDate;
     abstract class GomDatePrivate {
         static $gtype: GObject.GType<GomDatePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomDateTimeClass = typeof GomDateTime;
     abstract class GomDateTimePrivate {
         static $gtype: GObject.GType<GomDateTimePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdSchemaClass = typeof GomXsdSchema;
     abstract class GomXsdSchemaPrivate {
         static $gtype: GObject.GType<GomXsdSchemaPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdSimpleTypeClass = typeof GomXsdSimpleType;
     abstract class GomXsdSimpleTypePrivate {
         static $gtype: GObject.GType<GomXsdSimpleTypePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdTypeDefinitionClass = typeof GomXsdTypeDefinition;
     abstract class GomXsdTypeDefinitionPrivate {
         static $gtype: GObject.GType<GomXsdTypeDefinitionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdTypeListClass = typeof GomXsdTypeList;
     abstract class GomXsdTypeListPrivate {
         static $gtype: GObject.GType<GomXsdTypeListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdTypeUnionClass = typeof GomXsdTypeUnion;
     abstract class GomXsdTypeUnionPrivate {
         static $gtype: GObject.GType<GomXsdTypeUnionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdTypeRestrictionClass = typeof GomXsdTypeRestriction;
     abstract class GomXsdTypeRestrictionPrivate {
         static $gtype: GObject.GType<GomXsdTypeRestrictionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdTypeRestrictionDefClass = typeof GomXsdTypeRestrictionDef;
     abstract class GomXsdTypeRestrictionDefPrivate {
         static $gtype: GObject.GType<GomXsdTypeRestrictionDefPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdTypeRestrictionMinExclusiveClass = typeof GomXsdTypeRestrictionMinExclusive;
     abstract class GomXsdTypeRestrictionMinExclusivePrivate {
         static $gtype: GObject.GType<GomXsdTypeRestrictionMinExclusivePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdTypeRestrictionMinInclusiveClass = typeof GomXsdTypeRestrictionMinInclusive;
     abstract class GomXsdTypeRestrictionMinInclusivePrivate {
         static $gtype: GObject.GType<GomXsdTypeRestrictionMinInclusivePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdTypeRestrictionMaxExclusiveClass = typeof GomXsdTypeRestrictionMaxExclusive;
     abstract class GomXsdTypeRestrictionMaxExclusivePrivate {
         static $gtype: GObject.GType<GomXsdTypeRestrictionMaxExclusivePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdTypeRestrictionMaxInclusiveClass = typeof GomXsdTypeRestrictionMaxInclusive;
     abstract class GomXsdTypeRestrictionMaxInclusivePrivate {
         static $gtype: GObject.GType<GomXsdTypeRestrictionMaxInclusivePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdTypeRestrictionTotalDigitsClass = typeof GomXsdTypeRestrictionTotalDigits;
     abstract class GomXsdTypeRestrictionTotalDigitsPrivate {
         static $gtype: GObject.GType<GomXsdTypeRestrictionTotalDigitsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdTypeRestrictionFractionDigitsClass = typeof GomXsdTypeRestrictionFractionDigits;
     abstract class GomXsdTypeRestrictionFractionDigitsPrivate {
         static $gtype: GObject.GType<GomXsdTypeRestrictionFractionDigitsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdTypeRestrictionLengthClass = typeof GomXsdTypeRestrictionLength;
     abstract class GomXsdTypeRestrictionLengthPrivate {
         static $gtype: GObject.GType<GomXsdTypeRestrictionLengthPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdTypeRestrictionMinLengthClass = typeof GomXsdTypeRestrictionMinLength;
     abstract class GomXsdTypeRestrictionMinLengthPrivate {
         static $gtype: GObject.GType<GomXsdTypeRestrictionMinLengthPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdTypeRestrictionMaxLengthClass = typeof GomXsdTypeRestrictionMaxLength;
     abstract class GomXsdTypeRestrictionMaxLengthPrivate {
         static $gtype: GObject.GType<GomXsdTypeRestrictionMaxLengthPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdTypeRestrictionEnumerationClass = typeof GomXsdTypeRestrictionEnumeration;
     abstract class GomXsdTypeRestrictionEnumerationPrivate {
         static $gtype: GObject.GType<GomXsdTypeRestrictionEnumerationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdTypeRestrictionWhiteSpaceClass = typeof GomXsdTypeRestrictionWhiteSpace;
     abstract class GomXsdTypeRestrictionWhiteSpacePrivate {
         static $gtype: GObject.GType<GomXsdTypeRestrictionWhiteSpacePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdTypeRestrictionWhiteSpaceFixedClass = typeof GomXsdTypeRestrictionWhiteSpaceFixed;
     abstract class GomXsdTypeRestrictionWhiteSpaceFixedPrivate {
         static $gtype: GObject.GType<GomXsdTypeRestrictionWhiteSpaceFixedPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdTypeRestrictionPatternClass = typeof GomXsdTypeRestrictionPattern;
     abstract class GomXsdTypeRestrictionPatternPrivate {
         static $gtype: GObject.GType<GomXsdTypeRestrictionPatternPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdTypeRestrictionAssertionClass = typeof GomXsdTypeRestrictionAssertion;
     abstract class GomXsdTypeRestrictionAssertionPrivate {
         static $gtype: GObject.GType<GomXsdTypeRestrictionAssertionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdTypeRestrictionExplicitTimezoneClass = typeof GomXsdTypeRestrictionExplicitTimezone;
     abstract class GomXsdTypeRestrictionExplicitTimezonePrivate {
         static $gtype: GObject.GType<GomXsdTypeRestrictionExplicitTimezonePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdComplexTypeClass = typeof GomXsdComplexType;
     abstract class GomXsdComplexTypePrivate {
         static $gtype: GObject.GType<GomXsdComplexTypePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdExtensionClass = typeof GomXsdExtension;
     abstract class GomXsdExtensionPrivate {
         static $gtype: GObject.GType<GomXsdExtensionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdElementClass = typeof GomXsdElement;
     abstract class GomXsdElementPrivate {
         static $gtype: GObject.GType<GomXsdElementPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdAnnotationClass = typeof GomXsdAnnotation;
     abstract class GomXsdAnnotationPrivate {
         static $gtype: GObject.GType<GomXsdAnnotationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdBaseTypeClass = typeof GomXsdBaseType;
     abstract class GomXsdBaseTypePrivate {
         static $gtype: GObject.GType<GomXsdBaseTypePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdBaseContentClass = typeof GomXsdBaseContent;
     abstract class GomXsdBaseContentPrivate {
         static $gtype: GObject.GType<GomXsdBaseContentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdSimpleContentClass = typeof GomXsdSimpleContent;
     abstract class GomXsdSimpleContentPrivate {
         static $gtype: GObject.GType<GomXsdSimpleContentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdComplexContentClass = typeof GomXsdComplexContent;
     abstract class GomXsdComplexContentPrivate {
         static $gtype: GObject.GType<GomXsdComplexContentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdOpenContentClass = typeof GomXsdOpenContent;
     abstract class GomXsdOpenContentPrivate {
         static $gtype: GObject.GType<GomXsdOpenContentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdBaseAttributeClass = typeof GomXsdBaseAttribute;
     abstract class GomXsdBaseAttributePrivate {
         static $gtype: GObject.GType<GomXsdBaseAttributePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdAttributeClass = typeof GomXsdAttribute;
     abstract class GomXsdAttributePrivate {
         static $gtype: GObject.GType<GomXsdAttributePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdAttributeGroupClass = typeof GomXsdAttributeGroup;
     abstract class GomXsdAttributeGroupPrivate {
         static $gtype: GObject.GType<GomXsdAttributeGroupPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdListClass = typeof GomXsdList;
     abstract class GomXsdListPrivate {
         static $gtype: GObject.GType<GomXsdListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdListElementsClass = typeof GomXsdListElements;
     abstract class GomXsdListElementsPrivate {
         static $gtype: GObject.GType<GomXsdListElementsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdListSimpleTypesClass = typeof GomXsdListSimpleTypes;
     abstract class GomXsdListSimpleTypesPrivate {
         static $gtype: GObject.GType<GomXsdListSimpleTypesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdListComplexTypesClass = typeof GomXsdListComplexTypes;
     abstract class GomXsdListComplexTypesPrivate {
         static $gtype: GObject.GType<GomXsdListComplexTypesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdListTypeRestrictionEnumerationsClass = typeof GomXsdListTypeRestrictionEnumerations;
     abstract class GomXsdListTypeRestrictionEnumerationsPrivate {
         static $gtype: GObject.GType<GomXsdListTypeRestrictionEnumerationsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomXsdListTypeRestrictionWhiteSpacesClass = typeof GomXsdListTypeRestrictionWhiteSpaces;
     abstract class GomXsdListTypeRestrictionWhiteSpacesPrivate {
         static $gtype: GObject.GType<GomXsdListTypeRestrictionWhiteSpacesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomCharacterDataClass = typeof GomCharacterData;
     abstract class GomCharacterDataPrivate {
         static $gtype: GObject.GType<GomCharacterDataPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomTextClass = typeof GomText;
     abstract class GomTextPrivate {
         static $gtype: GObject.GType<GomTextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomProcessingInstructionClass = typeof GomProcessingInstruction;
     abstract class GomProcessingInstructionPrivate {
         static $gtype: GObject.GType<GomProcessingInstructionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GomCommentClass = typeof GomComment;
     abstract class GomCommentPrivate {
         static $gtype: GObject.GType<GomCommentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GAttributeClass = typeof GAttribute;
     abstract class GAttributePrivate {
         static $gtype: GObject.GType<GAttributePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GCDATAClass = typeof GCDATA;
     abstract class GCDATAPrivate {
         static $gtype: GObject.GType<GCDATAPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GCharacterDataClass = typeof GCharacterData;
     abstract class GCharacterDataPrivate {
         static $gtype: GObject.GType<GCharacterDataPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GChildNodeClass = typeof GChildNode;
     abstract class GChildNodePrivate {
         static $gtype: GObject.GType<GChildNodePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GNonDocumentChildNodeClass = typeof GNonDocumentChildNode;
     abstract class GNonDocumentChildNodePrivate {
         static $gtype: GObject.GType<GNonDocumentChildNodePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GCommentClass = typeof GComment;
     abstract class GCommentPrivate {
         static $gtype: GObject.GType<GCommentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GDocumentClass = typeof GDocument;
     abstract class GDocumentPrivate {
         static $gtype: GObject.GType<GDocumentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GImplementationClass = typeof GImplementation;
     abstract class GImplementationPrivate {
         static $gtype: GObject.GType<GImplementationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GDocumentTypeClass = typeof GDocumentType;
     abstract class GDocumentTypePrivate {
         static $gtype: GObject.GType<GDocumentTypePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GDocumentFragmentClass = typeof GDocumentFragment;
     abstract class GDocumentFragmentPrivate {
         static $gtype: GObject.GType<GDocumentFragmentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GDomNodeIteratorClass = typeof GDomNodeIterator;
     abstract class GDomNodeIteratorPrivate {
         static $gtype: GObject.GType<GDomNodeIteratorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GDomTreeWalkerClass = typeof GDomTreeWalker;
     abstract class GDomTreeWalkerPrivate {
         static $gtype: GObject.GType<GDomTreeWalkerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GDomTokenListClass = typeof GDomTokenList;
     abstract class GDomTokenListPrivate {
         static $gtype: GObject.GType<GDomTokenListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GDomSettableTokenListClass = typeof GDomSettableTokenList;
     abstract class GDomSettableTokenListPrivate {
         static $gtype: GObject.GType<GDomSettableTokenListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GDomHTMLCollectionClass = typeof GDomHTMLCollection;
     abstract class GDomHTMLCollectionPrivate {
         static $gtype: GObject.GType<GDomHTMLCollectionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GDomEventClass = typeof GDomEvent;
     abstract class GDomEventPrivate {
         static $gtype: GObject.GType<GDomEventPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GDomCustomEventClass = typeof GDomCustomEvent;
     abstract class GDomCustomEventPrivate {
         static $gtype: GObject.GType<GDomCustomEventPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GDomRangeClass = typeof GDomRange;
     abstract class GDomRangePrivate {
         static $gtype: GObject.GType<GDomRangePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GElementClass = typeof GElement;
     abstract class GElementPrivate {
         static $gtype: GObject.GType<GElementPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GHashMapAttrClass = typeof GHashMapAttr;
     abstract class GHashMapAttrPrivate {
         static $gtype: GObject.GType<GHashMapAttrPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GHashMapAttrEntryClass = typeof GHashMapAttrEntry;
     abstract class GHashMapAttrEntryPrivate {
         static $gtype: GObject.GType<GHashMapAttrEntryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GHashMapAttrIteratorClass = typeof GHashMapAttrIterator;
     abstract class GHashMapAttrIteratorPrivate {
         static $gtype: GObject.GType<GHashMapAttrIteratorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GListChildrenClass = typeof GListChildren;
     abstract class GListChildrenPrivate {
         static $gtype: GObject.GType<GListChildrenPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GListChildrenIteratorClass = typeof GListChildrenIterator;
     abstract class GListChildrenIteratorPrivate {
         static $gtype: GObject.GType<GListChildrenIteratorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GListNamespacesClass = typeof GListNamespaces;
     abstract class GListNamespacesPrivate {
         static $gtype: GObject.GType<GListNamespacesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GListNamespacesIteratorClass = typeof GListNamespacesIterator;
     abstract class GListNamespacesIteratorPrivate {
         static $gtype: GObject.GType<GListNamespacesIteratorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GNamespaceClass = typeof GNamespace;
     abstract class GNamespacePrivate {
         static $gtype: GObject.GType<GNamespacePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GNodeClass = typeof GNode;
     abstract class GNodePrivate {
         static $gtype: GObject.GType<GNodePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GProcessingInstructionClass = typeof GProcessingInstruction;
     abstract class GProcessingInstructionPrivate {
         static $gtype: GObject.GType<GProcessingInstructionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GTextClass = typeof GText;
     abstract class GTextPrivate {
         static $gtype: GObject.GType<GTextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GXPathObjectClass = typeof GXPathObject;
     abstract class GXPathObjectPrivate {
         static $gtype: GObject.GType<GXPathObjectPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type NodeListClass = typeof NodeList;
     abstract class NodeListPrivate {
         static $gtype: GObject.GType<NodeListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SerializableBoolClass = typeof SerializableBool;
     abstract class SerializableBoolPrivate {
         static $gtype: GObject.GType<SerializableBoolPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SerializableContainerClass = typeof SerializableContainer;
     abstract class SerializableContainerPrivate {
         static $gtype: GObject.GType<SerializableContainerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SerializableDoubleClass = typeof SerializableDouble;
     abstract class SerializableDoublePrivate {
         static $gtype: GObject.GType<SerializableDoublePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SerializableEnumClass = typeof SerializableEnum;
     abstract class SerializableEnumPrivate {
         static $gtype: GObject.GType<SerializableEnumPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SerializableFloatClass = typeof SerializableFloat;
     abstract class SerializableFloatPrivate {
         static $gtype: GObject.GType<SerializableFloatPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SerializableArrayListClass = typeof SerializableArrayList;
     abstract class SerializableArrayListPrivate {
         static $gtype: GObject.GType<SerializableArrayListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SerializableDualKeyMapClass = typeof SerializableDualKeyMap;
     abstract class SerializableDualKeyMapPrivate {
         static $gtype: GObject.GType<SerializableDualKeyMapPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SerializableHashMapClass = typeof SerializableHashMap;
     abstract class SerializableHashMapPrivate {
         static $gtype: GObject.GType<SerializableHashMapPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SerializableTreeMapClass = typeof SerializableTreeMap;
     abstract class SerializableTreeMapPrivate {
         static $gtype: GObject.GType<SerializableTreeMapPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SerializableIntClass = typeof SerializableInt;
     abstract class SerializableIntPrivate {
         static $gtype: GObject.GType<SerializableIntPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SerializableObjectModelClass = typeof SerializableObjectModel;
     abstract class SerializableObjectModelPrivate {
         static $gtype: GObject.GType<SerializableObjectModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SerializableValueListClass = typeof SerializableValueList;
     abstract class SerializableValueListPrivate {
         static $gtype: GObject.GType<SerializableValueListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TAttributeClass = typeof TAttribute;
     abstract class TAttributePrivate {
         static $gtype: GObject.GType<TAttributePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TCDATAClass = typeof TCDATA;
     abstract class TCDATAPrivate {
         static $gtype: GObject.GType<TCDATAPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TCommentClass = typeof TComment;
     abstract class TCommentPrivate {
         static $gtype: GObject.GType<TCommentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TDocumentClass = typeof TDocument;
     abstract class TDocumentPrivate {
         static $gtype: GObject.GType<TDocumentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TElementClass = typeof TElement;
     abstract class TElementPrivate {
         static $gtype: GObject.GType<TElementPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TNamespaceClass = typeof TNamespace;
     abstract class TNamespacePrivate {
         static $gtype: GObject.GType<TNamespacePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TNodeClass = typeof TNode;
     abstract class TNodePrivate {
         static $gtype: GObject.GType<TNodePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TNodeTChildrenListClass = typeof TNodeTChildrenList;
     abstract class TNodeTChildrenListPrivate {
         static $gtype: GObject.GType<TNodeTChildrenListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TProcessingInstructionClass = typeof TProcessingInstruction;
     abstract class TProcessingInstructionPrivate {
         static $gtype: GObject.GType<TProcessingInstructionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TTextClass = typeof TText;
     abstract class TTextPrivate {
         static $gtype: GObject.GType<TTextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type XParserClass = typeof XParser;
     abstract class XParserPrivate {
         static $gtype: GObject.GType<XParserPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CollectionIface = typeof Collection;

@@ -411,7 +411,6 @@ export namespace SocialWebClient {
                 date: GLib.TimeVal;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): Contact;
 
@@ -446,7 +445,6 @@ export namespace SocialWebClient {
                 date: GLib.TimeVal;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): Item;
 

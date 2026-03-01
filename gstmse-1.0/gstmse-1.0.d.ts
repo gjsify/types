@@ -69,7 +69,6 @@ export namespace GstMse {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1570,7 +1569,6 @@ export namespace GstMse {
                 end: Gst.ClockTime;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type MseSrcClass = typeof MseSrc;
@@ -1592,7 +1590,6 @@ export namespace GstMse {
                 end: Gst.ClockTime;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type SourceBufferListClass = typeof SourceBufferList;

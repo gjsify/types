@@ -65,7 +65,6 @@ export namespace Gtef {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -94,7 +93,6 @@ export namespace Gtef {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1850,7 +1848,8 @@ export namespace Gtef {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.InfoBar.ConstructorProps,
+            extends
+                Gtk.InfoBar.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {}
@@ -2523,7 +2522,8 @@ export namespace Gtef {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Grid.ConstructorProps,
+            extends
+                Gtk.Grid.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {}
@@ -3128,7 +3128,8 @@ export namespace Gtef {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GtkSource.View.ConstructorProps,
+            extends
+                GtkSource.View.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {}
@@ -3673,7 +3674,6 @@ export namespace Gtef {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ActionInfo;
 
@@ -3724,10 +3724,6 @@ export namespace Gtef {
     type ActionInfoCentralStoreClass = typeof ActionInfoCentralStore;
     abstract class ActionInfoCentralStorePrivate {
         static $gtype: GObject.GType<ActionInfoCentralStorePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3760,34 +3756,21 @@ export namespace Gtef {
                 tooltip: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type ActionInfoStoreClass = typeof ActionInfoStore;
     abstract class ActionInfoStorePrivate {
         static $gtype: GObject.GType<ActionInfoStorePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ApplicationClass = typeof Application;
     abstract class ApplicationPrivate {
         static $gtype: GObject.GType<ApplicationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ApplicationWindowClass = typeof ApplicationWindow;
     abstract class ApplicationWindowPrivate {
         static $gtype: GObject.GType<ApplicationWindowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BufferClass = typeof Buffer;
@@ -3797,7 +3780,6 @@ export namespace Gtef {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](charset: string): Encoding;
 
@@ -3851,10 +3833,6 @@ export namespace Gtef {
     type FileSaverClass = typeof FileSaver;
     abstract class FileSaverPrivate {
         static $gtype: GObject.GType<FileSaverPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FoldRegionClass = typeof FoldRegion;
@@ -3863,10 +3841,6 @@ export namespace Gtef {
     type MenuShellClass = typeof MenuShell;
     abstract class MenuShellPrivate {
         static $gtype: GObject.GType<MenuShellPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TabClass = typeof Tab;

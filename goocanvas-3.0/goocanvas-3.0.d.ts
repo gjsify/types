@@ -621,7 +621,8 @@ export namespace GooCanvas {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Container.ConstructorProps,
+            extends
+                Gtk.Container.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {
@@ -24606,7 +24607,6 @@ export namespace GooCanvas {
                 y2: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type CanvasClass = typeof Canvas;
@@ -24631,7 +24631,6 @@ export namespace GooCanvas {
                 radius_y: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type CanvasEllipseModelClass = typeof CanvasEllipseModel;
@@ -24655,10 +24654,6 @@ export namespace GooCanvas {
         show_horz_grid_lines: number;
         show_vert_grid_lines: number;
         vert_grid_lines_on_top: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CanvasGridModelClass = typeof CanvasGridModel;
@@ -24674,10 +24669,6 @@ export namespace GooCanvas {
         y: number;
         width: number;
         height: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CanvasImageModelClass = typeof CanvasImageModel;
@@ -24703,10 +24694,6 @@ export namespace GooCanvas {
         own_style: number;
         clip_fill_rule: number;
         is_static: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -24732,7 +24719,6 @@ export namespace GooCanvas {
                 dash_offset: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static newv(dashes: number[]): CanvasLineDash;
 
@@ -24770,7 +24756,6 @@ export namespace GooCanvas {
                 path_commands: any[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type CanvasPathModelClass = typeof CanvasPathModel;
@@ -24795,7 +24780,6 @@ export namespace GooCanvas {
                 ref_count: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](num_points: number): CanvasPoints;
 
@@ -24851,7 +24835,6 @@ export namespace GooCanvas {
                 end_arrow_coords: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type CanvasPolylineClass = typeof CanvasPolyline;
@@ -24880,7 +24863,6 @@ export namespace GooCanvas {
                 reconfigure_arrows: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type CanvasPolylineModelClass = typeof CanvasPolylineModel;
@@ -24925,7 +24907,6 @@ export namespace GooCanvas {
                 radius_bottom_left_y: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type CanvasRectModelClass = typeof CanvasRectModel;
@@ -24939,10 +24920,6 @@ export namespace GooCanvas {
         // Fields
 
         id: GLib.Quark;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CanvasTableClass = typeof CanvasTable;
@@ -24956,10 +24933,6 @@ export namespace GooCanvas {
         dimensions: CanvasTableDimension[];
         border_width: number;
         children: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class CanvasTableDimension {
@@ -24982,15 +24955,10 @@ export namespace GooCanvas {
                 homogeneous: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     abstract class CanvasTableLayoutData {
         static $gtype: GObject.GType<CanvasTableLayoutData>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CanvasTableModelClass = typeof CanvasTableModel;
@@ -25025,7 +24993,6 @@ export namespace GooCanvas {
                 wrap: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type CanvasTextModelClass = typeof CanvasTextModel;
@@ -25039,10 +25006,6 @@ export namespace GooCanvas {
      */
     class CanvasPathCommand {
         static $gtype: GObject.GType<CanvasPathCommand>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace CanvasItem {

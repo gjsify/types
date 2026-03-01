@@ -28,42 +28,22 @@ export namespace DBus {
     }
     class Connection {
         static $gtype: GObject.GType<Connection>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Error {
         static $gtype: GObject.GType<Error>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Message {
         static $gtype: GObject.GType<Message>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MessageIter {
         static $gtype: GObject.GType<MessageIter>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class PendingCall {
         static $gtype: GObject.GType<PendingCall>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

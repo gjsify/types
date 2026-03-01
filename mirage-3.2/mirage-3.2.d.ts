@@ -112,7 +112,6 @@ export namespace Mirage {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -2997,9 +2996,7 @@ export namespace Mirage {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Object.ConstructorProps,
-                Contextual.ConstructorProps,
-                Stream.ConstructorProps {}
+            extends Object.ConstructorProps, Contextual.ConstructorProps, Stream.ConstructorProps {}
     }
 
     /**
@@ -3690,9 +3687,7 @@ export namespace Mirage {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Object.ConstructorProps,
-                Contextual.ConstructorProps,
-                Stream.ConstructorProps {}
+            extends Object.ConstructorProps, Contextual.ConstructorProps, Stream.ConstructorProps {}
     }
 
     /**
@@ -11492,19 +11487,11 @@ export namespace Mirage {
     type CdTextCoderClass = typeof CdTextCoder;
     abstract class CdTextCoderPrivate {
         static $gtype: GObject.GType<CdTextCoderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ContextClass = typeof Context;
     abstract class ContextPrivate {
         static $gtype: GObject.GType<ContextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ContextualInterface = typeof Contextual;
@@ -11527,25 +11514,16 @@ export namespace Mirage {
                 value: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type DiscClass = typeof Disc;
     abstract class DiscPrivate {
         static $gtype: GObject.GType<DiscPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FileStreamClass = typeof FileStream;
     abstract class FileStreamPrivate {
         static $gtype: GObject.GType<FileStreamPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FilterStreamClass = typeof FilterStream;
@@ -11575,7 +11553,6 @@ export namespace Mirage {
                 mime_type: string[];
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -11592,46 +11569,26 @@ export namespace Mirage {
 
     abstract class FilterStreamPrivate {
         static $gtype: GObject.GType<FilterStreamPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FragmentClass = typeof Fragment;
     abstract class FragmentPrivate {
         static $gtype: GObject.GType<FragmentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IndexClass = typeof Index;
     abstract class IndexPrivate {
         static $gtype: GObject.GType<IndexPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LanguageClass = typeof Language;
     abstract class LanguagePrivate {
         static $gtype: GObject.GType<LanguagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ObjectClass = typeof Object;
     abstract class ObjectPrivate {
         static $gtype: GObject.GType<ObjectPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ParserClass = typeof Parser;
@@ -11659,7 +11616,6 @@ export namespace Mirage {
                 mime_type: string[];
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -11676,47 +11632,27 @@ export namespace Mirage {
 
     abstract class ParserPrivate {
         static $gtype: GObject.GType<ParserPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PluginClass = typeof Plugin;
     abstract class PluginPrivate {
         static $gtype: GObject.GType<PluginPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SectorClass = typeof Sector;
     abstract class SectorPrivate {
         static $gtype: GObject.GType<SectorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SessionClass = typeof Session;
     abstract class SessionPrivate {
         static $gtype: GObject.GType<SessionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StreamInterface = typeof Stream;
     type TrackClass = typeof Track;
     abstract class TrackPrivate {
         static $gtype: GObject.GType<TrackPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WriterClass = typeof Writer;
@@ -11740,7 +11676,6 @@ export namespace Mirage {
                 name: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -11766,18 +11701,10 @@ export namespace Mirage {
 
         name: string;
         description: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class WriterPrivate {
         static $gtype: GObject.GType<WriterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Contextual {

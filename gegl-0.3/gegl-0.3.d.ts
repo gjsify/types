@@ -2224,10 +2224,6 @@ export namespace Gegl {
     type AudioFragmentClass = typeof AudioFragment;
     abstract class AudioFragmentPrivate {
         static $gtype: GObject.GType<AudioFragmentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class BufferIterator {
@@ -2238,27 +2234,15 @@ export namespace Gegl {
         length: number;
         data: any[];
         roi: Rectangle[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class BufferIteratorPriv {
         static $gtype: GObject.GType<BufferIteratorPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ColorClass = typeof Color;
     abstract class ColorPrivate {
         static $gtype: GObject.GType<ColorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CurveClass = typeof Curve;
@@ -2276,10 +2260,6 @@ export namespace Gegl {
         negative_max: number;
         bitmask: number[];
         table: number[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Matrix2 {
@@ -2296,7 +2276,6 @@ export namespace Gegl {
                 coeff: number[];
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2318,7 +2297,6 @@ export namespace Gegl {
                 coeff: number[];
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): Matrix3;
 
@@ -2412,10 +2390,6 @@ export namespace Gegl {
 
     abstract class OperationContext {
         static $gtype: GObject.GType<OperationContext>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecDouble {
@@ -2430,10 +2404,6 @@ export namespace Gegl {
         ui_step_big: number;
         ui_digits: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         set_digits(digits: number): void;
@@ -2447,10 +2417,6 @@ export namespace Gegl {
 
         excluded_values: any[];
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         exclude_value(value: number): void;
@@ -2463,18 +2429,10 @@ export namespace Gegl {
 
         no_validate: number;
         null_ok: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecFormat {
         static $gtype: GObject.GType<ParamSpecFormat>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecInt {
@@ -2488,10 +2446,6 @@ export namespace Gegl {
         ui_step_small: number;
         ui_step_big: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         set_steps(small_step: number, big_step: number): void;
@@ -2504,10 +2458,6 @@ export namespace Gegl {
 
         ui_minimum: number;
         ui_maximum: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecString {
@@ -2517,10 +2467,6 @@ export namespace Gegl {
 
         no_validate: number;
         null_ok: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecUri {
@@ -2530,10 +2476,6 @@ export namespace Gegl {
 
         no_validate: number;
         null_ok: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PathClass = typeof Path;
@@ -2553,7 +2495,6 @@ export namespace Gegl {
                 point: PathPoint[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class PathList {
@@ -2572,7 +2513,6 @@ export namespace Gegl {
                 d: PathItem;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class PathPoint {
@@ -2591,7 +2531,6 @@ export namespace Gegl {
                 y: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class Random {
@@ -2600,7 +2539,6 @@ export namespace Gegl {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Random;
 
@@ -2684,7 +2622,6 @@ export namespace Gegl {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](x: number, y: number, width: number, height: number): Rectangle;
 
@@ -2794,10 +2731,6 @@ export namespace Gegl {
     abstract class Sampler {
         static $gtype: GObject.GType<Sampler>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -2814,28 +2747,16 @@ export namespace Gegl {
 
     abstract class Tile {
         static $gtype: GObject.GType<Tile>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TileBackendClass = typeof TileBackend;
     abstract class TileBackendPrivate {
         static $gtype: GObject.GType<TileBackendPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TileHandlerClass = typeof TileHandler;
     abstract class TileHandlerPrivate {
         static $gtype: GObject.GType<TileHandlerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TileSourceClass = typeof TileSource;

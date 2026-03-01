@@ -358,7 +358,8 @@ export namespace Mash {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Light.ConstructorProps,
+            extends
+                Light.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -945,7 +946,8 @@ export namespace Mash {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps,
+            extends
+                Clutter.Actor.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -2364,7 +2366,8 @@ export namespace Mash {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps,
+            extends
+                Clutter.Actor.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -3514,7 +3517,8 @@ export namespace Mash {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Light.ConstructorProps,
+            extends
+                Light.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -4157,7 +4161,8 @@ export namespace Mash {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends PointLight.ConstructorProps,
+            extends
+                PointLight.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -4717,86 +4722,49 @@ export namespace Mash {
                 max_vertex: Clutter.Vertex;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     abstract class DataLoaderPrivate {
         static $gtype: GObject.GType<DataLoaderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DataPrivate {
         static $gtype: GObject.GType<DataPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DirectionalLightClass = typeof DirectionalLight;
     abstract class DirectionalLightPrivate {
         static $gtype: GObject.GType<DirectionalLightPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LightClass = typeof Light;
     abstract class LightPrivate {
         static $gtype: GObject.GType<LightPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LightSetClass = typeof LightSet;
     abstract class LightSetPrivate {
         static $gtype: GObject.GType<LightSetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ModelClass = typeof Model;
     abstract class ModelPrivate {
         static $gtype: GObject.GType<ModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PlyLoaderClass = typeof PlyLoader;
     abstract class PlyLoaderPrivate {
         static $gtype: GObject.GType<PlyLoaderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PointLightClass = typeof PointLight;
     abstract class PointLightPrivate {
         static $gtype: GObject.GType<PointLightPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SpotLightClass = typeof SpotLight;
     abstract class SpotLightPrivate {
         static $gtype: GObject.GType<SpotLightPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

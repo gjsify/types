@@ -77,7 +77,6 @@ export namespace Kkc {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class LanguageModelError extends GLib.Error {
@@ -90,7 +89,6 @@ export namespace Kkc {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class KeyEventFormatError extends GLib.Error {
@@ -104,7 +102,6 @@ export namespace Kkc {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class RuleParseError extends GLib.Error {
@@ -117,7 +114,6 @@ export namespace Kkc {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class DictionaryError extends GLib.Error {
@@ -131,7 +127,6 @@ export namespace Kkc {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     const KeysymsVoidSymbol: number;
@@ -3686,7 +3681,8 @@ export namespace Kkc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends LanguageModel.ConstructorProps,
+            extends
+                LanguageModel.ConstructorProps,
                 UnigramLanguageModel.ConstructorProps,
                 BigramLanguageModel.ConstructorProps {}
     }
@@ -3788,8 +3784,7 @@ export namespace Kkc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends TextBigramLanguageModel.ConstructorProps,
-                TrigramLanguageModel.ConstructorProps {}
+            extends TextBigramLanguageModel.ConstructorProps, TrigramLanguageModel.ConstructorProps {}
     }
 
     class TextTrigramLanguageModel extends TextBigramLanguageModel implements TrigramLanguageModel {
@@ -3867,7 +3862,8 @@ export namespace Kkc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends LanguageModel.ConstructorProps,
+            extends
+                LanguageModel.ConstructorProps,
                 UnigramLanguageModel.ConstructorProps,
                 BigramLanguageModel.ConstructorProps {
             min_cost: number;
@@ -3971,8 +3967,7 @@ export namespace Kkc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends SortedBigramLanguageModel.ConstructorProps,
-                TrigramLanguageModel.ConstructorProps {}
+            extends SortedBigramLanguageModel.ConstructorProps, TrigramLanguageModel.ConstructorProps {}
     }
 
     class SortedTrigramLanguageModel extends SortedBigramLanguageModel implements TrigramLanguageModel {
@@ -5940,9 +5935,7 @@ export namespace Kkc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Dictionary.ConstructorProps,
-                SegmentDictionary.ConstructorProps {}
+            extends GObject.Object.ConstructorProps, Dictionary.ConstructorProps, SegmentDictionary.ConstructorProps {}
     }
 
     class EmptySegmentDictionary extends GObject.Object implements Dictionary, SegmentDictionary {
@@ -6446,9 +6439,7 @@ export namespace Kkc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Dictionary.ConstructorProps,
-                SegmentDictionary.ConstructorProps {}
+            extends GObject.Object.ConstructorProps, Dictionary.ConstructorProps, SegmentDictionary.ConstructorProps {}
     }
 
     class SystemSegmentDictionary extends GObject.Object implements Dictionary, SegmentDictionary {
@@ -6952,9 +6943,7 @@ export namespace Kkc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Dictionary.ConstructorProps,
-                SegmentDictionary.ConstructorProps {}
+            extends GObject.Object.ConstructorProps, Dictionary.ConstructorProps, SegmentDictionary.ConstructorProps {}
     }
 
     class UserSegmentDictionary extends GObject.Object implements Dictionary, SegmentDictionary {
@@ -7458,9 +7447,7 @@ export namespace Kkc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Dictionary.ConstructorProps,
-                SentenceDictionary.ConstructorProps {}
+            extends GObject.Object.ConstructorProps, Dictionary.ConstructorProps, SentenceDictionary.ConstructorProps {}
     }
 
     class UserSentenceDictionary extends GObject.Object implements Dictionary, SentenceDictionary {
@@ -7962,7 +7949,8 @@ export namespace Kkc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 Dictionary.ConstructorProps,
                 SegmentDictionary.ConstructorProps,
                 SentenceDictionary.ConstructorProps {}
@@ -8873,334 +8861,186 @@ export namespace Kkc {
     type MetadataFileClass = typeof MetadataFile;
     abstract class MetadataFilePrivate {
         static $gtype: GObject.GType<MetadataFilePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TrellisNodeClass = typeof TrellisNode;
     abstract class TrellisNodePrivate {
         static $gtype: GObject.GType<TrellisNodePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UnigramTrellisNodeClass = typeof UnigramTrellisNode;
     abstract class UnigramTrellisNodePrivate {
         static $gtype: GObject.GType<UnigramTrellisNodePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BigramTrellisNodeClass = typeof BigramTrellisNode;
     abstract class BigramTrellisNodePrivate {
         static $gtype: GObject.GType<BigramTrellisNodePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LanguageModelMetadataClass = typeof LanguageModelMetadata;
     abstract class LanguageModelMetadataPrivate {
         static $gtype: GObject.GType<LanguageModelMetadataPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LanguageModelClass = typeof LanguageModel;
     abstract class LanguageModelPrivate {
         static $gtype: GObject.GType<LanguageModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TextBigramLanguageModelClass = typeof TextBigramLanguageModel;
     abstract class TextBigramLanguageModelPrivate {
         static $gtype: GObject.GType<TextBigramLanguageModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TextTrigramLanguageModelClass = typeof TextTrigramLanguageModel;
     abstract class TextTrigramLanguageModelPrivate {
         static $gtype: GObject.GType<TextTrigramLanguageModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SortedBigramLanguageModelClass = typeof SortedBigramLanguageModel;
     abstract class SortedBigramLanguageModelPrivate {
         static $gtype: GObject.GType<SortedBigramLanguageModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SortedTrigramLanguageModelClass = typeof SortedTrigramLanguageModel;
     abstract class SortedTrigramLanguageModelPrivate {
         static $gtype: GObject.GType<SortedTrigramLanguageModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DecoderClass = typeof Decoder;
     abstract class DecoderPrivate {
         static $gtype: GObject.GType<DecoderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BigramDecoderClass = typeof BigramDecoder;
     abstract class BigramDecoderPrivate {
         static $gtype: GObject.GType<BigramDecoderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TrigramDecoderClass = typeof TrigramDecoder;
     abstract class TrigramDecoderPrivate {
         static $gtype: GObject.GType<TrigramDecoderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SegmentListClass = typeof SegmentList;
     abstract class SegmentListPrivate {
         static $gtype: GObject.GType<SegmentListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SegmentClass = typeof Segment;
     abstract class SegmentPrivate {
         static $gtype: GObject.GType<SegmentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CandidateListClass = typeof CandidateList;
     abstract class CandidateListPrivate {
         static $gtype: GObject.GType<CandidateListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CandidateClass = typeof Candidate;
     abstract class CandidatePrivate {
         static $gtype: GObject.GType<CandidatePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type KeyEventFilterClass = typeof KeyEventFilter;
     abstract class KeyEventFilterPrivate {
         static $gtype: GObject.GType<KeyEventFilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type KeyEventClass = typeof KeyEvent;
     abstract class KeyEventPrivate {
         static $gtype: GObject.GType<KeyEventPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type KeymapClass = typeof Keymap;
     abstract class KeymapPrivate {
         static $gtype: GObject.GType<KeymapPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type NicolaKeyEventFilterClass = typeof NicolaKeyEventFilter;
     abstract class NicolaKeyEventFilterPrivate {
         static $gtype: GObject.GType<NicolaKeyEventFilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RomKanaCharacterListClass = typeof RomKanaCharacterList;
     abstract class RomKanaCharacterListPrivate {
         static $gtype: GObject.GType<RomKanaCharacterListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RomKanaConverterClass = typeof RomKanaConverter;
     abstract class RomKanaConverterPrivate {
         static $gtype: GObject.GType<RomKanaConverterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RuleMetadataClass = typeof RuleMetadata;
     abstract class RuleMetadataPrivate {
         static $gtype: GObject.GType<RuleMetadataPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RuleClass = typeof Rule;
     abstract class RulePrivate {
         static $gtype: GObject.GType<RulePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UserRuleClass = typeof UserRule;
     abstract class UserRulePrivate {
         static $gtype: GObject.GType<UserRulePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ContextClass = typeof Context;
     abstract class ContextPrivate {
         static $gtype: GObject.GType<ContextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EmptySegmentDictionaryClass = typeof EmptySegmentDictionary;
     abstract class EmptySegmentDictionaryPrivate {
         static $gtype: GObject.GType<EmptySegmentDictionaryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SystemSegmentDictionaryClass = typeof SystemSegmentDictionary;
     abstract class SystemSegmentDictionaryPrivate {
         static $gtype: GObject.GType<SystemSegmentDictionaryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UserSegmentDictionaryClass = typeof UserSegmentDictionary;
     abstract class UserSegmentDictionaryPrivate {
         static $gtype: GObject.GType<UserSegmentDictionaryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UserSentenceDictionaryClass = typeof UserSentenceDictionary;
     abstract class UserSentenceDictionaryPrivate {
         static $gtype: GObject.GType<UserSentenceDictionaryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UserDictionaryClass = typeof UserDictionary;
     abstract class UserDictionaryPrivate {
         static $gtype: GObject.GType<UserDictionaryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DictionaryListClass = typeof DictionaryList;
     abstract class DictionaryListPrivate {
         static $gtype: GObject.GType<DictionaryListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DBusCandidateListClass = typeof DBusCandidateList;
     abstract class DBusCandidateListPrivate {
         static $gtype: GObject.GType<DBusCandidateListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DBusSegmentListClass = typeof DBusSegmentList;
     abstract class DBusSegmentListPrivate {
         static $gtype: GObject.GType<DBusSegmentListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DBusContextClass = typeof DBusContext;
     abstract class DBusContextPrivate {
         static $gtype: GObject.GType<DBusContextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DBusServerClass = typeof DBusServer;
     abstract class DBusServerPrivate {
         static $gtype: GObject.GType<DBusServerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UnigramLanguageModelIface = typeof UnigramLanguageModel;
@@ -9227,7 +9067,6 @@ export namespace Kkc {
                 id: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class KeymapEntry {
@@ -9237,10 +9076,6 @@ export namespace Kkc {
 
         key: KeyEvent;
         command: string | null;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class RomKanaCharacter {
@@ -9259,7 +9094,6 @@ export namespace Kkc {
                 input: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     namespace UnigramLanguageModel {

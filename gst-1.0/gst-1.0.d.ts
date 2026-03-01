@@ -307,7 +307,6 @@ export namespace Gst {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -815,7 +814,6 @@ export namespace Gst {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1039,7 +1037,6 @@ export namespace Gst {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1073,7 +1070,6 @@ export namespace Gst {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1406,7 +1402,6 @@ export namespace Gst {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1724,7 +1719,6 @@ export namespace Gst {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -2160,7 +2154,6 @@ export namespace Gst {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -16439,7 +16432,6 @@ export namespace Gst {
                 padding: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): AllocationParams;
 
@@ -16463,10 +16455,6 @@ export namespace Gst {
     type AllocatorClass = typeof Allocator;
     abstract class AllocatorPrivate {
         static $gtype: GObject.GType<AllocatorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -16479,7 +16467,6 @@ export namespace Gst {
         // Constructors
 
         constructor(initial_size: number);
-        _init(...args: any[]): void;
 
         static ['new'](initial_size: number): AtomicQueue;
 
@@ -16518,10 +16505,6 @@ export namespace Gst {
     type BinClass = typeof Bin;
     abstract class BinPrivate {
         static $gtype: GObject.GType<BinPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -16639,7 +16622,6 @@ export namespace Gst {
                 offset_end: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): Buffer;
 
@@ -17118,7 +17100,6 @@ export namespace Gst {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): BufferList;
 
@@ -17228,28 +17209,16 @@ export namespace Gst {
         start: number;
         stop: number;
         flags: BufferPoolAcquireFlags;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BufferPoolClass = typeof BufferPool;
     abstract class BufferPoolPrivate {
         static $gtype: GObject.GType<BufferPoolPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BusClass = typeof Bus;
     abstract class BusPrivate {
         static $gtype: GObject.GType<BusPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -17277,7 +17246,6 @@ export namespace Gst {
                 len: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -17327,7 +17295,6 @@ export namespace Gst {
                 mini_object: MiniObject;
             }>,
         );
-        _init(...args: any[]): void;
 
         static new_any(): Caps;
 
@@ -17733,7 +17700,6 @@ export namespace Gst {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static new_any(): CapsFeatures;
 
@@ -17891,18 +17857,10 @@ export namespace Gst {
         // Fields
 
         refcount: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ClockPrivate {
         static $gtype: GObject.GType<ClockPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -17942,7 +17900,6 @@ export namespace Gst {
         // Constructors
 
         constructor(context_type: string, persistent: boolean);
-        _init(...args: any[]): void;
 
         static ['new'](context_type: string, persistent: boolean): Context;
 
@@ -18008,10 +17965,6 @@ export namespace Gst {
     type ControlBindingClass = typeof ControlBinding;
     abstract class ControlBindingPrivate {
         static $gtype: GObject.GType<ControlBindingPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ControlSourceClass = typeof ControlSource;
@@ -18025,10 +17978,6 @@ export namespace Gst {
      */
     class CustomMeta {
         static $gtype: GObject.GType<CustomMeta>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -18062,7 +18011,6 @@ export namespace Gst {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](
             tzoffset: number,
@@ -18194,7 +18142,6 @@ export namespace Gst {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -18246,10 +18193,6 @@ export namespace Gst {
     abstract class DebugMessage {
         static $gtype: GObject.GType<DebugMessage>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -18270,28 +18213,16 @@ export namespace Gst {
     type DeviceMonitorClass = typeof DeviceMonitor;
     abstract class DeviceMonitorPrivate {
         static $gtype: GObject.GType<DeviceMonitorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DevicePrivate {
         static $gtype: GObject.GType<DevicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DeviceProviderClass = typeof DeviceProvider;
     type DeviceProviderFactoryClass = typeof DeviceProviderFactory;
     abstract class DeviceProviderPrivate {
         static $gtype: GObject.GType<DeviceProviderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DynamicTypeFactoryClass = typeof DynamicTypeFactory;
@@ -18361,7 +18292,6 @@ export namespace Gst {
                 seqnum: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static new_buffer_size(format: Format, minsize: number, maxsize: number, async: boolean): Event;
 
@@ -18666,19 +18596,11 @@ export namespace Gst {
         nick: string;
         description: string;
         quark: GLib.Quark;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GhostPadClass = typeof GhostPad;
     abstract class GhostPadPrivate {
         static $gtype: GObject.GType<GhostPadPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -18703,7 +18625,6 @@ export namespace Gst {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): IdStr;
 
@@ -18862,7 +18783,6 @@ export namespace Gst {
             resync: IteratorResyncFunction,
             free: IteratorFreeFunction,
         );
-        _init(...args: any[]): void;
 
         static new_single(type: GObject.GType, object: GObject.Value | any): Iterator;
 
@@ -19000,10 +18920,6 @@ export namespace Gst {
         size: number;
         maxsize: number;
         user_data: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -19064,7 +18980,6 @@ export namespace Gst {
             offset: number,
             notify?: GLib.DestroyNotify | null,
         );
-        _init(...args: any[]): void;
 
         static new_wrapped(
             flags: MemoryFlags,
@@ -19194,7 +19109,6 @@ export namespace Gst {
         // Constructors
 
         constructor(src: Object | null, structure: Structure);
-        _init(...args: any[]): void;
 
         static new_application(src: Object | null, structure: Structure): Message;
 
@@ -19835,10 +19749,6 @@ export namespace Gst {
 
         flags: MetaFlags;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -19987,10 +19897,6 @@ export namespace Gst {
         deserialize_func: MetaDeserializeFunction;
         clear_func: MetaClearFunction;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         is_custom(): boolean;
@@ -20026,7 +19932,6 @@ export namespace Gst {
                 size: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -20068,10 +19973,6 @@ export namespace Gst {
         flags: number;
         dispose: MiniObjectDisposeFunction;
         free: MiniObjectFreeFunction;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -20180,10 +20081,6 @@ export namespace Gst {
     type PadClass = typeof Pad;
     abstract class PadPrivate {
         static $gtype: GObject.GType<PadPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -20199,10 +20096,6 @@ export namespace Gst {
         data: any;
         offset: number;
         size: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -20222,10 +20115,6 @@ export namespace Gst {
         // Fields
 
         element_spec: GObject.ParamSpec;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -20243,10 +20132,6 @@ export namespace Gst {
         max_den: number;
         def_num: number;
         def_den: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -20261,10 +20146,6 @@ export namespace Gst {
      */
     class ParentBufferMeta {
         static $gtype: GObject.GType<ParentBufferMeta>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -20283,7 +20164,6 @@ export namespace Gst {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ParseContext;
 
@@ -20310,10 +20190,6 @@ export namespace Gst {
     type PipelineClass = typeof Pipeline;
     abstract class PipelinePrivate {
         static $gtype: GObject.GType<PipelinePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PluginClass = typeof Plugin;
@@ -20340,10 +20216,6 @@ export namespace Gst {
         'package': string;
         origin: string;
         release_datetime: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PluginFeatureClass = typeof PluginFeature;
@@ -20374,10 +20246,6 @@ export namespace Gst {
      */
     abstract class Poll {
         static $gtype: GObject.GType<Poll>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -20562,7 +20430,6 @@ export namespace Gst {
                 fd: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -20641,7 +20508,6 @@ export namespace Gst {
                 parent: MiniObject;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): Promise;
 
@@ -20703,10 +20569,6 @@ export namespace Gst {
     class ProtectionMeta {
         static $gtype: GObject.GType<ProtectionMeta>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         static get_info(): MetaInfo;
@@ -20715,10 +20577,6 @@ export namespace Gst {
     type ProxyPadClass = typeof ProxyPad;
     abstract class ProxyPadPrivate {
         static $gtype: GObject.GType<ProxyPadPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -20763,7 +20621,6 @@ export namespace Gst {
                 type: QueryType;
             }>,
         );
-        _init(...args: any[]): void;
 
         static new_accept_caps(caps: Caps): Query;
 
@@ -21294,10 +21151,6 @@ export namespace Gst {
         timestamp: ClockTime;
         duration: ClockTime;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -21309,10 +21162,6 @@ export namespace Gst {
     type RegistryClass = typeof Registry;
     abstract class RegistryPrivate {
         static $gtype: GObject.GType<RegistryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -21325,7 +21174,6 @@ export namespace Gst {
         // Constructors
 
         constructor(buffer?: Buffer | null, caps?: Caps | null, segment?: Segment | null, info?: Structure | null);
-        _init(...args: any[]): void;
 
         static ['new'](
             buffer?: Buffer | null,
@@ -21471,7 +21319,6 @@ export namespace Gst {
                 duration: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): Segment;
 
@@ -21736,10 +21583,6 @@ export namespace Gst {
     type SharedTaskPoolClass = typeof SharedTaskPool;
     abstract class SharedTaskPoolPrivate {
         static $gtype: GObject.GType<SharedTaskPoolPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -21753,10 +21596,6 @@ export namespace Gst {
         // Fields
 
         string: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -21783,10 +21622,6 @@ export namespace Gst {
         direction: PadDirection;
         presence: PadPresence;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -21805,18 +21640,10 @@ export namespace Gst {
     type StreamCollectionClass = typeof StreamCollection;
     abstract class StreamCollectionPrivate {
         static $gtype: GObject.GType<StreamCollectionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class StreamPrivate {
         static $gtype: GObject.GType<StreamPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -21938,7 +21765,6 @@ export namespace Gst {
         // Constructors
 
         constructor(name: string, firstfield: string, ___: any[]);
-        _init(...args: any[]): void;
 
         static from_string(string: string): Structure;
 
@@ -22562,10 +22388,6 @@ export namespace Gst {
     type SystemClockClass = typeof SystemClock;
     abstract class SystemClockPrivate {
         static $gtype: GObject.GType<SystemClockPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -22584,7 +22406,6 @@ export namespace Gst {
                 mini_object: MiniObject;
             }>,
         );
-        _init(...args: any[]): void;
 
         static new_empty(): TagList;
 
@@ -22959,10 +22780,6 @@ export namespace Gst {
     type TaskPoolClass = typeof TaskPool;
     abstract class TaskPrivate {
         static $gtype: GObject.GType<TaskPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -22984,7 +22801,6 @@ export namespace Gst {
                 value: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -23040,7 +22856,6 @@ export namespace Gst {
         // Constructors
 
         constructor(scope: TocScope);
-        _init(...args: any[]): void;
 
         static ['new'](scope: TocScope): Toc;
 
@@ -23088,7 +22903,6 @@ export namespace Gst {
         // Constructors
 
         constructor(type: TocEntryType, uid: string);
-        _init(...args: any[]): void;
 
         static ['new'](type: TocEntryType, uid: string): TocEntry;
 
@@ -23171,10 +22985,6 @@ export namespace Gst {
     type TracerFactoryClass = typeof TracerFactory;
     abstract class TracerPrivate {
         static $gtype: GObject.GType<TracerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TracerRecordClass = typeof TracerRecord;
@@ -23196,7 +23006,6 @@ export namespace Gst {
                 data: any;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -23280,7 +23089,6 @@ export namespace Gst {
             query?: string | null,
             fragment?: string | null,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             scheme: string | null,
@@ -23708,10 +23516,6 @@ export namespace Gst {
         serialize: ValueSerializeFunc;
         deserialize: ValueDeserializeFunc;
         deserialize_with_pspec: ValueDeserializeWithPSpecFunc;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace ChildProxy {

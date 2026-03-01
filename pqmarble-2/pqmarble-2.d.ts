@@ -96,10 +96,6 @@ export namespace PQMarble {
     type SettingsClass = typeof Settings;
     abstract class SettingsPrivate {
         static $gtype: GObject.GType<SettingsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

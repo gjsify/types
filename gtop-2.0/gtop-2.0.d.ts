@@ -484,10 +484,6 @@ export namespace GTop {
         ndisk: number;
         real_ndisk: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         static close(): void;
@@ -630,7 +626,6 @@ export namespace GTop {
                 parameter: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_cpu {
@@ -683,7 +678,6 @@ export namespace GTop {
                 xcpu_flags: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_disk {
@@ -710,7 +704,6 @@ export namespace GTop {
                 xdisk_flags: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_entry {
@@ -719,10 +712,6 @@ export namespace GTop {
         // Fields
 
         labels: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class glibtop_fsusage {
@@ -755,7 +744,6 @@ export namespace GTop {
                 write: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_loadavg {
@@ -780,15 +768,10 @@ export namespace GTop {
                 last_pid: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     abstract class glibtop_machine {
         static $gtype: GObject.GType<glibtop_machine>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class glibtop_map_entry {
@@ -835,7 +818,6 @@ export namespace GTop {
                 filename: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_mem {
@@ -868,7 +850,6 @@ export namespace GTop {
                 locked: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_mountentry {
@@ -891,7 +872,6 @@ export namespace GTop {
                 type: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_mountlist {
@@ -914,7 +894,6 @@ export namespace GTop {
                 size: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_msg_limits {
@@ -945,7 +924,6 @@ export namespace GTop {
                 msgtql: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_netlist {
@@ -964,7 +942,6 @@ export namespace GTop {
                 number: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_netload {
@@ -1017,7 +994,6 @@ export namespace GTop {
                 hwaddress: Uint8Array;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_open_files_entry {
@@ -1036,7 +1012,6 @@ export namespace GTop {
                 type: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_ppp {
@@ -1059,7 +1034,6 @@ export namespace GTop {
                 bytes_out: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_proc_affinity {
@@ -1080,7 +1054,6 @@ export namespace GTop {
                 all: boolean;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_proc_args {
@@ -1099,7 +1072,6 @@ export namespace GTop {
                 size: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1129,7 +1101,6 @@ export namespace GTop {
                 reserved: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_proc_kernel {
@@ -1164,7 +1135,6 @@ export namespace GTop {
                 wchan: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_proc_map {
@@ -1187,7 +1157,6 @@ export namespace GTop {
                 size: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_proc_mem {
@@ -1216,7 +1185,6 @@ export namespace GTop {
                 rss_rlim: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_proc_open_files {
@@ -1239,7 +1207,6 @@ export namespace GTop {
                 size: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_proc_segment {
@@ -1272,7 +1239,6 @@ export namespace GTop {
                 start_stack: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_proc_signal {
@@ -1297,7 +1263,6 @@ export namespace GTop {
                 sigcatch: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_proc_state {
@@ -1332,7 +1297,6 @@ export namespace GTop {
                 last_processor: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1383,7 +1347,6 @@ export namespace GTop {
                 xcpu_stime: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_proc_uid {
@@ -1436,7 +1399,6 @@ export namespace GTop {
                 groups: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_proc_wd {
@@ -1459,7 +1421,6 @@ export namespace GTop {
                 exe: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_proclist {
@@ -1482,7 +1443,6 @@ export namespace GTop {
                 size: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_response {
@@ -1505,7 +1465,6 @@ export namespace GTop {
                 u: glibtop_response_union;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_sem_limits {
@@ -1542,7 +1501,6 @@ export namespace GTop {
                 semaem: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_shm_limits {
@@ -1569,7 +1527,6 @@ export namespace GTop {
                 shmall: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_signame {
@@ -1590,7 +1547,6 @@ export namespace GTop {
                 label: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_swap {
@@ -1617,7 +1573,6 @@ export namespace GTop {
                 pageout: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_sysdeps {
@@ -1706,7 +1661,6 @@ export namespace GTop {
                 reserved7: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_sysinfo {
@@ -1716,10 +1670,6 @@ export namespace GTop {
 
         flags: number;
         ncpu: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class glibtop_uptime {
@@ -1742,7 +1692,6 @@ export namespace GTop {
                 boot_time: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class partition_info {
@@ -1765,7 +1714,6 @@ export namespace GTop {
                 max: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_response_union {
@@ -1784,7 +1732,6 @@ export namespace GTop {
                 sysdeps: glibtop_sysdeps;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class glibtop_union {
@@ -1855,7 +1802,6 @@ export namespace GTop {
                 proc_io: glibtop_proc_io;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**

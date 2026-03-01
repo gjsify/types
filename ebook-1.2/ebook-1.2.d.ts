@@ -101,7 +101,8 @@ export namespace EBook {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EDataServer.Client.ConstructorProps,
+            extends
+                EDataServer.Client.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.Initable.ConstructorProps {
             locale: string;
@@ -3936,36 +3937,20 @@ export namespace EBook {
     type BookClientCursorClass = typeof BookClientCursor;
     abstract class BookClientCursorPrivate {
         static $gtype: GObject.GType<BookClientCursorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class BookClientPrivate {
         static $gtype: GObject.GType<BookClientPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BookClientViewClass = typeof BookClientView;
     abstract class BookClientViewPrivate {
         static $gtype: GObject.GType<BookClientViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DestinationClass = typeof Destination;
     abstract class DestinationPrivate {
         static $gtype: GObject.GType<DestinationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

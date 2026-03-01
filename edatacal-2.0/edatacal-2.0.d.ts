@@ -2861,7 +2861,8 @@ export namespace EDataCal {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EBackend.Cache.ConstructorProps,
+            extends
+                EBackend.Cache.ConstructorProps,
                 ECal.TimezoneCache.ConstructorProps,
                 EDataServer.Extensible.ConstructorProps {}
     }
@@ -5720,7 +5721,8 @@ export namespace EDataCal {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EBackend.DataFactory.ConstructorProps,
+            extends
+                EBackend.DataFactory.ConstructorProps,
                 EDataServer.Extensible.ConstructorProps,
                 Gio.Initable.ConstructorProps {}
     }
@@ -7656,36 +7658,20 @@ export namespace EDataCal {
     type CalBackendFactoryClass = typeof CalBackendFactory;
     abstract class CalBackendFactoryPrivate {
         static $gtype: GObject.GType<CalBackendFactoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class CalBackendPrivate {
         static $gtype: GObject.GType<CalBackendPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CalBackendSExpClass = typeof CalBackendSExp;
     abstract class CalBackendSExpPrivate {
         static $gtype: GObject.GType<CalBackendSExpPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CalBackendSyncClass = typeof CalBackendSync;
     abstract class CalBackendSyncPrivate {
         static $gtype: GObject.GType<CalBackendSyncPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CalCacheClass = typeof CalCache;
@@ -7712,7 +7698,6 @@ export namespace EDataCal {
             object: string | null,
             state: EBackend.OfflineState,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             uid: string,
@@ -7738,10 +7723,6 @@ export namespace EDataCal {
 
     abstract class CalCachePrivate {
         static $gtype: GObject.GType<CalCachePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -7775,7 +7756,6 @@ export namespace EDataCal {
                 extra: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](uid: string, rid: string | null, object: string, extra?: string | null): CalCacheSearchData;
 
@@ -7814,7 +7794,6 @@ export namespace EDataCal {
                 extra: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             uid: string,
@@ -7839,55 +7818,31 @@ export namespace EDataCal {
 
     abstract class CalMetaBackendPrivate {
         static $gtype: GObject.GType<CalMetaBackendPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataCalClass = typeof DataCal;
     type DataCalFactoryClass = typeof DataCalFactory;
     abstract class DataCalFactoryPrivate {
         static $gtype: GObject.GType<DataCalFactoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DataCalPrivate {
         static $gtype: GObject.GType<DataCalPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataCalViewClass = typeof DataCalView;
     abstract class DataCalViewPrivate {
         static $gtype: GObject.GType<DataCalViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IntervalTreeClass = typeof IntervalTree;
     abstract class IntervalTreePrivate {
         static $gtype: GObject.GType<IntervalTreePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SubprocessCalFactoryClass = typeof SubprocessCalFactory;
     abstract class SubprocessCalFactoryPrivate {
         static $gtype: GObject.GType<SubprocessCalFactoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

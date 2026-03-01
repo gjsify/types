@@ -852,7 +852,8 @@ export namespace ClutterGst {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Texture.ConstructorProps,
+            extends
+                Clutter.Texture.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -1792,28 +1793,16 @@ export namespace ClutterGst {
     type PlayerIface = typeof Player;
     abstract class PlayerIfacePrivate {
         static $gtype: GObject.GType<PlayerIfacePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type VideoSinkClass = typeof VideoSink;
     abstract class VideoSinkPrivate {
         static $gtype: GObject.GType<VideoSinkPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type VideoTextureClass = typeof VideoTexture;
     abstract class VideoTexturePrivate {
         static $gtype: GObject.GType<VideoTexturePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Player {

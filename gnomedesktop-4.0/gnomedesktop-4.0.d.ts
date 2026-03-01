@@ -1390,46 +1390,26 @@ export namespace GnomeDesktop {
     type DesktopThumbnailFactoryClass = typeof DesktopThumbnailFactory;
     abstract class DesktopThumbnailFactoryPrivate {
         static $gtype: GObject.GType<DesktopThumbnailFactoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IdleMonitorClass = typeof IdleMonitor;
     abstract class IdleMonitorPrivate {
         static $gtype: GObject.GType<IdleMonitorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PnpIdsClass = typeof PnpIds;
     abstract class PnpIdsPrivate {
         static $gtype: GObject.GType<PnpIdsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WallClockClass = typeof WallClock;
     abstract class WallClockPrivate {
         static $gtype: GObject.GType<WallClockPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type XkbInfoClass = typeof XkbInfo;
     abstract class XkbInfoPrivate {
         static $gtype: GObject.GType<XkbInfoPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

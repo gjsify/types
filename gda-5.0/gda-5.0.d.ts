@@ -255,7 +255,6 @@ export namespace Gda {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace DataModelHint {
@@ -791,7 +790,6 @@ export namespace Gda {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace SqlOperatorType {
@@ -23393,10 +23391,6 @@ export namespace Gda {
     type BatchClass = typeof Batch;
     abstract class BatchPrivate {
         static $gtype: GObject.GType<BatchPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Binary {
@@ -23415,7 +23409,6 @@ export namespace Gda {
                 binary_length: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -23463,10 +23456,6 @@ export namespace Gda {
         data: Binary;
         op: BlobOp;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -23501,129 +23490,73 @@ export namespace Gda {
     type ColumnClass = typeof Column;
     abstract class ColumnPrivate {
         static $gtype: GObject.GType<ColumnPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConfigClass = typeof Config;
     abstract class ConfigPrivate {
         static $gtype: GObject.GType<ConfigPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConnectionClass = typeof Connection;
     type ConnectionEventClass = typeof ConnectionEvent;
     abstract class ConnectionEventPrivate {
         static $gtype: GObject.GType<ConnectionEventPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ConnectionPrivate {
         static $gtype: GObject.GType<ConnectionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataAccessWrapperClass = typeof DataAccessWrapper;
     abstract class DataAccessWrapperPrivate {
         static $gtype: GObject.GType<DataAccessWrapperPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataComparatorClass = typeof DataComparator;
     abstract class DataComparatorPrivate {
         static $gtype: GObject.GType<DataComparatorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataHandlerIface = typeof DataHandler;
     type DataModelArrayClass = typeof DataModelArray;
     abstract class DataModelArrayPrivate {
         static $gtype: GObject.GType<DataModelArrayPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataModelDirClass = typeof DataModelDir;
     abstract class DataModelDirPrivate {
         static $gtype: GObject.GType<DataModelDirPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataModelIface = typeof DataModel;
     type DataModelImportClass = typeof DataModelImport;
     abstract class DataModelImportPrivate {
         static $gtype: GObject.GType<DataModelImportPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataModelIterClass = typeof DataModelIter;
     abstract class DataModelIterPrivate {
         static $gtype: GObject.GType<DataModelIterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataModelLdapClass = typeof DataModelLdap;
     abstract class DataModelLdapPrivate {
         static $gtype: GObject.GType<DataModelLdapPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataPivotClass = typeof DataPivot;
     abstract class DataPivotPrivate {
         static $gtype: GObject.GType<DataPivotPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataProxyClass = typeof DataProxy;
     abstract class DataProxyPrivate {
         static $gtype: GObject.GType<DataProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataSelectClass = typeof DataSelect;
     abstract class DataSelectPrivate {
         static $gtype: GObject.GType<DataSelectPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Diff {
@@ -23634,10 +23567,6 @@ export namespace Gda {
         type: DiffType;
         old_row: number;
         new_row: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -23667,7 +23596,6 @@ export namespace Gda {
                 is_system: boolean;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): DsnInfo;
 
@@ -23700,7 +23628,6 @@ export namespace Gda {
                 y: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -23711,64 +23638,36 @@ export namespace Gda {
     type HandlerBinClass = typeof HandlerBin;
     abstract class HandlerBinPriv {
         static $gtype: GObject.GType<HandlerBinPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HandlerBooleanClass = typeof HandlerBoolean;
     abstract class HandlerBooleanPriv {
         static $gtype: GObject.GType<HandlerBooleanPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HandlerNumericalClass = typeof HandlerNumerical;
     abstract class HandlerNumericalPriv {
         static $gtype: GObject.GType<HandlerNumericalPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HandlerStringClass = typeof HandlerString;
     abstract class HandlerStringPriv {
         static $gtype: GObject.GType<HandlerStringPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HandlerTimeClass = typeof HandlerTime;
     abstract class HandlerTimePriv {
         static $gtype: GObject.GType<HandlerTimePriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HandlerTypeClass = typeof HandlerType;
     abstract class HandlerTypePriv {
         static $gtype: GObject.GType<HandlerTypePriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HolderClass = typeof Holder;
     abstract class HolderPrivate {
         static $gtype: GObject.GType<HolderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LockableIface = typeof Lockable;
@@ -23805,7 +23704,6 @@ export namespace Gda {
                 column_values: GObject.Value[];
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): MetaContext;
 
@@ -23880,10 +23778,6 @@ export namespace Gda {
         obj_short_name: string;
         obj_full_name: string;
         obj_owner: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MetaStoreChange {
@@ -23893,36 +23787,20 @@ export namespace Gda {
 
         c_type: MetaStoreChangeType;
         table_name: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MetaStoreClass = typeof MetaStore;
     abstract class MetaStoreClassPrivate {
         static $gtype: GObject.GType<MetaStoreClassPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class MetaStorePrivate {
         static $gtype: GObject.GType<MetaStorePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MetaStructClass = typeof MetaStruct;
     abstract class MetaStructPrivate {
         static $gtype: GObject.GType<MetaStructPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -23940,10 +23818,6 @@ export namespace Gda {
 
         pk_cols_array: number;
         pk_cols_nb: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -23960,10 +23834,6 @@ export namespace Gda {
         pkey: boolean;
         nullok: boolean;
         default_value: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -24010,10 +23880,6 @@ export namespace Gda {
         ref_pk_cols_array: number;
         ref_pk_names_array: string;
         fk_name: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -24027,10 +23893,6 @@ export namespace Gda {
 
         view_def: string;
         is_updatable: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -24057,7 +23919,6 @@ export namespace Gda {
                 width: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): Numeric;
 
@@ -24113,10 +23974,6 @@ export namespace Gda {
     type PStmtClass = typeof PStmt;
     abstract class PStmtPrivate {
         static $gtype: GObject.GType<PStmtPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -24132,10 +23989,6 @@ export namespace Gda {
         description: string;
         dsn_params: Set;
         auth_params: Set;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class QuarkList {
@@ -24144,7 +23997,6 @@ export namespace Gda {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): QuarkList;
 
@@ -24211,10 +24063,6 @@ export namespace Gda {
     type RowClass = typeof Row;
     abstract class RowPrivate {
         static $gtype: GObject.GType<RowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ServerOperationClass = typeof ServerOperation;
@@ -24230,18 +24078,10 @@ export namespace Gda {
         column: Column;
         param: Holder;
         priv: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ServerOperationPrivate {
         static $gtype: GObject.GType<ServerOperationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ServerProviderClass = typeof ServerProvider;
@@ -24253,18 +24093,10 @@ export namespace Gda {
         cnc: Connection;
         g_type: GObject.GType;
         dbms_type: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ServerProviderInfo {
         static $gtype: GObject.GType<ServerProviderInfo>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -24274,10 +24106,6 @@ export namespace Gda {
      */
     class ServerProviderMeta {
         static $gtype: GObject.GType<ServerProviderMeta>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ServerProviderPrivate {
@@ -24286,18 +24114,10 @@ export namespace Gda {
         // Fields
 
         parser: SqlParser;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ServerProviderXa {
         static $gtype: GObject.GType<ServerProviderXa>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SetClass = typeof Set;
@@ -24311,7 +24131,6 @@ export namespace Gda {
         // Constructors
 
         constructor(node: SetNode);
-        _init(...args: any[]): void;
 
         static ['new'](node: SetNode): SetGroup;
 
@@ -24359,7 +24178,6 @@ export namespace Gda {
         // Constructors
 
         constructor(holder: Holder);
-        _init(...args: any[]): void;
 
         static ['new'](holder: Holder): SetNode;
 
@@ -24399,10 +24217,6 @@ export namespace Gda {
 
     abstract class SetPrivate {
         static $gtype: GObject.GType<SetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -24419,7 +24233,6 @@ export namespace Gda {
         // Constructors
 
         constructor(model: DataModel);
-        _init(...args: any[]): void;
 
         static ['new'](model: DataModel): SetSource;
 
@@ -24452,10 +24265,6 @@ export namespace Gda {
     type SqlBuilderClass = typeof SqlBuilder;
     abstract class SqlBuilderPrivate {
         static $gtype: GObject.GType<SqlBuilderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SqlParserClass = typeof SqlParser;
@@ -24465,18 +24274,10 @@ export namespace Gda {
         // Fields
 
         parser: SqlParser;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class SqlParserPrivate {
         static $gtype: GObject.GType<SqlParserPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -24493,18 +24294,10 @@ export namespace Gda {
         provider: ServerProvider;
         cnc: Connection;
         render_value: SqlRenderingValue;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class SqlStatement {
         static $gtype: GObject.GType<SqlStatement>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -24514,59 +24307,31 @@ export namespace Gda {
 
     abstract class SqlStatementDelete {
         static $gtype: GObject.GType<SqlStatementDelete>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class SqlStatementInsert {
         static $gtype: GObject.GType<SqlStatementInsert>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class SqlStatementSelect {
         static $gtype: GObject.GType<SqlStatementSelect>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class SqlStatementTransaction {
         static $gtype: GObject.GType<SqlStatementTransaction>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class SqlStatementUnknown {
         static $gtype: GObject.GType<SqlStatementUnknown>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class SqlStatementUpdate {
         static $gtype: GObject.GType<SqlStatementUpdate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StatementClass = typeof Statement;
     abstract class StatementPrivate {
         static $gtype: GObject.GType<StatementPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -24625,19 +24390,11 @@ export namespace Gda {
 
         type: ThreadNotificationType;
         job_id: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ThreadWrapperClass = typeof ThreadWrapper;
     abstract class ThreadWrapperPrivate {
         static $gtype: GObject.GType<ThreadWrapperPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -24665,7 +24422,6 @@ export namespace Gda {
                 timezone: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -24717,7 +24473,6 @@ export namespace Gda {
                 timezone: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -24745,91 +24500,51 @@ export namespace Gda {
         trans: TransactionStatus;
         type: TransactionStatusEventType;
         conn_event: ConnectionEvent;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TreeClass = typeof Tree;
     type TreeManagerClass = typeof TreeManager;
     abstract class TreeManagerPrivate {
         static $gtype: GObject.GType<TreeManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TreeMgrColumnsClass = typeof TreeMgrColumns;
     abstract class TreeMgrColumnsPriv {
         static $gtype: GObject.GType<TreeMgrColumnsPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TreeMgrLabelClass = typeof TreeMgrLabel;
     abstract class TreeMgrLabelPriv {
         static $gtype: GObject.GType<TreeMgrLabelPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TreeMgrLdapClass = typeof TreeMgrLdap;
     abstract class TreeMgrLdapPriv {
         static $gtype: GObject.GType<TreeMgrLdapPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TreeMgrSchemasClass = typeof TreeMgrSchemas;
     abstract class TreeMgrSchemasPriv {
         static $gtype: GObject.GType<TreeMgrSchemasPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TreeMgrSelectClass = typeof TreeMgrSelect;
     abstract class TreeMgrSelectPriv {
         static $gtype: GObject.GType<TreeMgrSelectPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TreeMgrTablesClass = typeof TreeMgrTables;
     abstract class TreeMgrTablesPriv {
         static $gtype: GObject.GType<TreeMgrTablesPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TreeNodeClass = typeof TreeNode;
     abstract class TreeNodePrivate {
         static $gtype: GObject.GType<TreeNodePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class TreePrivate {
         static $gtype: GObject.GType<TreePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type XaTransactionClass = typeof XaTransaction;
@@ -24853,7 +24568,6 @@ export namespace Gda {
                 data: number[];
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -24868,10 +24582,6 @@ export namespace Gda {
 
     abstract class XaTransactionPrivate {
         static $gtype: GObject.GType<XaTransactionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace DataHandler {

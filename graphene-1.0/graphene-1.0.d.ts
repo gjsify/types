@@ -427,7 +427,6 @@ export namespace Graphene {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static alloc(): Box;
 
@@ -630,7 +629,6 @@ export namespace Graphene {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static alloc(): Euler;
 
@@ -817,7 +815,6 @@ export namespace Graphene {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static alloc(): Frustum;
 
@@ -897,7 +894,6 @@ export namespace Graphene {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static alloc(): Matrix;
 
@@ -1458,7 +1454,6 @@ export namespace Graphene {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static alloc(): Plane;
 
@@ -1577,7 +1572,6 @@ export namespace Graphene {
                 y: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static alloc(): Point;
 
@@ -1596,6 +1590,12 @@ export namespace Graphene {
          * @returns the distance between the two points
          */
         distance(b: Point): [number, number, number];
+        /**
+         * Computes the squared distance between `a` and `b`.
+         * @param b a #graphene_point_t
+         * @returns the distance between the two points, squared
+         */
+        distance_squared(b: Point): number;
         /**
          * Checks if the two points `a` and `b` point to the same
          * coordinates.
@@ -1675,7 +1675,6 @@ export namespace Graphene {
                 z: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static alloc(): Point3D;
 
@@ -1799,7 +1798,6 @@ export namespace Graphene {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static alloc(): Quad;
 
@@ -1861,7 +1859,6 @@ export namespace Graphene {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static alloc(): Quaternion;
 
@@ -2028,7 +2025,6 @@ export namespace Graphene {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static alloc(): Ray;
 
@@ -2186,7 +2182,6 @@ export namespace Graphene {
                 size: Size;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -2464,15 +2459,10 @@ export namespace Graphene {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
     }
 
     class Simd4X4F {
         static $gtype: GObject.GType<Simd4X4F>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2494,7 +2484,6 @@ export namespace Graphene {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static alloc(): Size;
 
@@ -2555,7 +2544,6 @@ export namespace Graphene {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static alloc(): Sphere;
 
@@ -2649,7 +2637,6 @@ export namespace Graphene {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static alloc(): Triangle;
 
@@ -2785,7 +2772,6 @@ export namespace Graphene {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static alloc(): Vec2;
 
@@ -2945,7 +2931,6 @@ export namespace Graphene {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static alloc(): Vec3;
 
@@ -3150,7 +3135,6 @@ export namespace Graphene {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static alloc(): Vec4;
 

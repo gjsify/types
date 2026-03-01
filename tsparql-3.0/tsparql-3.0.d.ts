@@ -200,7 +200,6 @@ export namespace Tsparql {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -3191,10 +3190,7 @@ export namespace Tsparql {
          * @param cancellable Optional [type@Gio.Cancellable]
          * @returns A prepared statement
          */
-        load_statement_from_gresource(
-            resource_path: string,
-            cancellable?: Gio.Cancellable | null,
-        ): SparqlStatement | null;
+        load_statement_from_gresource(resource_path: string, cancellable?: Gio.Cancellable | null): SparqlStatement;
         /**
          * Maps a `TrackerSparqlConnection` onto another through a `private:`handle_name`` URI.
          *
@@ -3308,7 +3304,7 @@ export namespace Tsparql {
          * @param cancellable Optional [type@Gio.Cancellable]
          * @returns A prepared statement
          */
-        query_statement(sparql: string, cancellable?: Gio.Cancellable | null): SparqlStatement | null;
+        query_statement(sparql: string, cancellable?: Gio.Cancellable | null): SparqlStatement;
         /**
          * Serializes a `DESCRIBE` or `CONSTRUCT` query into the specified RDF format.
          *
@@ -3695,7 +3691,7 @@ export namespace Tsparql {
          * @param cancellable Optional [type@Gio.Cancellable]
          * @returns A prepared statement
          */
-        update_statement(sparql: string, cancellable?: Gio.Cancellable | null): SparqlStatement | null;
+        update_statement(sparql: string, cancellable?: Gio.Cancellable | null): SparqlStatement;
     }
 
     namespace SparqlCursor {
@@ -4349,10 +4345,6 @@ export namespace Tsparql {
      */
     abstract class NotifierEvent {
         static $gtype: GObject.GType<NotifierEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 

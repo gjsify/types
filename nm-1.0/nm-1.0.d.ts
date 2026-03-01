@@ -231,7 +231,6 @@ export namespace NM {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -304,7 +303,6 @@ export namespace NM {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -519,7 +517,6 @@ export namespace NM {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -635,7 +632,6 @@ export namespace NM {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -708,7 +704,6 @@ export namespace NM {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1474,7 +1469,6 @@ export namespace NM {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1640,7 +1634,6 @@ export namespace NM {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -2478,7 +2471,6 @@ export namespace NM {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -2955,7 +2947,6 @@ export namespace NM {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -7427,9 +7418,7 @@ export namespace NM {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             activating_connection: ActiveConnection;
             activatingConnection: ActiveConnection;
             active_connections: ActiveConnection[];
@@ -16506,9 +16495,7 @@ export namespace NM {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             auto_register: boolean;
             autoRegister: boolean;
             capabilities: SecretAgentCapabilities;
@@ -35135,7 +35122,6 @@ export namespace NM {
         // Constructors
 
         constructor(vid_start: number, vid_end: number);
-        _init(...args: any[]): void;
 
         static ['new'](vid_start: number, vid_end: number): BridgeVlan;
 
@@ -35250,10 +35236,6 @@ export namespace NM {
     abstract class DnsEntry {
         static $gtype: GObject.GType<DnsEntry>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -35294,7 +35276,6 @@ export namespace NM {
         // Constructors
 
         constructor(family: number, addr: string, prefix: number);
-        _init(...args: any[]): void;
 
         static ['new'](family: number, addr: string, prefix: number): IPAddress;
 
@@ -35389,7 +35370,6 @@ export namespace NM {
         // Constructors
 
         constructor(family: number, dest: string, prefix: number, next_hop: string | null, metric: number);
-        _init(...args: any[]): void;
 
         static ['new'](family: number, dest: string, prefix: number, next_hop: string | null, metric: number): IPRoute;
 
@@ -35525,7 +35505,6 @@ export namespace NM {
         // Constructors
 
         constructor(addr_family: number);
-        _init(...args: any[]): void;
 
         static ['new'](addr_family: number): IPRoutingRule;
 
@@ -35660,10 +35639,6 @@ export namespace NM {
     abstract class KeyfileHandlerData {
         static $gtype: GObject.GType<KeyfileHandlerData>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -35750,7 +35725,6 @@ export namespace NM {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): LldpNeighbor;
 
@@ -35807,7 +35781,6 @@ export namespace NM {
         // Constructors
 
         constructor(start: number, end: number);
-        _init(...args: any[]): void;
 
         static ['new'](start: number, end: number): Range;
 
@@ -35919,7 +35892,6 @@ export namespace NM {
         // Constructors
 
         constructor(index: number);
-        _init(...args: any[]): void;
 
         static ['new'](index: number): SriovVF;
 
@@ -36028,7 +36000,6 @@ export namespace NM {
         // Constructors
 
         constructor(kind: string);
-        _init(...args: any[]): void;
 
         static ['new'](kind: string): TCAction;
 
@@ -36081,7 +36052,6 @@ export namespace NM {
         // Constructors
 
         constructor(kind: string, parent: number);
-        _init(...args: any[]): void;
 
         static ['new'](kind: string, parent: number): TCQdisc;
 
@@ -36141,7 +36111,6 @@ export namespace NM {
         // Constructors
 
         constructor(kind: string, parent: number);
-        _init(...args: any[]): void;
 
         static ['new'](kind: string, parent: number): TCTfilter;
 
@@ -36197,7 +36166,6 @@ export namespace NM {
             source_host: string,
             flags: TeamLinkWatcherArpPingFlags,
         );
-        _init(...args: any[]): void;
 
         static new_arp_ping(
             init_wait: number,
@@ -36303,10 +36271,6 @@ export namespace NM {
 
     abstract class VariantAttributeSpec {
         static $gtype: GObject.GType<VariantAttributeSpec>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type VpnConnectionClass = typeof VpnConnection;
@@ -36314,10 +36278,6 @@ export namespace NM {
     type VpnEditorPluginInterface = typeof VpnEditorPlugin;
     abstract class VpnEditorPluginVT {
         static $gtype: GObject.GType<VpnEditorPluginVT>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type VpnPluginInfoClass = typeof VpnPluginInfo;
@@ -36334,7 +36294,6 @@ export namespace NM {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): WireGuardPeer;
 

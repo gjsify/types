@@ -97,10 +97,6 @@ export namespace GCi {
     type EntryControllerClass = typeof EntryController;
     abstract class EntryControllerPrivate {
         static $gtype: GObject.GType<EntryControllerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

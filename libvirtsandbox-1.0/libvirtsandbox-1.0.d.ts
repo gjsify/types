@@ -2155,21 +2155,13 @@ export namespace LibvirtSandbox {
 
         // Virtual methods
 
-        vfunc_attach(
-            localStdin: Gio.UnixInputStream,
-            localStdout: Gio.UnixOutputStream,
-            localStderr: Gio.UnixOutputStream,
-        ): boolean;
+        vfunc_attach(localStdin: never, localStdout: never, localStderr: never): boolean;
         vfunc_closed(err: boolean): void;
         vfunc_detach(): boolean;
 
         // Methods
 
-        attach(
-            localStdin: Gio.UnixInputStream,
-            localStdout: Gio.UnixOutputStream,
-            localStderr: Gio.UnixOutputStream,
-        ): boolean;
+        attach(localStdin: never, localStdout: never, localStderr: never): boolean;
         attach_stderr(): boolean;
         attach_stdio(): boolean;
         detach(): boolean;
@@ -2521,127 +2513,71 @@ export namespace LibvirtSandbox {
     type BuilderContainerClass = typeof BuilderContainer;
     abstract class BuilderContainerPrivate {
         static $gtype: GObject.GType<BuilderContainerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BuilderInitrdClass = typeof BuilderInitrd;
     abstract class BuilderInitrdPrivate {
         static $gtype: GObject.GType<BuilderInitrdPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BuilderMachineClass = typeof BuilderMachine;
     abstract class BuilderMachinePrivate {
         static $gtype: GObject.GType<BuilderMachinePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class BuilderPrivate {
         static $gtype: GObject.GType<BuilderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConfigClass = typeof Config;
     type ConfigDiskClass = typeof ConfigDisk;
     abstract class ConfigDiskPrivate {
         static $gtype: GObject.GType<ConfigDiskPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConfigInitrdClass = typeof ConfigInitrd;
     abstract class ConfigInitrdPrivate {
         static $gtype: GObject.GType<ConfigInitrdPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConfigInteractiveClass = typeof ConfigInteractive;
     abstract class ConfigInteractivePrivate {
         static $gtype: GObject.GType<ConfigInteractivePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConfigMountClass = typeof ConfigMount;
     type ConfigMountFileClass = typeof ConfigMountFile;
     abstract class ConfigMountFilePrivate {
         static $gtype: GObject.GType<ConfigMountFilePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConfigMountGuestBindClass = typeof ConfigMountGuestBind;
     abstract class ConfigMountGuestBindPrivate {
         static $gtype: GObject.GType<ConfigMountGuestBindPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConfigMountHostBindClass = typeof ConfigMountHostBind;
     abstract class ConfigMountHostBindPrivate {
         static $gtype: GObject.GType<ConfigMountHostBindPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConfigMountHostImageClass = typeof ConfigMountHostImage;
     abstract class ConfigMountHostImagePrivate {
         static $gtype: GObject.GType<ConfigMountHostImagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ConfigMountPrivate {
         static $gtype: GObject.GType<ConfigMountPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConfigMountRamClass = typeof ConfigMountRam;
     abstract class ConfigMountRamPrivate {
         static $gtype: GObject.GType<ConfigMountRamPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConfigNetworkAddressClass = typeof ConfigNetworkAddress;
     abstract class ConfigNetworkAddressPrivate {
         static $gtype: GObject.GType<ConfigNetworkAddressPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConfigNetworkClass = typeof ConfigNetwork;
@@ -2649,124 +2585,68 @@ export namespace LibvirtSandbox {
     type ConfigNetworkFilterrefParameterClass = typeof ConfigNetworkFilterrefParameter;
     abstract class ConfigNetworkFilterrefParameterPrivate {
         static $gtype: GObject.GType<ConfigNetworkFilterrefParameterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ConfigNetworkFilterrefPrivate {
         static $gtype: GObject.GType<ConfigNetworkFilterrefPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ConfigNetworkPrivate {
         static $gtype: GObject.GType<ConfigNetworkPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConfigNetworkRouteClass = typeof ConfigNetworkRoute;
     abstract class ConfigNetworkRoutePrivate {
         static $gtype: GObject.GType<ConfigNetworkRoutePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ConfigPrivate {
         static $gtype: GObject.GType<ConfigPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConfigServiceClass = typeof ConfigService;
     type ConfigServiceGenericClass = typeof ConfigServiceGeneric;
     abstract class ConfigServiceGenericPrivate {
         static $gtype: GObject.GType<ConfigServiceGenericPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ConfigServicePrivate {
         static $gtype: GObject.GType<ConfigServicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConfigServiceSystemdClass = typeof ConfigServiceSystemd;
     abstract class ConfigServiceSystemdPrivate {
         static $gtype: GObject.GType<ConfigServiceSystemdPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConsoleClass = typeof Console;
     abstract class ConsolePrivate {
         static $gtype: GObject.GType<ConsolePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConsoleRawClass = typeof ConsoleRaw;
     abstract class ConsoleRawPrivate {
         static $gtype: GObject.GType<ConsoleRawPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConsoleRpcClass = typeof ConsoleRpc;
     abstract class ConsoleRpcPrivate {
         static $gtype: GObject.GType<ConsoleRpcPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ContextClass = typeof Context;
     type ContextInteractiveClass = typeof ContextInteractive;
     abstract class ContextInteractivePrivate {
         static $gtype: GObject.GType<ContextInteractivePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ContextPrivate {
         static $gtype: GObject.GType<ContextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ContextServiceClass = typeof ContextService;
     abstract class ContextServicePrivate {
         static $gtype: GObject.GType<ContextServicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

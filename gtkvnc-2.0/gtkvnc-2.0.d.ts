@@ -831,7 +831,8 @@ export namespace GtkVnc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.DrawingArea.ConstructorProps,
+            extends
+                Gtk.DrawingArea.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             allow_resize: boolean;
@@ -1786,19 +1787,11 @@ export namespace GtkVnc {
     type CairoFramebufferClass = typeof CairoFramebuffer;
     abstract class CairoFramebufferPrivate {
         static $gtype: GObject.GType<CairoFramebufferPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DisplayClass = typeof Display;
     abstract class DisplayPrivate {
         static $gtype: GObject.GType<DisplayPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class GrabSequence {
@@ -1817,7 +1810,6 @@ export namespace GtkVnc {
                 keysyms: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](keysyms: number[]): GrabSequence;
 

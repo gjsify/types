@@ -402,9 +402,7 @@ export namespace Gdl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends DockObject.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends DockObject.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             default_title: string;
             defaultTitle: string;
             floating: boolean;
@@ -1069,7 +1067,8 @@ export namespace Gdl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -1676,9 +1675,7 @@ export namespace Gdl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends DockObject.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends DockObject.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             behavior: DockItemBehavior;
             closed: boolean;
             iconified: boolean;
@@ -2456,7 +2453,8 @@ export namespace Gdl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -3174,7 +3172,8 @@ export namespace Gdl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Container.ConstructorProps,
+            extends
+                Gtk.Container.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             item: DockItem;
@@ -4034,9 +4033,7 @@ export namespace Gdl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends DockItem.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends DockItem.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             page: number;
         }
     }
@@ -4586,7 +4583,8 @@ export namespace Gdl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Container.ConstructorProps,
+            extends
+                Gtk.Container.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             long_name: string;
@@ -5451,9 +5449,7 @@ export namespace Gdl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends DockItem.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends DockItem.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             position: number;
         }
     }
@@ -6043,9 +6039,7 @@ export namespace Gdl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends DockObject.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends DockObject.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             floating: boolean;
             floatx: number;
             floaty: number;
@@ -6619,9 +6613,7 @@ export namespace Gdl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             item: DockItem;
         }
     }
@@ -7218,7 +7210,8 @@ export namespace Gdl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Window.ConstructorProps,
+            extends
+                Gtk.Window.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -7776,7 +7769,8 @@ export namespace Gdl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Notebook.ConstructorProps,
+            extends
+                Gtk.Notebook.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             switcher_style: SwitcherStyle;
@@ -8316,10 +8310,6 @@ export namespace Gdl {
     type DockBarClass = typeof DockBar;
     abstract class DockBarPrivate {
         static $gtype: GObject.GType<DockBarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DockClass = typeof Dock;
@@ -8327,105 +8317,57 @@ export namespace Gdl {
     type DockItemClass = typeof DockItem;
     abstract class DockItemClassPrivate {
         static $gtype: GObject.GType<DockItemClassPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DockItemGripClass = typeof DockItemGrip;
     abstract class DockItemGripPrivate {
         static $gtype: GObject.GType<DockItemGripPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DockItemPrivate {
         static $gtype: GObject.GType<DockItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DockLayoutClass = typeof DockLayout;
     abstract class DockLayoutPrivate {
         static $gtype: GObject.GType<DockLayoutPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DockMasterClass = typeof DockMaster;
     abstract class DockMasterPrivate {
         static $gtype: GObject.GType<DockMasterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DockNotebookClass = typeof DockNotebook;
     abstract class DockNotebookClassPrivate {
         static $gtype: GObject.GType<DockNotebookClassPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DockNotebookPrivate {
         static $gtype: GObject.GType<DockNotebookPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DockObjectClass = typeof DockObject;
     abstract class DockObjectClassPrivate {
         static $gtype: GObject.GType<DockObjectClassPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DockObjectPrivate {
         static $gtype: GObject.GType<DockObjectPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DockPanedClass = typeof DockPaned;
     abstract class DockPanedPrivate {
         static $gtype: GObject.GType<DockPanedPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DockPlaceholderClass = typeof DockPlaceholder;
     abstract class DockPlaceholderPrivate {
         static $gtype: GObject.GType<DockPlaceholderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DockPrivate {
         static $gtype: GObject.GType<DockPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -8440,10 +8382,6 @@ export namespace Gdl {
         target: DockObject;
         position: DockPlacement;
         rect: cairo.RectangleInt;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DockTablabelClass = typeof DockTablabel;
@@ -8451,18 +8389,10 @@ export namespace Gdl {
     type SwitcherClass = typeof Switcher;
     abstract class SwitcherClassPrivate {
         static $gtype: GObject.GType<SwitcherClassPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class SwitcherPrivate {
         static $gtype: GObject.GType<SwitcherPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

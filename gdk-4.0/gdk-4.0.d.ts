@@ -282,7 +282,6 @@ export namespace Gdk {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -511,7 +510,6 @@ export namespace Gdk {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -824,6 +822,341 @@ export namespace Gdk {
          */
         X8B8G8R8,
         /**
+         * Multiplane format with 2 planes.
+         *
+         * The first plane contains the first channel, usually containing
+         * luma values.
+         * The second plane with interleaved chroma values, Cb followed by Cr.
+         * Subsampled in both the X and Y direction.
+         *
+         * Commonly known by the fourcc "NV12".
+         */
+        G8_B8R8_420,
+        /**
+         * Multiplane format with 2 planes.
+         *
+         * The first plane contains the first channel, usually containing
+         * luma values.
+         * The second plane with interleaved chroma values, Cr followed by Cb.
+         * Subsampled in both the X and Y direction.
+         *
+         * Commonly known by the fourcc "NV21".
+         */
+        G8_R8B8_420,
+        /**
+         * Multiplane format with 2 planes.
+         *
+         * The first plane contains the first channel, usually containing
+         * luma values.
+         * The second plane with interleaved chroma values, Cb followed by Cr.
+         * Subsampled in the X direction.
+         *
+         * Commonly known by the fourcc "NV16".
+         */
+        G8_B8R8_422,
+        /**
+         * Multiplane format with 2 planes.
+         *
+         * The first plane contains the first channel, usually containing
+         * luma values.
+         * The second plane with interleaved chroma values, Cr followed by Cb.
+         * Subsampled in the X direction.
+         *
+         * Commonly known by the fourcc "NV61".
+         */
+        G8_R8B8_422,
+        /**
+         * Multiplane format with 2 planes.
+         *
+         * The first plane contains the first channel, usually containing
+         * luma values.
+         * The second plane with interleaved chroma values, Cb followed by Cr.
+         * This format is not subsampled.
+         *
+         * Commonly known by the fourcc "NV24".
+         */
+        G8_B8R8_444,
+        /**
+         * Multiplane format with 2 planes.
+         *
+         * The first plane contains the first channel, usually containing
+         * luma values.
+         * The second plane with interleaved chroma values, Cr followed by Cb.
+         * This format is not subsampled.
+         *
+         * Commonly known by the fourcc "NV42".
+         */
+        G8_R8B8_444,
+        /**
+         * Multiplane format with 2 planes.
+         *
+         * Each channel is a 16 bit integer, but only the highest 10 bits are used.
+         *
+         * The first plane contains the first channel, usually containing
+         * luma values.
+         * The second plane with interleaved chroma values, Cr followed by Cb.
+         * This format is not subsampled.
+         *
+         * Commonly known by the fourcc "P010".
+         */
+        G10X6_B10X6R10X6_420,
+        /**
+         * Multiplane format with 2 planes.
+         *
+         * Each channel is a 16 bit integer, but only the highest 10 bits are used.
+         *
+         * The first plane contains the first channel, usually containing
+         * luma values.
+         * The second plane with interleaved chroma values, Cr followed by Cb.
+         * This format is not subsampled.
+         *
+         * Commonly known by the fourcc "P012".
+         */
+        G12X4_B12X4R12X4_420,
+        /**
+         * Multiplane format with 2 planes.
+         *
+         * Each channel is a 16 bit integer.
+         *
+         * The first plane contains the first channel, usually containing
+         * luma values.
+         * The second plane with interleaved chroma values, Cr followed by Cb.
+         * This format is not subsampled.
+         *
+         * Commonly known by the fourcc "P016".
+         */
+        G16_B16R16_420,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 8 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel.
+         * Subsampled in both the X and Y direction with 4:1 ratio. It is
+         * mapped into the 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel.
+         * Subsampled in both the X and Y direction with 4:1 ratio. It is
+         * mapped into the 1st channel.
+         *
+         * Commonly known by the fourcc "YUV410".
+         */
+        G8_B8_R8_410,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 8 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the second chroma chanel.
+         * Subsampled in both the X and Y direction with 4:1 ratio. It is
+         * mapped into the 1st channel.
+         *
+         * The third plane usually contains the first chroma channel.
+         * Subsampled in both the X and Y direction with 4:1 ratio. It is
+         * mapped into the 3rd channel.
+         *
+         * Commonly known by the fourcc "YVU410".
+         */
+        G8_R8_B8_410,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 8 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel.
+         * Subsampled in the X direction with 4:1 ratio. It is
+         * mapped into the 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel.
+         * Subsampled in the X direction with 4:1 ratio. It is
+         * mapped into the 1st channel.
+         *
+         * Commonly known by the fourcc "YUV411".
+         */
+        G8_B8_R8_411,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 8 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the second chroma chanel.
+         * Subsampled in the X direction with 4:1 ratio. It is
+         * mapped into the 1st channel.
+         *
+         * The third plane usually contains the first chroma channel.
+         * Subsampled in the X direction with 4:1 ratio. It is
+         * mapped into the 3rd channel.
+         *
+         * Commonly known by the fourcc "YVU411".
+         */
+        G8_R8_B8_411,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 8 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel.
+         * Subsampled in both the X and Y direction. It is mapped into the
+         * 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel.
+         * Subsampled in both the X and Y direction. It is mapped into the
+         * 1st channel.
+         *
+         * Commonly known by the fourcc "YUV420".
+         */
+        G8_B8_R8_420,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 8 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the second chroma chanel.
+         * Subsampled in both the X and Y direction. It is mapped into the
+         * 1st channel.
+         *
+         * The third plane usually contains the first chroma channel.
+         * Subsampled in both the X and Y direction. It is mapped into the
+         * 3rd channel.
+         *
+         * Commonly known by the fourcc "YVU420".
+         */
+        G8_R8_B8_420,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 8 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel.
+         * Subsampled in the X direction. It is mapped into the 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel.
+         * Subsampled in the X direction. It is mapped into the 1st channel.
+         *
+         * Commonly known by the fourcc "YUV422".
+         */
+        G8_B8_R8_422,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 8 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the second chroma chanel.
+         * Subsampled in the X direction. It is mapped into the 1st channel.
+         *
+         * The third plane usually contains the first chroma channel.
+         * Subsampled in the X direction. It is mapped into the 3rd channel.
+         *
+         * Commonly known by the fourcc "YVU422".
+         */
+        G8_R8_B8_422,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 8 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel. It is
+         * mapped into the 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel. It is
+         * mapped into the 1st channel.
+         *
+         * Commonly known by the fourcc "YUV444".
+         */
+        G8_B8_R8_444,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 8 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the second chroma chanel.
+         * Subsampled in the X direction. It is mapped into the 1st channel.
+         *
+         * The third plane usually contains the first chroma channel.
+         * Subsampled in the X direction. It is mapped into the 3rd channel.
+         *
+         * Commonly known by the fourcc "YVU444".
+         */
+        G8_R8_B8_444,
+        /**
+         * Packed format with subsampled channels.
+         *
+         * Each channel is a 8 bit integer. The red and blue/chroma channels
+         * are subsampled and interleaved with the green/luma channel.
+         *
+         * Each block contains 2 pixels, so the width must be a multiple of
+         * 2.
+         *
+         * Commonly known by the fourcc "YUYV".
+         */
+        G8B8G8R8_422,
+        /**
+         * Packed format with subsampled channels.
+         *
+         * Each channel is a 8 bit integer. The red and blue/chroma channels
+         * are subsampled and interleaved with the green/luma channel.
+         *
+         * Each block contains 2 pixels, so the width must be a multiple of
+         * 2.
+         *
+         * Commonly known by the fourcc "YVYU".
+         */
+        G8R8G8B8_422,
+        /**
+         * Packed format with subsampled channels.
+         *
+         * Each channel is a 8 bit integer. The red and blue/chroma channels
+         * are subsampled and interleaved with the green/luma channel.
+         *
+         * Each block contains 2 pixels, so the width must be a multiple of
+         * 2.
+         *
+         * Commonly known by the fourcc "VYUY".
+         */
+        R8G8B8G8_422,
+        /**
+         * Packed format with subsampled channels.
+         *
+         * Each channel is a 8 bit integer. The red and blue/chroma channels
+         * are subsampled and interleaved with the green/luma channel.
+         *
+         * Each block contains 2 pixels, so the width must be a multiple of
+         * 2.
+         *
+         * Commonly known by the fourcc "UYVY".
+         */
+        B8G8R8G8_422,
+        /**
          * The number of formats. This value will change as
          *   more formats get added, so do not rely on its concrete integer.
          */
@@ -1078,7 +1411,6 @@ export namespace Gdk {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1201,7 +1533,6 @@ export namespace Gdk {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -4643,6 +4974,56 @@ export namespace Gdk {
         ALL,
     }
     /**
+     * Reflects what features a `GdkToplevel` supports.
+     */
+
+    /**
+     * Reflects what features a `GdkToplevel` supports.
+     */
+    export namespace ToplevelCapabilities {
+        export const $gtype: GObject.GType<ToplevelCapabilities>;
+    }
+
+    enum ToplevelCapabilities {
+        /**
+         * Whether tiled window states are supported.
+         */
+        EDGE_CONSTRAINTS,
+        /**
+         * Whether inhibiting system shortcuts is supported.
+         * See [method`Gdk`.Toplevel.inhibit_system_shortcuts].
+         */
+        INHIBIT_SHORTCUTS,
+        /**
+         * Whether titlebar gestures are supported.
+         * See [method`Gdk`.Toplevel.titlebar_gesture].
+         */
+        TITLEBAR_GESTURES,
+        /**
+         * Whether showing the window menu is supported.
+         * See [method`Gdk`.Toplevel.show_window_menu].
+         */
+        WINDOW_MENU,
+        /**
+         * Whether the toplevel can be maximized.
+         */
+        MAXIMIZE,
+        /**
+         * Whether the toplevel can be made fullscreen.
+         */
+        FULLSCREEN,
+        /**
+         * Whether the toplevel can be minimized.
+         * See [method`Gdk`.Toplevel.minimize].
+         */
+        MINIMIZE,
+        /**
+         * Whether the toplevel can be lowered.
+         * See [method`Gdk`.Toplevel.lower].
+         */
+        LOWER,
+    }
+    /**
      * Specifies the state of a toplevel surface.
      *
      * On platforms that support information about individual edges, the
@@ -5072,7 +5453,10 @@ export namespace Gdk {
          * Supported values:
          *
          * - 0: RGB
+         * - 1: BT.709
          * - 2: unspecified
+         * - 5,6: BT.601
+         * - 9: BT.2020
          */
         get matrix_coefficients(): number;
         set matrix_coefficients(val: number);
@@ -5082,7 +5466,10 @@ export namespace Gdk {
          * Supported values:
          *
          * - 0: RGB
+         * - 1: BT.709
          * - 2: unspecified
+         * - 5,6: BT.601
+         * - 9: BT.2020
          */
         get matrixCoefficients(): number;
         set matrixCoefficients(val: number);
@@ -8559,7 +8946,8 @@ export namespace Gdk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Texture.ConstructorProps,
+            extends
+                Texture.ConstructorProps,
                 Paintable.ConstructorProps,
                 Gio.Icon.ConstructorProps,
                 Gio.LoadableIcon.ConstructorProps {}
@@ -10198,8 +10586,8 @@ export namespace Gdk {
      * Represents the target of an ongoing DND operation.
      *
      * Possible drop sites get informed about the status of the ongoing drag
-     * operation with events of type %GDK_DRAG_ENTER, %GDK_DRAG_LEAVE,
-     * %GDK_DRAG_MOTION and %GDK_DROP_START. The `GdkDrop` object can be obtained
+     * operation with events of type `GDK_DRAG_ENTER`, `GDK_DRAG_LEAVE`,
+     * `GDK_DRAG_MOTION` and `GDK_DROP_START`. The `GdkDrop` object can be obtained
      * from these [class`Gdk`.Event] types using [method`Gdk`.DNDEvent.get_drop].
      *
      * The actual data transfer is initiated from the target side via an async
@@ -10287,11 +10675,11 @@ export namespace Gdk {
          * Returns the possible actions for this `GdkDrop`.
          *
          * If this value contains multiple actions - i.e.
-         * [func`Gdk`.DragAction.is_unique] returns %FALSE for the result -
+         * [func`Gdk`.DragAction.is_unique] returns false for the result -
          * [method`Gdk`.Drop.finish] must choose the action to use when
          * accepting the drop. This will only happen if you passed
-         * %GDK_ACTION_ASK as one of the possible actions in
-         * [method`Gdk`.Drop.status]. %GDK_ACTION_ASK itself will not
+         * `GDK_ACTION_ASK` as one of the possible actions in
+         * [method`Gdk`.Drop.status]. `GDK_ACTION_ASK` itself will not
          * be included in the actions returned by this function.
          *
          * This value may change over the lifetime of the [class`Gdk`.Drop]
@@ -10315,7 +10703,7 @@ export namespace Gdk {
          * If this is an in-app drag-and-drop operation, returns the `GdkDrag`
          * that corresponds to this drop.
          *
-         * If it is not, %NULL is returned.
+         * If it is not, `NULL` is returned.
          * @returns the corresponding `GdkDrag`
          */
         get_drag(): Drag | null;
@@ -10454,7 +10842,7 @@ export namespace Gdk {
          * action to use when multiple actions are possible.
          *
          * This function should be called by drag destinations in response to
-         * %GDK_DRAG_ENTER or %GDK_DRAG_MOTION events. If the destination does
+         * `GDK_DRAG_ENTER` or `GDK_DRAG_MOTION` events. If the destination does
          * not yet know the exact actions it supports, it should set any possible
          * actions first and then later call this function again.
          * @param actions Supported actions of the destination, or 0 to indicate    that a drop will not be accepted
@@ -11240,7 +11628,8 @@ export namespace Gdk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Texture.ConstructorProps,
+            extends
+                Texture.ConstructorProps,
                 Paintable.ConstructorProps,
                 Gio.Icon.ConstructorProps,
                 Gio.LoadableIcon.ConstructorProps {}
@@ -12561,7 +12950,8 @@ export namespace Gdk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Texture.ConstructorProps,
+            extends
+                Texture.ConstructorProps,
                 Paintable.ConstructorProps,
                 Gio.Icon.ConstructorProps,
                 Gio.LoadableIcon.ConstructorProps {}
@@ -13572,10 +13962,22 @@ export namespace Gdk {
          */
         get_height(): number;
         /**
+         * Gets the offset previously set via gdk_memory_texture_builder_set_offset().
+         * @param plane a plane
+         * @returns The offset associated to a @plane
+         */
+        get_offset(plane: number): number;
+        /**
          * Gets the stride previously set via gdk_memory_texture_builder_set_stride().
          * @returns the stride
          */
         get_stride(): number;
+        /**
+         * Gets the stride previously set via gdk_memory_texture_builder_set_stride_for_plane().
+         * @param plane a plane
+         * @returns The stride associated to a @plane
+         */
+        get_stride_for_plane(plane: number): number;
         /**
          * Gets the region previously set via gdk_memory_texture_builder_set_update_region()
          * or %NULL if none was set.
@@ -13619,10 +14021,17 @@ export namespace Gdk {
         /**
          * Sets the height of the texture.
          *
-         * The height must be set before calling [method`Gdk`.MemoryTextureBuilder.build].
+         * The height must be set before calling [method`Gdk`.MemoryTextureBuilder.build]
+         * and conform to size requirements of the provided format.
          * @param height The texture's height or 0 to unset
          */
         set_height(height: number): void;
+        /**
+         * Sets the offset of the texture for `plane`.
+         * @param plane a plane
+         * @param offset the texture's offset for @plane
+         */
+        set_offset(plane: number, offset: number): void;
         /**
          * Sets the rowstride of the bytes used.
          *
@@ -13630,6 +14039,12 @@ export namespace Gdk {
          * @param stride the stride or 0 to unset
          */
         set_stride(stride: number): void;
+        /**
+         * Sets the stride of the texture for `plane`.
+         * @param plane a plane
+         * @param stride the texture's stride for @plane
+         */
+        set_stride_for_plane(plane: number, stride: number): void;
         /**
          * Sets the region to be updated by this texture.
          *
@@ -13655,7 +14070,8 @@ export namespace Gdk {
         /**
          * Sets the width of the texture.
          *
-         * The width must be set before calling [method`Gdk`.MemoryTextureBuilder.build].
+         * The width must be set before calling [method`Gdk`.MemoryTextureBuilder.build]
+         * and conform to size requirements of the provided format.
          * @param width The texture's width or 0 to unset
          */
         set_width(width: number): void;
@@ -14685,7 +15101,8 @@ export namespace Gdk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 Paintable.ConstructorProps,
                 Gio.Icon.ConstructorProps,
                 Gio.LoadableIcon.ConstructorProps {
@@ -16388,10 +16805,6 @@ export namespace Gdk {
     abstract class ColorState {
         static $gtype: GObject.GType<ColorState>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -16529,7 +16942,6 @@ export namespace Gdk {
         // Constructors
 
         constructor(mime_types?: string[] | null);
-        _init(...args: any[]): void;
 
         static ['new'](mime_types?: string[] | null): ContentFormats;
 
@@ -16680,7 +17092,6 @@ export namespace Gdk {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ContentFormatsBuilder;
 
@@ -16753,10 +17164,6 @@ export namespace Gdk {
     abstract class DmabufFormats {
         static $gtype: GObject.GType<DmabufFormats>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -16812,10 +17219,6 @@ export namespace Gdk {
     abstract class DragSurfaceSize {
         static $gtype: GObject.GType<DragSurfaceSize>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -16831,10 +17234,6 @@ export namespace Gdk {
      */
     abstract class EventSequence {
         static $gtype: GObject.GType<EventSequence>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -16846,7 +17245,6 @@ export namespace Gdk {
         // Constructors
 
         constructor(files: Gio.File[]);
-        _init(...args: any[]): void;
 
         static new_from_array(files: Gio.File[]): FileList;
 
@@ -16866,10 +17264,6 @@ export namespace Gdk {
     type FrameClockClass = typeof FrameClock;
     abstract class FrameClockPrivate {
         static $gtype: GObject.GType<FrameClockPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -16883,10 +17277,6 @@ export namespace Gdk {
      */
     abstract class FrameTimings {
         static $gtype: GObject.GType<FrameTimings>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -16989,7 +17379,6 @@ export namespace Gdk {
                 level: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type MemoryTextureBuilderClass = typeof MemoryTextureBuilder;
@@ -17038,7 +17427,6 @@ export namespace Gdk {
         // Constructors
 
         constructor(anchor_rect: Rectangle, rect_anchor: Gravity, surface_anchor: Gravity);
-        _init(...args: any[]): void;
 
         static ['new'](anchor_rect: Rectangle, rect_anchor: Gravity, surface_anchor: Gravity): PopupLayout;
 
@@ -17051,13 +17439,13 @@ export namespace Gdk {
         copy(): PopupLayout;
         /**
          * Check whether `layout` and `other` has identical layout properties.
-         * @param other another `GdkPopupLayout`
-         * @returns %TRUE if @layout and @other have identical layout properties,   otherwise %FALSE.
+         * @param other another popup layout
+         * @returns true if @layout and @other have identical layout properties,   otherwise false.
          */
         equal(other: PopupLayout): boolean;
         /**
-         * Get the `GdkAnchorHints`.
-         * @returns the `GdkAnchorHints`
+         * Get the anchor hints.
+         * @returns the anchor hints
          */
         get_anchor_hints(): AnchorHints;
         /**
@@ -17093,10 +17481,10 @@ export namespace Gdk {
          *
          * The set `anchor_hints` determines how `surface` will be moved
          * if the anchor points cause it to move off-screen. For example,
-         * %GDK_ANCHOR_FLIP_X will replace %GDK_GRAVITY_NORTH_WEST with
-         * %GDK_GRAVITY_NORTH_EAST and vice versa if `surface` extends
+         * `GDK_ANCHOR_FLIP_X` will replace `GDK_GRAVITY_NORTH_WEST` with
+         * `GDK_GRAVITY_NORTH_EAST` and vice versa if `surface` extends
          * beyond the left or right edges of the monitor.
-         * @param anchor_hints the new `GdkAnchorHints`
+         * @param anchor_hints the new anchor hints
          */
         set_anchor_hints(anchor_hints: AnchorHints | null): void;
         /**
@@ -17168,7 +17556,6 @@ export namespace Gdk {
                 alpha: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -17291,7 +17678,6 @@ export namespace Gdk {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -17354,7 +17740,6 @@ export namespace Gdk {
         // Constructors
 
         constructor(texture: Texture);
-        _init(...args: any[]): void;
 
         static ['new'](texture: Texture): TextureDownloader;
 
@@ -17375,11 +17760,25 @@ export namespace Gdk {
          * fails to allocate memory. If you think that may happen, you should handle
          * memory allocation yourself and use [method`Gdk`.TextureDownloader.download_into]
          * once allocation succeeded.
+         *
+         * This function cannot be used with a multiplanar format. Use
+         * [method`Gdk`.TextureDownloader.download_bytes_with_planes] for that purpose.
          * @returns The downloaded pixels
          */
         download_bytes(): [GLib.Bytes, number];
         /**
+         * Downloads the given texture pixels into a `GBytes`. The offsets and
+         * strides of the resulting buffer will be stored in the respective values.
+         *
+         * If the format does have less than 4 planes, the remaining offsets and strides will be
+         * set to `0`.
+         * @returns The downloaded pixels
+         */
+        download_bytes_with_planes(): [GLib.Bytes, number[], number[]];
+        /**
          * Downloads the `texture` into local memory.
+         *
+         * This function cannot be used with a multiplanar format.
          * @param data pointer to enough memory to be filled with the   downloaded data of the texture
          * @param stride rowstride in bytes
          */
@@ -17441,10 +17840,6 @@ export namespace Gdk {
         time: number;
         flags: AxisFlags;
         axes: number[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ToplevelInterface = typeof Toplevel;
@@ -17465,7 +17860,6 @@ export namespace Gdk {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ToplevelLayout;
 
@@ -17478,14 +17872,14 @@ export namespace Gdk {
         copy(): ToplevelLayout;
         /**
          * Check whether `layout` and `other` has identical layout properties.
-         * @param other another `GdkToplevelLayout`
-         * @returns %TRUE if @layout and @other have identical layout properties,   otherwise %FALSE.
+         * @param other another toplevel layout
+         * @returns true if @layout and @other have identical layout properties,   otherwise false.
          */
         equal(other: ToplevelLayout): boolean;
         /**
          * If the layout specifies whether to the toplevel should go fullscreen,
-         * the value pointed to by `fullscreen` is set to %TRUE if it should go
-         * fullscreen, or %FALSE, if it should go unfullscreen.
+         * the value pointed to by `fullscreen` is set to true if it should go
+         * fullscreen, or false, if it should go unfullscreen.
          * @returns whether the @layout specifies the fullscreen state for the toplevel
          */
         get_fullscreen(): [boolean, boolean];
@@ -17497,15 +17891,15 @@ export namespace Gdk {
         get_fullscreen_monitor(): Monitor | null;
         /**
          * If the layout specifies whether to the toplevel should go maximized,
-         * the value pointed to by `maximized` is set to %TRUE if it should go
-         * fullscreen, or %FALSE, if it should go unmaximized.
+         * the value pointed to by `maximized` is set to true if it should go
+         * maximized, or false, if it should go unmaximized.
          * @returns whether the @layout specifies the maximized state for the toplevel
          */
         get_maximized(): [boolean, boolean];
         /**
          * Returns whether the layout should allow the user
          * to resize the surface.
-         * @returns %TRUE if the layout is resizable
+         * @returns true if the layout is resizable
          */
         get_resizable(): boolean;
         /**
@@ -17516,20 +17910,20 @@ export namespace Gdk {
         /**
          * Sets whether the layout should cause the surface
          * to be fullscreen when presented.
-         * @param fullscreen %TRUE to fullscreen the surface
+         * @param fullscreen true to fullscreen the surface
          * @param monitor the monitor to fullscreen on
          */
         set_fullscreen(fullscreen: boolean, monitor?: Monitor | null): void;
         /**
          * Sets whether the layout should cause the surface
          * to be maximized when presented.
-         * @param maximized %TRUE to maximize
+         * @param maximized true to maximize
          */
         set_maximized(maximized: boolean): void;
         /**
          * Sets whether the layout should allow the user
          * to resize the surface after it has been presented.
-         * @param resizable %TRUE to allow resizing
+         * @param resizable true to allow resizing
          */
         set_resizable(resizable: boolean): void;
         /**
@@ -17543,10 +17937,6 @@ export namespace Gdk {
      */
     abstract class ToplevelSize {
         static $gtype: GObject.GType<ToplevelSize>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -18014,10 +18404,12 @@ export namespace Gdk {
         // Constructor properties interface
 
         interface ConstructorProps extends Surface.ConstructorProps {
+            capabilities: ToplevelCapabilities;
             decorated: boolean;
             deletable: boolean;
             fullscreen_mode: FullscreenMode;
             fullscreenMode: FullscreenMode;
+            gravity: Gravity;
             icon_list: any;
             iconList: any;
             modal: boolean;
@@ -18040,6 +18432,10 @@ export namespace Gdk {
         // Properties
 
         /**
+         * The capabilities that are available for this toplevel.
+         */
+        get capabilities(): ToplevelCapabilities;
+        /**
          * Whether the window manager should add decorations.
          */
         get decorated(): boolean;
@@ -18059,6 +18455,20 @@ export namespace Gdk {
          */
         get fullscreenMode(): FullscreenMode;
         set fullscreenMode(val: FullscreenMode);
+        /**
+         * The gravity to use when resizing a surface programmatically.
+         *
+         * Gravity describes which point of the surface we want to keep
+         * fixed (meaning that the surface will grow in the opposite direction).
+         * For example, a gravity of `GDK_GRAVITY_NORTH_EAST` means that we
+         * want to fix top right corner of the surface.
+         *
+         * This property is just a hint that may affect the result when negotiating
+         * toplevel sizes with the windowing system. It does not affect interactive
+         * resizes started with [method`Gdk`.Toplevel.begin_resize].
+         */
+        get gravity(): Gravity;
+        set gravity(val: Gravity);
         /**
          * A list of textures to use as icon.
          */
@@ -18160,6 +18570,16 @@ export namespace Gdk {
          */
         focus(timestamp: number): void;
         /**
+         * The capabilities that are available for this toplevel.
+         */
+        get_capabilities(): ToplevelCapabilities;
+        /**
+         * Returns the gravity that is used when changing the toplevel
+         * size programmatically.
+         * @returns the gravity
+         */
+        get_gravity(): Gravity;
+        /**
          * Gets the bitwise or of the currently active surface state flags,
          * from the `GdkToplevelState` enumeration.
          * @returns surface state bitfield
@@ -18243,6 +18663,12 @@ export namespace Gdk {
          * @param deletable %TRUE to request a delete button
          */
         set_deletable(deletable: boolean): void;
+        /**
+         * Sets the gravity that is used when changing the toplevel
+         * size programmatically.
+         * @param gravity the new gravity
+         */
+        set_gravity(gravity: Gravity | null): void;
         /**
          * Sets a list of icons for the surface.
          *

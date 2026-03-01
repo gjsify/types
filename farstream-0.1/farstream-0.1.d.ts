@@ -88,10 +88,6 @@ export namespace Farstream {
         static B: number;
         static C: number;
         static D: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -134,7 +130,6 @@ export namespace Farstream {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -2239,7 +2234,6 @@ export namespace Farstream {
             ip: string,
             port: number,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             foundation: string,
@@ -2280,7 +2274,6 @@ export namespace Farstream {
         // Constructors
 
         constructor(id: number, encoding_name: string, media_type: MediaType, clock_rate: number);
-        _init(...args: any[]): void;
 
         static ['new'](id: number, encoding_name: string, media_type: MediaType, clock_rate: number): Codec;
 
@@ -2370,7 +2363,6 @@ export namespace Farstream {
                 value: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2382,10 +2374,6 @@ export namespace Farstream {
     type ElementAddedNotifierClass = typeof ElementAddedNotifier;
     abstract class ElementAddedNotifierPrivate {
         static $gtype: GObject.GType<ElementAddedNotifierPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2409,7 +2397,6 @@ export namespace Farstream {
                 extra_params: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2420,55 +2407,31 @@ export namespace Farstream {
     type ParticipantClass = typeof Participant;
     abstract class ParticipantPrivate {
         static $gtype: GObject.GType<ParticipantPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PluginClass = typeof Plugin;
     abstract class PluginPrivate {
         static $gtype: GObject.GType<PluginPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SessionClass = typeof Session;
     abstract class SessionPrivate {
         static $gtype: GObject.GType<SessionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StreamClass = typeof Stream;
     abstract class StreamPrivate {
         static $gtype: GObject.GType<StreamPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StreamTransmitterClass = typeof StreamTransmitter;
     abstract class StreamTransmitterPrivate {
         static $gtype: GObject.GType<StreamTransmitterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TransmitterClass = typeof Transmitter;
     abstract class TransmitterPrivate {
         static $gtype: GObject.GType<TransmitterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _RtpHeaderExtension {
@@ -2479,10 +2442,6 @@ export namespace Farstream {
         id: number;
         direction: StreamDirection;
         uri: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

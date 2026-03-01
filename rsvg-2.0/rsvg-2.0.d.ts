@@ -38,7 +38,6 @@ export namespace Rsvg {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -431,7 +430,12 @@ export namespace Rsvg {
      *    example, librsvg will not load `http` resources, to keep
      *    malicious SVG data from "phoning home".
      *
-     * 7. A relative URL must resolve to the same directory as the base URL, or to
+     * 7. URLs with a `file` scheme are rejected if they contain a hostname, as in
+     *    `file://hostname/some/directory/foo.svg`.  Windows UNC paths with a hostname are
+     *    also rejected.  This is to prevent documents from trying to access resources on
+     *    other machines.
+     *
+     * 8. A relative URL must resolve to the same directory as the base URL, or to
      *    one of its subdirectories.  Librsvg will canonicalize filenames, by
      *    removing ".." path components and resolving symbolic links, to decide whether
      *    files meet these conditions.
@@ -1249,7 +1253,6 @@ export namespace Rsvg {
                 ex: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type HandleClass = typeof Handle;
@@ -1273,10 +1276,6 @@ export namespace Rsvg {
 
         length: number;
         unit: Unit;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1299,7 +1298,6 @@ export namespace Rsvg {
                 y: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1325,7 +1323,6 @@ export namespace Rsvg {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**

@@ -106,7 +106,8 @@ export namespace Gucharmap {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends ChaptersModel.ConstructorProps,
+            extends
+                ChaptersModel.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.TreeDragDest.ConstructorProps,
                 Gtk.TreeDragSource.ConstructorProps,
@@ -669,7 +670,8 @@ export namespace Gucharmap {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ListStore.ConstructorProps,
+            extends
+                Gtk.ListStore.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.TreeDragDest.ConstructorProps,
                 Gtk.TreeDragSource.ConstructorProps,
@@ -2034,7 +2036,8 @@ export namespace Gucharmap {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.TreeView.ConstructorProps,
+            extends
+                Gtk.TreeView.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {}
@@ -2698,7 +2701,8 @@ export namespace Gucharmap {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Paned.ConstructorProps,
+            extends
+                Gtk.Paned.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -3340,7 +3344,8 @@ export namespace Gucharmap {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.DrawingArea.ConstructorProps,
+            extends
+                Gtk.DrawingArea.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {
@@ -4058,7 +4063,8 @@ export namespace Gucharmap {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends ChaptersModel.ConstructorProps,
+            extends
+                ChaptersModel.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.TreeDragDest.ConstructorProps,
                 Gtk.TreeDragSource.ConstructorProps,
@@ -4612,82 +4618,46 @@ export namespace Gucharmap {
     type BlockChaptersModelClass = typeof BlockChaptersModel;
     abstract class BlockChaptersModelPrivate {
         static $gtype: GObject.GType<BlockChaptersModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BlockCodepointListClass = typeof BlockCodepointList;
     abstract class BlockCodepointListPrivate {
         static $gtype: GObject.GType<BlockCodepointListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ChaptersModelClass = typeof ChaptersModel;
     abstract class ChaptersModelPrivate {
         static $gtype: GObject.GType<ChaptersModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ChaptersViewClass = typeof ChaptersView;
     abstract class ChaptersViewPrivate {
         static $gtype: GObject.GType<ChaptersViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CharmapClass = typeof Charmap;
     abstract class CharmapPrivate {
         static $gtype: GObject.GType<CharmapPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ChartableClass = typeof Chartable;
     abstract class ChartablePrivate {
         static $gtype: GObject.GType<ChartablePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CodepointListClass = typeof CodepointList;
     abstract class CodepointListPrivate {
         static $gtype: GObject.GType<CodepointListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ScriptChaptersModelClass = typeof ScriptChaptersModel;
     abstract class ScriptChaptersModelPrivate {
         static $gtype: GObject.GType<ScriptChaptersModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ScriptCodepointListClass = typeof ScriptCodepointList;
     abstract class ScriptCodepointListPrivate {
         static $gtype: GObject.GType<ScriptCodepointListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

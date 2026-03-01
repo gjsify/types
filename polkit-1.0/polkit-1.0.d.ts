@@ -48,7 +48,6 @@ export namespace Polkit {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -285,9 +284,7 @@ export namespace Polkit {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             backend_features: AuthorityFeatures;
             backendFeatures: AuthorityFeatures;
             backend_name: string;
@@ -2175,9 +2172,7 @@ export namespace Polkit {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.Permission.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Gio.Permission.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             action_id: string;
             actionId: string;
             subject: Subject;
@@ -5615,7 +5610,8 @@ export namespace Polkit {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.Initable.ConstructorProps,
                 Subject.ConstructorProps {

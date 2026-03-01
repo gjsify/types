@@ -196,7 +196,6 @@ export namespace St {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1343,7 +1342,8 @@ export namespace St {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
             child: A;
@@ -2026,7 +2026,8 @@ export namespace St {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Viewport.ConstructorProps<Clutter.BoxLayout>,
+            extends
+                Viewport.ConstructorProps<Clutter.BoxLayout>,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Scrollable.ConstructorProps {
@@ -2732,7 +2733,8 @@ export namespace St {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends Bin.ConstructorProps<A>,
+            extends
+                Bin.ConstructorProps<A>,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
             button_mask: ButtonMask;
@@ -3649,7 +3651,8 @@ export namespace St {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {}
     }
@@ -4288,7 +4291,8 @@ export namespace St {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
             clutter_text: Clutter.Text;
@@ -5105,9 +5109,7 @@ export namespace St {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends WidgetAccessible.ConstructorProps,
-                Atk.Component.ConstructorProps,
-                Atk.Value.ConstructorProps {}
+            extends WidgetAccessible.ConstructorProps, Atk.Component.ConstructorProps, Atk.Value.ConstructorProps {}
     }
 
     /**
@@ -5825,7 +5827,8 @@ export namespace St {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
             fallback_gicon: Gio.Icon;
@@ -6987,7 +6990,8 @@ export namespace St {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 Clutter.Content.ConstructorProps,
                 Gio.Icon.ConstructorProps,
                 Gio.LoadableIcon.ConstructorProps {
@@ -7863,7 +7867,8 @@ export namespace St {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
             clutter_text: Clutter.Text;
@@ -8497,9 +8502,7 @@ export namespace St {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Entry.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps {
+            extends Entry.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps {
             password_visible: boolean;
             passwordVisible: boolean;
             show_peek_icon: boolean;
@@ -9130,7 +9133,8 @@ export namespace St {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
             adjustment: Adjustment;
@@ -9754,7 +9758,8 @@ export namespace St {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
             child: Scrollable;
@@ -12261,7 +12266,9 @@ export namespace St {
         interface ConstructorProps<
             A extends Clutter.LayoutManager = Clutter.LayoutManager,
             B extends Clutter.Content = Clutter.Content,
-        > extends Widget.ConstructorProps<A, B>,
+        >
+            extends
+                Widget.ConstructorProps<A, B>,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Scrollable.ConstructorProps {
@@ -12930,7 +12937,9 @@ export namespace St {
         interface ConstructorProps<
             A extends Clutter.LayoutManager = Clutter.LayoutManager,
             B extends Clutter.Content = Clutter.Content,
-        > extends Clutter.Actor.ConstructorProps<A, B>,
+        >
+            extends
+                Clutter.Actor.ConstructorProps<A, B>,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
             can_focus: boolean;
@@ -14573,10 +14582,6 @@ export namespace St {
     type BoxLayoutClass = typeof BoxLayout;
     abstract class BoxLayoutPrivate {
         static $gtype: GObject.GType<BoxLayoutPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ButtonClass = typeof Button;
@@ -14611,7 +14616,6 @@ export namespace St {
                 success: Cogl.Color;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): IconColors;
 
@@ -14646,10 +14650,6 @@ export namespace St {
     type IconInfoClass = typeof IconInfo;
     abstract class IconPrivate {
         static $gtype: GObject.GType<IconPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IconThemeClass = typeof IconTheme;
@@ -14657,10 +14657,6 @@ export namespace St {
     type LabelClass = typeof Label;
     abstract class LabelPrivate {
         static $gtype: GObject.GType<LabelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PasswordEntryClass = typeof PasswordEntry;
@@ -14700,7 +14696,6 @@ export namespace St {
                 inset: boolean;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             color: Cogl.Color,
@@ -14753,7 +14748,6 @@ export namespace St {
         // Constructors
 
         constructor(shadow: Shadow);
-        _init(...args: any[]): void;
 
         static ['new'](shadow: Shadow): ShadowHelper;
 
@@ -14800,10 +14794,6 @@ export namespace St {
         prerendered_texture: Cogl.Texture;
         prerendered_pipeline: Cogl.Pipeline;
         corner_pipeline: Cogl.Pipeline[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 

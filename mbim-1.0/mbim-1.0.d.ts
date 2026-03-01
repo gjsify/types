@@ -1336,7 +1336,6 @@ export namespace Mbim {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1433,10 +1432,6 @@ export namespace Mbim {
          * DRX cycle T=256.
          */
         static '256': number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2458,7 +2453,6 @@ export namespace Mbim {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -3334,7 +3328,6 @@ export namespace Mbim {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -5514,10 +5507,6 @@ export namespace Mbim {
          * FR2 in 3GPP TS 38.101-2 (mmWave).
          */
         static '2': number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -7090,7 +7079,6 @@ export namespace Mbim {
                 error_rate: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -7134,7 +7122,6 @@ export namespace Mbim {
                 pilot_strength: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -7172,7 +7159,6 @@ export namespace Mbim {
                 rx_level: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -7212,7 +7198,6 @@ export namespace Mbim {
                 rsrq: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -7254,7 +7239,6 @@ export namespace Mbim {
                 sinr: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -7296,7 +7280,6 @@ export namespace Mbim {
                 path_loss: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -7338,7 +7321,6 @@ export namespace Mbim {
                 path_loss: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -7378,7 +7360,6 @@ export namespace Mbim {
                 rx_level: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -7419,7 +7400,6 @@ export namespace Mbim {
                 timing_advance: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -7462,7 +7442,6 @@ export namespace Mbim {
                 timing_advance: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -7504,7 +7483,6 @@ export namespace Mbim {
                 path_loss: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -7551,7 +7529,6 @@ export namespace Mbim {
                 path_loss: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -7587,16 +7564,11 @@ export namespace Mbim {
                 auth_protocol: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type DeviceClass = typeof Device;
     abstract class DevicePrivate {
         static $gtype: GObject.GType<DevicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -7624,7 +7596,6 @@ export namespace Mbim {
                 cids: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -7656,7 +7627,6 @@ export namespace Mbim {
                 cids: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -7684,7 +7654,6 @@ export namespace Mbim {
                 addr: Uint8Array;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -7706,7 +7675,6 @@ export namespace Mbim {
                 ipv4_address: IPv4;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -7734,7 +7702,6 @@ export namespace Mbim {
                 addr: Uint8Array;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -7756,7 +7723,6 @@ export namespace Mbim {
                 ipv6_address: IPv6;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -7798,7 +7764,6 @@ export namespace Mbim {
                 connection_status: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -7840,7 +7805,6 @@ export namespace Mbim {
                 auth_protocol: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -7860,7 +7824,6 @@ export namespace Mbim {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static atds_location_query_new(): Message;
 
@@ -9735,7 +9698,6 @@ export namespace Mbim {
                 packet_mask: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -9769,7 +9731,6 @@ export namespace Mbim {
                 filter_id: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -9803,7 +9764,6 @@ export namespace Mbim {
                 pco_data_buffer: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -9834,7 +9794,6 @@ export namespace Mbim {
                 name: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -9868,7 +9827,6 @@ export namespace Mbim {
                 pin_length_max: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -9905,7 +9863,6 @@ export namespace Mbim {
                 error_rate: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -9952,7 +9909,6 @@ export namespace Mbim {
                 auth_protocol: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -10002,7 +9958,6 @@ export namespace Mbim {
                 auth_protocol: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -10016,10 +9971,6 @@ export namespace Mbim {
     type ProxyClass = typeof Proxy;
     abstract class ProxyPrivate {
         static $gtype: GObject.GType<ProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -10047,7 +9998,6 @@ export namespace Mbim {
                 system_type: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -10077,7 +10027,6 @@ export namespace Mbim {
                 backoff_index: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -10105,7 +10054,6 @@ export namespace Mbim {
                 slot: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -10149,7 +10097,6 @@ export namespace Mbim {
                 encoded_message_size_in_characters: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -10187,7 +10134,6 @@ export namespace Mbim {
                 encoded_message_size_in_characters: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -10220,7 +10166,6 @@ export namespace Mbim {
                 pdu_data: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -10250,7 +10195,6 @@ export namespace Mbim {
                 pdu_data: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -10281,7 +10225,6 @@ export namespace Mbim {
                 tac: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -10310,7 +10253,6 @@ export namespace Mbim {
                 terminal_capability_data: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -10330,7 +10272,6 @@ export namespace Mbim {
         // Constructors
 
         constructor(type: TlvType, data: number, data_length: number);
-        _init(...args: any[]): void;
 
         static ['new'](type: TlvType, data: number, data_length: number): Tlv;
 
@@ -10425,7 +10366,6 @@ export namespace Mbim {
                 pin_key_references: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -10461,7 +10401,6 @@ export namespace Mbim {
                 e: Uint8Array;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 

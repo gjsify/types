@@ -2808,7 +2808,8 @@ export namespace Atk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Object.ConstructorProps,
+            extends
+                Object.ConstructorProps,
                 Action.ConstructorProps,
                 Component.ConstructorProps,
                 Document.ConstructorProps,
@@ -8346,7 +8347,6 @@ export namespace Atk {
                 value: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -8368,10 +8368,6 @@ export namespace Atk {
     type ImageIface = typeof Image;
     abstract class Implementor {
         static $gtype: GObject.GType<Implementor>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -8412,7 +8408,6 @@ export namespace Atk {
                 timestamp: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type MiscClass = typeof Misc;
@@ -8432,10 +8427,6 @@ export namespace Atk {
         // Fields
 
         property_name: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -8453,7 +8444,6 @@ export namespace Atk {
         // Constructors
 
         constructor(lower_limit: number, upper_limit: number, description: string);
-        _init(...args: any[]): void;
 
         static ['new'](lower_limit: number, upper_limit: number, description: string): Range;
 
@@ -8509,7 +8499,6 @@ export namespace Atk {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type RegistryClass = typeof Registry;
@@ -8545,7 +8534,6 @@ export namespace Atk {
                 content: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -8571,7 +8559,6 @@ export namespace Atk {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -8605,10 +8592,6 @@ export namespace Atk {
         end_object: Object;
         end_offset: number;
         start_is_active: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UtilClass = typeof Util;

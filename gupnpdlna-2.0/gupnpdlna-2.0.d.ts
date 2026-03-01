@@ -732,19 +732,11 @@ export namespace GUPnPDLNA {
 
         value: boolean;
         state: ValueState;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ContainerInformationClass = typeof ContainerInformation;
     abstract class Fraction {
         static $gtype: GObject.GType<Fraction>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -759,10 +751,6 @@ export namespace GUPnPDLNA {
 
     abstract class FractionRange {
         static $gtype: GObject.GType<FractionRange>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -786,20 +774,12 @@ export namespace GUPnPDLNA {
         numerator: number;
         denominator: number;
         state: ValueState;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ImageInformationClass = typeof ImageInformation;
     type InformationClass = typeof Information;
     abstract class IntRange {
         static $gtype: GObject.GType<IntRange>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -822,10 +802,6 @@ export namespace GUPnPDLNA {
 
         value: number;
         state: ValueState;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MetadataExtractorClass = typeof MetadataExtractor;
@@ -833,10 +809,6 @@ export namespace GUPnPDLNA {
     type ProfileGuesserClass = typeof ProfileGuesser;
     abstract class Restriction {
         static $gtype: GObject.GType<Restriction>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -875,18 +847,10 @@ export namespace GUPnPDLNA {
 
         value: string;
         state: ValueState;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ValueList {
         static $gtype: GObject.GType<ValueList>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 

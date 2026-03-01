@@ -4741,7 +4741,6 @@ export namespace Colord {
                 b: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): ColorLab;
 
@@ -4790,7 +4789,6 @@ export namespace Colord {
                 B: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): ColorRGB;
 
@@ -4864,7 +4862,6 @@ export namespace Colord {
                 B: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class ColorSwatch {
@@ -4873,7 +4870,6 @@ export namespace Colord {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ColorSwatch;
 
@@ -4916,7 +4912,6 @@ export namespace Colord {
                 W: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): ColorUVW;
 
@@ -4970,7 +4965,6 @@ export namespace Colord {
                 Z: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): ColorXYZ;
 
@@ -5038,7 +5032,6 @@ export namespace Colord {
                 y: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): ColorYxy;
 
@@ -5107,7 +5100,6 @@ export namespace Colord {
                 m22: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type ProfileClass = typeof Profile;
@@ -5118,7 +5110,6 @@ export namespace Colord {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Spectrum;
 
@@ -5349,7 +5340,6 @@ export namespace Colord {
                 v2: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 

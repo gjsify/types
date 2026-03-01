@@ -557,10 +557,6 @@ export namespace Epc {
     abstract class AuthContext {
         static $gtype: GObject.GType<AuthContext>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         check_password(password: string): boolean;
@@ -571,10 +567,6 @@ export namespace Epc {
     type ConsumerClass = typeof Consumer;
     abstract class ConsumerPrivate {
         static $gtype: GObject.GType<ConsumerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Contents {
@@ -583,7 +575,6 @@ export namespace Epc {
         // Constructors
 
         constructor(type: string, data: any, length: number);
-        _init(...args: any[]): void;
 
         static ['new'](type: string, data: any, length: number): Contents;
 
@@ -602,19 +593,11 @@ export namespace Epc {
     type DispatcherClass = typeof Dispatcher;
     abstract class DispatcherPrivate {
         static $gtype: GObject.GType<DispatcherPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PublisherClass = typeof Publisher;
     abstract class PublisherPrivate {
         static $gtype: GObject.GType<PublisherPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ServiceInfo {
@@ -623,7 +606,6 @@ export namespace Epc {
         // Constructors
 
         constructor(type: string, host: string, port: number, details: unknown);
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -640,10 +622,6 @@ export namespace Epc {
     type ServiceMonitorClass = typeof ServiceMonitor;
     abstract class ServiceMonitorPrivate {
         static $gtype: GObject.GType<ServiceMonitorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -658,7 +636,6 @@ export namespace Epc {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
     }
 
     /**

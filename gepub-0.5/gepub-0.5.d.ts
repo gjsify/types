@@ -741,7 +741,8 @@ export namespace Gepub {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends WebKit2.WebView.ConstructorProps,
+            extends
+                WebKit2.WebView.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             doc: Doc;

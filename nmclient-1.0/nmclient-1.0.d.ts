@@ -43,7 +43,6 @@ export namespace NMClient {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -204,7 +203,6 @@ export namespace NMClient {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -239,7 +237,6 @@ export namespace NMClient {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -274,7 +271,6 @@ export namespace NMClient {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -317,7 +313,6 @@ export namespace NMClient {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -345,7 +340,6 @@ export namespace NMClient {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -384,7 +378,6 @@ export namespace NMClient {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -415,7 +408,6 @@ export namespace NMClient {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -454,7 +446,6 @@ export namespace NMClient {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -489,7 +480,6 @@ export namespace NMClient {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -520,7 +510,6 @@ export namespace NMClient {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -555,7 +544,6 @@ export namespace NMClient {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -598,7 +586,6 @@ export namespace NMClient {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -647,7 +634,6 @@ export namespace NMClient {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -686,7 +672,6 @@ export namespace NMClient {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -716,7 +701,6 @@ export namespace NMClient {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -743,7 +727,6 @@ export namespace NMClient {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -784,7 +767,6 @@ export namespace NMClient {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -836,7 +818,6 @@ export namespace NMClient {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1252,9 +1233,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             bssid: string;
             flags: number;
             frequency: number;
@@ -2219,9 +2198,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             connection: string;
             default: boolean;
             default6: boolean;
@@ -3206,9 +3183,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             activating_connection: ActiveConnection;
             activatingConnection: ActiveConnection;
             active_connections: any[];
@@ -4453,9 +4428,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             options: GLib.HashTable<string, GObject.Value>;
         }
     }
@@ -5255,9 +5228,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             options: GLib.HashTable<string, GObject.Value>;
         }
     }
@@ -6080,9 +6051,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             active_connection: ActiveConnection;
             activeConnection: ActiveConnection;
             autoconnect: boolean;
@@ -7350,9 +7319,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Device.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Device.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             carrier: boolean;
         }
     }
@@ -8088,9 +8055,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Device.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Device.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             carrier: boolean;
             hw_address: string;
             hwAddress: string;
@@ -8851,9 +8816,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Device.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Device.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             carrier: boolean;
             hw_address: string;
             hwAddress: string;
@@ -9614,9 +9577,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Device.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Device.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             bt_capabilities: number;
             btCapabilities: number;
             hw_address: string;
@@ -10385,9 +10346,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Device.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Device.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             carrier: boolean;
             hw_address: string;
             hwAddress: string;
@@ -11162,9 +11121,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Device.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Device.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             hw_address: string;
             hwAddress: string;
             type_description: string;
@@ -11916,9 +11873,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Device.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Device.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             carrier: boolean;
             hw_address: string;
             hwAddress: string;
@@ -12668,9 +12623,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Device.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Device.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             current_capabilities: number;
             currentCapabilities: number;
             modem_capabilities: number;
@@ -13436,9 +13389,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Device.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Device.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             active_channel: number;
             activeChannel: number;
             companion: DeviceWifi;
@@ -14204,9 +14155,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Device.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Device.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             carrier: boolean;
             hw_address: string;
             hwAddress: string;
@@ -14968,9 +14917,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Device.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Device.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             carrier: boolean;
             hw_address: string;
             hwAddress: string;
@@ -15744,9 +15691,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Device.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Device.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             access_points: ObjectArray;
             accessPoints: ObjectArray;
             active_access_point: AccessPoint;
@@ -16594,9 +16539,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Device.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Device.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             active_nsp: WimaxNsp;
             activeNsp: WimaxNsp;
             bsid: string;
@@ -17437,9 +17380,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             addresses: any;
             domains: StringArray;
             gateway: string;
@@ -18303,9 +18244,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             addresses: IP6AddressObjectArray;
             domains: StringArray;
             gateway: string;
@@ -19160,9 +19099,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             dbus_path: string;
             dbusPath: string;
         }
@@ -19966,7 +19903,8 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends NetworkManager.Connection.ConstructorProps,
+            extends
+                NetworkManager.Connection.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.Initable.ConstructorProps {
             dbus_path: string;
@@ -20808,9 +20746,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             can_modify: boolean;
             canModify: boolean;
             hostname: string;
@@ -21947,7 +21883,8 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends ActiveConnection.ConstructorProps,
+            extends
+                ActiveConnection.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.Initable.ConstructorProps {
             banner: string;
@@ -22682,9 +22619,7 @@ export namespace NMClient {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             name: string;
             network_type: number;
             networkType: number;

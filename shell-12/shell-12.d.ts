@@ -370,8 +370,8 @@ export namespace Shell {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             action_group: Gio.ActionGroup;
             actionGroup: Gio.ActionGroup;
-            app_info: Gio.DesktopAppInfo;
-            appInfo: Gio.DesktopAppInfo;
+            app_info: never;
+            appInfo: never;
             busy: boolean;
             icon: Gio.Icon;
             id: string;
@@ -397,11 +397,11 @@ export namespace Shell {
         /**
          * The #GDesktopAppInfo associated with this ShellApp, if any.
          */
-        get app_info(): Gio.DesktopAppInfo;
+        get app_info(): never;
         /**
          * The #GDesktopAppInfo associated with this ShellApp, if any.
          */
-        get appInfo(): Gio.DesktopAppInfo;
+        get appInfo(): never;
         /**
          * Whether the application has marked itself as busy.
          */
@@ -512,7 +512,7 @@ export namespace Shell {
          * @returns A floating #ClutterActor
          */
         create_icon_texture(size: number): Clutter.Actor;
-        get_app_info(): Gio.DesktopAppInfo;
+        get_app_info(): never;
         get_busy(): boolean;
         get_description(): string;
         /**
@@ -2442,7 +2442,8 @@ export namespace Shell {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends NM.SecretAgentOld.ConstructorProps,
+            extends
+                NM.SecretAgentOld.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.Initable.ConstructorProps {}
     }
@@ -3881,7 +3882,8 @@ export namespace Shell {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends St.Bin.ConstructorProps<A>,
+            extends
+                St.Bin.ConstructorProps<A>,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -4613,7 +4615,8 @@ export namespace Shell {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends St.Widget.ConstructorProps,
+            extends
+                St.Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -5340,7 +5343,8 @@ export namespace Shell {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends Clutter.Clone.ConstructorProps<A>,
+            extends
+                Clutter.Clone.ConstructorProps<A>,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -6266,7 +6270,8 @@ export namespace Shell {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends St.Widget.ConstructorProps,
+            extends
+                St.Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -7166,7 +7171,8 @@ export namespace Shell {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends St.Widget.ConstructorProps,
+            extends
+                St.Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -7860,17 +7866,12 @@ export namespace Shell {
                 last_gc_seconds_ago: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type MountOperationClass = typeof MountOperation;
     type NetworkAgentClass = typeof NetworkAgent;
     abstract class NetworkAgentPrivate {
         static $gtype: GObject.GType<NetworkAgentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PerfLogClass = typeof PerfLog;
@@ -7886,10 +7887,6 @@ export namespace Shell {
     type WindowPreviewLayoutClass = typeof WindowPreviewLayout;
     abstract class WindowPreviewLayoutPrivate {
         static $gtype: GObject.GType<WindowPreviewLayoutPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WindowTrackerClass = typeof WindowTracker;

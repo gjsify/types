@@ -356,8 +356,7 @@ export namespace PangoFc {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Pango.FontMap.ConstructorProps,
-                Gio.ListModel.ConstructorProps {}
+            extends Pango.FontMap.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     /**
@@ -420,8 +419,8 @@ export namespace PangoFc {
          */
         cache_clear(): void;
         /**
-         * Informs font map that the fontconfig configuration (i.e.,
-         * the `FcConfig` object) used by this font map has changed.
+         * Informs font map that the fontconfig configuration (i.e., FcConfig
+         * object) used by this font map has changed.
          *
          * This currently calls [method`PangoFc`.FontMap.cache_clear] which
          * ensures that list of fonts, etc will be regenerated using the
@@ -1020,10 +1019,6 @@ export namespace PangoFc {
     type FontMapClass = typeof FontMap;
     abstract class FontMapPrivate {
         static $gtype: GObject.GType<FontMapPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

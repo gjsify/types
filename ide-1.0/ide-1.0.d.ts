@@ -85,7 +85,6 @@ export namespace Ide {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -114,7 +113,6 @@ export namespace Ide {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -171,7 +169,6 @@ export namespace Ide {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -554,7 +551,6 @@ export namespace Ide {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace VcsConfigType {
@@ -1011,7 +1007,8 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Dazzle.Application.ConstructorProps,
+            extends
+                Dazzle.Application.ConstructorProps,
                 Gio.ActionGroup.ConstructorProps,
                 Gio.ActionMap.ConstructorProps {}
     }
@@ -2178,8 +2175,7 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {
+            extends Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             auto_save: boolean;
             autoSave: boolean;
             auto_save_timeout: number;
@@ -3036,9 +3032,7 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Object.ConstructorProps,
-                Gio.ActionGroup.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Object.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.Initable.ConstructorProps {
             busy: boolean;
             can_build: boolean;
             canBuild: boolean;
@@ -6306,8 +6300,7 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GtkSource.CompletionWords.ConstructorProps,
-                GtkSource.CompletionProvider.ConstructorProps {}
+            extends GtkSource.CompletionWords.ConstructorProps, GtkSource.CompletionProvider.ConstructorProps {}
     }
 
     class CompletionWords extends GtkSource.CompletionWords implements GtkSource.CompletionProvider {
@@ -7293,9 +7286,7 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.ListModel.ConstructorProps {
+            extends Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.ListModel.ConstructorProps {
             current: Configuration;
             current_display_name: string;
             currentDisplayName: string;
@@ -9285,8 +9276,7 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {
+            extends Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             settled: boolean;
         }
     }
@@ -10497,9 +10487,7 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                BuildSystem.ConstructorProps {
+            extends Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, BuildSystem.ConstructorProps {
             project_file: Gio.File;
             projectFile: Gio.File;
         }
@@ -11276,9 +11264,7 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Vcs.ConstructorProps {}
+            extends Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Vcs.ConstructorProps {}
     }
 
     class DirectoryVcs extends Object implements Gio.AsyncInitable<DirectoryVcs>, Vcs {
@@ -12276,7 +12262,8 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Dazzle.DockOverlay.ConstructorProps,
+            extends
+                Dazzle.DockOverlay.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Dazzle.Dock.ConstructorProps,
                 Dazzle.DockItem.ConstructorProps,
@@ -17336,7 +17323,8 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends LayoutView.ConstructorProps,
+            extends
+                LayoutView.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -17840,8 +17828,7 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends GObject.Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {}
+            extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     class Environment<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
@@ -19409,7 +19396,8 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Object.ConstructorProps,
+            extends
+                Object.ConstructorProps,
                 GtkSource.CompletionProvider.ConstructorProps,
                 CompletionProvider.ConstructorProps {
             client: LangservClient;
@@ -22061,7 +22049,8 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Dazzle.DockBin.ConstructorProps,
+            extends
+                Dazzle.DockBin.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Dazzle.Dock.ConstructorProps,
                 Dazzle.DockItem.ConstructorProps,
@@ -26947,9 +26936,7 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {}
+            extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     class LayoutGrid extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
@@ -27512,7 +27499,8 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Dazzle.DockBinEdge.ConstructorProps,
+            extends
+                Dazzle.DockBinEdge.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Dazzle.DockItem.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
@@ -32025,9 +32013,7 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             active_view: LayoutView;
             activeView: LayoutView;
         }
@@ -32586,7 +32572,8 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -33372,7 +33359,8 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {}
@@ -33932,7 +33920,8 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -34550,7 +34539,8 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Entry.ConstructorProps,
+            extends
+                Gtk.Entry.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.CellEditable.ConstructorProps,
@@ -39192,7 +39182,8 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -39769,7 +39760,8 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ListBoxRow.ConstructorProps,
+            extends
+                Gtk.ListBoxRow.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             icon_name: string;
@@ -40382,7 +40374,8 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Dazzle.PreferencesView.ConstructorProps,
+            extends
+                Dazzle.PreferencesView.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Dazzle.Preferences.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -41860,8 +41853,7 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends GObject.Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {}
+            extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     class RecentProjects<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
@@ -42518,7 +42510,8 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {}
@@ -43035,9 +43028,7 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Object.ConstructorProps,
-                Gio.ActionGroup.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends Object.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.Initable.ConstructorProps {
             build_target: BuildTarget;
             buildTarget: BuildTarget;
             busy: boolean;
@@ -44390,9 +44381,7 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Object.ConstructorProps,
-                Gio.Initable.ConstructorProps,
-                Gio.ListModel.ConstructorProps {}
+            extends Object.ConstructorProps, Gio.Initable.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     class RuntimeManager<A extends GObject.Object = GObject.Object>
@@ -45540,7 +45529,8 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GtkSource.Map.ConstructorProps,
+            extends
+                GtkSource.Map.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {}
@@ -46605,7 +46595,8 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GtkSource.View.ConstructorProps,
+            extends
+                GtkSource.View.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {
@@ -47574,9 +47565,7 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             name: string;
         }
     }
@@ -48806,7 +48795,8 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Dazzle.ProgressButton.ConstructorProps,
+            extends
+                Dazzle.ProgressButton.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Activatable.ConstructorProps,
@@ -53153,8 +53143,7 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {
+            extends Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             has_active: boolean;
             hasActive: boolean;
             progress: number;
@@ -53855,7 +53844,8 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ListBoxRow.ConstructorProps,
+            extends
+                Gtk.ListBoxRow.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             transfer: Transfer;
@@ -54418,7 +54408,8 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.MenuButton.ConstructorProps,
+            extends
+                Gtk.MenuButton.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Activatable.ConstructorProps,
@@ -58794,7 +58785,8 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.DrawingArea.ConstructorProps,
+            extends
+                Gtk.DrawingArea.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             progress: number;
@@ -59473,7 +59465,8 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ApplicationWindow.ConstructorProps,
+            extends
+                Gtk.ApplicationWindow.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gio.ActionGroup.ConstructorProps,
                 Gio.ActionMap.ConstructorProps,
@@ -60743,7 +60736,8 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.HeaderBar.ConstructorProps,
+            extends
+                Gtk.HeaderBar.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -61294,7 +61288,8 @@ export namespace Ide {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.InfoBar.ConstructorProps,
+            extends
+                Gtk.InfoBar.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -61813,18 +61808,10 @@ export namespace Ide {
     type BufferManagerClass = typeof BufferManager;
     abstract class BuildCommand {
         static $gtype: GObject.GType<BuildCommand>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class BuildCommandQueue {
         static $gtype: GObject.GType<BuildCommandQueue>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BuildManagerClass = typeof BuildManager;
@@ -61832,10 +61819,6 @@ export namespace Ide {
     type BuildPipelineClass = typeof BuildPipeline;
     abstract class BuildResult {
         static $gtype: GObject.GType<BuildResult>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BuildStageClass = typeof BuildStage;
@@ -61849,10 +61832,6 @@ export namespace Ide {
     type BuildconfigConfigurationProviderClass = typeof BuildconfigConfigurationProvider;
     abstract class Builder {
         static $gtype: GObject.GType<Builder>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CompletionItemClass = typeof CompletionItem;
@@ -61873,7 +61852,6 @@ export namespace Ide {
         // Constructors
 
         constructor(severity: DiagnosticSeverity, text: string, location: SourceLocation);
-        _init(...args: any[]): void;
 
         static ['new'](severity: DiagnosticSeverity, text: string, location: SourceLocation): Diagnostic;
 
@@ -61950,7 +61928,6 @@ export namespace Ide {
         // Constructors
 
         constructor(ar?: Diagnostic[] | null);
-        _init(...args: any[]): void;
 
         static ['new'](ar?: Diagnostic[] | null): Diagnostics;
 
@@ -61988,10 +61965,6 @@ export namespace Ide {
     type DoapPersonClass = typeof DoapPerson;
     abstract class EditorFrame {
         static $gtype: GObject.GType<EditorFrame>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EditorPerspectiveClass = typeof EditorPerspective;
@@ -62005,10 +61978,6 @@ export namespace Ide {
     type FileSettingsClass = typeof FileSettings;
     class Fixit {
         static $gtype: GObject.GType<Fixit>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -62038,7 +62007,6 @@ export namespace Ide {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): HighlightIndex;
 
@@ -62093,7 +62061,6 @@ export namespace Ide {
                 pos: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -62129,7 +62096,6 @@ export namespace Ide {
         // Constructors
 
         constructor(keywords: string);
-        _init(...args: any[]): void;
 
         static ['new'](keywords: string): PatternSpec;
 
@@ -62165,18 +62131,10 @@ export namespace Ide {
     type RuntimeProviderInterface = typeof RuntimeProvider;
     abstract class Script {
         static $gtype: GObject.GType<Script>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ScriptManager {
         static $gtype: GObject.GType<ScriptManager>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SearchContextClass = typeof SearchContext;
@@ -62191,10 +62149,6 @@ export namespace Ide {
         provider: SearchProvider;
         max_results: number;
         count: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -62213,7 +62167,6 @@ export namespace Ide {
         // Constructors
 
         constructor(file: File, line: number, line_offset: number, offset: number);
-        _init(...args: any[]): void;
 
         static ['new'](file: File, line: number, line_offset: number, offset: number): SourceLocation;
 
@@ -62261,7 +62214,6 @@ export namespace Ide {
         // Constructors
 
         constructor(begin: SourceLocation, end: SourceLocation);
-        _init(...args: any[]): void;
 
         static ['new'](begin: SourceLocation, end: SourceLocation): SourceRange;
 
@@ -62312,7 +62264,6 @@ export namespace Ide {
             definition_location?: SourceLocation | null,
             canonical_location?: SourceLocation | null,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             name: string,
@@ -62361,10 +62312,6 @@ export namespace Ide {
     abstract class ThreadPool {
         static $gtype: GObject.GType<ThreadPool>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -62391,10 +62338,6 @@ export namespace Ide {
     type TransfersProgressIconClass = typeof TransfersProgressIcon;
     class UnsavedFile {
         static $gtype: GObject.GType<UnsavedFile>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -62425,7 +62368,6 @@ export namespace Ide {
         // Constructors
 
         constructor(uri_string: string, flags: UriParseFlags);
-        _init(...args: any[]): void;
 
         static ['new'](uri_string: string, flags: UriParseFlags): Uri;
 
@@ -62659,7 +62601,6 @@ export namespace Ide {
         // Constructors
 
         constructor(uri: string);
-        _init(...args: any[]): void;
 
         static ['new'](uri: string): VcsUri;
 

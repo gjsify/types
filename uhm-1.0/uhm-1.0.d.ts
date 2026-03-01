@@ -692,19 +692,11 @@ export namespace Uhm {
     type ResolverClass = typeof Resolver;
     abstract class ResolverPrivate {
         static $gtype: GObject.GType<ResolverPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ServerClass = typeof Server;
     abstract class ServerPrivate {
         static $gtype: GObject.GType<ServerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

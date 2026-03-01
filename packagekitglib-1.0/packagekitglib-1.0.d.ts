@@ -107,7 +107,6 @@ export namespace PackageKitGlib {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -137,7 +136,6 @@ export namespace PackageKitGlib {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -964,7 +962,6 @@ export namespace PackageKitGlib {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -7721,10 +7718,6 @@ export namespace PackageKitGlib {
      */
     abstract class CategoryPrivate {
         static $gtype: GObject.GType<CategoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ClientClass = typeof Client;
@@ -7734,10 +7727,6 @@ export namespace PackageKitGlib {
      */
     abstract class ClientHelperPrivate {
         static $gtype: GObject.GType<ClientHelperPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -7745,10 +7734,6 @@ export namespace PackageKitGlib {
      */
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ControlClass = typeof Control;
@@ -7757,10 +7742,6 @@ export namespace PackageKitGlib {
      */
     abstract class ControlPrivate {
         static $gtype: GObject.GType<ControlPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DesktopClass = typeof Desktop;
@@ -7769,10 +7750,6 @@ export namespace PackageKitGlib {
      */
     abstract class DesktopPrivate {
         static $gtype: GObject.GType<DesktopPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DetailsClass = typeof Details;
@@ -7781,10 +7758,6 @@ export namespace PackageKitGlib {
      */
     abstract class DetailsPrivate {
         static $gtype: GObject.GType<DetailsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DistroUpgradeClass = typeof DistroUpgrade;
@@ -7793,10 +7766,6 @@ export namespace PackageKitGlib {
      */
     abstract class DistroUpgradePrivate {
         static $gtype: GObject.GType<DistroUpgradePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -7818,7 +7787,6 @@ export namespace PackageKitGlib {
                 string: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type ErrorClass = typeof Error;
@@ -7827,10 +7795,6 @@ export namespace PackageKitGlib {
      */
     abstract class ErrorPrivate {
         static $gtype: GObject.GType<ErrorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EulaRequiredClass = typeof EulaRequired;
@@ -7839,10 +7803,6 @@ export namespace PackageKitGlib {
      */
     abstract class EulaRequiredPrivate {
         static $gtype: GObject.GType<EulaRequiredPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FilesClass = typeof Files;
@@ -7851,10 +7811,6 @@ export namespace PackageKitGlib {
      */
     abstract class FilesPrivate {
         static $gtype: GObject.GType<FilesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ItemProgressClass = typeof ItemProgress;
@@ -7863,10 +7819,6 @@ export namespace PackageKitGlib {
      */
     abstract class ItemProgressPrivate {
         static $gtype: GObject.GType<ItemProgressPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaChangeRequiredClass = typeof MediaChangeRequired;
@@ -7875,10 +7827,6 @@ export namespace PackageKitGlib {
      */
     abstract class MediaChangeRequiredPrivate {
         static $gtype: GObject.GType<MediaChangeRequiredPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PackageClass = typeof Package;
@@ -7887,10 +7835,6 @@ export namespace PackageKitGlib {
      */
     abstract class PackagePrivate {
         static $gtype: GObject.GType<PackagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PackageSackClass = typeof PackageSack;
@@ -7899,18 +7843,10 @@ export namespace PackageKitGlib {
      */
     abstract class PackageSackPrivate {
         static $gtype: GObject.GType<PackageSackPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class PackageSackResults {
         static $gtype: GObject.GType<PackageSackResults>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ProgressClass = typeof Progress;
@@ -7919,10 +7855,6 @@ export namespace PackageKitGlib {
      */
     abstract class ProgressPrivate {
         static $gtype: GObject.GType<ProgressPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RepoDetailClass = typeof RepoDetail;
@@ -7931,10 +7863,6 @@ export namespace PackageKitGlib {
      */
     abstract class RepoDetailPrivate {
         static $gtype: GObject.GType<RepoDetailPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RepoSignatureRequiredClass = typeof RepoSignatureRequired;
@@ -7943,10 +7871,6 @@ export namespace PackageKitGlib {
      */
     abstract class RepoSignatureRequiredPrivate {
         static $gtype: GObject.GType<RepoSignatureRequiredPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RequireRestartClass = typeof RequireRestart;
@@ -7955,10 +7879,6 @@ export namespace PackageKitGlib {
      */
     abstract class RequireRestartPrivate {
         static $gtype: GObject.GType<RequireRestartPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ResultsClass = typeof Results;
@@ -7967,10 +7887,6 @@ export namespace PackageKitGlib {
      */
     abstract class ResultsPrivate {
         static $gtype: GObject.GType<ResultsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceClass = typeof Source;
@@ -7979,10 +7895,6 @@ export namespace PackageKitGlib {
      */
     abstract class SourcePrivate {
         static $gtype: GObject.GType<SourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TaskClass = typeof Task;
@@ -7991,10 +7903,6 @@ export namespace PackageKitGlib {
      */
     abstract class TaskPrivate {
         static $gtype: GObject.GType<TaskPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TransactionListClass = typeof TransactionList;
@@ -8003,10 +7911,6 @@ export namespace PackageKitGlib {
      */
     abstract class TransactionListPrivate {
         static $gtype: GObject.GType<TransactionListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TransactionPastClass = typeof TransactionPast;
@@ -8015,10 +7919,6 @@ export namespace PackageKitGlib {
      */
     abstract class TransactionPastPrivate {
         static $gtype: GObject.GType<TransactionPastPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UpdateDetailClass = typeof UpdateDetail;
@@ -8027,10 +7927,6 @@ export namespace PackageKitGlib {
      */
     abstract class UpdateDetailPrivate {
         static $gtype: GObject.GType<UpdateDetailPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type Bitfield = number;

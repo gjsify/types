@@ -5593,7 +5593,8 @@ export namespace EDataBook {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EBackend.DataFactory.ConstructorProps,
+            extends
+                EBackend.DataFactory.ConstructorProps,
                 EDataServer.Extensible.ConstructorProps,
                 Gio.Initable.ConstructorProps {}
     }
@@ -7856,36 +7857,20 @@ export namespace EDataBook {
     type BookBackendFactoryClass = typeof BookBackendFactory;
     abstract class BookBackendFactoryPrivate {
         static $gtype: GObject.GType<BookBackendFactoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class BookBackendPrivate {
         static $gtype: GObject.GType<BookBackendPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BookBackendSExpClass = typeof BookBackendSExp;
     abstract class BookBackendSExpPrivate {
         static $gtype: GObject.GType<BookBackendSExpPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BookBackendSyncClass = typeof BookBackendSync;
     abstract class BookBackendSyncPrivate {
         static $gtype: GObject.GType<BookBackendSyncPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BookCacheClass = typeof BookCache;
@@ -7903,7 +7888,6 @@ export namespace EDataBook {
             sort_fields: EBookContacts.ContactField[],
             sort_types: EBookContacts.BookCursorSortType[],
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             book_cache: BookCache,
@@ -7915,10 +7899,6 @@ export namespace EDataBook {
 
     abstract class BookCachePrivate {
         static $gtype: GObject.GType<BookCachePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -7950,7 +7930,6 @@ export namespace EDataBook {
                 extra: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](uid: string, vcard: string, extra?: string | null): BookCacheSearchData;
 
@@ -7989,7 +7968,6 @@ export namespace EDataBook {
                 extra: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             uid: string,
@@ -8014,127 +7992,71 @@ export namespace EDataBook {
 
     abstract class BookMetaBackendPrivate {
         static $gtype: GObject.GType<BookMetaBackendPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BookSqliteClass = typeof BookSqlite;
     abstract class BookSqlitePrivate {
         static $gtype: GObject.GType<BookSqlitePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataBookClass = typeof DataBook;
     type DataBookCursorCacheClass = typeof DataBookCursorCache;
     abstract class DataBookCursorCachePrivate {
         static $gtype: GObject.GType<DataBookCursorCachePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataBookCursorClass = typeof DataBookCursor;
     abstract class DataBookCursorPrivate {
         static $gtype: GObject.GType<DataBookCursorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataBookCursorSqliteClass = typeof DataBookCursorSqlite;
     abstract class DataBookCursorSqlitePrivate {
         static $gtype: GObject.GType<DataBookCursorSqlitePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataBookDirectClass = typeof DataBookDirect;
     abstract class DataBookDirectPrivate {
         static $gtype: GObject.GType<DataBookDirectPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataBookFactoryClass = typeof DataBookFactory;
     abstract class DataBookFactoryPrivate {
         static $gtype: GObject.GType<DataBookFactoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DataBookPrivate {
         static $gtype: GObject.GType<DataBookPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataBookViewClass = typeof DataBookView;
     abstract class DataBookViewPrivate {
         static $gtype: GObject.GType<DataBookViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataBookViewWatcherCacheClass = typeof DataBookViewWatcherCache;
     abstract class DataBookViewWatcherCachePrivate {
         static $gtype: GObject.GType<DataBookViewWatcherCachePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataBookViewWatcherMemoryClass = typeof DataBookViewWatcherMemory;
     abstract class DataBookViewWatcherMemoryPrivate {
         static $gtype: GObject.GType<DataBookViewWatcherMemoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataBookViewWatcherSqliteClass = typeof DataBookViewWatcherSqlite;
     abstract class DataBookViewWatcherSqlitePrivate {
         static $gtype: GObject.GType<DataBookViewWatcherSqlitePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SubprocessBookFactoryClass = typeof SubprocessBookFactory;
     abstract class SubprocessBookFactoryPrivate {
         static $gtype: GObject.GType<SubprocessBookFactoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SystemLocaleWatcherClass = typeof SystemLocaleWatcher;
     abstract class SystemLocaleWatcherPrivate {
         static $gtype: GObject.GType<SystemLocaleWatcherPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -8142,10 +8064,6 @@ export namespace EDataBook {
      */
     abstract class bSqlCursor {
         static $gtype: GObject.GType<bSqlCursor>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -8176,7 +8094,6 @@ export namespace EDataBook {
                 extra: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**

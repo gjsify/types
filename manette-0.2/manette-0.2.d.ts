@@ -336,10 +336,6 @@ export namespace Manette {
     abstract class MonitorIter {
         static $gtype: GObject.GType<MonitorIter>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -354,10 +350,6 @@ export namespace Manette {
      */
     class Event {
         static $gtype: GObject.GType<Event>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 

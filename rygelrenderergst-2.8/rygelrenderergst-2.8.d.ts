@@ -39,7 +39,6 @@ export namespace RygelRendererGst {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     namespace PlaybinPlayer {
@@ -724,19 +723,11 @@ export namespace RygelRendererGst {
     type PlaybinPlayerClass = typeof PlaybinPlayer;
     abstract class PlaybinPlayerPrivate {
         static $gtype: GObject.GType<PlaybinPlayerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PlaybinRendererClass = typeof PlaybinRenderer;
     abstract class PlaybinRendererPrivate {
         static $gtype: GObject.GType<PlaybinRendererPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

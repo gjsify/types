@@ -133,7 +133,6 @@ export namespace Folks {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class IndividualAggregatorError extends GLib.Error {
@@ -150,7 +149,6 @@ export namespace Folks {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class PersonaStoreError extends GLib.Error {
@@ -170,7 +168,6 @@ export namespace Folks {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class PropertyError extends GLib.Error {
@@ -186,7 +183,6 @@ export namespace Folks {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace GroupDetailsChangeReason {
@@ -1085,7 +1081,8 @@ export namespace Folks {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 AliasDetails.ConstructorProps,
                 AvatarDetails.ConstructorProps,
                 BirthdayDetails.ConstructorProps,
@@ -3598,253 +3595,141 @@ export namespace Folks {
     type AbstractFieldDetailsClass = typeof AbstractFieldDetails;
     abstract class AbstractFieldDetailsPrivate {
         static $gtype: GObject.GType<AbstractFieldDetailsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AvatarCacheClass = typeof AvatarCache;
     abstract class AvatarCachePrivate {
         static $gtype: GObject.GType<AvatarCachePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BackendStoreClass = typeof BackendStore;
     abstract class BackendStorePrivate {
         static $gtype: GObject.GType<BackendStorePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BackendClass = typeof Backend;
     abstract class BackendPrivate {
         static $gtype: GObject.GType<BackendPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DebugClass = typeof Debug;
     abstract class DebugPrivate {
         static $gtype: GObject.GType<DebugPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EmailFieldDetailsClass = typeof EmailFieldDetails;
     abstract class EmailFieldDetailsPrivate {
         static $gtype: GObject.GType<EmailFieldDetailsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExtendedFieldDetailsClass = typeof ExtendedFieldDetails;
     abstract class ExtendedFieldDetailsPrivate {
         static $gtype: GObject.GType<ExtendedFieldDetailsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ImFieldDetailsClass = typeof ImFieldDetails;
     abstract class ImFieldDetailsPrivate {
         static $gtype: GObject.GType<ImFieldDetailsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IndividualAggregatorClass = typeof IndividualAggregator;
     abstract class IndividualAggregatorPrivate {
         static $gtype: GObject.GType<IndividualAggregatorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IndividualClass = typeof Individual;
     abstract class IndividualPrivate {
         static $gtype: GObject.GType<IndividualPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LocationClass = typeof Location;
     abstract class LocationPrivate {
         static $gtype: GObject.GType<LocationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StructuredNameClass = typeof StructuredName;
     abstract class StructuredNamePrivate {
         static $gtype: GObject.GType<StructuredNamePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type NoteFieldDetailsClass = typeof NoteFieldDetails;
     abstract class NoteFieldDetailsPrivate {
         static $gtype: GObject.GType<NoteFieldDetailsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ObjectCacheClass = typeof ObjectCache;
     abstract class ObjectCachePrivate {
         static $gtype: GObject.GType<ObjectCachePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PersonaStoreClass = typeof PersonaStore;
     abstract class PersonaStorePrivate {
         static $gtype: GObject.GType<PersonaStorePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PersonaClass = typeof Persona;
     abstract class PersonaPrivate {
         static $gtype: GObject.GType<PersonaPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PhoneFieldDetailsClass = typeof PhoneFieldDetails;
     abstract class PhoneFieldDetailsPrivate {
         static $gtype: GObject.GType<PhoneFieldDetailsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PostalAddressClass = typeof PostalAddress;
     abstract class PostalAddressPrivate {
         static $gtype: GObject.GType<PostalAddressPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PostalAddressFieldDetailsClass = typeof PostalAddressFieldDetails;
     abstract class PostalAddressFieldDetailsPrivate {
         static $gtype: GObject.GType<PostalAddressFieldDetailsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PotentialMatchClass = typeof PotentialMatch;
     abstract class PotentialMatchPrivate {
         static $gtype: GObject.GType<PotentialMatchPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type QueryClass = typeof Query;
     abstract class QueryPrivate {
         static $gtype: GObject.GType<QueryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RoleClass = typeof Role;
     abstract class RolePrivate {
         static $gtype: GObject.GType<RolePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RoleFieldDetailsClass = typeof RoleFieldDetails;
     abstract class RoleFieldDetailsPrivate {
         static $gtype: GObject.GType<RoleFieldDetailsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SearchViewClass = typeof SearchView;
     abstract class SearchViewPrivate {
         static $gtype: GObject.GType<SearchViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SimpleQueryClass = typeof SimpleQuery;
     abstract class SimpleQueryPrivate {
         static $gtype: GObject.GType<SimpleQueryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UrlFieldDetailsClass = typeof UrlFieldDetails;
     abstract class UrlFieldDetailsPrivate {
         static $gtype: GObject.GType<UrlFieldDetailsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UtilsClass = typeof Utils;
     abstract class UtilsPrivate {
         static $gtype: GObject.GType<UtilsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WebServiceFieldDetailsClass = typeof WebServiceFieldDetails;
     abstract class WebServiceFieldDetailsPrivate {
         static $gtype: GObject.GType<WebServiceFieldDetailsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AliasDetailsIface = typeof AliasDetails;

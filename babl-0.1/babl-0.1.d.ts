@@ -486,10 +486,6 @@ export namespace Babl {
      */
     class Object {
         static $gtype: GObject.GType<Object>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

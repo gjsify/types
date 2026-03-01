@@ -68,7 +68,6 @@ export namespace GnomeRR {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     const CONNECTOR_TYPE_PANEL: string;
@@ -268,9 +267,7 @@ export namespace GnomeRR {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             dpms_mode: DpmsModeType;
             dpmsMode: DpmsModeType;
             gdk_display: Gdk.Display;
@@ -1138,16 +1135,11 @@ export namespace GnomeRR {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
     }
 
     type ConfigClass = typeof Config;
     abstract class Crtc {
         static $gtype: GObject.GType<Crtc>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -1164,10 +1156,6 @@ export namespace GnomeRR {
 
     abstract class Mode {
         static $gtype: GObject.GType<Mode>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -1186,10 +1174,6 @@ export namespace GnomeRR {
 
     abstract class Output {
         static $gtype: GObject.GType<Output>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 

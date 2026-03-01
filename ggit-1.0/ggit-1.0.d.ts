@@ -306,7 +306,6 @@ export namespace Ggit {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -9384,7 +9383,6 @@ export namespace Ggit {
         // Constructors
 
         constructor(repository: Repository, ref: Ref);
-        _init(...args: any[]): void;
 
         static new_from_ref(repository: Repository, ref: Ref): AnnotatedCommit;
 
@@ -9414,10 +9412,6 @@ export namespace Ggit {
      */
     abstract class BlameHunk {
         static $gtype: GObject.GType<BlameHunk>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -9494,7 +9488,6 @@ export namespace Ggit {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): BlameOptions;
 
@@ -9581,10 +9574,6 @@ export namespace Ggit {
     abstract class BranchEnumerator {
         static $gtype: GObject.GType<BranchEnumerator>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -9619,10 +9608,6 @@ export namespace Ggit {
      */
     abstract class ConfigEntry {
         static $gtype: GObject.GType<ConfigEntry>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -9666,7 +9651,6 @@ export namespace Ggit {
         // Constructors
 
         constructor(name: string, instruction: string, text: string, is_masked: boolean);
-        _init(...args: any[]): void;
 
         static ['new'](name: string, instruction: string, text: string, is_masked: boolean): CredSshInteractivePrompt;
 
@@ -9688,10 +9672,6 @@ export namespace Ggit {
      */
     abstract class DiffBinary {
         static $gtype: GObject.GType<DiffBinary>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -9723,10 +9703,6 @@ export namespace Ggit {
      */
     abstract class DiffBinaryFile {
         static $gtype: GObject.GType<DiffBinaryFile>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -9765,10 +9741,6 @@ export namespace Ggit {
      */
     abstract class DiffDelta {
         static $gtype: GObject.GType<DiffDelta>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -9815,10 +9787,6 @@ export namespace Ggit {
      */
     abstract class DiffFile {
         static $gtype: GObject.GType<DiffFile>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -9868,10 +9836,6 @@ export namespace Ggit {
     abstract class DiffHunk {
         static $gtype: GObject.GType<DiffHunk>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         get_header(): string;
@@ -9913,10 +9877,6 @@ export namespace Ggit {
      */
     abstract class DiffLine {
         static $gtype: GObject.GType<DiffLine>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -9978,7 +9938,6 @@ export namespace Ggit {
             free_signature: DiffSimilarityMetricFreeSignatureCallback,
             similarity: DiffSimilarityMetricSimilarityCallback,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             file_signature: DiffSimilarityMetricFileSignatureCallback,
@@ -10009,7 +9968,6 @@ export namespace Ggit {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): FetchOptions;
 
@@ -10052,10 +10010,6 @@ export namespace Ggit {
      */
     abstract class IndexEntries {
         static $gtype: GObject.GType<IndexEntries>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -10119,10 +10073,6 @@ export namespace Ggit {
     abstract class IndexEntriesResolveUndo {
         static $gtype: GObject.GType<IndexEntriesResolveUndo>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -10167,10 +10117,6 @@ export namespace Ggit {
      */
     abstract class IndexEntry {
         static $gtype: GObject.GType<IndexEntry>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -10308,10 +10254,6 @@ export namespace Ggit {
     abstract class IndexEntryResolveUndo {
         static $gtype: GObject.GType<IndexEntryResolveUndo>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -10355,7 +10297,6 @@ export namespace Ggit {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): MergeOptions;
 
@@ -10445,10 +10386,6 @@ export namespace Ggit {
     abstract class Note {
         static $gtype: GObject.GType<Note>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -10483,7 +10420,6 @@ export namespace Ggit {
         // Constructors
 
         constructor(raw: Uint8Array | string);
-        _init(...args: any[]): void;
 
         static new_from_raw(raw: Uint8Array | string): OId;
 
@@ -10554,7 +10490,6 @@ export namespace Ggit {
             new_as_path?: string | null,
             diff_options?: DiffOptions | null,
         );
-        _init(...args: any[]): void;
 
         static new_from_blobs(
             old_blob?: Blob | null,
@@ -10628,10 +10563,6 @@ export namespace Ggit {
     abstract class RebaseOperation {
         static $gtype: GObject.GType<RebaseOperation>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -10673,7 +10604,6 @@ export namespace Ggit {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): RebaseOptions;
 
@@ -10733,10 +10663,6 @@ export namespace Ggit {
     abstract class RefSpec {
         static $gtype: GObject.GType<RefSpec>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -10772,10 +10698,6 @@ export namespace Ggit {
      */
     abstract class Reflog {
         static $gtype: GObject.GType<Reflog>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -10827,10 +10749,6 @@ export namespace Ggit {
     abstract class ReflogEntry {
         static $gtype: GObject.GType<ReflogEntry>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -10874,10 +10792,6 @@ export namespace Ggit {
     abstract class RemoteHead {
         static $gtype: GObject.GType<RemoteHead>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -10914,7 +10828,6 @@ export namespace Ggit {
         // Constructors
 
         constructor(mainline: number, merge_options?: MergeOptions | null, checkout_options?: CheckoutOptions | null);
-        _init(...args: any[]): void;
 
         static ['new'](
             mainline: number,
@@ -10946,7 +10859,6 @@ export namespace Ggit {
         // Constructors
 
         constructor(options: StatusOption, show: StatusShow, pathspec?: string[] | null);
-        _init(...args: any[]): void;
 
         static ['new'](options: StatusOption, show: StatusShow, pathspec?: string[] | null): StatusOptions;
 
@@ -10968,10 +10880,6 @@ export namespace Ggit {
      */
     abstract class Submodule {
         static $gtype: GObject.GType<Submodule>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -11087,10 +10995,6 @@ export namespace Ggit {
     abstract class TransferProgress {
         static $gtype: GObject.GType<TransferProgress>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -11131,10 +11035,6 @@ export namespace Ggit {
      */
     abstract class TreeEntry {
         static $gtype: GObject.GType<TreeEntry>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 

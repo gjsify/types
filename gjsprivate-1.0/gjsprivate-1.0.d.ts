@@ -119,8 +119,7 @@ export namespace GjsPrivate {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
-                Gio.DBusInterface.ConstructorProps {
+            extends Gio.DBusInterfaceSkeleton.ConstructorProps, Gio.DBusInterface.ConstructorProps {
             g_interface_info: Gio.DBusInterfaceInfo;
             gInterfaceInfo: Gio.DBusInterfaceInfo;
         }
@@ -652,26 +651,14 @@ export namespace GjsPrivate {
 
     class DBusImplementationClass {
         static $gtype: GObject.GType<DBusImplementationClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class DBusImplementationPrivate {
         static $gtype: GObject.GType<DBusImplementationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MatchInfo {
         static $gtype: GObject.GType<MatchInfo>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 

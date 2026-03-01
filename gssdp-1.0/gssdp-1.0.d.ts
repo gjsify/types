@@ -39,7 +39,6 @@ export namespace GSSDP {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1023,28 +1022,16 @@ export namespace GSSDP {
     type ClientClass = typeof Client;
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ResourceBrowserClass = typeof ResourceBrowser;
     abstract class ResourceBrowserPrivate {
         static $gtype: GObject.GType<ResourceBrowserPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ResourceGroupClass = typeof ResourceGroup;
     abstract class ResourceGroupPrivate {
         static $gtype: GObject.GType<ResourceGroupPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

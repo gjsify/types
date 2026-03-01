@@ -52,7 +52,6 @@ export namespace Rest {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -71,7 +70,6 @@ export namespace Rest {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -250,7 +248,6 @@ export namespace Rest {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1014,7 +1011,6 @@ export namespace Rest {
             content_type: string,
             filename?: string | null,
         );
-        _init(...args: any[]): void;
 
         static new_full(
             name: string,
@@ -1087,7 +1083,6 @@ export namespace Rest {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Params;
 
@@ -1144,10 +1139,6 @@ export namespace Rest {
     class ParamsIter {
         static $gtype: GObject.GType<ParamsIter>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -1187,7 +1178,6 @@ export namespace Rest {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static new_random(): PkceCodeChallenge;
 
@@ -1218,10 +1208,6 @@ export namespace Rest {
     type ProxyAuthClass = typeof ProxyAuth;
     abstract class ProxyAuthPrivate {
         static $gtype: GObject.GType<ProxyAuthPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ProxyCallClass = typeof ProxyCall;
@@ -1236,10 +1222,6 @@ export namespace Rest {
 
         name: string;
         content: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 

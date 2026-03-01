@@ -181,19 +181,11 @@ export namespace RygelRenderer {
     type MediaRendererPluginClass = typeof MediaRendererPlugin;
     abstract class MediaRendererPluginPrivate {
         static $gtype: GObject.GType<MediaRendererPluginPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaRendererClass = typeof MediaRenderer;
     abstract class MediaRendererPrivate {
         static $gtype: GObject.GType<MediaRendererPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaPlayerIface = typeof MediaPlayer;

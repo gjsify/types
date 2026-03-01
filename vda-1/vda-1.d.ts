@@ -47,7 +47,6 @@ export namespace Vda {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class ConnectionError extends GLib.Error {
@@ -62,7 +61,6 @@ export namespace Vda {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class DataObjectError extends GLib.Error {
@@ -80,7 +78,6 @@ export namespace Vda {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class DataCollectionError extends GLib.Error {
@@ -93,7 +90,6 @@ export namespace Vda {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class ParserError extends GLib.Error {
@@ -107,7 +103,6 @@ export namespace Vda {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class QueryError extends GLib.Error {
@@ -122,7 +117,6 @@ export namespace Vda {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class RoleError extends GLib.Error {
@@ -135,7 +129,6 @@ export namespace Vda {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class RowModelError extends GLib.Error {
@@ -149,7 +142,6 @@ export namespace Vda {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class SqlCommandError extends GLib.Error {
@@ -162,7 +154,6 @@ export namespace Vda {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class SqlCommandSelectError extends GLib.Error {
@@ -175,7 +166,6 @@ export namespace Vda {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class SqlExpressionError extends GLib.Error {
@@ -188,7 +178,6 @@ export namespace Vda {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace ConnectionStatus {
@@ -281,9 +270,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Result.ConstructorProps,
-                SqlAffectedRows.ConstructorProps {}
+            extends GObject.Object.ConstructorProps, Result.ConstructorProps, SqlAffectedRows.ConstructorProps {}
     }
 
     class AffectedRows extends GObject.Object implements Result, SqlAffectedRows {
@@ -784,7 +771,8 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 SqlCommand.ConstructorProps,
                 SqlCommandTableRelated.ConstructorProps,
                 SqlCommandConditional.ConstructorProps,
@@ -1320,7 +1308,8 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends CommandModification.ConstructorProps,
+            extends
+                CommandModification.ConstructorProps,
                 Stringifiable.ConstructorProps,
                 SqlCommandInsert.ConstructorProps {}
     }
@@ -1827,7 +1816,8 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 SqlCommand.ConstructorProps,
                 SqlCommandTableRelated.ConstructorProps,
                 SqlCommandModification.ConstructorProps,
@@ -2368,7 +2358,8 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 SqlCommand.ConstructorProps,
                 SqlCommandConditional.ConstructorProps,
                 Stringifiable.ConstructorProps,
@@ -2901,7 +2892,8 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends CommandModification.ConstructorProps,
+            extends
+                CommandModification.ConstructorProps,
                 SqlCommandConditional.ConstructorProps,
                 Stringifiable.ConstructorProps,
                 SqlCommandUpdate.ConstructorProps {}
@@ -3825,9 +3817,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Gee.ArrayList.ConstructorProps,
-                Gio.ListModel.ConstructorProps,
-                SqlExpression.ConstructorProps {}
+            extends Gee.ArrayList.ConstructorProps, Gio.ListModel.ConstructorProps, SqlExpression.ConstructorProps {}
     }
 
     class Expression<A extends GObject.Object = GObject.Object>
@@ -4440,8 +4430,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Expression.ConstructorProps<A>,
-                SqlExpressionField.ConstructorProps {}
+            extends Expression.ConstructorProps<A>, SqlExpressionField.ConstructorProps {}
     }
 
     class ExpressionField<A extends GObject.Object = GObject.Object>
@@ -4966,8 +4955,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Expression.ConstructorProps<A>,
-                SqlExpressionOperator.ConstructorProps {}
+            extends Expression.ConstructorProps<A>, SqlExpressionOperator.ConstructorProps {}
     }
 
     class ExpressionOperator<A extends GObject.Object = GObject.Object>
@@ -5569,8 +5557,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperator.ConstructorProps<A>,
-                SqlExpressionOperatorGroup.ConstructorProps {}
+            extends ExpressionOperator.ConstructorProps<A>, SqlExpressionOperatorGroup.ConstructorProps {}
     }
 
     class ExpressionOperatorGroup<A extends GObject.Object = GObject.Object>
@@ -6074,8 +6061,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperator.ConstructorProps<A>,
-                SqlExpressionOperatorMultiterm.ConstructorProps {}
+            extends ExpressionOperator.ConstructorProps<A>, SqlExpressionOperatorMultiterm.ConstructorProps {}
     }
 
     class ExpressionOperatorMultiterm<A extends GObject.Object = GObject.Object>
@@ -6579,8 +6565,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorMultiterm.ConstructorProps<A>,
-                SqlExpressionOperatorAnd.ConstructorProps {}
+            extends ExpressionOperatorMultiterm.ConstructorProps<A>, SqlExpressionOperatorAnd.ConstructorProps {}
     }
 
     class ExpressionOperatorAnd<A extends GObject.Object = GObject.Object>
@@ -7084,8 +7069,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorMultiterm.ConstructorProps<A>,
-                SqlExpressionOperatorOr.ConstructorProps {}
+            extends ExpressionOperatorMultiterm.ConstructorProps<A>, SqlExpressionOperatorOr.ConstructorProps {}
     }
 
     class ExpressionOperatorOr<A extends GObject.Object = GObject.Object>
@@ -7589,8 +7573,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperator.ConstructorProps<A>,
-                SqlExpressionOperatorBinaryterm.ConstructorProps {}
+            extends ExpressionOperator.ConstructorProps<A>, SqlExpressionOperatorBinaryterm.ConstructorProps {}
     }
 
     class ExpressionOperatorBinaryterm<A extends GObject.Object = GObject.Object>
@@ -8094,8 +8077,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>,
-                SqlExpressionOperatorEq.ConstructorProps {}
+            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorEq.ConstructorProps {}
     }
 
     class ExpressionOperatorEq<A extends GObject.Object = GObject.Object>
@@ -8599,8 +8581,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>,
-                SqlExpressionOperatorNotEq.ConstructorProps {}
+            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorNotEq.ConstructorProps {}
     }
 
     class ExpressionOperatorNotEq<A extends GObject.Object = GObject.Object>
@@ -9104,8 +9085,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>,
-                SqlExpressionOperatorDiff.ConstructorProps {}
+            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorDiff.ConstructorProps {}
     }
 
     class ExpressionOperatorDiff<A extends GObject.Object = GObject.Object>
@@ -9609,8 +9589,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>,
-                SqlExpressionOperatorGt.ConstructorProps {}
+            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorGt.ConstructorProps {}
     }
 
     class ExpressionOperatorGt<A extends GObject.Object = GObject.Object>
@@ -10114,8 +10093,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>,
-                SqlExpressionOperatorLt.ConstructorProps {}
+            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorLt.ConstructorProps {}
     }
 
     class ExpressionOperatorLt<A extends GObject.Object = GObject.Object>
@@ -10619,8 +10597,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>,
-                SqlExpressionOperatorGeq.ConstructorProps {}
+            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorGeq.ConstructorProps {}
     }
 
     class ExpressionOperatorGeq<A extends GObject.Object = GObject.Object>
@@ -11124,8 +11101,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>,
-                SqlExpressionOperatorLeq.ConstructorProps {}
+            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorLeq.ConstructorProps {}
     }
 
     class ExpressionOperatorLeq<A extends GObject.Object = GObject.Object>
@@ -11629,8 +11605,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>,
-                SqlExpressionOperatorRegexp.ConstructorProps {}
+            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorRegexp.ConstructorProps {}
     }
 
     class ExpressionOperatorRegexp<A extends GObject.Object = GObject.Object>
@@ -12134,8 +12109,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>,
-                SqlExpressionOperatorStar.ConstructorProps {}
+            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorStar.ConstructorProps {}
     }
 
     class ExpressionOperatorStar<A extends GObject.Object = GObject.Object>
@@ -12639,8 +12613,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>,
-                SqlExpressionOperatorDiv.ConstructorProps {}
+            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorDiv.ConstructorProps {}
     }
 
     class ExpressionOperatorDiv<A extends GObject.Object = GObject.Object>
@@ -13144,8 +13117,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>,
-                SqlExpressionOperatorIn.ConstructorProps {}
+            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorIn.ConstructorProps {}
     }
 
     class ExpressionOperatorIn<A extends GObject.Object = GObject.Object>
@@ -13649,8 +13621,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>,
-                SqlExpressionOperatorNotIn.ConstructorProps {}
+            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorNotIn.ConstructorProps {}
     }
 
     class ExpressionOperatorNotIn<A extends GObject.Object = GObject.Object>
@@ -14154,7 +14125,8 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>,
+            extends
+                ExpressionOperatorBinaryterm.ConstructorProps<A>,
                 SqlExpressionOperatorConcatenate.ConstructorProps {}
     }
 
@@ -14659,8 +14631,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>,
-                SqlExpressionOperatorSimilarTo.ConstructorProps {}
+            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorSimilarTo.ConstructorProps {}
     }
 
     class ExpressionOperatorSimilarTo<A extends GObject.Object = GObject.Object>
@@ -15164,8 +15135,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>,
-                SqlExpressionOperatorLike.ConstructorProps {}
+            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorLike.ConstructorProps {}
     }
 
     class ExpressionOperatorLike<A extends GObject.Object = GObject.Object>
@@ -15669,8 +15639,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>,
-                SqlExpressionOperatorNotLike.ConstructorProps {}
+            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorNotLike.ConstructorProps {}
     }
 
     class ExpressionOperatorNotLike<A extends GObject.Object = GObject.Object>
@@ -16174,8 +16143,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>,
-                SqlExpressionOperatorIlike.ConstructorProps {}
+            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorIlike.ConstructorProps {}
     }
 
     class ExpressionOperatorIlike<A extends GObject.Object = GObject.Object>
@@ -16679,8 +16647,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>,
-                SqlExpressionOperatorNotIlike.ConstructorProps {}
+            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorNotIlike.ConstructorProps {}
     }
 
     class ExpressionOperatorNotIlike<A extends GObject.Object = GObject.Object>
@@ -17184,8 +17151,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperator.ConstructorProps<A>,
-                SqlExpressionOperatorBinaryUnaryterm.ConstructorProps {}
+            extends ExpressionOperator.ConstructorProps<A>, SqlExpressionOperatorBinaryUnaryterm.ConstructorProps {}
     }
 
     class ExpressionOperatorBinaryUnaryterm<A extends GObject.Object = GObject.Object>
@@ -17692,7 +17658,8 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryUnaryterm.ConstructorProps<A>,
+            extends
+                ExpressionOperatorBinaryUnaryterm.ConstructorProps<A>,
                 SqlExpressionOperatorMinus.ConstructorProps {}
     }
 
@@ -18197,8 +18164,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryUnaryterm.ConstructorProps<A>,
-                SqlExpressionOperatorPlus.ConstructorProps {}
+            extends ExpressionOperatorBinaryUnaryterm.ConstructorProps<A>, SqlExpressionOperatorPlus.ConstructorProps {}
     }
 
     class ExpressionOperatorPlus<A extends GObject.Object = GObject.Object>
@@ -18702,8 +18668,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperator.ConstructorProps<A>,
-                SqlExpressionOperatorInitialUnaryterm.ConstructorProps {}
+            extends ExpressionOperator.ConstructorProps<A>, SqlExpressionOperatorInitialUnaryterm.ConstructorProps {}
     }
 
     class ExpressionOperatorInitialUnaryterm<A extends GObject.Object = GObject.Object>
@@ -19210,8 +19175,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorInitialUnaryterm.ConstructorProps<A>,
-                SqlExpressionOperatorNot.ConstructorProps {}
+            extends ExpressionOperatorInitialUnaryterm.ConstructorProps<A>, SqlExpressionOperatorNot.ConstructorProps {}
     }
 
     class ExpressionOperatorNot<A extends GObject.Object = GObject.Object>
@@ -19715,8 +19679,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperator.ConstructorProps<A>,
-                SqlExpressionOperatorFinalUnaryterm.ConstructorProps {}
+            extends ExpressionOperator.ConstructorProps<A>, SqlExpressionOperatorFinalUnaryterm.ConstructorProps {}
     }
 
     class ExpressionOperatorFinalUnaryterm<A extends GObject.Object = GObject.Object>
@@ -20223,8 +20186,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorFinalUnaryterm.ConstructorProps<A>,
-                SqlExpressionOperatorIs.ConstructorProps {}
+            extends ExpressionOperatorFinalUnaryterm.ConstructorProps<A>, SqlExpressionOperatorIs.ConstructorProps {}
     }
 
     class ExpressionOperatorIs<A extends GObject.Object = GObject.Object>
@@ -20728,8 +20690,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorIs.ConstructorProps<A>,
-                SqlExpressionOperatorIsNot.ConstructorProps {}
+            extends ExpressionOperatorIs.ConstructorProps<A>, SqlExpressionOperatorIsNot.ConstructorProps {}
     }
 
     class ExpressionOperatorIsNot<A extends GObject.Object = GObject.Object>
@@ -21233,8 +21194,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorIs.ConstructorProps<A>,
-                SqlExpressionOperatorIsNull.ConstructorProps {}
+            extends ExpressionOperatorIs.ConstructorProps<A>, SqlExpressionOperatorIsNull.ConstructorProps {}
     }
 
     class ExpressionOperatorIsNull<A extends GObject.Object = GObject.Object>
@@ -21738,8 +21698,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorIsNot.ConstructorProps<A>,
-                SqlExpressionOperatorIsNotNull.ConstructorProps {}
+            extends ExpressionOperatorIsNot.ConstructorProps<A>, SqlExpressionOperatorIsNotNull.ConstructorProps {}
     }
 
     class ExpressionOperatorIsNotNull<A extends GObject.Object = GObject.Object>
@@ -22243,8 +22202,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorIs.ConstructorProps<A>,
-                SqlExpressionOperatorIsTrue.ConstructorProps {}
+            extends ExpressionOperatorIs.ConstructorProps<A>, SqlExpressionOperatorIsTrue.ConstructorProps {}
     }
 
     class ExpressionOperatorIsTrue<A extends GObject.Object = GObject.Object>
@@ -22748,8 +22706,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorIsNot.ConstructorProps<A>,
-                SqlExpressionOperatorIsNotTrue.ConstructorProps {}
+            extends ExpressionOperatorIsNot.ConstructorProps<A>, SqlExpressionOperatorIsNotTrue.ConstructorProps {}
     }
 
     class ExpressionOperatorIsNotTrue<A extends GObject.Object = GObject.Object>
@@ -23253,8 +23210,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorIs.ConstructorProps<A>,
-                SqlExpressionOperatorIsFalse.ConstructorProps {}
+            extends ExpressionOperatorIs.ConstructorProps<A>, SqlExpressionOperatorIsFalse.ConstructorProps {}
     }
 
     class ExpressionOperatorIsFalse<A extends GObject.Object = GObject.Object>
@@ -23758,8 +23714,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorIsNot.ConstructorProps<A>,
-                SqlExpressionOperatorIsNotFalse.ConstructorProps {}
+            extends ExpressionOperatorIsNot.ConstructorProps<A>, SqlExpressionOperatorIsNotFalse.ConstructorProps {}
     }
 
     class ExpressionOperatorIsNotFalse<A extends GObject.Object = GObject.Object>
@@ -24263,8 +24218,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorIsNot.ConstructorProps<A>,
-                SqlExpressionOperatorIsNotUnknown.ConstructorProps {}
+            extends ExpressionOperatorIsNot.ConstructorProps<A>, SqlExpressionOperatorIsNotUnknown.ConstructorProps {}
     }
 
     class ExpressionOperatorIsNotUnknown<A extends GObject.Object = GObject.Object>
@@ -24768,8 +24722,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorIs.ConstructorProps<A>,
-                SqlExpressionOperatorIsUnknown.ConstructorProps {}
+            extends ExpressionOperatorIs.ConstructorProps<A>, SqlExpressionOperatorIsUnknown.ConstructorProps {}
     }
 
     class ExpressionOperatorIsUnknown<A extends GObject.Object = GObject.Object>
@@ -25273,7 +25226,8 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>,
+            extends
+                ExpressionOperatorBinaryterm.ConstructorProps<A>,
                 SqlExpressionOperatorIsDistinct.ConstructorProps {}
     }
 
@@ -25778,7 +25732,8 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorIsDistinct.ConstructorProps<A>,
+            extends
+                ExpressionOperatorIsDistinct.ConstructorProps<A>,
                 SqlExpressionOperatorIsNotDistinct.ConstructorProps {}
     }
 
@@ -26286,7 +26241,8 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorIsDistinct.ConstructorProps<A>,
+            extends
+                ExpressionOperatorIsDistinct.ConstructorProps<A>,
                 SqlExpressionOperatorIsDistinctFrom.ConstructorProps {}
     }
 
@@ -26794,7 +26750,8 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorIsNotDistinct.ConstructorProps<A>,
+            extends
+                ExpressionOperatorIsNotDistinct.ConstructorProps<A>,
                 SqlExpressionOperatorIsNotDistinctFrom.ConstructorProps {}
     }
 
@@ -27302,8 +27259,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperator.ConstructorProps<A>,
-                SqlExpressionOperatorThreeterm.ConstructorProps {}
+            extends ExpressionOperator.ConstructorProps<A>, SqlExpressionOperatorThreeterm.ConstructorProps {}
     }
 
     class ExpressionOperatorThreeterm<A extends GObject.Object = GObject.Object>
@@ -27807,8 +27763,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorThreeterm.ConstructorProps<A>,
-                SqlExpressionOperatorBetween.ConstructorProps {}
+            extends ExpressionOperatorThreeterm.ConstructorProps<A>, SqlExpressionOperatorBetween.ConstructorProps {}
     }
 
     class ExpressionOperatorBetween<A extends GObject.Object = GObject.Object>
@@ -28312,8 +28267,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBetween.ConstructorProps<A>,
-                SqlExpressionOperatorBetweenAnd.ConstructorProps {}
+            extends ExpressionOperatorBetween.ConstructorProps<A>, SqlExpressionOperatorBetweenAnd.ConstructorProps {}
     }
 
     class ExpressionOperatorBetweenAnd<A extends GObject.Object = GObject.Object>
@@ -28817,8 +28771,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBetween.ConstructorProps<A>,
-                SqlExpressionOperatorNotBetween.ConstructorProps {}
+            extends ExpressionOperatorBetween.ConstructorProps<A>, SqlExpressionOperatorNotBetween.ConstructorProps {}
     }
 
     class ExpressionOperatorNotBetween<A extends GObject.Object = GObject.Object>
@@ -29322,7 +29275,8 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorNotBetween.ConstructorProps<A>,
+            extends
+                ExpressionOperatorNotBetween.ConstructorProps<A>,
                 SqlExpressionOperatorNotBetweenAnd.ConstructorProps {}
     }
 
@@ -29830,7 +29784,8 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBetween.ConstructorProps<A>,
+            extends
+                ExpressionOperatorBetween.ConstructorProps<A>,
                 SqlExpressionOperatorBetweenSymmetric.ConstructorProps {}
     }
 
@@ -30338,7 +30293,8 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBetweenSymmetric.ConstructorProps<A>,
+            extends
+                ExpressionOperatorBetweenSymmetric.ConstructorProps<A>,
                 SqlExpressionOperatorBetweenSymmetricAnd.ConstructorProps {}
     }
 
@@ -30846,7 +30802,8 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBetweenSymmetric.ConstructorProps<A>,
+            extends
+                ExpressionOperatorBetweenSymmetric.ConstructorProps<A>,
                 SqlExpressionOperatorNotBetweenSymmetric.ConstructorProps {}
     }
 
@@ -31354,7 +31311,8 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorNotBetweenSymmetric.ConstructorProps<A>,
+            extends
+                ExpressionOperatorNotBetweenSymmetric.ConstructorProps<A>,
                 SqlExpressionOperatorNotBetweenSymmetricAnd.ConstructorProps {}
     }
 
@@ -31864,8 +31822,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Expression.ConstructorProps<A>,
-                SqlExpressionValue.ConstructorProps {}
+            extends Expression.ConstructorProps<A>, SqlExpressionValue.ConstructorProps {}
     }
 
     class ExpressionValue<A extends GObject.Object = GObject.Object>
@@ -32386,8 +32343,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionValue.ConstructorProps<A>,
-                SqlExpressionValueParameter.ConstructorProps {}
+            extends ExpressionValue.ConstructorProps<A>, SqlExpressionValueParameter.ConstructorProps {}
     }
 
     class ExpressionValueParameter<A extends GObject.Object = GObject.Object>
@@ -32913,9 +32869,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Gee.ArrayList.ConstructorProps,
-                Gio.ListModel.ConstructorProps,
-                HashModel.ConstructorProps {}
+            extends Gee.ArrayList.ConstructorProps, Gio.ListModel.ConstructorProps, HashModel.ConstructorProps {}
     }
 
     class HashList<A extends GObject.Object = GObject.Object>
@@ -36567,9 +36521,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Stringifiable.ConstructorProps,
-                SqlValue.ConstructorProps {}
+            extends GObject.Object.ConstructorProps, Stringifiable.ConstructorProps, SqlValue.ConstructorProps {}
     }
 
     class Value extends GObject.Object implements Stringifiable, SqlValue {
@@ -41016,9 +40968,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Value.ConstructorProps,
-                SqlValue.ConstructorProps,
-                SqlValueInteger.ConstructorProps {}
+            extends Value.ConstructorProps, SqlValue.ConstructorProps, SqlValueInteger.ConstructorProps {}
     }
 
     class ValueInteger extends Value implements SqlValue, SqlValueInteger {
@@ -43485,9 +43435,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Value.ConstructorProps,
-                SqlValue.ConstructorProps,
-                SqlValueUnsignedInteger.ConstructorProps {}
+            extends Value.ConstructorProps, SqlValue.ConstructorProps, SqlValueUnsignedInteger.ConstructorProps {}
     }
 
     class ValueUnsignedInteger extends Value implements SqlValue, SqlValueUnsignedInteger {
@@ -43998,8 +43946,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends ValueUnsignedInteger.ConstructorProps,
-                SqlValueUnsignedByte.ConstructorProps {}
+            extends ValueUnsignedInteger.ConstructorProps, SqlValueUnsignedByte.ConstructorProps {}
     }
 
     class ValueUnsignedByte extends ValueUnsignedInteger implements SqlValueUnsignedByte {
@@ -44489,8 +44436,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends ValueUnsignedInteger.ConstructorProps,
-                SqlValueUnsignedInt2.ConstructorProps {}
+            extends ValueUnsignedInteger.ConstructorProps, SqlValueUnsignedInt2.ConstructorProps {}
     }
 
     class ValueUnsignedInt2 extends ValueUnsignedInteger implements SqlValueUnsignedInt2 {
@@ -44980,8 +44926,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends ValueUnsignedInteger.ConstructorProps,
-                SqlValueUnsignedInt4.ConstructorProps {}
+            extends ValueUnsignedInteger.ConstructorProps, SqlValueUnsignedInt4.ConstructorProps {}
     }
 
     class ValueUnsignedInt4 extends ValueUnsignedInteger implements SqlValueUnsignedInt4 {
@@ -45471,8 +45416,7 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends ValueUnsignedInteger.ConstructorProps,
-                SqlValueUnsignedInt8.ConstructorProps {}
+            extends ValueUnsignedInteger.ConstructorProps, SqlValueUnsignedInt8.ConstructorProps {}
     }
 
     class ValueUnsignedInt8 extends ValueUnsignedInteger implements SqlValueUnsignedInt8 {
@@ -51430,7 +51374,8 @@ export namespace Vda {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 Stringifiable.ConstructorProps,
                 SqlValue.ConstructorProps,
                 SqlValueMathExp.ConstructorProps {
@@ -51958,973 +51903,541 @@ export namespace Vda {
     type AffectedRowsClass = typeof AffectedRows;
     abstract class AffectedRowsPrivate {
         static $gtype: GObject.GType<AffectedRowsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CommandDeleteClass = typeof CommandDelete;
     abstract class CommandDeletePrivate {
         static $gtype: GObject.GType<CommandDeletePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CommandInsertClass = typeof CommandInsert;
     abstract class CommandInsertPrivate {
         static $gtype: GObject.GType<CommandInsertPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CommandModificationClass = typeof CommandModification;
     abstract class CommandModificationPrivate {
         static $gtype: GObject.GType<CommandModificationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CommandSelectClass = typeof CommandSelect;
     abstract class CommandSelectPrivate {
         static $gtype: GObject.GType<CommandSelectPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CommandUpdateClass = typeof CommandUpdate;
     abstract class CommandUpdatePrivate {
         static $gtype: GObject.GType<CommandUpdatePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConnectionParameterClass = typeof ConnectionParameter;
     abstract class ConnectionParameterPrivate {
         static $gtype: GObject.GType<ConnectionParameterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConnectionParameterDbNameClass = typeof ConnectionParameterDbName;
     abstract class ConnectionParameterDbNamePrivate {
         static $gtype: GObject.GType<ConnectionParameterDbNamePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConnectionParameterHostClass = typeof ConnectionParameterHost;
     abstract class ConnectionParameterHostPrivate {
         static $gtype: GObject.GType<ConnectionParameterHostPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConnectionParameterPortClass = typeof ConnectionParameterPort;
     abstract class ConnectionParameterPortPrivate {
         static $gtype: GObject.GType<ConnectionParameterPortPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConnectionParameterUserNameClass = typeof ConnectionParameterUserName;
     abstract class ConnectionParameterUserNamePrivate {
         static $gtype: GObject.GType<ConnectionParameterUserNamePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConnectionParameterPasswordClass = typeof ConnectionParameterPassword;
     abstract class ConnectionParameterPasswordPrivate {
         static $gtype: GObject.GType<ConnectionParameterPasswordPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConnectionParametersClass = typeof ConnectionParameters;
     abstract class ConnectionParametersPrivate {
         static $gtype: GObject.GType<ConnectionParametersPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionClass = typeof Expression;
     abstract class ExpressionPrivate {
         static $gtype: GObject.GType<ExpressionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionFieldClass = typeof ExpressionField;
     abstract class ExpressionFieldPrivate {
         static $gtype: GObject.GType<ExpressionFieldPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorClass = typeof ExpressionOperator;
     abstract class ExpressionOperatorPrivate {
         static $gtype: GObject.GType<ExpressionOperatorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorGroupClass = typeof ExpressionOperatorGroup;
     abstract class ExpressionOperatorGroupPrivate {
         static $gtype: GObject.GType<ExpressionOperatorGroupPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorMultitermClass = typeof ExpressionOperatorMultiterm;
     abstract class ExpressionOperatorMultitermPrivate {
         static $gtype: GObject.GType<ExpressionOperatorMultitermPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorAndClass = typeof ExpressionOperatorAnd;
     abstract class ExpressionOperatorAndPrivate {
         static $gtype: GObject.GType<ExpressionOperatorAndPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorOrClass = typeof ExpressionOperatorOr;
     abstract class ExpressionOperatorOrPrivate {
         static $gtype: GObject.GType<ExpressionOperatorOrPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorBinarytermClass = typeof ExpressionOperatorBinaryterm;
     abstract class ExpressionOperatorBinarytermPrivate {
         static $gtype: GObject.GType<ExpressionOperatorBinarytermPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorEqClass = typeof ExpressionOperatorEq;
     abstract class ExpressionOperatorEqPrivate {
         static $gtype: GObject.GType<ExpressionOperatorEqPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorNotEqClass = typeof ExpressionOperatorNotEq;
     abstract class ExpressionOperatorNotEqPrivate {
         static $gtype: GObject.GType<ExpressionOperatorNotEqPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorDiffClass = typeof ExpressionOperatorDiff;
     abstract class ExpressionOperatorDiffPrivate {
         static $gtype: GObject.GType<ExpressionOperatorDiffPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorGtClass = typeof ExpressionOperatorGt;
     abstract class ExpressionOperatorGtPrivate {
         static $gtype: GObject.GType<ExpressionOperatorGtPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorLtClass = typeof ExpressionOperatorLt;
     abstract class ExpressionOperatorLtPrivate {
         static $gtype: GObject.GType<ExpressionOperatorLtPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorGeqClass = typeof ExpressionOperatorGeq;
     abstract class ExpressionOperatorGeqPrivate {
         static $gtype: GObject.GType<ExpressionOperatorGeqPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorLeqClass = typeof ExpressionOperatorLeq;
     abstract class ExpressionOperatorLeqPrivate {
         static $gtype: GObject.GType<ExpressionOperatorLeqPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorRegexpClass = typeof ExpressionOperatorRegexp;
     abstract class ExpressionOperatorRegexpPrivate {
         static $gtype: GObject.GType<ExpressionOperatorRegexpPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorStarClass = typeof ExpressionOperatorStar;
     abstract class ExpressionOperatorStarPrivate {
         static $gtype: GObject.GType<ExpressionOperatorStarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorDivClass = typeof ExpressionOperatorDiv;
     abstract class ExpressionOperatorDivPrivate {
         static $gtype: GObject.GType<ExpressionOperatorDivPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorInClass = typeof ExpressionOperatorIn;
     abstract class ExpressionOperatorInPrivate {
         static $gtype: GObject.GType<ExpressionOperatorInPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorNotInClass = typeof ExpressionOperatorNotIn;
     abstract class ExpressionOperatorNotInPrivate {
         static $gtype: GObject.GType<ExpressionOperatorNotInPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorConcatenateClass = typeof ExpressionOperatorConcatenate;
     abstract class ExpressionOperatorConcatenatePrivate {
         static $gtype: GObject.GType<ExpressionOperatorConcatenatePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorSimilarToClass = typeof ExpressionOperatorSimilarTo;
     abstract class ExpressionOperatorSimilarToPrivate {
         static $gtype: GObject.GType<ExpressionOperatorSimilarToPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorLikeClass = typeof ExpressionOperatorLike;
     abstract class ExpressionOperatorLikePrivate {
         static $gtype: GObject.GType<ExpressionOperatorLikePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorNotLikeClass = typeof ExpressionOperatorNotLike;
     abstract class ExpressionOperatorNotLikePrivate {
         static $gtype: GObject.GType<ExpressionOperatorNotLikePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorIlikeClass = typeof ExpressionOperatorIlike;
     abstract class ExpressionOperatorIlikePrivate {
         static $gtype: GObject.GType<ExpressionOperatorIlikePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorNotIlikeClass = typeof ExpressionOperatorNotIlike;
     abstract class ExpressionOperatorNotIlikePrivate {
         static $gtype: GObject.GType<ExpressionOperatorNotIlikePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorBinaryUnarytermClass = typeof ExpressionOperatorBinaryUnaryterm;
     abstract class ExpressionOperatorBinaryUnarytermPrivate {
         static $gtype: GObject.GType<ExpressionOperatorBinaryUnarytermPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorMinusClass = typeof ExpressionOperatorMinus;
     abstract class ExpressionOperatorMinusPrivate {
         static $gtype: GObject.GType<ExpressionOperatorMinusPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorPlusClass = typeof ExpressionOperatorPlus;
     abstract class ExpressionOperatorPlusPrivate {
         static $gtype: GObject.GType<ExpressionOperatorPlusPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorInitialUnarytermClass = typeof ExpressionOperatorInitialUnaryterm;
     abstract class ExpressionOperatorInitialUnarytermPrivate {
         static $gtype: GObject.GType<ExpressionOperatorInitialUnarytermPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorNotClass = typeof ExpressionOperatorNot;
     abstract class ExpressionOperatorNotPrivate {
         static $gtype: GObject.GType<ExpressionOperatorNotPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorFinalUnarytermClass = typeof ExpressionOperatorFinalUnaryterm;
     abstract class ExpressionOperatorFinalUnarytermPrivate {
         static $gtype: GObject.GType<ExpressionOperatorFinalUnarytermPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorIsClass = typeof ExpressionOperatorIs;
     abstract class ExpressionOperatorIsPrivate {
         static $gtype: GObject.GType<ExpressionOperatorIsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorIsNotClass = typeof ExpressionOperatorIsNot;
     abstract class ExpressionOperatorIsNotPrivate {
         static $gtype: GObject.GType<ExpressionOperatorIsNotPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorIsNullClass = typeof ExpressionOperatorIsNull;
     abstract class ExpressionOperatorIsNullPrivate {
         static $gtype: GObject.GType<ExpressionOperatorIsNullPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorIsNotNullClass = typeof ExpressionOperatorIsNotNull;
     abstract class ExpressionOperatorIsNotNullPrivate {
         static $gtype: GObject.GType<ExpressionOperatorIsNotNullPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorIsTrueClass = typeof ExpressionOperatorIsTrue;
     abstract class ExpressionOperatorIsTruePrivate {
         static $gtype: GObject.GType<ExpressionOperatorIsTruePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorIsNotTrueClass = typeof ExpressionOperatorIsNotTrue;
     abstract class ExpressionOperatorIsNotTruePrivate {
         static $gtype: GObject.GType<ExpressionOperatorIsNotTruePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorIsFalseClass = typeof ExpressionOperatorIsFalse;
     abstract class ExpressionOperatorIsFalsePrivate {
         static $gtype: GObject.GType<ExpressionOperatorIsFalsePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorIsNotFalseClass = typeof ExpressionOperatorIsNotFalse;
     abstract class ExpressionOperatorIsNotFalsePrivate {
         static $gtype: GObject.GType<ExpressionOperatorIsNotFalsePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorIsNotUnknownClass = typeof ExpressionOperatorIsNotUnknown;
     abstract class ExpressionOperatorIsNotUnknownPrivate {
         static $gtype: GObject.GType<ExpressionOperatorIsNotUnknownPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorIsUnknownClass = typeof ExpressionOperatorIsUnknown;
     abstract class ExpressionOperatorIsUnknownPrivate {
         static $gtype: GObject.GType<ExpressionOperatorIsUnknownPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorIsDistinctClass = typeof ExpressionOperatorIsDistinct;
     abstract class ExpressionOperatorIsDistinctPrivate {
         static $gtype: GObject.GType<ExpressionOperatorIsDistinctPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorIsNotDistinctClass = typeof ExpressionOperatorIsNotDistinct;
     abstract class ExpressionOperatorIsNotDistinctPrivate {
         static $gtype: GObject.GType<ExpressionOperatorIsNotDistinctPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorIsDistinctFromClass = typeof ExpressionOperatorIsDistinctFrom;
     abstract class ExpressionOperatorIsDistinctFromPrivate {
         static $gtype: GObject.GType<ExpressionOperatorIsDistinctFromPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorIsNotDistinctFromClass = typeof ExpressionOperatorIsNotDistinctFrom;
     abstract class ExpressionOperatorIsNotDistinctFromPrivate {
         static $gtype: GObject.GType<ExpressionOperatorIsNotDistinctFromPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorThreetermClass = typeof ExpressionOperatorThreeterm;
     abstract class ExpressionOperatorThreetermPrivate {
         static $gtype: GObject.GType<ExpressionOperatorThreetermPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorBetweenClass = typeof ExpressionOperatorBetween;
     abstract class ExpressionOperatorBetweenPrivate {
         static $gtype: GObject.GType<ExpressionOperatorBetweenPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorBetweenAndClass = typeof ExpressionOperatorBetweenAnd;
     abstract class ExpressionOperatorBetweenAndPrivate {
         static $gtype: GObject.GType<ExpressionOperatorBetweenAndPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorNotBetweenClass = typeof ExpressionOperatorNotBetween;
     abstract class ExpressionOperatorNotBetweenPrivate {
         static $gtype: GObject.GType<ExpressionOperatorNotBetweenPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorNotBetweenAndClass = typeof ExpressionOperatorNotBetweenAnd;
     abstract class ExpressionOperatorNotBetweenAndPrivate {
         static $gtype: GObject.GType<ExpressionOperatorNotBetweenAndPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorBetweenSymmetricClass = typeof ExpressionOperatorBetweenSymmetric;
     abstract class ExpressionOperatorBetweenSymmetricPrivate {
         static $gtype: GObject.GType<ExpressionOperatorBetweenSymmetricPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorBetweenSymmetricAndClass = typeof ExpressionOperatorBetweenSymmetricAnd;
     abstract class ExpressionOperatorBetweenSymmetricAndPrivate {
         static $gtype: GObject.GType<ExpressionOperatorBetweenSymmetricAndPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorNotBetweenSymmetricClass = typeof ExpressionOperatorNotBetweenSymmetric;
     abstract class ExpressionOperatorNotBetweenSymmetricPrivate {
         static $gtype: GObject.GType<ExpressionOperatorNotBetweenSymmetricPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionOperatorNotBetweenSymmetricAndClass = typeof ExpressionOperatorNotBetweenSymmetricAnd;
     abstract class ExpressionOperatorNotBetweenSymmetricAndPrivate {
         static $gtype: GObject.GType<ExpressionOperatorNotBetweenSymmetricAndPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionValueClass = typeof ExpressionValue;
     abstract class ExpressionValuePrivate {
         static $gtype: GObject.GType<ExpressionValuePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionValueParameterClass = typeof ExpressionValueParameter;
     abstract class ExpressionValueParameterPrivate {
         static $gtype: GObject.GType<ExpressionValueParameterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HashListClass = typeof HashList;
     abstract class HashListPrivate {
         static $gtype: GObject.GType<HashListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type InvalidQueryClass = typeof InvalidQuery;
     abstract class InvalidQueryPrivate {
         static $gtype: GObject.GType<InvalidQueryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type InvalidPreparedQueryClass = typeof InvalidPreparedQuery;
     abstract class InvalidPreparedQueryPrivate {
         static $gtype: GObject.GType<InvalidPreparedQueryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type InvalidResultClass = typeof InvalidResult;
     abstract class InvalidResultPrivate {
         static $gtype: GObject.GType<InvalidResultPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ParametersClass = typeof Parameters;
     abstract class ParametersPrivate {
         static $gtype: GObject.GType<ParametersPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ParserClass = typeof Parser;
     abstract class ParserPrivate {
         static $gtype: GObject.GType<ParserPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TableReferenceClass = typeof TableReference;
     abstract class TableReferencePrivate {
         static $gtype: GObject.GType<TableReferencePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueClass = typeof Value;
     abstract class ValuePrivate {
         static $gtype: GObject.GType<ValuePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueNullClass = typeof ValueNull;
     abstract class ValueNullPrivate {
         static $gtype: GObject.GType<ValueNullPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueStringClass = typeof ValueString;
     abstract class ValueStringPrivate {
         static $gtype: GObject.GType<ValueStringPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueXmlClass = typeof ValueXml;
     abstract class ValueXmlPrivate {
         static $gtype: GObject.GType<ValueXmlPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueJsonClass = typeof ValueJson;
     abstract class ValueJsonPrivate {
         static $gtype: GObject.GType<ValueJsonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueTextClass = typeof ValueText;
     abstract class ValueTextPrivate {
         static $gtype: GObject.GType<ValueTextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueNameClass = typeof ValueName;
     abstract class ValueNamePrivate {
         static $gtype: GObject.GType<ValueNamePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueBoolClass = typeof ValueBool;
     abstract class ValueBoolPrivate {
         static $gtype: GObject.GType<ValueBoolPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueBitClass = typeof ValueBit;
     abstract class ValueBitPrivate {
         static $gtype: GObject.GType<ValueBitPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueIntegerClass = typeof ValueInteger;
     abstract class ValueIntegerPrivate {
         static $gtype: GObject.GType<ValueIntegerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueByteClass = typeof ValueByte;
     abstract class ValueBytePrivate {
         static $gtype: GObject.GType<ValueBytePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueInt2Class = typeof ValueInt2;
     abstract class ValueInt2Private {
         static $gtype: GObject.GType<ValueInt2Private>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueInt4Class = typeof ValueInt4;
     abstract class ValueInt4Private {
         static $gtype: GObject.GType<ValueInt4Private>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueInt8Class = typeof ValueInt8;
     abstract class ValueInt8Private {
         static $gtype: GObject.GType<ValueInt8Private>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueUnsignedIntegerClass = typeof ValueUnsignedInteger;
     abstract class ValueUnsignedIntegerPrivate {
         static $gtype: GObject.GType<ValueUnsignedIntegerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueUnsignedByteClass = typeof ValueUnsignedByte;
     abstract class ValueUnsignedBytePrivate {
         static $gtype: GObject.GType<ValueUnsignedBytePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueUnsignedInt2Class = typeof ValueUnsignedInt2;
     abstract class ValueUnsignedInt2Private {
         static $gtype: GObject.GType<ValueUnsignedInt2Private>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueUnsignedInt4Class = typeof ValueUnsignedInt4;
     abstract class ValueUnsignedInt4Private {
         static $gtype: GObject.GType<ValueUnsignedInt4Private>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueUnsignedInt8Class = typeof ValueUnsignedInt8;
     abstract class ValueUnsignedInt8Private {
         static $gtype: GObject.GType<ValueUnsignedInt8Private>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueOidClass = typeof ValueOid;
     abstract class ValueOidPrivate {
         static $gtype: GObject.GType<ValueOidPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueNumericClass = typeof ValueNumeric;
     abstract class ValueNumericPrivate {
         static $gtype: GObject.GType<ValueNumericPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueFloatClass = typeof ValueFloat;
     abstract class ValueFloatPrivate {
         static $gtype: GObject.GType<ValueFloatPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueDoubleClass = typeof ValueDouble;
     abstract class ValueDoublePrivate {
         static $gtype: GObject.GType<ValueDoublePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueMoneyClass = typeof ValueMoney;
     abstract class ValueMoneyPrivate {
         static $gtype: GObject.GType<ValueMoneyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueTimestampClass = typeof ValueTimestamp;
     abstract class ValueTimestampPrivate {
         static $gtype: GObject.GType<ValueTimestampPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueTimestampNtzClass = typeof ValueTimestampNtz;
     abstract class ValueTimestampNtzPrivate {
         static $gtype: GObject.GType<ValueTimestampNtzPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueTimeClass = typeof ValueTime;
     abstract class ValueTimePrivate {
         static $gtype: GObject.GType<ValueTimePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueTimeNtzClass = typeof ValueTimeNtz;
     abstract class ValueTimeNtzPrivate {
         static $gtype: GObject.GType<ValueTimeNtzPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueDateClass = typeof ValueDate;
     abstract class ValueDatePrivate {
         static $gtype: GObject.GType<ValueDatePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueBinaryClass = typeof ValueBinary;
     abstract class ValueBinaryPrivate {
         static $gtype: GObject.GType<ValueBinaryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueMathExpClass = typeof ValueMathExp;
     abstract class ValueMathExpPrivate {
         static $gtype: GObject.GType<ValueMathExpPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MetaObjectIface = typeof MetaObject;

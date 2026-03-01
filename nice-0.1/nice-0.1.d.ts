@@ -2237,10 +2237,6 @@ export namespace Nice {
     class Address {
         static $gtype: GObject.GType<Address>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -2366,7 +2362,6 @@ export namespace Nice {
         // Constructors
 
         constructor(type: CandidateType);
-        _init(...args: any[]): void;
 
         static ['new'](type: CandidateType): Candidate;
 
@@ -2428,10 +2423,6 @@ export namespace Nice {
         buffers: Gio.InputVector[];
         n_buffers: number;
         length: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2465,7 +2456,6 @@ export namespace Nice {
                 n_buffers: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2487,7 +2477,6 @@ export namespace Nice {
                 user_data: any;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type PseudoTcpSocketClass = typeof PseudoTcpSocket;

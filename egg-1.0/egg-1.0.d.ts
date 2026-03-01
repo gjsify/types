@@ -407,7 +407,8 @@ export namespace Egg {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -976,9 +977,7 @@ export namespace Egg {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             max_width_request: number;
             maxWidthRequest: number;
         }
@@ -1534,7 +1533,8 @@ export namespace Egg {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Container.ConstructorProps,
+            extends
+                Gtk.Container.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             column_spacing: number;
@@ -2108,9 +2108,7 @@ export namespace Egg {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {}
+            extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     class ElasticBin extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
@@ -2648,9 +2646,7 @@ export namespace Egg {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             icon_name: string;
             iconName: string;
             pixel_size: number;
@@ -3222,7 +3218,8 @@ export namespace Egg {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -3794,9 +3791,7 @@ export namespace Egg {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             action: Gtk.FileChooserAction;
             create_folders: boolean;
             createFolders: boolean;
@@ -4389,7 +4384,8 @@ export namespace Egg {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ListBox.ConstructorProps,
+            extends
+                Gtk.ListBox.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             property_name: string;
@@ -5028,7 +5024,8 @@ export namespace Egg {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.EventBox.ConstructorProps,
+            extends
+                Gtk.EventBox.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             label: string;
@@ -5582,7 +5579,8 @@ export namespace Egg {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {}
@@ -6153,7 +6151,8 @@ export namespace Egg {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Button.ConstructorProps,
+            extends
+                Gtk.Button.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Activatable.ConstructorProps,
@@ -10796,9 +10795,7 @@ export namespace Egg {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             active_id: string;
             activeId: string;
             has_more: boolean;
@@ -11372,7 +11369,8 @@ export namespace Egg {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ScrolledWindow.ConstructorProps,
+            extends
+                Gtk.ScrolledWindow.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -11909,9 +11907,7 @@ export namespace Egg {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             search_mode_enabled: boolean;
             searchModeEnabled: boolean;
             show_close_button: boolean;
@@ -13486,9 +13482,7 @@ export namespace Egg {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             label: string;
             width_chars: number;
             widthChars: number;
@@ -14236,7 +14230,8 @@ export namespace Egg {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Popover.ConstructorProps,
+            extends
+                Gtk.Popover.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             button_text: string;
@@ -14813,7 +14808,8 @@ export namespace Egg {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Container.ConstructorProps,
+            extends
+                Gtk.Container.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             position: SliderPosition;
@@ -16256,7 +16252,8 @@ export namespace Egg {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Entry.ConstructorProps,
+            extends
+                Gtk.Entry.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.CellEditable.ConstructorProps,
@@ -21036,9 +21033,7 @@ export namespace Egg {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Window.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             model: Suggestion;
             relative_to: Gtk.Widget;
             relativeTo: Gtk.Widget;
@@ -21611,7 +21606,8 @@ export namespace Egg {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ListBoxRow.ConstructorProps,
+            extends
+                Gtk.ListBoxRow.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             suggestion: Suggestion;
@@ -22317,7 +22313,8 @@ export namespace Egg {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Container.ConstructorProps,
+            extends
+                Gtk.Container.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             column_spacing: number;
@@ -23790,7 +23787,6 @@ export namespace Egg {
                 description: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -23804,7 +23800,6 @@ export namespace Egg {
         // Constructors
 
         constructor(pid: GLib.Pid);
-        _init(...args: any[]): void;
 
         static new_for_pid(pid: GLib.Pid): CounterArena;
 
@@ -23840,7 +23835,6 @@ export namespace Egg {
                 padding: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type ElasticBinClass = typeof ElasticBin;
@@ -23911,7 +23905,6 @@ export namespace Egg {
                 len: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](element_size: number, compare_func: GLib.CompareFunc): Heap;
 

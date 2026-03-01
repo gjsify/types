@@ -6366,307 +6366,171 @@ export namespace Unity {
     type AppInfoManagerClass = typeof AppInfoManager;
     abstract class AppInfoManagerPrivate {
         static $gtype: GObject.GType<AppInfoManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AnnotatedIconClass = typeof AnnotatedIcon;
     abstract class AnnotatedIconPrivate {
         static $gtype: GObject.GType<AnnotatedIconPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type InspectorClass = typeof Inspector;
     abstract class InspectorPrivate {
         static $gtype: GObject.GType<InspectorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LauncherEntryClass = typeof LauncherEntry;
     abstract class LauncherEntryPrivate {
         static $gtype: GObject.GType<LauncherEntryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LauncherFavoritesClass = typeof LauncherFavorites;
     abstract class LauncherFavoritesPrivate {
         static $gtype: GObject.GType<LauncherFavoritesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MetadataProviderClass = typeof MetadataProvider;
     abstract class MetadataProviderPrivate {
         static $gtype: GObject.GType<MetadataProviderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ProgressSourceProviderClass = typeof ProgressSourceProvider;
     abstract class ProgressSourceProviderPrivate {
         static $gtype: GObject.GType<ProgressSourceProviderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CategoryClass = typeof Category;
     abstract class CategoryPrivate {
         static $gtype: GObject.GType<CategoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FilterClass = typeof Filter;
     abstract class FilterPrivate {
         static $gtype: GObject.GType<FilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FilterOptionClass = typeof FilterOption;
     abstract class FilterOptionPrivate {
         static $gtype: GObject.GType<FilterOptionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OptionsFilterClass = typeof OptionsFilter;
     abstract class OptionsFilterPrivate {
         static $gtype: GObject.GType<OptionsFilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RadioOptionFilterClass = typeof RadioOptionFilter;
     abstract class RadioOptionFilterPrivate {
         static $gtype: GObject.GType<RadioOptionFilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CheckOptionFilterClass = typeof CheckOptionFilter;
     abstract class CheckOptionFilterPrivate {
         static $gtype: GObject.GType<CheckOptionFilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CheckOptionFilterCompactClass = typeof CheckOptionFilterCompact;
     abstract class CheckOptionFilterCompactPrivate {
         static $gtype: GObject.GType<CheckOptionFilterCompactPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RatingsFilterClass = typeof RatingsFilter;
     abstract class RatingsFilterPrivate {
         static $gtype: GObject.GType<RatingsFilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MultiRangeFilterClass = typeof MultiRangeFilter;
     abstract class MultiRangeFilterPrivate {
         static $gtype: GObject.GType<MultiRangeFilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PreferencesManagerClass = typeof PreferencesManager;
     abstract class PreferencesManagerPrivate {
         static $gtype: GObject.GType<PreferencesManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DeprecatedScopeSearchClass = typeof DeprecatedScopeSearch;
     abstract class DeprecatedScopeSearchPrivate {
         static $gtype: GObject.GType<DeprecatedScopeSearchPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AggregatedScopeSearchClass = typeof AggregatedScopeSearch;
     abstract class AggregatedScopeSearchPrivate {
         static $gtype: GObject.GType<AggregatedScopeSearchPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PreviewClass = typeof Preview;
     abstract class PreviewPrivate {
         static $gtype: GObject.GType<PreviewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PreviewActionClass = typeof PreviewAction;
     abstract class PreviewActionPrivate {
         static $gtype: GObject.GType<PreviewActionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type InfoHintClass = typeof InfoHint;
     abstract class InfoHintPrivate {
         static $gtype: GObject.GType<InfoHintPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GenericPreviewClass = typeof GenericPreview;
     abstract class GenericPreviewPrivate {
         static $gtype: GObject.GType<GenericPreviewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ApplicationPreviewClass = typeof ApplicationPreview;
     abstract class ApplicationPreviewPrivate {
         static $gtype: GObject.GType<ApplicationPreviewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MusicPreviewClass = typeof MusicPreview;
     abstract class MusicPreviewPrivate {
         static $gtype: GObject.GType<MusicPreviewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PaymentPreviewClass = typeof PaymentPreview;
     abstract class PaymentPreviewPrivate {
         static $gtype: GObject.GType<PaymentPreviewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MoviePreviewClass = typeof MoviePreview;
     abstract class MoviePreviewPrivate {
         static $gtype: GObject.GType<MoviePreviewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SocialPreviewClass = typeof SocialPreview;
     abstract class SocialPreviewPrivate {
         static $gtype: GObject.GType<SocialPreviewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SocialPreviewCommentClass = typeof SocialPreviewComment;
     abstract class SocialPreviewCommentPrivate {
         static $gtype: GObject.GType<SocialPreviewCommentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ActivationResponseClass = typeof ActivationResponse;
     abstract class ActivationResponsePrivate {
         static $gtype: GObject.GType<ActivationResponsePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AggregatorActivationClass = typeof AggregatorActivation;
     abstract class AggregatorActivationPrivate {
         static $gtype: GObject.GType<AggregatorActivationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FilterSetClass = typeof FilterSet;
     abstract class FilterSetPrivate {
         static $gtype: GObject.GType<FilterSetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CategorySetClass = typeof CategorySet;
     abstract class CategorySetPrivate {
         static $gtype: GObject.GType<CategorySetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SchemaClass = typeof Schema;
     abstract class SchemaPrivate {
         static $gtype: GObject.GType<SchemaPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class SchemaFieldInfo {
@@ -6677,172 +6541,96 @@ export namespace Unity {
         name: string;
         schema: string;
         type: SchemaFieldType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CancellableClass = typeof Cancellable;
     abstract class CancellablePrivate {
         static $gtype: GObject.GType<CancellablePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ScopeSearchBaseClass = typeof ScopeSearchBase;
     abstract class ScopeSearchBasePrivate {
         static $gtype: GObject.GType<ScopeSearchBasePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ResultSetClass = typeof ResultSet;
     abstract class ResultSetPrivate {
         static $gtype: GObject.GType<ResultSetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AbstractPreviewClass = typeof AbstractPreview;
     abstract class AbstractPreviewPrivate {
         static $gtype: GObject.GType<AbstractPreviewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ResultPreviewerClass = typeof ResultPreviewer;
     abstract class ResultPreviewerPrivate {
         static $gtype: GObject.GType<ResultPreviewerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SearchMetadataClass = typeof SearchMetadata;
     abstract class SearchMetadataPrivate {
         static $gtype: GObject.GType<SearchMetadataPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GeoCoordinateClass = typeof GeoCoordinate;
     abstract class GeoCoordinatePrivate {
         static $gtype: GObject.GType<GeoCoordinatePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AbstractScopeClass = typeof AbstractScope;
     abstract class AbstractScopePrivate {
         static $gtype: GObject.GType<AbstractScopePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ScopeDBusConnectorClass = typeof ScopeDBusConnector;
     abstract class ScopeDBusConnectorPrivate {
         static $gtype: GObject.GType<ScopeDBusConnectorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DeprecatedScopeBaseClass = typeof DeprecatedScopeBase;
     abstract class DeprecatedScopeBasePrivate {
         static $gtype: GObject.GType<DeprecatedScopeBasePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DeprecatedScopeClass = typeof DeprecatedScope;
     abstract class DeprecatedScopePrivate {
         static $gtype: GObject.GType<DeprecatedScopePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AggregatorScopeClass = typeof AggregatorScope;
     abstract class AggregatorScopePrivate {
         static $gtype: GObject.GType<AggregatorScopePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MasterScopeClass = typeof MasterScope;
     abstract class MasterScopePrivate {
         static $gtype: GObject.GType<MasterScopePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SimpleScopeClass = typeof SimpleScope;
     abstract class SimpleScopePrivate {
         static $gtype: GObject.GType<SimpleScopePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ScopeLoaderClass = typeof ScopeLoader;
     abstract class ScopeLoaderPrivate {
         static $gtype: GObject.GType<ScopeLoaderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TrackMetadataClass = typeof TrackMetadata;
     abstract class TrackMetadataPrivate {
         static $gtype: GObject.GType<TrackMetadataPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PlaylistClass = typeof Playlist;
     abstract class PlaylistPrivate {
         static $gtype: GObject.GType<PlaylistPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MusicPlayerClass = typeof MusicPlayer;
     abstract class MusicPlayerPrivate {
         static $gtype: GObject.GType<MusicPlayerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ScopeResult {
@@ -6858,10 +6646,6 @@ export namespace Unity {
         title: string;
         comment: string;
         dnd_uri: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -6891,10 +6675,6 @@ export namespace Unity {
         result_set: ResultSet;
         cancellable: Cancellable;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         static create(
@@ -6919,10 +6699,6 @@ export namespace Unity {
         id: never;
         name: string;
         icon_name: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ActivePlaylistContainer {
@@ -6931,10 +6707,6 @@ export namespace Unity {
         // Fields
 
         valid: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

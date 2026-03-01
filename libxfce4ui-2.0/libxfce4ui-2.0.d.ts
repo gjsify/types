@@ -846,7 +846,8 @@ export namespace Libxfce4ui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -1901,9 +1902,7 @@ export namespace Libxfce4ui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             subtitle: string;
         }
     }
@@ -2480,20 +2479,12 @@ export namespace Libxfce4ui {
         menu_item_tooltip_text: string;
         menu_item_icon_name: string;
         callback: GObject.Callback;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ScreensaverClass = typeof Screensaver;
     type TitledDialogClass = typeof TitledDialog;
     abstract class TitledDialogPrivate {
         static $gtype: GObject.GType<TitledDialogPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ScreenSaver = Screensaver;

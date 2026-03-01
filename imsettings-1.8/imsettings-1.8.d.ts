@@ -936,19 +936,11 @@ export namespace IMSettings {
     type ClientClass = typeof Client;
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type InfoClass = typeof Info;
     abstract class InfoPrivate {
         static $gtype: GObject.GType<InfoPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

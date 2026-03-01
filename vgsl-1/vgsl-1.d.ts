@@ -78,10 +78,6 @@ export namespace Vgsl {
     type ConnectionClass = typeof Connection;
     abstract class ConnectionPrivate {
         static $gtype: GObject.GType<ConnectionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

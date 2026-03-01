@@ -5676,7 +5676,6 @@ export namespace Vips {
         // Constructors
 
         constructor(free_fn?: CallbackFn | null);
-        _init(...args: any[]): void;
 
         static ['new'](free_fn?: CallbackFn | null): Area;
 
@@ -5707,10 +5706,6 @@ export namespace Vips {
         // Fields
 
         pspec: GObject.ParamSpec;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ArgumentClass {
@@ -5721,10 +5716,6 @@ export namespace Vips {
         flags: ArgumentFlags;
         priority: number;
         offset: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -5740,10 +5731,6 @@ export namespace Vips {
         assigned: boolean;
         close_id: number;
         invalidate_id: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ArrayDouble {
@@ -5752,7 +5739,6 @@ export namespace Vips {
         // Constructors
 
         constructor(array: number[]);
-        _init(...args: any[]): void;
 
         static ['new'](array: number[]): ArrayDouble;
 
@@ -5775,7 +5761,6 @@ export namespace Vips {
                 area: Area;
             }>,
         );
-        _init(...args: any[]): void;
 
         static empty(): ArrayImage;
 
@@ -5809,7 +5794,6 @@ export namespace Vips {
         // Constructors
 
         constructor(array: number[]);
-        _init(...args: any[]): void;
 
         static ['new'](array: number[]): ArrayInt;
 
@@ -5828,7 +5812,6 @@ export namespace Vips {
         // Constructors
 
         constructor(free_fn: CallbackFn | null, data: Uint8Array | string);
-        _init(...args: any[]): void;
 
         static ['new'](free_fn: CallbackFn | null, data: Uint8Array | string): Blob;
 
@@ -5867,10 +5850,6 @@ export namespace Vips {
 
     abstract class Buf {
         static $gtype: GObject.GType<Buf>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ForeignClass = typeof Foreign;
@@ -5894,10 +5873,6 @@ export namespace Vips {
         tpels: number;
         npels: number;
         percent: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -5934,7 +5909,6 @@ export namespace Vips {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -5996,7 +5970,6 @@ export namespace Vips {
         // Constructors
 
         constructor(str: string);
-        _init(...args: any[]): void;
 
         static ['new'](str: string): RefString;
 
@@ -6027,23 +6000,14 @@ export namespace Vips {
                 s: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     abstract class Source {
         static $gtype: GObject.GType<Source>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class Target {
         static $gtype: GObject.GType<Target>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Thing {
@@ -6060,7 +6024,6 @@ export namespace Vips {
                 i: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](i: number): Thing;
     }

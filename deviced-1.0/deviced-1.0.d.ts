@@ -1800,7 +1800,6 @@ export namespace Deviced {
         // Constructors
 
         constructor(full_name: string);
-        _init(...args: any[]): void;
 
         static ['new'](full_name: string): Triplet;
 

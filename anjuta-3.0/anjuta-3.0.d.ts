@@ -84,7 +84,6 @@ export namespace Anjuta {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -124,7 +123,6 @@ export namespace Anjuta {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -148,7 +146,6 @@ export namespace Anjuta {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -176,7 +173,6 @@ export namespace Anjuta {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -224,7 +220,6 @@ export namespace Anjuta {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1701,7 +1696,8 @@ export namespace Anjuta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Button.ConstructorProps,
+            extends
+                Gtk.Button.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Activatable.ConstructorProps,
@@ -6324,7 +6320,8 @@ export namespace Anjuta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {}
@@ -7060,7 +7057,8 @@ export namespace Anjuta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Notebook.ConstructorProps,
+            extends
+                Gtk.Notebook.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             max_text_width: number;
@@ -7772,9 +7770,7 @@ export namespace Anjuta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gdl.Dock.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {}
+            extends Gdl.Dock.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     class Dock extends Gdl.Dock implements Atk.ImplementorIface, Gtk.Buildable {
@@ -8536,7 +8532,8 @@ export namespace Anjuta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Entry.ConstructorProps,
+            extends
+                Entry.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.CellEditable.ConstructorProps,
@@ -12955,7 +12952,8 @@ export namespace Anjuta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Entry.ConstructorProps,
+            extends
+                Gtk.Entry.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.CellEditable.ConstructorProps,
@@ -17600,9 +17598,7 @@ export namespace Anjuta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {}
+            extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     class EnvironmentEditor extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
@@ -18194,7 +18190,8 @@ export namespace Anjuta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends DropEntry.ConstructorProps,
+            extends
+                DropEntry.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.CellEditable.ConstructorProps,
@@ -22586,7 +22583,8 @@ export namespace Anjuta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -23404,7 +23402,8 @@ export namespace Anjuta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.TreeView.ConstructorProps,
+            extends
+                Gtk.TreeView.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {}
@@ -24623,7 +24622,8 @@ export namespace Anjuta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps,
+            extends
+                Gtk.Dialog.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -25588,7 +25588,8 @@ export namespace Anjuta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.MessageDialog.ConstructorProps,
+            extends
+                Gtk.MessageDialog.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -26342,7 +26343,8 @@ export namespace Anjuta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {}
@@ -26963,7 +26965,8 @@ export namespace Anjuta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Container.ConstructorProps,
+            extends
+                Gtk.Container.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             notebook: GObject.Object;
@@ -27605,7 +27608,8 @@ export namespace Anjuta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ToggleButton.ConstructorProps,
+            extends
+                Gtk.ToggleButton.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Activatable.ConstructorProps,
@@ -32985,7 +32989,8 @@ export namespace Anjuta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.TreeView.ConstructorProps,
+            extends
+                Gtk.TreeView.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {
@@ -33600,19 +33605,11 @@ export namespace Anjuta {
     type AsyncCommandClass = typeof AsyncCommand;
     abstract class AsyncCommandPriv {
         static $gtype: GObject.GType<AsyncCommandPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AsyncNotifyClass = typeof AsyncNotify;
     abstract class AsyncNotifyPriv {
         static $gtype: GObject.GType<AsyncNotifyPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AutogenClass = typeof Autogen;
@@ -33622,28 +33619,16 @@ export namespace Anjuta {
     type CellRendererDiffClass = typeof CellRendererDiff;
     abstract class CellRendererDiffPrivate {
         static $gtype: GObject.GType<CellRendererDiffPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CloseButtonClass = typeof CloseButton;
     abstract class CloseButtonClassPrivate {
         static $gtype: GObject.GType<CloseButtonClassPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ColumnTextViewClass = typeof ColumnTextView;
     abstract class ColumnTextViewPriv {
         static $gtype: GObject.GType<ColumnTextViewPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CommandBarClass = typeof CommandBar;
@@ -33662,72 +33647,40 @@ export namespace Anjuta {
         tooltip: string;
         stock_icon: string;
         callback: GObject.Callback;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class CommandBarPriv {
         static $gtype: GObject.GType<CommandBarPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CommandClass = typeof Command;
     abstract class CommandPriv {
         static $gtype: GObject.GType<CommandPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CommandQueueClass = typeof CommandQueue;
     abstract class CommandQueuePriv {
         static $gtype: GObject.GType<CommandQueuePriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CompletionClass = typeof Completion;
     abstract class CompletionPrivate {
         static $gtype: GObject.GType<CompletionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DockClass = typeof Dock;
     type DockPaneClass = typeof DockPane;
     abstract class DockPanePriv {
         static $gtype: GObject.GType<DockPanePriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DockPriv {
         static $gtype: GObject.GType<DockPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DropEntryClass = typeof DropEntry;
     class Encoding {
         static $gtype: GObject.GType<Encoding>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -33757,29 +33710,17 @@ export namespace Anjuta {
     type EntryClass = typeof Entry;
     abstract class EntryPriv {
         static $gtype: GObject.GType<EntryPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EnvironmentEditorClass = typeof EnvironmentEditor;
     type FileDropEntryClass = typeof FileDropEntry;
     abstract class FileDropEntryPriv {
         static $gtype: GObject.GType<FileDropEntryPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FileListClass = typeof FileList;
     abstract class FileListPriv {
         static $gtype: GObject.GType<FileListPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class LanguageProposalData {
@@ -33803,7 +33744,6 @@ export namespace Anjuta {
                 type: unknown;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](name: string): LanguageProposalData;
 
@@ -33818,37 +33758,21 @@ export namespace Anjuta {
     type LanguageProviderClass = typeof LanguageProvider;
     abstract class LanguageProviderPriv {
         static $gtype: GObject.GType<LanguageProviderPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LauncherClass = typeof Launcher;
     abstract class LauncherPriv {
         static $gtype: GObject.GType<LauncherPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PkgConfigChooserClass = typeof PkgConfigChooser;
     abstract class PkgConfigChooserPrivate {
         static $gtype: GObject.GType<PkgConfigChooserPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PkgScannerClass = typeof PkgScanner;
     abstract class PkgScannerPrivate {
         static $gtype: GObject.GType<PkgScannerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PluginClass = typeof Plugin;
@@ -33858,7 +33782,6 @@ export namespace Anjuta {
         // Constructors
 
         constructor(filename: string);
-        _init(...args: any[]): void;
 
         static ['new'](filename: string): PluginDescription;
 
@@ -33939,63 +33862,35 @@ export namespace Anjuta {
     type PluginHandleClass = typeof PluginHandle;
     abstract class PluginHandlePriv {
         static $gtype: GObject.GType<PluginHandlePriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PluginManagerClass = typeof PluginManager;
     abstract class PluginManagerPriv {
         static $gtype: GObject.GType<PluginManagerPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class PluginPrivate {
         static $gtype: GObject.GType<PluginPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PreferencesClass = typeof Preferences;
     type PreferencesDialogClass = typeof PreferencesDialog;
     abstract class PreferencesDialogPrivate {
         static $gtype: GObject.GType<PreferencesDialogPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class PreferencesPriv {
         static $gtype: GObject.GType<PreferencesPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ProfileClass = typeof Profile;
     type ProfileManagerClass = typeof ProfileManager;
     abstract class ProfileManagerPriv {
         static $gtype: GObject.GType<ProfileManagerPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ProfilePriv {
         static $gtype: GObject.GType<ProfilePriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ProjectNodeClass = typeof ProjectNode;
@@ -34009,7 +33904,6 @@ export namespace Anjuta {
         // Constructors
 
         constructor(type: ProjectNodeType, name: string, mime_type: string);
-        _init(...args: any[]): void;
 
         static ['new'](type: ProjectNodeType, name: string, mime_type: string): ProjectNodeInfo;
 
@@ -34035,7 +33929,6 @@ export namespace Anjuta {
         // Constructors
 
         constructor(value: string, name?: string | null, user_data?: any | null);
-        _init(...args: any[]): void;
 
         static ['new'](value: string, name?: string | null, user_data?: any | null): ProjectProperty;
 
@@ -34068,7 +33961,6 @@ export namespace Anjuta {
             default_value: ProjectProperty,
             user_data?: any | null,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             id: string,
@@ -34088,65 +33980,37 @@ export namespace Anjuta {
 
     abstract class Property {
         static $gtype: GObject.GType<Property>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SavePromptClass = typeof SavePrompt;
     abstract class SavePromptPrivate {
         static $gtype: GObject.GType<SavePromptPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SerializerClass = typeof Serializer;
     abstract class SerializerPrivate {
         static $gtype: GObject.GType<SerializerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SessionClass = typeof Session;
     abstract class SessionPriv {
         static $gtype: GObject.GType<SessionPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ShellIface = typeof Shell;
     type StatusClass = typeof Status;
     abstract class StatusPriv {
         static $gtype: GObject.GType<StatusPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SyncCommandClass = typeof SyncCommand;
     type TabberClass = typeof Tabber;
     abstract class TabberPriv {
         static $gtype: GObject.GType<TabberPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class Token {
         static $gtype: GObject.GType<Token>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -34188,15 +34052,10 @@ export namespace Anjuta {
                 column: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     abstract class TokenStream {
         static $gtype: GObject.GType<TokenStream>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -34243,10 +34102,6 @@ export namespace Anjuta {
     abstract class TokenStyle {
         static $gtype: GObject.GType<TokenStyle>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         format(list: Token): void;
@@ -34257,19 +34112,11 @@ export namespace Anjuta {
     type TreeComboBoxClass = typeof TreeComboBox;
     abstract class TreeComboBoxPrivate {
         static $gtype: GObject.GType<TreeComboBoxPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UIClass = typeof UI;
     abstract class UIPrivate {
         static $gtype: GObject.GType<UIPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class UtilStringMap {
@@ -34288,16 +34135,11 @@ export namespace Anjuta {
                 name: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type VcsStatusTreeViewClass = typeof VcsStatusTreeView;
     abstract class VcsStatusTreeViewPriv {
         static $gtype: GObject.GType<VcsStatusTreeViewPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Shell {

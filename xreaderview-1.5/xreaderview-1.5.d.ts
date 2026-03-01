@@ -1230,7 +1230,8 @@ export namespace XreaderView {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Container.ConstructorProps,
+            extends
+                Gtk.Container.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {}
@@ -1917,9 +1918,7 @@ export namespace XreaderView {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             current_page: number;
             currentPage: number;
             document: XreaderDocument.Document;
@@ -2659,7 +2658,8 @@ export namespace XreaderView {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Container.ConstructorProps,
+            extends
+                Gtk.Container.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -3188,18 +3188,10 @@ export namespace XreaderView {
     type JobThumbnailClass = typeof JobThumbnail;
     abstract class JobWebThumbnail {
         static $gtype: GObject.GType<JobWebThumbnail>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class JobWebThumbnailClass {
         static $gtype: GObject.GType<JobWebThumbnailClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PrintOperationClass = typeof PrintOperation;

@@ -137,7 +137,8 @@ export namespace PanelApplet {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.EventBox.ConstructorProps,
+            extends
+                Gtk.EventBox.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             flags: number;
@@ -939,10 +940,6 @@ export namespace PanelApplet {
     type AppletClass = typeof Applet;
     abstract class AppletPrivate {
         static $gtype: GObject.GType<AppletPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

@@ -6320,7 +6320,6 @@ export namespace GMime {
                 level: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -6432,10 +6431,6 @@ export namespace GMime {
         encode: boolean;
         save: number;
         state: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -6621,10 +6616,6 @@ export namespace GMime {
      */
     abstract class Header {
         static $gtype: GObject.GType<Header>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6637,10 +6628,6 @@ export namespace GMime {
         // Fields
 
         version: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -6718,10 +6705,6 @@ export namespace GMime {
      */
     abstract class HeaderList {
         static $gtype: GObject.GType<HeaderList>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -6845,10 +6828,6 @@ export namespace GMime {
         name: string;
         value: string;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -6889,10 +6868,6 @@ export namespace GMime {
      */
     abstract class PartIter {
         static $gtype: GObject.GType<PartIter>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -6977,10 +6952,6 @@ export namespace GMime {
 
         msgid: string;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -7041,7 +7012,6 @@ export namespace GMime {
                 len: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type StreamMemClass = typeof StreamMem;

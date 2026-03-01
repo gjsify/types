@@ -296,9 +296,7 @@ export namespace Thunarx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             label: string;
             label_widget: Gtk.Widget;
             labelWidget: Gtk.Widget;
@@ -905,7 +903,8 @@ export namespace Thunarx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.TypeModule.ConstructorProps,
+            extends
+                GObject.TypeModule.ConstructorProps,
                 GObject.TypePlugin.ConstructorProps,
                 ProviderPlugin.ConstructorProps {}
     }
@@ -1038,6 +1037,8 @@ export namespace Thunarx {
          * @returns the new or existing type id.
          */
         register_enum(name: string, const_static_values: GObject.EnumValue): GObject.GType;
+        // Conflicted with GObject.TypeModule.register_enum
+        register_enum(...args: never[]): any;
         /**
          * Looks up or registers a flags type that is implemented with a particular type `plugin`. If a type with name
          * qname was previously registered, the #GType identifier for the type is returned, otherwise the type is newly
@@ -1049,6 +1050,8 @@ export namespace Thunarx {
          * @returns the new or existing type id.
          */
         register_flags(name: string, const_static_values: GObject.FlagsValue): GObject.GType;
+        // Conflicted with GObject.TypeModule.register_flags
+        register_flags(...args: never[]): any;
         /**
          * Looks up or registers a type that is implemented with a particular type `plugin`. If a type with name `type_name`
          * was previously registered, the #GType identifier for the type is returned, otherwise the type is newly registered,
@@ -1649,7 +1652,8 @@ export namespace Thunarx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -2502,18 +2506,10 @@ export namespace Thunarx {
     type MenuItemClass = typeof MenuItem;
     abstract class MenuItemPrivate {
         static $gtype: GObject.GType<MenuItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class MenuPrivate {
         static $gtype: GObject.GType<MenuPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MenuProviderIface = typeof MenuProvider;
@@ -2521,10 +2517,6 @@ export namespace Thunarx {
     type PropertyPageClass = typeof PropertyPage;
     abstract class PropertyPagePrivate {
         static $gtype: GObject.GType<PropertyPagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PropertyPageProviderIface = typeof PropertyPageProvider;
@@ -2534,10 +2526,6 @@ export namespace Thunarx {
     type RenamerClass = typeof Renamer;
     abstract class RenamerPrivate {
         static $gtype: GObject.GType<RenamerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RenamerProviderIface = typeof RenamerProvider;

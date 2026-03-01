@@ -790,10 +790,6 @@ export namespace GstInterfaces {
         // Fields
 
         balance_type: ColorBalanceType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MixerClass {
@@ -802,10 +798,6 @@ export namespace GstInterfaces {
         // Fields
 
         mixer_type: MixerType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MixerOptionsClass = typeof MixerOptions;
@@ -816,10 +808,6 @@ export namespace GstInterfaces {
     type TunerChannelClass = typeof TunerChannel;
     class TunerClass {
         static $gtype: GObject.GType<TunerClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TunerNormClass = typeof TunerNorm;
@@ -829,10 +817,6 @@ export namespace GstInterfaces {
      */
     class XOverlayClass {
         static $gtype: GObject.GType<XOverlayClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace ColorBalance {

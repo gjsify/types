@@ -69,8 +69,7 @@ export namespace Peas {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends GObject.Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             loaded_plugins: string[];
             loadedPlugins: string[];
             nonglobal_loaders: boolean;
@@ -987,8 +986,7 @@ export namespace Peas {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends GObject.Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             construct_properties: any;
             constructProperties: any;
             engine: Engine;

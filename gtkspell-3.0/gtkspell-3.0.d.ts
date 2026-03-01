@@ -45,7 +45,6 @@ export namespace GtkSpell {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -212,10 +211,6 @@ export namespace GtkSpell {
     type CheckerClass = typeof Checker;
     abstract class CheckerPrivate {
         static $gtype: GObject.GType<CheckerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

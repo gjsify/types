@@ -142,7 +142,8 @@ export namespace OsmGpsMap {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.DrawingArea.ConstructorProps,
+            extends
+                Gtk.DrawingArea.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             auto_center: boolean;
@@ -1999,20 +2000,12 @@ export namespace OsmGpsMap {
     type MapImageClass = typeof MapImage;
     abstract class MapImagePrivate {
         static $gtype: GObject.GType<MapImagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MapLayerIface = typeof MapLayer;
     type MapOsdClass = typeof MapOsd;
     abstract class MapOsdPrivate {
         static $gtype: GObject.GType<MapOsdPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MapPoint {
@@ -2031,7 +2024,6 @@ export namespace OsmGpsMap {
                 rlon: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static new_degrees(lat: number, lon: number): MapPoint;
 
@@ -2054,27 +2046,15 @@ export namespace OsmGpsMap {
     type MapPolygonClass = typeof MapPolygon;
     abstract class MapPolygonPrivate {
         static $gtype: GObject.GType<MapPolygonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class MapPrivate {
         static $gtype: GObject.GType<MapPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MapTrackClass = typeof MapTrack;
     abstract class MapTrackPrivate {
         static $gtype: GObject.GType<MapTrackPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace MapLayer {

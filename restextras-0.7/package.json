@@ -1,6 +1,6 @@
 {
     "name": "@girs/restextras-0.7",
-    "version": "0.7.0-4.0.0-beta.38",
+    "version": "0.7.0-4.0.0-beta.39",
     "description": "GJS TypeScript type definitions for RestExtras-0.7, generated from library version 0.7.0",
     "type": "module",
     "module": "restextras-0.7.js",
@@ -31,14 +31,14 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-beta.38",
-      "@girs/libxml2-2.0": "2.0.0-4.0.0-beta.38",
-      "@girs/rest-0.7": "0.7.0-4.0.0-beta.38",
-      "@girs/soup-2.4": "2.74.3-4.0.0-beta.38",
-      "@girs/gio-2.0": "2.86.0-4.0.0-beta.38",
-      "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38",
-      "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
-      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.38"    },
+      "@girs/gjs": "4.0.0-beta.39",
+      "@girs/libxml2-2.0": "2.0.0-4.0.0-beta.39",
+      "@girs/rest-0.7": "0.7.0-4.0.0-beta.39",
+      "@girs/soup-2.4": "2.74.3-4.0.0-beta.39",
+      "@girs/gio-2.0": "2.86.4-4.0.0-beta.39",
+      "@girs/gobject-2.0": "2.86.4-4.0.0-beta.39",
+      "@girs/glib-2.0": "2.86.4-4.0.0-beta.39",
+      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.39"    },
     "devDependencies": {
       "typescript": "*"
     },

@@ -148,10 +148,6 @@ export namespace ClutterX11 {
     }
     abstract class XInputDevice {
         static $gtype: GObject.GType<XInputDevice>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

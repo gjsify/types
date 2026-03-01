@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./libsitra-0.1.d.ts"],
+    "readme": "./README.md",
+    "name": "Libsitra-0.1",
+    "tsconfig": "./tsconfig.json"
+}
+

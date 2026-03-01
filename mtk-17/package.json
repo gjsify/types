@@ -1,6 +1,6 @@
 {
     "name": "@girs/mtk-17",
-    "version": "17.0.0-4.0.0-beta.38",
+    "version": "17.0.0-4.0.0-beta.39",
     "description": "GJS TypeScript type definitions for Mtk-17, generated from library version 17.0.0",
     "type": "module",
     "module": "mtk-17.js",
@@ -31,10 +31,10 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-beta.38",
-      "@girs/graphene-1.0": "1.0.0-4.0.0-beta.38",
-      "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38",
-      "@girs/glib-2.0": "2.86.0-4.0.0-beta.38"    },
+      "@girs/gjs": "4.0.0-beta.39",
+      "@girs/graphene-1.0": "1.0.0-4.0.0-beta.39",
+      "@girs/gobject-2.0": "2.86.4-4.0.0-beta.39",
+      "@girs/glib-2.0": "2.86.4-4.0.0-beta.39"    },
     "devDependencies": {
       "typescript": "*"
     },

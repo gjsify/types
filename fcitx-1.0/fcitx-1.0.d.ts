@@ -303,7 +303,8 @@ export namespace Fcitx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps {
@@ -1230,7 +1231,8 @@ export namespace Fcitx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps {}
@@ -2076,19 +2078,11 @@ export namespace Fcitx {
     type ClientClass = typeof Client;
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConnectionClass = typeof Connection;
     abstract class ConnectionPrivate {
         static $gtype: GObject.GType<ConnectionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2114,7 +2108,6 @@ export namespace Fcitx {
                 enable: boolean;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](name: string, unique_name: string, langcode: string, enable: boolean): IMItem;
     }
@@ -2141,7 +2134,6 @@ export namespace Fcitx {
                 langcode: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class PreeditItem {
@@ -2160,7 +2152,6 @@ export namespace Fcitx {
                 type: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**

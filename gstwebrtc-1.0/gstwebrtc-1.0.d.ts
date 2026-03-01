@@ -187,7 +187,6 @@ export namespace GstWebRTC {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1494,7 +1493,6 @@ export namespace GstWebRTC {
                 _gst_reserved: any[];
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -1526,7 +1524,6 @@ export namespace GstWebRTC {
         // Constructors
 
         constructor(type: WebRTCSDPType, sdp: GstSdp.SDPMessage);
-        _init(...args: any[]): void;
 
         static ['new'](type: WebRTCSDPType, sdp: GstSdp.SDPMessage): WebRTCSessionDescription;
 

@@ -463,7 +463,6 @@ export namespace WebKit {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -497,7 +496,6 @@ export namespace WebKit {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -688,7 +686,6 @@ export namespace WebKit {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -778,7 +775,6 @@ export namespace WebKit {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -857,7 +853,6 @@ export namespace WebKit {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -995,7 +990,6 @@ export namespace WebKit {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1029,7 +1023,6 @@ export namespace WebKit {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1130,7 +1123,6 @@ export namespace WebKit {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1208,7 +1200,6 @@ export namespace WebKit {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1259,7 +1250,6 @@ export namespace WebKit {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1344,7 +1334,6 @@ export namespace WebKit {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -13056,7 +13045,8 @@ export namespace WebKit {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends WebViewBase.ConstructorProps,
+            extends
+                WebViewBase.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -15322,7 +15312,8 @@ export namespace WebKit {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {}
@@ -17313,7 +17304,6 @@ export namespace WebKit {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ApplicationInfo;
 
@@ -17388,7 +17378,6 @@ export namespace WebKit {
         // Constructors
 
         constructor(username: string, password: string, persistence: CredentialPersistence);
-        _init(...args: any[]): void;
 
         static ['new'](username: string, password: string, persistence: CredentialPersistence): Credential;
 
@@ -17478,10 +17467,6 @@ export namespace WebKit {
      */
     abstract class Feature {
         static $gtype: GObject.GType<Feature>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -17577,10 +17562,6 @@ export namespace WebKit {
     abstract class FeatureList {
         static $gtype: GObject.GType<FeatureList>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -17628,7 +17609,6 @@ export namespace WebKit {
         // Constructors
 
         constructor(latitude: number, longitude: number, accuracy: number);
-        _init(...args: any[]): void;
 
         static ['new'](latitude: number, longitude: number, accuracy: number): GeolocationPosition;
 
@@ -17682,10 +17662,6 @@ export namespace WebKit {
     abstract class ITPFirstParty {
         static $gtype: GObject.GType<ITPFirstParty>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -17732,10 +17708,6 @@ export namespace WebKit {
     abstract class ITPThirdParty {
         static $gtype: GObject.GType<ITPThirdParty>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -17768,10 +17740,6 @@ export namespace WebKit {
     type InputMethodContextClass = typeof InputMethodContext;
     abstract class InputMethodContextPrivate {
         static $gtype: GObject.GType<InputMethodContextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -17783,7 +17751,6 @@ export namespace WebKit {
         // Constructors
 
         constructor(start_offset: number, end_offset: number);
-        _init(...args: any[]): void;
 
         static ['new'](start_offset: number, end_offset: number): InputMethodUnderline;
 
@@ -17837,7 +17804,6 @@ export namespace WebKit {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): MemoryPressureSettings;
 
@@ -17934,10 +17900,6 @@ export namespace WebKit {
     abstract class NavigationAction {
         static $gtype: GObject.GType<NavigationAction>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -18014,7 +17976,6 @@ export namespace WebKit {
         // Constructors
 
         constructor(default_proxy_uri?: string | null, ignore_hosts?: string[] | null);
-        _init(...args: any[]): void;
 
         static ['new'](default_proxy_uri?: string | null, ignore_hosts?: string[] | null): NetworkProxySettings;
 
@@ -18055,10 +18016,6 @@ export namespace WebKit {
      */
     abstract class OptionMenuItem {
         static $gtype: GObject.GType<OptionMenuItem>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -18119,10 +18076,6 @@ export namespace WebKit {
     abstract class PermissionStateQuery {
         static $gtype: GObject.GType<PermissionStateQuery>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -18161,10 +18114,6 @@ export namespace WebKit {
     type PolicyDecisionClass = typeof PolicyDecision;
     abstract class PolicyDecisionPrivate {
         static $gtype: GObject.GType<PolicyDecisionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PrintOperationClass = typeof PrintOperation;
@@ -18174,10 +18123,6 @@ export namespace WebKit {
      */
     abstract class ScriptDialog {
         static $gtype: GObject.GType<ScriptDialog>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -18259,10 +18204,6 @@ export namespace WebKit {
     abstract class ScriptMessageReply {
         static $gtype: GObject.GType<ScriptMessageReply>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -18311,7 +18252,6 @@ export namespace WebKit {
         // Constructors
 
         constructor(protocol: string, host: string, port: number);
-        _init(...args: any[]): void;
 
         static ['new'](protocol: string, host: string, port: number): SecurityOrigin;
 
@@ -18380,10 +18320,6 @@ export namespace WebKit {
     abstract class UserContentFilter {
         static $gtype: GObject.GType<UserContentFilter>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -18430,7 +18366,6 @@ export namespace WebKit {
             allow_list?: string[] | null,
             block_list?: string[] | null,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             source: string,
@@ -18483,7 +18418,6 @@ export namespace WebKit {
             allow_list?: string[] | null,
             block_list?: string[] | null,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             source: string,
@@ -18536,7 +18470,6 @@ export namespace WebKit {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static new_all_hosts_and_schemes(): WebExtensionMatchPattern;
 
@@ -18627,19 +18560,11 @@ export namespace WebKit {
     type WebViewBaseClass = typeof WebViewBase;
     abstract class WebViewBasePrivate {
         static $gtype: GObject.GType<WebViewBasePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WebViewClass = typeof WebView;
     abstract class WebViewPrivate {
         static $gtype: GObject.GType<WebViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -18651,7 +18576,6 @@ export namespace WebKit {
         // Constructors
 
         constructor(data: GLib.Bytes | Uint8Array);
-        _init(...args: any[]): void;
 
         static ['new'](data: GLib.Bytes | Uint8Array): WebViewSessionState;
 
@@ -18699,10 +18623,6 @@ export namespace WebKit {
      */
     abstract class WebsiteData {
         static $gtype: GObject.GType<WebsiteData>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 

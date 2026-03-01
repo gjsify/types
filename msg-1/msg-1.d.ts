@@ -43,7 +43,6 @@ export namespace Msg {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class MailFolderType {
@@ -61,10 +60,6 @@ export namespace Msg {
         static ARCHIVE: number;
         static OTHER: number;
         static MAX: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     const API_ENDPOINT: string;
@@ -2466,18 +2461,10 @@ export namespace Msg {
 
     class AuthorizerInterface {
         static $gtype: GObject.GType<AuthorizerInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class DriveClass {
         static $gtype: GObject.GType<DriveClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class DriveItemClass {
@@ -2486,138 +2473,70 @@ export namespace Msg {
         // Fields
 
         padding: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class DriveItemFileClass {
         static $gtype: GObject.GType<DriveItemFileClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class DriveItemFolderClass {
         static $gtype: GObject.GType<DriveItemFolderClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class DriveServiceClass {
         static $gtype: GObject.GType<DriveServiceClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class GoaAuthorizerClass {
         static $gtype: GObject.GType<GoaAuthorizerClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class GoaAuthorizerPrivate {
         static $gtype: GObject.GType<GoaAuthorizerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class InputStreamClass {
         static $gtype: GObject.GType<InputStreamClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class InputStreamPrivate {
         static $gtype: GObject.GType<InputStreamPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MailFolderClass {
         static $gtype: GObject.GType<MailFolderClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MailMessageClass {
         static $gtype: GObject.GType<MailMessageClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MailServiceClass {
         static $gtype: GObject.GType<MailServiceClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class OAuth2AuthorizerClass {
         static $gtype: GObject.GType<OAuth2AuthorizerClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class OAuth2AuthorizerPrivate {
         static $gtype: GObject.GType<OAuth2AuthorizerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ServiceClass {
         static $gtype: GObject.GType<ServiceClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class UserClass {
         static $gtype: GObject.GType<UserClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class UserContactFolderClass {
         static $gtype: GObject.GType<UserContactFolderClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class UserServiceClass {
         static $gtype: GObject.GType<UserServiceClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _DriveItemFileClass {
@@ -2626,10 +2545,6 @@ export namespace Msg {
         // Fields
 
         padding: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _DriveItemFolderClass {
@@ -2638,10 +2553,6 @@ export namespace Msg {
         // Fields
 
         padding: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Authorizer {

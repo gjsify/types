@@ -3697,10 +3697,6 @@ export namespace Xdp {
     abstract class Parent {
         static $gtype: GObject.GType<Parent>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**

@@ -119,9 +119,7 @@ export namespace EpcUi {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             anonymous: boolean;
             anonymous_allowed: boolean;
             anonymousAllowed: boolean;
@@ -726,9 +724,7 @@ export namespace EpcUi {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Window.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             message: string;
             progress: number;
             title: string;
@@ -1241,19 +1237,11 @@ export namespace EpcUi {
     type PasswordDialogClass = typeof PasswordDialog;
     abstract class PasswordDialogPrivate {
         static $gtype: GObject.GType<PasswordDialogPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ProgressWindowClass = typeof ProgressWindow;
     abstract class ProgressWindowPrivate {
         static $gtype: GObject.GType<ProgressWindowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

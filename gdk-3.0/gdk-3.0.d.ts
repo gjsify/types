@@ -1031,7 +1031,6 @@ export namespace Gdk {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -11712,10 +11711,6 @@ export namespace Gdk {
     abstract class Atom {
         static $gtype: GObject.GType<Atom>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -11772,7 +11767,6 @@ export namespace Gdk {
                 blue: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -11842,10 +11836,6 @@ export namespace Gdk {
         type: EventType;
         window: Window;
         send_event: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -11900,10 +11890,6 @@ export namespace Gdk {
         device: Device;
         x_root: number;
         y_root: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -11921,10 +11907,6 @@ export namespace Gdk {
         y: number;
         width: number;
         height: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -11948,10 +11930,6 @@ export namespace Gdk {
         detail: NotifyType;
         focus: boolean;
         state: ModifierType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -11969,10 +11947,6 @@ export namespace Gdk {
         time: number;
         x_root: number;
         y_root: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -11989,10 +11963,6 @@ export namespace Gdk {
         send_event: number;
         area: Rectangle;
         count: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -12007,10 +11977,6 @@ export namespace Gdk {
         window: Window;
         send_event: number;
         'in': number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -12031,10 +11997,6 @@ export namespace Gdk {
         keyboard: boolean;
         implicit: boolean;
         grab_window: Window;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -12056,10 +12018,6 @@ export namespace Gdk {
         hardware_keycode: number;
         group: number;
         is_modifier: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -12082,10 +12040,6 @@ export namespace Gdk {
         device: Device;
         x_root: number;
         y_root: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -12105,10 +12059,6 @@ export namespace Gdk {
         reason: OwnerChange;
         time: number;
         selection_time: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -12127,10 +12077,6 @@ export namespace Gdk {
         index: number;
         mode: number;
         value: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -12148,10 +12094,6 @@ export namespace Gdk {
         group: number;
         button: number;
         mode: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -12168,10 +12110,6 @@ export namespace Gdk {
         time: number;
         group: number;
         mode: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -12187,10 +12125,6 @@ export namespace Gdk {
         send_event: number;
         time: number;
         state: PropertyState;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -12214,10 +12148,6 @@ export namespace Gdk {
         send_event: number;
         time: number;
         device: Device;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -12249,10 +12179,6 @@ export namespace Gdk {
         delta_x: number;
         delta_y: number;
         is_stop: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -12269,18 +12195,10 @@ export namespace Gdk {
         send_event: number;
         time: number;
         requestor: Window;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class EventSequence {
         static $gtype: GObject.GType<EventSequence>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -12296,10 +12214,6 @@ export namespace Gdk {
         send_event: number;
         action: SettingAction;
         name: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -12331,10 +12245,6 @@ export namespace Gdk {
         device: Device;
         x_root: number;
         y_root: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -12360,10 +12270,6 @@ export namespace Gdk {
         x_root: number;
         y_root: number;
         state: ModifierType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -12387,10 +12293,6 @@ export namespace Gdk {
         x_root: number;
         y_root: number;
         state: ModifierType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -12405,10 +12307,6 @@ export namespace Gdk {
         window: Window;
         send_event: number;
         state: VisibilityState;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -12424,19 +12322,11 @@ export namespace Gdk {
         send_event: number;
         changed_mask: WindowState;
         new_window_state: WindowState;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FrameClockClass = typeof FrameClock;
     abstract class FrameClockPrivate {
         static $gtype: GObject.GType<FrameClockPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -12449,10 +12339,6 @@ export namespace Gdk {
      */
     abstract class FrameTimings {
         static $gtype: GObject.GType<FrameTimings>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -12595,10 +12481,6 @@ export namespace Gdk {
         min_aspect: number;
         max_aspect: number;
         win_gravity: Gravity;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -12622,7 +12504,6 @@ export namespace Gdk {
                 level: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type MonitorClass = typeof Monitor;
@@ -12645,7 +12526,6 @@ export namespace Gdk {
                 y: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -12672,7 +12552,6 @@ export namespace Gdk {
                 alpha: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -12764,7 +12643,6 @@ export namespace Gdk {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -12817,7 +12695,6 @@ export namespace Gdk {
                 axes: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -12842,19 +12719,11 @@ export namespace Gdk {
         wmclass_class: string;
         override_redirect: boolean;
         type_hint: WindowTypeHint;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WindowClass = typeof Window;
     abstract class WindowRedirect {
         static $gtype: GObject.GType<WindowRedirect>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -12905,7 +12774,6 @@ export namespace Gdk {
         // Constructors
 
         constructor(type: EventType);
-        _init(...args: any[]): void;
 
         static ['new'](type: EventType): Event;
 

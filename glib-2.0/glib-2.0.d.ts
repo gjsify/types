@@ -1198,7 +1198,6 @@ export namespace GLib {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1291,7 +1290,6 @@ export namespace GLib {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1647,7 +1645,6 @@ export namespace GLib {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1698,7 +1695,6 @@ export namespace GLib {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1798,7 +1794,6 @@ export namespace GLib {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1876,7 +1871,6 @@ export namespace GLib {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1959,7 +1953,6 @@ export namespace GLib {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2079,7 +2072,6 @@ export namespace GLib {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2365,7 +2357,6 @@ export namespace GLib {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2419,7 +2410,6 @@ export namespace GLib {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace SliceConfig {
@@ -2531,7 +2521,6 @@ export namespace GLib {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2634,7 +2623,6 @@ export namespace GLib {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4063,7 +4051,6 @@ export namespace GLib {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4302,7 +4289,6 @@ export namespace GLib {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     const ALLOCATOR_LIST: number;
@@ -15423,10 +15409,6 @@ export namespace GLib {
     abstract class Allocator {
         static $gtype: GObject.GType<Allocator>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         free(): void;
@@ -15451,7 +15433,6 @@ export namespace GLib {
                 len: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -15461,10 +15442,6 @@ export namespace GLib {
      */
     abstract class AsyncQueue {
         static $gtype: GObject.GType<AsyncQueue>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -15799,7 +15776,6 @@ export namespace GLib {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): BookmarkFile;
 
@@ -16364,7 +16340,6 @@ export namespace GLib {
                 len: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -16538,7 +16513,6 @@ export namespace GLib {
         // Constructors
 
         constructor(data?: Uint8Array | null);
-        _init(...args: any[]): void;
 
         static ['new'](data?: Uint8Array | null): Bytes;
 
@@ -16704,10 +16678,6 @@ export namespace GLib {
     abstract class Cache {
         static $gtype: GObject.GType<Cache>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -16778,7 +16748,6 @@ export namespace GLib {
         // Constructors
 
         constructor(checksum_type: ChecksumType);
-        _init(...args: any[]): void;
 
         static ['new'](checksum_type: ChecksumType): Checksum;
 
@@ -16859,10 +16828,6 @@ export namespace GLib {
         prefix: string;
         cache: any[];
         strncmp_func: CompletionStrncmpFunc;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -16968,7 +16933,6 @@ export namespace GLib {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -17093,10 +17057,6 @@ export namespace GLib {
      */
     abstract class Data {
         static $gtype: GObject.GType<Data>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -17164,7 +17124,6 @@ export namespace GLib {
                 year: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): Date;
 
@@ -17594,7 +17553,6 @@ export namespace GLib {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](
             tz: TimeZone,
@@ -18139,7 +18097,6 @@ export namespace GLib {
                 value: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -18151,7 +18108,6 @@ export namespace GLib {
         // Constructors
 
         constructor(path: string, flags: number);
-        _init(...args: any[]): void;
 
         static open(path: string, flags: number): Dir;
 
@@ -18252,7 +18208,6 @@ export namespace GLib {
                 message: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         static new_literal(domain: { new (...args: any[]): Error } | Quark, code: number, message: string): Error;
 
@@ -18619,7 +18574,6 @@ export namespace GLib {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -18707,7 +18661,6 @@ export namespace GLib {
         // Constructors
 
         constructor(digest_type: ChecksumType, key: number, key_len: number);
-        _init(...args: any[]): void;
 
         static ['new'](digest_type: ChecksumType, key: number, key_len: number): Hmac;
 
@@ -18735,10 +18688,6 @@ export namespace GLib {
         flags: number;
         func: any;
         destroy: DestroyNotify;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -18810,10 +18759,6 @@ export namespace GLib {
         dummy3: any;
         finalize_hook: HookFinalizeFunc;
         dummy: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -18897,7 +18842,6 @@ export namespace GLib {
         // Constructors
 
         constructor(filename: string, mode: string);
-        _init(...args: any[]): void;
 
         static new_file(filename: string, mode: string): IOChannel;
 
@@ -19190,10 +19134,6 @@ export namespace GLib {
      */
     class IOFuncs {
         static $gtype: GObject.GType<IOFuncs>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -19337,7 +19277,6 @@ export namespace GLib {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): KeyFile;
 
@@ -19893,7 +19832,6 @@ export namespace GLib {
                 data: any;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -19928,7 +19866,6 @@ export namespace GLib {
                 length: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -19941,7 +19878,6 @@ export namespace GLib {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): MainContext;
 
@@ -20334,7 +20270,6 @@ export namespace GLib {
         // Constructors
 
         constructor(context: MainContext | null, is_running: boolean);
-        _init(...args: any[]): void;
 
         static ['new'](context: MainContext | null, is_running: boolean): MainLoop;
 
@@ -20396,7 +20331,6 @@ export namespace GLib {
         // Constructors
 
         constructor(filename: string, writable: boolean);
-        _init(...args: any[]): void;
 
         static ['new'](filename: string, writable: boolean): MappedFile;
 
@@ -20461,7 +20395,6 @@ export namespace GLib {
         // Constructors
 
         constructor(parser: MarkupParser, flags: MarkupParseFlags, user_data?: any | null);
-        _init(...args: any[]): void;
 
         static ['new'](parser: MarkupParser, flags: MarkupParseFlags, user_data?: any | null): MarkupParseContext;
 
@@ -20708,10 +20641,6 @@ export namespace GLib {
      */
     class MarkupParser {
         static $gtype: GObject.GType<MarkupParser>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -20720,10 +20649,6 @@ export namespace GLib {
      */
     abstract class MatchInfo {
         static $gtype: GObject.GType<MatchInfo>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -21122,10 +21047,6 @@ export namespace GLib {
     abstract class MemChunk {
         static $gtype: GObject.GType<MemChunk>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         static info(): void;
@@ -21150,10 +21071,6 @@ export namespace GLib {
      */
     class MemVTable {
         static $gtype: GObject.GType<MemVTable>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -21165,10 +21082,6 @@ export namespace GLib {
         // Fields
 
         data: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -21281,10 +21194,6 @@ export namespace GLib {
         status: OnceStatus;
         retval: any;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -21375,10 +21284,6 @@ export namespace GLib {
      */
     abstract class OptionContext {
         static $gtype: GObject.GType<OptionContext>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -21626,10 +21531,6 @@ export namespace GLib {
         arg_data: any;
         description: string;
         arg_description: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -21653,7 +21554,6 @@ export namespace GLib {
             user_data?: any | null,
             destroy?: DestroyNotify | null,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             name: string,
@@ -21743,7 +21643,6 @@ export namespace GLib {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -21953,7 +21852,6 @@ export namespace GLib {
         // Constructors
 
         constructor(pattern: string);
-        _init(...args: any[]): void;
 
         static ['new'](pattern: string): PatternSpec;
 
@@ -22035,7 +21933,6 @@ export namespace GLib {
                 revents: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -22059,10 +21956,6 @@ export namespace GLib {
      */
     class Private {
         static $gtype: GObject.GType<Private>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -22115,7 +22008,6 @@ export namespace GLib {
                 len: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -22138,7 +22030,6 @@ export namespace GLib {
                 length: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -22352,7 +22243,6 @@ export namespace GLib {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -22463,7 +22353,6 @@ export namespace GLib {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Rand;
 
@@ -22549,7 +22438,6 @@ export namespace GLib {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -22758,7 +22646,6 @@ export namespace GLib {
         // Constructors
 
         constructor(pattern: string, compile_options: RegexCompileFlags, match_options: RegexMatchFlags);
-        _init(...args: any[]): void;
 
         static ['new'](pattern: string, compile_options: RegexCompileFlags, match_options: RegexMatchFlags): Regex;
 
@@ -23328,10 +23215,6 @@ export namespace GLib {
     abstract class Relation {
         static $gtype: GObject.GType<Relation>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -23382,7 +23265,6 @@ export namespace GLib {
                 data: any;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -23425,10 +23307,6 @@ export namespace GLib {
         next_line: number;
         next_position: number;
         msg_handler: ScannerMsgFunc;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -23641,7 +23519,6 @@ export namespace GLib {
                 store_int64: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -23650,10 +23527,6 @@ export namespace GLib {
      */
     abstract class Sequence {
         static $gtype: GObject.GType<Sequence>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -23972,10 +23845,6 @@ export namespace GLib {
     abstract class SequenceIter {
         static $gtype: GObject.GType<SequenceIter>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -24040,7 +23909,6 @@ export namespace GLib {
         // Constructors
 
         constructor(source_funcs: SourceFuncs, struct_size: number);
-        _init(...args: any[]): void;
 
         static ['new'](source_funcs: SourceFuncs, struct_size: number): Source;
 
@@ -24593,10 +24461,6 @@ export namespace GLib {
      */
     class SourceCallbackFuncs {
         static $gtype: GObject.GType<SourceCallbackFuncs>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -24629,18 +24493,10 @@ export namespace GLib {
         prepare: SourceFuncsPrepareFunc;
         check: SourceFuncsCheckFunc;
         finalize: SourceFuncsFinalizeFunc;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class SourcePrivate {
         static $gtype: GObject.GType<SourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -24651,10 +24507,6 @@ export namespace GLib {
      */
     abstract class StatBuf {
         static $gtype: GObject.GType<StatBuf>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -24687,7 +24539,6 @@ export namespace GLib {
                 allocated_len: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](init?: string | null): String;
 
@@ -24987,10 +24838,6 @@ export namespace GLib {
     abstract class StringChunk {
         static $gtype: GObject.GType<StringChunk>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -25077,7 +24924,6 @@ export namespace GLib {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): StrvBuilder;
 
@@ -25154,10 +25000,6 @@ export namespace GLib {
     abstract class TestCase {
         static $gtype: GObject.GType<TestCase>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -25190,7 +25032,6 @@ export namespace GLib {
                 test_undefined: boolean;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class TestLogBuffer {
@@ -25199,7 +25040,6 @@ export namespace GLib {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -25225,10 +25065,6 @@ export namespace GLib {
         strings: string;
         n_nums: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -25242,10 +25078,6 @@ export namespace GLib {
      */
     abstract class TestSuite {
         static $gtype: GObject.GType<TestSuite>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -25286,7 +25118,6 @@ export namespace GLib {
         // Constructors
 
         constructor(name: string | null, func: ThreadFunc);
-        _init(...args: any[]): void;
 
         static ['new'](name: string | null, func: ThreadFunc): Thread;
 
@@ -25413,10 +25244,6 @@ export namespace GLib {
         func: Func;
         user_data: any;
         exclusive: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -25583,7 +25410,6 @@ export namespace GLib {
                 tv_usec: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -25695,7 +25521,6 @@ export namespace GLib {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](identifier?: string | null): TimeZone;
 
@@ -25817,10 +25642,6 @@ export namespace GLib {
     abstract class Timer {
         static $gtype: GObject.GType<Timer>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -25887,10 +25708,6 @@ export namespace GLib {
     class TrashStack {
         static $gtype: GObject.GType<TrashStack>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -25931,7 +25748,6 @@ export namespace GLib {
         // Constructors
 
         constructor(key_compare_func: CompareFunc);
-        _init(...args: any[]): void;
 
         static new_full(key_compare_func: CompareDataFunc): Tree;
 
@@ -26180,10 +25996,6 @@ export namespace GLib {
     abstract class TreeNode {
         static $gtype: GObject.GType<TreeNode>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -26230,7 +26042,6 @@ export namespace GLib {
                 len: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -26271,7 +26082,6 @@ export namespace GLib {
                 fds: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -26439,10 +26249,6 @@ export namespace GLib {
      */
     abstract class Uri {
         static $gtype: GObject.GType<Uri>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -26945,7 +26751,6 @@ export namespace GLib {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -27026,7 +26831,6 @@ export namespace GLib {
                 v_double: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -27049,7 +26853,6 @@ export namespace GLib {
                 v_float: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -27108,7 +26911,6 @@ export namespace GLib {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -27223,7 +27025,6 @@ export namespace GLib {
                 v_error: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type DateDay = number;

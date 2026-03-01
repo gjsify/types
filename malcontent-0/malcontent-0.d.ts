@@ -113,7 +113,6 @@ export namespace Malcontent {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -599,10 +598,6 @@ export namespace Malcontent {
         allow_user_installation: boolean;
         allow_system_installation: boolean;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -752,7 +747,6 @@ export namespace Malcontent {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): AppFilterBuilder;
 
@@ -871,10 +865,6 @@ export namespace Malcontent {
         daily_start_time: number;
         daily_end_time: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -952,7 +942,6 @@ export namespace Malcontent {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): SessionLimitsBuilder;
 

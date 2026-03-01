@@ -116,7 +116,8 @@ export namespace FolksDummy {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Persona.ConstructorProps,
+            extends
+                Persona.ConstructorProps,
                 Folks.AntiLinkable.ConstructorProps,
                 Folks.AvatarDetails.ConstructorProps,
                 Folks.BirthdayDetails.ConstructorProps,
@@ -1221,37 +1222,21 @@ export namespace FolksDummy {
     type BackendClass = typeof Backend;
     abstract class BackendPrivate {
         static $gtype: GObject.GType<BackendPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FullPersonaClass = typeof FullPersona;
     abstract class FullPersonaPrivate {
         static $gtype: GObject.GType<FullPersonaPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PersonaStoreClass = typeof PersonaStore;
     abstract class PersonaStorePrivate {
         static $gtype: GObject.GType<PersonaStorePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PersonaClass = typeof Persona;
     abstract class PersonaPrivate {
         static $gtype: GObject.GType<PersonaPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

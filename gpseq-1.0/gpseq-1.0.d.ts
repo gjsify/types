@@ -33,7 +33,6 @@ export namespace Gpseq {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class MapError extends GLib.Error {
@@ -46,7 +45,6 @@ export namespace Gpseq {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class OptionalError extends GLib.Error {
@@ -59,7 +57,6 @@ export namespace Gpseq {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     function collectors_to_generic_array(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): Collector;
@@ -2002,9 +1999,7 @@ export namespace Gpseq {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Gee.Hashable.ConstructorProps,
-                Result.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gee.Hashable.ConstructorProps, Result.ConstructorProps {
             g_type: GObject.GType;
             gType: GObject.GType;
             g_dup_func: GObject.BoxedCopyFunc;
@@ -4691,9 +4686,7 @@ export namespace Gpseq {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Gee.Traversable.ConstructorProps,
-                Gee.Iterable.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gee.Traversable.ConstructorProps, Gee.Iterable.ConstructorProps {
             g_type: GObject.GType;
             gType: GObject.GType;
             g_dup_func: GObject.BoxedCopyFunc;
@@ -7176,181 +7169,101 @@ export namespace Gpseq {
     type ArraySpliteratorClass = typeof ArraySpliterator;
     abstract class ArraySpliteratorPrivate {
         static $gtype: GObject.GType<ArraySpliteratorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ForkJoinTaskClass = typeof ForkJoinTask;
     abstract class ForkJoinTaskPrivate {
         static $gtype: GObject.GType<ForkJoinTaskPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ForkJoinTaskSharedResultClass = typeof ForkJoinTaskSharedResult;
     abstract class ForkJoinTaskSharedResultPrivate {
         static $gtype: GObject.GType<ForkJoinTaskSharedResultPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FuncTaskClass = typeof FuncTask;
     abstract class FuncTaskPrivate {
         static $gtype: GObject.GType<FuncTaskPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FutureClass = typeof Future;
     abstract class FuturePrivate {
         static $gtype: GObject.GType<FuturePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GenericArraySpliteratorClass = typeof GenericArraySpliterator;
     abstract class GenericArraySpliteratorPrivate {
         static $gtype: GObject.GType<GenericArraySpliteratorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IteratorSpliteratorClass = typeof IteratorSpliterator;
     abstract class IteratorSpliteratorPrivate {
         static $gtype: GObject.GType<IteratorSpliteratorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ListSpliteratorClass = typeof ListSpliterator;
     abstract class ListSpliteratorPrivate {
         static $gtype: GObject.GType<ListSpliteratorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OptionalClass = typeof Optional;
     abstract class OptionalPrivate {
         static $gtype: GObject.GType<OptionalPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PromiseClass = typeof Promise;
     abstract class PromisePrivate {
         static $gtype: GObject.GType<PromisePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SeqClass = typeof Seq;
     abstract class SeqPrivate {
         static $gtype: GObject.GType<SeqPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SpliteratorTaskClass = typeof SpliteratorTask;
     abstract class SpliteratorTaskPrivate {
         static $gtype: GObject.GType<SpliteratorTaskPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SubArrayClass = typeof SubArray;
     abstract class SubArrayPrivate {
         static $gtype: GObject.GType<SubArrayPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SubArraySpliteratorClass = typeof SubArraySpliterator;
     abstract class SubArraySpliteratorPrivate {
         static $gtype: GObject.GType<SubArraySpliteratorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SupplierSpliteratorClass = typeof SupplierSpliterator;
     abstract class SupplierSpliteratorPrivate {
         static $gtype: GObject.GType<SupplierSpliteratorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TaskEnvClass = typeof TaskEnv;
     abstract class TaskEnvPrivate {
         static $gtype: GObject.GType<TaskEnvPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WaitGroupClass = typeof WaitGroup;
     abstract class WaitGroupPrivate {
         static $gtype: GObject.GType<WaitGroupPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WorkerPoolClass = typeof WorkerPool;
     abstract class WorkerPoolPrivate {
         static $gtype: GObject.GType<WorkerPoolPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WorkerThreadClass = typeof WorkerThread;
     abstract class WorkerThreadPrivate {
         static $gtype: GObject.GType<WorkerThreadPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WrapperClass = typeof Wrapper;
     abstract class WrapperPrivate {
         static $gtype: GObject.GType<WrapperPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ChannelIface = typeof Channel;
@@ -7366,10 +7279,6 @@ export namespace Gpseq {
     type ThreadFactoryIface = typeof ThreadFactory;
     class CacheLinePad {
         static $gtype: GObject.GType<CacheLinePad>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Channel {

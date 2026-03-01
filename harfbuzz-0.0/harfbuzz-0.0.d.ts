@@ -9187,10 +9187,6 @@ export namespace HarfBuzz {
         name_id: ot_name_id_t;
         enable: aat_layout_feature_selector_t;
         disable: aat_layout_feature_selector_t;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9200,10 +9196,6 @@ export namespace HarfBuzz {
      */
     abstract class blob_t {
         static $gtype: GObject.GType<blob_t>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9212,10 +9204,6 @@ export namespace HarfBuzz {
      */
     abstract class buffer_t {
         static $gtype: GObject.GType<buffer_t>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9239,10 +9227,6 @@ export namespace HarfBuzz {
         reserved6: any;
         reserved7: any;
         reserved8: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9274,7 +9258,6 @@ export namespace HarfBuzz {
                 color: color_t;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9287,10 +9270,6 @@ export namespace HarfBuzz {
      */
     abstract class draw_funcs_t {
         static $gtype: GObject.GType<draw_funcs_t>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9318,7 +9297,6 @@ export namespace HarfBuzz {
                 current_y: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9326,10 +9304,6 @@ export namespace HarfBuzz {
      */
     abstract class face_t {
         static $gtype: GObject.GType<face_t>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9359,7 +9333,6 @@ export namespace HarfBuzz {
                 end: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -9398,7 +9371,6 @@ export namespace HarfBuzz {
                 line_gap: position_t;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9413,10 +9385,6 @@ export namespace HarfBuzz {
      */
     abstract class font_funcs_t {
         static $gtype: GObject.GType<font_funcs_t>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9424,10 +9392,6 @@ export namespace HarfBuzz {
      */
     abstract class font_t {
         static $gtype: GObject.GType<font_t>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9455,7 +9419,6 @@ export namespace HarfBuzz {
                 height: position_t;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9478,7 +9441,6 @@ export namespace HarfBuzz {
                 cluster: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9506,7 +9468,6 @@ export namespace HarfBuzz {
                 y_offset: position_t;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9515,10 +9476,6 @@ export namespace HarfBuzz {
      */
     abstract class language_t {
         static $gtype: GObject.GType<language_t>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -9534,10 +9491,6 @@ export namespace HarfBuzz {
      */
     abstract class map_t {
         static $gtype: GObject.GType<map_t>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9563,7 +9516,6 @@ export namespace HarfBuzz {
                 color_index: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9581,10 +9533,6 @@ export namespace HarfBuzz {
         end_connector_length: position_t;
         full_advance: position_t;
         flags: ot_math_glyph_part_flags_t;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9606,7 +9554,6 @@ export namespace HarfBuzz {
                 advance: position_t;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9628,7 +9575,6 @@ export namespace HarfBuzz {
                 kern_value: position_t;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9640,10 +9586,6 @@ export namespace HarfBuzz {
         // Fields
 
         name_id: ot_name_id_t;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9666,10 +9608,6 @@ export namespace HarfBuzz {
         min_value: number;
         default_value: number;
         max_value: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9697,7 +9635,6 @@ export namespace HarfBuzz {
                 max_value: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9724,10 +9661,6 @@ export namespace HarfBuzz {
      */
     abstract class paint_funcs_t {
         static $gtype: GObject.GType<paint_funcs_t>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9742,10 +9675,6 @@ export namespace HarfBuzz {
 
         direction: direction_t;
         script: script_t;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9756,10 +9685,6 @@ export namespace HarfBuzz {
      */
     abstract class set_t {
         static $gtype: GObject.GType<set_t>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9775,10 +9700,6 @@ export namespace HarfBuzz {
      */
     abstract class shape_plan_t {
         static $gtype: GObject.GType<shape_plan_t>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9793,10 +9714,6 @@ export namespace HarfBuzz {
      */
     abstract class unicode_funcs_t {
         static $gtype: GObject.GType<unicode_funcs_t>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9808,7 +9725,6 @@ export namespace HarfBuzz {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9832,7 +9748,6 @@ export namespace HarfBuzz {
                 value: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -9870,7 +9785,6 @@ export namespace HarfBuzz {
                 i8: Uint8Array;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class var_num_t {
@@ -9899,7 +9813,6 @@ export namespace HarfBuzz {
                 i8: Uint8Array;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type bool_t = number;

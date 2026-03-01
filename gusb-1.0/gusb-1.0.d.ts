@@ -196,7 +196,6 @@ export namespace GUsb {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2533,10 +2532,6 @@ export namespace GUsb {
     type InterfaceClass = typeof Interface;
     abstract class Source {
         static $gtype: GObject.GType<Source>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 

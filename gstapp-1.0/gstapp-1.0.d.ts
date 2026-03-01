@@ -980,6 +980,7 @@ export namespace GstApp {
             'notify::min-percent': (pspec: GObject.ParamSpec) => void;
             'notify::size': (pspec: GObject.ParamSpec) => void;
             'notify::stream-type': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-eos': (pspec: GObject.ParamSpec) => void;
             'notify::blocksize': (pspec: GObject.ParamSpec) => void;
             'notify::do-timestamp': (pspec: GObject.ParamSpec) => void;
             'notify::num-buffers': (pspec: GObject.ParamSpec) => void;
@@ -2048,19 +2049,11 @@ export namespace GstApp {
     type AppSinkClass = typeof AppSink;
     abstract class AppSinkPrivate {
         static $gtype: GObject.GType<AppSinkPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AppSrcClass = typeof AppSrc;
     abstract class AppSrcPrivate {
         static $gtype: GObject.GType<AppSrcPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

@@ -60,7 +60,6 @@ export namespace Granite {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace WidgetsDynamicNotebookTabBarBehavior {
@@ -356,8 +355,7 @@ export namespace Granite {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                ServicesSettingsSerializable.ConstructorProps {}
+            extends GObject.Object.ConstructorProps, ServicesSettingsSerializable.ConstructorProps {}
     }
 
     class DrawingColor extends GObject.Object implements ServicesSettingsSerializable {
@@ -7049,91 +7047,51 @@ export namespace Granite {
     type DrawingBufferSurfaceClass = typeof DrawingBufferSurface;
     abstract class DrawingBufferSurfacePrivate {
         static $gtype: GObject.GType<DrawingBufferSurfacePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DrawingColorClass = typeof DrawingColor;
     abstract class DrawingColorPrivate {
         static $gtype: GObject.GType<DrawingColorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DrawingUtilitiesClass = typeof DrawingUtilities;
     abstract class DrawingUtilitiesPrivate {
         static $gtype: GObject.GType<DrawingUtilitiesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ServicesContractorProxyClass = typeof ServicesContractorProxy;
     abstract class ServicesContractorProxyPrivate {
         static $gtype: GObject.GType<ServicesContractorProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ServicesIconFactoryClass = typeof ServicesIconFactory;
     abstract class ServicesIconFactoryPrivate {
         static $gtype: GObject.GType<ServicesIconFactoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ServicesLoggerClass = typeof ServicesLogger;
     abstract class ServicesLoggerPrivate {
         static $gtype: GObject.GType<ServicesLoggerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ServicesPathsClass = typeof ServicesPaths;
     abstract class ServicesPathsPrivate {
         static $gtype: GObject.GType<ServicesPathsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ServicesSettingsClass = typeof ServicesSettings;
     abstract class ServicesSettingsPrivate {
         static $gtype: GObject.GType<ServicesSettingsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ServicesSimpleCommandClass = typeof ServicesSimpleCommand;
     abstract class ServicesSimpleCommandPrivate {
         static $gtype: GObject.GType<ServicesSimpleCommandPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ServicesSystemClass = typeof ServicesSystem;
     abstract class ServicesSystemPrivate {
         static $gtype: GObject.GType<ServicesSystemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ServicesContractIface = typeof ServicesContract;
@@ -7141,172 +7099,96 @@ export namespace Granite {
     type WidgetsAlertViewClass = typeof WidgetsAlertView;
     abstract class WidgetsAlertViewPrivate {
         static $gtype: GObject.GType<WidgetsAlertViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WidgetsAvatarClass = typeof WidgetsAvatar;
     abstract class WidgetsAvatarPrivate {
         static $gtype: GObject.GType<WidgetsAvatarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WidgetsCellRendererBadgeClass = typeof WidgetsCellRendererBadge;
     abstract class WidgetsCellRendererBadgePrivate {
         static $gtype: GObject.GType<WidgetsCellRendererBadgePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WidgetsCellRendererExpanderClass = typeof WidgetsCellRendererExpander;
     abstract class WidgetsCellRendererExpanderPrivate {
         static $gtype: GObject.GType<WidgetsCellRendererExpanderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WidgetsCollapsiblePanedClass = typeof WidgetsCollapsiblePaned;
     abstract class WidgetsCollapsiblePanedPrivate {
         static $gtype: GObject.GType<WidgetsCollapsiblePanedPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WidgetsCompositedWindowClass = typeof WidgetsCompositedWindow;
     abstract class WidgetsCompositedWindowPrivate {
         static $gtype: GObject.GType<WidgetsCompositedWindowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WidgetsDatePickerClass = typeof WidgetsDatePicker;
     abstract class WidgetsDatePickerPrivate {
         static $gtype: GObject.GType<WidgetsDatePickerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WidgetsTabClass = typeof WidgetsTab;
     abstract class WidgetsTabPrivate {
         static $gtype: GObject.GType<WidgetsTabPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WidgetsDynamicNotebookClass = typeof WidgetsDynamicNotebook;
     abstract class WidgetsDynamicNotebookPrivate {
         static $gtype: GObject.GType<WidgetsDynamicNotebookPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WidgetsModeButtonClass = typeof WidgetsModeButton;
     abstract class WidgetsModeButtonPrivate {
         static $gtype: GObject.GType<WidgetsModeButtonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WidgetsOverlayBarClass = typeof WidgetsOverlayBar;
     abstract class WidgetsOverlayBarPrivate {
         static $gtype: GObject.GType<WidgetsOverlayBarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WidgetsSourceListClass = typeof WidgetsSourceList;
     abstract class WidgetsSourceListPrivate {
         static $gtype: GObject.GType<WidgetsSourceListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WidgetsSourceListItemClass = typeof WidgetsSourceListItem;
     abstract class WidgetsSourceListItemPrivate {
         static $gtype: GObject.GType<WidgetsSourceListItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WidgetsSourceListExpandableItemClass = typeof WidgetsSourceListExpandableItem;
     abstract class WidgetsSourceListExpandableItemPrivate {
         static $gtype: GObject.GType<WidgetsSourceListExpandableItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WidgetsStorageBarClass = typeof WidgetsStorageBar;
     abstract class WidgetsStorageBarPrivate {
         static $gtype: GObject.GType<WidgetsStorageBarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WidgetsTimePickerClass = typeof WidgetsTimePicker;
     abstract class WidgetsTimePickerPrivate {
         static $gtype: GObject.GType<WidgetsTimePickerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WidgetsToastClass = typeof WidgetsToast;
     abstract class WidgetsToastPrivate {
         static $gtype: GObject.GType<WidgetsToastPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WidgetsWelcomeButtonClass = typeof WidgetsWelcomeButton;
     abstract class WidgetsWelcomeButtonPrivate {
         static $gtype: GObject.GType<WidgetsWelcomeButtonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WidgetsWelcomeClass = typeof WidgetsWelcome;
     abstract class WidgetsWelcomePrivate {
         static $gtype: GObject.GType<WidgetsWelcomePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WidgetsSourceListSortableIface = typeof WidgetsSourceListSortable;
@@ -7315,136 +7197,76 @@ export namespace Granite {
     type ApplicationClass = typeof Application;
     abstract class ApplicationPrivate {
         static $gtype: GObject.GType<ApplicationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SettingsPageClass = typeof SettingsPage;
     abstract class SettingsPagePrivate {
         static $gtype: GObject.GType<SettingsPagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SimpleSettingsPageClass = typeof SimpleSettingsPage;
     abstract class SimpleSettingsPagePrivate {
         static $gtype: GObject.GType<SimpleSettingsPagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AccelLabelClass = typeof AccelLabel;
     abstract class AccelLabelPrivate {
         static $gtype: GObject.GType<AccelLabelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AsyncImageClass = typeof AsyncImage;
     abstract class AsyncImagePrivate {
         static $gtype: GObject.GType<AsyncImagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DialogClass = typeof Dialog;
     abstract class DialogPrivate {
         static $gtype: GObject.GType<DialogPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HeaderLabelClass = typeof HeaderLabel;
     abstract class HeaderLabelPrivate {
         static $gtype: GObject.GType<HeaderLabelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HyperTextViewClass = typeof HyperTextView;
     abstract class HyperTextViewPrivate {
         static $gtype: GObject.GType<HyperTextViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MessageDialogClass = typeof MessageDialog;
     abstract class MessageDialogPrivate {
         static $gtype: GObject.GType<MessageDialogPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ModeSwitchClass = typeof ModeSwitch;
     abstract class ModeSwitchPrivate {
         static $gtype: GObject.GType<ModeSwitchPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SeekBarClass = typeof SeekBar;
     abstract class SeekBarPrivate {
         static $gtype: GObject.GType<SeekBarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SettingsSidebarClass = typeof SettingsSidebar;
     abstract class SettingsSidebarPrivate {
         static $gtype: GObject.GType<SettingsSidebarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SettingsClass = typeof Settings;
     abstract class SettingsPrivate {
         static $gtype: GObject.GType<SettingsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SwitchModelButtonClass = typeof SwitchModelButton;
     abstract class SwitchModelButtonPrivate {
         static $gtype: GObject.GType<SwitchModelButtonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValidatedEntryClass = typeof ValidatedEntry;
     abstract class ValidatedEntryPrivate {
         static $gtype: GObject.GType<ValidatedEntryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace ServicesContract {

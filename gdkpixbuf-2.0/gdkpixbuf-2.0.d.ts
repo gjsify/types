@@ -196,7 +196,6 @@ export namespace GdkPixbuf {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -346,9 +345,7 @@ export namespace GdkPixbuf {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Gio.Icon.ConstructorProps,
-                Gio.LoadableIcon.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.Icon.ConstructorProps, Gio.LoadableIcon.ConstructorProps {
             bits_per_sample: number;
             bitsPerSample: number;
             colorspace: Colorspace;
@@ -2741,7 +2738,6 @@ export namespace GdkPixbuf {
                 license: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2890,10 +2886,6 @@ export namespace GdkPixbuf {
         load_animation: PixbufModuleLoadAnimationFunc;
         save: PixbufModuleSaveFunc;
         is_save_option_supported: PixbufModuleSaveOptionSupportedFunc;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2946,7 +2938,6 @@ export namespace GdkPixbuf {
                 relevance: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type PixbufSimpleAnimClass = typeof PixbufSimpleAnim;

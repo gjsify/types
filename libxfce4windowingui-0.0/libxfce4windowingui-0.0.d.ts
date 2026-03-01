@@ -133,9 +133,7 @@ export namespace Libxfce4windowingui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Menu.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Menu.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             window: Libxfce4windowing.Window | any;
         }
     }
@@ -634,10 +632,6 @@ export namespace Libxfce4windowingui {
     type WindowActionMenuClass = typeof WindowActionMenu;
     abstract class WindowActionMenuPrivate {
         static $gtype: GObject.GType<WindowActionMenuPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

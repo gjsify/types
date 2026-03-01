@@ -961,10 +961,6 @@ export namespace GstRtsp {
         scheme: RTSPAuthMethod;
         params: RTSPAuthParam;
         authorization: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -986,7 +982,6 @@ export namespace GstRtsp {
                 value: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -1000,10 +995,6 @@ export namespace GstRtsp {
      */
     abstract class RTSPConnection {
         static $gtype: GObject.GType<RTSPConnection>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1481,10 +1472,6 @@ export namespace GstRtsp {
 
         type: RTSPMsgType;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -1739,7 +1726,6 @@ export namespace GstRtsp {
                 max: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1789,10 +1775,6 @@ export namespace GstRtsp {
 
         type: RTSPTimeType;
         seconds: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1818,7 +1800,6 @@ export namespace GstRtsp {
                 day: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1832,10 +1813,6 @@ export namespace GstRtsp {
         unit: RTSPRangeUnit;
         min2: RTSPTime2;
         max2: RTSPTime2;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1861,10 +1838,6 @@ export namespace GstRtsp {
         client_port: RTSPRange;
         server_port: RTSPRange;
         ssrc: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1939,10 +1912,6 @@ export namespace GstRtsp {
         abspath: string;
         query: string;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -2009,10 +1978,6 @@ export namespace GstRtsp {
      */
     abstract class RTSPWatch {
         static $gtype: GObject.GType<RTSPWatch>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2135,7 +2100,6 @@ export namespace GstRtsp {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
     }
 
     namespace RTSPExtension {

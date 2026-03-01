@@ -101,9 +101,7 @@ export namespace GarconGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Menu.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Menu.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             menu: Garcon.Menu;
             right_click_edits: boolean;
             rightClickEdits: boolean;
@@ -659,10 +657,6 @@ export namespace GarconGtk {
     type MenuClass = typeof Menu;
     abstract class MenuPrivate {
         static $gtype: GObject.GType<MenuPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

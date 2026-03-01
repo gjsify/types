@@ -552,10 +552,6 @@ export namespace GstDxva {
     type DxvaAV1DecoderClass = typeof DxvaAV1Decoder;
     abstract class DxvaAV1DecoderPrivate {
         static $gtype: GObject.GType<DxvaAV1DecoderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class DxvaDecodingArgs {
@@ -586,34 +582,21 @@ export namespace GstDxva {
                 inverse_quantization_matrix_size: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type DxvaH264DecoderClass = typeof DxvaH264Decoder;
     abstract class DxvaH264DecoderPrivate {
         static $gtype: GObject.GType<DxvaH264DecoderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DxvaH265DecoderClass = typeof DxvaH265Decoder;
     abstract class DxvaH265DecoderPrivate {
         static $gtype: GObject.GType<DxvaH265DecoderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DxvaMpeg2DecoderClass = typeof DxvaMpeg2Decoder;
     abstract class DxvaMpeg2DecoderPrivate {
         static $gtype: GObject.GType<DxvaMpeg2DecoderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class DxvaResolution {
@@ -632,25 +615,16 @@ export namespace GstDxva {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type DxvaVp8DecoderClass = typeof DxvaVp8Decoder;
     abstract class DxvaVp8DecoderPrivate {
         static $gtype: GObject.GType<DxvaVp8DecoderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DxvaVp9DecoderClass = typeof DxvaVp9Decoder;
     abstract class DxvaVp9DecoderPrivate {
         static $gtype: GObject.GType<DxvaVp9DecoderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

@@ -2850,27 +2850,15 @@ export namespace Grl {
     type ConfigClass = typeof Config;
     abstract class ConfigPrivate {
         static $gtype: GObject.GType<ConfigPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataClass = typeof Data;
     abstract class DataPrivate {
         static $gtype: GObject.GType<DataPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class LogDomain {
         static $gtype: GObject.GType<LogDomain>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2884,10 +2872,6 @@ export namespace Grl {
     type MediaPluginClass = typeof MediaPlugin;
     abstract class MediaPluginPrivate {
         static $gtype: GObject.GType<MediaPluginPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2908,10 +2892,6 @@ export namespace Grl {
         flags: MetadataResolutionFlags;
         callback: MediaSourceResultCb;
         user_data: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaSourceClass = typeof MediaSource;
@@ -2931,10 +2911,6 @@ export namespace Grl {
         flags: MetadataResolutionFlags;
         callback: MediaSourceMetadataCb;
         user_data: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2953,18 +2929,10 @@ export namespace Grl {
         flags: MetadataResolutionFlags;
         callback: MediaSourceMetadataCb;
         user_data: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class MediaSourcePrivate {
         static $gtype: GObject.GType<MediaSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2985,10 +2953,6 @@ export namespace Grl {
         flags: MetadataResolutionFlags;
         callback: MediaSourceResultCb;
         user_data: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3005,10 +2969,6 @@ export namespace Grl {
         media: Media;
         callback: MediaSourceRemoveCb;
         user_data: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3029,10 +2989,6 @@ export namespace Grl {
         flags: MetadataResolutionFlags;
         callback: MediaSourceResultCb;
         user_data: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3048,20 +3004,12 @@ export namespace Grl {
         media: Media;
         callback: MediaSourceStoreCb;
         user_data: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaVideoClass = typeof MediaVideo;
     type MetadataSourceClass = typeof MetadataSource;
     abstract class MetadataSourcePrivate {
         static $gtype: GObject.GType<MetadataSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3080,10 +3028,6 @@ export namespace Grl {
         flags: MetadataResolutionFlags;
         callback: MetadataSourceResolveCb;
         user_data: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3101,10 +3045,6 @@ export namespace Grl {
         callback: MetadataSourceSetMetadataCb;
         user_data: any;
         failed_keys: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class PluginDescriptor {
@@ -3113,10 +3053,6 @@ export namespace Grl {
         // Fields
 
         plugin_id: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3130,28 +3066,16 @@ export namespace Grl {
         id: string;
         filename: string;
         rank: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PluginRegistryClass = typeof PluginRegistry;
     abstract class PluginRegistryPrivate {
         static $gtype: GObject.GType<PluginRegistryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RelatedKeysClass = typeof RelatedKeys;
     abstract class RelatedKeysPrivate {
         static $gtype: GObject.GType<RelatedKeysPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type KeyID = any;

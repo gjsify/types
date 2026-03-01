@@ -45,7 +45,6 @@ export namespace Gxps {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2741,37 +2740,21 @@ export namespace Gxps {
     type CorePropertiesClass = typeof CoreProperties;
     abstract class CorePropertiesPrivate {
         static $gtype: GObject.GType<CorePropertiesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DocumentClass = typeof Document;
     abstract class DocumentPrivate {
         static $gtype: GObject.GType<DocumentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DocumentStructureClass = typeof DocumentStructure;
     abstract class DocumentStructurePrivate {
         static $gtype: GObject.GType<DocumentStructurePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FileClass = typeof File;
     abstract class FilePrivate {
         static $gtype: GObject.GType<FilePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2779,10 +2762,6 @@ export namespace Gxps {
      */
     class Link {
         static $gtype: GObject.GType<Link>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2807,10 +2786,6 @@ export namespace Gxps {
      */
     class LinkTarget {
         static $gtype: GObject.GType<LinkTarget>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2854,7 +2829,6 @@ export namespace Gxps {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2892,10 +2866,6 @@ export namespace Gxps {
     type PageClass = typeof Page;
     abstract class PagePrivate {
         static $gtype: GObject.GType<PagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

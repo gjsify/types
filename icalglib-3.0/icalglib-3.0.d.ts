@@ -6412,10 +6412,6 @@ export namespace ICalGLib {
     type ObjectClass = typeof Object;
     abstract class ObjectPrivate {
         static $gtype: GObject.GType<ObjectPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ParameterClass = typeof Parameter;
@@ -6432,154 +6428,78 @@ export namespace ICalGLib {
     type ValueClass = typeof Value;
     abstract class _Array {
         static $gtype: GObject.GType<_Array>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _Attach {
         static $gtype: GObject.GType<_Attach>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _CompIter {
         static $gtype: GObject.GType<_CompIter>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _Component {
         static $gtype: GObject.GType<_Component>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _Datetimeperiod {
         static $gtype: GObject.GType<_Datetimeperiod>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _Duration {
         static $gtype: GObject.GType<_Duration>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _Geo {
         static $gtype: GObject.GType<_Geo>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _Parameter {
         static $gtype: GObject.GType<_Parameter>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _Parser {
         static $gtype: GObject.GType<_Parser>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _Period {
         static $gtype: GObject.GType<_Period>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _Property {
         static $gtype: GObject.GType<_Property>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _RecurIterator {
         static $gtype: GObject.GType<_RecurIterator>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _Recurrence {
         static $gtype: GObject.GType<_Recurrence>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _Reqstat {
         static $gtype: GObject.GType<_Reqstat>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _Time {
         static $gtype: GObject.GType<_Time>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _TimeSpan {
         static $gtype: GObject.GType<_TimeSpan>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _Timezone {
         static $gtype: GObject.GType<_Timezone>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _Trigger {
         static $gtype: GObject.GType<_Trigger>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _Value {
         static $gtype: GObject.GType<_Value>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

@@ -179,7 +179,8 @@ export namespace SecretUnstable {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps {
@@ -1620,7 +1621,8 @@ export namespace SecretUnstable {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps {
@@ -2991,7 +2993,8 @@ export namespace SecretUnstable {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps {}
@@ -3930,7 +3933,8 @@ export namespace SecretUnstable {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps {}
@@ -6819,37 +6823,21 @@ export namespace SecretUnstable {
     type CollectionClass = typeof Collection;
     abstract class CollectionPrivate {
         static $gtype: GObject.GType<CollectionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ItemClass = typeof Item;
     abstract class ItemPrivate {
         static $gtype: GObject.GType<ItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PromptClass = typeof Prompt;
     abstract class PromptPrivate {
         static $gtype: GObject.GType<PromptPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ServiceClass = typeof Service;
     abstract class ServicePrivate {
         static $gtype: GObject.GType<ServicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6861,7 +6849,6 @@ export namespace SecretUnstable {
         // Constructors
 
         constructor(secret: string, length: number, content_type: string);
-        _init(...args: any[]): void;
 
         static ['new'](secret: string, length: number, content_type: string): Value;
 

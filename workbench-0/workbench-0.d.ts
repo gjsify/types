@@ -65,8 +65,7 @@ export namespace Workbench {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                GtkSource.CompletionProvider.ConstructorProps {}
+            extends GObject.Object.ConstructorProps, GtkSource.CompletionProvider.ConstructorProps {}
     }
 
     /**
@@ -861,8 +860,7 @@ export namespace Workbench {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends GObject.Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             cancellable: Gio.Cancellable;
             context: GtkSource.CompletionContext;
             item_type: GObject.GType;
@@ -1616,7 +1614,8 @@ export namespace Workbench {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Window.ConstructorProps,
+            extends
+                Gtk.Window.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps,

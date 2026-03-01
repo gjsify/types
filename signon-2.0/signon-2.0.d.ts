@@ -183,7 +183,6 @@ export namespace Signon {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -773,7 +772,6 @@ export namespace Signon {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): IdentityInfo;
 
@@ -892,7 +890,6 @@ export namespace Signon {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): SecurityContext;
 

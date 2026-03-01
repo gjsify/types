@@ -62,7 +62,6 @@ export namespace Gck {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -101,7 +100,6 @@ export namespace Gck {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1348,9 +1346,7 @@ export namespace Gck {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             app_data: any;
             appData: any;
             handle: number;
@@ -3632,7 +3628,6 @@ export namespace Gck {
                 length: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](attr_type: number, value: number, length: number): Attribute;
 
@@ -3764,7 +3759,6 @@ export namespace Gck {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Attributes;
 
@@ -3873,7 +3867,6 @@ export namespace Gck {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](flags: BuilderFlags): Builder;
 
@@ -4200,7 +4193,6 @@ export namespace Gck {
                 n_parameter: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4229,7 +4221,6 @@ export namespace Gck {
                 flags: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4279,7 +4270,6 @@ export namespace Gck {
                 library_version_minor: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4323,7 +4313,6 @@ export namespace Gck {
                 device_error: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4374,7 +4363,6 @@ export namespace Gck {
                 firmware_version_minor: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4423,10 +4411,6 @@ export namespace Gck {
         firmware_version_major: number;
         firmware_version_minor: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -4463,7 +4447,6 @@ export namespace Gck {
                 any_unrecognized: boolean;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): UriData;
 

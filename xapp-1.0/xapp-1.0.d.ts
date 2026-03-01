@@ -40,10 +40,6 @@ export namespace XApp {
         static '32': number;
         static '48': number;
         static '96': number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -602,7 +598,8 @@ export namespace XApp {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Window.ConstructorProps,
+            extends
+                Gtk.Window.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -1204,7 +1201,8 @@ export namespace XApp {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Button.ConstructorProps,
+            extends
+                Gtk.Button.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Activatable.ConstructorProps,
@@ -5922,9 +5920,7 @@ export namespace XApp {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GtkWindow.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends GtkWindow.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             allow_paths: boolean;
             allowPaths: boolean;
             default_icon: string;
@@ -6769,7 +6765,8 @@ export namespace XApp {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusObjectManagerClient.ConstructorProps,
+            extends
+                Gio.DBusObjectManagerClient.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusObjectManager.ConstructorProps,
                 Gio.Initable.ConstructorProps {}
@@ -7717,9 +7714,7 @@ export namespace XApp {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusObjectProxy.ConstructorProps,
-                Gio.DBusObject.ConstructorProps,
-                Object.ConstructorProps {}
+            extends Gio.DBusObjectProxy.ConstructorProps, Gio.DBusObject.ConstructorProps, Object.ConstructorProps {}
     }
 
     /**
@@ -8277,9 +8272,7 @@ export namespace XApp {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusObjectSkeleton.ConstructorProps,
-                Gio.DBusObject.ConstructorProps,
-                Object.ConstructorProps {}
+            extends Gio.DBusObjectSkeleton.ConstructorProps, Gio.DBusObject.ConstructorProps, Object.ConstructorProps {}
     }
 
     /**
@@ -8919,7 +8912,8 @@ export namespace XApp {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Window.ConstructorProps,
+            extends
+                Gtk.Window.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -9480,9 +9474,7 @@ export namespace XApp {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             stack: Gtk.Stack;
         }
     }
@@ -10297,7 +10289,8 @@ export namespace XApp {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps,
@@ -11639,7 +11632,8 @@ export namespace XApp {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 StatusIconInterface.ConstructorProps {}
     }
@@ -12765,7 +12759,8 @@ export namespace XApp {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps,
@@ -13707,7 +13702,8 @@ export namespace XApp {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 SwitcherooControl.ConstructorProps {}
     }
@@ -14290,7 +14286,6 @@ export namespace XApp {
                 cached_mimetype: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -14331,7 +14326,6 @@ export namespace XApp {
                 env_strv: string[];
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -14352,10 +14346,6 @@ export namespace XApp {
     type KbdLayoutControllerClass = typeof KbdLayoutController;
     abstract class KbdLayoutControllerPrivate {
         static $gtype: GObject.GType<KbdLayoutControllerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MonitorBlankerClass = typeof MonitorBlanker;
@@ -14363,28 +14353,16 @@ export namespace XApp {
     type ObjectManagerClientClass = typeof ObjectManagerClient;
     abstract class ObjectManagerClientPrivate {
         static $gtype: GObject.GType<ObjectManagerClientPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ObjectProxyClass = typeof ObjectProxy;
     abstract class ObjectProxyPrivate {
         static $gtype: GObject.GType<ObjectProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ObjectSkeletonClass = typeof ObjectSkeleton;
     abstract class ObjectSkeletonPrivate {
         static $gtype: GObject.GType<ObjectSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PreferencesWindowClass = typeof PreferencesWindow;
@@ -14394,19 +14372,11 @@ export namespace XApp {
     type StatusIconInterfaceProxyClass = typeof StatusIconInterfaceProxy;
     abstract class StatusIconInterfaceProxyPrivate {
         static $gtype: GObject.GType<StatusIconInterfaceProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StatusIconInterfaceSkeletonClass = typeof StatusIconInterfaceSkeleton;
     abstract class StatusIconInterfaceSkeletonPrivate {
         static $gtype: GObject.GType<StatusIconInterfaceSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StatusIconMonitorClass = typeof StatusIconMonitor;
@@ -14415,19 +14385,11 @@ export namespace XApp {
     type SwitcherooControlProxyClass = typeof SwitcherooControlProxy;
     abstract class SwitcherooControlProxyPrivate {
         static $gtype: GObject.GType<SwitcherooControlProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SwitcherooControlSkeletonClass = typeof SwitcherooControlSkeleton;
     abstract class SwitcherooControlSkeletonPrivate {
         static $gtype: GObject.GType<SwitcherooControlSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -14445,7 +14407,6 @@ export namespace XApp {
         // Constructors
 
         constructor(visible: boolean, sensitive: boolean, widgets?: Gtk.Widget[] | null);
-        _init(...args: any[]): void;
 
         static ['new'](visible: boolean, sensitive: boolean, widgets?: Gtk.Widget[] | null): VisibilityGroup;
 

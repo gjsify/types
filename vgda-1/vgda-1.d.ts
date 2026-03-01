@@ -575,10 +575,6 @@ export namespace Vgda {
     type GProviderClass = typeof GProvider;
     abstract class GProviderPrivate {
         static $gtype: GObject.GType<GProviderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

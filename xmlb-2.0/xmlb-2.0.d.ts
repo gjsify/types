@@ -1947,7 +1947,6 @@ export namespace Xmlb {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -1991,7 +1990,6 @@ export namespace Xmlb {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2027,10 +2025,6 @@ export namespace Xmlb {
     type NodeClass = typeof Node;
     abstract class Opcode {
         static $gtype: GObject.GType<Opcode>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -2122,7 +2116,6 @@ export namespace Xmlb {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2186,10 +2179,6 @@ export namespace Xmlb {
     abstract class Stack {
         static $gtype: GObject.GType<Stack>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -2221,7 +2210,6 @@ export namespace Xmlb {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Methods
 

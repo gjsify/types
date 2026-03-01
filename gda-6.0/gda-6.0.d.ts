@@ -313,7 +313,6 @@ export namespace Gda {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace DataModelHint {
@@ -635,7 +634,6 @@ export namespace Gda {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace DiffType {
@@ -798,7 +796,6 @@ export namespace Gda {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace ServerOperationError {
@@ -1090,7 +1087,6 @@ export namespace Gda {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace SqlOperatorType {
@@ -1348,7 +1344,6 @@ export namespace Gda {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace XaTransactionError {
@@ -13915,9 +13910,7 @@ export namespace Gda {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                DbBuildable.ConstructorProps,
-                DdlModifiable.ConstructorProps {
+            extends GObject.Object.ConstructorProps, DbBuildable.ConstructorProps, DdlModifiable.ConstructorProps {
             autoinc: boolean;
             check: string;
             comment: string;
@@ -15827,9 +15820,7 @@ export namespace Gda {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends DbBase.ConstructorProps,
-                DbBuildable.ConstructorProps,
-                DdlModifiable.ConstructorProps {
+            extends DbBase.ConstructorProps, DbBuildable.ConstructorProps, DdlModifiable.ConstructorProps {
             comment: string;
             istemp: string;
         }
@@ -16460,9 +16451,7 @@ export namespace Gda {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends DbBase.ConstructorProps,
-                DbBuildable.ConstructorProps,
-                DdlModifiable.ConstructorProps {
+            extends DbBase.ConstructorProps, DbBuildable.ConstructorProps, DdlModifiable.ConstructorProps {
             defstring: string;
             ifnoexist: boolean;
             istemp: boolean;
@@ -26559,7 +26548,6 @@ export namespace Gda {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Binary;
 
@@ -26619,7 +26607,6 @@ export namespace Gda {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Blob;
 
@@ -26654,10 +26641,6 @@ export namespace Gda {
     type BlobOpClass = typeof BlobOp;
     class BlobOpFunctions {
         static $gtype: GObject.GType<BlobOpFunctions>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ColumnClass = typeof Column;
@@ -26674,10 +26657,6 @@ export namespace Gda {
     type DataModelImportIterClass = typeof DataModelImportIter;
     class DataModelInterface {
         static $gtype: GObject.GType<DataModelInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataModelIterClass = typeof DataModelIter;
@@ -26704,10 +26683,6 @@ export namespace Gda {
         type: DiffType;
         old_row: number;
         new_row: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -26737,7 +26712,6 @@ export namespace Gda {
                 is_system: boolean;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): DsnInfo;
 
@@ -26769,7 +26743,6 @@ export namespace Gda {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): GeometricPoint;
 
@@ -26825,7 +26798,6 @@ export namespace Gda {
                 column_values: GObject.Value[];
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): MetaContext;
 
@@ -26906,10 +26878,6 @@ export namespace Gda {
         obj_short_name: string;
         obj_full_name: string;
         obj_owner: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MetaStoreChange {
@@ -26918,7 +26886,6 @@ export namespace Gda {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): MetaStoreChange;
 
@@ -26950,10 +26917,6 @@ export namespace Gda {
 
         pk_cols_array: number;
         pk_cols_nb: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -26972,10 +26935,6 @@ export namespace Gda {
         default_value: string;
         auto_incement: boolean;
         desc: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -26992,10 +26951,6 @@ export namespace Gda {
         ref_pk_cols_array: number;
         ref_pk_names_array: string;
         fk_name: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -27009,10 +26964,6 @@ export namespace Gda {
 
         view_def: string;
         is_updatable: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -27027,7 +26978,6 @@ export namespace Gda {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Numeric;
 
@@ -27095,10 +27045,6 @@ export namespace Gda {
         dsn_params: Set;
         auth_params: Set;
         icon_id: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ProviderInterface = typeof Provider;
@@ -27109,7 +27055,6 @@ export namespace Gda {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): QuarkList;
 
@@ -27189,7 +27134,6 @@ export namespace Gda {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ServerOperationCreateTableArg;
 
@@ -27239,7 +27183,6 @@ export namespace Gda {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ServerOperationCreateTableArgFKeyRefField;
 
@@ -27266,10 +27209,6 @@ export namespace Gda {
         param: Holder;
         priv: any;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         copy(): ServerOperationNode;
@@ -27284,10 +27223,6 @@ export namespace Gda {
      */
     class ServerProviderBase {
         static $gtype: GObject.GType<ServerProviderBase>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ServerProviderClass = typeof ServerProvider;
@@ -27307,10 +27242,6 @@ export namespace Gda {
         provider_data_destroy_func: GLib.DestroyNotify;
         pad1: any;
         pad2: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ServerProviderHandlerInfo {
@@ -27321,10 +27252,6 @@ export namespace Gda {
         cnc: Connection;
         g_type: GObject.GType;
         dbms_type: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -27334,10 +27261,6 @@ export namespace Gda {
      */
     class ServerProviderMeta {
         static $gtype: GObject.GType<ServerProviderMeta>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -27345,10 +27268,6 @@ export namespace Gda {
      */
     class ServerProviderXa {
         static $gtype: GObject.GType<ServerProviderXa>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SetClass = typeof Set;
@@ -27362,7 +27281,6 @@ export namespace Gda {
         // Constructors
 
         constructor(node: SetNode);
-        _init(...args: any[]): void;
 
         static ['new'](node: SetNode): SetGroup;
 
@@ -27404,7 +27322,6 @@ export namespace Gda {
         // Constructors
 
         constructor(holder: Holder);
-        _init(...args: any[]): void;
 
         static ['new'](holder: Holder): SetNode;
 
@@ -27452,7 +27369,6 @@ export namespace Gda {
         // Constructors
 
         constructor(model: DataModel);
-        _init(...args: any[]): void;
 
         static ['new'](model: DataModel): SetSource;
 
@@ -27493,10 +27409,6 @@ export namespace Gda {
 
         type: SqlAnyPartType;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -27529,7 +27441,6 @@ export namespace Gda {
         // Constructors
 
         constructor(parent: SqlAnyPart);
-        _init(...args: any[]): void;
 
         static ['new'](parent: SqlAnyPart): SqlCase;
 
@@ -27578,7 +27489,6 @@ export namespace Gda {
         // Constructors
 
         constructor(parent: SqlAnyPart);
-        _init(...args: any[]): void;
 
         static ['new'](parent: SqlAnyPart): SqlExpr;
 
@@ -27620,7 +27530,6 @@ export namespace Gda {
         // Constructors
 
         constructor(parent: SqlAnyPart);
-        _init(...args: any[]): void;
 
         static ['new'](parent: SqlAnyPart): SqlField;
 
@@ -27663,7 +27572,6 @@ export namespace Gda {
         // Constructors
 
         constructor(parent: SqlAnyPart);
-        _init(...args: any[]): void;
 
         static ['new'](parent: SqlAnyPart): SqlFunction;
 
@@ -27712,7 +27620,6 @@ export namespace Gda {
         // Constructors
 
         constructor(parent: SqlAnyPart);
-        _init(...args: any[]): void;
 
         static ['new'](parent: SqlAnyPart): SqlOperation;
 
@@ -27764,7 +27671,6 @@ export namespace Gda {
         // Constructors
 
         constructor(simple_spec: GObject.Value | any);
-        _init(...args: any[]): void;
 
         static ['new'](simple_spec: GObject.Value | any): SqlParamSpec;
 
@@ -27821,10 +27727,6 @@ export namespace Gda {
         // Fields
 
         parser: SqlParser;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -27845,7 +27747,6 @@ export namespace Gda {
         // Constructors
 
         constructor(parent: SqlAnyPart);
-        _init(...args: any[]): void;
 
         static ['new'](parent: SqlAnyPart): SqlSelectField;
 
@@ -27895,7 +27796,6 @@ export namespace Gda {
         // Constructors
 
         constructor(parent: SqlAnyPart);
-        _init(...args: any[]): void;
 
         static ['new'](parent: SqlAnyPart): SqlSelectFrom;
 
@@ -27944,7 +27844,6 @@ export namespace Gda {
         // Constructors
 
         constructor(parent: SqlAnyPart);
-        _init(...args: any[]): void;
 
         static ['new'](parent: SqlAnyPart): SqlSelectJoin;
 
@@ -27988,7 +27887,6 @@ export namespace Gda {
         // Constructors
 
         constructor(parent: SqlAnyPart);
-        _init(...args: any[]): void;
 
         static ['new'](parent: SqlAnyPart): SqlSelectOrder;
 
@@ -28027,7 +27925,6 @@ export namespace Gda {
         // Constructors
 
         constructor(parent: SqlAnyPart);
-        _init(...args: any[]): void;
 
         static ['new'](parent: SqlAnyPart): SqlSelectTarget;
 
@@ -28080,7 +27977,6 @@ export namespace Gda {
         // Constructors
 
         constructor(type: SqlStatementType);
-        _init(...args: any[]): void;
 
         static ['new'](type: SqlStatementType): SqlStatement;
 
@@ -28362,10 +28258,6 @@ export namespace Gda {
         cnc: Connection;
         store: MetaStore;
         mstruct: MetaStruct;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class SqlStatementCompound {
@@ -28375,10 +28267,6 @@ export namespace Gda {
 
         compound_type: SqlStatementCompoundType;
         stmt_list: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -28393,18 +28281,10 @@ export namespace Gda {
         name: string;
         check_structure_func: SqlForeachFunc;
         check_validity_func: SqlForeachFunc;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class SqlStatementDelete {
         static $gtype: GObject.GType<SqlStatementDelete>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -28442,10 +28322,6 @@ export namespace Gda {
         on_conflict: string;
         fields_list: any[];
         values_list: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class SqlStatementSelect {
@@ -28457,10 +28333,6 @@ export namespace Gda {
         expr_list: any[];
         group_by: any[];
         order_by: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -28477,10 +28349,6 @@ export namespace Gda {
         isolation_level: TransactionIsolation;
         trans_mode: string;
         trans_name: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -28492,10 +28360,6 @@ export namespace Gda {
         // Fields
 
         expressions: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class SqlStatementUpdate {
@@ -28506,10 +28370,6 @@ export namespace Gda {
         on_conflict: string;
         fields_list: any[];
         expr_list: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -28525,7 +28385,6 @@ export namespace Gda {
         // Constructors
 
         constructor(parent: SqlAnyPart);
-        _init(...args: any[]): void;
 
         static ['new'](parent: SqlAnyPart): SqlTable;
 
@@ -28561,7 +28420,6 @@ export namespace Gda {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Text;
 
@@ -28603,7 +28461,6 @@ export namespace Gda {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Time;
 
@@ -28715,10 +28572,6 @@ export namespace Gda {
         trans: TransactionStatus;
         type: TransactionStatusEventType;
         conn_event: ConnectionEvent;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TreeClass = typeof Tree;
@@ -28735,7 +28588,6 @@ export namespace Gda {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Worker;
 
@@ -28942,7 +28794,6 @@ export namespace Gda {
                 data: number[];
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 

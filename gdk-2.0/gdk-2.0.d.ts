@@ -8842,18 +8842,10 @@ export namespace Gdk {
     type AppLaunchContextClass = typeof AppLaunchContext;
     abstract class AppLaunchContextPrivate {
         static $gtype: GObject.GType<AppLaunchContextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class Atom {
         static $gtype: GObject.GType<Atom>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -8862,10 +8854,6 @@ export namespace Gdk {
 
     class Bitmap {
         static $gtype: GObject.GType<Bitmap>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Color {
@@ -8888,7 +8876,6 @@ export namespace Gdk {
                 blue: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -8985,7 +8972,6 @@ export namespace Gdk {
         // Constructors
 
         constructor(cursor_type: CursorType);
-        _init(...args: any[]): void;
 
         static ['new'](cursor_type: CursorType): Cursor;
 
@@ -9024,10 +9010,6 @@ export namespace Gdk {
         use: AxisUse;
         min: number;
         max: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DeviceClass = typeof Device;
@@ -9038,20 +9020,12 @@ export namespace Gdk {
 
         keyval: number;
         modifiers: ModifierType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DisplayClass = typeof Display;
     type DisplayManagerClass = typeof DisplayManager;
     class DisplayPointerHooks {
         static $gtype: GObject.GType<DisplayPointerHooks>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DragContextClass = typeof DragContext;
@@ -9064,10 +9038,6 @@ export namespace Gdk {
         type: EventType;
         window: Window;
         send_event: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class EventButton {
@@ -9087,10 +9057,6 @@ export namespace Gdk {
         device: Device;
         x_root: number;
         y_root: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class EventClient {
@@ -9102,10 +9068,6 @@ export namespace Gdk {
         window: Window;
         send_event: number;
         data_format: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class EventConfigure {
@@ -9120,10 +9082,6 @@ export namespace Gdk {
         y: number;
         width: number;
         height: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class EventCrossing {
@@ -9144,10 +9102,6 @@ export namespace Gdk {
         detail: NotifyType;
         focus: boolean;
         state: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class EventDND {
@@ -9162,10 +9116,6 @@ export namespace Gdk {
         time: number;
         x_root: number;
         y_root: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class EventExpose {
@@ -9178,10 +9128,6 @@ export namespace Gdk {
         send_event: number;
         area: Rectangle;
         count: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class EventFocus {
@@ -9193,10 +9139,6 @@ export namespace Gdk {
         window: Window;
         send_event: number;
         'in': number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class EventGrabBroken {
@@ -9210,10 +9152,6 @@ export namespace Gdk {
         keyboard: boolean;
         implicit: boolean;
         grab_window: Window;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class EventKey {
@@ -9232,10 +9170,6 @@ export namespace Gdk {
         hardware_keycode: number;
         group: number;
         is_modifier: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class EventMotion {
@@ -9255,10 +9189,6 @@ export namespace Gdk {
         device: Device;
         x_root: number;
         y_root: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class EventNoExpose {
@@ -9269,10 +9199,6 @@ export namespace Gdk {
         type: EventType;
         window: Window;
         send_event: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class EventOwnerChange {
@@ -9287,10 +9213,6 @@ export namespace Gdk {
         reason: OwnerChange;
         time: number;
         selection_time: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class EventProperty {
@@ -9303,10 +9225,6 @@ export namespace Gdk {
         send_event: number;
         time: number;
         state: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class EventProximity {
@@ -9319,10 +9237,6 @@ export namespace Gdk {
         send_event: number;
         time: number;
         device: Device;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class EventScroll {
@@ -9341,10 +9255,6 @@ export namespace Gdk {
         device: Device;
         x_root: number;
         y_root: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class EventSelection {
@@ -9357,10 +9267,6 @@ export namespace Gdk {
         send_event: number;
         time: number;
         requestor: NativeWindow;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class EventSetting {
@@ -9373,10 +9279,6 @@ export namespace Gdk {
         send_event: number;
         action: SettingAction;
         name: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class EventVisibility {
@@ -9388,10 +9290,6 @@ export namespace Gdk {
         window: Window;
         send_event: number;
         state: VisibilityState;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class EventWindowState {
@@ -9404,10 +9302,6 @@ export namespace Gdk {
         send_event: number;
         changed_mask: WindowState;
         new_window_state: WindowState;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Font {
@@ -9418,10 +9312,6 @@ export namespace Gdk {
         type: FontType;
         ascent: number;
         descent: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -9484,10 +9374,6 @@ export namespace Gdk {
         line_style: LineStyle;
         cap_style: CapStyle;
         join_style: JoinStyle;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Geometry {
@@ -9506,10 +9392,6 @@ export namespace Gdk {
         min_aspect: number;
         max_aspect: number;
         win_gravity: Gravity;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ImageClass = typeof Image;
@@ -9523,10 +9405,6 @@ export namespace Gdk {
         serial: number;
         owner_events: boolean;
         time: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -9559,7 +9437,6 @@ export namespace Gdk {
                 level: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class PangoAttrEmbossColor {
@@ -9568,10 +9445,6 @@ export namespace Gdk {
         // Fields
 
         color: Pango.Color;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -9589,10 +9462,6 @@ export namespace Gdk {
 
         embossed: boolean;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -9604,10 +9473,6 @@ export namespace Gdk {
 
     class PangoAttrStipple {
         static $gtype: GObject.GType<PangoAttrStipple>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -9622,10 +9487,6 @@ export namespace Gdk {
     type PangoRendererClass = typeof PangoRenderer;
     abstract class PangoRendererPrivate {
         static $gtype: GObject.GType<PangoRendererPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class PixmapObject {
@@ -9635,18 +9496,10 @@ export namespace Gdk {
 
         impl: Drawable;
         depth: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class PixmapObjectClass {
         static $gtype: GObject.GType<PixmapObjectClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Point {
@@ -9665,15 +9518,10 @@ export namespace Gdk {
                 y: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class PointerHooks {
         static $gtype: GObject.GType<PointerHooks>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class PointerWindowInfo {
@@ -9688,10 +9536,6 @@ export namespace Gdk {
         state: number;
         button: number;
         motion_hint_serial: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Rectangle {
@@ -9714,7 +9558,6 @@ export namespace Gdk {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -9741,10 +9584,6 @@ export namespace Gdk {
 
     abstract class Region {
         static $gtype: GObject.GType<Region>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -9858,7 +9697,6 @@ export namespace Gdk {
                 n_colors: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -9886,7 +9724,6 @@ export namespace Gdk {
                 y2: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class Span {
@@ -9907,7 +9744,6 @@ export namespace Gdk {
                 width: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class TimeCoord {
@@ -9926,7 +9762,6 @@ export namespace Gdk {
                 axes: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class Trapezoid {
@@ -9953,7 +9788,6 @@ export namespace Gdk {
                 x22: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type VisualClass = typeof Visual;
@@ -9976,34 +9810,18 @@ export namespace Gdk {
         wmclass_class: string;
         override_redirect: boolean;
         type_hint: WindowTypeHint;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class WindowObject {
         static $gtype: GObject.GType<WindowObject>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class WindowObjectClass {
         static $gtype: GObject.GType<WindowObjectClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class WindowRedirect {
         static $gtype: GObject.GType<WindowRedirect>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Event {
@@ -10016,7 +9834,6 @@ export namespace Gdk {
         // Constructors
 
         constructor(type: EventType);
-        _init(...args: any[]): void;
 
         static ['new'](type: EventType): Event;
 

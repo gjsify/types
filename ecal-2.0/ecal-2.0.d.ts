@@ -1564,7 +1564,8 @@ export namespace ECal {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EDataServer.Client.ConstructorProps,
+            extends
+                EDataServer.Client.ConstructorProps,
                 TimezoneCache.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.Initable.ConstructorProps {
@@ -5689,10 +5690,6 @@ export namespace ECal {
     type ClientClass = typeof Client;
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5704,7 +5701,6 @@ export namespace ECal {
         // Constructors
 
         constructor(icomp: ICalGLib.Component);
-        _init(...args: any[]): void;
 
         static ['new'](icomp: ICalGLib.Component): ClientTzlookupICalCompData;
 
@@ -5728,10 +5724,6 @@ export namespace ECal {
     type ClientViewClass = typeof ClientView;
     abstract class ClientViewPrivate {
         static $gtype: GObject.GType<ClientViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5744,7 +5736,6 @@ export namespace ECal {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ComponentAlarm;
 
@@ -5898,7 +5889,6 @@ export namespace ECal {
         // Constructors
 
         constructor(uid: string, instance_time: number, occur_start: number, occur_end: number);
-        _init(...args: any[]): void;
 
         static ['new'](
             uid: string,
@@ -5964,7 +5954,6 @@ export namespace ECal {
         // Constructors
 
         constructor(repetitions: number, interval: ICalGLib.Duration);
-        _init(...args: any[]): void;
 
         static ['new'](repetitions: number, interval: ICalGLib.Duration): ComponentAlarmRepeat;
 
@@ -6014,7 +6003,6 @@ export namespace ECal {
         // Constructors
 
         constructor(absolute_time: ICalGLib.Time);
-        _init(...args: any[]): void;
 
         static new_absolute(absolute_time: ICalGLib.Time): ComponentAlarmTrigger;
 
@@ -6117,7 +6105,6 @@ export namespace ECal {
         // Constructors
 
         constructor(comp?: Component | null);
-        _init(...args: any[]): void;
 
         static ['new'](comp?: Component | null): ComponentAlarms;
 
@@ -6183,7 +6170,6 @@ export namespace ECal {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ComponentAttendee;
 
@@ -6318,7 +6304,6 @@ export namespace ECal {
         // Constructors
 
         constructor(value: ICalGLib.Time, tzid?: string | null);
-        _init(...args: any[]): void;
 
         static ['new'](value: ICalGLib.Time, tzid?: string | null): ComponentDateTime;
 
@@ -6389,7 +6374,6 @@ export namespace ECal {
         // Constructors
 
         constructor(uid: string, rid?: string | null);
-        _init(...args: any[]): void;
 
         static ['new'](uid: string, rid?: string | null): ComponentId;
 
@@ -6439,7 +6423,6 @@ export namespace ECal {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ComponentOrganizer;
 
@@ -6520,7 +6503,6 @@ export namespace ECal {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ComponentParameterBag;
 
@@ -6607,7 +6589,6 @@ export namespace ECal {
         // Constructors
 
         constructor(start: ICalGLib.Time, end?: ICalGLib.Time | null);
-        _init(...args: any[]): void;
 
         static new_datetime(start: ICalGLib.Time, end?: ICalGLib.Time | null): ComponentPeriod;
 
@@ -6686,10 +6667,6 @@ export namespace ECal {
 
     abstract class ComponentPrivate {
         static $gtype: GObject.GType<ComponentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6702,7 +6679,6 @@ export namespace ECal {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ComponentPropertyBag;
 
@@ -6788,7 +6764,6 @@ export namespace ECal {
         // Constructors
 
         constructor(kind: ComponentRangeKind, datetime: ComponentDateTime);
-        _init(...args: any[]): void;
 
         static ['new'](kind: ComponentRangeKind, datetime: ComponentDateTime): ComponentRange;
 
@@ -6825,7 +6800,6 @@ export namespace ECal {
         // Constructors
 
         constructor(value?: string | null, altrep?: string | null);
-        _init(...args: any[]): void;
 
         static ['new'](value?: string | null, altrep?: string | null): ComponentText;
 
@@ -6875,7 +6849,6 @@ export namespace ECal {
         // Constructors
 
         constructor(source_uid: string, component: Component, instance: ComponentAlarmInstance);
-        _init(...args: any[]): void;
 
         static ['new'](source_uid: string, component: Component, instance: ComponentAlarmInstance): ReminderData;
 
@@ -6916,10 +6889,6 @@ export namespace ECal {
     type ReminderWatcherClass = typeof ReminderWatcher;
     abstract class ReminderWatcherPrivate {
         static $gtype: GObject.GType<ReminderWatcherPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TimezoneCacheInterface = typeof TimezoneCache;

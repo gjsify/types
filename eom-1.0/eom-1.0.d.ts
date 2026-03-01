@@ -45,7 +45,6 @@ export namespace Eom {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -303,7 +302,8 @@ export namespace Eom {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Application.ConstructorProps,
+            extends
+                Gtk.Application.ConstructorProps,
                 Gio.ActionGroup.ConstructorProps,
                 Gio.ActionMap.ConstructorProps {}
     }
@@ -996,7 +996,8 @@ export namespace Eom {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.FileChooserDialog.ConstructorProps,
+            extends
+                Gtk.FileChooserDialog.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.FileChooser.ConstructorProps {}
@@ -2830,7 +2831,8 @@ export namespace Eom {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ListStore.ConstructorProps,
+            extends
+                Gtk.ListStore.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.TreeDragDest.ConstructorProps,
                 Gtk.TreeDragSource.ConstructorProps,
@@ -4276,9 +4278,7 @@ export namespace Eom {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             netbook_mode: boolean;
             netbookMode: boolean;
             thumbview: ThumbView;
@@ -4857,7 +4857,8 @@ export namespace Eom {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Grid.ConstructorProps,
+            extends
+                Gtk.Grid.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -5551,7 +5552,8 @@ export namespace Eom {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -6134,7 +6136,8 @@ export namespace Eom {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Statusbar.ConstructorProps,
+            extends
+                Gtk.Statusbar.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {}
@@ -6682,7 +6685,8 @@ export namespace Eom {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -7302,7 +7306,8 @@ export namespace Eom {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.IconView.ConstructorProps,
+            extends
+                Gtk.IconView.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.CellLayout.ConstructorProps,
@@ -8280,7 +8285,8 @@ export namespace Eom {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ApplicationWindow.ConstructorProps,
+            extends
+                Gtk.ApplicationWindow.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gio.ActionGroup.ConstructorProps,
                 Gio.ActionMap.ConstructorProps,
@@ -9422,37 +9428,21 @@ export namespace Eom {
     type ApplicationClass = typeof Application;
     abstract class ApplicationPrivate {
         static $gtype: GObject.GType<ApplicationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ClipboardHandlerClass = typeof ClipboardHandler;
     abstract class ClipboardHandlerPrivate {
         static $gtype: GObject.GType<ClipboardHandlerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FileChooserClass = typeof FileChooser;
     abstract class FileChooserPrivate {
         static $gtype: GObject.GType<FileChooserPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ImageClass = typeof Image;
     abstract class ImagePrivate {
         static $gtype: GObject.GType<ImagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ImageSaveInfoClass = typeof ImageSaveInfo;
@@ -9467,91 +9457,51 @@ export namespace Eom {
     type ListStoreClass = typeof ListStore;
     abstract class ListStorePrivate {
         static $gtype: GObject.GType<ListStorePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PropertiesDialogClass = typeof PropertiesDialog;
     abstract class PropertiesDialogPrivate {
         static $gtype: GObject.GType<PropertiesDialogPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ScrollViewClass = typeof ScrollView;
     abstract class ScrollViewPrivate {
         static $gtype: GObject.GType<ScrollViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SidebarClass = typeof Sidebar;
     abstract class SidebarPrivate {
         static $gtype: GObject.GType<SidebarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StatusbarClass = typeof Statusbar;
     abstract class StatusbarPrivate {
         static $gtype: GObject.GType<StatusbarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ThumbNavClass = typeof ThumbNav;
     abstract class ThumbNavPrivate {
         static $gtype: GObject.GType<ThumbNavPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ThumbViewClass = typeof ThumbView;
     abstract class ThumbViewPrivate {
         static $gtype: GObject.GType<ThumbViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TransformClass = typeof Transform;
     abstract class TransformPrivate {
         static $gtype: GObject.GType<TransformPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class URIConverter {
         static $gtype: GObject.GType<URIConverter>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WindowActivatableInterface = typeof WindowActivatable;
     type WindowClass = typeof Window;
     abstract class WindowPrivate {
         static $gtype: GObject.GType<WindowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace ApplicationActivatable {

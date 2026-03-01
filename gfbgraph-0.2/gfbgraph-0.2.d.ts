@@ -1046,9 +1046,7 @@ export namespace GFBGraph {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Node.ConstructorProps,
-                Connectable.ConstructorProps,
-                Json.Serializable.ConstructorProps {
+            extends Node.ConstructorProps, Connectable.ConstructorProps, Json.Serializable.ConstructorProps {
             height: number;
             images: any;
             name: string;
@@ -2625,10 +2623,6 @@ export namespace GFBGraph {
     type AlbumClass = typeof Album;
     abstract class AlbumPrivate {
         static $gtype: GObject.GType<AlbumPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AuthorizerInterface = typeof Authorizer;
@@ -2636,19 +2630,11 @@ export namespace GFBGraph {
     type GoaAuthorizerClass = typeof GoaAuthorizer;
     abstract class GoaAuthorizerPrivate {
         static $gtype: GObject.GType<GoaAuthorizerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type NodeClass = typeof Node;
     abstract class NodePrivate {
         static $gtype: GObject.GType<NodePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PhotoClass = typeof Photo;
@@ -2673,33 +2659,20 @@ export namespace GFBGraph {
                 source: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     abstract class PhotoPrivate {
         static $gtype: GObject.GType<PhotoPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SimpleAuthorizerClass = typeof SimpleAuthorizer;
     abstract class SimpleAuthorizerPrivate {
         static $gtype: GObject.GType<SimpleAuthorizerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UserClass = typeof User;
     abstract class UserPrivate {
         static $gtype: GObject.GType<UserPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Authorizer {

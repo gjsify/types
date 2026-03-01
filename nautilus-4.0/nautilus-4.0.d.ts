@@ -488,10 +488,6 @@ export namespace Nautilus {
      */
     abstract class OperationHandle {
         static $gtype: GObject.GType<OperationHandle>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PropertiesItemClass = typeof PropertiesItem;

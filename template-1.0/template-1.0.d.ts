@@ -47,7 +47,6 @@ export namespace Template {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -337,7 +336,6 @@ export namespace Template {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Scope;
 
@@ -455,7 +453,6 @@ export namespace Template {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Symbol;
 
@@ -499,7 +496,6 @@ export namespace Template {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static new_boolean(value: boolean): Expr;
 

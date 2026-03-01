@@ -1,7 +1,7 @@
 {
     "name": "@girs/harfbuzz-0.0",
-    "version": "11.5.0-4.0.0-beta.38",
-    "description": "GJS TypeScript type definitions for HarfBuzz-0.0, generated from library version 11.5.0",
+    "version": "11.5.1-4.0.0-beta.39",
+    "description": "GJS TypeScript type definitions for HarfBuzz-0.0, generated from library version 11.5.1",
     "type": "module",
     "module": "harfbuzz-0.0.js",
     "main": "harfbuzz-0.0.js",
@@ -31,10 +31,10 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-beta.38",
-      "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.38",
-      "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38",
-      "@girs/glib-2.0": "2.86.0-4.0.0-beta.38"    },
+      "@girs/gjs": "4.0.0-beta.39",
+      "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.39",
+      "@girs/gobject-2.0": "2.86.4-4.0.0-beta.39",
+      "@girs/glib-2.0": "2.86.4-4.0.0-beta.39"    },
     "devDependencies": {
       "typescript": "*"
     },

@@ -355,7 +355,8 @@ export namespace GPaste {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps {}
@@ -2185,7 +2186,8 @@ export namespace GPaste {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps {}
@@ -3126,7 +3128,8 @@ export namespace GPaste {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps {}
@@ -4389,10 +4392,6 @@ export namespace GPaste {
         accelerator: string;
         mode_flags: MetaKeyBindingFlags;
         grab_flags: GnomeShellActionMode;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GnomeShellClientClass = typeof GnomeShellClient;

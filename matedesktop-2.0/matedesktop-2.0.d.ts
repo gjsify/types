@@ -68,7 +68,6 @@ export namespace MateDesktop {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace DesktopItemStatus {
@@ -120,7 +119,6 @@ export namespace MateDesktop {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     const BG_KEY_BACKGROUND_FADE: string;
@@ -725,7 +723,8 @@ export namespace MateDesktop {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -1449,9 +1448,7 @@ export namespace MateDesktop {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             cancel_button: Gtk.Widget;
             cancelButton: Gtk.Widget;
             color_selection: Gtk.Widget;
@@ -2133,7 +2130,8 @@ export namespace MateDesktop {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -2893,7 +2891,8 @@ export namespace MateDesktop {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.MenuItem.ConstructorProps,
+            extends
+                Gtk.MenuItem.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Activatable.ConstructorProps,
@@ -8353,20 +8352,12 @@ export namespace MateDesktop {
     type BGCrossfadeClass = typeof BGCrossfade;
     abstract class BGCrossfadePrivate {
         static $gtype: GObject.GType<BGCrossfadePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ColorSelectionClass = typeof ColorSelection;
     type ColorSelectionDialogClass = typeof ColorSelectionDialog;
     abstract class ColorSelectionPrivate {
         static $gtype: GObject.GType<ColorSelectionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class DesktopItem {
@@ -8375,7 +8366,6 @@ export namespace MateDesktop {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): DesktopItem;
 
@@ -8427,45 +8417,25 @@ export namespace MateDesktop {
     type DesktopThumbnailFactoryClass = typeof DesktopThumbnailFactory;
     abstract class DesktopThumbnailFactoryPrivate {
         static $gtype: GObject.GType<DesktopThumbnailFactoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HSVClass = typeof HSV;
     abstract class HSVPrivate {
         static $gtype: GObject.GType<HSVPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ImageMenuItemClass = typeof ImageMenuItem;
     abstract class ImageMenuItemPrivate {
         static $gtype: GObject.GType<ImageMenuItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RRConfigClass = typeof RRConfig;
     abstract class RRConfigPrivate {
         static $gtype: GObject.GType<RRConfigPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class RRCrtc {
         static $gtype: GObject.GType<RRCrtc>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -8500,18 +8470,10 @@ export namespace MateDesktop {
     type RRLabelerClass = typeof RRLabeler;
     abstract class RRLabelerPrivate {
         static $gtype: GObject.GType<RRLabelerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class RRMode {
         static $gtype: GObject.GType<RRMode>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -8523,10 +8485,6 @@ export namespace MateDesktop {
 
     abstract class RROutput {
         static $gtype: GObject.GType<RROutput>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -8553,19 +8511,11 @@ export namespace MateDesktop {
     type RROutputInfoClass = typeof RROutputInfo;
     abstract class RROutputInfoPrivate {
         static $gtype: GObject.GType<RROutputInfoPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RRScreenClass = typeof RRScreen;
     abstract class RRScreenPrivate {
         static $gtype: GObject.GType<RRScreenPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

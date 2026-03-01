@@ -111,7 +111,6 @@ export namespace SpiceClientGLib {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3842,36 +3841,20 @@ export namespace SpiceClientGLib {
     type AudioClass = typeof Audio;
     abstract class AudioPrivate {
         static $gtype: GObject.GType<AudioPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ChannelClass = typeof Channel;
     abstract class ChannelClassPrivate {
         static $gtype: GObject.GType<ChannelClassPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ChannelPrivate {
         static $gtype: GObject.GType<ChannelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CursorChannelClass = typeof CursorChannel;
     abstract class CursorChannelPrivate {
         static $gtype: GObject.GType<CursorChannelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3900,16 +3883,11 @@ export namespace SpiceClientGLib {
                 data: any;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type DisplayChannelClass = typeof DisplayChannel;
     abstract class DisplayChannelPrivate {
         static $gtype: GObject.GType<DisplayChannelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3939,7 +3917,6 @@ export namespace SpiceClientGLib {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3971,7 +3948,6 @@ export namespace SpiceClientGLib {
                 marked: boolean;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type FileTransferTaskClass = typeof FileTransferTask;
@@ -4002,7 +3978,6 @@ export namespace SpiceClientGLib {
                 y0top: boolean;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4015,53 +3990,29 @@ export namespace SpiceClientGLib {
     type InputsChannelClass = typeof InputsChannel;
     abstract class InputsChannelPrivate {
         static $gtype: GObject.GType<InputsChannelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MainChannelClass = typeof MainChannel;
     abstract class MainChannelPrivate {
         static $gtype: GObject.GType<MainChannelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class MsgIn {
         static $gtype: GObject.GType<MsgIn>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class MsgOut {
         static $gtype: GObject.GType<MsgOut>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PlaybackChannelClass = typeof PlaybackChannel;
     abstract class PlaybackChannelPrivate {
         static $gtype: GObject.GType<PlaybackChannelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PortChannelClass = typeof PortChannel;
     abstract class PortChannelPrivate {
         static $gtype: GObject.GType<PortChannelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type QmpPortClass = typeof QmpPort;
@@ -4088,7 +4039,6 @@ export namespace SpiceClientGLib {
                 status: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4106,37 +4056,21 @@ export namespace SpiceClientGLib {
     type RecordChannelClass = typeof RecordChannel;
     abstract class RecordChannelPrivate {
         static $gtype: GObject.GType<RecordChannelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SessionClass = typeof Session;
     abstract class SessionPrivate {
         static $gtype: GObject.GType<SessionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SmartcardChannelClass = typeof SmartcardChannel;
     abstract class SmartcardChannelPrivate {
         static $gtype: GObject.GType<SmartcardChannelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SmartcardManagerClass = typeof SmartcardManager;
     abstract class SmartcardManagerPrivate {
         static $gtype: GObject.GType<SmartcardManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4144,10 +4078,6 @@ export namespace SpiceClientGLib {
      */
     abstract class SmartcardReader {
         static $gtype: GObject.GType<SmartcardReader>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4175,10 +4105,6 @@ export namespace SpiceClientGLib {
     type URIClass = typeof URI;
     abstract class URIPrivate {
         static $gtype: GObject.GType<URIPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4186,10 +4112,6 @@ export namespace SpiceClientGLib {
      */
     class UsbDevice {
         static $gtype: GObject.GType<UsbDevice>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4220,28 +4142,16 @@ export namespace SpiceClientGLib {
     type UsbDeviceManagerClass = typeof UsbDeviceManager;
     abstract class UsbDeviceManagerPrivate {
         static $gtype: GObject.GType<UsbDeviceManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UsbredirChannelClass = typeof UsbredirChannel;
     abstract class UsbredirChannelPrivate {
         static $gtype: GObject.GType<UsbredirChannelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WebdavChannelClass = typeof WebdavChannel;
     abstract class WebdavChannelPrivate {
         static $gtype: GObject.GType<WebdavChannelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

@@ -5168,39 +5168,52 @@ export namespace OSTree {
         query_filesystem_info_finish(res: Gio.AsyncResult): Gio.FileInfo;
         /**
          * Gets the requested information about specified `file`.
-         * The result is a #GFileInfo object that contains key-value
+         *
+         * The result is a [class`Gio`.FileInfo] object that contains key-value
          * attributes (such as the type or size of the file).
          *
          * The `attributes` value is a string that specifies the file
          * attributes that should be gathered. It is not an error if
-         * it's not possible to read a particular requested attribute
-         * from a file - it just won't be set. `attributes` should be a
-         * comma-separated list of attributes or attribute wildcards.
-         * The wildcard "*" means all attributes, and a wildcard like
-         * "standard::*" means all attributes in the standard namespace.
-         * An example attribute query be "standard::*,owner::user".
-         * The standard attributes are available as defines, like
-         * %G_FILE_ATTRIBUTE_STANDARD_NAME.
+         * it’s not possible to read a particular requested attribute
+         * from a file — it just won't be set. In particular this means that if a file
+         * is inaccessible (due to being in a folder with restrictive permissions), for
+         * example, you can expect the returned [class`Gio`.FileInfo] to have very few
+         * attributes set. You should check whether an attribute is set using
+         * [method`Gio`.FileInfo.has_attribute] before trying to retrieve its value.
          *
-         * If `cancellable` is not %NULL, then the operation can be cancelled
+         * It is guaranteed that if any of the following attributes are listed in
+         * `attributes,` they will always be set in the returned [class`Gio`.FileInfo],
+         * even if the user doesn’t have permissions to access the file:
+         *
+         *  - [const`Gio`.FILE_ATTRIBUTE_STANDARD_NAME]
+         *  - [const`Gio`.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME]
+         *
+         * `attributes` should be a comma-separated list of attributes or attribute
+         * wildcards. The wildcard `"*"` means all attributes, and a wildcard like
+         * `"standard::*"` means all attributes in the standard namespace.
+         * An example attribute query might be `"standard::*,owner::user"`.
+         * The standard attributes are available as defines, like
+         * [const`Gio`.FILE_ATTRIBUTE_STANDARD_NAME].
+         *
+         * If `cancellable` is not `NULL`, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
-         * operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
+         * operation was cancelled, the error [error`Gio`.IOErrorEnum.CANCELLED] will be
          * returned.
          *
          * For symlinks, normally the information about the target of the
          * symlink is returned, rather than information about the symlink
-         * itself. However if you pass %G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS
+         * itself. However if you pass [flags`Gio`.FileQueryInfoFlags.NOFOLLOW_SYMLINKS]
          * in `flags` the information about the symlink itself will be returned.
          * Also, for symlinks that point to non-existing files the information
          * about the symlink itself will be returned.
          *
-         * If the file does not exist, the %G_IO_ERROR_NOT_FOUND error will be
+         * If the file does not exist, the [error`Gio`.IOErrorEnum.NOT_FOUND] error will be
          * returned. Other errors are possible too, and depend on what kind of
-         * filesystem the file is on.
+         * file system the file is on.
          * @param attributes an attribute query string
-         * @param flags a set of #GFileQueryInfoFlags
-         * @param cancellable optional #GCancellable object,   %NULL to ignore
-         * @returns a #GFileInfo for the given @file, or %NULL   on error. Free the returned object with g_object_unref().
+         * @param flags flags to affect the query operation
+         * @param cancellable optional cancellable object
+         * @returns a [class@Gio.FileInfo] for the given @file
          */
         query_info(
             attributes: string,
@@ -7484,38 +7497,51 @@ export namespace OSTree {
         vfunc_query_filesystem_info_finish(res: Gio.AsyncResult): Gio.FileInfo;
         /**
          * Gets the requested information about specified `file`.
-         * The result is a #GFileInfo object that contains key-value
+         *
+         * The result is a [class`Gio`.FileInfo] object that contains key-value
          * attributes (such as the type or size of the file).
          *
          * The `attributes` value is a string that specifies the file
          * attributes that should be gathered. It is not an error if
-         * it's not possible to read a particular requested attribute
-         * from a file - it just won't be set. `attributes` should be a
-         * comma-separated list of attributes or attribute wildcards.
-         * The wildcard "*" means all attributes, and a wildcard like
-         * "standard::*" means all attributes in the standard namespace.
-         * An example attribute query be "standard::*,owner::user".
-         * The standard attributes are available as defines, like
-         * %G_FILE_ATTRIBUTE_STANDARD_NAME.
+         * it’s not possible to read a particular requested attribute
+         * from a file — it just won't be set. In particular this means that if a file
+         * is inaccessible (due to being in a folder with restrictive permissions), for
+         * example, you can expect the returned [class`Gio`.FileInfo] to have very few
+         * attributes set. You should check whether an attribute is set using
+         * [method`Gio`.FileInfo.has_attribute] before trying to retrieve its value.
          *
-         * If `cancellable` is not %NULL, then the operation can be cancelled
+         * It is guaranteed that if any of the following attributes are listed in
+         * `attributes,` they will always be set in the returned [class`Gio`.FileInfo],
+         * even if the user doesn’t have permissions to access the file:
+         *
+         *  - [const`Gio`.FILE_ATTRIBUTE_STANDARD_NAME]
+         *  - [const`Gio`.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME]
+         *
+         * `attributes` should be a comma-separated list of attributes or attribute
+         * wildcards. The wildcard `"*"` means all attributes, and a wildcard like
+         * `"standard::*"` means all attributes in the standard namespace.
+         * An example attribute query might be `"standard::*,owner::user"`.
+         * The standard attributes are available as defines, like
+         * [const`Gio`.FILE_ATTRIBUTE_STANDARD_NAME].
+         *
+         * If `cancellable` is not `NULL`, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
-         * operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
+         * operation was cancelled, the error [error`Gio`.IOErrorEnum.CANCELLED] will be
          * returned.
          *
          * For symlinks, normally the information about the target of the
          * symlink is returned, rather than information about the symlink
-         * itself. However if you pass %G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS
+         * itself. However if you pass [flags`Gio`.FileQueryInfoFlags.NOFOLLOW_SYMLINKS]
          * in `flags` the information about the symlink itself will be returned.
          * Also, for symlinks that point to non-existing files the information
          * about the symlink itself will be returned.
          *
-         * If the file does not exist, the %G_IO_ERROR_NOT_FOUND error will be
+         * If the file does not exist, the [error`Gio`.IOErrorEnum.NOT_FOUND] error will be
          * returned. Other errors are possible too, and depend on what kind of
-         * filesystem the file is on.
+         * file system the file is on.
          * @param attributes an attribute query string
-         * @param flags a set of #GFileQueryInfoFlags
-         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param flags flags to affect the query operation
+         * @param cancellable optional cancellable object
          */
         vfunc_query_info(
             attributes: string,
@@ -10059,59 +10085,31 @@ export namespace OSTree {
     type AsyncProgressClass = typeof AsyncProgress;
     abstract class Bootloader {
         static $gtype: GObject.GType<Bootloader>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class BootloaderGrub2 {
         static $gtype: GObject.GType<BootloaderGrub2>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class BootloaderInterface {
         static $gtype: GObject.GType<BootloaderInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class BootloaderSyslinux {
         static $gtype: GObject.GType<BootloaderSyslinux>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class BootloaderUboot {
         static $gtype: GObject.GType<BootloaderUboot>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ChecksumInputStreamClass = typeof ChecksumInputStream;
     abstract class ChecksumInputStreamPrivate {
         static $gtype: GObject.GType<ChecksumInputStreamPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class CmdPrivateVTable {
         static $gtype: GObject.GType<CmdPrivateVTable>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class DiffItem {
@@ -10127,10 +10125,6 @@ export namespace OSTree {
         src_checksum: string;
         target_checksum: string;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         ref(): DiffItem;
@@ -10139,34 +10133,18 @@ export namespace OSTree {
 
     abstract class GpgVerifier {
         static $gtype: GObject.GType<GpgVerifier>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class LibarchiveInputStream {
         static $gtype: GObject.GType<LibarchiveInputStream>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class LibarchiveInputStreamClass {
         static $gtype: GObject.GType<LibarchiveInputStreamClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class LibarchiveInputStreamPrivate {
         static $gtype: GObject.GType<LibarchiveInputStreamPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -10174,34 +10152,18 @@ export namespace OSTree {
      */
     abstract class LzmaCompressor {
         static $gtype: GObject.GType<LzmaCompressor>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class LzmaCompressorClass {
         static $gtype: GObject.GType<LzmaCompressorClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class LzmaDecompressor {
         static $gtype: GObject.GType<LzmaDecompressor>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class LzmaDecompressorClass {
         static $gtype: GObject.GType<LzmaDecompressorClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MutableTreeClass = typeof MutableTree;
@@ -10211,10 +10173,6 @@ export namespace OSTree {
         // Fields
 
         in_files: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -10239,10 +10197,6 @@ export namespace OSTree {
         subpath: string;
         unused_ints: number[];
         unused_ptrs: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -10254,7 +10208,6 @@ export namespace OSTree {
         // Constructors
 
         constructor(flags: RepoCommitModifierFlags, commit_filter?: RepoCommitFilter | null);
-        _init(...args: any[]): void;
 
         static ['new'](flags: RepoCommitModifierFlags, commit_filter?: RepoCommitFilter | null): RepoCommitModifier;
 
@@ -10316,7 +10269,6 @@ export namespace OSTree {
                 dummy_checksum_data: number[];
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -10375,7 +10327,6 @@ export namespace OSTree {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): RepoDevInoCache;
 
@@ -10388,18 +10339,10 @@ export namespace OSTree {
     type RepoFileClass = typeof RepoFile;
     abstract class RepoFileEnumerator {
         static $gtype: GObject.GType<RepoFileEnumerator>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class RepoFileEnumeratorClass {
         static $gtype: GObject.GType<RepoFileEnumeratorClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -10436,7 +10379,6 @@ export namespace OSTree {
                 padding4: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class RollsumMatches {
@@ -10449,26 +10391,14 @@ export namespace OSTree {
         total: number;
         match_size: number;
         matches: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class TlsCertInteraction {
         static $gtype: GObject.GType<TlsCertInteraction>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class TlsCertInteractionClass {
         static $gtype: GObject.GType<TlsCertInteractionClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

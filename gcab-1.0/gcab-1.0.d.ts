@@ -81,7 +81,6 @@ export namespace GCab {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**

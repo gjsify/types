@@ -572,28 +572,16 @@ export namespace GstCuda {
     type CudaAllocatorClass = typeof CudaAllocator;
     abstract class CudaAllocatorPrivate {
         static $gtype: GObject.GType<CudaAllocatorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CudaBufferPoolClass = typeof CudaBufferPool;
     abstract class CudaBufferPoolPrivate {
         static $gtype: GObject.GType<CudaBufferPoolPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CudaContextClass = typeof CudaContext;
     abstract class CudaContextPrivate {
         static $gtype: GObject.GType<CudaContextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class CudaGraphicsResource {
@@ -608,10 +596,6 @@ export namespace GstCuda {
         flags: CudaGst.graphicsRegisterFlags;
         registered: boolean;
         mapped: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class CudaMemory {
@@ -620,10 +604,6 @@ export namespace GstCuda {
         // Fields
 
         context: CudaContext;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -686,19 +666,11 @@ export namespace GstCuda {
 
     abstract class CudaMemoryPrivate {
         static $gtype: GObject.GType<CudaMemoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CudaPoolAllocatorClass = typeof CudaPoolAllocator;
     abstract class CudaPoolAllocatorPrivate {
         static $gtype: GObject.GType<CudaPoolAllocatorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class CudaStream {
@@ -711,7 +683,6 @@ export namespace GstCuda {
         // Constructors
 
         constructor(context: CudaContext);
-        _init(...args: any[]): void;
 
         static ['new'](context: CudaContext): CudaStream;
 
@@ -735,10 +706,6 @@ export namespace GstCuda {
 
     abstract class CudaStreamPrivate {
         static $gtype: GObject.GType<CudaStreamPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

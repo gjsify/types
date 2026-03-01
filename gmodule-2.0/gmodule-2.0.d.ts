@@ -38,7 +38,6 @@ export namespace GModule {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     const MODULE_IMPL_AR: number;
@@ -115,15 +114,11 @@ export namespace GModule {
     }
     /**
      * The #GModule struct is an opaque data structure to represent a
-     * [dynamically-loaded module](modules.html#dynamic-loading-of-modules).
+     * [dynamically-loaded module][glib-Dynamic-Loading-of-Modules].
      * It should only be accessed via the following functions.
      */
     abstract class Module {
         static $gtype: GObject.GType<Module>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 

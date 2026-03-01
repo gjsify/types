@@ -282,7 +282,8 @@ export namespace Liferea {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Application.ConstructorProps,
+            extends
+                Gtk.Application.ConstructorProps,
                 Gio.ActionGroup.ConstructorProps,
                 Gio.ActionMap.ConstructorProps {}
     }
@@ -1572,10 +1573,6 @@ export namespace Liferea {
     type ItemListClass = typeof ItemList;
     abstract class ItemListPrivate {
         static $gtype: GObject.GType<ItemListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ItemListViewClass = typeof ItemListView;
@@ -1583,10 +1580,6 @@ export namespace Liferea {
     type NetworkMonitorClass = typeof NetworkMonitor;
     abstract class NetworkMonitorPrivate {
         static $gtype: GObject.GType<NetworkMonitorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type NodeSourceActivatableInterface = typeof NodeSourceActivatable;
@@ -1612,15 +1605,10 @@ export namespace Liferea {
                 permanent: boolean;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     abstract class encTypePtr {
         static $gtype: GObject.GType<encTypePtr>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class enclosure {
@@ -1643,7 +1631,6 @@ export namespace Liferea {
                 downloaded: boolean;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1669,18 +1656,10 @@ export namespace Liferea {
 
     abstract class enclosurePtr {
         static $gtype: GObject.GType<enclosurePtr>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class itemPtr {
         static $gtype: GObject.GType<itemPtr>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class itemSet {
@@ -1701,15 +1680,10 @@ export namespace Liferea {
                 nodeId: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     abstract class itemSetPtr {
         static $gtype: GObject.GType<itemSetPtr>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class node {
@@ -1737,10 +1711,6 @@ export namespace Liferea {
         needsUpdate: boolean;
         needsRecount: boolean;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         static foreach_child_full(ptr: nodePtr, func: any | null, params: number, user_data?: any | null): void;
@@ -1752,10 +1722,6 @@ export namespace Liferea {
 
     abstract class nodePtr {
         static $gtype: GObject.GType<nodePtr>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class nodeSource {
@@ -1768,10 +1734,6 @@ export namespace Liferea {
         authToken: string;
         authFailures: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         static item_set_flag(node: nodePtr, item: itemPtr, newState: boolean): void;
@@ -1779,10 +1741,6 @@ export namespace Liferea {
 
     abstract class nodeSourcePtr {
         static $gtype: GObject.GType<nodeSourcePtr>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class nodeSourceType {
@@ -1793,18 +1751,10 @@ export namespace Liferea {
         id: string;
         name: string;
         capabilities: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class nodeSourceTypePtr {
         static $gtype: GObject.GType<nodeSourceTypePtr>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class socialSite {
@@ -1827,31 +1777,18 @@ export namespace Liferea {
                 titleFirst: boolean;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     abstract class socialSitePtr {
         static $gtype: GObject.GType<socialSitePtr>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class subscriptionType {
         static $gtype: GObject.GType<subscriptionType>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class subscriptionTypePtr {
         static $gtype: GObject.GType<subscriptionTypePtr>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace AuthActivatable {

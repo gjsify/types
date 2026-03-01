@@ -333,9 +333,7 @@ export namespace Totem {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Application.ConstructorProps,
-                Gio.ActionGroup.ConstructorProps,
-                Gio.ActionMap.ConstructorProps {
+            extends Gtk.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {
             current_content_type: string;
             currentContentType: string;
             current_display_name: string;

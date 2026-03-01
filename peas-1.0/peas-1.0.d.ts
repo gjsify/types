@@ -50,7 +50,6 @@ export namespace Peas {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     function plugin_info_error_quark(): GLib.Quark;
@@ -482,8 +481,7 @@ export namespace Peas {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends GObject.Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             construct_properties: any;
             constructProperties: any;
             engine: Engine;
@@ -1698,37 +1696,21 @@ export namespace Peas {
     type EngineClass = typeof Engine;
     abstract class EnginePrivate {
         static $gtype: GObject.GType<EnginePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExtensionBaseClass = typeof ExtensionBase;
     abstract class ExtensionBasePrivate {
         static $gtype: GObject.GType<ExtensionBasePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExtensionSetClass = typeof ExtensionSet;
     abstract class ExtensionSetPrivate {
         static $gtype: GObject.GType<ExtensionSetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ObjectModuleClass = typeof ObjectModule;
     abstract class ObjectModulePrivate {
         static $gtype: GObject.GType<ObjectModulePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1737,10 +1719,6 @@ export namespace Peas {
      */
     abstract class PluginInfo {
         static $gtype: GObject.GType<PluginInfo>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 

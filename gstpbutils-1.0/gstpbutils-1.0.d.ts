@@ -2188,19 +2188,11 @@ export namespace GstPbutils {
     type AudioVisualizerClass = typeof AudioVisualizer;
     abstract class AudioVisualizerPrivate {
         static $gtype: GObject.GType<AudioVisualizerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DiscovererClass = typeof Discoverer;
     abstract class DiscovererPrivate {
         static $gtype: GObject.GType<DiscovererPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EncodingAudioProfileClass = typeof EncodingAudioProfile;
@@ -2217,7 +2209,6 @@ export namespace GstPbutils {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): InstallPluginsContext;
 

@@ -666,10 +666,6 @@ export namespace GstInsertBin {
     type InsertBinClass = typeof InsertBin;
     abstract class InsertBinPrivate {
         static $gtype: GObject.GType<InsertBinPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

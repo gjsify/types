@@ -186,7 +186,8 @@ export namespace Budgie {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.EventBox.ConstructorProps,
+            extends
+                Gtk.EventBox.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             settings_prefix: string;
@@ -1144,9 +1145,7 @@ export namespace Budgie {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Window.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             position_policy: PopoverPositionPolicy;
             positionPolicy: PopoverPositionPolicy;
             relative_to: Gtk.Widget;
@@ -1751,18 +1750,10 @@ export namespace Budgie {
     type AppletInfoClass = typeof AppletInfo;
     abstract class AppletInfoPrivate {
         static $gtype: GObject.GType<AppletInfoPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class AppletPrivate {
         static $gtype: GObject.GType<AppletPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PluginIface = typeof Plugin;
@@ -1770,18 +1761,10 @@ export namespace Budgie {
     type PopoverManagerClass = typeof PopoverManager;
     abstract class PopoverManagerPrivate {
         static $gtype: GObject.GType<PopoverManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class PopoverPrivate {
         static $gtype: GObject.GType<PopoverPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Plugin {

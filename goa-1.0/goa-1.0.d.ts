@@ -57,7 +57,6 @@ export namespace Goa {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -416,7 +415,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps,
@@ -1754,7 +1754,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Account.ConstructorProps {}
     }
@@ -2711,7 +2712,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps,
@@ -3636,7 +3638,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Calendar.ConstructorProps {}
     }
@@ -4198,7 +4201,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps,
@@ -5098,7 +5102,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Chat.ConstructorProps {}
     }
@@ -5632,9 +5637,7 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             object_manager: Gio.DBusObjectManager;
             objectManager: Gio.DBusObjectManager;
         }
@@ -6486,7 +6489,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps,
@@ -7411,7 +7415,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Contacts.ConstructorProps {}
     }
@@ -7973,7 +7978,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps,
@@ -8873,7 +8879,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Documents.ConstructorProps {}
     }
@@ -9414,7 +9421,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps,
@@ -10339,7 +10347,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Exchange.ConstructorProps {}
     }
@@ -10903,7 +10912,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps,
@@ -11828,7 +11838,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Files.ConstructorProps {}
     }
@@ -12408,7 +12419,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps,
@@ -13573,7 +13585,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Mail.ConstructorProps {}
     }
@@ -14359,7 +14372,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps,
@@ -15452,7 +15466,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Manager.ConstructorProps {}
     }
@@ -16184,7 +16199,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps,
@@ -17084,7 +17100,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Maps.ConstructorProps {}
     }
@@ -17625,7 +17642,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps,
@@ -18550,7 +18568,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 MediaServer.ConstructorProps {}
     }
@@ -19114,7 +19133,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps,
@@ -20014,7 +20034,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Music.ConstructorProps {}
     }
@@ -20555,7 +20576,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps,
@@ -21547,7 +21569,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 OAuth2Based.ConstructorProps {}
     }
@@ -22180,7 +22203,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps,
@@ -23178,7 +23202,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 OAuthBased.ConstructorProps {}
     }
@@ -23813,7 +23838,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusObjectManagerClient.ConstructorProps,
+            extends
+                Gio.DBusObjectManagerClient.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusObjectManager.ConstructorProps,
                 Gio.Initable.ConstructorProps {}
@@ -24780,9 +24806,7 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusObjectProxy.ConstructorProps,
-                Gio.DBusObject.ConstructorProps,
-                Object.ConstructorProps {}
+            extends Gio.DBusObjectProxy.ConstructorProps, Gio.DBusObject.ConstructorProps, Object.ConstructorProps {}
     }
 
     /**
@@ -25615,9 +25639,7 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusObjectSkeleton.ConstructorProps,
-                Gio.DBusObject.ConstructorProps,
-                Object.ConstructorProps {}
+            extends Gio.DBusObjectSkeleton.ConstructorProps, Gio.DBusObject.ConstructorProps, Object.ConstructorProps {}
     }
 
     /**
@@ -26541,7 +26563,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps,
@@ -27510,7 +27533,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 PasswordBased.ConstructorProps {}
     }
@@ -28120,7 +28144,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps,
@@ -29020,7 +29045,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Photos.ConstructorProps {}
     }
@@ -29559,7 +29585,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps,
@@ -30459,7 +30486,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Printers.ConstructorProps {}
     }
@@ -30998,7 +31026,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps,
@@ -31898,7 +31927,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 ReadLater.ConstructorProps {}
     }
@@ -32438,7 +32468,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps,
@@ -33406,7 +33437,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Ticketing.ConstructorProps {}
     }
@@ -34012,7 +34044,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps,
@@ -34912,7 +34945,8 @@ export namespace Goa {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Todo.ConstructorProps {}
     }
@@ -35438,57 +35472,33 @@ export namespace Goa {
     type AccountProxyClass = typeof AccountProxy;
     abstract class AccountProxyPrivate {
         static $gtype: GObject.GType<AccountProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AccountSkeletonClass = typeof AccountSkeleton;
     abstract class AccountSkeletonPrivate {
         static $gtype: GObject.GType<AccountSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CalendarIface = typeof Calendar;
     type CalendarProxyClass = typeof CalendarProxy;
     abstract class CalendarProxyPrivate {
         static $gtype: GObject.GType<CalendarProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CalendarSkeletonClass = typeof CalendarSkeleton;
     abstract class CalendarSkeletonPrivate {
         static $gtype: GObject.GType<CalendarSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ChatIface = typeof Chat;
     type ChatProxyClass = typeof ChatProxy;
     abstract class ChatProxyPrivate {
         static $gtype: GObject.GType<ChatProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ChatSkeletonClass = typeof ChatSkeleton;
     abstract class ChatSkeletonPrivate {
         static $gtype: GObject.GType<ChatSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ClientClass = typeof Client;
@@ -35496,351 +35506,203 @@ export namespace Goa {
     type ContactsProxyClass = typeof ContactsProxy;
     abstract class ContactsProxyPrivate {
         static $gtype: GObject.GType<ContactsProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ContactsSkeletonClass = typeof ContactsSkeleton;
     abstract class ContactsSkeletonPrivate {
         static $gtype: GObject.GType<ContactsSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DocumentsIface = typeof Documents;
     type DocumentsProxyClass = typeof DocumentsProxy;
     abstract class DocumentsProxyPrivate {
         static $gtype: GObject.GType<DocumentsProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DocumentsSkeletonClass = typeof DocumentsSkeleton;
     abstract class DocumentsSkeletonPrivate {
         static $gtype: GObject.GType<DocumentsSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExchangeIface = typeof Exchange;
     type ExchangeProxyClass = typeof ExchangeProxy;
     abstract class ExchangeProxyPrivate {
         static $gtype: GObject.GType<ExchangeProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExchangeSkeletonClass = typeof ExchangeSkeleton;
     abstract class ExchangeSkeletonPrivate {
         static $gtype: GObject.GType<ExchangeSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FilesIface = typeof Files;
     type FilesProxyClass = typeof FilesProxy;
     abstract class FilesProxyPrivate {
         static $gtype: GObject.GType<FilesProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FilesSkeletonClass = typeof FilesSkeleton;
     abstract class FilesSkeletonPrivate {
         static $gtype: GObject.GType<FilesSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MailIface = typeof Mail;
     type MailProxyClass = typeof MailProxy;
     abstract class MailProxyPrivate {
         static $gtype: GObject.GType<MailProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MailSkeletonClass = typeof MailSkeleton;
     abstract class MailSkeletonPrivate {
         static $gtype: GObject.GType<MailSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ManagerIface = typeof Manager;
     type ManagerProxyClass = typeof ManagerProxy;
     abstract class ManagerProxyPrivate {
         static $gtype: GObject.GType<ManagerProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ManagerSkeletonClass = typeof ManagerSkeleton;
     abstract class ManagerSkeletonPrivate {
         static $gtype: GObject.GType<ManagerSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MapsIface = typeof Maps;
     type MapsProxyClass = typeof MapsProxy;
     abstract class MapsProxyPrivate {
         static $gtype: GObject.GType<MapsProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MapsSkeletonClass = typeof MapsSkeleton;
     abstract class MapsSkeletonPrivate {
         static $gtype: GObject.GType<MapsSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaServerIface = typeof MediaServer;
     type MediaServerProxyClass = typeof MediaServerProxy;
     abstract class MediaServerProxyPrivate {
         static $gtype: GObject.GType<MediaServerProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaServerSkeletonClass = typeof MediaServerSkeleton;
     abstract class MediaServerSkeletonPrivate {
         static $gtype: GObject.GType<MediaServerSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MusicIface = typeof Music;
     type MusicProxyClass = typeof MusicProxy;
     abstract class MusicProxyPrivate {
         static $gtype: GObject.GType<MusicProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MusicSkeletonClass = typeof MusicSkeleton;
     abstract class MusicSkeletonPrivate {
         static $gtype: GObject.GType<MusicSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OAuth2BasedIface = typeof OAuth2Based;
     type OAuth2BasedProxyClass = typeof OAuth2BasedProxy;
     abstract class OAuth2BasedProxyPrivate {
         static $gtype: GObject.GType<OAuth2BasedProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OAuth2BasedSkeletonClass = typeof OAuth2BasedSkeleton;
     abstract class OAuth2BasedSkeletonPrivate {
         static $gtype: GObject.GType<OAuth2BasedSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OAuthBasedIface = typeof OAuthBased;
     type OAuthBasedProxyClass = typeof OAuthBasedProxy;
     abstract class OAuthBasedProxyPrivate {
         static $gtype: GObject.GType<OAuthBasedProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OAuthBasedSkeletonClass = typeof OAuthBasedSkeleton;
     abstract class OAuthBasedSkeletonPrivate {
         static $gtype: GObject.GType<OAuthBasedSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ObjectIface = typeof Object;
     type ObjectManagerClientClass = typeof ObjectManagerClient;
     abstract class ObjectManagerClientPrivate {
         static $gtype: GObject.GType<ObjectManagerClientPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ObjectProxyClass = typeof ObjectProxy;
     abstract class ObjectProxyPrivate {
         static $gtype: GObject.GType<ObjectProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ObjectSkeletonClass = typeof ObjectSkeleton;
     abstract class ObjectSkeletonPrivate {
         static $gtype: GObject.GType<ObjectSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PasswordBasedIface = typeof PasswordBased;
     type PasswordBasedProxyClass = typeof PasswordBasedProxy;
     abstract class PasswordBasedProxyPrivate {
         static $gtype: GObject.GType<PasswordBasedProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PasswordBasedSkeletonClass = typeof PasswordBasedSkeleton;
     abstract class PasswordBasedSkeletonPrivate {
         static $gtype: GObject.GType<PasswordBasedSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PhotosIface = typeof Photos;
     type PhotosProxyClass = typeof PhotosProxy;
     abstract class PhotosProxyPrivate {
         static $gtype: GObject.GType<PhotosProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PhotosSkeletonClass = typeof PhotosSkeleton;
     abstract class PhotosSkeletonPrivate {
         static $gtype: GObject.GType<PhotosSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PrintersIface = typeof Printers;
     type PrintersProxyClass = typeof PrintersProxy;
     abstract class PrintersProxyPrivate {
         static $gtype: GObject.GType<PrintersProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PrintersSkeletonClass = typeof PrintersSkeleton;
     abstract class PrintersSkeletonPrivate {
         static $gtype: GObject.GType<PrintersSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ReadLaterIface = typeof ReadLater;
     type ReadLaterProxyClass = typeof ReadLaterProxy;
     abstract class ReadLaterProxyPrivate {
         static $gtype: GObject.GType<ReadLaterProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ReadLaterSkeletonClass = typeof ReadLaterSkeleton;
     abstract class ReadLaterSkeletonPrivate {
         static $gtype: GObject.GType<ReadLaterSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TicketingIface = typeof Ticketing;
     type TicketingProxyClass = typeof TicketingProxy;
     abstract class TicketingProxyPrivate {
         static $gtype: GObject.GType<TicketingProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TicketingSkeletonClass = typeof TicketingSkeleton;
     abstract class TicketingSkeletonPrivate {
         static $gtype: GObject.GType<TicketingSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TodoIface = typeof Todo;
     type TodoProxyClass = typeof TodoProxy;
     abstract class TodoProxyPrivate {
         static $gtype: GObject.GType<TodoProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TodoSkeletonClass = typeof TodoSkeleton;
     abstract class TodoSkeletonPrivate {
         static $gtype: GObject.GType<TodoSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Account {

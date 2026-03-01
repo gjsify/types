@@ -120,7 +120,8 @@ export namespace Abi {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Button.ConstructorProps,
+            extends
+                Gtk.Button.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Activatable.ConstructorProps,
@@ -4797,9 +4798,7 @@ export namespace Abi {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             content: string;
             content_length: number;
             contentLength: number;
@@ -5720,10 +5719,6 @@ export namespace Abi {
 
     abstract class PrivData {
         static $gtype: GObject.GType<PrivData>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TableClass = typeof Table;

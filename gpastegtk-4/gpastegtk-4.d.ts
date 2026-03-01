@@ -133,7 +133,8 @@ export namespace GPasteGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends PreferencesPage.ConstructorProps,
+            extends
+                PreferencesPage.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {}
@@ -674,7 +675,8 @@ export namespace GPasteGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Adw.PreferencesGroup.ConstructorProps,
+            extends
+                Adw.PreferencesGroup.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {}
@@ -1263,7 +1265,8 @@ export namespace GPasteGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends PreferencesPage.ConstructorProps,
+            extends
+                PreferencesPage.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {}
@@ -1872,7 +1875,8 @@ export namespace GPasteGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Adw.PreferencesPage.ConstructorProps,
+            extends
+                Adw.PreferencesPage.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {}
@@ -2423,7 +2427,8 @@ export namespace GPasteGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends PreferencesPage.ConstructorProps,
+            extends
+                PreferencesPage.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {}
@@ -2961,7 +2966,8 @@ export namespace GPasteGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Adw.Bin.ConstructorProps,
+            extends
+                Adw.Bin.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {}
@@ -3525,7 +3531,8 @@ export namespace GPasteGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Adw.PreferencesWindow.ConstructorProps,
+            extends
+                Adw.PreferencesWindow.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps,

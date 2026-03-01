@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/meta-7)
 
 
-GJS TypeScript type definitions for Meta-7, generated from library version 3.38.4 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.38.
+GJS TypeScript type definitions for Meta-7, generated from library version 3.38.4 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.39.
 
 ## Install
 

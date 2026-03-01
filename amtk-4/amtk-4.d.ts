@@ -739,7 +739,6 @@ export namespace Amtk {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ActionInfo;
 
@@ -809,10 +808,6 @@ export namespace Amtk {
     type ActionInfoCentralStoreClass = typeof ActionInfoCentralStore;
     abstract class ActionInfoCentralStorePrivate {
         static $gtype: GObject.GType<ActionInfoCentralStorePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -845,43 +840,26 @@ export namespace Amtk {
                 tooltip: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type ActionInfoStoreClass = typeof ActionInfoStore;
     abstract class ActionInfoStorePrivate {
         static $gtype: GObject.GType<ActionInfoStorePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ApplicationWindowClass = typeof ApplicationWindow;
     abstract class ApplicationWindowPrivate {
         static $gtype: GObject.GType<ApplicationWindowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FactoryClass = typeof Factory;
     abstract class FactoryPrivate {
         static $gtype: GObject.GType<FactoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MenuShellClass = typeof MenuShell;
     abstract class MenuShellPrivate {
         static $gtype: GObject.GType<MenuShellPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

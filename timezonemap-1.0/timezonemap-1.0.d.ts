@@ -54,7 +54,8 @@ export namespace TimezoneMap {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.EntryCompletion.ConstructorProps,
+            extends
+                Gtk.EntryCompletion.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.CellLayout.ConstructorProps {}
     }
@@ -994,7 +995,8 @@ export namespace TimezoneMap {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -1665,28 +1667,16 @@ export namespace TimezoneMap {
     type TimezoneCompletionClass = typeof TimezoneCompletion;
     abstract class TimezoneCompletionPrivate {
         static $gtype: GObject.GType<TimezoneCompletionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TimezoneLocationClass = typeof TimezoneLocation;
     abstract class TimezoneLocationPrivate {
         static $gtype: GObject.GType<TimezoneLocationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TimezoneMapClass = typeof TimezoneMap;
     abstract class TimezoneMapPrivate {
         static $gtype: GObject.GType<TimezoneMapPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

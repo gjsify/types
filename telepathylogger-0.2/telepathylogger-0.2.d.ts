@@ -881,27 +881,15 @@ export namespace TelepathyLogger {
     type CallEventClass = typeof CallEvent;
     abstract class CallEventPriv {
         static $gtype: GObject.GType<CallEventPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class EntityPriv {
         static $gtype: GObject.GType<EntityPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EventClass = typeof Event;
     abstract class EventPriv {
         static $gtype: GObject.GType<EventPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LogManagerClass = typeof LogManager;
@@ -916,28 +904,16 @@ export namespace TelepathyLogger {
         account: TelepathyGLib.Account;
         target: Entity;
         date: GLib.Date;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LogWalkerClass = typeof LogWalker;
     abstract class LogWalkerPriv {
         static $gtype: GObject.GType<LogWalkerPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TextEventClass = typeof TextEvent;
     abstract class TextEventPriv {
         static $gtype: GObject.GType<TextEventPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

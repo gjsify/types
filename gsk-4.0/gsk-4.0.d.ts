@@ -682,7 +682,6 @@ export namespace Gsk {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -3464,7 +3463,6 @@ export namespace Gsk {
                 color: Gdk.RGBA;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type GLRendererClass = typeof GLRenderer;
@@ -3494,7 +3492,6 @@ export namespace Gsk {
                 line_chars: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3519,10 +3516,6 @@ export namespace Gsk {
      */
     abstract class Path {
         static $gtype: GObject.GType<Path>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -3742,7 +3735,6 @@ export namespace Gsk {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): PathBuilder;
 
@@ -4133,7 +4125,6 @@ export namespace Gsk {
         // Constructors
 
         constructor(path: Path);
-        _init(...args: any[]): void;
 
         static ['new'](path: Path): PathMeasure;
 
@@ -4196,10 +4187,6 @@ export namespace Gsk {
      */
     class PathPoint {
         static $gtype: GObject.GType<PathPoint>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4334,7 +4321,6 @@ export namespace Gsk {
                 corner: Graphene.Size[];
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4447,7 +4433,6 @@ export namespace Gsk {
         // Constructors
 
         constructor(shader: GLShader, initial_values?: GLib.Bytes | null);
-        _init(...args: any[]): void;
 
         static ['new'](shader: GLShader, initial_values?: GLib.Bytes | null): ShaderArgsBuilder;
 
@@ -4560,7 +4545,6 @@ export namespace Gsk {
                 radius: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4572,7 +4556,6 @@ export namespace Gsk {
         // Constructors
 
         constructor(line_width: number);
-        _init(...args: any[]): void;
 
         static ['new'](line_width: number): Stroke;
 
@@ -4726,7 +4709,6 @@ export namespace Gsk {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Transform;
 

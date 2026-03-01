@@ -233,74 +233,38 @@ export namespace CryptUI {
     }
     class KeyChooser {
         static $gtype: GObject.GType<KeyChooser>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class KeyChooserClass {
         static $gtype: GObject.GType<KeyChooserClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class KeyChooserPriv {
         static $gtype: GObject.GType<KeyChooserPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class KeyStore {
         static $gtype: GObject.GType<KeyStore>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class KeyStoreClass {
         static $gtype: GObject.GType<KeyStoreClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class KeyStorePriv {
         static $gtype: GObject.GType<KeyStorePriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Keyset {
         static $gtype: GObject.GType<Keyset>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class KeysetClass {
         static $gtype: GObject.GType<KeysetClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class KeysetPrivate {
         static $gtype: GObject.GType<KeysetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

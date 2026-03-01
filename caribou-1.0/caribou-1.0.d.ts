@@ -1864,7 +1864,8 @@ export namespace Caribou {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends ScannableGroup.ConstructorProps,
+            extends
+                ScannableGroup.ConstructorProps,
                 IScannableItem.ConstructorProps,
                 IKeyboardObject.ConstructorProps {}
     }
@@ -2397,9 +2398,7 @@ export namespace Caribou {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                IScannableItem.ConstructorProps,
-                IKeyboardObject.ConstructorProps {
+            extends GObject.Object.ConstructorProps, IScannableItem.ConstructorProps, IKeyboardObject.ConstructorProps {
             align: string;
             width: number;
             toggle: string;
@@ -2981,7 +2980,8 @@ export namespace Caribou {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends ScannableGroup.ConstructorProps,
+            extends
+                ScannableGroup.ConstructorProps,
                 IScannableItem.ConstructorProps,
                 IKeyboardObject.ConstructorProps {}
     }
@@ -4155,109 +4155,61 @@ export namespace Caribou {
     type DisplayAdapterClass = typeof DisplayAdapter;
     abstract class DisplayAdapterPrivate {
         static $gtype: GObject.GType<DisplayAdapterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type NullAdapterClass = typeof NullAdapter;
     abstract class NullAdapterPrivate {
         static $gtype: GObject.GType<NullAdapterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type XAdapterClass = typeof XAdapter;
     abstract class XAdapterPrivate {
         static $gtype: GObject.GType<XAdapterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type KeyboardModelClass = typeof KeyboardModel;
     abstract class KeyboardModelPrivate {
         static $gtype: GObject.GType<KeyboardModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type KeyboardServiceClass = typeof KeyboardService;
     abstract class KeyboardServicePrivate {
         static $gtype: GObject.GType<KeyboardServicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GroupModelClass = typeof GroupModel;
     abstract class GroupModelPrivate {
         static $gtype: GObject.GType<GroupModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LevelModelClass = typeof LevelModel;
     abstract class LevelModelPrivate {
         static $gtype: GObject.GType<LevelModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RowModelClass = typeof RowModel;
     abstract class RowModelPrivate {
         static $gtype: GObject.GType<RowModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type KeyModelClass = typeof KeyModel;
     abstract class KeyModelPrivate {
         static $gtype: GObject.GType<KeyModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ColumnModelClass = typeof ColumnModel;
     abstract class ColumnModelPrivate {
         static $gtype: GObject.GType<ColumnModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ScannerClass = typeof Scanner;
     abstract class ScannerPrivate {
         static $gtype: GObject.GType<ScannerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ScannableGroupClass = typeof ScannableGroup;
     abstract class ScannableGroupPrivate {
         static $gtype: GObject.GType<ScannableGroupPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IScannableItemIface = typeof IScannableItem;

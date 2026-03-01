@@ -152,8 +152,7 @@ export namespace PangoFT2 {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends PangoFc.FontMap.ConstructorProps<A>,
-                Gio.ListModel.ConstructorProps {}
+            extends PangoFc.FontMap.ConstructorProps<A>, Gio.ListModel.ConstructorProps {}
     }
 
     /**

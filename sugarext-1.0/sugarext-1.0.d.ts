@@ -769,10 +769,6 @@ export namespace SugarExt {
     type ClientClass = typeof Client;
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ClientXSMPClass = typeof ClientXSMP;
@@ -784,10 +780,6 @@ export namespace SugarExt {
 
         root_window: Gdk.Window;
         cursor_shown: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GestureGrabberClass = typeof GestureGrabber;
@@ -800,30 +792,18 @@ export namespace SugarExt {
         controllers: any[];
         touches: any[];
         cancel_timeout_id: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GridClass = typeof Grid;
     type KeyGrabberClass = typeof KeyGrabber;
     abstract class KeyGrabberPrivate {
         static $gtype: GObject.GType<KeyGrabberPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SessionClass = typeof Session;
     type VolumeAlsaClass = typeof VolumeAlsa;
     abstract class VolumeAlsaPrivate {
         static $gtype: GObject.GType<VolumeAlsaPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type VolumeClass = typeof Volume;

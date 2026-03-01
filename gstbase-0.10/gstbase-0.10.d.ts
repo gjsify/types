@@ -763,10 +763,6 @@ export namespace GstBase {
     type GstAdapterClass = typeof GstAdapter;
     class GstAdapterPrivate {
         static $gtype: GObject.GType<GstAdapterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -792,7 +788,6 @@ export namespace GstBase {
                 bit: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](data: number[], size: number): GstBitReader;
 
@@ -840,7 +835,6 @@ export namespace GstBase {
                 byte: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](data: number[], size: number): GstByteReader;
 
@@ -936,7 +930,6 @@ export namespace GstBase {
                 owned: boolean;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): GstByteWriter;
 
@@ -1001,19 +994,11 @@ export namespace GstBase {
         pad: Gst.Pad;
         buffer: Gst.Buffer;
         pos: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GstCollectPadsClass = typeof GstCollectPads;
     class GstCollectPadsPrivate {
         static $gtype: GObject.GType<GstCollectPadsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GstDataQueueClass = typeof GstDataQueue;
@@ -1031,10 +1016,6 @@ export namespace GstBase {
         duration: number;
         visible: boolean;
         destroy: GLib.DestroyNotify;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1058,35 +1039,22 @@ export namespace GstBase {
                 time: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type GstPushSrcClass = typeof GstPushSrc;
     type SinkClass = typeof Sink;
     class SinkPrivate {
         static $gtype: GObject.GType<SinkPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SrcClass = typeof Src;
     class SrcPrivate {
         static $gtype: GObject.GType<SrcPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TransformClass = typeof Transform;
     class TransformPrivate {
         static $gtype: GObject.GType<TransformPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

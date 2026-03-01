@@ -166,7 +166,8 @@ export namespace GtkClutter {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps,
+            extends
+                Clutter.Actor.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -1187,7 +1188,8 @@ export namespace GtkClutter {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Container.ConstructorProps,
+            extends
+                Gtk.Container.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             use_layout_size: boolean;
@@ -1830,7 +1832,8 @@ export namespace GtkClutter {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Texture.ConstructorProps,
+            extends
+                Clutter.Texture.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -2438,7 +2441,8 @@ export namespace GtkClutter {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Window.ConstructorProps,
+            extends
+                Gtk.Window.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -2942,29 +2946,17 @@ export namespace GtkClutter {
     type ActorClass = typeof Actor;
     abstract class ActorPrivate {
         static $gtype: GObject.GType<ActorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EmbedClass = typeof Embed;
     abstract class EmbedPrivate {
         static $gtype: GObject.GType<EmbedPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TextureClass = typeof Texture;
     type WindowClass = typeof Window;
     abstract class WindowPrivate {
         static $gtype: GObject.GType<WindowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

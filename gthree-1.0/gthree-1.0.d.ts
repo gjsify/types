@@ -6239,10 +6239,6 @@ export namespace Gthree {
     abstract class AttributeArray {
         static $gtype: GObject.GType<AttributeArray>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         copy_at(
@@ -6361,7 +6357,6 @@ export namespace Gthree {
                 material_index: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type GroupClass = typeof Group;
@@ -6371,10 +6366,6 @@ export namespace Gthree {
     type LightClass = typeof Light;
     abstract class LightSetup {
         static $gtype: GObject.GType<LightSetup>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LightShadowClass = typeof LightShadow;
@@ -6386,10 +6377,6 @@ export namespace Gthree {
     type MaterialClass = typeof Material;
     abstract class MaterialProperties {
         static $gtype: GObject.GType<MaterialProperties>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MeshBasicMaterialClass = typeof MeshBasicMaterial;
@@ -6411,7 +6398,6 @@ export namespace Gthree {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -6433,10 +6419,6 @@ export namespace Gthree {
     abstract class ProgramCache {
         static $gtype: GObject.GType<ProgramCache>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         free(): void;
@@ -6445,10 +6427,6 @@ export namespace Gthree {
     type ProgramClass = typeof Program;
     abstract class ProgramParameters {
         static $gtype: GObject.GType<ProgramParameters>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type QuaternionInterpolantClass = typeof QuaternionInterpolant;
@@ -6470,7 +6448,6 @@ export namespace Gthree {
         // Constructors
 
         constructor(object: Object);
-        _init(...args: any[]): void;
 
         static ['new'](object: Object): RayIntersection;
 
@@ -6483,10 +6460,6 @@ export namespace Gthree {
     type RaycasterClass = typeof Raycaster;
     abstract class RenderList {
         static $gtype: GObject.GType<RenderList>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RenderTargetClass = typeof RenderTarget;
@@ -6499,10 +6472,6 @@ export namespace Gthree {
 
         realized_for: Renderer;
         dirty: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SceneClass = typeof Scene;
@@ -6518,10 +6487,6 @@ export namespace Gthree {
     type TextureClass = typeof Texture;
     abstract class Uniform {
         static $gtype: GObject.GType<Uniform>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -6549,10 +6514,6 @@ export namespace Gthree {
         name: string;
         type: UniformType;
         value: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type VectorKeyframeTrackClass = typeof VectorKeyframeTrack;

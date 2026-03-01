@@ -644,9 +644,7 @@ export namespace Wnck {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Menu.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Menu.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             window: any | any;
         }
     }
@@ -1563,7 +1561,8 @@ export namespace Wnck {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.MenuItem.ConstructorProps,
+            extends
+                Gtk.MenuItem.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Activatable.ConstructorProps,
@@ -6193,9 +6192,7 @@ export namespace Wnck {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             handle: Handle;
         }
     }
@@ -7278,7 +7275,8 @@ export namespace Wnck {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.MenuBar.ConstructorProps,
+            extends
+                Gtk.MenuBar.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             handle: Handle;
@@ -7829,7 +7827,8 @@ export namespace Wnck {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Container.ConstructorProps,
+            extends
+                Gtk.Container.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             handle: Handle;
@@ -9181,47 +9180,27 @@ export namespace Wnck {
     type ActionMenuClass = typeof ActionMenu;
     abstract class ActionMenuPrivate {
         static $gtype: GObject.GType<ActionMenuPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ApplicationClass = typeof Application;
     abstract class ApplicationPrivate {
         static $gtype: GObject.GType<ApplicationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ClassGroupClass = typeof ClassGroup;
     abstract class ClassGroupPrivate {
         static $gtype: GObject.GType<ClassGroupPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HandleClass = typeof Handle;
     abstract class IconCache {
         static $gtype: GObject.GType<IconCache>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ImageMenuItemClass = typeof ImageMenuItem;
     type PagerClass = typeof Pager;
     abstract class PagerPrivate {
         static $gtype: GObject.GType<PagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9265,43 +9244,26 @@ export namespace Wnck {
                 n_other: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type ScreenClass = typeof Screen;
     abstract class ScreenPrivate {
         static $gtype: GObject.GType<ScreenPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SelectorClass = typeof Selector;
     abstract class SelectorPrivate {
         static $gtype: GObject.GType<SelectorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TasklistClass = typeof Tasklist;
     abstract class TasklistPrivate {
         static $gtype: GObject.GType<TasklistPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WindowClass = typeof Window;
     abstract class WindowPrivate {
         static $gtype: GObject.GType<WindowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WorkspaceClass = typeof Workspace;
@@ -9334,15 +9296,10 @@ export namespace Wnck {
                 current_col: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     abstract class WorkspacePrivate {
         static $gtype: GObject.GType<WorkspacePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

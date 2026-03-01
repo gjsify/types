@@ -19,26 +19,14 @@ export namespace freetype2 {
 
     class Bitmap {
         static $gtype: GObject.GType<Bitmap>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Face {
         static $gtype: GObject.GType<Face>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Library {
         static $gtype: GObject.GType<Library>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type Int32 = number;

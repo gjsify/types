@@ -322,7 +322,6 @@ export namespace Snapd {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -421,10 +420,6 @@ export namespace Snapd {
          * the initial version of Snap markdown.
          */
         static '0': number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

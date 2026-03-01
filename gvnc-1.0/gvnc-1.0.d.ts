@@ -1935,7 +1935,6 @@ export namespace GVnc {
                 frequency: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): AudioFormat;
 
@@ -1974,7 +1973,6 @@ export namespace GVnc {
                 capacity: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](capacity: number): AudioSample;
 
@@ -1999,19 +1997,11 @@ export namespace GVnc {
     type BaseAudioClass = typeof BaseAudio;
     abstract class BaseAudioPrivate {
         static $gtype: GObject.GType<BaseAudioPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BaseFramebufferClass = typeof BaseFramebuffer;
     abstract class BaseFramebufferPrivate {
         static $gtype: GObject.GType<BaseFramebufferPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ColorMap {
@@ -2031,7 +2021,6 @@ export namespace GVnc {
                 size: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](offset: number, size: number): ColorMap;
 
@@ -2085,25 +2074,16 @@ export namespace GVnc {
                 blue: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type ConnectionClass = typeof Connection;
     abstract class ConnectionPrivate {
         static $gtype: GObject.GType<ConnectionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CursorClass = typeof Cursor;
     abstract class CursorPrivate {
         static $gtype: GObject.GType<CursorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FramebufferInterface = typeof Framebuffer;
@@ -2139,7 +2119,6 @@ export namespace GVnc {
                 blue_shift: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): PixelFormat;
 

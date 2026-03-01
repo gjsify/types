@@ -66,7 +66,6 @@ export namespace Tepl {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -95,7 +94,6 @@ export namespace Tepl {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -2570,7 +2568,8 @@ export namespace Tepl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.InfoBar.ConstructorProps,
+            extends
+                Gtk.InfoBar.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {}
@@ -3355,7 +3354,8 @@ export namespace Tepl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Notebook.ConstructorProps,
+            extends
+                Gtk.Notebook.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 TabGroup.ConstructorProps {}
@@ -3988,7 +3988,8 @@ export namespace Tepl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Grid.ConstructorProps,
+            extends
+                Gtk.Grid.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps,
@@ -4751,7 +4752,8 @@ export namespace Tepl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Grid.ConstructorProps,
+            extends
+                Gtk.Grid.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -5367,7 +5369,8 @@ export namespace Tepl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GtkSource.View.ConstructorProps,
+            extends
+                GtkSource.View.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {}
@@ -5911,19 +5914,11 @@ export namespace Tepl {
     type ApplicationClass = typeof Application;
     abstract class ApplicationPrivate {
         static $gtype: GObject.GType<ApplicationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ApplicationWindowClass = typeof ApplicationWindow;
     abstract class ApplicationWindowPrivate {
         static $gtype: GObject.GType<ApplicationWindowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BufferClass = typeof Buffer;
@@ -5933,7 +5928,6 @@ export namespace Tepl {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](charset: string): Encoding;
 
@@ -6012,10 +6006,6 @@ export namespace Tepl {
     type FileSaverClass = typeof FileSaver;
     abstract class FileSaverPrivate {
         static $gtype: GObject.GType<FileSaverPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FoldRegionClass = typeof FoldRegion;
@@ -6024,19 +6014,11 @@ export namespace Tepl {
     type MetadataStoreClass = typeof MetadataStore;
     abstract class MetadataStorePrivate {
         static $gtype: GObject.GType<MetadataStorePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type NotebookClass = typeof Notebook;
     abstract class NotebookPrivate {
         static $gtype: GObject.GType<NotebookPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TabClass = typeof Tab;
@@ -6044,18 +6026,10 @@ export namespace Tepl {
     type TabLabelClass = typeof TabLabel;
     abstract class TabLabelPrivate {
         static $gtype: GObject.GType<TabLabelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class TabPrivate {
         static $gtype: GObject.GType<TabPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ViewClass = typeof View;

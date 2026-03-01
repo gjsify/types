@@ -136,7 +136,6 @@ export namespace Modulemd {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace ErrorEnum {
@@ -321,7 +320,6 @@ export namespace Modulemd {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace YamlErrorEnum {

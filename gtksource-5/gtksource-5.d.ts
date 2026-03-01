@@ -178,7 +178,6 @@ export namespace GtkSource {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -207,7 +206,6 @@ export namespace GtkSource {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1678,7 +1676,8 @@ export namespace GtkSource {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -2512,8 +2511,7 @@ export namespace GtkSource {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends GObject.Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             busy: boolean;
             completion: Completion;
             empty: boolean;
@@ -5457,7 +5455,8 @@ export namespace GtkSource {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -6533,7 +6532,8 @@ export namespace GtkSource {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -7615,7 +7615,8 @@ export namespace GtkSource {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GutterRenderer.ConstructorProps,
+            extends
+                GutterRenderer.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -8211,7 +8212,8 @@ export namespace GtkSource {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GutterRenderer.ConstructorProps,
+            extends
+                GutterRenderer.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -8944,7 +8946,8 @@ export namespace GtkSource {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {}
@@ -10150,7 +10153,8 @@ export namespace GtkSource {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends View.ConstructorProps,
+            extends
+                View.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.AccessibleText.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -13777,7 +13781,8 @@ export namespace GtkSource {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Button.ConstructorProps,
+            extends
+                Gtk.Button.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -16963,7 +16968,8 @@ export namespace GtkSource {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps,
@@ -17963,7 +17969,8 @@ export namespace GtkSource {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -21652,7 +21659,8 @@ export namespace GtkSource {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.TextView.ConstructorProps,
+            extends
+                Gtk.TextView.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.AccessibleText.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -23110,10 +23118,6 @@ export namespace GtkSource {
     abstract class Encoding {
         static $gtype: GObject.GType<Encoding>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -23200,7 +23204,6 @@ export namespace GtkSource {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Methods
 

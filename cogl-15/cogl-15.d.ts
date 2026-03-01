@@ -6445,7 +6445,6 @@ export namespace Cogl {
                 alpha: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -6581,10 +6580,6 @@ export namespace Cogl {
     class DepthState {
         static $gtype: GObject.GType<DepthState>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -6676,10 +6671,6 @@ export namespace Cogl {
     abstract class DmaBufHandle {
         static $gtype: GObject.GType<DmaBufHandle>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -6717,10 +6708,6 @@ export namespace Cogl {
      */
     abstract class FrameClosure {
         static $gtype: GObject.GType<FrameClosure>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FrameInfoClass = typeof FrameInfo;
@@ -6761,10 +6748,6 @@ export namespace Cogl {
      */
     abstract class MatrixEntry {
         static $gtype: GObject.GType<MatrixEntry>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -6841,10 +6824,6 @@ export namespace Cogl {
     type TextureClass = typeof Texture;
     abstract class TimestampQuery {
         static $gtype: GObject.GType<TimestampQuery>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6867,7 +6846,6 @@ export namespace Cogl {
                 y: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6898,7 +6876,6 @@ export namespace Cogl {
                 a: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6925,7 +6902,6 @@ export namespace Cogl {
                 t: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6950,7 +6926,6 @@ export namespace Cogl {
                 z: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6979,7 +6954,6 @@ export namespace Cogl {
                 t: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     namespace ScanoutBuffer {

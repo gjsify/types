@@ -1228,10 +1228,6 @@ export namespace GWeather {
         phenomenon: ConditionPhenomenon;
         qualifier: ConditionQualifier;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         to_string(): string;

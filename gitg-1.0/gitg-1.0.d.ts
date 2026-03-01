@@ -143,7 +143,6 @@ export namespace Gitg {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class DateError extends GLib.Error {
@@ -156,7 +155,6 @@ export namespace Gitg {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class InitError extends GLib.Error {
@@ -169,7 +167,6 @@ export namespace Gitg {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class RemoteError extends GLib.Error {
@@ -185,7 +182,6 @@ export namespace Gitg {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class StageError extends GLib.Error {
@@ -204,7 +200,6 @@ export namespace Gitg {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace PatchSetType {
@@ -526,9 +521,7 @@ export namespace Gitg {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Ggit.Branch.ConstructorProps,
-                Ref.ConstructorProps,
-                Branch.ConstructorProps {}
+            extends Ggit.Branch.ConstructorProps, Ref.ConstructorProps, Branch.ConstructorProps {}
     }
 
     class BranchBase extends Ggit.Branch implements Ref, Branch {
@@ -7605,325 +7598,181 @@ export namespace Gitg {
     type AsyncClass = typeof Async;
     abstract class AsyncPrivate {
         static $gtype: GObject.GType<AsyncPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AuthenticationDialogClass = typeof AuthenticationDialog;
     abstract class AuthenticationDialogPrivate {
         static $gtype: GObject.GType<AuthenticationDialogPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AvatarCacheClass = typeof AvatarCache;
     abstract class AvatarCachePrivate {
         static $gtype: GObject.GType<AvatarCachePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BranchBaseClass = typeof BranchBase;
     abstract class BranchBasePrivate {
         static $gtype: GObject.GType<BranchBasePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CellRendererLanesClass = typeof CellRendererLanes;
     abstract class CellRendererLanesPrivate {
         static $gtype: GObject.GType<CellRendererLanesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ColorClass = typeof Color;
     abstract class ColorPrivate {
         static $gtype: GObject.GType<ColorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CommitListViewClass = typeof CommitListView;
     abstract class CommitListViewPrivate {
         static $gtype: GObject.GType<CommitListViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CommitModelClass = typeof CommitModel;
     abstract class CommitModelPrivate {
         static $gtype: GObject.GType<CommitModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CommitClass = typeof Commit;
     abstract class CommitPrivate {
         static $gtype: GObject.GType<CommitPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CredentialsManagerClass = typeof CredentialsManager;
     abstract class CredentialsManagerPrivate {
         static $gtype: GObject.GType<CredentialsManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DateClass = typeof Date;
     abstract class DatePrivate {
         static $gtype: GObject.GType<DatePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DiffStatClass = typeof DiffStat;
     abstract class DiffStatPrivate {
         static $gtype: GObject.GType<DiffStatPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DiffViewOptionsClass = typeof DiffViewOptions;
     abstract class DiffViewOptionsPrivate {
         static $gtype: GObject.GType<DiffViewOptionsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DiffViewClass = typeof DiffView;
     abstract class DiffViewPrivate {
         static $gtype: GObject.GType<DiffViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FontManagerClass = typeof FontManager;
     abstract class FontManagerPrivate {
         static $gtype: GObject.GType<FontManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GPGUtilsClass = typeof GPGUtils;
     abstract class GPGUtilsPrivate {
         static $gtype: GObject.GType<GPGUtilsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HookClass = typeof Hook;
     abstract class HookPrivate {
         static $gtype: GObject.GType<HookPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LabelRendererClass = typeof LabelRenderer;
     abstract class LabelRendererPrivate {
         static $gtype: GObject.GType<LabelRendererPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LanesClass = typeof Lanes;
     abstract class LanesPrivate {
         static $gtype: GObject.GType<LanesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LaneClass = typeof Lane;
     abstract class LanePrivate {
         static $gtype: GObject.GType<LanePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ProgressBinClass = typeof ProgressBin;
     abstract class ProgressBinPrivate {
         static $gtype: GObject.GType<ProgressBinPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RefBaseClass = typeof RefBase;
     abstract class RefBasePrivate {
         static $gtype: GObject.GType<RefBasePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ParsedRefNameClass = typeof ParsedRefName;
     abstract class ParsedRefNamePrivate {
         static $gtype: GObject.GType<ParsedRefNamePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RemoteClass = typeof Remote;
     abstract class RemotePrivate {
         static $gtype: GObject.GType<RemotePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RepositoryListBoxClass = typeof RepositoryListBox;
     abstract class RepositoryListBoxPrivate {
         static $gtype: GObject.GType<RepositoryListBoxPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RepositoryListBoxRowClass = typeof RepositoryListBoxRow;
     abstract class RepositoryListBoxRowPrivate {
         static $gtype: GObject.GType<RepositoryListBoxRowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RepositoryClass = typeof Repository;
     abstract class RepositoryPrivate {
         static $gtype: GObject.GType<RepositoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ResourceClass = typeof Resource;
     abstract class ResourcePrivate {
         static $gtype: GObject.GType<ResourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SidebarStoreClass = typeof SidebarStore;
     abstract class SidebarStorePrivate {
         static $gtype: GObject.GType<SidebarStorePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SidebarStoreSidebarTextClass = typeof SidebarStoreSidebarText;
     abstract class SidebarStoreSidebarTextPrivate {
         static $gtype: GObject.GType<SidebarStoreSidebarTextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SidebarStoreSidebarHeaderClass = typeof SidebarStoreSidebarHeader;
     abstract class SidebarStoreSidebarHeaderPrivate {
         static $gtype: GObject.GType<SidebarStoreSidebarHeaderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SidebarClass = typeof Sidebar;
     abstract class SidebarPrivate {
         static $gtype: GObject.GType<SidebarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StageStatusFileClass = typeof StageStatusFile;
     abstract class StageStatusFilePrivate {
         static $gtype: GObject.GType<StageStatusFilePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StageStatusSubmoduleClass = typeof StageStatusSubmodule;
     abstract class StageStatusSubmodulePrivate {
         static $gtype: GObject.GType<StageStatusSubmodulePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StageStatusEnumeratorClass = typeof StageStatusEnumerator;
     abstract class StageStatusEnumeratorPrivate {
         static $gtype: GObject.GType<StageStatusEnumeratorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PatchSetClass = typeof PatchSet;
     abstract class PatchSetPrivate {
         static $gtype: GObject.GType<PatchSetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class PatchSetPatch {
@@ -7935,55 +7784,31 @@ export namespace Gitg {
         old_offset: number;
         new_offset: number;
         length: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StageClass = typeof Stage;
     abstract class StagePrivate {
         static $gtype: GObject.GType<StagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TextConvClass = typeof TextConv;
     abstract class TextConvPrivate {
         static $gtype: GObject.GType<TextConvPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ThemeClass = typeof Theme;
     abstract class ThemePrivate {
         static $gtype: GObject.GType<ThemePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UtilsClass = typeof Utils;
     abstract class UtilsPrivate {
         static $gtype: GObject.GType<UtilsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WhenMappedClass = typeof WhenMapped;
     abstract class WhenMappedPrivate {
         static $gtype: GObject.GType<WhenMappedPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BranchIface = typeof Branch;

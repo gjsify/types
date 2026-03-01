@@ -129,7 +129,8 @@ export namespace AyatanaIdo3 {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.MenuItem.ConstructorProps,
+            extends
+                Gtk.MenuItem.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Activatable.ConstructorProps,
@@ -4809,7 +4810,8 @@ export namespace AyatanaIdo3 {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.MenuItem.ConstructorProps,
+            extends
+                Gtk.MenuItem.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Activatable.ConstructorProps,
@@ -9449,7 +9451,8 @@ export namespace AyatanaIdo3 {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Scale.ConstructorProps,
+            extends
+                Gtk.Scale.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {}
@@ -10004,7 +10007,8 @@ export namespace AyatanaIdo3 {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.MenuItem.ConstructorProps,
+            extends
+                Gtk.MenuItem.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Activatable.ConstructorProps,
@@ -14748,7 +14752,8 @@ export namespace AyatanaIdo3 {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.CheckMenuItem.ConstructorProps,
+            extends
+                Gtk.CheckMenuItem.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Activatable.ConstructorProps,

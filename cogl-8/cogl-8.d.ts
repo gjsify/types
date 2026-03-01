@@ -765,7 +765,6 @@ export namespace Cogl {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4479,7 +4478,6 @@ export namespace Cogl {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Color;
 
@@ -4708,7 +4706,6 @@ export namespace Cogl {
                 instance_count: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4719,19 +4716,11 @@ export namespace Cogl {
      */
     class FrameClosure {
         static $gtype: GObject.GType<FrameClosure>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FramebufferClass = typeof Framebuffer;
     abstract class FramebufferDriverConfig {
         static $gtype: GObject.GType<FramebufferDriverConfig>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Material {
@@ -4740,7 +4729,6 @@ export namespace Cogl {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Material;
 
@@ -5047,10 +5035,6 @@ export namespace Cogl {
 
     abstract class MaterialLayer {
         static $gtype: GObject.GType<MaterialLayer>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OffscreenClass = typeof Offscreen;
@@ -5063,10 +5047,6 @@ export namespace Cogl {
      */
     class OnscreenDirtyClosure {
         static $gtype: GObject.GType<OnscreenDirtyClosure>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5094,15 +5074,10 @@ export namespace Cogl {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     abstract class Scanout {
         static $gtype: GObject.GType<Scanout>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -5122,18 +5097,10 @@ export namespace Cogl {
         z: number;
         tx: number;
         ty: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class TraceContext {
         static $gtype: GObject.GType<TraceContext>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class TraceHead {
@@ -5152,7 +5119,6 @@ export namespace Cogl {
                 name: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5199,7 +5165,6 @@ export namespace Cogl {
                 unused: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class _ColorSizeCheck {
@@ -5216,7 +5181,6 @@ export namespace Cogl {
                 compile_time_assert_CoglColor_size: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class _TextureVertexSizeCheck {
@@ -5233,7 +5197,6 @@ export namespace Cogl {
                 compile_time_assert_CoglTextureVertex_size: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     export interface TextureNamespace {

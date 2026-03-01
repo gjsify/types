@@ -2007,7 +2007,6 @@ export namespace GIRepository {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2063,7 +2062,6 @@ export namespace GIRepository {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2153,10 +2151,6 @@ export namespace GIRepository {
     type RepositoryClass = typeof Repository;
     abstract class RepositoryPrivate {
         static $gtype: GObject.GType<RepositoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2164,10 +2158,6 @@ export namespace GIRepository {
      */
     abstract class Typelib {
         static $gtype: GObject.GType<Typelib>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2181,10 +2171,6 @@ export namespace GIRepository {
      */
     abstract class UnresolvedInfo {
         static $gtype: GObject.GType<UnresolvedInfo>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2244,7 +2230,6 @@ export namespace GIRepository {
                 v_pointer: any;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type ArgInfo = BaseInfo;

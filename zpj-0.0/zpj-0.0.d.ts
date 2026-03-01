@@ -44,7 +44,6 @@ export namespace Zpj {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1766,58 +1765,34 @@ export namespace Zpj {
     type AuthorizationDomainClass = typeof AuthorizationDomain;
     abstract class AuthorizationDomainPrivate {
         static $gtype: GObject.GType<AuthorizationDomainPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AuthorizerInterface = typeof Authorizer;
     type GoaAuthorizerClass = typeof GoaAuthorizer;
     abstract class GoaAuthorizerPrivate {
         static $gtype: GObject.GType<GoaAuthorizerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SkydriveClass = typeof Skydrive;
     type SkydriveEntryClass = typeof SkydriveEntry;
     abstract class SkydriveEntryPrivate {
         static $gtype: GObject.GType<SkydriveEntryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SkydriveFileClass = typeof SkydriveFile;
     abstract class SkydriveFilePrivate {
         static $gtype: GObject.GType<SkydriveFilePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SkydriveFolderClass = typeof SkydriveFolder;
     type SkydrivePhotoClass = typeof SkydrivePhoto;
     abstract class SkydrivePrivate {
         static $gtype: GObject.GType<SkydrivePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SkydriveVideoClass = typeof SkydriveVideo;
     abstract class SkydriveVideoPrivate {
         static $gtype: GObject.GType<SkydriveVideoPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Authorizer {

@@ -1428,7 +1428,6 @@ export namespace GSystem {
                 padding_data: any[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**

@@ -380,37 +380,6 @@ export namespace Atspi {
         UNLOCKMODIFIERS,
     }
     /**
-     * Enumeration used to indicate a type of live region and how assertive it
-     * should be in terms of speaking notifications. Currently, this is only used
-     * for "announcement" events, but it may be used for additional purposes
-     * in the future.
-     */
-
-    /**
-     * Enumeration used to indicate a type of live region and how assertive it
-     * should be in terms of speaking notifications. Currently, this is only used
-     * for "announcement" events, but it may be used for additional purposes
-     * in the future.
-     */
-    export namespace Live {
-        export const $gtype: GObject.GType<Live>;
-    }
-
-    enum Live {
-        /**
-         * No live region.
-         */
-        NONE,
-        /**
-         * This live region should be considered polite.
-         */
-        POLITE,
-        /**
-         * This live region should be considered assertive.
-         */
-        ASSERTIVE,
-    }
-    /**
      * Used by interfaces #AtspiText and #AtspiDocument, this
      * enumeration corresponds to the POSIX 'setlocale' enum values.
      */
@@ -773,7 +742,7 @@ export namespace Atspi {
          */
         DATE_EDITOR,
         /**
-         * An inconifed internal frame within a DESKTOP_FRAME.
+         * An inconifed internal frame within a DESKTOP_PANE.
          */
         DESKTOP_ICON,
         /**
@@ -796,14 +765,14 @@ export namespace Atspi {
          */
         DIRECTORY_PANE,
         /**
-         * An object used for drawing custom user interface
-         * elements.
-         */
-        DRAWING_AREA,
-        /**
          * A specialized dialog that displays the files in
          * the directory and lets the user select a file, browse a different
          * directory, or specify a filename.
+         */
+        DRAWING_AREA,
+        /**
+         * An object used for drawing custom user interface
+         * elements.
          */
         FILE_CHOOSER,
         /**
@@ -921,7 +890,7 @@ export namespace Atspi {
          * An object the user can manipulate to tell the
          * application to do something.
          */
-        BUTTON,
+        PUSH_BUTTON,
         /**
          * A specialized check box that will cause other
          * radio buttons in the same group to become unchecked when this one is
@@ -963,13 +932,14 @@ export namespace Atspi {
         SEPARATOR,
         /**
          * An object that allows the user to select from a bounded
-         * range.  Unlike `ATSPI_ROLE_SCROLL_BAR,` `ATSPI_ROLE_SLIDER` objects need not control
-         * 'viewport'-like objects.
+         * range.
          */
         SLIDER,
         /**
          * An object which allows one of a set of choices to
-         * be selected, and which displays the current choice.
+         * be selected, and which displays the current choice.  Unlike
+         * `ATSPI_ROLE_SCROLL_BAR,` `ATSPI_ROLE_SLIDER` objects need not control
+         * 'viewport'-like objects.
          */
         SPIN_BUTTON,
         /**
@@ -1092,7 +1062,7 @@ export namespace Atspi {
         /**
          * An object corresponding to the toplevel accessible
          * of an application, which may contain `ATSPI_ROLE_FRAME` objects or other
-         * accessible objects. Children of objects with the #ATSPI_ROLE_DESKTOP_FRAME role are generally
+         * accessible objects. Children of #AccessibleDesktop objects  are generally
          * `ATSPI_ROLE_APPLICATION` objects.
          */
         APPLICATION,
@@ -1428,25 +1398,16 @@ export namespace Atspi {
         /**
          * A container for content that is called out as a proposed
          * change from the current version of the document, such as by a reviewer of the
-         * content. An object with this role should include children with %ATSPI_ROLE_CONTENT_DELETION and/or
-         * %ATSPI_ROLE_CONTENT_INSERTION, in any order, to indicate what the
+         * content. This role should include either %ATSPI_ROLE_CONTENT_DELETION and/or
+         * %ATSPI_ROLE_CONTENT_INSERTION children, in any order, to indicate what the
          * actual change is. `Since:` 2.36
          */
         SUGGESTION,
         /**
-         * A specialized push button to open a menu. `Since` 2.46
-         */
-        PUSH_BUTTON_MENU,
-        /**
-         * A switch that can be toggled on/off. `Since` 2.56
-         */
-        SWITCH,
-        /**
          * Not a valid role, used for finding end of
-         * enumeration.
+         *  enumeration.
          */
         LAST_DEFINED,
-        PUSH_BUTTON,
     }
     /**
      * Enumeration used by interface #AtspiAccessible to specify where an
@@ -1988,7 +1949,6 @@ export namespace Atspi {
     const DBUS_INTERFACE_HYPERLINK: string;
     const DBUS_INTERFACE_HYPERTEXT: string;
     const DBUS_INTERFACE_IMAGE: string;
-    const DBUS_INTERFACE_KEYBOARD_MONITOR: string;
     const DBUS_INTERFACE_REGISTRY: string;
     const DBUS_INTERFACE_SELECTION: string;
     const DBUS_INTERFACE_SOCKET: string;
@@ -1996,16 +1956,12 @@ export namespace Atspi {
     const DBUS_INTERFACE_TABLE_CELL: string;
     const DBUS_INTERFACE_TEXT: string;
     const DBUS_INTERFACE_VALUE: string;
-    const DBUS_NAME_A11Y_MANAGER: string;
     const DBUS_NAME_REGISTRY: string;
-    const DBUS_PATH_A11Y_MANAGER: string;
     const DBUS_PATH_DEC: string;
     const DBUS_PATH_NULL: string;
     const DBUS_PATH_REGISTRY: string;
     const DBUS_PATH_ROOT: string;
     const DBUS_PATH_SCREEN_READER: string;
-    const DEVICE_A11Y_MANAGER_VIRTUAL_MOD_END: number;
-    const DEVICE_A11Y_MANAGER_VIRTUAL_MOD_START: number;
     /**
      * One higher than the highest valid value of #AtspiEventType.
      */
@@ -2128,14 +2084,6 @@ export namespace Atspi {
      */
     function generate_mouse_event(x: number, y: number, name: string): boolean;
     /**
-     * Like atspi_generate_mouse_event, but asynchronous.
-     * @param x a #glong indicating the screen x coordinate of the mouse event.
-     * @param y a #glong indicating the screen y coordinate of the mouse event.
-     * @param name a string indicating which mouse event to be synthesized        (e.g. "b1p", "b1c", "b2r", "rel", "abs").
-     * @param callback a callback to be called when a reply is received. May be NULL.
-     */
-    function generate_mouse_event_async(x: number, y: number, name: string, callback: GenerateMouseEventCB): void;
-    /**
      * Gets the virtual desktop indicated by index `i`.
      * NOTE: currently multiple virtual desktops are not implemented;
      * as a consequence, any `i` value different from 0 will not return a
@@ -2164,10 +2112,6 @@ export namespace Atspi {
      */
     function get_desktop_list(): Accessible[];
     /**
-     * Returns the version of the AT-SPI library being used at runtime.
-     */
-    function get_version(): [number, number, number];
-    /**
      * Connects to the accessibility registry and initializes the SPI.
      * @returns 0 on success, 1 if already initialized, or an integer error code.
      */
@@ -2178,11 +2122,11 @@ export namespace Atspi {
      */
     function is_initialized(): boolean;
     /**
-     * This function does nothing and should not be called.
-     * @param listener
-     * @param event_types
-     * @param filter
-     * @returns Always returns %FALSE.
+     * Registers a listener for device events, for instance button events.
+     * @param listener a pointer to the #AtspiDeviceListener which requests             the events.
+     * @param event_types an #AtspiDeviceEventMask mask indicating which             types of key events are requested (%ATSPI_KEY_PRESSED, etc.).
+     * @param filter Unused parameter.
+     * @returns %TRUE if successful, otherwise %FALSE.
      */
     function register_device_event_listener(
         listener: DeviceListener,
@@ -2212,13 +2156,8 @@ export namespace Atspi {
         sync_type: KeyListenerSyncType | null,
     ): boolean;
     /**
-     * Gets the localized description string describing the #AtspiRole `role`.
-     * @param role an #AtspiRole object to query.
-     * @returns the localized string describing the AtspiRole
-     */
-    function role_get_localized_name(role: Role | null): string;
-    /**
      * Gets a localizable string that indicates the name of an #AtspiRole.
+     * <em>DEPRECATED.</em>
      * @param role an #AtspiRole object to query.
      * @returns a localizable string name for an #AtspiRole enumerated type.
      */
@@ -2232,13 +2171,18 @@ export namespace Atspi {
      */
     function set_main_context(cnx: GLib.MainContext): void;
     /**
-     * Deprecated. This function no longer does anything and should not be used.
+     * Sets the reference window that will be used when atspi_generate_mouse_event
+     * is called. Coordinates will be assumed to be relative to this window. This
+     * is needed because, due to Wayland's security model, it is not currently
+     * possible to retrieve global coordinates.
+     * If NULL is passed, then AT-SPI will use the window that has focus at the
+     * time that atspi_generate_mouse_event is called.
      * @param accessible the #AtspiAccessible corresponding to the window to select.              should be a top-level window with a role of              ATSPI_ROLE_APPLICATION.
      */
     function set_reference_window(accessible: Accessible): void;
     /**
      * Set the timeout used for method calls. If this is not set explicitly,
-     * a default of 800 ms is used.
+     * a default of 0.8 ms is used.
      * Note that at-spi2-registryd currently uses a timeout of 3 seconds when
      * sending a keyboard event notification. This means that, if an AT makes
      * a call in response to the keyboard notification and the application
@@ -2265,9 +2209,6 @@ export namespace Atspi {
     }
     interface EventListenerSimpleCB {
         (event: Event): void;
-    }
-    interface GenerateMouseEventCB {
-        (user_data?: any | null): void;
     }
     interface KeyCallback {
         (device: Device, pressed: boolean, keycode: number, keysym: number, modifiers: number, keystring: string): void;
@@ -2323,7 +2264,7 @@ export namespace Atspi {
         NOSYNC,
         /**
          * Events are delivered synchronously, before the
-         * currently focused application sees them.
+         * currently focussed application sees them.
          */
         SYNCHRONOUS,
         /**
@@ -2352,7 +2293,8 @@ export namespace Atspi {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Object.ConstructorProps,
+            extends
+                Object.ConstructorProps,
                 Action.ConstructorProps,
                 Collection.ConstructorProps,
                 Component.ConstructorProps,
@@ -2367,13 +2309,6 @@ export namespace Atspi {
                 Value.ConstructorProps {}
     }
 
-    /**
-     * The base interface which is implemented by all accessible objects.
-     *
-     * All objects support interfaces for querying their contained 'children'
-     * and position in the accessible-object hierarchy, whether or not they
-     * actually have children.
-     */
     class Accessible
         extends Object
         implements
@@ -2449,10 +2384,6 @@ export namespace Atspi {
          */
         clear_cache(): void;
         /**
-         * Clears the cached information only for the given accessible.
-         */
-        clear_cache_single(): void;
-        /**
          * Gets the accessible id of the accessible.  This is not meant to be presented
          * to the user, but to be an id which is stable over application development.
          * Typically, this is the gtkbuilder id.
@@ -2463,7 +2394,7 @@ export namespace Atspi {
          * Gets the #AtspiAction interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiAction interface          instance, or NULL if @obj does not implement #AtspiAction.
          */
-        get_action(): Action;
+        get_action_iface(): Action;
         /**
          * Gets the #AtspiAction interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiAction interface          instance, or NULL if @obj does not implement #AtspiAction.
@@ -2512,7 +2443,7 @@ export namespace Atspi {
          * Gets the #AtspiCollection interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiCollection interface          instance, or NULL if @obj does not implement #AtspiCollection.
          */
-        get_collection(): Collection;
+        get_collection_iface(): Collection;
         /**
          * Gets the #AtspiCollection interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiCollection interface          instance, or NULL if @obj does not implement #AtspiCollection.
@@ -2522,7 +2453,7 @@ export namespace Atspi {
          * Gets the #AtspiComponent interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiComponent interface          instance, or NULL if @obj does not implement #AtspiComponent.
          */
-        get_component(): Component;
+        get_component_iface(): Component;
         /**
          * Gets the #AtspiComponent interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiComponent interface          instance, or NULL if @obj does not implement #AtspiComponent.
@@ -2537,7 +2468,7 @@ export namespace Atspi {
          * Gets the #AtspiDocument interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiDocument interface          instance, or NULL if @obj does not implement #AtspiDocument.
          */
-        get_document(): Document;
+        get_document_iface(): Document;
         /**
          * Gets the #AtspiDocument interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiDocument interface          instance, or NULL if @obj does not implement #AtspiDocument.
@@ -2547,19 +2478,12 @@ export namespace Atspi {
          * Gets the #AtspiEditableText interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiEditableText interface          instance, or NULL if @obj does not implement #AtspiEditableText.
          */
-        get_editable_text(): EditableText;
+        get_editable_text_iface(): EditableText;
         /**
          * Gets the #AtspiEditableText interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiEditableText interface          instance, or NULL if @obj does not implement #AtspiEditableText.
          */
         get_editable_text_iface(): EditableText;
-        /**
-         * Gets the help text associated with the accessible, if set. When this is
-         * present, it provides information that a screen reader can relay to the user
-         * to explain how to interact with the object.
-         * @returns a character string representing the help text for the #AtspiAccessible object or NULL on exception.
-         */
-        get_help_text(): string;
         /**
          * Gets the #AtspiHyperlink interface for an #AtspiAccessible.
          * @returns the #AtspiHyperlink object associated with          the given #AtspiAccessible, or NULL if not supported.
@@ -2569,7 +2493,7 @@ export namespace Atspi {
          * Gets the #AtspiHypertext interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiHypertext interface          instance, or NULL if @obj does not implement #AtspiHypertext.
          */
-        get_hypertext(): Hypertext;
+        get_hypertext_iface(): Hypertext;
         /**
          * Gets the #AtspiHypertext interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiHypertext interface          instance, or NULL if @obj does not implement #AtspiHypertext.
@@ -2585,7 +2509,7 @@ export namespace Atspi {
          * Gets the #AtspiImage interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiImage interface instance, or          NULL if @obj does not implement #AtspiImage.
          */
-        get_image(): Image;
+        get_image_iface(): Image;
         /**
          * Gets the #AtspiImage interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiImage interface instance, or          NULL if @obj does not implement #AtspiImage.
@@ -2651,9 +2575,7 @@ export namespace Atspi {
          * Gets the #AtspiSelection interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiSelection interface          instance, or NULL if @obj does not implement #AtspiSelection.
          */
-        get_selection(): Selection;
-        // Conflicted with Atspi.Text.get_selection
-        get_selection(...args: never[]): any;
+        get_selection_iface(): Selection;
         /**
          * Gets the #AtspiSelection interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiSelection interface          instance, or NULL if @obj does not implement #AtspiSelection.
@@ -2668,9 +2590,7 @@ export namespace Atspi {
          * Gets the #AtspiTable interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiTable interface instance, or          NULL if @obj does not implement #AtspiTable.
          */
-        get_table(): Table;
-        // Conflicted with Atspi.TableCell.get_table
-        get_table(...args: never[]): any;
+        get_table_iface(): Table;
         /**
          * Gets the #AtspiTableCell interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiTableCell interface instance,          or NULL if @obj does not implement #AtspiTable.
@@ -2685,9 +2605,7 @@ export namespace Atspi {
          * Gets the #AtspiTable interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiText interface instance, or          NULL if @obj does not implement #AtspiText.
          */
-        get_text(): Text;
-        // Conflicted with Atspi.Text.get_text
-        get_text(...args: never[]): any;
+        get_text_iface(): Text;
         /**
          * Gets the #AtspiTable interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiText interface instance, or          NULL if @obj does not implement #AtspiText.
@@ -2709,95 +2627,12 @@ export namespace Atspi {
          * Gets the #AtspiTable interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiValue interface instance, or          NULL if @obj does not implement #AtspiValue.
          */
-        get_value(): Value;
+        get_value_iface(): Value;
         /**
          * Gets the #AtspiTable interface for an #AtspiAccessible.
          * @returns a pointer to an #AtspiValue interface instance, or          NULL if @obj does not implement #AtspiValue.
          */
         get_value_iface(): Value;
-        /**
-         * Query whether the specified #AtspiAccessible implements the
-         * #AtspiAction interface.
-         * @returns #TRUE if @obj implements the #AtspiAction interface,          #FALSE otherwise.
-         */
-        is_action(): boolean;
-        /**
-         * Query whether the specified #AtspiAccessible implements the
-         * #AtspiApplication interface.
-         * @returns #TRUE if @obj implements the #AtspiApplication interface,          #FALSE otherwise.
-         */
-        is_application(): boolean;
-        /**
-         * Query whether the specified #AtspiAccessible implements the
-         * #AtspiCollection interface.
-         * @returns #TRUE if @obj implements the #AtspiCollection interface,          #FALSE otherwise.
-         */
-        is_collection(): boolean;
-        /**
-         * Query whether the specified #AtspiAccessible implements #AtspiComponent.
-         * @returns #TRUE if @obj implements the #AtspiComponent interface,          #FALSE otherwise.
-         */
-        is_component(): boolean;
-        /**
-         * Query whether the specified #AtspiAccessible implements the
-         * #AtspiDocument interface.
-         * @returns #TRUE if @obj implements the #AtspiDocument interface,          #FALSE otherwise.
-         */
-        is_document(): boolean;
-        /**
-         * Query whether the specified #AtspiAccessible implements the
-         * #AtspiEditableText interface.
-         * @returns #TRUE if @obj implements the #AtspiEditableText interface,          #FALSE otherwise.
-         */
-        is_editable_text(): boolean;
-        /**
-         * Query whether the specified #AtspiAccessible implements the
-         * #AtspiHyperlink interface.
-         * @returns #TRUE if @obj implements the #AtspiHypertext interface,          #FALSE otherwise.
-         */
-        is_hyperlink(): boolean;
-        /**
-         * Query whether the specified #AtspiAccessible implements the
-         * #AtspiHypertext interface.
-         * @returns #TRUE if @obj implements the #AtspiHypertext interface,          #FALSE otherwise.
-         */
-        is_hypertext(): boolean;
-        /**
-         * Query whether the specified #AtspiAccessible implements the
-         * #AtspiImage interface.
-         * @returns #TRUE if @obj implements the #AtspiImage interface,          #FALSE otherwise.
-         */
-        is_image(): boolean;
-        /**
-         * Query whether the specified #AtspiAccessible implements the
-         * #AtspiSelection interface.
-         * @returns #TRUE if @obj implements the #AtspiSelection interface,          #FALSE otherwise.
-         */
-        is_selection(): boolean;
-        /**
-         * Query whether the specified #AtspiAccessible implements the
-         * #AtspiTable interface.
-         * @returns #TRUE if @obj implements the #AtspiTable interface,          #FALSE otherwise.
-         */
-        is_table(): boolean;
-        /**
-         * Query whether the specified #AtspiAccessible implements the
-         * #AtspiTableCell interface.
-         * @returns #TRUE if @obj implements the #AtspiTable interface,          #FALSE otherwise.
-         */
-        is_table_cell(): boolean;
-        /**
-         * Query whether the specified #AtspiAccessible implements the
-         * #AtspiText interface.
-         * @returns #TRUE if @obj implements the #AtspiText interface,          #FALSE otherwise.
-         */
-        is_text(): boolean;
-        /**
-         * Query whether the specified #AtspiAccessible implements the
-         * #AtspiValue interface.
-         * @returns #TRUE if @obj implements the #AtspiValue interface,          #FALSE otherwise.
-         */
-        is_value(): boolean;
         /**
          * Sets the type of data to cache for accessibles.
          * If this is not set for an application or is reset to ATSPI_CACHE_UNDEFINED,
@@ -3012,8 +2847,8 @@ export namespace Atspi {
         scroll_to_point(coords: CoordType | null, x: number, y: number): boolean;
         /**
          * Moves and resizes the specified component.
-         * @param x the new horizontal position to which the component should be moved.
-         * @param y the new vertical position to which the component should be moved.
+         * @param x the new vertical position to which the component should be moved.
+         * @param y the new horizontal position to which the component should be moved.
          * @param width the width to which the component should be resized.
          * @param height the height to which the component should be resized.
          * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
@@ -3022,14 +2857,14 @@ export namespace Atspi {
         set_extents(x: number, y: number, width: number, height: number, ctype: CoordType | null): boolean;
         /**
          * Moves the component to the specified position.
-         * @param x the new horizontal position to which the component should be moved.
-         * @param y the new vertical position to which the component should be moved.
+         * @param x the new vertical position to which the component should be moved.
+         * @param y the new horizontal position to which the component should be moved.
          * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
          * @returns #TRUE if successful; #FALSE otherwise.
          */
         set_position(x: number, y: number, ctype: CoordType | null): boolean;
         /**
-         * Resizes the specified component to the given pixel dimensions.
+         * Resizes the specified component to the given coordinates.
          * @param width the width to which the component should be resized.
          * @param height the height to which the component should be resized.
          * @returns #TRUE if successful; #FALSE otherwise.
@@ -3063,21 +2898,6 @@ export namespace Atspi {
          * @returns a #gint indicating the page count of an #AccessibleDocument object.
          */
         get_page_count(): number;
-        /**
-         * Returns an array of AtspiTextSelections within this document.
-         * @returns a GArray of AtspiTextSelection structures representing the selection.
-         */
-        get_text_selections(): TextSelection[];
-        /**
-         * Makes 1 or more selections within this document denoted by the given
-         * array of AtspiTextSelections. Any existing physical selection (inside or
-         * outside this document) is replaced by the new selections. All objects within
-         * the given selection ranges must be descendants of this document. Otherwise
-         * FALSE will be returned.
-         * @param selections a GArray of AtspiTextSelections              to be selected.
-         * @returns TRUE if the selection was made successfully; FALSE otherwise.
-         */
-        set_text_selections(selections: TextSelection[]): boolean;
         /**
          * Copies text from an #AtspiEditableText object into the system clipboard.
          *
@@ -3499,6 +3319,11 @@ export namespace Atspi {
          */
         get_row_span(): number;
         /**
+         * Returns a reference to the accessible of the containing table.
+         * @returns the AtspiAccessible for the containing table.
+         */
+        get_table(): Accessible;
+        /**
          * Selects some text (adds a text selection) in an #AtspiText object.
          * @param start_offset the starting offset of the desired new selection.
          * @param end_offset the offset of the first character after the new selection.
@@ -3524,6 +3349,7 @@ export namespace Atspi {
          * Gets the attributes applied to a range of text from an #AtspiText
          * object. The text attributes correspond to CSS attributes
          * where possible.
+         * <em>DEPRECATED</em>
          * @param offset a #gint indicating the offset from which the attribute        search is based.
          * @returns a #GHashTable describing the attributes at the given character offset.
          */
@@ -3609,6 +3435,12 @@ export namespace Atspi {
          */
         get_range_extents(start_offset: number, end_offset: number, type: CoordType | null): Rect;
         /**
+         * Gets the bounds of the `selection_num-th` active text selection for an
+         *         #AtspiText object.
+         * @param selection_num a #gint indicating which selection to query.
+         */
+        get_selection(selection_num: number): Range;
+        /**
          * Gets a portion of the text exposed through an #AtspiText according to a given `offset`
          * and a specific `granularity,` along with the start and end offsets defining the
          * boundaries of such a portion of text.
@@ -3644,6 +3476,17 @@ export namespace Atspi {
          * @returns a newly allocated string containing the text at the @offset bounded   by the specified @granularity. Use g_free() to free the returned string.   Returns %NULL if the offset is invalid or no implementation is available.
          */
         get_string_at_offset(offset: number, granularity: TextGranularity | null): TextRange;
+        /**
+         * Gets a range of text from an #AtspiText object.  The number of bytes
+         *          in the returned string may exceed either end_offset or start_offset, since
+         *          UTF-8 is a variable-width encoding.
+         * @param start_offset a #gint indicating the start of the desired text range.
+         * @param end_offset a #gint indicating the first character past the desired range.
+         * @returns a text string containing characters from @start_offset          to @end_offset-1, inclusive, encoded as UTF-8.
+         */
+        get_text(start_offset: number, end_offset: number): string;
+        // Conflicted with Atspi.Value.get_text
+        get_text(...args: never[]): any;
         /**
          * Gets delimited text from an #AtspiText object which follows a given
          *          text offset.
@@ -4190,13 +4033,6 @@ export namespace Atspi {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    /**
-     * An interface identifying the root object associated
-     * with a running application.
-     *
-     * An interface identifying an object which is the root of the
-     * hierarchy associated with a running application.
-     */
     class Application extends GObject.Object {
         static $gtype: GObject.GType<Application>;
 
@@ -4246,35 +4082,15 @@ export namespace Atspi {
 
     namespace Device {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::app-id': (pspec: GObject.ParamSpec) => void;
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            app_id: string;
-            appId: string;
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
-
-        // Properties
-
-        /**
-         * The application ID of the application that created this device.
-         * The ID might be used for access control purposes
-         * by some device backends.
-         */
-        get app_id(): string;
-        /**
-         * The application ID of the application that created this device.
-         * The ID might be used for access control purposes
-         * by some device backends.
-         */
-        get appId(): string;
 
         /**
          * Compile-time signal type information.
@@ -4292,8 +4108,6 @@ export namespace Atspi {
         _init(...args: any[]): void;
 
         static ['new'](): Device;
-
-        static new_full(app_id?: string | null): Device;
 
         // Signals
 
@@ -4315,35 +4129,14 @@ export namespace Atspi {
 
         // Virtual methods
 
-        vfunc_add_key_grab(kd: KeyDefinition): boolean;
-        /**
-         * Synthesizes a mouse event at a specific screen coordinate.
-         * Most AT clients should use the #AccessibleAction interface when
-         * tempted to generate mouse events, rather than this method.
-         * Event names: b1p = button 1 press; b2r = button 2 release;
-         *              b3c = button 3 click; b2d = button 2 double-click;
-         *              abs = absolute motion; rel = relative motion.
-         * @param obj The #AtspiAccessible that should receive the click.
-         * @param x a #gint indicating the x coordinate of the mouse event, relative to     @obj..
-         * @param y a #gint indicating the y coordinate of the mouse event, relative to     @obj..
-         * @param name a string indicating which mouse event to be synthesized        (e.g. "b1p", "b1c", "b2r", "rel", "abs").
-         */
-        vfunc_generate_mouse_event(obj: Accessible, x: number, y: number, name: string): void;
-        /**
-         * Gets the modifier for a given keysym, if one exists. Does not create a new
-         * mapping. This function should be used when the intention is to query a
-         * locking modifier such as num lock via atspi_device_get_locked_modifiers,
-         * rather than to add key grabs.
-         * @param keysym the XKB keysym to map.
-         */
-        vfunc_get_keysym_modifier(keysym: number): number;
+        vfunc_add_key_grab(kd: KeyDefinition): void;
         /**
          * Returns the locked modifiers (ie, num lock, caps lock) associated with this
          * keyboard.
          */
         vfunc_get_locked_modifiers(): number;
         /**
-         * Gets the modifier for a given keycode, if one exists. Does not create a new
+         * Gets the modifier for a given keycode, if one exists. Does not creatt a new
          * mapping. This function should be used when the intention is to query a
          * locking modifier such as num lock via atspi_device_get_locked_modifiers,
          * rather than to add key grabs.
@@ -4356,18 +4149,6 @@ export namespace Atspi {
          * grab the keyboard.
          */
         vfunc_grab_keyboard(): boolean;
-        /**
-         * Maps the specified keysym to a modifier so that it can be used in
-         * conjunction with other keys to create a key grab. If the given keysym is
-         * already mapped, then this function will return the modifier that is
-         * currently mapped to the keysym, without doing anything else. Otherwise,
-         * it will use the last modifier that AT-SPI used to map a keysym. If no keys
-         * have yet been mapped using this device, then it will look for a modifier
-         * that is not currently being used. If no unused modifier can be found,
-         * then it will use the first modifier by default.
-         * @param keysym the XKB keysym to map.
-         */
-        vfunc_map_keysym_modifier(keysym: number): number;
         /**
          * Maps the specified key code to a modifier so that it can be used in
          * conjunction with other keys to create a key grab. If the given keycode is
@@ -4390,11 +4171,6 @@ export namespace Atspi {
          */
         vfunc_ungrab_keyboard(): void;
         /**
-         * Removes a mapped modifier from the given keysym.
-         * @param keysym the XKB keysym to unmap.
-         */
-        vfunc_unmap_keysym_modifier(keysym: number): void;
-        /**
          * Removes a mapped modifier from the given keycode.
          * @param keycode the keycode to unmap.
          */
@@ -4406,36 +4182,10 @@ export namespace Atspi {
         /**
          * Add a callback that will receive a notification whenever a key is
          * pressed or released.
-         * @param callback the   function to call when the given key is pressed.
+         * @param callback the function to call when the given key is            pressed.
          */
-        add_key_watcher(callback: KeyCallback): void;
-        /**
-         * Synthesizes a mouse event at a specific screen coordinate.
-         * Most AT clients should use the #AccessibleAction interface when
-         * tempted to generate mouse events, rather than this method.
-         * Event names: b1p = button 1 press; b2r = button 2 release;
-         *              b3c = button 3 click; b2d = button 2 double-click;
-         *              abs = absolute motion; rel = relative motion.
-         * @param obj The #AtspiAccessible that should receive the click.
-         * @param x a #gint indicating the x coordinate of the mouse event, relative to     @obj..
-         * @param y a #gint indicating the y coordinate of the mouse event, relative to     @obj..
-         * @param name a string indicating which mouse event to be synthesized        (e.g. "b1p", "b1c", "b2r", "rel", "abs").
-         */
-        generate_mouse_event(obj: Accessible, x: number, y: number, name: string): void;
-        /**
-         * Returns the application ID of the device.
-         */
-        get_app_id(): string;
+        add_key_watcher(callback?: KeyCallback | null): void;
         get_grab_by_id(id: number): KeyDefinition;
-        /**
-         * Gets the modifier for a given keysym, if one exists. Does not create a new
-         * mapping. This function should be used when the intention is to query a
-         * locking modifier such as num lock via atspi_device_get_locked_modifiers,
-         * rather than to add key grabs.
-         * @param keysym the XKB keysym to map.
-         * @returns the modifier that is mapped to this keysym.
-         */
-        get_keysym_modifier(keysym: number): number;
         /**
          * Returns the locked modifiers (ie, num lock, caps lock) associated with this
          * keyboard.
@@ -4443,7 +4193,7 @@ export namespace Atspi {
          */
         get_locked_modifiers(): number;
         /**
-         * Gets the modifier for a given keycode, if one exists. Does not create a new
+         * Gets the modifier for a given keycode, if one exists. Does not creatt a new
          * mapping. This function should be used when the intention is to query a
          * locking modifier such as num lock via atspi_device_get_locked_modifiers,
          * rather than to add key grabs.
@@ -4458,19 +4208,6 @@ export namespace Atspi {
          * @returns #TRUE if successful, #FALSE otherwise.
          */
         grab_keyboard(): boolean;
-        /**
-         * Maps the specified keysym to a modifier so that it can be used in
-         * conjunction with other keys to create a key grab. If the given keysym is
-         * already mapped, then this function will return the modifier that is
-         * currently mapped to the keysym, without doing anything else. Otherwise,
-         * it will use the last modifier that AT-SPI used to map a keysym. If no keys
-         * have yet been mapped using this device, then it will look for a modifier
-         * that is not currently being used. If no unused modifier can be found,
-         * then it will use the first modifier by default.
-         * @param keysym the XKB keysym to map.
-         * @returns the modifier that is now mapped to this keysym. This return value can be passed to atspi_device_add_key_grab.
-         */
-        map_keysym_modifier(keysym: number): number;
         /**
          * Maps the specified key code to a modifier so that it can be used in
          * conjunction with other keys to create a key grab. If the given keycode is
@@ -4491,19 +4228,9 @@ export namespace Atspi {
          */
         remove_key_grab(id: number): void;
         /**
-         * Sets the application ID of the device.
-         * @param app_id the application ID.
-         */
-        set_app_id(app_id: string): void;
-        /**
          * Removes a keyboard grab added via a call to atspi_device_add_keyboard.
          */
         ungrab_keyboard(): void;
-        /**
-         * Removes a mapped modifier from the given keysym.
-         * @param keysym the XKB keysym to unmap.
-         */
-        unmap_keysym_modifier(keysym: number): void;
         /**
          * Removes a mapped modifier from the given keycode.
          * @param keycode the keycode to unmap.
@@ -4511,63 +4238,9 @@ export namespace Atspi {
         unmap_modifier(keycode: number): void;
     }
 
-    namespace DeviceA11yManager {
-        // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {
-            'notify::app-id': (pspec: GObject.ParamSpec) => void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends Device.ConstructorProps {}
-    }
-
-    class DeviceA11yManager extends Device {
-        static $gtype: GObject.GType<DeviceA11yManager>;
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: DeviceA11yManager.SignalSignatures;
-
-        // Constructors
-
-        constructor(properties?: Partial<DeviceA11yManager.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static try_new(): DeviceA11yManager;
-
-        static try_new_full(app_id?: string | null): DeviceA11yManager;
-
-        // Signals
-
-        connect<K extends keyof DeviceA11yManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceA11yManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof DeviceA11yManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceA11yManager.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        emit<K extends keyof DeviceA11yManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DeviceA11yManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
-        emit(signal: string, ...args: any[]): void;
-    }
-
     namespace DeviceLegacy {
         // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {
-            'notify::app-id': (pspec: GObject.ParamSpec) => void;
-        }
+        interface SignalSignatures extends Device.SignalSignatures {}
 
         // Constructor properties interface
 
@@ -4593,8 +4266,6 @@ export namespace Atspi {
         _init(...args: any[]): void;
 
         static ['new'](): DeviceLegacy;
-
-        static new_full(app_id?: string | null): DeviceLegacy;
 
         // Signals
 
@@ -4647,7 +4318,7 @@ export namespace Atspi {
 
         _init(...args: any[]): void;
 
-        static ['new'](callback?: DeviceListenerCB | null): DeviceListener;
+        static ['new'](callback: DeviceListenerCB): DeviceListener;
 
         // Signals
 
@@ -4675,7 +4346,7 @@ export namespace Atspi {
 
         /**
          * Adds an in-process callback function to an existing #AtspiDeviceListener.
-         * @param callback an   #AtspiDeviceListenerCB function pointer.
+         * @param callback an #AtspiDeviceListenerCB function pointer.
          */
         add_callback(callback: DeviceListenerCB): void;
         /**
@@ -4688,9 +4359,7 @@ export namespace Atspi {
 
     namespace DeviceX11 {
         // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {
-            'notify::app-id': (pspec: GObject.ParamSpec) => void;
-        }
+        interface SignalSignatures extends Device.SignalSignatures {}
 
         // Constructor properties interface
 
@@ -4716,8 +4385,6 @@ export namespace Atspi {
         _init(...args: any[]): void;
 
         static ['new'](): DeviceX11;
-
-        static new_full(app_id?: string | null): DeviceX11;
 
         // Signals
 
@@ -4747,15 +4414,6 @@ export namespace Atspi {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    /**
-     * A generic interface implemented by objects for the receipt of event
-     * notifications.
-     *
-     * A generic interface implemented by objects for the receipt of event
-     * notifications. atspi-event-listener is the interface via which clients of
-     * the atspi-registry receive notification of changes to an application's user
-     * interface and content.
-     */
     class EventListener extends GObject.Object {
         static $gtype: GObject.GType<EventListener>;
 
@@ -4804,24 +4462,24 @@ export namespace Atspi {
 
         /**
          * Deregisters an #AtspiEventListenerCB from the registry, for a specific
-         * event type.
-         * @param callback the #AtspiEventListenerCB   registered against an event type.
-         * @param event_type a string specifying the event type for which this   listener is to be deregistered.
+         *             event type.
+         * @param callback the #AtspiEventListenerCB registered against an            event type.
+         * @param event_type a string specifying the event type for which this             listener is to be deregistered.
          */
         static deregister_from_callback(callback: EventListenerCB, event_type: string): boolean;
         /**
          * Registers an #AtspiEventListenerCB against an `event_type`.
-         * @param callback the   #AtspiEventListenerCB to be registered against an event type.
-         * @param event_type a character string indicating the type of events for which    notification is requested.  See atspi_event_listener_register()    for a description of the format.
+         * @param callback the #AtspiEventListenerCB to be registered against an event type.
+         * @param event_type a character string indicating the type of events for which            notification is requested.  See #atspi_event_listener_register for a description of the format.
          */
         static register_from_callback(callback: EventListenerCB, event_type: string): boolean;
         static register_from_callback_full(
-            callback: EventListenerCB,
+            callback: EventListenerCB | null,
             event_type: string,
             properties: string[],
         ): boolean;
         static register_from_callback_with_app(
-            callback: EventListenerCB,
+            callback: EventListenerCB | null,
             event_type: string,
             properties: string[],
             app?: Accessible | null,
@@ -4846,7 +4504,6 @@ export namespace Atspi {
          *            object:property-change
          *            object:property-change:accessible-name
          *            object:property-change:accessible-description
-         *            object:property-change:accessible-help-text
          *            object:property-change:accessible-parent
          *            object:property-change:accessible-value
          *            object:property-change:accessible-role
@@ -4874,7 +4531,6 @@ export namespace Atspi {
          *            object:column-deleted
          *            object:model-changed
          *            object:active-descendant-changed
-         *            object:announcement
          *
          *  (screen reader events)
          *             screen-reader:region-changed
@@ -4951,18 +4607,6 @@ export namespace Atspi {
         interface ConstructorProps extends Object.ConstructorProps {}
     }
 
-    /**
-     * Instances of atspi-hyperlink are the means by which end users
-     * and clients interact with linked content.
-     *
-     *  Instances of atspi-hyperlink are returned by
-     * atspi-hypertext objects, and are the means by
-     * which end users and clients interact with linked,
-     * and in some cases embedded, content. These instances
-     * may have multiple "anchors", where an anchor corresponds to a
-     * reference to a particular resource with a corresponding resource
-     * identified (URI).
-     */
     class Hyperlink extends Object {
         static $gtype: GObject.GType<Hyperlink>;
 
@@ -5056,10 +4700,6 @@ export namespace Atspi {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    /**
-     * An interface that allows the definition of match rules
-     * for accessible objects.
-     */
     class MatchRule extends GObject.Object {
         static $gtype: GObject.GType<MatchRule>;
 
@@ -5090,13 +4730,13 @@ export namespace Atspi {
         _init(...args: any[]): void;
 
         static ['new'](
-            states: StateSet | null,
+            states: StateSet,
             statematchtype: CollectionMatchType,
-            attributes: GLib.HashTable<string, string> | null,
+            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             attributematchtype: CollectionMatchType,
-            roles: Role[] | null,
+            roles: Role[],
             rolematchtype: CollectionMatchType,
-            interfaces: string[] | null,
+            interfaces: string[],
             interfacematchtype: CollectionMatchType,
             invert: boolean,
         ): MatchRule;
@@ -5180,14 +4820,6 @@ export namespace Atspi {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    /**
-     * An interface via which non-hierarchical relationships
-     * are indicated.
-     *
-     * An interface via which non-hierarchical relationships
-     * are indicated. An instance of this interface represents
-     * a "one-to-many" correspondence.
-     */
     class Relation extends GObject.Object {
         static $gtype: GObject.GType<Relation>;
 
@@ -5260,10 +4892,6 @@ export namespace Atspi {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    /**
-     * The atspi-stateset objects implement wrappers around a
-     * bitmap of accessible states.
-     */
     class StateSet extends GObject.Object {
         static $gtype: GObject.GType<StateSet>;
 
@@ -5363,14 +4991,9 @@ export namespace Atspi {
     type AccessibleClass = typeof Accessible;
     abstract class AccessiblePrivate {
         static $gtype: GObject.GType<AccessiblePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ApplicationClass = typeof Application;
-    type DeviceA11yManagerClass = typeof DeviceA11yManager;
     type DeviceClass = typeof Device;
     class DeviceEvent {
         static $gtype: GObject.GType<DeviceEvent>;
@@ -5384,10 +5007,6 @@ export namespace Atspi {
         timestamp: number;
         event_string: string;
         is_text: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DeviceLegacyClass = typeof DeviceLegacy;
@@ -5403,10 +5022,6 @@ export namespace Atspi {
         detail1: number;
         detail2: number;
         sender: Accessible;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -5443,7 +5058,6 @@ export namespace Atspi {
                 global: boolean;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type HyperlinkClass = typeof Hyperlink;
@@ -5467,7 +5081,6 @@ export namespace Atspi {
                 modifiers: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5494,7 +5107,6 @@ export namespace Atspi {
                 len: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type MatchRuleClass = typeof MatchRule;
@@ -5515,7 +5127,6 @@ export namespace Atspi {
                 y: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -5538,7 +5149,6 @@ export namespace Atspi {
                 end_offset: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -5569,7 +5179,6 @@ export namespace Atspi {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -5596,44 +5205,6 @@ export namespace Atspi {
                 content: string;
             }>,
         );
-        _init(...args: any[]): void;
-    }
-
-    /**
-     * This structure represents a single  text selection within a document. This
-     * selection is defined by two points in the content, where each one is defined
-     * by an AtkObject supporting the AtkText interface and a character offset
-     * relative to it.
-     *
-     * The end object must appear after the start object in the accessibility tree,
-     * i.e. the end object must be reachable from the start object by navigating
-     * forward (next, first child etc).
-     *
-     * This struct also contains a `start_is_active` boolean, to communicate if the
-     * start of the selection is the active point or not.
-     *
-     * The active point corresponds to the user's focus or point of interest. The
-     * user moves the active point to expand or collapse the range. The anchor
-     * point is the other point of the range and typically remains constant. In
-     * most cases, anchor is the start of the range and active is the end. However,
-     * when selecting backwards (e.g. pressing shift+left arrow in a text field),
-     * the start of the range is the active point, as the user moves this to
-     * manipulate the selection.
-     */
-    class TextSelection {
-        static $gtype: GObject.GType<TextSelection>;
-
-        // Fields
-
-        start_object: Accessible;
-        start_offset: number;
-        end_object: Accessible;
-        end_offset: number;
-        start_is_active: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Action {
@@ -5900,8 +5471,8 @@ export namespace Atspi {
         scroll_to_point(coords: CoordType | null, x: number, y: number): boolean;
         /**
          * Moves and resizes the specified component.
-         * @param x the new horizontal position to which the component should be moved.
-         * @param y the new vertical position to which the component should be moved.
+         * @param x the new vertical position to which the component should be moved.
+         * @param y the new horizontal position to which the component should be moved.
          * @param width the width to which the component should be resized.
          * @param height the height to which the component should be resized.
          * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
@@ -5910,14 +5481,14 @@ export namespace Atspi {
         set_extents(x: number, y: number, width: number, height: number, ctype: CoordType | null): boolean;
         /**
          * Moves the component to the specified position.
-         * @param x the new horizontal position to which the component should be moved.
-         * @param y the new vertical position to which the component should be moved.
+         * @param x the new vertical position to which the component should be moved.
+         * @param y the new horizontal position to which the component should be moved.
          * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
          * @returns #TRUE if successful; #FALSE otherwise.
          */
         set_position(x: number, y: number, ctype: CoordType | null): boolean;
         /**
-         * Resizes the specified component to the given pixel dimensions.
+         * Resizes the specified component to the given coordinates.
          * @param width the width to which the component should be resized.
          * @param height the height to which the component should be resized.
          * @returns #TRUE if successful; #FALSE otherwise.
@@ -5982,21 +5553,6 @@ export namespace Atspi {
          * @returns a #gint indicating the page count of an #AccessibleDocument object.
          */
         get_page_count(): number;
-        /**
-         * Returns an array of AtspiTextSelections within this document.
-         * @returns a GArray of AtspiTextSelection structures representing the selection.
-         */
-        get_text_selections(): TextSelection[];
-        /**
-         * Makes 1 or more selections within this document denoted by the given
-         * array of AtspiTextSelections. Any existing physical selection (inside or
-         * outside this document) is replaced by the new selections. All objects within
-         * the given selection ranges must be descendants of this document. Otherwise
-         * FALSE will be returned.
-         * @param selections a GArray of AtspiTextSelections              to be selected.
-         * @returns TRUE if the selection was made successfully; FALSE otherwise.
-         */
-        set_text_selections(selections: TextSelection[]): boolean;
     }
 
     export const Document: DocumentNamespace & {
@@ -6586,6 +6142,7 @@ export namespace Atspi {
          * Gets the attributes applied to a range of text from an #AtspiText
          * object. The text attributes correspond to CSS attributes
          * where possible.
+         * <em>DEPRECATED</em>
          * @param offset a #gint indicating the offset from which the attribute        search is based.
          * @returns a #GHashTable describing the attributes at the given character offset.
          */
@@ -6748,6 +6305,7 @@ export namespace Atspi {
          * Gets the attributes applied to a range of text from an #AtspiText
          * object. The text attributes correspond to CSS attributes
          * where possible.
+         * <em>DEPRECATED</em>
          * @param offset a #gint indicating the offset from which the attribute        search is based.
          * @returns a #GHashTable describing the attributes at the given character offset.
          */

@@ -69,7 +69,6 @@ export namespace Msg {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace MessageMailFolderType {
@@ -2893,19 +2892,11 @@ export namespace Msg {
     type GoaAuthorizerClass = typeof GoaAuthorizer;
     abstract class GoaAuthorizerPrivate {
         static $gtype: GObject.GType<GoaAuthorizerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type InputStreamClass = typeof InputStream;
     abstract class InputStreamPrivate {
         static $gtype: GObject.GType<InputStreamPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MailFolderClass = typeof MailFolder;
@@ -2914,10 +2905,6 @@ export namespace Msg {
     type OAuth2AuthorizerClass = typeof OAuth2Authorizer;
     abstract class OAuth2AuthorizerPrivate {
         static $gtype: GObject.GType<OAuth2AuthorizerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ServiceClass = typeof Service;
@@ -2929,10 +2916,6 @@ export namespace Msg {
         // Fields
 
         padding: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _DriveItemFolderClass {
@@ -2941,10 +2924,6 @@ export namespace Msg {
         // Fields
 
         padding: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Authorizer {

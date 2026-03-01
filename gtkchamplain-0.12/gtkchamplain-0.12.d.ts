@@ -95,7 +95,8 @@ export namespace GtkChamplain {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Alignment.ConstructorProps,
+            extends
+                Gtk.Alignment.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             champlain_view: Champlain.View;
@@ -615,10 +616,6 @@ export namespace GtkChamplain {
     type EmbedClass = typeof Embed;
     abstract class EmbedPrivate {
         static $gtype: GObject.GType<EmbedPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

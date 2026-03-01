@@ -59,7 +59,6 @@ export namespace MediaArt {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**

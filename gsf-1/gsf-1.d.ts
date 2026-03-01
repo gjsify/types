@@ -95,7 +95,6 @@ export namespace Gsf {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3651,19 +3650,11 @@ export namespace Gsf {
     type BlobClass = typeof Blob;
     abstract class BlobPrivate {
         static $gtype: GObject.GType<BlobPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ClipDataClass = typeof ClipData;
     abstract class ClipDataPrivate {
         static $gtype: GObject.GType<ClipDataPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3675,7 +3666,6 @@ export namespace Gsf {
         // Constructors
 
         constructor(name: string);
-        _init(...args: any[]): void;
 
         static ['new'](name: string): DocProp;
 
@@ -3714,7 +3704,6 @@ export namespace Gsf {
         // Constructors
 
         constructor(name: string);
-        _init(...args: any[]): void;
 
         static ['new'](name: string): MSOleSortingKey;
 
@@ -3728,10 +3717,6 @@ export namespace Gsf {
     abstract class OpenPkgRel {
         static $gtype: GObject.GType<OpenPkgRel>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         get_target(): string;
@@ -3741,10 +3726,6 @@ export namespace Gsf {
 
     abstract class OpenPkgRels {
         static $gtype: GObject.GType<OpenPkgRels>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OutfileClass = typeof Outfile;
@@ -3774,7 +3755,6 @@ export namespace Gsf {
                 timet: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): Timestamp;
 
@@ -3817,10 +3797,6 @@ export namespace Gsf {
 
     abstract class XMLBlob {
         static $gtype: GObject.GType<XMLBlob>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class XMLIn {
@@ -3830,10 +3806,6 @@ export namespace Gsf {
 
         user_state: any;
         content: GLib.String;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -3882,7 +3854,6 @@ export namespace Gsf {
         // Constructors
 
         constructor(nodes: XMLInNode[], ns: XMLInNS[]);
-        _init(...args: any[]): void;
 
         static ['new'](nodes: XMLInNode[], ns: XMLInNS[]): XMLInDoc;
 
@@ -3928,7 +3899,6 @@ export namespace Gsf {
                 ns_id: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class XMLInNode {
@@ -3943,10 +3913,6 @@ export namespace Gsf {
         has_content: XMLContent;
         check_children_for_ns: number;
         share_children_with_parent: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type XMLOutClass = typeof XMLOut;

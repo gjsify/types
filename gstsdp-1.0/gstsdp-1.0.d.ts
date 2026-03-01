@@ -559,18 +559,10 @@ export namespace GstSdp {
     function sdp_message_parse_uri(uri: string, msg: SDPMessage): SDPResult;
     abstract class MIKEYDecryptInfo {
         static $gtype: GObject.GType<MIKEYDecryptInfo>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class MIKEYEncryptInfo {
         static $gtype: GObject.GType<MIKEYEncryptInfo>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -594,7 +586,6 @@ export namespace GstSdp {
                 roc: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -628,7 +619,6 @@ export namespace GstSdp {
                 payloads: any[];
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): MIKEYMessage;
 
@@ -800,7 +790,6 @@ export namespace GstSdp {
         // Constructors
 
         constructor(type: MIKEYPayloadType);
-        _init(...args: any[]): void;
 
         static ['new'](type: MIKEYPayloadType): MIKEYPayload;
 
@@ -936,10 +925,6 @@ export namespace GstSdp {
         enc_alg: MIKEYEncAlg;
         mac_alg: MIKEYMacAlg;
         subpayloads: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -959,10 +944,6 @@ export namespace GstSdp {
         kv_type: MIKEYKVType;
         kv_len: Uint8Array;
         kv_data: Uint8Array;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -979,10 +960,6 @@ export namespace GstSdp {
         C: MIKEYCacheType;
         data_len: number;
         data: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -995,10 +972,6 @@ export namespace GstSdp {
 
         len: number;
         rand: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1013,10 +986,6 @@ export namespace GstSdp {
         policy: number;
         proto: MIKEYSecProto;
         params: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1040,7 +1009,6 @@ export namespace GstSdp {
                 val: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1053,10 +1021,6 @@ export namespace GstSdp {
 
         type: MIKEYTSType;
         ts_value: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1078,7 +1042,6 @@ export namespace GstSdp {
                 value: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -1116,7 +1079,6 @@ export namespace GstSdp {
                 bandwidth: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -1159,7 +1121,6 @@ export namespace GstSdp {
                 addr_number: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -1200,7 +1161,6 @@ export namespace GstSdp {
                 data: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1238,7 +1198,6 @@ export namespace GstSdp {
                 attributes: any[];
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1603,7 +1562,6 @@ export namespace GstSdp {
                 medias: any[];
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -2101,7 +2059,6 @@ export namespace GstSdp {
                 addr: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2126,7 +2083,6 @@ export namespace GstSdp {
                 repeat: any[];
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2166,7 +2122,6 @@ export namespace GstSdp {
                 typed_time: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 

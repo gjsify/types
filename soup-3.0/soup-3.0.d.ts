@@ -89,7 +89,7 @@ export namespace Soup {
          *   from that page, reject any cookie that it could try to set unless it
          *   already has a cookie in the cookie jar. For libsoup to be able to tell
          *   apart first party cookies from the rest, the application must call
-         *   [method`Message`.set_first_party] on each outgoing #SoupMessage, setting the
+         *   [method`Message`.set_first_party] on each outgoing [class`Message]`, setting the
          *   [struct`GLib`.Uri] of the main document. If no first party is set in a
          *   message when this policy is in effect, cookies will be assumed to be third
          *   party by default.
@@ -302,23 +302,23 @@ export namespace Soup {
         VERY_LOW,
         /**
          * Use this for low priority messages, a
-         *   #SoupMessage with the default priority will be processed first.
+         *   [class`Message]` with the default priority will be processed first.
          */
         LOW,
         /**
          * The default priotity, this is the
-         *   priority assigned to the #SoupMessage by default.
+         *   priority assigned to the [class`Message]` by default.
          */
         NORMAL,
         /**
-         * High priority, a #SoupMessage with
+         * High priority, a [class`Message]` with
          *   this priority will be processed before the ones with the default
          *   priority.
          */
         HIGH,
         /**
          * The highest priority, use this
-         *   for very urgent #SoupMessage as they will be the first ones to be
+         *   for very urgent [class`Message]` as they will be the first ones to be
          *   attended.
          */
         VERY_HIGH,
@@ -349,7 +349,7 @@ export namespace Soup {
         STRICT,
     }
     /**
-     * A #SoupSession error.
+     * A [class`Session]` error.
      */
     class SessionError extends GLib.Error {
         static $gtype: GObject.GType<SessionError>;
@@ -395,7 +395,6 @@ export namespace Soup {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -697,7 +696,6 @@ export namespace Soup {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -918,7 +916,6 @@ export namespace Soup {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1045,14 +1042,14 @@ export namespace Soup {
      */
     function check_version(major: number, minor: number, micro: number): boolean;
     /**
-     * Parses `header` and returns a #SoupCookie.
+     * Parses `header` and returns a [struct`Cookie]`.
      *
      * If `header` contains multiple cookies, only the first one will be parsed.
      *
      * If `header` does not have "path" or "domain" attributes, they will
      * be defaulted from `origin`. If `origin` is %NULL, path will default
      * to "/", but domain will be left as %NULL. Note that this is not a
-     * valid state for a #SoupCookie, and you will need to fill in some
+     * valid state for a [struct`Cookie]`, and you will need to fill in some
      * appropriate string for the domain if you want to actually make use
      * of the cookie.
      *
@@ -1068,7 +1065,7 @@ export namespace Soup {
      * `SoupCookie`s.
      *
      * As the "Cookie" header, unlike "Set-Cookie", only contains cookie names and
-     * values, none of the other #SoupCookie fields will be filled in. (Thus, you
+     * values, none of the other [struct`Cookie]` fields will be filled in. (Thus, you
      * can't generally pass a cookie returned from this method directly to
      * [func`cookies_to_response]`.)
      * @param msg a #SoupMessage containing a "Cookie" request header
@@ -1086,9 +1083,9 @@ export namespace Soup {
      */
     function cookies_from_response(msg: Message): Cookie[];
     /**
-     * Serializes a [struct`GLib`.SList] of #SoupCookie into a string suitable for
+     * Serializes a [struct`GLib`.SList] of [struct`Cookie]` into a string suitable for
      * setting as the value of the "Cookie" header.
-     * @param cookies a #GSList of #SoupCookie
+     * @param cookies a #GSList of [struct@Cookie]
      * @returns the serialization of @cookies
      */
     function cookies_to_cookie_header(cookies: Cookie[]): string;
@@ -1099,7 +1096,7 @@ export namespace Soup {
      * If `msg` already has a "Cookie" request header, these cookies will be appended
      * to the cookies already present. Be careful that you do not append the same
      * cookies twice, eg, when requeuing a message.
-     * @param cookies a #GSList of #SoupCookie
+     * @param cookies a #GSList of [struct@Cookie]
      * @param msg a #SoupMessage
      */
     function cookies_to_request(cookies: Cookie[], msg: Message): void;
@@ -1109,7 +1106,7 @@ export namespace Soup {
      *
      * This is in addition to any other "Set-Cookie" headers
      * `msg` may already have.
-     * @param cookies a #GSList of #SoupCookie
+     * @param cookies a #GSList of [struct@Cookie]
      * @param msg a #SoupMessage
      */
     function cookies_to_response(cookies: Cookie[], msg: Message): void;
@@ -1402,7 +1399,7 @@ export namespace Soup {
     function headers_parse_status_line(status_line: string): [boolean, HTTPVersion | null, number, string];
     /**
      * Initializes `iter` for iterating `hdrs`.
-     * @param hdrs a %SoupMessageHeaders
+     * @param hdrs a #SoupMessageHeaders
      */
     function message_headers_iter_init(hdrs: MessageHeaders): MessageHeadersIter;
     /**
@@ -1410,9 +1407,9 @@ export namespace Soup {
      * iterated by `iter`.
      *
      * If `iter` has already yielded the last header, then
-     * [method`MessageHeadersIter`.next] will return %FALSE and `name` and `value`
+     * [func`MessageHeadersIter`.next] will return %FALSE and `name` and `value`
      * will be unchanged.
-     * @param iter a %SoupMessageHeadersIter
+     * @param iter a #SoupMessageHeadersIter
      * @returns %TRUE if another name and value were returned, %FALSE   if the end of the headers has been reached.
      */
     function message_headers_iter_next(iter: MessageHeadersIter): [boolean, MessageHeadersIter, string, string];
@@ -1667,13 +1664,11 @@ export namespace Soup {
         CONTINUE,
     }
     /**
-     * Various flags that can be set on a #SoupMessage to alter its
-     * behavior.
+     * Various flags that can be set on a [class`Message]` to alter its behavior.
      */
 
     /**
-     * Various flags that can be set on a #SoupMessage to alter its
-     * behavior.
+     * Various flags that can be set on a [class`Message]` to alter its behavior.
      */
     export namespace MessageFlags {
         export const $gtype: GObject.GType<MessageFlags>;
@@ -1787,7 +1782,7 @@ export namespace Soup {
      * but applications never need to be aware of the specific subclasses being
      * used.
      *
-     * #SoupAuth objects store the authentication data associated with a given bit
+     * [class`Auth]` objects store the authentication data associated with a given bit
      * of web space. They are created automatically by [class`Session]`.
      */
     abstract class Auth extends GObject.Object {
@@ -1953,7 +1948,7 @@ export namespace Soup {
          *
          * You need to cancel an auth to complete an asynchronous authenticate operation
          * when no credentials are provided ([method`Auth`.authenticate] is not called).
-         * The #SoupAuth will be cancelled on dispose if it hans't been authenticated.
+         * The [class`Auth]` will be cancelled on dispose if it hasn't been authenticated.
          */
         cancel(): void;
         /**
@@ -1973,7 +1968,7 @@ export namespace Soup {
         /**
          * Gets an opaque identifier for `auth`.
          *
-         * The identifier can be used as a hash key or the like. #SoupAuth objects from
+         * The identifier can be used as a hash key or the like. [class`Auth]` objects from
          * the same server with the same identifier refer to the same authentication
          * domain (eg, the URLs associated with them take the same usernames and
          * passwords).
@@ -2022,7 +2017,7 @@ export namespace Soup {
          * As with [ctor`Auth`.new], this is normally only used by [class`Session]`.
          * @param msg the #SoupMessage @auth is being updated for
          * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
-         * @returns %TRUE if @auth is still a valid (but potentially   unauthenticated) #SoupAuth. %FALSE if something about @auth_params   could not be parsed or incorporated into @auth at all.
+         * @returns %TRUE if @auth is still a valid (but potentially   unauthenticated) [class@Auth]. %FALSE if something about @auth_params   could not be parsed or incorporated into @auth at all.
          */
         update(msg: Message, auth_header: string): boolean;
     }
@@ -2176,9 +2171,9 @@ export namespace Soup {
     /**
      * Server-side authentication.
      *
-     * A #SoupAuthDomain manages authentication for all or part of a
+     * A [class`AuthDomain]` manages authentication for all or part of a
      * [class`Server]`. To make a server require authentication, first create
-     * an appropriate subclass of #SoupAuthDomain, and then add it to the
+     * an appropriate subclass of [class`AuthDomain]`, and then add it to the
      * server with [method`Server`.add_auth_domain].
      *
      * In order for an auth domain to have any effect, you must add one or more
@@ -2447,7 +2442,7 @@ export namespace Soup {
     /**
      * Server-side "Basic" authentication.
      *
-     * #SoupAuthDomainBasic handles the server side of HTTP "Basic" (ie,
+     * [class`AuthDomainBasic]` handles the server side of HTTP "Basic" (ie,
      * cleartext password) authentication.
      */
     class AuthDomainBasic extends AuthDomain {
@@ -2554,7 +2549,7 @@ export namespace Soup {
     /**
      * Server-side "Digest" authentication.
      *
-     * #SoupAuthDomainDigest handles the server side of HTTP "Digest"
+     * [class`AuthDomainDigest]` handles the server side of HTTP "Digest"
      * authentication.
      */
     class AuthDomainDigest extends AuthDomain {
@@ -2625,7 +2620,7 @@ export namespace Soup {
          * That is, it returns a stringified MD5 hash of
          * `username,` `realm,` and `password` concatenated together. This is
          * the form that is needed as the return value of
-         * #SoupAuthDomainDigest's auth handler.
+         * [class`AuthDomainDigest]`'s auth handler.
          *
          * For security reasons, you should store the encoded hash, rather
          * than storing the cleartext password itself and calling this method
@@ -2671,10 +2666,10 @@ export namespace Soup {
     /**
      * HTTP client-side authentication handler.
      *
-     * #SoupAuthManager is the [iface`SessionFeature]` that handles HTTP
+     * [class`AuthManager]` is the [iface`SessionFeature]` that handles HTTP
      * authentication for a [class`Session]`.
      *
-     * A #SoupAuthManager is added to the session by default, and normally
+     * A [class`AuthManager]` is added to the session by default, and normally
      * you don't need to worry about it at all. However, if you want to
      * disable HTTP authentication, you can remove the feature from the
      * session with [method`Session`.remove_feature_by_type] or disable it on
@@ -3409,7 +3404,7 @@ export namespace Soup {
         /**
          * Will remove all entries in the `cache` plus all the cache files.
          *
-         * This is not thread safe and must be called only from the thread that created the #SoupCache
+         * This is not thread safe and must be called only from the thread that created the [class`Cache]`
          */
         clear(): void;
         /**
@@ -3421,7 +3416,7 @@ export namespace Soup {
          * You must call this before exiting if you want your cache data to
          * persist between sessions.
          *
-         * This is not thread safe and must be called only from the thread that created the #SoupCache
+         * This is not thread safe and must be called only from the thread that created the [class`Cache]`
          */
         dump(): void;
         /**
@@ -3442,7 +3437,7 @@ export namespace Soup {
         /**
          * Loads the contents of `cache'`s index into memory.
          *
-         * This is not thread safe and must be called only from the thread that created the #SoupCache
+         * This is not thread safe and must be called only from the thread that created the [class`Cache]`
          */
         load(): void;
         /**
@@ -3905,23 +3900,23 @@ export namespace Soup {
     /**
      * Handles decoding of HTTP messages.
      *
-     * #SoupContentDecoder handles adding the "Accept-Encoding" header on
+     * [class`ContentDecoder]` handles adding the "Accept-Encoding" header on
      * outgoing messages, and processing the "Content-Encoding" header on
      * incoming ones. Currently it supports the "gzip", "deflate", and "br"
      * content codings.
      *
-     * A #SoupContentDecoder will automatically be
+     * A [class`ContentDecoder]` will automatically be
      * added to the session by default. (You can use
      * [method`Session`.remove_feature_by_type] if you don't
      * want this.)
      *
-     * If #SoupContentDecoder successfully decodes the Content-Encoding,
+     * If [class`ContentDecoder]` successfully decodes the Content-Encoding,
      * the message body will contain the decoded data; however, the message headers
      * will be unchanged (and so "Content-Encoding" will still be present,
      * "Content-Length" will describe the original encoded length, etc).
      *
      * If "Content-Encoding" contains any encoding types that
-     * #SoupContentDecoder doesn't recognize, then none of the encodings
+     * [class`ContentDecoder]` doesn't recognize, then none of the encodings
      * will be decoded.
      *
      * (Note that currently there is no way to (automatically) use
@@ -4418,10 +4413,10 @@ export namespace Soup {
     /**
      * Sniffs the mime type of messages.
      *
-     * A #SoupContentSniffer tries to detect the actual content type of
+     * A [class`ContentSniffer]` tries to detect the actual content type of
      * the files that are being downloaded by looking at some of the data
      * before the [class`Message]` emits its [signal`Message:`:got-headers] signal.
-     * #SoupContentSniffer implements [iface`SessionFeature]`, so you can add
+     * [class`ContentSniffer]` implements [iface`SessionFeature]`, so you can add
      * content sniffing to a session with [method`Session`.add_feature] or
      * [method`Session`.add_feature_by_type].
      */
@@ -4939,12 +4934,12 @@ export namespace Soup {
     /**
      * Automatic cookie handling for SoupSession.
      *
-     * A #SoupCookieJar stores [struct`Cookie]`s and arrange for them to be sent with
-     * the appropriate [class`Message]`s. #SoupCookieJar implements
+     * A [class`CookieJar]` stores [struct`Cookie]`s and arrange for them to be sent with
+     * the appropriate [class`Message]`s. [class`CookieJar]` implements
      * [iface`SessionFeature]`, so you can add a cookie jar to a session with
      * [method`Session`.add_feature] or [method`Session`.add_feature_by_type].
      *
-     * Note that the base #SoupCookieJar class does not support any form
+     * Note that the base [class`CookieJar]` class does not support any form
      * of long-term cookie persistence.
      */
     class CookieJar extends GObject.Object implements SessionFeature {
@@ -5089,12 +5084,12 @@ export namespace Soup {
         get_accept_policy(): CookieJarAcceptPolicy;
         /**
          * Retrieves the list of cookies that would be sent with a request to `uri`
-         * as a [struct`GLib`.List] of #SoupCookie objects.
+         * as a [struct`GLib`.List] of [struct`Cookie]` objects.
          *
          * If `for_http` is %TRUE, the return value will include cookies marked
          * "HttpOnly" (that is, cookies that the server wishes to keep hidden
          * from client-side scripting operations such as the JavaScript
-         * document.cookies property). Since #SoupCookieJar sets the Cookie
+         * document.cookies property). Since [class`CookieJar]` sets the Cookie
          * header itself when making the actual HTTP request, you should
          * almost certainly be setting `for_http` to %FALSE if you are calling
          * this.
@@ -5133,7 +5128,7 @@ export namespace Soup {
          * If `for_http` is %TRUE, the return value will include cookies marked
          * "HttpOnly" (that is, cookies that the server wishes to keep hidden
          * from client-side scripting operations such as the JavaScript
-         * document.cookies property). Since #SoupCookieJar sets the Cookie
+         * document.cookies property). Since [class`CookieJar]` sets the Cookie
          * header itself when making the actual HTTP request, you should
          * almost certainly be setting `for_http` to %FALSE if you are calling
          * this.
@@ -5638,7 +5633,7 @@ export namespace Soup {
     /**
      * Database-based Cookie Jar.
      *
-     * #SoupCookieJarDB is a [class`CookieJar]` that reads cookies from and writes
+     * [class`CookieJarDB]` is a [class`CookieJar]` that reads cookies from and writes
      * them to a sqlite database in the new Mozilla format.
      *
      * (This is identical to `SoupCookieJarSqlite` in
@@ -6153,7 +6148,7 @@ export namespace Soup {
     /**
      * Text-file-based ("cookies.txt") Cookie Jar
      *
-     * #SoupCookieJarText is a [class`CookieJar]` that reads cookies from and writes
+     * [class`CookieJarText]` is a [class`CookieJar]` that reads cookies from and writes
      * them to a text file in format similar to Mozilla's "cookies.txt".
      */
     class CookieJarText extends CookieJar implements SessionFeature {
@@ -6660,24 +6655,24 @@ export namespace Soup {
     /**
      * Automatic HTTP Strict Transport Security enforcing for [class`Session]`.
      *
-     * A #SoupHSTSEnforcer stores HSTS policies and enforces them when
-     * required. #SoupHSTSEnforcer implements [iface`SessionFeature]`, so you
+     * A [class`HSTSEnforcer]` stores HSTS policies and enforces them when
+     * required. [class`HSTSEnforcer]` implements [iface`SessionFeature]`, so you
      * can add an HSTS enforcer to a session with
      * [method`Session`.add_feature] or [method`Session`.add_feature_by_type].
      *
-     * #SoupHSTSEnforcer keeps track of all the HTTPS destinations that,
+     * [class`HSTSEnforcer]` keeps track of all the HTTPS destinations that,
      * when connected to, return the Strict-Transport-Security header with
-     * valid values. #SoupHSTSEnforcer will forget those destinations
+     * valid values. [class`HSTSEnforcer]` will forget those destinations
      * upon expiry or when the server requests it.
      *
-     * When the [class`Session]` the #SoupHSTSEnforcer is attached to queues or
-     * restarts a message, the #SoupHSTSEnforcer will rewrite the URI to HTTPS if
+     * When the [class`Session]` the [class`HSTSEnforcer]` is attached to queues or
+     * restarts a message, the [class`HSTSEnforcer]` will rewrite the URI to HTTPS if
      * the destination is a known HSTS host and is contacted over an insecure
-     * transport protocol (HTTP). Users of #SoupHSTSEnforcer are advised to listen
+     * transport protocol (HTTP). Users of [class`HSTSEnforcer]` are advised to listen
      * to changes in the [property`Message:`uri] property in order to be aware of
      * changes in the message URI.
      *
-     * Note that #SoupHSTSEnforcer does not support any form of long-term
+     * Note that [class`HSTSEnforcer]` does not support any form of long-term
      * HSTS policy persistence. See [class`HSTSEnforcerDB]` for a persistent
      * enforcer.
      */
@@ -6722,7 +6717,7 @@ export namespace Soup {
         // Virtual methods
 
         /**
-         * The class closure for the #SoupHSTSEnforcer::changed signal.
+         * The class closure for the [signal`HSTSEnforcer:`:changed] signal.
          * @param old_policy
          * @param new_policy
          */
@@ -7242,7 +7237,7 @@ export namespace Soup {
     /**
      * Persistent HTTP Strict Transport Security enforcer.
      *
-     * #SoupHSTSEnforcerDB is a [class`HSTSEnforcer]` that uses a SQLite
+     * [class`HSTSEnforcerDB]` is a [class`HSTSEnforcer]` that uses a SQLite
      * database as a backend for persistency.
      */
     class HSTSEnforcerDB extends HSTSEnforcer implements SessionFeature {
@@ -7754,12 +7749,12 @@ export namespace Soup {
     /**
      * Debug logging support
      *
-     * #SoupLogger watches a [class`Session]` and logs the HTTP traffic that
+     * [class`Logger]` watches a [class`Session]` and logs the HTTP traffic that
      * it generates, for debugging purposes. Many applications use an
      * environment variable to determine whether or not to use
-     * #SoupLogger, and to determine the amount of debugging output.
+     * [class`Logger]`, and to determine the amount of debugging output.
      *
-     * To use #SoupLogger, first create a logger with [ctor`Logger`.new], optionally
+     * To use [class`Logger]`, first create a logger with [ctor`Logger`.new], optionally
      * configure it with [method`Logger`.set_request_filter],
      * [method`Logger`.set_response_filter], and [method`Logger`.set_printer], and
      * then attach it to a session (or multiple sessions) with
@@ -7776,11 +7771,11 @@ export namespace Soup {
      * > Content-Type: text/plain
      * > Connection: close
      *
-     * &lt; HTTP/1.1 201 Created
-     * &lt; Soup-Debug-Timestamp: 1200171744
-     * &lt; Soup-Debug: SoupMessage 1 (0x617000)
-     * &lt; Date: Sun, 12 Jan 2008 21:02:24 GMT
-     * &lt; Content-Length: 0
+     * < HTTP/1.1 201 Created
+     * < Soup-Debug-Timestamp: 1200171744
+     * < Soup-Debug: SoupMessage 1 (0x617000)
+     * < Date: Sun, 12 Jan 2008 21:02:24 GMT
+     * < Content-Length: 0
      * ```
      *
      * The `Soup-Debug-Timestamp` line gives the time (as a `time_t`) when the
@@ -7790,7 +7785,7 @@ export namespace Soup {
      * [class`Session]`, [class`Message]`, and [class`Gio`.Socket] involved; the hex
      * numbers are the addresses of the objects in question (which may be useful if
      * you are running in a debugger). The decimal IDs are simply counters that
-     * uniquely identify objects across the lifetime of the #SoupLogger. In
+     * uniquely identify objects across the lifetime of the [class`Logger]`. In
      * particular, this can be used to identify when multiple messages are sent
      * across the same connection.
      *
@@ -7802,7 +7797,7 @@ export namespace Soup {
      * from the network (from the [signal`Message:`:got-body] or
      * [signal`Message:`:got-informational] signal), which means that the
      * [signal`Message:`:got-headers] signal, and anything triggered off it (such as
-     * #SoupMessage::authenticate) will be emitted *before* the response headers are
+     * [signal`Message:`:authenticate]) will be emitted *before* the response headers are
      * actually logged.
      *
      * If the response doesn't happen to trigger the [signal`Message:`:got-body] nor
@@ -8433,10 +8428,10 @@ export namespace Soup {
     /**
      * Represents an HTTP message being sent or received.
      *
-     * A #SoupMessage represents an HTTP message that is being sent or
+     * A [class`Message]` represents an HTTP message that is being sent or
      * received.
      *
-     * You would create a #SoupMessage with [ctor`Message`.new] or
+     * You would create a [class`Message]` with [ctor`Message`.new] or
      * [ctor`Message`.new_from_uri], set up its fields appropriately, and send it.
      *
      * [property`Message:`status-code] will normally be a [enum`Status]` value, eg,
@@ -8451,7 +8446,7 @@ export namespace Soup {
      *
      * Note that libsoup's terminology here does not quite match the HTTP
      * specification: in RFC 2616, an "HTTP-message" is *either* a Request, *or* a
-     * Response. In libsoup, a #SoupMessage combines both the request and the
+     * Response. In libsoup, a [class`Message]` combines both the request and the
      * response.
      */
     class Message extends GObject.Object {
@@ -8487,7 +8482,7 @@ export namespace Soup {
         /**
          * Whether the message is an OPTIONS ping.
          *
-         * The #SoupMessage is intended to be used to send
+         * The [class`Message]` is intended to be used to send
          * `OPTIONS *` to a server. When set to %TRUE, the
          * path of [property`Message:`uri] will be ignored and
          * [property`Message:`method] set to %SOUP_METHOD_OPTIONS.
@@ -8497,7 +8492,7 @@ export namespace Soup {
         /**
          * Whether the message is an OPTIONS ping.
          *
-         * The #SoupMessage is intended to be used to send
+         * The [class`Message]` is intended to be used to send
          * `OPTIONS *` to a server. When set to %TRUE, the
          * path of [property`Message:`uri] will be ignored and
          * [property`Message:`method] set to %SOUP_METHOD_OPTIONS.
@@ -8520,7 +8515,7 @@ export namespace Soup {
         get method(): string;
         set method(val: string);
         /**
-         * Sets the priority of the #SoupMessage. See
+         * Sets the priority of the [class`Message]`. See
          * [method`Message`.set_priority] for further details.
          */
         get priority(): MessagePriority;
@@ -8677,7 +8672,7 @@ export namespace Soup {
          * a message that has already been queued is undefined. In particular,
          * you cannot call this on a message that is being requeued after a
          * redirect or authentication.
-         * @param feature_type the #GType of a #SoupSessionFeature
+         * @param feature_type the #GType of a [iface@SessionFeature]
          */
         disable_feature(feature_type: GObject.GType): void;
         /**
@@ -8762,12 +8757,12 @@ export namespace Soup {
         get_remote_address(): Gio.SocketAddress | null;
         /**
          * Returns the headers sent with the request.
-         * @returns The #SoupMessageHeaders
+         * @returns The [struct@MessageHeaders]
          */
         get_request_headers(): MessageHeaders;
         /**
          * Returns the headers recieved with the response.
-         * @returns The #SoupMessageHeaders
+         * @returns The [struct@MessageHeaders]
          */
         get_response_headers(): MessageHeaders;
         /**
@@ -8817,7 +8812,7 @@ export namespace Soup {
          * (or a subclass of that type) are disabled on `msg`.
          *
          * See [method`Message`.disable_feature].
-         * @param feature_type the #GType of a #SoupSessionFeature
+         * @param feature_type the #GType of a [iface@SessionFeature]
          * @returns %TRUE if feature is disabled, or %FALSE otherwise.
          */
         is_feature_disabled(feature_type: GObject.GType): boolean;
@@ -8899,7 +8894,7 @@ export namespace Soup {
          */
         set_priority(priority: MessagePriority | null): void;
         /**
-         * Set the request body of a #SoupMessage.
+         * Set the request body of a [class`Message]`.
          *
          * If `content_type` is %NULL and `stream` is not %NULL the Content-Type header will
          * not be changed if present.
@@ -8911,7 +8906,7 @@ export namespace Soup {
          */
         set_request_body(content_type: string | null, stream: Gio.InputStream | null, content_length: number): void;
         /**
-         * Set the request body of a #SoupMessage from [struct`GLib`.Bytes].
+         * Set the request body of a [class`Message]` from [struct`GLib`.Bytes].
          *
          * If `content_type` is %NULL and `bytes` is not %NULL the Content-Type header will
          * not be changed if present.
@@ -8975,8 +8970,7 @@ export namespace Soup {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.FilterInputStream.ConstructorProps,
-                Gio.PollableInputStream.ConstructorProps {
+            extends Gio.FilterInputStream.ConstructorProps, Gio.PollableInputStream.ConstructorProps {
             message: Message;
         }
     }
@@ -8990,7 +8984,7 @@ export namespace Soup {
      * [method`MultipartInputStream`.next_part] before reading. Responses
      * which are not wrapped will be treated like non-multipart responses.
      *
-     * Note that although #SoupMultipartInputStream is a [class`Gio`.InputStream],
+     * Note that although [class`MultipartInputStream]` is a [class`Gio`.InputStream],
      * you should not read directly from it, and the results are undefined
      * if you do.
      */
@@ -9047,7 +9041,7 @@ export namespace Soup {
          * Obtains the headers for the part currently being processed.
          *
          * Note that the [struct`MessageHeaders]` that are returned are owned by the
-         * #SoupMultipartInputStream and will be replaced when a call is made to
+         * [class`MultipartInputStream]` and will be replaced when a call is made to
          * [method`MultipartInputStream`.next_part] or its async counterpart, so if
          * keeping the headers is required, a copy must be made.
          *
@@ -9060,7 +9054,7 @@ export namespace Soup {
          * Obtains an input stream for the next part.
          *
          * When dealing with a multipart response the input stream needs to be wrapped
-         * in a #SoupMultipartInputStream and this function or its async counterpart
+         * in a [class`MultipartInputStream]` and this function or its async counterpart
          * need to be called to obtain the first part for reading.
          *
          * After calling this function,
@@ -10032,7 +10026,7 @@ export namespace Soup {
     }
 
     /**
-     * #SoupServer provides a basic implementation of an HTTP server. The
+     * [class`Server]` provides a basic implementation of an HTTP server. The
      * recommended usage of this server is for internal use, tasks like
      * a mock server for tests, a private service for IPC, etc. It is not
      * recommended to be exposed to untrusted clients as it may be vulnerable
@@ -10046,20 +10040,20 @@ export namespace Soup {
      * the path.)
      *
      * When a new connection is accepted (or a new request is started on
-     * an existing persistent connection), the #SoupServer will emit
+     * an existing persistent connection), the [class`Server]` will emit
      * [signal`Server:`:request-started] and then begin processing the request
      * as described below, but note that once the message is assigned a
      * status-code, then callbacks after that point will be
      * skipped. Note also that it is not defined when the callbacks happen
      * relative to various [class`ServerMessage]` signals.
      *
-     * Once the headers have been read, #SoupServer will check if there is
+     * Once the headers have been read, [class`Server]` will check if there is
      * a [class`AuthDomain]` `(qv)` covering the Request-URI; if so, and if the
      * message does not contain suitable authorization, then the
      * [class`AuthDomain]` will set a status of %SOUP_STATUS_UNAUTHORIZED on
      * the message.
      *
-     * After checking for authorization, #SoupServer will look for "early"
+     * After checking for authorization, [class`Server]` will look for "early"
      * handlers (added with [method`Server`.add_early_handler]) matching the
      * Request-URI. If one is found, it will be run; in particular, this
      * can be used to connect to signals to do a streaming read of the
@@ -10067,10 +10061,10 @@ export namespace Soup {
      *
      * (At this point, if the request headers contain `Expect:
      * 100-continue`, and a status code has been set, then
-     * #SoupServer will skip the remaining steps and return the response.
+     * [class`Server]` will skip the remaining steps and return the response.
      * If the request headers contain `Expect:
      * 100-continue` and no status code has been set,
-     * #SoupServer will return a %SOUP_STATUS_CONTINUE status before
+     * [class`Server]` will return a %SOUP_STATUS_CONTINUE status before
      * continuing.)
      *
      * The server will then read in the response body (if present). At
@@ -10084,7 +10078,7 @@ export namespace Soup {
      * run.
      *
      * Then, if the path has a WebSocket handler registered (and has
-     * not yet been assigned a status), #SoupServer will attempt to
+     * not yet been assigned a status), [class`Server]` will attempt to
      * validate the WebSocket handshake, filling in the response and
      * setting a status of %SOUP_STATUS_SWITCHING_PROTOCOLS or
      * %SOUP_STATUS_BAD_REQUEST accordingly.
@@ -10109,13 +10103,13 @@ export namespace Soup {
      * Once the server is set up, make one or more calls to
      * [method`Server`.listen], [method`Server`.listen_local], or
      * [method`Server`.listen_all] to tell it where to listen for
-     * connections. (All ports on a #SoupServer use the same handlers; if
+     * connections. (All ports on a [class`Server]` use the same handlers; if
      * you need to handle some ports differently, such as returning
      * different data for http and https, you'll need to create multiple
-     * `SoupServer`s, or else check the passed-in URI in the handler
+     * [class`Server]`s, or else check the passed-in URI in the handler
      * function.).
      *
-     * #SoupServer will begin processing connections as soon as you return
+     * [class`Server]` will begin processing connections as soon as you return
      * to (or start) the main loop for the current thread-default
      * [struct`GLib`.MainContext].
      */
@@ -10158,7 +10152,7 @@ export namespace Soup {
          *
          * As with [property`Session:`user_agent], if you set a
          * [property`Server:`server-header] property that has trailing
-         * whitespace, #SoupServer will append its own product token (eg,
+         * whitespace, [class`Server]` will append its own product token (eg,
          * `libsoup/2.3.2`) to the end of the header for you.
          */
         get server_header(): string;
@@ -10187,7 +10181,7 @@ export namespace Soup {
          *
          * As with [property`Session:`user_agent], if you set a
          * [property`Server:`server-header] property that has trailing
-         * whitespace, #SoupServer will append its own product token (eg,
+         * whitespace, [class`Server]` will append its own product token (eg,
          * `libsoup/2.3.2`) to the end of the header for you.
          */
         get serverHeader(): string;
@@ -10457,7 +10451,7 @@ export namespace Soup {
          * Note that if you used [method`Server`.listen_all] the returned URIs will use
          * the addresses `0.0.0.0` and `::`, rather than actually returning separate
          * URIs for each interface on the system.
-         * @returns a list of #GUris, which you   must free when you are done with it.
+         * @returns a list of [struct@GLib.Uri], which you   must free with each element with [method@GLib.Uri.unref] when you are done with it.
          */
         get_uris(): GLib.Uri[];
         /**
@@ -10469,7 +10463,7 @@ export namespace Soup {
          * certificate to use.
          *
          * If you are using the deprecated single-listener APIs, then a return value of
-         * %TRUE indicates that the #SoupServer serves https exclusively. If you are
+         * %TRUE indicates that the [class`Server]` serves https exclusively. If you are
          * using [method`Server`.listen], etc, then a %TRUE return value merely indicates
          * that the server is *able* to do https, regardless of whether it actually
          * currently is or not. Use [method`Server`.get_uris] to see if it currently has
@@ -10548,7 +10542,7 @@ export namespace Soup {
          * resume I/O.
          *
          * This must only be called on a [class`ServerMessage]` which was created by the
-         * #SoupServer and are currently doing I/O, such as those passed into a
+         * [class`Server]` and are currently doing I/O, such as those passed into a
          * [callback`ServerCallback]` or emitted in a [signal`Server:`:request-read]
          * signal.
          * @param msg a #SoupServerMessage associated with @server.
@@ -10594,7 +10588,7 @@ export namespace Soup {
          * I/O won't actually resume until you return to the main loop.
          *
          * This must only be called on a [class`ServerMessage]` which was created by the
-         * #SoupServer and are currently doing I/O, such as those passed into a
+         * [class`Server]` and are currently doing I/O, such as those passed into a
          * [callback`ServerCallback]` or emitted in a [signal`Server:`:request-read]
          * signal.
          * @param msg a #SoupServerMessage associated with @server.
@@ -10634,15 +10628,15 @@ export namespace Soup {
     /**
      * An HTTP server request and response pair.
      *
-     * A SoupServerMessage represents an HTTP message that is being sent or
+     * A [class`ServerMessage]` represents an HTTP message that is being sent or
      * received on a [class`Server]`.
      *
-     * [class`Server]` will create `SoupServerMessage`s automatically for
+     * [class`Server]` will create [class`ServerMessage]`s automatically for
      * incoming requests, which your application will receive via handlers.
      *
      * Note that libsoup's terminology here does not quite match the HTTP
      * specification: in RFC 2616, an "HTTP-message" is *either* a Request, *or* a
-     * Response. In libsoup, a #SoupServerMessage combines both the request and the
+     * Response. In libsoup, a [class`ServerMessage]` combines both the request and the
      * response.
      */
     class ServerMessage extends GObject.Object {
@@ -10659,11 +10653,11 @@ export namespace Soup {
          */
         get tlsPeerCertificate(): Gio.TlsCertificate;
         /**
-         * The verification errors on #SoupServerMessage:tls-peer-certificate
+         * The verification errors on [property`ServerMessage:`tls-peer-certificate]
          */
         get tls_peer_certificate_errors(): Gio.TlsCertificateFlags;
         /**
-         * The verification errors on #SoupServerMessage:tls-peer-certificate
+         * The verification errors on [property`ServerMessage:`tls-peer-certificate]
          */
         get tlsPeerCertificateErrors(): Gio.TlsCertificateFlags;
 
@@ -10823,7 +10817,7 @@ export namespace Soup {
          */
         set_redirect(status_code: number, redirect_uri: string): void;
         /**
-         * Convenience function to set the response body of a #SoupServerMessage. If
+         * Convenience function to set the response body of a [class`ServerMessage]`. If
          * `content_type` is %NULL, the response body must be empty as well.
          * @param content_type MIME Content-Type of the body
          * @param resp_use a #SoupMemoryUse describing how to handle @resp_body
@@ -10840,7 +10834,7 @@ export namespace Soup {
          */
         set_status(status_code: number, reason_phrase?: string | null): void;
         /**
-         * "Steals" the HTTP connection associated with `msg` from its #SoupServer. This
+         * "Steals" the HTTP connection associated with `msg` from its [class`Server]`. This
          * happens immediately, regardless of the current state of the connection; if
          * the response to `msg` has not yet finished being sent, then it will be
          * discarded; you can steal the connection from a
@@ -10914,13 +10908,13 @@ export namespace Soup {
     /**
      * Soup session state object.
      *
-     * #SoupSession is the object that controls client-side HTTP. A
-     * #SoupSession encapsulates all of the state that libsoup is keeping
+     * [class`Session]` is the object that controls client-side HTTP. A
+     * [class`Session]` encapsulates all of the state that libsoup is keeping
      * on behalf of your program; cached HTTP connections, authentication
      * information, etc. It also keeps track of various global options
      * and features that you are using.
      *
-     * Most applications will only need a single #SoupSession; the primary
+     * Most applications will only need a single [class`Session]`; the primary
      * reason you might need multiple sessions is if you need to have
      * multiple independent authentication contexts. (Eg, you are
      * connecting to a server and authenticating as two different users at
@@ -10929,7 +10923,7 @@ export namespace Soup {
      * one session for the first user, and a second session for the other
      * user.)
      *
-     * Additional #SoupSession functionality is provided by
+     * Additional [class`Session]` functionality is provided by
      * [iface`SessionFeature]` objects, which can be added to a session with
      * [method`Session`.add_feature] or [method`Session`.add_feature_by_type]
      * For example, [class`Logger]` provides support for
@@ -10941,7 +10935,7 @@ export namespace Soup {
      *
      * All `SoupSession`s are created with a [class`AuthManager]`, and support
      * for %SOUP_TYPE_AUTH_BASIC and %SOUP_TYPE_AUTH_DIGEST. Additionally,
-     * sessions using the plain #SoupSession class (rather than one of its deprecated
+     * sessions using the plain [class`Session]` class (rather than one of its deprecated
      * subtypes) have a [class`ContentDecoder]` by default.
      *
      * Note that all async methods will invoke their callbacks on the thread-default
@@ -10969,7 +10963,7 @@ export namespace Soup {
         get acceptLanguage(): string;
         set acceptLanguage(val: string);
         /**
-         * If %TRUE, #SoupSession will automatically set the string
+         * If %TRUE, [class`Session]` will automatically set the string
          * for the "Accept-Language" header on every [class`Message]`
          * sent, based on the return value of [func`GLib`.get_language_names].
          *
@@ -10979,7 +10973,7 @@ export namespace Soup {
         get accept_language_auto(): boolean;
         set accept_language_auto(val: boolean);
         /**
-         * If %TRUE, #SoupSession will automatically set the string
+         * If %TRUE, [class`Session]` will automatically set the string
          * for the "Accept-Language" header on every [class`Message]`
          * sent, based on the return value of [func`GLib`.get_language_names].
          *
@@ -11162,7 +11156,7 @@ export namespace Soup {
          * enclosed in parentheses, between or after the tokens.
          *
          * If you set a [property`Session:`user-agent] property that has trailing
-         * whitespace, #SoupSession will append its own product token
+         * whitespace, [class`Session]` will append its own product token
          * (eg, `libsoup/2.3.2`) to the end of the
          * header for you.
          */
@@ -11191,7 +11185,7 @@ export namespace Soup {
          * enclosed in parentheses, between or after the tokens.
          *
          * If you set a [property`Session:`user-agent] property that has trailing
-         * whitespace, #SoupSession will append its own product token
+         * whitespace, [class`Session]` will append its own product token
          * (eg, `libsoup/2.3.2`) to the end of the
          * header for you.
          */
@@ -11249,7 +11243,7 @@ export namespace Soup {
          * Adds `feature'`s functionality to `session`. You cannot add multiple
          * features of the same [alias`GObject`.Type] to a session.
          *
-         * See the main #SoupSession documentation for information on what
+         * See the main [class`Session]` documentation for information on what
          * features are present in sessions by default.
          * @param feature an object that implements #SoupSessionFeature
          */
@@ -11265,7 +11259,7 @@ export namespace Soup {
          * existing feature on `session` the chance to accept `feature_type` as
          * a "subfeature". This can be used to add new [class`Auth]` types, for instance.
          *
-         * See the main #SoupSession documentation for information on what
+         * See the main [class`Session]` documentation for information on what
          * features are present in sessions by default.
          * @param feature_type a #GType
          */
@@ -11947,11 +11941,11 @@ export namespace Soup {
      * WebSocket handshake, and [func`websocket_server_process_handshake]` for
      * handling the server side.)
      *
-     * #SoupWebsocketConnection handles the details of WebSocket communication. You
+     * [class`WebsocketConnection]` handles the details of WebSocket communication. You
      * can use [method`WebsocketConnection`.send_text] and
      * [method`WebsocketConnection`.send_binary] to send data, and the
      * [signal`WebsocketConnection:`:message] signal to receive data.
-     * (#SoupWebsocketConnection currently only supports asynchronous I/O.)
+     * ([class`WebsocketConnection]` currently only supports asynchronous I/O.)
      */
     class WebsocketConnection extends GObject.Object {
         static $gtype: GObject.GType<WebsocketConnection>;
@@ -12256,7 +12250,7 @@ export namespace Soup {
     /**
      * A WebSocket extension
      *
-     * #SoupWebsocketExtension is the base class for WebSocket extension objects.
+     * [class`WebsocketExtension]` is the base class for WebSocket extension objects.
      */
     abstract class WebsocketExtension extends GObject.Object {
         static $gtype: GObject.GType<WebsocketExtension>;
@@ -12462,7 +12456,7 @@ export namespace Soup {
      * SoupWebsocketExtensionManager is the [iface`SessionFeature]` that handles WebSockets
      * extensions for a [class`Session]`.
      *
-     * A #SoupWebsocketExtensionManager is added to the session by default, and normally
+     * A [class`WebsocketExtensionManager]` is added to the session by default, and normally
      * you don't need to worry about it at all. However, if you want to
      * disable WebSocket extensions, you can remove the feature from the
      * session with [method`Session`.remove_feature_by_type] or disable it on
@@ -12988,21 +12982,20 @@ export namespace Soup {
         // Constructors
 
         constructor(name: string, value: string, domain: string, path: string, max_age: number);
-        _init(...args: any[]): void;
 
         static ['new'](name: string, value: string, domain: string, path: string, max_age: number): Cookie;
 
         // Static methods
 
         /**
-         * Parses `header` and returns a #SoupCookie.
+         * Parses `header` and returns a [struct`Cookie]`.
          *
          * If `header` contains multiple cookies, only the first one will be parsed.
          *
          * If `header` does not have "path" or "domain" attributes, they will
          * be defaulted from `origin`. If `origin` is %NULL, path will default
          * to "/", but domain will be left as %NULL. Note that this is not a
-         * valid state for a #SoupCookie, and you will need to fill in some
+         * valid state for a [struct`Cookie]`, and you will need to fill in some
          * appropriate string for the domain if you want to actually make use
          * of the cookie.
          *
@@ -13181,7 +13174,7 @@ export namespace Soup {
     type HSTSEnforcerClass = typeof HSTSEnforcer;
     type HSTSEnforcerDBClass = typeof HSTSEnforcerDB;
     /**
-     * #SoupHSTSPolicy implements HTTP policies, as described by
+     * [struct`HSTSPolicy]` implements HTTP policies, as described by
      * [RFC 6797](http://tools.ietf.org/html/rfc6797).
      *
      * `domain` represents the host that this policy applies to. The domain
@@ -13205,7 +13198,6 @@ export namespace Soup {
         // Constructors
 
         constructor(domain: string, max_age: number, include_subdomains: boolean);
-        _init(...args: any[]): void;
 
         static ['new'](domain: string, max_age: number, include_subdomains: boolean): HSTSPolicy;
 
@@ -13275,7 +13267,7 @@ export namespace Soup {
 
     type LoggerClass = typeof Logger;
     /**
-     * #SoupMessageBody represents the request or response body of a
+     * [struct`MessageBody]` represents the request or response body of a
      * [class`Message]`.
      *
      * Note that while `length` always reflects the full length of the
@@ -13305,7 +13297,6 @@ export namespace Soup {
                 length: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): MessageBody;
 
@@ -13375,7 +13366,7 @@ export namespace Soup {
          */
         get_chunk(offset: number): GLib.Bytes | null;
         /**
-         * Handles the #SoupMessageBody part of receiving a chunk of data from
+         * Handles the [struct`MessageBody]` part of receiving a chunk of data from
          * the network.
          *
          * Normally this means appending `chunk` to `body,` exactly as with
@@ -13421,7 +13412,7 @@ export namespace Soup {
          */
         unref(): void;
         /**
-         * Handles the #SoupMessageBody part of writing a chunk of data to the
+         * Handles the [struct`MessageBody]` part of writing a chunk of data to the
          * network.
          *
          * Normally this is a no-op, but if you have set `body'`s accumulate flag to
@@ -13445,7 +13436,6 @@ export namespace Soup {
         // Constructors
 
         constructor(type: MessageHeadersType);
-        _init(...args: any[]): void;
 
         static ['new'](type: MessageHeadersType): MessageHeaders;
 
@@ -13608,7 +13598,7 @@ export namespace Soup {
          * Beware that even if given a `total_length,` this function does not
          * check that the ranges are satisfiable.
          *
-         * #SoupServer has built-in handling for range requests. If your
+         * [class`Server]` has built-in handling for range requests. If your
          * server handler returns a %SOUP_STATUS_OK response containing the
          * complete response body (rather than pausing the message and
          * returning some of the response body later), and there is a Range
@@ -13766,11 +13756,10 @@ export namespace Soup {
     }
 
     /**
-     * An opaque type used to iterate over a %SoupMessageHeaders
-     * structure.
+     * An opaque type used to iterate over a [struct`MessageHeaders]` structure
      *
      * After intializing the iterator with [func`MessageHeadersIter`.init], call
-     * [method`MessageHeadersIter`.next] to fetch data from it.
+     * [func`MessageHeadersIter`.next] to fetch data from it.
      *
      * You may not modify the headers while iterating over them.
      */
@@ -13780,13 +13769,12 @@ export namespace Soup {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Static methods
 
         /**
          * Initializes `iter` for iterating `hdrs`.
-         * @param hdrs a %SoupMessageHeaders
+         * @param hdrs a #SoupMessageHeaders
          */
         static init(hdrs: MessageHeaders): MessageHeadersIter;
         /**
@@ -13794,9 +13782,9 @@ export namespace Soup {
          * iterated by `iter`.
          *
          * If `iter` has already yielded the last header, then
-         * [method`MessageHeadersIter`.next] will return %FALSE and `name` and `value`
+         * [func`MessageHeadersIter`.next] will return %FALSE and `name` and `value`
          * will be unchanged.
-         * @param iter a %SoupMessageHeadersIter
+         * @param iter a #SoupMessageHeadersIter
          */
         static next(iter: MessageHeadersIter): [boolean, MessageHeadersIter, string, string];
     }
@@ -13819,10 +13807,6 @@ export namespace Soup {
      */
     abstract class MessageMetrics {
         static $gtype: GObject.GType<MessageMetrics>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -13979,12 +13963,12 @@ export namespace Soup {
      * Of particular interest to HTTP are `multipart/byte-ranges` and
      * `multipart/form-data`,
      *
-     * Although the headers of a #SoupMultipart body part will contain the
+     * Although the headers of a [struct`Multipart]` body part will contain the
      * full headers from that body part, libsoup does not interpret them
      * according to MIME rules. For example, each body part is assumed to
      * have "binary" Content-Transfer-Encoding, even if its headers
      * explicitly state otherwise. In other words, don't try to use
-     * #SoupMultipart for handling real MIME multiparts.
+     * [struct`Multipart]` for handling real MIME multiparts.
      */
     class Multipart {
         static $gtype: GObject.GType<Multipart>;
@@ -13992,7 +13976,6 @@ export namespace Soup {
         // Constructors
 
         constructor(mime_type: string);
-        _init(...args: any[]): void;
 
         static ['new'](mime_type: string): Multipart;
 
@@ -14088,7 +14071,6 @@ export namespace Soup {
                 end: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type ServerClass = typeof Server;

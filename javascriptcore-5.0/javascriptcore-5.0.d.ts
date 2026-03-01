@@ -1525,55 +1525,31 @@ export namespace JavaScriptCore {
         has_property: ClassHasPropertyFunction;
         delete_property: ClassDeletePropertyFunction;
         enumerate_properties: ClassEnumeratePropertiesFunction;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ContextClass = typeof Context;
     abstract class ContextPrivate {
         static $gtype: GObject.GType<ContextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExceptionClass = typeof Exception;
     abstract class ExceptionPrivate {
         static $gtype: GObject.GType<ExceptionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ValueClass = typeof Value;
     abstract class ValuePrivate {
         static $gtype: GObject.GType<ValuePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type VirtualMachineClass = typeof VirtualMachine;
     abstract class VirtualMachinePrivate {
         static $gtype: GObject.GType<VirtualMachinePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WeakValueClass = typeof WeakValue;
     abstract class WeakValuePrivate {
         static $gtype: GObject.GType<WeakValuePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

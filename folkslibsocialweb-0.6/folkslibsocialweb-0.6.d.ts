@@ -48,7 +48,8 @@ export namespace FolksLibsocialweb {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Folks.Persona.ConstructorProps,
+            extends
+                Folks.Persona.ConstructorProps,
                 Folks.AvatarDetails.ConstructorProps,
                 Folks.GenderDetails.ConstructorProps,
                 Folks.ImDetails.ConstructorProps,
@@ -768,19 +769,11 @@ export namespace FolksLibsocialweb {
     type PersonaClass = typeof Persona;
     abstract class PersonaPrivate {
         static $gtype: GObject.GType<PersonaPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PersonaStoreClass = typeof PersonaStore;
     abstract class PersonaStorePrivate {
         static $gtype: GObject.GType<PersonaStorePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

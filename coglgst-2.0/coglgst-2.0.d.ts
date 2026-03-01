@@ -311,16 +311,11 @@ export namespace CoglGst {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type VideoSinkClass = typeof VideoSink;
     abstract class VideoSinkPrivate {
         static $gtype: GObject.GType<VideoSinkPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

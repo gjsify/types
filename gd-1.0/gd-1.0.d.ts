@@ -125,7 +125,8 @@ export namespace Gd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Container.ConstructorProps,
+            extends
+                Gtk.Container.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             custom_title: Gtk.Widget;
@@ -751,7 +752,8 @@ export namespace Gd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.MenuButton.ConstructorProps,
+            extends
+                Gtk.MenuButton.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 HeaderButton.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
@@ -5377,7 +5379,8 @@ export namespace Gd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.RadioButton.ConstructorProps,
+            extends
+                Gtk.RadioButton.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 HeaderButton.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
@@ -9999,7 +10002,8 @@ export namespace Gd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Button.ConstructorProps,
+            extends
+                Gtk.Button.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 HeaderButton.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
@@ -14865,7 +14869,8 @@ export namespace Gd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ToggleButton.ConstructorProps,
+            extends
+                Gtk.ToggleButton.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 HeaderButton.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
@@ -19492,7 +19497,8 @@ export namespace Gd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.IconView.ConstructorProps,
+            extends
+                Gtk.IconView.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 MainViewGeneric.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -24155,7 +24161,8 @@ export namespace Gd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.TreeView.ConstructorProps,
+            extends
+                Gtk.TreeView.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 MainViewGeneric.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -28653,7 +28660,8 @@ export namespace Gd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Toolbar.ConstructorProps,
+            extends
+                Gtk.Toolbar.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps,
@@ -33197,7 +33205,8 @@ export namespace Gd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ScrolledWindow.ConstructorProps,
+            extends
+                Gtk.ScrolledWindow.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             model: Gtk.TreeModel;
@@ -33771,9 +33780,7 @@ export namespace Gd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             child_revealed: boolean;
             childRevealed: boolean;
             orientation: Gtk.Orientation;
@@ -34344,7 +34351,8 @@ export namespace Gd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Container.ConstructorProps,
+            extends
+                Gtk.Container.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             homogeneous: boolean;
@@ -34936,7 +34944,8 @@ export namespace Gd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -35865,7 +35874,8 @@ export namespace Gd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.SearchEntry.ConstructorProps,
+            extends
+                Gtk.SearchEntry.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.CellEditable.ConstructorProps,
@@ -40511,119 +40521,67 @@ export namespace Gd {
     type HeaderBarClass = typeof HeaderBar;
     abstract class HeaderBarPrivate {
         static $gtype: GObject.GType<HeaderBarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MainIconViewClass = typeof MainIconView;
     abstract class MainIconViewPrivate {
         static $gtype: GObject.GType<MainIconViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MainListViewClass = typeof MainListView;
     abstract class MainListViewPrivate {
         static $gtype: GObject.GType<MainListViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MainToolbarClass = typeof MainToolbar;
     abstract class MainToolbarPrivate {
         static $gtype: GObject.GType<MainToolbarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MainViewClass = typeof MainView;
     type MainViewGenericIface = typeof MainViewGeneric;
     abstract class MainViewPrivate {
         static $gtype: GObject.GType<MainViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RevealerClass = typeof Revealer;
     abstract class RevealerPrivate {
         static $gtype: GObject.GType<RevealerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StackClass = typeof Stack;
     abstract class StackPrivate {
         static $gtype: GObject.GType<StackPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StackSwitcherClass = typeof StackSwitcher;
     abstract class StackSwitcherPrivate {
         static $gtype: GObject.GType<StackSwitcherPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StyledTextRendererClass = typeof StyledTextRenderer;
     abstract class StyledTextRendererPrivate {
         static $gtype: GObject.GType<StyledTextRendererPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TaggedEntryClass = typeof TaggedEntry;
     abstract class TaggedEntryPrivate {
         static $gtype: GObject.GType<TaggedEntryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TaggedEntryTagClass = typeof TaggedEntryTag;
     abstract class TaggedEntryTagPrivate {
         static $gtype: GObject.GType<TaggedEntryTagPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TogglePixbufRendererClass = typeof TogglePixbufRenderer;
     abstract class TogglePixbufRendererPrivate {
         static $gtype: GObject.GType<TogglePixbufRendererPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TwoLinesRendererClass = typeof TwoLinesRenderer;
     abstract class TwoLinesRendererPrivate {
         static $gtype: GObject.GType<TwoLinesRendererPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace HeaderButton {

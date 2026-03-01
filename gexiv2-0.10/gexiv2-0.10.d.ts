@@ -1140,28 +1140,16 @@ export namespace GExiv2 {
     type MetadataClass = typeof Metadata;
     abstract class MetadataPrivate {
         static $gtype: GObject.GType<MetadataPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PreviewImageClass = typeof PreviewImage;
     abstract class PreviewImagePrivate {
         static $gtype: GObject.GType<PreviewImagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PreviewPropertiesClass = typeof PreviewProperties;
     abstract class PreviewPropertiesPrivate {
         static $gtype: GObject.GType<PreviewPropertiesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

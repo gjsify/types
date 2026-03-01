@@ -45743,10 +45743,6 @@ export namespace WebKit2WebExtension {
     abstract class ConsoleMessage {
         static $gtype: GObject.GType<ConsoleMessage>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -45789,18 +45785,10 @@ export namespace WebKit2WebExtension {
     type ContextMenuItemClass = typeof ContextMenuItem;
     abstract class ContextMenuItemPrivate {
         static $gtype: GObject.GType<ContextMenuItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ContextMenuPrivate {
         static $gtype: GObject.GType<ContextMenuPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DOMAttrClass = typeof DOMAttr;
@@ -45909,92 +45897,52 @@ export namespace WebKit2WebExtension {
     type FrameClass = typeof Frame;
     abstract class FramePrivate {
         static $gtype: GObject.GType<FramePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HitTestResultClass = typeof HitTestResult;
     abstract class HitTestResultPrivate {
         static $gtype: GObject.GType<HitTestResultPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ScriptWorldClass = typeof ScriptWorld;
     abstract class ScriptWorldPrivate {
         static $gtype: GObject.GType<ScriptWorldPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type URIRequestClass = typeof URIRequest;
     abstract class URIRequestPrivate {
         static $gtype: GObject.GType<URIRequestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type URIResponseClass = typeof URIResponse;
     abstract class URIResponsePrivate {
         static $gtype: GObject.GType<URIResponsePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UserMessageClass = typeof UserMessage;
     abstract class UserMessagePrivate {
         static $gtype: GObject.GType<UserMessagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WebEditorClass = typeof WebEditor;
     abstract class WebEditorPrivate {
         static $gtype: GObject.GType<WebEditorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WebExtensionClass = typeof WebExtension;
     abstract class WebExtensionPrivate {
         static $gtype: GObject.GType<WebExtensionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WebFormManagerClass = typeof WebFormManager;
     type WebHitTestResultClass = typeof WebHitTestResult;
     abstract class WebHitTestResultPrivate {
         static $gtype: GObject.GType<WebHitTestResultPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WebPageClass = typeof WebPage;
     abstract class WebPagePrivate {
         static $gtype: GObject.GType<WebPagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace DOMEventTarget {

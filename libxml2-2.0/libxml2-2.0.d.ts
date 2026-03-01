@@ -20,66 +20,34 @@ export namespace libxml2 {
     function dummy(): void;
     class Node {
         static $gtype: GObject.GType<Node>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class NodePtr {
         static $gtype: GObject.GType<NodePtr>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Doc {
         static $gtype: GObject.GType<Doc>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class DocPtr {
         static $gtype: GObject.GType<DocPtr>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class NsPtr {
         static $gtype: GObject.GType<NsPtr>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Char {
         static $gtype: GObject.GType<Char>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class TextWriter {
         static $gtype: GObject.GType<TextWriter>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class TextReader {
         static $gtype: GObject.GType<TextReader>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

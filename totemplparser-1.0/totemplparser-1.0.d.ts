@@ -45,7 +45,6 @@ export namespace TotemPlParser {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -763,10 +762,6 @@ export namespace TotemPlParser {
     type ParserClass = typeof Parser;
     abstract class ParserPrivate {
         static $gtype: GObject.GType<ParserPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PlaylistClass = typeof Playlist;
@@ -779,7 +774,6 @@ export namespace TotemPlParser {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
     }
 
     /**
