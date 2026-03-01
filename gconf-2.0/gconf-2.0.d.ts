@@ -63,7 +63,6 @@ export namespace GConf {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -292,7 +291,6 @@ export namespace GConf {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ChangeSet;
 
@@ -340,7 +338,6 @@ export namespace GConf {
         // Constructors
 
         constructor(key: string, val: Value);
-        _init(...args: any[]): void;
 
         static ['new'](key: string, val: Value): Entry;
 
@@ -382,7 +379,6 @@ export namespace GConf {
                 str: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class Value {
@@ -395,7 +391,6 @@ export namespace GConf {
         // Constructors
 
         constructor(type: ValueType);
-        _init(...args: any[]): void;
 
         static ['new'](type: ValueType): Value;
 

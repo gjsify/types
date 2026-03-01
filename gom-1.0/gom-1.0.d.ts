@@ -34,7 +34,6 @@ export namespace Gom {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1108,82 +1107,46 @@ export namespace Gom {
     type AdapterClass = typeof Adapter;
     abstract class AdapterPrivate {
         static $gtype: GObject.GType<AdapterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CommandBuilderClass = typeof CommandBuilder;
     abstract class CommandBuilderPrivate {
         static $gtype: GObject.GType<CommandBuilderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CommandClass = typeof Command;
     abstract class CommandPrivate {
         static $gtype: GObject.GType<CommandPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CursorClass = typeof Cursor;
     abstract class CursorPrivate {
         static $gtype: GObject.GType<CursorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FilterClass = typeof Filter;
     abstract class FilterPrivate {
         static $gtype: GObject.GType<FilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RepositoryClass = typeof Repository;
     abstract class RepositoryPrivate {
         static $gtype: GObject.GType<RepositoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ResourceClass = typeof Resource;
     type ResourceGroupClass = typeof ResourceGroup;
     abstract class ResourceGroupPrivate {
         static $gtype: GObject.GType<ResourceGroupPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ResourcePrivate {
         static $gtype: GObject.GType<ResourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SortingClass = typeof Sorting;
     abstract class SortingPrivate {
         static $gtype: GObject.GType<SortingPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

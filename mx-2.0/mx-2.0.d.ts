@@ -164,7 +164,6 @@ export namespace Mx {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -389,10 +388,6 @@ export namespace Mx {
          * 270 degrees of rotation
          */
         static '270': number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1722,7 +1717,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.Application.ConstructorProps,
+            extends
+                Gio.Application.ConstructorProps,
                 Gio.ActionGroup.ConstructorProps,
                 Gio.ActionMap.ConstructorProps {}
     }
@@ -2864,7 +2860,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -3754,7 +3751,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -4784,7 +4782,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -5900,7 +5899,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -6754,7 +6754,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -7563,7 +7564,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -8448,7 +8450,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -9395,7 +9398,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -10244,7 +10248,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -11002,7 +11007,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -11878,7 +11884,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -12773,7 +12780,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -13752,7 +13760,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Grid.ConstructorProps,
+            extends
+                Grid.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -14481,7 +14490,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -15492,7 +15502,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -16401,7 +16412,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends BoxLayout.ConstructorProps,
+            extends
+                BoxLayout.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -17114,7 +17126,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends FloatingWidget.ConstructorProps,
+            extends
+                FloatingWidget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -17764,7 +17777,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -18561,7 +18575,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Stack.ConstructorProps,
+            extends
+                Stack.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -19240,7 +19255,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -20076,7 +20092,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -20845,7 +20862,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -21622,7 +21640,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -22508,7 +22527,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -23316,7 +23336,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -24086,7 +24107,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -25121,7 +25143,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -26365,7 +26388,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps,
+            extends
+                Clutter.Actor.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -27481,7 +27505,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -28265,7 +28290,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -29061,7 +29087,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends FloatingWidget.ConstructorProps,
+            extends
+                FloatingWidget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -29719,7 +29746,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Bin.ConstructorProps,
+            extends
+                Bin.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -30403,7 +30431,8 @@ export namespace Mx {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps,
+            extends
+                Clutter.Actor.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -31911,46 +31940,26 @@ export namespace Mx {
     type ActionClass = typeof Action;
     abstract class ActionPrivate {
         static $gtype: GObject.GType<ActionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ActorManagerClass = typeof ActorManager;
     abstract class ActorManagerPrivate {
         static $gtype: GObject.GType<ActorManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AdjustmentClass = typeof Adjustment;
     abstract class AdjustmentPrivate {
         static $gtype: GObject.GType<AdjustmentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ApplicationClass = typeof Application;
     abstract class ApplicationPrivate {
         static $gtype: GObject.GType<ApplicationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BinClass = typeof Bin;
     abstract class BinPrivate {
         static $gtype: GObject.GType<BinPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class BorderImage {
@@ -31975,7 +31984,6 @@ export namespace Mx {
                 left: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -31989,64 +31997,36 @@ export namespace Mx {
     type BoxLayoutChildClass = typeof BoxLayoutChild;
     abstract class BoxLayoutChildPrivate {
         static $gtype: GObject.GType<BoxLayoutChildPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BoxLayoutClass = typeof BoxLayout;
     abstract class BoxLayoutPrivate {
         static $gtype: GObject.GType<BoxLayoutPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ButtonClass = typeof Button;
     type ButtonGroupClass = typeof ButtonGroup;
     abstract class ButtonGroupPrivate {
         static $gtype: GObject.GType<ButtonGroupPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ButtonPrivate {
         static $gtype: GObject.GType<ButtonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ClipboardClass = typeof Clipboard;
     abstract class ClipboardPrivate {
         static $gtype: GObject.GType<ClipboardPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ComboBoxClass = typeof ComboBox;
     abstract class ComboBoxPrivate {
         static $gtype: GObject.GType<ComboBoxPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DialogClass = typeof Dialog;
     abstract class DialogPrivate {
         static $gtype: GObject.GType<DialogPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DraggableIface = typeof Draggable;
@@ -32054,147 +32034,83 @@ export namespace Mx {
     type EntryClass = typeof Entry;
     abstract class EntryPrivate {
         static $gtype: GObject.GType<EntryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpanderClass = typeof Expander;
     abstract class ExpanderPrivate {
         static $gtype: GObject.GType<ExpanderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FadeEffectClass = typeof FadeEffect;
     abstract class FadeEffectPrivate {
         static $gtype: GObject.GType<FadeEffectPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FloatingWidgetClass = typeof FloatingWidget;
     abstract class FloatingWidgetPrivate {
         static $gtype: GObject.GType<FloatingWidgetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FocusManagerClass = typeof FocusManager;
     abstract class FocusManagerPrivate {
         static $gtype: GObject.GType<FocusManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FocusableIface = typeof Focusable;
     type FrameClass = typeof Frame;
     abstract class FramePrivate {
         static $gtype: GObject.GType<FramePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GridClass = typeof Grid;
     abstract class GridPrivate {
         static $gtype: GObject.GType<GridPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IconClass = typeof Icon;
     abstract class IconPrivate {
         static $gtype: GObject.GType<IconPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IconThemeClass = typeof IconTheme;
     abstract class IconThemePrivate {
         static $gtype: GObject.GType<IconThemePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ImageClass = typeof Image;
     abstract class ImagePrivate {
         static $gtype: GObject.GType<ImagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ItemFactoryIface = typeof ItemFactory;
     type ItemViewClass = typeof ItemView;
     abstract class ItemViewPrivate {
         static $gtype: GObject.GType<ItemViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type KineticScrollViewClass = typeof KineticScrollView;
     abstract class KineticScrollViewPrivate {
         static $gtype: GObject.GType<KineticScrollViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LabelClass = typeof Label;
     abstract class LabelPrivate {
         static $gtype: GObject.GType<LabelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ListViewClass = typeof ListView;
     abstract class ListViewPrivate {
         static $gtype: GObject.GType<ListViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MenuClass = typeof Menu;
     abstract class MenuPrivate {
         static $gtype: GObject.GType<MenuPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type NotebookClass = typeof Notebook;
     abstract class NotebookPrivate {
         static $gtype: GObject.GType<NotebookPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -32220,134 +32136,77 @@ export namespace Mx {
                 left: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type PagerClass = typeof Pager;
     abstract class PagerPrivate {
         static $gtype: GObject.GType<PagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PathBarClass = typeof PathBar;
     abstract class PathBarPrivate {
         static $gtype: GObject.GType<PathBarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ProgressBarClass = typeof ProgressBar;
     abstract class ProgressBarPrivate {
         static $gtype: GObject.GType<ProgressBarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ScrollBarClass = typeof ScrollBar;
     abstract class ScrollBarPrivate {
         static $gtype: GObject.GType<ScrollBarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ScrollViewClass = typeof ScrollView;
     abstract class ScrollViewPrivate {
         static $gtype: GObject.GType<ScrollViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ScrollableIface = typeof Scrollable;
     type SettingsClass = typeof Settings;
     abstract class SettingsPrivate {
         static $gtype: GObject.GType<SettingsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class SettingsProvider {
         static $gtype: GObject.GType<SettingsProvider>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class SettingsProviderIface {
         static $gtype: GObject.GType<SettingsProviderIface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SliderClass = typeof Slider;
     abstract class SliderPrivate {
         static $gtype: GObject.GType<SliderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SpinnerClass = typeof Spinner;
     abstract class SpinnerPrivate {
         static $gtype: GObject.GType<SpinnerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StackChildClass = typeof StackChild;
     abstract class StackChildPrivate {
         static $gtype: GObject.GType<StackChildPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StackClass = typeof Stack;
     abstract class StackPrivate {
         static $gtype: GObject.GType<StackPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StylableIface = typeof Stylable;
     type StyleClass = typeof Style;
     abstract class StylePrivate {
         static $gtype: GObject.GType<StylePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TableChildClass = typeof TableChild;
     type TableClass = typeof Table;
     abstract class TablePrivate {
         static $gtype: GObject.GType<TablePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -32373,71 +32232,42 @@ export namespace Mx {
                 color: Clutter.Color;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type TextureCacheClass = typeof TextureCache;
     type TextureFrameClass = typeof TextureFrame;
     abstract class TextureFramePrivate {
         static $gtype: GObject.GType<TextureFramePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ToggleClass = typeof Toggle;
     abstract class TogglePrivate {
         static $gtype: GObject.GType<TogglePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ToolbarClass = typeof Toolbar;
     abstract class ToolbarPrivate {
         static $gtype: GObject.GType<ToolbarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TooltipClass = typeof Tooltip;
     abstract class TooltipPrivate {
         static $gtype: GObject.GType<TooltipPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ViewportClass = typeof Viewport;
     abstract class ViewportPrivate {
         static $gtype: GObject.GType<ViewportPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WidgetClass = typeof Widget;
     abstract class WidgetPrivate {
         static $gtype: GObject.GType<WidgetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WindowClass = typeof Window;
     abstract class WindowPrivate {
         static $gtype: GObject.GType<WindowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Draggable {

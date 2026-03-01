@@ -247,10 +247,6 @@ export namespace GrlNet {
     type WcClass = typeof Wc;
     abstract class WcPrivate {
         static $gtype: GObject.GType<WcPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

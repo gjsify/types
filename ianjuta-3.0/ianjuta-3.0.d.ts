@@ -141,7 +141,6 @@ export namespace IAnjuta {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -341,7 +340,6 @@ export namespace IAnjuta {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -427,7 +425,6 @@ export namespace IAnjuta {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -475,7 +472,6 @@ export namespace IAnjuta {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -523,7 +519,6 @@ export namespace IAnjuta {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -569,7 +564,6 @@ export namespace IAnjuta {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -623,7 +617,6 @@ export namespace IAnjuta {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -708,7 +701,6 @@ export namespace IAnjuta {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -732,7 +724,6 @@ export namespace IAnjuta {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1099,7 +1090,6 @@ export namespace IAnjuta {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1318,7 +1308,6 @@ export namespace IAnjuta {
                 pending: boolean;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1352,7 +1341,6 @@ export namespace IAnjuta {
                 address: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type DebuggerIface = typeof Debugger;
@@ -1377,7 +1365,6 @@ export namespace IAnjuta {
                 text: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1399,7 +1386,6 @@ export namespace IAnjuta {
                 data: DebuggerInstructionALine[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type DebuggerInstructionIface = typeof DebuggerInstruction;
@@ -1421,7 +1407,6 @@ export namespace IAnjuta {
                 data: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type DebuggerMemoryIface = typeof DebuggerMemory;
@@ -1446,7 +1431,6 @@ export namespace IAnjuta {
                 value: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type DebuggerRegisterIface = typeof DebuggerRegister;
@@ -1484,7 +1468,6 @@ export namespace IAnjuta {
                 has_more: boolean;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type DocumentIface = typeof Document;
@@ -1501,10 +1484,6 @@ export namespace IAnjuta {
         text: string;
         icon: GdkPixbuf.Pixbuf;
         data: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EditorCellIface = typeof EditorCell;

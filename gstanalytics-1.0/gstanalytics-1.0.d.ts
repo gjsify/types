@@ -122,10 +122,6 @@ export namespace GstAnalytics {
 
         id: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -156,10 +152,6 @@ export namespace GstAnalytics {
         // Fields
 
         id: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -202,7 +194,6 @@ export namespace GstAnalytics {
                 name: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -215,10 +206,6 @@ export namespace GstAnalytics {
         // Fields
 
         id: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -254,10 +241,6 @@ export namespace GstAnalytics {
      */
     abstract class RelationMeta {
         static $gtype: GObject.GType<RelationMeta>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -379,7 +362,6 @@ export namespace GstAnalytics {
                 initial_buf_size: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -391,10 +373,6 @@ export namespace GstAnalytics {
         // Fields
 
         id: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 

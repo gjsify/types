@@ -597,10 +597,6 @@ export namespace AppIndicator3 {
      */
     abstract class IndicatorPrivate {
         static $gtype: GObject.GType<IndicatorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

@@ -111,7 +111,6 @@ export namespace EvinceDocument {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -2937,7 +2936,6 @@ export namespace EvinceDocument {
                 version: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type DocumentClass = typeof Document;
@@ -2998,7 +2996,6 @@ export namespace EvinceDocument {
                 fields_mask: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): DocumentInfo;
 
@@ -3035,7 +3032,6 @@ export namespace EvinceDocument {
                 web_statement: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): DocumentLicense;
 
@@ -3056,10 +3052,6 @@ export namespace EvinceDocument {
     type DocumentPrintInterface = typeof DocumentPrint;
     abstract class DocumentPrivate {
         static $gtype: GObject.GType<DocumentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DocumentSecurityInterface = typeof DocumentSecurity;
@@ -3078,10 +3070,6 @@ export namespace EvinceDocument {
         paper_height: number;
         duplex: boolean;
         pages_per_sheet: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FileExporterInterface = typeof FileExporter;
@@ -3109,7 +3097,6 @@ export namespace EvinceDocument {
                 after_hyphen: boolean;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): FindRectangle;
 
@@ -3127,46 +3114,26 @@ export namespace EvinceDocument {
     type ImageClass = typeof Image;
     abstract class ImagePrivate {
         static $gtype: GObject.GType<ImagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LayerClass = typeof Layer;
     abstract class LayerPrivate {
         static $gtype: GObject.GType<LayerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LinkActionClass = typeof LinkAction;
     abstract class LinkActionPrivate {
         static $gtype: GObject.GType<LinkActionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LinkClass = typeof Link;
     type LinkDestClass = typeof LinkDest;
     abstract class LinkDestPrivate {
         static $gtype: GObject.GType<LinkDestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class LinkPrivate {
         static $gtype: GObject.GType<LinkPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Mapping {
@@ -3185,7 +3152,6 @@ export namespace EvinceDocument {
                 data: any;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class MappingList {
@@ -3194,7 +3160,6 @@ export namespace EvinceDocument {
         // Constructors
 
         constructor(page: number, list: Mapping[]);
-        _init(...args: any[]): void;
 
         static ['new'](page: number, list: Mapping[]): MappingList;
 
@@ -3216,10 +3181,6 @@ export namespace EvinceDocument {
     type MediaClass = typeof Media;
     abstract class MediaPrivate {
         static $gtype: GObject.GType<MediaPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PageClass = typeof Page;
@@ -3239,7 +3200,6 @@ export namespace EvinceDocument {
                 y: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class Rectangle {
@@ -3262,7 +3222,6 @@ export namespace EvinceDocument {
                 y2: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): Rectangle;
 
@@ -3292,7 +3251,6 @@ export namespace EvinceDocument {
                 col: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](filename: string, line: number, col: number): SourceLink;
 
@@ -3319,7 +3277,6 @@ export namespace EvinceDocument {
                 mime_types: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     namespace AnnotationMarkup {

@@ -829,7 +829,6 @@ export namespace Lasem {
                 value: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -855,7 +854,6 @@ export namespace Lasem {
                 trait_default: any;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class AttributeManager {
@@ -864,7 +862,6 @@ export namespace Lasem {
         // Constructors
 
         constructor(n_attributes: number, attribute_infos: AttributeInfos);
-        _init(...args: any[]): void;
 
         static ['new'](n_attributes: number, attribute_infos: AttributeInfos): AttributeManager;
 
@@ -900,15 +897,10 @@ export namespace Lasem {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     abstract class DebugCategory {
         static $gtype: GObject.GType<DebugCategory>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomCharacterDataClass = typeof DomCharacterData;
@@ -940,7 +932,6 @@ export namespace Lasem {
                 y2: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class Property {
@@ -961,7 +952,6 @@ export namespace Lasem {
                 value: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class PropertyBag {
@@ -974,7 +964,6 @@ export namespace Lasem {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -1000,7 +989,6 @@ export namespace Lasem {
                 trait_default: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class PropertyManager {
@@ -1009,7 +997,6 @@ export namespace Lasem {
         // Constructors
 
         constructor(n_properties: number, property_infos: PropertyInfos);
-        _init(...args: any[]): void;
 
         static ['new'](n_properties: number, property_infos: PropertyInfos): PropertyManager;
 
@@ -1039,7 +1026,6 @@ export namespace Lasem {
                 size: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type Trait = void;

@@ -337,16 +337,11 @@ export namespace FcitxG {
                 candidate: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type ClientClass = typeof Client;
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class PreeditItem {
@@ -365,7 +360,6 @@ export namespace FcitxG {
                 type: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type WatcherClass = typeof Watcher;

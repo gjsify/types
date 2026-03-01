@@ -499,7 +499,8 @@ export namespace Lfb {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps,
@@ -1597,7 +1598,8 @@ export namespace Lfb {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 GdbusFeedback.ConstructorProps {}
     }
@@ -2323,19 +2325,11 @@ export namespace Lfb {
     type GdbusFeedbackProxyClass = typeof GdbusFeedbackProxy;
     abstract class GdbusFeedbackProxyPrivate {
         static $gtype: GObject.GType<GdbusFeedbackProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GdbusFeedbackSkeletonClass = typeof GdbusFeedbackSkeleton;
     abstract class GdbusFeedbackSkeletonPrivate {
         static $gtype: GObject.GType<GdbusFeedbackSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace GdbusFeedback {

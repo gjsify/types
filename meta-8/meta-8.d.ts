@@ -2664,7 +2664,8 @@ export namespace Meta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps,
+            extends
+                Clutter.Actor.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -4234,7 +4235,8 @@ export namespace Meta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps,
+            extends
+                Clutter.Actor.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -7348,7 +7350,8 @@ export namespace Meta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Stage.ConstructorProps,
+            extends
+                Clutter.Stage.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -8638,7 +8641,8 @@ export namespace Meta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps,
+            extends
+                Clutter.Actor.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -9610,7 +9614,8 @@ export namespace Meta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps,
+            extends
+                Clutter.Actor.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -10796,15 +10801,10 @@ export namespace Meta {
                 grabbed: boolean;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     abstract class BarrierPrivate {
         static $gtype: GObject.GType<BarrierPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ButtonLayout {
@@ -10816,10 +10816,6 @@ export namespace Meta {
         left_buttons_has_spacer: boolean[];
         right_buttons: ButtonFunction[];
         right_buttons_has_spacer: boolean[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CloseDialogInterface = typeof CloseDialog;
@@ -10834,18 +10830,10 @@ export namespace Meta {
         rect: Rectangle;
         side_type: Side;
         edge_type: EdgeType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class Frame {
         static $gtype: GObject.GType<Frame>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class FrameBorders {
@@ -10866,7 +10854,6 @@ export namespace Meta {
                 total: Gtk.Border;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -10877,10 +10864,6 @@ export namespace Meta {
     type InhibitShortcutsDialogInterface = typeof InhibitShortcutsDialog;
     class KeyBinding {
         static $gtype: GObject.GType<KeyBinding>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -10916,7 +10899,6 @@ export namespace Meta {
                 description: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class Rectangle {
@@ -10939,7 +10921,6 @@ export namespace Meta {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -10964,10 +10945,6 @@ export namespace Meta {
     abstract class Settings {
         static $gtype: GObject.GType<Settings>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         get_font_dpi(): number;
@@ -10981,10 +10958,6 @@ export namespace Meta {
      */
     class Shadow {
         static $gtype: GObject.GType<Shadow>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -11059,7 +11032,6 @@ export namespace Meta {
                 opacity: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type ShapedTextureClass = typeof ShapedTexture;
@@ -11074,18 +11046,10 @@ export namespace Meta {
 
         rect: Rectangle;
         side: Side;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class Theme {
         static $gtype: GObject.GType<Theme>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -11111,7 +11075,6 @@ export namespace Meta {
         // Constructors
 
         constructor(region: cairo.Region);
-        _init(...args: any[]): void;
 
         static ['new'](region: cairo.Region): WindowShape;
 

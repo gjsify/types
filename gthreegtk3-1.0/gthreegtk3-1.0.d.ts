@@ -87,9 +87,7 @@ export namespace GthreeGtk3 {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.GLArea.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.GLArea.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             camera: Gthree.Camera;
             renderer: Gthree.Renderer;
             scene: Gthree.Scene;

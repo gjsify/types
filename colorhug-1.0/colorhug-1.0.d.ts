@@ -102,10 +102,6 @@ export namespace ColorHug {
         static '20': number;
         static '2': number;
         static '100': number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     export namespace MeasureMode {
@@ -2447,7 +2443,6 @@ export namespace ColorHug {
                 bytes: Uint8Array;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 

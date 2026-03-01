@@ -536,64 +536,36 @@ export namespace GitgExt {
     type CommandLinesClass = typeof CommandLines;
     abstract class CommandLinesPrivate {
         static $gtype: GObject.GType<CommandLinesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MessageBusClass = typeof MessageBus;
     abstract class MessageBusPrivate {
         static $gtype: GObject.GType<MessageBusPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MessageIdClass = typeof MessageId;
     abstract class MessageIdPrivate {
         static $gtype: GObject.GType<MessageIdPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MessageClass = typeof Message;
     abstract class MessagePrivate {
         static $gtype: GObject.GType<MessagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UIClass = typeof UI;
     abstract class UIPrivate {
         static $gtype: GObject.GType<UIPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UserQueryResponseClass = typeof UserQueryResponse;
     abstract class UserQueryResponsePrivate {
         static $gtype: GObject.GType<UserQueryResponsePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UserQueryClass = typeof UserQuery;
     abstract class UserQueryPrivate {
         static $gtype: GObject.GType<UserQueryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ActionIface = typeof Action;

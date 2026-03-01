@@ -161,10 +161,6 @@ export namespace P11Kit {
     abstract class Pin {
         static $gtype: GObject.GType<Pin>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -196,10 +192,6 @@ export namespace P11Kit {
      */
     abstract class Uri {
         static $gtype: GObject.GType<Uri>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 

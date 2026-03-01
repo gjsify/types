@@ -1699,28 +1699,16 @@ export namespace Qrtr {
     type BusClass = typeof Bus;
     abstract class BusPrivate {
         static $gtype: GObject.GType<BusPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ClientClass = typeof Client;
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type NodeClass = typeof Node;
     abstract class NodePrivate {
         static $gtype: GObject.GType<NodePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1728,10 +1716,6 @@ export namespace Qrtr {
      */
     abstract class NodeServiceInfo {
         static $gtype: GObject.GType<NodeServiceInfo>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 

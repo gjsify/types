@@ -1995,10 +1995,6 @@ export namespace WebKitWebProcessExtension {
     abstract class ConsoleMessage {
         static $gtype: GObject.GType<ConsoleMessage>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**

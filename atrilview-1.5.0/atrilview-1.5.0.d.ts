@@ -1246,7 +1246,8 @@ export namespace AtrilView {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Container.ConstructorProps,
+            extends
+                Gtk.Container.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {
@@ -1947,9 +1948,7 @@ export namespace AtrilView {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             current_page: number;
             currentPage: number;
             document: AtrilDocument.Document;
@@ -2688,7 +2687,8 @@ export namespace AtrilView {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Container.ConstructorProps,
+            extends
+                Gtk.Container.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -3217,18 +3217,10 @@ export namespace AtrilView {
     type JobThumbnailClass = typeof JobThumbnail;
     abstract class JobWebThumbnail {
         static $gtype: GObject.GType<JobWebThumbnail>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class JobWebThumbnailClass {
         static $gtype: GObject.GType<JobWebThumbnailClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PrintOperationClass = typeof PrintOperation;

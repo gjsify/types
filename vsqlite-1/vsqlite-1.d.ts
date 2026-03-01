@@ -36,7 +36,6 @@ export namespace Vsqlite {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     namespace Connection {
@@ -592,10 +591,6 @@ export namespace Vsqlite {
     type ConnectionClass = typeof Connection;
     abstract class ConnectionPrivate {
         static $gtype: GObject.GType<ConnectionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

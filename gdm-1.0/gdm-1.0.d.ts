@@ -74,7 +74,8 @@ export namespace Gdm {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Chooser.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
@@ -939,7 +940,8 @@ export namespace Gdm {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Chooser.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps {}
     }
@@ -1767,7 +1769,8 @@ export namespace Gdm {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Greeter.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
@@ -2721,7 +2724,8 @@ export namespace Gdm {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Greeter.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps {}
     }
@@ -3370,7 +3374,8 @@ export namespace Gdm {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Manager.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
@@ -4287,7 +4292,8 @@ export namespace Gdm {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Manager.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps {}
     }
@@ -4897,7 +4903,8 @@ export namespace Gdm {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 RemoteGreeter.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
@@ -5747,7 +5754,8 @@ export namespace Gdm {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 RemoteGreeter.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps {}
     }
@@ -6293,7 +6301,8 @@ export namespace Gdm {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 UserVerifierChoiceList.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
@@ -7170,7 +7179,8 @@ export namespace Gdm {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 UserVerifierChoiceList.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps {}
     }
@@ -7740,7 +7750,8 @@ export namespace Gdm {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 UserVerifier.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
@@ -8706,7 +8717,8 @@ export namespace Gdm {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 UserVerifier.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps {}
     }
@@ -9368,7 +9380,8 @@ export namespace Gdm {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 WorkerManager.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
@@ -10359,7 +10372,8 @@ export namespace Gdm {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 WorkerManager.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps {}
     }
@@ -11033,19 +11047,11 @@ export namespace Gdm {
     type ChooserProxyClass = typeof ChooserProxy;
     abstract class ChooserProxyPrivate {
         static $gtype: GObject.GType<ChooserProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ChooserSkeletonClass = typeof ChooserSkeleton;
     abstract class ChooserSkeletonPrivate {
         static $gtype: GObject.GType<ChooserSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ClientClass = typeof Client;
@@ -11053,114 +11059,66 @@ export namespace Gdm {
     type GreeterProxyClass = typeof GreeterProxy;
     abstract class GreeterProxyPrivate {
         static $gtype: GObject.GType<GreeterProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GreeterSkeletonClass = typeof GreeterSkeleton;
     abstract class GreeterSkeletonPrivate {
         static $gtype: GObject.GType<GreeterSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ManagerIface = typeof Manager;
     type ManagerProxyClass = typeof ManagerProxy;
     abstract class ManagerProxyPrivate {
         static $gtype: GObject.GType<ManagerProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ManagerSkeletonClass = typeof ManagerSkeleton;
     abstract class ManagerSkeletonPrivate {
         static $gtype: GObject.GType<ManagerSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RemoteGreeterIface = typeof RemoteGreeter;
     type RemoteGreeterProxyClass = typeof RemoteGreeterProxy;
     abstract class RemoteGreeterProxyPrivate {
         static $gtype: GObject.GType<RemoteGreeterProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RemoteGreeterSkeletonClass = typeof RemoteGreeterSkeleton;
     abstract class RemoteGreeterSkeletonPrivate {
         static $gtype: GObject.GType<RemoteGreeterSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UserVerifierChoiceListIface = typeof UserVerifierChoiceList;
     type UserVerifierChoiceListProxyClass = typeof UserVerifierChoiceListProxy;
     abstract class UserVerifierChoiceListProxyPrivate {
         static $gtype: GObject.GType<UserVerifierChoiceListProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UserVerifierChoiceListSkeletonClass = typeof UserVerifierChoiceListSkeleton;
     abstract class UserVerifierChoiceListSkeletonPrivate {
         static $gtype: GObject.GType<UserVerifierChoiceListSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UserVerifierIface = typeof UserVerifier;
     type UserVerifierProxyClass = typeof UserVerifierProxy;
     abstract class UserVerifierProxyPrivate {
         static $gtype: GObject.GType<UserVerifierProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UserVerifierSkeletonClass = typeof UserVerifierSkeleton;
     abstract class UserVerifierSkeletonPrivate {
         static $gtype: GObject.GType<UserVerifierSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WorkerManagerIface = typeof WorkerManager;
     type WorkerManagerProxyClass = typeof WorkerManagerProxy;
     abstract class WorkerManagerProxyPrivate {
         static $gtype: GObject.GType<WorkerManagerProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WorkerManagerSkeletonClass = typeof WorkerManagerSkeleton;
     abstract class WorkerManagerSkeletonPrivate {
         static $gtype: GObject.GType<WorkerManagerSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Chooser {

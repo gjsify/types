@@ -223,7 +223,8 @@ export namespace Gkbd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Notebook.ConstructorProps,
+            extends
+                Gtk.Notebook.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -773,7 +774,8 @@ export namespace Gkbd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.DrawingArea.ConstructorProps,
+            extends
+                Gtk.DrawingArea.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -1395,10 +1397,6 @@ export namespace Gkbd {
         config_listener_id: number;
         engine: Xkl.Engine;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         activate(): boolean;
@@ -1438,10 +1436,6 @@ export namespace Gkbd {
         config_listener_id: number;
         engine: Xkl.Engine;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         activate(): void;
@@ -1470,10 +1464,6 @@ export namespace Gkbd {
         settings: Gio.Settings;
         config_listener_id: number;
         engine: Xkl.Engine;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1512,10 +1502,6 @@ export namespace Gkbd {
     type KeyboardDrawingClass = typeof KeyboardDrawing;
     class KeyboardDrawingDoodad {
         static $gtype: GObject.GType<KeyboardDrawingDoodad>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class KeyboardDrawingGroupLevel {
@@ -1534,23 +1520,14 @@ export namespace Gkbd {
                 level: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class KeyboardDrawingItem {
         static $gtype: GObject.GType<KeyboardDrawingItem>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class KeyboardDrawingKey {
         static $gtype: GObject.GType<KeyboardDrawingKey>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class KeyboardDrawingRenderContext {
@@ -1563,19 +1540,11 @@ export namespace Gkbd {
         scale_numerator: number;
         scale_denominator: number;
         dark_color: Gdk.RGBA;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StatusClass = typeof Status;
     abstract class StatusPrivate {
         static $gtype: GObject.GType<StatusPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

@@ -3342,36 +3342,20 @@ export namespace Grl {
     type CapsClass = typeof Caps;
     abstract class CapsPrivate {
         static $gtype: GObject.GType<CapsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConfigClass = typeof Config;
     abstract class ConfigPrivate {
         static $gtype: GObject.GType<ConfigPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataClass = typeof Data;
     abstract class DataPrivate {
         static $gtype: GObject.GType<DataPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class LogDomain {
         static $gtype: GObject.GType<LogDomain>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -3384,19 +3368,11 @@ export namespace Grl {
     type MediaClass = typeof Media;
     abstract class MediaPrivate {
         static $gtype: GObject.GType<MediaPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OperationOptionsClass = typeof OperationOptions;
     abstract class OperationOptionsPrivate {
         static $gtype: GObject.GType<OperationOptionsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PluginClass = typeof Plugin;
@@ -3419,18 +3395,10 @@ export namespace Grl {
         site: string;
         deinit: PluginDeinitFunc;
         register_keys: PluginRegisterKeysFunc;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class PluginPrivate {
         static $gtype: GObject.GType<PluginPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class RangeValue {
@@ -3439,7 +3407,6 @@ export namespace Grl {
         // Constructors
 
         constructor(min: GObject.Value | any, max: GObject.Value | any);
-        _init(...args: any[]): void;
 
         static ['new'](min: GObject.Value | any, max: GObject.Value | any): RangeValue;
 
@@ -3462,19 +3429,11 @@ export namespace Grl {
     type RegistryClass = typeof Registry;
     abstract class RegistryPrivate {
         static $gtype: GObject.GType<RegistryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RelatedKeysClass = typeof RelatedKeys;
     abstract class RelatedKeysPrivate {
         static $gtype: GObject.GType<RelatedKeysPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3493,10 +3452,6 @@ export namespace Grl {
         options: OperationOptions;
         callback: SourceResultCb;
         user_data: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceClass = typeof Source;
@@ -3516,18 +3471,10 @@ export namespace Grl {
         options: OperationOptions;
         callback: SourceResolveCb;
         user_data: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class SourcePrivate {
         static $gtype: GObject.GType<SourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3546,10 +3493,6 @@ export namespace Grl {
         options: OperationOptions;
         callback: SourceResultCb;
         user_data: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3566,10 +3509,6 @@ export namespace Grl {
         media: Media;
         callback: SourceRemoveCb;
         user_data: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3588,10 +3527,6 @@ export namespace Grl {
         options: OperationOptions;
         callback: SourceResolveCb;
         user_data: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3610,10 +3545,6 @@ export namespace Grl {
         options: OperationOptions;
         callback: SourceResultCb;
         user_data: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3632,10 +3563,6 @@ export namespace Grl {
         callback: SourceStoreCb;
         user_data: any;
         failed_keys: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3651,10 +3578,6 @@ export namespace Grl {
         media: Media;
         callback: SourceStoreCb;
         user_data: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type KeyID = number;

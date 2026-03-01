@@ -89,9 +89,7 @@ export namespace AnacondaWidgets {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends BaseWindow.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends BaseWindow.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             continue_button: Gtk.Button;
             continueButton: Gtk.Button;
             quit_button: Gtk.Button;
@@ -654,9 +652,7 @@ export namespace AnacondaWidgets {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             distribution: string;
             window_name: string;
             windowName: string;
@@ -1231,7 +1227,8 @@ export namespace AnacondaWidgets {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.EventBox.ConstructorProps,
+            extends
+                Gtk.EventBox.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             capacity: string;
@@ -1800,7 +1797,8 @@ export namespace AnacondaWidgets {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends BaseStandalone.ConstructorProps,
+            extends
+                BaseStandalone.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -2343,7 +2341,8 @@ export namespace AnacondaWidgets {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.EventBox.ConstructorProps,
+            extends
+                Gtk.EventBox.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             label_width: number;
@@ -2903,7 +2902,8 @@ export namespace AnacondaWidgets {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.EventBox.ConstructorProps,
+            extends
+                Gtk.EventBox.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             mountpoint: string;
@@ -3469,7 +3469,8 @@ export namespace AnacondaWidgets {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.EventBox.ConstructorProps,
+            extends
+                Gtk.EventBox.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             icon: string;
@@ -4025,7 +4026,8 @@ export namespace AnacondaWidgets {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends BaseWindow.ConstructorProps,
+            extends
+                BaseWindow.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -4568,7 +4570,8 @@ export namespace AnacondaWidgets {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends BaseStandalone.ConstructorProps,
+            extends
+                BaseStandalone.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             continue_button: Gtk.Button;
@@ -5071,66 +5074,34 @@ export namespace AnacondaWidgets {
 
     class BaseStandaloneClass {
         static $gtype: GObject.GType<BaseStandaloneClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class BaseStandalonePrivate {
         static $gtype: GObject.GType<BaseStandalonePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class BaseWindowClass {
         static $gtype: GObject.GType<BaseWindowClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class BaseWindowPrivate {
         static $gtype: GObject.GType<BaseWindowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class DiskOverviewClass {
         static $gtype: GObject.GType<DiskOverviewClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class DiskOverviewPrivate {
         static $gtype: GObject.GType<DiskOverviewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class HubWindowClass {
         static $gtype: GObject.GType<HubWindowClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class HubWindowPrivate {
         static $gtype: GObject.GType<HubWindowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class LayoutIndicatorClass {
@@ -5139,82 +5110,42 @@ export namespace AnacondaWidgets {
         // Fields
 
         engine: Xkl.Engine;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class LayoutIndicatorPrivate {
         static $gtype: GObject.GType<LayoutIndicatorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MountpointSelectorClass {
         static $gtype: GObject.GType<MountpointSelectorClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MountpointSelectorPrivate {
         static $gtype: GObject.GType<MountpointSelectorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class SpokeSelectorClass {
         static $gtype: GObject.GType<SpokeSelectorClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class SpokeSelectorPrivate {
         static $gtype: GObject.GType<SpokeSelectorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class SpokeWindowClass {
         static $gtype: GObject.GType<SpokeWindowClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class SpokeWindowPrivate {
         static $gtype: GObject.GType<SpokeWindowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class StandaloneWindowClass {
         static $gtype: GObject.GType<StandaloneWindowClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class StandaloneWindowPrivate {
         static $gtype: GObject.GType<StandaloneWindowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

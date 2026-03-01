@@ -65,7 +65,6 @@ export namespace Libosinfo {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -155,7 +154,6 @@ export namespace Libosinfo {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -250,7 +248,6 @@ export namespace Libosinfo {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -5665,55 +5662,31 @@ export namespace Libosinfo {
     type AvatarFormatClass = typeof AvatarFormat;
     abstract class AvatarFormatPrivate {
         static $gtype: GObject.GType<AvatarFormatPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DatamapClass = typeof Datamap;
     type DatamapListClass = typeof DatamapList;
     abstract class DatamapListPrivate {
         static $gtype: GObject.GType<DatamapListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DatamapPrivate {
         static $gtype: GObject.GType<DatamapPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DbClass = typeof Db;
     abstract class DbPrivate {
         static $gtype: GObject.GType<DbPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DeploymentClass = typeof Deployment;
     type DeploymentListClass = typeof DeploymentList;
     abstract class DeploymentListPrivate {
         static $gtype: GObject.GType<DeploymentListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DeploymentPrivate {
         static $gtype: GObject.GType<DeploymentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DeviceClass = typeof Device;
@@ -5721,116 +5694,64 @@ export namespace Libosinfo {
     type DeviceDriverListClass = typeof DeviceDriverList;
     abstract class DeviceDriverListPrivate {
         static $gtype: GObject.GType<DeviceDriverListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DeviceDriverPrivate {
         static $gtype: GObject.GType<DeviceDriverPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DeviceLinkClass = typeof DeviceLink;
     type DeviceLinkFilterClass = typeof DeviceLinkFilter;
     abstract class DeviceLinkFilterPrivate {
         static $gtype: GObject.GType<DeviceLinkFilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DeviceLinkListClass = typeof DeviceLinkList;
     abstract class DeviceLinkListPrivate {
         static $gtype: GObject.GType<DeviceLinkListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DeviceLinkPrivate {
         static $gtype: GObject.GType<DeviceLinkPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DeviceListClass = typeof DeviceList;
     abstract class DeviceListPrivate {
         static $gtype: GObject.GType<DeviceListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DevicePrivate {
         static $gtype: GObject.GType<DevicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EntityClass = typeof Entity;
     abstract class EntityPrivate {
         static $gtype: GObject.GType<EntityPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FilterClass = typeof Filter;
     abstract class FilterPrivate {
         static $gtype: GObject.GType<FilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FirmwareClass = typeof Firmware;
     type FirmwareListClass = typeof FirmwareList;
     abstract class FirmwareListPrivate {
         static $gtype: GObject.GType<FirmwareListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class FirmwarePrivate {
         static $gtype: GObject.GType<FirmwarePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ImageClass = typeof Image;
     type ImageListClass = typeof ImageList;
     abstract class ImageListPrivate {
         static $gtype: GObject.GType<ImageListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ImagePrivate {
         static $gtype: GObject.GType<ImagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type InstallConfigClass = typeof InstallConfig;
@@ -5838,197 +5759,109 @@ export namespace Libosinfo {
     type InstallConfigParamListClass = typeof InstallConfigParamList;
     abstract class InstallConfigParamListPrivate {
         static $gtype: GObject.GType<InstallConfigParamListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class InstallConfigParamPrivate {
         static $gtype: GObject.GType<InstallConfigParamPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class InstallConfigPrivate {
         static $gtype: GObject.GType<InstallConfigPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type InstallScriptClass = typeof InstallScript;
     type InstallScriptListClass = typeof InstallScriptList;
     abstract class InstallScriptListPrivate {
         static $gtype: GObject.GType<InstallScriptListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class InstallScriptPrivate {
         static $gtype: GObject.GType<InstallScriptPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ListClass = typeof List;
     abstract class ListPrivate {
         static $gtype: GObject.GType<ListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LoaderClass = typeof Loader;
     abstract class LoaderPrivate {
         static $gtype: GObject.GType<LoaderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaClass = typeof Media;
     type MediaListClass = typeof MediaList;
     abstract class MediaListPrivate {
         static $gtype: GObject.GType<MediaListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class MediaPrivate {
         static $gtype: GObject.GType<MediaPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OsClass = typeof Os;
     type OsListClass = typeof OsList;
     abstract class OsListPrivate {
         static $gtype: GObject.GType<OsListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class OsPrivate {
         static $gtype: GObject.GType<OsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OsVariantClass = typeof OsVariant;
     type OsVariantListClass = typeof OsVariantList;
     abstract class OsVariantListPrivate {
         static $gtype: GObject.GType<OsVariantListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class OsVariantPrivate {
         static $gtype: GObject.GType<OsVariantPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PlatformClass = typeof Platform;
     type PlatformListClass = typeof PlatformList;
     abstract class PlatformListPrivate {
         static $gtype: GObject.GType<PlatformListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class PlatformPrivate {
         static $gtype: GObject.GType<PlatformPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ProductClass = typeof Product;
     type ProductFilterClass = typeof ProductFilter;
     abstract class ProductFilterPrivate {
         static $gtype: GObject.GType<ProductFilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ProductListClass = typeof ProductList;
     abstract class ProductListPrivate {
         static $gtype: GObject.GType<ProductListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ProductPrivate {
         static $gtype: GObject.GType<ProductPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ResourcesClass = typeof Resources;
     type ResourcesListClass = typeof ResourcesList;
     abstract class ResourcesListPrivate {
         static $gtype: GObject.GType<ResourcesListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ResourcesPrivate {
         static $gtype: GObject.GType<ResourcesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TreeClass = typeof Tree;
     type TreeListClass = typeof TreeList;
     abstract class TreeListPrivate {
         static $gtype: GObject.GType<TreeListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class TreePrivate {
         static $gtype: GObject.GType<TreePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

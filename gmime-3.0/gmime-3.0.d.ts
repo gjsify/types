@@ -8183,7 +8183,6 @@ export namespace GMime {
                 level: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -8295,10 +8294,6 @@ export namespace GMime {
         encode: boolean;
         save: number;
         state: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -8490,7 +8485,6 @@ export namespace GMime {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): FormatOptions;
 
@@ -8597,10 +8591,6 @@ export namespace GMime {
         before: OpenPGPState;
         after: OpenPGPState;
         is_end_marker: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ParamClass = typeof Param;
@@ -8615,7 +8605,6 @@ export namespace GMime {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ParserOptions;
 
@@ -8763,7 +8752,6 @@ export namespace GMime {
         // Constructors
 
         constructor(toplevel: Object);
-        _init(...args: any[]): void;
 
         static ['new'](toplevel: Object): PartIter;
 
@@ -8862,7 +8850,6 @@ export namespace GMime {
                 array: any[];
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): References;
 
@@ -8943,7 +8930,6 @@ export namespace GMime {
                 len: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type StreamMemClass = typeof StreamMem;

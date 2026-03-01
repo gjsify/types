@@ -61,7 +61,6 @@ export namespace GstPlay {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1645,7 +1644,6 @@ export namespace GstPlay {
                 description: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 

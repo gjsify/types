@@ -4345,10 +4345,6 @@ export namespace TrackerMiner {
     abstract class DecoratorInfo {
         static $gtype: GObject.GType<DecoratorInfo>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -4411,19 +4407,11 @@ export namespace TrackerMiner {
     type MinerFSClass = typeof MinerFS;
     abstract class MinerFSPrivate {
         static $gtype: GObject.GType<MinerFSPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MinerOnlineClass = typeof MinerOnline;
     abstract class MinerPrivate {
         static $gtype: GObject.GType<MinerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MinerProxyClass = typeof MinerProxy;

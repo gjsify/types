@@ -84,7 +84,6 @@ export namespace Ags {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5700,9 +5699,7 @@ export namespace Ags {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Thread.ConstructorProps,
-                Connectable.ConstructorProps,
-                MainLoop.ConstructorProps {}
+            extends Thread.ConstructorProps, Connectable.ConstructorProps, MainLoop.ConstructorProps {}
     }
 
     class GenericMainLoop extends Thread implements Connectable, MainLoop {
@@ -8094,7 +8091,8 @@ export namespace Ags {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends ApplicationContext.ConstructorProps,
+            extends
+                ApplicationContext.ConstructorProps,
                 ConcurrencyProvider.ConstructorProps,
                 Connectable.ConstructorProps,
                 ServiceProvider.ConstructorProps {}
@@ -12196,7 +12194,8 @@ export namespace Ags {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends ApplicationContext.ConstructorProps,
+            extends
+                ApplicationContext.ConstructorProps,
                 ConcurrencyProvider.ConstructorProps,
                 Connectable.ConstructorProps {
             thread_pool: ThreadPool;
@@ -16821,10 +16820,6 @@ export namespace Ags {
     abstract class BufferUtil {
         static $gtype: GObject.GType<BufferUtil>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -17056,7 +17051,6 @@ export namespace Ags {
                 imag: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -17115,7 +17109,6 @@ export namespace Ags {
                 access_mode: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -17163,7 +17156,6 @@ export namespace Ags {
                 ptr: any;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -17177,10 +17169,6 @@ export namespace Ags {
 
     abstract class DestroyUtil {
         static $gtype: GObject.GType<DestroyUtil>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -17205,10 +17193,6 @@ export namespace Ags {
         file_version: string;
         app_encoding: string;
         encoding: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -17351,10 +17335,6 @@ export namespace Ags {
     abstract class ListUtil {
         static $gtype: GObject.GType<ListUtil>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -17375,10 +17355,6 @@ export namespace Ags {
         active_session_count: number;
         user_uuid: string;
         security_context: SecurityContext;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -17406,10 +17382,6 @@ export namespace Ags {
     type MainLoopInterface = typeof MainLoop;
     abstract class MathUtil {
         static $gtype: GObject.GType<MathUtil>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -17523,7 +17495,6 @@ export namespace Ags {
                 end_match_offset: unknown;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class RegexUtil {
@@ -17537,10 +17508,6 @@ export namespace Ags {
         is_unichar2: boolean;
         regex_str: string;
         compile_flags: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -17633,10 +17600,6 @@ export namespace Ags {
 
         id: UUID;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -17670,7 +17633,6 @@ export namespace Ags {
                 server_name: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type ServerStatusClass = typeof ServerStatus;
@@ -17694,7 +17656,6 @@ export namespace Ags {
                 nth_row_b: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -17756,10 +17717,6 @@ export namespace Ags {
     abstract class StringUtil {
         static $gtype: GObject.GType<StringUtil>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -17803,7 +17760,6 @@ export namespace Ags {
                 data: Uint8Array;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 

@@ -342,7 +342,8 @@ export namespace ClutterX11 {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Texture.ConstructorProps,
+            extends
+                Clutter.Texture.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -949,18 +950,10 @@ export namespace ClutterX11 {
     type TexturePixmapClass = typeof TexturePixmap;
     abstract class TexturePixmapPrivate {
         static $gtype: GObject.GType<TexturePixmapPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class XInputDevice {
         static $gtype: GObject.GType<XInputDevice>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

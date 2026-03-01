@@ -200,7 +200,6 @@ export namespace Tracker {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -4349,10 +4348,6 @@ export namespace Tracker {
      */
     abstract class NotifierEvent {
         static $gtype: GObject.GType<NotifierEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 

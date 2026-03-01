@@ -197,10 +197,6 @@ export namespace GstTag {
     type DemuxClass = typeof Demux;
     class DemuxPrivate {
         static $gtype: GObject.GType<DemuxPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

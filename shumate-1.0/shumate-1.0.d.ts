@@ -46,7 +46,6 @@ export namespace Shumate {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -180,7 +179,6 @@ export namespace Shumate {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -219,7 +217,6 @@ export namespace Shumate {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -391,7 +388,8 @@ export namespace Shumate {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -2486,7 +2484,8 @@ export namespace Shumate {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -3329,7 +3328,8 @@ export namespace Shumate {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -4245,7 +4245,8 @@ export namespace Shumate {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -5263,7 +5264,8 @@ export namespace Shumate {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Layer.ConstructorProps,
+            extends
+                Layer.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -6112,8 +6114,7 @@ export namespace Shumate {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends GObject.Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {}
+            extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     /**
@@ -6775,7 +6776,8 @@ export namespace Shumate {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps,
@@ -7757,7 +7759,8 @@ export namespace Shumate {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Layer.ConstructorProps,
+            extends
+                Layer.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -8385,7 +8388,8 @@ export namespace Shumate {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Layer.ConstructorProps,
+            extends
+                Layer.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -9135,7 +9139,8 @@ export namespace Shumate {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Marker.ConstructorProps,
+            extends
+                Marker.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps,
@@ -9829,7 +9834,8 @@ export namespace Shumate {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -10725,7 +10731,8 @@ export namespace Shumate {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -13517,7 +13524,8 @@ export namespace Shumate {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 Gdk.Paintable.ConstructorProps,
                 Gtk.SymbolicPaintable.ConstructorProps {
             height: number;

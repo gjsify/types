@@ -442,7 +442,8 @@ export namespace BraseroMedia {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ComboBox.ConstructorProps,
+            extends
+                Gtk.ComboBox.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.CellEditable.ConstructorProps,
@@ -5359,7 +5360,8 @@ export namespace BraseroMedia {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ComboBox.ConstructorProps,
+            extends
+                Gtk.ComboBox.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.CellEditable.ConstructorProps,

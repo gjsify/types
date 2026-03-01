@@ -1441,109 +1441,61 @@ export namespace Grss {
     type FeedAtomFormatterClass = typeof FeedAtomFormatter;
     abstract class FeedAtomFormatterPrivate {
         static $gtype: GObject.GType<FeedAtomFormatterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FeedChannelClass = typeof FeedChannel;
     abstract class FeedChannelPrivate {
         static $gtype: GObject.GType<FeedChannelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FeedEnclosureClass = typeof FeedEnclosure;
     abstract class FeedEnclosurePrivate {
         static $gtype: GObject.GType<FeedEnclosurePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FeedFormatterClass = typeof FeedFormatter;
     abstract class FeedFormatterPrivate {
         static $gtype: GObject.GType<FeedFormatterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FeedItemClass = typeof FeedItem;
     abstract class FeedItemPrivate {
         static $gtype: GObject.GType<FeedItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FeedParserClass = typeof FeedParser;
     abstract class FeedParserPrivate {
         static $gtype: GObject.GType<FeedParserPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FeedRssFormatterClass = typeof FeedRssFormatter;
     abstract class FeedRssFormatterPrivate {
         static $gtype: GObject.GType<FeedRssFormatterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FeedsGroupClass = typeof FeedsGroup;
     abstract class FeedsGroupPrivate {
         static $gtype: GObject.GType<FeedsGroupPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FeedsPoolClass = typeof FeedsPool;
     abstract class FeedsPoolPrivate {
         static $gtype: GObject.GType<FeedsPoolPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FeedsPublisherClass = typeof FeedsPublisher;
     abstract class FeedsPublisherPrivate {
         static $gtype: GObject.GType<FeedsPublisherPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FeedsStoreClass = typeof FeedsStore;
     abstract class FeedsStorePrivate {
         static $gtype: GObject.GType<FeedsStorePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FeedsSubscriberClass = typeof FeedsSubscriber;
     abstract class FeedsSubscriberPrivate {
         static $gtype: GObject.GType<FeedsSubscriberPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1556,7 +1508,6 @@ export namespace Grss {
         // Constructors
 
         constructor(name: string, email?: string | null, uri?: string | null);
-        _init(...args: any[]): void;
 
         static ['new'](name: string, email?: string | null, uri?: string | null): Person;
 

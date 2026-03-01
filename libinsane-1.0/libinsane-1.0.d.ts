@@ -60,7 +60,6 @@ export namespace Libinsane {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace ImgFormat {
@@ -518,56 +517,32 @@ export namespace Libinsane {
     type ApiClass = typeof Api;
     abstract class ApiPrivate {
         static $gtype: GObject.GType<ApiPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DeviceDescriptorClass = typeof DeviceDescriptor;
     abstract class DeviceDescriptorPrivate {
         static $gtype: GObject.GType<DeviceDescriptorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ItemClass = typeof Item;
     abstract class ItemPrivate {
         static $gtype: GObject.GType<ItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LoggerInterface = typeof Logger;
     type OptionDescriptorClass = typeof OptionDescriptor;
     abstract class OptionDescriptorPrivate {
         static $gtype: GObject.GType<OptionDescriptorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ScanParametersClass = typeof ScanParameters;
     abstract class ScanParametersPrivate {
         static $gtype: GObject.GType<ScanParametersPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ScanSessionClass = typeof ScanSession;
     abstract class ScanSessionPrivate {
         static $gtype: GObject.GType<ScanSessionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Logger {

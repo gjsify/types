@@ -77,7 +77,8 @@ export namespace GcrGtk4 {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {

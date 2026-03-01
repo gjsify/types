@@ -45,26 +45,14 @@ export namespace AvahiCore {
     }
     class StringList {
         static $gtype: GObject.GType<StringList>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Address {
         static $gtype: GObject.GType<Address>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Client {
         static $gtype: GObject.GType<Client>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IfIndex = number;

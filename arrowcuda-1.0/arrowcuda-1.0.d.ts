@@ -98,7 +98,8 @@ export namespace ArrowCUDA {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Arrow.BufferInputStream.ConstructorProps,
+            extends
+                Arrow.BufferInputStream.ConstructorProps,
                 Arrow.File.ConstructorProps,
                 Arrow.Readable.ConstructorProps {}
     }
@@ -592,9 +593,7 @@ export namespace ArrowCUDA {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Arrow.OutputStream.ConstructorProps,
-                Arrow.File.ConstructorProps,
-                Arrow.Writable.ConstructorProps {}
+            extends Arrow.OutputStream.ConstructorProps, Arrow.File.ConstructorProps, Arrow.Writable.ConstructorProps {}
     }
 
     class BufferOutputStream extends Arrow.OutputStream implements Arrow.File, Arrow.Writable {

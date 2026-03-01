@@ -2352,7 +2352,8 @@ export namespace Atspi {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Object.ConstructorProps,
+            extends
+                Object.ConstructorProps,
                 Action.ConstructorProps,
                 Collection.ConstructorProps,
                 Component.ConstructorProps,
@@ -5363,10 +5364,6 @@ export namespace Atspi {
     type AccessibleClass = typeof Accessible;
     abstract class AccessiblePrivate {
         static $gtype: GObject.GType<AccessiblePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ApplicationClass = typeof Application;
@@ -5384,10 +5381,6 @@ export namespace Atspi {
         timestamp: number;
         event_string: string;
         is_text: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DeviceLegacyClass = typeof DeviceLegacy;
@@ -5403,10 +5396,6 @@ export namespace Atspi {
         detail1: number;
         detail2: number;
         sender: Accessible;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -5443,7 +5432,6 @@ export namespace Atspi {
                 global: boolean;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type HyperlinkClass = typeof Hyperlink;
@@ -5467,7 +5455,6 @@ export namespace Atspi {
                 modifiers: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5494,7 +5481,6 @@ export namespace Atspi {
                 len: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type MatchRuleClass = typeof MatchRule;
@@ -5515,7 +5501,6 @@ export namespace Atspi {
                 y: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -5538,7 +5523,6 @@ export namespace Atspi {
                 end_offset: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -5569,7 +5553,6 @@ export namespace Atspi {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -5596,7 +5579,6 @@ export namespace Atspi {
                 content: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5630,10 +5612,6 @@ export namespace Atspi {
         end_object: Accessible;
         end_offset: number;
         start_is_active: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Action {

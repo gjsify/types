@@ -36,7 +36,6 @@ export namespace Gm {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -474,7 +473,6 @@ export namespace Gm {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**

@@ -16251,37 +16251,21 @@ export namespace Guestfs {
     type AddDomainClass = typeof AddDomain;
     abstract class AddDomainPrivate {
         static $gtype: GObject.GType<AddDomainPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AddDriveClass = typeof AddDrive;
     abstract class AddDrivePrivate {
         static $gtype: GObject.GType<AddDrivePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AddDriveScratchClass = typeof AddDriveScratch;
     abstract class AddDriveScratchPrivate {
         static $gtype: GObject.GType<AddDriveScratchPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AddLibvirtDomClass = typeof AddLibvirtDom;
     abstract class AddLibvirtDomPrivate {
         static $gtype: GObject.GType<AddLibvirtDomPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Application {
@@ -16320,7 +16304,6 @@ export namespace Guestfs {
                 app_description: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class Application2 {
@@ -16369,16 +16352,11 @@ export namespace Guestfs {
                 app2_spare4: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type AugTransformClass = typeof AugTransform;
     abstract class AugTransformPrivate {
         static $gtype: GObject.GType<AugTransformPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class BTRFSBalance {
@@ -16403,34 +16381,21 @@ export namespace Guestfs {
                 btrfsbalance_left: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type BTRFSFilesystemDefragmentClass = typeof BTRFSFilesystemDefragment;
     abstract class BTRFSFilesystemDefragmentPrivate {
         static $gtype: GObject.GType<BTRFSFilesystemDefragmentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BTRFSFilesystemResizeClass = typeof BTRFSFilesystemResize;
     abstract class BTRFSFilesystemResizePrivate {
         static $gtype: GObject.GType<BTRFSFilesystemResizePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BTRFSImageClass = typeof BTRFSImage;
     abstract class BTRFSImagePrivate {
         static $gtype: GObject.GType<BTRFSImagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class BTRFSQgroup {
@@ -16451,7 +16416,6 @@ export namespace Guestfs {
                 btrfsqgroup_excl: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class BTRFSScrub {
@@ -16496,7 +16460,6 @@ export namespace Guestfs {
                 btrfsscrub_last_physical: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class BTRFSSubvolume {
@@ -16517,106 +16480,61 @@ export namespace Guestfs {
                 btrfssubvolume_path: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type BTRFSSubvolumeCreateClass = typeof BTRFSSubvolumeCreate;
     abstract class BTRFSSubvolumeCreatePrivate {
         static $gtype: GObject.GType<BTRFSSubvolumeCreatePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BTRFSSubvolumeSnapshotClass = typeof BTRFSSubvolumeSnapshot;
     abstract class BTRFSSubvolumeSnapshotPrivate {
         static $gtype: GObject.GType<BTRFSSubvolumeSnapshotPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BtrfsFsckClass = typeof BtrfsFsck;
     abstract class BtrfsFsckPrivate {
         static $gtype: GObject.GType<BtrfsFsckPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CompressDeviceOutClass = typeof CompressDeviceOut;
     abstract class CompressDeviceOutPrivate {
         static $gtype: GObject.GType<CompressDeviceOutPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CompressOutClass = typeof CompressOut;
     abstract class CompressOutPrivate {
         static $gtype: GObject.GType<CompressOutPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CopyAttributesClass = typeof CopyAttributes;
     abstract class CopyAttributesPrivate {
         static $gtype: GObject.GType<CopyAttributesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CopyDeviceToDeviceClass = typeof CopyDeviceToDevice;
     abstract class CopyDeviceToDevicePrivate {
         static $gtype: GObject.GType<CopyDeviceToDevicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CopyDeviceToFileClass = typeof CopyDeviceToFile;
     abstract class CopyDeviceToFilePrivate {
         static $gtype: GObject.GType<CopyDeviceToFilePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CopyFileToDeviceClass = typeof CopyFileToDevice;
     abstract class CopyFileToDevicePrivate {
         static $gtype: GObject.GType<CopyFileToDevicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CopyFileToFileClass = typeof CopyFileToFile;
     abstract class CopyFileToFilePrivate {
         static $gtype: GObject.GType<CopyFileToFilePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CpioOutClass = typeof CpioOut;
     abstract class CpioOutPrivate {
         static $gtype: GObject.GType<CpioOutPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Dirent {
@@ -16637,61 +16555,36 @@ export namespace Guestfs {
                 name: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type DiskCreateClass = typeof DiskCreate;
     abstract class DiskCreatePrivate {
         static $gtype: GObject.GType<DiskCreatePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DownloadBlocksClass = typeof DownloadBlocks;
     abstract class DownloadBlocksPrivate {
         static $gtype: GObject.GType<DownloadBlocksPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type E2fsckClass = typeof E2fsck;
     abstract class E2fsckPrivate {
         static $gtype: GObject.GType<E2fsckPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FstrimClass = typeof Fstrim;
     abstract class FstrimPrivate {
         static $gtype: GObject.GType<FstrimPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GlobExpandClass = typeof GlobExpand;
     abstract class GlobExpandPrivate {
         static $gtype: GObject.GType<GlobExpandPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GrepClass = typeof Grep;
     abstract class GrepPrivate {
         static $gtype: GObject.GType<GrepPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class HivexNode {
@@ -16708,16 +16601,11 @@ export namespace Guestfs {
                 hivex_node_h: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type HivexOpenClass = typeof HivexOpen;
     abstract class HivexOpenPrivate {
         static $gtype: GObject.GType<HivexOpenPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class HivexValue {
@@ -16734,7 +16622,6 @@ export namespace Guestfs {
                 hivex_value_h: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class INotifyEvent {
@@ -16757,7 +16644,6 @@ export namespace Guestfs {
                 in_name: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class ISOInfo {
@@ -16806,16 +16692,11 @@ export namespace Guestfs {
                 iso_volume_effective_t: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type InspectGetIconClass = typeof InspectGetIcon;
     abstract class InspectGetIconPrivate {
         static $gtype: GObject.GType<InspectGetIconPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class IntBool {
@@ -16834,88 +16715,51 @@ export namespace Guestfs {
                 b: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type InternalTest63OptargsClass = typeof InternalTest63Optargs;
     abstract class InternalTest63OptargsPrivate {
         static $gtype: GObject.GType<InternalTest63OptargsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type InternalTestClass = typeof InternalTest;
     type InternalTestOnlyOptargsClass = typeof InternalTestOnlyOptargs;
     abstract class InternalTestOnlyOptargsPrivate {
         static $gtype: GObject.GType<InternalTestOnlyOptargsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class InternalTestPrivate {
         static $gtype: GObject.GType<InternalTestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IsBlockdevClass = typeof IsBlockdev;
     abstract class IsBlockdevPrivate {
         static $gtype: GObject.GType<IsBlockdevPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IsChardevClass = typeof IsChardev;
     abstract class IsChardevPrivate {
         static $gtype: GObject.GType<IsChardevPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IsDirClass = typeof IsDir;
     abstract class IsDirPrivate {
         static $gtype: GObject.GType<IsDirPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IsFifoClass = typeof IsFifo;
     abstract class IsFifoPrivate {
         static $gtype: GObject.GType<IsFifoPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IsFileClass = typeof IsFile;
     abstract class IsFilePrivate {
         static $gtype: GObject.GType<IsFilePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IsSocketClass = typeof IsSocket;
     abstract class IsSocketPrivate {
         static $gtype: GObject.GType<IsSocketPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class LV {
@@ -16962,16 +16806,11 @@ export namespace Guestfs {
                 modules: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type MDCreateClass = typeof MDCreate;
     abstract class MDCreatePrivate {
         static $gtype: GObject.GType<MDCreatePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MDStat {
@@ -16992,106 +16831,61 @@ export namespace Guestfs {
                 mdstat_flags: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type Mke2fsClass = typeof Mke2fs;
     abstract class Mke2fsPrivate {
         static $gtype: GObject.GType<Mke2fsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MkfsBtrfsClass = typeof MkfsBtrfs;
     abstract class MkfsBtrfsPrivate {
         static $gtype: GObject.GType<MkfsBtrfsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MkfsClass = typeof Mkfs;
     abstract class MkfsPrivate {
         static $gtype: GObject.GType<MkfsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MksquashfsClass = typeof Mksquashfs;
     abstract class MksquashfsPrivate {
         static $gtype: GObject.GType<MksquashfsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MkswapClass = typeof Mkswap;
     abstract class MkswapPrivate {
         static $gtype: GObject.GType<MkswapPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MktempClass = typeof Mktemp;
     abstract class MktempPrivate {
         static $gtype: GObject.GType<MktempPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type Mount9PClass = typeof Mount9P;
     abstract class Mount9PPrivate {
         static $gtype: GObject.GType<Mount9PPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MountLocalClass = typeof MountLocal;
     abstract class MountLocalPrivate {
         static $gtype: GObject.GType<MountLocalPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type NTFSResizeOptsClass = typeof NTFSResizeOpts;
     abstract class NTFSResizeOptsPrivate {
         static $gtype: GObject.GType<NTFSResizeOptsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type NtfscloneOutClass = typeof NtfscloneOut;
     abstract class NtfscloneOutPrivate {
         static $gtype: GObject.GType<NtfscloneOutPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type NtfsfixClass = typeof Ntfsfix;
     abstract class NtfsfixPrivate {
         static $gtype: GObject.GType<NtfsfixPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class PV {
@@ -17134,7 +16928,6 @@ export namespace Guestfs {
                 pv_mda_free: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class Partition {
@@ -17157,52 +16950,31 @@ export namespace Guestfs {
                 part_size: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type RemountClass = typeof Remount;
     abstract class RemountPrivate {
         static $gtype: GObject.GType<RemountPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RsyncClass = typeof Rsync;
     type RsyncInClass = typeof RsyncIn;
     abstract class RsyncInPrivate {
         static $gtype: GObject.GType<RsyncInPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RsyncOutClass = typeof RsyncOut;
     abstract class RsyncOutPrivate {
         static $gtype: GObject.GType<RsyncOutPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class RsyncPrivate {
         static $gtype: GObject.GType<RsyncPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SelinuxRelabelClass = typeof SelinuxRelabel;
     abstract class SelinuxRelabelPrivate {
         static $gtype: GObject.GType<SelinuxRelabelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SessionClass = typeof Session;
@@ -17216,27 +16988,15 @@ export namespace Guestfs {
         buf: Uint8Array;
         array: number[];
         array_len: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class SessionPrivate {
         static $gtype: GObject.GType<SessionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SetE2attrsClass = typeof SetE2attrs;
     abstract class SetE2attrsPrivate {
         static $gtype: GObject.GType<SetE2attrsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Stat {
@@ -17277,7 +17037,6 @@ export namespace Guestfs {
                 ctime: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class StatNS {
@@ -17336,7 +17095,6 @@ export namespace Guestfs {
                 st_spare6: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class StatVFS {
@@ -17373,16 +17131,11 @@ export namespace Guestfs {
                 namemax: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type SyslinuxClass = typeof Syslinux;
     abstract class SyslinuxPrivate {
         static $gtype: GObject.GType<SyslinuxPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class TSKDirent {
@@ -17429,34 +17182,21 @@ export namespace Guestfs {
                 tsk_spare1: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type TarInClass = typeof TarIn;
     abstract class TarInPrivate {
         static $gtype: GObject.GType<TarInPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TarOutClass = typeof TarOut;
     abstract class TarOutPrivate {
         static $gtype: GObject.GType<TarOutPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type Tune2FSClass = typeof Tune2FS;
     abstract class Tune2FSPrivate {
         static $gtype: GObject.GType<Tune2FSPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class UTSName {
@@ -17479,25 +17219,16 @@ export namespace Guestfs {
                 uts_machine: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type UmountClass = typeof Umount;
     type UmountLocalClass = typeof UmountLocal;
     abstract class UmountLocalPrivate {
         static $gtype: GObject.GType<UmountLocalPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class UmountPrivate {
         static $gtype: GObject.GType<UmountPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class VG {
@@ -17550,7 +17281,6 @@ export namespace Guestfs {
                 vg_mda_free: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class Version {
@@ -17573,7 +17303,6 @@ export namespace Guestfs {
                 extra: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class XAttr {
@@ -17592,7 +17321,6 @@ export namespace Guestfs {
                 attrval: Uint8Array;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class XFSInfo {
@@ -17657,34 +17385,21 @@ export namespace Guestfs {
                 xfs_rtextents: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type XfsAdminClass = typeof XfsAdmin;
     abstract class XfsAdminPrivate {
         static $gtype: GObject.GType<XfsAdminPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type XfsGrowfsClass = typeof XfsGrowfs;
     abstract class XfsGrowfsPrivate {
         static $gtype: GObject.GType<XfsGrowfsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type XfsRepairClass = typeof XfsRepair;
     abstract class XfsRepairPrivate {
         static $gtype: GObject.GType<XfsRepairPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class YaraDetection {
@@ -17703,7 +17418,6 @@ export namespace Guestfs {
                 yara_rule: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**

@@ -243,7 +243,8 @@ export namespace Pnl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Container.ConstructorProps,
+            extends
+                Gtk.Container.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Dock.ConstructorProps,
@@ -5004,7 +5005,8 @@ export namespace Pnl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends DockRevealer.ConstructorProps,
+            extends
+                DockRevealer.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 DockItem.ConstructorProps {
@@ -9461,7 +9463,8 @@ export namespace Pnl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.EventBox.ConstructorProps,
+            extends
+                Gtk.EventBox.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Dock.ConstructorProps,
@@ -14213,7 +14216,8 @@ export namespace Pnl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps,
+            extends
+                Gtk.Bin.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 DockItem.ConstructorProps {
@@ -18607,7 +18611,8 @@ export namespace Pnl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends MultiPaned.ConstructorProps,
+            extends
+                MultiPaned.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps,
@@ -23011,9 +23016,7 @@ export namespace Pnl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             child_revealed: boolean;
             childRevealed: boolean;
             position: number;
@@ -23610,7 +23613,8 @@ export namespace Pnl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps,
@@ -28021,7 +28025,8 @@ export namespace Pnl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends TabStrip.ConstructorProps,
+            extends
+                TabStrip.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {}
@@ -28628,7 +28633,8 @@ export namespace Pnl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps,
+            extends
+                Gtk.Bin.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 DockItem.ConstructorProps {
@@ -33055,7 +33061,8 @@ export namespace Pnl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Window.ConstructorProps,
+            extends
+                Gtk.Window.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Dock.ConstructorProps,
@@ -37801,7 +37808,8 @@ export namespace Pnl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Container.ConstructorProps,
+            extends
+                Gtk.Container.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -38383,7 +38391,8 @@ export namespace Pnl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ToggleButton.ConstructorProps,
+            extends
+                Gtk.ToggleButton.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Activatable.ConstructorProps,
@@ -42780,7 +42789,8 @@ export namespace Pnl {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {

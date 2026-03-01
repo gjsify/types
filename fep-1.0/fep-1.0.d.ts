@@ -754,19 +754,11 @@ export namespace Fep {
         value: number;
         start_index: number;
         end_index: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GClientClass = typeof GClient;
     abstract class GClientPrivate {
         static $gtype: GObject.GType<GClientPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class GEventAny {
@@ -775,10 +767,6 @@ export namespace Fep {
         // Fields
 
         type: GEventType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class GEventKey {
@@ -791,10 +779,6 @@ export namespace Fep {
         modifiers: number;
         source: string;
         source_length: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class GEventResize {
@@ -805,10 +789,6 @@ export namespace Fep {
         type: GEventType;
         cols: number;
         rows: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -821,7 +801,6 @@ export namespace Fep {
         // Constructors
 
         constructor(type: GEventType);
-        _init(...args: any[]): void;
 
         static ['new'](type: GEventType): GEvent;
 

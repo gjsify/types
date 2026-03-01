@@ -133,7 +133,8 @@ export namespace Matekbd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Notebook.ConstructorProps,
+            extends
+                Gtk.Notebook.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -684,7 +685,8 @@ export namespace Matekbd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.DrawingArea.ConstructorProps,
+            extends
+                Gtk.DrawingArea.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -1301,10 +1303,6 @@ export namespace Matekbd {
         config_listener_id: number;
         engine: Xkl.Engine;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         activate(): boolean;
@@ -1343,10 +1341,6 @@ export namespace Matekbd {
         config_listener_id: number;
         engine: Xkl.Engine;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         activate(): void;
@@ -1364,10 +1358,6 @@ export namespace Matekbd {
 
     abstract class IndicatorPrivate {
         static $gtype: GObject.GType<IndicatorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class KeyboardConfig {
@@ -1381,10 +1371,6 @@ export namespace Matekbd {
         settings: Gio.Settings;
         config_listener_id: number;
         engine: Xkl.Engine;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1423,10 +1409,6 @@ export namespace Matekbd {
     type KeyboardDrawingClass = typeof KeyboardDrawing;
     class KeyboardDrawingDoodad {
         static $gtype: GObject.GType<KeyboardDrawingDoodad>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class KeyboardDrawingGroupLevel {
@@ -1445,23 +1427,14 @@ export namespace Matekbd {
                 level: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class KeyboardDrawingItem {
         static $gtype: GObject.GType<KeyboardDrawingItem>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class KeyboardDrawingKey {
         static $gtype: GObject.GType<KeyboardDrawingKey>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class KeyboardDrawingRenderContext {
@@ -1474,19 +1447,11 @@ export namespace Matekbd {
         scale_numerator: number;
         scale_denominator: number;
         dark_color: Gdk.RGBA;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StatusClass = typeof Status;
     abstract class StatusPrivate {
         static $gtype: GObject.GType<StatusPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

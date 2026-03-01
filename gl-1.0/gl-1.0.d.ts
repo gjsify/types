@@ -20,106 +20,54 @@ export namespace GL {
     function InitNames(): void;
     class bitfield {
         static $gtype: GObject.GType<bitfield>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class charARB {
         static $gtype: GObject.GType<charARB>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class clampf {
         static $gtype: GObject.GType<clampf>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class __boolean {
         static $gtype: GObject.GType<__boolean>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class __enum {
         static $gtype: GObject.GType<__enum>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class float {
         static $gtype: GObject.GType<float>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class handleARB {
         static $gtype: GObject.GType<handleARB>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class int {
         static $gtype: GObject.GType<int>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class intptr {
         static $gtype: GObject.GType<intptr>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class sizei {
         static $gtype: GObject.GType<sizei>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class sizeiptr {
         static $gtype: GObject.GType<sizeiptr>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class uint {
         static $gtype: GObject.GType<uint>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class __void {
         static $gtype: GObject.GType<__void>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

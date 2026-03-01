@@ -103,7 +103,8 @@ export namespace Geoclue {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Client.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
@@ -1285,7 +1286,8 @@ export namespace Geoclue {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Client.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps {}
     }
@@ -2019,7 +2021,8 @@ export namespace Geoclue {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Location.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
@@ -2985,7 +2988,8 @@ export namespace Geoclue {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Location.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps {}
     }
@@ -3584,7 +3588,8 @@ export namespace Geoclue {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusProxy.ConstructorProps,
+            extends
+                Gio.DBusProxy.ConstructorProps,
                 Manager.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
@@ -4752,7 +4757,8 @@ export namespace Geoclue {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+            extends
+                Gio.DBusInterfaceSkeleton.ConstructorProps,
                 Manager.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps {}
     }
@@ -6384,66 +6390,38 @@ export namespace Geoclue {
     type ClientProxyClass = typeof ClientProxy;
     abstract class ClientProxyPrivate {
         static $gtype: GObject.GType<ClientProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ClientSkeletonClass = typeof ClientSkeleton;
     abstract class ClientSkeletonPrivate {
         static $gtype: GObject.GType<ClientSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LocationIface = typeof Location;
     type LocationProxyClass = typeof LocationProxy;
     abstract class LocationProxyPrivate {
         static $gtype: GObject.GType<LocationProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LocationSkeletonClass = typeof LocationSkeleton;
     abstract class LocationSkeletonPrivate {
         static $gtype: GObject.GType<LocationSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ManagerIface = typeof Manager;
     type ManagerProxyClass = typeof ManagerProxy;
     abstract class ManagerProxyPrivate {
         static $gtype: GObject.GType<ManagerProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ManagerSkeletonClass = typeof ManagerSkeleton;
     abstract class ManagerSkeletonPrivate {
         static $gtype: GObject.GType<ManagerSkeletonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SimpleClass = typeof Simple;
     abstract class SimplePrivate {
         static $gtype: GObject.GType<SimplePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Client {

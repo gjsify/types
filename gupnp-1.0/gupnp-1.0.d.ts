@@ -52,7 +52,6 @@ export namespace GUPnP {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -80,7 +79,6 @@ export namespace GUPnP {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -120,7 +118,6 @@ export namespace GUPnP {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -177,7 +174,6 @@ export namespace GUPnP {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     function control_error_quark(): GLib.Quark;
@@ -2707,72 +2703,40 @@ export namespace GUPnP {
     type ContextManagerClass = typeof ContextManager;
     abstract class ContextManagerPrivate {
         static $gtype: GObject.GType<ContextManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ContextPrivate {
         static $gtype: GObject.GType<ContextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ControlPointClass = typeof ControlPoint;
     abstract class ControlPointPrivate {
         static $gtype: GObject.GType<ControlPointPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DeviceClass = typeof Device;
     type DeviceInfoClass = typeof DeviceInfo;
     abstract class DeviceInfoPrivate {
         static $gtype: GObject.GType<DeviceInfoPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DevicePrivate {
         static $gtype: GObject.GType<DevicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DeviceProxyClass = typeof DeviceProxy;
     abstract class DeviceProxyPrivate {
         static $gtype: GObject.GType<DeviceProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ResourceFactoryClass = typeof ResourceFactory;
     abstract class ResourceFactoryPrivate {
         static $gtype: GObject.GType<ResourceFactoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RootDeviceClass = typeof RootDevice;
     abstract class RootDevicePrivate {
         static $gtype: GObject.GType<RootDevicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2780,10 +2744,6 @@ export namespace GUPnP {
      */
     class ServiceAction {
         static $gtype: GObject.GType<ServiceAction>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2861,10 +2821,6 @@ export namespace GUPnP {
         direction: ServiceActionArgDirection;
         related_state_variable: string;
         retval: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2876,37 +2832,21 @@ export namespace GUPnP {
         // Fields
 
         name: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ServiceClass = typeof Service;
     type ServiceInfoClass = typeof ServiceInfo;
     abstract class ServiceInfoPrivate {
         static $gtype: GObject.GType<ServiceInfoPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ServiceIntrospectionClass = typeof ServiceIntrospection;
     abstract class ServiceIntrospectionPrivate {
         static $gtype: GObject.GType<ServiceIntrospectionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ServicePrivate {
         static $gtype: GObject.GType<ServicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2914,19 +2854,11 @@ export namespace GUPnP {
      */
     class ServiceProxyAction {
         static $gtype: GObject.GType<ServiceProxyAction>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ServiceProxyClass = typeof ServiceProxy;
     abstract class ServiceProxyPrivate {
         static $gtype: GObject.GType<ServiceProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2942,19 +2874,11 @@ export namespace GUPnP {
         is_numeric: boolean;
         type: GObject.GType;
         allowed_values: string[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WhiteListClass = typeof WhiteList;
     abstract class WhiteListPrivate {
         static $gtype: GObject.GType<WhiteListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type XMLDocClass = typeof XMLDoc;

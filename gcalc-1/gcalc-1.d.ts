@@ -31,7 +31,6 @@ export namespace GCalc {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class FunctionError extends GLib.Error {
@@ -45,7 +44,6 @@ export namespace GCalc {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class ParserError extends GLib.Error {
@@ -59,7 +57,6 @@ export namespace GCalc {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class GroupError extends GLib.Error {
@@ -73,7 +70,6 @@ export namespace GCalc {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class SolverError extends GLib.Error {
@@ -86,7 +82,6 @@ export namespace GCalc {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class TermError extends GLib.Error {
@@ -100,7 +95,6 @@ export namespace GCalc {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class VariableError extends GLib.Error {
@@ -115,7 +109,6 @@ export namespace GCalc {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace GParserTokenType {
@@ -190,8 +183,7 @@ export namespace GCalc {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Gee.ArrayList.ConstructorProps,
-                Gio.ListModel.ConstructorProps {
+            extends Gee.ArrayList.ConstructorProps, Gio.ListModel.ConstructorProps {
             parent: Expression;
         }
     }
@@ -2607,7 +2599,8 @@ export namespace GCalc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GExpression.ConstructorProps,
+            extends
+                GExpression.ConstructorProps,
                 Operator.ConstructorProps,
                 BinaryOperator.ConstructorProps,
                 Assign.ConstructorProps {}
@@ -3618,7 +3611,8 @@ export namespace GCalc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GExpression.ConstructorProps,
+            extends
+                GExpression.ConstructorProps,
                 Operator.ConstructorProps,
                 BinaryOperator.ConstructorProps,
                 Division.ConstructorProps {}
@@ -4114,9 +4108,7 @@ export namespace GCalc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Result.ConstructorProps,
-                ErrorResult.ConstructorProps {}
+            extends GObject.Object.ConstructorProps, Result.ConstructorProps, ErrorResult.ConstructorProps {}
     }
 
     class GErrorResult extends GObject.Object implements Result, ErrorResult {
@@ -4621,9 +4613,7 @@ export namespace GCalc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GExpression.ConstructorProps,
-                Function.ConstructorProps,
-                Hashable.ConstructorProps {}
+            extends GExpression.ConstructorProps, Function.ConstructorProps, Hashable.ConstructorProps {}
     }
 
     class GFunction extends GExpression implements Function, Hashable {
@@ -6153,7 +6143,8 @@ export namespace GCalc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GExpression.ConstructorProps,
+            extends
+                GExpression.ConstructorProps,
                 Operator.ConstructorProps,
                 BinaryOperator.ConstructorProps,
                 Minus.ConstructorProps {}
@@ -6646,7 +6637,8 @@ export namespace GCalc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GExpression.ConstructorProps,
+            extends
+                GExpression.ConstructorProps,
                 Operator.ConstructorProps,
                 BinaryOperator.ConstructorProps,
                 Multiply.ConstructorProps {}
@@ -7193,7 +7185,8 @@ export namespace GCalc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GExpression.ConstructorProps,
+            extends
+                GExpression.ConstructorProps,
                 Operator.ConstructorProps,
                 BinaryOperator.ConstructorProps,
                 Plus.ConstructorProps {}
@@ -8177,9 +8170,7 @@ export namespace GCalc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GExpression.ConstructorProps,
-                Operator.ConstructorProps,
-                Pow.ConstructorProps {}
+            extends GExpression.ConstructorProps, Operator.ConstructorProps, Pow.ConstructorProps {}
     }
 
     class GPow extends GExpression implements Operator, Pow {
@@ -10675,9 +10666,7 @@ export namespace GCalc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GExpression.ConstructorProps,
-                Variable.ConstructorProps,
-                Hashable.ConstructorProps {}
+            extends GExpression.ConstructorProps, Variable.ConstructorProps, Hashable.ConstructorProps {}
     }
 
     class GVariable extends GExpression implements Variable, Hashable {
@@ -11192,334 +11181,186 @@ export namespace GCalc {
     type ExpressionContainerClass = typeof ExpressionContainer;
     abstract class ExpressionContainerPrivate {
         static $gtype: GObject.GType<ExpressionContainerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExpressionHashMapClass = typeof ExpressionHashMap;
     abstract class ExpressionHashMapPrivate {
         static $gtype: GObject.GType<ExpressionHashMapPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GFunctionAcosClass = typeof GFunctionAcos;
     abstract class GFunctionAcosPrivate {
         static $gtype: GObject.GType<GFunctionAcosPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GFunctionAcoshClass = typeof GFunctionAcosh;
     abstract class GFunctionAcoshPrivate {
         static $gtype: GObject.GType<GFunctionAcoshPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GFunctionAsinClass = typeof GFunctionAsin;
     abstract class GFunctionAsinPrivate {
         static $gtype: GObject.GType<GFunctionAsinPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GFunctionAsinhClass = typeof GFunctionAsinh;
     abstract class GFunctionAsinhPrivate {
         static $gtype: GObject.GType<GFunctionAsinhPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GFunctionAtanClass = typeof GFunctionAtan;
     abstract class GFunctionAtanPrivate {
         static $gtype: GObject.GType<GFunctionAtanPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GFunctionAtanhClass = typeof GFunctionAtanh;
     abstract class GFunctionAtanhPrivate {
         static $gtype: GObject.GType<GFunctionAtanhPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GFunctionCosClass = typeof GFunctionCos;
     abstract class GFunctionCosPrivate {
         static $gtype: GObject.GType<GFunctionCosPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GFunctionCoshClass = typeof GFunctionCosh;
     abstract class GFunctionCoshPrivate {
         static $gtype: GObject.GType<GFunctionCoshPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GFunctionExpClass = typeof GFunctionExp;
     abstract class GFunctionExpPrivate {
         static $gtype: GObject.GType<GFunctionExpPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GFunctionLogClass = typeof GFunctionLog;
     abstract class GFunctionLogPrivate {
         static $gtype: GObject.GType<GFunctionLogPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GFunctionSinClass = typeof GFunctionSin;
     abstract class GFunctionSinPrivate {
         static $gtype: GObject.GType<GFunctionSinPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GFunctionSinhClass = typeof GFunctionSinh;
     abstract class GFunctionSinhPrivate {
         static $gtype: GObject.GType<GFunctionSinhPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GFunctionSqrtClass = typeof GFunctionSqrt;
     abstract class GFunctionSqrtPrivate {
         static $gtype: GObject.GType<GFunctionSqrtPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GFunctionTanClass = typeof GFunctionTan;
     abstract class GFunctionTanPrivate {
         static $gtype: GObject.GType<GFunctionTanPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GFunctionTanhClass = typeof GFunctionTanh;
     abstract class GFunctionTanhPrivate {
         static $gtype: GObject.GType<GFunctionTanhPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GExpressionClass = typeof GExpression;
     abstract class GExpressionPrivate {
         static $gtype: GObject.GType<GExpressionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GErrorExpressionClass = typeof GErrorExpression;
     abstract class GErrorExpressionPrivate {
         static $gtype: GObject.GType<GErrorExpressionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GAssignClass = typeof GAssign;
     abstract class GAssignPrivate {
         static $gtype: GObject.GType<GAssignPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GConstantClass = typeof GConstant;
     abstract class GConstantPrivate {
         static $gtype: GObject.GType<GConstantPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GDivisionClass = typeof GDivision;
     abstract class GDivisionPrivate {
         static $gtype: GObject.GType<GDivisionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GErrorResultClass = typeof GErrorResult;
     abstract class GErrorResultPrivate {
         static $gtype: GObject.GType<GErrorResultPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GFunctionClass = typeof GFunction;
     abstract class GFunctionPrivate {
         static $gtype: GObject.GType<GFunctionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GMathEquationClass = typeof GMathEquation;
     abstract class GMathEquationPrivate {
         static $gtype: GObject.GType<GMathEquationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GMathEquationManagerClass = typeof GMathEquationManager;
     abstract class GMathEquationManagerPrivate {
         static $gtype: GObject.GType<GMathEquationManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GMinusClass = typeof GMinus;
     abstract class GMinusPrivate {
         static $gtype: GObject.GType<GMinusPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GMultiplyClass = typeof GMultiply;
     abstract class GMultiplyPrivate {
         static $gtype: GObject.GType<GMultiplyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GParserClass = typeof GParser;
     abstract class GParserPrivate {
         static $gtype: GObject.GType<GParserPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GPlusClass = typeof GPlus;
     abstract class GPlusPrivate {
         static $gtype: GObject.GType<GPlusPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GPolynomialClass = typeof GPolynomial;
     abstract class GPolynomialPrivate {
         static $gtype: GObject.GType<GPolynomialPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GPowClass = typeof GPow;
     abstract class GPowPrivate {
         static $gtype: GObject.GType<GPowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GResultClass = typeof GResult;
     abstract class GResultPrivate {
         static $gtype: GObject.GType<GResultPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GGroupClass = typeof GGroup;
     abstract class GGroupPrivate {
         static $gtype: GObject.GType<GGroupPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GSolverClass = typeof GSolver;
     abstract class GSolverPrivate {
         static $gtype: GObject.GType<GSolverPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GTermClass = typeof GTerm;
     abstract class GTermPrivate {
         static $gtype: GObject.GType<GTermPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GVariableClass = typeof GVariable;
     abstract class GVariablePrivate {
         static $gtype: GObject.GType<GVariablePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AssignIface = typeof Assign;

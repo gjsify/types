@@ -8312,7 +8312,6 @@ export namespace Cogl {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Color;
 
@@ -8557,15 +8556,10 @@ export namespace Cogl {
                 instance_count: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class DepthState {
         static $gtype: GObject.GType<DepthState>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -8716,7 +8710,6 @@ export namespace Cogl {
                 roll: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -8776,10 +8769,6 @@ export namespace Cogl {
      */
     abstract class Fence {
         static $gtype: GObject.GType<Fence>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -8788,10 +8777,6 @@ export namespace Cogl {
      */
     abstract class FenceClosure {
         static $gtype: GObject.GType<FenceClosure>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -8806,10 +8791,6 @@ export namespace Cogl {
      */
     abstract class FrameClosure {
         static $gtype: GObject.GType<FrameClosure>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -8819,10 +8800,6 @@ export namespace Cogl {
      */
     class GLES2Vtable {
         static $gtype: GObject.GType<GLES2Vtable>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class GtypeClass {
@@ -8831,10 +8808,6 @@ export namespace Cogl {
         // Fields
 
         dummy: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class GtypeObject {
@@ -8843,10 +8816,6 @@ export namespace Cogl {
         // Fields
 
         dummy: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class KmsCrtc {
@@ -8874,7 +8843,6 @@ export namespace Cogl {
                 ignore: Bool;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -8949,7 +8917,6 @@ export namespace Cogl {
                 ww: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -9392,10 +9359,6 @@ export namespace Cogl {
     abstract class MatrixEntry {
         static $gtype: GObject.GType<MatrixEntry>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -9475,10 +9438,6 @@ export namespace Cogl {
      */
     class OnscreenDirtyClosure {
         static $gtype: GObject.GType<OnscreenDirtyClosure>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9506,7 +9465,6 @@ export namespace Cogl {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9518,10 +9476,6 @@ export namespace Cogl {
      */
     class OnscreenResizeClosure {
         static $gtype: GObject.GType<OnscreenResizeClosure>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9551,7 +9505,6 @@ export namespace Cogl {
                 revents: unknown;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9637,7 +9590,6 @@ export namespace Cogl {
                 z: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -9803,10 +9755,6 @@ export namespace Cogl {
         z: number;
         tx: number;
         ty: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9853,7 +9801,6 @@ export namespace Cogl {
                 unused: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9876,7 +9823,6 @@ export namespace Cogl {
                 y: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9907,7 +9853,6 @@ export namespace Cogl {
                 a: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9934,7 +9879,6 @@ export namespace Cogl {
                 t: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9969,7 +9913,6 @@ export namespace Cogl {
                 a: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9994,7 +9937,6 @@ export namespace Cogl {
                 z: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -10027,7 +9969,6 @@ export namespace Cogl {
                 a: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -10056,7 +9997,6 @@ export namespace Cogl {
                 t: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -10093,7 +10033,6 @@ export namespace Cogl {
                 a: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class _ColorSizeCheck {
@@ -10110,7 +10049,6 @@ export namespace Cogl {
                 compile_time_assert_CoglColor_size: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class _EulerSizeCheck {
@@ -10127,7 +10065,6 @@ export namespace Cogl {
                 compile_time_assert_CoglEuler_size: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class _MatrixSizeCheck {
@@ -10144,7 +10081,6 @@ export namespace Cogl {
                 compile_time_assert_CoglMatrix_size: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class _QuaternionSizeCheck {
@@ -10161,7 +10097,6 @@ export namespace Cogl {
                 compile_time_assert_CoglQuaternion_size: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class _TextureVertexSizeCheck {
@@ -10178,7 +10113,6 @@ export namespace Cogl {
                 compile_time_assert_CoglTextureVertex_size: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     export interface FramebufferNamespace {

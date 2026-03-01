@@ -5396,10 +5396,6 @@ export namespace GObject {
 
         callback: any;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -5836,10 +5832,6 @@ export namespace GObject {
 
         data: any;
         notify: ClosureNotify;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5855,10 +5847,6 @@ export namespace GObject {
         maximum: number;
         n_values: number;
         values: EnumValue;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5883,7 +5871,6 @@ export namespace GObject {
                 value_nick: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5898,10 +5885,6 @@ export namespace GObject {
         mask: number;
         n_values: number;
         values: FlagsValue;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5926,7 +5909,6 @@ export namespace GObject {
                 value_nick: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type InitiallyUnownedClass = typeof InitiallyUnowned;
@@ -5942,10 +5924,6 @@ export namespace GObject {
         interface_init: InterfaceInitFunc;
         interface_finalize: InterfaceFinalizeFunc;
         interface_data: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ObjectClass = typeof Object;
@@ -5959,10 +5937,6 @@ export namespace GObject {
         // Fields
 
         pspec: ParamSpec;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ParamSpecClass = typeof ParamSpec;
@@ -5975,10 +5949,6 @@ export namespace GObject {
      */
     abstract class ParamSpecPool {
         static $gtype: GType<ParamSpecPool>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -6039,10 +6009,6 @@ export namespace GObject {
         instance_size: number;
         n_preallocs: number;
         value_type: GType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6055,10 +6021,6 @@ export namespace GObject {
         // Fields
 
         name: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6073,10 +6035,6 @@ export namespace GObject {
         signal_id: number;
         detail: GLib.Quark;
         run_type: SignalFlags;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6096,10 +6054,6 @@ export namespace GObject {
         return_type: GType;
         n_params: number;
         param_types: GType[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6107,10 +6061,6 @@ export namespace GObject {
      */
     class TypeClass {
         static $gtype: GType<TypeClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -6257,10 +6207,6 @@ export namespace GObject {
         // Fields
 
         type_flags: TypeFundamentalFlags;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6288,10 +6234,6 @@ export namespace GObject {
         instance_size: number;
         n_preallocs: number;
         instance_init: InstanceInitFunc;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6299,10 +6241,6 @@ export namespace GObject {
      */
     class TypeInstance {
         static $gtype: GType<TypeInstance>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -6314,10 +6252,6 @@ export namespace GObject {
      */
     class TypeInterface {
         static $gtype: GType<TypeInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -6390,10 +6324,6 @@ export namespace GObject {
         unuse_plugin: TypePluginUnuse;
         complete_type_info: TypePluginCompleteTypeInfo;
         complete_interface_info: TypePluginCompleteInterfaceInfo;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6410,10 +6340,6 @@ export namespace GObject {
         type_name: string;
         class_size: number;
         instance_size: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6442,10 +6368,6 @@ export namespace GObject {
         collect_value: TypeValueCollectFunc;
         lcopy_format: string;
         lcopy_value: TypeValueLCopyFunc;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6462,10 +6384,6 @@ export namespace GObject {
      */
     class Value {
         static $gtype: GType<Value>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -6909,7 +6827,6 @@ export namespace GObject {
         // Constructors
 
         constructor(n_prealloced: number);
-        _init(...args: any[]): void;
 
         static ['new'](n_prealloced: number): ValueArray;
 
@@ -7005,10 +6922,6 @@ export namespace GObject {
      */
     class WeakRef {
         static $gtype: GType<WeakRef>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -7036,7 +6949,6 @@ export namespace GObject {
                 v_pointer: any;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class _Value__data__union {
@@ -7069,7 +6981,6 @@ export namespace GObject {
                 v_pointer: any;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     namespace TypePlugin {

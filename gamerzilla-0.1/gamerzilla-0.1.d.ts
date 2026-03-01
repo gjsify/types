@@ -99,10 +99,6 @@ export namespace Gamerzilla {
     type GamerzillaGobjClass = typeof GamerzillaGobj;
     abstract class GamerzillaGobjPrivate {
         static $gtype: GObject.GType<GamerzillaGobjPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

@@ -5106,7 +5106,8 @@ export namespace Clutter {
         // Constructor properties interface
 
         interface ConstructorProps<A extends LayoutManager = LayoutManager, B extends Content = Content>
-            extends GObject.InitiallyUnowned.ConstructorProps,
+            extends
+                GObject.InitiallyUnowned.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Animatable.ConstructorProps {
             accessible_name: string;
@@ -12271,9 +12272,7 @@ export namespace Clutter {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Actor = Actor>
-            extends Actor.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Animatable.ConstructorProps {
+            extends Actor.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Animatable.ConstructorProps {
             source: A;
         }
     }
@@ -18337,9 +18336,7 @@ export namespace Clutter {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Actor.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Animatable.ConstructorProps {
+            extends Actor.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Animatable.ConstructorProps {
             is_grabbed: boolean;
             isGrabbed: boolean;
             key_focus: Actor;
@@ -19512,9 +19509,7 @@ export namespace Clutter {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Actor.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Animatable.ConstructorProps {
+            extends Actor.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Animatable.ConstructorProps {
             activatable: boolean;
             attributes: Pango.AttrList;
             buffer: TextBuffer;
@@ -22979,10 +22974,6 @@ export namespace Clutter {
     type ActorAccessibleClass = typeof ActorAccessible;
     abstract class ActorAccessiblePrivate {
         static $gtype: GObject.GType<ActorAccessiblePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -23012,7 +23003,6 @@ export namespace Clutter {
                 y2: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](x_1: number, y_1: number, x_2: number, y_2: number): ActorBox;
 
@@ -23161,7 +23151,6 @@ export namespace Clutter {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -23246,29 +23235,17 @@ export namespace Clutter {
     type ActorMetaClass = typeof ActorMeta;
     abstract class ActorMetaPrivate {
         static $gtype: GObject.GType<ActorMetaPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ActorNodeClass = typeof ActorNode;
     abstract class ActorPrivate {
         static $gtype: GObject.GType<ActorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AlignConstraintClass = typeof AlignConstraint;
     type AnimatableInterface = typeof Animatable;
     abstract class AnyEvent {
         static $gtype: GObject.GType<AnyEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BackendClass = typeof Backend;
@@ -23282,19 +23259,11 @@ export namespace Clutter {
     type BrightnessContrastEffectClass = typeof BrightnessContrastEffect;
     abstract class ButtonEvent {
         static $gtype: GObject.GType<ButtonEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ClickActionClass = typeof ClickAction;
     abstract class ClickActionPrivate {
         static $gtype: GObject.GType<ClickActionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ClipNodeClass = typeof ClipNode;
@@ -23305,10 +23274,6 @@ export namespace Clutter {
     type ColorStateParamsClass = typeof ColorStateParams;
     abstract class ColorTransformKey {
         static $gtype: GObject.GType<ColorTransformKey>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Colorimetry {
@@ -23317,10 +23282,6 @@ export namespace Clutter {
         // Fields
 
         type: ColorimetryType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ColorizeEffectClass = typeof ColorizeEffect;
@@ -23329,20 +23290,12 @@ export namespace Clutter {
     type ContextClass = typeof Context;
     abstract class CrossingEvent {
         static $gtype: GObject.GType<CrossingEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DeformEffectClass = typeof DeformEffect;
     type DesaturateEffectClass = typeof DesaturateEffect;
     abstract class DeviceEvent {
         static $gtype: GObject.GType<DeviceEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class EOTF {
@@ -23351,10 +23304,6 @@ export namespace Clutter {
         // Fields
 
         type: EOTFType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -23369,10 +23318,6 @@ export namespace Clutter {
     abstract class EventSequence {
         static $gtype: GObject.GType<EventSequence>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         get_slot(): number;
@@ -23382,10 +23327,6 @@ export namespace Clutter {
     type FlowLayoutClass = typeof FlowLayout;
     abstract class Frame {
         static $gtype: GObject.GType<Frame>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -23402,10 +23343,6 @@ export namespace Clutter {
     type GestureActionClass = typeof GestureAction;
     abstract class GestureActionPrivate {
         static $gtype: GObject.GType<GestureActionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GestureClass = typeof Gesture;
@@ -23413,10 +23350,6 @@ export namespace Clutter {
     type GridLayoutClass = typeof GridLayout;
     abstract class IMEvent {
         static $gtype: GObject.GType<IMEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type InputDeviceClass = typeof InputDevice;
@@ -23426,10 +23359,6 @@ export namespace Clutter {
     type IntervalClass = typeof Interval;
     abstract class KeyEvent {
         static $gtype: GObject.GType<KeyEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type KeyframeTransitionClass = typeof KeyframeTransition;
@@ -23446,10 +23375,6 @@ export namespace Clutter {
         min: number;
         max: number;
         ref: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -23475,7 +23400,6 @@ export namespace Clutter {
                 bottom: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): Margin;
 
@@ -23496,35 +23420,19 @@ export namespace Clutter {
 
     abstract class MotionEvent {
         static $gtype: GObject.GType<MotionEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OffscreenEffectClass = typeof OffscreenEffect;
     abstract class PadButtonEvent {
         static $gtype: GObject.GType<PadButtonEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class PadRingEvent {
         static $gtype: GObject.GType<PadRingEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class PadStripEvent {
         static $gtype: GObject.GType<PadStripEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PageTurnEffectClass = typeof PageTurnEffect;
@@ -23539,7 +23447,6 @@ export namespace Clutter {
             paint_flags: PaintFlag,
             color_state: ColorState,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -23557,10 +23464,6 @@ export namespace Clutter {
     type PaintNodeClass = typeof PaintNode;
     abstract class PaintNodePrivate {
         static $gtype: GObject.GType<PaintNodePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -23576,10 +23479,6 @@ export namespace Clutter {
      */
     abstract class PaintVolume {
         static $gtype: GObject.GType<PaintVolume>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -23765,15 +23664,10 @@ export namespace Clutter {
                 z_far: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     abstract class PickContext {
         static $gtype: GObject.GType<PickContext>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -23842,10 +23736,6 @@ export namespace Clutter {
         secondary_click_delay: number;
         dwell_delay: number;
         dwell_threshold: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Primaries {
@@ -23876,7 +23766,6 @@ export namespace Clutter {
                 w_y: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -23886,28 +23775,16 @@ export namespace Clutter {
     type PropertyTransitionClass = typeof PropertyTransition;
     abstract class ProximityEvent {
         static $gtype: GObject.GType<ProximityEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RootNodeClass = typeof RootNode;
     type RotateActionClass = typeof RotateAction;
     abstract class ScrollActor {
         static $gtype: GObject.GType<ScrollActor>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ScrollEvent {
         static $gtype: GObject.GType<ScrollEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SeatClass = typeof Seat;
@@ -23950,40 +23827,23 @@ export namespace Clutter {
                 color: Cogl.Color;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type TimelineClass = typeof Timeline;
     abstract class TouchEvent {
         static $gtype: GObject.GType<TouchEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class TouchpadHoldEvent {
         static $gtype: GObject.GType<TouchpadHoldEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class TouchpadPinchEvent {
         static $gtype: GObject.GType<TouchpadPinchEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class TouchpadSwipeEvent {
         static $gtype: GObject.GType<TouchpadSwipeEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TransformNodeClass = typeof TransformNode;
@@ -23993,10 +23853,6 @@ export namespace Clutter {
     type ZoomActionClass = typeof ZoomAction;
     class Event {
         static $gtype: GObject.GType<Event>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 

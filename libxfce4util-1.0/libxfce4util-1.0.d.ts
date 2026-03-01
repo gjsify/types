@@ -588,10 +588,6 @@ export namespace Libxfce4util {
     abstract class Rc {
         static $gtype: GObject.GType<Rc>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**

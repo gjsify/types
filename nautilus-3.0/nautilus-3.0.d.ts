@@ -382,10 +382,6 @@ export namespace Nautilus {
      */
     class ColumnProviderInterface {
         static $gtype: GObject.GType<ColumnProviderInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FileInfoInterface = typeof FileInfo;
@@ -394,10 +390,6 @@ export namespace Nautilus {
      */
     class InfoProviderInterface {
         static $gtype: GObject.GType<InfoProviderInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -405,10 +397,6 @@ export namespace Nautilus {
      */
     class LocationWidgetProviderInterface {
         static $gtype: GObject.GType<LocationWidgetProviderInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MenuClass = typeof Menu;
@@ -418,10 +406,6 @@ export namespace Nautilus {
      */
     class MenuProviderInterface {
         static $gtype: GObject.GType<MenuProviderInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -431,10 +415,6 @@ export namespace Nautilus {
      */
     abstract class OperationHandle {
         static $gtype: GObject.GType<OperationHandle>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PropertyPageClass = typeof PropertyPage;
@@ -443,10 +423,6 @@ export namespace Nautilus {
      */
     class PropertyPageProviderInterface {
         static $gtype: GObject.GType<PropertyPageProviderInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace ColumnProvider {

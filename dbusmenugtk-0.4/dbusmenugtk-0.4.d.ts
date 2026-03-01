@@ -252,9 +252,7 @@ export namespace DbusmenuGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Menu.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Menu.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             dbus_name: string;
             dbusName: string;
             dbus_object: string;
@@ -768,19 +766,11 @@ export namespace DbusmenuGtk {
     type ClientClass = typeof Client;
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MenuClass = typeof Menu;
     abstract class MenuPrivate {
         static $gtype: GObject.GType<MenuPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

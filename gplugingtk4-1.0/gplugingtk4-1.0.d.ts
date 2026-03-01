@@ -137,7 +137,8 @@ export namespace GPluginGtk4 {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps,
@@ -751,7 +752,8 @@ export namespace GPluginGtk4 {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ListBoxRow.ConstructorProps,
+            extends
+                Gtk.ListBoxRow.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -3934,7 +3936,8 @@ export namespace GPluginGtk4 {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps,
@@ -4520,7 +4523,8 @@ export namespace GPluginGtk4 {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps,

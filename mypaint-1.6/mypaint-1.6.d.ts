@@ -228,7 +228,6 @@ export namespace MyPaint {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Brush;
 
@@ -376,7 +375,6 @@ export namespace MyPaint {
                 tooltip: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -410,7 +408,6 @@ export namespace MyPaint {
                 tooltip: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -429,7 +426,6 @@ export namespace MyPaint {
         // Constructors
 
         constructor(width: number, height: number);
-        _init(...args: any[]): void;
 
         static ['new'](width: number, height: number): FixedTiledSurface;
 
@@ -460,7 +456,6 @@ export namespace MyPaint {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -484,7 +479,6 @@ export namespace MyPaint {
                 num_rectangles: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class Surface {
@@ -494,10 +488,6 @@ export namespace MyPaint {
 
         destroy: SurfaceDestroyFunction;
         refcount: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -573,7 +563,6 @@ export namespace MyPaint {
                 mipmap_level: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -602,10 +591,6 @@ export namespace MyPaint {
         dirty_bbox: Rectangle;
         threadsafe_tile_requests: boolean;
         tile_size: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 

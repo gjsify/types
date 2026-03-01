@@ -46,7 +46,6 @@ export namespace Vte {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -958,9 +957,7 @@ export namespace Vte {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             allow_bold: boolean;
             allowBold: boolean;
             audible_bell: boolean;
@@ -2723,25 +2720,16 @@ export namespace Vte {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
     }
 
     type PtyClass = typeof Pty;
     type TerminalClass = typeof Terminal;
     abstract class TerminalClassPrivate {
         static $gtype: GObject.GType<TerminalClassPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class TerminalPrivate {
         static $gtype: GObject.GType<TerminalPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

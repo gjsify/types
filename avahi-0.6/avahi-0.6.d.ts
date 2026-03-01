@@ -600,10 +600,6 @@ export namespace Avahi {
         host: string;
         port: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         freeze(): void;

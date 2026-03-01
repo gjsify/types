@@ -132,9 +132,7 @@ export namespace Bump {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Gio.Initable.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps, Gio.AsyncInitable.ConstructorProps {
             active: boolean;
             time_acquired: number;
             timeAcquired: number;
@@ -1529,9 +1527,7 @@ export namespace Bump {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Queue.ConstructorProps,
-                Threading.ConstructorProps {}
+            extends GObject.Object.ConstructorProps, Queue.ConstructorProps, Threading.ConstructorProps {}
     }
 
     class TaskQueue extends GObject.Object implements Queue, Threading {
@@ -2134,91 +2130,51 @@ export namespace Bump {
     type AsyncPriorityQueueClass = typeof AsyncPriorityQueue;
     abstract class AsyncPriorityQueuePrivate {
         static $gtype: GObject.GType<AsyncPriorityQueuePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ClaimClass = typeof Claim;
     abstract class ClaimPrivate {
         static $gtype: GObject.GType<ClaimPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EventClass = typeof Event;
     abstract class EventPrivate {
         static $gtype: GObject.GType<EventPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FactoryClass = typeof Factory;
     abstract class FactoryPrivate {
         static $gtype: GObject.GType<FactoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LazyClass = typeof Lazy;
     abstract class LazyPrivate {
         static $gtype: GObject.GType<LazyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ResourceClaimClass = typeof ResourceClaim;
     abstract class ResourceClaimPrivate {
         static $gtype: GObject.GType<ResourceClaimPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ResourcePoolClass = typeof ResourcePool;
     abstract class ResourcePoolPrivate {
         static $gtype: GObject.GType<ResourcePoolPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SemaphoreClass = typeof Semaphore;
     abstract class SemaphorePrivate {
         static $gtype: GObject.GType<SemaphorePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SemaphoreClaimClass = typeof SemaphoreClaim;
     abstract class SemaphoreClaimPrivate {
         static $gtype: GObject.GType<SemaphoreClaimPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TaskQueueClass = typeof TaskQueue;
     abstract class TaskQueuePrivate {
         static $gtype: GObject.GType<TaskQueuePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type QueueIface = typeof Queue;

@@ -264,10 +264,6 @@ export namespace GnomeBG {
     type BGSlideShowClass = typeof BGSlideShow;
     abstract class BGSlideShowPrivate {
         static $gtype: GObject.GType<BGSlideShowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

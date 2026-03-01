@@ -151,9 +151,7 @@ export namespace Entangle {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Application.ConstructorProps,
-                Gio.ActionGroup.ConstructorProps,
-                Gio.ActionMap.ConstructorProps {
+            extends Gtk.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {
             active_cameras: CameraList;
             activeCameras: CameraList;
             preferences: Preferences;
@@ -2214,7 +2212,8 @@ export namespace Entangle {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ApplicationWindow.ConstructorProps,
+            extends
+                Gtk.ApplicationWindow.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Progress.ConstructorProps,
                 Gio.ActionGroup.ConstructorProps,
@@ -3343,9 +3342,7 @@ export namespace Entangle {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             cameras: CameraList;
         }
     }
@@ -3996,9 +3993,7 @@ export namespace Entangle {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             camera_list: CameraList;
             cameraList: CameraList;
         }
@@ -5072,7 +5067,8 @@ export namespace Entangle {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Expander.ConstructorProps,
+            extends
+                Gtk.Expander.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             camera: Camera;
@@ -5959,7 +5955,8 @@ export namespace Entangle {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.AboutDialog.ConstructorProps,
+            extends
+                Gtk.AboutDialog.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -6575,7 +6572,8 @@ export namespace Entangle {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.DrawingArea.ConstructorProps,
+            extends
+                Gtk.DrawingArea.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             aspect_ratio: number;
@@ -7218,7 +7216,8 @@ export namespace Entangle {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.DrawingArea.ConstructorProps,
+            extends
+                Gtk.DrawingArea.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             image: Image;
@@ -7967,9 +7966,7 @@ export namespace Entangle {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Window.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             media: Media;
         }
     }
@@ -8534,7 +8531,8 @@ export namespace Entangle {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -9850,7 +9848,8 @@ export namespace Entangle {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps,
+            extends
+                Gtk.Dialog.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -10482,7 +10481,8 @@ export namespace Entangle {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {}
@@ -11224,7 +11224,8 @@ export namespace Entangle {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.DrawingArea.ConstructorProps,
+            extends
+                Gtk.DrawingArea.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {

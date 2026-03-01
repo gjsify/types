@@ -91,10 +91,6 @@ export namespace GstFft {
     abstract class FFTF32 {
         static $gtype: GObject.GType<FFTF32>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -152,7 +148,6 @@ export namespace GstFft {
                 i: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -184,10 +179,6 @@ export namespace GstFft {
      */
     abstract class FFTF64 {
         static $gtype: GObject.GType<FFTF64>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -246,7 +237,6 @@ export namespace GstFft {
                 i: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -278,10 +268,6 @@ export namespace GstFft {
      */
     abstract class FFTS16 {
         static $gtype: GObject.GType<FFTS16>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -340,7 +326,6 @@ export namespace GstFft {
                 i: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -372,10 +357,6 @@ export namespace GstFft {
      */
     abstract class FFTS32 {
         static $gtype: GObject.GType<FFTS32>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -434,7 +415,6 @@ export namespace GstFft {
                 i: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**

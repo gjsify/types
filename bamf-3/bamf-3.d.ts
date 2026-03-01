@@ -748,55 +748,31 @@ export namespace Bamf {
     type ApplicationClass = typeof Application;
     abstract class ApplicationPrivate {
         static $gtype: GObject.GType<ApplicationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ControlClass = typeof Control;
     abstract class ControlPrivate {
         static $gtype: GObject.GType<ControlPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MatcherClass = typeof Matcher;
     abstract class MatcherPrivate {
         static $gtype: GObject.GType<MatcherPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TabClass = typeof Tab;
     abstract class TabPrivate {
         static $gtype: GObject.GType<TabPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ViewClass = typeof View;
     abstract class ViewPrivate {
         static $gtype: GObject.GType<ViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WindowClass = typeof Window;
     abstract class WindowPrivate {
         static $gtype: GObject.GType<WindowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

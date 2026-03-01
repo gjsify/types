@@ -714,7 +714,6 @@ export namespace Pango {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -3893,8 +3892,7 @@ export namespace Pango {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends GObject.Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             is_monospace: boolean;
             isMonospace: boolean;
             is_variable: boolean;
@@ -4623,8 +4621,7 @@ export namespace Pango {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends GObject.Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             item_type: GObject.GType;
             itemType: GObject.GType;
             n_items: number;
@@ -6796,10 +6793,6 @@ export namespace Pango {
         flags: number;
         script: number;
         extra_attrs: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6815,10 +6808,6 @@ export namespace Pango {
         // Fields
 
         type: AttrType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6831,10 +6820,6 @@ export namespace Pango {
         // Fields
 
         color: Color;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6847,10 +6832,6 @@ export namespace Pango {
         // Fields
 
         value: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6859,10 +6840,6 @@ export namespace Pango {
      */
     class AttrFontDesc {
         static $gtype: GObject.GType<AttrFontDesc>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -6887,10 +6864,6 @@ export namespace Pango {
 
         features: string;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -6913,10 +6886,6 @@ export namespace Pango {
         // Fields
 
         value: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6930,10 +6899,6 @@ export namespace Pango {
      */
     abstract class AttrIterator {
         static $gtype: GObject.GType<AttrIterator>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -6992,10 +6957,6 @@ export namespace Pango {
     class AttrLanguage {
         static $gtype: GObject.GType<AttrLanguage>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -7024,7 +6985,6 @@ export namespace Pango {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): AttrList;
 
@@ -7222,10 +7182,6 @@ export namespace Pango {
         copy_func: AttrDataCopyFunc;
         destroy_func: GLib.DestroyNotify;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -7272,10 +7228,6 @@ export namespace Pango {
         size: number;
         absolute: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -7300,10 +7252,6 @@ export namespace Pango {
         // Fields
 
         value: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -7323,10 +7271,6 @@ export namespace Pango {
 
         start_index: number;
         end_index: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -7444,7 +7388,6 @@ export namespace Pango {
                 blue: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -7523,7 +7466,6 @@ export namespace Pango {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): FontDescription;
 
@@ -7978,7 +7920,6 @@ export namespace Pango {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -8109,7 +8050,6 @@ export namespace Pango {
                 y_offset: GlyphUnit;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -8134,7 +8074,6 @@ export namespace Pango {
                 attr: GlyphVisAttr;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -8154,10 +8093,6 @@ export namespace Pango {
         y_offset: number;
         start_x_offset: number;
         end_x_offset: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -8286,10 +8221,6 @@ export namespace Pango {
         end_index: number;
         end_char: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -8361,7 +8292,6 @@ export namespace Pango {
                 log_clusters: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): GlyphString;
 
@@ -8512,7 +8442,6 @@ export namespace Pango {
                 is_color: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -8540,7 +8469,6 @@ export namespace Pango {
                 analysis: Analysis;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): Item;
 
@@ -8609,10 +8537,6 @@ export namespace Pango {
      */
     abstract class Language {
         static $gtype: GObject.GType<Language>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -8781,10 +8705,6 @@ export namespace Pango {
      */
     abstract class LayoutIter {
         static $gtype: GObject.GType<LayoutIter>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -8977,10 +8897,6 @@ export namespace Pango {
         runs: LayoutRun[];
         resolved_dir: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -9125,7 +9041,6 @@ export namespace Pango {
                 reserved: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9163,7 +9078,6 @@ export namespace Pango {
                 y0: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -9329,16 +9243,11 @@ export namespace Pango {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type RendererClass = typeof Renderer;
     abstract class RendererPrivate {
         static $gtype: GObject.GType<RendererPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -9351,7 +9260,6 @@ export namespace Pango {
         // Constructors
 
         constructor(text: string, length: number);
-        _init(...args: any[]): void;
 
         static ['new'](text: string, length: number): ScriptIter;
 
@@ -9396,7 +9304,6 @@ export namespace Pango {
         // Constructors
 
         constructor(initial_size: number, positions_in_pixels: boolean);
-        _init(...args: any[]): void;
 
         static ['new'](initial_size: number, positions_in_pixels: boolean): TabArray;
 

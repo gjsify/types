@@ -362,7 +362,8 @@ export namespace EDataServerUI {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ScrolledWindow.ConstructorProps,
+            extends
+                Gtk.ScrolledWindow.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -1945,7 +1946,8 @@ export namespace EDataServerUI {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Grid.ConstructorProps,
+            extends
+                Gtk.Grid.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 EDataServer.Extensible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -2570,7 +2572,8 @@ export namespace EDataServerUI {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Grid.ConstructorProps,
+            extends
+                Gtk.Grid.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {}
@@ -3282,7 +3285,8 @@ export namespace EDataServerUI {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps,
+            extends
+                Gtk.Dialog.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -3794,19 +3798,11 @@ export namespace EDataServerUI {
     type CellRendererColorClass = typeof CellRendererColor;
     abstract class CellRendererColorPrivate {
         static $gtype: GObject.GType<CellRendererColorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CertificateWidgetClass = typeof CertificateWidget;
     abstract class CertificateWidgetPrivate {
         static $gtype: GObject.GType<CertificateWidgetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CredentialsPrompterClass = typeof CredentialsPrompter;
@@ -3814,44 +3810,24 @@ export namespace EDataServerUI {
     type CredentialsPrompterImplOAuth2Class = typeof CredentialsPrompterImplOAuth2;
     abstract class CredentialsPrompterImplOAuth2Private {
         static $gtype: GObject.GType<CredentialsPrompterImplOAuth2Private>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CredentialsPrompterImplPasswordClass = typeof CredentialsPrompterImplPassword;
     abstract class CredentialsPrompterImplPasswordPrivate {
         static $gtype: GObject.GType<CredentialsPrompterImplPasswordPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class CredentialsPrompterImplPrivate {
         static $gtype: GObject.GType<CredentialsPrompterImplPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class CredentialsPrompterPrivate {
         static $gtype: GObject.GType<CredentialsPrompterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RemindersWidgetClass = typeof RemindersWidget;
     abstract class RemindersWidgetPrivate {
         static $gtype: GObject.GType<RemindersWidgetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WebDAVDiscoverContentClass = typeof WebDAVDiscoverContent;

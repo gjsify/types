@@ -1556,7 +1556,8 @@ export namespace EvinceView {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Container.ConstructorProps,
+            extends
+                Gtk.Container.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {
@@ -2301,9 +2302,7 @@ export namespace EvinceView {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             current_page: number;
             currentPage: number;
             document: EvinceDocument.Document;

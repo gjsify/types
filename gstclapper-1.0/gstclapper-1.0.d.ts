@@ -61,7 +61,6 @@ export namespace GstClapper {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -2140,7 +2139,6 @@ export namespace GstClapper {
                 description: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 

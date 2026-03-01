@@ -38,7 +38,6 @@ export namespace Rsvg {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1249,7 +1248,6 @@ export namespace Rsvg {
                 ex: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type HandleClass = typeof Handle;
@@ -1273,10 +1271,6 @@ export namespace Rsvg {
 
         length: number;
         unit: Unit;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1299,7 +1293,6 @@ export namespace Rsvg {
                 y: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1325,7 +1318,6 @@ export namespace Rsvg {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**

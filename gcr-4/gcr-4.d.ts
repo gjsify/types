@@ -1621,8 +1621,7 @@ export namespace Gcr {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends CertificateExtension.ConstructorProps,
-                Gio.ListModel.ConstructorProps {
+            extends CertificateExtension.ConstructorProps, Gio.ListModel.ConstructorProps {
             n_items: number;
             nItems: number;
         }
@@ -2414,8 +2413,7 @@ export namespace Gcr {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends CertificateExtension.ConstructorProps,
-                Gio.ListModel.ConstructorProps {
+            extends CertificateExtension.ConstructorProps, Gio.ListModel.ConstructorProps {
             n_items: number;
             nItems: number;
         }
@@ -3039,8 +3037,7 @@ export namespace Gcr {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends CertificateExtension.ConstructorProps,
-                Gio.ListModel.ConstructorProps {
+            extends CertificateExtension.ConstructorProps, Gio.ListModel.ConstructorProps {
             n_items: number;
             nItems: number;
         }
@@ -3809,8 +3806,7 @@ export namespace Gcr {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends GObject.Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             n_items: number;
             nItems: number;
         }
@@ -4429,8 +4425,7 @@ export namespace Gcr {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends CertificateExtension.ConstructorProps,
-                Gio.ListModel.ConstructorProps {}
+            extends CertificateExtension.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     /**
@@ -5189,8 +5184,7 @@ export namespace Gcr {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends GObject.Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {}
+            extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     /**
@@ -6259,8 +6253,7 @@ export namespace Gcr {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends GObject.Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {}
+            extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     /**
@@ -8926,7 +8919,8 @@ export namespace Gcr {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 Prompt.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.Initable.ConstructorProps {
@@ -10558,10 +10552,6 @@ export namespace Gcr {
     type CertificateChainClass = typeof CertificateChain;
     abstract class CertificateChainPrivate {
         static $gtype: GObject.GType<CertificateChainPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CertificateExtensionAuthorityInfoAccessClass = typeof CertificateExtensionAuthorityInfoAccess;
@@ -10591,10 +10581,6 @@ export namespace Gcr {
      */
     abstract class Parsed {
         static $gtype: GObject.GType<Parsed>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -10652,47 +10638,27 @@ export namespace Gcr {
     type ParserClass = typeof Parser;
     abstract class ParserPrivate {
         static $gtype: GObject.GType<ParserPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type Pkcs11CertificateClass = typeof Pkcs11Certificate;
     abstract class Pkcs11CertificatePrivate {
         static $gtype: GObject.GType<Pkcs11CertificatePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PromptInterface = typeof Prompt;
     type SecretExchangeClass = typeof SecretExchange;
     abstract class SecretExchangePrivate {
         static $gtype: GObject.GType<SecretExchangePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SimpleCertificateClass = typeof SimpleCertificate;
     abstract class SimpleCertificatePrivate {
         static $gtype: GObject.GType<SimpleCertificatePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SshAskpassClass = typeof SshAskpass;
     abstract class SubjectPublicKeyInfo {
         static $gtype: GObject.GType<SubjectPublicKeyInfo>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -10727,19 +10693,11 @@ export namespace Gcr {
     type SystemPromptClass = typeof SystemPrompt;
     abstract class SystemPromptPrivate {
         static $gtype: GObject.GType<SystemPromptPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SystemPrompterClass = typeof SystemPrompter;
     abstract class SystemPrompterPrivate {
         static $gtype: GObject.GType<SystemPrompterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Certificate {

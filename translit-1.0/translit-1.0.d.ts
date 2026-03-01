@@ -109,10 +109,6 @@ export namespace Translit {
     type TransliteratorClass = typeof Transliterator;
     abstract class TransliteratorPrivate {
         static $gtype: GObject.GType<TransliteratorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

@@ -32,7 +32,6 @@ export namespace BlockDev {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace BtrfsTech {
@@ -72,7 +71,6 @@ export namespace BlockDev {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace CryptoKeyslotContextType {
@@ -151,7 +149,6 @@ export namespace BlockDev {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace DMTech {
@@ -183,7 +180,6 @@ export namespace BlockDev {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace FSTech {
@@ -217,7 +213,6 @@ export namespace BlockDev {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace LVMCacheMode {
@@ -249,7 +244,6 @@ export namespace BlockDev {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace LVMTech {
@@ -328,7 +322,6 @@ export namespace BlockDev {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace LoopTech {
@@ -353,7 +346,6 @@ export namespace BlockDev {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace MDTech {
@@ -377,7 +369,6 @@ export namespace BlockDev {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace MpathTech {
@@ -402,7 +393,6 @@ export namespace BlockDev {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace NVDIMMNamespaceMode {
@@ -464,7 +454,6 @@ export namespace BlockDev {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace NVMEFormatSecureErase {
@@ -584,7 +573,6 @@ export namespace BlockDev {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace PartTableType {
@@ -738,7 +726,6 @@ export namespace BlockDev {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace SmartSCSIBackgroundScanStatus {
@@ -836,7 +823,6 @@ export namespace BlockDev {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace SwapTech {
@@ -857,7 +843,6 @@ export namespace BlockDev {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class UtilsDevUtilsError extends GLib.Error {
@@ -870,7 +855,6 @@ export namespace BlockDev {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class UtilsExecError extends GLib.Error {
@@ -891,7 +875,6 @@ export namespace BlockDev {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class UtilsModuleError extends GLib.Error {
@@ -908,7 +891,6 @@ export namespace BlockDev {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace UtilsProgStatus {
@@ -2813,7 +2795,6 @@ export namespace BlockDev {
                 used: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class BtrfsFilesystemInfo {
@@ -2836,7 +2817,6 @@ export namespace BlockDev {
                 used: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class BtrfsSubvolumeInfo {
@@ -2857,7 +2837,6 @@ export namespace BlockDev {
                 path: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class CryptoBITLKInfo {
@@ -2882,7 +2861,6 @@ export namespace BlockDev {
                 sector_size: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class CryptoIntegrityExtra {
@@ -2911,7 +2889,6 @@ export namespace BlockDev {
                 buffer_sectors: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             sector_size: number,
@@ -2952,7 +2929,6 @@ export namespace BlockDev {
                 journal_integrity: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class CryptoKeyslotContext {
@@ -2965,7 +2941,6 @@ export namespace BlockDev {
         // Constructors
 
         constructor(keyfile: string, keyfile_offset: number, key_size: number);
-        _init(...args: any[]): void;
 
         static new_keyfile(keyfile: string, keyfile_offset: number, key_size: number): CryptoKeyslotContext;
 
@@ -3001,7 +2976,6 @@ export namespace BlockDev {
                 subsystem: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             data_alignment: number,
@@ -3029,10 +3003,6 @@ export namespace BlockDev {
         label: string;
         subsystem: string;
         hw_encryption: CryptoLUKSHWEncryptionType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class CryptoLUKSPBKDF {
@@ -3059,7 +3029,6 @@ export namespace BlockDev {
                 parallel_threads: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             type: string | null,
@@ -3089,7 +3058,6 @@ export namespace BlockDev {
                 keyslot: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3111,7 +3079,6 @@ export namespace BlockDev {
                 val: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](opt: string, val: string): ExtraArg;
 
@@ -3155,7 +3122,6 @@ export namespace BlockDev {
                 free_space: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class FSExfatInfo {
@@ -3180,7 +3146,6 @@ export namespace BlockDev {
                 cluster_count: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class FSExt2Info {
@@ -3207,7 +3172,6 @@ export namespace BlockDev {
                 free_blocks: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class FSExt3Info {
@@ -3234,7 +3198,6 @@ export namespace BlockDev {
                 free_blocks: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class FSExt4Info {
@@ -3261,7 +3224,6 @@ export namespace BlockDev {
                 free_blocks: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class FSExtInfo {
@@ -3288,7 +3250,6 @@ export namespace BlockDev {
                 free_blocks: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class FSF2FSInfo {
@@ -3313,7 +3274,6 @@ export namespace BlockDev {
                 features: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class FSFeatures {
@@ -3328,10 +3288,6 @@ export namespace BlockDev {
         features: FSFeatureFlags;
         partition_id: string;
         partition_type: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class FSMkfsOptions {
@@ -3360,7 +3316,6 @@ export namespace BlockDev {
                 reserve: Uint8Array;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class FSNILFS2Info {
@@ -3385,7 +3340,6 @@ export namespace BlockDev {
                 free_blocks: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class FSNtfsInfo {
@@ -3408,7 +3362,6 @@ export namespace BlockDev {
                 free_space: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class FSUdfInfo {
@@ -3439,7 +3392,6 @@ export namespace BlockDev {
                 free_blocks: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class FSVfatInfo {
@@ -3464,7 +3416,6 @@ export namespace BlockDev {
                 free_cluster_count: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class FSXfsInfo {
@@ -3487,7 +3438,6 @@ export namespace BlockDev {
                 block_count: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class LVMCacheStats {
@@ -3506,10 +3456,6 @@ export namespace BlockDev {
         write_hits: number;
         write_misses: number;
         mode: LVMCacheMode;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3583,7 +3529,6 @@ export namespace BlockDev {
                 segs: LVMSEGdata[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class LVMPVdata {
@@ -3628,7 +3573,6 @@ export namespace BlockDev {
                 missing: boolean;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class LVMSEGdata {
@@ -3649,7 +3593,6 @@ export namespace BlockDev {
                 pvdev: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class LVMVDOPooldata {
@@ -3666,10 +3609,6 @@ export namespace BlockDev {
         index_memory_size: number;
         deduplication: boolean;
         compression: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class LVMVDOStats {
@@ -3702,7 +3641,6 @@ export namespace BlockDev {
                 write_amplification_ratio: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class LVMVGdata {
@@ -3736,7 +3674,6 @@ export namespace BlockDev {
                 vg_tags: string[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class LoopInfo {
@@ -3763,7 +3700,6 @@ export namespace BlockDev {
                 read_only: boolean;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class MDDetailData {
@@ -3810,7 +3746,6 @@ export namespace BlockDev {
                 container: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class MDExamineData {
@@ -3847,7 +3782,6 @@ export namespace BlockDev {
                 chunk_size: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class NVDIMMNamespaceInfo {
@@ -3876,7 +3810,6 @@ export namespace BlockDev {
                 enabled: boolean;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class NVMEControllerInfo {
@@ -3901,10 +3834,6 @@ export namespace BlockDev {
         size_unalloc: number;
         num_namespaces: number;
         subsysnqn: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class NVMEErrorLogEntry {
@@ -3920,10 +3849,6 @@ export namespace BlockDev {
         lba: number;
         nsid: number;
         transport_type: NVMETransportType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3937,10 +3862,6 @@ export namespace BlockDev {
         data_size: number;
         metadata_size: number;
         relative_performance: NVMELBAFormatRelativePerformance;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class NVMENamespaceInfo {
@@ -3958,10 +3879,6 @@ export namespace BlockDev {
         features: number;
         format_progress_remaining: number;
         write_protected: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class NVMESanitizeLog {
@@ -3979,10 +3896,6 @@ export namespace BlockDev {
         time_for_overwrite_nd: number;
         time_for_block_erase_nd: number;
         time_for_crypto_erase_nd: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class NVMESelfTestLog {
@@ -3992,10 +3905,6 @@ export namespace BlockDev {
 
         current_operation: NVMESelfTestAction;
         current_operation_completion: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class NVMESelfTestLogEntry {
@@ -4010,10 +3919,6 @@ export namespace BlockDev {
         nsid: number;
         failing_lba: number;
         status_code_error: GLib.Error;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class NVMESmartLog {
@@ -4064,7 +3969,6 @@ export namespace BlockDev {
                 critical_temp_time: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class PartDiskSpec {
@@ -4076,10 +3980,6 @@ export namespace BlockDev {
         table_type: PartTableType;
         size: number;
         sector_size: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4121,7 +4021,6 @@ export namespace BlockDev {
                 type_name: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4140,7 +4039,6 @@ export namespace BlockDev {
         // Constructors
 
         constructor(name: Plugin, so_name?: string | null);
-        _init(...args: any[]): void;
 
         static ['new'](name: Plugin, so_name?: string | null): PluginSpec;
     }
@@ -4166,10 +4064,6 @@ export namespace BlockDev {
         power_on_time: number;
         power_cycle_count: number;
         temperature: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -4204,10 +4098,6 @@ export namespace BlockDev {
         pretty_value: number;
         pretty_value_unit: SmartATAAttributeUnit;
         pretty_value_string: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class SmartSCSI {
@@ -4248,10 +4138,6 @@ export namespace BlockDev {
         temperature: number;
         temperature_drive_trip: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -4280,7 +4166,6 @@ export namespace BlockDev {
                 micro: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**

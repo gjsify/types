@@ -305,7 +305,6 @@ export namespace Dmap {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -323,7 +322,6 @@ export namespace Dmap {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -341,7 +339,6 @@ export namespace Dmap {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -2052,29 +2049,17 @@ export namespace Dmap {
     type AvConnectionClass = typeof AvConnection;
     abstract class AvConnectionPrivate {
         static $gtype: GObject.GType<AvConnectionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AvRecordInterface = typeof AvRecord;
     type AvShareClass = typeof AvShare;
     abstract class AvSharePrivate {
         static $gtype: GObject.GType<AvSharePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConnectionClass = typeof Connection;
     abstract class ConnectionPrivate {
         static $gtype: GObject.GType<ConnectionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ContainerDbInterface = typeof ContainerDb;
@@ -2082,20 +2067,12 @@ export namespace Dmap {
     type ControlConnectionClass = typeof ControlConnection;
     abstract class ControlConnectionPrivate {
         static $gtype: GObject.GType<ControlConnectionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ControlPlayerInterface = typeof ControlPlayer;
     type ControlShareClass = typeof ControlShare;
     abstract class ControlSharePrivate {
         static $gtype: GObject.GType<ControlSharePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class DbFilterDefinition {
@@ -2116,7 +2093,6 @@ export namespace Dmap {
                 negate: boolean;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type DbInterface = typeof Db;
@@ -2140,53 +2116,32 @@ export namespace Dmap {
                 version: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type ImageConnectionClass = typeof ImageConnection;
     abstract class ImageConnectionPrivate {
         static $gtype: GObject.GType<ImageConnectionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ImageRecordInterface = typeof ImageRecord;
     type ImageShareClass = typeof ImageShare;
     abstract class ImageSharePrivate {
         static $gtype: GObject.GType<ImageSharePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MdnsBrowserClass = typeof MdnsBrowser;
     abstract class MdnsBrowserPrivate {
         static $gtype: GObject.GType<MdnsBrowserPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MdnsPublisherClass = typeof MdnsPublisher;
     abstract class MdnsPublisherPrivate {
         static $gtype: GObject.GType<MdnsPublisherPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MdnsServiceClass = typeof MdnsService;
     abstract class MdnsServicePrivate {
         static $gtype: GObject.GType<MdnsServicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MetaDataMap {
@@ -2205,7 +2160,6 @@ export namespace Dmap {
                 md: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class MlclBits {
@@ -2215,10 +2169,6 @@ export namespace Dmap {
 
         bits: Bits;
         share: Share;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Playlist {
@@ -2238,7 +2188,6 @@ export namespace Dmap {
                 id: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type RecordFactoryInterface = typeof RecordFactory;
@@ -2246,19 +2195,11 @@ export namespace Dmap {
     type ShareClass = typeof Share;
     abstract class SharePrivate {
         static $gtype: GObject.GType<SharePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TranscodeStreamClass = typeof TranscodeStream;
     abstract class TranscodeStreamPrivate {
         static $gtype: GObject.GType<TranscodeStreamPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace AvRecord {

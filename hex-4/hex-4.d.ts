@@ -651,7 +651,8 @@ export namespace Hex {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -1757,10 +1758,6 @@ export namespace Hex {
         type: ChangeType;
         v_string: string;
         v_byte: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DocumentClass = typeof Document;
@@ -1798,7 +1795,6 @@ export namespace Hex {
                 not_found_msg: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): DocumentFindData;
 
@@ -1818,10 +1814,6 @@ export namespace Hex {
      */
     abstract class WidgetAutoHighlight {
         static $gtype: GObject.GType<WidgetAutoHighlight>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WidgetClass = typeof Widget;

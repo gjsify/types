@@ -1870,15 +1870,10 @@ export namespace ICal {
                 chunks: any;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     abstract class attach {
         static $gtype: GObject.GType<attach>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class compiter {
@@ -1887,18 +1882,10 @@ export namespace ICal {
         // Fields
 
         kind: component_kind;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class component {
         static $gtype: GObject.GType<component>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class datetimeperiodtype {
@@ -1917,7 +1904,6 @@ export namespace ICal {
                 period: any;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class durationtype {
@@ -1944,7 +1930,6 @@ export namespace ICal {
                 seconds: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class geotype {
@@ -1963,23 +1948,14 @@ export namespace ICal {
                 lon: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     abstract class parameter {
         static $gtype: GObject.GType<parameter>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class parser {
         static $gtype: GObject.GType<parser>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class periodtype {
@@ -2000,23 +1976,14 @@ export namespace ICal {
                 duration: any;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     abstract class property {
         static $gtype: GObject.GType<property>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class pvl_elem {
         static $gtype: GObject.GType<pvl_elem>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class pvl_elem_t {
@@ -2039,23 +2006,14 @@ export namespace ICal {
                 prior: any;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     abstract class pvl_list {
         static $gtype: GObject.GType<pvl_list>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class recur_iterator {
         static $gtype: GObject.GType<recur_iterator>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class recurrencetype {
@@ -2079,10 +2037,6 @@ export namespace ICal {
         by_set_pos: number[];
         rscale: string;
         skip: recurrencetype_skip;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class reqstattype {
@@ -2093,10 +2047,6 @@ export namespace ICal {
         code: requeststatus;
         desc: string;
         debug: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class sspm_action_map {
@@ -2115,7 +2065,6 @@ export namespace ICal {
                 minor: any;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class sspm_header {
@@ -2154,7 +2103,6 @@ export namespace ICal {
                 error_text: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class sspm_part {
@@ -2177,7 +2125,6 @@ export namespace ICal {
                 data: any;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class time_span {
@@ -2198,7 +2145,6 @@ export namespace ICal {
                 is_busy: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class timetype {
@@ -2214,18 +2160,10 @@ export namespace ICal {
         second: number;
         is_date: number;
         is_daylight: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class timezone {
         static $gtype: GObject.GType<timezone>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class timezonephase {
@@ -2256,7 +2194,6 @@ export namespace ICal {
                 rrule: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class timezonetype {
@@ -2279,7 +2216,6 @@ export namespace ICal {
                 phases: any;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class triggertype {
@@ -2298,15 +2234,10 @@ export namespace ICal {
                 duration: any;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     abstract class value {
         static $gtype: GObject.GType<value>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

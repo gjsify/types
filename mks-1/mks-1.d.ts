@@ -299,7 +299,8 @@ export namespace Mks {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -1738,9 +1739,7 @@ export namespace Mks {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             connection: Gio.DBusConnection;
             devices: Gio.ListModel;
             name: string;
@@ -2773,7 +2772,6 @@ export namespace Mks {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ScreenAttributes;
 

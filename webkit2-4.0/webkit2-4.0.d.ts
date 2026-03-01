@@ -462,7 +462,6 @@ export namespace WebKit2 {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -496,7 +495,6 @@ export namespace WebKit2 {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -691,7 +689,6 @@ export namespace WebKit2 {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -834,7 +831,6 @@ export namespace WebKit2 {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -930,7 +926,6 @@ export namespace WebKit2 {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1018,7 +1013,6 @@ export namespace WebKit2 {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1052,7 +1046,6 @@ export namespace WebKit2 {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1182,7 +1175,6 @@ export namespace WebKit2 {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1260,7 +1252,6 @@ export namespace WebKit2 {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1311,7 +1302,6 @@ export namespace WebKit2 {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -14135,7 +14125,8 @@ export namespace WebKit2 {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends WebViewBase.ConstructorProps,
+            extends
+                WebViewBase.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             automation_presentation_type: AutomationBrowsingContextPresentation;
@@ -16727,7 +16718,8 @@ export namespace WebKit2 {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Container.ConstructorProps,
+            extends
+                Gtk.Container.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -18644,7 +18636,6 @@ export namespace WebKit2 {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ApplicationInfo;
 
@@ -18704,82 +18695,46 @@ export namespace WebKit2 {
     type AuthenticationRequestClass = typeof AuthenticationRequest;
     abstract class AuthenticationRequestPrivate {
         static $gtype: GObject.GType<AuthenticationRequestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AutomationSessionClass = typeof AutomationSession;
     abstract class AutomationSessionPrivate {
         static $gtype: GObject.GType<AutomationSessionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BackForwardListClass = typeof BackForwardList;
     type BackForwardListItemClass = typeof BackForwardListItem;
     abstract class BackForwardListItemPrivate {
         static $gtype: GObject.GType<BackForwardListItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class BackForwardListPrivate {
         static $gtype: GObject.GType<BackForwardListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ClipboardPermissionRequestClass = typeof ClipboardPermissionRequest;
     abstract class ClipboardPermissionRequestPrivate {
         static $gtype: GObject.GType<ClipboardPermissionRequestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ColorChooserRequestClass = typeof ColorChooserRequest;
     abstract class ColorChooserRequestPrivate {
         static $gtype: GObject.GType<ColorChooserRequestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ContextMenuClass = typeof ContextMenu;
     type ContextMenuItemClass = typeof ContextMenuItem;
     abstract class ContextMenuItemPrivate {
         static $gtype: GObject.GType<ContextMenuItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ContextMenuPrivate {
         static $gtype: GObject.GType<ContextMenuPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CookieManagerClass = typeof CookieManager;
     abstract class CookieManagerPrivate {
         static $gtype: GObject.GType<CookieManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -18791,7 +18746,6 @@ export namespace WebKit2 {
         // Constructors
 
         constructor(username: string, password: string, persistence: CredentialPersistence);
-        _init(...args: any[]): void;
 
         static ['new'](username: string, password: string, persistence: CredentialPersistence): Credential;
 
@@ -18843,37 +18797,21 @@ export namespace WebKit2 {
     type DeviceInfoPermissionRequestClass = typeof DeviceInfoPermissionRequest;
     abstract class DeviceInfoPermissionRequestPrivate {
         static $gtype: GObject.GType<DeviceInfoPermissionRequestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DownloadClass = typeof Download;
     abstract class DownloadPrivate {
         static $gtype: GObject.GType<DownloadPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EditorStateClass = typeof EditorState;
     abstract class EditorStatePrivate {
         static $gtype: GObject.GType<EditorStatePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FaviconDatabaseClass = typeof FaviconDatabase;
     abstract class FaviconDatabasePrivate {
         static $gtype: GObject.GType<FaviconDatabasePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -18913,10 +18851,6 @@ export namespace WebKit2 {
      */
     abstract class Feature {
         static $gtype: GObject.GType<Feature>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -19012,10 +18946,6 @@ export namespace WebKit2 {
     abstract class FeatureList {
         static $gtype: GObject.GType<FeatureList>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -19049,46 +18979,26 @@ export namespace WebKit2 {
     type FileChooserRequestClass = typeof FileChooserRequest;
     abstract class FileChooserRequestPrivate {
         static $gtype: GObject.GType<FileChooserRequestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FindControllerClass = typeof FindController;
     abstract class FindControllerPrivate {
         static $gtype: GObject.GType<FindControllerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FormSubmissionRequestClass = typeof FormSubmissionRequest;
     abstract class FormSubmissionRequestPrivate {
         static $gtype: GObject.GType<FormSubmissionRequestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GeolocationManagerClass = typeof GeolocationManager;
     abstract class GeolocationManagerPrivate {
         static $gtype: GObject.GType<GeolocationManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GeolocationPermissionRequestClass = typeof GeolocationPermissionRequest;
     abstract class GeolocationPermissionRequestPrivate {
         static $gtype: GObject.GType<GeolocationPermissionRequestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -19103,7 +19013,6 @@ export namespace WebKit2 {
         // Constructors
 
         constructor(latitude: number, longitude: number, accuracy: number);
-        _init(...args: any[]): void;
 
         static ['new'](latitude: number, longitude: number, accuracy: number): GeolocationPosition;
 
@@ -19153,10 +19062,6 @@ export namespace WebKit2 {
     type HitTestResultClass = typeof HitTestResult;
     abstract class HitTestResultPrivate {
         static $gtype: GObject.GType<HitTestResultPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -19164,10 +19069,6 @@ export namespace WebKit2 {
      */
     abstract class ITPFirstParty {
         static $gtype: GObject.GType<ITPFirstParty>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -19215,10 +19116,6 @@ export namespace WebKit2 {
     abstract class ITPThirdParty {
         static $gtype: GObject.GType<ITPThirdParty>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -19251,10 +19148,6 @@ export namespace WebKit2 {
     type InputMethodContextClass = typeof InputMethodContext;
     abstract class InputMethodContextPrivate {
         static $gtype: GObject.GType<InputMethodContextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -19266,7 +19159,6 @@ export namespace WebKit2 {
         // Constructors
 
         constructor(start_offset: number, end_offset: number);
-        _init(...args: any[]): void;
 
         static ['new'](start_offset: number, end_offset: number): InputMethodUnderline;
 
@@ -19294,10 +19186,6 @@ export namespace WebKit2 {
     type InstallMissingMediaPluginsPermissionRequestClass = typeof InstallMissingMediaPluginsPermissionRequest;
     abstract class InstallMissingMediaPluginsPermissionRequestPrivate {
         static $gtype: GObject.GType<InstallMissingMediaPluginsPermissionRequestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -19305,10 +19193,6 @@ export namespace WebKit2 {
      */
     abstract class JavascriptResult {
         static $gtype: GObject.GType<JavascriptResult>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -19338,10 +19222,6 @@ export namespace WebKit2 {
     type MediaKeySystemPermissionRequestClass = typeof MediaKeySystemPermissionRequest;
     abstract class MediaKeySystemPermissionRequestPrivate {
         static $gtype: GObject.GType<MediaKeySystemPermissionRequestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -19372,7 +19252,6 @@ export namespace WebKit2 {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): MemoryPressureSettings;
 
@@ -19469,10 +19348,6 @@ export namespace WebKit2 {
     abstract class MimeInfo {
         static $gtype: GObject.GType<MimeInfo>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -19512,10 +19387,6 @@ export namespace WebKit2 {
      */
     abstract class NavigationAction {
         static $gtype: GObject.GType<NavigationAction>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -19582,10 +19453,6 @@ export namespace WebKit2 {
     type NavigationPolicyDecisionClass = typeof NavigationPolicyDecision;
     abstract class NavigationPolicyDecisionPrivate {
         static $gtype: GObject.GType<NavigationPolicyDecisionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -19601,7 +19468,6 @@ export namespace WebKit2 {
         // Constructors
 
         constructor(default_proxy_uri?: string | null, ignore_hosts?: string[] | null);
-        _init(...args: any[]): void;
 
         static ['new'](default_proxy_uri?: string | null, ignore_hosts?: string[] | null): NetworkProxySettings;
 
@@ -19632,18 +19498,10 @@ export namespace WebKit2 {
     type NotificationPermissionRequestClass = typeof NotificationPermissionRequest;
     abstract class NotificationPermissionRequestPrivate {
         static $gtype: GObject.GType<NotificationPermissionRequestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class NotificationPrivate {
         static $gtype: GObject.GType<NotificationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OptionMenuClass = typeof OptionMenu;
@@ -19657,10 +19515,6 @@ export namespace WebKit2 {
      */
     abstract class OptionMenuItem {
         static $gtype: GObject.GType<OptionMenuItem>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -19707,10 +19561,6 @@ export namespace WebKit2 {
 
     abstract class OptionMenuPrivate {
         static $gtype: GObject.GType<OptionMenuPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PermissionRequestIface = typeof PermissionRequest;
@@ -19728,10 +19578,6 @@ export namespace WebKit2 {
      */
     abstract class PermissionStateQuery {
         static $gtype: GObject.GType<PermissionStateQuery>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -19770,55 +19616,31 @@ export namespace WebKit2 {
     type PluginClass = typeof Plugin;
     abstract class PluginPrivate {
         static $gtype: GObject.GType<PluginPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PointerLockPermissionRequestClass = typeof PointerLockPermissionRequest;
     abstract class PointerLockPermissionRequestPrivate {
         static $gtype: GObject.GType<PointerLockPermissionRequestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PolicyDecisionClass = typeof PolicyDecision;
     abstract class PolicyDecisionPrivate {
         static $gtype: GObject.GType<PolicyDecisionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PrintCustomWidgetClass = typeof PrintCustomWidget;
     abstract class PrintCustomWidgetPrivate {
         static $gtype: GObject.GType<PrintCustomWidgetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PrintOperationClass = typeof PrintOperation;
     abstract class PrintOperationPrivate {
         static $gtype: GObject.GType<PrintOperationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ResponsePolicyDecisionClass = typeof ResponsePolicyDecision;
     abstract class ResponsePolicyDecisionPrivate {
         static $gtype: GObject.GType<ResponsePolicyDecisionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -19826,10 +19648,6 @@ export namespace WebKit2 {
      */
     abstract class ScriptDialog {
         static $gtype: GObject.GType<ScriptDialog>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -19911,10 +19729,6 @@ export namespace WebKit2 {
     abstract class ScriptMessageReply {
         static $gtype: GObject.GType<ScriptMessageReply>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -19947,10 +19761,6 @@ export namespace WebKit2 {
     type SecurityManagerClass = typeof SecurityManager;
     abstract class SecurityManagerPrivate {
         static $gtype: GObject.GType<SecurityManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -19971,7 +19781,6 @@ export namespace WebKit2 {
         // Constructors
 
         constructor(protocol: string, host: string, port: number);
-        _init(...args: any[]): void;
 
         static ['new'](protocol: string, host: string, port: number): SecurityOrigin;
 
@@ -20041,46 +19850,26 @@ export namespace WebKit2 {
     type SettingsClass = typeof Settings;
     abstract class SettingsPrivate {
         static $gtype: GObject.GType<SettingsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type URIRequestClass = typeof URIRequest;
     abstract class URIRequestPrivate {
         static $gtype: GObject.GType<URIRequestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type URIResponseClass = typeof URIResponse;
     abstract class URIResponsePrivate {
         static $gtype: GObject.GType<URIResponsePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type URISchemeRequestClass = typeof URISchemeRequest;
     abstract class URISchemeRequestPrivate {
         static $gtype: GObject.GType<URISchemeRequestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type URISchemeResponseClass = typeof URISchemeResponse;
     abstract class URISchemeResponsePrivate {
         static $gtype: GObject.GType<URISchemeResponsePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -20088,10 +19877,6 @@ export namespace WebKit2 {
      */
     abstract class UserContentFilter {
         static $gtype: GObject.GType<UserContentFilter>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -20123,37 +19908,21 @@ export namespace WebKit2 {
     type UserContentFilterStoreClass = typeof UserContentFilterStore;
     abstract class UserContentFilterStorePrivate {
         static $gtype: GObject.GType<UserContentFilterStorePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UserContentManagerClass = typeof UserContentManager;
     abstract class UserContentManagerPrivate {
         static $gtype: GObject.GType<UserContentManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UserMediaPermissionRequestClass = typeof UserMediaPermissionRequest;
     abstract class UserMediaPermissionRequestPrivate {
         static $gtype: GObject.GType<UserMediaPermissionRequestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UserMessageClass = typeof UserMessage;
     abstract class UserMessagePrivate {
         static $gtype: GObject.GType<UserMessagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -20171,7 +19940,6 @@ export namespace WebKit2 {
             allow_list?: string[] | null,
             block_list?: string[] | null,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             source: string,
@@ -20224,7 +19992,6 @@ export namespace WebKit2 {
             allow_list?: string[] | null,
             block_list?: string[] | null,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             source: string,
@@ -20265,46 +20032,26 @@ export namespace WebKit2 {
     type WebContextClass = typeof WebContext;
     abstract class WebContextPrivate {
         static $gtype: GObject.GType<WebContextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WebInspectorClass = typeof WebInspector;
     abstract class WebInspectorPrivate {
         static $gtype: GObject.GType<WebInspectorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WebResourceClass = typeof WebResource;
     abstract class WebResourcePrivate {
         static $gtype: GObject.GType<WebResourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WebViewBaseClass = typeof WebViewBase;
     abstract class WebViewBasePrivate {
         static $gtype: GObject.GType<WebViewBasePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WebViewClass = typeof WebView;
     abstract class WebViewPrivate {
         static $gtype: GObject.GType<WebViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -20316,7 +20063,6 @@ export namespace WebKit2 {
         // Constructors
 
         constructor(data: GLib.Bytes | Uint8Array);
-        _init(...args: any[]): void;
 
         static ['new'](data: GLib.Bytes | Uint8Array): WebViewSessionState;
 
@@ -20364,10 +20110,6 @@ export namespace WebKit2 {
      */
     abstract class WebsiteData {
         static $gtype: GObject.GType<WebsiteData>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -20417,37 +20159,21 @@ export namespace WebKit2 {
     type WebsiteDataAccessPermissionRequestClass = typeof WebsiteDataAccessPermissionRequest;
     abstract class WebsiteDataAccessPermissionRequestPrivate {
         static $gtype: GObject.GType<WebsiteDataAccessPermissionRequestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WebsiteDataManagerClass = typeof WebsiteDataManager;
     abstract class WebsiteDataManagerPrivate {
         static $gtype: GObject.GType<WebsiteDataManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WebsitePoliciesClass = typeof WebsitePolicies;
     abstract class WebsitePoliciesPrivate {
         static $gtype: GObject.GType<WebsitePoliciesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WindowPropertiesClass = typeof WindowProperties;
     abstract class WindowPropertiesPrivate {
         static $gtype: GObject.GType<WindowPropertiesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace PermissionRequest {

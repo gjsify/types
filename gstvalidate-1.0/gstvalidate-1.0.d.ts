@@ -6232,7 +6232,6 @@ export namespace GstValidate {
             structure: Gst.Structure,
             add_to_lists: boolean,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             scenario: Scenario | null,
@@ -6280,18 +6279,10 @@ export namespace GstValidate {
         possible_variables: string;
         def: string;
         free: GLib.DestroyNotify;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ActionPrivate {
         static $gtype: GObject.GType<ActionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ActionType {
@@ -6306,18 +6297,10 @@ export namespace GstValidate {
         description: string;
         flags: ActionTypeFlags;
         rank: Gst.Rank;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ActionTypePrivate {
         static $gtype: GObject.GType<ActionTypePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BinMonitorClass = typeof BinMonitor;
@@ -6339,7 +6322,6 @@ export namespace GstValidate {
         // Constructors
 
         constructor(issue_id: IssueId, summary: string, description: string, default_level: ReportLevel);
-        _init(...args: any[]): void;
 
         static ['new'](issue_id: IssueId, summary: string, description: string, default_level: ReportLevel): Issue;
 
@@ -6369,27 +6351,15 @@ export namespace GstValidate {
     type MediaDescriptorParserClass = typeof MediaDescriptorParser;
     abstract class MediaDescriptorParserPrivate {
         static $gtype: GObject.GType<MediaDescriptorParserPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class MediaDescriptorPrivate {
         static $gtype: GObject.GType<MediaDescriptorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaDescriptorWriterClass = typeof MediaDescriptorWriter;
     abstract class MediaDescriptorWriterPrivate {
         static $gtype: GObject.GType<MediaDescriptorWriterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6412,10 +6382,6 @@ export namespace GstValidate {
         uri: string;
         discover_only: boolean;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         clear(): void;
@@ -6431,10 +6397,6 @@ export namespace GstValidate {
     type OverrideClass = typeof Override;
     abstract class OverridePrivate {
         static $gtype: GObject.GType<OverridePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class OverrideRegistry {
@@ -6445,10 +6407,6 @@ export namespace GstValidate {
         name_overrides: GLib.Queue;
         gtype_overrides: GLib.Queue;
         klass_overrides: GLib.Queue;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -6463,10 +6421,6 @@ export namespace GstValidate {
     type PadMonitorClass = typeof PadMonitor;
     abstract class PadSeekData {
         static $gtype: GObject.GType<PadSeekData>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PipelineMonitorClass = typeof PipelineMonitor;
@@ -6489,7 +6443,6 @@ export namespace GstValidate {
         // Constructors
 
         constructor(issue: Issue, reporter: Reporter, message: string);
-        _init(...args: any[]): void;
 
         static ['new'](issue: Issue, reporter: Reporter, message: string): Report;
 
@@ -6528,27 +6481,15 @@ export namespace GstValidate {
     type RunnerClass = typeof Runner;
     abstract class RunnerPrivate {
         static $gtype: GObject.GType<RunnerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ScenarioClass = typeof Scenario;
     abstract class ScenarioPrivate {
         static $gtype: GObject.GType<ScenarioPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class StreamInfo {
         static $gtype: GObject.GType<StreamInfo>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Reporter {

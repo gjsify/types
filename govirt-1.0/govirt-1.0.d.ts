@@ -34,7 +34,6 @@ export namespace GoVirt {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -51,7 +50,6 @@ export namespace GoVirt {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -379,28 +377,16 @@ export namespace GoVirt {
     type ProxyClass = typeof Proxy;
     abstract class ProxyPrivate {
         static $gtype: GObject.GType<ProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type VmClass = typeof Vm;
     type VmDisplayClass = typeof VmDisplay;
     abstract class VmDisplayPrivate {
         static $gtype: GObject.GType<VmDisplayPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class VmPrivate {
         static $gtype: GObject.GType<VmPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

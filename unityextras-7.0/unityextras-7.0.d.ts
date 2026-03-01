@@ -117,10 +117,6 @@ export namespace UnityExtras {
     type PreviewPlayerClass = typeof PreviewPlayer;
     abstract class PreviewPlayerPrivate {
         static $gtype: GObject.GType<PreviewPlayerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

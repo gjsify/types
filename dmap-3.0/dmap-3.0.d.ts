@@ -208,7 +208,6 @@ export namespace DMAP {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -248,7 +247,6 @@ export namespace DMAP {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1376,10 +1374,6 @@ export namespace DMAP {
     type ConnectionClass = typeof Connection;
     abstract class ConnectionPrivate {
         static $gtype: GObject.GType<ConnectionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ContainerDbIface = typeof ContainerDb;
@@ -1394,10 +1388,6 @@ export namespace DMAP {
         name: string;
         string: string;
         type: Type;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class DbFilterDefinition {
@@ -1418,17 +1408,12 @@ export namespace DMAP {
                 negate: boolean;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type DbIface = typeof Db;
     type GstInputStreamClass = typeof GstInputStream;
     abstract class GstInputStreamPrivate {
         static $gtype: GObject.GType<GstInputStreamPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class HashContext {
@@ -1451,16 +1436,11 @@ export namespace DMAP {
                 version: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type MdnsBrowserClass = typeof MdnsBrowser;
     abstract class MdnsBrowserPrivate {
         static $gtype: GObject.GType<MdnsBrowserPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MdnsBrowserService {
@@ -1475,19 +1455,11 @@ export namespace DMAP {
         password_protected: boolean;
         pair: string;
         transport_protocol: MdnsBrowserTransportProtocol;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MdnsPublisherClass = typeof MdnsPublisher;
     abstract class MdnsPublisherPrivate {
         static $gtype: GObject.GType<MdnsPublisherPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MetaDataMap {
@@ -1506,7 +1478,6 @@ export namespace DMAP {
                 md: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class Playlist {
@@ -1526,7 +1497,6 @@ export namespace DMAP {
                 id: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type RecordFactoryIface = typeof RecordFactory;
@@ -1534,10 +1504,6 @@ export namespace DMAP {
     type ShareClass = typeof Share;
     abstract class SharePrivate {
         static $gtype: GObject.GType<SharePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class StructureItem {
@@ -1547,10 +1513,6 @@ export namespace DMAP {
 
         content_code: ContentCode;
         size: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace ContainerDb {

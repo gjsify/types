@@ -75,7 +75,6 @@ export namespace RygelCore {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class CmdlineConfigError extends GLib.Error {
@@ -88,7 +87,6 @@ export namespace RygelCore {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     function get_pretty_host_name(): string;
@@ -5112,226 +5110,126 @@ export namespace RygelCore {
     type ConnectionManagerClass = typeof ConnectionManager;
     abstract class ConnectionManagerPrivate {
         static $gtype: GObject.GType<ConnectionManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BasicManagementClass = typeof BasicManagement;
     abstract class BasicManagementPrivate {
         static $gtype: GObject.GType<BasicManagementPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DescriptionFileClass = typeof DescriptionFile;
     abstract class DescriptionFilePrivate {
         static $gtype: GObject.GType<DescriptionFilePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DLNAProfileClass = typeof DLNAProfile;
     abstract class DLNAProfilePrivate {
         static $gtype: GObject.GType<DLNAProfilePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EnergyManagementClass = typeof EnergyManagement;
     abstract class EnergyManagementPrivate {
         static $gtype: GObject.GType<EnergyManagementPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RootDeviceClass = typeof RootDevice;
     abstract class RootDevicePrivate {
         static $gtype: GObject.GType<RootDevicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RootDeviceFactoryClass = typeof RootDeviceFactory;
     abstract class RootDeviceFactoryPrivate {
         static $gtype: GObject.GType<RootDeviceFactoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LogHandlerClass = typeof LogHandler;
     abstract class LogHandlerPrivate {
         static $gtype: GObject.GType<LogHandlerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MetaConfigClass = typeof MetaConfig;
     abstract class MetaConfigPrivate {
         static $gtype: GObject.GType<MetaConfigPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PluginLoaderClass = typeof PluginLoader;
     abstract class PluginLoaderPrivate {
         static $gtype: GObject.GType<PluginLoaderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RecursiveModuleLoaderClass = typeof RecursiveModuleLoader;
     abstract class RecursiveModuleLoaderPrivate {
         static $gtype: GObject.GType<RecursiveModuleLoaderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PluginClass = typeof Plugin;
     abstract class PluginPrivate {
         static $gtype: GObject.GType<PluginPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ResourceInfoClass = typeof ResourceInfo;
     abstract class ResourceInfoPrivate {
         static $gtype: GObject.GType<ResourceInfoPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaDeviceClass = typeof MediaDevice;
     abstract class MediaDevicePrivate {
         static $gtype: GObject.GType<MediaDevicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BaseConfigurationClass = typeof BaseConfiguration;
     abstract class BaseConfigurationPrivate {
         static $gtype: GObject.GType<BaseConfigurationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CmdlineConfigClass = typeof CmdlineConfig;
     abstract class CmdlineConfigPrivate {
         static $gtype: GObject.GType<CmdlineConfigPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EnvironmentConfigClass = typeof EnvironmentConfig;
     abstract class EnvironmentConfigPrivate {
         static $gtype: GObject.GType<EnvironmentConfigPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UserConfigClass = typeof UserConfig;
     abstract class UserConfigPrivate {
         static $gtype: GObject.GType<UserConfigPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type V1HacksClass = typeof V1Hacks;
     abstract class V1HacksPrivate {
         static $gtype: GObject.GType<V1HacksPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IconInfoClass = typeof IconInfo;
     abstract class IconInfoPrivate {
         static $gtype: GObject.GType<IconInfoPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type XMLUtilsClass = typeof XMLUtils;
     abstract class XMLUtilsPrivate {
         static $gtype: GObject.GType<XMLUtilsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type XMLUtilsIteratorClass = typeof XMLUtilsIterator;
     abstract class XMLUtilsIteratorPrivate {
         static $gtype: GObject.GType<XMLUtilsIteratorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type XMLUtilsChildIteratorClass = typeof XMLUtilsChildIterator;
     abstract class XMLUtilsChildIteratorPrivate {
         static $gtype: GObject.GType<XMLUtilsChildIteratorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PluginInformationClass = typeof PluginInformation;
     abstract class PluginInformationPrivate {
         static $gtype: GObject.GType<PluginInformationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type Dlna150HacksClass = typeof Dlna150Hacks;
     abstract class Dlna150HacksPrivate {
         static $gtype: GObject.GType<Dlna150HacksPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DBusInterfaceIface = typeof DBusInterface;

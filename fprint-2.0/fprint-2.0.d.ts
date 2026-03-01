@@ -85,7 +85,6 @@ export namespace FPrint {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -2816,10 +2815,6 @@ export namespace FPrint {
     type ImageDeviceClass = typeof ImageDevice;
     abstract class Minutia {
         static $gtype: GObject.GType<Minutia>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 

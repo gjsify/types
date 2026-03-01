@@ -1242,7 +1242,8 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 MetaContainer.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.Initable.ConstructorProps {
@@ -2793,9 +2794,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Source.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {}
+            extends Source.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -3307,9 +3306,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends AudioSource.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {}
+            extends AudioSource.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -3836,9 +3833,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Track.ConstructorProps,
-                MetaContainer.ConstructorProps,
-                Gst.ChildProxy.ConstructorProps {}
+            extends Track.ConstructorProps, MetaContainer.ConstructorProps, Gst.ChildProxy.ConstructorProps {}
     }
 
     /**
@@ -4738,9 +4733,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Transition.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {}
+            extends Transition.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     class AudioTransition extends Transition implements Extractable, MetaContainer {
@@ -5246,9 +5239,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends AudioSource.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {
+            extends AudioSource.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
             uri: string;
         }
     }
@@ -5765,9 +5756,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Operation.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {}
+            extends Operation.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -6374,9 +6363,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends OperationClip.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {}
+            extends OperationClip.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -6892,9 +6879,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends OperationClip.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {}
+            extends OperationClip.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     abstract class BaseTransitionClip extends OperationClip implements Extractable, MetaContainer {
@@ -7502,9 +7487,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Container.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {
+            extends Container.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
             duration_limit: number;
             durationLimit: number;
             layer: Layer;
@@ -8591,7 +8574,8 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Asset.ConstructorProps,
+            extends
+                Asset.ConstructorProps,
                 MetaContainer.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.Initable.ConstructorProps {
@@ -9924,9 +9908,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends TimelineElement.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {
+            extends TimelineElement.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
             height: number;
         }
     }
@@ -11110,9 +11092,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends BaseEffect.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {
+            extends BaseEffect.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
             bin_description: string;
             binDescription: string;
         }
@@ -11655,7 +11635,8 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends TrackElementAsset.ConstructorProps,
+            extends
+                TrackElementAsset.ConstructorProps,
                 MetaContainer.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.Initable.ConstructorProps {}
@@ -12365,9 +12346,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends BaseEffectClip.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {
+            extends BaseEffectClip.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
             audio_bin_description: string;
             audioBinDescription: string;
             video_bin_description: string;
@@ -13090,9 +13069,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Container.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {
+            extends Container.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
             duration: number;
             in_point: number;
             inPoint: number;
@@ -13692,9 +13669,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends VideoSource.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {
+            extends VideoSource.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
             uri: string;
         }
     }
@@ -14202,7 +14177,8 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.InitiallyUnowned.ConstructorProps,
+            extends
+                GObject.InitiallyUnowned.ConstructorProps,
                 Extractable.ConstructorProps,
                 MetaContainer.ConstructorProps {
             auto_transition: boolean;
@@ -16307,9 +16283,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends VideoSource.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {
+            extends VideoSource.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
             uri: string;
         }
     }
@@ -16840,9 +16814,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends TrackElement.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {}
+            extends TrackElement.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -17347,9 +17319,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clip.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {}
+            extends Clip.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -17854,9 +17824,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends OperationClip.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {}
+            extends OperationClip.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -18366,7 +18334,8 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gst.Pipeline.ConstructorProps,
+            extends
+                Gst.Pipeline.ConstructorProps,
                 Gst.ChildProxy.ConstructorProps,
                 GstVideo.VideoOverlay.ConstructorProps {
             audio_filter: Gst.Element;
@@ -19260,7 +19229,8 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Asset.ConstructorProps,
+            extends
+                Asset.ConstructorProps,
                 MetaContainer.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.Initable.ConstructorProps {
@@ -20569,9 +20539,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends TrackElement.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {}
+            extends TrackElement.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -21090,9 +21058,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clip.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {}
+            extends Clip.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -21598,7 +21564,8 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends ClipAsset.ConstructorProps,
+            extends
+                ClipAsset.ConstructorProps,
                 MetaContainer.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.Initable.ConstructorProps {}
@@ -22309,9 +22276,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends SourceClip.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {
+            extends SourceClip.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
             freq: number;
             mute: boolean;
             volume: number;
@@ -22903,9 +22868,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Operation.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {}
+            extends Operation.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     class TextOverlay extends Operation implements Extractable, MetaContainer {
@@ -23490,9 +23453,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends OverlayClip.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {
+            extends OverlayClip.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
             color: number;
             font_desc: string;
             fontDesc: string;
@@ -24129,7 +24090,8 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gst.Bin.ConstructorProps,
+            extends
+                Gst.Bin.ConstructorProps,
                 Extractable.ConstructorProps,
                 MetaContainer.ConstructorProps,
                 Gst.ChildProxy.ConstructorProps {
@@ -25581,7 +25543,8 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.InitiallyUnowned.ConstructorProps,
+            extends
+                GObject.InitiallyUnowned.ConstructorProps,
                 Extractable.ConstructorProps,
                 MetaContainer.ConstructorProps {
             duration: number;
@@ -27337,9 +27300,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends SourceClip.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {
+            extends SourceClip.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
             background: number;
             color: number;
             font_desc: string;
@@ -27989,9 +27950,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends VideoSource.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {}
+            extends VideoSource.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -28581,9 +28540,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gst.Bin.ConstructorProps,
-                MetaContainer.ConstructorProps,
-                Gst.ChildProxy.ConstructorProps {
+            extends Gst.Bin.ConstructorProps, MetaContainer.ConstructorProps, Gst.ChildProxy.ConstructorProps {
             caps: Gst.Caps;
             duration: number;
             id: string;
@@ -29782,9 +29739,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends TimelineElement.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {
+            extends TimelineElement.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
             active: boolean;
             auto_clamp_control_sources: boolean;
             autoClampControlSources: boolean;
@@ -31087,7 +31042,8 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Asset.ConstructorProps,
+            extends
+                Asset.ConstructorProps,
                 MetaContainer.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.Initable.ConstructorProps {
@@ -32284,9 +32240,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Operation.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {}
+            extends Operation.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -32792,9 +32746,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends BaseTransitionClip.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {
+            extends BaseTransitionClip.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
             vtype: VideoStandardTransitionType;
         }
     }
@@ -33327,9 +33279,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends SourceClip.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {
+            extends SourceClip.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
             is_image: boolean;
             isImage: boolean;
             mute: boolean;
@@ -33889,7 +33839,8 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends SourceClipAsset.ConstructorProps,
+            extends
+                SourceClipAsset.ConstructorProps,
                 MetaContainer.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.Initable.ConstructorProps {
@@ -34691,7 +34642,8 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends TrackElementAsset.ConstructorProps,
+            extends
+                TrackElementAsset.ConstructorProps,
                 MetaContainer.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.Initable.ConstructorProps {}
@@ -35424,9 +35376,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Source.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {}
+            extends Source.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -35946,9 +35896,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends VideoSource.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {}
+            extends VideoSource.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -36465,9 +36413,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Track.ConstructorProps,
-                MetaContainer.ConstructorProps,
-                Gst.ChildProxy.ConstructorProps {}
+            extends Track.ConstructorProps, MetaContainer.ConstructorProps, Gst.ChildProxy.ConstructorProps {}
     }
 
     /**
@@ -37369,9 +37315,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Transition.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {
+            extends Transition.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
             border: number;
             invert: boolean;
             transition_type: VideoStandardTransitionType;
@@ -37941,9 +37885,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends VideoSource.ConstructorProps,
-                Extractable.ConstructorProps,
-                MetaContainer.ConstructorProps {
+            extends VideoSource.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
             uri: string;
         }
     }
@@ -38487,173 +38429,97 @@ export namespace GES {
     type AssetClass = typeof Asset;
     abstract class AssetPrivate {
         static $gtype: GObject.GType<AssetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AudioSourceClass = typeof AudioSource;
     abstract class AudioSourcePrivate {
         static $gtype: GObject.GType<AudioSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AudioTestSourceClass = typeof AudioTestSource;
     abstract class AudioTestSourcePrivate {
         static $gtype: GObject.GType<AudioTestSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AudioTrackClass = typeof AudioTrack;
     abstract class AudioTrackPrivate {
         static $gtype: GObject.GType<AudioTrackPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AudioTransitionClass = typeof AudioTransition;
     abstract class AudioTransitionPrivate {
         static $gtype: GObject.GType<AudioTransitionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AudioUriSourceClass = typeof AudioUriSource;
     abstract class AudioUriSourcePrivate {
         static $gtype: GObject.GType<AudioUriSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BaseEffectClass = typeof BaseEffect;
     type BaseEffectClipClass = typeof BaseEffectClip;
     abstract class BaseEffectClipPrivate {
         static $gtype: GObject.GType<BaseEffectClipPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class BaseEffectPrivate {
         static $gtype: GObject.GType<BaseEffectPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BaseTransitionClipClass = typeof BaseTransitionClip;
     abstract class BaseTransitionClipPrivate {
         static $gtype: GObject.GType<BaseTransitionClipPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BaseXmlFormatterClass = typeof BaseXmlFormatter;
     abstract class BaseXmlFormatterPrivate {
         static $gtype: GObject.GType<BaseXmlFormatterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ClipAssetClass = typeof ClipAsset;
     abstract class ClipAssetPrivate {
         static $gtype: GObject.GType<ClipAssetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ClipClass = typeof Clip;
     abstract class ClipPrivate {
         static $gtype: GObject.GType<ClipPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CommandLineFormatterClass = typeof CommandLineFormatter;
     abstract class CommandLineFormatterPrivate {
         static $gtype: GObject.GType<CommandLineFormatterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ContainerClass = typeof Container;
     abstract class ContainerPrivate {
         static $gtype: GObject.GType<ContainerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DiscovererManagerClass = typeof DiscovererManager;
     abstract class DiscovererManagerPrivate {
         static $gtype: GObject.GType<DiscovererManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EffectAssetClass = typeof EffectAsset;
     abstract class EffectAssetPrivate {
         static $gtype: GObject.GType<EffectAssetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EffectClass = typeof Effect;
     type EffectClipClass = typeof EffectClip;
     abstract class EffectClipPrivate {
         static $gtype: GObject.GType<EffectClipPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class EffectPrivate {
         static $gtype: GObject.GType<EffectPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExtractableInterface = typeof Extractable;
     type FormatterClass = typeof Formatter;
     abstract class FormatterPrivate {
         static $gtype: GObject.GType<FormatterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -38673,37 +38539,21 @@ export namespace GES {
         width: number;
         zorder: number;
         operator: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GroupClass = typeof Group;
     abstract class GroupPrivate {
         static $gtype: GObject.GType<GroupPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ImageSourceClass = typeof ImageSource;
     abstract class ImageSourcePrivate {
         static $gtype: GObject.GType<ImageSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LayerClass = typeof Layer;
     abstract class LayerPrivate {
         static $gtype: GObject.GType<LayerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MarkerClass = typeof Marker;
@@ -38712,64 +38562,36 @@ export namespace GES {
     type MultiFileSourceClass = typeof MultiFileSource;
     abstract class MultiFileSourcePrivate {
         static $gtype: GObject.GType<MultiFileSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OperationClass = typeof Operation;
     type OperationClipClass = typeof OperationClip;
     abstract class OperationClipPrivate {
         static $gtype: GObject.GType<OperationClipPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class OperationPrivate {
         static $gtype: GObject.GType<OperationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OverlayClipClass = typeof OverlayClip;
     abstract class OverlayClipPrivate {
         static $gtype: GObject.GType<OverlayClipPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PipelineClass = typeof Pipeline;
     abstract class PipelinePrivate {
         static $gtype: GObject.GType<PipelinePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PitiviFormatterClass = typeof PitiviFormatter;
     abstract class PitiviFormatterPrivate {
         static $gtype: GObject.GType<PitiviFormatterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ProjectClass = typeof Project;
     abstract class ProjectPrivate {
         static $gtype: GObject.GType<ProjectPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceClass = typeof Source;
@@ -38777,215 +38599,119 @@ export namespace GES {
     type SourceClipClass = typeof SourceClip;
     abstract class SourceClipPrivate {
         static $gtype: GObject.GType<SourceClipPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class SourcePrivate {
         static $gtype: GObject.GType<SourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TestClipClass = typeof TestClip;
     abstract class TestClipPrivate {
         static $gtype: GObject.GType<TestClipPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TextOverlayClass = typeof TextOverlay;
     type TextOverlayClipClass = typeof TextOverlayClip;
     abstract class TextOverlayClipPrivate {
         static $gtype: GObject.GType<TextOverlayClipPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class TextOverlayPrivate {
         static $gtype: GObject.GType<TextOverlayPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TimelineClass = typeof Timeline;
     type TimelineElementClass = typeof TimelineElement;
     abstract class TimelineElementPrivate {
         static $gtype: GObject.GType<TimelineElementPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class TimelinePrivate {
         static $gtype: GObject.GType<TimelinePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TitleClipClass = typeof TitleClip;
     abstract class TitleClipPrivate {
         static $gtype: GObject.GType<TitleClipPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TitleSourceClass = typeof TitleSource;
     abstract class TitleSourcePrivate {
         static $gtype: GObject.GType<TitleSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TrackClass = typeof Track;
     type TrackElementAssetClass = typeof TrackElementAsset;
     abstract class TrackElementAssetPrivate {
         static $gtype: GObject.GType<TrackElementAssetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TrackElementClass = typeof TrackElement;
     abstract class TrackElementPrivate {
         static $gtype: GObject.GType<TrackElementPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class TrackPrivate {
         static $gtype: GObject.GType<TrackPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TransitionClass = typeof Transition;
     type TransitionClipClass = typeof TransitionClip;
     abstract class TransitionClipPrivate {
         static $gtype: GObject.GType<TransitionClipPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class TransitionPrivate {
         static $gtype: GObject.GType<TransitionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UriClipAssetClass = typeof UriClipAsset;
     abstract class UriClipAssetPrivate {
         static $gtype: GObject.GType<UriClipAssetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UriClipClass = typeof UriClip;
     abstract class UriClipPrivate {
         static $gtype: GObject.GType<UriClipPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class UriSource {
         static $gtype: GObject.GType<UriSource>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UriSourceAssetClass = typeof UriSourceAsset;
     abstract class UriSourceAssetPrivate {
         static $gtype: GObject.GType<UriSourceAssetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type VideoSourceClass = typeof VideoSource;
     abstract class VideoSourcePrivate {
         static $gtype: GObject.GType<VideoSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type VideoTestSourceClass = typeof VideoTestSource;
     abstract class VideoTestSourcePrivate {
         static $gtype: GObject.GType<VideoTestSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type VideoTrackClass = typeof VideoTrack;
     abstract class VideoTrackPrivate {
         static $gtype: GObject.GType<VideoTrackPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type VideoTransitionClass = typeof VideoTransition;
     abstract class VideoTransitionPrivate {
         static $gtype: GObject.GType<VideoTransitionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type VideoUriSourceClass = typeof VideoUriSource;
     abstract class VideoUriSourcePrivate {
         static $gtype: GObject.GType<VideoUriSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type XmlFormatterClass = typeof XmlFormatter;
     abstract class XmlFormatterPrivate {
         static $gtype: GObject.GType<XmlFormatterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Extractable {

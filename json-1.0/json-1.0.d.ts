@@ -107,7 +107,6 @@ export namespace Json {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -132,7 +131,6 @@ export namespace Json {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -183,7 +181,6 @@ export namespace Json {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1813,7 +1810,6 @@ export namespace Json {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Array;
 
@@ -2030,19 +2026,11 @@ export namespace Json {
     type BuilderClass = typeof Builder;
     abstract class BuilderPrivate {
         static $gtype: GObject.GType<BuilderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GeneratorClass = typeof Generator;
     abstract class GeneratorPrivate {
         static $gtype: GObject.GType<GeneratorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2086,7 +2074,6 @@ export namespace Json {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static alloc(): Node;
 
@@ -2499,7 +2486,6 @@ export namespace Json {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Object;
 
@@ -2832,7 +2818,6 @@ export namespace Json {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2919,20 +2904,12 @@ export namespace Json {
     type ParserClass = typeof Parser;
     abstract class ParserPrivate {
         static $gtype: GObject.GType<ParserPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PathClass = typeof Path;
     type ReaderClass = typeof Reader;
     abstract class ReaderPrivate {
         static $gtype: GObject.GType<ReaderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SerializableIface = typeof Serializable;

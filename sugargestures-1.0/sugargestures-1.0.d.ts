@@ -529,10 +529,6 @@ export namespace SugarGestures {
         // Fields
 
         widget: Gtk.Widget;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LongPressControllerClass = typeof LongPressController;
@@ -552,10 +548,6 @@ export namespace SugarGestures {
         delay: number;
         cancelled: number;
         triggered: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RotateControllerClass = typeof RotateController;
@@ -573,7 +565,6 @@ export namespace SugarGestures {
                 initial_angle: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type SwipeControllerClass = typeof SwipeController;
@@ -587,10 +578,6 @@ export namespace SugarGestures {
         swiping: number;
         swiped: number;
         directions: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TouchControllerClass = typeof TouchController;
@@ -601,10 +588,6 @@ export namespace SugarGestures {
 
         min_touches: number;
         max_touches: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ZoomControllerClass = typeof ZoomController;
@@ -622,7 +605,6 @@ export namespace SugarGestures {
                 initial_distance: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**

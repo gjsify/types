@@ -434,7 +434,6 @@ export namespace Poppler {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -673,10 +672,6 @@ export namespace Poppler {
          * No part available
          */
         static NONE: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1162,10 +1157,6 @@ export namespace Poppler {
         static '90': number;
         static '180': number;
         static '270': number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     export namespace StructureInlineAlign {
@@ -5111,10 +5102,6 @@ export namespace Poppler {
 
         type: ActionType;
         title: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5127,10 +5114,6 @@ export namespace Poppler {
 
         type: ActionType;
         title: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5144,10 +5127,6 @@ export namespace Poppler {
         type: ActionType;
         title: string;
         file_name: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5161,10 +5140,6 @@ export namespace Poppler {
         type: ActionType;
         title: string;
         script: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5179,10 +5154,6 @@ export namespace Poppler {
         title: string;
         file_name: string;
         params: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5195,10 +5166,6 @@ export namespace Poppler {
 
         action: ActionLayerAction;
         layers: Layer[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5213,10 +5180,6 @@ export namespace Poppler {
         title: string;
         operation: ActionMovieOperation;
         movie: Movie;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5230,10 +5193,6 @@ export namespace Poppler {
         type: ActionType;
         title: string;
         named_dest: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5246,10 +5205,6 @@ export namespace Poppler {
 
         type: ActionType;
         title: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5264,10 +5219,6 @@ export namespace Poppler {
         title: string;
         op: number;
         media: Media;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5286,10 +5237,6 @@ export namespace Poppler {
         title: string;
         fields: string[];
         exclude: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5303,10 +5250,6 @@ export namespace Poppler {
         type: ActionType;
         title: string;
         uri: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5340,7 +5283,6 @@ export namespace Poppler {
                 y3: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): AnnotCalloutLine;
 
@@ -5378,7 +5320,6 @@ export namespace Poppler {
                 area: Rectangle;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): AnnotMapping;
 
@@ -5407,7 +5348,6 @@ export namespace Poppler {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): CertificateInfo;
 
@@ -5493,7 +5433,6 @@ export namespace Poppler {
                 blue: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): Color;
 
@@ -5540,10 +5479,6 @@ export namespace Poppler {
         change_top: number;
         change_zoom: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -5579,7 +5514,6 @@ export namespace Poppler {
         // Constructors
 
         constructor(font_name: string);
-        _init(...args: any[]): void;
 
         static ['new'](font_name: string): FontDescription;
 
@@ -5601,10 +5535,6 @@ export namespace Poppler {
      */
     abstract class FontsIter {
         static $gtype: GObject.GType<FontsIter>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -5687,7 +5617,6 @@ export namespace Poppler {
                 area: Rectangle;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): FormFieldMapping;
 
@@ -5726,7 +5655,6 @@ export namespace Poppler {
                 image_id: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): ImageMapping;
 
@@ -5754,7 +5682,6 @@ export namespace Poppler {
         // Constructors
 
         constructor(document: Document);
-        _init(...args: any[]): void;
 
         static ['new'](document: Document): IndexIter;
 
@@ -5808,7 +5735,6 @@ export namespace Poppler {
         // Constructors
 
         constructor(document: Document);
-        _init(...args: any[]): void;
 
         static ['new'](document: Document): LayersIter;
 
@@ -5869,7 +5795,6 @@ export namespace Poppler {
                 area: Rectangle;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): LinkMapping;
 
@@ -5905,7 +5830,6 @@ export namespace Poppler {
                 end_page: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5942,7 +5866,6 @@ export namespace Poppler {
                 duration_real: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): PageTransition;
 
@@ -5965,7 +5888,6 @@ export namespace Poppler {
         // Constructors
 
         constructor(points: Point, n_points: number);
-        _init(...args: any[]): void;
 
         static new_from_array(points: Point, n_points: number): Path;
 
@@ -6008,7 +5930,6 @@ export namespace Poppler {
                 y: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): Point;
 
@@ -6054,7 +5975,6 @@ export namespace Poppler {
                 p4: Point;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): Quadrilateral;
 
@@ -6097,7 +6017,6 @@ export namespace Poppler {
                 y2: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): Rectangle;
 
@@ -6158,10 +6077,6 @@ export namespace Poppler {
     abstract class SignatureInfo {
         static $gtype: GObject.GType<SignatureInfo>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -6213,7 +6128,6 @@ export namespace Poppler {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): SigningData;
 
@@ -6429,7 +6343,6 @@ export namespace Poppler {
         // Constructors
 
         constructor(poppler_document: Document);
-        _init(...args: any[]): void;
 
         static ['new'](poppler_document: Document): StructureElementIter;
 
@@ -6493,7 +6406,6 @@ export namespace Poppler {
                 end_index: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): TextAttributes;
 
@@ -6515,10 +6427,6 @@ export namespace Poppler {
      */
     abstract class TextSpan {
         static $gtype: GObject.GType<TextSpan>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -6573,10 +6481,6 @@ export namespace Poppler {
         // Fields
 
         type: ActionType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 

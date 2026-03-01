@@ -50,7 +50,6 @@ export namespace AppStreamCompose {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -73,7 +72,6 @@ export namespace AppStreamCompose {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -129,7 +127,6 @@ export namespace AppStreamCompose {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1489,7 +1486,6 @@ export namespace AppStreamCompose {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Methods
 

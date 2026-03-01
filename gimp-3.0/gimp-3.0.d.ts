@@ -537,7 +537,6 @@ export namespace Gimp {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -16303,8 +16302,7 @@ export namespace Gimp {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends GObject.Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {}
+            extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     /**
@@ -23042,7 +23040,6 @@ export namespace Gimp {
                 static_data: boolean;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](data: Uint8Array | string, static_data: boolean): Array;
 
@@ -23062,10 +23059,6 @@ export namespace Gimp {
     type ColorTransformClass = typeof ColorTransform;
     abstract class Config {
         static $gtype: GObject.GType<Config>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -23259,7 +23252,6 @@ export namespace Gimp {
         // Constructors
 
         constructor(fd: number);
-        _init(...args: any[]): void;
 
         static new_from_fd(fd: number): ConfigWriter;
 
@@ -23381,7 +23373,6 @@ export namespace Gimp {
                 value_help: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type ExportOptionsClass = typeof ExportOptions;
@@ -23409,7 +23400,6 @@ export namespace Gimp {
                 value_help: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type FontClass = typeof Font;
@@ -23439,7 +23429,6 @@ export namespace Gimp {
                 a: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -23474,7 +23463,6 @@ export namespace Gimp {
                 coeff: number[];
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -23521,7 +23509,6 @@ export namespace Gimp {
                 coeff: number[];
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -23640,7 +23627,6 @@ export namespace Gimp {
                 coeff: number[];
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -23694,7 +23680,6 @@ export namespace Gimp {
                 date: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class ObjectArray {
@@ -23710,7 +23695,6 @@ export namespace Gimp {
         // Constructors
 
         constructor(object_type: GObject.GType, data: GObject.Object[], static_data: boolean);
-        _init(...args: any[]): void;
 
         static ['new'](object_type: GObject.GType, data: GObject.Object[], static_data: boolean): ObjectArray;
 
@@ -23728,26 +23712,14 @@ export namespace Gimp {
     type PaletteClass = typeof Palette;
     class ParamSpecArray {
         static $gtype: GObject.GType<ParamSpecArray>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecBrush {
         static $gtype: GObject.GType<ParamSpecBrush>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecChannel {
         static $gtype: GObject.GType<ParamSpecChannel>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecChoice {
@@ -23757,18 +23729,10 @@ export namespace Gimp {
 
         default_value: string;
         choice: Choice;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ParamSpecColor {
         static $gtype: GObject.GType<ParamSpecColor>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -23798,18 +23762,10 @@ export namespace Gimp {
         // Fields
 
         none_ok: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecDrawable {
         static $gtype: GObject.GType<ParamSpecDrawable>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecExportOptions {
@@ -23818,42 +23774,22 @@ export namespace Gimp {
         // Fields
 
         capabilities: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecFloatArray {
         static $gtype: GObject.GType<ParamSpecFloatArray>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecFont {
         static $gtype: GObject.GType<ParamSpecFont>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecGradient {
         static $gtype: GObject.GType<ParamSpecGradient>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecGroupLayer {
         static $gtype: GObject.GType<ParamSpecGroupLayer>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecImage {
@@ -23862,18 +23798,10 @@ export namespace Gimp {
         // Fields
 
         none_ok: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecInt32Array {
         static $gtype: GObject.GType<ParamSpecInt32Array>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecItem {
@@ -23882,34 +23810,18 @@ export namespace Gimp {
         // Fields
 
         none_ok: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecLayer {
         static $gtype: GObject.GType<ParamSpecLayer>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecLayerMask {
         static $gtype: GObject.GType<ParamSpecLayerMask>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecObject {
         static $gtype: GObject.GType<ParamSpecObject>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -23956,50 +23868,26 @@ export namespace Gimp {
         // Fields
 
         object_type: GObject.GType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecObjectClass {
         static $gtype: GObject.GType<ParamSpecObjectClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecPalette {
         static $gtype: GObject.GType<ParamSpecPalette>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ParamSpecParasite {
         static $gtype: GObject.GType<ParamSpecParasite>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecPath {
         static $gtype: GObject.GType<ParamSpecPath>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecPattern {
         static $gtype: GObject.GType<ParamSpecPattern>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecResource {
@@ -24009,26 +23897,14 @@ export namespace Gimp {
 
         none_ok: boolean;
         default_to_context: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecSelection {
         static $gtype: GObject.GType<ParamSpecSelection>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecTextLayer {
         static $gtype: GObject.GType<ParamSpecTextLayer>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ParamSpecUnit {
@@ -24039,10 +23915,6 @@ export namespace Gimp {
         allow_pixel: boolean;
         allow_percent: boolean;
         default_value: Unit;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -24056,10 +23928,6 @@ export namespace Gimp {
 
         element_spec: GObject.ParamSpec;
         fixed_n_elements: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -24085,7 +23953,6 @@ export namespace Gimp {
                 data: any[];
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](name: string, flags: number, data?: number[] | null): Parasite;
 
@@ -24168,7 +24035,6 @@ export namespace Gimp {
                 selection: string[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type PlugInClass = typeof PlugIn;
@@ -24185,10 +24051,6 @@ export namespace Gimp {
         set_value: ProgressVtableSetValueFunc;
         pulse: ProgressVtablePulseFunc;
         get_window_handle: ProgressVtableGetWindowFunc;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -24214,7 +24076,6 @@ export namespace Gimp {
                 a: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -24293,7 +24154,6 @@ export namespace Gimp {
         // Constructors
 
         constructor(file: Gio.File);
-        _init(...args: any[]): void;
 
         static new_file(file: Gio.File): Scanner;
 
@@ -24342,7 +24202,6 @@ export namespace Gimp {
         // Constructors
 
         constructor(n_prealloced: number);
-        _init(...args: any[]): void;
 
         static ['new'](n_prealloced: number): ValueArray;
 
@@ -24435,7 +24294,6 @@ export namespace Gimp {
                 y: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](x: number, y: number): Vector2;
 
@@ -24602,7 +24460,6 @@ export namespace Gimp {
                 z: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](x: number, y: number, z: number): Vector3;
 
@@ -24771,7 +24628,6 @@ export namespace Gimp {
                 w: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class VectorLoadData {
@@ -24789,10 +24645,6 @@ export namespace Gimp {
         pixel_density: number;
         density_unit: Unit;
         exact_density: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type VectorLoadProcedureClass = typeof VectorLoadProcedure;

@@ -44,7 +44,6 @@ export namespace GstGL {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -105,7 +104,6 @@ export namespace GstGL {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -242,7 +240,6 @@ export namespace GstGL {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -328,10 +325,6 @@ export namespace GstGL {
          * version 450 (valid for compatibility/core desktop GL)
          */
         static '450': number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -446,7 +439,6 @@ export namespace GstGL {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -3738,10 +3730,6 @@ export namespace GstGL {
         wrapped_data: any;
         gl_handle: any;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         copy(): GLAllocationParams;
@@ -3768,10 +3756,6 @@ export namespace GstGL {
      */
     class GLAsyncDebug {
         static $gtype: GObject.GType<GLAsyncDebug>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -3809,10 +3793,6 @@ export namespace GstGL {
     type GLBaseFilterClass = typeof GLBaseFilter;
     abstract class GLBaseFilterPrivate {
         static $gtype: GObject.GType<GLBaseFilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3831,10 +3811,6 @@ export namespace GstGL {
         map_count: number;
         gl_map_count: number;
         data: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -3881,19 +3857,11 @@ export namespace GstGL {
     type GLBaseMixerPadClass = typeof GLBaseMixerPad;
     abstract class GLBaseMixerPrivate {
         static $gtype: GObject.GType<GLBaseMixerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GLBaseSrcClass = typeof GLBaseSrc;
     abstract class GLBaseSrcPrivate {
         static $gtype: GObject.GType<GLBaseSrcPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3910,10 +3878,6 @@ export namespace GstGL {
         id: number;
         target: number;
         usage_hints: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -3941,7 +3905,6 @@ export namespace GstGL {
             gl_target: number,
             gl_usage: number,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             context: GLContext,
@@ -3956,47 +3919,27 @@ export namespace GstGL {
     type GLBufferPoolClass = typeof GLBufferPool;
     abstract class GLBufferPoolPrivate {
         static $gtype: GObject.GType<GLBufferPoolPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GLColorConvertClass = typeof GLColorConvert;
     abstract class GLColorConvertPrivate {
         static $gtype: GObject.GType<GLColorConvertPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GLContextClass = typeof GLContext;
     abstract class GLContextPrivate {
         static $gtype: GObject.GType<GLContextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GLDisplayClass = typeof GLDisplay;
     abstract class GLDisplayPrivate {
         static $gtype: GObject.GType<GLDisplayPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GLFilterClass = typeof GLFilter;
     type GLFramebufferClass = typeof GLFramebuffer;
     abstract class GLFramebufferPrivate {
         static $gtype: GObject.GType<GLFramebufferPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4007,10 +3950,6 @@ export namespace GstGL {
      */
     abstract class GLFuncs {
         static $gtype: GObject.GType<GLFuncs>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4042,10 +3981,6 @@ export namespace GstGL {
         texture_wrapped: boolean;
         unpack_length: number;
         tex_width: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -4153,10 +4088,6 @@ export namespace GstGL {
     class GLMemoryPBO {
         static $gtype: GObject.GType<GLMemoryPBO>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         static init_once(): void;
@@ -4210,10 +4141,6 @@ export namespace GstGL {
     type GLMixerPadClass = typeof GLMixerPad;
     abstract class GLMixerPrivate {
         static $gtype: GObject.GType<GLMixerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GLOverlayCompositorClass = typeof GLOverlayCompositor;
@@ -4223,10 +4150,6 @@ export namespace GstGL {
      */
     class GLQuery {
         static $gtype: GObject.GType<GLQuery>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -4288,10 +4211,6 @@ export namespace GstGL {
         height: number;
         renderbuffer_wrapped: boolean;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -4329,7 +4248,6 @@ export namespace GstGL {
             width: number,
             height: number,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             context: GLContext,
@@ -4355,19 +4273,11 @@ export namespace GstGL {
     type GLSLStageClass = typeof GLSLStage;
     abstract class GLSLStagePrivate {
         static $gtype: GObject.GType<GLSLStagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GLShaderClass = typeof GLShader;
     abstract class GLShaderPrivate {
         static $gtype: GObject.GType<GLShaderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4381,10 +4291,6 @@ export namespace GstGL {
 
         context: GLContext;
         data: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -4415,10 +4321,6 @@ export namespace GstGL {
     type GLUploadClass = typeof GLUpload;
     abstract class GLUploadPrivate {
         static $gtype: GObject.GType<GLUploadPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class GLVideoAllocationParams {
@@ -4442,7 +4344,6 @@ export namespace GstGL {
             target: GLTextureTarget,
             tex_format: GLFormat,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             context: GLContext,
@@ -4511,19 +4412,11 @@ export namespace GstGL {
     type GLViewConvertClass = typeof GLViewConvert;
     abstract class GLViewConvertPrivate {
         static $gtype: GObject.GType<GLViewConvertPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GLWindowClass = typeof GLWindow;
     abstract class GLWindowPrivate {
         static $gtype: GObject.GType<GLWindowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

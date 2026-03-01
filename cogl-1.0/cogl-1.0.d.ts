@@ -2628,7 +2628,6 @@ export namespace Cogl {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Color;
 
@@ -2855,18 +2854,10 @@ export namespace Cogl {
 
     abstract class Euler {
         static $gtype: GObject.GType<Euler>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class Material {
         static $gtype: GObject.GType<Material>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -3386,10 +3377,6 @@ export namespace Cogl {
     abstract class MaterialLayer {
         static $gtype: GObject.GType<MaterialLayer>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -3513,7 +3500,6 @@ export namespace Cogl {
                 ww: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -3730,10 +3716,6 @@ export namespace Cogl {
 
     abstract class Quaternion {
         static $gtype: GObject.GType<Quaternion>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3749,10 +3731,6 @@ export namespace Cogl {
         z: number;
         tx: number;
         ty: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class _ColorSizeCheck {
@@ -3769,7 +3747,6 @@ export namespace Cogl {
                 compile_time_assert_CoglColor_size: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class _MatrixSizeCheck {
@@ -3786,7 +3763,6 @@ export namespace Cogl {
                 compile_time_assert_CoglMatrix_size: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class _TextureVertexSizeCheck {
@@ -3803,7 +3779,6 @@ export namespace Cogl {
                 compile_time_assert_CoglTextureVertex_size: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     namespace Texture {

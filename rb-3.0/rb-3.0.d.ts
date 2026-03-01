@@ -119,7 +119,6 @@ export namespace RB {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -446,7 +445,6 @@ export namespace RB {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -521,7 +519,6 @@ export namespace RB {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -595,7 +592,6 @@ export namespace RB {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace PodcastParseStatus {
@@ -839,7 +835,6 @@ export namespace RB {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -863,7 +858,6 @@ export namespace RB {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1773,9 +1767,7 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Application.ConstructorProps,
-                Gio.ActionGroup.ConstructorProps,
-                Gio.ActionMap.ConstructorProps {
+            extends Gtk.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {
             shell: Shell;
         }
     }
@@ -2477,7 +2469,8 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends PlaylistSource.ConstructorProps,
+            extends
+                PlaylistSource.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {}
@@ -3040,7 +3033,8 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Source.ConstructorProps,
+            extends
+                Source.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -3608,7 +3602,8 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Grid.ConstructorProps,
+            extends
+                Gtk.Grid.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -4439,7 +4434,8 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -5154,7 +5150,8 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends DisplayPage.ConstructorProps,
+            extends
+                DisplayPage.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -5691,7 +5688,8 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.TreeModelFilter.ConstructorProps,
+            extends
+                Gtk.TreeModelFilter.ConstructorProps,
                 Gtk.TreeDragSource.ConstructorProps,
                 Gtk.TreeModel.ConstructorProps {}
     }
@@ -6739,7 +6737,8 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Grid.ConstructorProps,
+            extends
+                Gtk.Grid.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -7419,7 +7418,8 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -8379,9 +8379,7 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             fallback: string;
             use_tooltip: boolean;
             useTooltip: boolean;
@@ -9326,7 +9324,8 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -10194,7 +10193,8 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends BrowserSource.ConstructorProps,
+            extends
+                BrowserSource.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -11326,7 +11326,8 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Source.ConstructorProps,
+            extends
+                Source.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -12204,7 +12205,8 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ScrolledWindow.ConstructorProps,
+            extends
+                Gtk.ScrolledWindow.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             db: RhythmDB;
@@ -12844,9 +12846,7 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             rating: number;
         }
     }
@@ -15903,7 +15903,8 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 Gtk.TreeModel.ConstructorProps,
                 RhythmDBQueryResults.ConstructorProps {
             base_model: RhythmDBQueryModel;
@@ -17700,7 +17701,8 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -18324,9 +18326,7 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             bar_height: number;
             barHeight: number;
             show_labels: boolean;
@@ -19880,7 +19880,8 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps,
+            extends
+                Gtk.Dialog.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -20483,9 +20484,7 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             current_entry: RhythmDBEntry;
             currentEntry: RhythmDBEntry;
             entry_view: EntryView;
@@ -21107,7 +21106,8 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends DisplayPage.ConstructorProps,
+            extends
+                DisplayPage.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -22366,7 +22366,8 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Grid.ConstructorProps,
+            extends
+                Gtk.Grid.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -22980,7 +22981,8 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends PlaylistSource.ConstructorProps,
+            extends
+                PlaylistSource.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {}
@@ -23596,7 +23598,8 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Source.ConstructorProps,
+            extends
+                Source.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {}
@@ -25653,9 +25656,7 @@ export namespace RB {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             label: string;
         }
     }
@@ -26157,65 +26158,37 @@ export namespace RB {
     type ApplicationClass = typeof Application;
     abstract class ApplicationPrivate {
         static $gtype: GObject.GType<ApplicationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AsyncCopyClass = typeof AsyncCopy;
     abstract class AsyncCopyPrivate {
         static $gtype: GObject.GType<AsyncCopyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AutoPlaylistSourceClass = typeof AutoPlaylistSource;
     type BrowserSourceClass = typeof BrowserSource;
     abstract class BrowserSourcePrivate {
         static $gtype: GObject.GType<BrowserSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ButtonBarClass = typeof ButtonBar;
     abstract class ButtonBarPrivate {
         static $gtype: GObject.GType<ButtonBarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CellRendererPixbufClass = typeof CellRendererPixbuf;
     type CellRendererRatingClass = typeof CellRendererRating;
     abstract class CellRendererRatingClassPrivate {
         static $gtype: GObject.GType<CellRendererRatingClassPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class CellRendererRatingPrivate {
         static $gtype: GObject.GType<CellRendererRatingPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ChunkLoaderClass = typeof ChunkLoader;
     abstract class ChunkLoaderPrivate {
         static $gtype: GObject.GType<ChunkLoaderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DeviceSourceInterface = typeof DeviceSource;
@@ -26223,28 +26196,16 @@ export namespace RB {
     type DisplayPageGroupClass = typeof DisplayPageGroup;
     abstract class DisplayPageGroupPrivate {
         static $gtype: GObject.GType<DisplayPageGroupPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DisplayPageModelClass = typeof DisplayPageModel;
     abstract class DisplayPagePrivate {
         static $gtype: GObject.GType<DisplayPagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DisplayPageTreeClass = typeof DisplayPageTree;
     abstract class DisplayPageTreePrivate {
         static $gtype: GObject.GType<DisplayPageTreePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EncoderFactoryClass = typeof EncoderFactory;
@@ -26252,19 +26213,11 @@ export namespace RB {
     type EntryViewClass = typeof EntryView;
     abstract class EntryViewPrivate {
         static $gtype: GObject.GType<EntryViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExtDBClass = typeof ExtDB;
     abstract class ExtDBKey {
         static $gtype: GObject.GType<ExtDBKey>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -26368,38 +26321,22 @@ export namespace RB {
 
     abstract class ExtDBPrivate {
         static $gtype: GObject.GType<ExtDBPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FadingImageClass = typeof FadingImage;
     abstract class FadingImagePrivate {
         static $gtype: GObject.GType<FadingImagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HistoryClass = typeof History;
     abstract class HistoryPrivate {
         static $gtype: GObject.GType<HistoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LibraryBrowserClass = typeof LibraryBrowser;
     type ListModelClass = typeof ListModel;
     abstract class ListModelPrivate {
         static $gtype: GObject.GType<ListModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaPlayerEntryTypeClass = typeof MediaPlayerEntryType;
@@ -26407,19 +26344,11 @@ export namespace RB {
     type MetaDataClass = typeof MetaData;
     abstract class MetaDataPrivate {
         static $gtype: GObject.GType<MetaDataPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PlayOrderClass = typeof PlayOrder;
     abstract class PlayOrderPrivate {
         static $gtype: GObject.GType<PlayOrderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PlayerGstFilterIface = typeof PlayerGstFilter;
@@ -26428,19 +26357,11 @@ export namespace RB {
     type PlaylistManagerClass = typeof PlaylistManager;
     abstract class PlaylistManagerPrivate {
         static $gtype: GObject.GType<PlaylistManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PlaylistSourceClass = typeof PlaylistSource;
     abstract class PlaylistSourcePrivate {
         static $gtype: GObject.GType<PlaylistSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class PodcastChannel {
@@ -26462,10 +26383,6 @@ export namespace RB {
         posts: any[];
         num_posts: number;
         status: PodcastParseStatus;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class PodcastItem {
@@ -26496,43 +26413,26 @@ export namespace RB {
                 filesize: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type PodcastManagerClass = typeof PodcastManager;
     abstract class PodcastManagerPrivate {
         static $gtype: GObject.GType<PodcastManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PodcastSearchClass = typeof PodcastSearch;
     abstract class Profiler {
         static $gtype: GObject.GType<Profiler>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PropertyViewClass = typeof PropertyView;
     abstract class PropertyViewPrivate {
         static $gtype: GObject.GType<PropertyViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RatingClass = typeof Rating;
     abstract class RatingPrivate {
         static $gtype: GObject.GType<RatingPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class RefString {
@@ -26541,7 +26441,6 @@ export namespace RB {
         // Constructors
 
         constructor(init: string);
-        _init(...args: any[]): void;
 
         static ['new'](init: string): RefString;
 
@@ -26622,7 +26521,6 @@ export namespace RB {
         // Constructors
 
         constructor(db: RhythmDB, type: RhythmDBEntryType, uri: string);
-        _init(...args: any[]): void;
 
         static example_new(db: RhythmDB, type: RhythmDBEntryType, uri: string): RhythmDBEntry;
 
@@ -26764,45 +26662,25 @@ export namespace RB {
         // Fields
 
         prop: RhythmDBPropType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RhythmDBEntryTypeClass = typeof RhythmDBEntryType;
     abstract class RhythmDBEntryTypePrivate {
         static $gtype: GObject.GType<RhythmDBEntryTypePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RhythmDBImportJobClass = typeof RhythmDBImportJob;
     abstract class RhythmDBImportJobPrivate {
         static $gtype: GObject.GType<RhythmDBImportJobPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class RhythmDBPrivate {
         static $gtype: GObject.GType<RhythmDBPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RhythmDBPropertyModelClass = typeof RhythmDBPropertyModel;
     abstract class RhythmDBPropertyModelPrivate {
         static $gtype: GObject.GType<RhythmDBPropertyModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class RhythmDBQueryData {
@@ -26813,92 +26691,52 @@ export namespace RB {
         type: number;
         propid: number;
         subquery: RhythmDBQuery;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RhythmDBQueryModelClass = typeof RhythmDBQueryModel;
     abstract class RhythmDBQueryModelPrivate {
         static $gtype: GObject.GType<RhythmDBQueryModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RhythmDBQueryResultListClass = typeof RhythmDBQueryResultList;
     abstract class RhythmDBQueryResultListPrivate {
         static $gtype: GObject.GType<RhythmDBQueryResultListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RhythmDBQueryResultsIface = typeof RhythmDBQueryResults;
     type SearchEntryClass = typeof SearchEntry;
     abstract class SearchEntryPrivate {
         static $gtype: GObject.GType<SearchEntryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SegmentedBarClass = typeof SegmentedBar;
     abstract class SegmentedBarPrivate {
         static $gtype: GObject.GType<SegmentedBarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ShellClass = typeof Shell;
     type ShellPlayerClass = typeof ShellPlayer;
     abstract class ShellPlayerPrivate {
         static $gtype: GObject.GType<ShellPlayerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ShellPreferencesClass = typeof ShellPreferences;
     abstract class ShellPreferencesPrivate {
         static $gtype: GObject.GType<ShellPreferencesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ShellPrivate {
         static $gtype: GObject.GType<ShellPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SongInfoClass = typeof SongInfo;
     abstract class SongInfoPrivate {
         static $gtype: GObject.GType<SongInfoPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceClass = typeof Source;
     abstract class SourcePrivate {
         static $gtype: GObject.GType<SourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceSearchBasicClass = typeof SourceSearchBasic;
@@ -26906,76 +26744,44 @@ export namespace RB {
     type SourceToolbarClass = typeof SourceToolbar;
     abstract class SourceToolbarPrivate {
         static $gtype: GObject.GType<SourceToolbarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StaticPlaylistSourceClass = typeof StaticPlaylistSource;
     type StreamingSourceClass = typeof StreamingSource;
     abstract class StreamingSourcePrivate {
         static $gtype: GObject.GType<StreamingSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StringValueMapClass = typeof StringValueMap;
     abstract class StringValueMapPrivate {
         static $gtype: GObject.GType<StringValueMapPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TaskListClass = typeof TaskList;
     abstract class TaskListPrivate {
         static $gtype: GObject.GType<TaskListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TaskProgressInterface = typeof TaskProgress;
     type TaskProgressSimpleClass = typeof TaskProgressSimple;
     abstract class TaskProgressSimplePrivate {
         static $gtype: GObject.GType<TaskProgressSimplePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TrackTransferBatchClass = typeof TrackTransferBatch;
     abstract class TrackTransferBatchPrivate {
         static $gtype: GObject.GType<TrackTransferBatchPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TrackTransferQueueClass = typeof TrackTransferQueue;
     abstract class TrackTransferQueuePrivate {
         static $gtype: GObject.GType<TrackTransferQueuePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TransferTargetInterface = typeof TransferTarget;
     type URIDialogClass = typeof URIDialog;
     abstract class URIDialogPrivate {
         static $gtype: GObject.GType<URIDialogPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace DeviceSource {

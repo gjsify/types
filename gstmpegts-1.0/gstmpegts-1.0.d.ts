@@ -769,10 +769,6 @@ export namespace GstMpegts {
         static '25': number;
         static RESERVED: number;
         static AUTO: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1545,10 +1541,6 @@ export namespace GstMpegts {
         static '2': number;
         static '4': number;
         static AUTO: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     export namespace TerrestrialTransmissionMode {
@@ -1877,10 +1869,6 @@ export namespace GstMpegts {
          * HEVC / h265
          */
         static OTHER_HEVC: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1904,7 +1892,6 @@ export namespace GstMpegts {
                 events: AtscEITEvent[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1934,7 +1921,6 @@ export namespace GstMpegts {
                 descriptors: Descriptor[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1960,7 +1946,6 @@ export namespace GstMpegts {
                 messages: AtscMultString[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1986,7 +1971,6 @@ export namespace GstMpegts {
                 descriptors: Descriptor[];
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): AtscMGT;
     }
@@ -2016,7 +2000,6 @@ export namespace GstMpegts {
                 descriptors: Descriptor[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class AtscMultString {
@@ -2035,7 +2018,6 @@ export namespace GstMpegts {
                 segments: AtscStringSegment[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2063,7 +2045,6 @@ export namespace GstMpegts {
                 descriptors: any[];
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): AtscRRT;
     }
@@ -2088,7 +2069,6 @@ export namespace GstMpegts {
                 values: AtscRRTDimensionValue[];
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): AtscRRTDimension;
     }
@@ -2109,7 +2089,6 @@ export namespace GstMpegts {
                 ratings: AtscMultString[];
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): AtscRRTDimensionValue;
     }
@@ -2143,7 +2122,6 @@ export namespace GstMpegts {
                 descriptors: Descriptor[];
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): AtscSTT;
 
@@ -2177,7 +2155,6 @@ export namespace GstMpegts {
                 cached_string: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2210,7 +2187,6 @@ export namespace GstMpegts {
                 descriptors: Descriptor[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2260,7 +2236,6 @@ export namespace GstMpegts {
                 descriptors: Descriptor[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2302,7 +2277,6 @@ export namespace GstMpegts {
                 message_id: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2324,7 +2298,6 @@ export namespace GstMpegts {
                 streams: BATStream[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class BATStream {
@@ -2345,7 +2318,6 @@ export namespace GstMpegts {
                 descriptors: any[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2361,10 +2333,6 @@ export namespace GstMpegts {
         modulation: ModulationType;
         symbol_rate: number;
         fec_inner: DVBCodeRate;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2393,7 +2361,6 @@ export namespace GstMpegts {
                 text: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class Content {
@@ -2404,10 +2371,6 @@ export namespace GstMpegts {
         content_nibble_1: ContentNibbleHi;
         content_nibble_2: number;
         user_byte: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class DVBLinkageDescriptor {
@@ -2421,10 +2384,6 @@ export namespace GstMpegts {
         linkage_type: DVBLinkageType;
         private_data_length: number;
         private_data_bytes: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2452,7 +2411,6 @@ export namespace GstMpegts {
                 event_simulcast: boolean;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class DVBLinkageExtendedEvent {
@@ -2489,7 +2447,6 @@ export namespace GstMpegts {
                 target_service_id: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class DVBLinkageMobileHandOver {
@@ -2501,10 +2458,6 @@ export namespace GstMpegts {
         origin_type: boolean;
         network_id: number;
         initial_service_id: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class DVBParentalRatingItem {
@@ -2523,7 +2476,6 @@ export namespace GstMpegts {
                 rating: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class DVBServiceListItem {
@@ -2533,10 +2485,6 @@ export namespace GstMpegts {
 
         service_id: number;
         type: DVBServiceType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class DataBroadcastDescriptor {
@@ -2563,7 +2511,6 @@ export namespace GstMpegts {
                 text: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2596,7 +2543,6 @@ export namespace GstMpegts {
                 data: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -2888,7 +2834,6 @@ export namespace GstMpegts {
                 bouquet_name: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class DvbMultilingualComponentItem {
@@ -2907,7 +2852,6 @@ export namespace GstMpegts {
                 description: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2929,7 +2873,6 @@ export namespace GstMpegts {
                 network_name: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2953,7 +2896,6 @@ export namespace GstMpegts {
                 service_name: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2970,10 +2912,6 @@ export namespace GstMpegts {
         last_table_id: number;
         actual_stream: boolean;
         present_following: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2989,10 +2927,6 @@ export namespace GstMpegts {
         running_status: RunningStatus;
         free_CA_mode: boolean;
         descriptors: Descriptor[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3020,7 +2954,6 @@ export namespace GstMpegts {
                 text: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -3043,7 +2976,6 @@ export namespace GstMpegts {
                 item: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class ISO639LanguageDescriptor {
@@ -3054,10 +2986,6 @@ export namespace GstMpegts {
         nb_language: number;
         language: string[];
         audio_type: Iso639AudioType[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -3082,7 +3010,6 @@ export namespace GstMpegts {
                 logical_channel_number: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class LogicalChannelDescriptor {
@@ -3101,7 +3028,6 @@ export namespace GstMpegts {
                 channels: LogicalChannel[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3123,10 +3049,6 @@ export namespace GstMpegts {
         metadata_service_id: number;
         decoder_config_flags: number;
         dsm_cc_flag: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3152,7 +3074,6 @@ export namespace GstMpegts {
                 streams: NITStream[];
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): NIT;
     }
@@ -3175,7 +3096,6 @@ export namespace GstMpegts {
                 descriptors: Descriptor[];
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): NITStream;
     }
@@ -3194,10 +3114,6 @@ export namespace GstMpegts {
 
         metadata_service_id: number;
         flags: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -3234,7 +3150,6 @@ export namespace GstMpegts {
                 streams: PMTStream[];
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): PMT;
     }
@@ -3260,7 +3175,6 @@ export namespace GstMpegts {
                 descriptors: Descriptor[];
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): PMTStream;
     }
@@ -3284,7 +3198,6 @@ export namespace GstMpegts {
                 network_or_program_map_PID: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): PatProgram;
     }
@@ -3327,7 +3240,6 @@ export namespace GstMpegts {
                 is_running_time: boolean;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): SCTESIT;
     }
@@ -3355,7 +3267,6 @@ export namespace GstMpegts {
                 utc_splice_time: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](tag: number): SCTESpliceComponent;
     }
@@ -3404,7 +3315,6 @@ export namespace GstMpegts {
                 avails_expected: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): SCTESpliceEvent;
     }
@@ -3431,7 +3341,6 @@ export namespace GstMpegts {
                 services: SDTService[];
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): SDT;
     }
@@ -3460,7 +3369,6 @@ export namespace GstMpegts {
                 descriptors: Descriptor[];
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): SDTService;
     }
@@ -3474,10 +3382,6 @@ export namespace GstMpegts {
         // Fields
 
         descriptors: Descriptor[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3491,10 +3395,6 @@ export namespace GstMpegts {
         service_id: number;
         running_status: RunningStatus;
         descriptors: Descriptor[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3514,10 +3414,6 @@ export namespace GstMpegts {
         modulation_type: ModulationType;
         symbol_rate: number;
         fec_inner: DVBCodeRate;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3584,7 +3480,6 @@ export namespace GstMpegts {
         // Constructors
 
         constructor(pid: number, data: Uint8Array | string);
-        _init(...args: any[]): void;
 
         static ['new'](pid: number, data: Uint8Array | string): Section;
 
@@ -3768,7 +3663,6 @@ export namespace GstMpegts {
                 sub_cells: T2DeliverySystemCellExtension[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class T2DeliverySystemCellExtension {
@@ -3787,7 +3681,6 @@ export namespace GstMpegts {
                 transposer_frequency: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3808,10 +3701,6 @@ export namespace GstMpegts {
         tfs: boolean;
         cells: T2DeliverySystemCell[];
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         free(): void;
@@ -3826,10 +3715,6 @@ export namespace GstMpegts {
         // Fields
 
         descriptors: Descriptor[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3852,10 +3737,6 @@ export namespace GstMpegts {
         guard_interval: TerrestrialGuardInterval;
         transmission_mode: TerrestrialTransmissionMode;
         other_frequency: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

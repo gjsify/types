@@ -471,10 +471,6 @@ export namespace Playerctl {
     type PlayerManagerClass = typeof PlayerManager;
     abstract class PlayerManagerPrivate {
         static $gtype: GObject.GType<PlayerManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -489,10 +485,6 @@ export namespace Playerctl {
         name: string;
         instance: string;
         source: Source;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -510,10 +502,6 @@ export namespace Playerctl {
 
     abstract class PlayerPrivate {
         static $gtype: GObject.GType<PlayerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

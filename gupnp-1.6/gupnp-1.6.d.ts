@@ -51,7 +51,6 @@ export namespace GUPnP {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -82,7 +81,6 @@ export namespace GUPnP {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -118,7 +116,6 @@ export namespace GUPnP {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -161,7 +158,6 @@ export namespace GUPnP {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -205,7 +201,6 @@ export namespace GUPnP {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -228,7 +223,6 @@ export namespace GUPnP {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -267,7 +261,6 @@ export namespace GUPnP {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -4692,10 +4685,6 @@ export namespace GUPnP {
     abstract class ServiceAction {
         static $gtype: GObject.GType<ServiceAction>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -4772,10 +4761,6 @@ export namespace GUPnP {
         direction: ServiceActionArgDirection;
         related_state_variable: string;
         retval: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4787,10 +4772,6 @@ export namespace GUPnP {
         // Fields
 
         name: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ServiceClass = typeof Service;
@@ -4805,7 +4786,6 @@ export namespace GUPnP {
         // Constructors
 
         constructor(action: string, ___: any[]);
-        _init(...args: any[]): void;
 
         static new_from_list(
             action: string,
@@ -4958,10 +4938,6 @@ export namespace GUPnP {
         is_numeric: boolean;
         type: GObject.GType;
         allowed_values: string[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type XMLDocClass = typeof XMLDoc;

@@ -149,7 +149,8 @@ export namespace ClapperGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Container.ConstructorProps,
+            extends
+                Container.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {}
@@ -739,7 +740,8 @@ export namespace ClapperGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -1684,7 +1686,8 @@ export namespace ClapperGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -2582,7 +2585,8 @@ export namespace ClapperGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Container.ConstructorProps,
+            extends
+                Container.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -3182,7 +3186,8 @@ export namespace ClapperGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Button.ConstructorProps,
+            extends
+                Gtk.Button.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -6330,7 +6335,8 @@ export namespace ClapperGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Button.ConstructorProps,
+            extends
+                Gtk.Button.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -9473,7 +9479,8 @@ export namespace ClapperGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -10346,7 +10353,8 @@ export namespace ClapperGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Container.ConstructorProps,
+            extends
+                Container.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -10958,7 +10966,8 @@ export namespace ClapperGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends LeadContainer.ConstructorProps,
+            extends
+                LeadContainer.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -11547,7 +11556,8 @@ export namespace ClapperGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -12448,7 +12458,8 @@ export namespace ClapperGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Button.ConstructorProps,
+            extends
+                Gtk.Button.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -15598,7 +15609,8 @@ export namespace ClapperGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Button.ConstructorProps,
+            extends
+                Gtk.Button.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -18746,7 +18758,8 @@ export namespace ClapperGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {

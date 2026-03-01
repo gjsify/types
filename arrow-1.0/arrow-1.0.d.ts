@@ -163,7 +163,6 @@ export namespace Arrow {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -2005,9 +2004,7 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends SeekableInputStream.ConstructorProps,
-                File.ConstructorProps,
-                Readable.ConstructorProps {
+            extends SeekableInputStream.ConstructorProps, File.ConstructorProps, Readable.ConstructorProps {
             buffer: Buffer;
         }
     }
@@ -2509,9 +2506,7 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends OutputStream.ConstructorProps,
-                File.ConstructorProps,
-                Writable.ConstructorProps {}
+            extends OutputStream.ConstructorProps, File.ConstructorProps, Writable.ConstructorProps {}
     }
 
     class BufferOutputStream extends OutputStream implements File, Writable {
@@ -3743,9 +3738,7 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends InputStream.ConstructorProps,
-                File.ConstructorProps,
-                Readable.ConstructorProps {
+            extends InputStream.ConstructorProps, File.ConstructorProps, Readable.ConstructorProps {
             codec: Codec;
             raw: InputStream;
         }
@@ -4259,9 +4252,7 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends OutputStream.ConstructorProps,
-                File.ConstructorProps,
-                Writable.ConstructorProps {
+            extends OutputStream.ConstructorProps, File.ConstructorProps, Writable.ConstructorProps {
             codec: Codec;
             raw: OutputStream;
         }
@@ -8124,9 +8115,7 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends SeekableInputStream.ConstructorProps,
-                File.ConstructorProps,
-                Readable.ConstructorProps {}
+            extends SeekableInputStream.ConstructorProps, File.ConstructorProps, Readable.ConstructorProps {}
     }
 
     class FileInputStream extends SeekableInputStream implements File, Readable {
@@ -8624,9 +8613,7 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends OutputStream.ConstructorProps,
-                File.ConstructorProps,
-                Writable.ConstructorProps {}
+            extends OutputStream.ConstructorProps, File.ConstructorProps, Writable.ConstructorProps {}
     }
 
     class FileOutputStream extends OutputStream implements File, Writable {
@@ -10342,9 +10329,7 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends SeekableInputStream.ConstructorProps,
-                File.ConstructorProps,
-                Readable.ConstructorProps {
+            extends SeekableInputStream.ConstructorProps, File.ConstructorProps, Readable.ConstructorProps {
             raw: Gio.InputStream;
         }
     }
@@ -10847,9 +10832,7 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends OutputStream.ConstructorProps,
-                File.ConstructorProps,
-                Writable.ConstructorProps {
+            extends OutputStream.ConstructorProps, File.ConstructorProps, Writable.ConstructorProps {
             raw: Gio.OutputStream;
         }
     }
@@ -11807,9 +11790,7 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.InputStream.ConstructorProps,
-                File.ConstructorProps,
-                Readable.ConstructorProps {
+            extends Gio.InputStream.ConstructorProps, File.ConstructorProps, Readable.ConstructorProps {
             input_stream: any;
             inputStream: any;
         }
@@ -15045,9 +15026,7 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends SeekableInputStream.ConstructorProps,
-                File.ConstructorProps,
-                Readable.ConstructorProps {}
+            extends SeekableInputStream.ConstructorProps, File.ConstructorProps, Readable.ConstructorProps {}
     }
 
     class MemoryMappedInputStream extends SeekableInputStream implements File, Readable {
@@ -16658,9 +16637,7 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                File.ConstructorProps,
-                Writable.ConstructorProps {
+            extends GObject.Object.ConstructorProps, File.ConstructorProps, Writable.ConstructorProps {
             output_stream: any;
             outputStream: any;
         }
@@ -19010,9 +18987,7 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends InputStream.ConstructorProps,
-                File.ConstructorProps,
-                Readable.ConstructorProps {}
+            extends InputStream.ConstructorProps, File.ConstructorProps, Readable.ConstructorProps {}
     }
 
     class SeekableInputStream extends InputStream implements File, Readable {

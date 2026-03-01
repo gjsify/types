@@ -235,7 +235,6 @@ export namespace Hs {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -261,7 +260,6 @@ export namespace Hs {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -2011,10 +2009,6 @@ export namespace Hs {
         tv_type: Atari2600TVType;
         difficulty: Atari2600Difficulty[];
         select_switch: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type Atari7800CoreInterface = typeof Atari7800Core;
@@ -2030,10 +2024,6 @@ export namespace Hs {
         difficulty: Atari7800Difficulty[];
         pause_button: boolean;
         select_button: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AtariLynxCoreInterface = typeof AtariLynxCore;
@@ -2051,7 +2041,6 @@ export namespace Hs {
                 buttons: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type CoreClass = typeof Core;
@@ -2073,7 +2062,6 @@ export namespace Hs {
                 buttons: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type GameBoyCoreInterface = typeof GameBoyCore;
@@ -2091,7 +2079,6 @@ export namespace Hs {
                 buttons: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type GameGearCoreInterface = typeof GameGearCore;
@@ -2109,7 +2096,6 @@ export namespace Hs {
                 buttons: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type MasterSystemCoreInterface = typeof MasterSystemCore;
@@ -2135,7 +2121,6 @@ export namespace Hs {
                 light_phaser_y: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type MegaDriveCoreInterface = typeof MegaDriveCore;
@@ -2153,7 +2138,6 @@ export namespace Hs {
                 pad_buttons: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type NeoGeoPocketCoreInterface = typeof NeoGeoPocketCore;
@@ -2171,7 +2155,6 @@ export namespace Hs {
                 buttons: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type NesCoreInterface = typeof NesCore;
@@ -2188,10 +2171,6 @@ export namespace Hs {
         paddle_position: number;
         paddle_speed: number;
         paddle_button: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type Nintendo64CoreInterface = typeof Nintendo64Core;
@@ -2213,7 +2192,6 @@ export namespace Hs {
                 pad_control_stick_y: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type NintendoDsCoreInterface = typeof NintendoDsCore;
@@ -2239,7 +2217,6 @@ export namespace Hs {
                 mic_active: boolean;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type PcEngineCdCoreInterface = typeof PcEngineCdCore;
@@ -2251,10 +2228,6 @@ export namespace Hs {
 
         pad_buttons: number[];
         pad_mode: PcEnginePadMode[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PlayStationCoreInterface = typeof PlayStationCore;
@@ -2276,7 +2249,6 @@ export namespace Hs {
                 pad_sticks_y: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2304,7 +2276,6 @@ export namespace Hs {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2339,10 +2310,6 @@ export namespace Hs {
         pad_stick_y: number[];
         pad_left_trigger: number[];
         pad_right_trigger: number[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type Sg1000CoreInterface = typeof Sg1000Core;
@@ -2362,7 +2329,6 @@ export namespace Hs {
                 pause_button: boolean;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type SoftwareContextInterface = typeof SoftwareContext;
@@ -2381,7 +2347,6 @@ export namespace Hs {
                 pad_buttons: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type VirtualBoyCoreInterface = typeof VirtualBoyCore;
@@ -2399,7 +2364,6 @@ export namespace Hs {
                 buttons: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type WonderSwanCoreInterface = typeof WonderSwanCore;
@@ -2417,7 +2381,6 @@ export namespace Hs {
                 buttons: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2449,10 +2412,6 @@ export namespace Hs {
         super_nes: SuperNesInputState;
         virtual_boy: VirtualBoyInputState;
         wonderswan: WonderSwanInputState;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Atari2600Core {

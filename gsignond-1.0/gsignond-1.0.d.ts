@@ -192,7 +192,6 @@ export namespace GSignond {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1891,10 +1890,6 @@ export namespace GSignond {
     type AccessControlManagerClass = typeof AccessControlManager;
     abstract class AccessControlManagerPrivate {
         static $gtype: GObject.GType<AccessControlManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ConfigClass = typeof Config;
@@ -1905,10 +1900,6 @@ export namespace GSignond {
     type SecretStorageClass = typeof SecretStorage;
     abstract class SecretStoragePrivate {
         static $gtype: GObject.GType<SecretStoragePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class SecurityContext {
@@ -1927,7 +1918,6 @@ export namespace GSignond {
                 app_ctx: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): SecurityContext;
 
@@ -2006,10 +1996,6 @@ export namespace GSignond {
     type StorageManagerClass = typeof StorageManager;
     abstract class StorageManagerPrivate {
         static $gtype: GObject.GType<StorageManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Plugin {

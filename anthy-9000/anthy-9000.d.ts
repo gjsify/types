@@ -178,18 +178,10 @@ export namespace Anthy {
     type GContextClass = typeof GContext;
     abstract class GContextPrivate {
         static $gtype: GObject.GType<GContextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class anthy_context_t {
         static $gtype: GObject.GType<anthy_context_t>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class anthy_conv_stat {
@@ -206,7 +198,6 @@ export namespace Anthy {
                 nr_segment: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class anthy_prediction_stat {
@@ -223,7 +214,6 @@ export namespace Anthy {
                 nr_prediction: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class anthy_segment_stat {
@@ -242,7 +232,6 @@ export namespace Anthy {
                 seg_len: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**

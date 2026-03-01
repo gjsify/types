@@ -155,10 +155,6 @@ export namespace LangTag {
      */
     class DbVal {
         static $gtype: GObject.GType<DbVal>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -171,7 +167,6 @@ export namespace LangTag {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Error;
 
@@ -213,10 +208,6 @@ export namespace LangTag {
     abstract class ExtModule {
         static $gtype: GObject.GType<ExtModule>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -249,7 +240,6 @@ export namespace LangTag {
                 dummy: Pointer[];
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](size: number, finalizer: DestroyFunc): ExtModuleData;
 
@@ -283,10 +273,6 @@ export namespace LangTag {
         parse_tag: ExtModuleParseFunc;
         get_tag: ExtModuleGetTagFunc;
         validate_tag: ExtModuleValidateFunc;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -295,10 +281,6 @@ export namespace LangTag {
      */
     abstract class Extension {
         static $gtype: GObject.GType<Extension>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -341,10 +323,6 @@ export namespace LangTag {
      */
     abstract class Extlang {
         static $gtype: GObject.GType<Extlang>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -410,7 +388,6 @@ export namespace LangTag {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ExtlangDb;
 
@@ -440,10 +417,6 @@ export namespace LangTag {
      */
     abstract class Grandfathered {
         static $gtype: GObject.GType<Grandfathered>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -501,7 +474,6 @@ export namespace LangTag {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): GrandfatheredDb;
 
@@ -531,10 +503,6 @@ export namespace LangTag {
      */
     abstract class Iter {
         static $gtype: GObject.GType<Iter>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -592,10 +560,6 @@ export namespace LangTag {
      */
     abstract class IterTmpl {
         static $gtype: GObject.GType<IterTmpl>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -604,10 +568,6 @@ export namespace LangTag {
      */
     abstract class Lang {
         static $gtype: GObject.GType<Lang>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -684,7 +644,6 @@ export namespace LangTag {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): LangDb;
 
@@ -718,7 +677,6 @@ export namespace LangTag {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): List;
 
@@ -850,10 +808,6 @@ export namespace LangTag {
     abstract class Redundant {
         static $gtype: GObject.GType<Redundant>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -910,7 +864,6 @@ export namespace LangTag {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): RedundantDb;
 
@@ -940,10 +893,6 @@ export namespace LangTag {
      */
     abstract class Region {
         static $gtype: GObject.GType<Region>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -1001,7 +950,6 @@ export namespace LangTag {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): RegionDb;
 
@@ -1036,7 +984,6 @@ export namespace LangTag {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): RelationDb;
 
@@ -1072,10 +1019,6 @@ export namespace LangTag {
      */
     abstract class Script {
         static $gtype: GObject.GType<Script>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -1126,7 +1069,6 @@ export namespace LangTag {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ScriptDb;
 
@@ -1160,7 +1102,6 @@ export namespace LangTag {
         // Constructors
 
         constructor(string: string);
-        _init(...args: any[]): void;
 
         static ['new'](string: string): String;
 
@@ -1241,7 +1182,6 @@ export namespace LangTag {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Tag;
 
@@ -1403,10 +1343,6 @@ export namespace LangTag {
     abstract class Variant {
         static $gtype: GObject.GType<Variant>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -1471,7 +1407,6 @@ export namespace LangTag {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): VariantDb;
 

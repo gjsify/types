@@ -246,8 +246,7 @@ export namespace PangoXft {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends PangoFc.FontMap.ConstructorProps,
-                Gio.ListModel.ConstructorProps {}
+            extends PangoFc.FontMap.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     /**
@@ -929,10 +928,6 @@ export namespace PangoXft {
     type RendererClass = typeof Renderer;
     abstract class RendererPrivate {
         static $gtype: GObject.GType<RendererPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

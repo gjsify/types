@@ -1044,10 +1044,6 @@ export namespace Cvc {
     type ChannelMapClass = typeof ChannelMap;
     abstract class ChannelMapPrivate {
         static $gtype: GObject.GType<ChannelMapPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MixerCardClass = typeof MixerCard;
@@ -1076,15 +1072,10 @@ export namespace Cvc {
                 direction: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     abstract class MixerCardPrivate {
         static $gtype: GObject.GType<MixerCardPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MixerCardProfile {
@@ -1111,7 +1102,6 @@ export namespace Cvc {
                 n_sources: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -1121,55 +1111,31 @@ export namespace Cvc {
     type MixerControlClass = typeof MixerControl;
     abstract class MixerControlPrivate {
         static $gtype: GObject.GType<MixerControlPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MixerEventRoleClass = typeof MixerEventRole;
     abstract class MixerEventRolePrivate {
         static $gtype: GObject.GType<MixerEventRolePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MixerSinkClass = typeof MixerSink;
     type MixerSinkInputClass = typeof MixerSinkInput;
     abstract class MixerSinkInputPrivate {
         static $gtype: GObject.GType<MixerSinkInputPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class MixerSinkPrivate {
         static $gtype: GObject.GType<MixerSinkPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MixerSourceClass = typeof MixerSource;
     type MixerSourceOutputClass = typeof MixerSourceOutput;
     abstract class MixerSourceOutputPrivate {
         static $gtype: GObject.GType<MixerSourceOutputPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class MixerSourcePrivate {
         static $gtype: GObject.GType<MixerSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MixerStreamClass = typeof MixerStream;
@@ -1193,24 +1159,15 @@ export namespace Cvc {
                 available: boolean;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     abstract class MixerStreamPrivate {
         static $gtype: GObject.GType<MixerStreamPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MixerUIDeviceClass = typeof MixerUIDevice;
     abstract class MixerUIDevicePrivate {
         static $gtype: GObject.GType<MixerUIDevicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

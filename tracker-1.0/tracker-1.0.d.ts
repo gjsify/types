@@ -440,28 +440,16 @@ export namespace Tracker {
     type SparqlBuilderClass = typeof SparqlBuilder;
     abstract class SparqlBuilderPrivate {
         static $gtype: GObject.GType<SparqlBuilderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SparqlConnectionClass = typeof SparqlConnection;
     abstract class SparqlConnectionPrivate {
         static $gtype: GObject.GType<SparqlConnectionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SparqlCursorClass = typeof SparqlCursor;
     abstract class SparqlCursorPrivate {
         static $gtype: GObject.GType<SparqlCursorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class SparqlError extends GLib.Error {
@@ -481,7 +469,6 @@ export namespace Tracker {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**

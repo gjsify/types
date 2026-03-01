@@ -113,7 +113,8 @@ export namespace MalcontentUi {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Adw.PreferencesWindow.ConstructorProps,
+            extends
+                Adw.PreferencesWindow.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps,
@@ -3222,7 +3223,8 @@ export namespace MalcontentUi {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps,
@@ -3841,7 +3843,8 @@ export namespace MalcontentUi {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Adw.Bin.ConstructorProps,
+            extends
+                Adw.Bin.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {

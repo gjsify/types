@@ -20,82 +20,42 @@ export namespace xlib {
     function open_display(): void;
     class Display {
         static $gtype: GObject.GType<Display>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Screen {
         static $gtype: GObject.GType<Screen>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Visual {
         static $gtype: GObject.GType<Visual>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class XConfigureEvent {
         static $gtype: GObject.GType<XConfigureEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class XImage {
         static $gtype: GObject.GType<XImage>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class XFontStruct {
         static $gtype: GObject.GType<XFontStruct>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class XTrapezoid {
         static $gtype: GObject.GType<XTrapezoid>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class XVisualInfo {
         static $gtype: GObject.GType<XVisualInfo>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class XWindowAttributes {
         static $gtype: GObject.GType<XWindowAttributes>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class XEvent {
         static $gtype: GObject.GType<XEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type Atom = number;

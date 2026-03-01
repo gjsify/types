@@ -3794,18 +3794,10 @@ export namespace GstBase {
     type AggregatorPadClass = typeof AggregatorPad;
     abstract class AggregatorPadPrivate {
         static $gtype: GObject.GType<AggregatorPadPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class AggregatorPrivate {
         static $gtype: GObject.GType<AggregatorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BaseParseClass = typeof BaseParse;
@@ -3830,7 +3822,6 @@ export namespace GstBase {
         // Constructors
 
         constructor(buffer: Gst.Buffer, flags: BaseParseFrameFlags, overhead: number);
-        _init(...args: any[]): void;
 
         static ['new'](buffer: Gst.Buffer, flags: BaseParseFrameFlags, overhead: number): BaseParseFrame;
 
@@ -3857,37 +3848,21 @@ export namespace GstBase {
 
     abstract class BaseParsePrivate {
         static $gtype: GObject.GType<BaseParsePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BaseSinkClass = typeof BaseSink;
     abstract class BaseSinkPrivate {
         static $gtype: GObject.GType<BaseSinkPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BaseSrcClass = typeof BaseSrc;
     abstract class BaseSrcPrivate {
         static $gtype: GObject.GType<BaseSrcPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BaseTransformClass = typeof BaseTransform;
     abstract class BaseTransformPrivate {
         static $gtype: GObject.GType<BaseTransformPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3915,7 +3890,6 @@ export namespace GstBase {
                 bit: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4033,7 +4007,6 @@ export namespace GstBase {
                 bit_size: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4157,7 +4130,6 @@ export namespace GstBase {
                 byte: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4651,7 +4623,6 @@ export namespace GstBase {
                 owned: boolean;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4909,36 +4880,20 @@ export namespace GstBase {
         collect: CollectPads;
         pad: Gst.Pad;
         pos: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class CollectDataPrivate {
         static $gtype: GObject.GType<CollectDataPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CollectPadsClass = typeof CollectPads;
     abstract class CollectPadsPrivate {
         static $gtype: GObject.GType<CollectPadsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataQueueClass = typeof DataQueue;
     abstract class DataQueuePrivate {
         static $gtype: GObject.GType<DataQueuePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4980,7 +4935,6 @@ export namespace GstBase {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): FlowCombiner;
 
@@ -5049,10 +5003,6 @@ export namespace GstBase {
      */
     abstract class TypeFindData {
         static $gtype: GObject.GType<TypeFindData>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

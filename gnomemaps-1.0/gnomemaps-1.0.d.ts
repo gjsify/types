@@ -713,130 +713,70 @@ export namespace GnomeMaps {
     type ContactClass = typeof Contact;
     abstract class ContactPrivate {
         static $gtype: GObject.GType<ContactPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ContactStoreClass = typeof ContactStore;
     abstract class ContactStorePrivate {
         static $gtype: GObject.GType<ContactStorePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FileTileSourceClass = typeof FileTileSource;
     abstract class FileTileSourcePrivate {
         static $gtype: GObject.GType<FileTileSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OSMChangesetClass = typeof OSMChangeset;
     abstract class OSMChangesetPrivate {
         static $gtype: GObject.GType<OSMChangesetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OSMNodeClass = typeof OSMNode;
     abstract class OSMNodePrivate {
         static $gtype: GObject.GType<OSMNodePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OSMOAuthProxyCallClass = typeof OSMOAuthProxyCall;
     abstract class OSMOAuthProxyCallPrivate {
         static $gtype: GObject.GType<OSMOAuthProxyCallPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OSMObjectClass = typeof OSMObject;
     abstract class OSMObjectPrivate {
         static $gtype: GObject.GType<OSMObjectPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OSMRelationClass = typeof OSMRelation;
     abstract class OSMRelationPrivate {
         static $gtype: GObject.GType<OSMRelationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OSMWayClass = typeof OSMWay;
     abstract class OSMWayPrivate {
         static $gtype: GObject.GType<OSMWayPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _ContactClass {
         static $gtype: GObject.GType<_ContactClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _ContactStoreClass {
         static $gtype: GObject.GType<_ContactStoreClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _OSMChangesetClass {
         static $gtype: GObject.GType<_OSMChangesetClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _OSMNodeClass {
         static $gtype: GObject.GType<_OSMNodeClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _OSMRelationClass {
         static $gtype: GObject.GType<_OSMRelationClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class _OSMWayClass {
         static $gtype: GObject.GType<_OSMWayClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

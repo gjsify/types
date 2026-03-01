@@ -891,19 +891,11 @@ export namespace TelepathyFarstream {
     type ChannelClass = typeof Channel;
     abstract class ChannelPrivate {
         static $gtype: GObject.GType<ChannelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ContentClass = typeof Content;
     abstract class ContentPrivate {
         static $gtype: GObject.GType<ContentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

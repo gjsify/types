@@ -40,7 +40,6 @@ export namespace Gly {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1173,7 +1172,6 @@ export namespace Gly {
                 video_full_range_flag: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 

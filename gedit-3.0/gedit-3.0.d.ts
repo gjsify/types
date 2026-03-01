@@ -313,7 +313,8 @@ export namespace Gedit {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Application.ConstructorProps,
+            extends
+                Gtk.Application.ConstructorProps,
                 Gio.ActionGroup.ConstructorProps,
                 Gio.ActionMap.ConstructorProps {}
     }
@@ -1077,7 +1078,8 @@ export namespace Gedit {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ComboBox.ConstructorProps,
+            extends
+                Gtk.ComboBox.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.CellEditable.ConstructorProps,
@@ -6042,7 +6044,8 @@ export namespace Gedit {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Statusbar.ConstructorProps,
+            extends
+                Gtk.Statusbar.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {}
@@ -6597,7 +6600,8 @@ export namespace Gedit {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -7256,7 +7260,8 @@ export namespace Gedit {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GtkSource.View.ConstructorProps,
+            extends
+                GtkSource.View.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {}
@@ -7839,7 +7844,8 @@ export namespace Gedit {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ApplicationWindow.ConstructorProps,
+            extends
+                Gtk.ApplicationWindow.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gio.ActionGroup.ConstructorProps,
                 Gio.ActionMap.ConstructorProps,
@@ -9000,19 +9006,11 @@ export namespace Gedit {
     type MessageBusClass = typeof MessageBus;
     abstract class MessageBusPrivate {
         static $gtype: GObject.GType<MessageBusPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MessageClass = typeof Message;
     abstract class MessagePrivate {
         static $gtype: GObject.GType<MessagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StatusbarClass = typeof Statusbar;
@@ -9021,20 +9019,12 @@ export namespace Gedit {
     type ViewClass = typeof View;
     abstract class ViewPrivate {
         static $gtype: GObject.GType<ViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WindowActivatableInterface = typeof WindowActivatable;
     type WindowClass = typeof Window;
     abstract class WindowPrivate {
         static $gtype: GObject.GType<WindowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace AppActivatable {

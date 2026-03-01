@@ -107,7 +107,6 @@ export namespace Libxfce4windowing {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2257,7 +2256,8 @@ export namespace Libxfce4windowing {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 Gio.Icon.ConstructorProps,
                 Gio.Initable.ConstructorProps,
                 Gio.LoadableIcon.ConstructorProps {
@@ -7637,10 +7637,6 @@ export namespace Libxfce4windowing {
     abstract class ApplicationInstance {
         static $gtype: GObject.GType<ApplicationInstance>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -7663,165 +7659,93 @@ export namespace Libxfce4windowing {
     type ApplicationWaylandClass = typeof ApplicationWayland;
     abstract class ApplicationWaylandPrivate {
         static $gtype: GObject.GType<ApplicationWaylandPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ApplicationX11Class = typeof ApplicationX11;
     abstract class ApplicationX11Private {
         static $gtype: GObject.GType<ApplicationX11Private>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ScreenIface = typeof Screen;
     abstract class ScreenInterface {
         static $gtype: GObject.GType<ScreenInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ScreenWaylandClass = typeof ScreenWayland;
     abstract class ScreenWaylandPrivate {
         static $gtype: GObject.GType<ScreenWaylandPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ScreenX11Class = typeof ScreenX11;
     abstract class ScreenX11Private {
         static $gtype: GObject.GType<ScreenX11Private>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WindowClass = typeof Window;
     type WindowWaylandClass = typeof WindowWayland;
     abstract class WindowWaylandPrivate {
         static $gtype: GObject.GType<WindowWaylandPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WindowX11Class = typeof WindowX11;
     abstract class WindowX11Private {
         static $gtype: GObject.GType<WindowX11Private>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WnckIconClass = typeof WnckIcon;
     type WorkspaceDummyClass = typeof WorkspaceDummy;
     abstract class WorkspaceDummyPrivate {
         static $gtype: GObject.GType<WorkspaceDummyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WorkspaceGroupDummyClass = typeof WorkspaceGroupDummy;
     abstract class WorkspaceGroupDummyPrivate {
         static $gtype: GObject.GType<WorkspaceGroupDummyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WorkspaceGroupIface = typeof WorkspaceGroup;
     abstract class WorkspaceGroupInterface {
         static $gtype: GObject.GType<WorkspaceGroupInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WorkspaceGroupWaylandClass = typeof WorkspaceGroupWayland;
     abstract class WorkspaceGroupWaylandPrivate {
         static $gtype: GObject.GType<WorkspaceGroupWaylandPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WorkspaceIface = typeof Workspace;
     abstract class WorkspaceInterface {
         static $gtype: GObject.GType<WorkspaceInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WorkspaceManagerDummyClass = typeof WorkspaceManagerDummy;
     abstract class WorkspaceManagerDummyPrivate {
         static $gtype: GObject.GType<WorkspaceManagerDummyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WorkspaceManagerIface = typeof WorkspaceManager;
     abstract class WorkspaceManagerInterface {
         static $gtype: GObject.GType<WorkspaceManagerInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WorkspaceManagerWaylandClass = typeof WorkspaceManagerWayland;
     abstract class WorkspaceManagerWaylandPrivate {
         static $gtype: GObject.GType<WorkspaceManagerWaylandPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WorkspaceManagerX11Class = typeof WorkspaceManagerX11;
     abstract class WorkspaceManagerX11Private {
         static $gtype: GObject.GType<WorkspaceManagerX11Private>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WorkspaceWaylandClass = typeof WorkspaceWayland;
     abstract class WorkspaceWaylandPrivate {
         static $gtype: GObject.GType<WorkspaceWaylandPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WorkspaceX11Class = typeof WorkspaceX11;
     abstract class WorkspaceX11Private {
         static $gtype: GObject.GType<WorkspaceX11Private>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Screen {

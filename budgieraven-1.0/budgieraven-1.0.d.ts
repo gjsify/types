@@ -82,9 +82,7 @@ export namespace BudgieRaven {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {}
+            extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     class RavenWidget extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
@@ -588,10 +586,6 @@ export namespace BudgieRaven {
         initialized: boolean;
         uuid: string;
         instance_settings: Gio.Settings;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace RavenPlugin {

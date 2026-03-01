@@ -1132,10 +1132,6 @@ export namespace Dbusmenu {
     type ClientClass = typeof Client;
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MenuitemClass = typeof Menuitem;
@@ -1146,28 +1142,16 @@ export namespace Dbusmenu {
      */
     abstract class MenuitemPrivate {
         static $gtype: GObject.GType<MenuitemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MenuitemProxyClass = typeof MenuitemProxy;
     abstract class MenuitemProxyPrivate {
         static $gtype: GObject.GType<MenuitemProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ServerClass = typeof Server;
     abstract class ServerPrivate {
         static $gtype: GObject.GType<ServerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

@@ -2079,8 +2079,7 @@ export namespace Clapper {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Gst.Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {
+            extends Gst.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             current_index: number;
             currentIndex: number;
             current_item: MediaItem;
@@ -2994,8 +2993,7 @@ export namespace Clapper {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Gst.Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {
+            extends Gst.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             current_index: number;
             currentIndex: number;
             current_stream: Stream;
@@ -3838,8 +3836,7 @@ export namespace Clapper {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Gst.Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {
+            extends Gst.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             n_markers: number;
             nMarkers: number;
         }

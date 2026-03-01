@@ -99,7 +99,8 @@ export namespace ColordGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.DrawingArea.ConstructorProps,
+            extends
+                Gtk.DrawingArea.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             color: Colord.ColorRGB;
@@ -682,7 +683,8 @@ export namespace ColordGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Window.ConstructorProps,
+            extends
+                Gtk.Window.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -1322,10 +1324,6 @@ export namespace ColordGtk {
     type SampleWidgetClass = typeof SampleWidget;
     abstract class SampleWidgetPrivate {
         static $gtype: GObject.GType<SampleWidgetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SampleWindowClass = typeof SampleWindow;
@@ -1334,10 +1332,6 @@ export namespace ColordGtk {
      */
     abstract class SampleWindowPrivate {
         static $gtype: GObject.GType<SampleWindowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WindowClass = typeof Window;
@@ -1346,10 +1340,6 @@ export namespace ColordGtk {
      */
     abstract class WindowPrivate {
         static $gtype: GObject.GType<WindowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

@@ -63,7 +63,6 @@ export namespace Accounts {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace Error {
@@ -1958,19 +1957,11 @@ export namespace Accounts {
     type AccountClass = typeof Account;
     abstract class AccountPrivate {
         static $gtype: GObject.GType<AccountPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AccountServiceClass = typeof AccountService;
     abstract class AccountServicePrivate {
         static $gtype: GObject.GType<AccountServicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1982,10 +1973,6 @@ export namespace Accounts {
         // Fields
 
         account: Account;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2013,10 +2000,6 @@ export namespace Accounts {
      */
     abstract class AccountWatch {
         static $gtype: GObject.GType<AccountWatch>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2024,10 +2007,6 @@ export namespace Accounts {
      */
     class Application {
         static $gtype: GObject.GType<Application>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2075,10 +2054,6 @@ export namespace Accounts {
      */
     class AuthData {
         static $gtype: GObject.GType<AuthData>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2130,10 +2105,6 @@ export namespace Accounts {
     type ManagerClass = typeof Manager;
     abstract class ManagerPrivate {
         static $gtype: GObject.GType<ManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -2141,10 +2112,6 @@ export namespace Accounts {
      */
     class Provider {
         static $gtype: GObject.GType<Provider>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -2237,10 +2204,6 @@ export namespace Accounts {
     class Service {
         static $gtype: GObject.GType<Service>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -2324,10 +2287,6 @@ export namespace Accounts {
      */
     class ServiceType {
         static $gtype: GObject.GType<ServiceType>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 

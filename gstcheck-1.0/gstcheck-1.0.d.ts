@@ -701,7 +701,6 @@ export namespace GstCheck {
                 abi_size: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -710,10 +709,6 @@ export namespace GstCheck {
      */
     abstract class CheckLogFilter {
         static $gtype: GObject.GType<CheckLogFilter>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -824,10 +819,6 @@ export namespace GstCheck {
         element: Gst.Element;
         srcpad: Gst.Pad;
         sinkpad: Gst.Pad;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1394,10 +1385,6 @@ export namespace GstCheck {
 
     abstract class HarnessPrivate {
         static $gtype: GObject.GType<HarnessPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1405,10 +1392,6 @@ export namespace GstCheck {
      */
     abstract class HarnessThread {
         static $gtype: GObject.GType<HarnessThread>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1416,19 +1399,11 @@ export namespace GstCheck {
      */
     abstract class StreamConsistency {
         static $gtype: GObject.GType<StreamConsistency>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TestClockClass = typeof TestClock;
     abstract class TestClockPrivate {
         static $gtype: GObject.GType<TestClockPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

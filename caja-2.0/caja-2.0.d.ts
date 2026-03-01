@@ -369,20 +369,12 @@ export namespace Caja {
     type ColumnClass = typeof Column;
     abstract class ColumnDetails {
         static $gtype: GObject.GType<ColumnDetails>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ColumnProviderIface = typeof ColumnProvider;
     type ConfigurableIface = typeof Configurable;
     abstract class File {
         static $gtype: GObject.GType<File>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FileInfoIface = typeof FileInfo;
@@ -392,18 +384,10 @@ export namespace Caja {
     type MenuItemClass = typeof MenuItem;
     abstract class MenuItemDetails {
         static $gtype: GObject.GType<MenuItemDetails>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class MenuPrivate {
         static $gtype: GObject.GType<MenuPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MenuProviderIface = typeof MenuProvider;
@@ -414,19 +398,11 @@ export namespace Caja {
      */
     abstract class OperationHandle {
         static $gtype: GObject.GType<OperationHandle>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PropertyPageClass = typeof PropertyPage;
     abstract class PropertyPageDetails {
         static $gtype: GObject.GType<PropertyPageDetails>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PropertyPageProviderIface = typeof PropertyPageProvider;

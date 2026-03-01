@@ -382,7 +382,8 @@ export namespace Libxfce4panel {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ToggleButton.ConstructorProps,
+            extends
+                Gtk.ToggleButton.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Activatable.ConstructorProps,
@@ -4809,9 +4810,7 @@ export namespace Libxfce4panel {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             pixbuf: GdkPixbuf.Pixbuf;
             size: number;
             source: string;
@@ -5597,7 +5596,8 @@ export namespace Libxfce4panel {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.EventBox.ConstructorProps,
+            extends
+                Gtk.EventBox.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 PanelPluginProvider.ConstructorProps {
@@ -6618,28 +6618,16 @@ export namespace Libxfce4panel {
     type ArrowButtonClass = typeof ArrowButton;
     abstract class ArrowButtonPrivate {
         static $gtype: GObject.GType<ArrowButtonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PanelImageClass = typeof PanelImage;
     abstract class PanelImagePrivate {
         static $gtype: GObject.GType<PanelImagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PanelPluginClass = typeof PanelPlugin;
     abstract class PanelPluginPrivate {
         static $gtype: GObject.GType<PanelPluginPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PanelPluginProviderInterface = typeof PanelPluginProvider;

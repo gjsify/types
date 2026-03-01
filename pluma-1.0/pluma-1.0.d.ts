@@ -738,7 +738,8 @@ export namespace Pluma {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ComboBox.ConstructorProps,
+            extends
+                Gtk.ComboBox.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.CellEditable.ConstructorProps,
@@ -5631,7 +5632,8 @@ export namespace Pluma {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Notebook.ConstructorProps,
+            extends
+                Gtk.Notebook.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -6245,7 +6247,8 @@ export namespace Pluma {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -6865,7 +6868,8 @@ export namespace Pluma {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.InfoBar.ConstructorProps,
+            extends
+                Gtk.InfoBar.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -7426,7 +7430,8 @@ export namespace Pluma {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.EventBox.ConstructorProps,
+            extends
+                Gtk.EventBox.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             label: string;
@@ -7989,7 +7994,8 @@ export namespace Pluma {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Statusbar.ConstructorProps,
+            extends
+                Gtk.Statusbar.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {}
@@ -8543,7 +8549,8 @@ export namespace Pluma {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -9208,7 +9215,8 @@ export namespace Pluma {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GtkSource.View.ConstructorProps,
+            extends
+                GtkSource.View.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {}
@@ -9827,9 +9835,7 @@ export namespace Pluma {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Window.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             state: WindowState;
         }
     }
@@ -10450,27 +10456,15 @@ export namespace Pluma {
     type AppClass = typeof App;
     abstract class AppPrivate {
         static $gtype: GObject.GType<AppPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DocumentClass = typeof Document;
     abstract class DocumentPrivate {
         static $gtype: GObject.GType<DocumentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class Encoding {
         static $gtype: GObject.GType<Encoding>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -10491,28 +10485,16 @@ export namespace Pluma {
     type EncodingsComboBoxClass = typeof EncodingsComboBox;
     abstract class EncodingsComboBoxPrivate {
         static $gtype: GObject.GType<EncodingsComboBoxPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MessageBusClass = typeof MessageBus;
     abstract class MessageBusPrivate {
         static $gtype: GObject.GType<MessageBusPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MessageClass = typeof Message;
     abstract class MessagePrivate {
         static $gtype: GObject.GType<MessagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MessageType {
@@ -10521,7 +10503,6 @@ export namespace Pluma {
         // Constructors
 
         constructor(object_path: string | null, method: string | null, num_optional: number, ___: any[]);
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -10580,75 +10561,43 @@ export namespace Pluma {
     type NotebookClass = typeof Notebook;
     abstract class NotebookPrivate {
         static $gtype: GObject.GType<NotebookPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PanelClass = typeof Panel;
     abstract class PanelPrivate {
         static $gtype: GObject.GType<PanelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ProgressMessageAreaClass = typeof ProgressMessageArea;
     abstract class ProgressMessageAreaPrivate {
         static $gtype: GObject.GType<ProgressMessageAreaPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StatusComboBoxClass = typeof StatusComboBox;
     abstract class StatusComboBoxPrivate {
         static $gtype: GObject.GType<StatusComboBoxPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StatusbarClass = typeof Statusbar;
     abstract class StatusbarPrivate {
         static $gtype: GObject.GType<StatusbarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TabClass = typeof Tab;
     abstract class TabPrivate {
         static $gtype: GObject.GType<TabPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ViewActivatableInterface = typeof ViewActivatable;
     type ViewClass = typeof View;
     abstract class ViewPrivate {
         static $gtype: GObject.GType<ViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WindowActivatableInterface = typeof WindowActivatable;
     type WindowClass = typeof Window;
     abstract class WindowPrivate {
         static $gtype: GObject.GType<WindowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace AppActivatable {

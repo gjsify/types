@@ -149,7 +149,6 @@ export namespace EDataServer {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4366,7 +4365,8 @@ export namespace EDataServer {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 Gio.Initable.ConstructorProps,
                 Gio.NetworkMonitor.ConstructorProps {
             gio_name: string;
@@ -9172,9 +9172,7 @@ export namespace EDataServer {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Gio.Initable.ConstructorProps,
-                Gio.ProxyResolver.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps, Gio.ProxyResolver.ConstructorProps {
             connection_status: SourceConnectionStatus;
             connectionStatus: SourceConnectionStatus;
             display_name: string;
@@ -16406,9 +16404,7 @@ export namespace EDataServer {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             default_address_book: Source;
             defaultAddressBook: Source;
             default_calendar: Source;
@@ -20296,10 +20292,6 @@ export namespace EDataServer {
      */
     abstract class AsyncClosure {
         static $gtype: GObject.GType<AsyncClosure>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ClientClass = typeof Client;
@@ -20309,15 +20301,10 @@ export namespace EDataServer {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
     }
 
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -20330,7 +20317,6 @@ export namespace EDataServer {
         // Constructors
 
         constructor(locale: string);
-        _init(...args: any[]): void;
 
         static ['new'](locale: string): Collator;
 
@@ -20411,10 +20397,6 @@ export namespace EDataServer {
     type ExtensionClass = typeof Extension;
     abstract class ExtensionPrivate {
         static $gtype: GObject.GType<ExtensionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -20423,10 +20405,6 @@ export namespace EDataServer {
      */
     abstract class Flag {
         static $gtype: GObject.GType<Flag>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class FreeFormExpSymbol {
@@ -20437,10 +20415,6 @@ export namespace EDataServer {
         names: string;
         hint: string;
         build_sexp: FreeFormExpBuildSexpFunc;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class GDataQuery {
@@ -20449,7 +20423,6 @@ export namespace EDataServer {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): GDataQuery;
 
@@ -20613,27 +20586,15 @@ export namespace EDataServer {
     type GDataSessionClass = typeof GDataSession;
     abstract class GDataSessionPrivate {
         static $gtype: GObject.GType<GDataSessionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class MemChunk {
         static $gtype: GObject.GType<MemChunk>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ModuleClass = typeof Module;
     abstract class ModulePrivate {
         static $gtype: GObject.GType<ModulePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class NamedParameters {
@@ -20642,7 +20603,6 @@ export namespace EDataServer {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): NamedParameters;
 
@@ -20723,10 +20683,6 @@ export namespace EDataServer {
     type NetworkMonitorClass = typeof NetworkMonitor;
     abstract class NetworkMonitorPrivate {
         static $gtype: GObject.GType<NetworkMonitorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OAuth2ServiceBaseClass = typeof OAuth2ServiceBase;
@@ -20737,10 +20693,6 @@ export namespace EDataServer {
     type OAuth2ServicesClass = typeof OAuth2Services;
     abstract class OAuth2ServicesPrivate {
         static $gtype: GObject.GType<OAuth2ServicesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -20749,10 +20701,6 @@ export namespace EDataServer {
      */
     abstract class OperationPool {
         static $gtype: GObject.GType<OperationPool>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -20783,110 +20731,62 @@ export namespace EDataServer {
     type SoupAuthBearerClass = typeof SoupAuthBearer;
     abstract class SoupAuthBearerPrivate {
         static $gtype: GObject.GType<SoupAuthBearerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SoupSessionClass = typeof SoupSession;
     abstract class SoupSessionPrivate {
         static $gtype: GObject.GType<SoupSessionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceAddressBookClass = typeof SourceAddressBook;
     abstract class SourceAddressBookPrivate {
         static $gtype: GObject.GType<SourceAddressBookPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceAlarmsClass = typeof SourceAlarms;
     abstract class SourceAlarmsPrivate {
         static $gtype: GObject.GType<SourceAlarmsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceAuthenticationClass = typeof SourceAuthentication;
     abstract class SourceAuthenticationPrivate {
         static $gtype: GObject.GType<SourceAuthenticationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceAutocompleteClass = typeof SourceAutocomplete;
     abstract class SourceAutocompletePrivate {
         static $gtype: GObject.GType<SourceAutocompletePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceAutoconfigClass = typeof SourceAutoconfig;
     abstract class SourceAutoconfigPrivate {
         static $gtype: GObject.GType<SourceAutoconfigPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceBackendClass = typeof SourceBackend;
     abstract class SourceBackendPrivate {
         static $gtype: GObject.GType<SourceBackendPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceCalendarClass = typeof SourceCalendar;
     abstract class SourceCalendarPrivate {
         static $gtype: GObject.GType<SourceCalendarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceCamelClass = typeof SourceCamel;
     abstract class SourceCamelPrivate {
         static $gtype: GObject.GType<SourceCamelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceClass = typeof Source;
     type SourceCollectionClass = typeof SourceCollection;
     abstract class SourceCollectionPrivate {
         static $gtype: GObject.GType<SourceCollectionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceContactsClass = typeof SourceContacts;
     abstract class SourceContactsPrivate {
         static $gtype: GObject.GType<SourceContactsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceCredentialsProviderClass = typeof SourceCredentialsProvider;
@@ -20894,295 +20794,163 @@ export namespace EDataServer {
     type SourceCredentialsProviderImplOAuth2Class = typeof SourceCredentialsProviderImplOAuth2;
     abstract class SourceCredentialsProviderImplOAuth2Private {
         static $gtype: GObject.GType<SourceCredentialsProviderImplOAuth2Private>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceCredentialsProviderImplPasswordClass = typeof SourceCredentialsProviderImplPassword;
     abstract class SourceCredentialsProviderImplPasswordPrivate {
         static $gtype: GObject.GType<SourceCredentialsProviderImplPasswordPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class SourceCredentialsProviderImplPrivate {
         static $gtype: GObject.GType<SourceCredentialsProviderImplPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class SourceCredentialsProviderPrivate {
         static $gtype: GObject.GType<SourceCredentialsProviderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceExtensionClass = typeof SourceExtension;
     abstract class SourceExtensionPrivate {
         static $gtype: GObject.GType<SourceExtensionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceGoaClass = typeof SourceGoa;
     abstract class SourceGoaPrivate {
         static $gtype: GObject.GType<SourceGoaPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceLDAPClass = typeof SourceLDAP;
     abstract class SourceLDAPPrivate {
         static $gtype: GObject.GType<SourceLDAPPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceLocalClass = typeof SourceLocal;
     abstract class SourceLocalPrivate {
         static $gtype: GObject.GType<SourceLocalPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceMDNClass = typeof SourceMDN;
     abstract class SourceMDNPrivate {
         static $gtype: GObject.GType<SourceMDNPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceMailAccountClass = typeof SourceMailAccount;
     abstract class SourceMailAccountPrivate {
         static $gtype: GObject.GType<SourceMailAccountPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceMailCompositionClass = typeof SourceMailComposition;
     abstract class SourceMailCompositionPrivate {
         static $gtype: GObject.GType<SourceMailCompositionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceMailIdentityClass = typeof SourceMailIdentity;
     abstract class SourceMailIdentityPrivate {
         static $gtype: GObject.GType<SourceMailIdentityPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceMailSignatureClass = typeof SourceMailSignature;
     abstract class SourceMailSignaturePrivate {
         static $gtype: GObject.GType<SourceMailSignaturePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceMailSubmissionClass = typeof SourceMailSubmission;
     abstract class SourceMailSubmissionPrivate {
         static $gtype: GObject.GType<SourceMailSubmissionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceMailTransportClass = typeof SourceMailTransport;
     abstract class SourceMailTransportPrivate {
         static $gtype: GObject.GType<SourceMailTransportPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceMemoListClass = typeof SourceMemoList;
     abstract class SourceMemoListPrivate {
         static $gtype: GObject.GType<SourceMemoListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceOfflineClass = typeof SourceOffline;
     abstract class SourceOfflinePrivate {
         static $gtype: GObject.GType<SourceOfflinePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceOpenPGPClass = typeof SourceOpenPGP;
     abstract class SourceOpenPGPPrivate {
         static $gtype: GObject.GType<SourceOpenPGPPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class SourcePrivate {
         static $gtype: GObject.GType<SourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceProxyClass = typeof SourceProxy;
     abstract class SourceProxyPrivate {
         static $gtype: GObject.GType<SourceProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceRefreshClass = typeof SourceRefresh;
     abstract class SourceRefreshPrivate {
         static $gtype: GObject.GType<SourceRefreshPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceRegistryClass = typeof SourceRegistry;
     abstract class SourceRegistryPrivate {
         static $gtype: GObject.GType<SourceRegistryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceRegistryWatcherClass = typeof SourceRegistryWatcher;
     abstract class SourceRegistryWatcherPrivate {
         static $gtype: GObject.GType<SourceRegistryWatcherPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceResourceClass = typeof SourceResource;
     abstract class SourceResourcePrivate {
         static $gtype: GObject.GType<SourceResourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceRevisionGuardsClass = typeof SourceRevisionGuards;
     abstract class SourceRevisionGuardsPrivate {
         static $gtype: GObject.GType<SourceRevisionGuardsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceSMIMEClass = typeof SourceSMIME;
     abstract class SourceSMIMEPrivate {
         static $gtype: GObject.GType<SourceSMIMEPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceSecurityClass = typeof SourceSecurity;
     abstract class SourceSecurityPrivate {
         static $gtype: GObject.GType<SourceSecurityPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceSelectableClass = typeof SourceSelectable;
     abstract class SourceSelectablePrivate {
         static $gtype: GObject.GType<SourceSelectablePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceTaskListClass = typeof SourceTaskList;
     abstract class SourceTaskListPrivate {
         static $gtype: GObject.GType<SourceTaskListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceUoaClass = typeof SourceUoa;
     abstract class SourceUoaPrivate {
         static $gtype: GObject.GType<SourceUoaPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceWeatherClass = typeof SourceWeather;
     abstract class SourceWeatherPrivate {
         static $gtype: GObject.GType<SourceWeatherPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceWebDAVNotesClass = typeof SourceWebDAVNotes;
     abstract class SourceWebDAVNotesPrivate {
         static $gtype: GObject.GType<SourceWebDAVNotesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SourceWebdavClass = typeof SourceWebdav;
     abstract class SourceWebdavPrivate {
         static $gtype: GObject.GType<SourceWebdavPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class WebDAVAccessControlEntry {
@@ -21204,7 +20972,6 @@ export namespace EDataServer {
             flags: number,
             inherited_href?: string | null,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             principal_kind: WebDAVACEPrincipalKind,
@@ -21259,7 +21026,6 @@ export namespace EDataServer {
                 order: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -21294,7 +21060,6 @@ export namespace EDataServer {
             kind: WebDAVPrivilegeKind,
             hint: WebDAVPrivilegeHint,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             ns_uri: string | null,
@@ -21331,7 +21096,6 @@ export namespace EDataServer {
         // Constructors
 
         constructor(ns_uri: string, name: string);
-        _init(...args: any[]): void;
 
         static new_remove(ns_uri: string, name: string): WebDAVPropertyChange;
 
@@ -21386,7 +21150,6 @@ export namespace EDataServer {
             color: string | null,
             order: number,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             kind: WebDAVResourceKind,
@@ -21420,19 +21183,11 @@ export namespace EDataServer {
     type WebDAVSessionClass = typeof WebDAVSession;
     abstract class WebDAVSessionPrivate {
         static $gtype: GObject.GType<WebDAVSessionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type XmlDocumentClass = typeof XmlDocument;
     abstract class XmlDocumentPrivate {
         static $gtype: GObject.GType<XmlDocumentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -21440,10 +21195,6 @@ export namespace EDataServer {
      */
     abstract class XmlHash {
         static $gtype: GObject.GType<XmlHash>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Extensible {

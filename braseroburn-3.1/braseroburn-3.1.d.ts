@@ -505,7 +505,8 @@ export namespace BraseroBurn {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps,
+            extends
+                Gtk.Dialog.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -1101,9 +1102,7 @@ export namespace BraseroBurn {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             session: BurnSession;
         }
     }
@@ -2310,7 +2309,8 @@ export namespace BraseroBurn {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends ToolDialog.ConstructorProps,
+            extends
+                ToolDialog.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -2879,7 +2879,8 @@ export namespace BraseroBurn {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps,
+            extends
+                Gtk.Dialog.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -3740,7 +3741,8 @@ export namespace BraseroBurn {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends TrackData.ConstructorProps,
+            extends
+                TrackData.ConstructorProps,
                 Gtk.TreeDragDest.ConstructorProps,
                 Gtk.TreeDragSource.ConstructorProps,
                 Gtk.TreeModel.ConstructorProps,
@@ -5406,7 +5408,6 @@ export namespace BraseroBurn {
                 path: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type SessionCfgClass = typeof SessionCfg;
@@ -5424,10 +5425,6 @@ export namespace BraseroBurn {
     type TrackStreamClass = typeof TrackStream;
     abstract class TrackType {
         static $gtype: GObject.GType<TrackType>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 

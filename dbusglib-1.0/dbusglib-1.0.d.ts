@@ -66,26 +66,14 @@ export namespace DBusGLib {
 
     class Connection {
         static $gtype: GObject.GType<Connection>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MethodInvocation {
         static $gtype: GObject.GType<MethodInvocation>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ProxyClass {
         static $gtype: GObject.GType<ProxyClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

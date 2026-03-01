@@ -236,19 +236,11 @@ export namespace GUPnPIgd {
     type SimpleIgdClass = typeof SimpleIgd;
     abstract class SimpleIgdPrivate {
         static $gtype: GObject.GType<SimpleIgdPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SimpleIgdThreadClass = typeof SimpleIgdThread;
     abstract class SimpleIgdThreadPrivate {
         static $gtype: GObject.GType<SimpleIgdThreadPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

@@ -127,7 +127,6 @@ export namespace GUPnPAV {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -3130,10 +3129,6 @@ export namespace GUPnPAV {
     abstract class CDSLastChangeEntry {
         static $gtype: GObject.GType<CDSLastChangeEntry>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -3192,10 +3187,6 @@ export namespace GUPnPAV {
     type DIDLLiteObjectClass = typeof DIDLLiteObject;
     abstract class DIDLLiteObjectPrivate {
         static $gtype: GObject.GType<DIDLLiteObjectPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DIDLLiteParserClass = typeof DIDLLiteParser;

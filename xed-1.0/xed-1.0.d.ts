@@ -319,7 +319,8 @@ export namespace Xed {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Application.ConstructorProps,
+            extends
+                Gtk.Application.ConstructorProps,
                 Gio.ActionGroup.ConstructorProps,
                 Gio.ActionMap.ConstructorProps {}
     }
@@ -1103,7 +1104,8 @@ export namespace Xed {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ComboBox.ConstructorProps,
+            extends
+                Gtk.ComboBox.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.CellEditable.ConstructorProps,
@@ -5748,7 +5750,8 @@ export namespace Xed {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.FileChooserDialog.ConstructorProps,
+            extends
+                Gtk.FileChooserDialog.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.FileChooser.ConstructorProps {}
@@ -7251,7 +7254,8 @@ export namespace Xed {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Notebook.ConstructorProps,
+            extends
+                Gtk.Notebook.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -7876,9 +7880,7 @@ export namespace Xed {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             orientation: Gtk.Orientation;
         }
     }
@@ -8470,7 +8472,8 @@ export namespace Xed {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.InfoBar.ConstructorProps,
+            extends
+                Gtk.InfoBar.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -9029,7 +9032,8 @@ export namespace Xed {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {}
@@ -9616,7 +9620,8 @@ export namespace Xed {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Statusbar.ConstructorProps,
+            extends
+                Gtk.Statusbar.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {}
@@ -10171,7 +10176,8 @@ export namespace Xed {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -10834,7 +10840,8 @@ export namespace Xed {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GtkSource.View.ConstructorProps,
+            extends
+                GtkSource.View.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {}
@@ -11464,7 +11471,8 @@ export namespace Xed {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ApplicationWindow.ConstructorProps,
+            extends
+                Gtk.ApplicationWindow.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gio.ActionGroup.ConstructorProps,
                 Gio.ActionMap.ConstructorProps,
@@ -12628,47 +12636,27 @@ export namespace Xed {
     type AppClass = typeof App;
     abstract class AppPrivate {
         static $gtype: GObject.GType<AppPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DocumentClass = typeof Document;
     type EncodingsComboBoxClass = typeof EncodingsComboBox;
     abstract class EncodingsComboBoxPrivate {
         static $gtype: GObject.GType<EncodingsComboBoxPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FileChooserDialogClass = typeof FileChooserDialog;
     abstract class FileChooserDialogPrivate {
         static $gtype: GObject.GType<FileChooserDialogPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MessageBusClass = typeof MessageBus;
     abstract class MessageBusPrivate {
         static $gtype: GObject.GType<MessageBusPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MessageClass = typeof Message;
     abstract class MessagePrivate {
         static $gtype: GObject.GType<MessagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MessageType {
@@ -12677,7 +12665,6 @@ export namespace Xed {
         // Constructors
 
         constructor(object_path: string | null, method: string | null, num_optional: number, ___: any[]);
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -12736,75 +12723,43 @@ export namespace Xed {
     type NotebookClass = typeof Notebook;
     abstract class NotebookPrivate {
         static $gtype: GObject.GType<NotebookPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PanelClass = typeof Panel;
     abstract class PanelPrivate {
         static $gtype: GObject.GType<PanelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ProgressInfoBarClass = typeof ProgressInfoBar;
     abstract class ProgressInfoBarPrivate {
         static $gtype: GObject.GType<ProgressInfoBarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SearchbarClass = typeof Searchbar;
     abstract class SearchbarPrivate {
         static $gtype: GObject.GType<SearchbarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StatusbarClass = typeof Statusbar;
     abstract class StatusbarPrivate {
         static $gtype: GObject.GType<StatusbarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TabClass = typeof Tab;
     abstract class TabPrivate {
         static $gtype: GObject.GType<TabPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ViewActivatableInterface = typeof ViewActivatable;
     type ViewClass = typeof View;
     abstract class ViewPrivate {
         static $gtype: GObject.GType<ViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WindowActivatableInterface = typeof WindowActivatable;
     type WindowClass = typeof Window;
     abstract class WindowPrivate {
         static $gtype: GObject.GType<WindowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace AppActivatable {

@@ -142,7 +142,8 @@ export namespace FolksTelepathy {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Folks.Persona.ConstructorProps,
+            extends
+                Folks.Persona.ConstructorProps,
                 Folks.AliasDetails.ConstructorProps,
                 Folks.AvatarDetails.ConstructorProps,
                 Folks.BirthdayDetails.ConstructorProps,
@@ -932,19 +933,11 @@ export namespace FolksTelepathy {
     type PersonaStoreClass = typeof PersonaStore;
     abstract class PersonaStorePrivate {
         static $gtype: GObject.GType<PersonaStorePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PersonaClass = typeof Persona;
     abstract class PersonaPrivate {
         static $gtype: GObject.GType<PersonaPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

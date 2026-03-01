@@ -82,7 +82,6 @@ export namespace Rest {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -253,7 +252,6 @@ export namespace Rest {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -1285,10 +1283,6 @@ export namespace Rest {
     type OAuth2ProxyClass = typeof OAuth2Proxy;
     abstract class OAuth2ProxyPrivate {
         static $gtype: GObject.GType<OAuth2ProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OAuthProxyCallClass = typeof OAuthProxyCall;
@@ -1299,7 +1293,6 @@ export namespace Rest {
         // Constructors
 
         constructor(name: string, use: MemoryUse, data: Uint8Array | string, content_type: string, filename: string);
-        _init(...args: any[]): void;
 
         static new_full(
             name: string,
@@ -1369,10 +1362,6 @@ export namespace Rest {
     abstract class Params {
         static $gtype: GObject.GType<Params>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -1415,10 +1404,6 @@ export namespace Rest {
     abstract class ParamsIter {
         static $gtype: GObject.GType<ParamsIter>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -1453,19 +1438,11 @@ export namespace Rest {
     type ProxyAuthClass = typeof ProxyAuth;
     abstract class ProxyAuthPrivate {
         static $gtype: GObject.GType<ProxyAuthPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ProxyCallClass = typeof ProxyCall;
     abstract class ProxyCallPrivate {
         static $gtype: GObject.GType<ProxyCallPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ProxyClass = typeof Proxy;
@@ -1476,10 +1453,6 @@ export namespace Rest {
 
         name: string;
         content: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 

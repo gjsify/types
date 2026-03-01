@@ -2835,7 +2835,8 @@ export namespace Meta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps<Clutter.LayoutManager, BackgroundContent>,
+            extends
+                Clutter.Actor.ConstructorProps<Clutter.LayoutManager, BackgroundContent>,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
             meta_display: Display;
@@ -4186,7 +4187,8 @@ export namespace Meta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps,
+            extends
+                Clutter.Actor.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {}
     }
@@ -5947,8 +5949,7 @@ export namespace Meta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
-                Gio.DBusInterface.ConstructorProps {
+            extends Gio.DBusInterfaceSkeleton.ConstructorProps, Gio.DBusInterface.ConstructorProps {
             context: Context;
             exported: boolean;
         }
@@ -8822,7 +8823,8 @@ export namespace Meta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Stage.ConstructorProps,
+            extends
+                Clutter.Stage.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {}
     }
@@ -10887,7 +10889,8 @@ export namespace Meta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps,
+            extends
+                Clutter.Actor.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
             meta_window: Window;
@@ -11669,7 +11672,8 @@ export namespace Meta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps,
+            extends
+                Clutter.Actor.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {}
     }
@@ -12577,7 +12581,6 @@ export namespace Meta {
                 grabbed: boolean;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class ButtonLayout {
@@ -12589,10 +12592,6 @@ export namespace Meta {
         left_buttons_has_spacer: boolean[];
         right_buttons: ButtonFunction[];
         right_buttons_has_spacer: boolean[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CloseDialogInterface = typeof CloseDialog;
@@ -12610,10 +12609,6 @@ export namespace Meta {
         rect: Mtk.Rectangle;
         side_type: Side;
         edge_type: EdgeType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class FrameBorder {
@@ -12636,7 +12631,6 @@ export namespace Meta {
                 bottom: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class FrameBorders {
@@ -12657,7 +12651,6 @@ export namespace Meta {
                 total: FrameBorder;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -12668,10 +12661,6 @@ export namespace Meta {
     type InhibitShortcutsDialogInterface = typeof InhibitShortcutsDialog;
     abstract class KeyBinding {
         static $gtype: GObject.GType<KeyBinding>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -12698,10 +12687,6 @@ export namespace Meta {
     abstract class Settings {
         static $gtype: GObject.GType<Settings>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         get_font_dpi(): number;
@@ -12720,10 +12705,6 @@ export namespace Meta {
 
         rect: Mtk.Rectangle;
         side: Side;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WaylandClientClass = typeof WaylandClient;
@@ -12738,18 +12719,10 @@ export namespace Meta {
     type X11DisplayClass = typeof X11Display;
     abstract class _Monitor {
         static $gtype: GObject.GType<_Monitor>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class XEvent {
         static $gtype: GObject.GType<XEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace CloseDialog {

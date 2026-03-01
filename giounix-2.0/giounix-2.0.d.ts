@@ -1926,7 +1926,8 @@ export namespace GioUnix {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.InputStream.ConstructorProps,
+            extends
+                Gio.InputStream.ConstructorProps,
                 Gio.PollableInputStream.ConstructorProps,
                 FileDescriptorBased.ConstructorProps {
             close_fd: boolean;
@@ -3441,7 +3442,8 @@ export namespace GioUnix {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.OutputStream.ConstructorProps,
+            extends
+                Gio.OutputStream.ConstructorProps,
                 Gio.PollableOutputStream.ConstructorProps,
                 FileDescriptorBased.ConstructorProps {
             close_fd: boolean;
@@ -5351,20 +5353,12 @@ export namespace GioUnix {
     type FDMessageClass = typeof FDMessage;
     abstract class FDMessagePrivate {
         static $gtype: GObject.GType<FDMessagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FileDescriptorBasedIface = typeof FileDescriptorBased;
     type InputStreamClass = typeof InputStream;
     abstract class InputStreamPrivate {
         static $gtype: GObject.GType<InputStreamPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5373,10 +5367,6 @@ export namespace GioUnix {
      */
     abstract class MountEntry {
         static $gtype: GObject.GType<MountEntry>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -5514,10 +5504,6 @@ export namespace GioUnix {
     abstract class MountPoint {
         static $gtype: GObject.GType<MountPoint>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -5610,10 +5596,6 @@ export namespace GioUnix {
     type OutputStreamClass = typeof OutputStream;
     abstract class OutputStreamPrivate {
         static $gtype: GObject.GType<OutputStreamPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace DesktopAppInfoLookup {

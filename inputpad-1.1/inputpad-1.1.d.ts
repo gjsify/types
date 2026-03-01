@@ -152,7 +152,8 @@ export namespace InputPad {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Application.ConstructorProps,
+            extends
+                Gtk.Application.ConstructorProps,
                 Gio.ActionGroup.ConstructorProps,
                 Gio.ActionMap.ConstructorProps {}
     }
@@ -705,7 +706,8 @@ export namespace InputPad {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Button.ConstructorProps,
+            extends
+                Gtk.Button.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Activatable.ConstructorProps,
@@ -5360,7 +5362,8 @@ export namespace InputPad {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ComboBox.ConstructorProps,
+            extends
+                Gtk.ComboBox.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.CellEditable.ConstructorProps,
@@ -10001,7 +10004,8 @@ export namespace InputPad {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps,
+            extends
+                Gtk.Bin.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {}
@@ -10684,7 +10688,8 @@ export namespace InputPad {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ApplicationWindow.ConstructorProps,
+            extends
+                Gtk.ApplicationWindow.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gio.ActionGroup.ConstructorProps,
                 Gio.ActionMap.ConstructorProps,
@@ -11740,10 +11745,6 @@ export namespace InputPad {
         name: string;
         priv: GroupPrivate;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         destroy(): void;
@@ -11763,26 +11764,17 @@ export namespace InputPad {
                 signal_window: any;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type GtkApplicationClass = typeof GtkApplication;
     type GtkButtonClass = typeof GtkButton;
     abstract class GtkButtonPrivate {
         static $gtype: GObject.GType<GtkButtonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GtkComboBoxClass = typeof GtkComboBox;
     abstract class GtkComboBoxPrivate {
         static $gtype: GObject.GType<GtkComboBoxPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GtkKbduiClass = typeof GtkKbdui;
@@ -11793,10 +11785,6 @@ export namespace InputPad {
 
         kbdui: GtkKbdui;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         destroy(): void;
@@ -11806,36 +11794,20 @@ export namespace InputPad {
 
     abstract class GtkKbduiContextPrivate {
         static $gtype: GObject.GType<GtkKbduiContextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class GtkKbduiPrivate {
         static $gtype: GObject.GType<GtkKbduiPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GtkViewportClass = typeof GtkViewport;
     abstract class GtkViewportPrivate {
         static $gtype: GObject.GType<GtkViewportPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GtkWindowClass = typeof GtkWindow;
     abstract class GtkWindowPrivate {
         static $gtype: GObject.GType<GtkWindowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Table {
@@ -11848,10 +11820,6 @@ export namespace InputPad {
         type: TableType;
         data: any;
         priv: TablePrivate;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class TableCmd {
@@ -11870,7 +11838,6 @@ export namespace InputPad {
                 execl: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class TablePrivate {
@@ -11889,7 +11856,6 @@ export namespace InputPad {
                 signal_window: any;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class TableStr {
@@ -11910,7 +11876,6 @@ export namespace InputPad {
                 rawtext: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class TableXXX {
@@ -11935,7 +11900,6 @@ export namespace InputPad {
                 reserved5: any;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class UnicodeBlockTable {
@@ -11956,7 +11920,6 @@ export namespace InputPad {
                 label: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class WindowKbduiName {
@@ -11967,42 +11930,22 @@ export namespace InputPad {
         name: string;
         description: string;
         type: WindowType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class XKBConfigReg {
         static $gtype: GObject.GType<XKBConfigReg>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class XKBConfigRegPrivate {
         static $gtype: GObject.GType<XKBConfigRegPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class XKBKeyList {
         static $gtype: GObject.GType<XKBKeyList>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class XKBKeyListPrivate {
         static $gtype: GObject.GType<XKBKeyListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class XKBKeyRow {
@@ -12013,18 +11956,10 @@ export namespace InputPad {
         keycode: xlib.KeyCode;
         name: string;
         keysym: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class XKBKeyRowPrivate {
         static $gtype: GObject.GType<XKBKeyRowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class XKBLayoutList {
@@ -12034,18 +11969,10 @@ export namespace InputPad {
 
         layout: string;
         desc: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class XKBLayoutListPrivate {
         static $gtype: GObject.GType<XKBLayoutListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class XKBOptionGroupList {
@@ -12055,18 +11982,10 @@ export namespace InputPad {
 
         option_group: string;
         desc: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class XKBOptionGroupListPrivate {
         static $gtype: GObject.GType<XKBOptionGroupListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class XKBOptionList {
@@ -12076,18 +11995,10 @@ export namespace InputPad {
 
         option: string;
         desc: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class XKBOptionListPrivate {
         static $gtype: GObject.GType<XKBOptionListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class XKBVariantList {
@@ -12097,18 +12008,10 @@ export namespace InputPad {
 
         variant: string;
         desc: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class XKBVariantListPrivate {
         static $gtype: GObject.GType<XKBVariantListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

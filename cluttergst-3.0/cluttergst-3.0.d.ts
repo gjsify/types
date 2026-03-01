@@ -3871,7 +3871,8 @@ export namespace ClutterGst {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GstVideo.VideoSink.ConstructorProps,
+            extends
+                GstVideo.VideoSink.ConstructorProps,
                 GstVideo.ColorBalance.ConstructorProps,
                 GstVideo.Navigation.ConstructorProps {
             update_priority: number;
@@ -4534,10 +4535,6 @@ export namespace ClutterGst {
     type AspectratioClass = typeof Aspectratio;
     abstract class AspectratioPrivate {
         static $gtype: GObject.GType<AspectratioPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4564,7 +4561,6 @@ export namespace ClutterGst {
                 y2: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4584,45 +4580,25 @@ export namespace ClutterGst {
     type CameraDeviceClass = typeof CameraDevice;
     abstract class CameraDevicePrivate {
         static $gtype: GObject.GType<CameraDevicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CameraManagerClass = typeof CameraManager;
     abstract class CameraManagerPrivate {
         static $gtype: GObject.GType<CameraManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class CameraPrivate {
         static $gtype: GObject.GType<CameraPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ContentClass = typeof Content;
     abstract class ContentPrivate {
         static $gtype: GObject.GType<ContentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CropClass = typeof Crop;
     abstract class CropPrivate {
         static $gtype: GObject.GType<CropPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4643,7 +4619,6 @@ export namespace ClutterGst {
                 pipeline: unknown;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4664,7 +4639,6 @@ export namespace ClutterGst {
                 pipeline: unknown;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class Overlays {
@@ -4681,25 +4655,16 @@ export namespace ClutterGst {
                 overlays: any[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type PlaybackClass = typeof Playback;
     abstract class PlaybackPrivate {
         static $gtype: GObject.GType<PlaybackPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PlayerIface = typeof Player;
     abstract class PlayerIfacePrivate {
         static $gtype: GObject.GType<PlayerIfacePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4725,16 +4690,11 @@ export namespace ClutterGst {
                 par_d: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type VideoSinkClass = typeof VideoSink;
     abstract class VideoSinkPrivate {
         static $gtype: GObject.GType<VideoSinkPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Player {

@@ -964,7 +964,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -1647,7 +1648,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -2680,7 +2682,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -3257,7 +3260,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EditorProperty.ConstructorProps,
+            extends
+                EditorProperty.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Editable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -7673,7 +7677,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EditorProperty.ConstructorProps,
+            extends
+                EditorProperty.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Editable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -12089,7 +12094,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EditorProperty.ConstructorProps,
+            extends
+                EditorProperty.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Editable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -16505,7 +16511,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EditorProperty.ConstructorProps,
+            extends
+                EditorProperty.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Editable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -20921,7 +20928,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EditorProperty.ConstructorProps,
+            extends
+                EditorProperty.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Editable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -25337,7 +25345,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EditorProperty.ConstructorProps,
+            extends
+                EditorProperty.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Editable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -29756,7 +29765,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EditorProperty.ConstructorProps,
+            extends
+                EditorProperty.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Editable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -34172,7 +34182,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EditorProperty.ConstructorProps,
+            extends
+                EditorProperty.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Editable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -38588,7 +38599,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EditorProperty.ConstructorProps,
+            extends
+                EditorProperty.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Editable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -43004,7 +43016,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EditorProperty.ConstructorProps,
+            extends
+                EditorProperty.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Editable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -47420,7 +47433,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends EditorProperty.ConstructorProps,
+            extends
+                EditorProperty.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Editable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -51839,7 +51853,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -52454,7 +52469,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Editable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -56951,7 +56967,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Editable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -61382,7 +61399,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Grid.ConstructorProps,
+            extends
+                Gtk.Grid.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Editable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -65820,7 +65838,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -66445,7 +66464,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps,
+            extends
+                Gtk.Dialog.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -67005,7 +67025,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -67612,7 +67633,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {}
@@ -68419,7 +68441,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 Gtk.TreeDragSource.ConstructorProps,
                 Gtk.TreeModel.ConstructorProps {
             add_item: WidgetAdaptor;
@@ -69991,7 +70014,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.EventBox.ConstructorProps,
+            extends
+                Gtk.EventBox.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Editable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
@@ -74439,7 +74463,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Editable.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
@@ -79086,7 +79111,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -79627,7 +79653,8 @@ export namespace Gladeui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 Gtk.TreeDragSource.ConstructorProps,
                 Gtk.TreeModel.ConstructorProps {
             signals: any;
@@ -82055,10 +82082,6 @@ export namespace Gladeui {
     abstract class Catalog {
         static $gtype: GObject.GType<Catalog>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -82114,10 +82137,6 @@ export namespace Gladeui {
         // Fields
 
         property: Property;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Cursor {
@@ -82137,10 +82156,6 @@ export namespace Gladeui {
         resize_bottom: Gdk.Cursor;
         drag: Gdk.Cursor;
         add_widget_pixbuf: GdkPixbuf.Pixbuf;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -82168,10 +82183,6 @@ export namespace Gladeui {
     abstract class IDAllocator {
         static $gtype: GObject.GType<IDAllocator>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -82194,10 +82205,6 @@ export namespace Gladeui {
     abstract class NameContext {
         static $gtype: GObject.GType<NameContext>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         add_name(name: string): boolean;
@@ -82212,18 +82219,10 @@ export namespace Gladeui {
     type PaletteClass = typeof Palette;
     abstract class PalettePrivate {
         static $gtype: GObject.GType<PalettePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ParamSpecObjects {
         static $gtype: GObject.GType<ParamSpecObjects>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -82234,19 +82233,11 @@ export namespace Gladeui {
     type PlaceholderClass = typeof Placeholder;
     abstract class PlaceholderPrivate {
         static $gtype: GObject.GType<PlaceholderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ProjectClass = typeof Project;
     abstract class ProjectPrivate {
         static $gtype: GObject.GType<ProjectPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PropertyClass = typeof Property;
@@ -82256,7 +82247,6 @@ export namespace Gladeui {
         // Constructors
 
         constructor(adaptor: WidgetAdaptor, id: string);
-        _init(...args: any[]): void;
 
         static ['new'](adaptor: WidgetAdaptor, id: string): PropertyDef;
 
@@ -82364,27 +82354,15 @@ export namespace Gladeui {
     type PropertyLabelClass = typeof PropertyLabel;
     abstract class PropertyLabelPrivate {
         static $gtype: GObject.GType<PropertyLabelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class PropertyPrivate {
         static $gtype: GObject.GType<PropertyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PropertyShellClass = typeof PropertyShell;
     abstract class PropertyShellPrivate {
         static $gtype: GObject.GType<PropertyShellPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SignalClass = typeof Signal;
@@ -82394,7 +82372,6 @@ export namespace Gladeui {
         // Constructors
 
         constructor(adaptor: WidgetAdaptor, for_type: GObject.GType, signal_id: number);
-        _init(...args: any[]): void;
 
         static ['new'](adaptor: WidgetAdaptor, for_type: GObject.GType, signal_id: number): SignalDef;
 
@@ -82473,18 +82450,10 @@ export namespace Gladeui {
     type SignalModelClass = typeof SignalModel;
     abstract class SignalModelPrivate {
         static $gtype: GObject.GType<SignalModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class SignalPrivate {
         static $gtype: GObject.GType<SignalPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class TargetableVersion {
@@ -82503,7 +82472,6 @@ export namespace Gladeui {
                 minor: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type WidgetActionClass = typeof WidgetAction;
@@ -82530,7 +82498,6 @@ export namespace Gladeui {
                 important: boolean;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](path: string): WidgetActionDef;
 
@@ -82548,20 +82515,12 @@ export namespace Gladeui {
 
     abstract class WidgetActionPrivate {
         static $gtype: GObject.GType<WidgetActionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WidgetAdaptorClass = typeof WidgetAdaptor;
     type WidgetClass = typeof Widget;
     abstract class WidgetGroup {
         static $gtype: GObject.GType<WidgetGroup>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -82573,10 +82532,6 @@ export namespace Gladeui {
 
     abstract class WidgetPrivate {
         static $gtype: GObject.GType<WidgetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class XmlContext {
@@ -82585,7 +82540,6 @@ export namespace Gladeui {
         // Constructors
 
         constructor(doc: XmlDoc, name_space?: string | null);
-        _init(...args: any[]): void;
 
         static ['new'](doc: XmlDoc, name_space?: string | null): XmlContext;
 
@@ -82611,7 +82565,6 @@ export namespace Gladeui {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): XmlDoc;
 
@@ -82638,7 +82591,6 @@ export namespace Gladeui {
         // Constructors
 
         constructor(context: XmlContext, name: string);
-        _init(...args: any[]): void;
 
         static ['new'](context: XmlContext, name: string): XmlNode;
 

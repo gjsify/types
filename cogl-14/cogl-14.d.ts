@@ -7398,7 +7398,6 @@ export namespace Cogl {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -7484,10 +7483,6 @@ export namespace Cogl {
      */
     class DepthState {
         static $gtype: GObject.GType<DepthState>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -7606,10 +7601,6 @@ export namespace Cogl {
     abstract class DmaBufHandle {
         static $gtype: GObject.GType<DmaBufHandle>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -7648,10 +7639,6 @@ export namespace Cogl {
      */
     abstract class Fence {
         static $gtype: GObject.GType<Fence>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -7660,10 +7647,6 @@ export namespace Cogl {
      */
     abstract class FenceClosure {
         static $gtype: GObject.GType<FenceClosure>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -7678,20 +7661,12 @@ export namespace Cogl {
      */
     abstract class FrameClosure {
         static $gtype: GObject.GType<FrameClosure>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FrameInfoClass = typeof FrameInfo;
     type FramebufferClass = typeof Framebuffer;
     abstract class FramebufferDriverConfig {
         static $gtype: GObject.GType<FramebufferDriverConfig>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IndexBufferClass = typeof IndexBuffer;
@@ -7730,10 +7705,6 @@ export namespace Cogl {
      */
     abstract class MatrixEntry {
         static $gtype: GObject.GType<MatrixEntry>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -7814,10 +7785,6 @@ export namespace Cogl {
      */
     class OnscreenDirtyClosure {
         static $gtype: GObject.GType<OnscreenDirtyClosure>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -7845,7 +7812,6 @@ export namespace Cogl {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type OnscreenTemplateClass = typeof OnscreenTemplate;
@@ -7879,7 +7845,6 @@ export namespace Cogl {
                 revents: unknown;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type PrimitiveClass = typeof Primitive;
@@ -7907,18 +7872,10 @@ export namespace Cogl {
         z: number;
         tx: number;
         ty: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class TimestampQuery {
         static $gtype: GObject.GType<TimestampQuery>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -7941,7 +7898,6 @@ export namespace Cogl {
                 y: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -7972,7 +7928,6 @@ export namespace Cogl {
                 a: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -7999,7 +7954,6 @@ export namespace Cogl {
                 t: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -8034,7 +7988,6 @@ export namespace Cogl {
                 a: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -8059,7 +8012,6 @@ export namespace Cogl {
                 z: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -8092,7 +8044,6 @@ export namespace Cogl {
                 a: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -8121,7 +8072,6 @@ export namespace Cogl {
                 t: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -8158,7 +8108,6 @@ export namespace Cogl {
                 a: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     namespace ScanoutBuffer {

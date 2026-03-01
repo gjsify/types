@@ -1643,9 +1643,7 @@ export namespace Cally {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Actor.ConstructorProps,
-                Atk.Component.ConstructorProps,
-                Atk.Window.ConstructorProps {}
+            extends Actor.ConstructorProps, Atk.Component.ConstructorProps, Atk.Window.ConstructorProps {}
     }
 
     /**
@@ -2772,7 +2770,8 @@ export namespace Cally {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Actor.ConstructorProps,
+            extends
+                Actor.ConstructorProps,
                 Atk.Action.ConstructorProps,
                 Atk.Component.ConstructorProps,
                 Atk.EditableText.ConstructorProps,
@@ -4302,10 +4301,6 @@ export namespace Cally {
     type ActorClass = typeof Actor;
     abstract class ActorPrivate {
         static $gtype: GObject.GType<ActorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CloneClass = typeof Clone;

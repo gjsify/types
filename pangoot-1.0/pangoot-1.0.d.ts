@@ -403,7 +403,6 @@ export namespace PangoOT {
         // Constructors
 
         constructor(font: PangoFc.Font);
-        _init(...args: any[]): void;
 
         static ['new'](font: PangoFc.Font): Buffer;
 
@@ -483,7 +482,6 @@ export namespace PangoOT {
                 property_bit: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -515,7 +513,6 @@ export namespace PangoOT {
                 internal: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -538,10 +535,6 @@ export namespace PangoOT {
         n_static_gpos_features: number;
         other_features: FeatureMap;
         n_other_features: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 

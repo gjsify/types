@@ -86,7 +86,8 @@ export namespace GcrGtk3 {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -683,10 +684,6 @@ export namespace GcrGtk3 {
     type SecureEntryBufferClass = typeof SecureEntryBuffer;
     abstract class SecureEntryBufferPrivate {
         static $gtype: GObject.GType<SecureEntryBufferPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

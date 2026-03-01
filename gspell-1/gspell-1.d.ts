@@ -50,7 +50,6 @@ export namespace Gspell {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -275,9 +274,7 @@ export namespace Gspell {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             spell_navigator: Navigator;
             spellNavigator: Navigator;
         }
@@ -1072,7 +1069,8 @@ export namespace Gspell {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Button.ConstructorProps,
+            extends
+                Gtk.Button.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 LanguageChooser.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
@@ -5766,7 +5764,8 @@ export namespace Gspell {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps,
+            extends
+                Gtk.Dialog.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 LanguageChooser.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
@@ -6668,10 +6667,6 @@ export namespace Gspell {
     type EntryClass = typeof Entry;
     abstract class Language {
         static $gtype: GObject.GType<Language>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 

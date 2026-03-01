@@ -183,7 +183,6 @@ export namespace gSignon {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -809,19 +808,11 @@ export namespace gSignon {
     type AuthServiceClass = typeof AuthService;
     abstract class AuthServicePrivate {
         static $gtype: GObject.GType<AuthServicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AuthSessionClass = typeof AuthSession;
     abstract class AuthSessionPrivate {
         static $gtype: GObject.GType<AuthSessionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IdentityClass = typeof Identity;
@@ -834,7 +825,6 @@ export namespace gSignon {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): IdentityInfo;
 
@@ -971,10 +961,6 @@ export namespace gSignon {
 
     abstract class IdentityPrivate {
         static $gtype: GObject.GType<IdentityPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -996,7 +982,6 @@ export namespace gSignon {
                 app_ctx: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): SecurityContext;
 
@@ -1066,10 +1051,6 @@ export namespace gSignon {
 
     abstract class _AuthSession {
         static $gtype: GObject.GType<_AuthSession>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AuthSessionQueryAvailableMethodsCb = AuthSessionQueryAvailableMechanismsCb;

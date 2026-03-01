@@ -40,10 +40,6 @@ export namespace Mtk {
         static FLIPPED_90: number;
         static FLIPPED_180: number;
         static FLIPPED_270: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     export namespace RegionOverlap {
@@ -100,18 +96,10 @@ export namespace Mtk {
     function x11_errors_deinit(): void;
     abstract class AnonymousFile {
         static $gtype: GObject.GType<AnonymousFile>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DbusPidfd {
         static $gtype: GObject.GType<DbusPidfd>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -140,7 +128,6 @@ export namespace Mtk {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](x: number, y: number, width: number, height: number): Rectangle;
 
@@ -216,10 +203,6 @@ export namespace Mtk {
     abstract class Region {
         static $gtype: GObject.GType<Region>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         static create(): Region;
@@ -262,10 +245,6 @@ export namespace Mtk {
 
         n_levels: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         add_rectangle(x: number, y: number, width: number, height: number): void;
@@ -299,10 +278,6 @@ export namespace Mtk {
         line_start: boolean;
         line_end: boolean;
         i: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 

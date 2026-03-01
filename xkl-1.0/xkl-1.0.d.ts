@@ -813,19 +813,11 @@ export namespace Xkl {
     type ConfigRegistryClass = typeof ConfigRegistry;
     abstract class ConfigRegistryPrivate {
         static $gtype: GObject.GType<ConfigRegistryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EngineClass = typeof Engine;
     abstract class EnginePrivate {
         static $gtype: GObject.GType<EnginePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class State {
@@ -844,7 +836,6 @@ export namespace Xkl {
                 indicators: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**

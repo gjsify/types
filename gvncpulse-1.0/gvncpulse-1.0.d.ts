@@ -532,10 +532,6 @@ export namespace GVncPulse {
     type AudioPulseClass = typeof AudioPulse;
     abstract class AudioPulsePrivate {
         static $gtype: GObject.GType<AudioPulsePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

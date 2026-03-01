@@ -124,7 +124,8 @@ export namespace SpiceClientGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.EventBox.ConstructorProps,
+            extends
+                Gtk.EventBox.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             channel_id: number;
@@ -970,7 +971,8 @@ export namespace SpiceClientGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -1510,7 +1512,6 @@ export namespace SpiceClientGtk {
         // Constructors
 
         constructor(keysyms: number[]);
-        _init(...args: any[]): void;
 
         static ['new'](keysyms: number[]): GrabSequence;
 
@@ -1538,10 +1539,6 @@ export namespace SpiceClientGtk {
     type UsbDeviceWidgetClass = typeof UsbDeviceWidget;
     abstract class UsbDeviceWidgetPrivate {
         static $gtype: GObject.GType<UsbDeviceWidgetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

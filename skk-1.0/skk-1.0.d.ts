@@ -63,7 +63,6 @@ export namespace Skk {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class RuleParseError extends GLib.Error {
@@ -76,7 +75,6 @@ export namespace Skk {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     const KeysymsVoidSymbol: number;
@@ -3229,127 +3227,71 @@ export namespace Skk {
     type RomKanaConverterClass = typeof RomKanaConverter;
     abstract class RomKanaConverterPrivate {
         static $gtype: GObject.GType<RomKanaConverterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DictClass = typeof Dict;
     abstract class DictPrivate {
         static $gtype: GObject.GType<DictPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EmptyDictClass = typeof EmptyDict;
     abstract class EmptyDictPrivate {
         static $gtype: GObject.GType<EmptyDictPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FileDictClass = typeof FileDict;
     abstract class FileDictPrivate {
         static $gtype: GObject.GType<FileDictPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CdbDictClass = typeof CdbDict;
     abstract class CdbDictPrivate {
         static $gtype: GObject.GType<CdbDictPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UserDictClass = typeof UserDict;
     abstract class UserDictPrivate {
         static $gtype: GObject.GType<UserDictPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SkkServClass = typeof SkkServ;
     abstract class SkkServPrivate {
         static $gtype: GObject.GType<SkkServPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type KeyEventClass = typeof KeyEvent;
     abstract class KeyEventPrivate {
         static $gtype: GObject.GType<KeyEventPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type KeyEventFilterClass = typeof KeyEventFilter;
     abstract class KeyEventFilterPrivate {
         static $gtype: GObject.GType<KeyEventFilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RuleClass = typeof Rule;
     abstract class RulePrivate {
         static $gtype: GObject.GType<RulePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ContextClass = typeof Context;
     abstract class ContextPrivate {
         static $gtype: GObject.GType<ContextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CandidateClass = typeof Candidate;
     abstract class CandidatePrivate {
         static $gtype: GObject.GType<CandidatePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CandidateListClass = typeof CandidateList;
     abstract class CandidateListPrivate {
         static $gtype: GObject.GType<CandidateListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type NicolaKeyEventFilterClass = typeof NicolaKeyEventFilter;
     abstract class NicolaKeyEventFilterPrivate {
         static $gtype: GObject.GType<NicolaKeyEventFilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class RuleMetadata {
@@ -3374,7 +3316,6 @@ export namespace Skk {
                 filter: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 

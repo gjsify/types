@@ -46,7 +46,6 @@ export namespace Dee {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -1142,9 +1141,7 @@ export namespace Dee {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends ProxyModel.ConstructorProps,
-                Model.ConstructorProps,
-                Serializable.ConstructorProps {
+            extends ProxyModel.ConstructorProps, Model.ConstructorProps, Serializable.ConstructorProps {
             filter: Filter;
         }
     }
@@ -2641,9 +2638,7 @@ export namespace Dee {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends SerializableModel.ConstructorProps,
-                Model.ConstructorProps,
-                Serializable.ConstructorProps {
+            extends SerializableModel.ConstructorProps, Model.ConstructorProps, Serializable.ConstructorProps {
             back_end: Model;
             backEnd: Model;
             inherit_seqnums: boolean;
@@ -3830,9 +3825,7 @@ export namespace Dee {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends SerializableModel.ConstructorProps,
-                Model.ConstructorProps,
-                Serializable.ConstructorProps {}
+            extends SerializableModel.ConstructorProps, Model.ConstructorProps, Serializable.ConstructorProps {}
     }
 
     /**
@@ -4975,9 +4968,7 @@ export namespace Dee {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Model.ConstructorProps,
-                Serializable.ConstructorProps {}
+            extends GObject.Object.ConstructorProps, Model.ConstructorProps, Serializable.ConstructorProps {}
     }
 
     /**
@@ -6227,9 +6218,7 @@ export namespace Dee {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends ProxyModel.ConstructorProps,
-                Model.ConstructorProps,
-                Serializable.ConstructorProps {
+            extends ProxyModel.ConstructorProps, Model.ConstructorProps, Serializable.ConstructorProps {
             access_mode: SharedModelAccessMode;
             accessMode: SharedModelAccessMode;
             flush_mode: SharedModelFlushMode;
@@ -7057,9 +7046,7 @@ export namespace Dee {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends SerializableModel.ConstructorProps,
-                Model.ConstructorProps,
-                Serializable.ConstructorProps {
+            extends SerializableModel.ConstructorProps, Model.ConstructorProps, Serializable.ConstructorProps {
             target: Model;
         }
     }
@@ -8288,10 +8275,6 @@ export namespace Dee {
      */
     abstract class AnalyzerPrivate {
         static $gtype: GObject.GType<AnalyzerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ClientClass = typeof Client;
@@ -8300,10 +8283,6 @@ export namespace Dee {
      */
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FileResourceManagerClass = typeof FileResourceManager;
@@ -8318,10 +8297,6 @@ export namespace Dee {
         map_func: FilterMapFunc;
         map_notify: FilterMapNotify;
         userdata: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -8422,28 +8397,16 @@ export namespace Dee {
      */
     abstract class FilterModelPrivate {
         static $gtype: GObject.GType<FilterModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GListResultSetClass = typeof GListResultSet;
     type HashIndexClass = typeof HashIndex;
     abstract class HashIndexPrivate {
         static $gtype: GObject.GType<HashIndexPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class ICUTermFilter {
         static $gtype: GObject.GType<ICUTermFilter>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -8465,10 +8428,6 @@ export namespace Dee {
      */
     abstract class IndexPrivate {
         static $gtype: GObject.GType<IndexPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ModelIface = typeof Model;
@@ -8478,10 +8437,6 @@ export namespace Dee {
      */
     class ModelIter {
         static $gtype: GObject.GType<ModelIter>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -8495,10 +8450,6 @@ export namespace Dee {
 
         reader_func: ModelReaderFunc;
         userdata: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -8554,10 +8505,6 @@ export namespace Dee {
      */
     abstract class ModelTag {
         static $gtype: GObject.GType<ModelTag>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PeerClass = typeof Peer;
@@ -8566,10 +8513,6 @@ export namespace Dee {
      */
     abstract class PeerPrivate {
         static $gtype: GObject.GType<PeerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ProxyModelClass = typeof ProxyModel;
@@ -8578,10 +8521,6 @@ export namespace Dee {
      */
     abstract class ProxyModelPrivate {
         static $gtype: GObject.GType<ProxyModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ResourceManagerIface = typeof ResourceManager;
@@ -8592,10 +8531,6 @@ export namespace Dee {
      */
     abstract class SequenceModelPrivate {
         static $gtype: GObject.GType<SequenceModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SerializableIface = typeof Serializable;
@@ -8605,10 +8540,6 @@ export namespace Dee {
      */
     abstract class SerializableModelPrivate {
         static $gtype: GObject.GType<SerializableModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ServerClass = typeof Server;
@@ -8617,10 +8548,6 @@ export namespace Dee {
      */
     abstract class ServerPrivate {
         static $gtype: GObject.GType<ServerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SharedModelClass = typeof SharedModel;
@@ -8629,10 +8556,6 @@ export namespace Dee {
      */
     abstract class SharedModelPrivate {
         static $gtype: GObject.GType<SharedModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TermListClass = typeof TermList;
@@ -8641,19 +8564,11 @@ export namespace Dee {
      */
     abstract class TermListPrivate {
         static $gtype: GObject.GType<TermListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TextAnalyzerClass = typeof TextAnalyzer;
     abstract class TextAnalyzerPrivate {
         static $gtype: GObject.GType<TextAnalyzerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TransactionClass = typeof Transaction;
@@ -8662,19 +8577,11 @@ export namespace Dee {
      */
     abstract class TransactionPrivate {
         static $gtype: GObject.GType<TransactionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TreeIndexClass = typeof TreeIndex;
     abstract class TreeIndexPrivate {
         static $gtype: GObject.GType<TreeIndexPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Model {

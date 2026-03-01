@@ -69,7 +69,6 @@ export namespace RygelServer {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class MediaEngineError extends GLib.Error {
@@ -82,7 +81,6 @@ export namespace RygelServer {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class HTTPSeekRequestError extends GLib.Error {
@@ -97,7 +95,6 @@ export namespace RygelServer {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class DataSourceError extends GLib.Error {
@@ -112,7 +109,6 @@ export namespace RygelServer {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class HTTPRequestError extends GLib.Error {
@@ -128,7 +124,6 @@ export namespace RygelServer {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     class PlaySpeedError extends GLib.Error {
@@ -142,7 +137,6 @@ export namespace RygelServer {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     namespace AudioItem {
@@ -5452,388 +5446,216 @@ export namespace RygelServer {
     type AudioItemClass = typeof AudioItem;
     abstract class AudioItemPrivate {
         static $gtype: GObject.GType<AudioItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ImageItemClass = typeof ImageItem;
     abstract class ImageItemPrivate {
         static $gtype: GObject.GType<ImageItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LogicalExpressionClass = typeof LogicalExpression;
     abstract class LogicalExpressionPrivate {
         static $gtype: GObject.GType<LogicalExpressionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaArtStoreClass = typeof MediaArtStore;
     abstract class MediaArtStorePrivate {
         static $gtype: GObject.GType<MediaArtStorePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaObjectsClass = typeof MediaObjects;
     abstract class MediaObjectsPrivate {
         static $gtype: GObject.GType<MediaObjectsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MusicItemClass = typeof MusicItem;
     abstract class MusicItemPrivate {
         static $gtype: GObject.GType<MusicItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PhotoItemClass = typeof PhotoItem;
     abstract class PhotoItemPrivate {
         static $gtype: GObject.GType<PhotoItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RelationalExpressionClass = typeof RelationalExpression;
     abstract class RelationalExpressionPrivate {
         static $gtype: GObject.GType<RelationalExpressionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SimpleContainerClass = typeof SimpleContainer;
     abstract class SimpleContainerPrivate {
         static $gtype: GObject.GType<SimpleContainerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SubtitleClass = typeof Subtitle;
     abstract class SubtitlePrivate {
         static $gtype: GObject.GType<SubtitlePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ThumbnailClass = typeof Thumbnail;
     abstract class ThumbnailPrivate {
         static $gtype: GObject.GType<ThumbnailPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type VideoItemClass = typeof VideoItem;
     abstract class VideoItemPrivate {
         static $gtype: GObject.GType<VideoItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaContainerClass = typeof MediaContainer;
     abstract class MediaContainerPrivate {
         static $gtype: GObject.GType<MediaContainerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaItemClass = typeof MediaItem;
     abstract class MediaItemPrivate {
         static $gtype: GObject.GType<MediaItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaFileItemClass = typeof MediaFileItem;
     abstract class MediaFileItemPrivate {
         static $gtype: GObject.GType<MediaFileItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaObjectClass = typeof MediaObject;
     abstract class MediaObjectPrivate {
         static $gtype: GObject.GType<MediaObjectPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaResourceClass = typeof MediaResource;
     abstract class MediaResourcePrivate {
         static $gtype: GObject.GType<MediaResourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaServerPluginClass = typeof MediaServerPlugin;
     abstract class MediaServerPluginPrivate {
         static $gtype: GObject.GType<MediaServerPluginPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SearchExpressionClass = typeof SearchExpression;
     abstract class SearchExpressionPrivate {
         static $gtype: GObject.GType<SearchExpressionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaServerClass = typeof MediaServer;
     abstract class MediaServerPrivate {
         static $gtype: GObject.GType<MediaServerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaEngineClass = typeof MediaEngine;
     abstract class MediaEnginePrivate {
         static $gtype: GObject.GType<MediaEnginePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HTTPSeekRequestClass = typeof HTTPSeekRequest;
     abstract class HTTPSeekRequestPrivate {
         static $gtype: GObject.GType<HTTPSeekRequestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PlaylistItemClass = typeof PlaylistItem;
     abstract class PlaylistItemPrivate {
         static $gtype: GObject.GType<PlaylistItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ContentDirectoryClass = typeof ContentDirectory;
     abstract class ContentDirectoryPrivate {
         static $gtype: GObject.GType<ContentDirectoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HTTPByteSeekRequestClass = typeof HTTPByteSeekRequest;
     abstract class HTTPByteSeekRequestPrivate {
         static $gtype: GObject.GType<HTTPByteSeekRequestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HTTPByteSeekResponseClass = typeof HTTPByteSeekResponse;
     abstract class HTTPByteSeekResponsePrivate {
         static $gtype: GObject.GType<HTTPByteSeekResponsePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HTTPGetHandlerClass = typeof HTTPGetHandler;
     abstract class HTTPGetHandlerPrivate {
         static $gtype: GObject.GType<HTTPGetHandlerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HTTPGetClass = typeof HTTPGet;
     abstract class HTTPGetPrivate {
         static $gtype: GObject.GType<HTTPGetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HTTPItemURIClass = typeof HTTPItemURI;
     abstract class HTTPItemURIPrivate {
         static $gtype: GObject.GType<HTTPItemURIPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HTTPRequestClass = typeof HTTPRequest;
     abstract class HTTPRequestPrivate {
         static $gtype: GObject.GType<HTTPRequestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HTTPResponseClass = typeof HTTPResponse;
     abstract class HTTPResponsePrivate {
         static $gtype: GObject.GType<HTTPResponsePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HTTPResponseElementClass = typeof HTTPResponseElement;
     abstract class HTTPResponseElementPrivate {
         static $gtype: GObject.GType<HTTPResponseElementPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HTTPServerClass = typeof HTTPServer;
     abstract class HTTPServerPrivate {
         static $gtype: GObject.GType<HTTPServerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HTTPTimeSeekRequestClass = typeof HTTPTimeSeekRequest;
     abstract class HTTPTimeSeekRequestPrivate {
         static $gtype: GObject.GType<HTTPTimeSeekRequestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HTTPTimeSeekResponseClass = typeof HTTPTimeSeekResponse;
     abstract class HTTPTimeSeekResponsePrivate {
         static $gtype: GObject.GType<HTTPTimeSeekResponsePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SerializerClass = typeof Serializer;
     abstract class SerializerPrivate {
         static $gtype: GObject.GType<SerializerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PlaySpeedClass = typeof PlaySpeed;
     abstract class PlaySpeedPrivate {
         static $gtype: GObject.GType<PlaySpeedPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PlaySpeedRequestClass = typeof PlaySpeedRequest;
     abstract class PlaySpeedRequestPrivate {
         static $gtype: GObject.GType<PlaySpeedRequestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PlaySpeedResponseClass = typeof PlaySpeedResponse;
     abstract class PlaySpeedResponsePrivate {
         static $gtype: GObject.GType<PlaySpeedResponsePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DTCPCleartextRequestClass = typeof DTCPCleartextRequest;
     abstract class DTCPCleartextRequestPrivate {
         static $gtype: GObject.GType<DTCPCleartextRequestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DTCPCleartextResponseClass = typeof DTCPCleartextResponse;
     abstract class DTCPCleartextResponsePrivate {
         static $gtype: GObject.GType<DTCPCleartextResponsePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DLNAAvailableSeekRangeRequestClass = typeof DLNAAvailableSeekRangeRequest;
     abstract class DLNAAvailableSeekRangeRequestPrivate {
         static $gtype: GObject.GType<DLNAAvailableSeekRangeRequestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DLNAAvailableSeekRangeResponseClass = typeof DLNAAvailableSeekRangeResponse;
     abstract class DLNAAvailableSeekRangeResponsePrivate {
         static $gtype: GObject.GType<DLNAAvailableSeekRangeResponsePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SearchableContainerIface = typeof SearchableContainer;

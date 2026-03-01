@@ -403,7 +403,8 @@ export namespace GnomeBluetooth {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -1101,7 +1102,8 @@ export namespace GnomeBluetooth {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Button.ConstructorProps,
+            extends
+                Gtk.Button.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Activatable.ConstructorProps,
@@ -5767,7 +5769,8 @@ export namespace GnomeBluetooth {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -6544,7 +6547,8 @@ export namespace GnomeBluetooth {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -7145,7 +7149,8 @@ export namespace GnomeBluetooth {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {}
@@ -7661,10 +7666,6 @@ export namespace GnomeBluetooth {
     type ChooserComboClass = typeof ChooserCombo;
     abstract class ChooserComboPrivate {
         static $gtype: GObject.GType<ChooserComboPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ClientClass = typeof Client;

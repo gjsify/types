@@ -76,7 +76,6 @@ export namespace GLibUnix {
                 fds: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**

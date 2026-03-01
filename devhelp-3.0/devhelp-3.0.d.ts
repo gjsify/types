@@ -213,7 +213,8 @@ export namespace Devhelp {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends WebKit2.WebView.ConstructorProps,
+            extends
+                WebKit2.WebView.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -1212,7 +1213,8 @@ export namespace Devhelp {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.TreeView.ConstructorProps,
+            extends
+                Gtk.TreeView.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {
@@ -2882,7 +2884,8 @@ export namespace Devhelp {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Notebook.ConstructorProps,
+            extends
+                Gtk.Notebook.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             profile: Profile;
@@ -3586,7 +3589,8 @@ export namespace Devhelp {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.SearchBar.ConstructorProps,
+            extends
+                Gtk.SearchBar.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             notebook: Notebook;
@@ -4435,7 +4439,8 @@ export namespace Devhelp {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Grid.ConstructorProps,
+            extends
+                Gtk.Grid.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -5037,7 +5042,8 @@ export namespace Devhelp {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Grid.ConstructorProps,
+            extends
+                Gtk.Grid.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -5620,7 +5626,8 @@ export namespace Devhelp {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Grid.ConstructorProps,
+            extends
+                Gtk.Grid.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -6217,7 +6224,8 @@ export namespace Devhelp {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends WebKit2.WebView.ConstructorProps,
+            extends
+                WebKit2.WebView.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             profile: Profile;
@@ -6768,28 +6776,16 @@ export namespace Devhelp {
     type BookListBuilderClass = typeof BookListBuilder;
     abstract class BookListBuilderPrivate {
         static $gtype: GObject.GType<BookListBuilderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BookListClass = typeof BookList;
     type BookListDirectoryClass = typeof BookListDirectory;
     abstract class BookListDirectoryPrivate {
         static $gtype: GObject.GType<BookListDirectoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class BookListPrivate {
         static $gtype: GObject.GType<BookListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BookManagerClass = typeof BookManager;
@@ -6797,10 +6793,6 @@ export namespace Devhelp {
     type CompletionClass = typeof Completion;
     abstract class CompletionPrivate {
         static $gtype: GObject.GType<CompletionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type KeywordModelClass = typeof KeywordModel;
@@ -6810,7 +6802,6 @@ export namespace Devhelp {
         // Constructors
 
         constructor(type: LinkType, book_link: Link, name: string, relative_url: string);
-        _init(...args: any[]): void;
 
         static ['new'](type: LinkType, book_link: Link, name: string, relative_url: string): Link;
 
@@ -6873,55 +6864,31 @@ export namespace Devhelp {
     type NotebookClass = typeof Notebook;
     abstract class NotebookPrivate {
         static $gtype: GObject.GType<NotebookPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ProfileBuilderClass = typeof ProfileBuilder;
     abstract class ProfileBuilderPrivate {
         static $gtype: GObject.GType<ProfileBuilderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ProfileClass = typeof Profile;
     abstract class ProfilePrivate {
         static $gtype: GObject.GType<ProfilePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SearchBarClass = typeof SearchBar;
     abstract class SearchBarPrivate {
         static $gtype: GObject.GType<SearchBarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SettingsBuilderClass = typeof SettingsBuilder;
     abstract class SettingsBuilderPrivate {
         static $gtype: GObject.GType<SettingsBuilderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SettingsClass = typeof Settings;
     abstract class SettingsPrivate {
         static $gtype: GObject.GType<SettingsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SidebarClass = typeof Sidebar;
@@ -6929,27 +6896,15 @@ export namespace Devhelp {
     type TabLabelClass = typeof TabLabel;
     abstract class TabLabelPrivate {
         static $gtype: GObject.GType<TabLabelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class TabPrivate {
         static $gtype: GObject.GType<TabPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WebViewClass = typeof WebView;
     abstract class WebViewPrivate {
         static $gtype: GObject.GType<WebViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

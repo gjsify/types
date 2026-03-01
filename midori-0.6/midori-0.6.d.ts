@@ -78,7 +78,6 @@ export namespace Midori {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     const keys: GLib.DebugKey[];
@@ -570,8 +569,7 @@ export namespace Midori {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends GObject.Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             incognito: boolean;
             key: string;
         }
@@ -1791,7 +1789,8 @@ export namespace Midori {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 Gio.Initable.ConstructorProps,
                 Gio.ListModel.ConstructorProps,
                 Loggable.ConstructorProps {
@@ -5144,235 +5143,131 @@ export namespace Midori {
     type AppClass = typeof App;
     abstract class AppPrivate {
         static $gtype: GObject.GType<AppPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BrowserClass = typeof Browser;
     abstract class BrowserPrivate {
         static $gtype: GObject.GType<BrowserPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ClearPrivateDataClass = typeof ClearPrivateData;
     abstract class ClearPrivateDataPrivate {
         static $gtype: GObject.GType<ClearPrivateDataPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SuggestionItemClass = typeof SuggestionItem;
     abstract class SuggestionItemPrivate {
         static $gtype: GObject.GType<SuggestionItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CompletionClass = typeof Completion;
     abstract class CompletionPrivate {
         static $gtype: GObject.GType<CompletionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DatabaseStatementClass = typeof DatabaseStatement;
     abstract class DatabaseStatementPrivate {
         static $gtype: GObject.GType<DatabaseStatementPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DatabaseItemClass = typeof DatabaseItem;
     abstract class DatabaseItemPrivate {
         static $gtype: GObject.GType<DatabaseItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DatabaseClass = typeof Database;
     abstract class DatabasePrivate {
         static $gtype: GObject.GType<DatabasePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DownloadButtonClass = typeof DownloadButton;
     abstract class DownloadButtonPrivate {
         static $gtype: GObject.GType<DownloadButtonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DownloadItemClass = typeof DownloadItem;
     abstract class DownloadItemPrivate {
         static $gtype: GObject.GType<DownloadItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DownloadRowClass = typeof DownloadRow;
     abstract class DownloadRowPrivate {
         static $gtype: GObject.GType<DownloadRowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FaviconClass = typeof Favicon;
     abstract class FaviconPrivate {
         static $gtype: GObject.GType<FaviconPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type HistoryDatabaseClass = typeof HistoryDatabase;
     abstract class HistoryDatabasePrivate {
         static $gtype: GObject.GType<HistoryDatabasePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type NavigationbarClass = typeof Navigationbar;
     abstract class NavigationbarPrivate {
         static $gtype: GObject.GType<NavigationbarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type NetworkCheckClass = typeof NetworkCheck;
     abstract class NetworkCheckPrivate {
         static $gtype: GObject.GType<NetworkCheckPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PluginsClass = typeof Plugins;
     abstract class PluginsPrivate {
         static $gtype: GObject.GType<PluginsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LabelWidgetClass = typeof LabelWidget;
     abstract class LabelWidgetPrivate {
         static $gtype: GObject.GType<LabelWidgetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PreferencesClass = typeof Preferences;
     abstract class PreferencesPrivate {
         static $gtype: GObject.GType<PreferencesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CoreSettingsClass = typeof CoreSettings;
     abstract class CoreSettingsPrivate {
         static $gtype: GObject.GType<CoreSettingsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SettingsClass = typeof Settings;
     abstract class SettingsPrivate {
         static $gtype: GObject.GType<SettingsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StatusbarClass = typeof Statusbar;
     abstract class StatusbarPrivate {
         static $gtype: GObject.GType<StatusbarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SuggestionRowClass = typeof SuggestionRow;
     abstract class SuggestionRowPrivate {
         static $gtype: GObject.GType<SuggestionRowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SwitcherClass = typeof Switcher;
     abstract class SwitcherPrivate {
         static $gtype: GObject.GType<SwitcherPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TabClass = typeof Tab;
     abstract class TabPrivate {
         static $gtype: GObject.GType<TabPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TallyClass = typeof Tally;
     abstract class TallyPrivate {
         static $gtype: GObject.GType<TallyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UrlbarClass = typeof Urlbar;
     abstract class UrlbarPrivate {
         static $gtype: GObject.GType<UrlbarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AppActivatableIface = typeof AppActivatable;

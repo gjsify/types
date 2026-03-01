@@ -153,9 +153,7 @@ export namespace NMGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             country_codes: string;
             countryCodes: string;
             service_providers: string;
@@ -1049,7 +1047,8 @@ export namespace NMGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps,
+            extends
+                Gtk.Dialog.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -1640,7 +1639,8 @@ export namespace NMGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps,
+            extends
+                Gtk.Dialog.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -2151,10 +2151,6 @@ export namespace NMGtk {
     class CountryInfo {
         static $gtype: GObject.GType<CountryInfo>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         get_country_code(): string;
@@ -2166,10 +2162,6 @@ export namespace NMGtk {
 
     class MobileAccessMethod {
         static $gtype: GObject.GType<MobileAccessMethod>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2187,10 +2179,6 @@ export namespace NMGtk {
     class MobileProvider {
         static $gtype: GObject.GType<MobileProvider>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         get_3gpp_mcc_mnc(): string[];
@@ -2204,18 +2192,10 @@ export namespace NMGtk {
     type MobileProvidersDatabaseClass = typeof MobileProvidersDatabase;
     abstract class MobileProvidersDatabasePrivate {
         static $gtype: GObject.GType<MobileProvidersDatabasePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class MobileWizard {
         static $gtype: GObject.GType<MobileWizard>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2234,10 +2214,6 @@ export namespace NMGtk {
         username: string;
         password: string;
         gsm_apn: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type VpnPasswordDialogClass = typeof VpnPasswordDialog;

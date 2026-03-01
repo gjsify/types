@@ -156,8 +156,7 @@ export namespace Gtd {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends GObject.Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             child_model: Gio.ListModel;
             childModel: Gio.ListModel;
         }
@@ -764,8 +763,7 @@ export namespace Gtd {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends GObject.Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             item_type: GObject.GType;
             itemType: GObject.GType;
         }
@@ -1851,7 +1849,8 @@ export namespace Gtd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -3096,7 +3095,8 @@ export namespace Gtd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {}
@@ -3647,7 +3647,8 @@ export namespace Gtd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Popover.ConstructorProps,
+            extends
+                Gtk.Popover.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps,
@@ -6684,7 +6685,8 @@ export namespace Gtd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Widget.ConstructorProps,
+            extends
+                Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -7499,8 +7501,7 @@ export namespace Gtd {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Object.ConstructorProps,
-                Gio.ListModel.ConstructorProps {
+            extends Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             archived: boolean;
             color: Gdk.RGBA;
             is_removable: boolean;
@@ -8293,7 +8294,8 @@ export namespace Gtd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps,
@@ -8968,7 +8970,8 @@ export namespace Gtd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps,
+            extends
+                Gtk.Widget.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
@@ -9982,7 +9985,8 @@ export namespace Gtd {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ApplicationWindow.ConstructorProps,
+            extends
+                Gtk.ApplicationWindow.ConstructorProps,
                 Gio.ActionGroup.ConstructorProps,
                 Gio.ActionMap.ConstructorProps,
                 Gtk.Accessible.ConstructorProps,
@@ -13489,63 +13493,35 @@ export namespace Gtd {
     type ActivatableInterface = typeof Activatable;
     abstract class Animatable {
         static $gtype: GObject.GType<Animatable>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class Application {
         static $gtype: GObject.GType<Application>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BinLayoutClass = typeof BinLayout;
     type ClockClass = typeof Clock;
     abstract class DoneButton {
         static $gtype: GObject.GType<DoneButton>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class InitialSetupWindow {
         static $gtype: GObject.GType<InitialSetupWindow>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class Interval {
         static $gtype: GObject.GType<Interval>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ListModelFilterClass = typeof ListModelFilter;
     type ListStoreClass = typeof ListStore;
     abstract class ListView {
         static $gtype: GObject.GType<ListView>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ManagerClass = typeof Manager;
     abstract class MarkdownRenderer {
         static $gtype: GObject.GType<MarkdownRenderer>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MaxSizeLayoutClass = typeof MaxSizeLayout;
@@ -13557,10 +13533,6 @@ export namespace Gtd {
     type PanelInterface = typeof Panel;
     abstract class PluginManager {
         static $gtype: GObject.GType<PluginManager>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ProviderInterface = typeof Provider;
@@ -13568,61 +13540,33 @@ export namespace Gtd {
     type StarWidgetClass = typeof StarWidget;
     abstract class Storage {
         static $gtype: GObject.GType<Storage>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class StoragePopover {
         static $gtype: GObject.GType<StoragePopover>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class StorageRow {
         static $gtype: GObject.GType<StorageRow>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class StorageSelector {
         static $gtype: GObject.GType<StorageSelector>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TaskClass = typeof Task;
     type TaskListClass = typeof TaskList;
     abstract class TaskListItem {
         static $gtype: GObject.GType<TaskListItem>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TaskListViewClass = typeof TaskListView;
     abstract class TaskRow {
         static $gtype: GObject.GType<TaskRow>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class Transition {
         static $gtype: GObject.GType<Transition>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WidgetClass = typeof Widget;

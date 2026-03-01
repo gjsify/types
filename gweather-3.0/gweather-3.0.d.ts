@@ -984,7 +984,8 @@ export namespace GWeather {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.SearchEntry.ConstructorProps,
+            extends
+                Gtk.SearchEntry.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.CellEditable.ConstructorProps,
@@ -5428,7 +5429,8 @@ export namespace GWeather {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.ComboBox.ConstructorProps,
+            extends
+                Gtk.ComboBox.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.CellEditable.ConstructorProps,
@@ -10005,10 +10007,6 @@ export namespace GWeather {
         phenomenon: ConditionPhenomenon;
         qualifier: ConditionQualifier;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         to_string(): string;
@@ -10028,7 +10026,6 @@ export namespace GWeather {
         // Constructors
 
         constructor(name: string, icao: string | null, latitude: number, longitude: number);
-        _init(...args: any[]): void;
 
         static new_detached(name: string, icao: string | null, latitude: number, longitude: number): Location;
 
@@ -10306,10 +10303,6 @@ export namespace GWeather {
     type LocationEntryClass = typeof LocationEntry;
     abstract class LocationEntryPrivate {
         static $gtype: GObject.GType<LocationEntryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -10322,10 +10315,6 @@ export namespace GWeather {
      */
     class Timezone {
         static $gtype: GObject.GType<Timezone>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 

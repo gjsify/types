@@ -5546,10 +5546,6 @@ export namespace Gst {
     type AdapterClass = typeof Adapter;
     class AdapterPrivate {
         static $gtype: GObject.GType<AdapterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5574,7 +5570,6 @@ export namespace Gst {
                 live: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -5585,37 +5580,21 @@ export namespace Gst {
     type BaseSinkClass = typeof BaseSink;
     class BaseSinkPrivate {
         static $gtype: GObject.GType<BaseSinkPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BaseSrcClass = typeof BaseSrc;
     class BaseSrcPrivate {
         static $gtype: GObject.GType<BaseSrcPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BaseTransformClass = typeof BaseTransform;
     class BaseTransformPrivate {
         static $gtype: GObject.GType<BaseTransformPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BinClass = typeof Bin;
     class BinPrivate {
         static $gtype: GObject.GType<BinPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5641,7 +5620,6 @@ export namespace Gst {
                 bit: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](data: number[], size: number): BitReader;
 
@@ -5673,10 +5651,6 @@ export namespace Gst {
     class BufferListIterator {
         static $gtype: GObject.GType<BufferListIterator>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         free(): void;
@@ -5695,10 +5669,6 @@ export namespace Gst {
     type BusClass = typeof Bus;
     class BusPrivate {
         static $gtype: GObject.GType<BusPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5722,7 +5692,6 @@ export namespace Gst {
                 byte: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](data: number[], size: number): ByteReader;
 
@@ -5818,7 +5787,6 @@ export namespace Gst {
                 owned: boolean;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): ByteWriter;
 
@@ -5894,7 +5862,6 @@ export namespace Gst {
                 _gst_reserved: any[];
             }>,
         );
-        _init(...args: any[]): void;
 
         static new_empty(): Caps;
 
@@ -5957,18 +5924,10 @@ export namespace Gst {
         func: ClockCallback;
         user_data: any;
         destroy_data: GLib.DestroyNotify;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ClockPrivate {
         static $gtype: GObject.GType<ClockPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5983,19 +5942,11 @@ export namespace Gst {
         pad: Pad;
         buffer: Buffer;
         pos: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CollectPadsClass = typeof CollectPads;
     class CollectPadsPrivate {
         static $gtype: GObject.GType<CollectPadsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DataQueueClass = typeof DataQueue;
@@ -6013,10 +5964,6 @@ export namespace Gst {
         duration: number;
         visible: boolean;
         destroy: GLib.DestroyNotify;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6040,7 +5987,6 @@ export namespace Gst {
                 time: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6067,7 +6013,6 @@ export namespace Gst {
                 description: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -6082,10 +6027,6 @@ export namespace Gst {
 
     class DebugMessage {
         static $gtype: GObject.GType<DebugMessage>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -6120,7 +6061,6 @@ export namespace Gst {
                 _gst_reserved: any[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type ElementFactoryClass = typeof ElementFactory;
@@ -6137,19 +6077,11 @@ export namespace Gst {
         nick: string;
         description: string;
         quark: GLib.Quark;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GhostPadClass = typeof GhostPad;
     class GhostPadPrivate {
         static $gtype: GObject.GType<GhostPadPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ImplementsInterfaceClass = typeof ImplementsInterface;
@@ -6163,10 +6095,6 @@ export namespace Gst {
 
         format: Format;
         value: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IndexClass = typeof Index;
@@ -6180,10 +6108,6 @@ export namespace Gst {
 
         type: IndexEntryType;
         id: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -6205,10 +6129,6 @@ export namespace Gst {
         entries: any[];
         certainty: IndexCertainty;
         peergroup: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6236,7 +6156,6 @@ export namespace Gst {
             resync: IteratorResyncFunction,
             free: IteratorFreeFunction,
         );
-        _init(...args: any[]): void;
 
         static ['new'](
             size: number,
@@ -6268,10 +6187,6 @@ export namespace Gst {
     type PadClass = typeof Pad;
     class PadPrivate {
         static $gtype: GObject.GType<PadPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PadTemplateClass = typeof PadTemplate;
@@ -6290,10 +6205,6 @@ export namespace Gst {
         max_den: number;
         def_num: number;
         def_den: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6302,10 +6213,6 @@ export namespace Gst {
      */
     class ParamSpecMiniObject {
         static $gtype: GObject.GType<ParamSpecMiniObject>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6317,7 +6224,6 @@ export namespace Gst {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ParseContext;
 
@@ -6330,10 +6236,6 @@ export namespace Gst {
     type PipelineClass = typeof Pipeline;
     class PipelinePrivate {
         static $gtype: GObject.GType<PipelinePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PluginClass = typeof Plugin;
@@ -6357,19 +6259,11 @@ export namespace Gst {
         source: string;
         'package': string;
         origin: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PluginFeatureClass = typeof PluginFeature;
     class PluginPrivate {
         static $gtype: GObject.GType<PluginPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6381,7 +6275,6 @@ export namespace Gst {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](controllable: boolean): Poll;
 
@@ -6426,7 +6319,6 @@ export namespace Gst {
                 idx: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -6436,10 +6328,6 @@ export namespace Gst {
     type ProxyPadClass = typeof ProxyPad;
     class ProxyPadPrivate {
         static $gtype: GObject.GType<ProxyPadPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PushSrcClass = typeof PushSrc;
@@ -6456,19 +6344,11 @@ export namespace Gst {
         nick: string;
         description: string;
         quark: GLib.Quark;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RegistryClass = typeof Registry;
     class RegistryPrivate {
         static $gtype: GObject.GType<RegistryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6510,7 +6390,6 @@ export namespace Gst {
                 _gst_reserved: number[];
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): Segment;
 
@@ -6566,10 +6445,6 @@ export namespace Gst {
 
         string: string;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         get(): Caps;
@@ -6583,10 +6458,6 @@ export namespace Gst {
         name_template: string;
         direction: PadDirection;
         presence: PadPresence;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -6610,7 +6481,6 @@ export namespace Gst {
         // Constructors
 
         constructor(name: string, firstfield: string);
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -6661,10 +6531,6 @@ export namespace Gst {
     type SystemClockClass = typeof SystemClock;
     class SystemClockPrivate {
         static $gtype: GObject.GType<SystemClockPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6672,20 +6538,12 @@ export namespace Gst {
      */
     class TagSetterIFace {
         static $gtype: GObject.GType<TagSetterIFace>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TaskClass = typeof Task;
     type TaskPoolClass = typeof TaskPool;
     class TaskPrivate {
         static $gtype: GObject.GType<TaskPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6708,7 +6566,6 @@ export namespace Gst {
                 _gst_reserved: any[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6735,7 +6592,6 @@ export namespace Gst {
                 bufoffset: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](filename: string, size: number): Trace;
 
@@ -6767,7 +6623,6 @@ export namespace Gst {
                 message: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -6791,7 +6646,6 @@ export namespace Gst {
                 _gst_reserved: any[];
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -6811,10 +6665,6 @@ export namespace Gst {
 
         name: string;
         type: GObject.GType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type URIHandlerInterface = typeof URIHandler;
@@ -6830,10 +6680,6 @@ export namespace Gst {
         compare: ValueCompareFunc;
         serialize: ValueSerializeFunc;
         deserialize: ValueDeserializeFunc;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type XMLClass = typeof XML;

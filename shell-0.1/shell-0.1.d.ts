@@ -884,7 +884,8 @@ export namespace Shell {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Window.ConstructorProps,
+            extends
+                Gtk.Window.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -1799,7 +1800,8 @@ export namespace Shell {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends Clutter.Clone.ConstructorProps<A>,
+            extends
+                Clutter.Clone.ConstructorProps<A>,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -3742,7 +3744,8 @@ export namespace Shell {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends NM.SecretAgentOld.ConstructorProps,
+            extends
+                NM.SecretAgentOld.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.Initable.ConstructorProps {}
     }
@@ -5181,7 +5184,8 @@ export namespace Shell {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends St.Bin.ConstructorProps<A>,
+            extends
+                St.Bin.ConstructorProps<A>,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -5913,7 +5917,8 @@ export namespace Shell {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends St.Widget.ConstructorProps,
+            extends
+                St.Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -6641,7 +6646,8 @@ export namespace Shell {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends GtkEmbed.ConstructorProps<A>,
+            extends
+                GtkEmbed.ConstructorProps<A>,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -7572,7 +7578,8 @@ export namespace Shell {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends St.Widget.ConstructorProps,
+            extends
+                St.Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -8472,7 +8479,8 @@ export namespace Shell {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends St.Widget.ConstructorProps,
+            extends
+                St.Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -9168,17 +9176,12 @@ export namespace Shell {
                 last_gc_seconds_ago: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type MountOperationClass = typeof MountOperation;
     type NetworkAgentClass = typeof NetworkAgent;
     abstract class NetworkAgentPrivate {
         static $gtype: GObject.GType<NetworkAgentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PerfLogClass = typeof PerfLog;
@@ -9194,10 +9197,6 @@ export namespace Shell {
     type WindowPreviewLayoutClass = typeof WindowPreviewLayout;
     abstract class WindowPreviewLayoutPrivate {
         static $gtype: GObject.GType<WindowPreviewLayoutPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type WindowTrackerClass = typeof WindowTracker;

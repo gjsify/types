@@ -344,10 +344,6 @@ export namespace Unique {
     type AppClass = typeof App;
     abstract class AppPrivate {
         static $gtype: GObject.GType<AppPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BackendClass = typeof Backend;
@@ -364,7 +360,6 @@ export namespace Unique {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): MessageData;
 

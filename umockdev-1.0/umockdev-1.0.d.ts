@@ -29,7 +29,6 @@ export namespace UMockdev {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     function in_mock_environment(): boolean;
@@ -324,37 +323,21 @@ export namespace UMockdev {
     type TestbedClass = typeof Testbed;
     abstract class TestbedPrivate {
         static $gtype: GObject.GType<TestbedPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IoctlDataClass = typeof IoctlData;
     abstract class IoctlDataPrivate {
         static $gtype: GObject.GType<IoctlDataPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IoctlClientClass = typeof IoctlClient;
     abstract class IoctlClientPrivate {
         static $gtype: GObject.GType<IoctlClientPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type IoctlBaseClass = typeof IoctlBase;
     abstract class IoctlBasePrivate {
         static $gtype: GObject.GType<IoctlBasePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

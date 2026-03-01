@@ -505,29 +505,17 @@ export namespace RestExtras {
     type FlickrProxyClass = typeof FlickrProxy;
     abstract class FlickrProxyPrivate {
         static $gtype: GObject.GType<FlickrProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LastfmProxyCallClass = typeof LastfmProxyCall;
     type LastfmProxyClass = typeof LastfmProxy;
     abstract class LastfmProxyPrivate {
         static $gtype: GObject.GType<LastfmProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type YoutubeProxyClass = typeof YoutubeProxy;
     abstract class YoutubeProxyPrivate {
         static $gtype: GObject.GType<YoutubeProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

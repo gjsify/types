@@ -73,7 +73,8 @@ export namespace Cally {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Atk.GObjectAccessible.ConstructorProps,
+            extends
+                Atk.GObjectAccessible.ConstructorProps,
                 Atk.Action.ConstructorProps,
                 Atk.Component.ConstructorProps {}
     }
@@ -1012,9 +1013,7 @@ export namespace Cally {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Actor.ConstructorProps,
-                Atk.Action.ConstructorProps,
-                Atk.Component.ConstructorProps {}
+            extends Actor.ConstructorProps, Atk.Action.ConstructorProps, Atk.Component.ConstructorProps {}
     }
 
     /**
@@ -1991,7 +1990,8 @@ export namespace Cally {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Actor.ConstructorProps,
+            extends
+                Actor.ConstructorProps,
                 Atk.Action.ConstructorProps,
                 Atk.Component.ConstructorProps,
                 Atk.Window.ConstructorProps {}
@@ -3241,7 +3241,8 @@ export namespace Cally {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Actor.ConstructorProps,
+            extends
+                Actor.ConstructorProps,
                 Atk.Action.ConstructorProps,
                 Atk.Component.ConstructorProps,
                 Atk.EditableText.ConstructorProps,
@@ -4762,55 +4763,31 @@ export namespace Cally {
     type ActorClass = typeof Actor;
     abstract class ActorPrivate {
         static $gtype: GObject.GType<ActorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CloneClass = typeof Clone;
     abstract class ClonePrivate {
         static $gtype: GObject.GType<ClonePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RootClass = typeof Root;
     abstract class RootPrivate {
         static $gtype: GObject.GType<RootPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StageClass = typeof Stage;
     abstract class StagePrivate {
         static $gtype: GObject.GType<StagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TextClass = typeof Text;
     abstract class TextPrivate {
         static $gtype: GObject.GType<TextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UtilClass = typeof Util;
     abstract class UtilPrivate {
         static $gtype: GObject.GType<UtilPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

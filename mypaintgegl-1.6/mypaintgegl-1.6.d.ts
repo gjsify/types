@@ -27,7 +27,6 @@ export namespace MyPaintGegl {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): TiledSurface;
 

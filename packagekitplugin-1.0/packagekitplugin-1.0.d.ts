@@ -643,18 +643,10 @@ export namespace PackageKitPlugin {
     type BackendJobClass = typeof BackendJob;
     abstract class BackendJobPrivate {
         static $gtype: GObject.GType<BackendJobPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class BackendPrivate {
         static $gtype: GObject.GType<BackendPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class Plugin {
@@ -664,10 +656,6 @@ export namespace PackageKitPlugin {
 
         backend: Backend;
         job: BackendJob;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -688,19 +676,11 @@ export namespace PackageKitPlugin {
 
     abstract class PluginPrivate {
         static $gtype: GObject.GType<PluginPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TransactionClass = typeof Transaction;
     abstract class TransactionPrivate {
         static $gtype: GObject.GType<TransactionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

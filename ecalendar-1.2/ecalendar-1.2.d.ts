@@ -2085,37 +2085,21 @@ export namespace ECalendar {
 
         comp: CalComponent;
         type: CalChangeType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CalClass = typeof Cal;
     type CalClientClass = typeof CalClient;
     abstract class CalClientPrivate {
         static $gtype: GObject.GType<CalClientPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CalClientViewClass = typeof CalClientView;
     abstract class CalClientViewPrivate {
         static $gtype: GObject.GType<CalClientViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class CalComponentAlarm {
         static $gtype: GObject.GType<CalComponentAlarm>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2204,7 +2188,6 @@ export namespace ECalendar {
                 occur_end: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class CalComponentAlarmRepeat {
@@ -2223,7 +2206,6 @@ export namespace ECalendar {
                 duration: any;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class CalComponentAlarmTrigger {
@@ -2232,10 +2214,6 @@ export namespace ECalendar {
         // Fields
 
         type: CalComponentAlarmTriggerType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class CalComponentAlarms {
@@ -2245,10 +2223,6 @@ export namespace ECalendar {
 
         comp: CalComponent;
         alarms: any[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -2289,7 +2263,6 @@ export namespace ECalendar {
                 language: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type CalComponentClass = typeof CalComponent;
@@ -2309,7 +2282,6 @@ export namespace ECalendar {
                 tzid: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class CalComponentId {
@@ -2328,7 +2300,6 @@ export namespace ECalendar {
                 rid: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class CalComponentOrganizer {
@@ -2351,7 +2322,6 @@ export namespace ECalendar {
                 language: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class CalComponentPeriod {
@@ -2361,18 +2331,10 @@ export namespace ECalendar {
 
         type: CalComponentPeriodType;
         start: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class CalComponentPrivate {
         static $gtype: GObject.GType<CalComponentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class CalComponentRange {
@@ -2382,10 +2344,6 @@ export namespace ECalendar {
 
         type: CalComponentRangeType;
         datetime: CalComponentDateTime;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class CalComponentText {
@@ -2404,24 +2362,15 @@ export namespace ECalendar {
                 altrep: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     abstract class CalPrivate {
         static $gtype: GObject.GType<CalPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CalViewClass = typeof CalView;
     abstract class CalViewPrivate {
         static $gtype: GObject.GType<CalViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

@@ -113,7 +113,6 @@ export namespace GtkSource {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -160,7 +159,6 @@ export namespace GtkSource {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -189,7 +187,6 @@ export namespace GtkSource {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -2112,7 +2109,8 @@ export namespace GtkSource {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Window.ConstructorProps,
+            extends
+                Gtk.Window.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {}
     }
@@ -5737,7 +5735,8 @@ export namespace GtkSource {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends View.ConstructorProps,
+            extends
+                View.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {
@@ -8344,7 +8343,8 @@ export namespace GtkSource {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Button.ConstructorProps,
+            extends
+                Gtk.Button.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Actionable.ConstructorProps,
                 Gtk.Activatable.ConstructorProps,
@@ -13000,7 +13000,8 @@ export namespace GtkSource {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps,
+            extends
+                Gtk.Bin.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 StyleSchemeChooser.ConstructorProps {}
@@ -13908,7 +13909,8 @@ export namespace GtkSource {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.TextView.ConstructorProps,
+            extends
+                Gtk.TextView.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {
@@ -14893,46 +14895,26 @@ export namespace GtkSource {
     type BufferClass = typeof Buffer;
     abstract class BufferPrivate {
         static $gtype: GObject.GType<BufferPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CompletionClass = typeof Completion;
     type CompletionContextClass = typeof CompletionContext;
     abstract class CompletionContextPrivate {
         static $gtype: GObject.GType<CompletionContextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CompletionInfoClass = typeof CompletionInfo;
     abstract class CompletionInfoPrivate {
         static $gtype: GObject.GType<CompletionInfoPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CompletionItemClass = typeof CompletionItem;
     abstract class CompletionItemPrivate {
         static $gtype: GObject.GType<CompletionItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class CompletionPrivate {
         static $gtype: GObject.GType<CompletionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CompletionProposalIface = typeof CompletionProposal;
@@ -14940,18 +14922,10 @@ export namespace GtkSource {
     type CompletionWordsClass = typeof CompletionWords;
     abstract class CompletionWordsPrivate {
         static $gtype: GObject.GType<CompletionWordsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class Encoding {
         static $gtype: GObject.GType<Encoding>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -15009,109 +14983,61 @@ export namespace GtkSource {
     type FileLoaderClass = typeof FileLoader;
     abstract class FileLoaderPrivate {
         static $gtype: GObject.GType<FileLoaderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class FilePrivate {
         static $gtype: GObject.GType<FilePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FileSaverClass = typeof FileSaver;
     abstract class FileSaverPrivate {
         static $gtype: GObject.GType<FileSaverPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GutterClass = typeof Gutter;
     abstract class GutterPrivate {
         static $gtype: GObject.GType<GutterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GutterRendererClass = typeof GutterRenderer;
     type GutterRendererPixbufClass = typeof GutterRendererPixbuf;
     abstract class GutterRendererPixbufPrivate {
         static $gtype: GObject.GType<GutterRendererPixbufPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class GutterRendererPrivate {
         static $gtype: GObject.GType<GutterRendererPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GutterRendererTextClass = typeof GutterRendererText;
     abstract class GutterRendererTextPrivate {
         static $gtype: GObject.GType<GutterRendererTextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LanguageClass = typeof Language;
     type LanguageManagerClass = typeof LanguageManager;
     abstract class LanguageManagerPrivate {
         static $gtype: GObject.GType<LanguageManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class LanguagePrivate {
         static $gtype: GObject.GType<LanguagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MapClass = typeof Map;
     type MarkAttributesClass = typeof MarkAttributes;
     abstract class MarkAttributesPrivate {
         static $gtype: GObject.GType<MarkAttributesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MarkClass = typeof Mark;
     abstract class MarkPrivate {
         static $gtype: GObject.GType<MarkPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PrintCompositorClass = typeof PrintCompositor;
     abstract class PrintCompositorPrivate {
         static $gtype: GObject.GType<PrintCompositorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RegionClass = typeof Region;
@@ -15125,7 +15051,6 @@ export namespace GtkSource {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -15145,28 +15070,16 @@ export namespace GtkSource {
     type SearchContextClass = typeof SearchContext;
     abstract class SearchContextPrivate {
         static $gtype: GObject.GType<SearchContextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SearchSettingsClass = typeof SearchSettings;
     abstract class SearchSettingsPrivate {
         static $gtype: GObject.GType<SearchSettingsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SpaceDrawerClass = typeof SpaceDrawer;
     abstract class SpaceDrawerPrivate {
         static $gtype: GObject.GType<SpaceDrawerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StyleClass = typeof Style;
@@ -15177,18 +15090,10 @@ export namespace GtkSource {
     type StyleSchemeManagerClass = typeof StyleSchemeManager;
     abstract class StyleSchemeManagerPrivate {
         static $gtype: GObject.GType<StyleSchemeManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class StyleSchemePrivate {
         static $gtype: GObject.GType<StyleSchemePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TagClass = typeof Tag;
@@ -15196,10 +15101,6 @@ export namespace GtkSource {
     type ViewClass = typeof View;
     abstract class ViewPrivate {
         static $gtype: GObject.GType<ViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace CompletionProposal {

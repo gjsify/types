@@ -5886,396 +5886,220 @@ export namespace LibvirtGConfig {
     type CapabilitiesCpuFeatureClass = typeof CapabilitiesCpuFeature;
     abstract class CapabilitiesCpuFeaturePrivate {
         static $gtype: GObject.GType<CapabilitiesCpuFeaturePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CapabilitiesCpuModelClass = typeof CapabilitiesCpuModel;
     abstract class CapabilitiesCpuModelPrivate {
         static $gtype: GObject.GType<CapabilitiesCpuModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class CapabilitiesCpuPrivate {
         static $gtype: GObject.GType<CapabilitiesCpuPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CapabilitiesCpuTopologyClass = typeof CapabilitiesCpuTopology;
     abstract class CapabilitiesCpuTopologyPrivate {
         static $gtype: GObject.GType<CapabilitiesCpuTopologyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CapabilitiesGuestArchClass = typeof CapabilitiesGuestArch;
     abstract class CapabilitiesGuestArchPrivate {
         static $gtype: GObject.GType<CapabilitiesGuestArchPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CapabilitiesGuestClass = typeof CapabilitiesGuest;
     type CapabilitiesGuestDomainClass = typeof CapabilitiesGuestDomain;
     abstract class CapabilitiesGuestDomainPrivate {
         static $gtype: GObject.GType<CapabilitiesGuestDomainPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CapabilitiesGuestFeatureClass = typeof CapabilitiesGuestFeature;
     abstract class CapabilitiesGuestFeaturePrivate {
         static $gtype: GObject.GType<CapabilitiesGuestFeaturePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class CapabilitiesGuestPrivate {
         static $gtype: GObject.GType<CapabilitiesGuestPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CapabilitiesHostClass = typeof CapabilitiesHost;
     abstract class CapabilitiesHostPrivate {
         static $gtype: GObject.GType<CapabilitiesHostPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CapabilitiesHostSecModelClass = typeof CapabilitiesHostSecModel;
     abstract class CapabilitiesHostSecModelPrivate {
         static $gtype: GObject.GType<CapabilitiesHostSecModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class CapabilitiesPrivate {
         static $gtype: GObject.GType<CapabilitiesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainAddressClass = typeof DomainAddress;
     type DomainAddressPciClass = typeof DomainAddressPci;
     abstract class DomainAddressPciPrivate {
         static $gtype: GObject.GType<DomainAddressPciPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DomainAddressPrivate {
         static $gtype: GObject.GType<DomainAddressPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainAddressUsbClass = typeof DomainAddressUsb;
     abstract class DomainAddressUsbPrivate {
         static $gtype: GObject.GType<DomainAddressUsbPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainCapabilitiesClass = typeof DomainCapabilities;
     type DomainCapabilitiesOsClass = typeof DomainCapabilitiesOs;
     abstract class DomainCapabilitiesOsPrivate {
         static $gtype: GObject.GType<DomainCapabilitiesOsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DomainCapabilitiesPrivate {
         static $gtype: GObject.GType<DomainCapabilitiesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainChannelClass = typeof DomainChannel;
     abstract class DomainChannelPrivate {
         static $gtype: GObject.GType<DomainChannelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainChardevClass = typeof DomainChardev;
     abstract class DomainChardevPrivate {
         static $gtype: GObject.GType<DomainChardevPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainChardevSourceClass = typeof DomainChardevSource;
     abstract class DomainChardevSourcePrivate {
         static $gtype: GObject.GType<DomainChardevSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainChardevSourcePtyClass = typeof DomainChardevSourcePty;
     abstract class DomainChardevSourcePtyPrivate {
         static $gtype: GObject.GType<DomainChardevSourcePtyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainChardevSourceSpicePortClass = typeof DomainChardevSourceSpicePort;
     abstract class DomainChardevSourceSpicePortPrivate {
         static $gtype: GObject.GType<DomainChardevSourceSpicePortPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainChardevSourceSpiceVmcClass = typeof DomainChardevSourceSpiceVmc;
     abstract class DomainChardevSourceSpiceVmcPrivate {
         static $gtype: GObject.GType<DomainChardevSourceSpiceVmcPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainChardevSourceUnixClass = typeof DomainChardevSourceUnix;
     abstract class DomainChardevSourceUnixPrivate {
         static $gtype: GObject.GType<DomainChardevSourceUnixPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainClass = typeof Domain;
     type DomainClockClass = typeof DomainClock;
     abstract class DomainClockPrivate {
         static $gtype: GObject.GType<DomainClockPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainConsoleClass = typeof DomainConsole;
     abstract class DomainConsolePrivate {
         static $gtype: GObject.GType<DomainConsolePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainControllerClass = typeof DomainController;
     abstract class DomainControllerPrivate {
         static $gtype: GObject.GType<DomainControllerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainControllerUsbClass = typeof DomainControllerUsb;
     abstract class DomainControllerUsbPrivate {
         static $gtype: GObject.GType<DomainControllerUsbPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainCpuClass = typeof DomainCpu;
     type DomainCpuFeatureClass = typeof DomainCpuFeature;
     abstract class DomainCpuFeaturePrivate {
         static $gtype: GObject.GType<DomainCpuFeaturePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainCpuModelClass = typeof DomainCpuModel;
     abstract class DomainCpuModelPrivate {
         static $gtype: GObject.GType<DomainCpuModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DomainCpuPrivate {
         static $gtype: GObject.GType<DomainCpuPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainDeviceClass = typeof DomainDevice;
     abstract class DomainDevicePrivate {
         static $gtype: GObject.GType<DomainDevicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainDiskClass = typeof DomainDisk;
     type DomainDiskDriverClass = typeof DomainDiskDriver;
     abstract class DomainDiskDriverPrivate {
         static $gtype: GObject.GType<DomainDiskDriverPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DomainDiskPrivate {
         static $gtype: GObject.GType<DomainDiskPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainFilesysClass = typeof DomainFilesys;
     abstract class DomainFilesysPrivate {
         static $gtype: GObject.GType<DomainFilesysPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainGraphicsClass = typeof DomainGraphics;
     type DomainGraphicsDesktopClass = typeof DomainGraphicsDesktop;
     abstract class DomainGraphicsDesktopPrivate {
         static $gtype: GObject.GType<DomainGraphicsDesktopPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DomainGraphicsPrivate {
         static $gtype: GObject.GType<DomainGraphicsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainGraphicsRdpClass = typeof DomainGraphicsRdp;
     abstract class DomainGraphicsRdpPrivate {
         static $gtype: GObject.GType<DomainGraphicsRdpPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainGraphicsSdlClass = typeof DomainGraphicsSdl;
     abstract class DomainGraphicsSdlPrivate {
         static $gtype: GObject.GType<DomainGraphicsSdlPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainGraphicsSpiceClass = typeof DomainGraphicsSpice;
     abstract class DomainGraphicsSpicePrivate {
         static $gtype: GObject.GType<DomainGraphicsSpicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainGraphicsVncClass = typeof DomainGraphicsVnc;
     abstract class DomainGraphicsVncPrivate {
         static $gtype: GObject.GType<DomainGraphicsVncPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainHostdevClass = typeof DomainHostdev;
     type DomainHostdevPciClass = typeof DomainHostdevPci;
     abstract class DomainHostdevPciPrivate {
         static $gtype: GObject.GType<DomainHostdevPciPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DomainHostdevPrivate {
         static $gtype: GObject.GType<DomainHostdevPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainInputClass = typeof DomainInput;
     abstract class DomainInputPrivate {
         static $gtype: GObject.GType<DomainInputPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainInterfaceBridgeClass = typeof DomainInterfaceBridge;
     abstract class DomainInterfaceBridgePrivate {
         static $gtype: GObject.GType<DomainInterfaceBridgePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainInterfaceClass = typeof DomainInterface;
@@ -6283,340 +6107,188 @@ export namespace LibvirtGConfig {
     type DomainInterfaceFilterrefParameterClass = typeof DomainInterfaceFilterrefParameter;
     abstract class DomainInterfaceFilterrefParameterPrivate {
         static $gtype: GObject.GType<DomainInterfaceFilterrefParameterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DomainInterfaceFilterrefPrivate {
         static $gtype: GObject.GType<DomainInterfaceFilterrefPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainInterfaceNetworkClass = typeof DomainInterfaceNetwork;
     abstract class DomainInterfaceNetworkPrivate {
         static $gtype: GObject.GType<DomainInterfaceNetworkPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DomainInterfacePrivate {
         static $gtype: GObject.GType<DomainInterfacePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainInterfaceUserClass = typeof DomainInterfaceUser;
     abstract class DomainInterfaceUserPrivate {
         static $gtype: GObject.GType<DomainInterfaceUserPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainMemballoonClass = typeof DomainMemballoon;
     abstract class DomainMemballoonPrivate {
         static $gtype: GObject.GType<DomainMemballoonPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainOsClass = typeof DomainOs;
     abstract class DomainOsPrivate {
         static $gtype: GObject.GType<DomainOsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainParallelClass = typeof DomainParallel;
     abstract class DomainParallelPrivate {
         static $gtype: GObject.GType<DomainParallelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainPowerManagementClass = typeof DomainPowerManagement;
     abstract class DomainPowerManagementPrivate {
         static $gtype: GObject.GType<DomainPowerManagementPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DomainPrivate {
         static $gtype: GObject.GType<DomainPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainRedirdevClass = typeof DomainRedirdev;
     abstract class DomainRedirdevPrivate {
         static $gtype: GObject.GType<DomainRedirdevPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainSeclabelClass = typeof DomainSeclabel;
     abstract class DomainSeclabelPrivate {
         static $gtype: GObject.GType<DomainSeclabelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainSerialClass = typeof DomainSerial;
     abstract class DomainSerialPrivate {
         static $gtype: GObject.GType<DomainSerialPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainSmartcardClass = typeof DomainSmartcard;
     type DomainSmartcardHostCertificatesClass = typeof DomainSmartcardHostCertificates;
     abstract class DomainSmartcardHostCertificatesPrivate {
         static $gtype: GObject.GType<DomainSmartcardHostCertificatesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainSmartcardHostClass = typeof DomainSmartcardHost;
     abstract class DomainSmartcardHostPrivate {
         static $gtype: GObject.GType<DomainSmartcardHostPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainSmartcardPassthroughClass = typeof DomainSmartcardPassthrough;
     abstract class DomainSmartcardPassthroughPrivate {
         static $gtype: GObject.GType<DomainSmartcardPassthroughPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DomainSmartcardPrivate {
         static $gtype: GObject.GType<DomainSmartcardPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainSnapshotClass = typeof DomainSnapshot;
     type DomainSnapshotDiskClass = typeof DomainSnapshotDisk;
     abstract class DomainSnapshotDiskPrivate {
         static $gtype: GObject.GType<DomainSnapshotDiskPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DomainSnapshotPrivate {
         static $gtype: GObject.GType<DomainSnapshotPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainSoundClass = typeof DomainSound;
     abstract class DomainSoundPrivate {
         static $gtype: GObject.GType<DomainSoundPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainTimerClass = typeof DomainTimer;
     type DomainTimerHpetClass = typeof DomainTimerHpet;
     abstract class DomainTimerHpetPrivate {
         static $gtype: GObject.GType<DomainTimerHpetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainTimerPitClass = typeof DomainTimerPit;
     abstract class DomainTimerPitPrivate {
         static $gtype: GObject.GType<DomainTimerPitPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class DomainTimerPrivate {
         static $gtype: GObject.GType<DomainTimerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainTimerRtcClass = typeof DomainTimerRtc;
     abstract class DomainTimerRtcPrivate {
         static $gtype: GObject.GType<DomainTimerRtcPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DomainVideoClass = typeof DomainVideo;
     abstract class DomainVideoPrivate {
         static $gtype: GObject.GType<DomainVideoPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type InterfaceClass = typeof Interface;
     abstract class InterfacePrivate {
         static $gtype: GObject.GType<InterfacePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type NetworkClass = typeof Network;
     type NetworkFilterClass = typeof NetworkFilter;
     abstract class NetworkFilterPrivate {
         static $gtype: GObject.GType<NetworkFilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class NetworkPrivate {
         static $gtype: GObject.GType<NetworkPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type NodeDeviceClass = typeof NodeDevice;
     abstract class NodeDevicePrivate {
         static $gtype: GObject.GType<NodeDevicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ObjectClass = typeof Object;
     abstract class ObjectPrivate {
         static $gtype: GObject.GType<ObjectPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SecretClass = typeof Secret;
     abstract class SecretPrivate {
         static $gtype: GObject.GType<SecretPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StoragePermissionsClass = typeof StoragePermissions;
     abstract class StoragePermissionsPrivate {
         static $gtype: GObject.GType<StoragePermissionsPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StoragePoolClass = typeof StoragePool;
     abstract class StoragePoolPrivate {
         static $gtype: GObject.GType<StoragePoolPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StoragePoolSourceClass = typeof StoragePoolSource;
     abstract class StoragePoolSourcePrivate {
         static $gtype: GObject.GType<StoragePoolSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StoragePoolTargetClass = typeof StoragePoolTarget;
     abstract class StoragePoolTargetPrivate {
         static $gtype: GObject.GType<StoragePoolTargetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StorageVolBackingStoreClass = typeof StorageVolBackingStore;
     abstract class StorageVolBackingStorePrivate {
         static $gtype: GObject.GType<StorageVolBackingStorePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StorageVolClass = typeof StorageVol;
     abstract class StorageVolPrivate {
         static $gtype: GObject.GType<StorageVolPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StorageVolTargetClass = typeof StorageVolTarget;
     abstract class StorageVolTargetPrivate {
         static $gtype: GObject.GType<StorageVolTargetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

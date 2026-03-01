@@ -5220,45 +5220,25 @@ export namespace GstAudio {
     type AudioAggregatorConvertPadClass = typeof AudioAggregatorConvertPad;
     abstract class AudioAggregatorConvertPadPrivate {
         static $gtype: GObject.GType<AudioAggregatorConvertPadPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AudioAggregatorPadClass = typeof AudioAggregatorPad;
     abstract class AudioAggregatorPadPrivate {
         static $gtype: GObject.GType<AudioAggregatorPadPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class AudioAggregatorPrivate {
         static $gtype: GObject.GType<AudioAggregatorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AudioBaseSinkClass = typeof AudioBaseSink;
     abstract class AudioBaseSinkPrivate {
         static $gtype: GObject.GType<AudioBaseSinkPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AudioBaseSrcClass = typeof AudioBaseSrc;
     abstract class AudioBaseSrcPrivate {
         static $gtype: GObject.GType<AudioBaseSrcPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5279,10 +5259,6 @@ export namespace GstAudio {
         n_samples: number;
         n_planes: number;
         planes: any;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -5375,10 +5351,6 @@ export namespace GstAudio {
     type AudioCdSrcClass = typeof AudioCdSrc;
     abstract class AudioCdSrcPrivate {
         static $gtype: GObject.GType<AudioCdSrcPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5399,18 +5371,10 @@ export namespace GstAudio {
         num: number;
         start: number;
         end: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class AudioChannelMixer {
         static $gtype: GObject.GType<AudioChannelMixer>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -5471,10 +5435,6 @@ export namespace GstAudio {
         start: number;
         end: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         static get_info(): Gst.MetaInfo;
@@ -5497,7 +5457,6 @@ export namespace GstAudio {
         // Constructors
 
         constructor(flags: AudioConverterFlags, in_info: AudioInfo, out_info: AudioInfo, config?: Gst.Structure | null);
-        _init(...args: any[]): void;
 
         static ['new'](
             flags: AudioConverterFlags,
@@ -5620,10 +5579,6 @@ export namespace GstAudio {
     type AudioDecoderClass = typeof AudioDecoder;
     abstract class AudioDecoderPrivate {
         static $gtype: GObject.GType<AudioDecoderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -5647,10 +5602,6 @@ export namespace GstAudio {
         to_channels: number;
         matrix: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         static get_info(): Gst.MetaInfo;
@@ -5659,10 +5610,6 @@ export namespace GstAudio {
     type AudioEncoderClass = typeof AudioEncoder;
     abstract class AudioEncoderPrivate {
         static $gtype: GObject.GType<AudioEncoderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AudioFilterClass = typeof AudioFilter;
@@ -5685,10 +5632,6 @@ export namespace GstAudio {
         unpack_format: AudioFormat;
         unpack_func: AudioFormatUnpack;
         pack_func: AudioFormatPack;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -5729,7 +5672,6 @@ export namespace GstAudio {
                 position: AudioChannelPosition[];
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): AudioInfo;
 
@@ -5809,10 +5751,6 @@ export namespace GstAudio {
         level: number;
         voice_activity: boolean;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
@@ -5834,10 +5772,6 @@ export namespace GstAudio {
         samples: number;
         offsets: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         static get_info(): Gst.MetaInfo;
@@ -5845,10 +5779,6 @@ export namespace GstAudio {
 
     abstract class AudioQuantize {
         static $gtype: GObject.GType<AudioQuantize>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -5885,10 +5815,6 @@ export namespace GstAudio {
      */
     abstract class AudioResampler {
         static $gtype: GObject.GType<AudioResampler>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -6011,19 +5937,11 @@ export namespace GstAudio {
         segsize: number;
         segtotal: number;
         seglatency: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AudioSinkClass = typeof AudioSink;
     class AudioSinkClassExtension {
         static $gtype: GObject.GType<AudioSinkClassExtension>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AudioSrcClass = typeof AudioSrc;
@@ -6041,7 +5959,6 @@ export namespace GstAudio {
         // Constructors
 
         constructor(rate: number, alignment_threshold: Gst.ClockTime, discont_wait: Gst.ClockTime);
-        _init(...args: any[]): void;
 
         static ['new'](rate: number, alignment_threshold: Gst.ClockTime, discont_wait: Gst.ClockTime): AudioStreamAlign;
 

@@ -87,7 +87,8 @@ export namespace PeasGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -698,7 +699,8 @@ export namespace PeasGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.TreeView.ConstructorProps,
+            extends
+                Gtk.TreeView.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {
@@ -1339,19 +1341,11 @@ export namespace PeasGtk {
     type PluginManagerClass = typeof PluginManager;
     abstract class PluginManagerPrivate {
         static $gtype: GObject.GType<PluginManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PluginManagerViewClass = typeof PluginManagerView;
     abstract class PluginManagerViewPrivate {
         static $gtype: GObject.GType<PluginManagerViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Configurable {

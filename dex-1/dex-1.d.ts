@@ -49,7 +49,6 @@ export namespace Dex {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     export namespace FutureStatus {
@@ -2021,10 +2020,6 @@ export namespace Dex {
 
     abstract class AioContext {
         static $gtype: GObject.GType<AioContext>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class AsyncPairInfo {
@@ -2035,10 +2030,6 @@ export namespace Dex {
         async: any;
         finish: any;
         return_type: GObject.GType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AsyncResultClass = typeof AsyncResult;

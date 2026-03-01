@@ -932,7 +932,8 @@ export namespace Champlain {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Marker.ConstructorProps,
+            extends
+                Marker.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Location.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
@@ -1895,7 +1896,8 @@ export namespace Champlain {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps,
+            extends
+                Clutter.Actor.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -2961,7 +2963,8 @@ export namespace Champlain {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Marker.ConstructorProps,
+            extends
+                Marker.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Location.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
@@ -3869,7 +3872,8 @@ export namespace Champlain {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps,
+            extends
+                Clutter.Actor.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -4928,7 +4932,8 @@ export namespace Champlain {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps,
+            extends
+                Clutter.Actor.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -6620,7 +6625,8 @@ export namespace Champlain {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps,
+            extends
+                Clutter.Actor.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Location.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
@@ -7790,7 +7796,8 @@ export namespace Champlain {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Layer.ConstructorProps,
+            extends
+                Layer.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Exportable.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
@@ -9010,7 +9017,8 @@ export namespace Champlain {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Layer.ConstructorProps,
+            extends
+                Layer.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Exportable.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
@@ -9807,7 +9815,8 @@ export namespace Champlain {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Marker.ConstructorProps,
+            extends
+                Marker.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Exportable.ConstructorProps,
                 Location.ConstructorProps,
@@ -10585,7 +10594,8 @@ export namespace Champlain {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps,
+            extends
+                Clutter.Actor.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -11672,7 +11682,8 @@ export namespace Champlain {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps,
+            extends
+                Clutter.Actor.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Exportable.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
@@ -13323,7 +13334,8 @@ export namespace Champlain {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps,
+            extends
+                Clutter.Actor.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -14842,7 +14854,8 @@ export namespace Champlain {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps,
+            extends
+                Clutter.Actor.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps,
                 Clutter.Container.ConstructorProps,
@@ -15809,10 +15822,6 @@ export namespace Champlain {
     type AdjustmentClass = typeof Adjustment;
     abstract class AdjustmentPrivate {
         static $gtype: GObject.GType<AdjustmentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -15838,7 +15847,6 @@ export namespace Champlain {
                 bottom: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): BoundingBox;
 
@@ -15888,248 +15896,140 @@ export namespace Champlain {
     type CoordinateClass = typeof Coordinate;
     abstract class CoordinatePrivate {
         static $gtype: GObject.GType<CoordinatePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CustomMarkerClass = typeof CustomMarker;
     abstract class CustomMarkerPrivate {
         static $gtype: GObject.GType<CustomMarkerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ErrorTileRendererClass = typeof ErrorTileRenderer;
     abstract class ErrorTileRendererPrivate {
         static $gtype: GObject.GType<ErrorTileRendererPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ExportableIface = typeof Exportable;
     type FileCacheClass = typeof FileCache;
     abstract class FileCachePrivate {
         static $gtype: GObject.GType<FileCachePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FileTileSourceClass = typeof FileTileSource;
     abstract class FileTileSourcePrivate {
         static $gtype: GObject.GType<FileTileSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ImageRendererClass = typeof ImageRenderer;
     abstract class ImageRendererPrivate {
         static $gtype: GObject.GType<ImageRendererPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type KineticScrollViewClass = typeof KineticScrollView;
     abstract class KineticScrollViewPrivate {
         static $gtype: GObject.GType<KineticScrollViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LabelClass = typeof Label;
     abstract class LabelPrivate {
         static $gtype: GObject.GType<LabelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LayerClass = typeof Layer;
     type LicenseClass = typeof License;
     abstract class LicensePrivate {
         static $gtype: GObject.GType<LicensePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LocationIface = typeof Location;
     type MapSourceChainClass = typeof MapSourceChain;
     abstract class MapSourceChainPrivate {
         static $gtype: GObject.GType<MapSourceChainPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MapSourceClass = typeof MapSource;
     type MapSourceDescClass = typeof MapSourceDesc;
     abstract class MapSourceDescPrivate {
         static $gtype: GObject.GType<MapSourceDescPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MapSourceFactoryClass = typeof MapSourceFactory;
     abstract class MapSourceFactoryPrivate {
         static $gtype: GObject.GType<MapSourceFactoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class MapSourcePrivate {
         static $gtype: GObject.GType<MapSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MarkerClass = typeof Marker;
     type MarkerLayerClass = typeof MarkerLayer;
     abstract class MarkerLayerPrivate {
         static $gtype: GObject.GType<MarkerLayerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class MarkerPrivate {
         static $gtype: GObject.GType<MarkerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MemoryCacheClass = typeof MemoryCache;
     abstract class MemoryCachePrivate {
         static $gtype: GObject.GType<MemoryCachePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type NetworkBboxTileSourceClass = typeof NetworkBboxTileSource;
     abstract class NetworkBboxTileSourcePrivate {
         static $gtype: GObject.GType<NetworkBboxTileSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type NetworkTileSourceClass = typeof NetworkTileSource;
     abstract class NetworkTileSourcePrivate {
         static $gtype: GObject.GType<NetworkTileSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type NullTileSourceClass = typeof NullTileSource;
     abstract class NullTileSourcePrivate {
         static $gtype: GObject.GType<NullTileSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PathLayerClass = typeof PathLayer;
     abstract class PathLayerPrivate {
         static $gtype: GObject.GType<PathLayerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PointClass = typeof Point;
     abstract class PointPrivate {
         static $gtype: GObject.GType<PointPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type RendererClass = typeof Renderer;
     type ScaleClass = typeof Scale;
     abstract class ScalePrivate {
         static $gtype: GObject.GType<ScalePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TileCacheClass = typeof TileCache;
     abstract class TileCachePrivate {
         static $gtype: GObject.GType<TileCachePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TileClass = typeof Tile;
     abstract class TilePrivate {
         static $gtype: GObject.GType<TilePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TileSourceClass = typeof TileSource;
     abstract class TileSourcePrivate {
         static $gtype: GObject.GType<TileSourcePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ViewClass = typeof View;
     abstract class ViewPrivate {
         static $gtype: GObject.GType<ViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ViewportClass = typeof Viewport;
     abstract class ViewportPrivate {
         static $gtype: GObject.GType<ViewportPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Exportable {

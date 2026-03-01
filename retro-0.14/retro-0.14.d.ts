@@ -1079,7 +1079,8 @@ export namespace Retro {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.EventBox.ConstructorProps,
+            extends
+                Gtk.EventBox.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             can_grab_pointer: boolean;
@@ -2102,10 +2103,6 @@ export namespace Retro {
     class Pixdata {
         static $gtype: GObject.GType<Pixdata>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
@@ -2150,7 +2147,6 @@ export namespace Retro {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Input;
 

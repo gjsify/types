@@ -408,90 +408,46 @@ export namespace Nautilus {
 
     class ColumnClass {
         static $gtype: GObject.GType<ColumnClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class ColumnProviderInterface {
         static $gtype: GObject.GType<ColumnProviderInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class FileInfoInterface {
         static $gtype: GObject.GType<FileInfoInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class InfoProviderInterface {
         static $gtype: GObject.GType<InfoProviderInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MenuClass {
         static $gtype: GObject.GType<MenuClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MenuItemClass {
         static $gtype: GObject.GType<MenuItemClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class MenuProviderInterface {
         static $gtype: GObject.GType<MenuProviderInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class OperationHandle {
         static $gtype: GObject.GType<OperationHandle>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class PropertiesItemClass {
         static $gtype: GObject.GType<PropertiesItemClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class PropertiesModelClass {
         static $gtype: GObject.GType<PropertiesModelClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     class PropertiesModelProviderInterface {
         static $gtype: GObject.GType<PropertiesModelProviderInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace ColumnProvider {

@@ -1372,9 +1372,7 @@ export namespace Gck {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.Initable.ConstructorProps {
+            extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             app_data: any;
             appData: any;
             handle: number;
@@ -3672,7 +3670,6 @@ export namespace Gck {
                 length: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](attr_type: number, value: number, length: number): Attribute;
 
@@ -3804,7 +3801,6 @@ export namespace Gck {
         // Constructors
 
         constructor(reserved: number);
-        _init(...args: any[]): void;
 
         static ['new'](reserved: number): Attributes;
 
@@ -3934,7 +3930,6 @@ export namespace Gck {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](flags: BuilderFlags): Builder;
 
@@ -4262,10 +4257,6 @@ export namespace Gck {
     type EnumeratorClass = typeof Enumerator;
     abstract class EnumeratorPrivate {
         static $gtype: GObject.GType<EnumeratorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4289,7 +4280,6 @@ export namespace Gck {
                 n_parameter: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4318,7 +4308,6 @@ export namespace Gck {
                 flags: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4368,7 +4357,6 @@ export namespace Gck {
                 library_version_minor: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4385,29 +4373,17 @@ export namespace Gck {
 
     abstract class ModulePrivate {
         static $gtype: GObject.GType<ModulePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ObjectCacheIface = typeof ObjectCache;
     type ObjectClass = typeof Object;
     abstract class ObjectPrivate {
         static $gtype: GObject.GType<ObjectPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PasswordClass = typeof Password;
     abstract class PasswordPrivate {
         static $gtype: GObject.GType<PasswordPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SessionClass = typeof Session;
@@ -4436,7 +4412,6 @@ export namespace Gck {
                 device_error: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4453,10 +4428,6 @@ export namespace Gck {
 
     abstract class SessionPrivate {
         static $gtype: GObject.GType<SessionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SlotClass = typeof Slot;
@@ -4495,7 +4466,6 @@ export namespace Gck {
                 firmware_version_minor: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4512,10 +4482,6 @@ export namespace Gck {
 
     abstract class SlotPrivate {
         static $gtype: GObject.GType<SlotPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -4579,7 +4545,6 @@ export namespace Gck {
                 utc_time: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -4618,7 +4583,6 @@ export namespace Gck {
                 any_unrecognized: boolean;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): UriData;
 

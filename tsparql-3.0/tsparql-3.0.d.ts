@@ -200,7 +200,6 @@ export namespace Tsparql {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -4349,10 +4348,6 @@ export namespace Tsparql {
      */
     abstract class NotifierEvent {
         static $gtype: GObject.GType<NotifierEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 

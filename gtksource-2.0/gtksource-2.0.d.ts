@@ -1032,9 +1032,7 @@ export namespace GtkSource {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Window.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             max_height: number;
             maxHeight: number;
             max_width: number;
@@ -3770,7 +3768,8 @@ export namespace GtkSource {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.TextView.ConstructorProps,
+            extends
+                Gtk.TextView.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             auto_indent: boolean;
@@ -4626,46 +4625,26 @@ export namespace GtkSource {
     type BufferClass = typeof Buffer;
     abstract class BufferPrivate {
         static $gtype: GObject.GType<BufferPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CompletionClass = typeof Completion;
     type CompletionContextClass = typeof CompletionContext;
     abstract class CompletionContextPrivate {
         static $gtype: GObject.GType<CompletionContextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CompletionInfoClass = typeof CompletionInfo;
     abstract class CompletionInfoPrivate {
         static $gtype: GObject.GType<CompletionInfoPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CompletionItemClass = typeof CompletionItem;
     abstract class CompletionItemPrivate {
         static $gtype: GObject.GType<CompletionItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class CompletionPrivate {
         static $gtype: GObject.GType<CompletionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CompletionProposalIface = typeof CompletionProposal;
@@ -4673,74 +4652,42 @@ export namespace GtkSource {
     type GutterClass = typeof Gutter;
     abstract class GutterPrivate {
         static $gtype: GObject.GType<GutterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LanguageClass = typeof Language;
     type LanguageManagerClass = typeof LanguageManager;
     abstract class LanguageManagerPrivate {
         static $gtype: GObject.GType<LanguageManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class LanguagePrivate {
         static $gtype: GObject.GType<LanguagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MarkClass = typeof Mark;
     abstract class MarkPrivate {
         static $gtype: GObject.GType<MarkPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PrintCompositorClass = typeof PrintCompositor;
     abstract class PrintCompositorPrivate {
         static $gtype: GObject.GType<PrintCompositorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type StyleSchemeClass = typeof StyleScheme;
     type StyleSchemeManagerClass = typeof StyleSchemeManager;
     abstract class StyleSchemeManagerPrivate {
         static $gtype: GObject.GType<StyleSchemeManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class StyleSchemePrivate {
         static $gtype: GObject.GType<StyleSchemePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type UndoManagerIface = typeof UndoManager;
     type ViewClass = typeof View;
     abstract class ViewPrivate {
         static $gtype: GObject.GType<ViewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace CompletionProposal {

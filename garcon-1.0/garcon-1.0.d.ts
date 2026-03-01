@@ -3465,84 +3465,48 @@ export namespace Garcon {
     type MenuDirectoryClass = typeof MenuDirectory;
     abstract class MenuDirectoryPrivate {
         static $gtype: GObject.GType<MenuDirectoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MenuElementIface = typeof MenuElement;
     type MenuItemActionClass = typeof MenuItemAction;
     abstract class MenuItemActionPrivate {
         static $gtype: GObject.GType<MenuItemActionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MenuItemCacheClass = typeof MenuItemCache;
     abstract class MenuItemCachePrivate {
         static $gtype: GObject.GType<MenuItemCachePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MenuItemClass = typeof MenuItem;
     type MenuItemPoolClass = typeof MenuItemPool;
     abstract class MenuItemPoolPrivate {
         static $gtype: GObject.GType<MenuItemPoolPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class MenuItemPrivate {
         static $gtype: GObject.GType<MenuItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MenuMergerClass = typeof MenuMerger;
     abstract class MenuMergerPrivate {
         static $gtype: GObject.GType<MenuMergerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MenuNodeClass = typeof MenuNode;
     type MenuParserClass = typeof MenuParser;
     abstract class MenuParserPrivate {
         static $gtype: GObject.GType<MenuParserPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     abstract class MenuPrivate {
         static $gtype: GObject.GType<MenuPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MenuSeparatorClass = typeof MenuSeparator;
     type MenuTreeProviderIface = typeof MenuTreeProvider;
     class MenuNodeData {
         static $gtype: GObject.GType<MenuNodeData>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace MenuElement {

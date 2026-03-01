@@ -268,7 +268,6 @@ export namespace Easyfc {
         // Constructors
 
         constructor(alias_name: string);
-        _init(...args: any[]): void;
 
         static ['new'](alias_name: string): Alias;
 
@@ -325,7 +324,6 @@ export namespace Easyfc {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Config;
 
@@ -494,7 +492,6 @@ export namespace Easyfc {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Font;
 
@@ -710,10 +707,6 @@ export namespace Easyfc {
      */
     abstract class FontConfig {
         static $gtype: GObject.GType<FontConfig>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 

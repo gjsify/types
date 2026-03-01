@@ -892,7 +892,8 @@ export namespace Gepub {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends WebKit2.WebView.ConstructorProps,
+            extends
+                WebKit2.WebView.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             chapter: number;
@@ -1492,7 +1493,6 @@ export namespace Gepub {
                 playorder: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     class Resource {
@@ -1511,7 +1511,6 @@ export namespace Gepub {
                 uri: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type TextChunkClass = typeof TextChunk;

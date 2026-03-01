@@ -1067,7 +1067,8 @@ export namespace SoupGNOME {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Soup.ProxyResolverDefault.ConstructorProps,
+            extends
+                Soup.ProxyResolverDefault.ConstructorProps,
                 Soup.ProxyURIResolver.ConstructorProps,
                 Soup.SessionFeature.ConstructorProps {}
     }

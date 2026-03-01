@@ -69,7 +69,6 @@ export namespace GData {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -203,7 +202,6 @@ export namespace GData {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -297,7 +295,6 @@ export namespace GData {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -418,7 +415,6 @@ export namespace GData {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -32542,48 +32538,28 @@ export namespace GData {
     type APPCategoriesClass = typeof APPCategories;
     abstract class APPCategoriesPrivate {
         static $gtype: GObject.GType<APPCategoriesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AccessHandlerIface = typeof AccessHandler;
     type AccessRuleClass = typeof AccessRule;
     abstract class AccessRulePrivate {
         static $gtype: GObject.GType<AccessRulePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AuthorClass = typeof Author;
     abstract class AuthorPrivate {
         static $gtype: GObject.GType<AuthorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AuthorizationDomainClass = typeof AuthorizationDomain;
     abstract class AuthorizationDomainPrivate {
         static $gtype: GObject.GType<AuthorizationDomainPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type AuthorizerInterface = typeof Authorizer;
     type BatchOperationClass = typeof BatchOperation;
     abstract class BatchOperationPrivate {
         static $gtype: GObject.GType<BatchOperationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type BatchableIface = typeof Batchable;
@@ -32591,55 +32567,31 @@ export namespace GData {
     type CalendarCalendarClass = typeof CalendarCalendar;
     abstract class CalendarCalendarPrivate {
         static $gtype: GObject.GType<CalendarCalendarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CalendarEventClass = typeof CalendarEvent;
     abstract class CalendarEventPrivate {
         static $gtype: GObject.GType<CalendarEventPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CalendarFeedClass = typeof CalendarFeed;
     abstract class CalendarFeedPrivate {
         static $gtype: GObject.GType<CalendarFeedPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CalendarQueryClass = typeof CalendarQuery;
     abstract class CalendarQueryPrivate {
         static $gtype: GObject.GType<CalendarQueryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CalendarServiceClass = typeof CalendarService;
     abstract class CalendarServicePrivate {
         static $gtype: GObject.GType<CalendarServicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CategoryClass = typeof Category;
     abstract class CategoryPrivate {
         static $gtype: GObject.GType<CategoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
@@ -32664,7 +32616,6 @@ export namespace GData {
                 blue: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -32692,10 +32643,6 @@ export namespace GData {
     type CommentClass = typeof Comment;
     abstract class CommentPrivate {
         static $gtype: GObject.GType<CommentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type CommentableInterface = typeof Commentable;
@@ -32704,19 +32651,11 @@ export namespace GData {
     type DocumentsDocumentClass = typeof DocumentsDocument;
     abstract class DocumentsDocumentPrivate {
         static $gtype: GObject.GType<DocumentsDocumentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DocumentsDrawingClass = typeof DocumentsDrawing;
     abstract class DocumentsDrawingPrivate {
         static $gtype: GObject.GType<DocumentsDrawingPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DocumentsDriveClass = typeof DocumentsDrive;
@@ -32724,527 +32663,295 @@ export namespace GData {
     type DocumentsEntryClass = typeof DocumentsEntry;
     abstract class DocumentsEntryPrivate {
         static $gtype: GObject.GType<DocumentsEntryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DocumentsFeedClass = typeof DocumentsFeed;
     abstract class DocumentsFeedPrivate {
         static $gtype: GObject.GType<DocumentsFeedPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DocumentsFolderClass = typeof DocumentsFolder;
     abstract class DocumentsFolderPrivate {
         static $gtype: GObject.GType<DocumentsFolderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DocumentsMetadataClass = typeof DocumentsMetadata;
     abstract class DocumentsMetadataPrivate {
         static $gtype: GObject.GType<DocumentsMetadataPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DocumentsPdfClass = typeof DocumentsPdf;
     abstract class DocumentsPdfPrivate {
         static $gtype: GObject.GType<DocumentsPdfPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DocumentsPresentationClass = typeof DocumentsPresentation;
     abstract class DocumentsPresentationPrivate {
         static $gtype: GObject.GType<DocumentsPresentationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DocumentsPropertyClass = typeof DocumentsProperty;
     abstract class DocumentsPropertyPrivate {
         static $gtype: GObject.GType<DocumentsPropertyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DocumentsQueryClass = typeof DocumentsQuery;
     abstract class DocumentsQueryPrivate {
         static $gtype: GObject.GType<DocumentsQueryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DocumentsServiceClass = typeof DocumentsService;
     abstract class DocumentsServicePrivate {
         static $gtype: GObject.GType<DocumentsServicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DocumentsSpreadsheetClass = typeof DocumentsSpreadsheet;
     abstract class DocumentsSpreadsheetPrivate {
         static $gtype: GObject.GType<DocumentsSpreadsheetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DocumentsTextClass = typeof DocumentsText;
     abstract class DocumentsTextPrivate {
         static $gtype: GObject.GType<DocumentsTextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DocumentsUploadQueryClass = typeof DocumentsUploadQuery;
     abstract class DocumentsUploadQueryPrivate {
         static $gtype: GObject.GType<DocumentsUploadQueryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type DownloadStreamClass = typeof DownloadStream;
     abstract class DownloadStreamPrivate {
         static $gtype: GObject.GType<DownloadStreamPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type EntryClass = typeof Entry;
     abstract class EntryPrivate {
         static $gtype: GObject.GType<EntryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type FeedClass = typeof Feed;
     abstract class FeedPrivate {
         static $gtype: GObject.GType<FeedPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GContactCalendarClass = typeof GContactCalendar;
     abstract class GContactCalendarPrivate {
         static $gtype: GObject.GType<GContactCalendarPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GContactEventClass = typeof GContactEvent;
     abstract class GContactEventPrivate {
         static $gtype: GObject.GType<GContactEventPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GContactExternalIDClass = typeof GContactExternalID;
     abstract class GContactExternalIDPrivate {
         static $gtype: GObject.GType<GContactExternalIDPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GContactJotClass = typeof GContactJot;
     abstract class GContactJotPrivate {
         static $gtype: GObject.GType<GContactJotPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GContactLanguageClass = typeof GContactLanguage;
     abstract class GContactLanguagePrivate {
         static $gtype: GObject.GType<GContactLanguagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GContactRelationClass = typeof GContactRelation;
     abstract class GContactRelationPrivate {
         static $gtype: GObject.GType<GContactRelationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GContactWebsiteClass = typeof GContactWebsite;
     abstract class GContactWebsitePrivate {
         static $gtype: GObject.GType<GContactWebsitePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GDEmailAddressClass = typeof GDEmailAddress;
     abstract class GDEmailAddressPrivate {
         static $gtype: GObject.GType<GDEmailAddressPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GDIMAddressClass = typeof GDIMAddress;
     abstract class GDIMAddressPrivate {
         static $gtype: GObject.GType<GDIMAddressPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GDNameClass = typeof GDName;
     abstract class GDNamePrivate {
         static $gtype: GObject.GType<GDNamePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GDOrganizationClass = typeof GDOrganization;
     abstract class GDOrganizationPrivate {
         static $gtype: GObject.GType<GDOrganizationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GDPhoneNumberClass = typeof GDPhoneNumber;
     abstract class GDPhoneNumberPrivate {
         static $gtype: GObject.GType<GDPhoneNumberPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GDPostalAddressClass = typeof GDPostalAddress;
     abstract class GDPostalAddressPrivate {
         static $gtype: GObject.GType<GDPostalAddressPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GDReminderClass = typeof GDReminder;
     abstract class GDReminderPrivate {
         static $gtype: GObject.GType<GDReminderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GDWhenClass = typeof GDWhen;
     abstract class GDWhenPrivate {
         static $gtype: GObject.GType<GDWhenPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GDWhereClass = typeof GDWhere;
     abstract class GDWherePrivate {
         static $gtype: GObject.GType<GDWherePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GDWhoClass = typeof GDWho;
     abstract class GDWhoPrivate {
         static $gtype: GObject.GType<GDWhoPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GeneratorClass = typeof Generator;
     abstract class GeneratorPrivate {
         static $gtype: GObject.GType<GeneratorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type GoaAuthorizerClass = typeof GoaAuthorizer;
     abstract class GoaAuthorizerPrivate {
         static $gtype: GObject.GType<GoaAuthorizerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type LinkClass = typeof Link;
     abstract class LinkPrivate {
         static $gtype: GObject.GType<LinkPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaCategoryClass = typeof MediaCategory;
     abstract class MediaCategoryPrivate {
         static $gtype: GObject.GType<MediaCategoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaContentClass = typeof MediaContent;
     abstract class MediaContentPrivate {
         static $gtype: GObject.GType<MediaContentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaCreditClass = typeof MediaCredit;
     abstract class MediaCreditPrivate {
         static $gtype: GObject.GType<MediaCreditPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type MediaThumbnailClass = typeof MediaThumbnail;
     abstract class MediaThumbnailPrivate {
         static $gtype: GObject.GType<MediaThumbnailPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type OAuth2AuthorizerClass = typeof OAuth2Authorizer;
     abstract class OAuth2AuthorizerPrivate {
         static $gtype: GObject.GType<OAuth2AuthorizerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ParsableClass = typeof Parsable;
     abstract class ParsablePrivate {
         static $gtype: GObject.GType<ParsablePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PicasaWebAlbumClass = typeof PicasaWebAlbum;
     abstract class PicasaWebAlbumPrivate {
         static $gtype: GObject.GType<PicasaWebAlbumPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PicasaWebCommentClass = typeof PicasaWebComment;
     abstract class PicasaWebCommentPrivate {
         static $gtype: GObject.GType<PicasaWebCommentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PicasaWebFeedClass = typeof PicasaWebFeed;
     type PicasaWebFileClass = typeof PicasaWebFile;
     abstract class PicasaWebFilePrivate {
         static $gtype: GObject.GType<PicasaWebFilePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PicasaWebQueryClass = typeof PicasaWebQuery;
     abstract class PicasaWebQueryPrivate {
         static $gtype: GObject.GType<PicasaWebQueryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type PicasaWebServiceClass = typeof PicasaWebService;
     type PicasaWebUserClass = typeof PicasaWebUser;
     abstract class PicasaWebUserPrivate {
         static $gtype: GObject.GType<PicasaWebUserPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type QueryClass = typeof Query;
     abstract class QueryPrivate {
         static $gtype: GObject.GType<QueryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type ServiceClass = typeof Service;
     abstract class ServicePrivate {
         static $gtype: GObject.GType<ServicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TasksQueryClass = typeof TasksQuery;
     abstract class TasksQueryPrivate {
         static $gtype: GObject.GType<TasksQueryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TasksServiceClass = typeof TasksService;
     type TasksTaskClass = typeof TasksTask;
     abstract class TasksTaskPrivate {
         static $gtype: GObject.GType<TasksTaskPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TasksTasklistClass = typeof TasksTasklist;
     type UploadStreamClass = typeof UploadStream;
     abstract class UploadStreamPrivate {
         static $gtype: GObject.GType<UploadStreamPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type YouTubeCategoryClass = typeof YouTubeCategory;
     abstract class YouTubeCategoryPrivate {
         static $gtype: GObject.GType<YouTubeCategoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type YouTubeCommentClass = typeof YouTubeComment;
     abstract class YouTubeCommentPrivate {
         static $gtype: GObject.GType<YouTubeCommentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type YouTubeFeedClass = typeof YouTubeFeed;
     abstract class YouTubeFeedPrivate {
         static $gtype: GObject.GType<YouTubeFeedPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type YouTubeQueryClass = typeof YouTubeQuery;
     abstract class YouTubeQueryPrivate {
         static $gtype: GObject.GType<YouTubeQueryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type YouTubeServiceClass = typeof YouTubeService;
     abstract class YouTubeServicePrivate {
         static $gtype: GObject.GType<YouTubeServicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type YouTubeStateClass = typeof YouTubeState;
     abstract class YouTubeStatePrivate {
         static $gtype: GObject.GType<YouTubeStatePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type YouTubeVideoClass = typeof YouTubeVideo;
     abstract class YouTubeVideoPrivate {
         static $gtype: GObject.GType<YouTubeVideoPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace AccessHandler {

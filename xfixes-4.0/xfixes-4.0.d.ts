@@ -19,10 +19,6 @@ export namespace xfixes {
 
     class XserverRegion {
         static $gtype: GObject.GType<XserverRegion>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

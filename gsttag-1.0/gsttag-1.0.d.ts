@@ -1964,19 +1964,11 @@ export namespace GstTag {
     type TagDemuxClass = typeof TagDemux;
     abstract class TagDemuxPrivate {
         static $gtype: GObject.GType<TagDemuxPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TagMuxClass = typeof TagMux;
     abstract class TagMuxPrivate {
         static $gtype: GObject.GType<TagMuxPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type TagXmpWriterInterface = typeof TagXmpWriter;

@@ -143,7 +143,8 @@ export namespace GtkFrdp {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.DrawingArea.ConstructorProps,
+            extends
+                Gtk.DrawingArea.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             allow_resize: boolean;
@@ -835,19 +836,11 @@ export namespace GtkFrdp {
     type DisplayClass = typeof Display;
     abstract class DisplayPrivate {
         static $gtype: GObject.GType<DisplayPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     type SessionClass = typeof Session;
     abstract class SessionPrivate {
         static $gtype: GObject.GType<SessionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

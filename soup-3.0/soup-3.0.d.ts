@@ -395,7 +395,6 @@ export namespace Soup {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -697,7 +696,6 @@ export namespace Soup {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -918,7 +916,6 @@ export namespace Soup {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -8975,8 +8972,7 @@ export namespace Soup {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.FilterInputStream.ConstructorProps,
-                Gio.PollableInputStream.ConstructorProps {
+            extends Gio.FilterInputStream.ConstructorProps, Gio.PollableInputStream.ConstructorProps {
             message: Message;
         }
     }
@@ -12988,7 +12984,6 @@ export namespace Soup {
         // Constructors
 
         constructor(name: string, value: string, domain: string, path: string, max_age: number);
-        _init(...args: any[]): void;
 
         static ['new'](name: string, value: string, domain: string, path: string, max_age: number): Cookie;
 
@@ -13205,7 +13200,6 @@ export namespace Soup {
         // Constructors
 
         constructor(domain: string, max_age: number, include_subdomains: boolean);
-        _init(...args: any[]): void;
 
         static ['new'](domain: string, max_age: number, include_subdomains: boolean): HSTSPolicy;
 
@@ -13305,7 +13299,6 @@ export namespace Soup {
                 length: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): MessageBody;
 
@@ -13445,7 +13438,6 @@ export namespace Soup {
         // Constructors
 
         constructor(type: MessageHeadersType);
-        _init(...args: any[]): void;
 
         static ['new'](type: MessageHeadersType): MessageHeaders;
 
@@ -13780,7 +13772,6 @@ export namespace Soup {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -13819,10 +13810,6 @@ export namespace Soup {
      */
     abstract class MessageMetrics {
         static $gtype: GObject.GType<MessageMetrics>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -13992,7 +13979,6 @@ export namespace Soup {
         // Constructors
 
         constructor(mime_type: string);
-        _init(...args: any[]): void;
 
         static ['new'](mime_type: string): Multipart;
 
@@ -14088,7 +14074,6 @@ export namespace Soup {
                 end: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     type ServerClass = typeof Server;

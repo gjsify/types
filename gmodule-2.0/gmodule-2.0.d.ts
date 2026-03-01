@@ -38,7 +38,6 @@ export namespace GModule {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     const MODULE_IMPL_AR: number;
@@ -120,10 +119,6 @@ export namespace GModule {
      */
     abstract class Module {
         static $gtype: GObject.GType<Module>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 

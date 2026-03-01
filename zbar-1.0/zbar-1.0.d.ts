@@ -82,7 +82,8 @@ export namespace ZBar {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk__.Widget.ConstructorProps,
+            extends
+                Gtk__.Widget.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk__.Buildable.ConstructorProps {
             video_device: string;
