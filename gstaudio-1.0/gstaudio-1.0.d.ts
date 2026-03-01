@@ -2276,6 +2276,7 @@ export namespace GstAudio {
             'notify::latency-time': (pspec: GObject.ParamSpec) => void;
             'notify::provide-clock': (pspec: GObject.ParamSpec) => void;
             'notify::slave-method': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-eos': (pspec: GObject.ParamSpec) => void;
             'notify::blocksize': (pspec: GObject.ParamSpec) => void;
             'notify::do-timestamp': (pspec: GObject.ParamSpec) => void;
             'notify::num-buffers': (pspec: GObject.ParamSpec) => void;
@@ -2434,6 +2435,7 @@ export namespace GstAudio {
             'notify::device': (pspec: GObject.ParamSpec) => void;
             'notify::mode': (pspec: GObject.ParamSpec) => void;
             'notify::track': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-eos': (pspec: GObject.ParamSpec) => void;
             'notify::blocksize': (pspec: GObject.ParamSpec) => void;
             'notify::do-timestamp': (pspec: GObject.ParamSpec) => void;
             'notify::num-buffers': (pspec: GObject.ParamSpec) => void;
@@ -5132,6 +5134,7 @@ export namespace GstAudio {
             'notify::latency-time': (pspec: GObject.ParamSpec) => void;
             'notify::provide-clock': (pspec: GObject.ParamSpec) => void;
             'notify::slave-method': (pspec: GObject.ParamSpec) => void;
+            'notify::automatic-eos': (pspec: GObject.ParamSpec) => void;
             'notify::blocksize': (pspec: GObject.ParamSpec) => void;
             'notify::do-timestamp': (pspec: GObject.ParamSpec) => void;
             'notify::num-buffers': (pspec: GObject.ParamSpec) => void;

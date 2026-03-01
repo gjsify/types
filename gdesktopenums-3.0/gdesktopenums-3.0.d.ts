@@ -31,7 +31,6 @@ export namespace GDesktopEnums {
         PINK,
         PURPLE,
         SLATE,
-        BROWN,
     }
 
     export namespace BackgroundShading {

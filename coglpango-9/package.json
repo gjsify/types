@@ -1,6 +1,6 @@
 {
     "name": "@girs/coglpango-9",
-    "version": "9.0.0-4.0.0-beta.38",
+    "version": "9.0.0-4.0.0-beta.39",
     "description": "GJS TypeScript type definitions for CoglPango-9, generated from library version 9.0.0",
     "type": "module",
     "module": "coglpango-9.js",

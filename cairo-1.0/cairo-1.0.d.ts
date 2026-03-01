@@ -430,44 +430,6 @@ export namespace cairo {
         );
     }
 
-    class Glyph {
-        static $gtype: GObject.GType<Glyph>;
-
-        // Fields
-
-        index: number;
-        x: number;
-        y: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                index: number;
-                x: number;
-                y: number;
-            }>,
-        );
-    }
-
-    class TextCluster {
-        static $gtype: GObject.GType<TextCluster>;
-
-        // Fields
-
-        num_bytes: number;
-        num_glyphs: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                num_bytes: number;
-                num_glyphs: number;
-            }>,
-        );
-    }
-
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

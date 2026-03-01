@@ -1037,6 +1037,8 @@ export namespace Thunarx {
          * @returns the new or existing type id.
          */
         register_enum(name: string, const_static_values: GObject.EnumValue): GObject.GType;
+        // Conflicted with GObject.TypeModule.register_enum
+        register_enum(...args: never[]): any;
         /**
          * Looks up or registers a flags type that is implemented with a particular type `plugin`. If a type with name
          * qname was previously registered, the #GType identifier for the type is returned, otherwise the type is newly
@@ -1048,6 +1050,8 @@ export namespace Thunarx {
          * @returns the new or existing type id.
          */
         register_flags(name: string, const_static_values: GObject.FlagsValue): GObject.GType;
+        // Conflicted with GObject.TypeModule.register_flags
+        register_flags(...args: never[]): any;
         /**
          * Looks up or registers a type that is implemented with a particular type `plugin`. If a type with name `type_name`
          * was previously registered, the #GType identifier for the type is returned, otherwise the type is newly registered,

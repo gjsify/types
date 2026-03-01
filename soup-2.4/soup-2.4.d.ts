@@ -2071,6 +2071,15 @@ export namespace Soup {
      * @param hdrs a %SoupMessageHeaders
      */
     function message_headers_iter_init(hdrs: MessageHeaders): MessageHeadersIter;
+    /**
+     * Yields the next name/value pair in the %SoupMessageHeaders being
+     * iterated by `iter`. If `iter` has already yielded the last header,
+     * then soup_message_headers_iter_next() will return %FALSE and `name`
+     * and `value` will be unchanged.
+     * @param iter a %SoupMessageHeadersIter
+     * @returns %TRUE if another name and value were returned, %FALSE if the end of the headers has been reached.
+     */
+    function message_headers_iter_next(iter: MessageHeadersIter): [boolean, MessageHeadersIter, string, string];
     function request_error_quark(): GLib.Quark;
     function requester_error_quark(): GLib.Quark;
     /**
@@ -4373,7 +4382,15 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_add_feature(type: GObject.GType): boolean;
+        /**
+         * Perform setup when a feature is added to a session
+         * @param session
+         */
         vfunc_attach(session: Session): void;
+        /**
+         * Perform cleanup when a feature is removed from a session
+         * @param session
+         */
         vfunc_detach(session: Session): void;
         /**
          * Tests if `feature` has a "sub-feature" of type `type`. See
@@ -4387,8 +4404,24 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
+        /**
+         * Proxies the session's #SoupSession::request_queued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_queued(session: Session, msg: Message): void;
+        /**
+         * Proxies the session's #SoupSession::request_started signal. Deprecated 2.50. Use #SoupMessage::starting instead.
+         * @param session
+         * @param msg
+         * @param socket
+         */
         vfunc_request_started(session: Session, msg: Message, socket: Socket): void;
+        /**
+         * Proxies the session's #SoupSession::request_unqueued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_unqueued(session: Session, msg: Message): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -5084,7 +5117,15 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_add_feature(type: GObject.GType): boolean;
+        /**
+         * Perform setup when a feature is added to a session
+         * @param session
+         */
         vfunc_attach(session: Session): void;
+        /**
+         * Perform cleanup when a feature is removed from a session
+         * @param session
+         */
         vfunc_detach(session: Session): void;
         /**
          * Tests if `feature` has a "sub-feature" of type `type`. See
@@ -5098,8 +5139,24 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
+        /**
+         * Proxies the session's #SoupSession::request_queued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_queued(session: Session, msg: Message): void;
+        /**
+         * Proxies the session's #SoupSession::request_started signal. Deprecated 2.50. Use #SoupMessage::starting instead.
+         * @param session
+         * @param msg
+         * @param socket
+         */
         vfunc_request_started(session: Session, msg: Message, socket: Socket): void;
+        /**
+         * Proxies the session's #SoupSession::request_unqueued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_unqueued(session: Session, msg: Message): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -5621,7 +5678,15 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_add_feature(type: GObject.GType): boolean;
+        /**
+         * Perform setup when a feature is added to a session
+         * @param session
+         */
         vfunc_attach(session: Session): void;
+        /**
+         * Perform cleanup when a feature is removed from a session
+         * @param session
+         */
         vfunc_detach(session: Session): void;
         /**
          * Tests if `feature` has a "sub-feature" of type `type`. See
@@ -5635,8 +5700,24 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
+        /**
+         * Proxies the session's #SoupSession::request_queued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_queued(session: Session, msg: Message): void;
+        /**
+         * Proxies the session's #SoupSession::request_started signal. Deprecated 2.50. Use #SoupMessage::starting instead.
+         * @param session
+         * @param msg
+         * @param socket
+         */
         vfunc_request_started(session: Session, msg: Message, socket: Socket): void;
+        /**
+         * Proxies the session's #SoupSession::request_unqueued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_unqueued(session: Session, msg: Message): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -6194,7 +6275,15 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_add_feature(type: GObject.GType): boolean;
+        /**
+         * Perform setup when a feature is added to a session
+         * @param session
+         */
         vfunc_attach(session: Session): void;
+        /**
+         * Perform cleanup when a feature is removed from a session
+         * @param session
+         */
         vfunc_detach(session: Session): void;
         /**
          * Tests if `feature` has a "sub-feature" of type `type`. See
@@ -6208,8 +6297,24 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
+        /**
+         * Proxies the session's #SoupSession::request_queued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_queued(session: Session, msg: Message): void;
+        /**
+         * Proxies the session's #SoupSession::request_started signal. Deprecated 2.50. Use #SoupMessage::starting instead.
+         * @param session
+         * @param msg
+         * @param socket
+         */
         vfunc_request_started(session: Session, msg: Message, socket: Socket): void;
+        /**
+         * Proxies the session's #SoupSession::request_unqueued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_unqueued(session: Session, msg: Message): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -6926,7 +7031,15 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_add_feature(type: GObject.GType): boolean;
+        /**
+         * Perform setup when a feature is added to a session
+         * @param session
+         */
         vfunc_attach(session: Session): void;
+        /**
+         * Perform cleanup when a feature is removed from a session
+         * @param session
+         */
         vfunc_detach(session: Session): void;
         /**
          * Tests if `feature` has a "sub-feature" of type `type`. See
@@ -6940,8 +7053,24 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
+        /**
+         * Proxies the session's #SoupSession::request_queued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_queued(session: Session, msg: Message): void;
+        /**
+         * Proxies the session's #SoupSession::request_started signal. Deprecated 2.50. Use #SoupMessage::starting instead.
+         * @param session
+         * @param msg
+         * @param socket
+         */
         vfunc_request_started(session: Session, msg: Message, socket: Socket): void;
+        /**
+         * Proxies the session's #SoupSession::request_unqueued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_unqueued(session: Session, msg: Message): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -7478,7 +7607,15 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_add_feature(type: GObject.GType): boolean;
+        /**
+         * Perform setup when a feature is added to a session
+         * @param session
+         */
         vfunc_attach(session: Session): void;
+        /**
+         * Perform cleanup when a feature is removed from a session
+         * @param session
+         */
         vfunc_detach(session: Session): void;
         /**
          * Tests if `feature` has a "sub-feature" of type `type`. See
@@ -7492,8 +7629,24 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
+        /**
+         * Proxies the session's #SoupSession::request_queued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_queued(session: Session, msg: Message): void;
+        /**
+         * Proxies the session's #SoupSession::request_started signal. Deprecated 2.50. Use #SoupMessage::starting instead.
+         * @param session
+         * @param msg
+         * @param socket
+         */
         vfunc_request_started(session: Session, msg: Message, socket: Socket): void;
+        /**
+         * Proxies the session's #SoupSession::request_unqueued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_unqueued(session: Session, msg: Message): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -8030,7 +8183,15 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_add_feature(type: GObject.GType): boolean;
+        /**
+         * Perform setup when a feature is added to a session
+         * @param session
+         */
         vfunc_attach(session: Session): void;
+        /**
+         * Perform cleanup when a feature is removed from a session
+         * @param session
+         */
         vfunc_detach(session: Session): void;
         /**
          * Tests if `feature` has a "sub-feature" of type `type`. See
@@ -8044,8 +8205,24 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
+        /**
+         * Proxies the session's #SoupSession::request_queued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_queued(session: Session, msg: Message): void;
+        /**
+         * Proxies the session's #SoupSession::request_started signal. Deprecated 2.50. Use #SoupMessage::starting instead.
+         * @param session
+         * @param msg
+         * @param socket
+         */
         vfunc_request_started(session: Session, msg: Message, socket: Socket): void;
+        /**
+         * Proxies the session's #SoupSession::request_unqueued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_unqueued(session: Session, msg: Message): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -8540,6 +8717,11 @@ export namespace Soup {
 
         // Virtual methods
 
+        /**
+         * the class closure for the #SoupHSTSEnforcer::changed signal.
+         * @param old_policy
+         * @param new_policy
+         */
         vfunc_changed(old_policy: HSTSPolicy, new_policy: HSTSPolicy): void;
         /**
          * Gets whether `hsts_enforcer` has a currently valid policy for `domain`.
@@ -8631,7 +8813,15 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_add_feature(type: GObject.GType): boolean;
+        /**
+         * Perform setup when a feature is added to a session
+         * @param session
+         */
         vfunc_attach(session: Session): void;
+        /**
+         * Perform cleanup when a feature is removed from a session
+         * @param session
+         */
         vfunc_detach(session: Session): void;
         /**
          * Tests if `feature` has a "sub-feature" of type `type`. See
@@ -8645,8 +8835,24 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
+        /**
+         * Proxies the session's #SoupSession::request_queued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_queued(session: Session, msg: Message): void;
+        /**
+         * Proxies the session's #SoupSession::request_started signal. Deprecated 2.50. Use #SoupMessage::starting instead.
+         * @param session
+         * @param msg
+         * @param socket
+         */
         vfunc_request_started(session: Session, msg: Message, socket: Socket): void;
+        /**
+         * Proxies the session's #SoupSession::request_unqueued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_unqueued(session: Session, msg: Message): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -9184,7 +9390,15 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_add_feature(type: GObject.GType): boolean;
+        /**
+         * Perform setup when a feature is added to a session
+         * @param session
+         */
         vfunc_attach(session: Session): void;
+        /**
+         * Perform cleanup when a feature is removed from a session
+         * @param session
+         */
         vfunc_detach(session: Session): void;
         /**
          * Tests if `feature` has a "sub-feature" of type `type`. See
@@ -9198,8 +9412,24 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
+        /**
+         * Proxies the session's #SoupSession::request_queued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_queued(session: Session, msg: Message): void;
+        /**
+         * Proxies the session's #SoupSession::request_started signal. Deprecated 2.50. Use #SoupMessage::starting instead.
+         * @param session
+         * @param msg
+         * @param socket
+         */
         vfunc_request_started(session: Session, msg: Message, socket: Socket): void;
+        /**
+         * Proxies the session's #SoupSession::request_unqueued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_unqueued(session: Session, msg: Message): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -9792,7 +10022,15 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_add_feature(type: GObject.GType): boolean;
+        /**
+         * Perform setup when a feature is added to a session
+         * @param session
+         */
         vfunc_attach(session: Session): void;
+        /**
+         * Perform cleanup when a feature is removed from a session
+         * @param session
+         */
         vfunc_detach(session: Session): void;
         /**
          * Tests if `feature` has a "sub-feature" of type `type`. See
@@ -9806,8 +10044,24 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
+        /**
+         * Proxies the session's #SoupSession::request_queued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_queued(session: Session, msg: Message): void;
+        /**
+         * Proxies the session's #SoupSession::request_started signal. Deprecated 2.50. Use #SoupMessage::starting instead.
+         * @param session
+         * @param msg
+         * @param socket
+         */
         vfunc_request_started(session: Session, msg: Message, socket: Socket): void;
+        /**
+         * Proxies the session's #SoupSession::request_unqueued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_unqueued(session: Session, msg: Message): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -11913,7 +12167,15 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_add_feature(type: GObject.GType): boolean;
+        /**
+         * Perform setup when a feature is added to a session
+         * @param session
+         */
         vfunc_attach(session: Session): void;
+        /**
+         * Perform cleanup when a feature is removed from a session
+         * @param session
+         */
         vfunc_detach(session: Session): void;
         /**
          * Tests if `feature` has a "sub-feature" of type `type`. See
@@ -11927,8 +12189,24 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
+        /**
+         * Proxies the session's #SoupSession::request_queued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_queued(session: Session, msg: Message): void;
+        /**
+         * Proxies the session's #SoupSession::request_started signal. Deprecated 2.50. Use #SoupMessage::starting instead.
+         * @param session
+         * @param msg
+         * @param socket
+         */
         vfunc_request_started(session: Session, msg: Message, socket: Socket): void;
+        /**
+         * Proxies the session's #SoupSession::request_unqueued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_unqueued(session: Session, msg: Message): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -14911,7 +15189,15 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_add_feature(type: GObject.GType): boolean;
+        /**
+         * Perform setup when a feature is added to a session
+         * @param session
+         */
         vfunc_attach(session: Session): void;
+        /**
+         * Perform cleanup when a feature is removed from a session
+         * @param session
+         */
         vfunc_detach(session: Session): void;
         /**
          * Tests if `feature` has a "sub-feature" of type `type`. See
@@ -14925,8 +15211,24 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
+        /**
+         * Proxies the session's #SoupSession::request_queued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_queued(session: Session, msg: Message): void;
+        /**
+         * Proxies the session's #SoupSession::request_started signal. Deprecated 2.50. Use #SoupMessage::starting instead.
+         * @param session
+         * @param msg
+         * @param socket
+         */
         vfunc_request_started(session: Session, msg: Message, socket: Socket): void;
+        /**
+         * Proxies the session's #SoupSession::request_unqueued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_unqueued(session: Session, msg: Message): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -18470,10 +18772,29 @@ export namespace Soup {
 
         // Virtual methods
 
+        /**
+         * default handler for the #SoupWebsocketConnection::closed signal
+         */
         vfunc_closed(): void;
+        /**
+         * the default handler for the #SoupWebsocketConnection:closing signal
+         */
         vfunc_closing(): void;
+        /**
+         * default handler for the #SoupWebsocketConnection::error signal
+         * @param error
+         */
         vfunc_error(error: GLib.Error): void;
+        /**
+         * default handler for the #SoupWebsocketConnection::message signal
+         * @param type
+         * @param message
+         */
         vfunc_message(type: WebsocketDataType, message: GLib.Bytes | Uint8Array): void;
+        /**
+         * default handler for the #SoupWebsocketConnection::pong signal
+         * @param message
+         */
         vfunc_pong(message: GLib.Bytes | Uint8Array): void;
 
         // Methods
@@ -18860,7 +19181,15 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_add_feature(type: GObject.GType): boolean;
+        /**
+         * Perform setup when a feature is added to a session
+         * @param session
+         */
         vfunc_attach(session: Session): void;
+        /**
+         * Perform cleanup when a feature is removed from a session
+         * @param session
+         */
         vfunc_detach(session: Session): void;
         /**
          * Tests if `feature` has a "sub-feature" of type `type`. See
@@ -18874,8 +19203,24 @@ export namespace Soup {
          * @param type the #GType of a "sub-feature"
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
+        /**
+         * Proxies the session's #SoupSession::request_queued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_queued(session: Session, msg: Message): void;
+        /**
+         * Proxies the session's #SoupSession::request_started signal. Deprecated 2.50. Use #SoupMessage::starting instead.
+         * @param session
+         * @param msg
+         * @param socket
+         */
         vfunc_request_started(session: Session, msg: Message, socket: Socket): void;
+        /**
+         * Proxies the session's #SoupSession::request_unqueued signal
+         * @param session
+         * @param msg
+         */
         vfunc_request_unqueued(session: Session, msg: Message): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -20480,17 +20825,14 @@ export namespace Soup {
          * @param hdrs a %SoupMessageHeaders
          */
         static init(hdrs: MessageHeaders): MessageHeadersIter;
-
-        // Methods
-
         /**
          * Yields the next name/value pair in the %SoupMessageHeaders being
          * iterated by `iter`. If `iter` has already yielded the last header,
          * then soup_message_headers_iter_next() will return %FALSE and `name`
          * and `value` will be unchanged.
-         * @returns %TRUE if another name and value were returned, %FALSE if the end of the headers has been reached.
+         * @param iter a %SoupMessageHeadersIter
          */
-        next(): [boolean, string, string];
+        static next(iter: MessageHeadersIter): [boolean, MessageHeadersIter, string, string];
     }
 
     abstract class MessageQueue {
@@ -21146,7 +21488,15 @@ export namespace Soup {
              * @param type the #GType of a "sub-feature"
              */
             vfunc_add_feature(type: GObject.GType): boolean;
+            /**
+             * Perform setup when a feature is added to a session
+             * @param session
+             */
             vfunc_attach(session: Session): void;
+            /**
+             * Perform cleanup when a feature is removed from a session
+             * @param session
+             */
             vfunc_detach(session: Session): void;
             /**
              * Tests if `feature` has a "sub-feature" of type `type`. See
@@ -21160,8 +21510,24 @@ export namespace Soup {
              * @param type the #GType of a "sub-feature"
              */
             vfunc_remove_feature(type: GObject.GType): boolean;
+            /**
+             * Proxies the session's #SoupSession::request_queued signal
+             * @param session
+             * @param msg
+             */
             vfunc_request_queued(session: Session, msg: Message): void;
+            /**
+             * Proxies the session's #SoupSession::request_started signal. Deprecated 2.50. Use #SoupMessage::starting instead.
+             * @param session
+             * @param msg
+             * @param socket
+             */
             vfunc_request_started(session: Session, msg: Message, socket: Socket): void;
+            /**
+             * Proxies the session's #SoupSession::request_unqueued signal
+             * @param session
+             * @param msg
+             */
             vfunc_request_unqueued(session: Session, msg: Message): void;
         }
 

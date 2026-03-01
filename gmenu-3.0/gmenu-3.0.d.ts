@@ -219,7 +219,7 @@ export namespace GMenu {
 
         // Methods
 
-        get_app_info(): Gio.DesktopAppInfo;
+        get_app_info(): never;
         get_desktop_file_id(): string;
         get_desktop_file_path(): string;
         get_is_excluded(): boolean;

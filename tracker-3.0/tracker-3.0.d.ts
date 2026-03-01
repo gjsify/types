@@ -3190,10 +3190,7 @@ export namespace Tracker {
          * @param cancellable Optional [type@Gio.Cancellable]
          * @returns A prepared statement
          */
-        load_statement_from_gresource(
-            resource_path: string,
-            cancellable?: Gio.Cancellable | null,
-        ): SparqlStatement | null;
+        load_statement_from_gresource(resource_path: string, cancellable?: Gio.Cancellable | null): SparqlStatement;
         /**
          * Maps a `TrackerSparqlConnection` onto another through a `private:`handle_name`` URI.
          *
@@ -3307,7 +3304,7 @@ export namespace Tracker {
          * @param cancellable Optional [type@Gio.Cancellable]
          * @returns A prepared statement
          */
-        query_statement(sparql: string, cancellable?: Gio.Cancellable | null): SparqlStatement | null;
+        query_statement(sparql: string, cancellable?: Gio.Cancellable | null): SparqlStatement;
         /**
          * Serializes a `DESCRIBE` or `CONSTRUCT` query into the specified RDF format.
          *
@@ -3694,7 +3691,7 @@ export namespace Tracker {
          * @param cancellable Optional [type@Gio.Cancellable]
          * @returns A prepared statement
          */
-        update_statement(sparql: string, cancellable?: Gio.Cancellable | null): SparqlStatement | null;
+        update_statement(sparql: string, cancellable?: Gio.Cancellable | null): SparqlStatement;
     }
 
     namespace SparqlCursor {

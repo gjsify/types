@@ -21,13 +21,6 @@ export namespace Notify {
      * Notify-0.7
      */
 
-    /**
-     * The reason for which the notification has been closed.
-     */
-
-    /**
-     * The reason for which the notification has been closed.
-     */
     export namespace ClosedReason {
         export const $gtype: GObject.GType<ClosedReason>;
     }
@@ -50,6 +43,10 @@ export namespace Notify {
          *   [method`NotifyNotification`.close].
          */
         API_REQUEST,
+        /**
+         * Closed by undefined/reserved reasons.
+         */
+        UNDEFINED,
         /**
          * Closed by undefined/reserved reasons.
          */
@@ -91,15 +88,139 @@ export namespace Notify {
      */
     const EXPIRES_NEVER: number;
     /**
-     * Adwaita major version component (e.g. 1 if the version is 1.2.3).
+     * When set, a server that has the "action-icons" capability will attempt to
+     * interpret any action identifier as a named icon. The localized display name
+     * will be used to annotate the icon for accessibility purposes. The icon name
+     * should be compliant with the Freedesktop.org Icon Naming Specification.
+     *
+     * Requires server supporting specification version >= 1.2.
+     *
+     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_BOOLEAN] (`b`).
+     */
+    const NOTIFICATION_HINT_ACTION_ICONS: string;
+    /**
+     * The type of notification this is.
+     *
+     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_STRING] (`s`).
+     */
+    const NOTIFICATION_HINT_CATEGORY: string;
+    /**
+     * This specifies the name of the desktop filename representing the calling
+     * program. This should be the same as the prefix used for the application's
+     * .desktop file. An example would be "rhythmbox" from "rhythmbox.desktop". This
+     * can be used by the daemon to retrieve the correct icon for the application,
+     * for logging purposes, etc.
+     *
+     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_STRING] (`s`).
+     */
+    const NOTIFICATION_HINT_DESKTOP_ENTRY: string;
+    /**
+     * This is a raw data image format which describes the width,
+     * height, rowstride, has alpha, bits per sample, channels and image data
+     * respectively.
+     *
+     * Requires server supporting specification version >= 1.2
+     *
+     * [type`GLib`.VariantType]: `(iiibiiay)`
+     */
+    const NOTIFICATION_HINT_IMAGE_DATA: string;
+    /**
+     * This is a raw data image format which describes the width,
+     * height, rowstride, has alpha, bits per sample, channels and image data
+     * respectively.
+     *
+     * Requires server supporting specification version >= 1.1
+     *
+     * [type`GLib`.VariantType]: `(iiibiiay)`
+     */
+    const NOTIFICATION_HINT_IMAGE_DATA_LEGACY: string;
+    /**
+     * Alternative way to define the notification image.
+     *
+     * Requires server supporting specification version >= 1.2.
+     *
+     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_STRING] (`s`).
+     */
+    const NOTIFICATION_HINT_IMAGE_PATH: string;
+    /**
+     * Alternative way to define the notification image.
+     *
+     * Requires server supporting specification version >= 1.1.
+     *
+     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_STRING] (`s`).
+     */
+    const NOTIFICATION_HINT_IMAGE_PATH_LEGACY: string;
+    /**
+     * When set the server will not automatically remove the notification when an
+     * action has been invoked. The notification will remain resident in the server
+     * until it is explicitly removed by the user or by the sender. This hint is
+     * likely only useful when the server has the "persistence" capability.
+     *
+     * Requires server supporting specification version >= 1.2.
+     *
+     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_BOOLEAN] (`b`).
+     */
+    const NOTIFICATION_HINT_RESIDENT: string;
+    /**
+     * The path to a sound file to play when the notification pops up.
+     *
+     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_STRING] (`s`).
+     */
+    const NOTIFICATION_HINT_SOUND_FILE: string;
+    /**
+     * A themeable named sound from the freedesktop.org sound naming specification
+     * to play when the notification pops up. Similar to icon-name, only for sounds.
+     * An example would be "message-new-instant".
+     *
+     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_STRING] (`s`).
+     */
+    const NOTIFICATION_HINT_SOUND_NAME: string;
+    /**
+     * Causes the server to suppress playing any sounds, if it has that ability.
+     * This is usually set when the client itself is going to play its own sound.
+     *
+     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_BOOLEAN] (`b`).
+     */
+    const NOTIFICATION_HINT_SUPPRESS_SOUND: string;
+    /**
+     * When set the server will treat the notification as transient and by-pass the
+     * server's persistence capability, if it should exist.
+     *
+     * Requires server supporting specification version >= 1.2.
+     *
+     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_BOOLEAN] (`b`).
+     */
+    const NOTIFICATION_HINT_TRANSIENT: string;
+    /**
+     * The urgency level.
+     *
+     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_BYTE] (`y`).
+     */
+    const NOTIFICATION_HINT_URGENCY: string;
+    /**
+     * Specifies the X location on the screen that the notification should point to.
+     * The "y" hint must also be specified.
+     *
+     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_INT32] (`i`).
+     */
+    const NOTIFICATION_HINT_X: string;
+    /**
+     * Specifies the Y location on the screen that the notification should point to.
+     * The "x" hint must also be specified.
+     *
+     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_INT32] (`i`).
+     */
+    const NOTIFICATION_HINT_Y: string;
+    /**
+     * Notify major version component (e.g. 1 if the version is 1.2.3).
      */
     const VERSION_MAJOR: number;
     /**
-     * Adwaita micro version component (e.g. 3 if the version is 1.2.3).
+     * Notify micro version component (e.g. 3 if the version is 1.2.3).
      */
     const VERSION_MICRO: number;
     /**
-     * Adwaita minor version component (e.g. 2 if the version is 1.2.3).
+     * Notify minor version component (e.g. 2 if the version is 1.2.3).
      */
     const VERSION_MINOR: number;
     /**
@@ -331,6 +452,20 @@ export namespace Notify {
          * @returns %TRUE on success, or %FALSE on error with @error filled in
          */
         close(): boolean;
+        /**
+         * Gets an application launch context for the notification action
+         * activation.
+         *
+         * If an an action is currently being activated, gets a
+         * a [class`Gio`.AppLaunchContext] that can be used to launch applications using
+         * the current activation token (see [method`Notification`.get_activation_token]).
+         *
+         * This function is intended to be used in a [callback`ActionCallback]` to get
+         * the launch context for the activated action, if the notification daemon
+         * supports it.
+         * @returns The [class@Gio.AppLaunchContext] for  the current activation token, or %NULL if unset
+         */
+        get_activation_app_launch_context(): Gio.AppLaunchContext | null;
         /**
          * Gets the activation token of the notification.
          *
