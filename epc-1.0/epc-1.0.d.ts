@@ -18,54 +18,45 @@ export namespace Epc {
      * Epc-1.0
      */
 
-    /**
-     * The address family to use for contacting network services.
-     */
-
-    /**
-     * The address family to use for contacting network services.
-     */
     export namespace AddressFamily {
         export const $gtype: GObject.GType<AddressFamily>;
     }
 
+    /**
+     * The address family to use for contacting network services.
+     */
     enum AddressFamily {
         UNSPEC,
         IPV4,
         IPV6,
     }
-    /**
-     * Various strategies for handling service name collisions.
-     */
 
-    /**
-     * Various strategies for handling service name collisions.
-     */
     export namespace CollisionHandling {
         export const $gtype: GObject.GType<CollisionHandling>;
     }
 
+    /**
+     * Various strategies for handling service name collisions.
+     */
     enum CollisionHandling {
         IGNORE,
         CHANGE_NAME,
         UNIQUE_SERVICE,
     }
-    /**
-     * The transport protocols supported by libepc.
-     */
 
-    /**
-     * The transport protocols supported by libepc.
-     */
     export namespace Protocol {
         export const $gtype: GObject.GType<Protocol>;
     }
 
+    /**
+     * The transport protocols supported by libepc.
+     */
     enum Protocol {
         UNKNOWN,
         HTTP,
         HTTPS,
     }
+
     const SERVICE_TYPE_HTTP: string;
     const SERVICE_TYPE_HTTPS: string;
     const TLS_SECONDS_PER_DAY: number;
@@ -105,21 +96,18 @@ export namespace Epc {
     interface ContentsReadFunc {
         (contents: Contents, buffer: any, length: number): boolean;
     }
-    /**
-     * These flags specify the authentication behaviour of an #EpcPublisher.
-     */
-
-    /**
-     * These flags specify the authentication behaviour of an #EpcPublisher.
-     */
     export namespace AuthFlags {
         export const $gtype: GObject.GType<AuthFlags>;
     }
 
+    /**
+     * These flags specify the authentication behaviour of an #EpcPublisher.
+     */
     enum AuthFlags {
         DEFAULT,
         PASSWORD_TEXT_NEEDED,
     }
+
     namespace Consumer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

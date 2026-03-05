@@ -30,8 +30,9 @@ export namespace GCalc {
         DEGREES,
         GRADIANS,
     }
+
     class AssigError extends GLib.Error {
-        static $gtype: GObject.GType<AssigError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -43,7 +44,7 @@ export namespace GCalc {
     }
 
     class FunctionError extends GLib.Error {
-        static $gtype: GObject.GType<FunctionError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -56,7 +57,7 @@ export namespace GCalc {
     }
 
     class GroupError extends GLib.Error {
-        static $gtype: GObject.GType<GroupError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -69,7 +70,7 @@ export namespace GCalc {
     }
 
     class TermError extends GLib.Error {
-        static $gtype: GObject.GType<TermError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -82,7 +83,7 @@ export namespace GCalc {
     }
 
     class VariableError extends GLib.Error {
-        static $gtype: GObject.GType<VariableError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -96,7 +97,7 @@ export namespace GCalc {
     }
 
     class ParserError extends GLib.Error {
-        static $gtype: GObject.GType<ParserError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -109,7 +110,7 @@ export namespace GCalc {
     }
 
     class SolverError extends GLib.Error {
-        static $gtype: GObject.GType<SolverError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -178,6 +179,7 @@ export namespace GCalc {
         TWO,
         THREE,
     }
+
     namespace Assign {
         // Signal signatures
         interface SignalSignatures extends Expression.SignalSignatures {}

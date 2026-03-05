@@ -20,17 +20,13 @@ export namespace GnomeBluetooth {
      * GnomeBluetooth-3.0
      */
 
-    /**
-     * A more precise power state for a Bluetooth adapter.
-     */
-
-    /**
-     * A more precise power state for a Bluetooth adapter.
-     */
     export namespace AdapterState {
         export const $gtype: GObject.GType<AdapterState>;
     }
 
+    /**
+     * A more precise power state for a Bluetooth adapter.
+     */
     enum AdapterState {
         /**
          * Bluetooth adapter is missing.
@@ -53,17 +49,14 @@ export namespace GnomeBluetooth {
          */
         OFF,
     }
-    /**
-     * The type of battery reporting supported by the device.
-     */
 
-    /**
-     * The type of battery reporting supported by the device.
-     */
     export namespace BatteryType {
         export const $gtype: GObject.GType<BatteryType>;
     }
 
+    /**
+     * The type of battery reporting supported by the device.
+     */
     enum BatteryType {
         /**
          * no battery reporting
@@ -78,6 +71,7 @@ export namespace GnomeBluetooth {
          */
         COARSE,
     }
+
     /**
      * Use this value to select any Bluetooth audio device where a #BluetoothType enum is required.
      */
@@ -125,17 +119,13 @@ export namespace GnomeBluetooth {
      * @returns %TRUE if the address is valid, %FALSE if not.
      */
     function verify_address(bdaddr: string): boolean;
-    /**
-     * The type of a Bluetooth device. See also %BLUETOOTH_TYPE_INPUT and %BLUETOOTH_TYPE_AUDIO
-     */
-
-    /**
-     * The type of a Bluetooth device. See also %BLUETOOTH_TYPE_INPUT and %BLUETOOTH_TYPE_AUDIO
-     */
     export namespace Type {
         export const $gtype: GObject.GType<Type>;
     }
 
+    /**
+     * The type of a Bluetooth device. See also %BLUETOOTH_TYPE_INPUT and %BLUETOOTH_TYPE_AUDIO
+     */
     enum Type {
         /**
          * any device, or a device of an unknown type
@@ -222,6 +212,7 @@ export namespace GnomeBluetooth {
          */
         SPEAKERS,
     }
+
     namespace Client {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

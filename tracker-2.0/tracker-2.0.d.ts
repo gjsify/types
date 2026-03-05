@@ -23,14 +23,6 @@ export namespace Tracker {
     /**
      * Notifier event types.
      */
-
-    /**
-     * Notifier event types.
-     */
-    export namespace NotifierEventType {
-        export const $gtype: GObject.GType<NotifierEventType>;
-    }
-
     enum NotifierEventType {
         /**
          * An element was created.
@@ -69,8 +61,9 @@ export namespace Tracker {
         BLANK_NODE,
         BOOLEAN,
     }
+
     class SparqlError extends GLib.Error {
-        static $gtype: GObject.GType<SparqlError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -104,6 +97,7 @@ export namespace Tracker {
         EMBEDDED_INSERT,
         GRAPH,
     }
+
     const DBUS_SERVICE: string;
     const DBUS_INTERFACE_RESOURCES: string;
     const DBUS_OBJECT_RESOURCES: string;
@@ -140,14 +134,6 @@ export namespace Tracker {
     /**
      * Flags affecting #TrackerNotifier behavior.
      */
-
-    /**
-     * Flags affecting #TrackerNotifier behavior.
-     */
-    export namespace NotifierFlags {
-        export const $gtype: GObject.GType<NotifierFlags>;
-    }
-
     enum NotifierFlags {
         /**
          * No flags
@@ -169,6 +155,7 @@ export namespace Tracker {
          */
         NOTIFY_UNEXTRACTED,
     }
+
     namespace NamespaceManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

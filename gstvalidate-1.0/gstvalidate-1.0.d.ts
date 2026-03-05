@@ -25,29 +25,19 @@ export namespace GstValidate {
      * GstValidate-1.0
      */
 
-    /**
-     * GST_VALIDATE_EXECUTE_ACTION_ERROR:
-     * GST_VALIDATE_EXECUTE_ACTION_OK:
-     * GST_VALIDATE_EXECUTE_ACTION_ASYNC:
-     * GST_VALIDATE_EXECUTE_ACTION_ERROR_REPORTED:
-     * GST_VALIDATE_EXECUTE_ACTION_IN_PROGRESS:
-     * GST_VALIDATE_EXECUTE_ACTION_NONE:
-     * GST_VALIDATE_EXECUTE_ACTION_DONE:
-     */
-
-    /**
-     * GST_VALIDATE_EXECUTE_ACTION_ERROR:
-     * GST_VALIDATE_EXECUTE_ACTION_OK:
-     * GST_VALIDATE_EXECUTE_ACTION_ASYNC:
-     * GST_VALIDATE_EXECUTE_ACTION_ERROR_REPORTED:
-     * GST_VALIDATE_EXECUTE_ACTION_IN_PROGRESS:
-     * GST_VALIDATE_EXECUTE_ACTION_NONE:
-     * GST_VALIDATE_EXECUTE_ACTION_DONE:
-     */
     export namespace ActionReturn {
         export const $gtype: GObject.GType<ActionReturn>;
     }
 
+    /**
+     * GST_VALIDATE_EXECUTE_ACTION_ERROR:
+     * GST_VALIDATE_EXECUTE_ACTION_OK:
+     * GST_VALIDATE_EXECUTE_ACTION_ASYNC:
+     * GST_VALIDATE_EXECUTE_ACTION_ERROR_REPORTED:
+     * GST_VALIDATE_EXECUTE_ACTION_IN_PROGRESS:
+     * GST_VALIDATE_EXECUTE_ACTION_NONE:
+     * GST_VALIDATE_EXECUTE_ACTION_DONE:
+     */
     enum ActionReturn {
         ERROR,
         OK,
@@ -98,33 +88,22 @@ export namespace GstValidate {
         EXPECTED,
         NUM_ENTRIES,
     }
-    /**
-     * Setting the reporting level allows to control the way issues are reported
-     * when calling #gst_validate_runner_printf.
-     *
-     * The reporting level can be set through the "GST_VALIDATE_REPORTING_DETAILS"
-     * environment variable, as  a comma-separated list of (optional) object categories / names
-     * and levels. No object category / name sets the global level.
-     *
-     * Examples: GST_VALIDATE_REPORTING_DETAILS=synthetic,h264parse:all
-     *           GST_VALIDATE_REPORTING_DETAILS=none,h264parse::sink_0:synthetic
-     */
 
-    /**
-     * Setting the reporting level allows to control the way issues are reported
-     * when calling #gst_validate_runner_printf.
-     *
-     * The reporting level can be set through the "GST_VALIDATE_REPORTING_DETAILS"
-     * environment variable, as  a comma-separated list of (optional) object categories / names
-     * and levels. No object category / name sets the global level.
-     *
-     * Examples: GST_VALIDATE_REPORTING_DETAILS=synthetic,h264parse:all
-     *           GST_VALIDATE_REPORTING_DETAILS=none,h264parse::sink_0:synthetic
-     */
     export namespace ReportingDetails {
         export const $gtype: GObject.GType<ReportingDetails>;
     }
 
+    /**
+     * Setting the reporting level allows to control the way issues are reported
+     * when calling #gst_validate_runner_printf.
+     *
+     * The reporting level can be set through the "GST_VALIDATE_REPORTING_DETAILS"
+     * environment variable, as  a comma-separated list of (optional) object categories / names
+     * and levels. No object category / name sets the global level.
+     *
+     * Examples: GST_VALIDATE_REPORTING_DETAILS=synthetic,h264parse:all
+     *           GST_VALIDATE_REPORTING_DETAILS=none,h264parse::sink_0:synthetic
+     */
     enum ReportingDetails {
         /**
          * No reporting level known,
@@ -171,6 +150,7 @@ export namespace GstValidate {
         SMART,
         COUNT,
     }
+
     const UNKNOWN_BOOL: number;
     const UNKNOWN_UINT64: number;
     /**
@@ -341,7 +321,6 @@ export namespace GstValidate {
     interface PrepareAction {
         (action: Action): number;
     }
-
     export namespace ActionTypeFlags {
         export const $gtype: GObject.GType<ActionTypeFlags>;
     }
@@ -401,29 +380,20 @@ export namespace GstValidate {
          */
         CHECK,
     }
-    /**
-     * GST_VALIDATE_FATAL_DEFAULT:
-     * GST_VALIDATE_FATAL_ISSUES:
-     * GST_VALIDATE_FATAL_WARNINGS:
-     * GST_VALIDATE_FATAL_CRITICALS:
-     * GST_VALIDATE_PRINT_ISSUES:
-     * GST_VALIDATE_PRINT_WARNINGS:
-     * GST_VALIDATE_PRINT_CRITICALS:
-     */
 
-    /**
-     * GST_VALIDATE_FATAL_DEFAULT:
-     * GST_VALIDATE_FATAL_ISSUES:
-     * GST_VALIDATE_FATAL_WARNINGS:
-     * GST_VALIDATE_FATAL_CRITICALS:
-     * GST_VALIDATE_PRINT_ISSUES:
-     * GST_VALIDATE_PRINT_WARNINGS:
-     * GST_VALIDATE_PRINT_CRITICALS:
-     */
     export namespace DebugFlags {
         export const $gtype: GObject.GType<DebugFlags>;
     }
 
+    /**
+     * GST_VALIDATE_FATAL_DEFAULT:
+     * GST_VALIDATE_FATAL_ISSUES:
+     * GST_VALIDATE_FATAL_WARNINGS:
+     * GST_VALIDATE_FATAL_CRITICALS:
+     * GST_VALIDATE_PRINT_ISSUES:
+     * GST_VALIDATE_PRINT_WARNINGS:
+     * GST_VALIDATE_PRINT_CRITICALS:
+     */
     enum DebugFlags {
         FATAL_DEFAULT,
         FATAL_ISSUES,
@@ -433,21 +403,16 @@ export namespace GstValidate {
         PRINT_WARNINGS,
         PRINT_CRITICALS,
     }
-    /**
-     * GST_VALIDATE_ISSUE_FLAGS_NONE: No special flags for the issue type
-     * GST_VALIDATE_ISSUE_FLAGS_FULL_DETAILS: Always show all occurrences of the issue in full details
-     * GST_VALIDATE_ISSUE_FLAGS_NO_BACKTRACE: Do not generate backtrace for the issue type
-     */
 
-    /**
-     * GST_VALIDATE_ISSUE_FLAGS_NONE: No special flags for the issue type
-     * GST_VALIDATE_ISSUE_FLAGS_FULL_DETAILS: Always show all occurrences of the issue in full details
-     * GST_VALIDATE_ISSUE_FLAGS_NO_BACKTRACE: Do not generate backtrace for the issue type
-     */
     export namespace IssueFlags {
         export const $gtype: GObject.GType<IssueFlags>;
     }
 
+    /**
+     * GST_VALIDATE_ISSUE_FLAGS_NONE: No special flags for the issue type
+     * GST_VALIDATE_ISSUE_FLAGS_FULL_DETAILS: Always show all occurrences of the issue in full details
+     * GST_VALIDATE_ISSUE_FLAGS_NO_BACKTRACE: Do not generate backtrace for the issue type
+     */
     enum IssueFlags {
         NONE,
         FULL_DETAILS,
@@ -496,17 +461,14 @@ export namespace GstValidate {
         NO_FAILURE,
         NO_EXPRESSION,
     }
-    /**
-     * Defines the level of verbosity of -validate (ie, printing on stdout).
-     */
 
-    /**
-     * Defines the level of verbosity of -validate (ie, printing on stdout).
-     */
     export namespace VerbosityFlags {
         export const $gtype: GObject.GType<VerbosityFlags>;
     }
 
+    /**
+     * Defines the level of verbosity of -validate (ie, printing on stdout).
+     */
     enum VerbosityFlags {
         NONE,
         POSITION,
@@ -515,6 +477,7 @@ export namespace GstValidate {
         NEW_ELEMENTS,
         ALL,
     }
+
     namespace BinMonitor {
         // Signal signatures
         interface SignalSignatures extends ElementMonitor.SignalSignatures {

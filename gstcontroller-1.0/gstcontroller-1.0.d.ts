@@ -20,17 +20,13 @@ export namespace GstController {
      * GstController-1.0
      */
 
-    /**
-     * The various interpolation modes available.
-     */
-
-    /**
-     * The various interpolation modes available.
-     */
     export namespace InterpolationMode {
         export const $gtype: GObject.GType<InterpolationMode>;
     }
 
+    /**
+     * The various interpolation modes available.
+     */
     enum InterpolationMode {
         /**
          * steps-like interpolation, default
@@ -52,17 +48,14 @@ export namespace GstController {
          */
         CUBIC_MONOTONIC,
     }
-    /**
-     * The various waveform modes available.
-     */
 
-    /**
-     * The various waveform modes available.
-     */
     export namespace LFOWaveform {
         export const $gtype: GObject.GType<LFOWaveform>;
     }
 
+    /**
+     * The various waveform modes available.
+     */
     enum LFOWaveform {
         /**
          * sine waveform
@@ -85,6 +78,7 @@ export namespace GstController {
          */
         TRIANGLE,
     }
+
     /**
      * Reset the controlled value cache.
      * @param self the #GstTimedValueControlSource

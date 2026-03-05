@@ -30,7 +30,7 @@ export namespace Eom {
      */
 
     class ImageError extends GLib.Error {
-        static $gtype: GObject.GType<ImageError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -193,6 +193,7 @@ export namespace Eom {
         FULLSCREEN,
         SLIDESHOW,
     }
+
     const FILE_FORMAT_JPEG: string;
     const IMAGE_DATA_ALL: number;
     const LIST_STORE_THUMB_SIZE: number;
@@ -239,7 +240,6 @@ export namespace Eom {
      */
     function thumbnail_load(image: Image): GdkPixbuf.Pixbuf;
     type ExifData = object | null;
-
     export namespace Debug {
         export const $gtype: GObject.GType<Debug>;
     }
@@ -280,6 +280,7 @@ export namespace Eom {
         SLIDE_SHOW,
         DISABLE_COLLECTION,
     }
+
     namespace Application {
         // Signal signatures
         interface SignalSignatures extends Gtk.Application.SignalSignatures {

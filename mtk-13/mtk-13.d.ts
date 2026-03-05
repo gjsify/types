@@ -20,15 +20,12 @@ export namespace Mtk {
      * Mtk-13
      */
 
-    export namespace RoundingStrategy {
-        export const $gtype: GObject.GType<RoundingStrategy>;
-    }
-
     enum RoundingStrategy {
         SHRINK,
         GROW,
         ROUND,
     }
+
     function rectangle_from_graphene_rect(rect: Graphene.Rect, rounding_strategy: RoundingStrategy | null): Rectangle;
     function x11_errors_deinit(): void;
     class Rectangle {

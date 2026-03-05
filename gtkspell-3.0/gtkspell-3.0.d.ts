@@ -33,7 +33,7 @@ export namespace GtkSpell {
      * Error codes used for GtkSpell errors.
      */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 

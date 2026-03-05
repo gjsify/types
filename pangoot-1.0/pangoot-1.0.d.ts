@@ -31,16 +31,6 @@ export namespace PangoOT {
      * identify the various OpenType tables in the
      * pango_ot_info_… functions.
      */
-
-    /**
-     * The PangoOTTableType enumeration values are used to
-     * identify the various OpenType tables in the
-     * pango_ot_info_… functions.
-     */
-    export namespace TableType {
-        export const $gtype: GObject.GType<TableType>;
-    }
-
     enum TableType {
         /**
          * The GSUB table.
@@ -51,6 +41,7 @@ export namespace PangoOT {
          */
         GPOS,
     }
+
     /**
      * This is used as the property bit in pango_ot_ruleset_add_feature() when a
      * feature should be applied to all glyphs.

@@ -28,10 +28,6 @@ export namespace GtkSource {
      * GtkSource-2.0
      */
 
-    export namespace BracketMatchType {
-        export const $gtype: GObject.GType<BracketMatchType>;
-    }
-
     enum BracketMatchType {
         /**
          * there is no bracket to match.
@@ -52,17 +48,9 @@ export namespace GtkSource {
         FOUND,
     }
 
-    export namespace CompletionError {
-        export const $gtype: GObject.GType<CompletionError>;
-    }
-
     enum CompletionError {
         ALREADY_BOUND,
         NOT_BOUND,
-    }
-
-    export namespace SmartHomeEndType {
-        export const $gtype: GObject.GType<SmartHomeEndType>;
     }
 
     enum SmartHomeEndType {
@@ -89,10 +77,6 @@ export namespace GtkSource {
         ALWAYS,
     }
 
-    export namespace ViewGutterPosition {
-        export const $gtype: GObject.GType<ViewGutterPosition>;
-    }
-
     enum ViewGutterPosition {
         /**
          * the gutter position of the lines
@@ -105,6 +89,7 @@ export namespace GtkSource {
          */
         MARKS,
     }
+
     const COMPLETION_CAPABILITY_AUTOMATIC: string;
     const COMPLETION_CAPABILITY_INTERACTIVE: string;
     /**
@@ -171,11 +156,6 @@ export namespace GtkSource {
     interface ViewMarkTooltipFunc {
         (mark: Mark): string;
     }
-
-    export namespace CompletionActivation {
-        export const $gtype: GObject.GType<CompletionActivation>;
-    }
-
     enum CompletionActivation {
         /**
          * none.
@@ -191,12 +171,6 @@ export namespace GtkSource {
          */
         USER_REQUESTED,
     }
-    /**
-     * GtkSourceDrawSpacesFlags determine what kind of spaces whould be drawn. If none
-     * of GTK_SOURCE_DRAW_SPACES_LEADING, GTK_SOURCE_DRAW_SPACES_TEXT or
-     * GTK_SOURCE_DRAW_SPACES_TRAILING is specified, whitespaces at any position in
-     * the line will be drawn (i.e. it has the same effect as specifying all of them).
-     */
 
     /**
      * GtkSourceDrawSpacesFlags determine what kind of spaces whould be drawn. If none
@@ -204,10 +178,6 @@ export namespace GtkSource {
      * GTK_SOURCE_DRAW_SPACES_TRAILING is specified, whitespaces at any position in
      * the line will be drawn (i.e. it has the same effect as specifying all of them).
      */
-    export namespace DrawSpacesFlags {
-        export const $gtype: GObject.GType<DrawSpacesFlags>;
-    }
-
     enum DrawSpacesFlags {
         /**
          * whether the space character should be drawn.
@@ -243,15 +213,12 @@ export namespace GtkSource {
         ALL,
     }
 
-    export namespace SearchFlags {
-        export const $gtype: GObject.GType<SearchFlags>;
-    }
-
     enum SearchFlags {
         VISIBLE_ONLY,
         TEXT_ONLY,
         CASE_INSENSITIVE,
     }
+
     namespace Buffer {
         // Signal signatures
         interface SignalSignatures extends Gtk.TextBuffer.SignalSignatures {

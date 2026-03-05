@@ -28,8 +28,9 @@ export namespace Libmsi {
         NAMES,
         TYPES,
     }
+
     class DBError extends GLib.Error {
-        static $gtype: GObject.GType<DBError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -113,8 +114,9 @@ export namespace Libmsi {
         STRING,
         FILETIME,
     }
+
     class ResultError extends GLib.Error {
-        static $gtype: GObject.GType<ResultError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -150,7 +152,6 @@ export namespace Libmsi {
     const NULL_INT: number;
     function db_error_quark(): GLib.Quark;
     function result_error_quark(): GLib.Quark;
-
     export namespace DbFlags {
         export const $gtype: GObject.GType<DbFlags>;
     }
@@ -161,6 +162,7 @@ export namespace Libmsi {
         TRANSACT,
         PATCH,
     }
+
     namespace Database {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

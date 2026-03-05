@@ -1,6 +1,6 @@
 {
     "name": "@girs/gupnpigd-1.6",
-    "version": "1.6.0-4.0.0-beta.39",
+    "version": "1.6.0-4.0.0-beta.40",
     "description": "GJS TypeScript type definitions for GUPnPIgd-1.6, generated from library version 1.6.0",
     "type": "module",
     "module": "gupnpigd-1.6.js",
@@ -31,9 +31,9 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-beta.39",
-      "@girs/gobject-2.0": "2.86.4-4.0.0-beta.39",
-      "@girs/glib-2.0": "2.86.4-4.0.0-beta.39"    },
+      "@girs/gjs": "4.0.0-beta.40",
+      "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40",
+      "@girs/glib-2.0": "2.86.4-4.0.0-beta.40"    },
     "devDependencies": {
       "typescript": "*"
     },

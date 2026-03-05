@@ -21,35 +21,27 @@ export namespace GstTag {
      * GstTag-0.10
      */
 
-    /**
-     * Result values from the parse_tag virtual function.
-     */
-
-    /**
-     * Result values from the parse_tag virtual function.
-     */
     export namespace DemuxResult {
         export const $gtype: GObject.GType<DemuxResult>;
     }
 
+    /**
+     * Result values from the parse_tag virtual function.
+     */
     enum DemuxResult {
         BROKEN_TAG,
         AGAIN,
         OK,
     }
-    /**
-     * Type of image contained in an image tag (specified as field in
-     * the image buffer's caps structure)
-     */
 
-    /**
-     * Type of image contained in an image tag (specified as field in
-     * the image buffer's caps structure)
-     */
     export namespace ImageType {
         export const $gtype: GObject.GType<ImageType>;
     }
 
+    /**
+     * Type of image contained in an image tag (specified as field in
+     * the image buffer's caps structure)
+     */
     enum ImageType {
         NONE,
         UNDEFINED,
@@ -72,6 +64,7 @@ export namespace GstTag {
         ARTIST_LOGO,
         PUBLISHER_STUDIO_LOGO,
     }
+
     const CDDA_CDDB_DISCID: string;
     const CDDA_CDDB_DISCID_FULL: string;
     const CDDA_MUSICBRAINZ_DISCID: string;

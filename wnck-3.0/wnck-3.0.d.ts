@@ -29,17 +29,13 @@ export namespace Wnck {
      * Wnck-3.0
      */
 
-    /**
-     * Type describing the role of the libwnck user.
-     */
-
-    /**
-     * Type describing the role of the libwnck user.
-     */
     export namespace ClientType {
         export const $gtype: GObject.GType<ClientType>;
     }
 
+    /**
+     * Type describing the role of the libwnck user.
+     */
     enum ClientType {
         /**
          * the libwnck user is a normal application.
@@ -51,17 +47,14 @@ export namespace Wnck {
          */
         PAGER,
     }
-    /**
-     * Type defining a direction in which to search a neighbor #WnckWorkspace.
-     */
 
-    /**
-     * Type defining a direction in which to search a neighbor #WnckWorkspace.
-     */
     export namespace MotionDirection {
         export const $gtype: GObject.GType<MotionDirection>;
     }
 
+    /**
+     * Type defining a direction in which to search a neighbor #WnckWorkspace.
+     */
     enum MotionDirection {
         /**
          * search a neighbor #WnckWorkspace above another
@@ -84,17 +77,14 @@ export namespace Wnck {
          */
         RIGHT,
     }
-    /**
-     * Mode defining what a #WnckPager will display.
-     */
 
-    /**
-     * Mode defining what a #WnckPager will display.
-     */
     export namespace PagerDisplayMode {
         export const $gtype: GObject.GType<PagerDisplayMode>;
     }
 
+    /**
+     * Mode defining what a #WnckPager will display.
+     */
     enum PagerDisplayMode {
         /**
          * the #WnckPager will only display the names of the
@@ -107,17 +97,14 @@ export namespace Wnck {
          */
         CONTENT,
     }
-    /**
-     * Mode defining in which order scrolling on a #WnckPager will cycle through workspaces.
-     */
 
-    /**
-     * Mode defining in which order scrolling on a #WnckPager will cycle through workspaces.
-     */
     export namespace PagerScrollMode {
         export const $gtype: GObject.GType<PagerScrollMode>;
     }
 
+    /**
+     * Mode defining in which order scrolling on a #WnckPager will cycle through workspaces.
+     */
     enum PagerScrollMode {
         /**
          * given that the workspaces are set up in multiple rows,
@@ -136,19 +123,15 @@ export namespace Wnck {
          */
         NONE,
     }
-    /**
-     * Type defining the policy of the #WnckTasklist for grouping multiple
-     * #WnckWindow of the same #WnckApplication.
-     */
 
-    /**
-     * Type defining the policy of the #WnckTasklist for grouping multiple
-     * #WnckWindow of the same #WnckApplication.
-     */
     export namespace TasklistGroupingType {
         export const $gtype: GObject.GType<TasklistGroupingType>;
     }
 
+    /**
+     * Type defining the policy of the #WnckTasklist for grouping multiple
+     * #WnckWindow of the same #WnckApplication.
+     */
     enum TasklistGroupingType {
         /**
          * never group multiple #WnckWindow of the same
@@ -167,19 +150,15 @@ export namespace Wnck {
          */
         ALWAYS_GROUP,
     }
-    /**
-     * Flag used when changing the geometry of a #WnckWindow. This is the gravity
-     * point to use as a reference for the new position.
-     */
 
-    /**
-     * Flag used when changing the geometry of a #WnckWindow. This is the gravity
-     * point to use as a reference for the new position.
-     */
     export namespace WindowGravity {
         export const $gtype: GObject.GType<WindowGravity>;
     }
 
+    /**
+     * Flag used when changing the geometry of a #WnckWindow. This is the gravity
+     * point to use as a reference for the new position.
+     */
     enum WindowGravity {
         /**
          * keep the current gravity point.
@@ -236,17 +215,14 @@ export namespace Wnck {
          */
         STATIC,
     }
-    /**
-     * Type describing the semantic type of a #WnckWindow.
-     */
 
-    /**
-     * Type describing the semantic type of a #WnckWindow.
-     */
     export namespace WindowType {
         export const $gtype: GObject.GType<WindowType>;
     }
 
+    /**
+     * Type describing the semantic type of a #WnckWindow.
+     */
     enum WindowType {
         /**
          * the window is a normal window.
@@ -284,10 +260,6 @@ export namespace Wnck {
         SPLASHSCREEN,
     }
 
-    export namespace _LayoutCorner {
-        export const $gtype: GObject.GType<_LayoutCorner>;
-    }
-
     enum _LayoutCorner {
         TOPLEFT,
         TOPRIGHT,
@@ -295,14 +267,11 @@ export namespace Wnck {
         BOTTOMLEFT,
     }
 
-    export namespace _LayoutOrientation {
-        export const $gtype: GObject.GType<_LayoutOrientation>;
-    }
-
     enum _LayoutOrientation {
         HORIZONTAL,
         VERTICAL,
     }
+
     const DEFAULT_ICON_SIZE: number;
     const DEFAULT_MINI_ICON_SIZE: number;
     const MAJOR_VERSION: number;
@@ -381,19 +350,14 @@ export namespace Wnck {
      * @param usage return location for the X resource usage of the application owning the X window ID @xid.
      */
     function xid_read_resource_usage(gdk_display: Gdk.Display, xid: number, usage: ResourceUsage): void;
-    /**
-     * Type used as a bitmask to describe the actions that can be done for a
-     * #WnckWindow.
-     */
-
-    /**
-     * Type used as a bitmask to describe the actions that can be done for a
-     * #WnckWindow.
-     */
     export namespace WindowActions {
         export const $gtype: GObject.GType<WindowActions>;
     }
 
+    /**
+     * Type used as a bitmask to describe the actions that can be done for a
+     * #WnckWindow.
+     */
     enum WindowActions {
         /**
          * the window may be moved around the screen.
@@ -477,19 +441,15 @@ export namespace Wnck {
          */
         BELOW,
     }
-    /**
-     * Flag used as a bitmask when changing the geometry of a #WnckWindow. This
-     * indicates which part of the geometry should be changed.
-     */
 
-    /**
-     * Flag used as a bitmask when changing the geometry of a #WnckWindow. This
-     * indicates which part of the geometry should be changed.
-     */
     export namespace WindowMoveResizeMask {
         export const $gtype: GObject.GType<WindowMoveResizeMask>;
     }
 
+    /**
+     * Flag used as a bitmask when changing the geometry of a #WnckWindow. This
+     * indicates which part of the geometry should be changed.
+     */
     enum WindowMoveResizeMask {
         /**
          * X coordinate of the window should be changed.
@@ -508,17 +468,14 @@ export namespace Wnck {
          */
         HEIGHT,
     }
-    /**
-     * Type used as a bitmask to describe the state of a #WnckWindow.
-     */
 
-    /**
-     * Type used as a bitmask to describe the state of a #WnckWindow.
-     */
     export namespace WindowState {
         export const $gtype: GObject.GType<WindowState>;
     }
 
+    /**
+     * Type used as a bitmask to describe the state of a #WnckWindow.
+     */
     enum WindowState {
         /**
          * the window is minimized.
@@ -581,6 +538,7 @@ export namespace Wnck {
          */
         BELOW,
     }
+
     namespace ActionMenu {
         // Signal signatures
         interface SignalSignatures extends Gtk.Menu.SignalSignatures {

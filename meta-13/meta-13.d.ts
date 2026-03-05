@@ -36,23 +36,16 @@ export namespace Meta {
      * Meta-13
      */
 
-    /**
-     * Function a window button can have.
-     *
-     * Note, you can't add stuff here without extending the theme format
-     * to draw a new function and breaking all existing themes.
-     */
-
-    /**
-     * Function a window button can have.
-     *
-     * Note, you can't add stuff here without extending the theme format
-     * to draw a new function and breaking all existing themes.
-     */
     export namespace ButtonFunction {
         export const $gtype: GObject.GType<ButtonFunction>;
     }
 
+    /**
+     * Function a window button can have.
+     *
+     * Note, you can't add stuff here without extending the theme format
+     * to draw a new function and breaking all existing themes.
+     */
     enum ButtonFunction {
         /**
          * Menu
@@ -84,19 +77,15 @@ export namespace Meta {
         WAIT,
         FORCE_CLOSE,
     }
-    /**
-     * Indicates the appropriate effect to show the user for
-     * meta_compositor_show_window() and meta_compositor_hide_window()
-     */
 
-    /**
-     * Indicates the appropriate effect to show the user for
-     * meta_compositor_show_window() and meta_compositor_hide_window()
-     */
     export namespace CompEffect {
         export const $gtype: GObject.GType<CompEffect>;
     }
 
+    /**
+     * Indicates the appropriate effect to show the user for
+     * meta_compositor_show_window() and meta_compositor_hide_window()
+     */
     enum CompEffect {
         /**
          * The window is newly created
@@ -1166,19 +1155,15 @@ export namespace Meta {
         UNFULLSCREEN,
         MONITOR_MOVE,
     }
-    /**
-     * Layers a window can be in.
-     * These MUST be in the order of stacking.
-     */
 
-    /**
-     * Layers a window can be in.
-     * These MUST be in the order of stacking.
-     */
     export namespace StackLayer {
         export const $gtype: GObject.GType<StackLayer>;
     }
 
+    /**
+     * Layers a window can be in.
+     * These MUST be in the order of stacking.
+     */
     enum StackLayer {
         /**
          * Desktop layer
@@ -1262,17 +1247,14 @@ export namespace Meta {
          */
         X11,
     }
-    /**
-     * Menu the compositor should display for a given window
-     */
 
-    /**
-     * Menu the compositor should display for a given window
-     */
     export namespace WindowMenuType {
         export const $gtype: GObject.GType<WindowMenuType>;
     }
 
+    /**
+     * Menu the compositor should display for a given window
+     */
     enum WindowMenuType {
         /**
          * the window manager menu
@@ -1354,6 +1336,7 @@ export namespace Meta {
          */
         OVERRIDE_OTHER,
     }
+
     const CURRENT_TIME: number;
     const DEFAULT_ICON_NAME: string;
     const ICON_HEIGHT: number;
@@ -1541,7 +1524,6 @@ export namespace Meta {
     interface WindowForeachFunc {
         (window: Window): boolean;
     }
-
     export namespace BackendCapabilities {
         export const $gtype: GObject.GType<BackendCapabilities>;
     }
@@ -1796,17 +1778,14 @@ export namespace Meta {
          */
         CUSTOM_TRIGGER,
     }
-    /**
-     * Keyboard accessibility features.
-     */
 
-    /**
-     * Keyboard accessibility features.
-     */
     export namespace KeyboardA11yFlags {
         export const $gtype: GObject.GType<KeyboardA11yFlags>;
     }
 
+    /**
+     * Keyboard accessibility features.
+     */
     enum KeyboardA11yFlags {
         KEYBOARD_ENABLED,
         TIMEOUT_ENABLED,
@@ -1889,6 +1868,7 @@ export namespace Meta {
          */
         MOD5_MASK,
     }
+
     namespace Backend {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

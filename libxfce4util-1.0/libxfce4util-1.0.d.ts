@@ -23,14 +23,6 @@ export namespace Libxfce4util {
     /**
      * The license text to return from xfce_get_license_text().
      */
-
-    /**
-     * The license text to return from xfce_get_license_text().
-     */
-    export namespace LicenseTextType {
-        export const $gtype: GObject.GType<LicenseTextType>;
-    }
-
     enum LicenseTextType {
         /**
          * the BSD License.
@@ -44,10 +36,6 @@ export namespace Libxfce4util {
          * the GNU Lesser General Public License.
          */
         LGPL,
-    }
-
-    export namespace ResourceType {
-        export const $gtype: GObject.GType<ResourceType>;
     }
 
     enum ResourceType {
@@ -72,6 +60,7 @@ export namespace Libxfce4util {
          */
         THEMES,
     }
+
     const LOCALE_FULL_MATCH: number;
     const LOCALE_NO_MATCH: number;
     /**

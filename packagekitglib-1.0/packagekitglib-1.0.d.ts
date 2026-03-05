@@ -20,17 +20,13 @@ export namespace PackageKitGlib {
      * PackageKitGlib-1.0
      */
 
-    /**
-     * The authorization result
-     */
-
-    /**
-     * The authorization result
-     */
     export namespace AuthorizeEnum {
         export const $gtype: GObject.GType<AuthorizeEnum>;
     }
 
+    /**
+     * The authorization result
+     */
     enum AuthorizeEnum {
         /**
          * Unknown authorization status
@@ -50,11 +46,12 @@ export namespace PackageKitGlib {
         INTERACTIVE,
         LAST,
     }
+
     /**
      * Errors that can be thrown
      */
     class ClientError extends GLib.Error {
-        static $gtype: GObject.GType<ClientError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -120,7 +117,7 @@ export namespace PackageKitGlib {
      * Errors that can be thrown
      */
     class ControlError extends GLib.Error {
-        static $gtype: GObject.GType<ControlError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -145,17 +142,13 @@ export namespace PackageKitGlib {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * The distro upgrade status
-     */
-
-    /**
-     * The distro upgrade status
-     */
     export namespace DistroUpgradeEnum {
         export const $gtype: GObject.GType<DistroUpgradeEnum>;
     }
 
+    /**
+     * The distro upgrade status
+     */
     enum DistroUpgradeEnum {
         /**
          * Unknown disto upgrade state
@@ -171,17 +164,14 @@ export namespace PackageKitGlib {
         UNSTABLE,
         LAST,
     }
-    /**
-     * The error type
-     */
 
-    /**
-     * The error type
-     */
     export namespace ErrorEnum {
         export const $gtype: GObject.GType<ErrorEnum>;
     }
 
+    /**
+     * The error type
+     */
     enum ErrorEnum {
         UNKNOWN,
         /**
@@ -422,17 +412,14 @@ export namespace PackageKitGlib {
         REPO_ALREADY_SET,
         LAST,
     }
-    /**
-     * How the backend exited
-     */
 
-    /**
-     * How the backend exited
-     */
     export namespace ExitEnum {
         export const $gtype: GObject.GType<ExitEnum>;
     }
 
+    /**
+     * How the backend exited
+     */
     enum ExitEnum {
         /**
          * Unknown exit status
@@ -478,17 +465,14 @@ export namespace PackageKitGlib {
         REPAIR_REQUIRED,
         LAST,
     }
-    /**
-     * The filter types
-     */
 
-    /**
-     * The filter types
-     */
     export namespace FilterEnum {
         export const $gtype: GObject.GType<FilterEnum>;
     }
 
+    /**
+     * The filter types
+     */
     enum FilterEnum {
         /**
          * Unknown filter
@@ -604,17 +588,14 @@ export namespace PackageKitGlib {
         NOT_DOWNLOADED,
         LAST,
     }
-    /**
-     * The group type
-     */
 
-    /**
-     * The group type
-     */
     export namespace GroupEnum {
         export const $gtype: GObject.GType<GroupEnum>;
     }
 
+    /**
+     * The group type
+     */
     enum GroupEnum {
         /**
          * Unknown group
@@ -753,19 +734,15 @@ export namespace PackageKitGlib {
         DESKTOP_DDE,
         LAST,
     }
-    /**
-     * The enumerated types used in Package() - these have to refer to a specific
-     * package action, rather than a general state
-     */
 
-    /**
-     * The enumerated types used in Package() - these have to refer to a specific
-     * package action, rather than a general state
-     */
     export namespace InfoEnum {
         export const $gtype: GObject.GType<InfoEnum>;
     }
 
+    /**
+     * The enumerated types used in Package() - these have to refer to a specific
+     * package action, rather than a general state
+     */
     enum InfoEnum {
         /**
          * Package status is unknown
@@ -841,17 +818,14 @@ export namespace PackageKitGlib {
         CRITICAL,
         LAST,
     }
-    /**
-     * The media type
-     */
 
-    /**
-     * The media type
-     */
     export namespace MediaTypeEnum {
         export const $gtype: GObject.GType<MediaTypeEnum>;
     }
 
+    /**
+     * The media type
+     */
     enum MediaTypeEnum {
         /**
          * Unknown media type
@@ -871,17 +845,14 @@ export namespace PackageKitGlib {
         DISC,
         LAST,
     }
-    /**
-     * Network type
-     */
 
-    /**
-     * Network type
-     */
     export namespace NetworkEnum {
         export const $gtype: GObject.GType<NetworkEnum>;
     }
 
+    /**
+     * Network type
+     */
     enum NetworkEnum {
         /**
          * Unknown network
@@ -909,17 +880,14 @@ export namespace PackageKitGlib {
         MOBILE,
         LAST,
     }
-    /**
-     * Actions that can be taken after an offline operation.
-     */
 
-    /**
-     * Actions that can be taken after an offline operation.
-     */
     export namespace OfflineAction {
         export const $gtype: GObject.GType<OfflineAction>;
     }
 
+    /**
+     * Actions that can be taken after an offline operation.
+     */
     enum OfflineAction {
         /**
          * Unknown
@@ -938,11 +906,12 @@ export namespace PackageKitGlib {
          */
         UNSET,
     }
+
     /**
      * Errors that can be thrown
      */
     class OfflineError extends GLib.Error {
-        static $gtype: GObject.GType<OfflineError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -971,17 +940,13 @@ export namespace PackageKitGlib {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Type of sort to perform.
-     */
-
-    /**
-     * Type of sort to perform.
-     */
     export namespace PackageSackSortType {
         export const $gtype: GObject.GType<PackageSackSortType>;
     }
 
+    /**
+     * Type of sort to perform.
+     */
     enum PackageSackSortType {
         /**
          * Sort by name
@@ -1001,17 +966,14 @@ export namespace PackageKitGlib {
         SUMMARY,
         LAST,
     }
-    /**
-     * Flag to show which progress field has been updated.
-     */
 
-    /**
-     * Flag to show which progress field has been updated.
-     */
     export namespace ProgressType {
         export const $gtype: GObject.GType<ProgressType>;
     }
 
+    /**
+     * Flag to show which progress field has been updated.
+     */
     enum ProgressType {
         /**
          * package id updated
@@ -1079,17 +1041,14 @@ export namespace PackageKitGlib {
          */
         SENDER,
     }
-    /**
-     * What restart we need to after a transaction, ordered by severity
-     */
 
-    /**
-     * What restart we need to after a transaction, ordered by severity
-     */
     export namespace RestartEnum {
         export const $gtype: GObject.GType<RestartEnum>;
     }
 
+    /**
+     * What restart we need to after a transaction, ordered by severity
+     */
     enum RestartEnum {
         /**
          * Unknown restart state
@@ -1115,23 +1074,17 @@ export namespace PackageKitGlib {
         SECURITY_SYSTEM,
         LAST,
     }
-    /**
-     * What we were asked to do, this never changes for the lifetime of the
-     * transaction.
-     * Icons that have to represent the whole "aim" of the transaction will use
-     * these constants
-     */
 
-    /**
-     * What we were asked to do, this never changes for the lifetime of the
-     * transaction.
-     * Icons that have to represent the whole "aim" of the transaction will use
-     * these constants
-     */
     export namespace RoleEnum {
         export const $gtype: GObject.GType<RoleEnum>;
     }
 
+    /**
+     * What we were asked to do, this never changes for the lifetime of the
+     * transaction.
+     * Icons that have to represent the whole "aim" of the transaction will use
+     * these constants
+     */
     enum RoleEnum {
         /**
          * Unknow request
@@ -1265,17 +1218,14 @@ export namespace PackageKitGlib {
         UPGRADE_SYSTEM,
         LAST,
     }
-    /**
-     * The signature type type
-     */
 
-    /**
-     * The signature type type
-     */
     export namespace SigTypeEnum {
         export const $gtype: GObject.GType<SigTypeEnum>;
     }
 
+    /**
+     * The signature type type
+     */
     enum SigTypeEnum {
         /**
          * Unkwown signature type
@@ -1287,47 +1237,29 @@ export namespace PackageKitGlib {
         GPG,
         LAST,
     }
-    /**
-     * What status we are now; this can change for each transaction giving a
-     * status of what sort of thing is happening
-     * Icons that change to represent the current status of the transaction will
-     * use these constants
-     * If you add to these, make sure you add filenames in gpk-watch.c also
-     *
-     * A typical transaction will do:
-     * - schedule task
-     * WAIT
-     * - run task
-     * SETUP
-     * - wait for lock
-     * RUNNING
-     *
-     * This means that backends should run pk_backend_set_status (backend, PK_STATUS_ENUM_RUNNING)
-     * when they are ready to start running the transaction and after a lock has been got.
-     */
 
-    /**
-     * What status we are now; this can change for each transaction giving a
-     * status of what sort of thing is happening
-     * Icons that change to represent the current status of the transaction will
-     * use these constants
-     * If you add to these, make sure you add filenames in gpk-watch.c also
-     *
-     * A typical transaction will do:
-     * - schedule task
-     * WAIT
-     * - run task
-     * SETUP
-     * - wait for lock
-     * RUNNING
-     *
-     * This means that backends should run pk_backend_set_status (backend, PK_STATUS_ENUM_RUNNING)
-     * when they are ready to start running the transaction and after a lock has been got.
-     */
     export namespace StatusEnum {
         export const $gtype: GObject.GType<StatusEnum>;
     }
 
+    /**
+     * What status we are now; this can change for each transaction giving a
+     * status of what sort of thing is happening
+     * Icons that change to represent the current status of the transaction will
+     * use these constants
+     * If you add to these, make sure you add filenames in gpk-watch.c also
+     *
+     * A typical transaction will do:
+     * - schedule task
+     * WAIT
+     * - run task
+     * SETUP
+     * - wait for lock
+     * RUNNING
+     *
+     * This means that backends should run pk_backend_set_status (backend, PK_STATUS_ENUM_RUNNING)
+     * when they are ready to start running the transaction and after a lock has been got.
+     */
     enum StatusEnum {
         /**
          * Unknown status
@@ -1467,17 +1399,14 @@ export namespace PackageKitGlib {
         RUN_HOOK,
         LAST,
     }
-    /**
-     * The transaction flags that alter how the transaction is handled
-     */
 
-    /**
-     * The transaction flags that alter how the transaction is handled
-     */
     export namespace TransactionFlagEnum {
         export const $gtype: GObject.GType<TransactionFlagEnum>;
     }
 
+    /**
+     * The transaction flags that alter how the transaction is handled
+     */
     enum TransactionFlagEnum {
         /**
          * No transaction flag
@@ -1509,17 +1438,14 @@ export namespace PackageKitGlib {
         ALLOW_DOWNGRADE,
         LAST,
     }
-    /**
-     * What state the update is in
-     */
 
-    /**
-     * What state the update is in
-     */
     export namespace UpdateStateEnum {
         export const $gtype: GObject.GType<UpdateStateEnum>;
     }
 
+    /**
+     * What state the update is in
+     */
     enum UpdateStateEnum {
         /**
          * Update stability unknown
@@ -1539,17 +1465,14 @@ export namespace PackageKitGlib {
         TESTING,
         LAST,
     }
-    /**
-     * The type of distribution upgrade to perform
-     */
 
-    /**
-     * The type of distribution upgrade to perform
-     */
     export namespace UpgradeKindEnum {
         export const $gtype: GObject.GType<UpgradeKindEnum>;
     }
 
+    /**
+     * The type of distribution upgrade to perform
+     */
     enum UpgradeKindEnum {
         UNKNOWN,
         /**
@@ -1566,6 +1489,7 @@ export namespace PackageKitGlib {
         COMPLETE,
         LAST,
     }
+
     /**
      * The DBUS interface used by the PackageKit service.
      */
@@ -2108,17 +2032,13 @@ export namespace PackageKitGlib {
     interface ProgressCallback {
         (progress: Progress, type: ProgressType): void;
     }
-    /**
-     * Flags to be used for the method invocations.
-     */
-
-    /**
-     * Flags to be used for the method invocations.
-     */
     export namespace OfflineFlags {
         export const $gtype: GObject.GType<OfflineFlags>;
     }
 
+    /**
+     * Flags to be used for the method invocations.
+     */
     enum OfflineFlags {
         /**
          * No specific flag
@@ -2129,6 +2049,7 @@ export namespace PackageKitGlib {
          */
         INTERACTIVE,
     }
+
     namespace Category {
         // Signal signatures
         interface SignalSignatures extends Source.SignalSignatures {

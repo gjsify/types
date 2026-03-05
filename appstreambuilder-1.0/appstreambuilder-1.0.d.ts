@@ -25,14 +25,6 @@ export namespace AppStreamBuilder {
     /**
      * The flags to use when saving resources.
      */
-
-    /**
-     * The flags to use when saving resources.
-     */
-    export namespace AppSaveFlags {
-        export const $gtype: GObject.GType<AppSaveFlags>;
-    }
-
     enum AppSaveFlags {
         /**
          * Nothing to do
@@ -48,19 +40,11 @@ export namespace AppStreamBuilder {
         SCREENSHOTS,
     }
 
-    export namespace PackageKind {
-        export const $gtype: GObject.GType<PackageKind>;
-    }
-
     enum PackageKind {
         DEFAULT,
         BUNDLE,
         FIRMWARE,
         LAST,
-    }
-
-    export namespace PackageLogLevel {
-        export const $gtype: GObject.GType<PackageLogLevel>;
     }
 
     enum PackageLogLevel {
@@ -70,6 +54,7 @@ export namespace AppStreamBuilder {
         WARNING,
         LAST,
     }
+
     const PACKAGE_ENSURE_DEPS: number;
     const PACKAGE_ENSURE_FILES: number;
     const PACKAGE_ENSURE_LICENSE: number;
@@ -82,14 +67,6 @@ export namespace AppStreamBuilder {
     /**
      * The flags to use when processing the context.
      */
-
-    /**
-     * The flags to use when processing the context.
-     */
-    export namespace ContextFlags {
-        export const $gtype: GObject.GType<ContextFlags>;
-    }
-
     enum ContextFlags {
         /**
          * No special actions to use
@@ -152,6 +129,7 @@ export namespace AppStreamBuilder {
          */
         ADD_DEFAULT_ICONS,
     }
+
     namespace App {
         // Signal signatures
         interface SignalSignatures extends AppStreamGlib.App.SignalSignatures {}

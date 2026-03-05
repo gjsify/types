@@ -18,17 +18,13 @@ export namespace GPlugin {
      * GPlugin-1.0
      */
 
-    /**
-     * The known states of a plugin.
-     */
-
-    /**
-     * The known states of a plugin.
-     */
     export namespace PluginState {
         export const $gtype: GObject.GType<PluginState>;
     }
 
+    /**
+     * The known states of a plugin.
+     */
     enum PluginState {
         /**
          * The state of the plugin is unknown.
@@ -60,6 +56,7 @@ export namespace GPlugin {
          */
         UNLOAD_FAILED,
     }
+
     /**
      * This is the extra version string of GPlugin that was compiled against.
      */
@@ -164,17 +161,13 @@ export namespace GPlugin {
     interface ManagerForeachFunc {
         (id: string, plugins: Plugin[], data?: any | null): void;
     }
-    /**
-     * Flags to configure behaviors in GPlugin.
-     */
-
-    /**
-     * Flags to configure behaviors in GPlugin.
-     */
     export namespace CoreFlags {
         export const $gtype: GObject.GType<CoreFlags>;
     }
 
+    /**
+     * Flags to configure behaviors in GPlugin.
+     */
     enum CoreFlags {
         /**
          * No flags.
@@ -190,6 +183,7 @@ export namespace GPlugin {
          */
         LOG_PLUGIN_STATE_CHANGES,
     }
+
     namespace FileSource {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

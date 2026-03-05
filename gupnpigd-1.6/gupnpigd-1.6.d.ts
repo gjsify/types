@@ -21,14 +21,6 @@ export namespace GUPnPIgd {
     /**
      * Errors coming out of the GUPnPSimpleIGD object.
      */
-
-    /**
-     * Errors coming out of the GUPnPSimpleIGD object.
-     */
-    export namespace SimpleIgdError {
-        export const $gtype: GObject.GType<SimpleIgdError>;
-    }
-
     enum SimpleIgdError {
         /**
          * Error getting the external
@@ -36,6 +28,7 @@ export namespace GUPnPIgd {
          */
         SIMPLE_IGD_ERROR_EXTERNAL_ADDRESS,
     }
+
     namespace SimpleIgd {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

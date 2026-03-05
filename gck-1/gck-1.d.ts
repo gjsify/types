@@ -20,17 +20,13 @@ export namespace Gck {
      * Gck-1
      */
 
-    /**
-     * Flags to be used with a [method`Builder`.init_full] and [ctor`Builder`.new].
-     */
-
-    /**
-     * Flags to be used with a [method`Builder`.init_full] and [ctor`Builder`.new].
-     */
     export namespace BuilderFlags {
         export const $gtype: GObject.GType<BuilderFlags>;
     }
 
+    /**
+     * Flags to be used with a [method`Builder`.init_full] and [ctor`Builder`.new].
+     */
     enum BuilderFlags {
         /**
          * no special flags
@@ -41,25 +37,18 @@ export namespace Gck {
          */
         SECURE_MEMORY,
     }
-    /**
-     * Various error codes. All the `CKR_XXX` error codes from PKCS#11 are also
-     * relevant error codes.
-     *
-     * Note that errors are returned as [struct`GLib`.Error] structures. The `code`
-     * member of the error then contains the raw PKCS#11 `CK_RV` result value.
-     */
 
-    /**
-     * Various error codes. All the `CKR_XXX` error codes from PKCS#11 are also
-     * relevant error codes.
-     *
-     * Note that errors are returned as [struct`GLib`.Error] structures. The `code`
-     * member of the error then contains the raw PKCS#11 `CK_RV` result value.
-     */
     export namespace Error {
         export const $gtype: GObject.GType<Error>;
     }
 
+    /**
+     * Various error codes. All the `CKR_XXX` error codes from PKCS#11 are also
+     * relevant error codes.
+     *
+     * Note that errors are returned as [struct`GLib`.Error] structures. The `code`
+     * member of the error then contains the raw PKCS#11 `CK_RV` result value.
+     */
     enum Error {
         /**
          * a result code that signifies there was a problem
@@ -67,17 +56,14 @@ export namespace Gck {
          */
         PROBLEM,
     }
-    /**
-     * Various error codes used with PKCS#11 URIs
-     */
 
-    /**
-     * Various error codes used with PKCS#11 URIs
-     */
     export namespace UriError {
         export const $gtype: GObject.GType<UriError>;
     }
 
+    /**
+     * Various error codes used with PKCS#11 URIs
+     */
     enum UriError {
         /**
          * invalid URI scheme
@@ -100,6 +86,7 @@ export namespace Gck {
          */
         NOT_FOUND,
     }
+
     /**
      * Used as a terminator at the end of variable argument lists.
      */
@@ -316,17 +303,13 @@ export namespace Gck {
     interface Allocator {
         (data: any | null, length: number): any | null;
     }
-    /**
-     * Options for creating sessions.
-     */
-
-    /**
-     * Options for creating sessions.
-     */
     export namespace SessionOptions {
         export const $gtype: GObject.GType<SessionOptions>;
     }
 
+    /**
+     * Options for creating sessions.
+     */
     enum SessionOptions {
         /**
          * Open session as read only
@@ -345,19 +328,15 @@ export namespace Gck {
          */
         AUTHENTICATE,
     }
-    /**
-     * Which parts of the PKCS#11 URI will be parsed or formatted. These can be
-     * combined.
-     */
 
-    /**
-     * Which parts of the PKCS#11 URI will be parsed or formatted. These can be
-     * combined.
-     */
     export namespace UriFlags {
         export const $gtype: GObject.GType<UriFlags>;
     }
 
+    /**
+     * Which parts of the PKCS#11 URI will be parsed or formatted. These can be
+     * combined.
+     */
     enum UriFlags {
         /**
          * the URI will be used to match objects.
@@ -380,6 +359,7 @@ export namespace Gck {
          */
         FOR_ANY,
     }
+
     namespace Enumerator {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

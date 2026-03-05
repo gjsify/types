@@ -66,8 +66,9 @@ export namespace Kkc {
         WIDE_LATIN,
         DIRECT,
     }
+
     class MetadataFormatError extends GLib.Error {
-        static $gtype: GObject.GType<MetadataFormatError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -80,7 +81,7 @@ export namespace Kkc {
     }
 
     class LanguageModelError extends GLib.Error {
-        static $gtype: GObject.GType<LanguageModelError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -92,7 +93,7 @@ export namespace Kkc {
     }
 
     class KeyEventFormatError extends GLib.Error {
-        static $gtype: GObject.GType<KeyEventFormatError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -105,7 +106,7 @@ export namespace Kkc {
     }
 
     class RuleParseError extends GLib.Error {
-        static $gtype: GObject.GType<RuleParseError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -117,7 +118,7 @@ export namespace Kkc {
     }
 
     class DictionaryError extends GLib.Error {
-        static $gtype: GObject.GType<DictionaryError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -2218,7 +2219,6 @@ export namespace Kkc {
     interface GetTime {
         (): number;
     }
-
     export namespace ModifierType {
         export const $gtype: GObject.GType<ModifierType>;
     }
@@ -2240,6 +2240,7 @@ export namespace Kkc {
         META_MASK,
         RELEASE_MASK,
     }
+
     namespace MetadataFile {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

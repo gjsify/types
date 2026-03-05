@@ -20,10 +20,6 @@ export namespace MateMenu {
      * MateMenu-2.0
      */
 
-    export namespace TreeItemType {
-        export const $gtype: GObject.GType<TreeItemType>;
-    }
-
     enum TreeItemType {
         INVALID,
         DIRECTORY,
@@ -46,6 +42,7 @@ export namespace MateMenu {
         SORT_DISPLAY_NAME,
         INCLUDE_UNALLOCATED,
     }
+
     namespace Tree {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

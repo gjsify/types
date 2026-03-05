@@ -26,17 +26,13 @@ export namespace EBook {
      * EBook-1.2
      */
 
-    /**
-     * Error codes for the #E_BOOK_ERROR error
-     */
-
-    /**
-     * Error codes for the #E_BOOK_ERROR error
-     */
     export namespace BookStatus {
         export const $gtype: GObject.GType<BookStatus>;
     }
 
+    /**
+     * Error codes for the #E_BOOK_ERROR error
+     */
     enum BookStatus {
         OK,
         INVALID_ARG,
@@ -64,6 +60,7 @@ export namespace EBook {
         NO_SPACE,
         NOT_SUPPORTED,
     }
+
     function book_error_quark(): GLib.Quark;
     /**
      * Synchronously searches for `recipients` S/MIME or PGP certificates either

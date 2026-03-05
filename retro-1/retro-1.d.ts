@@ -29,17 +29,13 @@ export namespace Retro {
      * Retro-1
      */
 
-    /**
-     * Represents the axes of the analog sticks for the Libretro gamepad.
-     */
-
-    /**
-     * Represents the axes of the analog sticks for the Libretro gamepad.
-     */
     export namespace AnalogId {
         export const $gtype: GObject.GType<AnalogId>;
     }
 
+    /**
+     * Represents the axes of the analog sticks for the Libretro gamepad.
+     */
     enum AnalogId {
         /**
          * the X axis of an analog stick
@@ -50,17 +46,14 @@ export namespace Retro {
          */
         Y,
     }
-    /**
-     * Represents the analog sticks for the Libretro gamepad.
-     */
 
-    /**
-     * Represents the analog sticks for the Libretro gamepad.
-     */
     export namespace AnalogIndex {
         export const $gtype: GObject.GType<AnalogIndex>;
     }
 
+    /**
+     * Represents the analog sticks for the Libretro gamepad.
+     */
     enum AnalogIndex {
         /**
          * the left analog stick
@@ -71,17 +64,14 @@ export namespace Retro {
          */
         RIGHT,
     }
-    /**
-     * Represents the base types for Libretro controllers.
-     */
 
-    /**
-     * Represents the base types for Libretro controllers.
-     */
     export namespace ControllerType {
         export const $gtype: GObject.GType<ControllerType>;
     }
 
+    /**
+     * Represents the base types for Libretro controllers.
+     */
     enum ControllerType {
         /**
          * no controller
@@ -116,27 +106,19 @@ export namespace Retro {
          */
         TYPE_MASK,
     }
-    /**
-     * Represents the buttons for the Libretro gamepad. The available buttons are
-     * the same as the W3C Standard Gamepad, the SDL GameController and many other
-     * modern standard gamepads, but the name of the buttons may differ. See the
-     * <ulink url="https://w3c.github.io/gamepad/">W3C Gamepad Specification</ulink>
-     * and the <ulink url="https://wiki.libsdl.org/CategoryGameController">SDL
-     * GamepadController definition</ulink> for more information.
-     */
 
-    /**
-     * Represents the buttons for the Libretro gamepad. The available buttons are
-     * the same as the W3C Standard Gamepad, the SDL GameController and many other
-     * modern standard gamepads, but the name of the buttons may differ. See the
-     * <ulink url="https://w3c.github.io/gamepad/">W3C Gamepad Specification</ulink>
-     * and the <ulink url="https://wiki.libsdl.org/CategoryGameController">SDL
-     * GamepadController definition</ulink> for more information.
-     */
     export namespace JoypadId {
         export const $gtype: GObject.GType<JoypadId>;
     }
 
+    /**
+     * Represents the buttons for the Libretro gamepad. The available buttons are
+     * the same as the W3C Standard Gamepad, the SDL GameController and many other
+     * modern standard gamepads, but the name of the buttons may differ. See the
+     * <ulink url="https://w3c.github.io/gamepad/">W3C Gamepad Specification</ulink>
+     * and the <ulink url="https://wiki.libsdl.org/CategoryGameController">SDL
+     * GamepadController definition</ulink> for more information.
+     */
     enum JoypadId {
         /**
          * the bottom action button
@@ -203,17 +185,14 @@ export namespace Retro {
          */
         R3,
     }
-    /**
-     * Represents the inputs for the Libretro lightgun.
-     */
 
-    /**
-     * Represents the inputs for the Libretro lightgun.
-     */
     export namespace LightgunId {
         export const $gtype: GObject.GType<LightgunId>;
     }
 
+    /**
+     * Represents the inputs for the Libretro lightgun.
+     */
     enum LightgunId {
         /**
          * the X axis of a lightgun
@@ -244,17 +223,10 @@ export namespace Retro {
          */
         START,
     }
-    /**
-     * Represents the memory types for the Libretro core.
-     */
 
     /**
      * Represents the memory types for the Libretro core.
      */
-    export namespace MemoryType {
-        export const $gtype: GObject.GType<MemoryType>;
-    }
-
     enum MemoryType {
         /**
          * the save RAM
@@ -273,17 +245,14 @@ export namespace Retro {
          */
         VIDEO_RAM,
     }
-    /**
-     * Represents the inputs for the Libretro mouse.
-     */
 
-    /**
-     * Represents the inputs for the Libretro mouse.
-     */
     export namespace MouseId {
         export const $gtype: GObject.GType<MouseId>;
     }
 
+    /**
+     * Represents the inputs for the Libretro mouse.
+     */
     enum MouseId {
         /**
          * the X axis of a mouse
@@ -330,17 +299,14 @@ export namespace Retro {
          */
         BUTTON_5,
     }
-    /**
-     * Represents the inputs for the Libretro pointer.
-     */
 
-    /**
-     * Represents the inputs for the Libretro pointer.
-     */
     export namespace PointerId {
         export const $gtype: GObject.GType<PointerId>;
     }
 
+    /**
+     * Represents the inputs for the Libretro pointer.
+     */
     enum PointerId {
         /**
          * the X axis of a pointer
@@ -355,17 +321,14 @@ export namespace Retro {
          */
         PRESSED,
     }
-    /**
-     * Represents the strength of the rumble effect.
-     */
 
-    /**
-     * Represents the strength of the rumble effect.
-     */
     export namespace RumbleEffect {
         export const $gtype: GObject.GType<RumbleEffect>;
     }
 
+    /**
+     * Represents the strength of the rumble effect.
+     */
     enum RumbleEffect {
         /**
          * the strong rumble effect
@@ -376,17 +339,14 @@ export namespace Retro {
          */
         WEAK,
     }
-    /**
-     * Represents the filters that can be applied to the video output.
-     */
 
-    /**
-     * Represents the filters that can be applied to the video output.
-     */
     export namespace VideoFilter {
         export const $gtype: GObject.GType<VideoFilter>;
     }
 
+    /**
+     * Represents the filters that can be applied to the video output.
+     */
     enum VideoFilter {
         /**
          * a smooth but blurry video filer
@@ -401,6 +361,7 @@ export namespace Retro {
          */
         CRT,
     }
+
     function controller_type_get_id_count(type: ControllerType | null): number;
     function controller_type_get_index_count(type: ControllerType | null): number;
     /**

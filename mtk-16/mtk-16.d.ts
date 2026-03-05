@@ -34,18 +34,10 @@ export namespace Mtk {
         static FLIPPED_270: number;
     }
 
-    export namespace RegionOverlap {
-        export const $gtype: GObject.GType<RegionOverlap>;
-    }
-
     enum RegionOverlap {
         OUT,
         IN,
         PART,
-    }
-
-    export namespace RoundingStrategy {
-        export const $gtype: GObject.GType<RoundingStrategy>;
     }
 
     enum RoundingStrategy {
@@ -53,6 +45,7 @@ export namespace Mtk {
         GROW,
         ROUND,
     }
+
     const MONITOR_ALL_TRANSFORMS: number;
     const MONITOR_N_TRANSFORMS: number;
     const RECTANGLE_MAX_STACK_RECTS: number;

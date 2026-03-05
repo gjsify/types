@@ -23,14 +23,6 @@ export namespace IMSettings {
     /**
      * Error codes used in imsettings.
      */
-
-    /**
-     * Error codes used in imsettings.
-     */
-    export namespace Error {
-        export const $gtype: GObject.GType<Error>;
-    }
-
     enum Error {
         /**
          * unknown error happened.
@@ -57,6 +49,7 @@ export namespace IMSettings {
          */
         NOT_TARGETED_DESKTOP,
     }
+
     /**
      * The global configuration filename.
      */

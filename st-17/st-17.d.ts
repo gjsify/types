@@ -54,17 +54,14 @@ export namespace St {
         PRIMARY,
         CLIPBOARD,
     }
-    /**
-     * Used to target a particular corner of a #StThemeNode element.
-     */
 
-    /**
-     * Used to target a particular corner of a #StThemeNode element.
-     */
     export namespace Corner {
         export const $gtype: GObject.GType<Corner>;
     }
 
+    /**
+     * Used to target a particular corner of a #StThemeNode element.
+     */
     enum Corner {
         /**
          * The top-right corner.
@@ -83,17 +80,14 @@ export namespace St {
          */
         BOTTOMLEFT,
     }
-    /**
-     * Enumeration for focus direction.
-     */
 
-    /**
-     * Enumeration for focus direction.
-     */
     export namespace DirectionType {
         export const $gtype: GObject.GType<DirectionType>;
     }
 
+    /**
+     * Enumeration for focus direction.
+     */
     enum DirectionType {
         /**
          * Move forward.
@@ -120,17 +114,14 @@ export namespace St {
          */
         RIGHT,
     }
-    /**
-     * Used to specify options when rendering gradients.
-     */
 
-    /**
-     * Used to specify options when rendering gradients.
-     */
     export namespace GradientType {
         export const $gtype: GObject.GType<GradientType>;
     }
 
+    /**
+     * Used to specify options when rendering gradients.
+     */
     enum GradientType {
         /**
          * No gradient.
@@ -149,17 +140,14 @@ export namespace St {
          */
         RADIAL,
     }
-    /**
-     * Used to specify options when looking up icons.
-     */
 
-    /**
-     * Used to specify options when looking up icons.
-     */
     export namespace IconStyle {
         export const $gtype: GObject.GType<IconStyle>;
     }
 
+    /**
+     * Used to specify options when looking up icons.
+     */
     enum IconStyle {
         /**
          * Lookup the style requested in the icon name.
@@ -176,11 +164,12 @@ export namespace St {
          */
         SYMBOLIC,
     }
+
     /**
      * Error codes for StIconTheme operations.
      */
     class IconThemeError extends GLib.Error {
-        static $gtype: GObject.GType<IconThemeError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -212,17 +201,14 @@ export namespace St {
         NEVER,
         EXTERNAL,
     }
-    /**
-     * Used to target a particular side of a #StThemeNode element.
-     */
 
-    /**
-     * Used to target a particular side of a #StThemeNode element.
-     */
     export namespace Side {
         export const $gtype: GObject.GType<Side>;
     }
 
+    /**
+     * Used to target a particular side of a #StThemeNode element.
+     */
     enum Side {
         /**
          * The top side.
@@ -267,17 +253,14 @@ export namespace St {
         PREFER_DARK,
         PREFER_LIGHT,
     }
-    /**
-     * Used to align text in a label.
-     */
 
-    /**
-     * Used to align text in a label.
-     */
     export namespace TextAlign {
         export const $gtype: GObject.GType<TextAlign>;
     }
 
+    /**
+     * Used to align text in a label.
+     */
     enum TextAlign {
         /**
          * Text is aligned at the beginning of the label.
@@ -302,6 +285,7 @@ export namespace St {
         NONE,
         FOREVER,
     }
+
     /**
      * Creates a string describing `actor,` for use in debugging. This
      * includes the class name and actor name (if any), plus if `actor`
@@ -320,17 +304,13 @@ export namespace St {
     interface EntryCursorFunc {
         (entry: Entry, use_ibeam: boolean, data?: any | null): void;
     }
-    /**
-     * A mask representing which mouse buttons an #StButton responds to.
-     */
-
-    /**
-     * A mask representing which mouse buttons an #StButton responds to.
-     */
     export namespace ButtonMask {
         export const $gtype: GObject.GType<ButtonMask>;
     }
 
+    /**
+     * A mask representing which mouse buttons an #StButton responds to.
+     */
     enum ButtonMask {
         /**
          * button 1 (left)
@@ -345,17 +325,14 @@ export namespace St {
          */
         THREE,
     }
-    /**
-     * Used to specify options for [method`St`.IconTheme.lookup_icon]
-     */
 
-    /**
-     * Used to specify options for [method`St`.IconTheme.lookup_icon]
-     */
     export namespace IconLookupFlags {
         export const $gtype: GObject.GType<IconLookupFlags>;
     }
 
+    /**
+     * Used to specify options for [method`St`.IconTheme.lookup_icon]
+     */
     enum IconLookupFlags {
         /**
          * Never get SVG icons, even if gdk-pixbuf
@@ -401,23 +378,17 @@ export namespace St {
          */
         DIR_RTL,
     }
-    /**
-     * Flags used to determine the decoration of text.
-     *
-     * Not that neither %ST_TEXT_DECORATION_OVERLINE or %ST_TEXT_DECORATION_BLINK
-     * are implemented, currently.
-     */
 
-    /**
-     * Flags used to determine the decoration of text.
-     *
-     * Not that neither %ST_TEXT_DECORATION_OVERLINE or %ST_TEXT_DECORATION_BLINK
-     * are implemented, currently.
-     */
     export namespace TextDecoration {
         export const $gtype: GObject.GType<TextDecoration>;
     }
 
+    /**
+     * Flags used to determine the decoration of text.
+     *
+     * Not that neither %ST_TEXT_DECORATION_OVERLINE or %ST_TEXT_DECORATION_BLINK
+     * are implemented, currently.
+     */
     enum TextDecoration {
         UNDERLINE,
         /**
@@ -433,6 +404,7 @@ export namespace St {
          */
         BLINK,
     }
+
     namespace Adjustment {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

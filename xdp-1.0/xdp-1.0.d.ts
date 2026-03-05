@@ -20,19 +20,14 @@ export namespace Xdp {
      * Xdp-1.0
      */
 
-    /**
-     * The XdpButtonState enumeration is used to describe
-     * the state of buttons.
-     */
-
-    /**
-     * The XdpButtonState enumeration is used to describe
-     * the state of buttons.
-     */
     export namespace ButtonState {
         export const $gtype: GObject.GType<ButtonState>;
     }
 
+    /**
+     * The XdpButtonState enumeration is used to describe
+     * the state of buttons.
+     */
     enum ButtonState {
         /**
          * the button is down
@@ -51,19 +46,15 @@ export namespace Xdp {
     enum CameraFlags {
         NONE,
     }
-    /**
-     * The `XdpDiscreteAxis` enumeration is used to describe
-     * the discrete scroll axes.
-     */
 
-    /**
-     * The `XdpDiscreteAxis` enumeration is used to describe
-     * the discrete scroll axes.
-     */
     export namespace DiscreteAxis {
         export const $gtype: GObject.GType<DiscreteAxis>;
     }
 
+    /**
+     * The `XdpDiscreteAxis` enumeration is used to describe
+     * the discrete scroll axes.
+     */
     enum DiscreteAxis {
         /**
          * the horizontal scroll axis
@@ -82,19 +73,15 @@ export namespace Xdp {
     enum EmailFlags {
         NONE,
     }
-    /**
-     * The `XdpKeyState` enumeration is used to describe
-     * the state of keys.
-     */
 
-    /**
-     * The `XdpKeyState` enumeration is used to describe
-     * the state of keys.
-     */
     export namespace KeyState {
         export const $gtype: GObject.GType<KeyState>;
     }
 
+    /**
+     * The `XdpKeyState` enumeration is used to describe
+     * the state of keys.
+     */
     enum KeyState {
         /**
          * the key is down
@@ -105,19 +92,15 @@ export namespace Xdp {
          */
         PRESSED,
     }
-    /**
-     * The values of this enum indicate the desired level
-     * of accuracy for location information.
-     */
 
-    /**
-     * The values of this enum indicate the desired level
-     * of accuracy for location information.
-     */
     export namespace LocationAccuracy {
         export const $gtype: GObject.GType<LocationAccuracy>;
     }
 
+    /**
+     * The values of this enum indicate the desired level
+     * of accuracy for location information.
+     */
     enum LocationAccuracy {
         /**
          * No particular accuracy
@@ -152,19 +135,15 @@ export namespace Xdp {
     enum LocationMonitorFlags {
         NONE,
     }
-    /**
-     * The values of this enum are returned in the [signal`Portal:`:session-state-changed] signal
-     * to indicate the current state of the user session.
-     */
 
-    /**
-     * The values of this enum are returned in the [signal`Portal:`:session-state-changed] signal
-     * to indicate the current state of the user session.
-     */
     export namespace LoginSessionState {
         export const $gtype: GObject.GType<LoginSessionState>;
     }
 
+    /**
+     * The values of this enum are returned in the [signal`Portal:`:session-state-changed] signal
+     * to indicate the current state of the user session.
+     */
     enum LoginSessionState {
         /**
          * the session is running
@@ -189,17 +168,14 @@ export namespace Xdp {
     enum NotificationFlags {
         NONE,
     }
-    /**
-     * Options for how the screencast session should persist.
-     */
 
-    /**
-     * Options for how the screencast session should persist.
-     */
     export namespace PersistMode {
         export const $gtype: GObject.GType<PersistMode>;
     }
 
+    /**
+     * Options for how the screencast session should persist.
+     */
     enum PersistMode {
         /**
          * do not persist
@@ -238,17 +214,14 @@ export namespace Xdp {
     enum SessionMonitorFlags {
         NONE,
     }
-    /**
-     * The state of a session.
-     */
 
-    /**
-     * The state of a session.
-     */
     export namespace SessionState {
         export const $gtype: GObject.GType<SessionState>;
     }
 
+    /**
+     * The state of a session.
+     */
     enum SessionState {
         /**
          * the session has not been started.
@@ -263,17 +236,14 @@ export namespace Xdp {
          */
         CLOSED,
     }
-    /**
-     * The type of a session.
-     */
 
-    /**
-     * The type of a session.
-     */
     export namespace SessionType {
         export const $gtype: GObject.GType<SessionType>;
     }
 
+    /**
+     * The type of a session.
+     */
     enum SessionType {
         /**
          * a screencast session.
@@ -300,21 +270,16 @@ export namespace Xdp {
     enum UpdateMonitorFlags {
         NONE,
     }
-    /**
-     * The values of this enum are returned in the
-     * [signal`Portal:`:update-progress] signal to indicate
-     * the current progress of an installation.
-     */
 
-    /**
-     * The values of this enum are returned in the
-     * [signal`Portal:`:update-progress] signal to indicate
-     * the current progress of an installation.
-     */
     export namespace UpdateStatus {
         export const $gtype: GObject.GType<UpdateStatus>;
     }
 
+    /**
+     * The values of this enum are returned in the
+     * [signal`Portal:`:update-progress] signal to indicate
+     * the current progress of an installation.
+     */
     enum UpdateStatus {
         /**
          * Installation in progress
@@ -341,18 +306,15 @@ export namespace Xdp {
     enum UserInformationFlags {
         NONE,
     }
-    const WALLPAPER_TARGET_BOTH: number;
-    /**
-     * Options to use when requesting background.
-     */
 
-    /**
-     * Options to use when requesting background.
-     */
+    const WALLPAPER_TARGET_BOTH: number;
     export namespace BackgroundFlags {
         export const $gtype: GObject.GType<BackgroundFlags>;
     }
 
+    /**
+     * Options to use when requesting background.
+     */
     enum BackgroundFlags {
         /**
          * No options
@@ -367,17 +329,14 @@ export namespace Xdp {
          */
         ACTIVATABLE,
     }
-    /**
-     * Options for how the cursor is handled.
-     */
 
-    /**
-     * Options for how the cursor is handled.
-     */
     export namespace CursorMode {
         export const $gtype: GObject.GType<CursorMode>;
     }
 
+    /**
+     * Options for how the cursor is handled.
+     */
     enum CursorMode {
         /**
          * no cursor
@@ -392,17 +351,14 @@ export namespace Xdp {
          */
         METADATA,
     }
-    /**
-     * Flags to specify what input devices to control for a remote desktop session.
-     */
 
-    /**
-     * Flags to specify what input devices to control for a remote desktop session.
-     */
     export namespace DeviceType {
         export const $gtype: GObject.GType<DeviceType>;
     }
 
+    /**
+     * Flags to specify what input devices to control for a remote desktop session.
+     */
     enum DeviceType {
         /**
          * no device
@@ -421,17 +377,14 @@ export namespace Xdp {
          */
         TOUCHSCREEN,
     }
-    /**
-     * Flags that determine what session status changes are inhibited.
-     */
 
-    /**
-     * Flags that determine what session status changes are inhibited.
-     */
     export namespace InhibitFlags {
         export const $gtype: GObject.GType<InhibitFlags>;
     }
 
+    /**
+     * Flags that determine what session status changes are inhibited.
+     */
     enum InhibitFlags {
         /**
          * Inhibit logout
@@ -450,17 +403,14 @@ export namespace Xdp {
          */
         IDLE,
     }
-    /**
-     * The type of a launcher.
-     */
 
-    /**
-     * The type of a launcher.
-     */
     export namespace LauncherType {
         export const $gtype: GObject.GType<LauncherType>;
     }
 
+    /**
+     * The type of a launcher.
+     */
     enum LauncherType {
         /**
          * a launcher for a regular application
@@ -471,17 +421,14 @@ export namespace Xdp {
          */
         WEBAPP,
     }
-    /**
-     * Options for opening files.
-     */
 
-    /**
-     * Options for opening files.
-     */
     export namespace OpenFileFlags {
         export const $gtype: GObject.GType<OpenFileFlags>;
     }
 
+    /**
+     * Options for opening files.
+     */
     enum OpenFileFlags {
         /**
          * No options
@@ -492,17 +439,14 @@ export namespace Xdp {
          */
         MULTIPLE,
     }
-    /**
-     * Options for opening uris.
-     */
 
-    /**
-     * Options for opening uris.
-     */
     export namespace OpenUriFlags {
         export const $gtype: GObject.GType<OpenUriFlags>;
     }
 
+    /**
+     * Options for opening uris.
+     */
     enum OpenUriFlags {
         /**
          * No options
@@ -517,17 +461,14 @@ export namespace Xdp {
          */
         WRITABLE,
     }
-    /**
-     * Flags to specify what kind of sources to offer for a screencast session.
-     */
 
-    /**
-     * Flags to specify what kind of sources to offer for a screencast session.
-     */
     export namespace OutputType {
         export const $gtype: GObject.GType<OutputType>;
     }
 
+    /**
+     * Flags to specify what kind of sources to offer for a screencast session.
+     */
     enum OutputType {
         /**
          * do not select any output
@@ -546,17 +487,14 @@ export namespace Xdp {
          */
         VIRTUAL,
     }
-    /**
-     * Options for starting remote desktop sessions.
-     */
 
-    /**
-     * Options for starting remote desktop sessions.
-     */
     export namespace RemoteDesktopFlags {
         export const $gtype: GObject.GType<RemoteDesktopFlags>;
     }
 
+    /**
+     * Options for starting remote desktop sessions.
+     */
     enum RemoteDesktopFlags {
         /**
          * No options
@@ -567,17 +505,14 @@ export namespace Xdp {
          */
         MULTIPLE,
     }
-    /**
-     * Options for starting screen casts.
-     */
 
-    /**
-     * Options for starting screen casts.
-     */
     export namespace ScreencastFlags {
         export const $gtype: GObject.GType<ScreencastFlags>;
     }
 
+    /**
+     * Options for starting screen casts.
+     */
     enum ScreencastFlags {
         /**
          * No options
@@ -597,19 +532,15 @@ export namespace Xdp {
         NONE,
         INTERACTIVE,
     }
-    /**
-     * Flags influencing the spawn operation and how the
-     * new sandbox is created.
-     */
 
-    /**
-     * Flags influencing the spawn operation and how the
-     * new sandbox is created.
-     */
     export namespace SpawnFlags {
         export const $gtype: GObject.GType<SpawnFlags>;
     }
 
+    /**
+     * Flags influencing the spawn operation and how the
+     * new sandbox is created.
+     */
     enum SpawnFlags {
         /**
          * No flags
@@ -636,17 +567,14 @@ export namespace Xdp {
          */
         WATCH,
     }
-    /**
-     * The values of this enumeration determine where the wallpaper is being set.
-     */
 
-    /**
-     * The values of this enumeration determine where the wallpaper is being set.
-     */
     export namespace WallpaperFlags {
         export const $gtype: GObject.GType<WallpaperFlags>;
     }
 
+    /**
+     * The values of this enumeration determine where the wallpaper is being set.
+     */
     enum WallpaperFlags {
         /**
          * No flags
@@ -665,6 +593,7 @@ export namespace Xdp {
          */
         PREVIEW,
     }
+
     namespace Portal {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

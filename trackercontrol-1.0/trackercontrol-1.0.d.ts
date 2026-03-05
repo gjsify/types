@@ -24,15 +24,6 @@ export namespace TrackerControl {
      * Enumeration values used in errors returned by the
      * #TrackerMinerManager API.
      */
-
-    /**
-     * Enumeration values used in errors returned by the
-     * #TrackerMinerManager API.
-     */
-    export namespace MinerManagerError {
-        export const $gtype: GObject.GType<MinerManagerError>;
-    }
-
     enum MinerManagerError {
         /**
          * The miner in question
@@ -45,6 +36,7 @@ export namespace TrackerControl {
          */
         NOENT,
     }
+
     namespace MinerManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

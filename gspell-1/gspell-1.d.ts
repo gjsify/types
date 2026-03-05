@@ -34,7 +34,7 @@ export namespace Gspell {
      * from a spell-checker-related function.
      */
     class CheckerError extends GLib.Error {
-        static $gtype: GObject.GType<CheckerError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 

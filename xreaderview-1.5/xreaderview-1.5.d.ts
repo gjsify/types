@@ -69,6 +69,7 @@ export namespace XreaderView {
         TEXT,
         RECTANGLE,
     }
+
     const STOCK_ATTACHMENT: string;
     const STOCK_CLOSE: string;
     const STOCK_INVERTED_COLORS: string;
@@ -89,7 +90,6 @@ export namespace XreaderView {
     function stock_icons_init(): void;
     function stock_icons_set_screen(screen: Gdk.Screen): void;
     function stock_icons_shutdown(): void;
-
     export namespace JobPageDataFlags {
         export const $gtype: GObject.GType<JobPageDataFlags>;
     }
@@ -105,6 +105,7 @@ export namespace XreaderView {
         ANNOTS,
         ALL,
     }
+
     namespace DocumentModel {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

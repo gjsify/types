@@ -21,7 +21,7 @@ export namespace BlockDev {
      */
 
     class BtrfsError extends GLib.Error {
-        static $gtype: GObject.GType<BtrfsError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -34,18 +34,15 @@ export namespace BlockDev {
         constructor(options: { message: string; code: number });
     }
 
-    export namespace BtrfsTech {
-        export const $gtype: GObject.GType<BtrfsTech>;
-    }
-
     enum BtrfsTech {
         FS,
         MULTI_DEV,
         SUBVOL,
         SNAPSHOT,
     }
+
     class CryptoError extends GLib.Error {
-        static $gtype: GObject.GType<CryptoError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -73,20 +70,12 @@ export namespace BlockDev {
         constructor(options: { message: string; code: number });
     }
 
-    export namespace CryptoKeyslotContextType {
-        export const $gtype: GObject.GType<CryptoKeyslotContextType>;
-    }
-
     enum CryptoKeyslotContextType {
         NONE,
         PASSPHRASE,
         KEYFILE,
         KEYRING,
         VOLUME_KEY,
-    }
-
-    export namespace CryptoLUKSHWEncryptionType {
-        export const $gtype: GObject.GType<CryptoLUKSHWEncryptionType>;
     }
 
     enum CryptoLUKSHWEncryptionType {
@@ -110,17 +99,9 @@ export namespace BlockDev {
         OPAL_HW_AND_SW,
     }
 
-    export namespace CryptoLUKSVersion {
-        export const $gtype: GObject.GType<CryptoLUKSVersion>;
-    }
-
     enum CryptoLUKSVersion {
         LUKS1,
         LUKS2,
-    }
-
-    export namespace CryptoTech {
-        export const $gtype: GObject.GType<CryptoTech>;
     }
 
     enum CryptoTech {
@@ -133,8 +114,9 @@ export namespace BlockDev {
         FVAULT2,
         SED_OPAL,
     }
+
     class DMError extends GLib.Error {
-        static $gtype: GObject.GType<DMError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -151,15 +133,12 @@ export namespace BlockDev {
         constructor(options: { message: string; code: number });
     }
 
-    export namespace DMTech {
-        export const $gtype: GObject.GType<DMTech>;
-    }
-
     enum DMTech {
         DM_TECH_MAP,
     }
+
     class FSError extends GLib.Error {
-        static $gtype: GObject.GType<FSError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -182,10 +161,6 @@ export namespace BlockDev {
         constructor(options: { message: string; code: number });
     }
 
-    export namespace FSTech {
-        export const $gtype: GObject.GType<FSTech>;
-    }
-
     enum FSTech {
         GENERIC,
         MOUNT,
@@ -201,8 +176,9 @@ export namespace BlockDev {
         BTRFS,
         UDF,
     }
+
     class InitError extends GLib.Error {
-        static $gtype: GObject.GType<InitError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -215,17 +191,14 @@ export namespace BlockDev {
         constructor(options: { message: string; code: number });
     }
 
-    export namespace LVMCacheMode {
-        export const $gtype: GObject.GType<LVMCacheMode>;
-    }
-
     enum LVMCacheMode {
         UNKNOWN,
         WRITETHROUGH,
         WRITEBACK,
     }
+
     class LVMError extends GLib.Error {
-        static $gtype: GObject.GType<LVMError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -246,10 +219,6 @@ export namespace BlockDev {
         constructor(options: { message: string; code: number });
     }
 
-    export namespace LVMTech {
-        export const $gtype: GObject.GType<LVMTech>;
-    }
-
     enum LVMTech {
         BASIC,
         BASIC_SNAP,
@@ -265,18 +234,10 @@ export namespace BlockDev {
         SHARED,
     }
 
-    export namespace LVMVDOCompressionState {
-        export const $gtype: GObject.GType<LVMVDOCompressionState>;
-    }
-
     enum LVMVDOCompressionState {
         UNKNOWN,
         ONLINE,
         OFFLINE,
-    }
-
-    export namespace LVMVDOIndexState {
-        export const $gtype: GObject.GType<LVMVDOIndexState>;
     }
 
     enum LVMVDOIndexState {
@@ -289,19 +250,11 @@ export namespace BlockDev {
         ONLINE,
     }
 
-    export namespace LVMVDOOperatingMode {
-        export const $gtype: GObject.GType<LVMVDOOperatingMode>;
-    }
-
     enum LVMVDOOperatingMode {
         UNKNOWN,
         RECOVERING,
         READ_ONLY,
         NORMAL,
-    }
-
-    export namespace LVMVDOWritePolicy {
-        export const $gtype: GObject.GType<LVMVDOWritePolicy>;
     }
 
     enum LVMVDOWritePolicy {
@@ -310,8 +263,9 @@ export namespace BlockDev {
         SYNC,
         ASYNC,
     }
+
     class LoopError extends GLib.Error {
-        static $gtype: GObject.GType<LoopError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -324,15 +278,12 @@ export namespace BlockDev {
         constructor(options: { message: string; code: number });
     }
 
-    export namespace LoopTech {
-        export const $gtype: GObject.GType<LoopTech>;
-    }
-
     enum LoopTech {
         LOOP_TECH_LOOP,
     }
+
     class MDError extends GLib.Error {
-        static $gtype: GObject.GType<MDError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -348,15 +299,12 @@ export namespace BlockDev {
         constructor(options: { message: string; code: number });
     }
 
-    export namespace MDTech {
-        export const $gtype: GObject.GType<MDTech>;
-    }
-
     enum MDTech {
         MD_TECH_MDRAID,
     }
+
     class MpathError extends GLib.Error {
-        static $gtype: GObject.GType<MpathError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -371,16 +319,13 @@ export namespace BlockDev {
         constructor(options: { message: string; code: number });
     }
 
-    export namespace MpathTech {
-        export const $gtype: GObject.GType<MpathTech>;
-    }
-
     enum MpathTech {
         BASE,
         FRIENDLY_NAMES,
     }
+
     class NVDIMMError extends GLib.Error {
-        static $gtype: GObject.GType<NVDIMMError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -395,10 +340,6 @@ export namespace BlockDev {
         constructor(options: { message: string; code: number });
     }
 
-    export namespace NVDIMMNamespaceMode {
-        export const $gtype: GObject.GType<NVDIMMNamespaceMode>;
-    }
-
     enum NVDIMMNamespaceMode {
         RAW,
         SECTOR,
@@ -409,16 +350,8 @@ export namespace BlockDev {
         UNKNOWN,
     }
 
-    export namespace NVDIMMTech {
-        export const $gtype: GObject.GType<NVDIMMTech>;
-    }
-
     enum NVDIMMTech {
         NVDIMM_TECH_NAMESPACE,
-    }
-
-    export namespace NVMEControllerType {
-        export const $gtype: GObject.GType<NVMEControllerType>;
     }
 
     enum NVMEControllerType {
@@ -427,8 +360,9 @@ export namespace BlockDev {
         DISCOVERY,
         ADMIN,
     }
+
     class NVMEError extends GLib.Error {
-        static $gtype: GObject.GType<NVMEError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -456,18 +390,10 @@ export namespace BlockDev {
         constructor(options: { message: string; code: number });
     }
 
-    export namespace NVMEFormatSecureErase {
-        export const $gtype: GObject.GType<NVMEFormatSecureErase>;
-    }
-
     enum NVMEFormatSecureErase {
         NONE,
         USER_DATA,
         CRYPTO,
-    }
-
-    export namespace NVMELBAFormatRelativePerformance {
-        export const $gtype: GObject.GType<NVMELBAFormatRelativePerformance>;
     }
 
     enum NVMELBAFormatRelativePerformance {
@@ -478,19 +404,11 @@ export namespace BlockDev {
         DEGRADED,
     }
 
-    export namespace NVMESanitizeAction {
-        export const $gtype: GObject.GType<NVMESanitizeAction>;
-    }
-
     enum NVMESanitizeAction {
         EXIT_FAILURE,
         BLOCK_ERASE,
         OVERWRITE,
         CRYPTO_ERASE,
-    }
-
-    export namespace NVMESanitizeStatus {
-        export const $gtype: GObject.GType<NVMESanitizeStatus>;
     }
 
     enum NVMESanitizeStatus {
@@ -501,20 +419,12 @@ export namespace BlockDev {
         FAILED,
     }
 
-    export namespace NVMESelfTestAction {
-        export const $gtype: GObject.GType<NVMESelfTestAction>;
-    }
-
     enum NVMESelfTestAction {
         NOT_RUNNING,
         SHORT,
         EXTENDED,
         VENDOR_SPECIFIC,
         ABORT,
-    }
-
-    export namespace NVMESelfTestResult {
-        export const $gtype: GObject.GType<NVMESelfTestResult>;
     }
 
     enum NVMESelfTestResult {
@@ -530,17 +440,9 @@ export namespace BlockDev {
         ABORTED_SANITIZE,
     }
 
-    export namespace NVMETech {
-        export const $gtype: GObject.GType<NVMETech>;
-    }
-
     enum NVMETech {
         NVME,
         FABRICS,
-    }
-
-    export namespace NVMETransportType {
-        export const $gtype: GObject.GType<NVMETransportType>;
     }
 
     enum NVMETransportType {
@@ -551,17 +453,14 @@ export namespace BlockDev {
         LOOP,
     }
 
-    export namespace PartAlign {
-        export const $gtype: GObject.GType<PartAlign>;
-    }
-
     enum PartAlign {
         NONE,
         MINIMAL,
         OPTIMAL,
     }
+
     class PartError extends GLib.Error {
-        static $gtype: GObject.GType<PartError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -575,27 +474,15 @@ export namespace BlockDev {
         constructor(options: { message: string; code: number });
     }
 
-    export namespace PartTableType {
-        export const $gtype: GObject.GType<PartTableType>;
-    }
-
     enum PartTableType {
         MSDOS,
         GPT,
         UNDEF,
     }
 
-    export namespace PartTech {
-        export const $gtype: GObject.GType<PartTech>;
-    }
-
     enum PartTech {
         MBR,
         GPT,
-    }
-
-    export namespace PartType {
-        export const $gtype: GObject.GType<PartType>;
     }
 
     enum PartType {
@@ -607,19 +494,11 @@ export namespace BlockDev {
         PROTECTED,
     }
 
-    export namespace PartTypeReq {
-        export const $gtype: GObject.GType<PartTypeReq>;
-    }
-
     enum PartTypeReq {
         NORMAL,
         LOGICAL,
         EXTENDED,
         NEXT,
-    }
-
-    export namespace Plugin {
-        export const $gtype: GObject.GType<Plugin>;
     }
 
     enum Plugin {
@@ -640,10 +519,6 @@ export namespace BlockDev {
         UNDEF,
     }
 
-    export namespace SmartATAAttributeFlag {
-        export const $gtype: GObject.GType<SmartATAAttributeFlag>;
-    }
-
     enum SmartATAAttributeFlag {
         PREFAILURE,
         ONLINE,
@@ -652,10 +527,6 @@ export namespace BlockDev {
         EVENT_COUNT,
         SELF_PRESERVING,
         OTHER,
-    }
-
-    export namespace SmartATAAttributeUnit {
-        export const $gtype: GObject.GType<SmartATAAttributeUnit>;
     }
 
     enum SmartATAAttributeUnit {
@@ -669,10 +540,6 @@ export namespace BlockDev {
         MB,
     }
 
-    export namespace SmartATAOfflineDataCollectionCapabilities {
-        export const $gtype: GObject.GType<SmartATAOfflineDataCollectionCapabilities>;
-    }
-
     enum SmartATAOfflineDataCollectionCapabilities {
         NOT_SUPPORTED,
         EXEC_OFFLINE_IMMEDIATE,
@@ -681,10 +548,6 @@ export namespace BlockDev {
         SELF_TEST,
         CONVEYANCE_SELF_TEST,
         SELECTIVE_SELF_TEST,
-    }
-
-    export namespace SmartATAOfflineDataCollectionStatus {
-        export const $gtype: GObject.GType<SmartATAOfflineDataCollectionStatus>;
     }
 
     enum SmartATAOfflineDataCollectionStatus {
@@ -696,10 +559,6 @@ export namespace BlockDev {
         ABORTED_ERROR,
         VENDOR_SPECIFIC,
         RESERVED,
-    }
-
-    export namespace SmartATASelfTestStatus {
-        export const $gtype: GObject.GType<SmartATASelfTestStatus>;
     }
 
     enum SmartATASelfTestStatus {
@@ -714,8 +573,9 @@ export namespace BlockDev {
         ERROR_HANDLING,
         IN_PROGRESS,
     }
+
     class SmartError extends GLib.Error {
-        static $gtype: GObject.GType<SmartError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -728,10 +588,6 @@ export namespace BlockDev {
         constructor(options: { message: string; code: number });
     }
 
-    export namespace SmartSCSIBackgroundScanStatus {
-        export const $gtype: GObject.GType<SmartSCSIBackgroundScanStatus>;
-    }
-
     enum SmartSCSIBackgroundScanStatus {
         NO_SCANS_ACTIVE,
         SCAN_ACTIVE,
@@ -742,10 +598,6 @@ export namespace BlockDev {
         HALTED_VENDOR_SPECIFIC,
         HALTED_TEMPERATURE,
         BMS_TIMER,
-    }
-
-    export namespace SmartSCSIInformationalException {
-        export const $gtype: GObject.GType<SmartSCSIInformationalException>;
     }
 
     enum SmartSCSIInformationalException {
@@ -785,10 +637,6 @@ export namespace BlockDev {
         UNSPECIFIED,
     }
 
-    export namespace SmartSelfTestOp {
-        export const $gtype: GObject.GType<SmartSelfTestOp>;
-    }
-
     enum SmartSelfTestOp {
         ABORT,
         OFFLINE,
@@ -797,16 +645,13 @@ export namespace BlockDev {
         CONVEYANCE,
     }
 
-    export namespace SmartTech {
-        export const $gtype: GObject.GType<SmartTech>;
-    }
-
     enum SmartTech {
         ATA,
         SCSI,
     }
+
     class SwapError extends GLib.Error {
-        static $gtype: GObject.GType<SwapError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -825,15 +670,12 @@ export namespace BlockDev {
         constructor(options: { message: string; code: number });
     }
 
-    export namespace SwapTech {
-        export const $gtype: GObject.GType<SwapTech>;
-    }
-
     enum SwapTech {
         SWAP_TECH_SWAP,
     }
+
     class UtilsDBusError extends GLib.Error {
-        static $gtype: GObject.GType<UtilsDBusError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -846,7 +688,7 @@ export namespace BlockDev {
     }
 
     class UtilsDevUtilsError extends GLib.Error {
-        static $gtype: GObject.GType<UtilsDevUtilsError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -858,7 +700,7 @@ export namespace BlockDev {
     }
 
     class UtilsExecError extends GLib.Error {
-        static $gtype: GObject.GType<UtilsExecError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -878,7 +720,7 @@ export namespace BlockDev {
     }
 
     class UtilsModuleError extends GLib.Error {
-        static $gtype: GObject.GType<UtilsModuleError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -893,15 +735,12 @@ export namespace BlockDev {
         constructor(options: { message: string; code: number });
     }
 
-    export namespace UtilsProgStatus {
-        export const $gtype: GObject.GType<UtilsProgStatus>;
-    }
-
     enum UtilsProgStatus {
         STARTED,
         PROGRESS,
         FINISHED,
     }
+
     const BTRFS_MAIN_VOLUME_ID: number;
     const BTRFS_MIN_MEMBER_SIZE: number;
     const MD_CHUNK_SIZE: number;
@@ -2452,20 +2291,11 @@ export namespace BlockDev {
     interface UtilsProgFunc {
         (task_id: number, status: UtilsProgStatus, completion: number, msg?: string | null): void;
     }
-
-    export namespace BtrfsTechMode {
-        export const $gtype: GObject.GType<BtrfsTechMode>;
-    }
-
     enum BtrfsTechMode {
         CREATE,
         DELETE,
         MODIFY,
         QUERY,
-    }
-
-    export namespace CryptoIntegrityOpenFlags {
-        export const $gtype: GObject.GType<CryptoIntegrityOpenFlags>;
     }
 
     enum CryptoIntegrityOpenFlags {
@@ -2475,10 +2305,6 @@ export namespace BlockDev {
         RECALCULATE,
         RECALCULATE_RESET,
         ALLOW_DISCARDS,
-    }
-
-    export namespace CryptoTechMode {
-        export const $gtype: GObject.GType<CryptoTechMode>;
     }
 
     enum CryptoTechMode {
@@ -2493,27 +2319,15 @@ export namespace BlockDev {
         MODIFY,
     }
 
-    export namespace DMTechMode {
-        export const $gtype: GObject.GType<DMTechMode>;
-    }
-
     enum DMTechMode {
         CREATE_ACTIVATE,
         REMOVE_DEACTIVATE,
         QUERY,
     }
 
-    export namespace FSConfigureFlags {
-        export const $gtype: GObject.GType<FSConfigureFlags>;
-    }
-
     enum FSConfigureFlags {
         LABEL,
         UUID,
-    }
-
-    export namespace FSF2FSFeature {
-        export const $gtype: GObject.GType<FSF2FSFeature>;
     }
 
     enum FSF2FSFeature {
@@ -2531,34 +2345,19 @@ export namespace BlockDev {
         SB_CHKSUM,
     }
 
-    export namespace FSFeatureFlags {
-        export const $gtype: GObject.GType<FSFeatureFlags>;
-    }
-
     enum FSFeatureFlags {
         OWNERS,
         PARTITION_TABLE,
-    }
-
-    export namespace FSFsckFlags {
-        export const $gtype: GObject.GType<FSFsckFlags>;
     }
 
     enum FSFsckFlags {
         CHECK,
         REPAIR,
     }
-    /**
-     * Flags indicating mkfs options are available for given filesystem type.
-     */
 
     /**
      * Flags indicating mkfs options are available for given filesystem type.
      */
-    export namespace FSMkfsOptionsFlags {
-        export const $gtype: GObject.GType<FSMkfsOptionsFlags>;
-    }
-
     enum FSMkfsOptionsFlags {
         LABEL,
         UUID,
@@ -2567,28 +2366,16 @@ export namespace BlockDev {
         FORCE,
         NOPT,
     }
-    /**
-     * Flags indicating whether a filesystem resize action supports growing and/or
-     * shrinking if mounted or unmounted.
-     */
 
     /**
      * Flags indicating whether a filesystem resize action supports growing and/or
      * shrinking if mounted or unmounted.
      */
-    export namespace FSResizeFlags {
-        export const $gtype: GObject.GType<FSResizeFlags>;
-    }
-
     enum FSResizeFlags {
         OFFLINE_SHRINK,
         OFFLINE_GROW,
         ONLINE_SHRINK,
         ONLINE_GROW,
-    }
-
-    export namespace FSTechMode {
-        export const $gtype: GObject.GType<FSTechMode>;
     }
 
     enum FSTechMode {
@@ -2600,10 +2387,6 @@ export namespace BlockDev {
         QUERY,
         RESIZE,
         SET_UUID,
-    }
-
-    export namespace LVMCachePoolFlags {
-        export const $gtype: GObject.GType<LVMCachePoolFlags>;
     }
 
     enum LVMCachePoolFlags {
@@ -2619,19 +2402,11 @@ export namespace BlockDev {
         META_RAID10,
     }
 
-    export namespace LVMTechMode {
-        export const $gtype: GObject.GType<LVMTechMode>;
-    }
-
     enum LVMTechMode {
         CREATE,
         REMOVE,
         MODIFY,
         QUERY,
-    }
-
-    export namespace LoopTechMode {
-        export const $gtype: GObject.GType<LoopTechMode>;
     }
 
     enum LoopTechMode {
@@ -2641,10 +2416,6 @@ export namespace BlockDev {
         QUERY,
     }
 
-    export namespace MDTechMode {
-        export const $gtype: GObject.GType<MDTechMode>;
-    }
-
     enum MDTechMode {
         CREATE,
         DELETE,
@@ -2652,17 +2423,9 @@ export namespace BlockDev {
         QUERY,
     }
 
-    export namespace MpathTechMode {
-        export const $gtype: GObject.GType<MpathTechMode>;
-    }
-
     enum MpathTechMode {
         QUERY,
         MODIFY,
-    }
-
-    export namespace NVDIMMTechMode {
-        export const $gtype: GObject.GType<NVDIMMTechMode>;
     }
 
     enum NVDIMMTechMode {
@@ -2671,10 +2434,6 @@ export namespace BlockDev {
         ACTIVATE_DEACTIVATE,
         QUERY,
         RECONFIGURE,
-    }
-
-    export namespace NVMEControllerFeature {
-        export const $gtype: GObject.GType<NVMEControllerFeature>;
     }
 
     enum NVMEControllerFeature {
@@ -2698,19 +2457,11 @@ export namespace BlockDev {
         MGMT_SMBUS,
     }
 
-    export namespace NVMENamespaceFeature {
-        export const $gtype: GObject.GType<NVMENamespaceFeature>;
-    }
-
     enum NVMENamespaceFeature {
         THIN,
         MULTIPATH_SHARED,
         FORMAT_PROGRESS,
         ROTATIONAL,
-    }
-
-    export namespace NVMESmartCriticalWarning {
-        export const $gtype: GObject.GType<NVMESmartCriticalWarning>;
     }
 
     enum NVMESmartCriticalWarning {
@@ -2722,18 +2473,10 @@ export namespace BlockDev {
         PMR_READONLY,
     }
 
-    export namespace NVMETechMode {
-        export const $gtype: GObject.GType<NVMETechMode>;
-    }
-
     enum NVMETechMode {
         INFO,
         MANAGE,
         INITIATOR,
-    }
-
-    export namespace PartTechMode {
-        export const $gtype: GObject.GType<PartTechMode>;
     }
 
     enum PartTechMode {
@@ -2744,10 +2487,6 @@ export namespace BlockDev {
         QUERY_PART,
     }
 
-    export namespace SmartATACapabilities {
-        export const $gtype: GObject.GType<SmartATACapabilities>;
-    }
-
     enum SmartATACapabilities {
         ATTRIBUTE_AUTOSAVE,
         AUTOSAVE_TIMER,
@@ -2755,17 +2494,9 @@ export namespace BlockDev {
         GP_LOGGING,
     }
 
-    export namespace SmartTechMode {
-        export const $gtype: GObject.GType<SmartTechMode>;
-    }
-
     enum SmartTechMode {
         INFO,
         SELFTEST,
-    }
-
-    export namespace SwapTechMode {
-        export const $gtype: GObject.GType<SwapTechMode>;
     }
 
     enum SwapTechMode {
@@ -2775,6 +2506,7 @@ export namespace BlockDev {
         SET_LABEL,
         SET_UUID,
     }
+
     class BtrfsDeviceInfo {
         static $gtype: GObject.GType<BtrfsDeviceInfo>;
 

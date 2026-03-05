@@ -30,10 +30,6 @@ export namespace SugarExt {
      * SugarExt-1.0
      */
 
-    export namespace ClientEndStyle {
-        export const $gtype: GObject.GType<ClientEndStyle>;
-    }
-
     enum ClientEndStyle {
         END_SESSION_DEFAULT,
         LOGOUT,
@@ -41,18 +37,10 @@ export namespace SugarExt {
         SHUTDOWN,
     }
 
-    export namespace ClientMode {
-        export const $gtype: GObject.GType<ClientMode>;
-    }
-
     enum ClientMode {
         DISABLED,
         NO_RESTART,
         NORMAL,
-    }
-
-    export namespace ClientXSMPState {
-        export const $gtype: GObject.GType<ClientXSMPState>;
     }
 
     enum ClientXSMPState {
@@ -66,27 +54,15 @@ export namespace SugarExt {
         CONNECTION_CLOSED,
     }
 
-    export namespace SessionLogoutMode {
-        export const $gtype: GObject.GType<SessionLogoutMode>;
-    }
-
     enum SessionLogoutMode {
         NORMAL,
         NO_CONFIRMATION,
         FORCE,
     }
 
-    export namespace SessionLogoutType {
-        export const $gtype: GObject.GType<SessionLogoutType>;
-    }
-
     enum SessionLogoutType {
         LOGOUT,
         SHUTDOWN,
-    }
-
-    export namespace SessionPhase {
-        export const $gtype: GObject.GType<SessionPhase>;
     }
 
     enum SessionPhase {
@@ -99,6 +75,7 @@ export namespace SugarExt {
         RUNNING,
         SHUTDOWN,
     }
+
     /**
      * Virtually sets the contents of the specified clipboard by providing
      * a list of supported formats for the clipboard data and a function

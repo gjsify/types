@@ -21,7 +21,7 @@ export namespace Gee {
      */
 
     class FutureError extends GLib.Error {
-        static $gtype: GObject.GType<FutureError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -76,6 +76,7 @@ export namespace Gee {
         END,
         WAIT,
     }
+
     function functions_get_equal_func_for(t: GObject.GType): [EqualDataFunc, any];
     function functions_get_hash_func_for(t: GObject.GType): [HashDataFunc, any];
     function functions_get_compare_func_for(t: GObject.GType): [GLib.CompareDataFunc, any];

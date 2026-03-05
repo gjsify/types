@@ -45,11 +45,12 @@ export namespace Tepl {
          */
         GZIP,
     }
+
     /**
      * An error code used with the %TEPL_FILE_LOADER_ERROR domain.
      */
     class FileLoaderError extends GLib.Error {
-        static $gtype: GObject.GType<FileLoaderError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -76,7 +77,7 @@ export namespace Tepl {
      * An error code used with the %TEPL_FILE_SAVER_ERROR domain.
      */
     class FileSaverError extends GLib.Error {
-        static $gtype: GObject.GType<FileSaverError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -139,6 +140,7 @@ export namespace Tepl {
          */
         MULTIPLE_LINES,
     }
+
     /**
      * Gets a list of all encodings known by #TeplEncoding.
      * @returns a list of #TeplEncoding's.
@@ -341,17 +343,13 @@ export namespace Tepl {
      * @returns A newly allocated string with the replacements. Free with g_free().
      */
     function utils_str_replace(string: string, search: string, replacement: string): string;
-    /**
-     * Flags to define the behavior of a #TeplFileSaver.
-     */
-
-    /**
-     * Flags to define the behavior of a #TeplFileSaver.
-     */
     export namespace FileSaverFlags {
         export const $gtype: GObject.GType<FileSaverFlags>;
     }
 
+    /**
+     * Flags to define the behavior of a #TeplFileSaver.
+     */
     enum FileSaverFlags {
         /**
          * No flags.
@@ -370,25 +368,18 @@ export namespace Tepl {
          */
         CREATE_BACKUP,
     }
-    /**
-     * The folding state at a certain line in the #GtkTextBuffer.
-     *
-     * Since #TeplGutterRendererFolds has a flat view of the folding tree, some
-     * states can be combined; for example, %TEPL_GUTTER_RENDERER_FOLDS_STATE_END
-     * and %TEPL_GUTTER_RENDERER_FOLDS_STATE_CONTINUE.
-     */
 
-    /**
-     * The folding state at a certain line in the #GtkTextBuffer.
-     *
-     * Since #TeplGutterRendererFolds has a flat view of the folding tree, some
-     * states can be combined; for example, %TEPL_GUTTER_RENDERER_FOLDS_STATE_END
-     * and %TEPL_GUTTER_RENDERER_FOLDS_STATE_CONTINUE.
-     */
     export namespace GutterRendererFoldsState {
         export const $gtype: GObject.GType<GutterRendererFoldsState>;
     }
 
+    /**
+     * The folding state at a certain line in the #GtkTextBuffer.
+     *
+     * Since #TeplGutterRendererFolds has a flat view of the folding tree, some
+     * states can be combined; for example, %TEPL_GUTTER_RENDERER_FOLDS_STATE_END
+     * and %TEPL_GUTTER_RENDERER_FOLDS_STATE_CONTINUE.
+     */
     enum GutterRendererFoldsState {
         /**
          * No code folding here.
@@ -413,6 +404,7 @@ export namespace Tepl {
          */
         END,
     }
+
     namespace AbstractFactory {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

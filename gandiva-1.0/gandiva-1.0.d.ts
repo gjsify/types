@@ -21,17 +21,13 @@ export namespace Gandiva {
      * Gandiva-1.0
      */
 
-    /**
-     * They are corresponding to `gandiva::ResultNullableType` values.
-     */
-
-    /**
-     * They are corresponding to `gandiva::ResultNullableType` values.
-     */
     export namespace ResultNullableType {
         export const $gtype: GObject.GType<ResultNullableType>;
     }
 
+    /**
+     * They are corresponding to `gandiva::ResultNullableType` values.
+     */
     enum ResultNullableType {
         /**
          * This means the result validity is an intersection of
@@ -48,6 +44,7 @@ export namespace Gandiva {
          */
         INTERNAL,
     }
+
     /**
      * The major version.
      */

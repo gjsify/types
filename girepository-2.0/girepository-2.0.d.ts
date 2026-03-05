@@ -21,14 +21,6 @@ export namespace GIRepository {
     /**
      * The type of array in a #GITypeInfo.
      */
-
-    /**
-     * The type of array in a #GITypeInfo.
-     */
-    export namespace ArrayType {
-        export const $gtype: GObject.GType<ArrayType>;
-    }
-
     enum ArrayType {
         /**
          * a C array, char[] for instance
@@ -47,17 +39,10 @@ export namespace GIRepository {
          */
         BYTE_ARRAY,
     }
-    /**
-     * The direction of a #GIArgInfo.
-     */
 
     /**
      * The direction of a #GIArgInfo.
      */
-    export namespace Direction {
-        export const $gtype: GObject.GType<Direction>;
-    }
-
     enum Direction {
         /**
          * in argument.
@@ -72,17 +57,10 @@ export namespace GIRepository {
          */
         INOUT,
     }
-    /**
-     * The type of a GIBaseInfo struct.
-     */
 
     /**
      * The type of a GIBaseInfo struct.
      */
-    export namespace InfoType {
-        export const $gtype: GObject.GType<InfoType>;
-    }
-
     enum InfoType {
         /**
          * invalid type
@@ -166,19 +144,11 @@ export namespace GIRepository {
          */
         UNRESOLVED,
     }
-    /**
-     * An error code used with #G_IREPOSITORY_ERROR in a #GError returned
-     * from a #GIRepository routine.
-     */
 
     /**
      * An error code used with #G_IREPOSITORY_ERROR in a #GError returned
      * from a #GIRepository routine.
      */
-    export namespace RepositoryError {
-        export const $gtype: GObject.GType<RepositoryError>;
-    }
-
     enum RepositoryError {
         /**
          * the typelib could not be found.
@@ -200,21 +170,12 @@ export namespace GIRepository {
          */
         LIBRARY_NOT_FOUND,
     }
-    /**
-     * Scope type of a #GIArgInfo representing callback, determines how the
-     * callback is invoked and is used to decided when the invoke structs
-     * can be freed.
-     */
 
     /**
      * Scope type of a #GIArgInfo representing callback, determines how the
      * callback is invoked and is used to decided when the invoke structs
      * can be freed.
      */
-    export namespace ScopeType {
-        export const $gtype: GObject.GType<ScopeType>;
-    }
-
     enum ScopeType {
         /**
          * The argument is not of callback type.
@@ -242,18 +203,6 @@ export namespace GIRepository {
          */
         FOREVER,
     }
-    /**
-     * The transfer is the exchange of data between two parts, from the callee to
-     * the caller. The callee is either a function/method/signal or an
-     * object/interface where a property is defined. The caller is the side
-     * accessing a property or calling a function.
-     * #GITransfer specifies who's responsible for freeing the resources after the
-     * ownership transfer is complete. In case of a containing type such as a list,
-     * an array or a hash table the container itself is specified differently from
-     * the items within the container itself. Each container is freed differently,
-     * check the documentation for the types themselves for information on how to
-     * free them.
-     */
 
     /**
      * The transfer is the exchange of data between two parts, from the callee to
@@ -267,10 +216,6 @@ export namespace GIRepository {
      * check the documentation for the types themselves for information on how to
      * free them.
      */
-    export namespace Transfer {
-        export const $gtype: GObject.GType<Transfer>;
-    }
-
     enum Transfer {
         /**
          * transfer nothing from the callee (function or the type
@@ -294,17 +239,10 @@ export namespace GIRepository {
          */
         EVERYTHING,
     }
-    /**
-     * The type tag of a #GITypeInfo.
-     */
 
     /**
      * The type tag of a #GITypeInfo.
      */
-    export namespace TypeTag {
-        export const $gtype: GObject.GType<TypeTag>;
-    }
-
     enum TypeTag {
         /**
          * void
@@ -396,19 +334,11 @@ export namespace GIRepository {
          */
         UNICHAR,
     }
-    /**
-     * An error occuring while invoking a function via
-     * g_function_info_invoke().
-     */
 
     /**
      * An error occuring while invoking a function via
      * g_function_info_invoke().
      */
-    export namespace nvokeError {
-        export const $gtype: GObject.GType<nvokeError>;
-    }
-
     enum nvokeError {
         /**
          * invokation failed, unknown error.
@@ -425,6 +355,7 @@ export namespace GIRepository {
          */
         ARGUMENT_MISMATCH,
     }
+
     /**
      * The major version number of the girepository library.
      */
@@ -1600,14 +1531,6 @@ export namespace GIRepository {
     /**
      * Flags for a #GIFieldInfo.
      */
-
-    /**
-     * Flags for a #GIFieldInfo.
-     */
-    export namespace FieldInfoFlags {
-        export const $gtype: GObject.GType<FieldInfoFlags>;
-    }
-
     enum FieldInfoFlags {
         /**
          * field is readable.
@@ -1618,17 +1541,10 @@ export namespace GIRepository {
          */
         WRITABLE,
     }
-    /**
-     * Flags for a #GIFunctionInfo struct.
-     */
 
     /**
      * Flags for a #GIFunctionInfo struct.
      */
-    export namespace FunctionInfoFlags {
-        export const $gtype: GObject.GType<FunctionInfoFlags>;
-    }
-
     enum FunctionInfoFlags {
         /**
          * is a method.
@@ -1655,34 +1571,20 @@ export namespace GIRepository {
          */
         THROWS,
     }
-    /**
-     * Flags that control how a typelib is loaded.
-     */
 
     /**
      * Flags that control how a typelib is loaded.
      */
-    export namespace RepositoryLoadFlags {
-        export const $gtype: GObject.GType<RepositoryLoadFlags>;
-    }
-
     enum RepositoryLoadFlags {
         /**
          * Lazily load the typelib.
          */
         IREPOSITORY_LOAD_FLAG_LAZY,
     }
-    /**
-     * Flags of a #GIVFuncInfo struct.
-     */
 
     /**
      * Flags of a #GIVFuncInfo struct.
      */
-    export namespace VFuncInfoFlags {
-        export const $gtype: GObject.GType<VFuncInfoFlags>;
-    }
-
     enum VFuncInfoFlags {
         /**
          * chains up to the parent type
@@ -1701,6 +1603,7 @@ export namespace GIRepository {
          */
         THROWS,
     }
+
     namespace Repository {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

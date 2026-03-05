@@ -34,18 +34,10 @@ export namespace MetaTest {
      * MetaTest-17
      */
 
-    export namespace ContextTestType {
-        export const $gtype: GObject.GType<ContextTestType>;
-    }
-
     enum ContextTestType {
         HEADLESS,
         VKMS,
         TEST,
-    }
-
-    export namespace ContextTestFlag {
-        export const $gtype: GObject.GType<ContextTestFlag>;
     }
 
     enum ContextTestFlag {
@@ -55,14 +47,11 @@ export namespace MetaTest {
         NO_ANIMATIONS,
     }
 
-    export namespace TestRunFlags {
-        export const $gtype: GObject.GType<TestRunFlags>;
-    }
-
     enum TestRunFlags {
         NONE,
         CAN_SKIP,
     }
+
     namespace ContextTest {
         // Signal signatures
         interface SignalSignatures extends Meta.Context.SignalSignatures {

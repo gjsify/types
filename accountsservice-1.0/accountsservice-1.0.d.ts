@@ -20,17 +20,13 @@ export namespace AccountsService {
      * AccountsService-1.0
      */
 
-    /**
-     * Type of user account
-     */
-
-    /**
-     * Type of user account
-     */
     export namespace UserAccountType {
         export const $gtype: GObject.GType<UserAccountType>;
     }
 
+    /**
+     * Type of user account
+     */
     enum UserAccountType {
         /**
          * Normal non-administrative user
@@ -41,11 +37,12 @@ export namespace AccountsService {
          */
         ADMINISTRATOR,
     }
+
     /**
      * Various error codes returned by the accounts service.
      */
     class UserManagerError extends GLib.Error {
-        static $gtype: GObject.GType<UserManagerError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -79,17 +76,13 @@ export namespace AccountsService {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Mode for setting the user's password.
-     */
-
-    /**
-     * Mode for setting the user's password.
-     */
     export namespace UserPasswordMode {
         export const $gtype: GObject.GType<UserPasswordMode>;
     }
 
+    /**
+     * Mode for setting the user's password.
+     */
     enum UserPasswordMode {
         /**
          * Password set normally
@@ -104,6 +97,7 @@ export namespace AccountsService {
          */
         NONE,
     }
+
     function user_manager_error_quark(): GLib.Quark;
     namespace User {
         // Signal signatures

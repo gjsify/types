@@ -21,10 +21,6 @@ export namespace TelepathyLogger {
      * TelepathyLogger-0.2
      */
 
-    export namespace EntityType {
-        export const $gtype: GObject.GType<EntityType>;
-    }
-
     enum EntityType {
         /**
          * the current contact's type is unknown
@@ -47,30 +43,19 @@ export namespace TelepathyLogger {
         SELF,
     }
 
-    export namespace LogManagerError {
-        export const $gtype: GObject.GType<LogManagerError>;
-    }
-
     enum LogManagerError {
         /**
          * Error return when adding logs fails
          */
         LOG_MANAGER_ERROR_ADD_EVENT,
     }
+
     interface LogEventFilter {
         (event: Event): boolean;
     }
     /**
      * Mask used to filter type of #TplEvent returned.
      */
-
-    /**
-     * Mask used to filter type of #TplEvent returned.
-     */
-    export namespace EventTypeMask {
-        export const $gtype: GObject.GType<EventTypeMask>;
-    }
-
     enum EventTypeMask {
         /**
          * Mask to #TplTextEvent
@@ -85,6 +70,7 @@ export namespace TelepathyLogger {
          */
         ANY,
     }
+
     namespace CallEvent {
         // Signal signatures
         interface SignalSignatures extends Event.SignalSignatures {

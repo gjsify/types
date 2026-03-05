@@ -18,17 +18,13 @@ export namespace Playerctl {
      * Playerctl-2.0
      */
 
-    /**
-     * Loop status enumeration for a #PlayerctlPlayer
-     */
-
-    /**
-     * Loop status enumeration for a #PlayerctlPlayer
-     */
     export namespace LoopStatus {
         export const $gtype: GObject.GType<LoopStatus>;
     }
 
+    /**
+     * Loop status enumeration for a #PlayerctlPlayer
+     */
     enum LoopStatus {
         /**
          * The playback will stop when there are no more tracks to play.
@@ -44,17 +40,14 @@ export namespace Playerctl {
          */
         PLAYLIST,
     }
-    /**
-     * Playback status enumeration for a #PlayerctlPlayer
-     */
 
-    /**
-     * Playback status enumeration for a #PlayerctlPlayer
-     */
     export namespace PlaybackStatus {
         export const $gtype: GObject.GType<PlaybackStatus>;
     }
 
+    /**
+     * Playback status enumeration for a #PlayerctlPlayer
+     */
     enum PlaybackStatus {
         /**
          * A track is currently playing.
@@ -69,17 +62,14 @@ export namespace Playerctl {
          */
         STOPPED,
     }
-    /**
-     * The source of the name used to control the player.
-     */
 
-    /**
-     * The source of the name used to control the player.
-     */
     export namespace Source {
         export const $gtype: GObject.GType<Source>;
     }
 
+    /**
+     * The source of the name used to control the player.
+     */
     enum Source {
         /**
          * Only for unitialized players. Source will be chosen automatically.
@@ -94,6 +84,7 @@ export namespace Playerctl {
          */
         DBUS_SYSTEM,
     }
+
     /**
      * Lists all the players that can be controlled by Playerctl.
      * @returns A list of player names.

@@ -21,10 +21,6 @@ export namespace Rest {
      * Rest-1.0
      */
 
-    export namespace MemoryUse {
-        export const $gtype: GObject.GType<MemoryUse>;
-    }
-
     enum MemoryUse {
         /**
          * the memory block can be assumed to always exist for the
@@ -41,8 +37,9 @@ export namespace Rest {
          */
         COPY,
     }
+
     class OAuth2Error extends GLib.Error {
-        static $gtype: GObject.GType<OAuth2Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -58,7 +55,7 @@ export namespace Rest {
      * Error domain used when returning errors from #RestProxyCall.
      */
     class ProxyCallError extends GLib.Error {
-        static $gtype: GObject.GType<ProxyCallError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -80,7 +77,7 @@ export namespace Rest {
      * Error domain used when returning errors from a #RestProxy.
      */
     class ProxyError extends GLib.Error {
-        static $gtype: GObject.GType<ProxyError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 

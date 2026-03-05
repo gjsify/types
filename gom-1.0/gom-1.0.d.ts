@@ -21,7 +21,7 @@ export namespace Gom {
      */
 
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -68,6 +68,7 @@ export namespace Gom {
         ASCENDING,
         DESCENDING,
     }
+
     function error_quark(): GLib.Quark;
     interface AdapterCallback {
         (adapter: Adapter): void;

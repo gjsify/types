@@ -1,6 +1,6 @@
 {
     "name": "@girs/unity-6.0",
-    "version": "6.0.0-4.0.0-beta.39",
+    "version": "6.0.0-4.0.0-beta.40",
     "description": "GJS TypeScript type definitions for Unity-6.0, generated from library version 6.0.0",
     "type": "module",
     "module": "unity-6.0.js",
@@ -31,13 +31,13 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-beta.39",
-      "@girs/glib-2.0": "2.86.4-4.0.0-beta.39",
-      "@girs/dbusmenu-0.4": "0.4.0-4.0.0-beta.39",
-      "@girs/gobject-2.0": "2.86.4-4.0.0-beta.39",
-      "@girs/dee-1.0": "1.0.0-4.0.0-beta.39",
-      "@girs/gio-2.0": "2.86.4-4.0.0-beta.39",
-      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.39"    },
+      "@girs/gjs": "4.0.0-beta.40",
+      "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+      "@girs/dbusmenu-0.4": "0.4.0-4.0.0-beta.40",
+      "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40",
+      "@girs/dee-1.0": "1.0.0-4.0.0-beta.40",
+      "@girs/gio-2.0": "2.86.4-4.0.0-beta.40",
+      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.40"    },
     "devDependencies": {
       "typescript": "*"
     },

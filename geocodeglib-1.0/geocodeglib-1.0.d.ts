@@ -26,7 +26,7 @@ export namespace GeocodeGlib {
      * Error codes returned by geocode-glib functions.
      */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -63,51 +63,41 @@ export namespace GeocodeGlib {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Coordinate Reference System Identification for a location.
-     */
-
-    /**
-     * Coordinate Reference System Identification for a location.
-     */
     export namespace LocationCRS {
         export const $gtype: GObject.GType<LocationCRS>;
     }
 
+    /**
+     * Coordinate Reference System Identification for a location.
+     */
     enum LocationCRS {
         /**
          * CRS is World Geodetic System, standard for Earth.
          */
         WGS84,
     }
-    /**
-     * The URI scheme for this location.
-     */
 
-    /**
-     * The URI scheme for this location.
-     */
     export namespace LocationURIScheme {
         export const $gtype: GObject.GType<LocationURIScheme>;
     }
 
+    /**
+     * The URI scheme for this location.
+     */
     enum LocationURIScheme {
         /**
          * The 'geo' URI scheme, RFC 5870
          */
         GEO,
     }
-    /**
-     * Osm type of the place.
-     */
 
-    /**
-     * Osm type of the place.
-     */
     export namespace PlaceOsmType {
         export const $gtype: GObject.GType<PlaceOsmType>;
     }
 
+    /**
+     * Osm type of the place.
+     */
     enum PlaceOsmType {
         /**
          * Unknown type
@@ -126,17 +116,14 @@ export namespace GeocodeGlib {
          */
         WAY,
     }
-    /**
-     * Type of the place.
-     */
 
-    /**
-     * Type of the place.
-     */
     export namespace PlaceType {
         export const $gtype: GObject.GType<PlaceType>;
     }
 
+    /**
+     * Type of the place.
+     */
     enum PlaceType {
         /**
          * Type is unknown for this place.
@@ -279,6 +266,7 @@ export namespace GeocodeGlib {
          */
         LIGHT_RAIL_STATION,
     }
+
     /**
      * Constant representing city-level accuracy.
      */

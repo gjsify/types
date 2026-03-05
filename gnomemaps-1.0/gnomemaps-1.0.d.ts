@@ -53,6 +53,7 @@ export namespace GnomeMaps {
          */
         LOADED,
     }
+
     function osm_finalize(): void;
     function osm_init(): void;
     function osm_parse(content: string, length: number): OSMObject;

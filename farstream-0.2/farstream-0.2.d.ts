@@ -20,17 +20,13 @@ export namespace Farstream {
      * Farstream-0.2
      */
 
-    /**
-     * An enum for the type of candidate used/reported
-     */
-
-    /**
-     * An enum for the type of candidate used/reported
-     */
     export namespace CandidateType {
         export const $gtype: GObject.GType<CandidateType>;
     }
 
+    /**
+     * An enum for the type of candidate used/reported
+     */
     enum CandidateType {
         /**
          * A host candidate (local)
@@ -53,17 +49,14 @@ export namespace Farstream {
          */
         MULTICAST,
     }
-    /**
-     * This enum contains the component IDs defined in ICE-19
-     */
 
-    /**
-     * This enum contains the component IDs defined in ICE-19
-     */
     export namespace ComponentType {
         export const $gtype: GObject.GType<ComponentType>;
     }
 
+    /**
+     * This enum contains the component IDs defined in ICE-19
+     */
     enum ComponentType {
         /**
          * Use this when specifying a component is innapropriate
@@ -78,12 +71,7 @@ export namespace Farstream {
          */
         RTCP,
     }
-    /**
-     * An enum that represents the different DTMF event that can be sent to a
-     * #FsSession. The values corresponds those those defined in RFC 4733
-     * The rest of the possibles values are in the IANA registry at:
-     * http://www.iana.org/assignments/audio-telephone-event-registry
-     */
+
     /**
      * An enum that represents the different DTMF event that can be sent to a
      * #FsSession. The values corresponds those those defined in RFC 4733
@@ -113,17 +101,13 @@ export namespace Farstream {
         static D: number;
     }
 
-    /**
-     * An enum that represents the different ways a DTMF event can be sent
-     */
-
-    /**
-     * An enum that represents the different ways a DTMF event can be sent
-     */
     export namespace DTMFMethod {
         export const $gtype: GObject.GType<DTMFMethod>;
     }
 
+    /**
+     * An enum that represents the different ways a DTMF event can be sent
+     */
     enum DTMFMethod {
         /**
          * Send as a special payload type defined by RFC 4733
@@ -135,12 +119,13 @@ export namespace Farstream {
          */
         SOUND,
     }
+
     /**
      * This is the enum of error numbers that will come either on the "error"
      * signal, from the Gst Bus or for error in the FS_ERROR domain in GErrors
      */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -214,17 +199,13 @@ export namespace Farstream {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Enum used to signify the media type of a codec or stream.
-     */
-
-    /**
-     * Enum used to signify the media type of a codec or stream.
-     */
     export namespace MediaType {
         export const $gtype: GObject.GType<MediaType>;
     }
 
+    /**
+     * Enum used to signify the media type of a codec or stream.
+     */
     enum MediaType {
         /**
          * A media type that encodes audio.
@@ -243,17 +224,14 @@ export namespace Farstream {
          */
         LAST,
     }
-    /**
-     * An enum for the base IP protocol
-     */
 
-    /**
-     * An enum for the base IP protocol
-     */
     export namespace NetworkProtocol {
         export const $gtype: GObject.GType<NetworkProtocol>;
     }
 
+    /**
+     * An enum for the base IP protocol
+     */
     enum NetworkProtocol {
         /**
          * A UDP based protocol
@@ -281,21 +259,16 @@ export namespace Farstream {
          */
         TCP_SO,
     }
-    /**
-     * These are the possible states of a stream, a simple multicast stream
-     * could only be in "disconnected" or "ready" state.
-     * An stream using an ICE transmitter would use all of these.
-     */
 
-    /**
-     * These are the possible states of a stream, a simple multicast stream
-     * could only be in "disconnected" or "ready" state.
-     * An stream using an ICE transmitter would use all of these.
-     */
     export namespace StreamState {
         export const $gtype: GObject.GType<StreamState>;
     }
 
+    /**
+     * These are the possible states of a stream, a simple multicast stream
+     * could only be in "disconnected" or "ready" state.
+     * An stream using an ICE transmitter would use all of these.
+     */
     enum StreamState {
         /**
          * connectivity checks have been completed,
@@ -323,6 +296,7 @@ export namespace Farstream {
          */
         READY,
     }
+
     /**
      * A format that can be used in printf like format strings to format a FsCodec
      */
@@ -487,17 +461,13 @@ export namespace Farstream {
     type CandidateList = object | null;
     type CodecGList = object | null;
     type RtpHeaderExtensionGList = object | null;
-    /**
-     * An enum for specifying the direction of a stream
-     */
-
-    /**
-     * An enum for specifying the direction of a stream
-     */
     export namespace StreamDirection {
         export const $gtype: GObject.GType<StreamDirection>;
     }
 
+    /**
+     * An enum for specifying the direction of a stream
+     */
     enum StreamDirection {
         /**
          * No direction specified
@@ -516,6 +486,7 @@ export namespace Farstream {
          */
         BOTH,
     }
+
     namespace Conference {
         // Signal signatures
         interface SignalSignatures extends Gst.Bin.SignalSignatures {

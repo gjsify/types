@@ -25,7 +25,7 @@ export namespace GXPS {
      * Error codes returned by GXPS functions.
      */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -50,31 +50,16 @@ export namespace GXPS {
     /**
      * Error codes returned by #GXPSFile functions.
      */
-
-    /**
-     * Error codes returned by #GXPSFile functions.
-     */
-    export namespace FileError {
-        export const $gtype: GObject.GType<FileError>;
-    }
-
     enum FileError {
         /**
          * The XPS is invalid.
          */
         FILE_ERROR_INVALID,
     }
-    /**
-     * Error codes returned by #GXPSPage functions
-     */
 
     /**
      * Error codes returned by #GXPSPage functions
      */
-    export namespace PageError {
-        export const $gtype: GObject.GType<PageError>;
-    }
-
     enum PageError {
         /**
          * The page is invalid.
@@ -89,6 +74,7 @@ export namespace GXPS {
          */
         INVALID_ANCHOR,
     }
+
     /**
      * The major version number of the GXPS header files (e.g. in GXPS version
      * 0.1.2 this is 0.)

@@ -21,17 +21,13 @@ export namespace GstRtp {
      * GstRtp-1.0
      */
 
-    /**
-     * Different types of feedback messages.
-     */
-
-    /**
-     * Different types of feedback messages.
-     */
     export namespace RTCPFBType {
         export const $gtype: GObject.GType<RTCPFBType>;
     }
 
+    /**
+     * Different types of feedback messages.
+     */
     enum RTCPFBType {
         /**
          * Invalid type
@@ -89,17 +85,14 @@ export namespace GstRtp {
          */
         PSFB_TYPE_VBCN,
     }
-    /**
-     * Different types of SDES content.
-     */
 
-    /**
-     * Different types of SDES content.
-     */
     export namespace RTCPSDESType {
         export const $gtype: GObject.GType<RTCPSDESType>;
     }
 
+    /**
+     * Different types of SDES content.
+     */
     enum RTCPSDESType {
         /**
          * Invalid SDES entry
@@ -170,17 +163,14 @@ export namespace GstRtp {
          */
         MID,
     }
-    /**
-     * Different RTCP packet types.
-     */
 
-    /**
-     * Different RTCP packet types.
-     */
     export namespace RTCPType {
         export const $gtype: GObject.GType<RTCPType>;
     }
 
+    /**
+     * Different RTCP packet types.
+     */
     enum RTCPType {
         /**
          * Invalid type
@@ -219,19 +209,15 @@ export namespace GstRtp {
          */
         XR,
     }
-    /**
-     * Types of RTCP Extended Reports, those are defined in RFC 3611 and other RFCs
-     * according to the [IANA registry](https://www.iana.org/assignments/rtcp-xr-block-types/rtcp-xr-block-types.xhtml).
-     */
 
-    /**
-     * Types of RTCP Extended Reports, those are defined in RFC 3611 and other RFCs
-     * according to the [IANA registry](https://www.iana.org/assignments/rtcp-xr-block-types/rtcp-xr-block-types.xhtml).
-     */
     export namespace RTCPXRType {
         export const $gtype: GObject.GType<RTCPXRType>;
     }
 
+    /**
+     * Types of RTCP Extended Reports, those are defined in RFC 3611 and other RFCs
+     * according to the [IANA registry](https://www.iana.org/assignments/rtcp-xr-block-types/rtcp-xr-block-types.xhtml).
+     */
     enum RTCPXRType {
         /**
          * Invalid XR Report Block
@@ -266,20 +252,7 @@ export namespace GstRtp {
          */
         VOIP_METRICS,
     }
-    /**
-     * Standard predefined fixed payload types.
-     *
-     * The official list is at:
-     * http://www.iana.org/assignments/rtp-parameters
-     *
-     * Audio:
-     * reserved: 19
-     * unassigned: 20-23,
-     *
-     * Video:
-     * unassigned: 24, 27, 29, 30, 35-71, 77-95
-     * Reserved for RTCP conflict avoidance: 72-76
-     */
+
     /**
      * Standard predefined fixed payload types.
      *
@@ -405,17 +378,13 @@ export namespace GstRtp {
         static H263: number;
     }
 
-    /**
-     * The transfer profile to use.
-     */
-
-    /**
-     * The transfer profile to use.
-     */
     export namespace RTPProfile {
         export const $gtype: GObject.GType<RTPProfile>;
     }
 
+    /**
+     * The transfer profile to use.
+     */
     enum RTPProfile {
         /**
          * invalid profile
@@ -438,6 +407,7 @@ export namespace GstRtp {
          */
         SAVPF,
     }
+
     /**
      * The maximum amount of SSRCs in a BYE packet.
      */
@@ -831,25 +801,17 @@ export namespace GstRtp {
     function rtp_payload_info_for_pt(payload_type: number): RTPPayloadInfo | null;
     function rtp_source_meta_api_get_type(): GObject.GType;
     function rtp_source_meta_get_info(): Gst.MetaInfo;
-    /**
-     * Additional RTP buffer flags. These flags can potentially be used on any
-     * buffers carrying RTP packets.
-     *
-     * Note that these are only valid for #GstCaps of type: application/x-rtp (x-rtcp).
-     * They can conflict with other extended buffer flags.
-     */
-
-    /**
-     * Additional RTP buffer flags. These flags can potentially be used on any
-     * buffers carrying RTP packets.
-     *
-     * Note that these are only valid for #GstCaps of type: application/x-rtp (x-rtcp).
-     * They can conflict with other extended buffer flags.
-     */
     export namespace RTPBufferFlags {
         export const $gtype: GObject.GType<RTPBufferFlags>;
     }
 
+    /**
+     * Additional RTP buffer flags. These flags can potentially be used on any
+     * buffers carrying RTP packets.
+     *
+     * Note that these are only valid for #GstCaps of type: application/x-rtp (x-rtcp).
+     * They can conflict with other extended buffer flags.
+     */
     enum RTPBufferFlags {
         /**
          * The #GstBuffer was once wrapped
@@ -868,17 +830,14 @@ export namespace GstRtp {
          */
         LAST,
     }
-    /**
-     * Additional mapping flags for gst_rtp_buffer_map().
-     */
 
-    /**
-     * Additional mapping flags for gst_rtp_buffer_map().
-     */
     export namespace RTPBufferMapFlags {
         export const $gtype: GObject.GType<RTPBufferMapFlags>;
     }
 
+    /**
+     * Additional mapping flags for gst_rtp_buffer_map().
+     */
     enum RTPBufferMapFlags {
         /**
          * Skip mapping and validation of RTP
@@ -891,17 +850,14 @@ export namespace GstRtp {
          */
         LAST,
     }
-    /**
-     * Direction to which to apply the RTP Header Extension
-     */
 
-    /**
-     * Direction to which to apply the RTP Header Extension
-     */
     export namespace RTPHeaderExtensionDirection {
         export const $gtype: GObject.GType<RTPHeaderExtensionDirection>;
     }
 
+    /**
+     * Direction to which to apply the RTP Header Extension
+     */
     enum RTPHeaderExtensionDirection {
         /**
          * Neither send nor
@@ -926,17 +882,14 @@ export namespace GstRtp {
          */
         INHERITED,
     }
-    /**
-     * Flags that apply to a RTP Audio/Video header extension.
-     */
 
-    /**
-     * Flags that apply to a RTP Audio/Video header extension.
-     */
     export namespace RTPHeaderExtensionFlags {
         export const $gtype: GObject.GType<RTPHeaderExtensionFlags>;
     }
 
+    /**
+     * Flags that apply to a RTP Audio/Video header extension.
+     */
     enum RTPHeaderExtensionFlags {
         /**
          * The one byte rtp extension header.
@@ -951,6 +904,7 @@ export namespace GstRtp {
          */
         TWO_BYTE,
     }
+
     namespace RTPBaseAudioPayload {
         // Signal signatures
         interface SignalSignatures extends RTPBasePayload.SignalSignatures {

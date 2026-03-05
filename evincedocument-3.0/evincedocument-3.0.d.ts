@@ -99,8 +99,9 @@ export namespace EvinceDocument {
         NO,
         YES,
     }
+
     class DocumentError extends GLib.Error {
-        static $gtype: GObject.GType<DocumentError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -258,6 +259,7 @@ export namespace EvinceDocument {
         UNCOVER,
         FADE,
     }
+
     /**
      * The major version number of the EV library
      * (e.g. in version 3.1.4 this is 3).
@@ -363,7 +365,6 @@ export namespace EvinceDocument {
      */
     function xfer_uri_simple(from: string, to: string): boolean;
     function xmp_parse(xmp: string, size: number, info: DocumentInfo): boolean;
-
     export namespace AnnotationsSaveMask {
         export const $gtype: GObject.GType<AnnotationsSaveMask>;
     }
@@ -470,6 +471,7 @@ export namespace EvinceDocument {
         CASE_SENSITIVE,
         WHOLE_WORDS_ONLY,
     }
+
     namespace Annotation {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

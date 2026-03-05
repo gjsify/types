@@ -25,7 +25,7 @@ export namespace GstTranscoder {
      */
 
     class TranscoderError extends GLib.Error {
-        static $gtype: GObject.GType<TranscoderError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -48,21 +48,15 @@ export namespace GstTranscoder {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Types of messages that will be posted on the transcoder API bus.
-     *
-     * See also #gst_transcoder_get_message_bus()
-     */
-
-    /**
-     * Types of messages that will be posted on the transcoder API bus.
-     *
-     * See also #gst_transcoder_get_message_bus()
-     */
     export namespace TranscoderMessage {
         export const $gtype: GObject.GType<TranscoderMessage>;
     }
 
+    /**
+     * Types of messages that will be posted on the transcoder API bus.
+     *
+     * See also #gst_transcoder_get_message_bus()
+     */
     enum TranscoderMessage {
         /**
          * Sink position changed
@@ -89,17 +83,14 @@ export namespace GstTranscoder {
          */
         WARNING,
     }
-    /**
-     * High level representation of the transcoder pipeline state.
-     */
 
-    /**
-     * High level representation of the transcoder pipeline state.
-     */
     export namespace TranscoderState {
         export const $gtype: GObject.GType<TranscoderState>;
     }
 
+    /**
+     * High level representation of the transcoder pipeline state.
+     */
     enum TranscoderState {
         /**
          * the transcoder is stopped.
@@ -115,6 +106,7 @@ export namespace GstTranscoder {
          */
         PLAYING,
     }
+
     /**
      * Gets a string representing the given error.
      * @param error a #GstTranscoderError

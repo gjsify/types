@@ -72,6 +72,7 @@ export namespace AtrilView {
         FREE,
         AUTOMATIC,
     }
+
     const STOCK_ATTACHMENT: string;
     const STOCK_CLOSE: string;
     const STOCK_INVERTED_COLORS: string;
@@ -92,7 +93,6 @@ export namespace AtrilView {
      */
     function stock_icons_init(): void;
     function stock_icons_set_screen(screen: Gdk.Screen): void;
-
     export namespace JobPageDataFlags {
         export const $gtype: GObject.GType<JobPageDataFlags>;
     }
@@ -110,6 +110,7 @@ export namespace AtrilView {
         ANNOTS,
         ALL,
     }
+
     namespace DocumentModel {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

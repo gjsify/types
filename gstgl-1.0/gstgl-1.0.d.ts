@@ -23,7 +23,7 @@ export namespace GstGL {
      */
 
     class GLBaseMemoryError extends GLib.Error {
-        static $gtype: GObject.GType<GLBaseMemoryError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -68,11 +68,12 @@ export namespace GstGL {
          */
         NON_CONFORMANT,
     }
+
     /**
      * OpenGL context errors.
      */
     class GLContextError extends GLib.Error {
-        static $gtype: GObject.GType<GLContextError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -216,11 +217,12 @@ export namespace GstGL {
          */
         TIMESTAMP,
     }
+
     /**
      * Compilation stage that caused an error
      */
     class GLSLError extends GLib.Error {
-        static $gtype: GObject.GType<GLSLError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -246,9 +248,6 @@ export namespace GstGL {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * GLSL version list
-     */
     /**
      * GLSL version list
      */
@@ -327,17 +326,13 @@ export namespace GstGL {
         static '450': number;
     }
 
-    /**
-     * Output anaglyph type to generate when downmixing to mono
-     */
-
-    /**
-     * Output anaglyph type to generate when downmixing to mono
-     */
     export namespace GLStereoDownmix {
         export const $gtype: GObject.GType<GLStereoDownmix>;
     }
 
+    /**
+     * Output anaglyph type to generate when downmixing to mono
+     */
     enum GLStereoDownmix {
         /**
          * Dubois optimised Green-Magenta anaglyph
@@ -352,25 +347,18 @@ export namespace GstGL {
          */
         AMBER_BLUE_DUBOIS,
     }
-    /**
-     * The OpenGL texture target that an OpenGL texture can be bound to.  The
-     * gst_gl_value_set_texture_target_from_mask(),
-     * gst_gl_value_get_texture_target_mask(), and
-     * gst_gl_value_set_texture_target() functions can be used for handling texture
-     * targets with #GValue's when e.g. dealing with #GstCaps.
-     */
 
-    /**
-     * The OpenGL texture target that an OpenGL texture can be bound to.  The
-     * gst_gl_value_set_texture_target_from_mask(),
-     * gst_gl_value_get_texture_target_mask(), and
-     * gst_gl_value_set_texture_target() functions can be used for handling texture
-     * targets with #GValue's when e.g. dealing with #GstCaps.
-     */
     export namespace GLTextureTarget {
         export const $gtype: GObject.GType<GLTextureTarget>;
     }
 
+    /**
+     * The OpenGL texture target that an OpenGL texture can be bound to.  The
+     * gst_gl_value_set_texture_target_from_mask(),
+     * gst_gl_value_get_texture_target_mask(), and
+     * gst_gl_value_set_texture_target() functions can be used for handling texture
+     * targets with #GValue's when e.g. dealing with #GstCaps.
+     */
     enum GLTextureTarget {
         /**
          * no texture target
@@ -418,8 +406,9 @@ export namespace GstGL {
          */
         UNSHARED_GL_CONTEXT,
     }
+
     class GLWindowError extends GLib.Error {
-        static $gtype: GObject.GType<GLWindowError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -829,7 +818,6 @@ export namespace GstGL {
     interface GLWindowResizeCB {
         (data: any | null, width: number, height: number): void;
     }
-
     export namespace GLAPI {
         export const $gtype: GObject.GType<GLAPI>;
     }
@@ -1000,17 +988,14 @@ export namespace GstGL {
          */
         ANY,
     }
-    /**
-     * GLSL profiles
-     */
 
-    /**
-     * GLSL profiles
-     */
     export namespace GLSLProfile {
         export const $gtype: GObject.GType<GLSLProfile>;
     }
 
+    /**
+     * GLSL profiles
+     */
     enum GLSLProfile {
         /**
          * no profile supported/available
@@ -1033,6 +1018,7 @@ export namespace GstGL {
          */
         ANY,
     }
+
     namespace GLBaseFilter {
         // Signal signatures
         interface SignalSignatures extends GstBase.BaseTransform.SignalSignatures {

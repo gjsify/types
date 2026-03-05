@@ -24,14 +24,6 @@ export namespace TrackerMiner {
     /**
      * Possible errors returned when calling tracker_decorator_next_finish().
      */
-
-    /**
-     * Possible errors returned when calling tracker_decorator_next_finish().
-     */
-    export namespace DecoratorError {
-        export const $gtype: GObject.GType<DecoratorError>;
-    }
-
     enum DecoratorError {
         /**
          * There is no item to be processed
@@ -68,19 +60,11 @@ export namespace TrackerMiner {
         DIRECTORY,
         PARENT_DIRECTORY,
     }
-    /**
-     * Possible errors returned when calling #TrackerMiner APIs or
-     * subclassed miners where the error is generic to all miners.
-     */
 
     /**
      * Possible errors returned when calling #TrackerMiner APIs or
      * subclassed miners where the error is generic to all miners.
      */
-    export namespace MinerError {
-        export const $gtype: GObject.GType<MinerError>;
-    }
-
     enum MinerError {
         /**
          * No name was given when creating
@@ -114,19 +98,11 @@ export namespace TrackerMiner {
          */
         INVALID_COOKIE,
     }
-    /**
-     * Possible errors returned when calling creating new objects based on
-     * the #TrackerMinerFS type and other APIs available with this class.
-     */
 
     /**
      * Possible errors returned when calling creating new objects based on
      * the #TrackerMinerFS type and other APIs available with this class.
      */
-    export namespace MinerFSError {
-        export const $gtype: GObject.GType<MinerFSError>;
-    }
-
     enum MinerFSError {
         /**
          * There was an error during
@@ -148,6 +124,7 @@ export namespace TrackerMiner {
         '3G',
         LAN,
     }
+
     /**
      * The name of the D-Bus interface to use for all data miners that
      * inter-operate with Tracker.
@@ -171,7 +148,6 @@ export namespace TrackerMiner {
      * Used as the domain for any #GErrors reported by `TrackerMiner` objects.
      */
     const MINER_ERROR_DOMAIN: string;
-
     export namespace DirectoryFlags {
         export const $gtype: GObject.GType<DirectoryFlags>;
     }
@@ -187,6 +163,7 @@ export namespace TrackerMiner {
         NO_STAT,
         CHECK_DELETED,
     }
+
     namespace Decorator {
         // Signal signatures
         interface SignalSignatures extends Miner.SignalSignatures {

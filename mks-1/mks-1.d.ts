@@ -30,17 +30,13 @@ export namespace Mks {
      * Mks-1
      */
 
-    /**
-     * A mouse button.
-     */
-
-    /**
-     * A mouse button.
-     */
     export namespace MouseButton {
         export const $gtype: GObject.GType<MouseButton>;
     }
 
+    /**
+     * A mouse button.
+     */
     enum MouseButton {
         /**
          * Left button.
@@ -71,17 +67,14 @@ export namespace Mks {
          */
         EXTRA,
     }
-    /**
-     * A screen kind.
-     */
 
-    /**
-     * A screen kind.
-     */
     export namespace ScreenKind {
         export const $gtype: GObject.GType<ScreenKind>;
     }
 
+    /**
+     * A screen kind.
+     */
     enum ScreenKind {
         /**
          * A text only screen.
@@ -92,17 +85,14 @@ export namespace Mks {
          */
         GRAPHIC,
     }
-    /**
-     * The type of a touch event.
-     */
 
-    /**
-     * The type of a touch event.
-     */
     export namespace TouchEventKind {
         export const $gtype: GObject.GType<TouchEventKind>;
     }
 
+    /**
+     * The type of a touch event.
+     */
     enum TouchEventKind {
         /**
          * The touch event has just started.
@@ -121,6 +111,7 @@ export namespace Mks {
          */
         CANCEL,
     }
+
     /**
      * mks major version component (e.g. 1 if %MKS_VERSION is 1.2.3)
      */
@@ -156,17 +147,13 @@ export namespace Mks {
      * The function must be called before using any of the library functions.
      */
     function init(): void;
-    /**
-     * The active keyboard modifiers.
-     */
-
-    /**
-     * The active keyboard modifiers.
-     */
     export namespace KeyboardModifier {
         export const $gtype: GObject.GType<KeyboardModifier>;
     }
 
+    /**
+     * The active keyboard modifiers.
+     */
     enum KeyboardModifier {
         /**
          * No modifier.
@@ -185,6 +172,7 @@ export namespace Mks {
          */
         CAPS_LOCK,
     }
+
     namespace Device {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

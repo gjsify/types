@@ -27,7 +27,7 @@ export namespace Vsqlite {
      */
 
     class ConnectionError extends GLib.Error {
-        static $gtype: GObject.GType<ConnectionError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 

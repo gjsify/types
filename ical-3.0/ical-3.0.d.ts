@@ -18,18 +18,10 @@ export namespace ICal {
      * ICal-3.0
      */
 
-    export namespace _unknown_token_handling {
-        export const $gtype: GObject.GType<_unknown_token_handling>;
-    }
-
     enum _unknown_token_handling {
         ASSUME_IANA_TOKEN,
         DISCARD_TOKEN,
         TREAT_AS_ERROR,
-    }
-
-    export namespace component_kind {
-        export const $gtype: GObject.GType<component_kind>;
     }
 
     enum component_kind {
@@ -68,10 +60,6 @@ export namespace ICal {
         XPATCH_COMPONENT,
     }
 
-    export namespace errorenum {
-        export const $gtype: GObject.GType<errorenum>;
-    }
-
     enum errorenum {
         NO_ERROR,
         BADARG_ERROR,
@@ -86,10 +74,6 @@ export namespace ICal {
         UNKNOWN_ERROR,
     }
 
-    export namespace errorstate {
-        export const $gtype: GObject.GType<errorstate>;
-    }
-
     enum errorstate {
         FATAL,
         NONFATAL,
@@ -97,19 +81,11 @@ export namespace ICal {
         UNKNOWN,
     }
 
-    export namespace parameter_action {
-        export const $gtype: GObject.GType<parameter_action>;
-    }
-
     enum parameter_action {
         X,
         ASK,
         ABORT,
         NONE,
-    }
-
-    export namespace parameter_cutype {
-        export const $gtype: GObject.GType<parameter_cutype>;
     }
 
     enum parameter_cutype {
@@ -122,10 +98,6 @@ export namespace ICal {
         NONE,
     }
 
-    export namespace parameter_display {
-        export const $gtype: GObject.GType<parameter_display>;
-    }
-
     enum parameter_display {
         X,
         BADGE,
@@ -135,19 +107,11 @@ export namespace ICal {
         NONE,
     }
 
-    export namespace parameter_enable {
-        export const $gtype: GObject.GType<parameter_enable>;
-    }
-
     enum parameter_enable {
         X,
         TRUE,
         FALSE,
         NONE,
-    }
-
-    export namespace parameter_encoding {
-        export const $gtype: GObject.GType<parameter_encoding>;
     }
 
     enum parameter_encoding {
@@ -157,10 +121,6 @@ export namespace ICal {
         NONE,
     }
 
-    export namespace parameter_fbtype {
-        export const $gtype: GObject.GType<parameter_fbtype>;
-    }
-
     enum parameter_fbtype {
         X,
         FREE,
@@ -168,10 +128,6 @@ export namespace ICal {
         BUSYUNAVAILABLE,
         BUSYTENTATIVE,
         NONE,
-    }
-
-    export namespace parameter_feature {
-        export const $gtype: GObject.GType<parameter_feature>;
     }
 
     enum parameter_feature {
@@ -184,10 +140,6 @@ export namespace ICal {
         SCREEN,
         VIDEO,
         NONE,
-    }
-
-    export namespace parameter_kind {
-        export const $gtype: GObject.GType<parameter_kind>;
     }
 
     enum parameter_kind {
@@ -245,19 +197,11 @@ export namespace ICal {
         NO_PARAMETER,
     }
 
-    export namespace parameter_local {
-        export const $gtype: GObject.GType<parameter_local>;
-    }
-
     enum parameter_local {
         X,
         TRUE,
         FALSE,
         NONE,
-    }
-
-    export namespace parameter_partstat {
-        export const $gtype: GObject.GType<parameter_partstat>;
     }
 
     enum parameter_partstat {
@@ -273,10 +217,6 @@ export namespace ICal {
         NONE,
     }
 
-    export namespace parameter_patchaction {
-        export const $gtype: GObject.GType<parameter_patchaction>;
-    }
-
     enum parameter_patchaction {
         X,
         CREATE,
@@ -286,10 +226,6 @@ export namespace ICal {
         NONE,
     }
 
-    export namespace parameter_range {
-        export const $gtype: GObject.GType<parameter_range>;
-    }
-
     enum parameter_range {
         X,
         THISANDPRIOR,
@@ -297,19 +233,11 @@ export namespace ICal {
         NONE,
     }
 
-    export namespace parameter_related {
-        export const $gtype: GObject.GType<parameter_related>;
-    }
-
     enum parameter_related {
         X,
         START,
         END,
         NONE,
-    }
-
-    export namespace parameter_reltype {
-        export const $gtype: GObject.GType<parameter_reltype>;
     }
 
     enum parameter_reltype {
@@ -321,19 +249,11 @@ export namespace ICal {
         NONE,
     }
 
-    export namespace parameter_required {
-        export const $gtype: GObject.GType<parameter_required>;
-    }
-
     enum parameter_required {
         X,
         TRUE,
         FALSE,
         NONE,
-    }
-
-    export namespace parameter_role {
-        export const $gtype: GObject.GType<parameter_role>;
     }
 
     enum parameter_role {
@@ -345,19 +265,11 @@ export namespace ICal {
         NONE,
     }
 
-    export namespace parameter_rsvp {
-        export const $gtype: GObject.GType<parameter_rsvp>;
-    }
-
     enum parameter_rsvp {
         X,
         TRUE,
         FALSE,
         NONE,
-    }
-
-    export namespace parameter_scheduleagent {
-        export const $gtype: GObject.GType<parameter_scheduleagent>;
     }
 
     enum parameter_scheduleagent {
@@ -367,19 +279,11 @@ export namespace ICal {
         NONE,
     }
 
-    export namespace parameter_scheduleforcesend {
-        export const $gtype: GObject.GType<parameter_scheduleforcesend>;
-    }
-
     enum parameter_scheduleforcesend {
         X,
         REQUEST,
         REPLY,
         NONE,
-    }
-
-    export namespace parameter_stayinformed {
-        export const $gtype: GObject.GType<parameter_stayinformed>;
     }
 
     enum parameter_stayinformed {
@@ -389,20 +293,12 @@ export namespace ICal {
         NONE,
     }
 
-    export namespace parameter_substate {
-        export const $gtype: GObject.GType<parameter_substate>;
-    }
-
     enum parameter_substate {
         X,
         OK,
         ERROR,
         SUSPENDED,
         NONE,
-    }
-
-    export namespace parameter_value {
-        export const $gtype: GObject.GType<parameter_value>;
     }
 
     enum parameter_value {
@@ -424,10 +320,6 @@ export namespace ICal {
         NONE,
     }
 
-    export namespace parameter_xliccomparetype {
-        export const $gtype: GObject.GType<parameter_xliccomparetype>;
-    }
-
     enum parameter_xliccomparetype {
         X,
         EQUAL,
@@ -440,10 +332,6 @@ export namespace ICal {
         ISNULL,
         ISNOTNULL,
         NONE,
-    }
-
-    export namespace parameter_xlicerrortype {
-        export const $gtype: GObject.GType<parameter_xlicerrortype>;
     }
 
     enum parameter_xlicerrortype {
@@ -460,20 +348,12 @@ export namespace ICal {
         NONE,
     }
 
-    export namespace parser_state {
-        export const $gtype: GObject.GType<parser_state>;
-    }
-
     enum parser_state {
         ERROR,
         SUCCESS,
         BEGIN_COMP,
         END_COMP,
         IN_PROGRESS,
-    }
-
-    export namespace property_action {
-        export const $gtype: GObject.GType<property_action>;
     }
 
     enum property_action {
@@ -485,20 +365,12 @@ export namespace ICal {
         NONE,
     }
 
-    export namespace property_busytype {
-        export const $gtype: GObject.GType<property_busytype>;
-    }
-
     enum property_busytype {
         X,
         BUSY,
         BUSYUNAVAILABLE,
         BUSYTENTATIVE,
         NONE,
-    }
-
-    export namespace property_carlevel {
-        export const $gtype: GObject.GType<property_carlevel>;
     }
 
     enum property_carlevel {
@@ -509,20 +381,12 @@ export namespace ICal {
         NONE,
     }
 
-    export namespace property_class {
-        export const $gtype: GObject.GType<property_class>;
-    }
-
     enum property_class {
         X,
         PUBLIC,
         PRIVATE,
         CONFIDENTIAL,
         NONE,
-    }
-
-    export namespace property_cmd {
-        export const $gtype: GObject.GType<property_cmd>;
     }
 
     enum property_cmd {
@@ -540,10 +404,6 @@ export namespace ICal {
         SEARCH,
         SETLOCALE,
         NONE,
-    }
-
-    export namespace property_kind {
-        export const $gtype: GObject.GType<property_kind>;
     }
 
     enum property_kind {
@@ -674,10 +534,6 @@ export namespace ICal {
         NO_PROPERTY,
     }
 
-    export namespace property_method {
-        export const $gtype: GObject.GType<property_method>;
-    }
-
     enum property_method {
         X,
         PUBLISH,
@@ -699,10 +555,6 @@ export namespace ICal {
         NONE,
     }
 
-    export namespace property_pollcompletion {
-        export const $gtype: GObject.GType<property_pollcompletion>;
-    }
-
     enum property_pollcompletion {
         X,
         SERVER,
@@ -712,18 +564,10 @@ export namespace ICal {
         NONE,
     }
 
-    export namespace property_pollmode {
-        export const $gtype: GObject.GType<property_pollmode>;
-    }
-
     enum property_pollmode {
         X,
         BASIC,
         NONE,
-    }
-
-    export namespace property_querylevel {
-        export const $gtype: GObject.GType<property_querylevel>;
     }
 
     enum property_querylevel {
@@ -731,10 +575,6 @@ export namespace ICal {
         CALQL1,
         CALQLNONE,
         NONE,
-    }
-
-    export namespace property_status {
-        export const $gtype: GObject.GType<property_status>;
     }
 
     enum property_status {
@@ -754,20 +594,12 @@ export namespace ICal {
         NONE,
     }
 
-    export namespace property_taskmode {
-        export const $gtype: GObject.GType<property_taskmode>;
-    }
-
     enum property_taskmode {
         X,
         AUTOMATICCOMPLETION,
         AUTOMATICFAILURE,
         AUTOMATICSTATUS,
         NONE,
-    }
-
-    export namespace property_transp {
-        export const $gtype: GObject.GType<property_transp>;
     }
 
     enum property_transp {
@@ -777,10 +609,6 @@ export namespace ICal {
         TRANSPARENT,
         TRANSPARENTNOCONFLICT,
         NONE,
-    }
-
-    export namespace property_xlicclass {
-        export const $gtype: GObject.GType<property_xlicclass>;
     }
 
     enum property_xlicclass {
@@ -815,10 +643,6 @@ export namespace ICal {
         NONE,
     }
 
-    export namespace recurrencetype_frequency {
-        export const $gtype: GObject.GType<recurrencetype_frequency>;
-    }
-
     enum recurrencetype_frequency {
         SECONDLY_RECURRENCE,
         MINUTELY_RECURRENCE,
@@ -830,19 +654,11 @@ export namespace ICal {
         NO_RECURRENCE,
     }
 
-    export namespace recurrencetype_skip {
-        export const $gtype: GObject.GType<recurrencetype_skip>;
-    }
-
     enum recurrencetype_skip {
         BACKWARD,
         FORWARD,
         OMIT,
         UNDEFINED,
-    }
-
-    export namespace recurrencetype_weekday {
-        export const $gtype: GObject.GType<recurrencetype_weekday>;
     }
 
     enum recurrencetype_weekday {
@@ -854,10 +670,6 @@ export namespace ICal {
         THURSDAY_WEEKDAY,
         FRIDAY_WEEKDAY,
         SATURDAY_WEEKDAY,
-    }
-
-    export namespace requeststatus {
-        export const $gtype: GObject.GType<requeststatus>;
     }
 
     enum requeststatus {
@@ -902,10 +714,6 @@ export namespace ICal {
         '9_0_UNRECOGNIZED_COMMAND',
     }
 
-    export namespace restriction_kind {
-        export const $gtype: GObject.GType<restriction_kind>;
-    }
-
     enum restriction_kind {
         NONE,
         ZERO,
@@ -916,10 +724,6 @@ export namespace ICal {
         ONEEXCLUSIVE,
         ONEMUTUAL,
         UNKNOWN,
-    }
-
-    export namespace value_kind {
-        export const $gtype: GObject.GType<value_kind>;
     }
 
     enum value_kind {
@@ -961,6 +765,7 @@ export namespace ICal {
         XLICCLASS_VALUE,
         NO_VALUE,
     }
+
     const BOOLEAN_FALSE: number;
     const BOOLEAN_TRUE: number;
     const BY_DAY_SIZE: number;

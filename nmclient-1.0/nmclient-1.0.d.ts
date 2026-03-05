@@ -26,7 +26,7 @@ export namespace NMClient {
      * Describes errors that may result from operations involving a #NMClient.
      */
     class ClientError extends GLib.Error {
-        static $gtype: GObject.GType<ClientError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -52,19 +52,14 @@ export namespace NMClient {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * #NMClientPermission values indicate various permissions that NetworkManager
-     * clients can obtain to perform certain tasks on behalf of the current user.
-     */
-
-    /**
-     * #NMClientPermission values indicate various permissions that NetworkManager
-     * clients can obtain to perform certain tasks on behalf of the current user.
-     */
     export namespace ClientPermission {
         export const $gtype: GObject.GType<ClientPermission>;
     }
 
+    /**
+     * #NMClientPermission values indicate various permissions that NetworkManager
+     * clients can obtain to perform certain tasks on behalf of the current user.
+     */
     enum ClientPermission {
         /**
          * unknown or no permission
@@ -149,19 +144,15 @@ export namespace NMClient {
          */
         LAST,
     }
-    /**
-     * #NMClientPermissionResult values indicate what authorizations and permissions
-     * the user requires to obtain a given #NMClientPermission
-     */
 
-    /**
-     * #NMClientPermissionResult values indicate what authorizations and permissions
-     * the user requires to obtain a given #NMClientPermission
-     */
     export namespace ClientPermissionResult {
         export const $gtype: GObject.GType<ClientPermissionResult>;
     }
 
+    /**
+     * #NMClientPermissionResult values indicate what authorizations and permissions
+     * the user requires to obtain a given #NMClientPermission
+     */
     enum ClientPermissionResult {
         /**
          * unknown or no authorization
@@ -182,8 +173,9 @@ export namespace NMClient {
          */
         NO,
     }
+
     class DeviceAdslError extends GLib.Error {
-        static $gtype: GObject.GType<DeviceAdslError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -213,7 +205,7 @@ export namespace NMClient {
     }
 
     class DeviceBondError extends GLib.Error {
-        static $gtype: GObject.GType<DeviceBondError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -247,7 +239,7 @@ export namespace NMClient {
     }
 
     class DeviceBridgeError extends GLib.Error {
-        static $gtype: GObject.GType<DeviceBridgeError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -281,7 +273,7 @@ export namespace NMClient {
     }
 
     class DeviceBtError extends GLib.Error {
-        static $gtype: GObject.GType<DeviceBtError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -323,7 +315,7 @@ export namespace NMClient {
     }
 
     class DeviceError extends GLib.Error {
-        static $gtype: GObject.GType<DeviceError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -350,7 +342,7 @@ export namespace NMClient {
     }
 
     class DeviceEthernetError extends GLib.Error {
-        static $gtype: GObject.GType<DeviceEthernetError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -388,7 +380,7 @@ export namespace NMClient {
     }
 
     class DeviceGenericError extends GLib.Error {
-        static $gtype: GObject.GType<DeviceGenericError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -418,7 +410,7 @@ export namespace NMClient {
     }
 
     class DeviceInfinibandError extends GLib.Error {
-        static $gtype: GObject.GType<DeviceInfinibandError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -456,7 +448,7 @@ export namespace NMClient {
     }
 
     class DeviceModemError extends GLib.Error {
-        static $gtype: GObject.GType<DeviceModemError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -490,7 +482,7 @@ export namespace NMClient {
     }
 
     class DeviceOlpcMeshError extends GLib.Error {
-        static $gtype: GObject.GType<DeviceOlpcMeshError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -520,7 +512,7 @@ export namespace NMClient {
     }
 
     class DeviceTeamError extends GLib.Error {
-        static $gtype: GObject.GType<DeviceTeamError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -554,7 +546,7 @@ export namespace NMClient {
     }
 
     class DeviceVlanError extends GLib.Error {
-        static $gtype: GObject.GType<DeviceVlanError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -596,7 +588,7 @@ export namespace NMClient {
     }
 
     class DeviceWifiError extends GLib.Error {
-        static $gtype: GObject.GType<DeviceWifiError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -644,7 +636,7 @@ export namespace NMClient {
     }
 
     class DeviceWimaxError extends GLib.Error {
-        static $gtype: GObject.GType<DeviceWimaxError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -685,7 +677,7 @@ export namespace NMClient {
      * Describes errors that may result from operations involving a #NMObject.
      */
     class ObjectError extends GLib.Error {
-        static $gtype: GObject.GType<ObjectError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -711,7 +703,7 @@ export namespace NMClient {
     }
 
     class RemoteConnectionError extends GLib.Error {
-        static $gtype: GObject.GType<RemoteConnectionError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -740,7 +732,7 @@ export namespace NMClient {
      * Describes errors that may result from operations involving a #NMRemoteSettings.
      */
     class RemoteSettingsError extends GLib.Error {
-        static $gtype: GObject.GType<RemoteSettingsError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -781,7 +773,7 @@ export namespace NMClient {
      * when they encounter problems retrieving secrets on behalf of NM.
      */
     class SecretAgentError extends GLib.Error {
-        static $gtype: GObject.GType<SecretAgentError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -824,17 +816,13 @@ export namespace NMClient {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * WiMAX network type.
-     */
-
-    /**
-     * WiMAX network type.
-     */
     export namespace WimaxNspNetworkType {
         export const $gtype: GObject.GType<WimaxNspNetworkType>;
     }
 
+    /**
+     * WiMAX network type.
+     */
     enum WimaxNspNetworkType {
         /**
          * unknown network type
@@ -853,6 +841,7 @@ export namespace NMClient {
          */
         ROAMING_PARTNER,
     }
+
     const ACCESS_POINT_BSSID: string;
     const ACCESS_POINT_FLAGS: string;
     const ACCESS_POINT_FREQUENCY: string;
@@ -1147,17 +1136,13 @@ export namespace NMClient {
     type Ssid = object | null;
     type StringArray = object | null;
     type UintArray = object | null;
-    /**
-     * #NMSecretAgentCapabilities indicate various capabilities of the agent.
-     */
-
-    /**
-     * #NMSecretAgentCapabilities indicate various capabilities of the agent.
-     */
     export namespace SecretAgentCapabilities {
         export const $gtype: GObject.GType<SecretAgentCapabilities>;
     }
 
+    /**
+     * #NMSecretAgentCapabilities indicate various capabilities of the agent.
+     */
     enum SecretAgentCapabilities {
         /**
          * the agent supports no special capabilities
@@ -1174,17 +1159,14 @@ export namespace NMClient {
          */
         LAST,
     }
-    /**
-     * #NMSecretAgentGetSecretsFlags values modify the behavior of a GetSecrets request.
-     */
 
-    /**
-     * #NMSecretAgentGetSecretsFlags values modify the behavior of a GetSecrets request.
-     */
     export namespace SecretAgentGetSecretsFlags {
         export const $gtype: GObject.GType<SecretAgentGetSecretsFlags>;
     }
 
+    /**
+     * #NMSecretAgentGetSecretsFlags values modify the behavior of a GetSecrets request.
+     */
     enum SecretAgentGetSecretsFlags {
         /**
          * no special behavior; by default no
@@ -1213,6 +1195,7 @@ export namespace NMClient {
          */
         USER_REQUESTED,
     }
+
     namespace AccessPoint {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {

@@ -29,8 +29,9 @@ export namespace Dex {
         CATCH,
         FINALLY,
     }
+
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -60,6 +61,7 @@ export namespace Dex {
         RESOLVED,
         REJECTED,
     }
+
     /**
      * An asynchronous `pread()` wrapper.
      * @param aio_context

@@ -37,15 +37,6 @@ export namespace Cheese {
      * Errors that can occur during camera setup, when calling
      * cheese_camera_setup().
      */
-
-    /**
-     * Errors that can occur during camera setup, when calling
-     * cheese_camera_setup().
-     */
-    export namespace CameraError {
-        export const $gtype: GObject.GType<CameraError>;
-    }
-
     enum CameraError {
         /**
          * unknown error
@@ -61,19 +52,11 @@ export namespace Cheese {
          */
         NO_DEVICE,
     }
-    /**
-     * The media type, used for generating filenames with
-     * cheese_fileutil_get_new_media_filename().
-     */
 
     /**
      * The media type, used for generating filenames with
      * cheese_fileutil_get_new_media_filename().
      */
-    export namespace MediaMode {
-        export const $gtype: GObject.GType<MediaMode>;
-    }
-
     enum MediaMode {
         /**
          * photo
@@ -88,6 +71,7 @@ export namespace Cheese {
          */
         BURST,
     }
+
     /**
      * The filename suffix for photos saved by Cheese.
      */

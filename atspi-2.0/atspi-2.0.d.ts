@@ -19,19 +19,14 @@ export namespace Atspi {
      * Atspi-2.0
      */
 
-    /**
-     * Enumeration used by #AtspiMatchRule to specify
-     * how to interpret #AtspiAccessible objects.
-     */
-
-    /**
-     * Enumeration used by #AtspiMatchRule to specify
-     * how to interpret #AtspiAccessible objects.
-     */
     export namespace CollectionMatchType {
         export const $gtype: GObject.GType<CollectionMatchType>;
     }
 
+    /**
+     * Enumeration used by #AtspiMatchRule to specify
+     * how to interpret #AtspiAccessible objects.
+     */
     enum CollectionMatchType {
         /**
          * Indicates an error condition or
@@ -62,19 +57,15 @@ export namespace Atspi {
          */
         LAST_DEFINED,
     }
-    /**
-     * Enumeration used by interface #AtspiCollection to specify
-     * the way #AtspiAccesible objects should be sorted.
-     */
 
-    /**
-     * Enumeration used by interface #AtspiCollection to specify
-     * the way #AtspiAccesible objects should be sorted.
-     */
     export namespace CollectionSortOrder {
         export const $gtype: GObject.GType<CollectionSortOrder>;
     }
 
+    /**
+     * Enumeration used by interface #AtspiCollection to specify
+     * the way #AtspiAccesible objects should be sorted.
+     */
     enum CollectionSortOrder {
         /**
          * Invalid sort order
@@ -110,19 +101,15 @@ export namespace Atspi {
          */
         LAST_DEFINED,
     }
-    /**
-     * Enumeration used by interface #AtspiCollection to specify
-     * restrictions on #AtspiAccesible objects to be traversed.
-     */
 
-    /**
-     * Enumeration used by interface #AtspiCollection to specify
-     * restrictions on #AtspiAccesible objects to be traversed.
-     */
     export namespace CollectionTreeTraversalType {
         export const $gtype: GObject.GType<CollectionTreeTraversalType>;
     }
 
+    /**
+     * Enumeration used by interface #AtspiCollection to specify
+     * restrictions on #AtspiAccesible objects to be traversed.
+     */
     enum CollectionTreeTraversalType {
         /**
          * Restrict children tree traveral
@@ -142,51 +129,31 @@ export namespace Atspi {
          */
         LAST_DEFINED,
     }
-    /**
-     * The #AtspiComponentLayer of an #AtspiComponent instance indicates its
-     * relative stacking order with respect to the onscreen visual representation
-     * of the UI. #AtspiComponentLayer, in combination with #AtspiComponent bounds
-     * information, can be used to compute the visibility of all or part of a
-     * component.  This is important in programmatic determination of
-     * region-of-interest for magnification, and in
-     * flat screen review models of the screen, as well as
-     * for other uses. Objects residing in two of the #AtspiComponentLayer
-     * categories support further z-ordering information, with respect to their
-     * peers in the same layer: namely, `ATSPI_LAYER_WINDOW` and
-     * `ATSPI_LAYER_MDI`.  Relative stacking order for other objects within the
-     * same layer is not available; the recommended heuristic is
-     * first child paints first. In other words, assume that the
-     * first siblings in the child list are subject to being overpainted by later
-     * siblings if their bounds intersect. The order of layers, from bottom to top,
-     *  is: `ATSPI_LAYER_BACKGROUND,` `ATSPI_LAYER_WINDOW,` `ATSPI_LAYER_MDI,`
-     * `ATSPI_LAYER_CANVAS,` `ATSPI_LAYER_WIDGET,` `ATSPI_LAYER_POPUP,` and
-     * `ATSPI_LAYER_OVERLAY`.
-     */
 
-    /**
-     * The #AtspiComponentLayer of an #AtspiComponent instance indicates its
-     * relative stacking order with respect to the onscreen visual representation
-     * of the UI. #AtspiComponentLayer, in combination with #AtspiComponent bounds
-     * information, can be used to compute the visibility of all or part of a
-     * component.  This is important in programmatic determination of
-     * region-of-interest for magnification, and in
-     * flat screen review models of the screen, as well as
-     * for other uses. Objects residing in two of the #AtspiComponentLayer
-     * categories support further z-ordering information, with respect to their
-     * peers in the same layer: namely, `ATSPI_LAYER_WINDOW` and
-     * `ATSPI_LAYER_MDI`.  Relative stacking order for other objects within the
-     * same layer is not available; the recommended heuristic is
-     * first child paints first. In other words, assume that the
-     * first siblings in the child list are subject to being overpainted by later
-     * siblings if their bounds intersect. The order of layers, from bottom to top,
-     *  is: `ATSPI_LAYER_BACKGROUND,` `ATSPI_LAYER_WINDOW,` `ATSPI_LAYER_MDI,`
-     * `ATSPI_LAYER_CANVAS,` `ATSPI_LAYER_WIDGET,` `ATSPI_LAYER_POPUP,` and
-     * `ATSPI_LAYER_OVERLAY`.
-     */
     export namespace ComponentLayer {
         export const $gtype: GObject.GType<ComponentLayer>;
     }
 
+    /**
+     * The #AtspiComponentLayer of an #AtspiComponent instance indicates its
+     * relative stacking order with respect to the onscreen visual representation
+     * of the UI. #AtspiComponentLayer, in combination with #AtspiComponent bounds
+     * information, can be used to compute the visibility of all or part of a
+     * component.  This is important in programmatic determination of
+     * region-of-interest for magnification, and in
+     * flat screen review models of the screen, as well as
+     * for other uses. Objects residing in two of the #AtspiComponentLayer
+     * categories support further z-ordering information, with respect to their
+     * peers in the same layer: namely, `ATSPI_LAYER_WINDOW` and
+     * `ATSPI_LAYER_MDI`.  Relative stacking order for other objects within the
+     * same layer is not available; the recommended heuristic is
+     * first child paints first. In other words, assume that the
+     * first siblings in the child list are subject to being overpainted by later
+     * siblings if their bounds intersect. The order of layers, from bottom to top,
+     *  is: `ATSPI_LAYER_BACKGROUND,` `ATSPI_LAYER_WINDOW,` `ATSPI_LAYER_MDI,`
+     * `ATSPI_LAYER_CANVAS,` `ATSPI_LAYER_WIDGET,` `ATSPI_LAYER_POPUP,` and
+     * `ATSPI_LAYER_OVERLAY`.
+     */
     enum ComponentLayer {
         /**
          * Indicates an error condition or uninitialized value.
@@ -233,19 +200,15 @@ export namespace Atspi {
          */
         LAST_DEFINED,
     }
-    /**
-     * Enumeration used by #AtspiComponent, #AtspiImage, and #AtspiText interfaces
-     * to specify whether coordinates are relative to the window or the screen.
-     */
 
-    /**
-     * Enumeration used by #AtspiComponent, #AtspiImage, and #AtspiText interfaces
-     * to specify whether coordinates are relative to the window or the screen.
-     */
     export namespace CoordType {
         export const $gtype: GObject.GType<CoordType>;
     }
 
+    /**
+     * Enumeration used by #AtspiComponent, #AtspiImage, and #AtspiText interfaces
+     * to specify whether coordinates are relative to the window or the screen.
+     */
     enum CoordType {
         /**
          * Specifies xy coordinates relative to the screen.
@@ -262,21 +225,16 @@ export namespace Atspi {
          */
         PARENT,
     }
-    /**
-     * Enumeration used to specify the event types of interest to an
-     * #AtspiEventListener, or
-     * to identify the type of an event for which notification has been sent.
-     */
 
-    /**
-     * Enumeration used to specify the event types of interest to an
-     * #AtspiEventListener, or
-     * to identify the type of an event for which notification has been sent.
-     */
     export namespace EventType {
         export const $gtype: GObject.GType<EventType>;
     }
 
+    /**
+     * Enumeration used to specify the event types of interest to an
+     * #AtspiEventListener, or
+     * to identify the type of an event for which notification has been sent.
+     */
     enum EventType {
         /**
          * Indicates that a key on a keyboard device was
@@ -299,17 +257,14 @@ export namespace Atspi {
          */
         BUTTON_RELEASED_EVENT,
     }
-    /**
-     * Deprecated. Should not be used.
-     */
 
-    /**
-     * Deprecated. Should not be used.
-     */
     export namespace KeyEventType {
         export const $gtype: GObject.GType<KeyEventType>;
     }
 
+    /**
+     * Deprecated. Should not be used.
+     */
     enum KeyEventType {
         /**
          * Key press event
@@ -320,19 +275,15 @@ export namespace Atspi {
          */
         RELEASED,
     }
-    /**
-     * Enumeration used when synthesizing keyboard input via
-     * #atspi_generate_keyboard_event.
-     */
 
-    /**
-     * Enumeration used when synthesizing keyboard input via
-     * #atspi_generate_keyboard_event.
-     */
     export namespace KeySynthType {
         export const $gtype: GObject.GType<KeySynthType>;
     }
 
+    /**
+     * Enumeration used when synthesizing keyboard input via
+     * #atspi_generate_keyboard_event.
+     */
     enum KeySynthType {
         /**
          * Emulates the pressing of a hardware keyboard key.
@@ -379,19 +330,15 @@ export namespace Atspi {
          */
         UNLOCKMODIFIERS,
     }
-    /**
-     * Used by interfaces #AtspiText and #AtspiDocument, this
-     * enumeration corresponds to the POSIX 'setlocale' enum values.
-     */
 
-    /**
-     * Used by interfaces #AtspiText and #AtspiDocument, this
-     * enumeration corresponds to the POSIX 'setlocale' enum values.
-     */
     export namespace LocaleType {
         export const $gtype: GObject.GType<LocaleType>;
     }
 
+    /**
+     * Used by interfaces #AtspiText and #AtspiDocument, this
+     * enumeration corresponds to the POSIX 'setlocale' enum values.
+     */
     enum LocaleType {
         /**
          * For localizable natural-language messages.
@@ -467,51 +414,31 @@ export namespace Atspi {
          */
         NUMLOCK,
     }
-    /**
-     * #AtspiRelationType specifies a relationship between objects
-     * (possibly one-to-many
-     * or many-to-one) outside of the normal parent/child hierarchical
-     * relationship. It allows better semantic       identification of how objects
-     * are associated with one another.       For instance the
-     * `ATSPI_RELATION_LABELLED_BY`
-     * relationship may be used to identify labelling information       that should
-     * accompany the accessible name property when presenting an object's content or
-     * identity       to the end user.  Similarly,
-     * `ATSPI_RELATION_CONTROLLER_FOR` can be used
-     * to further specify the context in which a valuator is useful, and/or the
-     * other UI components which are directly effected by user interactions with
-     * the valuator. Common examples include association of scrollbars with the
-     * viewport or panel which they control.
-     *
-     *
-     * Enumeration used to specify
-     * the type of relation encapsulated in an #AtspiRelation object.
-     */
 
-    /**
-     * #AtspiRelationType specifies a relationship between objects
-     * (possibly one-to-many
-     * or many-to-one) outside of the normal parent/child hierarchical
-     * relationship. It allows better semantic       identification of how objects
-     * are associated with one another.       For instance the
-     * `ATSPI_RELATION_LABELLED_BY`
-     * relationship may be used to identify labelling information       that should
-     * accompany the accessible name property when presenting an object's content or
-     * identity       to the end user.  Similarly,
-     * `ATSPI_RELATION_CONTROLLER_FOR` can be used
-     * to further specify the context in which a valuator is useful, and/or the
-     * other UI components which are directly effected by user interactions with
-     * the valuator. Common examples include association of scrollbars with the
-     * viewport or panel which they control.
-     *
-     *
-     * Enumeration used to specify
-     * the type of relation encapsulated in an #AtspiRelation object.
-     */
     export namespace RelationType {
         export const $gtype: GObject.GType<RelationType>;
     }
 
+    /**
+     * #AtspiRelationType specifies a relationship between objects
+     * (possibly one-to-many
+     * or many-to-one) outside of the normal parent/child hierarchical
+     * relationship. It allows better semantic       identification of how objects
+     * are associated with one another.       For instance the
+     * `ATSPI_RELATION_LABELLED_BY`
+     * relationship may be used to identify labelling information       that should
+     * accompany the accessible name property when presenting an object's content or
+     * identity       to the end user.  Similarly,
+     * `ATSPI_RELATION_CONTROLLER_FOR` can be used
+     * to further specify the context in which a valuator is useful, and/or the
+     * other UI components which are directly effected by user interactions with
+     * the valuator. Common examples include association of scrollbars with the
+     * viewport or panel which they control.
+     *
+     *
+     * Enumeration used to specify
+     * the type of relation encapsulated in an #AtspiRelation object.
+     */
     enum RelationType {
         /**
          * Not a meaningful relationship; clients should not
@@ -667,19 +594,15 @@ export namespace Atspi {
          */
         LAST_DEFINED,
     }
-    /**
-     * Enumeration used by interface #AtspiAccessible to specify the role
-     * of an #AtspiAccessible object.
-     */
 
-    /**
-     * Enumeration used by interface #AtspiAccessible to specify the role
-     * of an #AtspiAccessible object.
-     */
     export namespace Role {
         export const $gtype: GObject.GType<Role>;
     }
 
+    /**
+     * Enumeration used by interface #AtspiAccessible to specify the role
+     * of an #AtspiAccessible object.
+     */
     enum Role {
         /**
          * A role indicating an error condition, such as
@@ -1409,19 +1332,15 @@ export namespace Atspi {
          */
         LAST_DEFINED,
     }
-    /**
-     * Enumeration used by interface #AtspiAccessible to specify where an
-     * #AtspiAccessible object should be placed on the screen when using scroll_to.
-     */
 
-    /**
-     * Enumeration used by interface #AtspiAccessible to specify where an
-     * #AtspiAccessible object should be placed on the screen when using scroll_to.
-     */
     export namespace ScrollType {
         export const $gtype: GObject.GType<ScrollType>;
     }
 
+    /**
+     * Enumeration used by interface #AtspiAccessible to specify where an
+     * #AtspiAccessible object should be placed on the screen when using scroll_to.
+     */
     enum ScrollType {
         /**
          * Scroll the object to the top left corner of the
@@ -1458,19 +1377,15 @@ export namespace Atspi {
          */
         ANYWHERE,
     }
-    /**
-     * Enumeration used by various interfaces indicating every possible state
-     * an #AtspiAccesible object can assume.
-     */
 
-    /**
-     * Enumeration used by various interfaces indicating every possible state
-     * an #AtspiAccesible object can assume.
-     */
     export namespace StateType {
         export const $gtype: GObject.GType<StateType>;
     }
 
+    /**
+     * Enumeration used by various interfaces indicating every possible state
+     * an #AtspiAccesible object can assume.
+     */
     enum StateType {
         /**
          * Indicates an invalid state - probably an error
@@ -1772,27 +1687,19 @@ export namespace Atspi {
          */
         LAST_DEFINED,
     }
-    /**
-     * Specifies the boundary conditions determining a run of text as returned from
-     * #atspi_text_get_text_at_offset, #atspi_text_get_text_after_offset, and
-     * #atspi_text_get_text_before_offset.
-     *
-     * This enumerationis deprecated since 2.9.90 and should not be used. Use
-     * AtspiTextGranularity with #atspi_text_get_string_at_offset instead.
-     */
 
-    /**
-     * Specifies the boundary conditions determining a run of text as returned from
-     * #atspi_text_get_text_at_offset, #atspi_text_get_text_after_offset, and
-     * #atspi_text_get_text_before_offset.
-     *
-     * This enumerationis deprecated since 2.9.90 and should not be used. Use
-     * AtspiTextGranularity with #atspi_text_get_string_at_offset instead.
-     */
     export namespace TextBoundaryType {
         export const $gtype: GObject.GType<TextBoundaryType>;
     }
 
+    /**
+     * Specifies the boundary conditions determining a run of text as returned from
+     * #atspi_text_get_text_at_offset, #atspi_text_get_text_after_offset, and
+     * #atspi_text_get_text_before_offset.
+     *
+     * This enumerationis deprecated since 2.9.90 and should not be used. Use
+     * AtspiTextGranularity with #atspi_text_get_string_at_offset instead.
+     */
     enum TextBoundaryType {
         /**
          * An #AtspiText instance is bounded by this
@@ -1846,19 +1753,15 @@ export namespace Atspi {
          */
         LINE_END,
     }
-    /**
-     * Enumeration used by interface #AtspiText to indicate
-     * how to treat characters intersecting bounding boxes.
-     */
 
-    /**
-     * Enumeration used by interface #AtspiText to indicate
-     * how to treat characters intersecting bounding boxes.
-     */
     export namespace TextClipType {
         export const $gtype: GObject.GType<TextClipType>;
     }
 
+    /**
+     * Enumeration used by interface #AtspiText to indicate
+     * how to treat characters intersecting bounding boxes.
+     */
     enum TextClipType {
         /**
          * No characters/glyphs are omitted.
@@ -1880,19 +1783,15 @@ export namespace Atspi {
          */
         BOTH,
     }
-    /**
-     * Text granularity types used for specifying the granularity of the region of
-     * text we are interested in.
-     */
 
-    /**
-     * Text granularity types used for specifying the granularity of the region of
-     * text we are interested in.
-     */
     export namespace TextGranularity {
         export const $gtype: GObject.GType<TextGranularity>;
     }
 
+    /**
+     * Text granularity types used for specifying the granularity of the region of
+     * text we are interested in.
+     */
     enum TextGranularity {
         /**
          * Granularity is defined by the boundaries between characters
@@ -1924,6 +1823,7 @@ export namespace Atspi {
          */
         PARAGRAPH,
     }
+
     /**
      * One higher than the highest valid value of #AtspiComponentLayer.
      */
@@ -2213,7 +2113,6 @@ export namespace Atspi {
     interface KeyCallback {
         (device: Device, pressed: boolean, keycode: number, keysym: number, modifiers: number, keystring: string): void;
     }
-
     export namespace Cache {
         export const $gtype: GObject.GType<Cache>;
     }
@@ -2232,29 +2131,20 @@ export namespace Atspi {
         DEFAULT,
         UNDEFINED,
     }
-    /**
-     * Specifies the type of a key listener event.
-     * The values above can and should be bitwise-'OR'-ed
-     * together, observing the compatibility limitations specified in the description of
-     * each value.  For instance, #ATSPI_KEYLISTENER_ALL_WINDOWS | #ATSPI_KEYLISTENER_CANCONSUME is
-     * a commonly used combination which gives the AT complete control over the delivery of matching
-     * events.  However, such filters should be used sparingly as they may have a negative impact on
-     * system performance.
-     */
 
-    /**
-     * Specifies the type of a key listener event.
-     * The values above can and should be bitwise-'OR'-ed
-     * together, observing the compatibility limitations specified in the description of
-     * each value.  For instance, #ATSPI_KEYLISTENER_ALL_WINDOWS | #ATSPI_KEYLISTENER_CANCONSUME is
-     * a commonly used combination which gives the AT complete control over the delivery of matching
-     * events.  However, such filters should be used sparingly as they may have a negative impact on
-     * system performance.
-     */
     export namespace KeyListenerSyncType {
         export const $gtype: GObject.GType<KeyListenerSyncType>;
     }
 
+    /**
+     * Specifies the type of a key listener event.
+     * The values above can and should be bitwise-'OR'-ed
+     * together, observing the compatibility limitations specified in the description of
+     * each value.  For instance, #ATSPI_KEYLISTENER_ALL_WINDOWS | #ATSPI_KEYLISTENER_CANCONSUME is
+     * a commonly used combination which gives the AT complete control over the delivery of matching
+     * events.  However, such filters should be used sparingly as they may have a negative impact on
+     * system performance.
+     */
     enum KeyListenerSyncType {
         /**
          * Events may be delivered asynchronously,
@@ -2283,6 +2173,7 @@ export namespace Atspi {
          */
         ALL_WINDOWS,
     }
+
     namespace Accessible {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {

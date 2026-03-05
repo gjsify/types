@@ -32,6 +32,7 @@ export namespace Geoclue {
         STREET,
         EXACT,
     }
+
     /**
      * Gets a machine-readable description of the <link linkend="gdbus-interface-org-freedesktop-GeoClue2-Client.top_of_page">org.freedesktop.GeoClue2.Client</link> D-Bus interface.
      * @returns A #GDBusInterfaceInfo. Do not free.
@@ -71,7 +72,6 @@ export namespace Geoclue {
      * @returns The last property id.
      */
     function manager_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
-
     export namespace ClientProxyCreateFlags {
         export const $gtype: GObject.GType<ClientProxyCreateFlags>;
     }
@@ -80,6 +80,7 @@ export namespace Geoclue {
         NONE,
         AUTO_DELETE,
     }
+
     namespace ClientProxy {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {

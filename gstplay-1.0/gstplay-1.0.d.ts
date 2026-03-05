@@ -48,8 +48,9 @@ export namespace GstPlay {
          */
         CONTRAST,
     }
+
     class PlayError extends GLib.Error {
-        static $gtype: GObject.GType<PlayError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -131,10 +132,6 @@ export namespace GstPlay {
         SEEK_DONE,
     }
 
-    export namespace PlaySnapshotFormat {
-        export const $gtype: GObject.GType<PlaySnapshotFormat>;
-    }
-
     enum PlaySnapshotFormat {
         /**
          * raw native format.
@@ -181,6 +178,7 @@ export namespace GstPlay {
          */
         PLAYING,
     }
+
     /**
      * Gets a string representing the given color balance type.
      * @param type a #GstPlayColorBalanceType

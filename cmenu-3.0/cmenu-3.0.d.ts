@@ -20,10 +20,6 @@ export namespace CMenu {
      * CMenu-3.0
      */
 
-    export namespace TreeItemType {
-        export const $gtype: GObject.GType<TreeItemType>;
-    }
-
     enum TreeItemType {
         INVALID,
         DIRECTORY,
@@ -32,8 +28,8 @@ export namespace CMenu {
         HEADER,
         ALIAS,
     }
-    const DESKTOPAPPINFO_FLATPAK_SUFFIX: string;
 
+    const DESKTOPAPPINFO_FLATPAK_SUFFIX: string;
     export namespace TreeFlags {
         export const $gtype: GObject.GType<TreeFlags>;
     }
@@ -47,6 +43,7 @@ export namespace CMenu {
         SORT_DISPLAY_NAME,
         INCLUDE_UNALLOCATED,
     }
+
     namespace DesktopAppInfo {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

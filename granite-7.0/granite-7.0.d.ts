@@ -40,7 +40,7 @@ export namespace Granite {
      */
 
     class ServicesContractorError extends GLib.Error {
-        static $gtype: GObject.GType<ServicesContractorError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -72,6 +72,7 @@ export namespace Granite {
         DARK,
         LIGHT,
     }
+
     const SettingsUriLOCATION: string;
     const SettingsUriONLINE_ACCOUNTS: string;
     const SettingsUriNETWORK: string;

@@ -100,6 +100,7 @@ export namespace Fep {
          */
         RESIZED,
     }
+
     namespace GClient {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

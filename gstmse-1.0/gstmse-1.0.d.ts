@@ -20,21 +20,15 @@ export namespace GstMse {
      * GstMse-1.0
      */
 
-    /**
-     * Reasons for ending a #GstMediaSource using gst_media_source_end_of_stream().
-     *
-     * [Specification](https://www.w3.org/TR/media-source-2/#dom-endofstreamerror)
-     */
-
-    /**
-     * Reasons for ending a #GstMediaSource using gst_media_source_end_of_stream().
-     *
-     * [Specification](https://www.w3.org/TR/media-source-2/#dom-endofstreamerror)
-     */
     export namespace MediaSourceEOSError {
         export const $gtype: GObject.GType<MediaSourceEOSError>;
     }
 
+    /**
+     * Reasons for ending a #GstMediaSource using gst_media_source_end_of_stream().
+     *
+     * [Specification](https://www.w3.org/TR/media-source-2/#dom-endofstreamerror)
+     */
     enum MediaSourceEOSError {
         /**
          * End the stream successfully
@@ -49,6 +43,7 @@ export namespace GstMse {
          */
         DECODE,
     }
+
     /**
      * Any error that can occur within #GstMediaSource or #GstSourceBuffer APIs.
      * These values correspond directly to those in the Web IDL specification.
@@ -56,7 +51,7 @@ export namespace GstMse {
      * [Specification](https://webidl.spec.whatwg.org/#idl-DOMException-error-names)
      */
     class MediaSourceError extends GLib.Error {
-        static $gtype: GObject.GType<MediaSourceError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -78,21 +73,15 @@ export namespace GstMse {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Describes the possible states of the Media Source.
-     *
-     * [Specification](https://www.w3.org/TR/media-source-2/#dom-readystate)
-     */
-
-    /**
-     * Describes the possible states of the Media Source.
-     *
-     * [Specification](https://www.w3.org/TR/media-source-2/#dom-readystate)
-     */
     export namespace MediaSourceReadyState {
         export const $gtype: GObject.GType<MediaSourceReadyState>;
     }
 
+    /**
+     * Describes the possible states of the Media Source.
+     *
+     * [Specification](https://www.w3.org/TR/media-source-2/#dom-readystate)
+     */
     enum MediaSourceReadyState {
         /**
          * The #GstMediaSource is not connected to
@@ -110,27 +99,19 @@ export namespace GstMse {
          */
         ENDED,
     }
-    /**
-     * Describes how much information a #GstMseSrc has about the media it is playing
-     * back at the current playback #GstMseSrc:position. This type corresponds
-     * directly to the ready state of a HTML Media Element and is a separate concept
-     * from #GstMediaSourceReadyState.
-     *
-     * [Specification](https://html.spec.whatwg.org/multipage/media.html#ready-states)
-     */
 
-    /**
-     * Describes how much information a #GstMseSrc has about the media it is playing
-     * back at the current playback #GstMseSrc:position. This type corresponds
-     * directly to the ready state of a HTML Media Element and is a separate concept
-     * from #GstMediaSourceReadyState.
-     *
-     * [Specification](https://html.spec.whatwg.org/multipage/media.html#ready-states)
-     */
     export namespace MseSrcReadyState {
         export const $gtype: GObject.GType<MseSrcReadyState>;
     }
 
+    /**
+     * Describes how much information a #GstMseSrc has about the media it is playing
+     * back at the current playback #GstMseSrc:position. This type corresponds
+     * directly to the ready state of a HTML Media Element and is a separate concept
+     * from #GstMediaSourceReadyState.
+     *
+     * [Specification](https://html.spec.whatwg.org/multipage/media.html#ready-states)
+     */
     enum MseSrcReadyState {
         /**
          * No information is available about the
@@ -159,21 +140,19 @@ export namespace GstMse {
          */
         ENOUGH_DATA,
     }
-    /**
-     * [Specification](https://www.w3.org/TR/media-source-2/#dom-appendmode)
-     */
 
-    /**
-     * [Specification](https://www.w3.org/TR/media-source-2/#dom-appendmode)
-     */
     export namespace SourceBufferAppendMode {
         export const $gtype: GObject.GType<SourceBufferAppendMode>;
     }
 
+    /**
+     * [Specification](https://www.w3.org/TR/media-source-2/#dom-appendmode)
+     */
     enum SourceBufferAppendMode {
         SEGMENTS,
         SEQUENCE,
     }
+
     /**
      * Any error type that can be reported by the Media Source API.
      */

@@ -30,14 +30,6 @@ export namespace EDataBook {
     /**
      * What compare function should be used when comparing two values.
      */
-
-    /**
-     * What compare function should be used when comparing two values.
-     */
-    export namespace BookBackendSexpCompareKind {
-        export const $gtype: GObject.GType<BookBackendSexpCompareKind>;
-    }
-
     enum BookBackendSexpCompareKind {
         /**
          * Unknown compare kind
@@ -60,13 +52,6 @@ export namespace EDataBook {
          */
         IS,
     }
-    /**
-     * Specifies the start position to in the list of traversed contacts
-     * in calls to e_book_cache_cursor_step().
-     *
-     * When an #EBookCacheCursor is created, the current position implied by %E_BOOK_CACHE_CURSOR_ORIGIN_CURRENT
-     * is the same as %E_BOOK_CACHE_CURSOR_ORIGIN_BEGIN.
-     */
 
     /**
      * Specifies the start position to in the list of traversed contacts
@@ -75,10 +60,6 @@ export namespace EDataBook {
      * When an #EBookCacheCursor is created, the current position implied by %E_BOOK_CACHE_CURSOR_ORIGIN_CURRENT
      * is the same as %E_BOOK_CACHE_CURSOR_ORIGIN_BEGIN.
      */
-    export namespace BookCacheCursorOrigin {
-        export const $gtype: GObject.GType<BookCacheCursorOrigin>;
-    }
-
     enum BookCacheCursorOrigin {
         /**
          * The current cursor position.
@@ -93,17 +74,10 @@ export namespace EDataBook {
          */
         END,
     }
-    /**
-     * Defines the types of possible errors reported by the #EBookSqlite
-     */
 
     /**
      * Defines the types of possible errors reported by the #EBookSqlite
      */
-    export namespace BookSqliteError {
-        export const $gtype: GObject.GType<BookSqliteError>;
-    }
-
     enum BookSqliteError {
         /**
          * An error was reported from the SQLite engine
@@ -141,17 +115,10 @@ export namespace EDataBook {
          */
         LOAD,
     }
-    /**
-     * Indicates the type of change which occurred in an #EbSqlChangeCallback
-     */
 
     /**
      * Indicates the type of change which occurred in an #EbSqlChangeCallback
      */
-    export namespace bSqlChangeType {
-        export const $gtype: GObject.GType<bSqlChangeType>;
-    }
-
     enum bSqlChangeType {
         /**
          * Contact was modified as a result of its addition to the addressbook
@@ -166,13 +133,6 @@ export namespace EDataBook {
          */
         LAST,
     }
-    /**
-     * Specifies the start position to in the list of traversed contacts
-     * in calls to e_book_sqlite_cursor_step().
-     *
-     * When an #EbSqlCursor is created, the current position implied by %EBSQL_CURSOR_ORIGIN_CURRENT
-     * is the same as %EBSQL_CURSOR_ORIGIN_BEGIN.
-     */
 
     /**
      * Specifies the start position to in the list of traversed contacts
@@ -181,10 +141,6 @@ export namespace EDataBook {
      * When an #EbSqlCursor is created, the current position implied by %EBSQL_CURSOR_ORIGIN_CURRENT
      * is the same as %EBSQL_CURSOR_ORIGIN_BEGIN.
      */
-    export namespace bSqlCursorOrigin {
-        export const $gtype: GObject.GType<bSqlCursorOrigin>;
-    }
-
     enum bSqlCursorOrigin {
         /**
          * The current cursor position
@@ -199,17 +155,10 @@ export namespace EDataBook {
          */
         END,
     }
-    /**
-     * Indicates the type of lock requested in e_book_sqlite_lock()
-     */
 
     /**
      * Indicates the type of lock requested in e_book_sqlite_lock()
      */
-    export namespace bSqlLockType {
-        export const $gtype: GObject.GType<bSqlLockType>;
-    }
-
     enum bSqlLockType {
         /**
          * Obtain a lock for reading
@@ -220,12 +169,6 @@ export namespace EDataBook {
          */
         WRITE,
     }
-    /**
-     * Indicates what type of action to take while unlocking the sqlite with e_book_sqlite_unlock()
-     *
-     * In the case that some addressbook modification failed while holding an %EBSQL_LOCK_WRITE lock,
-     * then the #EBookSqlite must be unlocked with %EBSQL_UNLOCK_ROLLBACK.
-     */
 
     /**
      * Indicates what type of action to take while unlocking the sqlite with e_book_sqlite_unlock()
@@ -233,10 +176,6 @@ export namespace EDataBook {
      * In the case that some addressbook modification failed while holding an %EBSQL_LOCK_WRITE lock,
      * then the #EBookSqlite must be unlocked with %EBSQL_UNLOCK_ROLLBACK.
      */
-    export namespace bSqlUnlockAction {
-        export const $gtype: GObject.GType<bSqlUnlockAction>;
-    }
-
     enum bSqlUnlockAction {
         /**
          * Just unlock, this is appropriate for locks which were obtained with %EBSQL_LOCK_READ
@@ -251,6 +190,7 @@ export namespace EDataBook {
          */
         ROLLBACK,
     }
+
     /**
      * This key can be used with e_book_sqlite_get_key_value().
      *
@@ -379,14 +319,6 @@ export namespace EDataBook {
     /**
      * Defines the behaviour of e_book_cache_cursor_step().
      */
-
-    /**
-     * Defines the behaviour of e_book_cache_cursor_step().
-     */
-    export namespace BookCacheCursorStepFlags {
-        export const $gtype: GObject.GType<BookCacheCursorStepFlags>;
-    }
-
     enum BookCacheCursorStepFlags {
         /**
          * The cursor position should be modified while stepping.
@@ -397,17 +329,10 @@ export namespace EDataBook {
          */
         FETCH,
     }
-    /**
-     * Defines the behaviour of e_book_sqlite_cursor_step().
-     */
 
     /**
      * Defines the behaviour of e_book_sqlite_cursor_step().
      */
-    export namespace bSqlCursorStepFlags {
-        export const $gtype: GObject.GType<bSqlCursorStepFlags>;
-    }
-
     enum bSqlCursorStepFlags {
         /**
          * The cursor position should be modified while stepping
@@ -418,6 +343,7 @@ export namespace EDataBook {
          */
         FETCH,
     }
+
     namespace BookBackend {
         // Signal signatures
         interface SignalSignatures extends EBackend.Backend.SignalSignatures {

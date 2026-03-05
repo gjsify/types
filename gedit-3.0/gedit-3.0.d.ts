@@ -49,6 +49,7 @@ export namespace Gedit {
         STATE_EXTERNALLY_MODIFIED_NOTIFICATION,
         NUM_OF_STATES,
     }
+
     /**
      * Loads `location`. Ignores non-existing locations.
      * @param window a #GeditWindow
@@ -243,29 +244,19 @@ export namespace Gedit {
     interface MessageCallback {
         (bus: MessageBus, message: Message): void;
     }
-    /**
-     * Enumeration of debug sections.
-     *
-     * Debugging output for a section is enabled by setting an environment variable
-     * of the same name. For example, setting the <code>GEDIT_DEBUG_PLUGINS</code>
-     * environment variable enables all debugging output for the %GEDIT_DEBUG_PLUGINS
-     * section. Setting the special environment variable <code>GEDIT_DEBUG</code>
-     * enables output for all sections.
-     */
-
-    /**
-     * Enumeration of debug sections.
-     *
-     * Debugging output for a section is enabled by setting an environment variable
-     * of the same name. For example, setting the <code>GEDIT_DEBUG_PLUGINS</code>
-     * environment variable enables all debugging output for the %GEDIT_DEBUG_PLUGINS
-     * section. Setting the special environment variable <code>GEDIT_DEBUG</code>
-     * enables output for all sections.
-     */
     export namespace DebugSection {
         export const $gtype: GObject.GType<DebugSection>;
     }
 
+    /**
+     * Enumeration of debug sections.
+     *
+     * Debugging output for a section is enabled by setting an environment variable
+     * of the same name. For example, setting the <code>GEDIT_DEBUG_PLUGINS</code>
+     * environment variable enables all debugging output for the %GEDIT_DEBUG_PLUGINS
+     * section. Setting the special environment variable <code>GEDIT_DEBUG</code>
+     * enables output for all sections.
+     */
     enum DebugSection {
         NO_DEBUG,
         DEBUG_VIEW,
@@ -291,6 +282,7 @@ export namespace Gedit {
         LOADING,
         ERROR,
     }
+
     namespace App {
         // Signal signatures
         interface SignalSignatures extends Gtk.Application.SignalSignatures {

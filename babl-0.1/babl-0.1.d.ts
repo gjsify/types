@@ -17,10 +17,6 @@ export namespace Babl {
      * Babl-0.1
      */
 
-    export namespace IccIntent {
-        export const $gtype: GObject.GType<IccIntent>;
-    }
-
     enum IccIntent {
         PERCEPTUAL,
         RELATIVE_COLORIMETRIC,
@@ -29,14 +25,11 @@ export namespace Babl {
         PERFORMANCE,
     }
 
-    export namespace SpaceFlags {
-        export const $gtype: GObject.GType<SpaceFlags>;
-    }
-
     enum SpaceFlags {
         NONE,
         EQUALIZE,
     }
+
     const ALPHA_FLOOR: number;
     const ALPHA_FLOOR_F: number;
     const MAJOR_VERSION: number;
@@ -433,11 +426,6 @@ export namespace Babl {
             n: number,
         ): void;
     }
-
-    export namespace ModelFlag {
-        export const $gtype: GObject.GType<ModelFlag>;
-    }
-
     enum ModelFlag {
         /**
          * the model encodes alpha.
@@ -480,6 +468,7 @@ export namespace Babl {
          */
         CMYK,
     }
+
     /**
      * The babl API is based around polymorphism and almost everything is
      * a Babl object.

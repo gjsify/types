@@ -1,6 +1,6 @@
 {
     "name": "@girs/gobject-2.0",
-    "version": "2.86.4-4.0.0-beta.39",
+    "version": "2.86.4-4.0.0-beta.40",
     "description": "GJS TypeScript type definitions for GObject-2.0, generated from library version 2.86.4",
     "type": "module",
     "module": "gobject-2.0.js",
@@ -31,8 +31,8 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-beta.39",
-      "@girs/glib-2.0": "2.86.4-4.0.0-beta.39"    },
+      "@girs/gjs": "4.0.0-beta.40",
+      "@girs/glib-2.0": "2.86.4-4.0.0-beta.40"    },
     "devDependencies": {
       "typescript": "*"
     },

@@ -32,29 +32,19 @@ export namespace Clutter {
      * Clutter-15
      */
 
-    /**
-     * Controls how a #ClutterActor should align itself inside the extra space
-     * assigned to it during the allocation.
-     *
-     * Alignment only matters if the allocated space given to an actor is
-     * bigger than its natural size; for example, when
-     * the [property`Clutter`.Actor:x-expand] or the [property`Clutter`.Actor:y-expand]
-     * properties of #ClutterActor are set to %TRUE.
-     */
-
-    /**
-     * Controls how a #ClutterActor should align itself inside the extra space
-     * assigned to it during the allocation.
-     *
-     * Alignment only matters if the allocated space given to an actor is
-     * bigger than its natural size; for example, when
-     * the [property`Clutter`.Actor:x-expand] or the [property`Clutter`.Actor:y-expand]
-     * properties of #ClutterActor are set to %TRUE.
-     */
     export namespace ActorAlign {
         export const $gtype: GObject.GType<ActorAlign>;
     }
 
+    /**
+     * Controls how a #ClutterActor should align itself inside the extra space
+     * assigned to it during the allocation.
+     *
+     * Alignment only matters if the allocated space given to an actor is
+     * bigger than its natural size; for example, when
+     * the [property`Clutter`.Actor:x-expand] or the [property`Clutter`.Actor:y-expand]
+     * properties of #ClutterActor are set to %TRUE.
+     */
     enum ActorAlign {
         /**
          * Stretch to cover the whole allocated space
@@ -77,19 +67,15 @@ export namespace Clutter {
          */
         END,
     }
-    /**
-     * Specifies the axis on which #ClutterAlignConstraint should maintain
-     * the alignment.
-     */
 
-    /**
-     * Specifies the axis on which #ClutterAlignConstraint should maintain
-     * the alignment.
-     */
     export namespace AlignAxis {
         export const $gtype: GObject.GType<AlignAxis>;
     }
 
+    /**
+     * Specifies the axis on which #ClutterAlignConstraint should maintain
+     * the alignment.
+     */
     enum AlignAxis {
         /**
          * Maintain the alignment on the X axis
@@ -104,39 +90,25 @@ export namespace Clutter {
          */
         BOTH,
     }
-    /**
-     * The animation modes used by [iface`Animatable]`.
-     *
-     * This enumeration can be expanded in later versions of Clutter.
-     *
-     * <figure id="easing-modes">
-     *   <title>Easing modes provided by Clutter</title>
-     *   <graphic fileref="easing-modes.png" format="PNG"/>
-     * </figure>
-     *
-     * Every global alpha function registered using clutter_alpha_register_func()
-     * or clutter_alpha_register_closure() will have a logical id greater than
-     * %CLUTTER_ANIMATION_LAST.
-     */
 
-    /**
-     * The animation modes used by [iface`Animatable]`.
-     *
-     * This enumeration can be expanded in later versions of Clutter.
-     *
-     * <figure id="easing-modes">
-     *   <title>Easing modes provided by Clutter</title>
-     *   <graphic fileref="easing-modes.png" format="PNG"/>
-     * </figure>
-     *
-     * Every global alpha function registered using clutter_alpha_register_func()
-     * or clutter_alpha_register_closure() will have a logical id greater than
-     * %CLUTTER_ANIMATION_LAST.
-     */
     export namespace AnimationMode {
         export const $gtype: GObject.GType<AnimationMode>;
     }
 
+    /**
+     * The animation modes used by [iface`Animatable]`.
+     *
+     * This enumeration can be expanded in later versions of Clutter.
+     *
+     * <figure id="easing-modes">
+     *   <title>Easing modes provided by Clutter</title>
+     *   <graphic fileref="easing-modes.png" format="PNG"/>
+     * </figure>
+     *
+     * Every global alpha function registered using clutter_alpha_register_func()
+     * or clutter_alpha_register_closure() will have a logical id greater than
+     * %CLUTTER_ANIMATION_LAST.
+     */
     enum AnimationMode {
         /**
          * custom progress function
@@ -332,17 +304,14 @@ export namespace Clutter {
          */
         ANIMATION_LAST,
     }
-    /**
-     * Specifies which property should be used in a binding
-     */
 
-    /**
-     * Specifies which property should be used in a binding
-     */
     export namespace BindCoordinate {
         export const $gtype: GObject.GType<BindCoordinate>;
     }
 
+    /**
+     * Specifies which property should be used in a binding
+     */
     enum BindCoordinate {
         /**
          * Bind the X coordinate
@@ -385,17 +354,14 @@ export namespace Clutter {
         RELEASED,
         PRESSED,
     }
-    /**
-     * Colorspace information.
-     */
 
-    /**
-     * Colorspace information.
-     */
     export namespace Colorspace {
         export const $gtype: GObject.GType<Colorspace>;
     }
 
+    /**
+     * Colorspace information.
+     */
     enum Colorspace {
         /**
          * Unknown colorspace
@@ -410,17 +376,14 @@ export namespace Clutter {
          */
         BT2020,
     }
-    /**
-     * Controls the alignment of the #ClutterContent inside a #ClutterActor.
-     */
 
-    /**
-     * Controls the alignment of the #ClutterContent inside a #ClutterActor.
-     */
     export namespace ContentGravity {
         export const $gtype: GObject.GType<ContentGravity>;
     }
 
+    /**
+     * Controls the alignment of the #ClutterContent inside a #ClutterActor.
+     */
     enum ContentGravity {
         /**
          * Align the content to the top left corner
@@ -468,17 +431,14 @@ export namespace Clutter {
          */
         RESIZE_ASPECT,
     }
-    /**
-     * The texture format required to store a specific encoding.
-     */
 
-    /**
-     * The texture format required to store a specific encoding.
-     */
     export namespace EncodingRequiredFormat {
         export const $gtype: GObject.GType<EncodingRequiredFormat>;
     }
 
+    /**
+     * The texture format required to store a specific encoding.
+     */
     enum EncodingRequiredFormat {
         /**
          * 8bpc uint
@@ -502,17 +462,14 @@ export namespace Clutter {
         CAPTURE,
         BUBBLE,
     }
-    /**
-     * Types of events.
-     */
 
-    /**
-     * Types of events.
-     */
     export namespace EventType {
         export const $gtype: GObject.GType<EventType>;
     }
 
+    /**
+     * Types of events.
+     */
     enum EventType {
         /**
          * Empty event
@@ -636,19 +593,15 @@ export namespace Clutter {
         CANCELLED,
         CLUTTER_N_GESTURE_STATES,
     }
-    /**
-     * Enum passed to the [method`GestureAction`.set_threshold_trigger_edge]
-     * function.
-     */
 
-    /**
-     * Enum passed to the [method`GestureAction`.set_threshold_trigger_edge]
-     * function.
-     */
     export namespace GestureTriggerEdge {
         export const $gtype: GObject.GType<GestureTriggerEdge>;
     }
 
+    /**
+     * Enum passed to the [method`GestureAction`.set_threshold_trigger_edge]
+     * function.
+     */
     enum GestureTriggerEdge {
         /**
          * Tell #ClutterGestureAction that
@@ -669,17 +622,14 @@ export namespace Clutter {
          */
         BEFORE,
     }
-    /**
-     * Grid position modes.
-     */
 
-    /**
-     * Grid position modes.
-     */
     export namespace GridPosition {
         export const $gtype: GObject.GType<GridPosition>;
     }
 
+    /**
+     * Grid position modes.
+     */
     enum GridPosition {
         /**
          * left position
@@ -698,17 +648,14 @@ export namespace Clutter {
          */
         BOTTOM,
     }
-    /**
-     * The type of axes Clutter recognizes on a #ClutterInputDevice
-     */
 
-    /**
-     * The type of axes Clutter recognizes on a #ClutterInputDevice
-     */
     export namespace InputAxis {
         export const $gtype: GObject.GType<InputAxis>;
     }
 
+    /**
+     * The type of axes Clutter recognizes on a #ClutterInputDevice
+     */
     enum InputAxis {
         /**
          * Unused axis
@@ -795,17 +742,14 @@ export namespace Clutter {
         UNKNOWN,
         FINGER,
     }
-    /**
-     * Defines the type of tool that a #ClutterInputDeviceTool represents.8
-     */
 
-    /**
-     * Defines the type of tool that a #ClutterInputDeviceTool represents.8
-     */
     export namespace InputDeviceToolType {
         export const $gtype: GObject.GType<InputDeviceToolType>;
     }
 
+    /**
+     * Defines the type of tool that a #ClutterInputDeviceTool represents.8
+     */
     enum InputDeviceToolType {
         /**
          * No tool
@@ -840,23 +784,17 @@ export namespace Clutter {
          */
         LENS,
     }
-    /**
-     * The types of input devices available.
-     *
-     * The #ClutterInputDeviceType enumeration can be extended at later
-     * date; not every platform supports every input device type.
-     */
 
-    /**
-     * The types of input devices available.
-     *
-     * The #ClutterInputDeviceType enumeration can be extended at later
-     * date; not every platform supports every input device type.
-     */
     export namespace InputDeviceType {
         export const $gtype: GObject.GType<InputDeviceType>;
     }
 
+    /**
+     * The types of input devices available.
+     *
+     * The #ClutterInputDeviceType enumeration can be extended at later
+     * date; not every platform supports every input device type.
+     */
     enum InputDeviceType {
         /**
          * A pointer device
@@ -907,17 +845,14 @@ export namespace Clutter {
          */
         N_DEVICE_TYPES,
     }
-    /**
-     * The mode for input devices available.
-     */
 
-    /**
-     * The mode for input devices available.
-     */
     export namespace InputMode {
         export const $gtype: GObject.GType<InputMode>;
     }
 
+    /**
+     * The mode for input devices available.
+     */
     enum InputMode {
         /**
          * A logical, virtual device
@@ -953,17 +888,14 @@ export namespace Clutter {
         RELEASED,
         PRESSED,
     }
-    /**
-     * The states for the #ClutterClickAction::long-press signal.
-     */
 
-    /**
-     * The states for the #ClutterClickAction::long-press signal.
-     */
     export namespace LongPressState {
         export const $gtype: GObject.GType<LongPressState>;
     }
 
+    /**
+     * The states for the #ClutterClickAction::long-press signal.
+     */
     enum LongPressState {
         /**
          * Queries the action whether it supports
@@ -979,17 +911,14 @@ export namespace Clutter {
          */
         CANCEL,
     }
-    /**
-     * Represents the orientation of actors or layout managers.
-     */
 
-    /**
-     * Represents the orientation of actors or layout managers.
-     */
     export namespace Orientation {
         export const $gtype: GObject.GType<Orientation>;
     }
 
+    /**
+     * Represents the orientation of actors or layout managers.
+     */
     enum Orientation {
         /**
          * An horizontal orientation
@@ -1000,19 +929,15 @@ export namespace Clutter {
          */
         VERTICAL,
     }
-    /**
-     * The axis of the constraint that should be applied on the
-     * panning action
-     */
 
-    /**
-     * The axis of the constraint that should be applied on the
-     * panning action
-     */
     export namespace PanAxis {
         export const $gtype: GObject.GType<PanAxis>;
     }
 
+    /**
+     * The axis of the constraint that should be applied on the
+     * panning action
+     */
     enum PanAxis {
         /**
          * No constraint
@@ -1032,17 +957,14 @@ export namespace Clutter {
          */
         AXIS_AUTO,
     }
-    /**
-     * Controls the paint cycle of the scene graph when in pick mode
-     */
 
-    /**
-     * Controls the paint cycle of the scene graph when in pick mode
-     */
     export namespace PickMode {
         export const $gtype: GObject.GType<PickMode>;
     }
 
+    /**
+     * Controls the paint cycle of the scene graph when in pick mode
+     */
     enum PickMode {
         /**
          * Do not paint any actor
@@ -1065,17 +987,14 @@ export namespace Clutter {
     enum PipelineCapability {
         STATE,
     }
-    /**
-     * Dwell click types.
-     */
 
-    /**
-     * Dwell click types.
-     */
     export namespace PointerA11yDwellClickType {
         export const $gtype: GObject.GType<PointerA11yDwellClickType>;
     }
 
+    /**
+     * Dwell click types.
+     */
     enum PointerA11yDwellClickType {
         /**
          * Internal use only
@@ -1087,17 +1006,14 @@ export namespace Clutter {
         DOUBLE,
         DRAG,
     }
-    /**
-     * Dwell gesture directions.
-     */
 
-    /**
-     * Dwell gesture directions.
-     */
     export namespace PointerA11yDwellDirection {
         export const $gtype: GObject.GType<PointerA11yDwellDirection>;
     }
 
+    /**
+     * Dwell gesture directions.
+     */
     enum PointerA11yDwellDirection {
         NONE,
         LEFT,
@@ -1105,32 +1021,26 @@ export namespace Clutter {
         UP,
         DOWN,
     }
-    /**
-     * Dwell mode.
-     */
 
-    /**
-     * Dwell mode.
-     */
     export namespace PointerA11yDwellMode {
         export const $gtype: GObject.GType<PointerA11yDwellMode>;
     }
 
+    /**
+     * Dwell mode.
+     */
     enum PointerA11yDwellMode {
         WINDOW,
         GESTURE,
     }
-    /**
-     * Pointer accessibility timeout type.
-     */
 
-    /**
-     * Pointer accessibility timeout type.
-     */
     export namespace PointerA11yTimeoutType {
         export const $gtype: GObject.GType<PointerA11yTimeoutType>;
     }
 
+    /**
+     * Pointer accessibility timeout type.
+     */
     enum PointerA11yTimeoutType {
         SECONDARY_CLICK,
         DWELL,
@@ -1145,17 +1055,14 @@ export namespace Clutter {
         CLEAR,
         COMMIT,
     }
-    /**
-     * Specifies the type of requests for a #ClutterActor.
-     */
 
-    /**
-     * Specifies the type of requests for a #ClutterActor.
-     */
     export namespace RequestMode {
         export const $gtype: GObject.GType<RequestMode>;
     }
 
+    /**
+     * Specifies the type of requests for a #ClutterActor.
+     */
     enum RequestMode {
         /**
          * Height for width requests
@@ -1171,17 +1078,14 @@ export namespace Clutter {
          */
         CONTENT_SIZE,
     }
-    /**
-     * Axis of a rotation.
-     */
 
-    /**
-     * Axis of a rotation.
-     */
     export namespace RotateAxis {
         export const $gtype: GObject.GType<RotateAxis>;
     }
 
+    /**
+     * Axis of a rotation.
+     */
     enum RotateAxis {
         /**
          * Rotate around the X axis
@@ -1196,19 +1100,15 @@ export namespace Clutter {
          */
         Z_AXIS,
     }
-    /**
-     * The scaling filters to be used with the [property`Actor:`minification-filter]
-     * and [property`Actor:`magnification-filter] properties.
-     */
 
-    /**
-     * The scaling filters to be used with the [property`Actor:`minification-filter]
-     * and [property`Actor:`magnification-filter] properties.
-     */
     export namespace ScalingFilter {
         export const $gtype: GObject.GType<ScalingFilter>;
     }
 
+    /**
+     * The scaling filters to be used with the [property`Actor:`minification-filter]
+     * and [property`Actor:`magnification-filter] properties.
+     */
     enum ScalingFilter {
         /**
          * Linear interpolation filter
@@ -1225,23 +1125,17 @@ export namespace Clutter {
          */
         TRILINEAR,
     }
-    /**
-     * Direction of a pointer scroll event.
-     *
-     * The %CLUTTER_SCROLL_SMOOTH value implies that the #ClutterScrollEvent
-     * has precise scrolling delta information.
-     */
 
-    /**
-     * Direction of a pointer scroll event.
-     *
-     * The %CLUTTER_SCROLL_SMOOTH value implies that the #ClutterScrollEvent
-     * has precise scrolling delta information.
-     */
     export namespace ScrollDirection {
         export const $gtype: GObject.GType<ScrollDirection>;
     }
 
+    /**
+     * Direction of a pointer scroll event.
+     *
+     * The %CLUTTER_SCROLL_SMOOTH value implies that the #ClutterScrollEvent
+     * has precise scrolling delta information.
+     */
     enum ScrollDirection {
         /**
          * Scroll up
@@ -1264,23 +1158,17 @@ export namespace Clutter {
          */
         SMOOTH,
     }
-    /**
-     * The scroll source determines the source of the scroll event.
-     *
-     * Keep in mind that the source device #ClutterInputDeviceType is not enough
-     * to infer the scroll source.6
-     */
 
-    /**
-     * The scroll source determines the source of the scroll event.
-     *
-     * Keep in mind that the source device #ClutterInputDeviceType is not enough
-     * to infer the scroll source.6
-     */
     export namespace ScrollSource {
         export const $gtype: GObject.GType<ScrollSource>;
     }
 
+    /**
+     * The scroll source determines the source of the scroll event.
+     *
+     * Keep in mind that the source device #ClutterInputDeviceType is not enough
+     * to infer the scroll source.6
+     */
     enum ScrollSource {
         /**
          * Source of scroll events is unknown.
@@ -1301,17 +1189,14 @@ export namespace Clutter {
          */
         CONTINUOUS,
     }
-    /**
-     * The type of GLSL shader program
-     */
 
-    /**
-     * The type of GLSL shader program
-     */
     export namespace ShaderType {
         export const $gtype: GObject.GType<ShaderType>;
     }
 
+    /**
+     * The type of GLSL shader program
+     */
     enum ShaderType {
         /**
          * a vertex shader
@@ -1322,17 +1207,14 @@ export namespace Clutter {
          */
         FRAGMENT_SHADER,
     }
-    /**
-     * The edge to snap
-     */
 
-    /**
-     * The edge to snap
-     */
     export namespace SnapEdge {
         export const $gtype: GObject.GType<SnapEdge>;
     }
 
+    /**
+     * The edge to snap
+     */
     enum SnapEdge {
         /**
          * the top edge
@@ -1351,21 +1233,16 @@ export namespace Clutter {
          */
         LEFT,
     }
-    /**
-     * Change the value transition of a step function.
-     *
-     * See clutter_timeline_set_step_progress().
-     */
 
-    /**
-     * Change the value transition of a step function.
-     *
-     * See clutter_timeline_set_step_progress().
-     */
     export namespace StepMode {
         export const $gtype: GObject.GType<StepMode>;
     }
 
+    /**
+     * Change the value transition of a step function.
+     *
+     * See clutter_timeline_set_step_progress().
+     */
     enum StepMode {
         /**
          * The change in the value of a
@@ -1380,17 +1257,14 @@ export namespace Clutter {
          */
         END,
     }
-    /**
-     * The text direction to be used by [class`Actor]`s
-     */
 
-    /**
-     * The text direction to be used by [class`Actor]`s
-     */
     export namespace TextDirection {
         export const $gtype: GObject.GType<TextDirection>;
     }
 
+    /**
+     * The text direction to be used by [class`Actor]`s
+     */
     enum TextDirection {
         /**
          * Use the default setting, as returned
@@ -1406,17 +1280,14 @@ export namespace Clutter {
          */
         RTL,
     }
-    /**
-     * The direction of a #ClutterTimeline
-     */
 
-    /**
-     * The direction of a #ClutterTimeline
-     */
     export namespace TimelineDirection {
         export const $gtype: GObject.GType<TimelineDirection>;
     }
 
+    /**
+     * The direction of a #ClutterTimeline
+     */
     enum TimelineDirection {
         /**
          * forward direction for a timeline
@@ -1427,55 +1298,33 @@ export namespace Clutter {
          */
         BACKWARD,
     }
-    /**
-     * The phase of a touchpad gesture event.
-     *
-     * All gestures are guaranteed to begin with an event of type
-     * %CLUTTER_TOUCHPAD_GESTURE_PHASE_BEGIN, followed by a number
-     * of %CLUTTER_TOUCHPAD_GESTURE_PHASE_UPDATE (possibly 0).
-     *
-     * A finished gesture may have 2 possible outcomes, an event with phase
-     * %CLUTTER_TOUCHPAD_GESTURE_PHASE_END will be emitted when the gesture is
-     * considered successful, this should be used as the hint to perform any
-     * permanent changes.
-     *
-     * Cancelled gestures may be so for a variety of reasons, due to hardware,
-     * or due to the gesture recognition layers hinting the gesture did not
-     * finish resolutely (eg. a 3rd finger being added during a pinch gesture).
-     * In these cases, the last event with report the phase
-     * %CLUTTER_TOUCHPAD_GESTURE_PHASE_CANCEL, this should be used as a hint
-     * to undo any visible/permanent changes that were done throughout the
-     * progress of the gesture.
-     *
-     * See also #ClutterTouchpadPinchEvent and #ClutterTouchpadPinchEvent.4
-     */
 
-    /**
-     * The phase of a touchpad gesture event.
-     *
-     * All gestures are guaranteed to begin with an event of type
-     * %CLUTTER_TOUCHPAD_GESTURE_PHASE_BEGIN, followed by a number
-     * of %CLUTTER_TOUCHPAD_GESTURE_PHASE_UPDATE (possibly 0).
-     *
-     * A finished gesture may have 2 possible outcomes, an event with phase
-     * %CLUTTER_TOUCHPAD_GESTURE_PHASE_END will be emitted when the gesture is
-     * considered successful, this should be used as the hint to perform any
-     * permanent changes.
-     *
-     * Cancelled gestures may be so for a variety of reasons, due to hardware,
-     * or due to the gesture recognition layers hinting the gesture did not
-     * finish resolutely (eg. a 3rd finger being added during a pinch gesture).
-     * In these cases, the last event with report the phase
-     * %CLUTTER_TOUCHPAD_GESTURE_PHASE_CANCEL, this should be used as a hint
-     * to undo any visible/permanent changes that were done throughout the
-     * progress of the gesture.
-     *
-     * See also #ClutterTouchpadPinchEvent and #ClutterTouchpadPinchEvent.4
-     */
     export namespace TouchpadGesturePhase {
         export const $gtype: GObject.GType<TouchpadGesturePhase>;
     }
 
+    /**
+     * The phase of a touchpad gesture event.
+     *
+     * All gestures are guaranteed to begin with an event of type
+     * %CLUTTER_TOUCHPAD_GESTURE_PHASE_BEGIN, followed by a number
+     * of %CLUTTER_TOUCHPAD_GESTURE_PHASE_UPDATE (possibly 0).
+     *
+     * A finished gesture may have 2 possible outcomes, an event with phase
+     * %CLUTTER_TOUCHPAD_GESTURE_PHASE_END will be emitted when the gesture is
+     * considered successful, this should be used as the hint to perform any
+     * permanent changes.
+     *
+     * Cancelled gestures may be so for a variety of reasons, due to hardware,
+     * or due to the gesture recognition layers hinting the gesture did not
+     * finish resolutely (eg. a 3rd finger being added during a pinch gesture).
+     * In these cases, the last event with report the phase
+     * %CLUTTER_TOUCHPAD_GESTURE_PHASE_CANCEL, this should be used as a hint
+     * to undo any visible/permanent changes that were done throughout the
+     * progress of the gesture.
+     *
+     * See also #ClutterTouchpadPinchEvent and #ClutterTouchpadPinchEvent.4
+     */
     enum TouchpadGesturePhase {
         /**
          * The gesture has begun.
@@ -1496,17 +1345,14 @@ export namespace Clutter {
          */
         CANCEL,
     }
-    /**
-     * Colorspace information.
-     */
 
-    /**
-     * Colorspace information.
-     */
     export namespace TransferFunction {
         export const $gtype: GObject.GType<TransferFunction>;
     }
 
+    /**
+     * Colorspace information.
+     */
     enum TransferFunction {
         /**
          * Unknown transfer function
@@ -1525,6 +1371,7 @@ export namespace Clutter {
          */
         LINEAR,
     }
+
     /**
      * The middle button of a pointer device.
      */
@@ -4194,17 +4041,13 @@ export namespace Clutter {
     interface TimelineProgressFunc {
         (timeline: Timeline, elapsed: number, total: number): number;
     }
-    /**
-     * Content repeat modes.
-     */
-
-    /**
-     * Content repeat modes.
-     */
     export namespace ContentRepeat {
         export const $gtype: GObject.GType<ContentRepeat>;
     }
 
+    /**
+     * Content repeat modes.
+     */
     enum ContentRepeat {
         /**
          * No repeat
@@ -4270,17 +4113,14 @@ export namespace Clutter {
         DISABLE_DYNAMIC_MAX_RENDER_TIME,
         PAINT_MAX_RENDER_TIME,
     }
-    /**
-     * Flags passed to the ‘paint’ or ‘pick’ method of #ClutterEffect.
-     */
 
-    /**
-     * Flags passed to the ‘paint’ or ‘pick’ method of #ClutterEffect.
-     */
     export namespace EffectPaintFlags {
         export const $gtype: GObject.GType<EffectPaintFlags>;
     }
 
+    /**
+     * Flags passed to the ‘paint’ or ‘pick’ method of #ClutterEffect.
+     */
     enum EffectPaintFlags {
         /**
          * The actor or one of its children
@@ -4295,17 +4135,14 @@ export namespace Clutter {
          */
         BYPASS_EFFECT,
     }
-    /**
-     * Flags for the #ClutterEvent
-     */
 
-    /**
-     * Flags for the #ClutterEvent
-     */
     export namespace EventFlags {
         export const $gtype: GObject.GType<EventFlags>;
     }
 
+    /**
+     * Flags for the #ClutterEvent
+     */
     enum EventFlags {
         /**
          * No flag set
@@ -4396,27 +4233,19 @@ export namespace Clutter {
         LATIN,
         MULTILINE,
     }
-    /**
-     * Masks applied to a #ClutterEvent by modifiers.
-     *
-     * Note that Clutter may add internal values to events which include
-     * reserved values such as %CLUTTER_MODIFIER_RESERVED_13_MASK.  Your code
-     * should preserve and ignore them.  You can use %CLUTTER_MODIFIER_MASK to
-     * remove all reserved values.
-     */
 
-    /**
-     * Masks applied to a #ClutterEvent by modifiers.
-     *
-     * Note that Clutter may add internal values to events which include
-     * reserved values such as %CLUTTER_MODIFIER_RESERVED_13_MASK.  Your code
-     * should preserve and ignore them.  You can use %CLUTTER_MODIFIER_MASK to
-     * remove all reserved values.
-     */
     export namespace ModifierType {
         export const $gtype: GObject.GType<ModifierType>;
     }
 
+    /**
+     * Masks applied to a #ClutterEvent by modifiers.
+     *
+     * Note that Clutter may add internal values to events which include
+     * reserved values such as %CLUTTER_MODIFIER_RESERVED_13_MASK.  Your code
+     * should preserve and ignore them.  You can use %CLUTTER_MODIFIER_MASK to
+     * remove all reserved values.
+     */
     enum ModifierType {
         /**
          * Mask applied by the Shift key
@@ -4505,17 +4334,14 @@ export namespace Clutter {
          */
         MODIFIER_MASK,
     }
-    /**
-     * Possible flags to pass to clutter_actor_set_offscreen_redirect().
-     */
 
-    /**
-     * Possible flags to pass to clutter_actor_set_offscreen_redirect().
-     */
     export namespace OffscreenRedirect {
         export const $gtype: GObject.GType<OffscreenRedirect>;
     }
 
+    /**
+     * Possible flags to pass to clutter_actor_set_offscreen_redirect().
+     */
     enum OffscreenRedirect {
         /**
          * Only redirect
@@ -4555,32 +4381,26 @@ export namespace Clutter {
     enum PickDebugFlag {
         PICKING,
     }
-    /**
-     * Pointer accessibility features applied to a ClutterInputDevice pointer.
-     */
 
-    /**
-     * Pointer accessibility features applied to a ClutterInputDevice pointer.
-     */
     export namespace PointerA11yFlags {
         export const $gtype: GObject.GType<PointerA11yFlags>;
     }
 
+    /**
+     * Pointer accessibility features applied to a ClutterInputDevice pointer.
+     */
     enum PointerA11yFlags {
         SECONDARY_CLICK_ENABLED,
         DWELL_ENABLED,
     }
-    /**
-     * Flags to pass to clutter_threads_add_repaint_func_full().
-     */
 
-    /**
-     * Flags to pass to clutter_threads_add_repaint_func_full().
-     */
     export namespace RepaintFlags {
         export const $gtype: GObject.GType<RepaintFlags>;
     }
 
+    /**
+     * Flags to pass to clutter_threads_add_repaint_func_full().
+     */
     enum RepaintFlags {
         /**
          * Run the repaint function prior to
@@ -4593,21 +4413,16 @@ export namespace Clutter {
          */
         POST_PAINT,
     }
-    /**
-     * Flags used to notify the axes that were stopped in a #ClutterScrollEvent.
-     *
-     * These can be used to trigger post-scroll effects like kinetic scrolling.6
-     */
 
-    /**
-     * Flags used to notify the axes that were stopped in a #ClutterScrollEvent.
-     *
-     * These can be used to trigger post-scroll effects like kinetic scrolling.6
-     */
     export namespace ScrollFinishFlags {
         export const $gtype: GObject.GType<ScrollFinishFlags>;
     }
 
+    /**
+     * Flags used to notify the axes that were stopped in a #ClutterScrollEvent.
+     *
+     * These can be used to trigger post-scroll effects like kinetic scrolling.6
+     */
     enum ScrollFinishFlags {
         /**
          * no axis was stopped.
@@ -4622,17 +4437,14 @@ export namespace Clutter {
          */
         VERTICAL,
     }
-    /**
-     * The main direction of the swipe gesture
-     */
 
-    /**
-     * The main direction of the swipe gesture
-     */
     export namespace SwipeDirection {
         export const $gtype: GObject.GType<SwipeDirection>;
     }
 
+    /**
+     * The main direction of the swipe gesture
+     */
     enum SwipeDirection {
         /**
          * Upwards swipe gesture
@@ -4662,6 +4474,7 @@ export namespace Clutter {
         POINTER,
         TOUCHSCREEN,
     }
+
     namespace Action {
         // Signal signatures
         interface SignalSignatures extends ActorMeta.SignalSignatures {

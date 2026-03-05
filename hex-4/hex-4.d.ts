@@ -33,14 +33,6 @@ export namespace Hex {
     /**
      * Type of change operation.
      */
-
-    /**
-     * Type of change operation.
-     */
-    export namespace ChangeType {
-        export const $gtype: GObject.GType<ChangeType>;
-    }
-
     enum ChangeType {
         /**
          * the change is a string
@@ -51,17 +43,10 @@ export namespace Hex {
          */
         BYTE,
     }
-    /**
-     * Specifies how data is to be grouped by the #HexWidget.
-     */
 
     /**
      * Specifies how data is to be grouped by the #HexWidget.
      */
-    export namespace WidgetGroupType {
-        export const $gtype: GObject.GType<WidgetGroupType>;
-    }
-
     enum WidgetGroupType {
         /**
          * group data by byte (8-bit)
@@ -80,6 +65,7 @@ export namespace Hex {
          */
         QUAD,
     }
+
     /**
      * Utility function to obtain the size of a #GFile.
      *
@@ -114,14 +100,6 @@ export namespace Hex {
     /**
      * Bitwise flags for search options that can be combined as desired.
      */
-
-    /**
-     * Bitwise flags for search options that can be combined as desired.
-     */
-    export namespace SearchFlags {
-        export const $gtype: GObject.GType<SearchFlags>;
-    }
-
     enum SearchFlags {
         /**
          * no search flags (byte-for-byte match)
@@ -136,6 +114,7 @@ export namespace Hex {
          */
         IGNORE_CASE,
     }
+
     namespace Document {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

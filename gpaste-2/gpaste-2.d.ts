@@ -48,6 +48,7 @@ export namespace GPaste {
         ALL,
         POSITION,
     }
+
     const BUS_NAME: string;
     const CLOSE_ON_SELECT_SETTING: string;
     const DAEMON_ABOUT: string;
@@ -248,15 +249,6 @@ export namespace GPaste {
      * Controls in which GNOME Shell states an action (like keybindings and gestures)
      * should be handled.
      */
-
-    /**
-     * Controls in which GNOME Shell states an action (like keybindings and gestures)
-     * should be handled.
-     */
-    export namespace GnomeShellActionMode {
-        export const $gtype: GObject.GType<GnomeShellActionMode>;
-    }
-
     enum GnomeShellActionMode {
         /**
          * block action
@@ -305,10 +297,6 @@ export namespace GPaste {
         ALL,
     }
 
-    export namespace MetaKeyBindingFlags {
-        export const $gtype: GObject.GType<MetaKeyBindingFlags>;
-    }
-
     enum MetaKeyBindingFlags {
         /**
          * none
@@ -332,6 +320,7 @@ export namespace GPaste {
         NON_MASKABLE,
         IGNORE_AUTOREPEAT,
     }
+
     namespace Client {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {

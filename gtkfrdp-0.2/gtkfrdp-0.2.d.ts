@@ -29,27 +29,15 @@ export namespace GtkFrdp {
      * GtkFrdp-0.2
      */
 
-    export namespace ErrConnect {
-        export const $gtype: GObject.GType<ErrConnect>;
-    }
-
     enum ErrConnect {
         CONNECT_CANCELLED,
         AUTHENTICATION_FAILED,
         SECURITY_NEGO_CONNECT_FAILED,
     }
 
-    export namespace KeyEvent {
-        export const $gtype: GObject.GType<KeyEvent>;
-    }
-
     enum KeyEvent {
         PRESS,
         RELEASE,
-    }
-
-    export namespace MouseEvent {
-        export const $gtype: GObject.GType<MouseEvent>;
     }
 
     enum MouseEvent {
@@ -64,6 +52,7 @@ export namespace GtkFrdp {
         BUTTON5,
         HWHEEL,
     }
+
     namespace Display {
         // Signal signatures
         interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {

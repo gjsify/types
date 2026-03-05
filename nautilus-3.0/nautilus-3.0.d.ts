@@ -29,19 +29,14 @@ export namespace Nautilus {
      * Nautilus-3.0
      */
 
-    /**
-     * Return values for asynchronous operations performed by the extension.
-     * See nautilus_info_provider_update_file_info().
-     */
-
-    /**
-     * Return values for asynchronous operations performed by the extension.
-     * See nautilus_info_provider_update_file_info().
-     */
     export namespace OperationResult {
         export const $gtype: GObject.GType<OperationResult>;
     }
 
+    /**
+     * Return values for asynchronous operations performed by the extension.
+     * See nautilus_info_provider_update_file_info().
+     */
     enum OperationResult {
         /**
          * the operation succeeded, and the extension
@@ -59,6 +54,7 @@ export namespace Nautilus {
          */
         IN_PROGRESS,
     }
+
     function file_info_create(location: Gio.File): FileInfo;
     function file_info_create_for_uri(uri: string): FileInfo;
     function file_info_list_copy(files: FileInfo[]): FileInfo[];

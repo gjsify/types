@@ -30,27 +30,15 @@ export namespace Liferea {
      * Liferea-3.0
      */
 
-    export namespace feedListFindType {
-        export const $gtype: GObject.GType<feedListFindType>;
-    }
-
     enum feedListFindType {
         ODE_BY_URL,
         ODE_BY_ID,
         OLDER_BY_TITLE,
     }
 
-    export namespace itemViewMode {
-        export const $gtype: GObject.GType<itemViewMode>;
-    }
-
     enum itemViewMode {
         SINGLE_ITEM,
         NODE_INFO,
-    }
-
-    export namespace lifereaIcon {
-        export const $gtype: GObject.GType<lifereaIcon>;
     }
 
     enum lifereaIcon {
@@ -64,20 +52,12 @@ export namespace Liferea {
         AX_ICONS,
     }
 
-    export namespace nodeSourceState {
-        export const $gtype: GObject.GType<nodeSourceState>;
-    }
-
     enum nodeSourceState {
         NONE,
         IN_PROGRESS,
         ACTIVE,
         NO_AUTH,
         MIGRATE,
-    }
-
-    export namespace nodeViewSortType {
-        export const $gtype: GObject.GType<nodeViewSortType>;
     }
 
     enum nodeViewSortType {
@@ -87,15 +67,12 @@ export namespace Liferea {
         STATE,
     }
 
-    export namespace nodeViewType {
-        export const $gtype: GObject.GType<nodeViewType>;
-    }
-
     enum nodeViewType {
         NORMAL,
         WIDE,
         AUTO,
     }
+
     const NODE_SOURCE_MAX_AUTH_FAILURES: number;
     const NODE_SOURCE_TYPE_DUMMY_ID: string;
     /**
@@ -233,11 +210,6 @@ export namespace Liferea {
     interface nodeActionFunc {
         (node: nodePtr): void;
     }
-
-    export namespace nodeSourceCapability {
-        export const $gtype: GObject.GType<nodeSourceCapability>;
-    }
-
     enum nodeSourceCapability {
         IS_ROOT,
         DYNAMIC_CREATION,
@@ -252,14 +224,11 @@ export namespace Liferea {
         REPARENT_NODE,
     }
 
-    export namespace nodeSourceUpdate {
-        export const $gtype: GObject.GType<nodeSourceUpdate>;
-    }
-
     enum nodeSourceUpdate {
         LIST,
         LOGIN,
     }
+
     namespace Application {
         // Signal signatures
         interface SignalSignatures extends Gtk.Application.SignalSignatures {

@@ -18,10 +18,6 @@ export namespace Modulemd {
      * Modulemd-2.0
      */
 
-    export namespace CompressionTypeEnum {
-        export const $gtype: GObject.GType<CompressionTypeEnum>;
-    }
-
     enum CompressionTypeEnum {
         /**
          * Zstandard compression; since 2.15
@@ -61,10 +57,6 @@ export namespace Modulemd {
         SENTINEL,
     }
 
-    export namespace DefaultsVersionEnum {
-        export const $gtype: GObject.GType<DefaultsVersionEnum>;
-    }
-
     enum DefaultsVersionEnum {
         /**
          * Represents an error handling mdversion.
@@ -85,8 +77,9 @@ export namespace Modulemd {
          */
         LATEST,
     }
+
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -138,10 +131,6 @@ export namespace Modulemd {
         constructor(options: { message: string; code: number });
     }
 
-    export namespace ErrorEnum {
-        export const $gtype: GObject.GType<ErrorEnum>;
-    }
-
     enum ErrorEnum {
         /**
          * Represents an error encountered while upgrading the
@@ -182,10 +171,6 @@ export namespace Modulemd {
         NOT_IMPLEMENTED,
     }
 
-    export namespace ModuleStreamVersionEnum {
-        export const $gtype: GObject.GType<ModuleStreamVersionEnum>;
-    }
-
     enum ModuleStreamVersionEnum {
         /**
          * Represents an error handling module stream
@@ -213,10 +198,6 @@ export namespace Modulemd {
         LATEST,
     }
 
-    export namespace ObsoletesVersionEnum {
-        export const $gtype: GObject.GType<ObsoletesVersionEnum>;
-    }
-
     enum ObsoletesVersionEnum {
         /**
          * Represents an error handling mdversion.
@@ -236,10 +217,6 @@ export namespace Modulemd {
          * #ModulemdObsoletes metadata format.
          */
         LATEST,
-    }
-
-    export namespace PackagerVersionEnum {
-        export const $gtype: GObject.GType<PackagerVersionEnum>;
     }
 
     enum PackagerVersionEnum {
@@ -268,8 +245,9 @@ export namespace Modulemd {
          */
         LATEST,
     }
+
     class YamlError extends GLib.Error {
-        static $gtype: GObject.GType<YamlError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -322,10 +300,6 @@ export namespace Modulemd {
         constructor(options: { message: string; code: number });
     }
 
-    export namespace YamlErrorEnum {
-        export const $gtype: GObject.GType<YamlErrorEnum>;
-    }
-
     enum YamlErrorEnum {
         /**
          * Represents an error encountered while opening a
@@ -369,6 +343,7 @@ export namespace Modulemd {
          */
         INCONSISTENT,
     }
+
     /**
      * The ModuleStream v3 specification defines the maximum lenth of the context
      * field.

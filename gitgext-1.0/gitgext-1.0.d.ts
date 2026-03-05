@@ -40,6 +40,7 @@ export namespace GitgExt {
         NORMAL,
         SELECTION,
     }
+
     interface ForeachCommitSelectionFunc {
         (object: Ggit.Commit): boolean;
     }
@@ -49,7 +50,6 @@ export namespace GitgExt {
     interface RefNameEditingDone {
         (new_name: string, cancelled: boolean): void;
     }
-
     export namespace ExternalChangeHint {
         export const $gtype: GObject.GType<ExternalChangeHint>;
     }
@@ -59,6 +59,7 @@ export namespace GitgExt {
         REFS,
         INDEX,
     }
+
     namespace CommandLines {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

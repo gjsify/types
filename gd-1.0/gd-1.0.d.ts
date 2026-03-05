@@ -29,10 +29,6 @@ export namespace Gd {
      * Gd-1.0
      */
 
-    export namespace MainColumns {
-        export const $gtype: GObject.GType<MainColumns>;
-    }
-
     enum MainColumns {
         ID,
         URI,
@@ -45,17 +41,9 @@ export namespace Gd {
         LAST,
     }
 
-    export namespace MainViewType {
-        export const $gtype: GObject.GType<MainViewType>;
-    }
-
     enum MainViewType {
         ICON,
         LIST,
-    }
-
-    export namespace StackTransitionType {
-        export const $gtype: GObject.GType<StackTransitionType>;
     }
 
     enum StackTransitionType {
@@ -64,6 +52,7 @@ export namespace Gd {
         SLIDE_RIGHT,
         SLIDE_LEFT,
     }
+
     /**
      * This functions must be called during initialization
      * to make sure the widget types are available to GtkBuilder.

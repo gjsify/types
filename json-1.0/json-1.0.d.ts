@@ -20,17 +20,13 @@ export namespace Json {
      * Json-1.0
      */
 
-    /**
-     * Indicates the content of a node.
-     */
-
-    /**
-     * Indicates the content of a node.
-     */
     export namespace NodeType {
         export const $gtype: GObject.GType<NodeType>;
     }
 
+    /**
+     * Indicates the content of a node.
+     */
     enum NodeType {
         /**
          * The node contains a JSON object
@@ -49,13 +45,14 @@ export namespace Json {
          */
         NULL,
     }
+
     /**
      * Error codes for `JSON_PARSER_ERROR`.
      *
      * This enumeration can be extended at later date
      */
     class ParserError extends GLib.Error {
-        static $gtype: GObject.GType<ParserError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -119,7 +116,7 @@ export namespace Json {
      * This enumeration can be extended at later date
      */
     class PathError extends GLib.Error {
-        static $gtype: GObject.GType<PathError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -143,7 +140,7 @@ export namespace Json {
      * This enumeration can be extended at later date
      */
     class ReaderError extends GLib.Error {
-        static $gtype: GObject.GType<ReaderError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 

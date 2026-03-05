@@ -22,7 +22,7 @@ export namespace Gpseq {
      */
 
     class ChannelError extends GLib.Error {
-        static $gtype: GObject.GType<ChannelError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -36,7 +36,7 @@ export namespace Gpseq {
     }
 
     class MapError extends GLib.Error {
-        static $gtype: GObject.GType<MapError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -48,7 +48,7 @@ export namespace Gpseq {
     }
 
     class OptionalError extends GLib.Error {
-        static $gtype: GObject.GType<OptionalError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -301,7 +301,6 @@ export namespace Gpseq {
     interface VoidTaskFunc {
         (): void;
     }
-
     export namespace CollectorFeatures {
         export const $gtype: GObject.GType<CollectorFeatures>;
     }
@@ -310,6 +309,7 @@ export namespace Gpseq {
         CONCURRENT,
         UNORDERED,
     }
+
     namespace ArraySpliterator {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

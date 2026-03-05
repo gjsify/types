@@ -21,25 +21,17 @@ export namespace GstPbutils {
      * GstPbutils-0.10
      */
 
-    /**
-     * Result codes returned by gst_install_plugins_async() and
-     * gst_install_plugins_sync(), and also the result code passed to the
-     * #GstInstallPluginsResultFunc specified with gst_install_plugin_async().
-     * These codes indicate success or failure of starting an external installer
-     * program and to what extent the requested plugins could be installed.
-     */
-
-    /**
-     * Result codes returned by gst_install_plugins_async() and
-     * gst_install_plugins_sync(), and also the result code passed to the
-     * #GstInstallPluginsResultFunc specified with gst_install_plugin_async().
-     * These codes indicate success or failure of starting an external installer
-     * program and to what extent the requested plugins could be installed.
-     */
     export namespace GstInstallPluginsReturn {
         export const $gtype: GObject.GType<GstInstallPluginsReturn>;
     }
 
+    /**
+     * Result codes returned by gst_install_plugins_async() and
+     * gst_install_plugins_sync(), and also the result code passed to the
+     * #GstInstallPluginsResultFunc specified with gst_install_plugin_async().
+     * These codes indicate success or failure of starting an external installer
+     * program and to what extent the requested plugins could be installed.
+     */
     enum GstInstallPluginsReturn {
         SUCCESS,
         NOT_FOUND,
@@ -53,6 +45,7 @@ export namespace GstPbutils {
         HELPER_MISSING,
         INSTALL_IN_PROGRESS,
     }
+
     function gst_install_plugins_async(
         details: string[],
         ctx: GstInstallPluginsContext,

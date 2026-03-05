@@ -34,17 +34,9 @@ export namespace Entangle {
      * Entangle-0.1
      */
 
-    export namespace CameraCaptureTarget {
-        export const $gtype: GObject.GType<CameraCaptureTarget>;
-    }
-
     enum CameraCaptureTarget {
         RAM,
         CARD,
-    }
-
-    export namespace CameraManualFocusStep {
-        export const $gtype: GObject.GType<CameraManualFocusStep>;
     }
 
     enum CameraManualFocusStep {
@@ -56,19 +48,11 @@ export namespace Entangle {
         OUT_FINE,
     }
 
-    export namespace ColourProfileIntent {
-        export const $gtype: GObject.GType<ColourProfileIntent>;
-    }
-
     enum ColourProfileIntent {
         PERCEPTUAL,
         REL_COLOURIMETRIC,
         SATURATION,
         ABS_COLOURIMETRIC,
-    }
-
-    export namespace ImageDisplayGrid {
-        export const $gtype: GObject.GType<ImageDisplayGrid>;
     }
 
     enum ImageDisplayGrid {
@@ -80,15 +64,12 @@ export namespace Entangle {
         GOLDEN_SECTIONS,
     }
 
-    export namespace PixbufImageSlot {
-        export const $gtype: GObject.GType<PixbufImageSlot>;
-    }
-
     enum PixbufImageSlot {
         MASTER,
         PREVIEW,
         THUMBNAIL,
     }
+
     function debug_setup(debug_app: boolean, debug_gphoto: boolean): void;
     function dpms_set_blanking(enabled: boolean): boolean;
     /**

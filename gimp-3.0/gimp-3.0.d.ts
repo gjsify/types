@@ -51,17 +51,13 @@ export namespace Gimp {
      * Gimp-3.0
      */
 
-    /**
-     * Modes of initialising a layer mask.
-     */
-
-    /**
-     * Modes of initialising a layer mask.
-     */
     export namespace AddMaskType {
         export const $gtype: GObject.GType<AddMaskType>;
     }
 
+    /**
+     * Modes of initialising a layer mask.
+     */
     enum AddMaskType {
         /**
          * White (full opacity)
@@ -92,17 +88,10 @@ export namespace Gimp {
          */
         CHANNEL,
     }
-    /**
-     * Methods of syncing procedure arguments.
-     */
 
     /**
      * Methods of syncing procedure arguments.
      */
-    export namespace ArgumentSync {
-        export const $gtype: GObject.GType<ArgumentSync>;
-    }
-
     enum ArgumentSync {
         /**
          * Don't sync this argument
@@ -113,17 +102,14 @@ export namespace Gimp {
          */
         PARASITE,
     }
-    /**
-     * Extracted from app/paint/paint-enums.h
-     */
 
-    /**
-     * Extracted from app/paint/paint-enums.h
-     */
     export namespace BrushApplicationMode {
         export const $gtype: GObject.GType<BrushApplicationMode>;
     }
 
+    /**
+     * Extracted from app/paint/paint-enums.h
+     */
     enum BrushApplicationMode {
         /**
          * GIMP_BRUSH_HARD
@@ -134,17 +120,14 @@ export namespace Gimp {
          */
         SOFT,
     }
-    /**
-     * Shapes of generated brushes.
-     */
 
-    /**
-     * Shapes of generated brushes.
-     */
     export namespace BrushGeneratedShape {
         export const $gtype: GObject.GType<BrushGeneratedShape>;
     }
 
+    /**
+     * Shapes of generated brushes.
+     */
     enum BrushGeneratedShape {
         /**
          * Circle
@@ -159,17 +142,14 @@ export namespace Gimp {
          */
         DIAMOND,
     }
-    /**
-     * Style of line endings.
-     */
 
-    /**
-     * Style of line endings.
-     */
     export namespace CapStyle {
         export const $gtype: GObject.GType<CapStyle>;
     }
 
+    /**
+     * Style of line endings.
+     */
     enum CapStyle {
         /**
          * Butt
@@ -184,17 +164,14 @@ export namespace Gimp {
          */
         SQUARE,
     }
-    /**
-     * Operations to combine channels and selections.
-     */
 
-    /**
-     * Operations to combine channels and selections.
-     */
     export namespace ChannelOps {
         export const $gtype: GObject.GType<ChannelOps>;
     }
 
+    /**
+     * Operations to combine channels and selections.
+     */
     enum ChannelOps {
         /**
          * Add to the current selection
@@ -213,17 +190,14 @@ export namespace Gimp {
          */
         INTERSECT,
     }
-    /**
-     * Channels (as in color components).
-     */
 
-    /**
-     * Channels (as in color components).
-     */
     export namespace ChannelType {
         export const $gtype: GObject.GType<ChannelType>;
     }
 
+    /**
+     * Channels (as in color components).
+     */
     enum ChannelType {
         /**
          * Red
@@ -250,17 +224,14 @@ export namespace Gimp {
          */
         ALPHA,
     }
-    /**
-     * Size of the checkerboard indicating transparency.
-     */
 
-    /**
-     * Size of the checkerboard indicating transparency.
-     */
     export namespace CheckSize {
         export const $gtype: GObject.GType<CheckSize>;
     }
 
+    /**
+     * Size of the checkerboard indicating transparency.
+     */
     enum CheckSize {
         /**
          * Small
@@ -275,17 +246,14 @@ export namespace Gimp {
          */
         LARGE_CHECKS,
     }
-    /**
-     * Color/Brightness of the checkerboard indicating transparency.
-     */
 
-    /**
-     * Color/Brightness of the checkerboard indicating transparency.
-     */
     export namespace CheckType {
         export const $gtype: GObject.GType<CheckType>;
     }
 
+    /**
+     * Color/Brightness of the checkerboard indicating transparency.
+     */
     enum CheckType {
         /**
          * Light checks
@@ -316,17 +284,14 @@ export namespace Gimp {
          */
         CUSTOM_CHECKS,
     }
-    /**
-     * Clone sources.
-     */
 
-    /**
-     * Clone sources.
-     */
     export namespace CloneType {
         export const $gtype: GObject.GType<CloneType>;
     }
 
+    /**
+     * Clone sources.
+     */
     enum CloneType {
         /**
          * Clone from an image/drawable source
@@ -337,17 +302,14 @@ export namespace Gimp {
          */
         PATTERN,
     }
-    /**
-     * Modes of color management.
-     */
 
-    /**
-     * Modes of color management.
-     */
     export namespace ColorManagementMode {
         export const $gtype: GObject.GType<ColorManagementMode>;
     }
 
+    /**
+     * Modes of color management.
+     */
     enum ColorManagementMode {
         /**
          * Color management is off
@@ -362,17 +324,14 @@ export namespace Gimp {
          */
         SOFTPROOF,
     }
-    /**
-     * Intents for color management.
-     */
 
-    /**
-     * Intents for color management.
-     */
     export namespace ColorRenderingIntent {
         export const $gtype: GObject.GType<ColorRenderingIntent>;
     }
 
+    /**
+     * Intents for color management.
+     */
     enum ColorRenderingIntent {
         /**
          * Perceptual
@@ -391,17 +350,14 @@ export namespace Gimp {
          */
         ABSOLUTE_COLORIMETRIC,
     }
-    /**
-     * Possible tag colors.
-     */
 
-    /**
-     * Possible tag colors.
-     */
     export namespace ColorTag {
         export const $gtype: GObject.GType<ColorTag>;
     }
 
+    /**
+     * Possible tag colors.
+     */
     enum ColorTag {
         /**
          * None
@@ -440,17 +396,10 @@ export namespace Gimp {
          */
         GRAY,
     }
-    /**
-     * Flags for modifying #GimpColorTransform's behavior.
-     */
 
     /**
      * Flags for modifying #GimpColorTransform's behavior.
      */
-    export namespace ColorTransformFlags {
-        export const $gtype: GObject.GType<ColorTransformFlags>;
-    }
-
     enum ColorTransformFlags {
         /**
          * optimize for accuracy rather
@@ -468,17 +417,14 @@ export namespace Gimp {
          */
         BLACK_POINT_COMPENSATION,
     }
-    /**
-     * Encoding types of image components.
-     */
 
-    /**
-     * Encoding types of image components.
-     */
     export namespace ComponentType {
         export const $gtype: GObject.GType<ComponentType>;
     }
 
+    /**
+     * Encoding types of image components.
+     */
     enum ComponentType {
         /**
          * 8-bit integer
@@ -505,11 +451,12 @@ export namespace Gimp {
          */
         DOUBLE,
     }
+
     /**
      * The possible values of a #GError thrown by libgimpconfig.
      */
     class ConfigError extends GLib.Error {
-        static $gtype: GObject.GType<ConfigError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -542,14 +489,6 @@ export namespace Gimp {
     /**
      * Types of config paths.
      */
-
-    /**
-     * Types of config paths.
-     */
-    export namespace ConfigPathType {
-        export const $gtype: GObject.GType<ConfigPathType>;
-    }
-
     enum ConfigPathType {
         /**
          * A single file
@@ -568,17 +507,14 @@ export namespace Gimp {
          */
         DIR_LIST,
     }
-    /**
-     * Extracted from app/core/core-enums.h
-     */
 
-    /**
-     * Extracted from app/core/core-enums.h
-     */
     export namespace ConvertDitherType {
         export const $gtype: GObject.GType<ConvertDitherType>;
     }
 
+    /**
+     * Extracted from app/core/core-enums.h
+     */
     enum ConvertDitherType {
         /**
          * GIMP_CONVERT_DITHER_NONE
@@ -597,17 +533,14 @@ export namespace Gimp {
          */
         FIXED,
     }
-    /**
-     * Types of palettes for indexed conversion.
-     */
 
-    /**
-     * Types of palettes for indexed conversion.
-     */
     export namespace ConvertPaletteType {
         export const $gtype: GObject.GType<ConvertPaletteType>;
     }
 
+    /**
+     * Types of palettes for indexed conversion.
+     */
     enum ConvertPaletteType {
         /**
          * Generate optimum palette
@@ -626,17 +559,14 @@ export namespace Gimp {
          */
         CUSTOM,
     }
-    /**
-     * Types of convolutions.
-     */
 
-    /**
-     * Types of convolutions.
-     */
     export namespace ConvolveType {
         export const $gtype: GObject.GType<ConvolveType>;
     }
 
+    /**
+     * Types of convolutions.
+     */
     enum ConvolveType {
         /**
          * Blur
@@ -647,17 +577,10 @@ export namespace Gimp {
          */
         SHARPEN,
     }
-    /**
-     * Types of detectable CPU accelerations
-     */
 
     /**
      * Types of detectable CPU accelerations
      */
-    export namespace CpuAccelFlags {
-        export const $gtype: GObject.GType<CpuAccelFlags>;
-    }
-
     enum CpuAccelFlags {
         /**
          * None
@@ -708,17 +631,14 @@ export namespace Gimp {
          */
         PPC_ALTIVEC,
     }
-    /**
-     * Grayscale conversion methods.
-     */
 
-    /**
-     * Grayscale conversion methods.
-     */
     export namespace DesaturateMode {
         export const $gtype: GObject.GType<DesaturateMode>;
     }
 
+    /**
+     * Grayscale conversion methods.
+     */
     enum DesaturateMode {
         /**
          * Lightness (HSL)
@@ -741,17 +661,14 @@ export namespace Gimp {
          */
         VALUE,
     }
-    /**
-     * Methods for the dodge/burn operation.
-     */
 
-    /**
-     * Methods for the dodge/burn operation.
-     */
     export namespace DodgeBurnType {
         export const $gtype: GObject.GType<DodgeBurnType>;
     }
 
+    /**
+     * Methods for the dodge/burn operation.
+     */
     enum DodgeBurnType {
         /**
          * Dodge
@@ -762,17 +679,10 @@ export namespace Gimp {
          */
         BURN,
     }
-    /**
-     * Possible return values of [method`ExportOptions`.get_image].
-     */
 
     /**
      * Possible return values of [method`ExportOptions`.get_image].
      */
-    export namespace ExportReturn {
-        export const $gtype: GObject.GType<ExportReturn>;
-    }
-
     enum ExportReturn {
         /**
          * The image is unmodified but export shall continue anyway
@@ -783,17 +693,14 @@ export namespace Gimp {
          */
         EXPORT,
     }
-    /**
-     * Types of filling.
-     */
 
-    /**
-     * Types of filling.
-     */
     export namespace FillType {
         export const $gtype: GObject.GType<FillType>;
     }
 
+    /**
+     * Types of filling.
+     */
     enum FillType {
         /**
          * Foreground color
@@ -820,34 +727,28 @@ export namespace Gimp {
          */
         PATTERN,
     }
-    /**
-     * Foreground extract engines.
-     */
 
-    /**
-     * Foreground extract engines.
-     */
     export namespace ForegroundExtractMode {
         export const $gtype: GObject.GType<ForegroundExtractMode>;
     }
 
+    /**
+     * Foreground extract engines.
+     */
     enum ForegroundExtractMode {
         /**
          * Matting (Since 2.10)
          */
         MATTING,
     }
-    /**
-     * Color space for blending gradients.
-     */
 
-    /**
-     * Color space for blending gradients.
-     */
     export namespace GradientBlendColorSpace {
         export const $gtype: GObject.GType<GradientBlendColorSpace>;
     }
 
+    /**
+     * Color space for blending gradients.
+     */
     enum GradientBlendColorSpace {
         /**
          * Perceptual RGB
@@ -862,17 +763,14 @@ export namespace Gimp {
          */
         CIE_LAB,
     }
-    /**
-     * Coloring types for gradient segments.
-     */
 
-    /**
-     * Coloring types for gradient segments.
-     */
     export namespace GradientSegmentColor {
         export const $gtype: GObject.GType<GradientSegmentColor>;
     }
 
+    /**
+     * Coloring types for gradient segments.
+     */
     enum GradientSegmentColor {
         /**
          * RGB
@@ -887,17 +785,14 @@ export namespace Gimp {
          */
         HSV_CW,
     }
-    /**
-     * Transition functions for gradient segments.
-     */
 
-    /**
-     * Transition functions for gradient segments.
-     */
     export namespace GradientSegmentType {
         export const $gtype: GObject.GType<GradientSegmentType>;
     }
 
+    /**
+     * Transition functions for gradient segments.
+     */
     enum GradientSegmentType {
         /**
          * Linear
@@ -924,17 +819,14 @@ export namespace Gimp {
          */
         STEP,
     }
-    /**
-     * Gradient shapes.
-     */
 
-    /**
-     * Gradient shapes.
-     */
     export namespace GradientType {
         export const $gtype: GObject.GType<GradientType>;
     }
 
+    /**
+     * Gradient shapes.
+     */
     enum GradientType {
         /**
          * Linear
@@ -981,17 +873,14 @@ export namespace Gimp {
          */
         SPIRAL_ANTICLOCKWISE,
     }
-    /**
-     * Rendering types for the display grid.
-     */
 
-    /**
-     * Rendering types for the display grid.
-     */
     export namespace GridStyle {
         export const $gtype: GObject.GType<GridStyle>;
     }
 
+    /**
+     * Rendering types for the display grid.
+     */
     enum GridStyle {
         /**
          * Intersections (dots)
@@ -1014,17 +903,14 @@ export namespace Gimp {
          */
         SOLID,
     }
-    /**
-     * Extracted from app/core/core-enums.h
-     */
 
-    /**
-     * Extracted from app/core/core-enums.h
-     */
     export namespace HistogramChannel {
         export const $gtype: GObject.GType<HistogramChannel>;
     }
 
+    /**
+     * Extracted from app/core/core-enums.h
+     */
     enum HistogramChannel {
         /**
          * GIMP_HISTOGRAM_VALUE
@@ -1051,17 +937,14 @@ export namespace Gimp {
          */
         LUMINANCE,
     }
-    /**
-     * Hue ranges.
-     */
 
-    /**
-     * Hue ranges.
-     */
     export namespace HueRange {
         export const $gtype: GObject.GType<HueRange>;
     }
 
+    /**
+     * Hue ranges.
+     */
     enum HueRange {
         /**
          * All hues
@@ -1092,17 +975,14 @@ export namespace Gimp {
          */
         MAGENTA,
     }
-    /**
-     * Icon types for plug-ins to register.
-     */
 
-    /**
-     * Icon types for plug-ins to register.
-     */
     export namespace IconType {
         export const $gtype: GObject.GType<IconType>;
     }
 
+    /**
+     * Icon types for plug-ins to register.
+     */
     enum IconType {
         /**
          * Icon name
@@ -1117,17 +997,14 @@ export namespace Gimp {
          */
         IMAGE_FILE,
     }
-    /**
-     * Image color models.
-     */
 
-    /**
-     * Image color models.
-     */
     export namespace ImageBaseType {
         export const $gtype: GObject.GType<ImageBaseType>;
     }
 
+    /**
+     * Image color models.
+     */
     enum ImageBaseType {
         /**
          * RGB color
@@ -1142,17 +1019,14 @@ export namespace Gimp {
          */
         INDEXED,
     }
-    /**
-     * Possible drawable types.
-     */
 
-    /**
-     * Possible drawable types.
-     */
     export namespace ImageType {
         export const $gtype: GObject.GType<ImageType>;
     }
 
+    /**
+     * Possible drawable types.
+     */
     enum ImageType {
         /**
          * RGB
@@ -1179,17 +1053,14 @@ export namespace Gimp {
          */
         INDEXEDA_IMAGE,
     }
-    /**
-     * Ink tool tips.
-     */
 
-    /**
-     * Ink tool tips.
-     */
     export namespace InkBlobType {
         export const $gtype: GObject.GType<InkBlobType>;
     }
 
+    /**
+     * Ink tool tips.
+     */
     enum InkBlobType {
         /**
          * Circle
@@ -1204,17 +1075,14 @@ export namespace Gimp {
          */
         DIAMOND,
     }
-    /**
-     * Interpolation types.
-     */
 
-    /**
-     * Interpolation types.
-     */
     export namespace InterpolationType {
         export const $gtype: GObject.GType<InterpolationType>;
     }
 
+    /**
+     * Interpolation types.
+     */
     enum InterpolationType {
         /**
          * None
@@ -1237,17 +1105,14 @@ export namespace Gimp {
          */
         LOHALO,
     }
-    /**
-     * Line join styles.
-     */
 
-    /**
-     * Line join styles.
-     */
     export namespace JoinStyle {
         export const $gtype: GObject.GType<JoinStyle>;
     }
 
+    /**
+     * Line join styles.
+     */
     enum JoinStyle {
         /**
          * Miter
@@ -1262,17 +1127,14 @@ export namespace Gimp {
          */
         BEVEL,
     }
-    /**
-     * Extracted from app/operations/operations-enums.h
-     */
 
-    /**
-     * Extracted from app/operations/operations-enums.h
-     */
     export namespace LayerColorSpace {
         export const $gtype: GObject.GType<LayerColorSpace>;
     }
 
+    /**
+     * Extracted from app/operations/operations-enums.h
+     */
     enum LayerColorSpace {
         /**
          * GIMP_LAYER_COLOR_SPACE_AUTO
@@ -1287,17 +1149,14 @@ export namespace Gimp {
          */
         RGB_PERCEPTUAL,
     }
-    /**
-     * Extracted from app/operations/operations-enums.h
-     */
 
-    /**
-     * Extracted from app/operations/operations-enums.h
-     */
     export namespace LayerCompositeMode {
         export const $gtype: GObject.GType<LayerCompositeMode>;
     }
 
+    /**
+     * Extracted from app/operations/operations-enums.h
+     */
     enum LayerCompositeMode {
         /**
          * GIMP_LAYER_COMPOSITE_AUTO
@@ -1320,17 +1179,14 @@ export namespace Gimp {
          */
         INTERSECTION,
     }
-    /**
-     * Extracted from app/operations/operations-enums.h
-     */
 
-    /**
-     * Extracted from app/operations/operations-enums.h
-     */
     export namespace LayerMode {
         export const $gtype: GObject.GType<LayerMode>;
     }
 
+    /**
+     * Extracted from app/operations/operations-enums.h
+     */
     enum LayerMode {
         /**
          * GIMP_LAYER_MODE_NORMAL_LEGACY
@@ -1581,17 +1437,14 @@ export namespace Gimp {
          */
         PASS_THROUGH,
     }
-    /**
-     * Layer mask apply modes.
-     */
 
-    /**
-     * Layer mask apply modes.
-     */
     export namespace MaskApplyMode {
         export const $gtype: GObject.GType<MaskApplyMode>;
     }
 
+    /**
+     * Layer mask apply modes.
+     */
     enum MaskApplyMode {
         /**
          * Apply the mask
@@ -1602,17 +1455,14 @@ export namespace Gimp {
          */
         DISCARD,
     }
-    /**
-     * Types of merging layers.
-     */
 
-    /**
-     * Types of merging layers.
-     */
     export namespace MergeType {
         export const $gtype: GObject.GType<MergeType>;
     }
 
+    /**
+     * Types of merging layers.
+     */
     enum MergeType {
         /**
          * Expanded as necessary
@@ -1631,17 +1481,14 @@ export namespace Gimp {
          */
         FLATTEN_IMAGE,
     }
-    /**
-     * How to present messages.
-     */
 
-    /**
-     * How to present messages.
-     */
     export namespace MessageHandlerType {
         export const $gtype: GObject.GType<MessageHandlerType>;
     }
 
+    /**
+     * How to present messages.
+     */
     enum MessageHandlerType {
         /**
          * A popup dialog
@@ -1656,17 +1503,10 @@ export namespace Gimp {
          */
         ERROR_CONSOLE,
     }
-    /**
-     * Well-defined colorspace information available from metadata
-     */
 
     /**
      * Well-defined colorspace information available from metadata
      */
-    export namespace MetadataColorspace {
-        export const $gtype: GObject.GType<MetadataColorspace>;
-    }
-
     enum MetadataColorspace {
         /**
          * Unspecified
@@ -1685,34 +1525,20 @@ export namespace Gimp {
          */
         ADOBERGB,
     }
-    /**
-     * Types of errors returned by modules
-     */
 
     /**
      * Types of errors returned by modules
      */
-    export namespace ModuleError {
-        export const $gtype: GObject.GType<ModuleError>;
-    }
-
     enum ModuleError {
         /**
          * Generic error condition
          */
         MODULE_FAILED,
     }
-    /**
-     * The possible states a #GimpModule can be in.
-     */
 
     /**
      * The possible states a #GimpModule can be in.
      */
-    export namespace ModuleState {
-        export const $gtype: GObject.GType<ModuleState>;
-    }
-
     enum ModuleState {
         /**
          * Missing gimp_module_register() function
@@ -1734,17 +1560,14 @@ export namespace Gimp {
          */
         NOT_LOADED,
     }
-    /**
-     * Background fill types for the offset operation.
-     */
 
-    /**
-     * Background fill types for the offset operation.
-     */
     export namespace OffsetType {
         export const $gtype: GObject.GType<OffsetType>;
     }
 
+    /**
+     * Background fill types for the offset operation.
+     */
     enum OffsetType {
         /**
          * Background
@@ -1759,17 +1582,14 @@ export namespace Gimp {
          */
         WRAP_AROUND,
     }
-    /**
-     * Orientations for various purposes.
-     */
 
-    /**
-     * Orientations for various purposes.
-     */
     export namespace OrientationType {
         export const $gtype: GObject.GType<OrientationType>;
     }
 
+    /**
+     * Orientations for various purposes.
+     */
     enum OrientationType {
         /**
          * Horizontal
@@ -1784,17 +1604,14 @@ export namespace Gimp {
          */
         UNKNOWN,
     }
-    /**
-     * PDB error handlers.
-     */
 
-    /**
-     * PDB error handlers.
-     */
     export namespace PDBErrorHandler {
         export const $gtype: GObject.GType<PDBErrorHandler>;
     }
 
+    /**
+     * PDB error handlers.
+     */
     enum PDBErrorHandler {
         /**
          * Internal
@@ -1805,17 +1622,14 @@ export namespace Gimp {
          */
         PLUGIN,
     }
-    /**
-     * Types of PDB procedures.
-     */
 
-    /**
-     * Types of PDB procedures.
-     */
     export namespace PDBProcType {
         export const $gtype: GObject.GType<PDBProcType>;
     }
 
+    /**
+     * Types of PDB procedures.
+     */
     enum PDBProcType {
         /**
          * Internal GIMP procedure
@@ -1834,17 +1648,14 @@ export namespace Gimp {
          */
         TEMPORARY,
     }
-    /**
-     * Return status of PDB calls.
-     */
 
-    /**
-     * Return status of PDB calls.
-     */
     export namespace PDBStatusType {
         export const $gtype: GObject.GType<PDBStatusType>;
     }
 
+    /**
+     * Return status of PDB calls.
+     */
     enum PDBStatusType {
         /**
          * Execution error
@@ -1867,17 +1678,14 @@ export namespace Gimp {
          */
         CANCEL,
     }
-    /**
-     * Paint application modes.
-     */
 
-    /**
-     * Paint application modes.
-     */
     export namespace PaintApplicationMode {
         export const $gtype: GObject.GType<PaintApplicationMode>;
     }
 
+    /**
+     * Paint application modes.
+     */
     enum PaintApplicationMode {
         /**
          * Constant
@@ -1888,36 +1696,25 @@ export namespace Gimp {
          */
         INCREMENTAL,
     }
-    /**
-     * Possible type of strokes in path objects.
-     */
 
-    /**
-     * Possible type of strokes in path objects.
-     */
     export namespace PathStrokeType {
         export const $gtype: GObject.GType<PathStrokeType>;
     }
 
+    /**
+     * Possible type of strokes in path objects.
+     */
     enum PathStrokeType {
         /**
          * A bezier stroke
          */
         BEZIER,
     }
-    /**
-     * How to deal with transparency when creating thubnail pixbufs from
-     * images and drawables.
-     */
 
     /**
      * How to deal with transparency when creating thubnail pixbufs from
      * images and drawables.
      */
-    export namespace PixbufTransparency {
-        export const $gtype: GObject.GType<PixbufTransparency>;
-    }
-
     enum PixbufTransparency {
         /**
          * Create a pixbuf with alpha
@@ -1932,17 +1729,14 @@ export namespace Gimp {
          */
         LARGE_CHECKS,
     }
-    /**
-     * Precisions for pixel encoding.
-     */
 
-    /**
-     * Precisions for pixel encoding.
-     */
     export namespace Precision {
         export const $gtype: GObject.GType<Precision>;
     }
 
+    /**
+     * Precisions for pixel encoding.
+     */
     enum Precision {
         /**
          * 8-bit linear integer
@@ -2047,17 +1841,14 @@ export namespace Gimp {
          */
         DOUBLE_GAMMA,
     }
-    /**
-     * Commands for the progress API.
-     */
 
-    /**
-     * Commands for the progress API.
-     */
     export namespace ProgressCommand {
         export const $gtype: GObject.GType<ProgressCommand>;
     }
 
+    /**
+     * Commands for the progress API.
+     */
     enum ProgressCommand {
         /**
          * Start a progress
@@ -2085,10 +1876,6 @@ export namespace Gimp {
         GET_WINDOW,
     }
 
-    export namespace RGBCompositeMode {
-        export const $gtype: GObject.GType<RGBCompositeMode>;
-    }
-
     enum RGBCompositeMode {
         /**
          * don't do compositing
@@ -2103,17 +1890,14 @@ export namespace Gimp {
          */
         BEHIND,
     }
-    /**
-     * Repeat modes for example for gradients.
-     */
 
-    /**
-     * Repeat modes for example for gradients.
-     */
     export namespace RepeatMode {
         export const $gtype: GObject.GType<RepeatMode>;
     }
 
+    /**
+     * Repeat modes for example for gradients.
+     */
     enum RepeatMode {
         /**
          * None (extend)
@@ -2132,17 +1916,14 @@ export namespace Gimp {
          */
         TRIANGULAR,
     }
-    /**
-     * Types of simple rotations.
-     */
 
-    /**
-     * Types of simple rotations.
-     */
     export namespace RotationType {
         export const $gtype: GObject.GType<RotationType>;
     }
 
+    /**
+     * Types of simple rotations.
+     */
     enum RotationType {
         /**
          * 90 degrees
@@ -2157,17 +1938,14 @@ export namespace Gimp {
          */
         DEGREES270,
     }
-    /**
-     * Run modes for plug-ins.
-     */
 
-    /**
-     * Run modes for plug-ins.
-     */
     export namespace RunMode {
         export const $gtype: GObject.GType<RunMode>;
     }
 
+    /**
+     * Run modes for plug-ins.
+     */
     enum RunMode {
         /**
          * Run interactively
@@ -2182,17 +1960,14 @@ export namespace Gimp {
          */
         WITH_LAST_VALS,
     }
-    /**
-     * Criterions for color similarity.
-     */
 
-    /**
-     * Criterions for color similarity.
-     */
     export namespace SelectCriterion {
         export const $gtype: GObject.GType<SelectCriterion>;
     }
 
+    /**
+     * Criterions for color similarity.
+     */
     enum SelectCriterion {
         /**
          * Composite
@@ -2239,17 +2014,14 @@ export namespace Gimp {
          */
         ALPHA,
     }
-    /**
-     * Size types for the old-style text API.
-     */
 
-    /**
-     * Size types for the old-style text API.
-     */
     export namespace SizeType {
         export const $gtype: GObject.GType<SizeType>;
     }
 
+    /**
+     * Size types for the old-style text API.
+     */
     enum SizeType {
         /**
          * Pixels
@@ -2260,17 +2032,14 @@ export namespace Gimp {
          */
         POINTS,
     }
-    /**
-     * When to generate stack traces in case of an error.
-     */
 
-    /**
-     * When to generate stack traces in case of an error.
-     */
     export namespace StackTraceMode {
         export const $gtype: GObject.GType<StackTraceMode>;
     }
 
+    /**
+     * When to generate stack traces in case of an error.
+     */
     enum StackTraceMode {
         /**
          * Never
@@ -2285,17 +2054,14 @@ export namespace Gimp {
          */
         ALWAYS,
     }
-    /**
-     * Methods of stroking selections and paths.
-     */
 
-    /**
-     * Methods of stroking selections and paths.
-     */
     export namespace StrokeMethod {
         export const $gtype: GObject.GType<StrokeMethod>;
     }
 
+    /**
+     * Methods of stroking selections and paths.
+     */
     enum StrokeMethod {
         /**
          * Stroke line
@@ -2306,17 +2072,14 @@ export namespace Gimp {
          */
         PAINT_METHOD,
     }
-    /**
-     * Text directions.
-     */
 
-    /**
-     * Text directions.
-     */
     export namespace TextDirection {
         export const $gtype: GObject.GType<TextDirection>;
     }
 
+    /**
+     * Text directions.
+     */
     enum TextDirection {
         /**
          * From left to right
@@ -2343,17 +2106,14 @@ export namespace Gimp {
          */
         TTB_LTR_UPRIGHT,
     }
-    /**
-     * Text hint strengths.
-     */
 
-    /**
-     * Text hint strengths.
-     */
     export namespace TextHintStyle {
         export const $gtype: GObject.GType<TextHintStyle>;
     }
 
+    /**
+     * Text hint strengths.
+     */
     enum TextHintStyle {
         /**
          * None
@@ -2372,17 +2132,14 @@ export namespace Gimp {
          */
         FULL,
     }
-    /**
-     * Text justifications.
-     */
 
-    /**
-     * Text justifications.
-     */
     export namespace TextJustification {
         export const $gtype: GObject.GType<TextJustification>;
     }
 
+    /**
+     * Text justifications.
+     */
     enum TextJustification {
         /**
          * Left justified
@@ -2401,17 +2158,14 @@ export namespace Gimp {
          */
         FILL,
     }
-    /**
-     * For choosing which brightness ranges to transform.
-     */
 
-    /**
-     * For choosing which brightness ranges to transform.
-     */
     export namespace TransferMode {
         export const $gtype: GObject.GType<TransferMode>;
     }
 
+    /**
+     * For choosing which brightness ranges to transform.
+     */
     enum TransferMode {
         /**
          * Shadows
@@ -2426,17 +2180,14 @@ export namespace Gimp {
          */
         HIGHLIGHTS,
     }
-    /**
-     * Transform directions.
-     */
 
-    /**
-     * Transform directions.
-     */
     export namespace TransformDirection {
         export const $gtype: GObject.GType<TransformDirection>;
     }
 
+    /**
+     * Transform directions.
+     */
     enum TransformDirection {
         /**
          * Normal (Forward)
@@ -2447,17 +2198,14 @@ export namespace Gimp {
          */
         BACKWARD,
     }
-    /**
-     * Ways of clipping the result when transforming drawables.
-     */
 
-    /**
-     * Ways of clipping the result when transforming drawables.
-     */
     export namespace TransformResize {
         export const $gtype: GObject.GType<TransformResize>;
     }
 
+    /**
+     * Ways of clipping the result when transforming drawables.
+     */
     enum TransformResize {
         /**
          * Adjust
@@ -2476,21 +2224,12 @@ export namespace Gimp {
          */
         CROP_WITH_ASPECT,
     }
-    /**
-     * Integer IDs of built-in units used for dimensions in images. These
-     * IDs are meant to stay stable but user-created units IDs may change
-     * from one session to another.
-     */
 
     /**
      * Integer IDs of built-in units used for dimensions in images. These
      * IDs are meant to stay stable but user-created units IDs may change
      * from one session to another.
      */
-    export namespace UnitID {
-        export const $gtype: GObject.GType<UnitID>;
-    }
-
     enum UnitID {
         /**
          * Pixels
@@ -2521,6 +2260,7 @@ export namespace Gimp {
          */
         PERCENT,
     }
+
     const API_VERSION: string;
     /**
      * The dark gray value for the default checkerboard pattern.
@@ -7107,14 +6847,6 @@ export namespace Gimp {
     /**
      * The types of images and layers an export procedure can handle
      */
-
-    /**
-     * The types of images and layers an export procedure can handle
-     */
-    export namespace ExportCapabilities {
-        export const $gtype: GObject.GType<ExportCapabilities>;
-    }
-
     enum ExportCapabilities {
         /**
          * Handles RGB images
@@ -7161,17 +6893,10 @@ export namespace Gimp {
          */
         NEEDS_CROP,
     }
-    /**
-     * What metadata to load when importing images.
-     */
 
     /**
      * What metadata to load when importing images.
      */
-    export namespace MetadataLoadFlags {
-        export const $gtype: GObject.GType<MetadataLoadFlags>;
-    }
-
     enum MetadataLoadFlags {
         /**
          * Do not load the metadata
@@ -7198,17 +6923,10 @@ export namespace Gimp {
          */
         ALL,
     }
-    /**
-     * What kinds of metadata to save when exporting images.
-     */
 
     /**
      * What kinds of metadata to save when exporting images.
      */
-    export namespace MetadataSaveFlags {
-        export const $gtype: GObject.GType<MetadataSaveFlags>;
-    }
-
     enum MetadataSaveFlags {
         /**
          * Save EXIF
@@ -7241,17 +6959,14 @@ export namespace Gimp {
          */
         ALL,
     }
-    /**
-     * The cases when a #GimpProcedure should be shown as sensitive.
-     */
 
-    /**
-     * The cases when a #GimpProcedure should be shown as sensitive.
-     */
     export namespace ProcedureSensitivityMask {
         export const $gtype: GObject.GType<ProcedureSensitivityMask>;
     }
 
+    /**
+     * The cases when a #GimpProcedure should be shown as sensitive.
+     */
     enum ProcedureSensitivityMask {
         /**
          * Handles image with one selected drawable.
@@ -7271,6 +6986,7 @@ export namespace Gimp {
         NO_IMAGE,
         ALWAYS,
     }
+
     namespace BatchProcedure {
         // Signal signatures
         interface SignalSignatures extends Procedure.SignalSignatures {

@@ -63,17 +63,14 @@ export namespace Shell {
         STARTING,
         RUNNING,
     }
-    /**
-     * The mode of blurring of the effect.
-     */
 
-    /**
-     * The mode of blurring of the effect.
-     */
     export namespace BlurMode {
         export const $gtype: GObject.GType<BlurMode>;
     }
 
+    /**
+     * The mode of blurring of the effect.
+     */
     enum BlurMode {
         /**
          * blur the actor contents, and its children
@@ -94,19 +91,15 @@ export namespace Shell {
         USER_CANCELED,
         INTERNAL_ERROR,
     }
-    /**
-     * Temporary hack to work around Cogl not exporting CoglSnippetHook in
-     * the 1.0 API. Don't use.
-     */
 
-    /**
-     * Temporary hack to work around Cogl not exporting CoglSnippetHook in
-     * the 1.0 API. Don't use.
-     */
     export namespace SnippetHook {
         export const $gtype: GObject.GType<SnippetHook>;
     }
 
+    /**
+     * Temporary hack to work around Cogl not exporting CoglSnippetHook in
+     * the 1.0 API. Don't use.
+     */
     enum SnippetHook {
         VERTEX,
         VERTEX_TRANSFORM,
@@ -115,6 +108,7 @@ export namespace Shell {
         LAYER_FRAGMENT,
         TEXTURE_LOOKUP,
     }
+
     const KEYRING_SK_TAG: string;
     const KEYRING_SN_TAG: string;
     const KEYRING_UUID_TAG: string;
@@ -363,19 +357,14 @@ export namespace Shell {
     interface PerfStatisticsCallback {
         (perf_log: PerfLog, data?: any | null): void;
     }
-    /**
-     * Controls in which GNOME Shell states an action (like keybindings and gestures)
-     * should be handled.
-     */
-
-    /**
-     * Controls in which GNOME Shell states an action (like keybindings and gestures)
-     * should be handled.
-     */
     export namespace ActionMode {
         export const $gtype: GObject.GType<ActionMode>;
     }
 
+    /**
+     * Controls in which GNOME Shell states an action (like keybindings and gestures)
+     * should be handled.
+     */
     enum ActionMode {
         /**
          * block action
@@ -423,6 +412,7 @@ export namespace Shell {
          */
         ALL,
     }
+
     namespace App {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

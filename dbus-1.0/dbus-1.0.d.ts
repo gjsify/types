@@ -17,15 +17,12 @@ export namespace DBus {
      * DBus-1.0
      */
 
-    export namespace BusType {
-        export const $gtype: GObject.GType<BusType>;
-    }
-
     enum BusType {
         SESSION,
         SYSTEM,
         STARTER,
     }
+
     class Connection {
         static $gtype: GObject.GType<Connection>;
     }

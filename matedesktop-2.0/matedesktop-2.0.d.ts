@@ -29,18 +29,10 @@ export namespace MateDesktop {
      * MateDesktop-2.0
      */
 
-    export namespace BGColorType {
-        export const $gtype: GObject.GType<BGColorType>;
-    }
-
     enum BGColorType {
         SOLID,
         H_GRADIENT,
         V_GRADIENT,
-    }
-
-    export namespace BGPlacement {
-        export const $gtype: GObject.GType<BGPlacement>;
     }
 
     enum BGPlacement {
@@ -51,8 +43,9 @@ export namespace MateDesktop {
         FILL_SCREEN,
         SPANNED,
     }
+
     class DesktopItemError extends GLib.Error {
-        static $gtype: GObject.GType<DesktopItemError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -70,18 +63,10 @@ export namespace MateDesktop {
         constructor(options: { message: string; code: number });
     }
 
-    export namespace DesktopItemStatus {
-        export const $gtype: GObject.GType<DesktopItemStatus>;
-    }
-
     enum DesktopItemStatus {
         UNCHANGED,
         CHANGED,
         DISAPPEARED,
-    }
-
-    export namespace DesktopItemType {
-        export const $gtype: GObject.GType<DesktopItemType>;
     }
 
     enum DesktopItemType {
@@ -96,16 +81,13 @@ export namespace MateDesktop {
         SERVICE_TYPE,
     }
 
-    export namespace DesktopThumbnailSize {
-        export const $gtype: GObject.GType<DesktopThumbnailSize>;
-    }
-
     enum DesktopThumbnailSize {
         NORMAL,
         LARGE,
     }
+
     class RRError extends GLib.Error {
-        static $gtype: GObject.GType<RRError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -329,17 +311,8 @@ export namespace MateDesktop {
     interface ColorSelectionChangePaletteWithScreenFunc {
         (screen: Gdk.Screen, colors: Gdk.RGBA, n_colors: number): void;
     }
-
-    export namespace DesktopItemIconFlags {
-        export const $gtype: GObject.GType<DesktopItemIconFlags>;
-    }
-
     enum DesktopItemIconFlags {
         DESKTOP_ITEM_ICON_NO_KDE,
-    }
-
-    export namespace DesktopItemLaunchFlags {
-        export const $gtype: GObject.GType<DesktopItemLaunchFlags>;
     }
 
     enum DesktopItemLaunchFlags {
@@ -350,17 +323,9 @@ export namespace MateDesktop {
         DO_NOT_REAP_CHILD,
     }
 
-    export namespace DesktopItemLoadFlags {
-        export const $gtype: GObject.GType<DesktopItemLoadFlags>;
-    }
-
     enum DesktopItemLoadFlags {
         ONLY_IF_EXISTS,
         NO_TRANSLATIONS,
-    }
-
-    export namespace RRRotation {
-        export const $gtype: GObject.GType<RRRotation>;
     }
 
     enum RRRotation {
@@ -371,6 +336,7 @@ export namespace MateDesktop {
         REFLECT_X,
         REFLECT_Y,
     }
+
     namespace BG {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

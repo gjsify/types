@@ -22,17 +22,13 @@ export namespace Dmap {
      * Dmap-4.0
      */
 
-    /**
-     * Enumeration of connection states.
-     */
-
-    /**
-     * Enumeration of connection states.
-     */
     export namespace ConnectionState {
         export const $gtype: GObject.GType<ConnectionState>;
     }
 
+    /**
+     * Enumeration of connection states.
+     */
     enum ConnectionState {
         /**
          * getting DMAP server information
@@ -263,28 +259,26 @@ export namespace Dmap {
         SINGLE,
         ALL,
     }
-    /**
-     * Special DmapDb ID values.
-     */
 
-    /**
-     * Special DmapDb ID values.
-     */
     export namespace DbId {
         export const $gtype: GObject.GType<DbId>;
     }
 
+    /**
+     * Special DmapDb ID values.
+     */
     enum DbId {
         /**
          * the value which represents a bad DmapDb ID.
          */
         BAD,
     }
+
     /**
      * Errors inside the libdmapsharing library.
      */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -312,7 +306,7 @@ export namespace Dmap {
     }
 
     class MdnsBrowserError extends GLib.Error {
-        static $gtype: GObject.GType<MdnsBrowserError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -329,7 +323,7 @@ export namespace Dmap {
     }
 
     class MdnsPublisherError extends GLib.Error {
-        static $gtype: GObject.GType<MdnsPublisherError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -354,17 +348,14 @@ export namespace Dmap {
         UDP,
         LAST,
     }
-    /**
-     * Enum values used to specify the service type.
-     */
 
-    /**
-     * Enum values used to specify the service type.
-     */
     export namespace MdnsServiceType {
         export const $gtype: GObject.GType<MdnsServiceType>;
     }
 
+    /**
+     * Enum values used to specify the service type.
+     */
     enum MdnsServiceType {
         /**
          * an invalid service type
@@ -412,6 +403,7 @@ export namespace Dmap {
         NAME_AND_PASSWORD,
         PASSWORD,
     }
+
     const HASH_SIZE: number;
     /**
      * Compares the two records associated with the provided keys according

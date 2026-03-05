@@ -24,15 +24,6 @@ export namespace GrlNet {
      * These constants identify all the available errors managed by
      * the web client.
      */
-
-    /**
-     * These constants identify all the available errors managed by
-     * the web client.
-     */
-    export namespace WcError {
-        export const $gtype: GObject.GType<WcError>;
-    }
-
     enum WcError {
         UNAVAILABLE,
         PROTOCOL_ERROR,
@@ -44,6 +35,7 @@ export namespace GrlNet {
         PROXY_ERROR,
         CANCELLED,
     }
+
     namespace Wc {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

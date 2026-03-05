@@ -29,17 +29,13 @@ export namespace Gladeui {
      * Gladeui-2.0
      */
 
-    /**
-     * These are the reasons your #GladePostCreateFunc can be called.
-     */
-
-    /**
-     * These are the reasons your #GladePostCreateFunc can be called.
-     */
     export namespace CreateReason {
         export const $gtype: GObject.GType<CreateReason>;
     }
 
+    /**
+     * These are the reasons your #GladePostCreateFunc can be called.
+     */
     enum CreateReason {
         /**
          * Was created at the user's request
@@ -112,17 +108,14 @@ export namespace Gladeui {
         ICON_ONLY,
         LABEL_ONLY,
     }
-    /**
-     * Indicates what the pointer is used for in the workspace.
-     */
 
-    /**
-     * Indicates what the pointer is used for in the workspace.
-     */
     export namespace PointerMode {
         export const $gtype: GObject.GType<PointerMode>;
     }
 
+    /**
+     * Indicates what the pointer is used for in the workspace.
+     */
     enum PointerMode {
         /**
          * Mouse pointer used for selecting widgets
@@ -146,19 +139,15 @@ export namespace Gladeui {
          */
         ALIGN_EDIT,
     }
-    /**
-     * The tree view columns provided by the GtkTreeModel implemented
-     * by GladeProject
-     */
 
-    /**
-     * The tree view columns provided by the GtkTreeModel implemented
-     * by GladeProject
-     */
     export namespace ProjectModelColumns {
         export const $gtype: GObject.GType<ProjectModelColumns>;
     }
 
+    /**
+     * The tree view columns provided by the GtkTreeModel implemented
+     * by GladeProject
+     */
     enum ProjectModelColumns {
         /**
          * name of the icon for the widget
@@ -243,6 +232,7 @@ export namespace Gladeui {
         OPEN,
         SAVE,
     }
+
     const DEVHELP_FALLBACK_ICON_FILE: string;
     const DEVHELP_ICON_NAME: string;
     const ENV_BUNDLED: string;
@@ -853,7 +843,6 @@ export namespace Gladeui {
         (adaptor: WidgetAdaptor, widget: Widget, context: XmlContext, node: XmlNode): void;
     }
     type GList = object | null;
-
     export namespace DebugFlag {
         export const $gtype: GObject.GType<DebugFlag>;
     }
@@ -909,6 +898,7 @@ export namespace Gladeui {
          */
         UNRECOGNIZED,
     }
+
     namespace AdaptorChooser {
         // Signal signatures
         interface SignalSignatures extends Gtk.Box.SignalSignatures {

@@ -33,6 +33,7 @@ export namespace GjsPrivate {
         NUMERIC,
         TIME,
     }
+
     function bindtextdomain(domain: string, location: string): void;
     function clear_terminal(): void;
     function format_int_alternative_output(n: number): string;

@@ -31,17 +31,13 @@ export namespace GeglGtk3 {
      * GeglGtk3-0.1
      */
 
-    /**
-     * Specifies the autoscaling behavior of #GeglGtkView.
-     */
-
-    /**
-     * Specifies the autoscaling behavior of #GeglGtkView.
-     */
     export namespace ViewAutoscale {
         export const $gtype: GObject.GType<ViewAutoscale>;
     }
 
+    /**
+     * Specifies the autoscaling behavior of #GeglGtkView.
+     */
     enum ViewAutoscale {
         /**
          * Do not autoscale
@@ -56,6 +52,7 @@ export namespace GeglGtk3 {
          */
         CONTENT,
     }
+
     namespace View {
         // Signal signatures
         interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {

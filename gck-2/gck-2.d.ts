@@ -20,17 +20,13 @@ export namespace Gck {
      * Gck-2
      */
 
-    /**
-     * Flags to be used with a [method`Builder`.init_full] and [ctor`Builder`.new].
-     */
-
-    /**
-     * Flags to be used with a [method`Builder`.init_full] and [ctor`Builder`.new].
-     */
     export namespace BuilderFlags {
         export const $gtype: GObject.GType<BuilderFlags>;
     }
 
+    /**
+     * Flags to be used with a [method`Builder`.init_full] and [ctor`Builder`.new].
+     */
     enum BuilderFlags {
         /**
          * no special flags
@@ -41,6 +37,7 @@ export namespace Gck {
          */
         SECURE_MEMORY,
     }
+
     /**
      * Various error codes. All the `CKR_XXX` error codes from PKCS#11 are also
      * relevant error codes.
@@ -49,7 +46,7 @@ export namespace Gck {
      * member of the error then contains the raw PKCS#11 `CK_RV` result value.
      */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -72,7 +69,7 @@ export namespace Gck {
      * Various error codes used with PKCS#11 URIs
      */
     class UriError extends GLib.Error {
-        static $gtype: GObject.GType<UriError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -300,17 +297,13 @@ export namespace Gck {
     interface Allocator {
         (data: any | null, length: number): any | null;
     }
-    /**
-     * Options for creating sessions.
-     */
-
-    /**
-     * Options for creating sessions.
-     */
     export namespace SessionOptions {
         export const $gtype: GObject.GType<SessionOptions>;
     }
 
+    /**
+     * Options for creating sessions.
+     */
     enum SessionOptions {
         /**
          * Open session as read only
@@ -329,19 +322,15 @@ export namespace Gck {
          */
         AUTHENTICATE,
     }
-    /**
-     * Which parts of the PKCS#11 URI will be parsed or formatted. These can be
-     * combined.
-     */
 
-    /**
-     * Which parts of the PKCS#11 URI will be parsed or formatted. These can be
-     * combined.
-     */
     export namespace UriFlags {
         export const $gtype: GObject.GType<UriFlags>;
     }
 
+    /**
+     * Which parts of the PKCS#11 URI will be parsed or formatted. These can be
+     * combined.
+     */
     enum UriFlags {
         /**
          * the URI will be used to match objects.
@@ -364,6 +353,7 @@ export namespace Gck {
          */
         FOR_ANY,
     }
+
     namespace Enumerator {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

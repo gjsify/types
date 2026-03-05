@@ -21,10 +21,6 @@ export namespace PackageKitPlugin {
      * PackageKitPlugin-1.0
      */
 
-    export namespace BackendJobSignal {
-        export const $gtype: GObject.GType<BackendJobSignal>;
-    }
-
     enum BackendJobSignal {
         ALLOW_CANCEL,
         DETAILS,
@@ -50,20 +46,12 @@ export namespace PackageKitPlugin {
         LAST,
     }
 
-    export namespace HintEnum {
-        export const $gtype: GObject.GType<HintEnum>;
-    }
-
     enum HintEnum {
         FALSE,
         TRUE,
         UNSET,
         INVALID,
         LAST,
-    }
-
-    export namespace PluginPhase {
-        export const $gtype: GObject.GType<PluginPhase>;
     }
 
     enum PluginPhase {
@@ -78,10 +66,6 @@ export namespace PackageKitPlugin {
         UNKNOWN,
     }
 
-    export namespace TransactionState {
-        export const $gtype: GObject.GType<TransactionState>;
-    }
-
     enum TransactionState {
         NEW,
         WAITING_FOR_AUTH,
@@ -91,6 +75,7 @@ export namespace PackageKitPlugin {
         FINISHED,
         UNKNOWN,
     }
+
     /**
      * The unknown percentage value
      */

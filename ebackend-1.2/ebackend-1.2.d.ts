@@ -25,17 +25,13 @@ export namespace EBackend {
      * EBackend-1.2
      */
 
-    /**
-     * Completion codes used by #EAuthenticationSession.
-     */
-
-    /**
-     * Completion codes used by #EAuthenticationSession.
-     */
     export namespace AuthenticationSessionResult {
         export const $gtype: GObject.GType<AuthenticationSessionResult>;
     }
 
+    /**
+     * Completion codes used by #EAuthenticationSession.
+     */
     enum AuthenticationSessionResult {
         /**
          * An error occurred while authenticating.
@@ -50,17 +46,10 @@ export namespace EBackend {
          */
         DISMISSED,
     }
-    /**
-     * Declares whether to exclude or include locally deleted objects.
-     */
 
     /**
      * Declares whether to exclude or include locally deleted objects.
      */
-    export namespace CacheDeletedFlag {
-        export const $gtype: GObject.GType<CacheDeletedFlag>;
-    }
-
     enum CacheDeletedFlag {
         /**
          * Do not include locally deleted objects
@@ -71,17 +60,10 @@ export namespace EBackend {
          */
         INCLUDE_DELETED,
     }
-    /**
-     * Defines the types of possible errors reported by the #ECache
-     */
 
     /**
      * Defines the types of possible errors reported by the #ECache
      */
-    export namespace CacheError {
-        export const $gtype: GObject.GType<CacheError>;
-    }
-
     enum CacheError {
         /**
          * An error was reported from the SQLite engine
@@ -122,17 +104,10 @@ export namespace EBackend {
          */
         CORRUPT,
     }
-    /**
-     * Indicates the type of lock requested in e_cache_lock().
-     */
 
     /**
      * Indicates the type of lock requested in e_cache_lock().
      */
-    export namespace CacheLockType {
-        export const $gtype: GObject.GType<CacheLockType>;
-    }
-
     enum CacheLockType {
         /**
          * Obtain a lock for reading.
@@ -143,19 +118,11 @@ export namespace EBackend {
          */
         WRITE,
     }
-    /**
-     * Declares whether the operation is done in online or offline.
-     * This influences the offline state of the related objects.
-     */
 
     /**
      * Declares whether the operation is done in online or offline.
      * This influences the offline state of the related objects.
      */
-    export namespace CacheOfflineFlag {
-        export const $gtype: GObject.GType<CacheOfflineFlag>;
-    }
-
     enum CacheOfflineFlag {
         /**
          * Do not know current online/offline state
@@ -170,17 +137,10 @@ export namespace EBackend {
          */
         IS_OFFLINE,
     }
-    /**
-     * Indicates what type of action to take while unlocking the cache with e_cache_unlock().
-     */
 
     /**
      * Indicates what type of action to take while unlocking the cache with e_cache_unlock().
      */
-    export namespace CacheUnlockAction {
-        export const $gtype: GObject.GType<CacheUnlockAction>;
-    }
-
     enum CacheUnlockAction {
         /**
          * Just unlock, this is appropriate for locks which were obtained with %E_CACHE_LOCK_READ.
@@ -195,19 +155,15 @@ export namespace EBackend {
          */
         ROLLBACK,
     }
-    /**
-     * Exit codes submitted to e_dbus_server_quit() and returned by
-     * e_dbus_server_run().
-     */
 
-    /**
-     * Exit codes submitted to e_dbus_server_quit() and returned by
-     * e_dbus_server_run().
-     */
     export namespace DBusServerExitCode {
         export const $gtype: GObject.GType<DBusServerExitCode>;
     }
 
+    /**
+     * Exit codes submitted to e_dbus_server_quit() and returned by
+     * e_dbus_server_run().
+     */
     enum DBusServerExitCode {
         /**
          * The server's run state is unchanged.
@@ -224,19 +180,15 @@ export namespace EBackend {
          */
         RELOAD,
     }
-    /**
-     * Defines offline state of an object. Locally changed objects require
-     * synchronization with their remote storage.
-     */
 
-    /**
-     * Defines offline state of an object. Locally changed objects require
-     * synchronization with their remote storage.
-     */
     export namespace OfflineState {
         export const $gtype: GObject.GType<OfflineState>;
     }
 
+    /**
+     * Defines offline state of an object. Locally changed objects require
+     * synchronization with their remote storage.
+     */
     enum OfflineState {
         /**
          * Unknown offline state.
@@ -259,6 +211,7 @@ export namespace EBackend {
          */
         LOCALLY_DELETED,
     }
+
     const CACHE_COLUMN_OBJECT: string;
     const CACHE_COLUMN_REVISION: string;
     const CACHE_COLUMN_STATE: string;
@@ -319,17 +272,13 @@ export namespace EBackend {
             column_values: string[],
         ): boolean;
     }
-    /**
-     * Flags to check whether at least one of the asked for parts is enabled.
-     */
-
-    /**
-     * Flags to check whether at least one of the asked for parts is enabled.
-     */
     export namespace CollectionBackendParts {
         export const $gtype: GObject.GType<CollectionBackendParts>;
     }
 
+    /**
+     * Flags to check whether at least one of the asked for parts is enabled.
+     */
     enum CollectionBackendParts {
         /**
          * None part.
@@ -352,17 +301,14 @@ export namespace EBackend {
          */
         ANY,
     }
-    /**
-     * Initial permissions for a newly-loaded data source key file.
-     */
 
-    /**
-     * Initial permissions for a newly-loaded data source key file.
-     */
     export namespace SourcePermissionFlags {
         export const $gtype: GObject.GType<SourcePermissionFlags>;
     }
 
+    /**
+     * Initial permissions for a newly-loaded data source key file.
+     */
     enum SourcePermissionFlags {
         /**
          * The data source gets no initial permissions.
@@ -377,6 +323,7 @@ export namespace EBackend {
          */
         REMOVABLE,
     }
+
     namespace Backend {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

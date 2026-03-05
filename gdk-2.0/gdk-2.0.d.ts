@@ -557,6 +557,7 @@ export namespace Gdk {
         COMBO,
         DND,
     }
+
     const CURRENT_TIME: number;
     const KEY_0: number;
     const KEY_1: number;
@@ -4759,7 +4760,6 @@ export namespace Gdk {
     interface SpanFunc {
         (span: Span, data?: any | null): void;
     }
-
     export namespace DragAction {
         export const $gtype: GObject.GType<DragAction>;
     }
@@ -4934,6 +4934,7 @@ export namespace Gdk {
         ABOVE,
         BELOW,
     }
+
     namespace AppLaunchContext {
         // Signal signatures
         interface SignalSignatures extends Gio.AppLaunchContext.SignalSignatures {}

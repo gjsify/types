@@ -31,17 +31,13 @@ export namespace Workbench {
      * Workbench-0
      */
 
-    /**
-     * Enumeration of request states.
-     */
-
-    /**
-     * Enumeration of request states.
-     */
     export namespace RequestState {
         export const $gtype: GObject.GType<RequestState>;
     }
 
+    /**
+     * Enumeration of request states.
+     */
     enum RequestState {
         /**
          * the request state is unknown
@@ -56,6 +52,7 @@ export namespace Workbench {
          */
         COMPLETE,
     }
+
     namespace CompletionProvider {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

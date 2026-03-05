@@ -29,7 +29,7 @@ export namespace Vte {
      */
 
     class PtyError extends GLib.Error {
-        static $gtype: GObject.GType<PtyError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -65,19 +65,15 @@ export namespace Vte {
         FORCE_ENABLE,
         FORCE_DISABLE,
     }
-    /**
-     * An enumerated type which can be used to indicate the cursor blink mode
-     * for the terminal.
-     */
 
-    /**
-     * An enumerated type which can be used to indicate the cursor blink mode
-     * for the terminal.
-     */
     export namespace TerminalCursorBlinkMode {
         export const $gtype: GObject.GType<TerminalCursorBlinkMode>;
     }
 
+    /**
+     * An enumerated type which can be used to indicate the cursor blink mode
+     * for the terminal.
+     */
     enum TerminalCursorBlinkMode {
         /**
          * Follow GTK+ settings for cursor blinking.
@@ -92,19 +88,15 @@ export namespace Vte {
          */
         OFF,
     }
-    /**
-     * An enumerated type which can be used to indicate what should the terminal
-     * draw at the cursor position.
-     */
 
-    /**
-     * An enumerated type which can be used to indicate what should the terminal
-     * draw at the cursor position.
-     */
     export namespace TerminalCursorShape {
         export const $gtype: GObject.GType<TerminalCursorShape>;
     }
 
+    /**
+     * An enumerated type which can be used to indicate what should the terminal
+     * draw at the cursor position.
+     */
     enum TerminalCursorShape {
         /**
          * Draw a block cursor.  This is the default.
@@ -120,21 +112,16 @@ export namespace Vte {
          */
         UNDERLINE,
     }
-    /**
-     * An enumerated type which can be used to indicate which string the terminal
-     * should send to an application when the user presses the Delete or Backspace
-     * keys.
-     */
 
-    /**
-     * An enumerated type which can be used to indicate which string the terminal
-     * should send to an application when the user presses the Delete or Backspace
-     * keys.
-     */
     export namespace TerminalEraseBinding {
         export const $gtype: GObject.GType<TerminalEraseBinding>;
     }
 
+    /**
+     * An enumerated type which can be used to indicate which string the terminal
+     * should send to an application when the user presses the Delete or Backspace
+     * keys.
+     */
     enum TerminalEraseBinding {
         /**
          * For backspace, attempt to determine the right value from the terminal's IO settings.  For delete, use the control sequence.
@@ -157,25 +144,22 @@ export namespace Vte {
          */
         TTY,
     }
-    /**
-     * A flag type to determine how terminal contents should be written
-     * to an output stream.
-     */
 
-    /**
-     * A flag type to determine how terminal contents should be written
-     * to an output stream.
-     */
     export namespace TerminalWriteFlags {
         export const $gtype: GObject.GType<TerminalWriteFlags>;
     }
 
+    /**
+     * A flag type to determine how terminal contents should be written
+     * to an output stream.
+     */
     enum TerminalWriteFlags {
         /**
          * Write contents as UTF-8 text.  This is the default.
          */
         DEFAULT,
     }
+
     /**
      * Gets the user's shell, or %NULL. In the latter case, the
      * system default (usually "/bin/sh") should be used.
@@ -191,7 +175,6 @@ export namespace Vte {
     interface SelectionFunc {
         (terminal: Terminal, column: number, row: number, data?: any | null): boolean;
     }
-
     export namespace PtyFlags {
         export const $gtype: GObject.GType<PtyFlags>;
     }
@@ -223,6 +206,7 @@ export namespace Vte {
          */
         DEFAULT,
     }
+
     namespace Pty {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

@@ -21,14 +21,6 @@ export namespace GUPnPDLNA {
     /**
      * Flags describing a state of GUPnP DLNA Value.
      */
-
-    /**
-     * Flags describing a state of GUPnP DLNA Value.
-     */
-    export namespace ValueState {
-        export const $gtype: GObject.GType<ValueState>;
-    }
-
     enum ValueState {
         /**
          * Value is set.
@@ -43,6 +35,7 @@ export namespace GUPnPDLNA {
          */
         UNSUPPORTED,
     }
+
     namespace AudioInformation {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

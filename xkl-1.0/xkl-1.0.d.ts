@@ -19,17 +19,13 @@ export namespace Xkl {
      * Xkl-1.0
      */
 
-    /**
-     * The listener action modes:
-     */
-
-    /**
-     * The listener action modes:
-     */
     export namespace EngineListenModes {
         export const $gtype: GObject.GType<EngineListenModes>;
     }
 
+    /**
+     * The listener action modes:
+     */
     enum EngineListenModes {
         /**
          * The listener process should handle the per-window states
@@ -46,17 +42,14 @@ export namespace Xkl {
          */
         MANAGE_LAYOUTS,
     }
-    /**
-     * The type of the keyboard state change
-     */
 
-    /**
-     * The type of the keyboard state change
-     */
     export namespace EngineStateChange {
         export const $gtype: GObject.GType<EngineStateChange>;
     }
 
+    /**
+     * The type of the keyboard state change
+     */
     enum EngineStateChange {
         /**
          * Group was changed
@@ -67,6 +60,7 @@ export namespace Xkl {
          */
         INDICATORS_CHANGED,
     }
+
     const MAX_CI_DESC_LENGTH: number;
     const MAX_CI_NAME_LENGTH: number;
     const MAX_CI_SHORT_DESC_LENGTH: number;
@@ -101,17 +95,13 @@ export namespace Xkl {
     interface TwoConfigItemsProcessFunc {
         (config: ConfigRegistry, item: ConfigItem, subitem: ConfigItem, data: any): void;
     }
-    /**
-     * A set of flags used to indicate the capabilities of the active backend
-     */
-
-    /**
-     * A set of flags used to indicate the capabilities of the active backend
-     */
     export namespace EngineFeatures {
         export const $gtype: GObject.GType<EngineFeatures>;
     }
 
+    /**
+     * A set of flags used to indicate the capabilities of the active backend
+     */
     enum EngineFeatures {
         /**
          * Backend allows to toggls indicators on/off
@@ -139,6 +129,7 @@ export namespace Xkl {
          */
         DEVICE_DISCOVERY,
     }
+
     namespace ConfigItem {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

@@ -215,19 +215,14 @@ export namespace Amtk {
      * @returns the new string with the mnemonics removed. Free with g_free() when no longer needed.
      */
     function utils_remove_mnemonic(str: string): string;
-    /**
-     * #AmtkFactoryFlags permits to control how a factory function creates the
-     * object, to ignore some steps.
-     */
-
-    /**
-     * #AmtkFactoryFlags permits to control how a factory function creates the
-     * object, to ignore some steps.
-     */
     export namespace FactoryFlags {
         export const $gtype: GObject.GType<FactoryFlags>;
     }
 
+    /**
+     * #AmtkFactoryFlags permits to control how a factory function creates the
+     * object, to ignore some steps.
+     */
     enum FactoryFlags {
         /**
          * No flags.
@@ -267,6 +262,7 @@ export namespace Amtk {
          */
         IGNORE_ACCELS_FOR_APP,
     }
+
     namespace ActionInfoCentralStore {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

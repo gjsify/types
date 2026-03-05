@@ -20,17 +20,13 @@ export namespace Hs {
      * Hs-1
      */
 
-    /**
-     * Supported Atari 2600 controllers.
-     */
-
-    /**
-     * Supported Atari 2600 controllers.
-     */
     export namespace Atari2600Controller {
         export const $gtype: GObject.GType<Atari2600Controller>;
     }
 
+    /**
+     * Supported Atari 2600 controllers.
+     */
     enum Atari2600Controller {
         /**
          * No controller.
@@ -57,17 +53,14 @@ export namespace Hs {
          */
         PADDLES,
     }
-    /**
-     * Atari 2600 difficulty switch positions.
-     */
 
-    /**
-     * Atari 2600 difficulty switch positions.
-     */
     export namespace Atari2600Difficulty {
         export const $gtype: GObject.GType<Atari2600Difficulty>;
     }
 
+    /**
+     * Atari 2600 difficulty switch positions.
+     */
     enum Atari2600Difficulty {
         /**
          * Advanced (A) difficulty.
@@ -92,17 +85,14 @@ export namespace Hs {
         FIRE_5,
         FIRE_9,
     }
-    /**
-     * Atari 2600 TV Type switch positions.
-     */
 
-    /**
-     * Atari 2600 TV Type switch positions.
-     */
     export namespace Atari2600TVType {
         export const $gtype: GObject.GType<Atari2600TVType>;
     }
 
+    /**
+     * Atari 2600 TV Type switch positions.
+     */
     enum Atari2600TVType {
         /**
          * Color TV.
@@ -113,17 +103,14 @@ export namespace Hs {
          */
         BLACK_WHITE,
     }
-    /**
-     * Supported Atari 7800 controllers.
-     */
 
-    /**
-     * Supported Atari 7800 controllers.
-     */
     export namespace Atari7800Controller {
         export const $gtype: GObject.GType<Atari7800Controller>;
     }
 
+    /**
+     * Supported Atari 7800 controllers.
+     */
     enum Atari7800Controller {
         /**
          * No controller.
@@ -138,17 +125,14 @@ export namespace Hs {
          */
         LIGHTGUN,
     }
-    /**
-     * Atari 7800 difficulty switch positions.
-     */
 
-    /**
-     * Atari 7800 difficulty switch positions.
-     */
     export namespace Atari7800Difficulty {
         export const $gtype: GObject.GType<Atari7800Difficulty>;
     }
 
+    /**
+     * Atari 7800 difficulty switch positions.
+     */
     enum Atari7800Difficulty {
         /**
          * Advanced (A) difficulty.
@@ -188,6 +172,7 @@ export namespace Hs {
         OPTION2,
         PAUSE,
     }
+
     /**
      * An error code used in various methods in [class`Core]`.
      *
@@ -203,7 +188,7 @@ export namespace Hs {
      * [error`Hs`.CoreError.INTERNAL]         | `org.gnome.gitlab.alicem.libhighscore.Error.Internal`
      */
     class CoreError extends GLib.Error {
-        static $gtype: GObject.GType<CoreError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -248,7 +233,7 @@ export namespace Hs {
      * An error code used in [vfunc`GLContext`.realize].
      */
     class GLContextError extends GLib.Error {
-        static $gtype: GObject.GType<GLContextError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -269,17 +254,13 @@ export namespace Hs {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Describes OpenGL profiles for [iface`GLContext]`.
-     */
-
-    /**
-     * Describes OpenGL profiles for [iface`GLContext]`.
-     */
     export namespace GLProfile {
         export const $gtype: GObject.GType<GLProfile>;
     }
 
+    /**
+     * Describes OpenGL profiles for [iface`GLContext]`.
+     */
     enum GLProfile {
         /**
          * Use the core OpenGL profile
@@ -326,17 +307,14 @@ export namespace Hs {
         SELECT,
         START,
     }
-    /**
-     * Game Boy models.
-     */
 
-    /**
-     * Game Boy models.
-     */
     export namespace GameBoyModel {
         export const $gtype: GObject.GType<GameBoyModel>;
     }
 
+    /**
+     * Game Boy models.
+     */
     enum GameBoyModel {
         /**
          * Game Boy (DMG).
@@ -377,17 +355,14 @@ export namespace Hs {
         TWO,
         START,
     }
-    /**
-     * Describes log levels for [method`Core`.log].
-     */
 
-    /**
-     * Describes log levels for [method`Core`.log].
-     */
     export namespace LogLevel {
         export const $gtype: GObject.GType<LogLevel>;
     }
 
+    /**
+     * Describes log levels for [method`Core`.log].
+     */
     enum LogLevel {
         /**
          * Log level for debug messages.
@@ -456,17 +431,14 @@ export namespace Hs {
         B,
         OPTION,
     }
-    /**
-     * Supported NES accessories.
-     */
 
-    /**
-     * Supported NES accessories.
-     */
     export namespace NesAccessory {
         export const $gtype: GObject.GType<NesAccessory>;
     }
 
+    /**
+     * Supported NES accessories.
+     */
     enum NesAccessory {
         /**
          * No accessory.
@@ -496,17 +468,14 @@ export namespace Hs {
         SELECT,
         START,
     }
-    /**
-     * Famicom mic level.
-     */
 
-    /**
-     * Famicom mic level.
-     */
     export namespace NesMicLevel {
         export const $gtype: GObject.GType<NesMicLevel>;
     }
 
+    /**
+     * Famicom mic level.
+     */
     enum NesMicLevel {
         /**
          * Quiet.
@@ -538,17 +507,14 @@ export namespace Hs {
         Z,
         START,
     }
-    /**
-     * Nintendo 64 controller expansions.
-     */
 
-    /**
-     * Nintendo 64 controller expansions.
-     */
     export namespace Nintendo64Pak {
         export const $gtype: GObject.GType<Nintendo64Pak>;
     }
 
+    /**
+     * Nintendo 64 controller expansions.
+     */
     enum Nintendo64Pak {
         /**
          * No expansion.
@@ -602,23 +568,17 @@ export namespace Hs {
         SELECT,
         RUN,
     }
-    /**
-     * TurboGrafx-16 pad mode.
-     *
-     * Most games only work with 2-button mode, but some have improved controls for
-     * 6-button mode.
-     */
 
-    /**
-     * TurboGrafx-16 pad mode.
-     *
-     * Most games only work with 2-button mode, but some have improved controls for
-     * 6-button mode.
-     */
     export namespace PcEnginePadMode {
         export const $gtype: GObject.GType<PcEnginePadMode>;
     }
 
+    /**
+     * TurboGrafx-16 pad mode.
+     *
+     * Most games only work with 2-button mode, but some have improved controls for
+     * 6-button mode.
+     */
     enum PcEnginePadMode {
         /**
          * Use two face buttons.
@@ -629,17 +589,14 @@ export namespace Hs {
          */
         SIX_BUTTONS,
     }
-    /**
-     * Represents the pixel formats to use for [iface`SoftwareContext]` framebuffer.
-     */
 
-    /**
-     * Represents the pixel formats to use for [iface`SoftwareContext]` framebuffer.
-     */
     export namespace PixelFormat {
         export const $gtype: GObject.GType<PixelFormat>;
     }
 
+    /**
+     * Represents the pixel formats to use for [iface`SoftwareContext]` framebuffer.
+     */
     enum PixelFormat {
         /**
          * A pixel is 24 bits long, with 8 bit for red, green
@@ -657,17 +614,14 @@ export namespace Hs {
          */
         B8G8R8X8,
     }
-    /**
-     * Represents the supported game platforms.
-     */
 
-    /**
-     * Represents the supported game platforms.
-     */
     export namespace Platform {
         export const $gtype: GObject.GType<Platform>;
     }
 
+    /**
+     * Represents the supported game platforms.
+     */
     enum Platform {
         /**
          * An unset value.
@@ -760,17 +714,14 @@ export namespace Hs {
          */
         WONDERSWAN,
     }
-    /**
-     * BIOS type for [method`PlayStationCore`.set_bios_path].
-     */
 
-    /**
-     * BIOS type for [method`PlayStationCore`.set_bios_path].
-     */
     export namespace PlayStationBios {
         export const $gtype: GObject.GType<PlayStationBios>;
     }
 
+    /**
+     * BIOS type for [method`PlayStationCore`.set_bios_path].
+     */
     enum PlayStationBios {
         /**
          * Japanese BIOS (scph5500.bin)
@@ -809,19 +760,15 @@ export namespace Hs {
         SELECT,
         START,
     }
-    /**
-     * DualShock modes for [method`PlayStationCore`.get_dualshock_mode] and
-     * [method`PlayStationCore`.set_dualshock_mode].
-     */
 
-    /**
-     * DualShock modes for [method`PlayStationCore`.get_dualshock_mode] and
-     * [method`PlayStationCore`.set_dualshock_mode].
-     */
     export namespace PlayStationDualShockMode {
         export const $gtype: GObject.GType<PlayStationDualShockMode>;
     }
 
+    /**
+     * DualShock modes for [method`PlayStationCore`.get_dualshock_mode] and
+     * [method`PlayStationCore`.set_dualshock_mode].
+     */
     enum PlayStationDualShockMode {
         /**
          * Digital mode
@@ -841,17 +788,14 @@ export namespace Hs {
         LEFT,
         RIGHT,
     }
-    /**
-     * Represents game region.
-     */
 
-    /**
-     * Represents game region.
-     */
     export namespace Region {
         export const $gtype: GObject.GType<Region>;
     }
 
+    /**
+     * Represents game region.
+     */
     enum Region {
         /**
          * This game doesn't have a region (e.g. it's a handheld game).
@@ -866,32 +810,26 @@ export namespace Hs {
          */
         PAL,
     }
-    /**
-     * Describes the controller types for the 3D Control Pad
-     */
 
-    /**
-     * Describes the controller types for the 3D Control Pad
-     */
     export namespace SegaSaturn3DPadMode {
         export const $gtype: GObject.GType<SegaSaturn3DPadMode>;
     }
 
+    /**
+     * Describes the controller types for the 3D Control Pad
+     */
     enum SegaSaturn3DPadMode {
         DIGITAL,
         ANALOG,
     }
-    /**
-     * BIOS type for [method`SegaSaturnCore`.set_bios_path].
-     */
 
-    /**
-     * BIOS type for [method`SegaSaturnCore`.set_bios_path].
-     */
     export namespace SegaSaturnBios {
         export const $gtype: GObject.GType<SegaSaturnBios>;
     }
 
+    /**
+     * BIOS type for [method`SegaSaturnCore`.set_bios_path].
+     */
     enum SegaSaturnBios {
         /**
          * Japanese BIOS (sega_101.bin)
@@ -922,17 +860,14 @@ export namespace Hs {
         R,
         START,
     }
-    /**
-     * Controller type for [method`SegaSaturnCore`.set_controller].
-     */
 
-    /**
-     * Controller type for [method`SegaSaturnCore`.set_controller].
-     */
     export namespace SegaSaturnController {
         export const $gtype: GObject.GType<SegaSaturnController>;
     }
 
+    /**
+     * Controller type for [method`SegaSaturnCore`.set_controller].
+     */
     enum SegaSaturnController {
         CONTROL_PAD,
         '3D_CONTROL_PAD',
@@ -1008,6 +943,7 @@ export namespace Hs {
         B,
         START,
     }
+
     /**
      * The maximum number of players in Atari 2600 games.
      */
@@ -1195,17 +1131,13 @@ export namespace Hs {
     interface StateCallback {
         (self: Core): void;
     }
-    /**
-     * Flags that can be passed when creating a [iface`GLContext]`.
-     */
-
-    /**
-     * Flags that can be passed when creating a [iface`GLContext]`.
-     */
     export namespace GLFlags {
         export const $gtype: GObject.GType<GLFlags>;
     }
 
+    /**
+     * Flags that can be passed when creating a [iface`GLContext]`.
+     */
     enum GLFlags {
         /**
          * Default flags.
@@ -1233,6 +1165,7 @@ export namespace Hs {
          */
         DIRECT_FB_ACCESS,
     }
+
     namespace Core {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

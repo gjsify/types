@@ -21,29 +21,14 @@ export namespace LangTag {
     /**
      * Error code used in this library.
      */
-
-    /**
-     * Error code used in this library.
-     */
-    export namespace ErrorType {
-        export const $gtype: GObject.GType<ErrorType>;
-    }
-
     enum ErrorType {}
-    /**
-     * This is used as a binary count sequence with lt_tag_get_string_with_filter()
-     * to allow only given tags to be the outcome.
-     */
 
     /**
      * This is used as a binary count sequence with lt_tag_get_string_with_filter()
      * to allow only given tags to be the outcome.
      */
-    export namespace TagFilter {
-        export const $gtype: GObject.GType<TagFilter>;
-    }
-
     enum TagFilter {}
+
     const DIR_SEPARATOR: number;
     const DIR_SEPARATOR_S: string;
     /**

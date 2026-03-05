@@ -30,19 +30,14 @@ export namespace Anjuta {
      * Anjuta-3.0
      */
 
-    /**
-     * Specifies if the entry corresponds to a frame or a button.
-     * Buttons are added to the last frame that appears before the button entry
-     */
-
-    /**
-     * Specifies if the entry corresponds to a frame or a button.
-     * Buttons are added to the last frame that appears before the button entry
-     */
     export namespace CommandBarEntryType {
         export const $gtype: GObject.GType<CommandBarEntryType>;
     }
 
+    /**
+     * Specifies if the entry corresponds to a frame or a button.
+     * Buttons are added to the last frame that appears before the button entry
+     */
     enum CommandBarEntryType {
         /**
          * This entry should create a frame in the
@@ -68,11 +63,12 @@ export namespace Anjuta {
         AUTOMATIC,
         MANUAL,
     }
+
     /**
      * Possibly errors that can occur during charset conversion
      */
     class ConvertError extends GLib.Error {
-        static $gtype: GObject.GType<ConvertError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -99,11 +95,12 @@ export namespace Anjuta {
         STDERR,
         PTY,
     }
+
     /**
      * Possible errors when parsing a plugin file
      */
     class PluginDescriptionParseError extends GLib.Error {
-        static $gtype: GObject.GType<PluginDescriptionParseError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -130,7 +127,7 @@ export namespace Anjuta {
     }
 
     class PluginManagerError extends GLib.Error {
-        static $gtype: GObject.GType<PluginManagerError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -156,7 +153,7 @@ export namespace Anjuta {
      * Error codes returned by anjuta profile functions.
      */
     class ProfileError extends GLib.Error {
-        static $gtype: GObject.GType<ProfileError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -210,8 +207,9 @@ export namespace Anjuta {
         LAST,
         END,
     }
+
     class ShellError extends GLib.Error {
-        static $gtype: GObject.GType<ShellError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -239,6 +237,7 @@ export namespace Anjuta {
         CENTER,
         FLOATING,
     }
+
     const SYSTEM_PROFILE_NAME: string;
     const VCS_DEFAULT_STATUS_CODES: number;
     function cclosure_marshal_VOID__BOXED_ENUM(
@@ -472,7 +471,6 @@ export namespace Anjuta {
     interface TokenForeachFunc {
         (token: Token, data?: any | null): void;
     }
-
     export namespace ProjectNodeState {
         export const $gtype: GObject.GType<ProjectNodeState>;
     }
@@ -619,6 +617,7 @@ export namespace Anjuta {
         IGNORED,
         ALL,
     }
+
     namespace AsyncCommand {
         // Signal signatures
         interface SignalSignatures extends Command.SignalSignatures {}

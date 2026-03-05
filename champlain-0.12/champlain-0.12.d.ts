@@ -31,34 +31,27 @@ export namespace Champlain {
      * Champlain-0.12
      */
 
-    /**
-     * Projections supported by the library.
-     */
-
-    /**
-     * Projections supported by the library.
-     */
     export namespace MapProjection {
         export const $gtype: GObject.GType<MapProjection>;
     }
 
+    /**
+     * Projections supported by the library.
+     */
     enum MapProjection {
         /**
          * Currently the only supported projection
          */
         MERCATOR,
     }
-    /**
-     * Selection mode
-     */
 
-    /**
-     * Selection mode
-     */
     export namespace SelectionMode {
         export const $gtype: GObject.GType<SelectionMode>;
     }
 
+    /**
+     * Selection mode
+     */
     enum SelectionMode {
         /**
          * No marker can be selected.
@@ -73,17 +66,14 @@ export namespace Champlain {
          */
         MULTIPLE,
     }
-    /**
-     * Tile loading state.
-     */
 
-    /**
-     * Tile loading state.
-     */
     export namespace State {
         export const $gtype: GObject.GType<State>;
     }
 
+    /**
+     * Tile loading state.
+     */
     enum State {
         /**
          * Initial or undefined state
@@ -103,17 +93,14 @@ export namespace Champlain {
          */
         DONE,
     }
-    /**
-     * Units used by the scale.
-     */
 
-    /**
-     * Units used by the scale.
-     */
     export namespace Unit {
         export const $gtype: GObject.GType<Unit>;
     }
 
+    /**
+     * Units used by the scale.
+     */
     enum Unit {
         /**
          * kilometers
@@ -124,6 +111,7 @@ export namespace Champlain {
          */
         MILES,
     }
+
     /**
      * The major version of libchamplain (1, if %CHAMPLAIN_VERSION is 1.2.3)
      */

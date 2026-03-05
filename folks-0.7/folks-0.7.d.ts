@@ -123,8 +123,9 @@ export namespace Folks {
         FALSE,
         TRUE,
     }
+
     class ImDetailsError extends GLib.Error {
-        static $gtype: GObject.GType<ImDetailsError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -136,7 +137,7 @@ export namespace Folks {
     }
 
     class IndividualAggregatorError extends GLib.Error {
-        static $gtype: GObject.GType<IndividualAggregatorError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -152,7 +153,7 @@ export namespace Folks {
     }
 
     class PersonaStoreError extends GLib.Error {
-        static $gtype: GObject.GType<PersonaStoreError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -171,7 +172,7 @@ export namespace Folks {
     }
 
     class PropertyError extends GLib.Error {
-        static $gtype: GObject.GType<PropertyError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -203,6 +204,7 @@ export namespace Folks {
         PERMISSION_DENIED,
         SEPARATED,
     }
+
     namespace AbstractFieldDetails {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

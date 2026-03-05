@@ -21,14 +21,6 @@ export namespace GLibUnix {
     /**
      * Mnemonic constants for the ends of a Unix pipe.
      */
-
-    /**
-     * Mnemonic constants for the ends of a Unix pipe.
-     */
-    export namespace PipeEnd {
-        export const $gtype: GObject.GType<PipeEnd>;
-    }
-
     enum PipeEnd {
         /**
          * The readable file descriptor 0
@@ -39,6 +31,7 @@ export namespace GLibUnix {
          */
         WRITE,
     }
+
     function closefrom(lowfd: number): number;
     function error_quark(): GLib.Quark;
     function fd_add_full(

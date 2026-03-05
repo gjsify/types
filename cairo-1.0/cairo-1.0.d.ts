@@ -345,6 +345,7 @@ export namespace cairo {
         OUT,
         PART,
     }
+
     function image_surface_create(): void;
     class Context {
         static $gtype: GObject.GType<Context>;

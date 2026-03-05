@@ -20,10 +20,6 @@ export namespace GVnc {
      * GVnc-1.0
      */
 
-    export namespace AudioFormatType {
-        export const $gtype: GObject.GType<AudioFormatType>;
-    }
-
     enum AudioFormatType {
         U8,
         S8,
@@ -176,6 +172,7 @@ export namespace GVnc {
         INVALID_LAOUT,
         FORWARDED,
     }
+
     const LEDSTATE_CAPS_LOCK: number;
     const LEDSTATE_NUM_LOCK: number;
     const LEDSTATE_SCROLL_LOCK: number;

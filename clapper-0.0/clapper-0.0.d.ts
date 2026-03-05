@@ -185,6 +185,7 @@ export namespace Clapper {
          */
         SUBTITLE,
     }
+
     /**
      * Check if Clapper was compiled with Discoverer feature.
      */
@@ -335,17 +336,13 @@ export namespace Clapper {
      * @returns %TRUE if Clapper could be initialized, %FALSE otherwise.
      */
     function init_check(argv?: string[] | null): [boolean, string[] | null];
-    /**
-     * Additional [flags`GObject`.ParamFlags] to be set in enhancer plugins implementations.
-     */
-
-    /**
-     * Additional [flags`GObject`.ParamFlags] to be set in enhancer plugins implementations.
-     */
     export namespace EnhancerParamFlags {
         export const $gtype: GObject.GType<EnhancerParamFlags>;
     }
 
+    /**
+     * Additional [flags`GObject`.ParamFlags] to be set in enhancer plugins implementations.
+     */
     enum EnhancerParamFlags {
         /**
          * Use this flag for enhancer properties that should have global access scope.
@@ -368,17 +365,14 @@ export namespace Clapper {
          */
         DIRPATH,
     }
-    /**
-     * Flags informing which properties were updated within [class`Clapper`.MediaItem].
-     */
 
-    /**
-     * Flags informing which properties were updated within [class`Clapper`.MediaItem].
-     */
     export namespace ReactableItemUpdatedFlags {
         export const $gtype: GObject.GType<ReactableItemUpdatedFlags>;
     }
 
+    /**
+     * Flags informing which properties were updated within [class`Clapper`.MediaItem].
+     */
     enum ReactableItemUpdatedFlags {
         /**
          * Media item title was updated.
@@ -405,6 +399,7 @@ export namespace Clapper {
          */
         CACHE_LOCATION,
     }
+
     namespace AudioStream {
         // Signal signatures
         interface SignalSignatures extends Stream.SignalSignatures {

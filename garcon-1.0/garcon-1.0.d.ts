@@ -21,18 +21,10 @@ export namespace Garcon {
      * Garcon-1.0
      */
 
-    export namespace MenuLayoutMergeType {
-        export const $gtype: GObject.GType<MenuLayoutMergeType>;
-    }
-
     enum MenuLayoutMergeType {
         MENUS,
         FILES,
         ALL,
-    }
-
-    export namespace MenuMergeFileType {
-        export const $gtype: GObject.GType<MenuMergeFileType>;
     }
 
     enum MenuMergeFileType {
@@ -77,6 +69,7 @@ export namespace Garcon {
         MERGEDIR,
         MERGEDIRS,
     }
+
     /**
      * Macro for garcon_set_environment or garcon_set_environment_xdg
      * to set the Xfce Desktop Environment.

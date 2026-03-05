@@ -37,8 +37,9 @@ export namespace GConf {
         PRELOAD_ONELEVEL,
         PRELOAD_RECURSIVE,
     }
+
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -83,6 +84,7 @@ export namespace GConf {
         LIST,
         PAIR,
     }
+
     function concat_dir_and_key(dir: string, key: string): string;
     /**
      * Detach from the config server and release
@@ -134,7 +136,6 @@ export namespace GConf {
     interface ListenersPredicate {
         (location: string, cnxn_id: number, listener_data?: any | null): boolean;
     }
-
     export namespace UnsetFlags {
         export const $gtype: GObject.GType<UnsetFlags>;
     }
@@ -142,6 +143,7 @@ export namespace GConf {
     enum UnsetFlags {
         NAMES,
     }
+
     namespace Client {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

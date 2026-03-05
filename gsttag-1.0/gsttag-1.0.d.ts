@@ -21,17 +21,13 @@ export namespace GstTag {
      * GstTag-1.0
      */
 
-    /**
-     * Result values from the parse_tag virtual function.
-     */
-
-    /**
-     * Result values from the parse_tag virtual function.
-     */
     export namespace TagDemuxResult {
         export const $gtype: GObject.GType<TagDemuxResult>;
     }
 
+    /**
+     * Result values from the parse_tag virtual function.
+     */
     enum TagDemuxResult {
         /**
          * cannot parse tag, just skip it
@@ -46,19 +42,15 @@ export namespace GstTag {
          */
         OK,
     }
-    /**
-     * Type of image contained in an image tag (specified as "image-type" field in
-     * the info structure in the image's #GstSample)
-     */
 
-    /**
-     * Type of image contained in an image tag (specified as "image-type" field in
-     * the info structure in the image's #GstSample)
-     */
     export namespace TagImageType {
         export const $gtype: GObject.GType<TagImageType>;
     }
 
+    /**
+     * Type of image contained in an image tag (specified as "image-type" field in
+     * the info structure in the image's #GstSample)
+     */
     enum TagImageType {
         /**
          * No image type. Can be used to
@@ -143,6 +135,7 @@ export namespace GstTag {
          */
         PUBLISHER_STUDIO_LOGO,
     }
+
     /**
      * AcoustID Fingerprint (Chromaprint)
      */
@@ -764,17 +757,13 @@ export namespace GstTag {
      * @param value a vorbiscomment value string (value in key=value), must be valid UTF-8
      */
     function vorbis_tag_add(list: Gst.TagList, tag: string, value: string): void;
-    /**
-     * See http://creativecommons.org/ns for more information.
-     */
-
-    /**
-     * See http://creativecommons.org/ns for more information.
-     */
     export namespace TagLicenseFlags {
         export const $gtype: GObject.GType<TagLicenseFlags>;
     }
 
+    /**
+     * See http://creativecommons.org/ns for more information.
+     */
     enum TagLicenseFlags {
         /**
          * making multiple copies
@@ -851,6 +840,7 @@ export namespace GstTag {
          */
         FREE_SOFTWARE_FOUNDATION_LICENSE,
     }
+
     namespace TagDemux {
         // Signal signatures
         interface SignalSignatures extends Gst.Element.SignalSignatures {

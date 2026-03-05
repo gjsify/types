@@ -25,7 +25,7 @@ export namespace GSSDP {
      * Error used in client creation.
      */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -48,17 +48,13 @@ export namespace GSSDP {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Implemented behavior of the UDA (Unified Device Architecture) protocol.
-     */
-
-    /**
-     * Implemented behavior of the UDA (Unified Device Architecture) protocol.
-     */
     export namespace UDAVersion {
         export const $gtype: GObject.GType<UDAVersion>;
     }
 
+    /**
+     * Implemented behavior of the UDA (Unified Device Architecture) protocol.
+     */
     enum UDAVersion {
         /**
          * When creating a client, use the default version
@@ -73,6 +69,7 @@ export namespace GSSDP {
          */
         VERSION_1_1,
     }
+
     /**
      * SSDP search target for finding all possible resources.
      */

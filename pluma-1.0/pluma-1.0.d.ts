@@ -61,6 +61,7 @@ export namespace Pluma {
         STATE_EXTERNALLY_MODIFIED_NOTIFICATION,
         NUM_OF_STATES,
     }
+
     const METADATA_ATTRIBUTE_ENCODING: string;
     const METADATA_ATTRIBUTE_LANGUAGE: string;
     const METADATA_ATTRIBUTE_POSITION: string;
@@ -246,7 +247,6 @@ export namespace Pluma {
     interface MessageTypeForeach {
         (key: string, type: GObject.GType, required: boolean): void;
     }
-
     export namespace DebugSection {
         export const $gtype: GObject.GType<DebugSection>;
     }
@@ -325,6 +325,7 @@ export namespace Pluma {
         ERROR,
         SAVING_SESSION,
     }
+
     namespace App {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

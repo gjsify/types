@@ -37,10 +37,6 @@ export namespace DMAP {
         DONE,
     }
 
-    export namespace ContentCode {
-        export const $gtype: GObject.GType<ContentCode>;
-    }
-
     enum ContentCode {
         CC_INVALID,
         RAW,
@@ -197,8 +193,9 @@ export namespace DMAP {
         CC_CAIV,
         CC_CAVC,
     }
+
     class MdnsBrowserError extends GLib.Error {
-        static $gtype: GObject.GType<MdnsBrowserError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -236,8 +233,9 @@ export namespace DMAP {
         UDP,
         LAST,
     }
+
     class MdnsPublisherError extends GLib.Error {
-        static $gtype: GObject.GType<MdnsPublisherError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -280,6 +278,7 @@ export namespace DMAP {
         CONTAINER,
         POINTER,
     }
+
     const HASH_SIZE: number;
     const STATUS_OK: number;
     function content_code_dmap_type(code: ContentCode | null): Type;

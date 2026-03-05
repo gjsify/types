@@ -41,8 +41,9 @@ export namespace GstVulkan {
         TYPE_BUFFER,
         TYPE_IMAGE,
     }
+
     class VulkanError extends GLib.Error {
-        static $gtype: GObject.GType<VulkanError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -98,8 +99,9 @@ export namespace GstVulkan {
         FRAMEBUFFER,
         SHADER,
     }
+
     class VulkanWindowError extends GLib.Error {
-        static $gtype: GObject.GType<VulkanWindowError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -349,7 +351,6 @@ export namespace GstVulkan {
     interface VulkanTrashNotify {
         (device: VulkanDevice): void;
     }
-
     export namespace VulkanDisplayType {
         export const $gtype: GObject.GType<VulkanDisplayType>;
     }
@@ -394,6 +395,7 @@ export namespace GstVulkan {
         LE,
         COMPLEX,
     }
+
     namespace VulkanBufferMemoryAllocator {
         // Signal signatures
         interface SignalSignatures extends Gst.Allocator.SignalSignatures {

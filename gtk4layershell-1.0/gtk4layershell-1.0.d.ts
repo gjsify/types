@@ -30,10 +30,6 @@ export namespace Gtk4LayerShell {
      * Gtk4LayerShell-1.0
      */
 
-    export namespace Edge {
-        export const $gtype: GObject.GType<Edge>;
-    }
-
     enum Edge {
         /**
          * The left edge of the screen.
@@ -58,10 +54,6 @@ export namespace Gtk4LayerShell {
         ENTRY_NUMBER,
     }
 
-    export namespace KeyboardMode {
-        export const $gtype: GObject.GType<KeyboardMode>;
-    }
-
     enum KeyboardMode {
         /**
          * This window should not receive keyboard events.
@@ -81,10 +73,6 @@ export namespace Gtk4LayerShell {
          * future releases as more entries are added)
          */
         ENTRY_NUMBER,
-    }
-
-    export namespace Layer {
-        export const $gtype: GObject.GType<Layer>;
     }
 
     enum Layer {
@@ -110,6 +98,7 @@ export namespace Gtk4LayerShell {
          */
         ENTRY_NUMBER,
     }
+
     /**
      * When auto exclusive zone is enabled, exclusive zone is automatically set to the
      * size of the `window` + relevant margin. To disable auto exclusive zone, just set the

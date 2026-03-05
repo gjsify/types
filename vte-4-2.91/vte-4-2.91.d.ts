@@ -30,19 +30,14 @@ export namespace Vte {
      * Vte-4-2.91
      */
 
-    /**
-     * An enumeration type that can be used to specify how the terminal
-     * uses extra allocated space.
-     */
-
-    /**
-     * An enumeration type that can be used to specify how the terminal
-     * uses extra allocated space.
-     */
     export namespace Align {
         export const $gtype: GObject.GType<Align>;
     }
 
+    /**
+     * An enumeration type that can be used to specify how the terminal
+     * uses extra allocated space.
+     */
     enum Align {
         /**
          * align to left/top
@@ -57,19 +52,15 @@ export namespace Vte {
          */
         END,
     }
-    /**
-     * An enumerated type which can be used to indicate the cursor blink mode
-     * for the terminal.
-     */
 
-    /**
-     * An enumerated type which can be used to indicate the cursor blink mode
-     * for the terminal.
-     */
     export namespace CursorBlinkMode {
         export const $gtype: GObject.GType<CursorBlinkMode>;
     }
 
+    /**
+     * An enumerated type which can be used to indicate the cursor blink mode
+     * for the terminal.
+     */
     enum CursorBlinkMode {
         /**
          * Follow GTK+ settings for cursor blinking.
@@ -84,19 +75,15 @@ export namespace Vte {
          */
         OFF,
     }
-    /**
-     * An enumerated type which can be used to indicate what should the terminal
-     * draw at the cursor position.
-     */
 
-    /**
-     * An enumerated type which can be used to indicate what should the terminal
-     * draw at the cursor position.
-     */
     export namespace CursorShape {
         export const $gtype: GObject.GType<CursorShape>;
     }
 
+    /**
+     * An enumerated type which can be used to indicate what should the terminal
+     * draw at the cursor position.
+     */
     enum CursorShape {
         /**
          * Draw a block cursor.  This is the default.
@@ -112,21 +99,16 @@ export namespace Vte {
          */
         UNDERLINE,
     }
-    /**
-     * An enumerated type which can be used to indicate which string the terminal
-     * should send to an application when the user presses the Delete or Backspace
-     * keys.
-     */
 
-    /**
-     * An enumerated type which can be used to indicate which string the terminal
-     * should send to an application when the user presses the Delete or Backspace
-     * keys.
-     */
     export namespace EraseBinding {
         export const $gtype: GObject.GType<EraseBinding>;
     }
 
+    /**
+     * An enumerated type which can be used to indicate which string the terminal
+     * should send to an application when the user presses the Delete or Backspace
+     * keys.
+     */
     enum EraseBinding {
         /**
          * For backspace, attempt to determine the right value from the terminal's IO settings.  For delete, use the control sequence.
@@ -149,19 +131,15 @@ export namespace Vte {
          */
         TTY,
     }
-    /**
-     * An enumeration type that can be used to specify the format the selection
-     * should be copied to the clipboard in.
-     */
 
-    /**
-     * An enumeration type that can be used to specify the format the selection
-     * should be copied to the clipboard in.
-     */
     export namespace Format {
         export const $gtype: GObject.GType<Format>;
     }
 
+    /**
+     * An enumeration type that can be used to specify the format the selection
+     * should be copied to the clipboard in.
+     */
     enum Format {
         /**
          * Export as plain text
@@ -172,8 +150,9 @@ export namespace Vte {
          */
         HTML,
     }
+
     class PtyError extends GLib.Error {
-        static $gtype: GObject.GType<PtyError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -204,7 +183,7 @@ export namespace Vte {
      * any PCRE2 error values may occur.
      */
     class RegexError extends GLib.Error {
-        static $gtype: GObject.GType<RegexError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -228,19 +207,14 @@ export namespace Vte {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * An enumerated type which can be used to indicate whether the terminal allows
-     * the text contents to be blinked.
-     */
-
-    /**
-     * An enumerated type which can be used to indicate whether the terminal allows
-     * the text contents to be blinked.
-     */
     export namespace TextBlinkMode {
         export const $gtype: GObject.GType<TextBlinkMode>;
     }
 
+    /**
+     * An enumerated type which can be used to indicate whether the terminal allows
+     * the text contents to be blinked.
+     */
     enum TextBlinkMode {
         /**
          * Do not blink the text.
@@ -259,25 +233,22 @@ export namespace Vte {
          */
         ALWAYS,
     }
-    /**
-     * A flag type to determine how terminal contents should be written
-     * to an output stream.
-     */
 
-    /**
-     * A flag type to determine how terminal contents should be written
-     * to an output stream.
-     */
     export namespace WriteFlags {
         export const $gtype: GObject.GType<WriteFlags>;
     }
 
+    /**
+     * A flag type to determine how terminal contents should be written
+     * to an output stream.
+     */
     enum WriteFlags {
         /**
          * Write contents as UTF-8 text.  This is the default.
          */
         DEFAULT,
     }
+
     /**
      * The major version number of the VTE library
      * (e.g. in version 3.1.4 this is 3).
@@ -400,14 +371,6 @@ export namespace Vte {
     /**
      * An enumeration type for features.
      */
-
-    /**
-     * An enumeration type for features.
-     */
-    export namespace FeatureFlags {
-        export const $gtype: GObject.GType<FeatureFlags>;
-    }
-
     enum FeatureFlags {
         /**
          * whether VTE was built with bidirectional text support
@@ -471,6 +434,7 @@ export namespace Vte {
          */
         DEFAULT,
     }
+
     namespace Pty {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

@@ -36,15 +36,6 @@ export namespace WebKitWebProcessExtension {
      * Enum values used to denote the stock actions for
      * #WebKitContextMenuItem<!-- -->s
      */
-
-    /**
-     * Enum values used to denote the stock actions for
-     * #WebKitContextMenuItem<!-- -->s
-     */
-    export namespace ContextMenuAction {
-        export const $gtype: GObject.GType<ContextMenuAction>;
-    }
-
     enum ContextMenuAction {
         /**
          * No action, used by separator menu items.
@@ -235,23 +226,17 @@ export namespace WebKitWebProcessExtension {
          */
         CUSTOM,
     }
-    /**
-     * Enum values used to denote errors happening when sending user messages.
-     */
 
     /**
      * Enum values used to denote errors happening when sending user messages.
      */
-    export namespace UserMessageError {
-        export const $gtype: GObject.GType<UserMessageError>;
-    }
-
     enum UserMessageError {
         /**
          * The message was not handled by the receiver.
          */
         USER_MESSAGE_UNHANDLED_MESSAGE,
     }
+
     interface WebProcessExtensionInitializeFunction {
         (extension: WebProcessExtension): void;
     }
@@ -261,14 +246,6 @@ export namespace WebKitWebProcessExtension {
     /**
      * Enum values with flags representing the context of a #WebKitHitTestResult.
      */
-
-    /**
-     * Enum values with flags representing the context of a #WebKitHitTestResult.
-     */
-    export namespace HitTestResultContext {
-        export const $gtype: GObject.GType<HitTestResultContext>;
-    }
-
     enum HitTestResultContext {
         /**
          * anywhere in the document.
@@ -299,6 +276,7 @@ export namespace WebKitWebProcessExtension {
          */
         SELECTION,
     }
+
     namespace ContextMenu {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

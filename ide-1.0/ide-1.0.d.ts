@@ -35,19 +35,11 @@ export namespace Ide {
      * Ide-1.0
      */
 
-    export namespace ApplicationMode {
-        export const $gtype: GObject.GType<ApplicationMode>;
-    }
-
     enum ApplicationMode {
         PRIMARY,
         WORKER,
         TOOL,
         TESTS,
-    }
-
-    export namespace BufferLineChange {
-        export const $gtype: GObject.GType<BufferLineChange>;
     }
 
     enum BufferLineChange {
@@ -75,8 +67,9 @@ export namespace Ide {
         SELECT,
         MATCH,
     }
+
     class DeviceError extends GLib.Error {
-        static $gtype: GObject.GType<DeviceError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -103,8 +96,9 @@ export namespace Ide {
         ERROR,
         FATAL,
     }
+
     class DoapError extends GLib.Error {
-        static $gtype: GObject.GType<DoapError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -136,31 +130,26 @@ export namespace Ide {
         SPACES,
         TABS,
     }
-    /**
-     * %IDE_LAYOUT_GRID_SPLIT_LEFT:
-     * %IDE_LAYOUT_GRID_SPLIT_RIGHT:
-     * %IDE_LAYOUT_GRID_SPLIT_MOVE_LEFT:
-     * %IDE_LAYOUT_GRID_SPLIT_MOVE_RIGHT:
-     */
 
-    /**
-     * %IDE_LAYOUT_GRID_SPLIT_LEFT:
-     * %IDE_LAYOUT_GRID_SPLIT_RIGHT:
-     * %IDE_LAYOUT_GRID_SPLIT_MOVE_LEFT:
-     * %IDE_LAYOUT_GRID_SPLIT_MOVE_RIGHT:
-     */
     export namespace LayoutGridSplit {
         export const $gtype: GObject.GType<LayoutGridSplit>;
     }
 
+    /**
+     * %IDE_LAYOUT_GRID_SPLIT_LEFT:
+     * %IDE_LAYOUT_GRID_SPLIT_RIGHT:
+     * %IDE_LAYOUT_GRID_SPLIT_MOVE_LEFT:
+     * %IDE_LAYOUT_GRID_SPLIT_MOVE_RIGHT:
+     */
     enum LayoutGridSplit {
         LEFT,
         RIGHT,
         MOVE_LEFT,
         MOVE_RIGHT,
     }
+
     class RuntimeError extends GLib.Error {
-        static $gtype: GObject.GType<RuntimeError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -175,39 +164,29 @@ export namespace Ide {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * The type of keyboard mode.
-     */
-
-    /**
-     * The type of keyboard mode.
-     */
     export namespace SourceViewModeType {
         export const $gtype: GObject.GType<SourceViewModeType>;
     }
 
+    /**
+     * The type of keyboard mode.
+     */
     enum SourceViewModeType {
         TRANSIENT,
         PERMANENT,
         MODAL,
     }
-    /**
-     * The type of movement.
-     *
-     * Some of these movements may be modified by using the modify-repeat action.
-     * First adjust the repeat and then perform the "movement" action.
-     */
 
-    /**
-     * The type of movement.
-     *
-     * Some of these movements may be modified by using the modify-repeat action.
-     * First adjust the repeat and then perform the "movement" action.
-     */
     export namespace SourceViewMovement {
         export const $gtype: GObject.GType<SourceViewMovement>;
     }
 
+    /**
+     * The type of movement.
+     *
+     * Some of these movements may be modified by using the modify-repeat action.
+     * First adjust the repeat and then perform the "movement" action.
+     */
     enum SourceViewMovement {
         /**
          * move to previous character in the file.
@@ -438,17 +417,14 @@ export namespace Ide {
          */
         PREVIOUS_MATCH_SEARCH_CHAR,
     }
-    /**
-     * The style of theatric.
-     */
 
-    /**
-     * The style of theatric.
-     */
     export namespace SourceViewTheatric {
         export const $gtype: GObject.GType<SourceViewTheatric>;
     }
 
+    /**
+     * The style of theatric.
+     */
     enum SourceViewTheatric {
         /**
          * expand from selection location.
@@ -521,19 +497,16 @@ export namespace Ide {
         LAST,
     }
 
-    export namespace TransferError {
-        export const $gtype: GObject.GType<TransferError>;
-    }
-
     enum TransferError {
         UNKNOWN,
         CONNECTION_IS_METERED,
     }
+
     /**
      * Error codes returned by #IdeUri methods.
      */
     class UriError extends GLib.Error {
-        static $gtype: GObject.GType<UriError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -561,6 +534,7 @@ export namespace Ide {
         FULL_NAME,
         EMAIL,
     }
+
     const BUFFER_LINE_FLAGS_DIAGNOSTICS_MASK: number;
     const BUILD_PHASE_MASK: number;
     const BUILD_PHASE_WHENCE_MASK: number;
@@ -862,7 +836,6 @@ export namespace Ide {
     interface WidgetContextHandler {
         (widget: Gtk.Widget, context: Context): void;
     }
-
     export namespace BufferLineFlags {
         export const $gtype: GObject.GType<BufferLineFlags>;
     }
@@ -908,17 +881,10 @@ export namespace Ide {
         IS_MEMBER,
         IS_DEPRECATED,
     }
-    /**
-     * Flags that control how a URI string is parsed (or re-parsed).
-     */
 
     /**
      * Flags that control how a URI string is parsed (or re-parsed).
      */
-    export namespace UriParseFlags {
-        export const $gtype: GObject.GType<UriParseFlags>;
-    }
-
     enum UriParseFlags {
         /**
          * Parse the URI strictly according to the RFC
@@ -965,23 +931,16 @@ export namespace Ide {
         UTF8_ONLY,
     }
 
-    export namespace UriToStringFlags {
-        export const $gtype: GObject.GType<UriToStringFlags>;
-    }
-
     enum UriToStringFlags {
         AUTH_PARAMS,
         FRAGMENT,
-    }
-
-    export namespace WorkbenchOpenFlags {
-        export const $gtype: GObject.GType<WorkbenchOpenFlags>;
     }
 
     enum WorkbenchOpenFlags {
         NONE,
         BACKGROUND,
     }
+
     namespace Application {
         // Signal signatures
         interface SignalSignatures extends Dazzle.Application.SignalSignatures {

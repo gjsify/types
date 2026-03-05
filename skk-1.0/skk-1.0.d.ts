@@ -52,8 +52,9 @@ export namespace Skk {
         LAST,
         DEFAULT,
     }
+
     class KeyEventFormatError extends GLib.Error {
-        static $gtype: GObject.GType<KeyEventFormatError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -66,7 +67,7 @@ export namespace Skk {
     }
 
     class RuleParseError extends GLib.Error {
-        static $gtype: GObject.GType<RuleParseError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -2166,7 +2167,6 @@ export namespace Skk {
     interface GetTime {
         (): number;
     }
-
     export namespace ModifierType {
         export const $gtype: GObject.GType<ModifierType>;
     }
@@ -2189,6 +2189,7 @@ export namespace Skk {
         META_MASK,
         RELEASE_MASK,
     }
+
     namespace RomKanaConverter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

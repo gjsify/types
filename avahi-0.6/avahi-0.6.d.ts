@@ -109,6 +109,7 @@ export namespace Avahi {
         GA_RESOLVER_FOUND,
         GA_RESOLVER_FAILURE,
     }
+
     function error_quark(): GLib.Quark;
     namespace Client {
         // Signal signatures

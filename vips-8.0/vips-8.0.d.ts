@@ -18,29 +18,19 @@ export namespace Vips {
      * Vips-8.0
      */
 
-    /**
-     * The type of access an operation has to supply. See vips_tilecache()
-     * and #VipsForeign.
-     *
-     * `VIPS_ACCESS_RANDOM` means requests can come in any order.
-     *
-     * `VIPS_ACCESS_SEQUENTIAL` means requests will be top-to-bottom, but with some
-     * amount of buffering behind the read point for small non-local accesses.
-     */
-
-    /**
-     * The type of access an operation has to supply. See vips_tilecache()
-     * and #VipsForeign.
-     *
-     * `VIPS_ACCESS_RANDOM` means requests can come in any order.
-     *
-     * `VIPS_ACCESS_SEQUENTIAL` means requests will be top-to-bottom, but with some
-     * amount of buffering behind the read point for small non-local accesses.
-     */
     export namespace Access {
         export const $gtype: GObject.GType<Access>;
     }
 
+    /**
+     * The type of access an operation has to supply. See vips_tilecache()
+     * and #VipsForeign.
+     *
+     * `VIPS_ACCESS_RANDOM` means requests can come in any order.
+     *
+     * `VIPS_ACCESS_SEQUENTIAL` means requests will be top-to-bottom, but with some
+     * amount of buffering behind the read point for small non-local accesses.
+     */
     enum Access {
         /**
          * can read anywhere
@@ -53,27 +43,19 @@ export namespace Vips {
         SEQUENTIAL_UNBUFFERED,
         LAST,
     }
-    /**
-     * See vips_join() and so on.
-     *
-     * Operations like vips_join() need to be told whether to align images on the
-     * low or high coordinate edge, or centre.
-     *
-     * See also: vips_join().
-     */
 
-    /**
-     * See vips_join() and so on.
-     *
-     * Operations like vips_join() need to be told whether to align images on the
-     * low or high coordinate edge, or centre.
-     *
-     * See also: vips_join().
-     */
     export namespace Align {
         export const $gtype: GObject.GType<Align>;
     }
 
+    /**
+     * See vips_join() and so on.
+     *
+     * Operations like vips_join() need to be told whether to align images on the
+     * low or high coordinate edge, or centre.
+     *
+     * See also: vips_join().
+     */
     enum Align {
         /**
          * align low coordinate edge
@@ -89,25 +71,18 @@ export namespace Vips {
         HIGH,
         LAST,
     }
-    /**
-     * See vips_rot() and so on.
-     *
-     * Fixed rotate angles.
-     *
-     * See also: vips_rot().
-     */
 
-    /**
-     * See vips_rot() and so on.
-     *
-     * Fixed rotate angles.
-     *
-     * See also: vips_rot().
-     */
     export namespace Angle {
         export const $gtype: GObject.GType<Angle>;
     }
 
+    /**
+     * See vips_rot() and so on.
+     *
+     * Fixed rotate angles.
+     *
+     * See also: vips_rot().
+     */
     enum Angle {
         /**
          * no rotate
@@ -127,25 +102,18 @@ export namespace Vips {
         D270,
         LAST,
     }
-    /**
-     * See vips_rot45() and so on.
-     *
-     * Fixed rotate angles.
-     *
-     * See also: vips_rot45().
-     */
 
-    /**
-     * See vips_rot45() and so on.
-     *
-     * Fixed rotate angles.
-     *
-     * See also: vips_rot45().
-     */
     export namespace Angle45 {
         export const $gtype: GObject.GType<Angle45>;
     }
 
+    /**
+     * See vips_rot45() and so on.
+     *
+     * Fixed rotate angles.
+     *
+     * See also: vips_rot45().
+     */
     enum Angle45 {
         /**
          * no rotate
@@ -181,23 +149,17 @@ export namespace Vips {
         D315,
         LAST,
     }
-    /**
-     * The format used for each band element.
-     *
-     * Each corresponds to a native C type for the current machine. For example,
-     * #VIPS_FORMAT_USHORT is <type>unsigned short</type>.
-     */
 
-    /**
-     * The format used for each band element.
-     *
-     * Each corresponds to a native C type for the current machine. For example,
-     * #VIPS_FORMAT_USHORT is <type>unsigned short</type>.
-     */
     export namespace BandFormat {
         export const $gtype: GObject.GType<BandFormat>;
     }
 
+    /**
+     * The format used for each band element.
+     *
+     * Each corresponds to a native C type for the current machine. For example,
+     * #VIPS_FORMAT_USHORT is <type>unsigned short</type>.
+     */
     enum BandFormat {
         /**
          * invalid setting
@@ -245,31 +207,21 @@ export namespace Vips {
         DPCOMPLEX,
         LAST,
     }
-    /**
-     * The various Porter-Duff and PDF blend modes. See vips_composite(),
-     * for example.
-     *
-     * The Cairo docs have a nice explanation of all the blend modes:
-     *
-     * https://www.cairographics.org/operators
-     *
-     * The non-separable modes are not implemented.
-     */
 
-    /**
-     * The various Porter-Duff and PDF blend modes. See vips_composite(),
-     * for example.
-     *
-     * The Cairo docs have a nice explanation of all the blend modes:
-     *
-     * https://www.cairographics.org/operators
-     *
-     * The non-separable modes are not implemented.
-     */
     export namespace BlendMode {
         export const $gtype: GObject.GType<BlendMode>;
     }
 
+    /**
+     * The various Porter-Duff and PDF blend modes. See vips_composite(),
+     * for example.
+     *
+     * The Cairo docs have a nice explanation of all the blend modes:
+     *
+     * https://www.cairographics.org/operators
+     *
+     * The non-separable modes are not implemented.
+     */
     enum BlendMode {
         /**
          * where the second object is drawn, the first is removed
@@ -373,31 +325,21 @@ export namespace Vips {
         EXCLUSION,
         LAST,
     }
-    /**
-     * How pixels are coded.
-     *
-     * Normally, pixels are uncoded and can be manipulated as you would expect.
-     * However some file formats code pixels for compression, and sometimes it's
-     * useful to be able to manipulate images in the coded format.
-     *
-     * The gaps in the numbering are historical and must be maintained. Allocate
-     * new numbers from the end.
-     */
 
-    /**
-     * How pixels are coded.
-     *
-     * Normally, pixels are uncoded and can be manipulated as you would expect.
-     * However some file formats code pixels for compression, and sometimes it's
-     * useful to be able to manipulate images in the coded format.
-     *
-     * The gaps in the numbering are historical and must be maintained. Allocate
-     * new numbers from the end.
-     */
     export namespace Coding {
         export const $gtype: GObject.GType<Coding>;
     }
 
+    /**
+     * How pixels are coded.
+     *
+     * Normally, pixels are uncoded and can be manipulated as you would expect.
+     * However some file formats code pixels for compression, and sometimes it's
+     * useful to be able to manipulate images in the coded format.
+     *
+     * The gaps in the numbering are historical and must be maintained. Allocate
+     * new numbers from the end.
+     */
     enum Coding {
         ERROR,
         /**
@@ -414,17 +356,14 @@ export namespace Vips {
         RAD,
         LAST,
     }
-    /**
-     * How to combine values. See vips_compass(), for example.
-     */
 
-    /**
-     * How to combine values. See vips_compass(), for example.
-     */
     export namespace Combine {
         export const $gtype: GObject.GType<Combine>;
     }
 
+    /**
+     * How to combine values. See vips_compass(), for example.
+     */
     enum Combine {
         /**
          * take the maximum of the possible values
@@ -440,27 +379,19 @@ export namespace Vips {
         MIN,
         LAST,
     }
-    /**
-     * See vips_draw_image() and so on.
-     *
-     * Operations like vips_draw_image() need to be told how to combine images
-     * from two sources.
-     *
-     * See also: vips_join().
-     */
 
-    /**
-     * See vips_draw_image() and so on.
-     *
-     * Operations like vips_draw_image() need to be told how to combine images
-     * from two sources.
-     *
-     * See also: vips_join().
-     */
     export namespace CombineMode {
         export const $gtype: GObject.GType<CombineMode>;
     }
 
+    /**
+     * See vips_draw_image() and so on.
+     *
+     * Operations like vips_draw_image() need to be told how to combine images
+     * from two sources.
+     *
+     * See also: vips_join().
+     */
     enum CombineMode {
         /**
          * set pixels to the new value
@@ -472,17 +403,14 @@ export namespace Vips {
         ADD,
         LAST,
     }
-    /**
-     * A direction on a compass. Used for vips_gravity(), for example.
-     */
 
-    /**
-     * A direction on a compass. Used for vips_gravity(), for example.
-     */
     export namespace CompassDirection {
         export const $gtype: GObject.GType<CompassDirection>;
     }
 
+    /**
+     * A direction on a compass. Used for vips_gravity(), for example.
+     */
     enum CompassDirection {
         /**
          * centre
@@ -522,71 +450,41 @@ export namespace Vips {
         NORTH_WEST,
         LAST,
     }
-    /**
-     * See vips_image_pipelinev(). Operations can hint
-     * the kind of demand geometry they prefer
-     * to the VIPS image IO system.
-     *
-     * These demand styles are given below in order of increasing
-     * specialisation.  When demanding output from a pipeline,
-     * vips_image_generate()
-     * will use the most general style requested by the operations
-     * in the pipeline.
-     *
-     * #VIPS_DEMAND_STYLE_SMALLTILE --- This is the most general demand format.
-     * Output is demanded in small (around 100x100 pel) sections. This style works
-     * reasonably efficiently, even for bizarre operations like 45 degree rotate.
-     *
-     * #VIPS_DEMAND_STYLE_FATSTRIP --- This operation would like to output strips
-     * the width of the image and as high as possible. This option is suitable
-     * for area operations which do not violently transform coordinates, such
-     * as vips_conv().
-     *
-     * #VIPS_DEMAND_STYLE_THINSTRIP --- This operation would like to output strips
-     * the width of the image and a few pels high. This option is suitable for
-     * point-to-point operations, such as those in the arithmetic package.
-     *
-     * #VIPS_DEMAND_STYLE_ANY --- This image is not being demand-read from a disc
-     * file (even indirectly) so any demand style is OK. It's used for things like
-     * vips_black() where the pixels are calculated.
-     *
-     * See also: vips_image_pipelinev().
-     */
 
-    /**
-     * See vips_image_pipelinev(). Operations can hint
-     * the kind of demand geometry they prefer
-     * to the VIPS image IO system.
-     *
-     * These demand styles are given below in order of increasing
-     * specialisation.  When demanding output from a pipeline,
-     * vips_image_generate()
-     * will use the most general style requested by the operations
-     * in the pipeline.
-     *
-     * #VIPS_DEMAND_STYLE_SMALLTILE --- This is the most general demand format.
-     * Output is demanded in small (around 100x100 pel) sections. This style works
-     * reasonably efficiently, even for bizarre operations like 45 degree rotate.
-     *
-     * #VIPS_DEMAND_STYLE_FATSTRIP --- This operation would like to output strips
-     * the width of the image and as high as possible. This option is suitable
-     * for area operations which do not violently transform coordinates, such
-     * as vips_conv().
-     *
-     * #VIPS_DEMAND_STYLE_THINSTRIP --- This operation would like to output strips
-     * the width of the image and a few pels high. This option is suitable for
-     * point-to-point operations, such as those in the arithmetic package.
-     *
-     * #VIPS_DEMAND_STYLE_ANY --- This image is not being demand-read from a disc
-     * file (even indirectly) so any demand style is OK. It's used for things like
-     * vips_black() where the pixels are calculated.
-     *
-     * See also: vips_image_pipelinev().
-     */
     export namespace DemandStyle {
         export const $gtype: GObject.GType<DemandStyle>;
     }
 
+    /**
+     * See vips_image_pipelinev(). Operations can hint
+     * the kind of demand geometry they prefer
+     * to the VIPS image IO system.
+     *
+     * These demand styles are given below in order of increasing
+     * specialisation.  When demanding output from a pipeline,
+     * vips_image_generate()
+     * will use the most general style requested by the operations
+     * in the pipeline.
+     *
+     * #VIPS_DEMAND_STYLE_SMALLTILE --- This is the most general demand format.
+     * Output is demanded in small (around 100x100 pel) sections. This style works
+     * reasonably efficiently, even for bizarre operations like 45 degree rotate.
+     *
+     * #VIPS_DEMAND_STYLE_FATSTRIP --- This operation would like to output strips
+     * the width of the image and as high as possible. This option is suitable
+     * for area operations which do not violently transform coordinates, such
+     * as vips_conv().
+     *
+     * #VIPS_DEMAND_STYLE_THINSTRIP --- This operation would like to output strips
+     * the width of the image and a few pels high. This option is suitable for
+     * point-to-point operations, such as those in the arithmetic package.
+     *
+     * #VIPS_DEMAND_STYLE_ANY --- This image is not being demand-read from a disc
+     * file (even indirectly) so any demand style is OK. It's used for things like
+     * vips_black() where the pixels are calculated.
+     *
+     * See also: vips_image_pipelinev().
+     */
     enum DemandStyle {
         ERROR,
         /**
@@ -606,27 +504,19 @@ export namespace Vips {
          */
         ANY,
     }
-    /**
-     * See vips_flip(), vips_join() and so on.
-     *
-     * Operations like vips_flip() need to be told whether to flip left-right or
-     * top-bottom.
-     *
-     * See also: vips_flip(), vips_join().
-     */
 
-    /**
-     * See vips_flip(), vips_join() and so on.
-     *
-     * Operations like vips_flip() need to be told whether to flip left-right or
-     * top-bottom.
-     *
-     * See also: vips_flip(), vips_join().
-     */
     export namespace Direction {
         export const $gtype: GObject.GType<Direction>;
     }
 
+    /**
+     * See vips_flip(), vips_join() and so on.
+     *
+     * Operations like vips_flip() need to be told whether to flip left-right or
+     * top-bottom.
+     *
+     * See also: vips_flip(), vips_join().
+     */
     enum Direction {
         /**
          * left-right
@@ -638,61 +528,36 @@ export namespace Vips {
         VERTICAL,
         LAST,
     }
-    /**
-     * See vips_embed(), vips_conv(), vips_affine() and so on.
-     *
-     * When the edges of an image are extended, you can specify
-     * how you want the extension done.
-     *
-     * #VIPS_EXTEND_BLACK --- new pixels are black, ie. all bits are zero.
-     *
-     * #VIPS_EXTEND_COPY --- each new pixel takes the value of the nearest edge
-     * pixel
-     *
-     * #VIPS_EXTEND_REPEAT --- the image is tiled to fill the new area
-     *
-     * #VIPS_EXTEND_MIRROR --- the image is reflected and tiled to reduce hash
-     * edges
-     *
-     * #VIPS_EXTEND_WHITE --- new pixels are white, ie. all bits are set
-     *
-     * #VIPS_EXTEND_BACKGROUND --- colour set from the `background` property
-     *
-     * We have to specify the exact value of each enum member since we have to
-     * keep these frozen for back compat with vips7.
-     *
-     * See also: vips_embed().
-     */
 
-    /**
-     * See vips_embed(), vips_conv(), vips_affine() and so on.
-     *
-     * When the edges of an image are extended, you can specify
-     * how you want the extension done.
-     *
-     * #VIPS_EXTEND_BLACK --- new pixels are black, ie. all bits are zero.
-     *
-     * #VIPS_EXTEND_COPY --- each new pixel takes the value of the nearest edge
-     * pixel
-     *
-     * #VIPS_EXTEND_REPEAT --- the image is tiled to fill the new area
-     *
-     * #VIPS_EXTEND_MIRROR --- the image is reflected and tiled to reduce hash
-     * edges
-     *
-     * #VIPS_EXTEND_WHITE --- new pixels are white, ie. all bits are set
-     *
-     * #VIPS_EXTEND_BACKGROUND --- colour set from the `background` property
-     *
-     * We have to specify the exact value of each enum member since we have to
-     * keep these frozen for back compat with vips7.
-     *
-     * See also: vips_embed().
-     */
     export namespace Extend {
         export const $gtype: GObject.GType<Extend>;
     }
 
+    /**
+     * See vips_embed(), vips_conv(), vips_affine() and so on.
+     *
+     * When the edges of an image are extended, you can specify
+     * how you want the extension done.
+     *
+     * #VIPS_EXTEND_BLACK --- new pixels are black, ie. all bits are zero.
+     *
+     * #VIPS_EXTEND_COPY --- each new pixel takes the value of the nearest edge
+     * pixel
+     *
+     * #VIPS_EXTEND_REPEAT --- the image is tiled to fill the new area
+     *
+     * #VIPS_EXTEND_MIRROR --- the image is reflected and tiled to reduce hash
+     * edges
+     *
+     * #VIPS_EXTEND_WHITE --- new pixels are white, ie. all bits are set
+     *
+     * #VIPS_EXTEND_BACKGROUND --- colour set from the `background` property
+     *
+     * We have to specify the exact value of each enum member since we have to
+     * keep these frozen for back compat with vips7.
+     *
+     * See also: vips_embed().
+     */
     enum Extend {
         /**
          * extend with black (all 0) pixels
@@ -720,25 +585,18 @@ export namespace Vips {
         BACKGROUND,
         LAST,
     }
-    /**
-     * How sensitive loaders are to errors, from never stop (very insensitive), to
-     * stop on the smallest warning (very sensitive).
-     *
-     * Each one implies the ones before it, so #VIPS_FAIL_ON_ERROR implies
-     * #VIPS_FAIL_ON_TRUNCATED.
-     */
 
-    /**
-     * How sensitive loaders are to errors, from never stop (very insensitive), to
-     * stop on the smallest warning (very sensitive).
-     *
-     * Each one implies the ones before it, so #VIPS_FAIL_ON_ERROR implies
-     * #VIPS_FAIL_ON_TRUNCATED.
-     */
     export namespace FailOn {
         export const $gtype: GObject.GType<FailOn>;
     }
 
+    /**
+     * How sensitive loaders are to errors, from never stop (very insensitive), to
+     * stop on the smallest warning (very sensitive).
+     *
+     * Each one implies the ones before it, so #VIPS_FAIL_ON_ERROR implies
+     * #VIPS_FAIL_ON_TRUNCATED.
+     */
     enum FailOn {
         /**
          * never stop
@@ -758,17 +616,14 @@ export namespace Vips {
         WARNING,
         LAST,
     }
-    /**
-     * How many pyramid layers to create.
-     */
 
-    /**
-     * How many pyramid layers to create.
-     */
     export namespace ForeignDzContainer {
         export const $gtype: GObject.GType<ForeignDzContainer>;
     }
 
+    /**
+     * How many pyramid layers to create.
+     */
     enum ForeignDzContainer {
         /**
          * write tiles to the filesystem
@@ -784,17 +639,14 @@ export namespace Vips {
         SZI,
         LAST,
     }
-    /**
-     * How many pyramid layers to create.
-     */
 
-    /**
-     * How many pyramid layers to create.
-     */
     export namespace ForeignDzDepth {
         export const $gtype: GObject.GType<ForeignDzDepth>;
     }
 
+    /**
+     * How many pyramid layers to create.
+     */
     enum ForeignDzDepth {
         /**
          * create layers down to 1x1 pixel
@@ -810,17 +662,14 @@ export namespace Vips {
         ONE,
         LAST,
     }
-    /**
-     * What directory layout and metadata standard to use.
-     */
 
-    /**
-     * What directory layout and metadata standard to use.
-     */
     export namespace ForeignDzLayout {
         export const $gtype: GObject.GType<ForeignDzLayout>;
     }
 
+    /**
+     * What directory layout and metadata standard to use.
+     */
     enum ForeignDzLayout {
         /**
          * use DeepZoom directory layout
@@ -844,21 +693,16 @@ export namespace Vips {
         IIIF3,
         LAST,
     }
-    /**
-     * The compression format to use inside a HEIF container.
-     *
-     * This is assumed to use the same numbering as %heif_compression_format.
-     */
 
-    /**
-     * The compression format to use inside a HEIF container.
-     *
-     * This is assumed to use the same numbering as %heif_compression_format.
-     */
     export namespace ForeignHeifCompression {
         export const $gtype: GObject.GType<ForeignHeifCompression>;
     }
 
+    /**
+     * The compression format to use inside a HEIF container.
+     *
+     * This is assumed to use the same numbering as %heif_compression_format.
+     */
     enum ForeignHeifCompression {
         /**
          * x265
@@ -878,21 +722,16 @@ export namespace Vips {
         AV1,
         LAST,
     }
-    /**
-     * The selected encoder to use.
-     * If libheif hasn't been compiled with the selected encoder,
-     * we will fallback to the default encoder for the compression format.
-     */
 
-    /**
-     * The selected encoder to use.
-     * If libheif hasn't been compiled with the selected encoder,
-     * we will fallback to the default encoder for the compression format.
-     */
     export namespace ForeignHeifEncoder {
         export const $gtype: GObject.GType<ForeignHeifEncoder>;
     }
 
+    /**
+     * The selected encoder to use.
+     * If libheif hasn't been compiled with the selected encoder,
+     * we will fallback to the default encoder for the compression format.
+     */
     enum ForeignHeifEncoder {
         /**
          * auto
@@ -916,17 +755,14 @@ export namespace Vips {
         X265,
         LAST,
     }
-    /**
-     * Set jpeg subsampling mode.
-     */
 
-    /**
-     * Set jpeg subsampling mode.
-     */
     export namespace ForeignJpegSubsample {
         export const $gtype: GObject.GType<ForeignJpegSubsample>;
     }
 
+    /**
+     * Set jpeg subsampling mode.
+     */
     enum ForeignJpegSubsample {
         /**
          * default preset
@@ -942,39 +778,25 @@ export namespace Vips {
         OFF,
         LAST,
     }
-    /**
-     * The netpbm file format to save as.
-     *
-     * #VIPS_FOREIGN_PPM_FORMAT_PBM images are single bit.
-     *
-     * #VIPS_FOREIGN_PPM_FORMAT_PGM images are 8, 16, or 32-bits, one band.
-     *
-     * #VIPS_FOREIGN_PPM_FORMAT_PPM images are 8, 16, or 32-bits, three bands.
-     *
-     * #VIPS_FOREIGN_PPM_FORMAT_PFM images are 32-bit float pixels.
-     *
-     * #VIPS_FOREIGN_PPM_FORMAT_PNM images are anymap images -- the image format
-     * is used to pick the saver.
-     */
 
-    /**
-     * The netpbm file format to save as.
-     *
-     * #VIPS_FOREIGN_PPM_FORMAT_PBM images are single bit.
-     *
-     * #VIPS_FOREIGN_PPM_FORMAT_PGM images are 8, 16, or 32-bits, one band.
-     *
-     * #VIPS_FOREIGN_PPM_FORMAT_PPM images are 8, 16, or 32-bits, three bands.
-     *
-     * #VIPS_FOREIGN_PPM_FORMAT_PFM images are 32-bit float pixels.
-     *
-     * #VIPS_FOREIGN_PPM_FORMAT_PNM images are anymap images -- the image format
-     * is used to pick the saver.
-     */
     export namespace ForeignPpmFormat {
         export const $gtype: GObject.GType<ForeignPpmFormat>;
     }
 
+    /**
+     * The netpbm file format to save as.
+     *
+     * #VIPS_FOREIGN_PPM_FORMAT_PBM images are single bit.
+     *
+     * #VIPS_FOREIGN_PPM_FORMAT_PGM images are 8, 16, or 32-bits, one band.
+     *
+     * #VIPS_FOREIGN_PPM_FORMAT_PPM images are 8, 16, or 32-bits, three bands.
+     *
+     * #VIPS_FOREIGN_PPM_FORMAT_PFM images are 32-bit float pixels.
+     *
+     * #VIPS_FOREIGN_PPM_FORMAT_PNM images are anymap images -- the image format
+     * is used to pick the saver.
+     */
     enum ForeignPpmFormat {
         /**
          * portable bitmap
@@ -998,17 +820,14 @@ export namespace Vips {
         PNM,
         LAST,
     }
-    /**
-     * Set subsampling mode.
-     */
 
-    /**
-     * Set subsampling mode.
-     */
     export namespace ForeignSubsample {
         export const $gtype: GObject.GType<ForeignSubsample>;
     }
 
+    /**
+     * Set subsampling mode.
+     */
     enum ForeignSubsample {
         /**
          * prevent subsampling when quality >= 90
@@ -1024,33 +843,22 @@ export namespace Vips {
         OFF,
         LAST,
     }
-    /**
-     * The compression types supported by the tiff writer.
-     *
-     * Use `Q` to set the jpeg compression level, default 75.
-     *
-     * Use `predictor` to set the lzw or deflate prediction, default horizontal.
-     *
-     * Use `lossless` to set WEBP lossless compression.
-     *
-     * Use `level` to set webp and zstd compression level.
-     */
 
-    /**
-     * The compression types supported by the tiff writer.
-     *
-     * Use `Q` to set the jpeg compression level, default 75.
-     *
-     * Use `predictor` to set the lzw or deflate prediction, default horizontal.
-     *
-     * Use `lossless` to set WEBP lossless compression.
-     *
-     * Use `level` to set webp and zstd compression level.
-     */
     export namespace ForeignTiffCompression {
         export const $gtype: GObject.GType<ForeignTiffCompression>;
     }
 
+    /**
+     * The compression types supported by the tiff writer.
+     *
+     * Use `Q` to set the jpeg compression level, default 75.
+     *
+     * Use `predictor` to set the lzw or deflate prediction, default horizontal.
+     *
+     * Use `lossless` to set WEBP lossless compression.
+     *
+     * Use `level` to set webp and zstd compression level.
+     */
     enum ForeignTiffCompression {
         /**
          * no compression
@@ -1090,19 +898,15 @@ export namespace Vips {
         JP2K,
         LAST,
     }
-    /**
-     * The predictor can help deflate and lzw compression. The values are fixed by
-     * the tiff library.
-     */
 
-    /**
-     * The predictor can help deflate and lzw compression. The values are fixed by
-     * the tiff library.
-     */
     export namespace ForeignTiffPredictor {
         export const $gtype: GObject.GType<ForeignTiffPredictor>;
     }
 
+    /**
+     * The predictor can help deflate and lzw compression. The values are fixed by
+     * the tiff library.
+     */
     enum ForeignTiffPredictor {
         /**
          * no prediction
@@ -1118,17 +922,14 @@ export namespace Vips {
         FLOAT,
         LAST,
     }
-    /**
-     * Use inches or centimeters as the resolution unit for a tiff file.
-     */
 
-    /**
-     * Use inches or centimeters as the resolution unit for a tiff file.
-     */
     export namespace ForeignTiffResunit {
         export const $gtype: GObject.GType<ForeignTiffResunit>;
     }
 
+    /**
+     * Use inches or centimeters as the resolution unit for a tiff file.
+     */
     enum ForeignTiffResunit {
         /**
          * use centimeters
@@ -1140,17 +941,14 @@ export namespace Vips {
         INCH,
         LAST,
     }
-    /**
-     * Tune lossy encoder settings for different image types.
-     */
 
-    /**
-     * Tune lossy encoder settings for different image types.
-     */
     export namespace ForeignWebpPreset {
         export const $gtype: GObject.GType<ForeignWebpPreset>;
     }
 
+    /**
+     * Tune lossy encoder settings for different image types.
+     */
     enum ForeignWebpPreset {
         /**
          * default preset
@@ -1194,21 +992,16 @@ export namespace Vips {
         OPENOUT,
         PARTIAL,
     }
-    /**
-     * The rendering intent. #VIPS_INTENT_ABSOLUTE is best for
-     * scientific work, #VIPS_INTENT_RELATIVE is usually best for
-     * accurate communication with other imaging libraries.
-     */
 
-    /**
-     * The rendering intent. #VIPS_INTENT_ABSOLUTE is best for
-     * scientific work, #VIPS_INTENT_RELATIVE is usually best for
-     * accurate communication with other imaging libraries.
-     */
     export namespace Intent {
         export const $gtype: GObject.GType<Intent>;
     }
 
+    /**
+     * The rendering intent. #VIPS_INTENT_ABSOLUTE is best for
+     * scientific work, #VIPS_INTENT_RELATIVE is usually best for
+     * accurate communication with other imaging libraries.
+     */
     enum Intent {
         /**
          * perceptual rendering intent
@@ -1228,33 +1021,22 @@ export namespace Vips {
         ABSOLUTE,
         LAST,
     }
-    /**
-     * Pick the algorithm vips uses to decide image "interestingness". This is used
-     * by vips_smartcrop(), for example, to decide what parts of the image to
-     * keep.
-     *
-     * #VIPS_INTERESTING_NONE and #VIPS_INTERESTING_LOW mean the same -- the
-     * crop is positioned at the top or left. #VIPS_INTERESTING_HIGH positions at
-     * the bottom or right.
-     *
-     * See also: vips_smartcrop().
-     */
 
-    /**
-     * Pick the algorithm vips uses to decide image "interestingness". This is used
-     * by vips_smartcrop(), for example, to decide what parts of the image to
-     * keep.
-     *
-     * #VIPS_INTERESTING_NONE and #VIPS_INTERESTING_LOW mean the same -- the
-     * crop is positioned at the top or left. #VIPS_INTERESTING_HIGH positions at
-     * the bottom or right.
-     *
-     * See also: vips_smartcrop().
-     */
     export namespace Interesting {
         export const $gtype: GObject.GType<Interesting>;
     }
 
+    /**
+     * Pick the algorithm vips uses to decide image "interestingness". This is used
+     * by vips_smartcrop(), for example, to decide what parts of the image to
+     * keep.
+     *
+     * #VIPS_INTERESTING_NONE and #VIPS_INTERESTING_LOW mean the same -- the
+     * crop is positioned at the top or left. #VIPS_INTERESTING_HIGH positions at
+     * the bottom or right.
+     *
+     * See also: vips_smartcrop().
+     */
     enum Interesting {
         /**
          * do nothing
@@ -1286,33 +1068,22 @@ export namespace Vips {
         ALL,
         LAST,
     }
-    /**
-     * How the values in an image should be interpreted. For example, a
-     * three-band float image of type #VIPS_INTERPRETATION_LAB should have its
-     * pixels interpreted as coordinates in CIE Lab space.
-     *
-     * RGB and sRGB are treated in the same way. Use the colourspace functions if
-     * you want some other behaviour.
-     *
-     * The gaps in numbering are historical and must be maintained. Allocate
-     * new numbers from the end.
-     */
 
-    /**
-     * How the values in an image should be interpreted. For example, a
-     * three-band float image of type #VIPS_INTERPRETATION_LAB should have its
-     * pixels interpreted as coordinates in CIE Lab space.
-     *
-     * RGB and sRGB are treated in the same way. Use the colourspace functions if
-     * you want some other behaviour.
-     *
-     * The gaps in numbering are historical and must be maintained. Allocate
-     * new numbers from the end.
-     */
     export namespace Interpretation {
         export const $gtype: GObject.GType<Interpretation>;
     }
 
+    /**
+     * How the values in an image should be interpreted. For example, a
+     * three-band float image of type #VIPS_INTERPRETATION_LAB should have its
+     * pixels interpreted as coordinates in CIE Lab space.
+     *
+     * RGB and sRGB are treated in the same way. Use the colourspace functions if
+     * you want some other behaviour.
+     *
+     * The gaps in numbering are historical and must be maintained. Allocate
+     * new numbers from the end.
+     */
     enum Interpretation {
         ERROR,
         /**
@@ -1393,17 +1164,14 @@ export namespace Vips {
         HSV,
         LAST,
     }
-    /**
-     * The resampling kernels vips supports. See vips_reduce(), for example.
-     */
 
-    /**
-     * The resampling kernels vips supports. See vips_reduce(), for example.
-     */
     export namespace Kernel {
         export const $gtype: GObject.GType<Kernel>;
     }
 
+    /**
+     * The resampling kernels vips supports. See vips_reduce(), for example.
+     */
     enum Kernel {
         /**
          * The nearest pixel to the point.
@@ -1431,17 +1199,14 @@ export namespace Vips {
         LANCZOS3,
         LAST,
     }
-    /**
-     * See also: vips_boolean().
-     */
 
-    /**
-     * See also: vips_boolean().
-     */
     export namespace OperationBoolean {
         export const $gtype: GObject.GType<OperationBoolean>;
     }
 
+    /**
+     * See also: vips_boolean().
+     */
     enum OperationBoolean {
         /**
          * &
@@ -1465,17 +1230,14 @@ export namespace Vips {
         RSHIFT,
         LAST,
     }
-    /**
-     * See also: vips_complex().
-     */
 
-    /**
-     * See also: vips_complex().
-     */
     export namespace OperationComplex {
         export const $gtype: GObject.GType<OperationComplex>;
     }
 
+    /**
+     * See also: vips_complex().
+     */
     enum OperationComplex {
         /**
          * convert to polar coordinates
@@ -1491,17 +1253,14 @@ export namespace Vips {
         CONJ,
         LAST,
     }
-    /**
-     * See also: vips_complex2().
-     */
 
-    /**
-     * See also: vips_complex2().
-     */
     export namespace OperationComplex2 {
         export const $gtype: GObject.GType<OperationComplex2>;
     }
 
+    /**
+     * See also: vips_complex2().
+     */
     enum OperationComplex2 {
         /**
          * convert to polar coordinates
@@ -1509,17 +1268,14 @@ export namespace Vips {
         CROSS_PHASE,
         LAST,
     }
-    /**
-     * See also: vips_complexget().
-     */
 
-    /**
-     * See also: vips_complexget().
-     */
     export namespace OperationComplexget {
         export const $gtype: GObject.GType<OperationComplexget>;
     }
 
+    /**
+     * See also: vips_complexget().
+     */
     enum OperationComplexget {
         /**
          * get real component
@@ -1531,17 +1287,14 @@ export namespace Vips {
         IMAG,
         LAST,
     }
-    /**
-     * See also: vips_math().
-     */
 
-    /**
-     * See also: vips_math().
-     */
     export namespace OperationMath {
         export const $gtype: GObject.GType<OperationMath>;
     }
 
+    /**
+     * See also: vips_math().
+     */
     enum OperationMath {
         /**
          * sin(), angles in degrees
@@ -1609,17 +1362,14 @@ export namespace Vips {
         ATANH,
         LAST,
     }
-    /**
-     * See also: vips_math().
-     */
 
-    /**
-     * See also: vips_math().
-     */
     export namespace OperationMath2 {
         export const $gtype: GObject.GType<OperationMath2>;
     }
 
+    /**
+     * See also: vips_math().
+     */
     enum OperationMath2 {
         /**
          * pow(left, right)
@@ -1635,21 +1385,16 @@ export namespace Vips {
         ATAN2,
         LAST,
     }
-    /**
-     * More like hit-miss, really.
-     *
-     * See also: vips_morph().
-     */
 
-    /**
-     * More like hit-miss, really.
-     *
-     * See also: vips_morph().
-     */
     export namespace OperationMorphology {
         export const $gtype: GObject.GType<OperationMorphology>;
     }
 
+    /**
+     * More like hit-miss, really.
+     *
+     * See also: vips_morph().
+     */
     enum OperationMorphology {
         /**
          * true if all set
@@ -1661,17 +1406,14 @@ export namespace Vips {
         DILATE,
         LAST,
     }
-    /**
-     * See also: vips_relational().
-     */
 
-    /**
-     * See also: vips_relational().
-     */
     export namespace OperationRelational {
         export const $gtype: GObject.GType<OperationRelational>;
     }
 
+    /**
+     * See also: vips_relational().
+     */
     enum OperationRelational {
         /**
          * ==
@@ -1699,17 +1441,14 @@ export namespace Vips {
         MOREEQ,
         LAST,
     }
-    /**
-     * See also: vips_round().
-     */
 
-    /**
-     * See also: vips_round().
-     */
     export namespace OperationRound {
         export const $gtype: GObject.GType<OperationRound>;
     }
 
+    /**
+     * See also: vips_round().
+     */
     enum OperationRound {
         /**
          * round to nearest
@@ -1725,21 +1464,16 @@ export namespace Vips {
         FLOOR,
         LAST,
     }
-    /**
-     * Pick a Profile Connection Space for vips_icc_import() and
-     * vips_icc_export(). LAB is usually best, XYZ can be more convenient in some
-     * cases.
-     */
 
-    /**
-     * Pick a Profile Connection Space for vips_icc_import() and
-     * vips_icc_export(). LAB is usually best, XYZ can be more convenient in some
-     * cases.
-     */
     export namespace PCS {
         export const $gtype: GObject.GType<PCS>;
     }
 
+    /**
+     * Pick a Profile Connection Space for vips_icc_import() and
+     * vips_icc_export(). LAB is usually best, XYZ can be more convenient in some
+     * cases.
+     */
     enum PCS {
         /**
          * use CIELAB D65 as the Profile Connection Space
@@ -1751,17 +1485,14 @@ export namespace Vips {
         XYZ,
         LAST,
     }
-    /**
-     * How accurate an operation should be.
-     */
 
-    /**
-     * How accurate an operation should be.
-     */
     export namespace Precision {
         export const $gtype: GObject.GType<Precision>;
     }
 
+    /**
+     * How accurate an operation should be.
+     */
     enum Precision {
         /**
          * int everywhere
@@ -1777,17 +1508,14 @@ export namespace Vips {
         APPROXIMATE,
         LAST,
     }
-    /**
-     * How to calculate the output pixels when shrinking a 2x2 region.
-     */
 
-    /**
-     * How to calculate the output pixels when shrinking a 2x2 region.
-     */
     export namespace RegionShrink {
         export const $gtype: GObject.GType<RegionShrink>;
     }
 
+    /**
+     * How to calculate the output pixels when shrinking a 2x2 region.
+     */
     enum RegionShrink {
         /**
          * use the average
@@ -1815,17 +1543,14 @@ export namespace Vips {
         NEAREST,
         LAST,
     }
-    /**
-     * See also: #VipsForeignSave.
-     */
 
-    /**
-     * See also: #VipsForeignSave.
-     */
     export namespace Saveable {
         export const $gtype: GObject.GType<Saveable>;
     }
 
+    /**
+     * See also: #VipsForeignSave.
+     */
     enum Saveable {
         /**
          * 1 band (eg. CSV)
@@ -1853,23 +1578,17 @@ export namespace Vips {
         ANY,
         LAST,
     }
-    /**
-     * Controls whether an operation should upsize, downsize, both up and
-     * downsize, or force a size.
-     *
-     * See also: vips_thumbnail().
-     */
 
-    /**
-     * Controls whether an operation should upsize, downsize, both up and
-     * downsize, or force a size.
-     *
-     * See also: vips_thumbnail().
-     */
     export namespace Size {
         export const $gtype: GObject.GType<Size>;
     }
 
+    /**
+     * Controls whether an operation should upsize, downsize, both up and
+     * downsize, or force a size.
+     *
+     * See also: vips_thumbnail().
+     */
     enum Size {
         /**
          * size both up and down
@@ -1889,23 +1608,17 @@ export namespace Vips {
         FORCE,
         LAST,
     }
-    /**
-     * Sets the word wrapping style for vips_text() when used with a maximum
-     * width.
-     *
-     * See also: vips_text().
-     */
 
-    /**
-     * Sets the word wrapping style for vips_text() when used with a maximum
-     * width.
-     *
-     * See also: vips_text().
-     */
     export namespace TextWrap {
         export const $gtype: GObject.GType<TextWrap>;
     }
 
+    /**
+     * Sets the word wrapping style for vips_text() when used with a maximum
+     * width.
+     *
+     * See also: vips_text().
+     */
     enum TextWrap {
         /**
          * wrap at word boundaries
@@ -1937,6 +1650,7 @@ export namespace Vips {
         EQUALS,
         COMMA,
     }
+
     const ARGUMENT_OPTIONAL_INPUT: number;
     const ARGUMENT_OPTIONAL_OUTPUT: number;
     const ARGUMENT_REQUIRED_INPUT: number;
@@ -3416,61 +3130,35 @@ export namespace Vips {
     interface TypeMapFn {
         (type: GObject.GType, a?: any | null): any | null;
     }
-    /**
-     * Flags we associate with each object argument.
-     *
-     * Have separate input & output flags. Both set is an error; neither set is OK.
-     *
-     * Input gobjects are automatically reffed, output gobjects automatically ref
-     * us. We also automatically watch for "destroy" and unlink.
-     *
-     * `VIPS_ARGUMENT_SET_ALWAYS` is handy for arguments which are set from C. For
-     * example, VipsImage::width is a property that gives access to the Xsize
-     * member of struct _VipsImage. We default its 'assigned' to TRUE
-     * since the field is always set directly by C.
-     *
-     * `VIPS_ARGUMENT_DEPRECATED` arguments are not shown in help text, are not
-     * looked for if required, are not checked for "have-been-set". You can
-     * deprecate a required argument, but you must obviously add a new required
-     * argument if you do.
-     *
-     * Input args with `VIPS_ARGUMENT_MODIFY` will be modified by the operation.
-     * This is used for things like the in-place drawing operations.
-     *
-     * `VIPS_ARGUMENT_NON_HASHABLE` stops the argument being used in hash and
-     * equality tests. It's useful for arguments like `revalidate` which
-     * control the behaviour of the operator cache.
-     */
-
-    /**
-     * Flags we associate with each object argument.
-     *
-     * Have separate input & output flags. Both set is an error; neither set is OK.
-     *
-     * Input gobjects are automatically reffed, output gobjects automatically ref
-     * us. We also automatically watch for "destroy" and unlink.
-     *
-     * `VIPS_ARGUMENT_SET_ALWAYS` is handy for arguments which are set from C. For
-     * example, VipsImage::width is a property that gives access to the Xsize
-     * member of struct _VipsImage. We default its 'assigned' to TRUE
-     * since the field is always set directly by C.
-     *
-     * `VIPS_ARGUMENT_DEPRECATED` arguments are not shown in help text, are not
-     * looked for if required, are not checked for "have-been-set". You can
-     * deprecate a required argument, but you must obviously add a new required
-     * argument if you do.
-     *
-     * Input args with `VIPS_ARGUMENT_MODIFY` will be modified by the operation.
-     * This is used for things like the in-place drawing operations.
-     *
-     * `VIPS_ARGUMENT_NON_HASHABLE` stops the argument being used in hash and
-     * equality tests. It's useful for arguments like `revalidate` which
-     * control the behaviour of the operator cache.
-     */
     export namespace ArgumentFlags {
         export const $gtype: GObject.GType<ArgumentFlags>;
     }
 
+    /**
+     * Flags we associate with each object argument.
+     *
+     * Have separate input & output flags. Both set is an error; neither set is OK.
+     *
+     * Input gobjects are automatically reffed, output gobjects automatically ref
+     * us. We also automatically watch for "destroy" and unlink.
+     *
+     * `VIPS_ARGUMENT_SET_ALWAYS` is handy for arguments which are set from C. For
+     * example, VipsImage::width is a property that gives access to the Xsize
+     * member of struct _VipsImage. We default its 'assigned' to TRUE
+     * since the field is always set directly by C.
+     *
+     * `VIPS_ARGUMENT_DEPRECATED` arguments are not shown in help text, are not
+     * looked for if required, are not checked for "have-been-set". You can
+     * deprecate a required argument, but you must obviously add a new required
+     * argument if you do.
+     *
+     * Input args with `VIPS_ARGUMENT_MODIFY` will be modified by the operation.
+     * This is used for things like the in-place drawing operations.
+     *
+     * `VIPS_ARGUMENT_NON_HASHABLE` stops the argument being used in hash and
+     * equality tests. It's useful for arguments like `revalidate` which
+     * control the behaviour of the operator cache.
+     */
     enum ArgumentFlags {
         /**
          * no flags
@@ -3513,45 +3201,28 @@ export namespace Vips {
          */
         NON_HASHABLE,
     }
-    /**
-     * Some hints about the image loader.
-     *
-     * #VIPS_FOREIGN_PARTIAL means that the image can be read directly from the
-     * file without needing to be unpacked to a temporary image first.
-     *
-     * #VIPS_FOREIGN_SEQUENTIAL means that the loader supports lazy reading, but
-     * only top-to-bottom (sequential) access. Formats like PNG can read sets of
-     * scanlines, for example, but only in order.
-     *
-     * If neither PARTIAL or SEQUENTIAL is set, the loader only supports whole
-     * image read. Setting both PARTIAL and SEQUENTIAL is an error.
-     *
-     * #VIPS_FOREIGN_BIGENDIAN means that image pixels are most-significant byte
-     * first. Depending on the native byte order of the host machine, you may
-     * need to swap bytes. See vips_copy().
-     */
 
-    /**
-     * Some hints about the image loader.
-     *
-     * #VIPS_FOREIGN_PARTIAL means that the image can be read directly from the
-     * file without needing to be unpacked to a temporary image first.
-     *
-     * #VIPS_FOREIGN_SEQUENTIAL means that the loader supports lazy reading, but
-     * only top-to-bottom (sequential) access. Formats like PNG can read sets of
-     * scanlines, for example, but only in order.
-     *
-     * If neither PARTIAL or SEQUENTIAL is set, the loader only supports whole
-     * image read. Setting both PARTIAL and SEQUENTIAL is an error.
-     *
-     * #VIPS_FOREIGN_BIGENDIAN means that image pixels are most-significant byte
-     * first. Depending on the native byte order of the host machine, you may
-     * need to swap bytes. See vips_copy().
-     */
     export namespace ForeignFlags {
         export const $gtype: GObject.GType<ForeignFlags>;
     }
 
+    /**
+     * Some hints about the image loader.
+     *
+     * #VIPS_FOREIGN_PARTIAL means that the image can be read directly from the
+     * file without needing to be unpacked to a temporary image first.
+     *
+     * #VIPS_FOREIGN_SEQUENTIAL means that the loader supports lazy reading, but
+     * only top-to-bottom (sequential) access. Formats like PNG can read sets of
+     * scanlines, for example, but only in order.
+     *
+     * If neither PARTIAL or SEQUENTIAL is set, the loader only supports whole
+     * image read. Setting both PARTIAL and SEQUENTIAL is an error.
+     *
+     * #VIPS_FOREIGN_BIGENDIAN means that image pixels are most-significant byte
+     * first. Depending on the native byte order of the host machine, you may
+     * need to swap bytes. See vips_copy().
+     */
     enum ForeignFlags {
         /**
          * no flags set
@@ -3571,17 +3242,14 @@ export namespace Vips {
         SEQUENTIAL,
         ALL,
     }
-    /**
-     * Which metadata to retain.
-     */
 
-    /**
-     * Which metadata to retain.
-     */
     export namespace ForeignKeep {
         export const $gtype: GObject.GType<ForeignKeep>;
     }
 
+    /**
+     * Which metadata to retain.
+     */
     enum ForeignKeep {
         /**
          * don't attach metadata
@@ -3612,19 +3280,15 @@ export namespace Vips {
          */
         ALL,
     }
-    /**
-     * http://www.w3.org/TR/PNG-Filters.html
-     * The values mirror those of png.h in libpng.
-     */
 
-    /**
-     * http://www.w3.org/TR/PNG-Filters.html
-     * The values mirror those of png.h in libpng.
-     */
     export namespace ForeignPngFilter {
         export const $gtype: GObject.GType<ForeignPngFilter>;
     }
 
+    /**
+     * http://www.w3.org/TR/PNG-Filters.html
+     * The values mirror those of png.h in libpng.
+     */
     enum ForeignPngFilter {
         /**
          * no filtering
@@ -3651,81 +3315,46 @@ export namespace Vips {
          */
         ALL,
     }
-    /**
-     * Flags we associate with an operation.
-     *
-     * `VIPS_OPERATION_SEQUENTIAL` means that the operation works like vips_conv():
-     * it can process images top-to-bottom with only small non-local
-     * references.
-     *
-     * Every scan-line must be requested, you are not allowed to skip
-     * ahead, but as a special case, the very first request can be for a region
-     * not at the top of the image. In this case, the first part of the image will
-     * be read and discarded
-     *
-     * Every scan-line must be requested, you are not allowed to skip
-     * ahead, but as a special case, the very first request can be for a region
-     * not at the top of the image. In this case, the first part of the image will
-     * be read and discarded
-     *
-     * `VIPS_OPERATION_NOCACHE` means that the operation must not be cached by
-     * vips.
-     *
-     * `VIPS_OPERATION_DEPRECATED` means this is an old operation kept in vips for
-     * compatibility only and should be hidden from users.
-     *
-     * `VIPS_OPERATION_UNTRUSTED` means the operation depends on external libraries
-     * which have not been hardened against attack. It should probably not be used
-     * on untrusted input. Use vips_block_untrusted_set() to block all
-     * untrusted operations.
-     *
-     * `VIPS_OPERATION_BLOCKED` means the operation is prevented from executing. Use
-     * vips_operation_block_set() to enable and disable groups of operations.
-     *
-     * `VIPS_OPERATION_REVALIDATE` force the operation to run, updating the cache
-     * with the new value. This is used by eg. VipsForeignLoad to implement the
-     * "revalidate" argument.
-     */
 
-    /**
-     * Flags we associate with an operation.
-     *
-     * `VIPS_OPERATION_SEQUENTIAL` means that the operation works like vips_conv():
-     * it can process images top-to-bottom with only small non-local
-     * references.
-     *
-     * Every scan-line must be requested, you are not allowed to skip
-     * ahead, but as a special case, the very first request can be for a region
-     * not at the top of the image. In this case, the first part of the image will
-     * be read and discarded
-     *
-     * Every scan-line must be requested, you are not allowed to skip
-     * ahead, but as a special case, the very first request can be for a region
-     * not at the top of the image. In this case, the first part of the image will
-     * be read and discarded
-     *
-     * `VIPS_OPERATION_NOCACHE` means that the operation must not be cached by
-     * vips.
-     *
-     * `VIPS_OPERATION_DEPRECATED` means this is an old operation kept in vips for
-     * compatibility only and should be hidden from users.
-     *
-     * `VIPS_OPERATION_UNTRUSTED` means the operation depends on external libraries
-     * which have not been hardened against attack. It should probably not be used
-     * on untrusted input. Use vips_block_untrusted_set() to block all
-     * untrusted operations.
-     *
-     * `VIPS_OPERATION_BLOCKED` means the operation is prevented from executing. Use
-     * vips_operation_block_set() to enable and disable groups of operations.
-     *
-     * `VIPS_OPERATION_REVALIDATE` force the operation to run, updating the cache
-     * with the new value. This is used by eg. VipsForeignLoad to implement the
-     * "revalidate" argument.
-     */
     export namespace OperationFlags {
         export const $gtype: GObject.GType<OperationFlags>;
     }
 
+    /**
+     * Flags we associate with an operation.
+     *
+     * `VIPS_OPERATION_SEQUENTIAL` means that the operation works like vips_conv():
+     * it can process images top-to-bottom with only small non-local
+     * references.
+     *
+     * Every scan-line must be requested, you are not allowed to skip
+     * ahead, but as a special case, the very first request can be for a region
+     * not at the top of the image. In this case, the first part of the image will
+     * be read and discarded
+     *
+     * Every scan-line must be requested, you are not allowed to skip
+     * ahead, but as a special case, the very first request can be for a region
+     * not at the top of the image. In this case, the first part of the image will
+     * be read and discarded
+     *
+     * `VIPS_OPERATION_NOCACHE` means that the operation must not be cached by
+     * vips.
+     *
+     * `VIPS_OPERATION_DEPRECATED` means this is an old operation kept in vips for
+     * compatibility only and should be hidden from users.
+     *
+     * `VIPS_OPERATION_UNTRUSTED` means the operation depends on external libraries
+     * which have not been hardened against attack. It should probably not be used
+     * on untrusted input. Use vips_block_untrusted_set() to block all
+     * untrusted operations.
+     *
+     * `VIPS_OPERATION_BLOCKED` means the operation is prevented from executing. Use
+     * vips_operation_block_set() to enable and disable groups of operations.
+     *
+     * `VIPS_OPERATION_REVALIDATE` force the operation to run, updating the cache
+     * with the new value. This is used by eg. VipsForeignLoad to implement the
+     * "revalidate" argument.
+     */
     enum OperationFlags {
         /**
          * no flags
@@ -3757,6 +3386,7 @@ export namespace Vips {
          */
         REVALIDATE,
     }
+
     namespace Foreign {
         // Signal signatures
         interface SignalSignatures extends Operation.SignalSignatures {

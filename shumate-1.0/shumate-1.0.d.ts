@@ -34,7 +34,7 @@ export namespace Shumate {
      * Error codes in the #SHUMATE_FILE_CACHE_ERROR domain.
      */
     class FileCacheError extends GLib.Error {
-        static $gtype: GObject.GType<FileCacheError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -55,17 +55,13 @@ export namespace Shumate {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * A type of geometry.
-     */
-
-    /**
-     * A type of geometry.
-     */
     export namespace GeometryType {
         export const $gtype: GObject.GType<GeometryType>;
     }
 
+    /**
+     * A type of geometry.
+     */
     enum GeometryType {
         /**
          * Unknown geometry type
@@ -96,34 +92,28 @@ export namespace Shumate {
          */
         MULTIPOLYGON,
     }
-    /**
-     * Projections supported by the library.
-     */
 
-    /**
-     * Projections supported by the library.
-     */
     export namespace MapProjection {
         export const $gtype: GObject.GType<MapProjection>;
     }
 
+    /**
+     * Projections supported by the library.
+     */
     enum MapProjection {
         /**
          * Currently the only supported projection
          */
         MERCATOR,
     }
-    /**
-     * Tile loading state.
-     */
 
-    /**
-     * Tile loading state.
-     */
     export namespace State {
         export const $gtype: GObject.GType<State>;
     }
 
+    /**
+     * Tile loading state.
+     */
     enum State {
         /**
          * Initial or undefined state
@@ -143,11 +133,12 @@ export namespace Shumate {
          */
         DONE,
     }
+
     /**
      * Error codes that occurs while parsing the style in [class`VectorRenderer]`.
      */
     class StyleError extends GLib.Error {
-        static $gtype: GObject.GType<StyleError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -189,7 +180,7 @@ export namespace Shumate {
      * Error codes in the #SHUMATE_TILE_DOWNLOADER_ERROR domain.
      */
     class TileDownloaderError extends GLib.Error {
-        static $gtype: GObject.GType<TileDownloaderError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -226,17 +217,13 @@ export namespace Shumate {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Units used by the scale.
-     */
-
-    /**
-     * Units used by the scale.
-     */
     export namespace Unit {
         export const $gtype: GObject.GType<Unit>;
     }
 
+    /**
+     * Units used by the scale.
+     */
     enum Unit {
         /**
          * Both metric and imperial units
@@ -251,6 +238,7 @@ export namespace Shumate {
          */
         IMPERIAL,
     }
+
     /**
      * The major version of libshumate (1, if %SHUMATE_VERSION is 1.2.3)
      */

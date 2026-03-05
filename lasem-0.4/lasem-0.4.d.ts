@@ -55,6 +55,7 @@ export namespace Lasem {
         DOCUMENT_FRAGMENT_NODE,
         NOTATION_NODE,
     }
+
     const DOM_VIEW_DEFAULT_RESOLUTION: number;
     const DOM_VIEW_DEFAULT_VIEWBOX_HEIGHT: number;
     const DOM_VIEW_DEFAULT_VIEWBOX_WIDTH: number;

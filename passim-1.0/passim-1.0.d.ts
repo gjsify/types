@@ -20,10 +20,6 @@ export namespace Passim {
      * Passim-1.0
      */
 
-    export namespace Status {
-        export const $gtype: GObject.GType<Status>;
-    }
-
     enum Status {
         UNKNOWN,
         STARTING,
@@ -31,6 +27,7 @@ export namespace Passim {
         RUNNING,
         DISABLED_METERED,
     }
+
     const DBUS_INTERFACE: string;
     const DBUS_PATH: string;
     const DBUS_SERVICE: string;

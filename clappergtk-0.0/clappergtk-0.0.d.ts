@@ -107,7 +107,6 @@ export namespace ClapperGtk {
      * @returns the version of the ClapperGtk library as string
      */
     function get_version_s(): string;
-
     export namespace VideoActionMask {
         export const $gtype: GObject.GType<VideoActionMask>;
     }
@@ -138,6 +137,7 @@ export namespace ClapperGtk {
          */
         ANY,
     }
+
     namespace Audio {
         // Signal signatures
         interface SignalSignatures extends Av.SignalSignatures {

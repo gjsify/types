@@ -1,6 +1,6 @@
 {
     "name": "@girs/gstclapper-1.0",
-    "version": "1.0.0-4.0.0-beta.39",
+    "version": "1.0.0-4.0.0-beta.40",
     "description": "GJS TypeScript type definitions for GstClapper-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "gstclapper-1.0.js",
@@ -31,16 +31,16 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-beta.39",
-      "@girs/gstvideo-1.0": "1.0.0-4.0.0-beta.39",
-      "@girs/gstbase-1.0": "1.0.0-4.0.0-beta.39",
-      "@girs/gst-1.0": "1.26.10-4.0.0-beta.39",
-      "@girs/gobject-2.0": "2.86.4-4.0.0-beta.39",
-      "@girs/glib-2.0": "2.86.4-4.0.0-beta.39",
-      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.39",
-      "@girs/gsttag-1.0": "1.0.0-4.0.0-beta.39",
-      "@girs/gstpbutils-1.0": "1.0.0-4.0.0-beta.39",
-      "@girs/gstaudio-1.0": "1.0.0-4.0.0-beta.39"    },
+      "@girs/gjs": "4.0.0-beta.40",
+      "@girs/gstvideo-1.0": "1.0.0-4.0.0-beta.40",
+      "@girs/gstbase-1.0": "1.0.0-4.0.0-beta.40",
+      "@girs/gst-1.0": "1.26.10-4.0.0-beta.40",
+      "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40",
+      "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.40",
+      "@girs/gsttag-1.0": "1.0.0-4.0.0-beta.40",
+      "@girs/gstpbutils-1.0": "1.0.0-4.0.0-beta.40",
+      "@girs/gstaudio-1.0": "1.0.0-4.0.0-beta.40"    },
     "devDependencies": {
       "typescript": "*"
     },

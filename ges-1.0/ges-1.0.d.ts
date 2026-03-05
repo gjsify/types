@@ -25,10 +25,6 @@ export namespace GES {
      * GES-1.0
      */
 
-    export namespace AssetLoadingReturn {
-        export const $gtype: GObject.GType<AssetLoadingReturn>;
-    }
-
     enum AssetLoadingReturn {
         /**
          * Indicates that an error occurred
@@ -45,19 +41,11 @@ export namespace GES {
          */
         OK,
     }
-    /**
-     * To be used by subclasses only. This indicate how to handle a change in
-     * a child.
-     */
 
     /**
      * To be used by subclasses only. This indicate how to handle a change in
      * a child.
      */
-    export namespace ChildrenControlMode {
-        export const $gtype: GObject.GType<ChildrenControlMode>;
-    }
-
     enum ChildrenControlMode {
         UPDATE,
         IGNORE_NOTIFIES,
@@ -65,17 +53,14 @@ export namespace GES {
         UPDATE_ALL_VALUES,
         LAST,
     }
-    /**
-     * The edges of an object contain in a #GESTimeline or #GESTrack
-     */
 
-    /**
-     * The edges of an object contain in a #GESTimeline or #GESTrack
-     */
     export namespace Edge {
         export const $gtype: GObject.GType<Edge>;
     }
 
+    /**
+     * The edges of an object contain in a #GESTimeline or #GESTrack
+     */
     enum Edge {
         /**
          * Represents the start of an object.
@@ -104,207 +89,109 @@ export namespace GES {
          */
         NONE,
     }
-    /**
-     * When a single timeline element is edited within its timeline at some
-     * position, using ges_timeline_element_edit(), depending on the edit
-     * mode, its #GESTimelineElement:start, #GESTimelineElement:duration or
-     * #GESTimelineElement:in-point will be adjusted accordingly. In addition,
-     * any clips may change #GESClip:layer.
-     *
-     * Each edit can be broken down into a combination of three basic edits:
-     *
-     * + MOVE: This moves the start of the element to the edit position.
-     * + START-TRIM: This cuts or grows the start of the element, whilst
-     *   maintaining the time at which its internal content appears in the
-     *   timeline data output. If the element is made shorter, the data that
-     *   appeared at the edit position will still appear in the timeline at
-     *   the same time. If the element is made longer, the data that appeared
-     *   at the previous start of the element will still appear in the
-     *   timeline at the same time.
-     * + END-TRIM: Similar to START-TRIM, but the end of the element is cut or
-     *   grown.
-     *
-     * In particular, when editing a #GESClip:
-     *
-     * + MOVE: This will set the #GESTimelineElement:start of the clip to the
-     *   edit position.
-     * + START-TRIM: This will set the #GESTimelineElement:start of the clip
-     *   to the edit position. To keep the end time the same, the
-     *   #GESTimelineElement:duration of the clip will be adjusted in the
-     *   opposite direction. In addition, the #GESTimelineElement:in-point of
-     *   the clip will be shifted such that the content that appeared at the
-     *   new or previous start time, whichever is latest, still appears at the
-     *   same timeline time. For example, if a frame appeared at the start of
-     *   the clip, and the start of the clip is reduced, the in-point of the
-     *   clip will also reduce such that the frame will appear later within
-     *   the clip, but at the same timeline position.
-     * + END-TRIM: This will set the #GESTimelineElement:duration of the clip
-     *   such that its end time will match the edit position.
-     *
-     * When editing a #GESGroup:
-     *
-     * + MOVE: This will set the #GESGroup:start of the clip to the edit
-     *   position by shifting all of its children by the same amount. So each
-     *   child will maintain their relative positions.
-     * + START-TRIM: If the group is made shorter, this will START-TRIM any
-     *   clips under the group that start after the edit position to the same
-     *   edit position. If the group is made longer, this will START-TRIM any
-     *   clip under the group whose start matches the start of the group to
-     *   the same edit position.
-     * + END-TRIM: If the group is made shorter, this will END-TRIM any clips
-     *   under the group that end after the edit position to the same edit
-     *   position. If the group is made longer, this will END-TRIM any clip
-     *   under the group whose end matches the end of the group to the same
-     *   edit position.
-     *
-     * When editing a #GESTrackElement, if it has a #GESClip parent, this
-     * will be edited instead. Otherwise it is edited in the same way as a
-     * #GESClip.
-     *
-     * The layer priority of a #GESGroup is the lowest layer priority of any
-     * #GESClip underneath it. When a group is edited to a new layer
-     * priority, it will shift all clips underneath it by the same amount,
-     * such that their relative layers stay the same.
-     *
-     * If the #GESTimeline has a #GESTimeline:snapping-distance, then snapping
-     * may occur for some of the edges of the **main** edited element:
-     *
-     * + MOVE: The start or end edge of *any* #GESSource under the element may
-     *   be snapped.
-     * + START-TRIM: The start edge of a #GESSource whose start edge touches
-     *   the start edge of the element may snap.
-     * + END-TRIM: The end edge of a #GESSource whose end edge touches the end
-     *   edge of the element may snap.
-     *
-     * These edges may snap with either the start or end edge of *any* other
-     * #GESSource in the timeline that is not also being moved by the element,
-     * including those in different layers, if they are within the
-     * #GESTimeline:snapping-distance. During an edit, only up to one snap can
-     * occur. This will shift the edit position such that the snapped edges
-     * will touch once the edit has completed.
-     *
-     * Note that snapping can cause an edit to fail where it would have
-     * otherwise succeeded because it may push the edit position such that the
-     * edit would result in an unsupported timeline configuration. Similarly,
-     * snapping can cause an edit to succeed where it would have otherwise
-     * failed.
-     *
-     * For example, in #GES_EDIT_MODE_RIPPLE acting on #GES_EDGE_NONE, the
-     * main element is the MOVED toplevel of the edited element. Any source
-     * under the main MOVED toplevel may have its start or end edge snapped.
-     * Note, these sources cannot snap with each other. The edit may also
-     * push other elements, but any sources under these elements cannot snap,
-     * nor can they be snapped with. If a snap does occur, the MOVE of the
-     * toplevel *and* all other elements pushed by the ripple will be shifted
-     * by the same amount such that the snapped edges will touch.
-     *
-     * You can also find more explanation about the behaviour of those modes at:
-     * [trim, ripple and roll](http://pitivi.org/manual/trimming.html)
-     * and [clip management](http://pitivi.org/manual/usingclips.html).
-     */
 
-    /**
-     * When a single timeline element is edited within its timeline at some
-     * position, using ges_timeline_element_edit(), depending on the edit
-     * mode, its #GESTimelineElement:start, #GESTimelineElement:duration or
-     * #GESTimelineElement:in-point will be adjusted accordingly. In addition,
-     * any clips may change #GESClip:layer.
-     *
-     * Each edit can be broken down into a combination of three basic edits:
-     *
-     * + MOVE: This moves the start of the element to the edit position.
-     * + START-TRIM: This cuts or grows the start of the element, whilst
-     *   maintaining the time at which its internal content appears in the
-     *   timeline data output. If the element is made shorter, the data that
-     *   appeared at the edit position will still appear in the timeline at
-     *   the same time. If the element is made longer, the data that appeared
-     *   at the previous start of the element will still appear in the
-     *   timeline at the same time.
-     * + END-TRIM: Similar to START-TRIM, but the end of the element is cut or
-     *   grown.
-     *
-     * In particular, when editing a #GESClip:
-     *
-     * + MOVE: This will set the #GESTimelineElement:start of the clip to the
-     *   edit position.
-     * + START-TRIM: This will set the #GESTimelineElement:start of the clip
-     *   to the edit position. To keep the end time the same, the
-     *   #GESTimelineElement:duration of the clip will be adjusted in the
-     *   opposite direction. In addition, the #GESTimelineElement:in-point of
-     *   the clip will be shifted such that the content that appeared at the
-     *   new or previous start time, whichever is latest, still appears at the
-     *   same timeline time. For example, if a frame appeared at the start of
-     *   the clip, and the start of the clip is reduced, the in-point of the
-     *   clip will also reduce such that the frame will appear later within
-     *   the clip, but at the same timeline position.
-     * + END-TRIM: This will set the #GESTimelineElement:duration of the clip
-     *   such that its end time will match the edit position.
-     *
-     * When editing a #GESGroup:
-     *
-     * + MOVE: This will set the #GESGroup:start of the clip to the edit
-     *   position by shifting all of its children by the same amount. So each
-     *   child will maintain their relative positions.
-     * + START-TRIM: If the group is made shorter, this will START-TRIM any
-     *   clips under the group that start after the edit position to the same
-     *   edit position. If the group is made longer, this will START-TRIM any
-     *   clip under the group whose start matches the start of the group to
-     *   the same edit position.
-     * + END-TRIM: If the group is made shorter, this will END-TRIM any clips
-     *   under the group that end after the edit position to the same edit
-     *   position. If the group is made longer, this will END-TRIM any clip
-     *   under the group whose end matches the end of the group to the same
-     *   edit position.
-     *
-     * When editing a #GESTrackElement, if it has a #GESClip parent, this
-     * will be edited instead. Otherwise it is edited in the same way as a
-     * #GESClip.
-     *
-     * The layer priority of a #GESGroup is the lowest layer priority of any
-     * #GESClip underneath it. When a group is edited to a new layer
-     * priority, it will shift all clips underneath it by the same amount,
-     * such that their relative layers stay the same.
-     *
-     * If the #GESTimeline has a #GESTimeline:snapping-distance, then snapping
-     * may occur for some of the edges of the **main** edited element:
-     *
-     * + MOVE: The start or end edge of *any* #GESSource under the element may
-     *   be snapped.
-     * + START-TRIM: The start edge of a #GESSource whose start edge touches
-     *   the start edge of the element may snap.
-     * + END-TRIM: The end edge of a #GESSource whose end edge touches the end
-     *   edge of the element may snap.
-     *
-     * These edges may snap with either the start or end edge of *any* other
-     * #GESSource in the timeline that is not also being moved by the element,
-     * including those in different layers, if they are within the
-     * #GESTimeline:snapping-distance. During an edit, only up to one snap can
-     * occur. This will shift the edit position such that the snapped edges
-     * will touch once the edit has completed.
-     *
-     * Note that snapping can cause an edit to fail where it would have
-     * otherwise succeeded because it may push the edit position such that the
-     * edit would result in an unsupported timeline configuration. Similarly,
-     * snapping can cause an edit to succeed where it would have otherwise
-     * failed.
-     *
-     * For example, in #GES_EDIT_MODE_RIPPLE acting on #GES_EDGE_NONE, the
-     * main element is the MOVED toplevel of the edited element. Any source
-     * under the main MOVED toplevel may have its start or end edge snapped.
-     * Note, these sources cannot snap with each other. The edit may also
-     * push other elements, but any sources under these elements cannot snap,
-     * nor can they be snapped with. If a snap does occur, the MOVE of the
-     * toplevel *and* all other elements pushed by the ripple will be shifted
-     * by the same amount such that the snapped edges will touch.
-     *
-     * You can also find more explanation about the behaviour of those modes at:
-     * [trim, ripple and roll](http://pitivi.org/manual/trimming.html)
-     * and [clip management](http://pitivi.org/manual/usingclips.html).
-     */
     export namespace EditMode {
         export const $gtype: GObject.GType<EditMode>;
     }
 
+    /**
+     * When a single timeline element is edited within its timeline at some
+     * position, using ges_timeline_element_edit(), depending on the edit
+     * mode, its #GESTimelineElement:start, #GESTimelineElement:duration or
+     * #GESTimelineElement:in-point will be adjusted accordingly. In addition,
+     * any clips may change #GESClip:layer.
+     *
+     * Each edit can be broken down into a combination of three basic edits:
+     *
+     * + MOVE: This moves the start of the element to the edit position.
+     * + START-TRIM: This cuts or grows the start of the element, whilst
+     *   maintaining the time at which its internal content appears in the
+     *   timeline data output. If the element is made shorter, the data that
+     *   appeared at the edit position will still appear in the timeline at
+     *   the same time. If the element is made longer, the data that appeared
+     *   at the previous start of the element will still appear in the
+     *   timeline at the same time.
+     * + END-TRIM: Similar to START-TRIM, but the end of the element is cut or
+     *   grown.
+     *
+     * In particular, when editing a #GESClip:
+     *
+     * + MOVE: This will set the #GESTimelineElement:start of the clip to the
+     *   edit position.
+     * + START-TRIM: This will set the #GESTimelineElement:start of the clip
+     *   to the edit position. To keep the end time the same, the
+     *   #GESTimelineElement:duration of the clip will be adjusted in the
+     *   opposite direction. In addition, the #GESTimelineElement:in-point of
+     *   the clip will be shifted such that the content that appeared at the
+     *   new or previous start time, whichever is latest, still appears at the
+     *   same timeline time. For example, if a frame appeared at the start of
+     *   the clip, and the start of the clip is reduced, the in-point of the
+     *   clip will also reduce such that the frame will appear later within
+     *   the clip, but at the same timeline position.
+     * + END-TRIM: This will set the #GESTimelineElement:duration of the clip
+     *   such that its end time will match the edit position.
+     *
+     * When editing a #GESGroup:
+     *
+     * + MOVE: This will set the #GESGroup:start of the clip to the edit
+     *   position by shifting all of its children by the same amount. So each
+     *   child will maintain their relative positions.
+     * + START-TRIM: If the group is made shorter, this will START-TRIM any
+     *   clips under the group that start after the edit position to the same
+     *   edit position. If the group is made longer, this will START-TRIM any
+     *   clip under the group whose start matches the start of the group to
+     *   the same edit position.
+     * + END-TRIM: If the group is made shorter, this will END-TRIM any clips
+     *   under the group that end after the edit position to the same edit
+     *   position. If the group is made longer, this will END-TRIM any clip
+     *   under the group whose end matches the end of the group to the same
+     *   edit position.
+     *
+     * When editing a #GESTrackElement, if it has a #GESClip parent, this
+     * will be edited instead. Otherwise it is edited in the same way as a
+     * #GESClip.
+     *
+     * The layer priority of a #GESGroup is the lowest layer priority of any
+     * #GESClip underneath it. When a group is edited to a new layer
+     * priority, it will shift all clips underneath it by the same amount,
+     * such that their relative layers stay the same.
+     *
+     * If the #GESTimeline has a #GESTimeline:snapping-distance, then snapping
+     * may occur for some of the edges of the **main** edited element:
+     *
+     * + MOVE: The start or end edge of *any* #GESSource under the element may
+     *   be snapped.
+     * + START-TRIM: The start edge of a #GESSource whose start edge touches
+     *   the start edge of the element may snap.
+     * + END-TRIM: The end edge of a #GESSource whose end edge touches the end
+     *   edge of the element may snap.
+     *
+     * These edges may snap with either the start or end edge of *any* other
+     * #GESSource in the timeline that is not also being moved by the element,
+     * including those in different layers, if they are within the
+     * #GESTimeline:snapping-distance. During an edit, only up to one snap can
+     * occur. This will shift the edit position such that the snapped edges
+     * will touch once the edit has completed.
+     *
+     * Note that snapping can cause an edit to fail where it would have
+     * otherwise succeeded because it may push the edit position such that the
+     * edit would result in an unsupported timeline configuration. Similarly,
+     * snapping can cause an edit to succeed where it would have otherwise
+     * failed.
+     *
+     * For example, in #GES_EDIT_MODE_RIPPLE acting on #GES_EDGE_NONE, the
+     * main element is the MOVED toplevel of the edited element. Any source
+     * under the main MOVED toplevel may have its start or end edge snapped.
+     * Note, these sources cannot snap with each other. The edit may also
+     * push other elements, but any sources under these elements cannot snap,
+     * nor can they be snapped with. If a snap does occur, the MOVE of the
+     * toplevel *and* all other elements pushed by the ripple will be shifted
+     * by the same amount such that the snapped edges will touch.
+     *
+     * You can also find more explanation about the behaviour of those modes at:
+     * [trim, ripple and roll](http://pitivi.org/manual/trimming.html)
+     * and [clip management](http://pitivi.org/manual/usingclips.html).
+     */
     enum EditMode {
         /**
          * The element is edited the normal way (default).
@@ -442,10 +329,6 @@ export namespace GES {
         SLIDE,
     }
 
-    export namespace Error {
-        export const $gtype: GObject.GType<Error>;
-    }
-
     enum Error {
         /**
          * The ID passed is malformed
@@ -487,17 +370,14 @@ export namespace GES {
         INVALID_OVERLAP_IN_TRACK,
         INVALID_EFFECT_BIN_DESCRIPTION,
     }
-    /**
-     * Horizontal alignment of the text.
-     */
 
-    /**
-     * Horizontal alignment of the text.
-     */
     export namespace TextHAlign {
         export const $gtype: GObject.GType<TextHAlign>;
     }
 
+    /**
+     * Horizontal alignment of the text.
+     */
     enum TextHAlign {
         /**
          * align text left
@@ -517,17 +397,14 @@ export namespace GES {
         POSITION,
         ABSOLUTE,
     }
-    /**
-     * Vertical alignment of the text.
-     */
 
-    /**
-     * Vertical alignment of the text.
-     */
     export namespace TextVAlign {
         export const $gtype: GObject.GType<TextVAlign>;
     }
 
+    /**
+     * Vertical alignment of the text.
+     */
     enum TextVAlign {
         /**
          * draw text on the baseline
@@ -851,17 +728,14 @@ export namespace GES {
          */
         FADE_IN,
     }
-    /**
-     * The test pattern to produce
-     */
 
-    /**
-     * The test pattern to produce
-     */
     export namespace VideoTestPattern {
         export const $gtype: GObject.GType<VideoTestPattern>;
     }
 
+    /**
+     * The test pattern to produce
+     */
     enum VideoTestPattern {
         /**
          * A standard SMPTE test pattern
@@ -936,6 +810,7 @@ export namespace GES {
          */
         SOLID_COLOR,
     }
+
     /**
      * Constant to define an undefined frame number
      */
@@ -1111,7 +986,6 @@ export namespace GES {
     interface MetaForeachFunc {
         (container: MetaContainer, key: string, value: GObject.Value | any): void;
     }
-
     export namespace MarkerFlags {
         export const $gtype: GObject.GType<MarkerFlags>;
     }
@@ -1145,17 +1019,14 @@ export namespace GES {
          */
         READWRITE,
     }
-    /**
-     * The various modes a #GESPipeline can be configured to.
-     */
 
-    /**
-     * The various modes a #GESPipeline can be configured to.
-     */
     export namespace PipelineFlags {
         export const $gtype: GObject.GType<PipelineFlags>;
     }
 
+    /**
+     * The various modes a #GESPipeline can be configured to.
+     */
     enum PipelineFlags {
         /**
          * Output the #GESPipeline:timeline's
@@ -1187,27 +1058,19 @@ export namespace GES {
          */
         SMART_RENDER,
     }
-    /**
-     * Types of content handled by a track. If the content is not one of
-     * `GES_TRACK_TYPE_AUDIO,` `GES_TRACK_TYPE_VIDEO` or `GES_TRACK_TYPE_TEXT,`
-     * the user of the #GESTrack must set the type to `GES_TRACK_TYPE_CUSTOM`.
-     *
-     * `GES_TRACK_TYPE_UNKNOWN` is for internal purposes and should not be used
-     * by users
-     */
 
-    /**
-     * Types of content handled by a track. If the content is not one of
-     * `GES_TRACK_TYPE_AUDIO,` `GES_TRACK_TYPE_VIDEO` or `GES_TRACK_TYPE_TEXT,`
-     * the user of the #GESTrack must set the type to `GES_TRACK_TYPE_CUSTOM`.
-     *
-     * `GES_TRACK_TYPE_UNKNOWN` is for internal purposes and should not be used
-     * by users
-     */
     export namespace TrackType {
         export const $gtype: GObject.GType<TrackType>;
     }
 
+    /**
+     * Types of content handled by a track. If the content is not one of
+     * `GES_TRACK_TYPE_AUDIO,` `GES_TRACK_TYPE_VIDEO` or `GES_TRACK_TYPE_TEXT,`
+     * the user of the #GESTrack must set the type to `GES_TRACK_TYPE_CUSTOM`.
+     *
+     * `GES_TRACK_TYPE_UNKNOWN` is for internal purposes and should not be used
+     * by users
+     */
     enum TrackType {
         /**
          * A track of unknown type (i.e. invalid)
@@ -1230,6 +1093,7 @@ export namespace GES {
          */
         CUSTOM,
     }
+
     namespace Asset {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

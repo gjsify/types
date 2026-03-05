@@ -27,7 +27,7 @@ export namespace GUPnP {
      * Error codes used during invocation of service actions.
      */
     class ControlError extends GLib.Error {
-        static $gtype: GObject.GType<ControlError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -61,7 +61,7 @@ export namespace GUPnP {
      * Error codes during eventing of state variables.
      */
     class EventingError extends GLib.Error {
-        static $gtype: GObject.GType<EventingError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -91,7 +91,7 @@ export namespace GUPnP {
      * Errors during [class`GUPnP`.RootDevice] creation
      */
     class RootdeviceError extends GLib.Error {
-        static $gtype: GObject.GType<RootdeviceError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -126,7 +126,7 @@ export namespace GUPnP {
      * Error codes during communication with another server.
      */
     class ServerError extends GLib.Error {
-        static $gtype: GObject.GType<ServerError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -164,17 +164,13 @@ export namespace GUPnP {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Represents the direction of a service state variable.
-     */
-
-    /**
-     * Represents the direction of a service state variable.
-     */
     export namespace ServiceActionArgDirection {
         export const $gtype: GObject.GType<ServiceActionArgDirection>;
     }
 
+    /**
+     * Represents the direction of a service state variable.
+     */
     enum ServiceActionArgDirection {
         /**
          * An "in" variable, to the service.
@@ -185,11 +181,12 @@ export namespace GUPnP {
          */
         OUT,
     }
+
     /**
      * Errors during service handling
      */
     class ServiceError extends GLib.Error {
-        static $gtype: GObject.GType<ServiceError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -211,7 +208,7 @@ export namespace GUPnP {
      * Errors during service introspection
      */
     class ServiceIntrospectionError extends GLib.Error {
-        static $gtype: GObject.GType<ServiceIntrospectionError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -233,7 +230,7 @@ export namespace GUPnP {
      * Errors during occuring during processing of XML data.
      */
     class XMLError extends GLib.Error {
-        static $gtype: GObject.GType<XMLError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 

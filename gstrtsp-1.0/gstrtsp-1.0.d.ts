@@ -23,17 +23,13 @@ export namespace GstRtsp {
      * GstRtsp-1.0
      */
 
-    /**
-     * Authentication methods, ordered by strength
-     */
-
-    /**
-     * Authentication methods, ordered by strength
-     */
     export namespace RTSPAuthMethod {
         export const $gtype: GObject.GType<RTSPAuthMethod>;
     }
 
+    /**
+     * Authentication methods, ordered by strength
+     */
     enum RTSPAuthMethod {
         /**
          * no authentication
@@ -48,17 +44,14 @@ export namespace GstRtsp {
          */
         DIGEST,
     }
-    /**
-     * The possible network families.
-     */
 
-    /**
-     * The possible network families.
-     */
     export namespace RTSPFamily {
         export const $gtype: GObject.GType<RTSPFamily>;
     }
 
+    /**
+     * The possible network families.
+     */
     enum RTSPFamily {
         /**
          * unknown network family
@@ -73,17 +66,14 @@ export namespace GstRtsp {
          */
         INET6,
     }
-    /**
-     * Enumeration of rtsp header fields
-     */
 
-    /**
-     * Enumeration of rtsp header fields
-     */
     export namespace RTSPHeaderField {
         export const $gtype: GObject.GType<RTSPHeaderField>;
     }
 
+    /**
+     * Enumeration of rtsp header fields
+     */
     enum RTSPHeaderField {
         INVALID,
         ACCEPT,
@@ -176,17 +166,14 @@ export namespace GstRtsp {
         RATE_CONTROL,
         LAST,
     }
-    /**
-     * The type of a message.
-     */
 
-    /**
-     * The type of a message.
-     */
     export namespace RTSPMsgType {
         export const $gtype: GObject.GType<RTSPMsgType>;
     }
 
+    /**
+     * The type of a message.
+     */
     enum RTSPMsgType {
         /**
          * invalid message type
@@ -213,17 +200,14 @@ export namespace GstRtsp {
          */
         DATA,
     }
-    /**
-     * Different possible time range units.
-     */
 
-    /**
-     * Different possible time range units.
-     */
     export namespace RTSPRangeUnit {
         export const $gtype: GObject.GType<RTSPRangeUnit>;
     }
 
+    /**
+     * Different possible time range units.
+     */
     enum RTSPRangeUnit {
         /**
          * SMPTE timecode
@@ -246,17 +230,14 @@ export namespace GstRtsp {
          */
         CLOCK,
     }
-    /**
-     * Result codes from the RTSP functions.
-     */
 
-    /**
-     * Result codes from the RTSP functions.
-     */
     export namespace RTSPResult {
         export const $gtype: GObject.GType<RTSPResult>;
     }
 
+    /**
+     * Result codes from the RTSP functions.
+     */
     enum RTSPResult {
         /**
          * no error
@@ -331,17 +312,14 @@ export namespace GstRtsp {
          */
         ELAST,
     }
-    /**
-     * The different RTSP states.
-     */
 
-    /**
-     * The different RTSP states.
-     */
     export namespace RTSPState {
         export const $gtype: GObject.GType<RTSPState>;
     }
 
+    /**
+     * The different RTSP states.
+     */
     enum RTSPState {
         /**
          * invalid state
@@ -368,17 +346,14 @@ export namespace GstRtsp {
          */
         RECORDING,
     }
-    /**
-     * Enumeration of rtsp status codes
-     */
 
-    /**
-     * Enumeration of rtsp status codes
-     */
     export namespace RTSPStatusCode {
         export const $gtype: GObject.GType<RTSPStatusCode>;
     }
 
+    /**
+     * Enumeration of rtsp status codes
+     */
     enum RTSPStatusCode {
         INVALID,
         CONTINUE,
@@ -427,17 +402,14 @@ export namespace GstRtsp {
         RTSP_VERSION_NOT_SUPPORTED,
         OPTION_NOT_SUPPORTED,
     }
-    /**
-     * Possible time types.
-     */
 
-    /**
-     * Possible time types.
-     */
     export namespace RTSPTimeType {
         export const $gtype: GObject.GType<RTSPTimeType>;
     }
 
+    /**
+     * Possible time types.
+     */
     enum RTSPTimeType {
         /**
          * seconds
@@ -460,17 +432,14 @@ export namespace GstRtsp {
          */
         UTC,
     }
-    /**
-     * The supported RTSP versions.
-     */
 
-    /**
-     * The supported RTSP versions.
-     */
     export namespace RTSPVersion {
         export const $gtype: GObject.GType<RTSPVersion>;
     }
 
+    /**
+     * The supported RTSP versions.
+     */
     enum RTSPVersion {
         /**
          * unknown/invalid version
@@ -489,6 +458,7 @@ export namespace GstRtsp {
          */
         '2_0',
     }
+
     /**
      * The default RTSP port to connect to.
      */
@@ -765,17 +735,13 @@ export namespace GstRtsp {
     interface RTSPConnectionAcceptCertificateFunc {
         (conn: Gio.TlsConnection, peer_cert: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags): boolean;
     }
-    /**
-     * The possible events for the connection.
-     */
-
-    /**
-     * The possible events for the connection.
-     */
     export namespace RTSPEvent {
         export const $gtype: GObject.GType<RTSPEvent>;
     }
 
+    /**
+     * The possible events for the connection.
+     */
     enum RTSPEvent {
         /**
          * connection is readable
@@ -786,17 +752,14 @@ export namespace GstRtsp {
          */
         WRITE,
     }
-    /**
-     * The different transport methods.
-     */
 
-    /**
-     * The different transport methods.
-     */
     export namespace RTSPLowerTrans {
         export const $gtype: GObject.GType<RTSPLowerTrans>;
     }
 
+    /**
+     * The different transport methods.
+     */
     enum RTSPLowerTrans {
         /**
          * invalid transport flag
@@ -823,17 +786,14 @@ export namespace GstRtsp {
          */
         TLS,
     }
-    /**
-     * The different supported RTSP methods.
-     */
 
-    /**
-     * The different supported RTSP methods.
-     */
     export namespace RTSPMethod {
         export const $gtype: GObject.GType<RTSPMethod>;
     }
 
+    /**
+     * The different supported RTSP methods.
+     */
     enum RTSPMethod {
         /**
          * invalid method
@@ -892,17 +852,14 @@ export namespace GstRtsp {
          */
         POST,
     }
-    /**
-     * The transfer profile to use.
-     */
 
-    /**
-     * The transfer profile to use.
-     */
     export namespace RTSPProfile {
         export const $gtype: GObject.GType<RTSPProfile>;
     }
 
+    /**
+     * The transfer profile to use.
+     */
     enum RTSPProfile {
         /**
          * invalid profile
@@ -925,17 +882,14 @@ export namespace GstRtsp {
          */
         SAVPF,
     }
-    /**
-     * The transfer mode to use.
-     */
 
-    /**
-     * The transfer mode to use.
-     */
     export namespace RTSPTransMode {
         export const $gtype: GObject.GType<RTSPTransMode>;
     }
 
+    /**
+     * The transfer mode to use.
+     */
     enum RTSPTransMode {
         /**
          * invalid tansport mode
@@ -950,6 +904,7 @@ export namespace GstRtsp {
          */
         RDT,
     }
+
     /**
      * RTSP Authentication credentials
      */

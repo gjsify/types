@@ -24,7 +24,7 @@ export namespace Xfconf {
      * An enumeration listing the different kinds of errors under the XFCONF_ERROR domain.
      */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 

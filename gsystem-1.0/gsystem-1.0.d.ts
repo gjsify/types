@@ -24,15 +24,6 @@ export namespace GSystem {
      * Flags to define the behaviour of the standard input/output/error of
      * a #GSSubprocess.
      */
-
-    /**
-     * Flags to define the behaviour of the standard input/output/error of
-     * a #GSSubprocess.
-     */
-    export namespace SubprocessStreamDisposition {
-        export const $gtype: GObject.GType<SubprocessStreamDisposition>;
-    }
-
     enum SubprocessStreamDisposition {
         /**
          * Redirect to operating system's null output stream
@@ -51,6 +42,7 @@ export namespace GSystem {
          */
         STDERR_MERGE,
     }
+
     /**
      * Load all extended attributes for the file named `name` residing in
      * directory `dfd`.

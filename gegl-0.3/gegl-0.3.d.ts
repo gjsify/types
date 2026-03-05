@@ -77,18 +77,10 @@ export namespace Gegl {
         LOHALO,
     }
 
-    export namespace SplitStrategy {
-        export const $gtype: GObject.GType<SplitStrategy>;
-    }
-
     enum SplitStrategy {
         AUTO,
         HORIZONTAL,
         VERTICAL,
-    }
-
-    export namespace TileCommand {
-        export const $gtype: GObject.GType<TileCommand>;
     }
 
     enum TileCommand {
@@ -103,6 +95,7 @@ export namespace Gegl {
         REINIT,
         LAST_COMMAND,
     }
+
     const AUTO_ROWSTRIDE: number;
     const BUFFER_MAX_ITERATORS: number;
     const CH_BACK_CENTER: number;
@@ -554,7 +547,6 @@ export namespace Gegl {
             data?: any | null,
         ): any | null;
     }
-
     export namespace AccessMode {
         export const $gtype: GObject.GType<AccessMode>;
     }
@@ -565,18 +557,10 @@ export namespace Gegl {
         READWRITE,
     }
 
-    export namespace BlitFlags {
-        export const $gtype: GObject.GType<BlitFlags>;
-    }
-
     enum BlitFlags {
         DEFAULT,
         CACHE,
         DIRTY,
-    }
-
-    export namespace PadType {
-        export const $gtype: GObject.GType<PadType>;
     }
 
     enum PadType {
@@ -584,15 +568,12 @@ export namespace Gegl {
         INPUT,
     }
 
-    export namespace SerializeFlag {
-        export const $gtype: GObject.GType<SerializeFlag>;
-    }
-
     enum SerializeFlag {
         TRIM_DEFAULTS,
         VERSION,
         INDENT,
     }
+
     namespace AudioFragment {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

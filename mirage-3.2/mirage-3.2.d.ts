@@ -27,18 +27,6 @@ export namespace Mirage {
      * All masks except %MIRAGE_DEBUG_ERROR and %MIRAGE_DEBUG_WARNING can be combined
      * together to control verbosity of libMirage.
      */
-
-    /**
-     * Debug message types and debug masks used to control verbosity of various
-     * parts of libMirage.
-     *
-     * All masks except %MIRAGE_DEBUG_ERROR and %MIRAGE_DEBUG_WARNING can be combined
-     * together to control verbosity of libMirage.
-     */
-    export namespace DebugMask {
-        export const $gtype: GObject.GType<DebugMask>;
-    }
-
     enum DebugMask {
         /**
          * error message
@@ -89,8 +77,9 @@ export namespace Mirage {
          */
         WRITER,
     }
+
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -124,14 +113,6 @@ export namespace Mirage {
     /**
      * Error codes for libMirage library.
      */
-
-    /**
-     * Error codes for libMirage library.
-     */
-    export namespace ErrorCode {
-        export const $gtype: GObject.GType<ErrorCode>;
-    }
-
     enum ErrorCode {
         /**
          * error in core libMirage code
@@ -190,17 +171,10 @@ export namespace Mirage {
          */
         WRITER_ERROR,
     }
-    /**
-     * Fragment roles.
-     */
 
     /**
      * Fragment roles.
      */
-    export namespace FragmentRole {
-        export const $gtype: GObject.GType<FragmentRole>;
-    }
-
     enum FragmentRole {
         /**
          * pregap fragment
@@ -211,17 +185,10 @@ export namespace Mirage {
          */
         DATA,
     }
-    /**
-     * CD-TEXT pack types.
-     */
 
     /**
      * CD-TEXT pack types.
      */
-    export namespace LanguagePackType {
-        export const $gtype: GObject.GType<LanguagePackType>;
-    }
-
     enum LanguagePackType {
         /**
          * Album name and Track titles
@@ -288,17 +255,10 @@ export namespace Mirage {
          */
         SIZE,
     }
-    /**
-     * Track file data formats.
-     */
 
     /**
      * Track file data formats.
      */
-    export namespace MainDataFormat {
-        export const $gtype: GObject.GType<MainDataFormat>;
-    }
-
     enum MainDataFormat {
         /**
          * binary data
@@ -313,17 +273,10 @@ export namespace Mirage {
          */
         AUDIO_SWAP,
     }
-    /**
-     * Medium types.
-     */
 
     /**
      * Medium types.
      */
-    export namespace MediumType {
-        export const $gtype: GObject.GType<MediumType>;
-    }
-
     enum MediumType {
         /**
          * CD disc
@@ -346,17 +299,10 @@ export namespace Mirage {
          */
         HDD,
     }
-    /**
-     * Subchannel selection flags.
-     */
 
     /**
      * Subchannel selection flags.
      */
-    export namespace SectorSubchannelFormat {
-        export const $gtype: GObject.GType<SectorSubchannelFormat>;
-    }
-
     enum SectorSubchannelFormat {
         /**
          * no subchannel
@@ -375,17 +321,10 @@ export namespace Mirage {
          */
         RW,
     }
-    /**
-     * Sector type. Also implies track mode.
-     */
 
     /**
      * Sector type. Also implies track mode.
      */
-    export namespace SectorType {
-        export const $gtype: GObject.GType<SectorType>;
-    }
-
     enum SectorType {
         /**
          * Mode 0 sector
@@ -424,17 +363,10 @@ export namespace Mirage {
          */
         RAW_SCRAMBLED,
     }
-    /**
-     * Sector data validity flags.
-     */
 
     /**
      * Sector data validity flags.
      */
-    export namespace SectorValidData {
-        export const $gtype: GObject.GType<SectorValidData>;
-    }
-
     enum SectorValidData {
         /**
          * sync pattern valid
@@ -461,17 +393,10 @@ export namespace Mirage {
          */
         SUBCHAN,
     }
-    /**
-     * Session type.
-     */
 
     /**
      * Session type.
      */
-    export namespace SessionType {
-        export const $gtype: GObject.GType<SessionType>;
-    }
-
     enum SessionType {
         /**
          * CD AUDIO
@@ -490,17 +415,10 @@ export namespace Mirage {
          */
         CDROM_XA,
     }
-    /**
-     * Subchannel type for interleaving/deinterleaving.
-     */
 
     /**
      * Subchannel type for interleaving/deinterleaving.
      */
-    export namespace SubChannel {
-        export const $gtype: GObject.GType<SubChannel>;
-    }
-
     enum SubChannel {
         /**
          * W subchannel data
@@ -535,17 +453,10 @@ export namespace Mirage {
          */
         P,
     }
-    /**
-     * Subchannel file data formats.
-     */
 
     /**
      * Subchannel file data formats.
      */
-    export namespace SubchannelDataFormat {
-        export const $gtype: GObject.GType<SubchannelDataFormat>;
-    }
-
     enum SubchannelDataFormat {
         /**
          * internal subchannel (i.e. included in track file)
@@ -572,17 +483,10 @@ export namespace Mirage {
          */
         Q16,
     }
-    /**
-     * Track constants.
-     */
 
     /**
      * Track constants.
      */
-    export namespace TrackConstant {
-        export const $gtype: GObject.GType<TrackConstant>;
-    }
-
     enum TrackConstant {
         /**
          * Lead-in track
@@ -593,17 +497,10 @@ export namespace Mirage {
          */
         LEADOUT,
     }
-    /**
-     * Track flags.
-     */
 
     /**
      * Track flags.
      */
-    export namespace TrackFlag {
-        export const $gtype: GObject.GType<TrackFlag>;
-    }
-
     enum TrackFlag {
         /**
          * four channel audio
@@ -618,6 +515,7 @@ export namespace Mirage {
          */
         PREEMPHASIS,
     }
+
     /**
      * Length of ISRC string.
      */

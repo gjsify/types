@@ -339,6 +339,7 @@ export namespace LibvirtGObject {
         BLOCK,
         DIR,
     }
+
     function init_object(argv?: string[] | null): string[] | null;
     function init_object_check(argv?: string[] | null): [boolean, string[] | null];
     interface StreamIOFunc {
@@ -361,7 +362,6 @@ export namespace LibvirtGObject {
     type StoragePoolHandle = object | null;
     type StorageVolHandle = object | null;
     type StreamHandle = object | null;
-
     export namespace DomainStartFlags {
         export const $gtype: GObject.GType<DomainStartFlags>;
     }
@@ -384,6 +384,7 @@ export namespace LibvirtGObject {
         HANGUP,
         ERROR,
     }
+
     namespace Connection {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

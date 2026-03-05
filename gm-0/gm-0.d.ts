@@ -24,7 +24,7 @@ export namespace Gm {
      * Error codes returned by gmobile functions.
      */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 

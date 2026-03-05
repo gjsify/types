@@ -42,17 +42,13 @@ export namespace XApp {
         static '96': number;
     }
 
-    /**
-     * Represents the direction of icon scroll events.
-     */
-
-    /**
-     * Represents the direction of icon scroll events.
-     */
     export namespace ScrollDirection {
         export const $gtype: GObject.GType<ScrollDirection>;
     }
 
+    /**
+     * Represents the direction of icon scroll events.
+     */
     enum ScrollDirection {
         /**
          * Scroll theoretical content up.
@@ -93,6 +89,7 @@ export namespace XApp {
          */
         NO_SUPPORT,
     }
+
     /**
      * Provides the path to the system's temporary files folder. This is identical to g_get_tmp_dir,
      * but includes the /dev/shm ramdisk as the first choice for a temporary folder.

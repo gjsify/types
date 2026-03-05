@@ -18,10 +18,6 @@ export namespace Bamf {
      * Bamf-3
      */
 
-    export namespace ClickBehavior {
-        export const $gtype: GObject.GType<ClickBehavior>;
-    }
-
     enum ClickBehavior {
         NONE,
         OPEN,
@@ -33,19 +29,11 @@ export namespace Bamf {
         PICKER,
     }
 
-    export namespace WindowMaximizationType {
-        export const $gtype: GObject.GType<WindowMaximizationType>;
-    }
-
     enum WindowMaximizationType {
         FLOATING,
         HORIZONTAL_MAXIMIZED,
         VERTICAL_MAXIMIZED,
         MAXIMIZED,
-    }
-
-    export namespace WindowType {
-        export const $gtype: GObject.GType<WindowType>;
     }
 
     enum WindowType {
@@ -59,6 +47,7 @@ export namespace Bamf {
         SPLASHSCREEN,
         UNKNOWN,
     }
+
     const APPLICATION_SIGNAL_DESKTOP_FILE_UPDATED: string;
     const APPLICATION_SIGNAL_WINDOW_ADDED: string;
     const APPLICATION_SIGNAL_WINDOW_REMOVED: string;

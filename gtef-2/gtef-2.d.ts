@@ -44,11 +44,12 @@ export namespace Gtef {
          */
         GZIP,
     }
+
     /**
      * An error code used with the %GTEF_FILE_LOADER_ERROR domain.
      */
     class FileLoaderError extends GLib.Error {
-        static $gtype: GObject.GType<FileLoaderError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -75,7 +76,7 @@ export namespace Gtef {
      * An error code used with the %GTEF_FILE_SAVER_ERROR domain.
      */
     class FileSaverError extends GLib.Error {
-        static $gtype: GObject.GType<FileSaverError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -138,6 +139,7 @@ export namespace Gtef {
          */
         MULTIPLE_LINES,
     }
+
     /**
      * A wrapper function for g_action_map_add_action_entries() that checks
      * duplicates.
@@ -240,17 +242,13 @@ export namespace Gtef {
      * @returns the URI of @item. Free with g_free() when no longer needed.
      */
     function utils_recent_chooser_menu_get_item_uri(menu: Gtk.RecentChooserMenu, item: Gtk.MenuItem): string;
-    /**
-     * Flags to define the behavior of a #GtefFileSaver.
-     */
-
-    /**
-     * Flags to define the behavior of a #GtefFileSaver.
-     */
     export namespace FileSaverFlags {
         export const $gtype: GObject.GType<FileSaverFlags>;
     }
 
+    /**
+     * Flags to define the behavior of a #GtefFileSaver.
+     */
     enum FileSaverFlags {
         /**
          * No flags.
@@ -269,25 +267,18 @@ export namespace Gtef {
          */
         CREATE_BACKUP,
     }
-    /**
-     * The folding state at a certain line in the #GtkTextBuffer.
-     *
-     * Since #GtefGutterRendererFolds has a flat view of the folding tree, some
-     * states can be combined; for example, %GTEF_GUTTER_RENDERER_FOLDS_STATE_END
-     * and %GTEF_GUTTER_RENDERER_FOLDS_STATE_CONTINUE.
-     */
 
-    /**
-     * The folding state at a certain line in the #GtkTextBuffer.
-     *
-     * Since #GtefGutterRendererFolds has a flat view of the folding tree, some
-     * states can be combined; for example, %GTEF_GUTTER_RENDERER_FOLDS_STATE_END
-     * and %GTEF_GUTTER_RENDERER_FOLDS_STATE_CONTINUE.
-     */
     export namespace GutterRendererFoldsState {
         export const $gtype: GObject.GType<GutterRendererFoldsState>;
     }
 
+    /**
+     * The folding state at a certain line in the #GtkTextBuffer.
+     *
+     * Since #GtefGutterRendererFolds has a flat view of the folding tree, some
+     * states can be combined; for example, %GTEF_GUTTER_RENDERER_FOLDS_STATE_END
+     * and %GTEF_GUTTER_RENDERER_FOLDS_STATE_CONTINUE.
+     */
     enum GutterRendererFoldsState {
         /**
          * No code folding here.
@@ -312,6 +303,7 @@ export namespace Gtef {
          */
         END,
     }
+
     namespace ActionInfoCentralStore {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

@@ -21,17 +21,13 @@ export namespace Poppler {
      * Poppler-0.18
      */
 
-    /**
-     * Layer actions
-     */
-
-    /**
-     * Layer actions
-     */
     export namespace ActionLayerAction {
         export const $gtype: GObject.GType<ActionLayerAction>;
     }
 
+    /**
+     * Layer actions
+     */
     enum ActionLayerAction {
         /**
          * set layer visibility on
@@ -46,17 +42,14 @@ export namespace Poppler {
          */
         TOGGLE,
     }
-    /**
-     * Movie operations
-     */
 
-    /**
-     * Movie operations
-     */
     export namespace ActionMovieOperation {
         export const $gtype: GObject.GType<ActionMovieOperation>;
     }
 
+    /**
+     * Movie operations
+     */
     enum ActionMovieOperation {
         /**
          * play movie
@@ -75,17 +68,14 @@ export namespace Poppler {
          */
         STOP,
     }
-    /**
-     * Action types
-     */
 
-    /**
-     * Action types
-     */
     export namespace ActionType {
         export const $gtype: GObject.GType<ActionType>;
     }
 
+    /**
+     * Action types
+     */
     enum ActionType {
         /**
          * unknown action
@@ -136,17 +126,14 @@ export namespace Poppler {
          */
         RESET_FORM,
     }
-    /**
-     * Form field additional action types to be passed to `poppler_form_field_get_additional_action`
-     */
 
-    /**
-     * Form field additional action types to be passed to `poppler_form_field_get_additional_action`
-     */
     export namespace AdditionalActionType {
         export const $gtype: GObject.GType<AdditionalActionType>;
     }
 
+    /**
+     * Form field additional action types to be passed to `poppler_form_field_get_additional_action`
+     */
     enum AdditionalActionType {
         /**
          * The action to be performed when the user modifies the field.
@@ -265,17 +252,14 @@ export namespace Poppler {
         WATERMARK,
         '3D',
     }
-    /**
-     * Backend codes returned by poppler_get_backend().
-     */
 
-    /**
-     * Backend codes returned by poppler_get_backend().
-     */
     export namespace Backend {
         export const $gtype: GObject.GType<Backend>;
     }
 
+    /**
+     * Backend codes returned by poppler_get_backend().
+     */
     enum Backend {
         /**
          * Unknown backend
@@ -290,17 +274,14 @@ export namespace Poppler {
          */
         CAIRO,
     }
-    /**
-     * Signature certificate verification results
-     */
 
-    /**
-     * Signature certificate verification results
-     */
     export namespace CertificateStatus {
         export const $gtype: GObject.GType<CertificateStatus>;
     }
 
+    /**
+     * Signature certificate verification results
+     */
     enum CertificateStatus {
         /**
          * certificate is considered trusted
@@ -331,17 +312,14 @@ export namespace Poppler {
          */
         NOT_VERIFIED,
     }
-    /**
-     * Destination types
-     */
 
-    /**
-     * Destination types
-     */
     export namespace DestType {
         export const $gtype: GObject.GType<DestType>;
     }
 
+    /**
+     * Destination types
+     */
     enum DestType {
         /**
          * unknown destination
@@ -401,11 +379,12 @@ export namespace Poppler {
          */
         NAMED,
     }
+
     /**
      * Error codes returned by #PopplerDocument
      */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -440,17 +419,13 @@ export namespace Poppler {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Font types
-     */
-
-    /**
-     * Font types
-     */
     export namespace FontType {
         export const $gtype: GObject.GType<FontType>;
     }
 
+    /**
+     * Font types
+     */
     enum FontType {
         /**
          * unknown font type
@@ -542,17 +517,14 @@ export namespace Poppler {
         MULTILINE,
         FILE_SELECT,
     }
-    /**
-     * Play mode enum values.
-     */
 
-    /**
-     * Play mode enum values.
-     */
     export namespace MoviePlayMode {
         export const $gtype: GObject.GType<MoviePlayMode>;
     }
 
+    /**
+     * Play mode enum values.
+     */
     enum MoviePlayMode {
         /**
          * the movie should be played once and controls should be closed at the end.
@@ -572,17 +544,14 @@ export namespace Poppler {
          */
         PALINDROME,
     }
-    /**
-     * PDF Subtype Conformance
-     */
 
-    /**
-     * PDF Subtype Conformance
-     */
     export namespace PDFConformance {
         export const $gtype: GObject.GType<PDFConformance>;
     }
 
+    /**
+     * PDF Subtype Conformance
+     */
     enum PDFConformance {
         /**
          * Null
@@ -621,9 +590,7 @@ export namespace Poppler {
          */
         NONE,
     }
-    /**
-     * PDF Subtype Part
-     */
+
     /**
      * PDF Subtype Part
      */
@@ -674,17 +641,13 @@ export namespace Poppler {
         static NONE: number;
     }
 
-    /**
-     * PDF Subtype
-     */
-
-    /**
-     * PDF Subtype
-     */
     export namespace PDFSubtype {
         export const $gtype: GObject.GType<PDFSubtype>;
     }
 
+    /**
+     * PDF Subtype
+     */
     enum PDFSubtype {
         /**
          * Null
@@ -715,17 +678,14 @@ export namespace Poppler {
          */
         NONE,
     }
-    /**
-     * Page layout types
-     */
 
-    /**
-     * Page layout types
-     */
     export namespace PageLayout {
         export const $gtype: GObject.GType<PageLayout>;
     }
 
+    /**
+     * Page layout types
+     */
     enum PageLayout {
         /**
          * no specific layout set
@@ -756,17 +716,14 @@ export namespace Poppler {
          */
         TWO_PAGE_RIGHT,
     }
-    /**
-     * Page modes
-     */
 
-    /**
-     * Page modes
-     */
     export namespace PageMode {
         export const $gtype: GObject.GType<PageMode>;
     }
 
+    /**
+     * Page modes
+     */
     enum PageMode {
         /**
          * no specific mode set
@@ -797,19 +754,15 @@ export namespace Poppler {
          */
         USE_ATTACHMENTS,
     }
-    /**
-     * Page transition alignment types for #POPPLER_PAGE_TRANSITION_SPLIT
-     * and #POPPLER_PAGE_TRANSITION_BLINDS transition types
-     */
 
-    /**
-     * Page transition alignment types for #POPPLER_PAGE_TRANSITION_SPLIT
-     * and #POPPLER_PAGE_TRANSITION_BLINDS transition types
-     */
     export namespace PageTransitionAlignment {
         export const $gtype: GObject.GType<PageTransitionAlignment>;
     }
 
+    /**
+     * Page transition alignment types for #POPPLER_PAGE_TRANSITION_SPLIT
+     * and #POPPLER_PAGE_TRANSITION_BLINDS transition types
+     */
     enum PageTransitionAlignment {
         /**
          * horizontal dimension
@@ -820,19 +773,15 @@ export namespace Poppler {
          */
         VERTICAL,
     }
-    /**
-     * Page transition direction types for #POPPLER_PAGE_TRANSITION_SPLIT,
-     * #POPPLER_PAGE_TRANSITION_BOX and #POPPLER_PAGE_TRANSITION_FLY transition types
-     */
 
-    /**
-     * Page transition direction types for #POPPLER_PAGE_TRANSITION_SPLIT,
-     * #POPPLER_PAGE_TRANSITION_BOX and #POPPLER_PAGE_TRANSITION_FLY transition types
-     */
     export namespace PageTransitionDirection {
         export const $gtype: GObject.GType<PageTransitionDirection>;
     }
 
+    /**
+     * Page transition direction types for #POPPLER_PAGE_TRANSITION_SPLIT,
+     * #POPPLER_PAGE_TRANSITION_BOX and #POPPLER_PAGE_TRANSITION_FLY transition types
+     */
     enum PageTransitionDirection {
         /**
          * inward from the edges of the page
@@ -843,17 +792,14 @@ export namespace Poppler {
          */
         OUTWARD,
     }
-    /**
-     * Page transition types
-     */
 
-    /**
-     * Page transition types
-     */
     export namespace PageTransitionType {
         export const $gtype: GObject.GType<PageTransitionType>;
     }
 
+    /**
+     * Page transition types
+     */
     enum PageTransitionType {
         /**
          * the new page replace the old one
@@ -908,17 +854,14 @@ export namespace Poppler {
          */
         FADE,
     }
-    /**
-     * Duplex viewer preference
-     */
 
-    /**
-     * Duplex viewer preference
-     */
     export namespace PrintDuplex {
         export const $gtype: GObject.GType<PrintDuplex>;
     }
 
+    /**
+     * Duplex viewer preference
+     */
     enum PrintDuplex {
         /**
          * No preference on duplex printing
@@ -937,17 +880,14 @@ export namespace Poppler {
          */
         DUPLEX_FLIP_LONG_EDGE,
     }
-    /**
-     * PrintScaling viewer preference
-     */
 
-    /**
-     * PrintScaling viewer preference
-     */
     export namespace PrintScaling {
         export const $gtype: GObject.GType<PrintScaling>;
     }
 
+    /**
+     * PrintScaling viewer preference
+     */
     enum PrintScaling {
         /**
          * application's default page scaling
@@ -958,17 +898,14 @@ export namespace Poppler {
          */
         NONE,
     }
-    /**
-     * Selection styles
-     */
 
-    /**
-     * Selection styles
-     */
     export namespace SelectionStyle {
         export const $gtype: GObject.GType<SelectionStyle>;
     }
 
+    /**
+     * Selection styles
+     */
     enum SelectionStyle {
         /**
          * glyph is the minimum unit for selection
@@ -983,17 +920,14 @@ export namespace Poppler {
          */
         LINE,
     }
-    /**
-     * Signature verification results
-     */
 
-    /**
-     * Signature verification results
-     */
     export namespace SignatureStatus {
         export const $gtype: GObject.GType<SignatureStatus>;
     }
 
+    /**
+     * Signature verification results
+     */
     enum SignatureStatus {
         /**
          * signature is cryptographically valid
@@ -1147,6 +1081,7 @@ export namespace Poppler {
         OFF,
         NEUTRAL,
     }
+
     class StructureGlyphOrientation {
         static $gtype: GObject.GType<StructureGlyphOrientation>;
 
@@ -1287,6 +1222,7 @@ export namespace Poppler {
         ULTRABOLD,
         HEAVY,
     }
+
     const ANNOT_TEXT_ICON_CIRCLE: string;
     const ANNOT_TEXT_ICON_COMMENT: string;
     const ANNOT_TEXT_ICON_CROSS: string;
@@ -1396,7 +1332,6 @@ export namespace Poppler {
     interface NssPasswordFunc {
         (text: string): string;
     }
-
     export namespace AnnotFlag {
         export const $gtype: GObject.GType<AnnotFlag>;
     }
@@ -1414,17 +1349,14 @@ export namespace Poppler {
         TOGGLE_NO_VIEW,
         LOCKED_CONTENTS,
     }
-    /**
-     * Flags using while searching text in a page
-     */
 
-    /**
-     * Flags using while searching text in a page
-     */
     export namespace FindFlags {
         export const $gtype: GObject.GType<FindFlags>;
     }
 
+    /**
+     * Flags using while searching text in a page
+     */
     enum FindFlags {
         /**
          * use default search settings
@@ -1456,17 +1388,14 @@ export namespace Poppler {
          */
         MULTILINE,
     }
-    /**
-     * Permissions
-     */
 
-    /**
-     * Permissions
-     */
     export namespace Permissions {
         export const $gtype: GObject.GType<Permissions>;
     }
 
+    /**
+     * Permissions
+     */
     enum Permissions {
         /**
          * document can be printer
@@ -1507,17 +1436,14 @@ export namespace Poppler {
          */
         FULL,
     }
-    /**
-     * Printing flags
-     */
 
-    /**
-     * Printing flags
-     */
     export namespace PrintFlags {
         export const $gtype: GObject.GType<PrintFlags>;
     }
 
+    /**
+     * Printing flags
+     */
     enum PrintFlags {
         /**
          * print main document contents
@@ -1575,17 +1501,14 @@ export namespace Poppler {
         PRINT_ALL,
         ALL,
     }
-    /**
-     * Signature validation flags
-     */
 
-    /**
-     * Signature validation flags
-     */
     export namespace SignatureValidationFlags {
         export const $gtype: GObject.GType<SignatureValidationFlags>;
     }
 
+    /**
+     * Signature validation flags
+     */
     enum SignatureValidationFlags {
         /**
          * Whether to validate also the certificate of the signature
@@ -1617,17 +1540,14 @@ export namespace Poppler {
          */
         RECURSIVE,
     }
-    /**
-     * Viewer preferences
-     */
 
-    /**
-     * Viewer preferences
-     */
     export namespace ViewerPreferences {
         export const $gtype: GObject.GType<ViewerPreferences>;
     }
 
+    /**
+     * Viewer preferences
+     */
     enum ViewerPreferences {
         /**
          * no preferences set
@@ -1662,6 +1582,7 @@ export namespace Poppler {
          */
         DIRECTION_RTL,
     }
+
     namespace Annot {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
