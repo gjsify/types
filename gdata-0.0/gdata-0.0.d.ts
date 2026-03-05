@@ -24,17 +24,13 @@ export namespace GData {
      * GData-0.0
      */
 
-    /**
-     * Indicates which type of batch operation caused the current #GDataBatchOperationCallback to be called.
-     */
-
-    /**
-     * Indicates which type of batch operation caused the current #GDataBatchOperationCallback to be called.
-     */
     export namespace BatchOperationType {
         export const $gtype: GObject.GType<BatchOperationType>;
     }
 
+    /**
+     * Indicates which type of batch operation caused the current #GDataBatchOperationCallback to be called.
+     */
     enum BatchOperationType {
         /**
          * a query operation
@@ -53,11 +49,12 @@ export namespace GData {
          */
         DELETION,
     }
+
     /**
      * Error codes for #GDataDocumentsService operations.
      */
     class DocumentsServiceError extends GLib.Error {
-        static $gtype: GObject.GType<DocumentsServiceError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -75,17 +72,13 @@ export namespace GData {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * An enum representing the possible values of #GDataMediaContent:expression.
-     */
-
-    /**
-     * An enum representing the possible values of #GDataMediaContent:expression.
-     */
     export namespace MediaExpression {
         export const $gtype: GObject.GType<MediaExpression>;
     }
 
+    /**
+     * An enum representing the possible values of #GDataMediaContent:expression.
+     */
     enum MediaExpression {
         /**
          * the media is a sample of a larger video
@@ -100,17 +93,14 @@ export namespace GData {
          */
         NONSTOP,
     }
-    /**
-     * An enum representing the possible values of #GDataMediaContent:medium.
-     */
 
-    /**
-     * An enum representing the possible values of #GDataMediaContent:medium.
-     */
     export namespace MediaMedium {
         export const $gtype: GObject.GType<MediaMedium>;
     }
 
+    /**
+     * An enum representing the possible values of #GDataMediaContent:medium.
+     */
     enum MediaMedium {
         /**
          * the type of the media is unknown
@@ -137,17 +127,14 @@ export namespace GData {
          */
         EXECUTABLE,
     }
-    /**
-     * Representations of the different operations performed by the library.
-     */
 
-    /**
-     * Representations of the different operations performed by the library.
-     */
     export namespace OperationType {
         export const $gtype: GObject.GType<OperationType>;
     }
 
+    /**
+     * Representations of the different operations performed by the library.
+     */
     enum OperationType {
         /**
          * a query
@@ -182,11 +169,12 @@ export namespace GData {
          */
         BATCH,
     }
+
     /**
      * Error codes for XML or JSON parsing operations.
      */
     class ParserError extends GLib.Error {
-        static $gtype: GObject.GType<ParserError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -208,19 +196,14 @@ export namespace GData {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Visibility statuses available for albums on PicasaWeb. For more information, see the
-     * <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#Visibility">online documentation</ulink>.
-     */
-
-    /**
-     * Visibility statuses available for albums on PicasaWeb. For more information, see the
-     * <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#Visibility">online documentation</ulink>.
-     */
     export namespace PicasaWebVisibility {
         export const $gtype: GObject.GType<PicasaWebVisibility>;
     }
 
+    /**
+     * Visibility statuses available for albums on PicasaWeb. For more information, see the
+     * <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#Visibility">online documentation</ulink>.
+     */
     enum PicasaWebVisibility {
         /**
          * the album is visible to everyone, regardless of whether they're authenticated
@@ -231,11 +214,12 @@ export namespace GData {
          */
         PRIVATE,
     }
+
     /**
      * Error codes for #GDataService operations.
      */
     class ServiceError extends GLib.Error {
-        static $gtype: GObject.GType<ServiceError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -301,17 +285,13 @@ export namespace GData {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Video ages, allowing queries to be limited to videos uploaded in a recent time period.
-     */
-
-    /**
-     * Video ages, allowing queries to be limited to videos uploaded in a recent time period.
-     */
     export namespace YouTubeAge {
         export const $gtype: GObject.GType<YouTubeAge>;
     }
 
+    /**
+     * Video ages, allowing queries to be limited to videos uploaded in a recent time period.
+     */
     enum YouTubeAge {
         /**
          * retrieve all videos, regardless of the date they were uploaded
@@ -330,23 +310,17 @@ export namespace GData {
          */
         THIS_MONTH,
     }
-    /**
-     * Permissions for actions which can be set on a #GDataYouTubeVideo using gdata_youtube_video_set_access_control().
-     *
-     * The only actions which can have the %GDATA_YOUTUBE_PERMISSION_MODERATED permission are
-     * %GDATA_YOUTUBE_ACTION_RATE and %GDATA_YOUTUBE_ACTION_COMMENT.
-     */
 
-    /**
-     * Permissions for actions which can be set on a #GDataYouTubeVideo using gdata_youtube_video_set_access_control().
-     *
-     * The only actions which can have the %GDATA_YOUTUBE_PERMISSION_MODERATED permission are
-     * %GDATA_YOUTUBE_ACTION_RATE and %GDATA_YOUTUBE_ACTION_COMMENT.
-     */
     export namespace YouTubePermission {
         export const $gtype: GObject.GType<YouTubePermission>;
     }
 
+    /**
+     * Permissions for actions which can be set on a #GDataYouTubeVideo using gdata_youtube_video_set_access_control().
+     *
+     * The only actions which can have the %GDATA_YOUTUBE_PERMISSION_MODERATED permission are
+     * %GDATA_YOUTUBE_ACTION_RATE and %GDATA_YOUTUBE_ACTION_COMMENT.
+     */
     enum YouTubePermission {
         /**
          * the action is allowed for everyone
@@ -361,19 +335,15 @@ export namespace GData {
          */
         MODERATED,
     }
-    /**
-     * Safe search levels for removing restricted entries from query results. For more information, see the
-     * <ulink type="http" url="https://developers.google.com/youtube/v3/docs/search/list#safeSearch">online documentation</ulink>.
-     */
 
-    /**
-     * Safe search levels for removing restricted entries from query results. For more information, see the
-     * <ulink type="http" url="https://developers.google.com/youtube/v3/docs/search/list#safeSearch">online documentation</ulink>.
-     */
     export namespace YouTubeSafeSearch {
         export const $gtype: GObject.GType<YouTubeSafeSearch>;
     }
 
+    /**
+     * Safe search levels for removing restricted entries from query results. For more information, see the
+     * <ulink type="http" url="https://developers.google.com/youtube/v3/docs/search/list#safeSearch">online documentation</ulink>.
+     */
     enum YouTubeSafeSearch {
         /**
          * YouTube will not perform any filtering on the search result set
@@ -389,11 +359,12 @@ export namespace GData {
          */
         STRICT,
     }
+
     /**
      * Error codes for #GDataYouTubeService operations.
      */
     class YouTubeServiceError extends GLib.Error {
-        static $gtype: GObject.GType<YouTubeServiceError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -421,23 +392,16 @@ export namespace GData {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Standard feed types for standard feed queries with
-     * gdata_youtube_service_query_standard_feed(). For more information, see the
-     * <ulink type="http" url="https://developers.google.com/youtube/2.0/developers_guide_protocol_video_feeds#Standard_feeds">online
-     * documentation</ulink>.
-     */
-
-    /**
-     * Standard feed types for standard feed queries with
-     * gdata_youtube_service_query_standard_feed(). For more information, see the
-     * <ulink type="http" url="https://developers.google.com/youtube/2.0/developers_guide_protocol_video_feeds#Standard_feeds">online
-     * documentation</ulink>.
-     */
     export namespace YouTubeStandardFeedType {
         export const $gtype: GObject.GType<YouTubeStandardFeedType>;
     }
 
+    /**
+     * Standard feed types for standard feed queries with
+     * gdata_youtube_service_query_standard_feed(). For more information, see the
+     * <ulink type="http" url="https://developers.google.com/youtube/2.0/developers_guide_protocol_video_feeds#Standard_feeds">online
+     * documentation</ulink>.
+     */
     enum YouTubeStandardFeedType {
         /**
          * This feed contains the most popular YouTube
@@ -447,6 +411,7 @@ export namespace GData {
          */
         FEED,
     }
+
     /**
      * The users specified by the #GDataAccessRule have no rights.
      */

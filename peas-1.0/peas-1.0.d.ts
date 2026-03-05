@@ -26,7 +26,7 @@ export namespace Peas {
      * loading a plugin.
      */
     class PluginInfoError extends GLib.Error {
-        static $gtype: GObject.GType<PluginInfoError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 

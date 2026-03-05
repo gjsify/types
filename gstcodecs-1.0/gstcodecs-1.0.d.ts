@@ -66,10 +66,6 @@ export namespace GstCodecs {
         FLEXIBLE,
     }
 
-    export namespace H264DpbBumpMode {
-        export const $gtype: GObject.GType<H264DpbBumpMode>;
-    }
-
     enum H264DpbBumpMode {
         /**
          * No latency requirement for DBP bumping.
@@ -85,18 +81,10 @@ export namespace GstCodecs {
         VERY_LOW_LATENCY,
     }
 
-    export namespace H264PictureField {
-        export const $gtype: GObject.GType<H264PictureField>;
-    }
-
     enum H264PictureField {
         FRAME,
         TOP_FIELD,
         BOTTOM_FIELD,
-    }
-
-    export namespace H264PictureReference {
-        export const $gtype: GObject.GType<H264PictureReference>;
     }
 
     enum H264PictureReference {
@@ -113,17 +101,10 @@ export namespace GstCodecs {
          */
         LONG_TERM,
     }
-    /**
-     * Reference modes: Specify the type of inter prediction to be used
-     */
 
     /**
      * Reference modes: Specify the type of inter prediction to be used
      */
-    export namespace Vp9ReferenceMode {
-        export const $gtype: GObject.GType<Vp9ReferenceMode>;
-    }
-
     enum Vp9ReferenceMode {
         /**
          * Indicates that all the inter blocks use only a single reference frame
@@ -138,17 +119,10 @@ export namespace GstCodecs {
          */
         SELECT,
     }
-    /**
-     * TxMode: Specifies how the transform size is determined
-     */
 
     /**
      * TxMode: Specifies how the transform size is determined
      */
-    export namespace Vp9TxMode {
-        export const $gtype: GObject.GType<Vp9TxMode>;
-    }
-
     enum Vp9TxMode {
         /**
          * Only 4x4
@@ -171,17 +145,10 @@ export namespace GstCodecs {
          */
         SELECT,
     }
-    /**
-     * TxSize: Specifies the transform size
-     */
 
     /**
      * TxSize: Specifies the transform size
      */
-    export namespace Vp9TxSize {
-        export const $gtype: GObject.GType<Vp9TxSize>;
-    }
-
     enum Vp9TxSize {
         /**
          * 4x4
@@ -200,6 +167,7 @@ export namespace GstCodecs {
          */
         '32X32',
     }
+
     const H264_DPB_MAX_SIZE: number;
     const H265_DPB_MAX_SIZE: number;
     /**

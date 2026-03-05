@@ -60,6 +60,7 @@ export namespace Xed {
         STATE_EXTERNALLY_MODIFIED_NOTIFICATION,
         NUM_OF_STATES,
     }
+
     const METADATA_ATTRIBUTE_ENCODING: string;
     const METADATA_ATTRIBUTE_LANGUAGE: string;
     const METADATA_ATTRIBUTE_POSITION: string;
@@ -261,7 +262,6 @@ export namespace Xed {
     interface MessageTypeForeach {
         (key: string, type: GObject.GType, required: boolean): void;
     }
-
     export namespace DebugSection {
         export const $gtype: GObject.GType<DebugSection>;
     }
@@ -297,6 +297,7 @@ export namespace Xed {
         ERROR,
         SAVING_SESSION,
     }
+
     namespace App {
         // Signal signatures
         interface SignalSignatures extends Gtk.Application.SignalSignatures {

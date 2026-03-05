@@ -27,7 +27,7 @@ export namespace Zpj {
      * This enumeration can be expanded at a later date.
      */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -46,25 +46,17 @@ export namespace Zpj {
         constructor(options: { message: string; code: number });
     }
 
-    /**
-     * The types of Skydrive
-     * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh243648">
-     * objects</ulink>.
-     *
-     * This enumeration can be expanded at a later date.
-     */
-
-    /**
-     * The types of Skydrive
-     * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh243648">
-     * objects</ulink>.
-     *
-     * This enumeration can be expanded at a later date.
-     */
     export namespace SkydriveEntryType {
         export const $gtype: GObject.GType<SkydriveEntryType>;
     }
 
+    /**
+     * The types of Skydrive
+     * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh243648">
+     * objects</ulink>.
+     *
+     * This enumeration can be expanded at a later date.
+     */
     enum SkydriveEntryType {
         /**
          * A file.
@@ -87,13 +79,6 @@ export namespace Zpj {
          */
         INVALID,
     }
-    /**
-     * Different
-     * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826522.aspx#reading_photos_videos_props">
-     * thumbnail sizes</ulink> offered by SkyDrive.
-     *
-     * This enumeration can be expanded at a later date.
-     */
 
     /**
      * Different
@@ -102,10 +87,6 @@ export namespace Zpj {
      *
      * This enumeration can be expanded at a later date.
      */
-    export namespace ThumbnailSize {
-        export const $gtype: GObject.GType<ThumbnailSize>;
-    }
-
     enum ThumbnailSize {
         /**
          * Smallest possible size.
@@ -116,6 +97,7 @@ export namespace Zpj {
          */
         NORMAL,
     }
+
     /**
      * <ulink
      * url="http://msdn.microsoft.com/en-us/library/live/hh826545#friendly">

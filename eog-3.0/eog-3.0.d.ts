@@ -30,7 +30,7 @@ export namespace Eog {
      */
 
     class ImageError extends GLib.Error {
-        static $gtype: GObject.GType<ImageError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -135,17 +135,14 @@ export namespace Eog {
         TRANSPOSE,
         TRANSVERSE,
     }
-    /**
-     * Used to define how transparent image parts are drawn.
-     */
 
-    /**
-     * Used to define how transparent image parts are drawn.
-     */
     export namespace TransparencyStyle {
         export const $gtype: GObject.GType<TransparencyStyle>;
     }
 
+    /**
+     * Used to define how transparent image parts are drawn.
+     */
     enum TransparencyStyle {
         /**
          * Use the background color of the current UI theme
@@ -161,8 +158,9 @@ export namespace Eog {
          */
         COLOR,
     }
+
     class UCError extends GLib.Error {
-        static $gtype: GObject.GType<UCError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -235,17 +233,14 @@ export namespace Eog {
         FULLSCREEN,
         SLIDESHOW,
     }
-    /**
-     * Used to determine the zooming behaviour of an #EogScrollView.
-     */
 
-    /**
-     * Used to determine the zooming behaviour of an #EogScrollView.
-     */
     export namespace ZoomMode {
         export const $gtype: GObject.GType<ZoomMode>;
     }
 
+    /**
+     * Used to determine the zooming behaviour of an #EogScrollView.
+     */
     enum ZoomMode {
         /**
          * Use the currently set zoom factor to display the image
@@ -259,6 +254,7 @@ export namespace Eog {
          */
         SHRINK_TO_FIT,
     }
+
     const FILE_FORMAT_JPEG: string;
     const IMAGE_DATA_ALL: number;
     const LIST_STORE_THUMB_SIZE: number;
@@ -307,7 +303,6 @@ export namespace Eog {
     function thumbnail_load(image: Image): GdkPixbuf.Pixbuf;
     function uc_error_quark(): GLib.Quark;
     type ExifData = object | null;
-
     export namespace Debug {
         export const $gtype: GObject.GType<Debug>;
     }
@@ -349,6 +344,7 @@ export namespace Eog {
         DISABLE_GALLERY,
         SINGLE_WINDOW,
     }
+
     namespace Application {
         // Signal signatures
         interface SignalSignatures extends Gtk.Application.SignalSignatures {

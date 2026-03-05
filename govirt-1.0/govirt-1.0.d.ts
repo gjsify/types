@@ -23,7 +23,7 @@ export namespace GoVirt {
      */
 
     class ProxyError extends GLib.Error {
-        static $gtype: GObject.GType<ProxyError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -41,7 +41,7 @@ export namespace GoVirt {
     }
 
     class RestCallError extends GLib.Error {
-        static $gtype: GObject.GType<RestCallError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -74,6 +74,7 @@ export namespace GoVirt {
         UP,
         REBOOTING,
     }
+
     function proxy_error_quark(): GLib.Quark;
     function rest_call_error_quark(): GLib.Quark;
     namespace Proxy {

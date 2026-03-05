@@ -31,10 +31,6 @@ export namespace Gdaui {
      * Gdaui-5.0
      */
 
-    export namespace Action {
-        export const $gtype: GObject.GType<Action>;
-    }
-
     enum Action {
         NEW_DATA,
         WRITE_MODIFIED_DATA,
@@ -51,16 +47,13 @@ export namespace Gdaui {
         MOVE_LAST_CHUNCK,
     }
 
-    export namespace BasicFormPart {
-        export const $gtype: GObject.GType<BasicFormPart>;
-    }
-
     enum BasicFormPart {
         LABELS,
         ENTRIES,
     }
+
     class DataEntryError extends GLib.Error {
-        static $gtype: GObject.GType<DataEntryError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -76,15 +69,6 @@ export namespace Gdaui {
      * Defines when the data modifications held in the underlying #GdaDataProxy are written to the
      * data model being proxied (using gda_data_proxy_apply_row_changes()).
      */
-
-    /**
-     * Defines when the data modifications held in the underlying #GdaDataProxy are written to the
-     * data model being proxied (using gda_data_proxy_apply_row_changes()).
-     */
-    export namespace DataProxyWriteMode {
-        export const $gtype: GObject.GType<DataProxyWriteMode>;
-    }
-
     enum DataProxyWriteMode {
         /**
          * write only when explicitly requested
@@ -103,6 +87,7 @@ export namespace Gdaui {
          */
         VALUE_CHANGE,
     }
+
     const ATTRIBUTE_PLUGIN: string;
     const COLOR_NORMAL_DEFAULT: string;
     const COLOR_NORMAL_INVALID: string;
@@ -142,11 +127,6 @@ export namespace Gdaui {
             data?: any | null,
         ): void;
     }
-
-    export namespace ActionMode {
-        export const $gtype: GObject.GType<ActionMode>;
-    }
-
     enum ActionMode {
         NAVIGATION_ARROWS,
         NAVIGATION_SCROLL,
@@ -158,10 +138,6 @@ export namespace Gdaui {
         REPORT_ERROR,
     }
 
-    export namespace DataProxyInfoFlag {
-        export const $gtype: GObject.GType<DataProxyInfoFlag>;
-    }
-
     enum DataProxyInfoFlag {
         NONE,
         CURRENT_ROW,
@@ -170,22 +146,16 @@ export namespace Gdaui {
         CHUNCK_CHANGE_BUTTONS,
         NO_FILTER,
     }
-    /**
-     * Defines the aspect of the #GdauiLogin widget
-     */
 
     /**
      * Defines the aspect of the #GdauiLogin widget
      */
-    export namespace LoginMode {
-        export const $gtype: GObject.GType<LoginMode>;
-    }
-
     enum LoginMode {
         ENABLE_CONTROL_CENTRE_MODE,
         HIDE_DSN_SELECTION_MODE,
         HIDE_DIRECT_CONNECTION_MODE,
     }
+
     namespace BasicForm {
         // Signal signatures
         interface SignalSignatures extends Gtk.Box.SignalSignatures {

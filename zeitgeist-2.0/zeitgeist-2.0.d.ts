@@ -81,8 +81,9 @@ export namespace Zeitgeist {
         AVAILABLE,
         ANY,
     }
+
     class EngineError extends GLib.Error {
-        static $gtype: GObject.GType<EngineError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -103,7 +104,7 @@ export namespace Zeitgeist {
     }
 
     class DataModelError extends GLib.Error {
-        static $gtype: GObject.GType<DataModelError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 

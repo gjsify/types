@@ -28,14 +28,6 @@ export namespace EBookContacts {
     /**
      * The type of change in an #EBookChange
      */
-
-    /**
-     * The type of change in an #EBookChange
-     */
-    export namespace BookChangeType {
-        export const $gtype: GObject.GType<BookChangeType>;
-    }
-
     enum BookChangeType {
         /**
          * A vCard was added
@@ -50,11 +42,12 @@ export namespace EBookContacts {
          */
         MODIFIED,
     }
+
     /**
      * Error codes returned by #EBookClient APIs, if an #EClientError was not available.
      */
     class BookClientError extends GLib.Error {
-        static $gtype: GObject.GType<BookClientError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -84,25 +77,17 @@ export namespace EBookContacts {
         constructor(options: { message: string; code: number });
     }
 
-    /**
-     * Specifies the start position to in the list of traversed contacts
-     * in calls to e_book_client_cursor_step().
-     *
-     * When an #EBookClientCursor is created, the current position implied by %E_BOOK_CURSOR_ORIGIN_CURRENT
-     * is the same as %E_BOOK_CURSOR_ORIGIN_BEGIN.
-     */
-
-    /**
-     * Specifies the start position to in the list of traversed contacts
-     * in calls to e_book_client_cursor_step().
-     *
-     * When an #EBookClientCursor is created, the current position implied by %E_BOOK_CURSOR_ORIGIN_CURRENT
-     * is the same as %E_BOOK_CURSOR_ORIGIN_BEGIN.
-     */
     export namespace BookCursorOrigin {
         export const $gtype: GObject.GType<BookCursorOrigin>;
     }
 
+    /**
+     * Specifies the start position to in the list of traversed contacts
+     * in calls to e_book_client_cursor_step().
+     *
+     * When an #EBookClientCursor is created, the current position implied by %E_BOOK_CURSOR_ORIGIN_CURRENT
+     * is the same as %E_BOOK_CURSOR_ORIGIN_BEGIN.
+     */
     enum BookCursorOrigin {
         /**
          * The current cursor position
@@ -117,17 +102,14 @@ export namespace EBookContacts {
          */
         END,
     }
-    /**
-     * Specifies the sort order of an ordered query
-     */
 
-    /**
-     * Specifies the sort order of an ordered query
-     */
     export namespace BookCursorSortType {
         export const $gtype: GObject.GType<BookCursorSortType>;
     }
 
+    /**
+     * Specifies the sort order of an ordered query
+     */
     enum BookCursorSortType {
         /**
          * Sort results in ascending order
@@ -138,17 +120,14 @@ export namespace EBookContacts {
          */
         DESCENDING,
     }
-    /**
-     * The type of index defined by e_source_backend_summary_setup_set_indexed_fields()
-     */
 
-    /**
-     * The type of index defined by e_source_backend_summary_setup_set_indexed_fields()
-     */
     export namespace BookIndexType {
         export const $gtype: GObject.GType<BookIndexType>;
     }
 
+    /**
+     * The type of index defined by e_source_backend_summary_setup_set_indexed_fields()
+     */
     enum BookIndexType {
         /**
          * An index suitable for searching contacts with a prefix pattern
@@ -170,21 +149,12 @@ export namespace EBookContacts {
          */
         SORT_KEY,
     }
-    /**
-     * The kind of test a query created by e_book_query_field_test() shall perform.
-     *
-     * See also: e_phone_number_compare_strings().
-     */
 
     /**
      * The kind of test a query created by e_book_query_field_test() shall perform.
      *
      * See also: e_phone_number_compare_strings().
      */
-    export namespace BookQueryTest {
-        export const $gtype: GObject.GType<BookQueryTest>;
-    }
-
     enum BookQueryTest {
         /**
          * look for exact match of the supplied test value
@@ -236,17 +206,10 @@ export namespace EBookContacts {
          */
         LAST,
     }
-    /**
-     * Status messages used in notifications in the deprecated #EBookView class
-     */
 
     /**
      * Status messages used in notifications in the deprecated #EBookView class
      */
-    export namespace BookViewStatus {
-        export const $gtype: GObject.GType<BookViewStatus>;
-    }
-
     enum BookViewStatus {
         /**
          * Ok
@@ -272,10 +235,6 @@ export namespace EBookContacts {
          * Another error occurred
          */
         ERROR_OTHER_ERROR,
-    }
-
-    export namespace ContactField {
-        export const $gtype: GObject.GType<ContactField>;
     }
 
     enum ContactField {
@@ -434,25 +393,14 @@ export namespace EBookContacts {
         LAST_LABEL_ID,
     }
 
-    export namespace ContactPhotoType {
-        export const $gtype: GObject.GType<ContactPhotoType>;
-    }
-
     enum ContactPhotoType {
         INLINED,
         URI,
     }
-    /**
-     * The origin of a parsed EPhoneNumber's country calling code.
-     */
 
     /**
      * The origin of a parsed EPhoneNumber's country calling code.
      */
-    export namespace PhoneNumberCountrySource {
-        export const $gtype: GObject.GType<PhoneNumberCountrySource>;
-    }
-
     enum PhoneNumberCountrySource {
         /**
          * the EPhoneNumber was build from a fully qualified telephone number
@@ -470,11 +418,12 @@ export namespace EBookContacts {
          */
         DEFAULT,
     }
+
     /**
      * Numeric description of a phone number related error.
      */
     class PhoneNumberError extends GLib.Error {
-        static $gtype: GObject.GType<PhoneNumberError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -519,14 +468,6 @@ export namespace EBookContacts {
     /**
      * The supported formatting rules for phone numbers.
      */
-
-    /**
-     * The supported formatting rules for phone numbers.
-     */
-    export namespace PhoneNumberFormat {
-        export const $gtype: GObject.GType<PhoneNumberFormat>;
-    }
-
     enum PhoneNumberFormat {
         /**
          * format according E.164: "+493055667788".
@@ -548,65 +489,6 @@ export namespace EBookContacts {
          */
         RFC3966,
     }
-    /**
-     * The strength of a phone number match.
-     *
-     * <example>
-     * <title>Some examples of phone number matches</title>
-     * <para>
-     * Let's consider the phone number "+1-221-5423789", then comparing with
-     * "+1.221.542.3789" we have get E_PHONE_NUMBER_MATCH_EXACT because country
-     * code, region code and local number are matching. Comparing with "2215423789"
-     * will result in E_PHONE_NUMBER_MATCH_NATIONAL because the country calling code
-     * is missing, but the national portion is matching. Finally comparing with
-     * "5423789" gives E_PHONE_NUMBER_MATCH_SHORT. For more detail have a look at
-     * the following table:
-     *
-     * <informaltable border="1" align="center">
-     *  <colgroup>
-     *   <col width="20%" />
-     *   <col width="20%" />
-     *   <col width="20%" />
-     *   <col width="20%" />
-     *   <col width="20%" />
-     *  </colgroup>
-     *  <tbody>
-     *   <tr>
-     *    <th></th>
-     *    <th align="center">+1-617-5423789</th>
-     *    <th align="center">+1-221-5423789</th>
-     *    <th align="center">221-5423789</th>
-     *    <th align="center">5423789</th>
-     *   </tr><tr>
-     *    <th align="right">+1-617-5423789</th>
-     *    <td align="center">exact</td>
-     *    <td align="center">none</td>
-     *    <td align="center">none</td>
-     *    <td align="center">short</td>
-     *   </tr><tr>
-     *    <th align="right">+1-221-5423789</th>
-     *    <td align="center">none</td>
-     *    <td align="center">exact</td>
-     *    <td align="center">national</td>
-     *    <td align="center">short</td>
-     *   </tr><tr>
-     *    <th align="right">221-5423789</th>
-     *    <td align="center">none</td>
-     *    <td align="center">national</td>
-     *    <td align="center">national</td>
-     *    <td align="center">short</td>
-     *   </tr><tr>
-     *    <th align="right">5423789</th>
-     *    <td align="center">short</td>
-     *    <td align="center">short</td>
-     *    <td align="center">short</td>
-     *    <td align="center">short</td>
-     *   </tr>
-     *  </tbody>
-     * </informaltable>
-     * </para>
-     * </example>
-     */
 
     /**
      * The strength of a phone number match.
@@ -667,10 +549,6 @@ export namespace EBookContacts {
      * </para>
      * </example>
      */
-    export namespace PhoneNumberMatch {
-        export const $gtype: GObject.GType<PhoneNumberMatch>;
-    }
-
     enum PhoneNumberMatch {
         /**
          * The phone numbers did not match.
@@ -696,6 +574,7 @@ export namespace EBookContacts {
          */
         SHORT,
     }
+
     class VCardFormat {
         static $gtype: GObject.GType<VCardFormat>;
 
@@ -1052,17 +931,13 @@ export namespace EBookContacts {
      */
     function phone_number_is_supported(): boolean;
     type ContactAttrList = object | null;
-    /**
-     * Flags that control the behaviour of an #EBookClientView.
-     */
-
-    /**
-     * Flags that control the behaviour of an #EBookClientView.
-     */
     export namespace BookClientViewFlags {
         export const $gtype: GObject.GType<BookClientViewFlags>;
     }
 
+    /**
+     * Flags that control the behaviour of an #EBookClientView.
+     */
     enum BookClientViewFlags {
         /**
          * Symbolic value for no flags
@@ -1082,17 +957,14 @@ export namespace EBookContacts {
          */
         MANUAL_QUERY,
     }
-    /**
-     * Defines the behaviour of e_book_client_cursor_step().
-     */
 
-    /**
-     * Defines the behaviour of e_book_client_cursor_step().
-     */
     export namespace BookCursorStepFlags {
         export const $gtype: GObject.GType<BookCursorStepFlags>;
     }
 
+    /**
+     * Defines the behaviour of e_book_client_cursor_step().
+     */
     enum BookCursorStepFlags {
         /**
          * The cursor position should be modified while stepping
@@ -1103,23 +975,17 @@ export namespace EBookContacts {
          */
         FETCH,
     }
-    /**
-     * Book operation flags, to specify behavior in certain situations. The conflict
-     * resolution mode flags cannot be combined together, where the `E_BOOK_OPERATION_FLAG_CONFLICT_KEEP_LOCAL`
-     * is the default behavior (and it is used when no other conflict resolution flag is set).
-     * The flags can be ignored when the operation or the backend don't support it.
-     */
 
-    /**
-     * Book operation flags, to specify behavior in certain situations. The conflict
-     * resolution mode flags cannot be combined together, where the `E_BOOK_OPERATION_FLAG_CONFLICT_KEEP_LOCAL`
-     * is the default behavior (and it is used when no other conflict resolution flag is set).
-     * The flags can be ignored when the operation or the backend don't support it.
-     */
     export namespace BookOperationFlags {
         export const $gtype: GObject.GType<BookOperationFlags>;
     }
 
+    /**
+     * Book operation flags, to specify behavior in certain situations. The conflict
+     * resolution mode flags cannot be combined together, where the `E_BOOK_OPERATION_FLAG_CONFLICT_KEEP_LOCAL`
+     * is the default behavior (and it is used when no other conflict resolution flag is set).
+     * The flags can be ignored when the operation or the backend don't support it.
+     */
     enum BookOperationFlags {
         /**
          * no operation flags defined
@@ -1151,6 +1017,7 @@ export namespace EBookContacts {
          */
         CONFLICT_WRITE_COPY,
     }
+
     namespace BookIndicesUpdater {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

@@ -23,14 +23,6 @@ export namespace Malcontent {
     /**
      * Different semantics for interpreting an application list.
      */
-
-    /**
-     * Different semantics for interpreting an application list.
-     */
-    export namespace AppFilterListType {
-        export const $gtype: GObject.GType<AppFilterListType>;
-    }
-
     enum AppFilterListType {
         /**
          * Any program in the list is not allowed to
@@ -43,21 +35,16 @@ export namespace Malcontent {
          */
         ALLOWLIST,
     }
-    /**
-     * Rating values of the intensity of a given section in an app or game.
-     * These are directly equivalent to the values in the #AsContentRatingValue
-     * enumeration in libappstream.
-     */
 
-    /**
-     * Rating values of the intensity of a given section in an app or game.
-     * These are directly equivalent to the values in the #AsContentRatingValue
-     * enumeration in libappstream.
-     */
     export namespace AppFilterOarsValue {
         export const $gtype: GObject.GType<AppFilterOarsValue>;
     }
 
+    /**
+     * Rating values of the intensity of a given section in an app or game.
+     * These are directly equivalent to the values in the #AsContentRatingValue
+     * enumeration in libappstream.
+     */
     enum AppFilterOarsValue {
         /**
          * Unknown value for the given
@@ -83,11 +70,12 @@ export namespace Malcontent {
          */
         INTENSE,
     }
+
     /**
      * Errors relating to get/set operations on an #MctManager instance.
      */
     class ManagerError extends GLib.Error {
-        static $gtype: GObject.GType<ManagerError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -123,15 +111,6 @@ export namespace Malcontent {
      * Types of session limit which can be imposed on an account. Additional types
      * may be added in future.
      */
-
-    /**
-     * Types of session limit which can be imposed on an account. Additional types
-     * may be added in future.
-     */
-    export namespace SessionLimitsType {
-        export const $gtype: GObject.GType<SessionLimitsType>;
-    }
-
     enum SessionLimitsType {
         /**
          * No session limits are imposed.
@@ -143,6 +122,7 @@ export namespace Malcontent {
          */
         DAILY_SCHEDULE,
     }
+
     /**
      * Deserialize an app filter previously serialized with
      * mct_app_filter_serialize(). This function guarantees to be able to
@@ -169,19 +149,14 @@ export namespace Malcontent {
      * @returns deserialized session limits
      */
     function session_limits_deserialize(variant: GLib.Variant, user_id: number): SessionLimits;
-    /**
-     * Flags to control the behaviour of getter functions like
-     * mct_manager_get_app_filter() and mct_manager_get_app_filter_async().
-     */
-
-    /**
-     * Flags to control the behaviour of getter functions like
-     * mct_manager_get_app_filter() and mct_manager_get_app_filter_async().
-     */
     export namespace ManagerGetValueFlags {
         export const $gtype: GObject.GType<ManagerGetValueFlags>;
     }
 
+    /**
+     * Flags to control the behaviour of getter functions like
+     * mct_manager_get_app_filter() and mct_manager_get_app_filter_async().
+     */
     enum ManagerGetValueFlags {
         /**
          * No flags set.
@@ -193,19 +168,15 @@ export namespace Malcontent {
          */
         INTERACTIVE,
     }
-    /**
-     * Flags to control the behaviour of setter functions like
-     * mct_manager_set_app_filter() and mct_manager_set_app_filter_async().
-     */
 
-    /**
-     * Flags to control the behaviour of setter functions like
-     * mct_manager_set_app_filter() and mct_manager_set_app_filter_async().
-     */
     export namespace ManagerSetValueFlags {
         export const $gtype: GObject.GType<ManagerSetValueFlags>;
     }
 
+    /**
+     * Flags to control the behaviour of setter functions like
+     * mct_manager_set_app_filter() and mct_manager_set_app_filter_async().
+     */
     enum ManagerSetValueFlags {
         /**
          * No flags set.
@@ -217,6 +188,7 @@ export namespace Malcontent {
          */
         INTERACTIVE,
     }
+
     namespace Manager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

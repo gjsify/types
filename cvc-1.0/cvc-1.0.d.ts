@@ -50,8 +50,8 @@ export namespace Cvc {
         INPUT,
         OUTPUT,
     }
-    const MIXER_UI_DEVICE_INVALID: number;
 
+    const MIXER_UI_DEVICE_INVALID: number;
     export namespace HeadsetPortChoice {
         export const $gtype: GObject.GType<HeadsetPortChoice>;
     }
@@ -62,6 +62,7 @@ export namespace Cvc {
         HEADSET,
         MIC,
     }
+
     namespace ChannelMap {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

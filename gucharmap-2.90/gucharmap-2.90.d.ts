@@ -72,6 +72,7 @@ export namespace Gucharmap {
         '15_1',
         LATEST,
     }
+
     const VERSION_MAJOR: number;
     const VERSION_MICRO: number;
     const VERSION_MINOR: number;

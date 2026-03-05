@@ -25,7 +25,7 @@ export namespace Goa {
      * corresponding D-Bus error names.
      */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 

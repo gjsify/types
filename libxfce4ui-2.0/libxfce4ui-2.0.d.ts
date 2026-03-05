@@ -34,15 +34,6 @@ export namespace Libxfce4ui {
      * List of item types which are supported by the #XfceGtkActionEntry.
      * To be extended if required.
      */
-
-    /**
-     * List of item types which are supported by the #XfceGtkActionEntry.
-     * To be extended if required.
-     */
-    export namespace GtkMenuItem {
-        export const $gtype: GObject.GType<GtkMenuItem>;
-    }
-
     enum GtkMenuItem {
         /**
          * see #GtkMenuItem
@@ -61,17 +52,10 @@ export namespace Libxfce4ui {
          */
         RADIO_MENU_ITEM,
     }
-    /**
-     * Some sample priority values for use with xfce_sm_client_set_priority().
-     */
 
     /**
      * Some sample priority values for use with xfce_sm_client_set_priority().
      */
-    export namespace SMClientPriority {
-        export const $gtype: GObject.GType<SMClientPriority>;
-    }
-
     enum SMClientPriority {
         /**
          * A high priority value.  You probably
@@ -102,19 +86,15 @@ export namespace Libxfce4ui {
          */
         LOWEST,
     }
-    /**
-     * An enumeration describing how the session manager should restart
-     * the application.
-     */
 
-    /**
-     * An enumeration describing how the session manager should restart
-     * the application.
-     */
     export namespace SMClientRestartStyle {
         export const $gtype: GObject.GType<SMClientRestartStyle>;
     }
 
+    /**
+     * An enumeration describing how the session manager should restart
+     * the application.
+     */
     enum SMClientRestartStyle {
         /**
          * Only restart the application if it is
@@ -128,19 +108,15 @@ export namespace Libxfce4ui {
          */
         IMMEDIATELY,
     }
-    /**
-     * Hints to the session manager what kind of shutdown the session manager
-     * should perform.
-     */
 
-    /**
-     * Hints to the session manager what kind of shutdown the session manager
-     * should perform.
-     */
     export namespace SMClientShutdownHint {
         export const $gtype: GObject.GType<SMClientShutdownHint>;
     }
 
+    /**
+     * Hints to the session manager what kind of shutdown the session manager
+     * should perform.
+     */
     enum SMClientShutdownHint {
         /**
          * Prompt the user for a choice,
@@ -159,17 +135,14 @@ export namespace Libxfce4ui {
          */
         REBOOT,
     }
-    /**
-     * Error codes returned by XfceSmCLient functions.
-     */
 
-    /**
-     * Error codes returned by XfceSmCLient functions.
-     */
     export namespace SmCLientErrorEnum {
         export const $gtype: GObject.GType<SmCLientErrorEnum>;
     }
 
+    /**
+     * Error codes returned by XfceSmCLient functions.
+     */
     enum SmCLientErrorEnum {
         /**
          * Failed to connect to the session manager.
@@ -180,6 +153,7 @@ export namespace Libxfce4ui {
          */
         INVALID_CLIENT,
     }
+
     /**
      * This allows you to easily create mixed buttons in a dialog.
      * param1 is used for the stock_id, param2 for the label and

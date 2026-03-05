@@ -33,16 +33,13 @@ export namespace Gepub {
      * Gepub-0.7
      */
 
-    export namespace TextChunkType {
-        export const $gtype: GObject.GType<TextChunkType>;
-    }
-
     enum TextChunkType {
         EPUBTEXTHEADER,
         EPUBTEXTBOLD,
         EPUBTEXTITALIC,
         EPUBTEXTNORMAL,
     }
+
     /**
      * The book author.
      */

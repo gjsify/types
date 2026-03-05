@@ -492,9 +492,9 @@ export namespace LibvirtGConfig {
         SCSI,
         MPATH,
     }
+
     function init(argv?: string[] | null): string[] | null;
     function init_check(argv?: string[] | null): [boolean, string[] | null];
-
     export namespace StorageVolTargetFeatures {
         export const $gtype: GObject.GType<StorageVolTargetFeatures>;
     }
@@ -502,6 +502,7 @@ export namespace LibvirtGConfig {
     enum StorageVolTargetFeatures {
         REFCOUNT,
     }
+
     namespace Capabilities {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {

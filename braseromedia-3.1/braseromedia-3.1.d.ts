@@ -32,19 +32,12 @@ export namespace BraseroMedia {
     /**
      * Error codes returned by libbrasero-media
      */
-
-    /**
-     * Error codes returned by libbrasero-media
-     */
-    export namespace MediaError {
-        export const $gtype: GObject.GType<MediaError>;
-    }
-
     enum MediaError {
         NONE,
         GENERAL,
         IMAGE_INVALID,
     }
+
     const MEDIUM_BDRE: number;
     const MEDIUM_BDR_RANDOM: number;
     const MEDIUM_BDR_SRM: number;
@@ -84,11 +77,6 @@ export namespace BraseroMedia {
     function media_quark(): GLib.Quark;
     function units_get_time_string(time: number, with_unit: boolean, round: boolean): string;
     function units_get_time_string_from_size(size: number, with_unit: boolean, round: boolean): string;
-
-    export namespace DriveCaps {
-        export const $gtype: GObject.GType<DriveCaps>;
-    }
-
     enum DriveCaps {
         NONE,
         CDR,
@@ -104,10 +92,6 @@ export namespace BraseroMedia {
         BDRW,
     }
 
-    export namespace DriveType {
-        export const $gtype: GObject.GType<DriveType>;
-    }
-
     enum DriveType {
         NONE,
         FILE,
@@ -116,19 +100,11 @@ export namespace BraseroMedia {
         ALL_BUT_FILE,
         ALL,
     }
-    /**
-     * This enum allows to define all characteristics for a media (closed, writable, ...)
-     * and identify all types of optical media.
-     */
 
     /**
      * This enum allows to define all characteristics for a media (closed, writable, ...)
      * and identify all types of optical media.
      */
-    export namespace Media {
-        export const $gtype: GObject.GType<Media>;
-    }
-
     enum Media {
         UNSUPPORTED,
         BUSY,
@@ -158,10 +134,6 @@ export namespace BraseroMedia {
         HAS_AUDIO,
     }
 
-    export namespace MediaType {
-        export const $gtype: GObject.GType<MediaType>;
-    }
-
     enum MediaType {
         NONE,
         FILE,
@@ -174,6 +146,7 @@ export namespace BraseroMedia {
         ALL_BUT_FILE,
         ALL,
     }
+
     namespace Drive {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

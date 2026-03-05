@@ -46,6 +46,7 @@ export namespace Caribou {
         ROWS,
         LINEAR,
     }
+
     interface KeyButtonCallback {
         (keybuttoncode: number, pressed: boolean): void;
     }

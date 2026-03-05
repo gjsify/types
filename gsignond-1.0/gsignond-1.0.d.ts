@@ -24,7 +24,7 @@ export namespace GSignond {
      * This enum provides a list of errors that plugins and extensions can use.
      */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -194,19 +194,14 @@ export namespace GSignond {
         constructor(options: { message: string; code: number });
     }
 
-    /**
-     * The plugin provides state updates by emitting #GSignondPlugin::status-changed
-     * signal with this enum and a string describing what happened.
-     */
-
-    /**
-     * The plugin provides state updates by emitting #GSignondPlugin::status-changed
-     * signal with this enum and a string describing what happened.
-     */
     export namespace PluginState {
         export const $gtype: GObject.GType<PluginState>;
     }
 
+    /**
+     * The plugin provides state updates by emitting #GSignondPlugin::status-changed
+     * signal with this enum and a string describing what happened.
+     */
     enum PluginState {
         /**
          * State unknown
@@ -257,17 +252,10 @@ export namespace GSignond {
          */
         HOLDING,
     }
-    /**
-     * This enum defines errors that may happen during user interaction.
-     */
 
     /**
      * This enum defines errors that may happen during user interaction.
      */
-    export namespace SignonuiError {
-        export const $gtype: GObject.GType<SignonuiError>;
-    }
-
     enum SignonuiError {
         /**
          * No errors
@@ -318,17 +306,10 @@ export namespace GSignond {
          */
         FORGOT_PASSWORD,
     }
-    /**
-     * Policy setting to define how plugins should handle interaction with the user.
-     */
 
     /**
      * Policy setting to define how plugins should handle interaction with the user.
      */
-    export namespace UiPolicy {
-        export const $gtype: GObject.GType<UiPolicy>;
-    }
-
     enum UiPolicy {
         /**
          * use a default user interaction scenario
@@ -349,6 +330,7 @@ export namespace GSignond {
          */
         VALIDATION,
     }
+
     /**
      * A prefix for dbus timeout keys. Should be used only when defining new keys.
      */

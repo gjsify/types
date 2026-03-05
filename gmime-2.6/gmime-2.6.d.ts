@@ -23,14 +23,6 @@ export namespace GMime {
     /**
      * The trust value of a certificate.
      */
-
-    /**
-     * The trust value of a certificate.
-     */
-    export namespace CertificateTrust {
-        export const $gtype: GObject.GType<CertificateTrust>;
-    }
-
     enum CertificateTrust {
         /**
          * No trust assigned.
@@ -57,17 +49,10 @@ export namespace GMime {
          */
         ULTIMATE,
     }
-    /**
-     * A cipher algorithm.
-     */
 
     /**
      * A cipher algorithm.
      */
-    export namespace CipherAlgo {
-        export const $gtype: GObject.GType<CipherAlgo>;
-    }
-
     enum CipherAlgo {
         /**
          * The default (or unknown) cipher.
@@ -118,17 +103,10 @@ export namespace GMime {
          */
         CAMELLIA256,
     }
-    /**
-     * A Content-Transfer-Encoding enumeration.
-     */
 
     /**
      * A Content-Transfer-Encoding enumeration.
      */
-    export namespace ContentEncoding {
-        export const $gtype: GObject.GType<ContentEncoding>;
-    }
-
     enum ContentEncoding {
         /**
          * Default transfer encoding.
@@ -159,17 +137,10 @@ export namespace GMime {
          */
         UUENCODE,
     }
-    /**
-     * A hash algorithm.
-     */
 
     /**
      * A hash algorithm.
      */
-    export namespace DigestAlgo {
-        export const $gtype: GObject.GType<DigestAlgo>;
-    }
-
     enum DigestAlgo {
         /**
          * The default hash algorithm.
@@ -220,12 +191,6 @@ export namespace GMime {
          */
         MD4,
     }
-    /**
-     * Used with functions like g_mime_filter_best_encoding() and
-     * g_mime_object_encode() as the 'constraint' argument. These values
-     * provide a means of letting the filter know what the encoding
-     * constraints are for the stream.
-     */
 
     /**
      * Used with functions like g_mime_filter_best_encoding() and
@@ -233,10 +198,6 @@ export namespace GMime {
      * provide a means of letting the filter know what the encoding
      * constraints are for the stream.
      */
-    export namespace EncodingConstraint {
-        export const $gtype: GObject.GType<EncodingConstraint>;
-    }
-
     enum EncodingConstraint {
         /**
          * The stream data must fit within the 7bit ASCII range.
@@ -251,17 +212,10 @@ export namespace GMime {
          */
         BINARY,
     }
-    /**
-     * The mode for a #GMimeFilterFrom filter.
-     */
 
     /**
      * The mode for a #GMimeFilterFrom filter.
      */
-    export namespace FilterFromMode {
-        export const $gtype: GObject.GType<FilterFromMode>;
-    }
-
     enum FilterFromMode {
         /**
          * Default mode.
@@ -276,17 +230,10 @@ export namespace GMime {
          */
         ARMOR,
     }
-    /**
-     * The mode for the #GMimeFilterGZip filter.
-     */
 
     /**
      * The mode for the #GMimeFilterGZip filter.
      */
-    export namespace FilterGZipMode {
-        export const $gtype: GObject.GType<FilterGZipMode>;
-    }
-
     enum FilterGZipMode {
         /**
          * Compress (zip) mode.
@@ -297,17 +244,10 @@ export namespace GMime {
          */
         UNZIP,
     }
-    /**
-     * A public-key algorithm.
-     */
 
     /**
      * A public-key algorithm.
      */
-    export namespace PubKeyAlgo {
-        export const $gtype: GObject.GType<PubKeyAlgo>;
-    }
-
     enum PubKeyAlgo {
         /**
          * The default public-key algorithm.
@@ -338,17 +278,10 @@ export namespace GMime {
          */
         ELG,
     }
-    /**
-     * A message recipient type.
-     */
 
     /**
      * A message recipient type.
      */
-    export namespace RecipientType {
-        export const $gtype: GObject.GType<RecipientType>;
-    }
-
     enum RecipientType {
         /**
          * Represents the recipients in the To: header.
@@ -363,17 +296,10 @@ export namespace GMime {
          */
         BCC,
     }
-    /**
-     * Relative seek position.
-     */
 
     /**
      * Relative seek position.
      */
-    export namespace SeekWhence {
-        export const $gtype: GObject.GType<SeekWhence>;
-    }
-
     enum SeekWhence {
         /**
          * Seek relative to the beginning of the stream.
@@ -388,19 +314,11 @@ export namespace GMime {
          */
         END,
     }
-    /**
-     * A value representing the signature status for a particular
-     * #GMimeSignature.
-     */
 
     /**
      * A value representing the signature status for a particular
      * #GMimeSignature.
      */
-    export namespace SignatureStatus {
-        export const $gtype: GObject.GType<SignatureStatus>;
-    }
-
     enum SignatureStatus {
         /**
          * Good signature.
@@ -415,17 +333,10 @@ export namespace GMime {
          */
         BAD,
     }
-    /**
-     * The buffering mode for a #GMimeStreamBuffer stream.
-     */
 
     /**
      * The buffering mode for a #GMimeStreamBuffer stream.
      */
-    export namespace StreamBufferMode {
-        export const $gtype: GObject.GType<StreamBufferMode>;
-    }
-
     enum StreamBufferMode {
         /**
          * Cache all reads.
@@ -440,6 +351,7 @@ export namespace GMime {
          */
         BLOCK_WRITE,
     }
+
     /**
      * GMime's binary age.
      */
@@ -1123,16 +1035,6 @@ export namespace GMime {
      * educated guesses as to what the best charset and/or encodings to
      * use for the content passed through the filter.
      */
-
-    /**
-     * Bit flags to enable charset and/or encoding scanning to make
-     * educated guesses as to what the best charset and/or encodings to
-     * use for the content passed through the filter.
-     */
-    export namespace FilterBestFlags {
-        export const $gtype: GObject.GType<FilterBestFlags>;
-    }
-
     enum FilterBestFlags {
         /**
          * Enable best-charset detection.
@@ -1143,17 +1045,10 @@ export namespace GMime {
          */
         ENCODING,
     }
-    /**
-     * Possible errors that a #GMimeSignature could have.
-     */
 
     /**
      * Possible errors that a #GMimeSignature could have.
      */
-    export namespace SignatureError {
-        export const $gtype: GObject.GType<SignatureError>;
-    }
-
     enum SignatureError {
         /**
          * No error.
@@ -1180,6 +1075,7 @@ export namespace GMime {
          */
         UNSUPP_ALGO,
     }
+
     namespace Certificate {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

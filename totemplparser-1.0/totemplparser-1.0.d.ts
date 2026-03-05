@@ -25,7 +25,7 @@ export namespace TotemPlParser {
      * errors occurring during file operations in a #TotemPlParser.
      */
     class ParserError extends GLib.Error {
-        static $gtype: GObject.GType<ParserError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -51,17 +51,13 @@ export namespace TotemPlParser {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Gives the result of parsing a playlist.
-     */
-
-    /**
-     * Gives the result of parsing a playlist.
-     */
     export namespace ParserResult {
         export const $gtype: GObject.GType<ParserResult>;
     }
 
+    /**
+     * Gives the result of parsing a playlist.
+     */
     enum ParserResult {
         /**
          * The playlist could not be handled.
@@ -85,17 +81,14 @@ export namespace TotemPlParser {
          */
         CANCELLED,
     }
-    /**
-     * The type of playlist a #TotemPlParser will parse.
-     */
 
-    /**
-     * The type of playlist a #TotemPlParser will parse.
-     */
     export namespace ParserType {
         export const $gtype: GObject.GType<ParserType>;
     }
 
+    /**
+     * The type of playlist a #TotemPlParser will parse.
+     */
     enum ParserType {
         /**
          * PLS parser
@@ -118,6 +111,7 @@ export namespace TotemPlParser {
          */
         IRIVER_PLA,
     }
+
     const PARSER_CONTENT_RATING_CLEAN: string;
     const PARSER_CONTENT_RATING_EXPLICIT: string;
     const PARSER_CONTENT_RATING_UNRATED: string;

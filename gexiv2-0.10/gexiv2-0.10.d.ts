@@ -20,17 +20,13 @@ export namespace GExiv2 {
      * GExiv2-0.10
      */
 
-    /**
-     * Options to control the byte order of binary EXIF data exports
-     */
-
-    /**
-     * Options to control the byte order of binary EXIF data exports
-     */
     export namespace ByteOrder {
         export const $gtype: GObject.GType<ByteOrder>;
     }
 
+    /**
+     * Options to control the byte order of binary EXIF data exports
+     */
     enum ByteOrder {
         /**
          * Use little-endian byte order
@@ -41,17 +37,14 @@ export namespace GExiv2 {
          */
         BIG,
     }
-    /**
-     * GExiv2 log levels
-     */
 
-    /**
-     * GExiv2 log levels
-     */
     export namespace LogLevel {
         export const $gtype: GObject.GType<LogLevel>;
     }
 
+    /**
+     * GExiv2 log levels
+     */
     enum LogLevel {
         /**
          * Log level for debugging
@@ -74,27 +67,19 @@ export namespace GExiv2 {
          */
         MUTE,
     }
-    /**
-     * The orientation of an image is defined as the location of it's x,y origin.  More than rotation,
-     * orientation allows for every variation of rotation, flips, and mirroring to be described in
-     * 3 bits of data.
-     *
-     * A handy primer to orientation can be found at
-     * <ulink url="http://jpegclub.org/exif_orientation.html"></ulink>
-     */
 
-    /**
-     * The orientation of an image is defined as the location of it's x,y origin.  More than rotation,
-     * orientation allows for every variation of rotation, flips, and mirroring to be described in
-     * 3 bits of data.
-     *
-     * A handy primer to orientation can be found at
-     * <ulink url="http://jpegclub.org/exif_orientation.html"></ulink>
-     */
     export namespace Orientation {
         export const $gtype: GObject.GType<Orientation>;
     }
 
+    /**
+     * The orientation of an image is defined as the location of it's x,y origin.  More than rotation,
+     * orientation allows for every variation of rotation, flips, and mirroring to be described in
+     * 3 bits of data.
+     *
+     * A handy primer to orientation can be found at
+     * <ulink url="http://jpegclub.org/exif_orientation.html"></ulink>
+     */
     enum Orientation {
         /**
          * The orientation of the image is unknown
@@ -133,17 +118,14 @@ export namespace GExiv2 {
          */
         ROT_270,
     }
-    /**
-     * Used in gexiv2_metadata_set_xmp_tag_struct() to determine the array type
-     */
 
-    /**
-     * Used in gexiv2_metadata_set_xmp_tag_struct() to determine the array type
-     */
     export namespace StructureType {
         export const $gtype: GObject.GType<StructureType>;
     }
 
+    /**
+     * Used in gexiv2_metadata_set_xmp_tag_struct() to determine the array type
+     */
     enum StructureType {
         /**
          * Structure is not an array
@@ -166,6 +148,7 @@ export namespace GExiv2 {
          */
         LANG,
     }
+
     const MAJOR_VERSION: number;
     const MICRO_VERSION: number;
     const MINOR_VERSION: number;
@@ -196,19 +179,14 @@ export namespace GExiv2 {
     interface LogHandler {
         (level: LogLevel, msg: string): void;
     }
-    /**
-     * Options to control the format of the serialized XMP packet
-     * Taken from: exiv2/src/xmp.hpp
-     */
-
-    /**
-     * Options to control the format of the serialized XMP packet
-     * Taken from: exiv2/src/xmp.hpp
-     */
     export namespace XmpFormatFlags {
         export const $gtype: GObject.GType<XmpFormatFlags>;
     }
 
+    /**
+     * Options to control the format of the serialized XMP packet
+     * Taken from: exiv2/src/xmp.hpp
+     */
     enum XmpFormatFlags {
         /**
          * Omit the XML packet wrapper.
@@ -239,6 +217,7 @@ export namespace GExiv2 {
          */
         OMIT_ALL_FORMATTING,
     }
+
     namespace Metadata {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

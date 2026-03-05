@@ -20,17 +20,13 @@ export namespace Lfb {
      * Lfb-0.0
      */
 
-    /**
-     * Enum values used to indicate why the feedbacks for an event ended.
-     */
-
-    /**
-     * Enum values used to indicate why the feedbacks for an event ended.
-     */
     export namespace EventEndReason {
         export const $gtype: GObject.GType<EventEndReason>;
     }
 
+    /**
+     * Enum values used to indicate why the feedbacks for an event ended.
+     */
     enum EventEndReason {
         /**
          * There was no feedback in the current theme for this event
@@ -50,19 +46,15 @@ export namespace Lfb {
          */
         EXPLICIT,
     }
-    /**
-     * Enum values to indicate the current state of the feedbacks
-     * triggered by an event.
-     */
 
-    /**
-     * Enum values to indicate the current state of the feedbacks
-     * triggered by an event.
-     */
     export namespace EventState {
         export const $gtype: GObject.GType<EventState>;
     }
 
+    /**
+     * Enum values to indicate the current state of the feedbacks
+     * triggered by an event.
+     */
     enum EventState {
         /**
          * An error occurred triggering feedbacks
@@ -81,6 +73,7 @@ export namespace Lfb {
          */
         ENDED,
     }
+
     /**
      * Gets a machine-readable description of the <link linkend="gdbus-interface-org-sigxcpu-Feedback.top_of_page">org.sigxcpu.Feedback</link> D-Bus interface.
      * @returns A #GDBusInterfaceInfo. Do not free.

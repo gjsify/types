@@ -160,6 +160,7 @@ export namespace Unity {
         PLAYING,
         PAUSED,
     }
+
     /**
      * <para>Asynchronously read a stream into memory. This method will close the input stream when done.</para>
      * @param input

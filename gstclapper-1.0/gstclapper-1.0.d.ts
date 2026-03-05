@@ -48,8 +48,9 @@ export namespace GstClapper {
          */
         CONTRAST,
     }
+
     class ClapperError extends GLib.Error {
-        static $gtype: GObject.GType<ClapperError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -89,10 +90,6 @@ export namespace GstClapper {
          * fast seek method (next keyframe).
          */
         FAST,
-    }
-
-    export namespace ClapperSnapshotFormat {
-        export const $gtype: GObject.GType<ClapperSnapshotFormat>;
     }
 
     enum ClapperSnapshotFormat {
@@ -140,6 +137,7 @@ export namespace GstClapper {
          */
         PLAYING,
     }
+
     /**
      * Gets a string representing the given color balance type.
      * @param type a #GstClapperColorBalanceType

@@ -73,18 +73,11 @@ export namespace GstBase {
     /**
      * The #GstElement flags that a basesrc element may have.
      */
-
-    /**
-     * The #GstElement flags that a basesrc element may have.
-     */
-    export namespace SrcFlags {
-        export const $gtype: GObject.GType<SrcFlags>;
-    }
-
     enum SrcFlags {
         STARTED,
         FLAG_LAST,
     }
+
     namespace GstAdapter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

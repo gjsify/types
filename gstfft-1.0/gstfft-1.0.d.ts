@@ -23,14 +23,6 @@ export namespace GstFft {
     /**
      * The various window functions available.
      */
-
-    /**
-     * The various window functions available.
-     */
-    export namespace FFTWindow {
-        export const $gtype: GObject.GType<FFTWindow>;
-    }
-
     enum FFTWindow {
         /**
          * Rectangular window
@@ -53,6 +45,7 @@ export namespace GstFft {
          */
         BLACKMAN,
     }
+
     /**
      * Returns the next number to `n` that is entirely a product
      * of 2, 3 and 5. Using this as the `len` parameter for

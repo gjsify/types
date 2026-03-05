@@ -20,19 +20,14 @@ export namespace Guestfs {
      * Guestfs-1.0
      */
 
-    /**
-     * For more detail on libguestfs events, see "SETTING CALLBACKS TO HANDLE
-     * EVENTS" in guestfs(3).
-     */
-
-    /**
-     * For more detail on libguestfs events, see "SETTING CALLBACKS TO HANDLE
-     * EVENTS" in guestfs(3).
-     */
     export namespace SessionEvent {
         export const $gtype: GObject.GType<SessionEvent>;
     }
 
+    /**
+     * For more detail on libguestfs events, see "SETTING CALLBACKS TO HANDLE
+     * EVENTS" in guestfs(3).
+     */
     enum SessionEvent {
         /**
          * The close event
@@ -75,23 +70,17 @@ export namespace Guestfs {
          */
         WARNING,
     }
-    /**
-     * An object representing a tristate: i.e. true, false, or unset. If a language
-     * binding has a native concept of true and false which also correspond to the
-     * integer values 1 and 0 respectively, these will also correspond to
-     * GUESTFS_TRISTATE_TRUE and GUESTFS_TRISTATE_FALSE.
-     */
 
-    /**
-     * An object representing a tristate: i.e. true, false, or unset. If a language
-     * binding has a native concept of true and false which also correspond to the
-     * integer values 1 and 0 respectively, these will also correspond to
-     * GUESTFS_TRISTATE_TRUE and GUESTFS_TRISTATE_FALSE.
-     */
     export namespace Tristate {
         export const $gtype: GObject.GType<Tristate>;
     }
 
+    /**
+     * An object representing a tristate: i.e. true, false, or unset. If a language
+     * binding has a native concept of true and false which also correspond to the
+     * integer values 1 and 0 respectively, these will also correspond to
+     * GUESTFS_TRISTATE_TRUE and GUESTFS_TRISTATE_FALSE.
+     */
     enum Tristate {
         /**
          * False
@@ -106,6 +95,7 @@ export namespace Guestfs {
          */
         NONE,
     }
+
     namespace AddDomain {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

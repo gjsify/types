@@ -38,20 +38,13 @@ export namespace GtkClutter {
     /**
      * Error enumeration for #GtkClutterTexture
      */
-
-    /**
-     * Error enumeration for #GtkClutterTexture
-     */
-    export namespace TextureError {
-        export const $gtype: GObject.GType<TextureError>;
-    }
-
     enum TextureError {
         /**
          * Invalid stock id
          */
         TEXTURE_ERROR_INVALID_STOCK_ID,
     }
+
     /**
      * This function should be called instead of clutter_init() and
      * gtk_init().

@@ -19,18 +19,10 @@ export namespace Mtk {
      * Mtk-14
      */
 
-    export namespace RegionOverlap {
-        export const $gtype: GObject.GType<RegionOverlap>;
-    }
-
     enum RegionOverlap {
         OUT,
         IN,
         PART,
-    }
-
-    export namespace RoundingStrategy {
-        export const $gtype: GObject.GType<RoundingStrategy>;
     }
 
     enum RoundingStrategy {
@@ -38,6 +30,7 @@ export namespace Mtk {
         GROW,
         ROUND,
     }
+
     const RECTANGLE_MAX_STACK_RECTS: number;
     const REGION_BUILDER_MAX_LEVELS: number;
     function rectangle_from_graphene_rect(rect: Graphene.Rect, rounding_strategy: RoundingStrategy | null): Rectangle;

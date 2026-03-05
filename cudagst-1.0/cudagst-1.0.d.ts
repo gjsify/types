@@ -17,16 +17,8 @@ export namespace CudaGst {
      * CudaGst-1.0
      */
 
-    export namespace GLDeviceList {
-        export const $gtype: GObject.GType<GLDeviceList>;
-    }
-
     enum GLDeviceList {
         GL_DEVICE_LIST_ALL,
-    }
-
-    export namespace address_mode {
-        export const $gtype: GObject.GType<address_mode>;
     }
 
     enum address_mode {
@@ -36,17 +28,9 @@ export namespace CudaGst {
         BORDER,
     }
 
-    export namespace array_format {
-        export const $gtype: GObject.GType<array_format>;
-    }
-
     enum array_format {
         INT8,
         INT16,
-    }
-
-    export namespace device_attribute {
-        export const $gtype: GObject.GType<device_attribute>;
     }
 
     enum device_attribute {
@@ -60,10 +44,6 @@ export namespace CudaGst {
         HANDLE_TYPE_WIN32_KMT_HANDLE_SUPPORTED,
     }
 
-    export namespace event_flags {
-        export const $gtype: GObject.GType<event_flags>;
-    }
-
     enum event_flags {
         DEFAULT,
         BLOCKING_SYNC,
@@ -71,27 +51,15 @@ export namespace CudaGst {
         INTERPROCESS,
     }
 
-    export namespace filter_mode {
-        export const $gtype: GObject.GType<filter_mode>;
-    }
-
     enum filter_mode {
         POINT,
         LINEAR,
-    }
-
-    export namespace graphicsMapResourceFlags {
-        export const $gtype: GObject.GType<graphicsMapResourceFlags>;
     }
 
     enum graphicsMapResourceFlags {
         NONE,
         READ_ONLY,
         WRITE_DISCARD,
-    }
-
-    export namespace graphicsRegisterFlags {
-        export const $gtype: GObject.GType<graphicsRegisterFlags>;
     }
 
     enum graphicsRegisterFlags {
@@ -102,16 +70,8 @@ export namespace CudaGst {
         TEXTURE_GATHER,
     }
 
-    export namespace ipcMem_flags {
-        export const $gtype: GObject.GType<ipcMem_flags>;
-    }
-
     enum ipcMem_flags {
         IPC_MEM_LAZY_ENABLE_PEER_ACCESS,
-    }
-
-    export namespace memAccess_flags {
-        export const $gtype: GObject.GType<memAccess_flags>;
     }
 
     enum memAccess_flags {
@@ -121,17 +81,9 @@ export namespace CudaGst {
         MAX,
     }
 
-    export namespace memAllocationGranularity_flags {
-        export const $gtype: GObject.GType<memAllocationGranularity_flags>;
-    }
-
     enum memAllocationGranularity_flags {
         MINIMUM,
         RECOMMENDED,
-    }
-
-    export namespace memAllocationHandleType {
-        export const $gtype: GObject.GType<memAllocationHandleType>;
     }
 
     enum memAllocationHandleType {
@@ -142,28 +94,16 @@ export namespace CudaGst {
         MAX,
     }
 
-    export namespace memAllocationType {
-        export const $gtype: GObject.GType<memAllocationType>;
-    }
-
     enum memAllocationType {
         INVALID,
         PINNED,
         MAX,
     }
 
-    export namespace memLocationType {
-        export const $gtype: GObject.GType<memLocationType>;
-    }
-
     enum memLocationType {
         INVALID,
         DEVICE,
         MAX,
-    }
-
-    export namespace memorytype {
-        export const $gtype: GObject.GType<memorytype>;
     }
 
     enum memorytype {
@@ -173,16 +113,8 @@ export namespace CudaGst {
         UNIFIED,
     }
 
-    export namespace resourceViewFormat {
-        export const $gtype: GObject.GType<resourceViewFormat>;
-    }
-
     enum resourceViewFormat {
         RES_VIEW_FORMAT_NONE,
-    }
-
-    export namespace resourcetype {
-        export const $gtype: GObject.GType<resourcetype>;
     }
 
     enum resourcetype {
@@ -192,10 +124,6 @@ export namespace CudaGst {
         PITCH2D,
     }
 
-    export namespace result {
-        export const $gtype: GObject.GType<result>;
-    }
-
     enum result {
         SUCCESS,
         ERROR_NO_DEVICE,
@@ -203,14 +131,11 @@ export namespace CudaGst {
         ERROR_NOT_SUPPORTED,
     }
 
-    export namespace stream_flags {
-        export const $gtype: GObject.GType<stream_flags>;
-    }
-
     enum stream_flags {
         DEFAULT,
         NON_BLOCKING,
     }
+
     const IPC_HANDLE_SIZE: number;
     const TRSF_READ_AS_INTEGER: number;
     const VERSION: number;

@@ -22,16 +22,13 @@ export namespace GnomeDesktop {
      * GnomeDesktop-4.0
      */
 
-    export namespace DesktopThumbnailSize {
-        export const $gtype: GObject.GType<DesktopThumbnailSize>;
-    }
-
     enum DesktopThumbnailSize {
         NORMAL,
         LARGE,
         XLARGE,
         XXLARGE,
     }
+
     const DESKTOP_PLATFORM_VERSION: number;
     /**
      * Returns whether the thumbnail has the correct uri and mtime embedded in the

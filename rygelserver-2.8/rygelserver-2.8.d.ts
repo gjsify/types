@@ -55,8 +55,9 @@ export namespace RygelServer {
         DIDL_S,
         M3UEXT,
     }
+
     class WritableContainerError extends GLib.Error {
-        static $gtype: GObject.GType<WritableContainerError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -68,7 +69,7 @@ export namespace RygelServer {
     }
 
     class MediaEngineError extends GLib.Error {
-        static $gtype: GObject.GType<MediaEngineError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -80,7 +81,7 @@ export namespace RygelServer {
     }
 
     class HTTPSeekRequestError extends GLib.Error {
-        static $gtype: GObject.GType<HTTPSeekRequestError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -94,7 +95,7 @@ export namespace RygelServer {
     }
 
     class DataSourceError extends GLib.Error {
-        static $gtype: GObject.GType<DataSourceError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -108,7 +109,7 @@ export namespace RygelServer {
     }
 
     class HTTPRequestError extends GLib.Error {
-        static $gtype: GObject.GType<HTTPRequestError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -123,7 +124,7 @@ export namespace RygelServer {
     }
 
     class PlaySpeedError extends GLib.Error {
-        static $gtype: GObject.GType<PlaySpeedError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 

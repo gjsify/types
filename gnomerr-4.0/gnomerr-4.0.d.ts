@@ -29,10 +29,6 @@ export namespace GnomeRR {
      * GnomeRR-4.0
      */
 
-    export namespace DpmsMode {
-        export const $gtype: GObject.GType<DpmsMode>;
-    }
-
     enum DpmsMode {
         ON,
         STANDBY,
@@ -52,8 +48,9 @@ export namespace GnomeRR {
         OFF,
         UNKNOWN,
     }
+
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -76,11 +73,6 @@ export namespace GnomeRR {
      * @returns the GnomeRR error domain
      */
     function error_quark(): GLib.Quark;
-
-    export namespace Rotation {
-        export const $gtype: GObject.GType<Rotation>;
-    }
-
     enum Rotation {
         ROTATION_NEXT,
         ROTATION_0,
@@ -90,6 +82,7 @@ export namespace GnomeRR {
         REFLECT_X,
         REFLECT_Y,
     }
+
     namespace Config {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

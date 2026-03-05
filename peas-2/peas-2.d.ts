@@ -24,15 +24,6 @@ export namespace Peas {
      * These identify the various errors that can occur while
      * loading a plugin.
      */
-
-    /**
-     * These identify the various errors that can occur while
-     * loading a plugin.
-     */
-    export namespace PluginInfoError {
-        export const $gtype: GObject.GType<PluginInfoError>;
-    }
-
     enum PluginInfoError {
         /**
          * The plugin failed to load.
@@ -51,6 +42,7 @@ export namespace Peas {
          */
         DEP_LOADING_FAILED,
     }
+
     interface ExtensionSetForeachFunc<A = GObject.Object> {
         (set: ExtensionSet, info: PluginInfo, extension: A, data?: any | null): void;
     }

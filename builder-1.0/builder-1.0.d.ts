@@ -36,29 +36,23 @@ export namespace Builder {
      * Builder-1.0
      */
 
-    /**
-     * %GB_VIEW_GRID_SPLIT_LEFT:
-     * %GB_VIEW_GRID_SPLIT_RIGHT:
-     * %GB_VIEW_GRID_SPLIT_MOVE_LEFT:
-     * %GB_VIEW_GRID_SPLIT_MOVE_RIGHT:
-     */
-
-    /**
-     * %GB_VIEW_GRID_SPLIT_LEFT:
-     * %GB_VIEW_GRID_SPLIT_RIGHT:
-     * %GB_VIEW_GRID_SPLIT_MOVE_LEFT:
-     * %GB_VIEW_GRID_SPLIT_MOVE_RIGHT:
-     */
     export namespace ViewGridSplit {
         export const $gtype: GObject.GType<ViewGridSplit>;
     }
 
+    /**
+     * %GB_VIEW_GRID_SPLIT_LEFT:
+     * %GB_VIEW_GRID_SPLIT_RIGHT:
+     * %GB_VIEW_GRID_SPLIT_MOVE_LEFT:
+     * %GB_VIEW_GRID_SPLIT_MOVE_RIGHT:
+     */
     enum ViewGridSplit {
         LEFT,
         RIGHT,
         MOVE_LEFT,
         MOVE_RIGHT,
     }
+
     interface TreeFilterFunc {
         (tree: Tree, node: TreeNode): boolean;
     }

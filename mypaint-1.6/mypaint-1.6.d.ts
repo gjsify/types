@@ -18,10 +18,6 @@ export namespace MyPaint {
      * MyPaint-1.6
      */
 
-    export namespace BrushInput {
-        export const $gtype: GObject.GType<BrushInput>;
-    }
-
     enum BrushInput {
         INPUT_PRESSURE,
         INPUT_SPEED1,
@@ -42,10 +38,6 @@ export namespace MyPaint {
         INPUT_BARREL_ROTATION,
         INPUT_BRUSH_RADIUS,
         INPUTS_COUNT,
-    }
-
-    export namespace BrushSetting {
-        export const $gtype: GObject.GType<BrushSetting>;
     }
 
     enum BrushSetting {
@@ -116,10 +108,6 @@ export namespace MyPaint {
         SETTINGS_COUNT,
     }
 
-    export namespace BrushState {
-        export const $gtype: GObject.GType<BrushState>;
-    }
-
     enum BrushState {
         STATE_X,
         STATE_Y,
@@ -167,6 +155,7 @@ export namespace MyPaint {
         STATE_BARREL_ROTATION,
         STATES_COUNT,
     }
+
     function brush_input_from_cname(cname: string): BrushInput;
     function brush_input_info(id: BrushInput | null): BrushInputInfo;
     function brush_setting_from_cname(cname: string): BrushSetting;

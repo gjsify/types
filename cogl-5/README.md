@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/cogl-5)
 
 
-GJS TypeScript type definitions for Cogl-5, generated from library version 5.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.39.
+GJS TypeScript type definitions for Cogl-5, generated from library version 5.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.40.
 
 ## Install
 

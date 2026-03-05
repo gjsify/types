@@ -24,7 +24,7 @@ export namespace Fwupd {
      * The error code.
      */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -105,14 +105,6 @@ export namespace Fwupd {
     /**
      * The update state.
      */
-
-    /**
-     * The update state.
-     */
-    export namespace KeyringKind {
-        export const $gtype: GObject.GType<KeyringKind>;
-    }
-
     enum KeyringKind {
         /**
          * Unknown
@@ -135,17 +127,10 @@ export namespace Fwupd {
          */
         JCAT,
     }
-    /**
-     * The release urgency.
-     */
 
     /**
      * The release urgency.
      */
-    export namespace ReleaseUrgency {
-        export const $gtype: GObject.GType<ReleaseUrgency>;
-    }
-
     enum ReleaseUrgency {
         /**
          * Unknown
@@ -168,17 +153,10 @@ export namespace Fwupd {
          */
         CRITICAL,
     }
-    /**
-     * The kind of remote.
-     */
 
     /**
      * The kind of remote.
      */
-    export namespace RemoteKind {
-        export const $gtype: GObject.GType<RemoteKind>;
-    }
-
     enum RemoteKind {
         /**
          * Unknown kind
@@ -197,17 +175,10 @@ export namespace Fwupd {
          */
         DIRECTORY,
     }
-    /**
-     * The HSI level.
-     */
 
     /**
      * The HSI level.
      */
-    export namespace SecurityAttrLevel {
-        export const $gtype: GObject.GType<SecurityAttrLevel>;
-    }
-
     enum SecurityAttrLevel {
         /**
          * Very few detected firmware protections
@@ -234,17 +205,10 @@ export namespace Fwupd {
          */
         SYSTEM_ATTESTATION,
     }
-    /**
-     * The HSI result.
-     */
 
     /**
      * The HSI result.
      */
-    export namespace SecurityAttrResult {
-        export const $gtype: GObject.GType<SecurityAttrResult>;
-    }
-
     enum SecurityAttrResult {
         /**
          * Not known
@@ -307,17 +271,10 @@ export namespace Fwupd {
          */
         NOT_SUPPORTED,
     }
-    /**
-     * The flags to show daemon status.
-     */
 
     /**
      * The flags to show daemon status.
      */
-    export namespace Status {
-        export const $gtype: GObject.GType<Status>;
-    }
-
     enum Status {
         /**
          * Unknown state
@@ -376,17 +333,10 @@ export namespace Fwupd {
          */
         SHUTDOWN,
     }
-    /**
-     * The update state.
-     */
 
     /**
      * The update state.
      */
-    export namespace UpdateState {
-        export const $gtype: GObject.GType<UpdateState>;
-    }
-
     enum UpdateState {
         /**
          * Unknown
@@ -413,12 +363,6 @@ export namespace Fwupd {
          */
         FAILED_TRANSIENT,
     }
-    /**
-     * The flags used when parsing version numbers.
-     *
-     * If no verification is required then %FWUPD_VERSION_FORMAT_PLAIN should
-     * be used to signify an unparsable text string.
-     */
 
     /**
      * The flags used when parsing version numbers.
@@ -426,10 +370,6 @@ export namespace Fwupd {
      * If no verification is required then %FWUPD_VERSION_FORMAT_PLAIN should
      * be used to signify an unparsable text string.
      */
-    export namespace VersionFormat {
-        export const $gtype: GObject.GType<VersionFormat>;
-    }
-
     enum VersionFormat {
         /**
          * Unknown version format
@@ -484,6 +424,7 @@ export namespace Fwupd {
          */
         HEX,
     }
+
     const DBUS_INTERFACE: string;
     const DBUS_PATH: string;
     const DBUS_SERVICE: string;
@@ -836,14 +777,6 @@ export namespace Fwupd {
     /**
      * The options to use for downloading.
      */
-
-    /**
-     * The options to use for downloading.
-     */
-    export namespace ClientDownloadFlags {
-        export const $gtype: GObject.GType<ClientDownloadFlags>;
-    }
-
     enum ClientDownloadFlags {
         /**
          * No flags set
@@ -854,17 +787,10 @@ export namespace Fwupd {
          */
         ONLY_IPFS,
     }
-    /**
-     * The options to use for uploading.
-     */
 
     /**
      * The options to use for uploading.
      */
-    export namespace ClientUploadFlags {
-        export const $gtype: GObject.GType<ClientUploadFlags>;
-    }
-
     enum ClientUploadFlags {
         /**
          * No flags set
@@ -875,17 +801,10 @@ export namespace Fwupd {
          */
         ALWAYS_MULTIPART,
     }
-    /**
-     * The flags to the feature capabilities of the front-end client.
-     */
 
     /**
      * The flags to the feature capabilities of the front-end client.
      */
-    export namespace FeatureFlags {
-        export const $gtype: GObject.GType<FeatureFlags>;
-    }
-
     enum FeatureFlags {
         /**
          * No trust
@@ -908,17 +827,10 @@ export namespace Fwupd {
          */
         SWITCH_BRANCH,
     }
-    /**
-     * The flags to show how the data should be converted.
-     */
 
     /**
      * The flags to show how the data should be converted.
      */
-    export namespace GuidFlags {
-        export const $gtype: GObject.GType<GuidFlags>;
-    }
-
     enum GuidFlags {
         /**
          * No trust
@@ -933,17 +845,10 @@ export namespace Fwupd {
          */
         MIXED_ENDIAN,
     }
-    /**
-     * Flags to set when performing the firmware update or install.
-     */
 
     /**
      * Flags to set when performing the firmware update or install.
      */
-    export namespace InstallFlags {
-        export const $gtype: GObject.GType<InstallFlags>;
-    }
-
     enum InstallFlags {
         /**
          * No flags set
@@ -990,17 +895,10 @@ export namespace Fwupd {
          */
         NO_SEARCH,
     }
-    /**
-     * The flags available for HSI attributes.
-     */
 
     /**
      * The flags available for HSI attributes.
      */
-    export namespace SecurityAttrFlags {
-        export const $gtype: GObject.GType<SecurityAttrFlags>;
-    }
-
     enum SecurityAttrFlags {
         /**
          * No flags set
@@ -1027,17 +925,10 @@ export namespace Fwupd {
          */
         RUNTIME_ISSUE,
     }
-    /**
-     * Flags to set when performing the firmware update or install.
-     */
 
     /**
      * Flags to set when performing the firmware update or install.
      */
-    export namespace SelfSignFlags {
-        export const $gtype: GObject.GType<SelfSignFlags>;
-    }
-
     enum SelfSignFlags {
         /**
          * No flags set
@@ -1052,17 +943,10 @@ export namespace Fwupd {
          */
         ADD_CERT,
     }
-    /**
-     * The flags to show the level of trust.
-     */
 
     /**
      * The flags to show the level of trust.
      */
-    export namespace TrustFlags {
-        export const $gtype: GObject.GType<TrustFlags>;
-    }
-
     enum TrustFlags {
         /**
          * No trust
@@ -1077,6 +961,7 @@ export namespace Fwupd {
          */
         METADATA,
     }
+
     namespace Client {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

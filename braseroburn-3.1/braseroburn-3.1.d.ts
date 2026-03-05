@@ -29,10 +29,6 @@ export namespace BraseroBurn {
      * BraseroBurn-3.1
      */
 
-    export namespace BurnAction {
-        export const $gtype: GObject.GType<BurnAction>;
-    }
-
     enum BurnAction {
         NONE,
         GETTING_SIZE,
@@ -53,10 +49,6 @@ export namespace BraseroBurn {
         FINISHED,
         EJECTING,
         LAST,
-    }
-
-    export namespace BurnError {
-        export const $gtype: GObject.GType<BurnError>;
     }
 
     enum BurnError {
@@ -95,10 +87,6 @@ export namespace BraseroBurn {
         ERROR_ENCRYPTION_KEY,
     }
 
-    export namespace BurnResult {
-        export const $gtype: GObject.GType<BurnResult>;
-    }
-
     enum BurnResult {
         OK,
         ERR,
@@ -112,10 +100,6 @@ export namespace BraseroBurn {
         NOT_SUPPORTED,
     }
 
-    export namespace PluginErrorType {
-        export const $gtype: GObject.GType<PluginErrorType>;
-    }
-
     enum PluginErrorType {
         NONE,
         MODULE,
@@ -125,10 +109,6 @@ export namespace BraseroBurn {
         MISSING_LIBRARY,
         LIBRARY_VERSION,
         MISSING_GSTREAMER_PLUGIN,
-    }
-
-    export namespace SessionError {
-        export const $gtype: GObject.GType<SessionError>;
     }
 
     enum SessionError {
@@ -146,19 +126,11 @@ export namespace BraseroBurn {
         DISC_PROTECTED,
     }
 
-    export namespace StatusType {
-        export const $gtype: GObject.GType<StatusType>;
-    }
-
     enum StatusType {
         OK,
         ERROR,
         QUESTION,
         INFORMATION,
-    }
-
-    export namespace TrackDataCfgColumn {
-        export const $gtype: GObject.GType<TrackDataCfgColumn>;
     }
 
     enum TrackDataCfgColumn {
@@ -177,6 +149,7 @@ export namespace BraseroBurn {
         IS_IMPORTED,
         COL_NUM,
     }
+
     const COVER_URI: string;
     const DATA_TRACK_SIZE_TAG: string;
     const DND_TARGET_DATA_TRACK_REFERENCE_LIST: string;
@@ -205,11 +178,6 @@ export namespace BraseroBurn {
     interface ForeachPluginErrorCb {
         (type: PluginErrorType, detail: string): BurnResult;
     }
-
-    export namespace BurnFlag {
-        export const $gtype: GObject.GType<BurnFlag>;
-    }
-
     enum BurnFlag {
         NONE,
         CHECK_SIZE,
@@ -229,10 +197,6 @@ export namespace BraseroBurn {
         LAST,
     }
 
-    export namespace ChecksumType {
-        export const $gtype: GObject.GType<ChecksumType>;
-    }
-
     enum ChecksumType {
         NONE,
         DETECT,
@@ -242,10 +206,6 @@ export namespace BraseroBurn {
         SHA1_FILE,
         SHA256,
         SHA256_FILE,
-    }
-
-    export namespace ImageFS {
-        export const $gtype: GObject.GType<ImageFS>;
     }
 
     enum ImageFS {
@@ -260,10 +220,6 @@ export namespace BraseroBurn {
         FS_ANY,
     }
 
-    export namespace ImageFormat {
-        export const $gtype: GObject.GType<ImageFormat>;
-    }
-
     enum ImageFormat {
         NONE,
         BIN,
@@ -271,10 +227,6 @@ export namespace BraseroBurn {
         CLONE,
         CDRDAO,
         ANY,
-    }
-
-    export namespace StreamFormat {
-        export const $gtype: GObject.GType<StreamFormat>;
     }
 
     enum StreamFormat {
@@ -292,6 +244,7 @@ export namespace BraseroBurn {
         METADATA_INFO,
         AUDIO_FORMAT_RAW_LITTLE_ENDIAN,
     }
+
     namespace Burn {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

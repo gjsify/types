@@ -48,19 +48,6 @@ export namespace GdkPixdata {
      * `GDK_PIXBUF_DUMP_GTYPES` and `GDK_PIXBUF_DUMP_CTYPES`. The remaining
      * elements are optional flags that can be freely added.
      */
-
-    /**
-     * An enumeration which is used by gdk_pixdata_to_csource() to
-     * determine the form of C source to be generated. The three values
-     * `GDK_PIXDATA_DUMP_PIXDATA_STREAM,` `GDK_PIXDATA_DUMP_PIXDATA_STRUCT`
-     * and `GDK_PIXDATA_DUMP_MACROS` are mutually exclusive, as are
-     * `GDK_PIXBUF_DUMP_GTYPES` and `GDK_PIXBUF_DUMP_CTYPES`. The remaining
-     * elements are optional flags that can be freely added.
-     */
-    export namespace PixdataDumpType {
-        export const $gtype: GObject.GType<PixdataDumpType>;
-    }
-
     enum PixdataDumpType {
         /**
          * Generate pixbuf data stream (a single
@@ -105,21 +92,12 @@ export namespace GdkPixdata {
          */
         RLE_DECODER,
     }
-    /**
-     * An enumeration containing three sets of flags for a #GdkPixdata struct:
-     * one for the used colorspace, one for the width of the samples and one
-     * for the encoding of the pixel data.
-     */
 
     /**
      * An enumeration containing three sets of flags for a #GdkPixdata struct:
      * one for the used colorspace, one for the width of the samples and one
      * for the encoding of the pixel data.
      */
-    export namespace PixdataType {
-        export const $gtype: GObject.GType<PixdataType>;
-    }
-
     enum PixdataType {
         /**
          * each pixel has red, green and blue samples.
@@ -159,6 +137,7 @@ export namespace GdkPixdata {
          */
         ENCODING_MASK,
     }
+
     /**
      * A pixel buffer suitable for serialization and streaming.
      *

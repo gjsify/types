@@ -23,14 +23,6 @@ export namespace GMime {
     /**
      * An address type.
      */
-
-    /**
-     * An address type.
-     */
-    export namespace AddressType {
-        export const $gtype: GObject.GType<AddressType>;
-    }
-
     enum AddressType {
         /**
          * Represents the addresses in the Sender header.
@@ -57,17 +49,10 @@ export namespace GMime {
          */
         BCC,
     }
-    /**
-     * A description of the user's preference for encrypted messaging.
-     */
 
     /**
      * A description of the user's preference for encrypted messaging.
      */
-    export namespace AutocryptPreferEncrypt {
-        export const $gtype: GObject.GType<AutocryptPreferEncrypt>;
-    }
-
     enum AutocryptPreferEncrypt {
         /**
          * No preference stated.
@@ -78,17 +63,10 @@ export namespace GMime {
          */
         MUTUAL,
     }
-    /**
-     * A cipher algorithm.
-     */
 
     /**
      * A cipher algorithm.
      */
-    export namespace CipherAlgo {
-        export const $gtype: GObject.GType<CipherAlgo>;
-    }
-
     enum CipherAlgo {
         /**
          * The default (or unknown) cipher.
@@ -139,17 +117,10 @@ export namespace GMime {
          */
         CAMELLIA256,
     }
-    /**
-     * A Content-Transfer-Encoding enumeration.
-     */
 
     /**
      * A Content-Transfer-Encoding enumeration.
      */
-    export namespace ContentEncoding {
-        export const $gtype: GObject.GType<ContentEncoding>;
-    }
-
     enum ContentEncoding {
         /**
          * Default transfer encoding.
@@ -180,17 +151,10 @@ export namespace GMime {
          */
         UUENCODE,
     }
-    /**
-     * A hash algorithm.
-     */
 
     /**
      * A hash algorithm.
      */
-    export namespace DigestAlgo {
-        export const $gtype: GObject.GType<DigestAlgo>;
-    }
-
     enum DigestAlgo {
         /**
          * The default hash algorithm.
@@ -253,12 +217,6 @@ export namespace GMime {
          */
         CRC32_RFC2440,
     }
-    /**
-     * Used with functions like g_mime_filter_best_encoding() and
-     * g_mime_object_encode() as the 'constraint' argument. These values
-     * provide a means of letting the filter know what the encoding
-     * constraints are for the stream.
-     */
 
     /**
      * Used with functions like g_mime_filter_best_encoding() and
@@ -266,10 +224,6 @@ export namespace GMime {
      * provide a means of letting the filter know what the encoding
      * constraints are for the stream.
      */
-    export namespace EncodingConstraint {
-        export const $gtype: GObject.GType<EncodingConstraint>;
-    }
-
     enum EncodingConstraint {
         /**
          * The stream data must fit within the 7bit ASCII range.
@@ -284,17 +238,10 @@ export namespace GMime {
          */
         BINARY,
     }
-    /**
-     * The mode for a #GMimeFilterFrom filter.
-     */
 
     /**
      * The mode for a #GMimeFilterFrom filter.
      */
-    export namespace FilterFromMode {
-        export const $gtype: GObject.GType<FilterFromMode>;
-    }
-
     enum FilterFromMode {
         /**
          * Default mode.
@@ -309,17 +256,10 @@ export namespace GMime {
          */
         ARMOR,
     }
-    /**
-     * The mode for the #GMimeFilterGZip filter.
-     */
 
     /**
      * The mode for the #GMimeFilterGZip filter.
      */
-    export namespace FilterGZipMode {
-        export const $gtype: GObject.GType<FilterGZipMode>;
-    }
-
     enum FilterGZipMode {
         /**
          * Compress (zip) mode.
@@ -330,17 +270,10 @@ export namespace GMime {
          */
         UNZIP,
     }
-    /**
-     * An enum of formats.
-     */
 
     /**
      * An enum of formats.
      */
-    export namespace Format {
-        export const $gtype: GObject.GType<Format>;
-    }
-
     enum Format {
         /**
          * The stream contains a single message.
@@ -355,13 +288,6 @@ export namespace GMime {
          */
         MMDF,
     }
-    /**
-     * There are two commonly used line-endings used by modern Operating Systems.
-     * Unix-based systems such as Linux and Mac OS use a single character ('\n' aka LF)
-     * to represent the end of line where-as Windows (or DOS) uses a sequence of two
-     * characters ("\r\n" aka CRLF). Most text-based network protocols such as SMTP,
-     * POP3, and IMAP use the CRLF sequence as well.
-     */
 
     /**
      * There are two commonly used line-endings used by modern Operating Systems.
@@ -370,10 +296,6 @@ export namespace GMime {
      * characters ("\r\n" aka CRLF). Most text-based network protocols such as SMTP,
      * POP3, and IMAP use the CRLF sequence as well.
      */
-    export namespace NewLineFormat {
-        export const $gtype: GObject.GType<NewLineFormat>;
-    }
-
     enum NewLineFormat {
         /**
          * The Unix New-Line format ("\n").
@@ -384,17 +306,10 @@ export namespace GMime {
          */
         DOS,
     }
-    /**
-     * The type of OpenPGP data found, if any.
-     */
 
     /**
      * The type of OpenPGP data found, if any.
      */
-    export namespace OpenPGPData {
-        export const $gtype: GObject.GType<OpenPGPData>;
-    }
-
     enum OpenPGPData {
         /**
          * No OpenPGP data found.
@@ -417,13 +332,6 @@ export namespace GMime {
          */
         PRIVATE_KEY,
     }
-    /**
-     * The MIME specifications specify that the proper method for encoding Content-Type and
-     * Content-Disposition parameter values is the method described in
-     * <ulink url="https://tools.ietf.org/html/rfc2231">rfc2231</ulink>. However, it is common for
-     * some older email clients to improperly encode using the method described in
-     * <ulink url="https://tools.ietf.org/html/rfc2047">rfc2047</ulink> instead.
-     */
 
     /**
      * The MIME specifications specify that the proper method for encoding Content-Type and
@@ -432,10 +340,6 @@ export namespace GMime {
      * some older email clients to improperly encode using the method described in
      * <ulink url="https://tools.ietf.org/html/rfc2047">rfc2047</ulink> instead.
      */
-    export namespace ParamEncodingMethod {
-        export const $gtype: GObject.GType<ParamEncodingMethod>;
-    }
-
     enum ParamEncodingMethod {
         /**
          * Use the default encoding method set on the #GMimeFormatOptions.
@@ -450,19 +354,11 @@ export namespace GMime {
          */
         RFC2047,
     }
-    /**
-     * Issues the `GMimeParser` detects. Note that the `GMIME_CRIT_*` issues indicate that some parts of the `GMimeParser` input may
-     * be ignored or will be interpreted differently by other software products.
-     */
 
     /**
      * Issues the `GMimeParser` detects. Note that the `GMIME_CRIT_*` issues indicate that some parts of the `GMimeParser` input may
      * be ignored or will be interpreted differently by other software products.
      */
-    export namespace ParserWarning {
-        export const $gtype: GObject.GType<ParserWarning>;
-    }
-
     enum ParserWarning {
         /**
          * Repeated exactly the same header which should exist only once.
@@ -533,17 +429,10 @@ export namespace GMime {
          */
         CRIT_PART_WITHOUT_HEADERS_OR_CONTENT,
     }
-    /**
-     * A public-key algorithm.
-     */
 
     /**
      * A public-key algorithm.
      */
-    export namespace PubKeyAlgo {
-        export const $gtype: GObject.GType<PubKeyAlgo>;
-    }
-
     enum PubKeyAlgo {
         /**
          * The default public-key algorithm.
@@ -590,17 +479,10 @@ export namespace GMime {
          */
         EDDSA,
     }
-    /**
-     * An RFC compliance mode.
-     */
 
     /**
      * An RFC compliance mode.
      */
-    export namespace RfcComplianceMode {
-        export const $gtype: GObject.GType<RfcComplianceMode>;
-    }
-
     enum RfcComplianceMode {
         /**
          * Attempt to be much more liberal accepting broken and/or invalid formatting.
@@ -611,17 +493,10 @@ export namespace GMime {
          */
         STRICT,
     }
-    /**
-     * The S/MIME data type.
-     */
 
     /**
      * The S/MIME data type.
      */
-    export namespace SecureMimeType {
-        export const $gtype: GObject.GType<SecureMimeType>;
-    }
-
     enum SecureMimeType {
         /**
          * The S/MIME content contains compressed data.
@@ -644,17 +519,10 @@ export namespace GMime {
          */
         UNKNOWN,
     }
-    /**
-     * Relative seek position.
-     */
 
     /**
      * Relative seek position.
      */
-    export namespace SeekWhence {
-        export const $gtype: GObject.GType<SeekWhence>;
-    }
-
     enum SeekWhence {
         /**
          * Seek relative to the beginning of the stream.
@@ -669,19 +537,11 @@ export namespace GMime {
          */
         END,
     }
-    /**
-     * A value representing the signature status bit flags for a particular
-     * #GMimeSignature.
-     */
 
     /**
      * A value representing the signature status bit flags for a particular
      * #GMimeSignature.
      */
-    export namespace SignatureStatus {
-        export const $gtype: GObject.GType<SignatureStatus>;
-    }
-
     enum SignatureStatus {
         /**
          * The signature is fully valid.
@@ -732,17 +592,10 @@ export namespace GMime {
          */
         TOFU_CONFLICT,
     }
-    /**
-     * The buffering mode for a #GMimeStreamBuffer stream.
-     */
 
     /**
      * The buffering mode for a #GMimeStreamBuffer stream.
      */
-    export namespace StreamBufferMode {
-        export const $gtype: GObject.GType<StreamBufferMode>;
-    }
-
     enum StreamBufferMode {
         /**
          * Read in 4k blocks.
@@ -753,17 +606,6 @@ export namespace GMime {
          */
         WRITE,
     }
-    /**
-     * The trust level of a certificate.  Trust level tries to answer the
-     * question: "How much is the user willing to rely on cryptographic
-     * identity assertions made by the owner of this certificate?"
-     *
-     * By way of comparison with web browser X.509 certificate validation
-     * stacks, the certificate of a "Root CA" has `GMIME_TRUST_ULTIMATE,`
-     * while the certificate of an intermediate CA has `GMIME_TRUST_FULL,`
-     * and an end-entity certificate (e.g., with CA:FALSE set) would have
-     * `GMIME_TRUST_NEVER`.
-     */
 
     /**
      * The trust level of a certificate.  Trust level tries to answer the
@@ -776,10 +618,6 @@ export namespace GMime {
      * and an end-entity certificate (e.g., with CA:FALSE set) would have
      * `GMIME_TRUST_NEVER`.
      */
-    export namespace Trust {
-        export const $gtype: GObject.GType<Trust>;
-    }
-
     enum Trust {
         /**
          * We do not know whether to rely on identity assertions made by the certificate.
@@ -806,23 +644,6 @@ export namespace GMime {
          */
         ULTIMATE,
     }
-    /**
-     * The validity level of a certificate's User ID.  Validity level
-     * tries to answer the question: "How strongly do we believe that this
-     * certificate belongs to the party it says it belongs to?"
-     *
-     * Note that some OpenPGP certificates have multiple User IDs, and
-     * each User ID may have a different validity level (e.g. depending on
-     * which third parties have certified which User IDs, and which third
-     * parties the local user has chosen to trust).
-     *
-     * Similarly, an X.509 certificate can have multiple SubjectAltNames,
-     * and each name may also have a different validity level (e.g. if the
-     * issuing CA is bound by name constraints).
-     *
-     * Note that the GMime API currently only exposes the highest-validty
-     * User ID for any given certificate.
-     */
 
     /**
      * The validity level of a certificate's User ID.  Validity level
@@ -841,10 +662,6 @@ export namespace GMime {
      * Note that the GMime API currently only exposes the highest-validty
      * User ID for any given certificate.
      */
-    export namespace Validity {
-        export const $gtype: GObject.GType<Validity>;
-    }
-
     enum Validity {
         /**
          * The User ID of the certificate is of unknown validity.
@@ -871,6 +688,7 @@ export namespace GMime {
          */
         ULTIMATE,
     }
+
     /**
      * GMime's binary age.
      */
@@ -1532,14 +1350,6 @@ export namespace GMime {
     /**
      * Decryption flags.
      */
-
-    /**
-     * Decryption flags.
-     */
-    export namespace DecryptFlags {
-        export const $gtype: GObject.GType<DecryptFlags>;
-    }
-
     enum DecryptFlags {
         /**
          * No flags specified.
@@ -1562,17 +1372,10 @@ export namespace GMime {
          */
         ENABLE_ONLINE_CERTIFICATE_CHECKS,
     }
-    /**
-     * Encryption flags.
-     */
 
     /**
      * Encryption flags.
      */
-    export namespace EncryptFlags {
-        export const $gtype: GObject.GType<EncryptFlags>;
-    }
-
     enum EncryptFlags {
         /**
          * No flags specified.
@@ -1595,21 +1398,12 @@ export namespace GMime {
          */
         THROW_KEYIDS,
     }
-    /**
-     * Bit flags to enable charset and/or encoding scanning to make
-     * educated guesses as to what the best charset and/or encodings to
-     * use for the content passed through the filter.
-     */
 
     /**
      * Bit flags to enable charset and/or encoding scanning to make
      * educated guesses as to what the best charset and/or encodings to
      * use for the content passed through the filter.
      */
-    export namespace FilterBestFlags {
-        export const $gtype: GObject.GType<FilterBestFlags>;
-    }
-
     enum FilterBestFlags {
         /**
          * Enable best-charset detection.
@@ -1620,17 +1414,10 @@ export namespace GMime {
          */
         ENCODING,
     }
-    /**
-     * The current state of the #GMimeFilterOpenPGP filter.
-     */
 
     /**
      * The current state of the #GMimeFilterOpenPGP filter.
      */
-    export namespace OpenPGPState {
-        export const $gtype: GObject.GType<OpenPGPState>;
-    }
-
     enum OpenPGPState {
         /**
          * No OpenPGP markers have been found (yet).
@@ -1673,17 +1460,10 @@ export namespace GMime {
          */
         END_PGP_PRIVATE_KEY_BLOCK,
     }
-    /**
-     * Signature verification flags.
-     */
 
     /**
      * Signature verification flags.
      */
-    export namespace VerifyFlags {
-        export const $gtype: GObject.GType<VerifyFlags>;
-    }
-
     enum VerifyFlags {
         /**
          * No flags specified.
@@ -1698,6 +1478,7 @@ export namespace GMime {
          */
         ENABLE_ONLINE_CERTIFICATE_CHECKS,
     }
+
     namespace ApplicationPkcs7Mime {
         // Signal signatures
         interface SignalSignatures extends Part.SignalSignatures {}

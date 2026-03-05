@@ -34,8 +34,9 @@ export namespace Vda {
         BACKWARD,
         RELATIVE,
     }
+
     class MetaObjectError extends GLib.Error {
-        static $gtype: GObject.GType<MetaObjectError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -50,7 +51,7 @@ export namespace Vda {
     }
 
     class ConnectionError extends GLib.Error {
-        static $gtype: GObject.GType<ConnectionError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -64,7 +65,7 @@ export namespace Vda {
     }
 
     class DataObjectError extends GLib.Error {
-        static $gtype: GObject.GType<DataObjectError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -81,7 +82,7 @@ export namespace Vda {
     }
 
     class DataCollectionError extends GLib.Error {
-        static $gtype: GObject.GType<DataCollectionError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -93,7 +94,7 @@ export namespace Vda {
     }
 
     class ParserError extends GLib.Error {
-        static $gtype: GObject.GType<ParserError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -106,7 +107,7 @@ export namespace Vda {
     }
 
     class QueryError extends GLib.Error {
-        static $gtype: GObject.GType<QueryError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -120,7 +121,7 @@ export namespace Vda {
     }
 
     class RoleError extends GLib.Error {
-        static $gtype: GObject.GType<RoleError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -132,7 +133,7 @@ export namespace Vda {
     }
 
     class RowModelError extends GLib.Error {
-        static $gtype: GObject.GType<RowModelError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -145,7 +146,7 @@ export namespace Vda {
     }
 
     class SqlCommandError extends GLib.Error {
-        static $gtype: GObject.GType<SqlCommandError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -157,7 +158,7 @@ export namespace Vda {
     }
 
     class SqlCommandSelectError extends GLib.Error {
-        static $gtype: GObject.GType<SqlCommandSelectError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -169,7 +170,7 @@ export namespace Vda {
     }
 
     class SqlExpressionError extends GLib.Error {
-        static $gtype: GObject.GType<SqlExpressionError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -261,6 +262,7 @@ export namespace Vda {
         USAGE,
         PRIVILEGES,
     }
+
     namespace AffectedRows {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

@@ -1,6 +1,6 @@
 {
     "name": "@girs/shell-17",
-    "version": "17.0.0-4.0.0-beta.39",
+    "version": "17.0.0-4.0.0-beta.40",
     "description": "GJS TypeScript type definitions for Shell-17, generated from library version 17.0.0",
     "type": "module",
     "module": "shell-17.js",

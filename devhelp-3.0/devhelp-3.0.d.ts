@@ -32,17 +32,13 @@ export namespace Devhelp {
      * Devhelp-3.0
      */
 
-    /**
-     * The type of the content the link points to.
-     */
-
-    /**
-     * The type of the content the link points to.
-     */
     export namespace LinkType {
         export const $gtype: GObject.GType<LinkType>;
     }
 
+    /**
+     * The type of the content the link points to.
+     */
     enum LinkType {
         /**
          * The top-level page of a #DhBook.
@@ -85,6 +81,7 @@ export namespace Devhelp {
          */
         SIGNAL,
     }
+
     /**
      * Binds `sidebar` and `notebook:`
      * - When the #DhSidebar::link-selected signal is emitted, open the URI in the
@@ -122,7 +119,6 @@ export namespace Devhelp {
      */
     function init(): void;
     function link_type_to_string(link_type: LinkType | null): string;
-
     export namespace LinkFlags {
         export const $gtype: GObject.GType<LinkFlags>;
     }
@@ -137,6 +133,7 @@ export namespace Devhelp {
          */
         DEPRECATED,
     }
+
     namespace AssistantView {
         // Signal signatures
         interface SignalSignatures extends WebKit2.WebView.SignalSignatures {

@@ -31,17 +31,13 @@ export namespace Panel {
      * Panel-1
      */
 
-    /**
-     * The area of the panel.
-     */
-
-    /**
-     * The area of the panel.
-     */
     export namespace Area {
         export const $gtype: GObject.GType<Area>;
     }
 
+    /**
+     * The area of the panel.
+     */
     enum Area {
         /**
          * the area of the panel that is at the horizontal
@@ -67,6 +63,7 @@ export namespace Panel {
          */
         CENTER,
     }
+
     /**
      * libpanel major version component (e.g. 1 if %PANEL_VERSION is 1.2.3)
      */

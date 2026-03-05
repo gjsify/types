@@ -197,15 +197,6 @@ export namespace EDataServerUI {
      * An #ECredentialsPrompter prompt flags, influencing behaviour
      * of the e_credentials_prompter_prompt().
      */
-
-    /**
-     * An #ECredentialsPrompter prompt flags, influencing behaviour
-     * of the e_credentials_prompter_prompt().
-     */
-    export namespace CredentialsPrompterPromptFlags {
-        export const $gtype: GObject.GType<CredentialsPrompterPromptFlags>;
-    }
-
     enum CredentialsPrompterPromptFlags {
         /**
          * No flag is set.
@@ -224,6 +215,7 @@ export namespace EDataServerUI {
          */
         ALLOW_STORED_CREDENTIALS,
     }
+
     namespace CellRendererColor {
         // Signal signatures
         interface SignalSignatures extends Gtk.CellRenderer.SignalSignatures {

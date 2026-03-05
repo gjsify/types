@@ -36,16 +36,6 @@ export namespace NMA4 {
      * Currently only local files are supported, but might be extended to use URIs,
      * such as PKCS\#11 certificate URIs in future as well.
      */
-
-    /**
-     * Flags that controls what is the certificate chooser button able to pick.
-     * Currently only local files are supported, but might be extended to use URIs,
-     * such as PKCS\#11 certificate URIs in future as well.
-     */
-    export namespace CertChooserFlags {
-        export const $gtype: GObject.GType<CertChooserFlags>;
-    }
-
     enum CertChooserFlags {
         /**
          * No flags
@@ -69,10 +59,6 @@ export namespace NMA4 {
         NO_PASSWORDS,
     }
 
-    export namespace MobileFamily {
-        export const $gtype: GObject.GType<MobileFamily>;
-    }
-
     enum MobileFamily {
         /**
          * Unknown or invalid network access method
@@ -87,6 +73,7 @@ export namespace NMA4 {
          */
         CDMA,
     }
+
     const BAR_CODE_SIZE: string;
     const BAR_CODE_TEXT: string;
     const BAR_CODE_WIDGET_CONNECTION: string;

@@ -30,19 +30,11 @@ export namespace GnomeDesktop {
      * GnomeDesktop-3.0
      */
 
-    export namespace DesktopThumbnailSize {
-        export const $gtype: GObject.GType<DesktopThumbnailSize>;
-    }
-
     enum DesktopThumbnailSize {
         NORMAL,
         LARGE,
         XLARGE,
         XXLARGE,
-    }
-
-    export namespace RRDpmsMode {
-        export const $gtype: GObject.GType<RRDpmsMode>;
     }
 
     enum RRDpmsMode {
@@ -64,8 +56,9 @@ export namespace GnomeDesktop {
         OFF,
         UNKNOWN,
     }
+
     class RRError extends GLib.Error {
-        static $gtype: GObject.GType<RRError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -305,11 +298,6 @@ export namespace GnomeDesktop {
     interface IdleMonitorWatchFunc {
         (monitor: IdleMonitor, id: number): void;
     }
-
-    export namespace RRRotation {
-        export const $gtype: GObject.GType<RRRotation>;
-    }
-
     enum RRRotation {
         ROTATION_NEXT,
         ROTATION_0,
@@ -319,6 +307,7 @@ export namespace GnomeDesktop {
         REFLECT_X,
         REFLECT_Y,
     }
+
     namespace BG {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

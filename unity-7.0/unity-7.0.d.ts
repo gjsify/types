@@ -236,6 +236,7 @@ export namespace Unity {
         CATEGORY_ID,
         OWNER_SCOPE,
     }
+
     const SCOPE_API_VERSION: number;
     function category_renderer_from_string(renderer_name: string): CategoryRenderer;
     function category_renderer_to_string(val: CategoryRenderer | null): string;

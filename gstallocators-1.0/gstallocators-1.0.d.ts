@@ -93,14 +93,6 @@ export namespace GstAllocators {
     /**
      * Various flags to control the operation of the fd backed memory.
      */
-
-    /**
-     * Various flags to control the operation of the fd backed memory.
-     */
-    export namespace FdMemoryFlags {
-        export const $gtype: GObject.GType<FdMemoryFlags>;
-    }
-
     enum FdMemoryFlags {
         /**
          * no flag
@@ -122,6 +114,7 @@ export namespace GstAllocators {
          */
         DONT_CLOSE,
     }
+
     namespace DRMDumbAllocator {
         // Signal signatures
         interface SignalSignatures extends Gst.Allocator.SignalSignatures {

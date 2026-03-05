@@ -22,14 +22,6 @@ export namespace Grl {
     /**
      * These constants identify all the available core errors
      */
-
-    /**
-     * These constants identify all the available core errors
-     */
-    export namespace CoreError {
-        export const $gtype: GObject.GType<CoreError>;
-    }
-
     enum CoreError {
         BROWSE_FAILED,
         SEARCH_FAILED,
@@ -51,17 +43,10 @@ export namespace Grl {
         NOTIFY_CHANGED_FAILED,
         OPERATION_CANCELLED,
     }
-    /**
-     * Grilo log levels. Defines the level of verbosity selected in Grilo.
-     */
 
     /**
      * Grilo log levels. Defines the level of verbosity selected in Grilo.
      */
-    export namespace LogLevel {
-        export const $gtype: GObject.GType<LogLevel>;
-    }
-
     enum LogLevel {
         NONE,
         ERROR,
@@ -71,47 +56,28 @@ export namespace Grl {
         DEBUG,
         LAST,
     }
-    /**
-     * GrlMedia serialize type
-     */
 
     /**
      * GrlMedia serialize type
      */
-    export namespace MediaSerializeType {
-        export const $gtype: GObject.GType<MediaSerializeType>;
-    }
-
     enum MediaSerializeType {
         BASIC,
         PARTIAL,
         FULL,
     }
-    /**
-     * Specifies which kind of change has happened in the plugin
-     */
 
-    /**
-     * Specifies which kind of change has happened in the plugin
-     */
     export namespace MediaSourceChangeType {
         export const $gtype: GObject.GType<MediaSourceChangeType>;
     }
 
+    /**
+     * Specifies which kind of change has happened in the plugin
+     */
     enum MediaSourceChangeType {
         CHANGED,
         ADDED,
         REMOVED,
     }
-    /**
-     * Module priority ranks. Defines the order in which the resolver
-     * (or similar rank-picking mechanisms) will choose this plugin
-     * over an alternative one with the same function.
-     *
-     * These constants serve as a rough guidance for defining the rank
-     * of a GrlPluginInfo. Any value is valid, including values bigger
-     * than GRL_PLUGIN_RANK_HIGHEST.
-     */
 
     /**
      * Module priority ranks. Defines the order in which the resolver
@@ -122,10 +88,6 @@ export namespace Grl {
      * of a GrlPluginInfo. Any value is valid, including values bigger
      * than GRL_PLUGIN_RANK_HIGHEST.
      */
-    export namespace PluginRank {
-        export const $gtype: GObject.GType<PluginRank>;
-    }
-
     enum PluginRank {
         LOWEST,
         LOW,
@@ -133,6 +95,7 @@ export namespace Grl {
         HIGH,
         HIGHEST,
     }
+
     const CONFIG_KEY_APIKEY: string;
     const CONFIG_KEY_APIKEY_BLOB: string;
     const CONFIG_KEY_APISECRET: string;
@@ -346,48 +309,25 @@ export namespace Grl {
     /**
      * GrlMetadata resolution flags
      */
-
-    /**
-     * GrlMetadata resolution flags
-     */
-    export namespace MetadataResolutionFlags {
-        export const $gtype: GObject.GType<MetadataResolutionFlags>;
-    }
-
     enum MetadataResolutionFlags {
         NORMAL,
         FULL,
         IDLE_RELAY,
         FAST_ONLY,
     }
-    /**
-     * Flags for metadata writing operations.
-     */
 
     /**
      * Flags for metadata writing operations.
      */
-    export namespace MetadataWritingFlags {
-        export const $gtype: GObject.GType<MetadataWritingFlags>;
-    }
-
     enum MetadataWritingFlags {
         NORMAL,
         FULL,
     }
-    /**
-     * Bitwise flags which reflect the kind of operations that a
-     * #GrlMediaPlugin supports.
-     */
 
     /**
      * Bitwise flags which reflect the kind of operations that a
      * #GrlMediaPlugin supports.
      */
-    export namespace SupportedOps {
-        export const $gtype: GObject.GType<SupportedOps>;
-    }
-
     enum SupportedOps {
         NONE,
         METADATA,
@@ -402,6 +342,7 @@ export namespace Grl {
         MEDIA_FROM_URI,
         NOTIFY_CHANGE,
     }
+
     namespace Config {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

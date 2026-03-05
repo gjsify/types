@@ -58,6 +58,7 @@ export namespace Gc {
         FAILED,
         INVALID_STATE,
     }
+
     function character_is_composite(chars: string): boolean;
     function character_is_invisible(chars: string): boolean;
     function character_name(chars: string): string | null;
@@ -68,7 +69,6 @@ export namespace Gc {
     interface SearchFunc {
         (uc: string): boolean;
     }
-
     export namespace SearchFlag {
         export const $gtype: GObject.GType<SearchFlag>;
     }
@@ -77,6 +77,7 @@ export namespace Gc {
         NONE,
         WORD,
     }
+
     namespace SearchContext {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

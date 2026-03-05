@@ -50,8 +50,9 @@ export namespace Granite {
         ERROR,
         FATAL,
     }
+
     class ServicesContractorError extends GLib.Error {
-        static $gtype: GObject.GType<ServicesContractorError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -140,6 +141,7 @@ export namespace Granite {
         DARK,
         LIGHT,
     }
+
     const StyleClassBADGE: string;
     const StyleClassCATEGORY_EXPANDER: string;
     const StyleClassCONTENT_VIEW: string;

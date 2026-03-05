@@ -24,20 +24,13 @@ export namespace Uhm {
     /**
      * Error codes for #UhmServer operations.
      */
-
-    /**
-     * Error codes for #UhmServer operations.
-     */
-    export namespace ServerError {
-        export const $gtype: GObject.GType<ServerError>;
-    }
-
     enum ServerError {
         /**
          * In comparison mode, a message received from the client did not match the next message in the current trace file.
          */
         SERVER_ERROR_MESSAGE_MISMATCH,
     }
+
     /**
      * Evaluates to the major version of the libuhttpmock headers at compile time.
      * (e.g. in libuhttpmock version 1.2.3 this is 1).

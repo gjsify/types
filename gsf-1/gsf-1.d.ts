@@ -21,10 +21,6 @@ export namespace Gsf {
      * Gsf-1
      */
 
-    export namespace ClipFormat {
-        export const $gtype: GObject.GType<ClipFormat>;
-    }
-
     enum ClipFormat {
         /**
          * Windows clipboard format
@@ -52,10 +48,6 @@ export namespace Gsf {
         UNKNOWN,
     }
 
-    export namespace ClipFormatWindows {
-        export const $gtype: GObject.GType<ClipFormatWindows>;
-    }
-
     enum ClipFormatWindows {
         /**
          * error
@@ -78,8 +70,9 @@ export namespace Gsf {
          */
         ENHANCED_METAFILE,
     }
+
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -97,17 +90,13 @@ export namespace Gsf {
         constructor(options: { message: string; code: number });
     }
 
-    /**
-     * Controls when to add quotes around fields.
-     */
-
-    /**
-     * Controls when to add quotes around fields.
-     */
     export namespace OutputCsvQuotingMode {
         export const $gtype: GObject.GType<OutputCsvQuotingMode>;
     }
 
+    /**
+     * Controls when to add quotes around fields.
+     */
     enum OutputCsvQuotingMode {
         /**
          * never add quotes around fields
@@ -122,17 +111,10 @@ export namespace Gsf {
          */
         ALWAYS,
     }
-    /**
-     * Controls the handling of character data within a parser node.
-     */
 
     /**
      * Controls the handling of character data within a parser node.
      */
-    export namespace XMLContent {
-        export const $gtype: GObject.GType<XMLContent>;
-    }
-
     enum XMLContent {
         /**
          * node has no cstr contents
@@ -152,10 +134,6 @@ export namespace Gsf {
         '2ND',
     }
 
-    export namespace ZipCompressionMethod {
-        export const $gtype: GObject.GType<ZipCompressionMethod>;
-    }
-
     enum ZipCompressionMethod {
         STORED,
         SHRUNK,
@@ -169,6 +147,7 @@ export namespace Gsf {
         DEFLATED_BETTER,
         IMPLODED_BETTER,
     }
+
     /**
      * (Integer) Count of bytes in the document.
      */

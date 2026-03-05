@@ -50,6 +50,7 @@ export namespace Caja {
          */
         IN_PROGRESS,
     }
+
     function file_info_create(location: Gio.File): FileInfo;
     function file_info_create_for_uri(uri: string): FileInfo;
     function file_info_list_copy(files: FileInfo[]): FileInfo[];

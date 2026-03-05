@@ -23,14 +23,6 @@ export namespace UPowerGlib {
     /**
      * The device type.
      */
-
-    /**
-     * The device type.
-     */
-    export namespace DeviceKind {
-        export const $gtype: GObject.GType<DeviceKind>;
-    }
-
     enum DeviceKind {
         UNKNOWN,
         LINE_POWER,
@@ -46,17 +38,10 @@ export namespace UPowerGlib {
         COMPUTER,
         LAST,
     }
-    /**
-     * The warning level of a battery.
-     */
 
     /**
      * The warning level of a battery.
      */
-    export namespace DeviceLevel {
-        export const $gtype: GObject.GType<DeviceLevel>;
-    }
-
     enum DeviceLevel {
         UNKNOWN,
         NONE,
@@ -66,17 +51,10 @@ export namespace UPowerGlib {
         ACTION,
         LAST,
     }
-    /**
-     * The device state.
-     */
 
     /**
      * The device state.
      */
-    export namespace DeviceState {
-        export const $gtype: GObject.GType<DeviceState>;
-    }
-
     enum DeviceState {
         UNKNOWN,
         CHARGING,
@@ -87,17 +65,10 @@ export namespace UPowerGlib {
         PENDING_DISCHARGE,
         LAST,
     }
-    /**
-     * The device technology.
-     */
 
     /**
      * The device technology.
      */
-    export namespace DeviceTechnology {
-        export const $gtype: GObject.GType<DeviceTechnology>;
-    }
-
     enum DeviceTechnology {
         UNKNOWN,
         LITHIUM_ION,
@@ -108,6 +79,7 @@ export namespace UPowerGlib {
         NICKEL_METAL_HYDRIDE,
         LAST,
     }
+
     const MAJOR_VERSION: number;
     /**
      * The compile-time micro version

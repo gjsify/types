@@ -24,7 +24,7 @@ export namespace Signon {
      * Possible Signon errors.
      */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -189,17 +189,13 @@ export namespace Signon {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Policy for the signon process, passed to the UI plugin.
-     */
-
-    /**
-     * Policy for the signon process, passed to the UI plugin.
-     */
     export namespace SessionDataUiPolicy {
         export const $gtype: GObject.GType<SessionDataUiPolicy>;
     }
 
+    /**
+     * Policy for the signon process, passed to the UI plugin.
+     */
     enum SessionDataUiPolicy {
         /**
          * The plugin can decide when to show UI.
@@ -219,6 +215,7 @@ export namespace Signon {
          */
         VALIDATION,
     }
+
     /**
      * Caption for the UI dialog.
      */
@@ -256,17 +253,13 @@ export namespace Signon {
      */
     const SESSION_DATA_WINDOW_ID: string;
     function error_quark(): GLib.Quark;
-    /**
-     * Types used in #SignonIdentityInfo.
-     */
-
-    /**
-     * Types used in #SignonIdentityInfo.
-     */
     export namespace IdentityType {
         export const $gtype: GObject.GType<IdentityType>;
     }
 
+    /**
+     * Types used in #SignonIdentityInfo.
+     */
     enum IdentityType {
         /**
          * an identity that is not an app, web or network
@@ -285,6 +278,7 @@ export namespace Signon {
          */
         NETWORK,
     }
+
     namespace AuthService {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

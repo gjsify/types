@@ -124,6 +124,7 @@ export namespace Wp {
         ERROR,
         CUSTOM_START,
     }
+
     const ITERATOR_METHODS_VERSION: number;
     /**
      * A custom GLib log level for trace messages (extension of GLogLevelFlags)
@@ -392,7 +393,6 @@ export namespace Wp {
     interface SettingsChangedCallback {
         (obj: Settings, setting: string, value: SpaJson): void;
     }
-
     export namespace BaseDirsFlags {
         export const $gtype: GObject.GType<BaseDirsFlags>;
     }
@@ -532,6 +532,7 @@ export namespace Wp {
     enum SpaDeviceFeatures {
         ENABLED,
     }
+
     namespace AsyncEventHook {
         // Signal signatures
         interface SignalSignatures extends InterestEventHook.SignalSignatures {

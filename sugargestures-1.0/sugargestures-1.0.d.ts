@@ -70,6 +70,7 @@ export namespace SugarGestures {
         UP,
         DOWN,
     }
+
     namespace EventController {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

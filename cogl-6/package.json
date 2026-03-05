@@ -1,6 +1,6 @@
 {
     "name": "@girs/cogl-6",
-    "version": "6.0.0-4.0.0-beta.39",
+    "version": "6.0.0-4.0.0-beta.40",
     "description": "GJS TypeScript type definitions for Cogl-6, generated from library version 6.0.0",
     "type": "module",
     "module": "cogl-6.js",

@@ -64,6 +64,7 @@ export namespace Egg {
         CENTER,
         RIGHT,
     }
+
     const COUNTER_REQUIRES_ATOMIC: number;
     function counter_arena_get_default(): CounterArena;
     /**

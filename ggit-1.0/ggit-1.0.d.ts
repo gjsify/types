@@ -20,17 +20,13 @@ export namespace Ggit {
      * Ggit-1.0
      */
 
-    /**
-     * The type of a branch.
-     */
-
-    /**
-     * The type of a branch.
-     */
     export namespace BranchType {
         export const $gtype: GObject.GType<BranchType>;
     }
 
+    /**
+     * The type of a branch.
+     */
     enum BranchType {
         /**
          * specifies a local branch.
@@ -52,21 +48,16 @@ export namespace Ggit {
         NO_LOCAL,
         NO_LINKS,
     }
-    /**
-     * Priority level of a config file.
-     * These priority levels correspond to the natural escalation logic
-     * (from higher to lower) when searching for config entries in git.git.
-     */
 
-    /**
-     * Priority level of a config file.
-     * These priority levels correspond to the natural escalation logic
-     * (from higher to lower) when searching for config entries in git.git.
-     */
     export namespace ConfigLevel {
         export const $gtype: GObject.GType<ConfigLevel>;
     }
 
+    /**
+     * Priority level of a config file.
+     * These priority levels correspond to the natural escalation logic
+     * (from higher to lower) when searching for config entries in git.git.
+     */
     enum ConfigLevel {
         /**
          * System-wide on Windows, for compatibility with portable git.
@@ -97,17 +88,14 @@ export namespace Ggit {
          */
         HIGHEST,
     }
-    /**
-     * Describes the type of change the delta is.
-     */
 
-    /**
-     * Describes the type of change the delta is.
-     */
     export namespace DeltaType {
         export const $gtype: GObject.GType<DeltaType>;
     }
 
+    /**
+     * Describes the type of change the delta is.
+     */
     enum DeltaType {
         /**
          * unmodified.
@@ -145,39 +133,30 @@ export namespace Ggit {
         UNREADABLE,
         CONFLICTED,
     }
-    /**
-     * When producing a binary diff, the binary data returned will be
-     * either the deflated full ("literal") contents of the file, or
-     * the deflated binary delta between the two sides (whichever is
-     * smaller).
-     */
 
-    /**
-     * When producing a binary diff, the binary data returned will be
-     * either the deflated full ("literal") contents of the file, or
-     * the deflated binary delta between the two sides (whichever is
-     * smaller).
-     */
     export namespace DiffBinaryType {
         export const $gtype: GObject.GType<DiffBinaryType>;
     }
 
+    /**
+     * When producing a binary diff, the binary data returned will be
+     * either the deflated full ("literal") contents of the file, or
+     * the deflated binary delta between the two sides (whichever is
+     * smaller).
+     */
     enum DiffBinaryType {
         NONE,
         LITERAL,
         DELTA,
     }
-    /**
-     * Possible output formats for diff data.
-     */
 
-    /**
-     * Possible output formats for diff data.
-     */
     export namespace DiffFormatType {
         export const $gtype: GObject.GType<DiffFormatType>;
     }
 
+    /**
+     * Possible output formats for diff data.
+     */
     enum DiffFormatType {
         /**
          * full git diff.
@@ -200,25 +179,18 @@ export namespace Ggit {
          */
         NAME_STATUS,
     }
-    /**
-     * These values describe where a line came from and will be passed to
-     * the #GgitDiffLineCallback when iterating over a diff.
-     *
-     * The #GGIT_DIFF_LINE_FILE_HDR, #GGIT_DIFF_LINE_HUNK_HDR and
-     * #GGIT_DIFF_LINE_BINARY values are only sent when the diff is being printed.
-     */
 
-    /**
-     * These values describe where a line came from and will be passed to
-     * the #GgitDiffLineCallback when iterating over a diff.
-     *
-     * The #GGIT_DIFF_LINE_FILE_HDR, #GGIT_DIFF_LINE_HUNK_HDR and
-     * #GGIT_DIFF_LINE_BINARY values are only sent when the diff is being printed.
-     */
     export namespace DiffLineType {
         export const $gtype: GObject.GType<DiffLineType>;
     }
 
+    /**
+     * These values describe where a line came from and will be passed to
+     * the #GgitDiffLineCallback when iterating over a diff.
+     *
+     * The #GGIT_DIFF_LINE_FILE_HDR, #GGIT_DIFF_LINE_HUNK_HDR and
+     * #GGIT_DIFF_LINE_BINARY values are only sent when the diff is being printed.
+     */
     enum DiffLineType {
         /**
          * line is part of the context.
@@ -266,11 +238,12 @@ export namespace Ggit {
         FETCH,
         PUSH,
     }
+
     /**
      * Error codes for the %GGIT_ERROR error domain.
      */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -340,17 +313,14 @@ export namespace Ggit {
         THEIRS,
         UNION,
     }
-    /**
-     * Valid stages for pack building.
-     */
 
-    /**
-     * Valid stages for pack building.
-     */
     export namespace PackbuilderStage {
         export const $gtype: GObject.GType<PackbuilderStage>;
     }
 
+    /**
+     * Valid stages for pack building.
+     */
     enum PackbuilderStage {
         /**
          * adding objects.
@@ -361,17 +331,14 @@ export namespace Ggit {
          */
         DELTAFICATION,
     }
-    /**
-     * The type of proxy to use.
-     */
 
-    /**
-     * The type of proxy to use.
-     */
     export namespace ProxyType {
         export const $gtype: GObject.GType<ProxyType>;
     }
 
+    /**
+     * The type of proxy to use.
+     */
     enum ProxyType {
         /**
          * Do not attempt to connect through a proxy.
@@ -386,17 +353,14 @@ export namespace Ggit {
          */
         SPECIFIED,
     }
-    /**
-     * Type of rebase operation in-progress.
-     */
 
-    /**
-     * Type of rebase operation in-progress.
-     */
     export namespace RebaseOperationType {
         export const $gtype: GObject.GType<RebaseOperationType>;
     }
 
+    /**
+     * Type of rebase operation in-progress.
+     */
     enum RebaseOperationType {
         /**
          * The given commit is to be cherry-picked.
@@ -430,17 +394,14 @@ export namespace Ggit {
          */
         EXEC,
     }
-    /**
-     * Describes the type a reference is.
-     */
 
-    /**
-     * Describes the type a reference is.
-     */
     export namespace RefType {
         export const $gtype: GObject.GType<RefType>;
     }
 
+    /**
+     * Describes the type a reference is.
+     */
     enum RefType {
         /**
          * An invalid reference.
@@ -459,17 +420,14 @@ export namespace Ggit {
          */
         LISTALL,
     }
-    /**
-     * Argument to the completion callback which tells it which operation finished.
-     */
 
-    /**
-     * Argument to the completion callback which tells it which operation finished.
-     */
     export namespace RemoteCompletionType {
         export const $gtype: GObject.GType<RemoteCompletionType>;
     }
 
+    /**
+     * Argument to the completion callback which tells it which operation finished.
+     */
     enum RemoteCompletionType {
         /**
          * download.
@@ -484,21 +442,16 @@ export namespace Ggit {
          */
         ERROR,
     }
-    /**
-     * Automatic tag following option
-     *
-     * Lets us select the --tags option to use.
-     */
 
-    /**
-     * Automatic tag following option
-     *
-     * Lets us select the --tags option to use.
-     */
     export namespace RemoteDownloadTagsType {
         export const $gtype: GObject.GType<RemoteDownloadTagsType>;
     }
 
+    /**
+     * Automatic tag following option
+     *
+     * Lets us select the --tags option to use.
+     */
     enum RemoteDownloadTagsType {
         /**
          * Use the setting from the configuration.
@@ -518,17 +471,14 @@ export namespace Ggit {
          */
         ALL,
     }
-    /**
-     * Describes the type of reset to perform.
-     */
 
-    /**
-     * Describes the type of reset to perform.
-     */
     export namespace ResetType {
         export const $gtype: GObject.GType<ResetType>;
     }
 
+    /**
+     * Describes the type of reset to perform.
+     */
     enum ResetType {
         /**
          * The head will be moved to the commit.
@@ -544,19 +494,15 @@ export namespace Ggit {
          */
         HARD,
     }
-    /**
-     * Show options for #ggit_repository_file_status_foreach. Determines which
-     * files are included in the status.
-     */
 
-    /**
-     * Show options for #ggit_repository_file_status_foreach. Determines which
-     * files are included in the status.
-     */
     export namespace StatusShow {
         export const $gtype: GObject.GType<StatusShow>;
     }
 
+    /**
+     * Show options for #ggit_repository_file_status_foreach. Determines which
+     * files are included in the status.
+     */
     enum StatusShow {
         /**
          * receive one callback for each file,
@@ -572,17 +518,14 @@ export namespace Ggit {
          */
         WORKDIR_ONLY,
     }
-    /**
-     * Describes which submodules should be ignored.
-     */
 
-    /**
-     * Describes which submodules should be ignored.
-     */
     export namespace SubmoduleIgnore {
         export const $gtype: GObject.GType<SubmoduleIgnore>;
     }
 
+    /**
+     * Describes which submodules should be ignored.
+     */
     enum SubmoduleIgnore {
         /**
          * reset to on-disk value.
@@ -605,19 +548,15 @@ export namespace Ggit {
          */
         ALL,
     }
-    /**
-     * Options for submodule recurse.
-     * Represents the value of `submodule.$name.fetchRecurseSubmodules`
-     */
 
-    /**
-     * Options for submodule recurse.
-     * Represents the value of `submodule.$name.fetchRecurseSubmodules`
-     */
     export namespace SubmoduleRecurse {
         export const $gtype: GObject.GType<SubmoduleRecurse>;
     }
 
+    /**
+     * Options for submodule recurse.
+     * Represents the value of `submodule.$name.fetchRecurseSubmodules`
+     */
     enum SubmoduleRecurse {
         /**
          * do no recurse into submodules.
@@ -633,17 +572,14 @@ export namespace Ggit {
          */
         ONDEMAND,
     }
-    /**
-     * Describes how a submodule should be updated.
-     */
 
-    /**
-     * Describes how a submodule should be updated.
-     */
     export namespace SubmoduleUpdate {
         export const $gtype: GObject.GType<SubmoduleUpdate>;
     }
 
+    /**
+     * Describes how a submodule should be updated.
+     */
     enum SubmoduleUpdate {
         /**
          * checkout the submodule.
@@ -669,17 +605,14 @@ export namespace Ggit {
          */
         DEFAULT,
     }
-    /**
-     * Describes in which order a tree walk should be performed.
-     */
 
-    /**
-     * Describes in which order a tree walk should be performed.
-     */
     export namespace TreeWalkMode {
         export const $gtype: GObject.GType<TreeWalkMode>;
     }
 
+    /**
+     * Describes in which order a tree walk should be performed.
+     */
     enum TreeWalkMode {
         /**
          * walk tree in pre-order
@@ -690,6 +623,7 @@ export namespace Ggit {
          */
         POST,
     }
+
     /**
      * The build type of the installed build.
      */
@@ -799,21 +733,15 @@ export namespace Ggit {
     interface TreeWalkCallback {
         (root: string, entry: TreeEntry): number;
     }
-    /**
-     * Attribute check flags indicate the order in which to check for gitattributes.
-     * git core uses `GGIT_ATTRIBUTE_CHECK_FILE_THEN_INDEX` for all operations,
-     * except on checkout, where it uses `GGIT_ATTRIBUTE_CHECK_INDEX_THEN_FILE`.
-     */
-
-    /**
-     * Attribute check flags indicate the order in which to check for gitattributes.
-     * git core uses `GGIT_ATTRIBUTE_CHECK_FILE_THEN_INDEX` for all operations,
-     * except on checkout, where it uses `GGIT_ATTRIBUTE_CHECK_INDEX_THEN_FILE`.
-     */
     export namespace AttributeCheckFlags {
         export const $gtype: GObject.GType<AttributeCheckFlags>;
     }
 
+    /**
+     * Attribute check flags indicate the order in which to check for gitattributes.
+     * git core uses `GGIT_ATTRIBUTE_CHECK_FILE_THEN_INDEX` for all operations,
+     * except on checkout, where it uses `GGIT_ATTRIBUTE_CHECK_INDEX_THEN_FILE`.
+     */
     enum AttributeCheckFlags {
         /**
          * check working directory, then index.
@@ -891,17 +819,14 @@ export namespace Ggit {
         UPDATE_SUBMODULES,
         UPDATE_SUBMODULES_IF_CHANGED,
     }
-    /**
-     * Describes how something should be created.
-     */
 
-    /**
-     * Describes how something should be created.
-     */
     export namespace CreateFlags {
         export const $gtype: GObject.GType<CreateFlags>;
     }
 
+    /**
+     * Describes how something should be created.
+     */
     enum CreateFlags {
         /**
          * attempt to create.
@@ -947,17 +872,14 @@ export namespace Ggit {
         BREAK_REWRITES_FOR_RENAMES_ONLY,
         FIND_REMOVE_UNMODIFIED,
     }
-    /**
-     * Describes the diff file and/or delta flags
-     */
 
-    /**
-     * Describes the diff file and/or delta flags
-     */
     export namespace DiffFlag {
         export const $gtype: GObject.GType<DiffFlag>;
     }
 
+    /**
+     * Describes the diff file and/or delta flags
+     */
     enum DiffFlag {
         /**
          * if the file is binary.
@@ -981,17 +903,14 @@ export namespace Ggit {
         NONE,
         EXCLUDE_SUBJECT_PATCH_MARKER,
     }
-    /**
-     * How the diff should be generated.
-     */
 
-    /**
-     * How the diff should be generated.
-     */
     export namespace DiffOption {
         export const $gtype: GObject.GType<DiffOption>;
     }
 
+    /**
+     * How the diff should be generated.
+     */
     enum DiffOption {
         /**
          * normal.
@@ -1106,33 +1025,22 @@ export namespace Ggit {
         HTTPS,
         SSH,
     }
-    /**
-     * GGIT_MERGE_FILE_DEFAULT: Defaults.
-     * GGIT_MERGE_FILE_STYLE_MERGE: Create standard conflicted merge files.
-     * GGIT_MERGE_FILE_STYLE_DIFF3: Create diff3-style files.
-     * GGIT_MERGE_FILE_SIMPLIFY_ALNUM: Condense non-alphanumeric regions for simplified diff file.
-     * GGIT_MERGE_FILE_IGNORE_WHITESPACE: Ignore all whitespace.
-     * GGIT_MERGE_FILE_IGNORE_WHITESPACE_CHANGE: Ignore changes in amount of whitespace.
-     * GGIT_MERGE_FILE_IGNORE_WHITESPACE_EOL: Ignore whitespace at end of line.
-     * GGIT_MERGE_FILE_DIFF_PATIENCE: Use the "patience diff" algorithm.
-     * GGIT_MERGE_FILE_DIFF_MINIMAL: Take extra time to find minimal diff.
-     */
 
-    /**
-     * GGIT_MERGE_FILE_DEFAULT: Defaults.
-     * GGIT_MERGE_FILE_STYLE_MERGE: Create standard conflicted merge files.
-     * GGIT_MERGE_FILE_STYLE_DIFF3: Create diff3-style files.
-     * GGIT_MERGE_FILE_SIMPLIFY_ALNUM: Condense non-alphanumeric regions for simplified diff file.
-     * GGIT_MERGE_FILE_IGNORE_WHITESPACE: Ignore all whitespace.
-     * GGIT_MERGE_FILE_IGNORE_WHITESPACE_CHANGE: Ignore changes in amount of whitespace.
-     * GGIT_MERGE_FILE_IGNORE_WHITESPACE_EOL: Ignore whitespace at end of line.
-     * GGIT_MERGE_FILE_DIFF_PATIENCE: Use the "patience diff" algorithm.
-     * GGIT_MERGE_FILE_DIFF_MINIMAL: Take extra time to find minimal diff.
-     */
     export namespace MergeFileFlags {
         export const $gtype: GObject.GType<MergeFileFlags>;
     }
 
+    /**
+     * GGIT_MERGE_FILE_DEFAULT: Defaults.
+     * GGIT_MERGE_FILE_STYLE_MERGE: Create standard conflicted merge files.
+     * GGIT_MERGE_FILE_STYLE_DIFF3: Create diff3-style files.
+     * GGIT_MERGE_FILE_SIMPLIFY_ALNUM: Condense non-alphanumeric regions for simplified diff file.
+     * GGIT_MERGE_FILE_IGNORE_WHITESPACE: Ignore all whitespace.
+     * GGIT_MERGE_FILE_IGNORE_WHITESPACE_CHANGE: Ignore changes in amount of whitespace.
+     * GGIT_MERGE_FILE_IGNORE_WHITESPACE_EOL: Ignore whitespace at end of line.
+     * GGIT_MERGE_FILE_DIFF_PATIENCE: Use the "patience diff" algorithm.
+     * GGIT_MERGE_FILE_DIFF_MINIMAL: Take extra time to find minimal diff.
+     */
     enum MergeFileFlags {
         DEFAULT,
         STYLE_MERGE,
@@ -1174,17 +1082,14 @@ export namespace Ggit {
          */
         NO_RECURSIVE,
     }
-    /**
-     * The type of sorting mode for the revision walker.
-     */
 
-    /**
-     * The type of sorting mode for the revision walker.
-     */
     export namespace SortMode {
         export const $gtype: GObject.GType<SortMode>;
     }
 
+    /**
+     * The type of sorting mode for the revision walker.
+     */
     enum SortMode {
         /**
          * Sorts the repository contents in no particular ordering;
@@ -1211,17 +1116,14 @@ export namespace Ggit {
          */
         REVERSE,
     }
-    /**
-     * Describes how a stash should be applied.
-     */
 
-    /**
-     * Describes how a stash should be applied.
-     */
     export namespace StashFlags {
         export const $gtype: GObject.GType<StashFlags>;
     }
 
+    /**
+     * Describes how a stash should be applied.
+     */
     enum StashFlags {
         /**
          * default stash.
@@ -1243,17 +1145,14 @@ export namespace Ggit {
          */
         INCLUDE_IGNORED,
     }
-    /**
-     * Describes a file's status.
-     */
 
-    /**
-     * Describes a file's status.
-     */
     export namespace StatusFlags {
         export const $gtype: GObject.GType<StatusFlags>;
     }
 
+    /**
+     * Describes a file's status.
+     */
     enum StatusFlags {
         /**
          * file is current.
@@ -1294,49 +1193,30 @@ export namespace Ggit {
         IGNORED,
         CONFLICTED,
     }
-    /**
-     * GGIT_STATUS_OPTION_INCLUDE_UNTRACKED: include untracked files (default).
-     * GGIT_STATUS_OPTION_INCLUDE_IGNORED: include ignored files (default).
-     * GGIT_STATUS_OPTION_INCLUDE_UNMODIFIED: include unmodified files.
-     * GGIT_STATUS_OPTION_EXCLUDE_SUBMODULES: exclude submodules.
-     * GGIT_STATUS_OPTION_RECURSE_UNTRACKED_DIRS: search untracked directories recursively (default).
-     * GGIT_STATUS_OPTION_DISABLE_PATHSPEC_MATCH: do not match path specifications.
-     * GGIT_STATUS_OPTION_RECURSE_IGNORED_DIRS: search ignored directories recursively.
-     * GGIT_STATUS_OPTION_RENAMES_HEAD_TO_INDEX: indicates that rename detection
-     * should be processed between the head and the index and enables
-     * the GIT_STATUS_INDEX_RENAMED as a possible status flag.
-     * GGIT_STATUS_OPTION_RENAMES_INDEX_TO_WORKDIR: indicates tha rename
-     * detection should be run between the index and the working directory
-     * and enabled GIT_STATUS_WT_RENAMED as a possible status flag.
-     * GGIT_STATUS_OPTION_SORT_CASE_SENSITIVELY: sort case sensitive.
-     * GGIT_STATUS_OPTION_SORT_CASE_INSENSITIVELY: sort case insensitive.
-     * GGIT_STATUS_OPTION_DEFAULT: default flags.
-     * Status options specified when using #ggit_repository_file_status_foreach.
-     */
 
-    /**
-     * GGIT_STATUS_OPTION_INCLUDE_UNTRACKED: include untracked files (default).
-     * GGIT_STATUS_OPTION_INCLUDE_IGNORED: include ignored files (default).
-     * GGIT_STATUS_OPTION_INCLUDE_UNMODIFIED: include unmodified files.
-     * GGIT_STATUS_OPTION_EXCLUDE_SUBMODULES: exclude submodules.
-     * GGIT_STATUS_OPTION_RECURSE_UNTRACKED_DIRS: search untracked directories recursively (default).
-     * GGIT_STATUS_OPTION_DISABLE_PATHSPEC_MATCH: do not match path specifications.
-     * GGIT_STATUS_OPTION_RECURSE_IGNORED_DIRS: search ignored directories recursively.
-     * GGIT_STATUS_OPTION_RENAMES_HEAD_TO_INDEX: indicates that rename detection
-     * should be processed between the head and the index and enables
-     * the GIT_STATUS_INDEX_RENAMED as a possible status flag.
-     * GGIT_STATUS_OPTION_RENAMES_INDEX_TO_WORKDIR: indicates tha rename
-     * detection should be run between the index and the working directory
-     * and enabled GIT_STATUS_WT_RENAMED as a possible status flag.
-     * GGIT_STATUS_OPTION_SORT_CASE_SENSITIVELY: sort case sensitive.
-     * GGIT_STATUS_OPTION_SORT_CASE_INSENSITIVELY: sort case insensitive.
-     * GGIT_STATUS_OPTION_DEFAULT: default flags.
-     * Status options specified when using #ggit_repository_file_status_foreach.
-     */
     export namespace StatusOption {
         export const $gtype: GObject.GType<StatusOption>;
     }
 
+    /**
+     * GGIT_STATUS_OPTION_INCLUDE_UNTRACKED: include untracked files (default).
+     * GGIT_STATUS_OPTION_INCLUDE_IGNORED: include ignored files (default).
+     * GGIT_STATUS_OPTION_INCLUDE_UNMODIFIED: include unmodified files.
+     * GGIT_STATUS_OPTION_EXCLUDE_SUBMODULES: exclude submodules.
+     * GGIT_STATUS_OPTION_RECURSE_UNTRACKED_DIRS: search untracked directories recursively (default).
+     * GGIT_STATUS_OPTION_DISABLE_PATHSPEC_MATCH: do not match path specifications.
+     * GGIT_STATUS_OPTION_RECURSE_IGNORED_DIRS: search ignored directories recursively.
+     * GGIT_STATUS_OPTION_RENAMES_HEAD_TO_INDEX: indicates that rename detection
+     * should be processed between the head and the index and enables
+     * the GIT_STATUS_INDEX_RENAMED as a possible status flag.
+     * GGIT_STATUS_OPTION_RENAMES_INDEX_TO_WORKDIR: indicates tha rename
+     * detection should be run between the index and the working directory
+     * and enabled GIT_STATUS_WT_RENAMED as a possible status flag.
+     * GGIT_STATUS_OPTION_SORT_CASE_SENSITIVELY: sort case sensitive.
+     * GGIT_STATUS_OPTION_SORT_CASE_INSENSITIVELY: sort case insensitive.
+     * GGIT_STATUS_OPTION_DEFAULT: default flags.
+     * Status options specified when using #ggit_repository_file_status_foreach.
+     */
     enum StatusOption {
         INCLUDE_UNTRACKED,
         INCLUDE_IGNORED,
@@ -1351,17 +1231,14 @@ export namespace Ggit {
         SORT_CASE_INSENSITIVELY,
         DEFAULT,
     }
-    /**
-     * FIXME
-     */
 
-    /**
-     * FIXME
-     */
     export namespace SubmoduleStatus {
         export const $gtype: GObject.GType<SubmoduleStatus>;
     }
 
+    /**
+     * FIXME
+     */
     enum SubmoduleStatus {
         IN_HEAD,
         IN_INDEX,
@@ -1378,6 +1255,7 @@ export namespace Ggit {
         WD_WD_MODIFIED,
         WD_UNTRACKED,
     }
+
     namespace Blame {
         // Signal signatures
         interface SignalSignatures extends Native.SignalSignatures {

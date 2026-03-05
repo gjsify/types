@@ -30,6 +30,7 @@ export namespace Deviced {
         PHONE,
         MICRO_CONTROLLER,
     }
+
     /**
      * libdeviced major version component (e.g. 1 if %DEVD_VERSION is 1.2.3)
      */

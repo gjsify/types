@@ -52,17 +52,14 @@ export namespace Notify {
          */
         UNDEFIEND,
     }
-    /**
-     * The urgency level of the notification.
-     */
 
-    /**
-     * The urgency level of the notification.
-     */
     export namespace Urgency {
         export const $gtype: GObject.GType<Urgency>;
     }
 
+    /**
+     * The urgency level of the notification.
+     */
     enum Urgency {
         /**
          * Low urgency. Used for unimportant notifications.
@@ -77,6 +74,7 @@ export namespace Notify {
          */
         CRITICAL,
     }
+
     /**
      * The default expiration time on a notification.
      */

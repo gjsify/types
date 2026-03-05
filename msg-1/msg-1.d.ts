@@ -23,17 +23,14 @@ export namespace Msg {
      * Msg-1
      */
 
-    export namespace DriveType {
-        export const $gtype: GObject.GType<DriveType>;
-    }
-
     enum DriveType {
         PERSONAL,
         BUSINESS,
         DOCUMENT_LIBRARY,
     }
+
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 

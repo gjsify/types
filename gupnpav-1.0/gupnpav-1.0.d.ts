@@ -19,10 +19,6 @@ export namespace GUPnPAV {
      * GUPnPAV-1.0
      */
 
-    export namespace CDSLastChangeEvent {
-        export const $gtype: GObject.GType<CDSLastChangeEvent>;
-    }
-
     enum CDSLastChangeEvent {
         /**
          * Invalid #GUPnPCDSLastChangeEntry.
@@ -49,17 +45,10 @@ export namespace GUPnPAV {
          */
         ST_DONE,
     }
-    /**
-     * Possible return values of the gupnp_didl_lite_object_apply_fragments() call.
-     */
 
     /**
      * Possible return values of the gupnp_didl_lite_object_apply_fragments() call.
      */
-    export namespace DIDLLiteFragmentResult {
-        export const $gtype: GObject.GType<DIDLLiteFragmentResult>;
-    }
-
     enum DIDLLiteFragmentResult {
         /**
          * Operation succeeded.
@@ -106,12 +95,13 @@ export namespace GUPnPAV {
          */
         UNKNOWN_ERROR,
     }
+
     /**
      * #GError codes used for errors in the #GUPNP_PROTOCOL_ERROR domain, upon any
      * protocol related errors.
      */
     class ProtocolError extends GLib.Error {
-        static $gtype: GObject.GType<ProtocolError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -129,17 +119,13 @@ export namespace GUPnPAV {
         constructor(options: { message: string; code: number });
     }
 
-    /**
-     * The possible operators in SearchCriteria strings.
-     */
-
-    /**
-     * The possible operators in SearchCriteria strings.
-     */
     export namespace SearchCriteriaOp {
         export const $gtype: GObject.GType<SearchCriteriaOp>;
     }
 
+    /**
+     * The possible operators in SearchCriteria strings.
+     */
     enum SearchCriteriaOp {
         /**
          * '='
@@ -183,10 +169,6 @@ export namespace GUPnPAV {
         EXISTS,
     }
 
-    export namespace SearchCriteriaParserError {
-        export const $gtype: GObject.GType<SearchCriteriaParserError>;
-    }
-
     enum SearchCriteriaParserError {
         /**
          * Parsing the search criteria
@@ -194,6 +176,7 @@ export namespace GUPnPAV {
          */
         SEARCH_CRITERIA_PARSER_ERROR_FAILED,
     }
+
     const DIDL_LITE_WRITER_NAMESPACE_DC: string;
     const DIDL_LITE_WRITER_NAMESPACE_DLNA: string;
     const DIDL_LITE_WRITER_NAMESPACE_PV: string;
@@ -208,17 +191,13 @@ export namespace GUPnPAV {
      */
     function format_date_time_for_didl_lite(date_time: GLib.DateTime, date_only: boolean): string;
     function protocol_error_quark(): GLib.Quark;
-    /**
-     * The DLNA conversion flags for a resource.
-     */
-
-    /**
-     * The DLNA conversion flags for a resource.
-     */
     export namespace DLNAConversion {
         export const $gtype: GObject.GType<DLNAConversion>;
     }
 
+    /**
+     * The DLNA conversion flags for a resource.
+     */
     enum DLNAConversion {
         /**
          * Content is in original source format
@@ -229,25 +208,18 @@ export namespace GUPnPAV {
          */
         TRANSCODED,
     }
-    /**
-     * The miscellaneous operations supported by a resource. For details on these
-     * flags please refer to section 7.3.37.2 of DLNA Networked Device
-     * Interoperability Guidelines Volume 1, October 2006.
-     *
-     * Updated DTCP Flags based on 2011 Guidelines, section 7.4.1.3.23.2
-     */
 
-    /**
-     * The miscellaneous operations supported by a resource. For details on these
-     * flags please refer to section 7.3.37.2 of DLNA Networked Device
-     * Interoperability Guidelines Volume 1, October 2006.
-     *
-     * Updated DTCP Flags based on 2011 Guidelines, section 7.4.1.3.23.2
-     */
     export namespace DLNAFlags {
         export const $gtype: GObject.GType<DLNAFlags>;
     }
 
+    /**
+     * The miscellaneous operations supported by a resource. For details on these
+     * flags please refer to section 7.3.37.2 of DLNA Networked Device
+     * Interoperability Guidelines Volume 1, October 2006.
+     *
+     * Updated DTCP Flags based on 2011 Guidelines, section 7.4.1.3.23.2
+     */
     enum DLNAFlags {
         /**
          * No flags
@@ -320,17 +292,14 @@ export namespace GUPnPAV {
          */
         LOP_CLEARTEXT_BYTESEEK,
     }
-    /**
-     * The seek operations supported by a resource.
-     */
 
-    /**
-     * The seek operations supported by a resource.
-     */
     export namespace DLNAOperation {
         export const $gtype: GObject.GType<DLNAOperation>;
     }
 
+    /**
+     * The seek operations supported by a resource.
+     */
     enum DLNAOperation {
         /**
          * Resource does not support seeking of any type
@@ -345,21 +314,16 @@ export namespace GUPnPAV {
          */
         TIMESEEK,
     }
-    /**
-     * The DLNA OCM flags supported by a DIDL-Lite Object. For details on these
-     * flags please refer to section 7.3.118.4 of DLNA Networked Device
-     * Interoperability Guidelines Volume 1, October 2006.
-     */
 
-    /**
-     * The DLNA OCM flags supported by a DIDL-Lite Object. For details on these
-     * flags please refer to section 7.3.118.4 of DLNA Networked Device
-     * Interoperability Guidelines Volume 1, October 2006.
-     */
     export namespace OCMFlags {
         export const $gtype: GObject.GType<OCMFlags>;
     }
 
+    /**
+     * The DLNA OCM flags supported by a DIDL-Lite Object. For details on these
+     * flags please refer to section 7.3.118.4 of DLNA Networked Device
+     * Interoperability Guidelines Volume 1, October 2006.
+     */
     enum OCMFlags {
         /**
          * No flags
@@ -388,6 +352,7 @@ export namespace GUPnPAV {
          */
         CHANGE_METADATA,
     }
+
     namespace CDSLastChangeParser {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

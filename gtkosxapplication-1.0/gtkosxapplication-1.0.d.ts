@@ -29,10 +29,6 @@ export namespace GtkosxApplication {
      * GtkosxApplication-1.0
      */
 
-    export namespace ApplicationAttentionType {
-        export const $gtype: GObject.GType<ApplicationAttentionType>;
-    }
-
     enum ApplicationAttentionType {
         /**
          * Bounce the icon until the app is activated.
@@ -43,6 +39,7 @@ export namespace GtkosxApplication {
          */
         NFO_REQUEST,
     }
+
     namespace Application {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

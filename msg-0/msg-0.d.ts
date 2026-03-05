@@ -28,16 +28,6 @@ export namespace Msg {
      * <ulink url="https://docs.microsoft.com/en-us/graph/api/resources/drive?view=graph-rest-1.0">
      * objects</ulink>.
      */
-
-    /**
-     * The type of Drive
-     * <ulink url="https://docs.microsoft.com/en-us/graph/api/resources/drive?view=graph-rest-1.0">
-     * objects</ulink>.
-     */
-    export namespace DriveType {
-        export const $gtype: GObject.GType<DriveType>;
-    }
-
     enum DriveType {
         /**
          * Personal OneDrive drive
@@ -52,11 +42,12 @@ export namespace Msg {
          */
         DOCUMENT_LIBRARY,
     }
+
     /**
      * This enumeration can be expanded at a later date.
      */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -71,10 +62,6 @@ export namespace Msg {
         constructor(options: { message: string; code: number });
     }
 
-    export namespace MessageMailFolderType {
-        export const $gtype: GObject.GType<MessageMailFolderType>;
-    }
-
     enum MessageMailFolderType {
         INBOX,
         DRAFTS,
@@ -84,6 +71,7 @@ export namespace Msg {
         OUTBOX,
         ARCHIVE,
     }
+
     const API_ENDPOINT: string;
     function error_quark(): GLib.Quark;
     function json_object_get_string(object: Json.Object, name: string): string;

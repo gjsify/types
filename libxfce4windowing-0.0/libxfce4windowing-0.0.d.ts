@@ -34,16 +34,6 @@ export namespace Libxfce4windowing {
      *
      * See #xfw_set_client_type() for details.
      */
-
-    /**
-     * The type of the application.
-     *
-     * See #xfw_set_client_type() for details.
-     */
-    export namespace ClientType {
-        export const $gtype: GObject.GType<ClientType>;
-    }
-
     enum ClientType {
         /**
          * a regular application
@@ -54,21 +44,16 @@ export namespace Libxfce4windowing {
          */
         PAGER,
     }
-    /**
-     * Represents a direction, either of position ("This workspace is to the left
-     * of the current workspace") or movement ("Move this window to the workspace to
-     * the right of its current workspace").
-     */
 
-    /**
-     * Represents a direction, either of position ("This workspace is to the left
-     * of the current workspace") or movement ("Move this window to the workspace to
-     * the right of its current workspace").
-     */
     export namespace Direction {
         export const $gtype: GObject.GType<Direction>;
     }
 
+    /**
+     * Represents a direction, either of position ("This workspace is to the left
+     * of the current workspace") or movement ("Move this window to the workspace to
+     * the right of its current workspace").
+     */
     enum Direction {
         /**
          * upward from the current location
@@ -87,11 +72,12 @@ export namespace Libxfce4windowing {
          */
         RIGHT,
     }
+
     /**
      * An error code enum describing possible errors returned by this library.
      */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -109,17 +95,13 @@ export namespace Libxfce4windowing {
         constructor(options: { message: string; code: number });
     }
 
-    /**
-     * Enumeration describing the windows type or function.
-     */
-
-    /**
-     * Enumeration describing the windows type or function.
-     */
     export namespace WindowType {
         export const $gtype: GObject.GType<WindowType>;
     }
 
+    /**
+     * Enumeration describing the windows type or function.
+     */
     enum WindowType {
         /**
          * window is a regular window.
@@ -155,19 +137,11 @@ export namespace Libxfce4windowing {
          */
         SPLASHSCREEN,
     }
-    /**
-     * Represents the windowing environment that is currently running.  Note that
-     * for an application running on XWayland, this will return #XFW_WINDOWING_X11.
-     */
 
     /**
      * Represents the windowing environment that is currently running.  Note that
      * for an application running on XWayland, this will return #XFW_WINDOWING_X11.
      */
-    export namespace Windowing {
-        export const $gtype: GObject.GType<Windowing>;
-    }
-
     enum Windowing {
         /**
          * the application is running under an unknown
@@ -184,6 +158,7 @@ export namespace Libxfce4windowing {
          */
         WAYLAND,
     }
+
     /**
      * A macro that evaluates to the major version of libxfce4windowing, in a format
      * that can be used by the C pre-processor.
@@ -264,17 +239,13 @@ export namespace Libxfce4windowing {
     interface SetLayoutFunc {
         (group: WorkspaceGroup, rows: number, columns: number): boolean;
     }
-    /**
-     * Flags bitfield that describes actions that can be taken on the window.
-     */
-
-    /**
-     * Flags bitfield that describes actions that can be taken on the window.
-     */
     export namespace WindowCapabilities {
         export const $gtype: GObject.GType<WindowCapabilities>;
     }
 
+    /**
+     * Flags bitfield that describes actions that can be taken on the window.
+     */
     enum WindowCapabilities {
         /**
          * window has no capabilities.
@@ -347,17 +318,14 @@ export namespace Libxfce4windowing {
          */
         CAN_CHANGE_WORKSPACE,
     }
-    /**
-     * A flags bitfield representing various states the window can hold.
-     */
 
-    /**
-     * A flags bitfield representing various states the window can hold.
-     */
     export namespace WindowState {
         export const $gtype: GObject.GType<WindowState>;
     }
 
+    /**
+     * A flags bitfield representing various states the window can hold.
+     */
     enum WindowState {
         /**
          * window has no state bits set.
@@ -409,19 +377,15 @@ export namespace Libxfce4windowing {
          */
         URGENT,
     }
-    /**
-     * Flags enum representing a bitfield of actions that can be performed on this
-     * workspace.
-     */
 
-    /**
-     * Flags enum representing a bitfield of actions that can be performed on this
-     * workspace.
-     */
     export namespace WorkspaceCapabilities {
         export const $gtype: GObject.GType<WorkspaceCapabilities>;
     }
 
+    /**
+     * Flags enum representing a bitfield of actions that can be performed on this
+     * workspace.
+     */
     enum WorkspaceCapabilities {
         /**
          * workspace has no capabilities.
@@ -436,19 +400,15 @@ export namespace Libxfce4windowing {
          */
         REMOVE,
     }
-    /**
-     * Flags enum representing a bitfield of actions that can be performed on this
-     * workspace group.
-     */
 
-    /**
-     * Flags enum representing a bitfield of actions that can be performed on this
-     * workspace group.
-     */
     export namespace WorkspaceGroupCapabilities {
         export const $gtype: GObject.GType<WorkspaceGroupCapabilities>;
     }
 
+    /**
+     * Flags enum representing a bitfield of actions that can be performed on this
+     * workspace group.
+     */
     enum WorkspaceGroupCapabilities {
         /**
          * group has no capabilities.
@@ -471,17 +431,14 @@ export namespace Libxfce4windowing {
          */
         SET_LAYOUT,
     }
-    /**
-     * Flags enum representing a bitfield that describes the workspace's state.
-     */
 
-    /**
-     * Flags enum representing a bitfield that describes the workspace's state.
-     */
     export namespace WorkspaceState {
         export const $gtype: GObject.GType<WorkspaceState>;
     }
 
+    /**
+     * Flags enum representing a bitfield that describes the workspace's state.
+     */
     enum WorkspaceState {
         /**
          * workspace has no state information.
@@ -506,6 +463,7 @@ export namespace Libxfce4windowing {
          */
         VIRTUAL,
     }
+
     namespace Application {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

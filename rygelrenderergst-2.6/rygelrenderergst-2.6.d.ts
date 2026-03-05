@@ -30,7 +30,7 @@ export namespace RygelRendererGst {
      */
 
     class PlaybinPlayerError extends GLib.Error {
-        static $gtype: GObject.GType<PlaybinPlayerError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 

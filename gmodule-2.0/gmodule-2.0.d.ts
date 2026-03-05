@@ -22,7 +22,7 @@ export namespace GModule {
      * Errors returned by g_module_open_full().
      */
     class ModuleError extends GLib.Error {
-        static $gtype: GObject.GType<ModuleError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -84,15 +84,6 @@ export namespace GModule {
      * Flags passed to g_module_open().
      * Note that these flags are not supported on all platforms.
      */
-
-    /**
-     * Flags passed to g_module_open().
-     * Note that these flags are not supported on all platforms.
-     */
-    export namespace ModuleFlags {
-        export const $gtype: GObject.GType<ModuleFlags>;
-    }
-
     enum ModuleFlags {
         /**
          * specifies that symbols are only resolved when
@@ -112,6 +103,7 @@ export namespace GModule {
          */
         MASK,
     }
+
     /**
      * The #GModule struct is an opaque data structure to represent a
      * [dynamically-loaded module][glib-Dynamic-Loading-of-Modules].

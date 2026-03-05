@@ -33,15 +33,6 @@ export namespace AyatanaAppIndicator3 {
      * The category provides grouping for the indicators so that
      * users can find indicators that are similar together.
      */
-
-    /**
-     * The category provides grouping for the indicators so that
-     * users can find indicators that are similar together.
-     */
-    export namespace IndicatorCategory {
-        export const $gtype: GObject.GType<IndicatorCategory>;
-    }
-
     enum IndicatorCategory {
         /**
          * The indicator is used to display the status of the application.
@@ -64,12 +55,6 @@ export namespace AyatanaAppIndicator3 {
          */
         OTHER,
     }
-    /**
-     * These are the states that the indicator can be on in
-     * the user's panel.  The indicator by default starts
-     * in the state `APP_INDICATOR_STATUS_PASSIVE` and can be
-     * shown by setting it to `APP_INDICATOR_STATUS_ACTIVE`.
-     */
 
     /**
      * These are the states that the indicator can be on in
@@ -77,10 +62,6 @@ export namespace AyatanaAppIndicator3 {
      * in the state `APP_INDICATOR_STATUS_PASSIVE` and can be
      * shown by setting it to `APP_INDICATOR_STATUS_ACTIVE`.
      */
-    export namespace IndicatorStatus {
-        export const $gtype: GObject.GType<IndicatorStatus>;
-    }
-
     enum IndicatorStatus {
         /**
          * The indicator should not be shown to the user.
@@ -95,6 +76,7 @@ export namespace AyatanaAppIndicator3 {
          */
         ATTENTION,
     }
+
     /**
      * String identifier for the #AppIndicator::connection-changed signal.
      */

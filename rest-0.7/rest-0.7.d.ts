@@ -21,10 +21,6 @@ export namespace Rest {
      * Rest-0.7
      */
 
-    export namespace MemoryUse {
-        export const $gtype: GObject.GType<MemoryUse>;
-    }
-
     enum MemoryUse {
         /**
          * the memory block can be assumed to always exist for the
@@ -41,21 +37,16 @@ export namespace Rest {
          */
         COPY,
     }
-    /**
-     * The signature method to use when signing method calls.  `PLAINTEXT` is only
-     * recommended for testing, in general `HMAC_SHA1` is well supported and more
-     * secure.
-     */
 
-    /**
-     * The signature method to use when signing method calls.  `PLAINTEXT` is only
-     * recommended for testing, in general `HMAC_SHA1` is well supported and more
-     * secure.
-     */
     export namespace OAuthSignatureMethod {
         export const $gtype: GObject.GType<OAuthSignatureMethod>;
     }
 
+    /**
+     * The signature method to use when signing method calls.  `PLAINTEXT` is only
+     * recommended for testing, in general `HMAC_SHA1` is well supported and more
+     * secure.
+     */
     enum OAuthSignatureMethod {
         /**
          * plain text signatures (not recommended)
@@ -66,11 +57,12 @@ export namespace Rest {
          */
         HMAC_SHA1,
     }
+
     /**
      * Error domain used when returning errors from #RestProxyCall.
      */
     class ProxyCallError extends GLib.Error {
-        static $gtype: GObject.GType<ProxyCallError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -92,7 +84,7 @@ export namespace Rest {
      * Error domain used when returning errors from a #RestProxy.
      */
     class ProxyError extends GLib.Error {
-        static $gtype: GObject.GType<ProxyError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 

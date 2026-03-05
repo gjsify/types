@@ -20,16 +20,13 @@ export namespace Translit {
      * Translit-1.0
      */
 
-    export namespace ErrorEnum {
-        export const $gtype: GObject.GType<ErrorEnum>;
-    }
-
     enum ErrorEnum {
         NO_SUCH_BACKEND,
         LOAD_FAILED,
         INVALID_INPUT,
         FAILED,
     }
+
     function error_quark(): GLib.Quark;
     function implement_transliterator(backend: string, type: GObject.GType): void;
     namespace Transliterator {

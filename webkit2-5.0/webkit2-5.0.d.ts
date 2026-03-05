@@ -32,17 +32,13 @@ export namespace WebKit2 {
      * WebKit2-5.0
      */
 
-    /**
-     * Enum values representing the authentication scheme.
-     */
-
-    /**
-     * Enum values representing the authentication scheme.
-     */
     export namespace AuthenticationScheme {
         export const $gtype: GObject.GType<AuthenticationScheme>;
     }
 
+    /**
+     * Enum values representing the authentication scheme.
+     */
     enum AuthenticationScheme {
         /**
          * The default authentication scheme of WebKit.
@@ -85,17 +81,14 @@ export namespace WebKit2 {
          */
         UNKNOWN,
     }
-    /**
-     * Enum values used for determining the automation browsing context presentation.
-     */
 
-    /**
-     * Enum values used for determining the automation browsing context presentation.
-     */
     export namespace AutomationBrowsingContextPresentation {
         export const $gtype: GObject.GType<AutomationBrowsingContextPresentation>;
     }
 
+    /**
+     * Enum values used for determining the automation browsing context presentation.
+     */
     enum AutomationBrowsingContextPresentation {
         /**
          * a window
@@ -106,17 +99,14 @@ export namespace WebKit2 {
          */
         TAB,
     }
-    /**
-     * Enum values used to specify autoplay policies.
-     */
 
-    /**
-     * Enum values used to specify autoplay policies.
-     */
     export namespace AutoplayPolicy {
         export const $gtype: GObject.GType<AutoplayPolicy>;
     }
 
+    /**
+     * Enum values used to specify autoplay policies.
+     */
     enum AutoplayPolicy {
         /**
          * Do not restrict autoplay.
@@ -132,17 +122,14 @@ export namespace WebKit2 {
          */
         DENY,
     }
-    /**
-     * Enum values used for determining the #WebKitWebContext cache model.
-     */
 
-    /**
-     * Enum values used for determining the #WebKitWebContext cache model.
-     */
     export namespace CacheModel {
         export const $gtype: GObject.GType<CacheModel>;
     }
 
+    /**
+     * Enum values used for determining the #WebKitWebContext cache model.
+     */
     enum CacheModel {
         /**
          * Disable the cache completely, which
@@ -163,19 +150,15 @@ export namespace WebKit2 {
          */
         DOCUMENT_BROWSER,
     }
-    /**
-     * Enum values used to denote the stock actions for
-     * #WebKitContextMenuItem<!-- -->s
-     */
 
-    /**
-     * Enum values used to denote the stock actions for
-     * #WebKitContextMenuItem<!-- -->s
-     */
     export namespace ContextMenuAction {
         export const $gtype: GObject.GType<ContextMenuAction>;
     }
 
+    /**
+     * Enum values used to denote the stock actions for
+     * #WebKitContextMenuItem<!-- -->s
+     */
     enum ContextMenuAction {
         /**
          * No action, used by separator menu items.
@@ -366,17 +349,14 @@ export namespace WebKit2 {
          */
         CUSTOM,
     }
-    /**
-     * Enum values used to denote the cookie acceptance policies.
-     */
 
-    /**
-     * Enum values used to denote the cookie acceptance policies.
-     */
     export namespace CookieAcceptPolicy {
         export const $gtype: GObject.GType<CookieAcceptPolicy>;
     }
 
+    /**
+     * Enum values used to denote the cookie acceptance policies.
+     */
     enum CookieAcceptPolicy {
         /**
          * Accept all cookies unconditionally.
@@ -391,17 +371,14 @@ export namespace WebKit2 {
          */
         NO_THIRD_PARTY,
     }
-    /**
-     * Enum values used to denote the cookie persistent storage types.
-     */
 
-    /**
-     * Enum values used to denote the cookie persistent storage types.
-     */
     export namespace CookiePersistentStorage {
         export const $gtype: GObject.GType<CookiePersistentStorage>;
     }
 
+    /**
+     * Enum values used to denote the cookie persistent storage types.
+     */
     enum CookiePersistentStorage {
         /**
          * Cookies are stored in a text
@@ -414,17 +391,14 @@ export namespace WebKit2 {
          */
         SQLITE,
     }
-    /**
-     * Enum values representing the duration for which a credential persists.
-     */
 
-    /**
-     * Enum values representing the duration for which a credential persists.
-     */
     export namespace CredentialPersistence {
         export const $gtype: GObject.GType<CredentialPersistence>;
     }
 
+    /**
+     * Enum values representing the duration for which a credential persists.
+     */
     enum CredentialPersistence {
         /**
          * Credential does not persist
@@ -439,11 +413,12 @@ export namespace WebKit2 {
          */
         PERMANENT,
     }
+
     /**
      * Enum values used to denote the various download errors.
      */
     class DownloadError extends GLib.Error {
-        static $gtype: GObject.GType<DownloadError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -476,7 +451,7 @@ export namespace WebKit2 {
      * Enum values used to denote the various errors related to the #WebKitFaviconDatabase.
      */
     class FaviconDatabaseError extends GLib.Error {
-        static $gtype: GObject.GType<FaviconDatabaseError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -505,17 +480,13 @@ export namespace WebKit2 {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Enum values used for determining the hardware acceleration policy.
-     */
-
-    /**
-     * Enum values used for determining the hardware acceleration policy.
-     */
     export namespace HardwareAccelerationPolicy {
         export const $gtype: GObject.GType<HardwareAccelerationPolicy>;
     }
 
+    /**
+     * Enum values used for determining the hardware acceleration policy.
+     */
     enum HardwareAccelerationPolicy {
         /**
          * Hardware acceleration is enabled/disabled as request by web contents.
@@ -530,17 +501,14 @@ export namespace WebKit2 {
          */
         NEVER,
     }
-    /**
-     * Enum values used to describe the primary purpose of the active editable element.
-     */
 
-    /**
-     * Enum values used to describe the primary purpose of the active editable element.
-     */
     export namespace InputPurpose {
         export const $gtype: GObject.GType<InputPurpose>;
     }
 
+    /**
+     * Enum values used to describe the primary purpose of the active editable element.
+     */
     enum InputPurpose {
         /**
          * Editable element expects any characters
@@ -571,19 +539,15 @@ export namespace WebKit2 {
          */
         PASSWORD,
     }
-    /**
-     * Enum values used to denote the different events which can trigger
-     * the detection of insecure content.
-     */
 
-    /**
-     * Enum values used to denote the different events which can trigger
-     * the detection of insecure content.
-     */
     export namespace InsecureContentEvent {
         export const $gtype: GObject.GType<InsecureContentEvent>;
     }
 
+    /**
+     * Enum values used to denote the different events which can trigger
+     * the detection of insecure content.
+     */
     enum InsecureContentEvent {
         /**
          * Insecure content has been detected by
@@ -598,11 +562,12 @@ export namespace WebKit2 {
          */
         DISPLAYED,
     }
+
     /**
      * Enum values used to denote errors happening when executing JavaScript
      */
     class JavascriptError extends GLib.Error {
-        static $gtype: GObject.GType<JavascriptError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -623,19 +588,14 @@ export namespace WebKit2 {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Enum values used to denote the different events that happen during a
-     * #WebKitWebView load operation.
-     */
-
-    /**
-     * Enum values used to denote the different events that happen during a
-     * #WebKitWebView load operation.
-     */
     export namespace LoadEvent {
         export const $gtype: GObject.GType<LoadEvent>;
     }
 
+    /**
+     * Enum values used to denote the different events that happen during a
+     * #WebKitWebView load operation.
+     */
     enum LoadEvent {
         /**
          * A new load request has been made.
@@ -662,17 +622,14 @@ export namespace WebKit2 {
          */
         FINISHED,
     }
-    /**
-     * Enum values used to specify the capture state of a media device.
-     */
 
-    /**
-     * Enum values used to specify the capture state of a media device.
-     */
     export namespace MediaCaptureState {
         export const $gtype: GObject.GType<MediaCaptureState>;
     }
 
+    /**
+     * Enum values used to specify the capture state of a media device.
+     */
     enum MediaCaptureState {
         /**
          * Media capture is disabled.
@@ -687,17 +644,14 @@ export namespace WebKit2 {
          */
         MUTED,
     }
-    /**
-     * Enum values used to denote the various navigation types.
-     */
 
-    /**
-     * Enum values used to denote the various navigation types.
-     */
     export namespace NavigationType {
         export const $gtype: GObject.GType<NavigationType>;
     }
 
+    /**
+     * Enum values used to denote the various navigation types.
+     */
     enum NavigationType {
         /**
          * The navigation was triggered by clicking a link.
@@ -724,11 +678,12 @@ export namespace WebKit2 {
          */
         OTHER,
     }
+
     /**
      * Enum values used to denote the various network errors.
      */
     class NetworkError extends GLib.Error {
-        static $gtype: GObject.GType<NetworkError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -765,17 +720,13 @@ export namespace WebKit2 {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Enum values used to set the network proxy mode.
-     */
-
-    /**
-     * Enum values used to set the network proxy mode.
-     */
     export namespace NetworkProxyMode {
         export const $gtype: GObject.GType<NetworkProxyMode>;
     }
 
+    /**
+     * Enum values used to set the network proxy mode.
+     */
     enum NetworkProxyMode {
         /**
          * Use the default proxy of the system.
@@ -790,11 +741,12 @@ export namespace WebKit2 {
          */
         CUSTOM,
     }
+
     /**
      * Enum values used to denote the various plugin and multimedia errors.
      */
     class PluginError extends GLib.Error {
-        static $gtype: GObject.GType<PluginError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -835,19 +787,14 @@ export namespace WebKit2 {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Enum values used for determining the type of a policy decision during
-     * #WebKitWebView::decide-policy.
-     */
-
-    /**
-     * Enum values used for determining the type of a policy decision during
-     * #WebKitWebView::decide-policy.
-     */
     export namespace PolicyDecisionType {
         export const $gtype: GObject.GType<PolicyDecisionType>;
     }
 
+    /**
+     * Enum values used for determining the type of a policy decision during
+     * #WebKitWebView::decide-policy.
+     */
     enum PolicyDecisionType {
         /**
          * This type of policy decision
@@ -881,11 +828,12 @@ export namespace WebKit2 {
          */
         RESPONSE,
     }
+
     /**
      * Enum values used to denote the various policy errors.
      */
     class PolicyError extends GLib.Error {
-        static $gtype: GObject.GType<PolicyError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -926,7 +874,7 @@ export namespace WebKit2 {
      * Enum values used to denote the various print errors.
      */
     class PrintError extends GLib.Error {
-        static $gtype: GObject.GType<PrintError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -955,19 +903,14 @@ export namespace WebKit2 {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Enum values representing the response of the print dialog shown with
-     * webkit_print_operation_run_dialog().
-     */
-
-    /**
-     * Enum values representing the response of the print dialog shown with
-     * webkit_print_operation_run_dialog().
-     */
     export namespace PrintOperationResponse {
         export const $gtype: GObject.GType<PrintOperationResponse>;
     }
 
+    /**
+     * Enum values representing the response of the print dialog shown with
+     * webkit_print_operation_run_dialog().
+     */
     enum PrintOperationResponse {
         /**
          * Print button was clicked in print dialog
@@ -978,17 +921,14 @@ export namespace WebKit2 {
          */
         CANCEL,
     }
-    /**
-     * Enum values used for determining the #WebKitWebContext process model.
-     */
 
-    /**
-     * Enum values used for determining the #WebKitWebContext process model.
-     */
     export namespace ProcessModel {
         export const $gtype: GObject.GType<ProcessModel>;
     }
 
+    /**
+     * Enum values used for determining the #WebKitWebContext process model.
+     */
     enum ProcessModel {
         /**
          * Deprecated 2.26.
@@ -1007,36 +947,29 @@ export namespace WebKit2 {
          */
         MULTIPLE_SECONDARY_PROCESSES,
     }
-    /**
-     * Enum values to specify the different ways in which a #WebKitWebView
-     * can save its current web page into a self-contained file.
-     */
 
-    /**
-     * Enum values to specify the different ways in which a #WebKitWebView
-     * can save its current web page into a self-contained file.
-     */
     export namespace SaveMode {
         export const $gtype: GObject.GType<SaveMode>;
     }
 
+    /**
+     * Enum values to specify the different ways in which a #WebKitWebView
+     * can save its current web page into a self-contained file.
+     */
     enum SaveMode {
         /**
          * Save the current page using the MHTML format.
          */
         MHTML,
     }
-    /**
-     * Enum values used for determining the type of #WebKitScriptDialog
-     */
 
-    /**
-     * Enum values used for determining the type of #WebKitScriptDialog
-     */
     export namespace ScriptDialogType {
         export const $gtype: GObject.GType<ScriptDialogType>;
     }
 
+    /**
+     * Enum values used for determining the type of #WebKitScriptDialog
+     */
     enum ScriptDialogType {
         /**
          * Alert script dialog, used to show a
@@ -1059,11 +992,12 @@ export namespace WebKit2 {
          */
         BEFORE_UNLOAD_CONFIRM,
     }
+
     /**
      * Enum values used to denote errors happening when creating snapshots of #WebKitWebView
      */
     class SnapshotError extends GLib.Error {
-        static $gtype: GObject.GType<SnapshotError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -1084,19 +1018,14 @@ export namespace WebKit2 {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Enum values used to specify the region from which to get a #WebKitWebView
-     * snapshot
-     */
-
-    /**
-     * Enum values used to specify the region from which to get a #WebKitWebView
-     * snapshot
-     */
     export namespace SnapshotRegion {
         export const $gtype: GObject.GType<SnapshotRegion>;
     }
 
+    /**
+     * Enum values used to specify the region from which to get a #WebKitWebView
+     * snapshot
+     */
     enum SnapshotRegion {
         /**
          * Specifies a snapshot only for the area that is
@@ -1108,17 +1037,14 @@ export namespace WebKit2 {
          */
         FULL_DOCUMENT,
     }
-    /**
-     * Enum values used to denote the TLS errors policy.
-     */
 
-    /**
-     * Enum values used to denote the TLS errors policy.
-     */
     export namespace TLSErrorsPolicy {
         export const $gtype: GObject.GType<TLSErrorsPolicy>;
     }
 
+    /**
+     * Enum values used to denote the TLS errors policy.
+     */
     enum TLSErrorsPolicy {
         /**
          * Ignore TLS errors.
@@ -1132,11 +1058,12 @@ export namespace WebKit2 {
          */
         FAIL,
     }
+
     /**
      * Errors that can occur while compiling content filters.
      */
     class UserContentFilterError extends GLib.Error {
-        static $gtype: GObject.GType<UserContentFilterError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -1161,17 +1088,13 @@ export namespace WebKit2 {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Specifies in which frames user style sheets are to be inserted in.
-     */
-
-    /**
-     * Specifies in which frames user style sheets are to be inserted in.
-     */
     export namespace UserContentInjectedFrames {
         export const $gtype: GObject.GType<UserContentInjectedFrames>;
     }
 
+    /**
+     * Specifies in which frames user style sheets are to be inserted in.
+     */
     enum UserContentInjectedFrames {
         /**
          * Insert the user style
@@ -1186,11 +1109,12 @@ export namespace WebKit2 {
          */
         TOP_FRAME,
     }
+
     /**
      * Enum values used to denote errors happening when sending user messages.
      */
     class UserMessageError extends GLib.Error {
-        static $gtype: GObject.GType<UserMessageError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -1211,17 +1135,13 @@ export namespace WebKit2 {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Specifies at which place of documents an user script will be inserted.
-     */
-
-    /**
-     * Specifies at which place of documents an user script will be inserted.
-     */
     export namespace UserScriptInjectionTime {
         export const $gtype: GObject.GType<UserScriptInjectionTime>;
     }
 
+    /**
+     * Specifies at which place of documents an user script will be inserted.
+     */
     enum UserScriptInjectionTime {
         /**
          * Insert the code of the user
@@ -1234,17 +1154,14 @@ export namespace WebKit2 {
          */
         END,
     }
-    /**
-     * Specifies how to treat an user style sheet.
-     */
 
-    /**
-     * Specifies how to treat an user style sheet.
-     */
     export namespace UserStyleLevel {
         export const $gtype: GObject.GType<UserStyleLevel>;
     }
 
+    /**
+     * Specifies how to treat an user style sheet.
+     */
     enum UserStyleLevel {
         /**
          * The style sheet is an user style sheet,
@@ -1258,19 +1175,15 @@ export namespace WebKit2 {
          */
         AUTHOR,
     }
-    /**
-     * Enum values used for setting if a #WebKitWebView is intended for
-     * WebExtensions.
-     */
 
-    /**
-     * Enum values used for setting if a #WebKitWebView is intended for
-     * WebExtensions.
-     */
     export namespace WebExtensionMode {
         export const $gtype: GObject.GType<WebExtensionMode>;
     }
 
+    /**
+     * Enum values used for setting if a #WebKitWebView is intended for
+     * WebExtensions.
+     */
     enum WebExtensionMode {
         /**
          * Not for an extension.
@@ -1285,17 +1198,14 @@ export namespace WebKit2 {
          */
         MANIFESTV3,
     }
-    /**
-     * Enum values used to specify the reason why the web process terminated abnormally.
-     */
 
-    /**
-     * Enum values used to specify the reason why the web process terminated abnormally.
-     */
     export namespace WebProcessTerminationReason {
         export const $gtype: GObject.GType<WebProcessTerminationReason>;
     }
 
+    /**
+     * Enum values used to specify the reason why the web process terminated abnormally.
+     */
     enum WebProcessTerminationReason {
         /**
          * the web process crashed.
@@ -1310,6 +1220,7 @@ export namespace WebKit2 {
          */
         TERMINATED_BY_API,
     }
+
     /**
      * The copy clipboard command. Copies the current selection inside
      * a #WebKitWebView to the clipboard.
@@ -1527,17 +1438,13 @@ export namespace WebKit2 {
     interface URISchemeRequestCallback {
         (request: URISchemeRequest): void;
     }
-    /**
-     * Enum values with flags representing typing attributes.
-     */
-
-    /**
-     * Enum values with flags representing typing attributes.
-     */
     export namespace EditorTypingAttributes {
         export const $gtype: GObject.GType<EditorTypingAttributes>;
     }
 
+    /**
+     * Enum values with flags representing typing attributes.
+     */
     enum EditorTypingAttributes {
         /**
          * No typing attributes.
@@ -1560,17 +1467,14 @@ export namespace WebKit2 {
          */
         STRIKETHROUGH,
     }
-    /**
-     * Enum values used to specify search options.
-     */
 
-    /**
-     * Enum values used to specify search options.
-     */
     export namespace FindOptions {
         export const $gtype: GObject.GType<FindOptions>;
     }
 
+    /**
+     * Enum values used to specify search options.
+     */
     enum FindOptions {
         /**
          * no search flags, this means a case
@@ -1601,17 +1505,14 @@ export namespace WebKit2 {
          */
         WRAP_AROUND,
     }
-    /**
-     * Enum values with flags representing the context of a #WebKitHitTestResult.
-     */
 
-    /**
-     * Enum values with flags representing the context of a #WebKitHitTestResult.
-     */
     export namespace HitTestResultContext {
         export const $gtype: GObject.GType<HitTestResultContext>;
     }
 
+    /**
+     * Enum values with flags representing the context of a #WebKitHitTestResult.
+     */
     enum HitTestResultContext {
         /**
          * anywhere in the document.
@@ -1642,17 +1543,14 @@ export namespace WebKit2 {
          */
         SELECTION,
     }
-    /**
-     * Enum values used to describe hints that might be taken into account by input methods.
-     */
 
-    /**
-     * Enum values used to describe hints that might be taken into account by input methods.
-     */
     export namespace InputHints {
         export const $gtype: GObject.GType<InputHints>;
     }
 
+    /**
+     * Enum values used to describe hints that might be taken into account by input methods.
+     */
     enum InputHints {
         /**
          * No special behavior suggested
@@ -1683,19 +1581,15 @@ export namespace WebKit2 {
          */
         INHIBIT_OSK,
     }
-    /**
-     * Enum values used to specify options when taking a snapshot
-     * from a #WebKitWebView.
-     */
 
-    /**
-     * Enum values used to specify options when taking a snapshot
-     * from a #WebKitWebView.
-     */
     export namespace SnapshotOptions {
         export const $gtype: GObject.GType<SnapshotOptions>;
     }
 
+    /**
+     * Enum values used to specify options when taking a snapshot
+     * from a #WebKitWebView.
+     */
     enum SnapshotOptions {
         /**
          * Do not include any special options.
@@ -1712,17 +1606,14 @@ export namespace WebKit2 {
          */
         TRANSPARENT_BACKGROUND,
     }
-    /**
-     * Enum values with flags representing types of Website data.
-     */
 
-    /**
-     * Enum values with flags representing types of Website data.
-     */
     export namespace WebsiteDataTypes {
         export const $gtype: GObject.GType<WebsiteDataTypes>;
     }
 
+    /**
+     * Enum values with flags representing types of Website data.
+     */
     enum WebsiteDataTypes {
         /**
          * Memory cache.
@@ -1785,6 +1676,7 @@ export namespace WebKit2 {
          */
         ALL,
     }
+
     namespace AuthenticationRequest {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

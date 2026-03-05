@@ -17,18 +17,10 @@ export namespace CDesktopEnums {
      * CDesktopEnums-3.0
      */
 
-    export namespace BackgroundShading {
-        export const $gtype: GObject.GType<BackgroundShading>;
-    }
-
     enum BackgroundShading {
         SOLID,
         VERTICAL,
         HORIZONTAL,
-    }
-
-    export namespace BackgroundStyle {
-        export const $gtype: GObject.GType<BackgroundStyle>;
     }
 
     enum BackgroundStyle {
@@ -41,18 +33,10 @@ export namespace CDesktopEnums {
         SPANNED,
     }
 
-    export namespace DeviceSendEvents {
-        export const $gtype: GObject.GType<DeviceSendEvents>;
-    }
-
     enum DeviceSendEvents {
         ENABLED,
         DISABLED,
         DISABLED_ON_EXTERNAL_MOUSE,
-    }
-
-    export namespace FocusMode {
-        export const $gtype: GObject.GType<FocusMode>;
     }
 
     enum FocusMode {
@@ -61,17 +45,9 @@ export namespace CDesktopEnums {
         MOUSE,
     }
 
-    export namespace FocusNewWindows {
-        export const $gtype: GObject.GType<FocusNewWindows>;
-    }
-
     enum FocusNewWindows {
         SMART,
         STRICT,
-    }
-
-    export namespace MagnifierLensShape {
-        export const $gtype: GObject.GType<MagnifierLensShape>;
     }
 
     enum MagnifierLensShape {
@@ -81,19 +57,11 @@ export namespace CDesktopEnums {
         VERTICAL,
     }
 
-    export namespace MagnifierMouseTrackingMode {
-        export const $gtype: GObject.GType<MagnifierMouseTrackingMode>;
-    }
-
     enum MagnifierMouseTrackingMode {
         NONE,
         CENTERED,
         PROPORTIONAL,
         PUSH,
-    }
-
-    export namespace MagnifierScreenPosition {
-        export const $gtype: GObject.GType<MagnifierScreenPosition>;
     }
 
     enum MagnifierScreenPosition {
@@ -103,10 +71,6 @@ export namespace CDesktopEnums {
         BOTTOM_HALF,
         LEFT_HALF,
         RIGHT_HALF,
-    }
-
-    export namespace MediaKeyType {
-        export const $gtype: GObject.GType<MediaKeyType>;
     }
 
     enum MediaKeyType {
@@ -167,10 +131,6 @@ export namespace CDesktopEnums {
         LAST,
     }
 
-    export namespace MouseDwellDirection {
-        export const $gtype: GObject.GType<MouseDwellDirection>;
-    }
-
     enum MouseDwellDirection {
         LEFT,
         RIGHT,
@@ -178,27 +138,15 @@ export namespace CDesktopEnums {
         DOWN,
     }
 
-    export namespace MouseDwellMode {
-        export const $gtype: GObject.GType<MouseDwellMode>;
-    }
-
     enum MouseDwellMode {
         WINDOW,
         GESTURE,
-    }
-
-    export namespace NotificationScreenDisplay {
-        export const $gtype: GObject.GType<NotificationScreenDisplay>;
     }
 
     enum NotificationScreenDisplay {
         PRIMARY_SCREEN,
         ACTIVE_SCREEN,
         FIXED_SCREEN,
-    }
-
-    export namespace PadButtonAction {
-        export const $gtype: GObject.GType<PadButtonAction>;
     }
 
     enum PadButtonAction {
@@ -208,18 +156,10 @@ export namespace CDesktopEnums {
         KEYBINDING,
     }
 
-    export namespace PointerAccelProfile {
-        export const $gtype: GObject.GType<PointerAccelProfile>;
-    }
-
     enum PointerAccelProfile {
         DEFAULT,
         FLAT,
         ADAPTIVE,
-    }
-
-    export namespace ProxyMode {
-        export const $gtype: GObject.GType<ProxyMode>;
     }
 
     enum ProxyMode {
@@ -228,18 +168,10 @@ export namespace CDesktopEnums {
         AUTO,
     }
 
-    export namespace ScreensaverMode {
-        export const $gtype: GObject.GType<ScreensaverMode>;
-    }
-
     enum ScreensaverMode {
         BLANK_ONLY,
         RANDOM,
         SINGLE,
-    }
-
-    export namespace StylusButtonAction {
-        export const $gtype: GObject.GType<StylusButtonAction>;
     }
 
     enum StylusButtonAction {
@@ -251,17 +183,9 @@ export namespace CDesktopEnums {
         DISABLED,
     }
 
-    export namespace TabletMapping {
-        export const $gtype: GObject.GType<TabletMapping>;
-    }
-
     enum TabletMapping {
         ABSOLUTE,
         RELATIVE,
-    }
-
-    export namespace TitlebarAction {
-        export const $gtype: GObject.GType<TitlebarAction>;
     }
 
     enum TitlebarAction {
@@ -277,27 +201,15 @@ export namespace CDesktopEnums {
         MENU,
     }
 
-    export namespace TitlebarScrollAction {
-        export const $gtype: GObject.GType<TitlebarScrollAction>;
-    }
-
     enum TitlebarScrollAction {
         SHADE,
         OPACITY,
         NONE,
     }
 
-    export namespace ToolbarIconSize {
-        export const $gtype: GObject.GType<ToolbarIconSize>;
-    }
-
     enum ToolbarIconSize {
         SMALL,
         LARGE,
-    }
-
-    export namespace ToolbarStyle {
-        export const $gtype: GObject.GType<ToolbarStyle>;
     }
 
     enum ToolbarStyle {
@@ -307,19 +219,11 @@ export namespace CDesktopEnums {
         TEXT,
     }
 
-    export namespace TouchpadClickMethod {
-        export const $gtype: GObject.GType<TouchpadClickMethod>;
-    }
-
     enum TouchpadClickMethod {
         DEFAULT,
         NONE,
         AREAS,
         FINGERS,
-    }
-
-    export namespace TouchpadHandedness {
-        export const $gtype: GObject.GType<TouchpadHandedness>;
     }
 
     enum TouchpadHandedness {
@@ -328,14 +232,11 @@ export namespace CDesktopEnums {
         MOUSE,
     }
 
-    export namespace VisualBellType {
-        export const $gtype: GObject.GType<VisualBellType>;
-    }
-
     enum VisualBellType {
         FULLSCREEN_FLASH,
         FRAME_FLASH,
     }
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

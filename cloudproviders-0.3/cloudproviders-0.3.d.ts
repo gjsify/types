@@ -20,16 +20,13 @@ export namespace CloudProviders {
      * CloudProviders-0.3
      */
 
-    export namespace AccountStatus {
-        export const $gtype: GObject.GType<AccountStatus>;
-    }
-
     enum AccountStatus {
         INVALID,
         IDLE,
         SYNCING,
         ERROR,
     }
+
     const ACCOUNT_DBUS_IFACE: string;
     const PROVIDER_DBUS_IFACE: string;
     /**

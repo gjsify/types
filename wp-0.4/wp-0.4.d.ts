@@ -44,17 +44,14 @@ export namespace Wp {
         IS_PRESENT,
         IS_ABSENT,
     }
-    /**
-     * The state of the dbus connection.
-     */
 
-    /**
-     * The state of the dbus connection.
-     */
     export namespace DBusState {
         export const $gtype: GObject.GType<DBusState>;
     }
 
+    /**
+     * The state of the dbus connection.
+     */
     enum DBusState {
         CLOSED,
         CONNECTING,
@@ -125,6 +122,7 @@ export namespace Wp {
         ERROR,
         CUSTOM_START,
     }
+
     const INTEREST_MATCH_ALL: number;
     const ITERATOR_METHODS_VERSION: number;
     const LOG_LEVEL_TRACE: number;
@@ -382,17 +380,13 @@ export namespace Wp {
     interface IteratorForeachFunc {
         (item: GObject.Value | any, data?: any | null): void;
     }
-    /**
-     * Flags to be used as WpObjectFeatures for WpDbus.
-     */
-
-    /**
-     * Flags to be used as WpObjectFeatures for WpDbus.
-     */
     export namespace DbusFeatures {
         export const $gtype: GObject.GType<DbusFeatures>;
     }
 
+    /**
+     * Flags to be used as WpObjectFeatures for WpDbus.
+     */
     enum DbusFeatures {
         ENABLED,
     }
@@ -504,6 +498,7 @@ export namespace Wp {
     enum SpaDeviceFeatures {
         ENABLED,
     }
+
     namespace Client {
         // Signal signatures
         interface SignalSignatures extends GlobalProxy.SignalSignatures {

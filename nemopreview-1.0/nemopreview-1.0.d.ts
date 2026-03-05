@@ -54,6 +54,7 @@ export namespace NemoPreview {
         DONE,
         ERROR,
     }
+
     function create_foreign_window(xid: number): Gdk.Window;
     function create_rounded_background(): Clutter.Actor;
     function query_supported_document_types(): string[];

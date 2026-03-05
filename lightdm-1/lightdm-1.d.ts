@@ -24,7 +24,7 @@ export namespace LightDM {
      * Error codes returned by greeter operations.
      */
     class GreeterError extends GLib.Error {
-        static $gtype: GObject.GType<GreeterError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -72,17 +72,14 @@ export namespace LightDM {
          */
         ERROR,
     }
-    /**
-     * Prompt types the client is required to display.
-     */
 
-    /**
-     * Prompt types the client is required to display.
-     */
     export namespace PromptType {
         export const $gtype: GObject.GType<PromptType>;
     }
 
+    /**
+     * Prompt types the client is required to display.
+     */
     enum PromptType {
         /**
          * prompt is a question.  The information can be shown as it is entered.
@@ -93,6 +90,7 @@ export namespace LightDM {
          */
         SECRET,
     }
+
     const GREETER_SIGNAL_AUTHENTICATION_COMPLETE: string;
     const GREETER_SIGNAL_AUTOLOGIN_TIMER_EXPIRED: string;
     const GREETER_SIGNAL_IDLE: string;

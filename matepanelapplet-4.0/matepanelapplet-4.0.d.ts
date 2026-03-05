@@ -49,11 +49,11 @@ export namespace MatePanelApplet {
         LEFT,
         RIGHT,
     }
+
     const APPLET_FLAGS_ALL: number;
     interface AppletFactoryCallback {
         (applet: Applet, iid: string): boolean;
     }
-
     export namespace AppletFlags {
         export const $gtype: GObject.GType<AppletFlags>;
     }
@@ -64,6 +64,7 @@ export namespace MatePanelApplet {
         EXPAND_MINOR,
         HAS_HANDLE,
     }
+
     namespace Applet {
         // Signal signatures
         interface SignalSignatures extends Gtk.EventBox.SignalSignatures {

@@ -22,17 +22,13 @@ export namespace SpiceClientGLib {
      * SpiceClientGLib-2.0
      */
 
-    /**
-     * An event, emitted by #SpiceChannel::channel-event signal.
-     */
-
-    /**
-     * An event, emitted by #SpiceChannel::channel-event signal.
-     */
     export namespace ChannelEvent {
         export const $gtype: GObject.GType<ChannelEvent>;
     }
 
+    /**
+     * An event, emitted by #SpiceChannel::channel-event signal.
+     */
     enum ChannelEvent {
         /**
          * no event, or ignored event
@@ -71,11 +67,12 @@ export namespace SpiceClientGLib {
          */
         ERROR_IO,
     }
+
     /**
      * Error codes returned by spice-client API.
      */
     class ClientError extends GLib.Error {
-        static $gtype: GObject.GType<ClientError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -116,14 +113,6 @@ export namespace SpiceClientGLib {
     /**
      * An action to perform on the VM.
      */
-
-    /**
-     * An action to perform on the VM.
-     */
-    export namespace QmpPortVmAction {
-        export const $gtype: GObject.GType<QmpPortVmAction>;
-    }
-
     enum QmpPortVmAction {
         /**
          * This command will cause the VM process to exit gracefully.
@@ -150,17 +139,14 @@ export namespace SpiceClientGLib {
          */
         LAST,
     }
-    /**
-     * Session migration state.
-     */
 
-    /**
-     * Session migration state.
-     */
     export namespace SessionMigration {
         export const $gtype: GObject.GType<SessionMigration>;
     }
 
+    /**
+     * Session migration state.
+     */
     enum SessionMigration {
         /**
          * no migration going on
@@ -179,6 +165,7 @@ export namespace SpiceClientGLib {
          */
         CONNECTING,
     }
+
     /**
      * Spice-Gtk major version component (e.g. 1 if version is 1.2.3)
      */
@@ -611,17 +598,13 @@ export namespace SpiceClientGLib {
         (channel: Channel, _in: MsgIn): void;
     }
     type VReader = object | null;
-    /**
-     * Constants used to synchronize modifiers between a client and a guest.
-     */
-
-    /**
-     * Constants used to synchronize modifiers between a client and a guest.
-     */
     export namespace InputsLock {
         export const $gtype: GObject.GType<InputsLock>;
     }
 
+    /**
+     * Constants used to synchronize modifiers between a client and a guest.
+     */
     enum InputsLock {
         /**
          * Scroll Lock
@@ -636,17 +619,14 @@ export namespace SpiceClientGLib {
          */
         CAPS_LOCK,
     }
-    /**
-     * Peer certificate verification parameters flags.
-     */
 
-    /**
-     * Peer certificate verification parameters flags.
-     */
     export namespace SessionVerify {
         export const $gtype: GObject.GType<SessionVerify>;
     }
 
+    /**
+     * Peer certificate verification parameters flags.
+     */
     enum SessionVerify {
         /**
          * verify certificate public key matching
@@ -661,6 +641,7 @@ export namespace SpiceClientGLib {
          */
         SUBJECT,
     }
+
     namespace Audio {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

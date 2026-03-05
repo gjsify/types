@@ -1,6 +1,6 @@
 {
     "name": "@girs/st-9",
-    "version": "9.0.0-4.0.0-beta.39",
+    "version": "9.0.0-4.0.0-beta.40",
     "description": "GJS TypeScript type definitions for St-9, generated from library version 9.0.0",
     "type": "module",
     "module": "st-9.js",

@@ -33,14 +33,6 @@ export namespace ColordGtk {
     /**
      * Errors that can be thrown
      */
-
-    /**
-     * Errors that can be thrown
-     */
-    export namespace WindowError {
-        export const $gtype: GObject.GType<WindowError>;
-    }
-
     enum WindowError {
         /**
          * the transaction failed for an unknown reason
@@ -48,6 +40,7 @@ export namespace ColordGtk {
         FAILED,
         LAST,
     }
+
     const GTK_MAJOR_VERSION: number;
     const GTK_MICRO_VERSION: number;
     const GTK_MINOR_VERSION: number;

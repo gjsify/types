@@ -30,10 +30,6 @@ export namespace Matekbd {
      * Matekbd-1.0
      */
 
-    export namespace KeyboardDrawingGroupLevelPosition {
-        export const $gtype: GObject.GType<KeyboardDrawingGroupLevelPosition>;
-    }
-
     enum KeyboardDrawingGroupLevelPosition {
         TOPLEFT,
         TOPRIGHT,
@@ -44,16 +40,13 @@ export namespace Matekbd {
         LAST,
     }
 
-    export namespace KeyboardDrawingItemType {
-        export const $gtype: GObject.GType<KeyboardDrawingItemType>;
-    }
-
     enum KeyboardDrawingItemType {
         INVALID,
         KEY,
         KEY_EXTRA,
         DOODAD,
     }
+
     const KEYBOARD_DRAWING_H: number;
     function install_glib_log_appender(): void;
     function keyboard_config_add_default_switch_option_if_necessary(

@@ -58,8 +58,9 @@ export namespace GXml {
         USERS,
         XSLT_TREE,
     }
+
     class DocumentError extends GLib.Error {
-        static $gtype: GObject.GType<DocumentError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -72,7 +73,7 @@ export namespace GXml {
     }
 
     class SerializableError extends GLib.Error {
-        static $gtype: GObject.GType<SerializableError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -85,7 +86,7 @@ export namespace GXml {
     }
 
     class SerializableEnumError extends GLib.Error {
-        static $gtype: GObject.GType<SerializableEnumError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -98,7 +99,7 @@ export namespace GXml {
     }
 
     class EnumerationError extends GLib.Error {
-        static $gtype: GObject.GType<EnumerationError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -111,7 +112,7 @@ export namespace GXml {
     }
 
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -125,7 +126,7 @@ export namespace GXml {
     }
 
     class DomError extends GLib.Error {
-        static $gtype: GObject.GType<DomError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -161,7 +162,7 @@ export namespace GXml {
     }
 
     class XPathError extends GLib.Error {
-        static $gtype: GObject.GType<XPathError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -195,7 +196,7 @@ export namespace GXml {
     }
 
     class ParserError extends GLib.Error {
-        static $gtype: GObject.GType<ParserError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -209,7 +210,7 @@ export namespace GXml {
     }
 
     class IXsdSchemaError extends GLib.Error {
-        static $gtype: GObject.GType<IXsdSchemaError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -271,10 +272,10 @@ export namespace GXml {
         END_TO_END,
         END_TO_START,
     }
+
     interface DomMutationCallback {
         (mutations: Gee.List, observer: DomMutationObserver): void;
     }
-
     export namespace DomEventFlags {
         export const $gtype: GObject.GType<DomEventFlags>;
     }
@@ -300,6 +301,7 @@ export namespace GXml {
         CONTAINED_BY,
         IMPLEMENTATION_SPECIFIC,
     }
+
     namespace ElementList {
         // Signal signatures
         interface SignalSignatures extends Gee.ArrayList.SignalSignatures {

@@ -78,8 +78,9 @@ export namespace XreaderDocument {
         GZIP,
         LZMA,
     }
+
     class DocumentError extends GLib.Error {
-        static $gtype: GObject.GType<DocumentError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -237,6 +238,7 @@ export namespace XreaderDocument {
         UNCOVER,
         FADE,
     }
+
     /**
      * The major version number of the EV library
      * (e.g. in version 3.1.4 this is 3).
@@ -332,7 +334,6 @@ export namespace XreaderDocument {
      * @returns %TRUE on success, or %FALSE on error with @error filled in
      */
     function xfer_uri_simple(from: string, to: string): boolean;
-
     export namespace AnnotationsSaveMask {
         export const $gtype: GObject.GType<AnnotationsSaveMask>;
     }
@@ -419,6 +420,7 @@ export namespace XreaderDocument {
         PREVIEW,
         NUMBER_UP,
     }
+
     namespace Annotation {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

@@ -44,17 +44,14 @@ export namespace Mx {
         CREATION_FAILED,
         UNKNOWN_OPERATION,
     }
-    /**
-     * Set the alignment of the item
-     */
 
-    /**
-     * Set the alignment of the item
-     */
     export namespace Align {
         export const $gtype: GObject.GType<Align>;
     }
 
+    /**
+     * Set the alignment of the item
+     */
     enum Align {
         /**
          * Align at the beginning of the axis
@@ -107,17 +104,14 @@ export namespace Mx {
         FROM_LEFT,
         FROM_RIGHT,
     }
-    /**
-     * Support values of font weight
-     */
 
-    /**
-     * Support values of font weight
-     */
     export namespace FontWeight {
         export const $gtype: GObject.GType<FontWeight>;
     }
 
+    /**
+     * Support values of font weight
+     */
     enum FontWeight {
         /**
          * Normal font weight
@@ -136,8 +130,9 @@ export namespace Mx {
          */
         LIGHTER,
     }
+
     class ImageError extends GLib.Error {
-        static $gtype: GObject.GType<ImageError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -155,17 +150,13 @@ export namespace Mx {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Defines the scaling mode of an image.
-     */
-
-    /**
-     * Defines the scaling mode of an image.
-     */
     export namespace ImageScaleMode {
         export const $gtype: GObject.GType<ImageScaleMode>;
     }
 
+    /**
+     * Defines the scaling mode of an image.
+     */
     enum ImageScaleMode {
         /**
          * Do not apply any scaling and center the image within the allocation
@@ -201,17 +192,14 @@ export namespace Mx {
         ACTION,
         CANCEL,
     }
-    /**
-     * Defines the orientation of various layout widgets.
-     */
 
-    /**
-     * Defines the orientation of various layout widgets.
-     */
     export namespace Orientation {
         export const $gtype: GObject.GType<Orientation>;
     }
 
+    /**
+     * Defines the orientation of various layout widgets.
+     */
     enum Orientation {
         /**
          * horizontal orientation
@@ -222,17 +210,14 @@ export namespace Mx {
          */
         VERTICAL,
     }
-    /**
-     * Defines the position of an interface element.
-     */
 
-    /**
-     * Defines the position of an interface element.
-     */
     export namespace Position {
         export const $gtype: GObject.GType<Position>;
     }
 
+    /**
+     * Defines the position of an interface element.
+     */
     enum Position {
         /**
          * The top position
@@ -251,17 +236,14 @@ export namespace Mx {
          */
         LEFT,
     }
-    /**
-     * Defines the scrolling policy of scrollable widgets.
-     */
 
-    /**
-     * Defines the scrolling policy of scrollable widgets.
-     */
     export namespace ScrollPolicy {
         export const $gtype: GObject.GType<ScrollPolicy>;
     }
 
+    /**
+     * Defines the scrolling policy of scrollable widgets.
+     */
     enum ScrollPolicy {
         /**
          * Never scroll
@@ -288,17 +270,14 @@ export namespace Mx {
     enum StyleError {
         INVALID_FILE,
     }
-    /**
-     * Defines the animation when tooltips are shown and hidden.
-     */
 
-    /**
-     * Defines the animation when tooltips are shown and hidden.
-     */
     export namespace TooltipAnimation {
         export const $gtype: GObject.GType<TooltipAnimation>;
     }
 
+    /**
+     * Defines the animation when tooltips are shown and hidden.
+     */
     enum TooltipAnimation {
         /**
          * Bounce the tooltips when they appear
@@ -309,9 +288,7 @@ export namespace Mx {
          */
         FADE,
     }
-    /**
-     * Defines the clock-wise rotation angle of a window.
-     */
+
     /**
      * Defines the clock-wise rotation angle of a window.
      */
@@ -409,7 +386,6 @@ export namespace Mx {
     interface ClipboardCallbackFunc {
         (clipboard: Clipboard, text: string): void;
     }
-
     export namespace ApplicationFlags {
         export const $gtype: GObject.GType<ApplicationFlags>;
     }
@@ -437,6 +413,7 @@ export namespace Mx {
          */
         INVALIDATE_CACHE,
     }
+
     namespace Action {
         // Signal signatures
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {

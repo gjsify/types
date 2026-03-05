@@ -20,31 +20,18 @@ export namespace GnomeAutoar {
      * GnomeAutoar-0.1
      */
 
-    export namespace ConflictAction {
-        export const $gtype: GObject.GType<ConflictAction>;
-    }
-
     enum ConflictAction {
         UNHANDLED,
         SKIP,
         OVERWRITE,
         CHANGE_DESTINATION,
     }
-    /**
-     * This is a non-negative number which represents filters supported by
-     * libarchive. A libarchive filter is a filter which can convert a
-     * regular file into a compressed file.
-     */
 
     /**
      * This is a non-negative number which represents filters supported by
      * libarchive. A libarchive filter is a filter which can convert a
      * regular file into a compressed file.
      */
-    export namespace Filter {
-        export const $gtype: GObject.GType<Filter>;
-    }
-
     enum Filter {
         /**
          * %ARCHIVE_FILTER_NONE: No filter
@@ -87,21 +74,12 @@ export namespace GnomeAutoar {
          */
         LRZIP,
     }
-    /**
-     * This is a non-negative number which represents formats supported by
-     * libarchive. A libarchive format is a file format which can store many
-     * files as a archive file.
-     */
 
     /**
      * This is a non-negative number which represents formats supported by
      * libarchive. A libarchive format is a file format which can store many
      * files as a archive file.
      */
-    export namespace Format {
-        export const $gtype: GObject.GType<Format>;
-    }
-
     enum Format {
         /**
          * %ARCHIVE_FORMAT_ZIP: Zip archive
@@ -162,6 +140,7 @@ export namespace GnomeAutoar {
          */
         XAR,
     }
+
     const EMPTY_ARCHIVE_ERRNO: number;
     const NOT_AN_ARCHIVE_ERRNO: number;
     const PASSPHRASE_REQUIRED_ERRNO: number;

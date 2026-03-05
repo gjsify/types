@@ -1,6 +1,6 @@
 {
     "name": "@girs/st-10",
-    "version": "10.0.0-4.0.0-beta.39",
+    "version": "10.0.0-4.0.0-beta.40",
     "description": "GJS TypeScript type definitions for St-10, generated from library version 10.0.0",
     "type": "module",
     "module": "st-10.js",

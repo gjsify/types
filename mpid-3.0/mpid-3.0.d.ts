@@ -46,10 +46,6 @@ export namespace MPID {
         DEVICE_INFO_MISSING,
     }
 
-    export namespace Source {
-        export const $gtype: GObject.GType<Source>;
-    }
-
     enum Source {
         /**
          * No device information is available
@@ -74,6 +70,7 @@ export namespace MPID {
         SYSTEM_DEVICE_INFO,
         OVERRIDE_DEVICE_INFO,
     }
+
     const PROTOCOL_GENERIC: string;
     const PROTOCOL_IPOD: string;
     /**

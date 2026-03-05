@@ -36,10 +36,6 @@ export namespace RB {
      * RB-3.0
      */
 
-    export namespace DisplayPageGroupCategory {
-        export const $gtype: GObject.GType<DisplayPageGroupCategory>;
-    }
-
     enum DisplayPageGroupCategory {
         FIXED,
         REMOVABLE,
@@ -48,19 +44,15 @@ export namespace RB {
         TOOLS,
         LAST,
     }
-    /**
-     * Predefined categories of page group. The order they're defined here is the order they
-     * appear in the page tree.
-     */
 
-    /**
-     * Predefined categories of page group. The order they're defined here is the order they
-     * appear in the page tree.
-     */
     export namespace DisplayPageGroupType {
         export const $gtype: GObject.GType<DisplayPageGroupType>;
     }
 
+    /**
+     * Predefined categories of page group. The order they're defined here is the order they
+     * appear in the page tree.
+     */
     enum DisplayPageGroupType {
         /**
          * Fixed single instance sources (e.g., library)
@@ -83,17 +75,14 @@ export namespace RB {
          */
         TOOLS,
     }
-    /**
-     * Columns present in the display page model.
-     */
 
-    /**
-     * Columns present in the display page model.
-     */
     export namespace DisplayPageModelColumn {
         export const $gtype: GObject.GType<DisplayPageModelColumn>;
     }
 
+    /**
+     * Columns present in the display page model.
+     */
     enum DisplayPageModelColumn {
         /**
          * TRUE if the page is the playing source
@@ -104,8 +93,9 @@ export namespace RB {
          */
         PAGE,
     }
+
     class EncoderError extends GLib.Error {
-        static $gtype: GObject.GType<EncoderError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -125,23 +115,16 @@ export namespace RB {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Predefined column types to use in #RBEntryView<!-- -->s.  Use
-     * #rb_entry_view_append_column to add these to an entry view.
-     * The predefined column names map directly to the #RhythmDBEntry properties
-     * the columns display.
-     */
-
-    /**
-     * Predefined column types to use in #RBEntryView<!-- -->s.  Use
-     * #rb_entry_view_append_column to add these to an entry view.
-     * The predefined column names map directly to the #RhythmDBEntry properties
-     * the columns display.
-     */
     export namespace EntryViewColumn {
         export const $gtype: GObject.GType<EntryViewColumn>;
     }
 
+    /**
+     * Predefined column types to use in #RBEntryView<!-- -->s.  Use
+     * #rb_entry_view_append_column to add these to an entry view.
+     * The predefined column names map directly to the #RhythmDBEntry properties
+     * the columns display.
+     */
     enum EntryViewColumn {
         /**
          * the track number column
@@ -239,20 +222,12 @@ export namespace RB {
         USER_EXPLICIT,
     }
 
-    export namespace GstMediaType {
-        export const $gtype: GObject.GType<GstMediaType>;
-    }
-
     enum GstMediaType {
         NONE,
         CONTAINER,
         AUDIO,
         VIDEO,
         OTHER,
-    }
-
-    export namespace MetaDataError {
-        export const $gtype: GObject.GType<MetaDataError>;
     }
 
     enum MetaDataError {
@@ -264,17 +239,10 @@ export namespace RB {
         INTERNAL,
         EMPTY_FILE,
     }
-    /**
-     * Metadata fields that can be read from and written to files.
-     */
 
     /**
      * Metadata fields that can be read from and written to files.
      */
-    export namespace MetaDataField {
-        export const $gtype: GObject.GType<MetaDataField>;
-    }
-
     enum MetaDataField {
         /**
          * Title of the recording
@@ -429,8 +397,9 @@ export namespace RB {
          */
         LAST,
     }
+
     class MetadataErrorType extends GLib.Error {
-        static $gtype: GObject.GType<MetadataErrorType>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -494,8 +463,9 @@ export namespace RB {
         COMPOSER,
         COMPOSER_SORTNAME,
     }
+
     class PlayerError extends GLib.Error {
-        static $gtype: GObject.GType<PlayerError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -544,19 +514,11 @@ export namespace RB {
         CROSSFADE,
     }
 
-    export namespace PlaylistExportType {
-        export const $gtype: GObject.GType<PlaylistExportType>;
-    }
-
     enum PlaylistExportType {
         UNKNOWN,
         M3U,
         PLS,
         XSPF,
-    }
-
-    export namespace PlaylistManagerError {
-        export const $gtype: GObject.GType<PlaylistManagerError>;
     }
 
     enum PlaylistManagerError {
@@ -579,8 +541,9 @@ export namespace RB {
         UNCHANGED,
         UPDATED,
     }
+
     class PodcastParseError extends GLib.Error {
-        static $gtype: GObject.GType<PodcastParseError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -594,26 +557,19 @@ export namespace RB {
         constructor(options: { message: string; code: number });
     }
 
-    export namespace PodcastParseStatus {
-        export const $gtype: GObject.GType<PodcastParseStatus>;
-    }
-
     enum PodcastParseStatus {
         UNPARSED,
         SUCCESS,
         ERROR,
     }
-    /**
-     * Various events that can result in changes to the entry's availability.
-     */
 
-    /**
-     * Various events that can result in changes to the entry's availability.
-     */
     export namespace RhythmDBEntryAvailability {
         export const $gtype: GObject.GType<RhythmDBEntryAvailability>;
     }
 
+    /**
+     * Various events that can result in changes to the entry's availability.
+     */
     enum RhythmDBEntryAvailability {
         /**
          * File was checked and found present
@@ -632,19 +588,15 @@ export namespace RB {
          */
         NOT_FOUND,
     }
-    /**
-     * Categories used to group entry types.  These are used in a few places to control
-     * handling of entries.
-     */
 
-    /**
-     * Categories used to group entry types.  These are used in a few places to control
-     * handling of entries.
-     */
     export namespace RhythmDBEntryCategory {
         export const $gtype: GObject.GType<RhythmDBEntryCategory>;
     }
 
+    /**
+     * Categories used to group entry types.  These are used in a few places to control
+     * handling of entries.
+     */
     enum RhythmDBEntryCategory {
         /**
          * Normal files on disk
@@ -662,10 +614,6 @@ export namespace RB {
          * Things Rhythmbox shouldn't normally deal with
          */
         VIRTUAL,
-    }
-
-    export namespace RhythmDBError {
-        export const $gtype: GObject.GType<RhythmDBError>;
     }
 
     enum RhythmDBError {
@@ -810,10 +758,6 @@ export namespace RB {
         ALWAYS_PLAY,
     }
 
-    export namespace ShellError {
-        export const $gtype: GObject.GType<ShellError>;
-    }
-
     enum ShellError {
         NO_SUCH_URI,
         NO_SUCH_PROPERTY,
@@ -821,8 +765,9 @@ export namespace RB {
         INVALID_PROPERTY_TYPE,
         NO_SOURCE_FOR_URI,
     }
+
     class ShellErrorType extends GLib.Error {
-        static $gtype: GObject.GType<ShellErrorType>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -845,7 +790,7 @@ export namespace RB {
     }
 
     class ShellPlayerError extends GLib.Error {
-        static $gtype: GObject.GType<ShellPlayerError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -864,17 +809,13 @@ export namespace RB {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Locations available for adding new widgets to the preferences dialog.
-     */
-
-    /**
-     * Locations available for adding new widgets to the preferences dialog.
-     */
     export namespace ShellPrefsUILocation {
         export const $gtype: GObject.GType<ShellPrefsUILocation>;
     }
 
+    /**
+     * Locations available for adding new widgets to the preferences dialog.
+     */
     enum ShellPrefsUILocation {
         /**
          * The "general" preferences page
@@ -928,6 +869,7 @@ export namespace RB {
         COMPLETE,
         CANCELLED,
     }
+
     const ENABLE_PROFILING: number;
     const ENCODER_DEST_TEMPFILE: string;
     const ENCODING_STYLE_CBR: string;

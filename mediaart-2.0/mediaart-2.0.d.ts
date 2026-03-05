@@ -25,7 +25,7 @@ export namespace MediaArt {
      * #MediaArtError API.
      */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -64,14 +64,6 @@ export namespace MediaArt {
     /**
      * This type categorized the type of media art we're dealing with.
      */
-
-    /**
-     * This type categorized the type of media art we're dealing with.
-     */
-    export namespace Type {
-        export const $gtype: GObject.GType<Type>;
-    }
-
     enum Type {
         /**
          * No media art is available
@@ -86,6 +78,7 @@ export namespace MediaArt {
          */
         VIDEO,
     }
+
     /**
      * This function performs the same operation as
      * media_art_file_to_jpeg() with the exception that a raw `buffer` can
@@ -322,14 +315,6 @@ export namespace MediaArt {
     /**
      * This type categorized the flags used when processing media art.
      */
-
-    /**
-     * This type categorized the flags used when processing media art.
-     */
-    export namespace ProcessFlags {
-        export const $gtype: GObject.GType<ProcessFlags>;
-    }
-
     enum ProcessFlags {
         /**
          * Normal operation.
@@ -340,6 +325,7 @@ export namespace MediaArt {
          */
         FORCE,
     }
+
     namespace Process {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

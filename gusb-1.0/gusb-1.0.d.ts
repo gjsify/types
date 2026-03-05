@@ -21,24 +21,13 @@ export namespace GUsb {
      * GUsb-1.0
      */
 
-    export namespace ContextError {
-        export const $gtype: GObject.GType<ContextError>;
-    }
-
     enum ContextError {
         CONTEXT_ERROR_INTERNAL,
     }
-    /**
-     * The USB device class.
-     */
 
     /**
      * The USB device class.
      */
-    export namespace DeviceClassCode {
-        export const $gtype: GObject.GType<DeviceClassCode>;
-    }
-
     enum DeviceClassCode {
         INTERFACE_DESC,
         AUDIO,
@@ -62,32 +51,18 @@ export namespace GUsb {
         APPLICATION_SPECIFIC,
         VENDOR_SPECIFIC,
     }
-    /**
-     * The message direction.
-     */
 
     /**
      * The message direction.
      */
-    export namespace DeviceDirection {
-        export const $gtype: GObject.GType<DeviceDirection>;
-    }
-
     enum DeviceDirection {
         DEVICE_TO_HOST,
         HOST_TO_DEVICE,
     }
-    /**
-     * The error code.
-     */
 
     /**
      * The error code.
      */
-    export namespace DeviceError {
-        export const $gtype: GObject.GType<DeviceError>;
-    }
-
     enum DeviceError {
         /**
          * Internal error
@@ -134,60 +109,40 @@ export namespace GUsb {
          */
         BUSY,
     }
-    /**
-     * The USB language ID.
-     */
 
     /**
      * The USB language ID.
      */
-    export namespace DeviceLangid {
-        export const $gtype: GObject.GType<DeviceLangid>;
-    }
-
     enum DeviceLangid {
         INVALID,
         ENGLISH_UNITED_STATES,
     }
-    /**
-     * The message recipient.
-     */
 
     /**
      * The message recipient.
      */
-    export namespace DeviceRecipient {
-        export const $gtype: GObject.GType<DeviceRecipient>;
-    }
-
     enum DeviceRecipient {
         DEVICE,
         INTERFACE,
         ENDPOINT,
         OTHER,
     }
-    /**
-     * The message request type.
-     */
 
     /**
      * The message request type.
      */
-    export namespace DeviceRequestType {
-        export const $gtype: GObject.GType<DeviceRequestType>;
-    }
-
     enum DeviceRequestType {
         STANDARD,
         CLASS,
         VENDOR,
         RESERVED,
     }
+
     /**
      * The error code.
      */
     class SourceError extends GLib.Error {
-        static $gtype: GObject.GType<SourceError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -225,14 +180,6 @@ export namespace GUsb {
     /**
      * The flags to use for the context.
      */
-
-    /**
-     * The flags to use for the context.
-     */
-    export namespace ContextFlags {
-        export const $gtype: GObject.GType<ContextFlags>;
-    }
-
     enum ContextFlags {
         NONE,
         AUTO_OPEN_DEVICES,
@@ -240,23 +187,16 @@ export namespace GUsb {
         SAVE_REMOVED_DEVICES,
         DEBUG,
     }
-    /**
-     * Flags for the g_usb_device_claim_interface and
-     * g_usb_device_release_interface methods flags parameters.
-     */
 
     /**
      * Flags for the g_usb_device_claim_interface and
      * g_usb_device_release_interface methods flags parameters.
      */
-    export namespace DeviceClaimInterfaceFlags {
-        export const $gtype: GObject.GType<DeviceClaimInterfaceFlags>;
-    }
-
     enum DeviceClaimInterfaceFlags {
         NONE,
         BIND_KERNEL_DRIVER,
     }
+
     namespace BosDescriptor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

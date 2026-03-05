@@ -62,6 +62,7 @@ export namespace GtkVnc {
         RELEASE,
         CLICK,
     }
+
     namespace CairoFramebuffer {
         // Signal signatures
         interface SignalSignatures extends GVnc.BaseFramebuffer.SignalSignatures {

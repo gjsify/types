@@ -20,16 +20,13 @@ export namespace Govf {
      * Govf-0.1
      */
 
-    export namespace PackageError {
-        export const $gtype: GObject.GType<PackageError>;
-    }
-
     enum PackageError {
         FAILED,
         NOT_FOUND,
         XML,
         LAST,
     }
+
     namespace Disk {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

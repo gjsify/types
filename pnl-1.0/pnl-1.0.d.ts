@@ -54,6 +54,7 @@ export namespace Pnl {
         SLIDE_UP,
         SLIDE_DOWN,
     }
+
     /**
      * pnl major version component (e.g. 1 if %PNL_VERSION is 1.2.3)
      */

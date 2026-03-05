@@ -170,19 +170,14 @@ export namespace Amtk {
      * @returns the URI of @item. Free with g_free() when no longer needed.
      */
     function utils_recent_chooser_menu_get_item_uri(menu: Gtk.RecentChooserMenu, item: Gtk.MenuItem): string;
-    /**
-     * #AmtkFactoryFlags permits to control how a factory function creates the
-     * object, to ignore some steps.
-     */
-
-    /**
-     * #AmtkFactoryFlags permits to control how a factory function creates the
-     * object, to ignore some steps.
-     */
     export namespace FactoryFlags {
         export const $gtype: GObject.GType<FactoryFlags>;
     }
 
+    /**
+     * #AmtkFactoryFlags permits to control how a factory function creates the
+     * object, to ignore some steps.
+     */
     enum FactoryFlags {
         /**
          * No flags.
@@ -220,6 +215,7 @@ export namespace Amtk {
          */
         IGNORE_ACCELS_FOR_APP,
     }
+
     namespace ActionInfoCentralStore {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

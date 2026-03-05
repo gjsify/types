@@ -21,7 +21,7 @@ export namespace Template {
      */
 
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -131,6 +131,7 @@ export namespace Template {
         EXPR,
         VALUE,
     }
+
     const ENABLE_TRACE: number;
     const LOG_LEVEL_TRACE: number;
     /**

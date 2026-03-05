@@ -51,6 +51,7 @@ export namespace Tracker {
         EMBEDDED_INSERT,
         GRAPH,
     }
+
     const DBUS_SERVICE: string;
     const DBUS_INTERFACE_RESOURCES: string;
     const DBUS_OBJECT_RESOURCES: string;
@@ -453,7 +454,7 @@ export namespace Tracker {
     }
 
     class SparqlError extends GLib.Error {
-        static $gtype: GObject.GType<SparqlError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 

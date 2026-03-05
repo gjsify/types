@@ -25,7 +25,7 @@ export namespace Accounts {
      * libaccounts-glib that return a #GError.
      */
     class AccountsError extends GLib.Error {
-        static $gtype: GObject.GType<AccountsError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -65,10 +65,6 @@ export namespace Accounts {
         constructor(options: { message: string; code: number });
     }
 
-    export namespace Error {
-        export const $gtype: GObject.GType<Error>;
-    }
-
     enum Error {
         DB,
         DISPOSED,
@@ -76,17 +72,10 @@ export namespace Accounts {
         DB_LOCKED,
         ACCOUNT_NOT_FOUND,
     }
-    /**
-     * The source of a setting on a #AgAccount.
-     */
 
     /**
      * The source of a setting on a #AgAccount.
      */
-    export namespace SettingSource {
-        export const $gtype: GObject.GType<SettingSource>;
-    }
-
     enum SettingSource {
         /**
          * the setting is not present
@@ -102,6 +91,7 @@ export namespace Accounts {
          */
         PROFILE,
     }
+
     const MANAGER_INTERFACE: string;
     const MANAGER_OBJECT_PATH: string;
     const MANAGER_SERVICE_NAME: string;

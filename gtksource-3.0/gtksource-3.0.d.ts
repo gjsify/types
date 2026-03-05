@@ -90,12 +90,13 @@ export namespace GtkSource {
          */
         TITLE,
     }
+
     /**
      * An error code used with %GTK_SOURCE_COMPLETION_ERROR in a #GError returned
      * from a completion-related function.
      */
     class CompletionError extends GLib.Error {
-        static $gtype: GObject.GType<CompletionError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -133,11 +134,12 @@ export namespace GtkSource {
          */
         GZIP,
     }
+
     /**
      * An error code used with the %GTK_SOURCE_FILE_LOADER_ERROR domain.
      */
     class FileLoaderError extends GLib.Error {
-        static $gtype: GObject.GType<FileLoaderError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -169,7 +171,7 @@ export namespace GtkSource {
      * An error code used with the %GTK_SOURCE_FILE_SAVER_ERROR domain.
      */
     class FileSaverError extends GLib.Error {
-        static $gtype: GObject.GType<FileSaverError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -193,19 +195,14 @@ export namespace GtkSource {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * The alignment mode of the renderer, when a cell spans multiple lines (due to
-     * text wrapping).
-     */
-
-    /**
-     * The alignment mode of the renderer, when a cell spans multiple lines (due to
-     * text wrapping).
-     */
     export namespace GutterRendererAlignmentMode {
         export const $gtype: GObject.GType<GutterRendererAlignmentMode>;
     }
 
+    /**
+     * The alignment mode of the renderer, when a cell spans multiple lines (due to
+     * text wrapping).
+     */
     enum GutterRendererAlignmentMode {
         /**
          * The full cell.
@@ -285,6 +282,7 @@ export namespace GtkSource {
          */
         MARKS,
     }
+
     function completion_error_quark(): GLib.Quark;
     /**
      * Gets all encodings.
@@ -350,7 +348,6 @@ export namespace GtkSource {
      * @returns the unescaped @text.
      */
     function utils_unescape_search_text(text: string): string;
-
     export namespace CompletionActivation {
         export const $gtype: GObject.GType<CompletionActivation>;
     }
@@ -373,23 +370,17 @@ export namespace GtkSource {
          */
         USER_REQUESTED,
     }
-    /**
-     * GtkSourceDrawSpacesFlags determine what kind of spaces whould be drawn. If none
-     * of GTK_SOURCE_DRAW_SPACES_LEADING, GTK_SOURCE_DRAW_SPACES_TEXT or
-     * GTK_SOURCE_DRAW_SPACES_TRAILING is specified, whitespaces at any position in
-     * the line will be drawn (i.e. it has the same effect as specifying all of them).
-     */
 
-    /**
-     * GtkSourceDrawSpacesFlags determine what kind of spaces whould be drawn. If none
-     * of GTK_SOURCE_DRAW_SPACES_LEADING, GTK_SOURCE_DRAW_SPACES_TEXT or
-     * GTK_SOURCE_DRAW_SPACES_TRAILING is specified, whitespaces at any position in
-     * the line will be drawn (i.e. it has the same effect as specifying all of them).
-     */
     export namespace DrawSpacesFlags {
         export const $gtype: GObject.GType<DrawSpacesFlags>;
     }
 
+    /**
+     * GtkSourceDrawSpacesFlags determine what kind of spaces whould be drawn. If none
+     * of GTK_SOURCE_DRAW_SPACES_LEADING, GTK_SOURCE_DRAW_SPACES_TEXT or
+     * GTK_SOURCE_DRAW_SPACES_TRAILING is specified, whitespaces at any position in
+     * the line will be drawn (i.e. it has the same effect as specifying all of them).
+     */
     enum DrawSpacesFlags {
         /**
          * whether the space character should be drawn.
@@ -426,17 +417,14 @@ export namespace GtkSource {
          */
         ALL,
     }
-    /**
-     * Flags to define the behavior of a #GtkSourceFileSaver.
-     */
 
-    /**
-     * Flags to define the behavior of a #GtkSourceFileSaver.
-     */
     export namespace FileSaverFlags {
         export const $gtype: GObject.GType<FileSaverFlags>;
     }
 
+    /**
+     * Flags to define the behavior of a #GtkSourceFileSaver.
+     */
     enum FileSaverFlags {
         /**
          * No flags.
@@ -504,23 +492,17 @@ export namespace GtkSource {
          */
         REMOVE_DUPLICATES,
     }
-    /**
-     * #GtkSourceSpaceLocationFlags contains flags for white space locations.
-     *
-     * If a line contains only white spaces (no text), the white spaces match both
-     * %GTK_SOURCE_SPACE_LOCATION_LEADING and %GTK_SOURCE_SPACE_LOCATION_TRAILING.
-     */
 
-    /**
-     * #GtkSourceSpaceLocationFlags contains flags for white space locations.
-     *
-     * If a line contains only white spaces (no text), the white spaces match both
-     * %GTK_SOURCE_SPACE_LOCATION_LEADING and %GTK_SOURCE_SPACE_LOCATION_TRAILING.
-     */
     export namespace SpaceLocationFlags {
         export const $gtype: GObject.GType<SpaceLocationFlags>;
     }
 
+    /**
+     * #GtkSourceSpaceLocationFlags contains flags for white space locations.
+     *
+     * If a line contains only white spaces (no text), the white spaces match both
+     * %GTK_SOURCE_SPACE_LOCATION_LEADING and %GTK_SOURCE_SPACE_LOCATION_TRAILING.
+     */
     enum SpaceLocationFlags {
         /**
          * No flags.
@@ -544,17 +526,14 @@ export namespace GtkSource {
          */
         ALL,
     }
-    /**
-     * #GtkSourceSpaceTypeFlags contains flags for white space types.
-     */
 
-    /**
-     * #GtkSourceSpaceTypeFlags contains flags for white space types.
-     */
     export namespace SpaceTypeFlags {
         export const $gtype: GObject.GType<SpaceTypeFlags>;
     }
 
+    /**
+     * #GtkSourceSpaceTypeFlags contains flags for white space types.
+     */
     enum SpaceTypeFlags {
         /**
          * No flags.
@@ -583,6 +562,7 @@ export namespace GtkSource {
          */
         ALL,
     }
+
     namespace Buffer {
         // Signal signatures
         interface SignalSignatures extends Gtk.TextBuffer.SignalSignatures {

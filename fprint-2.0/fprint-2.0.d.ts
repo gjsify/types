@@ -27,7 +27,7 @@ export namespace FPrint {
      * such as #G_IO_ERROR or #G_USB_DEVICE_ERROR may also be reported.
      */
     class DeviceError extends GLib.Error {
-        static $gtype: GObject.GType<DeviceError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -91,19 +91,14 @@ export namespace FPrint {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Error codes representing scan failures resulting in the user needing to
-     * retry.
-     */
-
-    /**
-     * Error codes representing scan failures resulting in the user needing to
-     * retry.
-     */
     export namespace DeviceRetry {
         export const $gtype: GObject.GType<DeviceRetry>;
     }
 
+    /**
+     * Error codes representing scan failures resulting in the user needing to
+     * retry.
+     */
     enum DeviceRetry {
         /**
          * The scan did not succeed due to poor scan quality
@@ -220,23 +215,17 @@ export namespace FPrint {
          */
         PRESS,
     }
-    /**
-     * When a device is created, it is assumed to be cold. Applications such as
-     * fprintd may want to ensure all devices on the system are cold before
-     * shutting down in order to ensure that the cool-off period is not violated
-     * because the internal libfprint state about the device is lost.
-     */
 
-    /**
-     * When a device is created, it is assumed to be cold. Applications such as
-     * fprintd may want to ensure all devices on the system are cold before
-     * shutting down in order to ensure that the cool-off period is not violated
-     * because the internal libfprint state about the device is lost.
-     */
     export namespace Temperature {
         export const $gtype: GObject.GType<Temperature>;
     }
 
+    /**
+     * When a device is created, it is assumed to be cold. Applications such as
+     * fprintd may want to ensure all devices on the system are cold before
+     * shutting down in order to ensure that the cool-off period is not violated
+     * because the internal libfprint state about the device is lost.
+     */
     enum Temperature {
         /**
          * Sensor is considered cold.
@@ -251,6 +240,7 @@ export namespace FPrint {
          */
         HOT,
     }
+
     function device_error_quark(): GLib.Quark;
     function device_retry_quark(): GLib.Quark;
     interface EnrollProgress {
@@ -259,7 +249,6 @@ export namespace FPrint {
     interface MatchCb {
         (device: Device, match?: Print | null, print?: Print | null, error?: GLib.Error | null): void;
     }
-
     export namespace DeviceFeature {
         export const $gtype: GObject.GType<DeviceFeature>;
     }
@@ -329,6 +318,7 @@ export namespace FPrint {
          */
         PRESENT,
     }
+
     namespace Context {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

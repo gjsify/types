@@ -18,26 +18,19 @@ export namespace Libinsane {
      * Libinsane-1.0
      */
 
-    export namespace ConstraintType {
-        export const $gtype: GObject.GType<ConstraintType>;
-    }
-
     enum ConstraintType {
         NONE,
         RANGE,
         LIST,
     }
 
-    export namespace DeviceLocations {
-        export const $gtype: GObject.GType<DeviceLocations>;
-    }
-
     enum DeviceLocations {
         ANY,
         LOCAL_ONLY,
     }
+
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -62,10 +55,6 @@ export namespace Libinsane {
         constructor(options: { message: string; code: number });
     }
 
-    export namespace ImgFormat {
-        export const $gtype: GObject.GType<ImgFormat>;
-    }
-
     enum ImgFormat {
         RAW_RGB_24,
         GRAYSCALE_8,
@@ -86,10 +75,6 @@ export namespace Libinsane {
         TIFF,
     }
 
-    export namespace ItemType {
-        export const $gtype: GObject.GType<ItemType>;
-    }
-
     enum ItemType {
         DEVICE,
         FLATBED,
@@ -97,19 +82,11 @@ export namespace Libinsane {
         UNIDENTIFIED,
     }
 
-    export namespace LogLevel {
-        export const $gtype: GObject.GType<LogLevel>;
-    }
-
     enum LogLevel {
         DEBUG,
         INFO,
         WARNING,
         ERROR,
-    }
-
-    export namespace Unit {
-        export const $gtype: GObject.GType<Unit>;
     }
 
     enum Unit {
@@ -121,20 +98,13 @@ export namespace Libinsane {
         PERCENT,
         MICROSECOND,
     }
+
     function error_quark(): GLib.Quark;
     function register_logger(logger: Logger): void;
     function unregister_logger(): void;
     /**
      * Not actually an enum but a bit field.
      */
-
-    /**
-     * Not actually an enum but a bit field.
-     */
-    export namespace Capability {
-        export const $gtype: GObject.GType<Capability>;
-    }
-
     enum Capability {
         NONE,
         EMULATED,
@@ -144,16 +114,13 @@ export namespace Libinsane {
         INACTIVE,
     }
 
-    export namespace SetFlag {
-        export const $gtype: GObject.GType<SetFlag>;
-    }
-
     enum SetFlag {
         NONE,
         INEXACT,
         MUST_RELOAD_OPTIONS,
         MUST_RELOAD_PARAMS,
     }
+
     namespace Api {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

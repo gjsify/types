@@ -29,10 +29,6 @@ export namespace InputPad {
      * InputPad-1.1
      */
 
-    export namespace TableType {
-        export const $gtype: GObject.GType<TableType>;
-    }
-
     enum TableType {
         NONE,
         CHARS,
@@ -41,17 +37,9 @@ export namespace InputPad {
         COMMANDS,
     }
 
-    export namespace WindowShowLayoutType {
-        export const $gtype: GObject.GType<WindowShowLayoutType>;
-    }
-
     enum WindowShowLayoutType {
         NOTHING,
         DEFAULT,
-    }
-
-    export namespace WindowShowTableType {
-        export const $gtype: GObject.GType<WindowShowTableType>;
     }
 
     enum WindowShowTableType {
@@ -60,13 +48,10 @@ export namespace InputPad {
         ALL,
     }
 
-    export namespace WindowType {
-        export const $gtype: GObject.GType<WindowType>;
-    }
-
     enum WindowType {
         WINDOW_TYPE_GTK,
     }
+
     const MAX_COLUMN: number;
     const MAX_ROW: number;
     const MAX_WINDOW_ROW: number;

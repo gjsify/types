@@ -21,17 +21,13 @@ export namespace ArrowDataset {
      * ArrowDataset-1.0
      */
 
-    /**
-     * They are corresponding to `arrow::dataset::SegmentEncoding` values.
-     */
-
-    /**
-     * They are corresponding to `arrow::dataset::SegmentEncoding` values.
-     */
     export namespace SegmentEncoding {
         export const $gtype: GObject.GType<SegmentEncoding>;
     }
 
+    /**
+     * They are corresponding to `arrow::dataset::SegmentEncoding` values.
+     */
     enum SegmentEncoding {
         /**
          * No encoding.
@@ -42,6 +38,7 @@ export namespace ArrowDataset {
          */
         URI,
     }
+
     namespace CSVFileFormat {
         // Signal signatures
         interface SignalSignatures extends FileFormat.SignalSignatures {

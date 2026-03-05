@@ -22,14 +22,6 @@ export namespace Easyfc {
     /**
      * Error code used in libeasyfc.
      */
-
-    /**
-     * Error code used in libeasyfc.
-     */
-    export namespace Error {
-        export const $gtype: GObject.GType<Error>;
-    }
-
     enum Error {
         /**
          * unknown error happened.
@@ -80,17 +72,10 @@ export namespace Easyfc {
          */
         END,
     }
-    /**
-     * The hintstyle option to be used for ezfc_font_set_hintstyle().
-     */
 
     /**
      * The hintstyle option to be used for ezfc_font_set_hintstyle().
      */
-    export namespace FontHintstyle {
-        export const $gtype: GObject.GType<FontHintstyle>;
-    }
-
     enum FontHintstyle {
         /**
          * unknown state in the hintstyle.
@@ -117,17 +102,10 @@ export namespace Easyfc {
          */
         END,
     }
-    /**
-     * The sub-pixel rendering option to be used in ezfc_font_set_subpixel_rendering().
-     */
 
     /**
      * The sub-pixel rendering option to be used in ezfc_font_set_subpixel_rendering().
      */
-    export namespace FontSubpixelRender {
-        export const $gtype: GObject.GType<FontSubpixelRender>;
-    }
-
     enum FontSubpixelRender {
         /**
          * unknown state on using the sub-pixel rendering.
@@ -162,6 +140,7 @@ export namespace Easyfc {
          */
         END,
     }
+
     /**
      * Obtains a #GQuark being used for #GError.
      * @returns a #GQuark.

@@ -29,17 +29,13 @@ export namespace Gdl {
      * Gdl-3
      */
 
-    /**
-     * Used to customize the appearance of a #GdlDockBar.
-     */
-
-    /**
-     * Used to customize the appearance of a #GdlDockBar.
-     */
     export namespace DockBarStyle {
         export const $gtype: GObject.GType<DockBarStyle>;
     }
 
+    /**
+     * Used to customize the appearance of a #GdlDockBar.
+     */
     enum DockBarStyle {
         /**
          * Buttons display only icons in the dockbar.
@@ -58,17 +54,10 @@ export namespace Gdl {
          */
         AUTO,
     }
-    /**
-     * Define the image displayed.
-     */
 
     /**
      * Define the image displayed.
      */
-    export namespace DockItemButtonImageType {
-        export const $gtype: GObject.GType<DockItemButtonImageType>;
-    }
-
     enum DockItemButtonImageType {
         /**
          * Display a small cross
@@ -79,17 +68,14 @@ export namespace Gdl {
          */
         ICONIFY,
     }
-    /**
-     * Described the docking position.
-     */
 
-    /**
-     * Described the docking position.
-     */
     export namespace DockPlacement {
         export const $gtype: GObject.GType<DockPlacement>;
     }
 
+    /**
+     * Described the docking position.
+     */
     enum DockPlacement {
         /**
          * No position defined
@@ -120,17 +106,14 @@ export namespace Gdl {
          */
         FLOATING,
     }
-    /**
-     * Used to customize the appearance of the tabs in #GdlDockNotebook.
-     */
 
-    /**
-     * Used to customize the appearance of the tabs in #GdlDockNotebook.
-     */
     export namespace SwitcherStyle {
         export const $gtype: GObject.GType<SwitcherStyle>;
     }
 
+    /**
+     * Used to customize the appearance of the tabs in #GdlDockNotebook.
+     */
     enum SwitcherStyle {
         /**
          * Tabs display only text labels.
@@ -157,6 +140,7 @@ export namespace Gdl {
          */
         NONE,
     }
+
     const DOCK_MASTER_PROPERTY: string;
     const DOCK_NAME_PROPERTY: string;
     /**
@@ -188,17 +172,13 @@ export namespace Gdl {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
-    /**
-     * Described the behaviour of a doc item. The item can have multiple flags set.
-     */
-
-    /**
-     * Described the behaviour of a doc item. The item can have multiple flags set.
-     */
     export namespace DockItemBehavior {
         export const $gtype: GObject.GType<DockItemBehavior>;
     }
 
+    /**
+     * Described the behaviour of a doc item. The item can have multiple flags set.
+     */
     enum DockItemBehavior {
         /**
          * Normal dock item
@@ -253,17 +233,14 @@ export namespace Gdl {
          */
         NO_GRIP,
     }
-    /**
-     * Status flag of a GdlDockItem. Don't use unless you derive a widget from GdlDockItem
-     */
 
-    /**
-     * Status flag of a GdlDockItem. Don't use unless you derive a widget from GdlDockItem
-     */
     export namespace DockItemFlags {
         export const $gtype: GObject.GType<DockItemFlags>;
     }
 
+    /**
+     * Status flag of a GdlDockItem. Don't use unless you derive a widget from GdlDockItem
+     */
     enum DockItemFlags {
         /**
          * item is in a drag operation
@@ -282,23 +259,17 @@ export namespace Gdl {
          */
         USER_ACTION,
     }
-    /**
-     * Described the state of a #GdlDockObject.
-     *
-     * Since 3.6: These flags are available using access function, like
-     * gdl_dock_object_is_automatic() or gdl_dock_object_is_closed().
-     */
 
-    /**
-     * Described the state of a #GdlDockObject.
-     *
-     * Since 3.6: These flags are available using access function, like
-     * gdl_dock_object_is_automatic() or gdl_dock_object_is_closed().
-     */
     export namespace DockObjectFlags {
         export const $gtype: GObject.GType<DockObjectFlags>;
     }
 
+    /**
+     * Described the state of a #GdlDockObject.
+     *
+     * Since 3.6: These flags are available using access function, like
+     * gdl_dock_object_is_automatic() or gdl_dock_object_is_closed().
+     */
     enum DockObjectFlags {
         /**
          * Object is created and destroyed by the master, not the user
@@ -317,19 +288,15 @@ export namespace Gdl {
          */
         IN_DETACH,
     }
-    /**
-     * Used to flag additional characteristics to GObject properties used in dock
-     * object.
-     */
 
-    /**
-     * Used to flag additional characteristics to GObject properties used in dock
-     * object.
-     */
     export namespace DockParamFlags {
         export const $gtype: GObject.GType<DockParamFlags>;
     }
 
+    /**
+     * Used to flag additional characteristics to GObject properties used in dock
+     * object.
+     */
     enum DockParamFlags {
         /**
          * The parameter is to be exported for later layout rebuilding
@@ -340,6 +307,7 @@ export namespace Gdl {
          */
         AFTER,
     }
+
     namespace Dock {
         // Signal signatures
         interface SignalSignatures extends DockObject.SignalSignatures {

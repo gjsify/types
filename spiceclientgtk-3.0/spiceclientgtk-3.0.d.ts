@@ -32,17 +32,13 @@ export namespace SpiceClientGtk {
      * SpiceClientGtk-3.0
      */
 
-    /**
-     * Constants for key events.
-     */
-
-    /**
-     * Constants for key events.
-     */
     export namespace DisplayKeyEvent {
         export const $gtype: GObject.GType<DisplayKeyEvent>;
     }
 
+    /**
+     * Constants for key events.
+     */
     enum DisplayKeyEvent {
         /**
          * key press
@@ -57,6 +53,7 @@ export namespace SpiceClientGtk {
          */
         CLICK,
     }
+
     namespace Display {
         // Signal signatures
         interface SignalSignatures extends Gtk.EventBox.SignalSignatures {

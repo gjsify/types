@@ -21,15 +21,6 @@ export namespace P11Kit {
      * Error codes returned by various functions. The functions each clearly state
      * which error codes they are capable of returning.
      */
-
-    /**
-     * Error codes returned by various functions. The functions each clearly state
-     * which error codes they are capable of returning.
-     */
-    export namespace UriResult {
-        export const $gtype: GObject.GType<UriResult>;
-    }
-
     enum UriResult {
         OK,
         UNEXPECTED,
@@ -39,6 +30,7 @@ export namespace P11Kit {
         BAD_VERSION,
         NOT_FOUND,
     }
+
     const PIN_FALLBACK: string;
     const URI_SCHEME: string;
     const URI_SCHEME_LEN: number;
@@ -112,14 +104,6 @@ export namespace P11Kit {
     /**
      * Flags that are passed to p11_kit_pin_request() and registered callbacks.
      */
-
-    /**
-     * Flags that are passed to p11_kit_pin_request() and registered callbacks.
-     */
-    export namespace PinFlags {
-        export const $gtype: GObject.GType<PinFlags>;
-    }
-
     enum PinFlags {
         USER_LOGIN,
         SO_LOGIN,
@@ -128,12 +112,6 @@ export namespace P11Kit {
         MANY_TRIES,
         FINAL_TRY,
     }
-    /**
-     * A PKCS\#11 URI can represent different kinds of things. This flag is used by
-     * p11_kit_uri_parse() to denote in what context the URI will be used.
-     *
-     * The various types can be combined.
-     */
 
     /**
      * A PKCS\#11 URI can represent different kinds of things. This flag is used by
@@ -141,10 +119,6 @@ export namespace P11Kit {
      *
      * The various types can be combined.
      */
-    export namespace UriType {
-        export const $gtype: GObject.GType<UriType>;
-    }
-
     enum UriType {
         OBJECT,
         TOKEN,
@@ -154,6 +128,7 @@ export namespace P11Kit {
         OBJECT_ON_TOKEN_AND_MODULE,
         ANY,
     }
+
     /**
      * A structure representing a PKCS\#11 PIN. There are no public fields
      * visible in this structure. Use the various accessor functions.

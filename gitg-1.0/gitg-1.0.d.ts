@@ -133,8 +133,9 @@ export namespace Gitg {
         SECTION,
         ITEM,
     }
+
     class CredentialsError extends GLib.Error {
-        static $gtype: GObject.GType<CredentialsError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -146,7 +147,7 @@ export namespace Gitg {
     }
 
     class DateError extends GLib.Error {
-        static $gtype: GObject.GType<DateError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -158,7 +159,7 @@ export namespace Gitg {
     }
 
     class InitError extends GLib.Error {
-        static $gtype: GObject.GType<InitError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -170,7 +171,7 @@ export namespace Gitg {
     }
 
     class RemoteError extends GLib.Error {
-        static $gtype: GObject.GType<RemoteError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -185,7 +186,7 @@ export namespace Gitg {
     }
 
     class StageError extends GLib.Error {
-        static $gtype: GObject.GType<StageError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -210,9 +211,9 @@ export namespace Gitg {
         ADD,
         REMOVE,
     }
+
     function commit_model_columns_type(): GObject.GType;
     function init(): void;
-
     export namespace LaneTag {
         export const $gtype: GObject.GType<LaneTag>;
     }
@@ -238,6 +239,7 @@ export namespace Gitg {
         SKIP_HOOKS,
         SIGN_COMMIT,
     }
+
     namespace Async {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

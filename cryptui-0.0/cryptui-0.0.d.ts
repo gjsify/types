@@ -35,17 +35,6 @@ export namespace CryptUI {
      * Never ever change a values already present. These values are used
      * across applications, DBus etc...
      */
-
-    /**
-     * Used in key properties to indicate what kind of key it is
-     *
-     * Never ever change a values already present. These values are used
-     * across applications, DBus etc...
-     */
-    export namespace EncType {
-        export const $gtype: GObject.GType<EncType>;
-    }
-
     enum EncType {
         /**
          * the key is none of the below types
@@ -69,23 +58,12 @@ export namespace CryptUI {
         MAXVALUE,
     }
 
-    export namespace KeyChooserMode {
-        export const $gtype: GObject.GType<KeyChooserMode>;
-    }
-
     enum KeyChooserMode {
         RECIPIENTS,
         SIGNER,
         SUPPORT_SYMMETRIC,
         MUSTSIGN,
     }
-    /**
-     * Used in key properties to indicate a key's status.  These values are
-     * logically OR'd together.
-     *
-     * Never ever change a values already present. These values are used
-     * across applications, DBus etc...
-     */
 
     /**
      * Used in key properties to indicate a key's status.  These values are
@@ -94,10 +72,6 @@ export namespace CryptUI {
      * Never ever change a values already present. These values are used
      * across applications, DBus etc...
      */
-    export namespace KeyFlags {
-        export const $gtype: GObject.GType<KeyFlags>;
-    }
-
     enum KeyFlags {
         /**
          * whether the key is valid
@@ -133,21 +107,11 @@ export namespace CryptUI {
         EXPORTABLE,
     }
 
-    export namespace KeyStoreMode {
-        export const $gtype: GObject.GType<KeyStoreMode>;
-    }
-
     enum KeyStoreMode {
         ALL,
         SELECTED,
         RESULTS,
     }
-    /**
-     * Indicates where a key is located.
-     *
-     * Never ever change a values already present. These values are used
-     * across applications, DBus etc...
-     */
 
     /**
      * Indicates where a key is located.
@@ -155,10 +119,6 @@ export namespace CryptUI {
      * Never ever change a values already present. These values are used
      * across applications, DBus etc...
      */
-    export namespace Location {
-        export const $gtype: GObject.GType<Location>;
-    }
-
     enum Location {
         /**
          * An invalid key
@@ -181,12 +141,6 @@ export namespace CryptUI {
          */
         LOCAL,
     }
-    /**
-     * What the validity of the key is.
-     *
-     * Never ever change a values already present. These values are used
-     * across applications, DBus etc...
-     */
 
     /**
      * What the validity of the key is.
@@ -194,10 +148,6 @@ export namespace CryptUI {
      * Never ever change a values already present. These values are used
      * across applications, DBus etc...
      */
-    export namespace Validity {
-        export const $gtype: GObject.GType<Validity>;
-    }
-
     enum Validity {
         /**
          * the key is revoked
@@ -228,6 +178,7 @@ export namespace CryptUI {
          */
         ULTIMATE,
     }
+
     interface KeyStoreFilterFunc {
         (ckset: Keyset, key: string): boolean;
     }

@@ -32,17 +32,13 @@ export namespace ClutterX11 {
      * ClutterX11-5
      */
 
-    /**
-     * Return values for the #ClutterX11FilterFunc function.
-     */
-
-    /**
-     * Return values for the #ClutterX11FilterFunc function.
-     */
     export namespace FilterReturn {
         export const $gtype: GObject.GType<FilterReturn>;
     }
 
+    /**
+     * Return values for the #ClutterX11FilterFunc function.
+     */
     enum FilterReturn {
         /**
          * The event was not handled, continues the
@@ -59,6 +55,7 @@ export namespace ClutterX11 {
          */
         REMOVE,
     }
+
     /**
      * Retrieves the pointer to the default display.
      * @returns the default display

@@ -49,11 +49,12 @@ export namespace Libosinfo {
          */
         WARN,
     }
+
     /**
      * #GError codes used for errors in #OSINFO_ERROR domain.
      */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -74,17 +75,13 @@ export namespace Libosinfo {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Policy for configuration parameter presence
-     */
-
-    /**
-     * Policy for configuration parameter presence
-     */
     export namespace InstallConfigParamPolicy {
         export const $gtype: GObject.GType<InstallConfigParamPolicy>;
     }
 
+    /**
+     * Policy for configuration parameter presence
+     */
     enum InstallConfigParamPolicy {
         /**
          * no policy defined
@@ -116,12 +113,13 @@ export namespace Libosinfo {
          */
         NETWORK,
     }
+
     /**
      * #GError codes used for errors in the #OSINFO_MEDIA_ERROR domain, during
      * reading of data from install media location.
      */
     class MediaError extends GLib.Error {
-        static $gtype: GObject.GType<MediaError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -174,17 +172,14 @@ export namespace Libosinfo {
          */
         DOS,
     }
-    /**
-     * Enum values used to form relationships between products
-     */
 
-    /**
-     * Enum values used to form relationships between products
-     */
     export namespace ProductRelationship {
         export const $gtype: GObject.GType<ProductRelationship>;
     }
 
+    /**
+     * Enum values used to form relationships between products
+     */
     enum ProductRelationship {
         /**
          * a descendent (RHEL-5 derives from Fedora-6)
@@ -227,12 +222,13 @@ export namespace Libosinfo {
          */
         ROLLING,
     }
+
     /**
      * #GError codes used for errors in the #OSINFO_TREE_ERROR domain, during
      * reading the treeinfo from a URI.
      */
     class TreeError extends GLib.Error {
-        static $gtype: GObject.GType<TreeError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -408,7 +404,6 @@ export namespace Libosinfo {
      * @returns the #GQuark representing the string.
      */
     function tree_error_quark(): GLib.Quark;
-
     export namespace InstallScriptInjectionMethod {
         export const $gtype: GObject.GType<InstallScriptInjectionMethod>;
     }
@@ -440,22 +435,19 @@ export namespace Libosinfo {
          */
         WEB,
     }
-    /**
-     * OSINFO_MEDIA_DETECT_REQUIRE_BOOTABLE: Requires a media to be bootable.
-     * Flags used for detecting a media.
-     */
 
-    /**
-     * OSINFO_MEDIA_DETECT_REQUIRE_BOOTABLE: Requires a media to be bootable.
-     * Flags used for detecting a media.
-     */
     export namespace MediaDetectFlags {
         export const $gtype: GObject.GType<MediaDetectFlags>;
     }
 
+    /**
+     * OSINFO_MEDIA_DETECT_REQUIRE_BOOTABLE: Requires a media to be bootable.
+     * Flags used for detecting a media.
+     */
     enum MediaDetectFlags {
         BOOTABLE,
     }
+
     namespace AvatarFormat {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {

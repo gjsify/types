@@ -20,17 +20,13 @@ export namespace Arrow {
      * Arrow-1.0
      */
 
-    /**
-     * They are corresponding to `arrow::Compression::type` values.
-     */
-
-    /**
-     * They are corresponding to `arrow::Compression::type` values.
-     */
     export namespace CompressionType {
         export const $gtype: GObject.GType<CompressionType>;
     }
 
+    /**
+     * They are corresponding to `arrow::Compression::type` values.
+     */
     enum CompressionType {
         /**
          * Not compressed.
@@ -65,17 +61,14 @@ export namespace Arrow {
          */
         BZ2,
     }
-    /**
-     * They correspond to the values of `arrow::compute::CountOptions::CountMode`.
-     */
 
-    /**
-     * They correspond to the values of `arrow::compute::CountOptions::CountMode`.
-     */
     export namespace CountMode {
         export const $gtype: GObject.GType<CountMode>;
     }
 
+    /**
+     * They correspond to the values of `arrow::compute::CountOptions::CountMode`.
+     */
     enum CountMode {
         /**
          * Only non-null values will be counted.
@@ -90,13 +83,14 @@ export namespace Arrow {
          */
         ALL,
     }
+
     /**
      * The error codes are used by all arrow-glib functions.
      *
      * They are corresponding to `arrow::Status` values.
      */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -169,17 +163,13 @@ export namespace Arrow {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * They are corresponding to `arrow::io::FileMode::type` values.
-     */
-
-    /**
-     * They are corresponding to `arrow::io::FileMode::type` values.
-     */
     export namespace FileMode {
         export const $gtype: GObject.GType<FileMode>;
     }
 
+    /**
+     * They are corresponding to `arrow::io::FileMode::type` values.
+     */
     enum FileMode {
         /**
          * For read.
@@ -194,17 +184,14 @@ export namespace Arrow {
          */
         READWRITE,
     }
-    /**
-     * They are corresponding to `arrow::fs::FileType` values.
-     */
 
-    /**
-     * They are corresponding to `arrow::fs::FileType` values.
-     */
     export namespace FileType {
         export const $gtype: GObject.GType<FileType>;
     }
 
+    /**
+     * They are corresponding to `arrow::fs::FileType` values.
+     */
     enum FileType {
         /**
          * Entry is not found
@@ -223,19 +210,15 @@ export namespace Arrow {
          */
         DIR,
     }
-    /**
-     * They are corresponding to
-     * `arrow::compute::FilterOptions::NullSelectionBehavior` values.
-     */
 
-    /**
-     * They are corresponding to
-     * `arrow::compute::FilterOptions::NullSelectionBehavior` values.
-     */
     export namespace FilterNullSelectionBehavior {
         export const $gtype: GObject.GType<FilterNullSelectionBehavior>;
     }
 
+    /**
+     * They are corresponding to
+     * `arrow::compute::FilterOptions::NullSelectionBehavior` values.
+     */
     enum FilterNullSelectionBehavior {
         /**
          * Filtered value will be removed in the output.
@@ -246,21 +229,16 @@ export namespace Arrow {
          */
         EMIT_NULL,
     }
-    /**
-     * They are corresponding to `arrow::IntervalType::type` values.
-     *
-     * Since 7.0.0
-     */
 
-    /**
-     * They are corresponding to `arrow::IntervalType::type` values.
-     *
-     * Since 7.0.0
-     */
     export namespace IntervalType {
         export const $gtype: GObject.GType<IntervalType>;
     }
 
+    /**
+     * They are corresponding to `arrow::IntervalType::type` values.
+     *
+     * Since 7.0.0
+     */
     enum IntervalType {
         /**
          * A number of months.
@@ -277,17 +255,14 @@ export namespace Arrow {
          */
         MONTH_DAY_NANO,
     }
-    /**
-     * They are corresponding to `arrow::json::UnexpectedFieldBehavior` values.
-     */
 
-    /**
-     * They are corresponding to `arrow::json::UnexpectedFieldBehavior` values.
-     */
     export namespace JSONReadUnexpectedFieldBehavior {
         export const $gtype: GObject.GType<JSONReadUnexpectedFieldBehavior>;
     }
 
+    /**
+     * They are corresponding to `arrow::json::UnexpectedFieldBehavior` values.
+     */
     enum JSONReadUnexpectedFieldBehavior {
         /**
          * Ignore other fields.
@@ -302,17 +277,14 @@ export namespace Arrow {
          */
         INFER_TYPE,
     }
-    /**
-     * They correspond to the values of `arrow::compute::JoinType`.
-     */
 
-    /**
-     * They correspond to the values of `arrow::compute::JoinType`.
-     */
     export namespace JoinType {
         export const $gtype: GObject.GType<JoinType>;
     }
 
+    /**
+     * They correspond to the values of `arrow::compute::JoinType`.
+     */
     enum JoinType {
         LEFT_SEMI,
         RIGHT_SEMI,
@@ -323,19 +295,15 @@ export namespace Arrow {
         RIGHT_OUTER,
         FULL_OUTER,
     }
-    /**
-     * They are corresponding to `arrow::ipc::MetadataVersion::type`
-     * values.
-     */
 
-    /**
-     * They are corresponding to `arrow::ipc::MetadataVersion::type`
-     * values.
-     */
     export namespace MetadataVersion {
         export const $gtype: GObject.GType<MetadataVersion>;
     }
 
+    /**
+     * They are corresponding to `arrow::ipc::MetadataVersion::type`
+     * values.
+     */
     enum MetadataVersion {
         /**
          * Version 1.
@@ -350,17 +318,14 @@ export namespace Arrow {
          */
         V3,
     }
-    /**
-     * They are corresponding to `arrow::compute::NullPlacement` values.
-     */
 
-    /**
-     * They are corresponding to `arrow::compute::NullPlacement` values.
-     */
     export namespace NullPlacement {
         export const $gtype: GObject.GType<NullPlacement>;
     }
 
+    /**
+     * They are corresponding to `arrow::compute::NullPlacement` values.
+     */
     enum NullPlacement {
         /**
          * Place nulls and NaNs before any non-null values.
@@ -373,19 +338,15 @@ export namespace Arrow {
          */
         AT_END,
     }
-    /**
-     * They correspond to the values of
-     * `arrow::compute::QuantileOptions::Interpolation`.
-     */
 
-    /**
-     * They correspond to the values of
-     * `arrow::compute::QuantileOptions::Interpolation`.
-     */
     export namespace QuantileInterpolation {
         export const $gtype: GObject.GType<QuantileInterpolation>;
     }
 
+    /**
+     * They correspond to the values of
+     * `arrow::compute::QuantileOptions::Interpolation`.
+     */
     enum QuantileInterpolation {
         /**
          * Linear.
@@ -419,17 +380,14 @@ export namespace Arrow {
         FIRST,
         DENSE,
     }
-    /**
-     * They correspond to the values of `arrow::compute::RoundMode`.
-     */
 
-    /**
-     * They correspond to the values of `arrow::compute::RoundMode`.
-     */
     export namespace RoundMode {
         export const $gtype: GObject.GType<RoundMode>;
     }
 
+    /**
+     * They correspond to the values of `arrow::compute::RoundMode`.
+     */
     enum RoundMode {
         DOWN,
         UP,
@@ -464,17 +422,14 @@ export namespace Arrow {
         HALF_TO_EVEN,
         HALF_TO_ODD,
     }
-    /**
-     * They are corresponding to `arrow::fs::S3LogLevel` values.
-     */
 
-    /**
-     * They are corresponding to `arrow::fs::S3LogLevel` values.
-     */
     export namespace S3LogLevel {
         export const $gtype: GObject.GType<S3LogLevel>;
     }
 
+    /**
+     * They are corresponding to `arrow::fs::S3LogLevel` values.
+     */
     enum S3LogLevel {
         /**
          * Off.
@@ -505,17 +460,14 @@ export namespace Arrow {
          */
         TRACE,
     }
-    /**
-     * They are corresponding to `arrow::compute::SortOrder` values.
-     */
 
-    /**
-     * They are corresponding to `arrow::compute::SortOrder` values.
-     */
     export namespace SortOrder {
         export const $gtype: GObject.GType<SortOrder>;
     }
 
+    /**
+     * They are corresponding to `arrow::compute::SortOrder` values.
+     */
     enum SortOrder {
         /**
          * Sort in ascending order.
@@ -526,17 +478,14 @@ export namespace Arrow {
          */
         DESCENDING,
     }
-    /**
-     * They are corresponding to `arrow::TimeUnit::type` values.
-     */
 
-    /**
-     * They are corresponding to `arrow::TimeUnit::type` values.
-     */
     export namespace TimeUnit {
         export const $gtype: GObject.GType<TimeUnit>;
     }
 
+    /**
+     * They are corresponding to `arrow::TimeUnit::type` values.
+     */
     enum TimeUnit {
         /**
          * Second.
@@ -555,17 +504,14 @@ export namespace Arrow {
          */
         NANO,
     }
-    /**
-     * They are corresponding to `arrow::Type::type` values.
-     */
 
-    /**
-     * They are corresponding to `arrow::Type::type` values.
-     */
     export namespace Type {
         export const $gtype: GObject.GType<Type>;
     }
 
+    /**
+     * They are corresponding to `arrow::Type::type` values.
+     */
     enum Type {
         /**
          * A degenerate NULL type represented as 0 bytes/bits.
@@ -730,17 +676,14 @@ export namespace Arrow {
          */
         RUN_END_ENCODED,
     }
-    /**
-     * They correspond to the values of `arrow::compute::Utf8NormalizeOptions::Form`.
-     */
 
-    /**
-     * They correspond to the values of `arrow::compute::Utf8NormalizeOptions::Form`.
-     */
     export namespace UTF8NormalizeForm {
         export const $gtype: GObject.GType<UTF8NormalizeForm>;
     }
 
+    /**
+     * They correspond to the values of `arrow::compute::Utf8NormalizeOptions::Form`.
+     */
     enum UTF8NormalizeForm {
         /**
          * Normalization Form Canonical Composition.
@@ -761,6 +704,7 @@ export namespace Arrow {
          */
         NFKD,
     }
+
     /**
      * The major version.
      */

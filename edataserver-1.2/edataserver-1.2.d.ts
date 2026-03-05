@@ -27,14 +27,6 @@ export namespace EDataServer {
     /**
      * Error codes for #EClient operations.
      */
-
-    /**
-     * Error codes for #EClient operations.
-     */
-    export namespace ClientError {
-        export const $gtype: GObject.GType<ClientError>;
-    }
-
     enum ClientError {
         /**
          * Invalid argument was used
@@ -125,11 +117,12 @@ export namespace EDataServer {
          */
         OUT_OF_SYNC,
     }
+
     /**
      * Errors from the #E_COLLATOR_ERROR domain.
      */
     class CollatorError extends GLib.Error {
-        static $gtype: GObject.GType<CollatorError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -151,19 +144,14 @@ export namespace EDataServer {
         constructor(options: { message: string; code: number });
     }
 
-    /**
-     * Defines what to do when a conflict between the locally stored and
-     * remotely stored object versions happen during object modify or remove.
-     */
-
-    /**
-     * Defines what to do when a conflict between the locally stored and
-     * remotely stored object versions happen during object modify or remove.
-     */
     export namespace ConflictResolution {
         export const $gtype: GObject.GType<ConflictResolution>;
     }
 
+    /**
+     * Defines what to do when a conflict between the locally stored and
+     * remotely stored object versions happen during object modify or remove.
+     */
     enum ConflictResolution {
         /**
          * Fail when a write-conflict occurs.
@@ -187,17 +175,10 @@ export namespace EDataServer {
          */
         WRITE_COPY,
     }
-    /**
-     * Holds status of a task.
-     */
 
     /**
      * Holds status of a task.
      */
-    export namespace GDataTaskStatus {
-        export const $gtype: GObject.GType<GDataTaskStatus>;
-    }
-
     enum GDataTaskStatus {
         /**
          * unknown status
@@ -212,21 +193,16 @@ export namespace EDataServer {
          */
         COMPLETED,
     }
-    /**
-     * Policy for responding to Message Disposition Notification requests
-     * (i.e. a Disposition-Notification-To header) when receiving messages.
-     * See RFC 2298 for more information about MDN requests.
-     */
 
-    /**
-     * Policy for responding to Message Disposition Notification requests
-     * (i.e. a Disposition-Notification-To header) when receiving messages.
-     * See RFC 2298 for more information about MDN requests.
-     */
     export namespace MdnResponsePolicy {
         export const $gtype: GObject.GType<MdnResponsePolicy>;
     }
 
+    /**
+     * Policy for responding to Message Disposition Notification requests
+     * (i.e. a Disposition-Notification-To header) when receiving messages.
+     * See RFC 2298 for more information about MDN requests.
+     */
     enum MdnResponsePolicy {
         /**
          * Never respond to an MDN request.
@@ -241,21 +217,12 @@ export namespace EDataServer {
          */
         ASK,
     }
-    /**
-     * A value used during querying authentication URI, to decide whether certain
-     * resource can be used or not. The `E_OAUTH2`_SERVICE_NAVIGATION_POLICY_ABORT
-     * can be used to abort the authentication query, like when user cancelled it.
-     */
 
     /**
      * A value used during querying authentication URI, to decide whether certain
      * resource can be used or not. The `E_OAUTH2`_SERVICE_NAVIGATION_POLICY_ABORT
      * can be used to abort the authentication query, like when user cancelled it.
      */
-    export namespace OAuth2ServiceNavigationPolicy {
-        export const $gtype: GObject.GType<OAuth2ServiceNavigationPolicy>;
-    }
-
     enum OAuth2ServiceNavigationPolicy {
         /**
          * Deny navigation to the given web resource
@@ -270,17 +237,14 @@ export namespace EDataServer {
          */
         ABORT,
     }
-    /**
-     * Network proxy configuration methods.
-     */
 
-    /**
-     * Network proxy configuration methods.
-     */
     export namespace ProxyMethod {
         export const $gtype: GObject.GType<ProxyMethod>;
     }
 
+    /**
+     * Network proxy configuration methods.
+     */
     enum ProxyMethod {
         /**
          * Use the default #GProxyResolver (see g_proxy_resolver_get_default()).
@@ -299,17 +263,14 @@ export namespace EDataServer {
          */
         NONE,
     }
-    /**
-     * Status codes used by the #EBackend authentication wrapper.
-     */
 
-    /**
-     * Status codes used by the #EBackend authentication wrapper.
-     */
     export namespace SourceAuthenticationResult {
         export const $gtype: GObject.GType<SourceAuthenticationResult>;
     }
 
+    /**
+     * Status codes used by the #EBackend authentication wrapper.
+     */
     enum SourceAuthenticationResult {
         /**
          * Unknown error occurred while authenticating. Since: 3.26
@@ -336,27 +297,19 @@ export namespace EDataServer {
          */
         REQUIRED,
     }
-    /**
-     * Connection status codes used by the #ESource to indicate its connection state.
-     * This is used in combination with authentication of the ESource. For example,
-     * if there are multiple clients asking for a password and a user enters the password
-     * in one of them, then the status will change into 'connecting', which is a signal
-     * do close the password prompt in the other client, because the credentials had
-     * been already provided.
-     */
 
-    /**
-     * Connection status codes used by the #ESource to indicate its connection state.
-     * This is used in combination with authentication of the ESource. For example,
-     * if there are multiple clients asking for a password and a user enters the password
-     * in one of them, then the status will change into 'connecting', which is a signal
-     * do close the password prompt in the other client, because the credentials had
-     * been already provided.
-     */
     export namespace SourceConnectionStatus {
         export const $gtype: GObject.GType<SourceConnectionStatus>;
     }
 
+    /**
+     * Connection status codes used by the #ESource to indicate its connection state.
+     * This is used in combination with authentication of the ESource. For example,
+     * if there are multiple clients asking for a password and a user enters the password
+     * in one of them, then the status will change into 'connecting', which is a signal
+     * do close the password prompt in the other client, because the credentials had
+     * been already provided.
+     */
     enum SourceConnectionStatus {
         /**
          * The source is currently disconnected from its (possibly remote) data store.
@@ -380,17 +333,14 @@ export namespace EDataServer {
          */
         CONNECTED,
     }
-    /**
-     * An ESource's authentication reason, used by an ESource::CredentialsRequired method.
-     */
 
-    /**
-     * An ESource's authentication reason, used by an ESource::CredentialsRequired method.
-     */
     export namespace SourceCredentialsReason {
         export const $gtype: GObject.GType<SourceCredentialsReason>;
     }
 
+    /**
+     * An ESource's authentication reason, used by an ESource::CredentialsRequired method.
+     */
     enum SourceCredentialsReason {
         /**
          * A return value when there was no 'credentials-required' signal emitted yet,
@@ -419,17 +369,14 @@ export namespace EDataServer {
          */
         ERROR,
     }
-    /**
-     * Defines authentication types for LDAP sources.
-     */
 
-    /**
-     * Defines authentication types for LDAP sources.
-     */
     export namespace SourceLDAPAuthentication {
         export const $gtype: GObject.GType<SourceLDAPAuthentication>;
     }
 
+    /**
+     * Defines authentication types for LDAP sources.
+     */
     enum SourceLDAPAuthentication {
         /**
          * Use none authentication type.
@@ -444,17 +391,14 @@ export namespace EDataServer {
          */
         BINDDN,
     }
-    /**
-     * Defines search scope for LDAP sources.
-     */
 
-    /**
-     * Defines search scope for LDAP sources.
-     */
     export namespace SourceLDAPScope {
         export const $gtype: GObject.GType<SourceLDAPScope>;
     }
 
+    /**
+     * Defines search scope for LDAP sources.
+     */
     enum SourceLDAPScope {
         /**
          * One level search scope.
@@ -465,17 +409,14 @@ export namespace EDataServer {
          */
         SUBTREE,
     }
-    /**
-     * Defines what connection security should be used for LDAP sources.
-     */
 
-    /**
-     * Defines what connection security should be used for LDAP sources.
-     */
     export namespace SourceLDAPSecurity {
         export const $gtype: GObject.GType<SourceLDAPSecurity>;
     }
 
+    /**
+     * Defines what connection security should be used for LDAP sources.
+     */
     enum SourceLDAPSecurity {
         /**
          * Connect insecurely.
@@ -490,17 +431,14 @@ export namespace EDataServer {
          */
         STARTTLS,
     }
-    /**
-     * Set of preferred reply styles for an #ESourceMailComposition extension.
-     */
 
-    /**
-     * Set of preferred reply styles for an #ESourceMailComposition extension.
-     */
     export namespace SourceMailCompositionReplyStyle {
         export const $gtype: GObject.GType<SourceMailCompositionReplyStyle>;
     }
 
+    /**
+     * Set of preferred reply styles for an #ESourceMailComposition extension.
+     */
     enum SourceMailCompositionReplyStyle {
         /**
          * Use default reply style.
@@ -523,17 +461,14 @@ export namespace EDataServer {
          */
         OUTLOOK,
     }
-    /**
-     * Units to be used in an #ESourceWeather extension.
-     */
 
-    /**
-     * Units to be used in an #ESourceWeather extension.
-     */
     export namespace SourceWeatherUnits {
         export const $gtype: GObject.GType<SourceWeatherUnits>;
     }
 
+    /**
+     * Units to be used in an #ESourceWeather extension.
+     */
     enum SourceWeatherUnits {
         /**
          * Fahrenheit units
@@ -548,17 +483,14 @@ export namespace EDataServer {
          */
         KELVIN,
     }
-    /**
-     * Describes a three-state value, which can be either Off, On or Inconsistent.
-     */
 
-    /**
-     * Describes a three-state value, which can be either Off, On or Inconsistent.
-     */
     export namespace ThreeState {
         export const $gtype: GObject.GType<ThreeState>;
     }
 
+    /**
+     * Describes a three-state value, which can be either Off, On or Inconsistent.
+     */
     enum ThreeState {
         /**
          * the three-state value is Off
@@ -572,10 +504,6 @@ export namespace EDataServer {
          * the three-state value is neither On, nor Off
          */
         INCONSISTENT,
-    }
-
-    export namespace TimeParseStatus {
-        export const $gtype: GObject.GType<TimeParseStatus>;
     }
 
     enum TimeParseStatus {
@@ -592,17 +520,14 @@ export namespace EDataServer {
          */
         INVALID,
     }
-    /**
-     * Response codes for the trust prompt.
-     */
 
-    /**
-     * Response codes for the trust prompt.
-     */
     export namespace TrustPromptResponse {
         export const $gtype: GObject.GType<TrustPromptResponse>;
     }
 
+    /**
+     * Response codes for the trust prompt.
+     */
     enum TrustPromptResponse {
         /**
          * Unknown response, usually due to some error
@@ -626,10 +551,6 @@ export namespace EDataServer {
         REJECT_TEMPORARILY,
     }
 
-    export namespace WebDAVACEPrincipalKind {
-        export const $gtype: GObject.GType<WebDAVACEPrincipalKind>;
-    }
-
     enum WebDAVACEPrincipalKind {
         UNKNOWN,
         HREF,
@@ -641,17 +562,9 @@ export namespace EDataServer {
         OWNER,
     }
 
-    export namespace WebDAVLockScope {
-        export const $gtype: GObject.GType<WebDAVLockScope>;
-    }
-
     enum WebDAVLockScope {
         EXCLUSIVE,
         SHARED,
-    }
-
-    export namespace WebDAVPrivilegeHint {
-        export const $gtype: GObject.GType<WebDAVPrivilegeHint>;
     }
 
     enum WebDAVPrivilegeHint {
@@ -670,10 +583,6 @@ export namespace EDataServer {
         CALDAV_READ_FREE_BUSY,
     }
 
-    export namespace WebDAVPrivilegeKind {
-        export const $gtype: GObject.GType<WebDAVPrivilegeKind>;
-    }
-
     enum WebDAVPrivilegeKind {
         UNKNOWN,
         ABSTRACT,
@@ -681,17 +590,9 @@ export namespace EDataServer {
         COMMON,
     }
 
-    export namespace WebDAVPropertyChangeKind {
-        export const $gtype: GObject.GType<WebDAVPropertyChangeKind>;
-    }
-
     enum WebDAVPropertyChangeKind {
         SET,
         REMOVE,
-    }
-
-    export namespace WebDAVResourceKind {
-        export const $gtype: GObject.GType<WebDAVResourceKind>;
     }
 
     enum WebDAVResourceKind {
@@ -703,10 +604,6 @@ export namespace EDataServer {
         RESOURCE,
         SUBSCRIBED_ICALENDAR,
         WEBDAV_NOTES,
-    }
-
-    export namespace XmlHashStatus {
-        export const $gtype: GObject.GType<XmlHashStatus>;
     }
 
     enum XmlHashStatus {
@@ -724,10 +621,6 @@ export namespace EDataServer {
         NOT_FOUND,
     }
 
-    export namespace XmlHashType {
-        export const $gtype: GObject.GType<XmlHashType>;
-    }
-
     enum XmlHashType {
         /**
          * Use the object UID as the hash key.
@@ -738,6 +631,7 @@ export namespace EDataServer {
          */
         PROPERTY,
     }
+
     /**
      * The "cache-dir" property indicates the backend's local directory for
      * cached data.
@@ -2548,14 +2442,6 @@ export namespace EDataServer {
     /**
      * Flags of the OAuth2 service.
      */
-
-    /**
-     * Flags of the OAuth2 service.
-     */
-    export namespace OAuth2ServiceFlags {
-        export const $gtype: GObject.GType<OAuth2ServiceFlags>;
-    }
-
     enum OAuth2ServiceFlags {
         /**
          * No flag set
@@ -2568,10 +2454,6 @@ export namespace EDataServer {
         EXTRACT_REQUIRES_PAGE_CONTENT,
     }
 
-    export namespace WebDAVACEFlag {
-        export const $gtype: GObject.GType<WebDAVACEFlag>;
-    }
-
     enum WebDAVACEFlag {
         UNKNOWN,
         GRANT,
@@ -2581,20 +2463,12 @@ export namespace EDataServer {
         INHERITED,
     }
 
-    export namespace WebDAVACLRestrictions {
-        export const $gtype: GObject.GType<WebDAVACLRestrictions>;
-    }
-
     enum WebDAVACLRestrictions {
         NONE,
         GRANT_ONLY,
         NO_INVERT,
         DENY_BEFORE_GRANT,
         REQUIRED_PRINCIPAL,
-    }
-
-    export namespace WebDAVDiscoverSupports {
-        export const $gtype: GObject.GType<WebDAVDiscoverSupports>;
     }
 
     enum WebDAVDiscoverSupports {
@@ -2606,10 +2480,6 @@ export namespace EDataServer {
         WEBDAV_NOTES,
         CALENDAR_AUTO_SCHEDULE,
         SUBSCRIBED_ICALENDAR,
-    }
-
-    export namespace WebDAVListFlags {
-        export const $gtype: GObject.GType<WebDAVListFlags>;
     }
 
     enum WebDAVListFlags {
@@ -2629,10 +2499,6 @@ export namespace EDataServer {
         ONLY_ADDRESSBOOK,
     }
 
-    export namespace WebDAVResourceSupports {
-        export const $gtype: GObject.GType<WebDAVResourceSupports>;
-    }
-
     enum WebDAVResourceSupports {
         NONE,
         CONTACTS,
@@ -2644,6 +2510,7 @@ export namespace EDataServer {
         WEBDAV_NOTES,
         LAST,
     }
+
     namespace Client {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {

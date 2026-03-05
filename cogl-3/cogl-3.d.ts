@@ -22,14 +22,6 @@ export namespace Cogl {
     /**
      * Data types for the components of a vertex attribute.
      */
-
-    /**
-     * Data types for the components of a vertex attribute.
-     */
-    export namespace AttributeType {
-        export const $gtype: GObject.GType<AttributeType>;
-    }
-
     enum AttributeType {
         /**
          * Data is the same size of a byte
@@ -54,13 +46,6 @@ export namespace Cogl {
          */
         FLOAT,
     }
-    /**
-     * Error codes that can be thrown when performing bitmap
-     * operations. Note that gdk_pixbuf_new_from_file() can also throw
-     * errors directly from the underlying image loading library. For
-     * example, if GdkPixbuf is used then errors #GdkPixbufError<!-- -->s
-     * will be used directly.
-     */
 
     /**
      * Error codes that can be thrown when performing bitmap
@@ -69,10 +54,6 @@ export namespace Cogl {
      * example, if GdkPixbuf is used then errors #GdkPixbufError<!-- -->s
      * will be used directly.
      */
-    export namespace BitmapError {
-        export const $gtype: GObject.GType<BitmapError>;
-    }
-
     enum BitmapError {
         /**
          * Generic failure code, something went
@@ -88,17 +69,10 @@ export namespace Cogl {
          */
         CORRUPT_IMAGE,
     }
-    /**
-     * Error enumeration for the blend strings parser
-     */
 
     /**
      * Error enumeration for the blend strings parser
      */
-    export namespace BlendStringError {
-        export const $gtype: GObject.GType<BlendStringError>;
-    }
-
     enum BlendStringError {
         /**
          * Generic parse error
@@ -118,15 +92,6 @@ export namespace Cogl {
          */
         GPU_UNSUPPORTED_ERROR,
     }
-    /**
-     * When using depth testing one of these functions is used to compare
-     * the depth of an incoming fragment against the depth value currently
-     * stored in the depth buffer. The function is changed using
-     * cogl_depth_state_set_test_function().
-     *
-     * The test is only done when depth testing is explicitly enabled. (See
-     * cogl_depth_state_set_test_enabled())
-     */
 
     /**
      * When using depth testing one of these functions is used to compare
@@ -137,10 +102,6 @@ export namespace Cogl {
      * The test is only done when depth testing is explicitly enabled. (See
      * cogl_depth_state_set_test_enabled())
      */
-    export namespace DepthTestFunction {
-        export const $gtype: GObject.GType<DepthTestFunction>;
-    }
-
     enum DepthTestFunction {
         /**
          * Never passes.
@@ -181,17 +142,10 @@ export namespace Cogl {
          */
         ALWAYS,
     }
-    /**
-     * Return values for the #CoglXlibFilterFunc and #CoglWin32FilterFunc functions.
-     */
 
     /**
      * Return values for the #CoglXlibFilterFunc and #CoglWin32FilterFunc functions.
      */
-    export namespace FilterReturn {
-        export const $gtype: GObject.GType<FilterReturn>;
-    }
-
     enum FilterReturn {
         /**
          * The event was not handled, continues the
@@ -203,20 +157,6 @@ export namespace Cogl {
          */
         REMOVE,
     }
-    /**
-     * The fog mode determines the equation used to calculate the fogging blend
-     * factor while fogging is enabled. The simplest %COGL_FOG_MODE_LINEAR mode
-     * determines f as:
-     *
-     *
-     * ```
-     *   f = end - eye_distance / end - start
-     * ```
-     *
-     *
-     * Where eye_distance is the distance of the current fragment in eye
-     * coordinates from the origin.
-     */
 
     /**
      * The fog mode determines the equation used to calculate the fogging blend
@@ -232,10 +172,6 @@ export namespace Cogl {
      * Where eye_distance is the distance of the current fragment in eye
      * coordinates from the origin.
      */
-    export namespace FogMode {
-        export const $gtype: GObject.GType<FogMode>;
-    }
-
     enum FogMode {
         /**
          * Calculates the fog blend factor as:
@@ -265,17 +201,6 @@ export namespace Cogl {
          */
         EXPONENTIAL_SQUARED,
     }
-    /**
-     * You should aim to use the smallest data type that gives you enough
-     * range, since it reduces the size of your index array and can help
-     * reduce the demand on memory bandwidth.
-     *
-     * Note that %COGL_INDICES_TYPE_UNSIGNED_INT is only supported if the
-     * %COGL_FEATURE_ID_UNSIGNED_INT_INDICES feature is available. This
-     * should always be available on OpenGL but on OpenGL ES it will only
-     * be available if the GL_OES_element_index_uint extension is
-     * advertized.
-     */
 
     /**
      * You should aim to use the smallest data type that gives you enough
@@ -288,10 +213,6 @@ export namespace Cogl {
      * be available if the GL_OES_element_index_uint extension is
      * advertized.
      */
-    export namespace IndicesType {
-        export const $gtype: GObject.GType<IndicesType>;
-    }
-
     enum IndicesType {
         /**
          * Your indices are unsigned bytes
@@ -306,12 +227,6 @@ export namespace Cogl {
          */
         INT,
     }
-    /**
-     * Alpha testing happens before blending primitives with the framebuffer and
-     * gives an opportunity to discard fragments based on a comparison with the
-     * incoming alpha value and a reference alpha value. The #CoglMaterialAlphaFunc
-     * determines how the comparison is done.
-     */
 
     /**
      * Alpha testing happens before blending primitives with the framebuffer and
@@ -319,10 +234,6 @@ export namespace Cogl {
      * incoming alpha value and a reference alpha value. The #CoglMaterialAlphaFunc
      * determines how the comparison is done.
      */
-    export namespace MaterialAlphaFunc {
-        export const $gtype: GObject.GType<MaterialAlphaFunc>;
-    }
-
     enum MaterialAlphaFunc {
         /**
          * Never let the fragment through.
@@ -363,13 +274,6 @@ export namespace Cogl {
          */
         ALWAYS,
     }
-    /**
-     * Texture filtering is used whenever the current pixel maps either to more
-     * than one texture element (texel) or less than one. These filter enums
-     * correspond to different strategies used to come up with a pixel color, by
-     * possibly referring to multiple neighbouring texels and taking a weighted
-     * average or simply using the nearest texel.
-     */
 
     /**
      * Texture filtering is used whenever the current pixel maps either to more
@@ -378,10 +282,6 @@ export namespace Cogl {
      * possibly referring to multiple neighbouring texels and taking a weighted
      * average or simply using the nearest texel.
      */
-    export namespace MaterialFilter {
-        export const $gtype: GObject.GType<MaterialFilter>;
-    }
-
     enum MaterialFilter {
         /**
          * Measuring in manhatten distance from the,
@@ -420,19 +320,11 @@ export namespace Cogl {
          */
         LINEAR_MIPMAP_LINEAR,
     }
-    /**
-     * Available types of layers for a #CoglMaterial. This enumeration
-     * might be expanded in later versions.
-     */
 
     /**
      * Available types of layers for a #CoglMaterial. This enumeration
      * might be expanded in later versions.
      */
-    export namespace MaterialLayerType {
-        export const $gtype: GObject.GType<MaterialLayerType>;
-    }
-
     enum MaterialLayerType {
         /**
          * The layer represents a
@@ -440,16 +332,6 @@ export namespace Cogl {
          */
         MATERIAL_LAYER_TYPE_TEXTURE,
     }
-    /**
-     * The wrap mode specifies what happens when texture coordinates
-     * outside the range 0→1 are used. Note that if the filter mode is
-     * anything but %COGL_MATERIAL_FILTER_NEAREST then texels outside the
-     * range 0→1 might be used even when the coordinate is exactly 0 or 1
-     * because OpenGL will try to sample neighbouring pixels. For example
-     * if you are trying to render the full texture then you may get
-     * artifacts around the edges when the pixels from the other side are
-     * merged in if the wrap mode is set to repeat.
-     */
 
     /**
      * The wrap mode specifies what happens when texture coordinates
@@ -461,10 +343,6 @@ export namespace Cogl {
      * artifacts around the edges when the pixels from the other side are
      * merged in if the wrap mode is set to repeat.
      */
-    export namespace MaterialWrapMode {
-        export const $gtype: GObject.GType<MaterialWrapMode>;
-    }
-
     enum MaterialWrapMode {
         /**
          * The texture will be repeated. This
@@ -491,25 +369,14 @@ export namespace Cogl {
         AUTOMATIC,
     }
 
-    export namespace RendererError {
-        export const $gtype: GObject.GType<RendererError>;
-    }
-
     enum RendererError {
         XLIB_DISPLAY_OPEN,
         BAD_CONSTRAINT,
     }
-    /**
-     * Types of shaders
-     */
 
     /**
      * Types of shaders
      */
-    export namespace ShaderType {
-        export const $gtype: GObject.GType<ShaderType>;
-    }
-
     enum ShaderType {
         /**
          * A program for proccessing vertices
@@ -520,19 +387,11 @@ export namespace Cogl {
          */
         FRAGMENT,
     }
-    /**
-     * Represents how draw should affect the two buffers
-     * of a stereo framebuffer. See cogl_framebuffer_set_stereo_mode().
-     */
 
     /**
      * Represents how draw should affect the two buffers
      * of a stereo framebuffer. See cogl_framebuffer_set_stereo_mode().
      */
-    export namespace StereoMode {
-        export const $gtype: GObject.GType<StereoMode>;
-    }
-
     enum StereoMode {
         /**
          * draw to both stereo buffers
@@ -547,27 +406,6 @@ export namespace Cogl {
          */
         RIGHT,
     }
-    /**
-     * Error enumeration for Cogl
-     *
-     * The `COGL_SYSTEM_ERROR_UNSUPPORTED` error can be thrown for a
-     * variety of reasons. For example:
-     *
-     * <itemizedlist>
-     *  <listitem><para>You've tried to use a feature that is not
-     *   advertised by cogl_has_feature(). This could happen if you create
-     *   a 2d texture with a non-power-of-two size when
-     *   %COGL_FEATURE_ID_TEXTURE_NPOT is not advertised.</para></listitem>
-     *  <listitem><para>The GPU can not handle the configuration you have
-     *   requested. An example might be if you try to use too many texture
-     *   layers in a single #CoglPipeline</para></listitem>
-     *  <listitem><para>The driver does not support some
-     *   configuration.</para></listiem>
-     * </itemizedlist>
-     *
-     * Currently this is only used by Cogl API marked as experimental so
-     * this enum should also be considered experimental.
-     */
 
     /**
      * Error enumeration for Cogl
@@ -590,10 +428,6 @@ export namespace Cogl {
      * Currently this is only used by Cogl API marked as experimental so
      * this enum should also be considered experimental.
      */
-    export namespace SystemError {
-        export const $gtype: GObject.GType<SystemError>;
-    }
-
     enum SystemError {
         /**
          * You tried to use a feature or
@@ -606,17 +440,10 @@ export namespace Cogl {
          */
         NO_MEMORY,
     }
-    /**
-     * See cogl_texture_set_components().
-     */
 
     /**
      * See cogl_texture_set_components().
      */
-    export namespace TextureComponents {
-        export const $gtype: GObject.GType<TextureComponents>;
-    }
-
     enum TextureComponents {
         /**
          * Only the alpha component
@@ -641,17 +468,10 @@ export namespace Cogl {
          */
         DEPTH,
     }
-    /**
-     * Error codes that can be thrown when allocating textures.
-     */
 
     /**
      * Error codes that can be thrown when allocating textures.
      */
-    export namespace TextureError {
-        export const $gtype: GObject.GType<TextureError>;
-    }
-
     enum TextureError {
         /**
          * Unsupported size
@@ -668,19 +488,11 @@ export namespace Cogl {
          */
         TYPE,
     }
-    /**
-     * Constants representing the underlying hardware texture type of a
-     * #CoglTexture.
-     */
 
     /**
      * Constants representing the underlying hardware texture type of a
      * #CoglTexture.
      */
-    export namespace TextureType {
-        export const $gtype: GObject.GType<TextureType>;
-    }
-
     enum TextureType {
         /**
          * A #CoglTexture2D
@@ -695,17 +507,10 @@ export namespace Cogl {
          */
         RECTANGLE,
     }
-    /**
-     * Different ways of interpreting vertices when drawing.
-     */
 
     /**
      * Different ways of interpreting vertices when drawing.
      */
-    export namespace VerticesMode {
-        export const $gtype: GObject.GType<VerticesMode>;
-    }
-
     enum VerticesMode {
         /**
          * FIXME, equivalent to
@@ -741,21 +546,12 @@ export namespace Cogl {
          */
         TRIANGLE_FAN,
     }
-    /**
-     * Enum used to represent the two directions of rotation. This can be
-     * used to set the front face for culling by calling
-     * cogl_pipeline_set_front_face_winding().
-     */
 
     /**
      * Enum used to represent the two directions of rotation. This can be
      * used to set the front face for culling by calling
      * cogl_pipeline_set_front_face_winding().
      */
-    export namespace Winding {
-        export const $gtype: GObject.GType<Winding>;
-    }
-
     enum Winding {
         /**
          * Vertices are in a clockwise order
@@ -765,10 +561,6 @@ export namespace Cogl {
          * Vertices are in a counter-clockwise order
          */
         COUNTER_CLOCKWISE,
-    }
-
-    export namespace WinsysFeature {
-        export const $gtype: GObject.GType<WinsysFeature>;
     }
 
     enum WinsysFeature {
@@ -785,6 +577,7 @@ export namespace Cogl {
         SYNC_AND_COMPLETE_EVENT,
         N_FEATURES,
     }
+
     const AFIRST_BIT: number;
     const A_BIT: number;
     const BGR_BIT: number;
@@ -1926,14 +1719,6 @@ export namespace Cogl {
     /**
      * Types of auxiliary buffers
      */
-
-    /**
-     * Types of auxiliary buffers
-     */
-    export namespace BufferBit {
-        export const $gtype: GObject.GType<BufferBit>;
-    }
-
     enum BufferBit {
         /**
          * Selects the primary color buffer
@@ -1948,17 +1733,10 @@ export namespace Cogl {
          */
         STENCIL,
     }
-    /**
-     * Target flags for FBOs.
-     */
 
     /**
      * Target flags for FBOs.
      */
-    export namespace BufferTarget {
-        export const $gtype: GObject.GType<BufferTarget>;
-    }
-
     enum BufferTarget {
         /**
          * FIXME
@@ -1969,12 +1747,6 @@ export namespace Cogl {
          */
         OFFSCREEN_BUFFER,
     }
-    /**
-     * Defines a bit mask of color channels. This can be used with
-     * cogl_pipeline_set_color_mask() for example to define which color
-     * channels should be written to the current framebuffer when
-     * drawing something.
-     */
 
     /**
      * Defines a bit mask of color channels. This can be used with
@@ -1982,10 +1754,6 @@ export namespace Cogl {
      * channels should be written to the current framebuffer when
      * drawing something.
      */
-    export namespace ColorMask {
-        export const $gtype: GObject.GType<ColorMask>;
-    }
-
     enum ColorMask {
         /**
          * None of the color channels are masked
@@ -2012,17 +1780,10 @@ export namespace Cogl {
          */
         ALL,
     }
-    /**
-     * Flags for the supported features.
-     */
 
     /**
      * Flags for the supported features.
      */
-    export namespace FeatureFlags {
-        export const $gtype: GObject.GType<FeatureFlags>;
-    }
-
     enum FeatureFlags {
         /**
          * ARB_texture_rectangle support
@@ -2135,26 +1896,6 @@ export namespace Cogl {
          */
         DEPTH_TEXTURE,
     }
-    /**
-     * Pixel formats used by Cogl. For the formats with a byte per
-     * component, the order of the components specify the order in
-     * increasing memory addresses. So for example
-     * %COGL_PIXEL_FORMAT_RGB_888 would have the red component in the
-     * lowest address, green in the next address and blue after that
-     * regardless of the endianness of the system.
-     *
-     * For the formats with non byte aligned components the component
-     * order specifies the order within a 16-bit or 32-bit number from
-     * most significant bit to least significant. So for
-     * %COGL_PIXEL_FORMAT_RGB_565, the red component would be in bits
-     * 11-15, the green component would be in 6-11 and the blue component
-     * would be in 1-5. Therefore the order in memory depends on the
-     * endianness of the system.
-     *
-     * When uploading a texture %COGL_PIXEL_FORMAT_ANY can be used as the
-     * internal format. Cogl will try to pick the best format to use
-     * internally and convert the texture data if necessary.
-     */
 
     /**
      * Pixel formats used by Cogl. For the formats with a byte per
@@ -2176,10 +1917,6 @@ export namespace Cogl {
      * internal format. Cogl will try to pick the best format to use
      * internally and convert the texture data if necessary.
      */
-    export namespace PixelFormat {
-        export const $gtype: GObject.GType<PixelFormat>;
-    }
-
     enum PixelFormat {
         /**
          * Any format
@@ -2299,34 +2036,20 @@ export namespace Cogl {
         DEPTH_32,
         DEPTH_24_STENCIL_8,
     }
-    /**
-     * Flags for cogl_framebuffer_read_pixels_into_bitmap()
-     */
 
     /**
      * Flags for cogl_framebuffer_read_pixels_into_bitmap()
      */
-    export namespace ReadPixelsFlags {
-        export const $gtype: GObject.GType<ReadPixelsFlags>;
-    }
-
     enum ReadPixelsFlags {
         /**
          * Read from the color buffer
          */
         READ_PIXELS_COLOR_BUFFER,
     }
-    /**
-     * Flags to pass to the cogl_texture_new_* family of functions.
-     */
 
     /**
      * Flags to pass to the cogl_texture_new_* family of functions.
      */
-    export namespace TextureFlags {
-        export const $gtype: GObject.GType<TextureFlags>;
-    }
-
     enum TextureFlags {
         /**
          * No flags specified
@@ -2350,6 +2073,7 @@ export namespace Cogl {
          */
         NO_ATLAS,
     }
+
     namespace Bitmap {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}

@@ -63,8 +63,9 @@ export namespace Midori {
         HTTP,
         NONE,
     }
+
     class DatabaseError extends GLib.Error {
-        static $gtype: GObject.GType<DatabaseError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 

@@ -64,8 +64,9 @@ export namespace RygelCore {
         TITLE,
         ENABLED,
     }
+
     class ConfigurationError extends GLib.Error {
-        static $gtype: GObject.GType<ConfigurationError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -78,7 +79,7 @@ export namespace RygelCore {
     }
 
     class CmdlineConfigError extends GLib.Error {
-        static $gtype: GObject.GType<CmdlineConfigError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -90,7 +91,6 @@ export namespace RygelCore {
     }
 
     function get_pretty_host_name(): string;
-
     export namespace PluginCapabilities {
         export const $gtype: GObject.GType<PluginCapabilities>;
     }
@@ -106,6 +106,7 @@ export namespace RygelCore {
         DIAGNOSTICS,
         ENERGY_MANAGEMENT,
     }
+
     namespace ConnectionManager {
         // Signal signatures
         interface SignalSignatures extends GUPnP.Service.SignalSignatures {

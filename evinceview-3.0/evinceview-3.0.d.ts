@@ -90,6 +90,7 @@ export namespace EvinceView {
          */
         AUTOMATIC,
     }
+
     const STOCK_ANNOT_SQUIGGLY: string;
     const STOCK_ANNOT_TEXT: string;
     const STOCK_ATTACHMENT: string;
@@ -116,7 +117,6 @@ export namespace EvinceView {
     function stock_icons_init(): void;
     function stock_icons_set_screen(screen: Gdk.Screen): void;
     function stock_icons_shutdown(): void;
-
     export namespace JobPageDataFlags {
         export const $gtype: GObject.GType<JobPageDataFlags>;
     }
@@ -135,6 +135,7 @@ export namespace EvinceView {
         MEDIA,
         ALL,
     }
+
     namespace DocumentModel {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
